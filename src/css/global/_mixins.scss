@@ -1,0 +1,17 @@
+@mixin globalTransition() {
+  transition: 0.2s all linear;
+}
+
+@mixin linx($base, $hover) {
+  color: $base;
+  @include globalTransition();
+  &:visited {
+    color: $base;
+  }
+  &:hover {
+    color: $hover;
+  }
+  &:active {
+    color: $hover;
+  }
+}

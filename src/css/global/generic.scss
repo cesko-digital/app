@@ -1,0 +1,87 @@
+/* LAYOUT THOUGHTS */
+
+body {
+  background-color: #f9f9f9;
+}
+
+.content {
+  display: block;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-left: $contentPadding;
+  padding-right: $contentPadding;
+  position: relative;
+
+  /* OPTIONS */
+  &.-reset {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &.-arrowHeader {
+    padding-left: $contentPadding;
+    padding-right: 0;
+    padding-top: 25px;
+    display: flex;
+    h2 {
+      margin-top: 0;
+    }
+    .arrowsFlex {
+      align-items: flex-start !important;
+      margin-left: auto;
+    }
+  }
+}
+
+section, article, header, footer {
+  overflow:auto;
+  padding-bottom: 40px;
+  background-color: $white;
+}
+
+.flex {
+  display: flex;
+
+  /* OPTIONS */
+  &.-badge {
+    padding-top: 14px;
+    padding-bottom: 35px;
+    justify-content: space-between;
+  }
+}
+
+.text-align {
+  &.-right {
+    text-align: right;
+  }
+  &.-left {
+    text-align: left;
+  }
+  &.-center {
+    text-align: center;
+  }
+}
+
+
+
+/* jednotlive upravy sekci */
+
+.cityVizor {
+  h2 {
+    margin-bottom: 2px !important;
+  }
+  h4 {
+    margin-top: 0;
+  }
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.nasTym {
+  .btn {
+    margin-bottom: 15px;
+  }
+}
+
+

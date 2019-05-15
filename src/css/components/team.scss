@@ -1,0 +1,27 @@
+.team {
+  display: flex;
+  justify-content: space-between;
+  width: 480px;
+  margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 50px;
+  figure {
+    margin: 0;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    overflow: hidden;
+    @include globalTransition();
+    img {
+      border-radius: 50%;
+      width: 100%;
+      margin: auto;
+      zoom: 1.1;
+    }
+    &:hover {
+      img {
+        zoom: 1.1;
+      }
+    }
+  }
+}

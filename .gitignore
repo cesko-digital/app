@@ -1,0 +1,17 @@
+rebel.xml
+.gradle
+.idea
+.DS_Store
+*.iml
+*.ipr
+*.iws
+out
+build
+log4j.properties
+src/main/resources/config-local.properties
+_dist
+
+_devel/
+node_modules/
+
+package-lock.json

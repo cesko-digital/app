@@ -1,0 +1,35 @@
+.header {
+  &_menu {
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+  }
+  .logo {
+    height: 27px;
+    width: auto;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    li {
+      display: inline;
+      margin-right: 35px;
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        text-decoration: none;
+        @include linx($black, $blue);
+        font-size: 14px;
+      }
+    }
+  }
+  &_intro {
+    padding-top: 30px;
+  }
+
+
+}

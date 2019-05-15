@@ -1,0 +1,31 @@
+$badgeSize: 150px;
+
+.badge {
+  width: $badgeSize;
+  height: $badgeSize;
+  background-color: $purple;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 600;
+  &_number {
+    color: $white;
+    font-size: 30px;
+    line-height: 39px;
+    letter-spacing: 0.5px;
+    span {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+  &_text {
+    color: $blackInDark;
+    text-align: center;
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: normal;
+  }
+}
