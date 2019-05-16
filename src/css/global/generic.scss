@@ -62,6 +62,11 @@ section, article, header, footer {
   &.-center {
     text-align: center;
   }
+  &.-respCenter {
+    @media (max-width: $resolutionTablet) {
+      text-align: center !important;
+    }
+  }
 }
 
 .hideOn {
