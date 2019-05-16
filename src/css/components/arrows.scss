@@ -10,11 +10,17 @@
     display: flex;
     overflow: hidden;
     width: $contentPadding;
+    @media (max-width: $resolutionTablet) {
+      width: $contentPaddingMobile;
+    }
     flex-direction: row-reverse;
   }
   .right {
     display: flex;
-    width: calc(100% - 120px);
+    width: calc(100% - #{$contentPadding});
+    @media (max-width: $resolutionTablet) {
+      width: calc(100% - #{$contentPaddingMobile});
+    }
     overflow: hidden;
   }
 }
@@ -124,9 +130,20 @@
 
 }
 
-//TODO: jinak, lepe
+//TODO: jinak, lepe, treba spocitat
 .arrowButton {
   position: absolute;
   top: 45px;
-  right: 120px;
+  right: $contentPadding;
+  @media (max-width: $resolutionTablet) {
+    right: $contentPaddingMobile;
+  }
+  @media (max-width: 400px) {
+    width: 270px;
+    left: 50%;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+
+
 }

@@ -1,8 +1,23 @@
+$menuResponsive : 600px;
+
 .header {
   &_menu {
     display: flex;
     padding-top: 20px;
     align-items: center;
+    &Resp {
+      width: 30px;
+      padding: 5px;
+      display: none;
+      margin-left: auto;
+      cursor: pointer;
+      @media (max-width: 600px) {
+        display: block;
+      }
+      img {
+        width: 100%;
+      }
+    }
   }
   .logo {
     height: 27px;
@@ -17,6 +32,9 @@
     li {
       display: inline;
       margin-right: 35px;
+      @media (max-width: 850px) {
+        margin-right: 20px;
+      }
       &:last-child {
         margin-right: 0;
       }
@@ -26,10 +44,42 @@
         font-size: 14px;
       }
     }
+    @media (max-width: 600px) {
+      position: fixed;
+      height: 100%;
+      display: block;
+      background-color: $white;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      padding-top: 20px;
+      transform: translate(0,-100%);
+      li {
+        display: block;
+        padding-top: 30px;
+        padding-left: 30px;
+      }
+    }
   }
   &_intro {
     padding-top: 30px;
   }
+}
 
+#menuClose {
+ //margin-right: 15px;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
 
+.respMenu {
+  &.-transition {
+    transition: transform 0.3s ease-in-out;
+  }
+  &.-open {
+    transform: translate(0,0);
+  }
 }

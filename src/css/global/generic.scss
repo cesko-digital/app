@@ -12,6 +12,10 @@ body {
   padding-left: $contentPadding;
   padding-right: $contentPadding;
   position: relative;
+  @media (max-width: $resolutionTablet) {
+    padding-left: $contentPaddingMobile;
+    padding-right: $contentPaddingMobile;
+  }
 
   /* OPTIONS */
   &.-reset {
@@ -20,6 +24,9 @@ body {
   }
   &.-arrowHeader {
     padding-left: $contentPadding;
+    @media (max-width: $resolutionTablet) {
+      padding-left: $contentPaddingMobile;
+    }
     padding-right: 0;
     padding-top: 25px;
     display: flex;
@@ -37,18 +44,13 @@ section, article, header, footer {
   overflow:auto;
   padding-bottom: 40px;
   background-color: $white;
-}
-
-.flex {
-  display: flex;
-
-  /* OPTIONS */
-  &.-badge {
-    padding-top: 14px;
-    padding-bottom: 35px;
-    justify-content: space-between;
+  @media (max-width: $resolutionTablet) {
+    padding-bottom: 20px;
   }
 }
+
+
+
 
 .text-align {
   &.-right {
@@ -59,6 +61,59 @@ section, article, header, footer {
   }
   &.-center {
     text-align: center;
+  }
+}
+
+.hideOn {
+  &.-r1000 {
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+  &.-r940 {
+    @media (max-width: 940px) {
+      display: none;
+    }
+  }
+  &.-r870 {
+    @media (max-width: 870px) {
+      display: none;
+    }
+  }
+  &.-r700 {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+  &.-r610 {
+    @media (max-width: 610px) {
+      display: none;
+    }
+  }
+  &.-r550 {
+    @media (max-width: 550px) {
+      display: none;
+    }
+  }
+  &.-r500 {
+    @media (max-width: 500px) {
+      display: none;
+    }
+  }
+  &.-r450 {
+    @media (max-width: 450px) {
+      display: none;
+    }
+  }
+  &.-r400 {
+    @media (max-width: 400px) {
+      display: none;
+    }
+  }
+  &.-tablet {
+    @media (max-width: $resolutionTablet) {
+      display: none;
+    }
   }
 }
 
@@ -83,5 +138,6 @@ section, article, header, footer {
     margin-bottom: 15px;
   }
 }
+
 
 

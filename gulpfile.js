@@ -126,7 +126,7 @@ gulp.task('configure-release', function() {
 	releasing = true;
 });
 
-gulp.task('release', ['configure-release', 'sass', 'js', 'third-party', 'copy', 'html'], function() {
+gulp.task('release', ['configure-release', 'sass', 'js', 'images', 'third-party', 'copy', 'html'], function() {
 	asciify('Releasing', {color:'yellow', font: 'smshadow'}, function(err, res){ console.log(res); });
 });
 

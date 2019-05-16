@@ -78,6 +78,15 @@ p {
   line-height: 22px;
   margin-top: 0;
   margin-bottom: 15px;
+  &.-noRespBreak {
+    @media (max-width: $resolutionTablet) {
+      br {
+        display: inline;
+        content: ' ';
+        clear:none;
+      }
+    }
+  }
 }
 
 a {

@@ -5,6 +5,14 @@
   margin: 0 auto;
   padding-top: 45px;
   padding-bottom: 50px;
+  @media (max-width: 500px) {
+    width: 400px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  &Wrapper {
+    overflow: hidden;
+  }
   figure {
     margin: 0;
     width: 120px;
