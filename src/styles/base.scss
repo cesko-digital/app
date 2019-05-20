@@ -3,8 +3,29 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+a {
+  color: #1a2c29;
+}
+
 .g-hide-mobile {
   @media (max-width: $media-medium) {
     display: none !important;
+  }
+}
+
+.logo {
+  display: inline-block;
+  width: 134px;
+  height: 27px;
+  background: url('../images/logo.svg');
+  padding: 0 !important;
+  margin-top: 20px;
+
+  @media (min-width: $media-medium) {
+    margin-top: 0;
+  }
+
+  &__inner {
+    display: none;
   }
 }

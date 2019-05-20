@@ -13,7 +13,8 @@
 
 .nav {
   display: flex;
-  margin: 0 30px;
+  flex-wrap: wrap;
+  margin: 0 10px;
   border-bottom: 1px solid #a79075;
 
   &--footer {
@@ -26,8 +27,12 @@
   }
 
   &__link {
-    padding: 20px;
+    padding: 10px;
     color: $text-color;
+
+    @media (min-width: $media-medium) {
+      padding: 20px;
+    }
 
     &--footer {
       color: #ffffff;
