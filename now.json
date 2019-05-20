@@ -1,0 +1,13 @@
+{
+    "name": "web",
+    "version": 2,
+    "alias": "test.cesko.digital",
+    "builds": [
+        { "src": "index.html", "use": "@now/static" },
+        { "src": "dist/**", "use": "@now/static" }
+    ],
+    "github": {
+        "enabled": false,
+        "silent": false
+    }
+  }
