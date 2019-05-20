@@ -4,10 +4,12 @@
     "alias": "test.cesko.digital",
     "builds": [
         { "src": "index.html", "use": "@now/static" },
-        { "src": "dist/**", "use": "@now/static" }
+        { "src": "assets/**", "use": "@now/static" },
+        { "src": "package.json", "use": "@now/static-build" }
     ],
     "github": {
         "enabled": false,
         "silent": false
-    }
+    },
+    "regions": ["bru1","cdg1","lhr1"]
   }
