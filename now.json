@@ -3,7 +3,7 @@
     "version": 2,
     "alias": "test.cesko.digital",
     "builds": [
-        { "src": "index.html", "use": "@now/static" },
+        { "src": "*.html", "use": "@now/static" },
         { "src": "assets/**", "use": "@now/static" },
         { "src": "package.json", "use": "@now/static-build" }
     ],
