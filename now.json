@@ -8,7 +8,7 @@
         { "src": "package.json", "use": "@now/static-build" }
     ],
     "github": {
-        "enabled": false,
+        "enabled": true,
         "silent": false
     },
     "regions": ["bru1","cdg1","lhr1"]
