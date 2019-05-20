@@ -9,7 +9,7 @@ out
 build
 log4j.properties
 src/main/resources/config-local.properties
-_dist
+dist
 
 _devel/
 node_modules/

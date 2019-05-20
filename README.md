@@ -1,7 +1,11 @@
 # cesko.digital web
 
-## Build SASS files
+## Build
 
 ```
-sass ./src/styles/main.scss ./dist/main.css --watch
+npm i
+```
+
+```
+npm run build
 ```

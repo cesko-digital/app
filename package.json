@@ -1,0 +1,30 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "website for cesko.digital",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesko-digital/web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cesko-digital/web/issues"
+  },
+  "homepage": "https://github.com/cesko-digital/web#readme",
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^3.0.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.32.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
