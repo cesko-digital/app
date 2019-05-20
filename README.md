@@ -1,5 +1,7 @@
-# web
+# cesko.digital web
 
-INIT - npm install
-DEVEL - gulp devel
-DIST - gulp release
+## Build SASS files
+
+```
+sass ./src/styles/main.scss ./dist/main.css --watch
+```

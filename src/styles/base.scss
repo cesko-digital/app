@@ -1,0 +1,10 @@
+html {
+  font-family: $serif-font-family;
+  -webkit-font-smoothing: antialiased;
+}
+
+.g-hide-mobile {
+  @media (max-width: $media-medium) {
+    display: none !important;
+  }
+}

@@ -1,0 +1,35 @@
+.idea {
+  background-color: #556B76;
+  @include background-2x('idea-mobile.jpg', 'idea-mobile@2x.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+
+  @media (min-width: $media-medium) {
+    @include background-2x('idea-desktop.jpg', 'idea-desktop@2x.jpg');
+    background-position: calc(50% - 400px) top;
+    background-size: 640px 594px;
+  }
+
+  &__wrap {
+    max-width: $layout-width;
+    margin: 0 auto;
+    padding-top: 280px;
+
+    @media (min-width: $media-medium) {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &__content {
+    background: #ffffff;
+    padding: 30px;
+
+    @media (min-width: $media-medium) {
+      padding: 80px;
+      max-width: 600px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+
+  &--cta {
+    background-color: #70A9A1;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 13px 30px;
+    border-radius: 45px;
+
+    @media (hover: hover) {
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        background-color: #44837A;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.12);
+      }
+    }
+  }
+}

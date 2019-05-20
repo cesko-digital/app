@@ -1,0 +1,16 @@
+.team {
+  background: #FCF2E6;
+
+  &__wrap {
+    max-width: $layout-width;
+    margin: 0 auto;
+  }
+
+  &__content {
+    padding: 80px 30px;
+
+    @media (min-width: $media-medium) {
+      padding: 80px 0;
+    }
+  }
+}

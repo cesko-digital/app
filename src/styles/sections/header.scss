@@ -1,0 +1,51 @@
+.header {
+  max-width: $layout-width;
+  margin: 0 auto;
+  text-align: center;
+
+  @media (min-width: $media-medium) {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.nav {
+  display: flex;
+  margin: 0 30px;
+  border-bottom: 1px solid #a79075;
+
+  &--footer {
+    justify-content: center;
+  }
+
+  @media (min-width: $media-medium) {
+    margin: 0;
+    border-bottom: none;
+  }
+
+  &__link {
+    padding: 20px;
+    color: $text-color;
+
+    &--footer {
+      color: #ffffff;
+    }
+
+    &--cta {
+      font-weight: bold;
+    }
+
+    &--nopadding {
+      padding: 20px 0;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transition: all 200ms ease-in-out;
+        opacity: 0.6;
+      }
+    }
+  }
+}
