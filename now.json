@@ -1,7 +1,7 @@
 {
     "name": "web",
     "version": 2,
-    "alias": "test.cesko.digital",
+    "alias": "cesko.digital",
     "builds": [
         { "src": "*.html", "use": "@now/static" },
         { "src": "assets/**", "use": "@now/static" },
