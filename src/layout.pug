@@ -1,0 +1,43 @@
+block vars
+doctype html
+html(lang=lang)
+  head
+    script.
+      var dataLayer = dataLayer || []; // Google Tag Manager
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='author', content='cesko.digital')
+    link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,700', rel='stylesheet')
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PWGVF79');
+    // End Google Tag Manager
+    link(rel='canonical', href='https://cesko.digital/')
+    // <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    // open graph specification if anyone shares
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='https://cesko.digital/')
+    meta(property='og:image', content='https://cesko.digital/assets/fb-sharing-banner.png')
+    meta(property='fb:app_id', content='617439058737243')
+    meta(name='twitter:site', content='Česko.Digital')
+    meta(name='twitter:url', content='https://cesko.digital/')
+    meta(name='twitter:image', content='https://cesko.digital/assets/fb-sharing-banner.png')
+
+    title= title
+    meta(name='description', content=description)
+    meta(property='og:title', content=ogTitle)
+    meta(property='og:description', content=ogDescription)
+    meta(name='twitter:title', content=ogTitle)
+    meta(name='twitter:description', content=ogDescription)
+    block header
+  body
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-PWGVF79', height='0', width='0', style='display:none;visibility:hidden')
+    // End Google Tag Manager (noscript)
+    block content
+    block footer

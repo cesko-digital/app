@@ -19,6 +19,12 @@ module.exports = {
         ]
       },
       {
+        test: /\.pug$/,
+        use: [
+          'pug-loader',
+        ]
+      },
+      {
         test: /\.(png|jp(e*)g|svg)$/,
         use: [{
           loader: 'url-loader',
@@ -35,11 +41,11 @@ module.exports = {
       filename: 'main.[hash].css',
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/index.pug',
       filename: '../index.html'
     }),
     new HtmlWebpackPlugin({
-      template: 'src/en.html',
+      template: 'src/en.pug',
       filename: '../en.html'
     }),
   ]
