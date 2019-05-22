@@ -44,7 +44,7 @@
     background-position: bottom;
     background-size: contain;
 
-    padding-bottom: 190px;
+    padding-bottom: 80px;
 
     @media (min-width: $media-medium) {
       max-width: $layout-width;
@@ -54,5 +54,22 @@
       background-position: bottom right;
       background-size: 700px 614px;
     }
+  }
+
+  &__social {
+    margin-bottom: 140px;
+    padding: 0 30px;
+
+    @media (min-width: $media-medium) {
+      margin-top: 90px;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+
+  &__social-item {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 }
