@@ -1,0 +1,90 @@
+extends layout.pug
+
+block vars
+  - var lang = "en";
+  - var title = "Česko.Digital - changing Czechia for the better through ones and zeroes";
+  - var description = "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live."
+  - var ogTitle = "Changing Czechia for the better through ones and zeroes";
+  - var ogDescription = "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live.";
+
+block content
+  .hero
+    header.header
+      a.btn.nav__link.nav__link--nopadding.logo(href='https://cesko.digital/')
+        span.logo__inner
+          | cesko.digital
+          span
+      nav
+        ul.nav
+          li
+            a.btn.nav__link(href='#idea') Our vision
+          li
+            a.btn.nav__link(href='#team') About us
+          li
+            a.btn.nav__link(href='#media') Media kit
+          li
+            a.btn.nav__link(href='index.html') Česky
+          li
+            a.btn.nav__link.nav__link--cta.g-hide-mobile(href='https://slack.cesko.digital/') Join us
+    .hero__wrap
+      .hero__content
+        h1.g-title-h1.hero__title Changing Czechia for the better through ones and zeroes
+        p.g-subtitle-h1.hero__subtitle
+          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.
+        a.btn.btn--cta(href='https://slack.cesko.digital/') Join us
+  section.numbers
+    ul.numbers__list
+      li.number.numbers__list-item
+        span.number__value 40
+        span.number__label People involved
+      li.number.numbers__list-item
+        span.number__value 2
+        span.number__label Completed projects
+      li.number.numbers__list-item
+        span.number__value 5
+        span.number__label Projects underway
+      li.number.numbers__list-item
+        span.number__value 147
+        span.number__label Commits
+  section#idea.idea
+    .idea__wrap
+      .idea__content
+        h2.g-title-h2 About česko.digital
+        p
+          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live. We have behind us worldwide success and a combined total of hundreds of years’ experience. And we know that with the help of IT we can achieve great things, which cost less but work better.
+        p This is Česko.Digital.
+        p
+          | Are you working on community projects, but you’re missing IT professionals? 
+          a(href='mailto:lenka@cesko.digital') Get in touch
+          | .
+        p
+          | Do you study or work in IT? 
+          a(href='https://slack.cesko.digital/') Come join us
+  section#team.team
+    .team__wrap
+      .team__content
+        h2.g-title-h2 Let's meet!
+        p
+          | The next meetup will happen this Thursday, May 23rd at 18h in 
+          a(href='https://node5.cz/en/contacts/') Node5
+          | .
+  section#partners.partners
+  section#media.media
+    .media__wrap
+      .media__content
+        h2.g-title-h2 Media kit
+        a(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
+        br
+        a(href='assets/press-release.pdf') Press release Česko.Digital
+  footer.footer
+    ul.nav.nav--footer
+      li
+        a.btn.nav__link.nav__link--footer(href='#idea') Our vision
+      li
+        a.btn.nav__link.nav__link--footer(href='#team') About us
+      li
+        a.btn.nav__link.nav__link--footer(href='#media') Media kit
+      li
+        a.btn.nav__link.nav__link--footer(href='index.html') Česky
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta.g-hide-mobile(href='https://slack.cesko.digital/') Join us

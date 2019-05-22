@@ -1,0 +1,89 @@
+extends layout.pug
+
+block vars
+  - var lang = "cs";
+  - var title = "Česko.Digital - Skrz jedničky a nuly měníme Česko k lepšímu";
+  - var description = "Jsme komunita špičkových vývojářů, designérů a produkťáků, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu."
+  - var ogTitle = "Skrz jedničky a nuly měníme Česko k lepšímu";
+  - var ogDescription = "Jsme komunita špičkových vývojářů, designérů a produkťáků, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.";
+
+block content
+  .hero
+    header.header
+      a.btn.nav__link.nav__link--nopadding.logo(href='https://cesko.digital/')
+        span.logo__inner
+          | cesko.digital
+          span
+      nav
+        ul.nav
+          li
+            a.btn.nav__link(href='#idea') Naše vize
+          li
+            a.btn.nav__link(href='#team') Kdo jsme
+          li
+            a.btn.nav__link(href='#media') Pro media
+          li
+            a.btn.nav__link(href='en.html') English
+          li
+            a.btn.nav__link.nav__link--cta.g-hide-mobile(href='https://slack.cesko.digital/') Přidej se k nám
+    .hero__wrap
+      .hero__content
+        h1.g-title-h1.hero__title Skrz jedničky a nuly měníme Česko k lepšímu
+        p.g-subtitle-h1.hero__subtitle
+          | Jsme komunita špičkových vývojářů, designérů a produkťáků, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.
+        a.btn.btn--cta(href='https://slack.cesko.digital/') Přidej se k nám
+  section.numbers
+    ul.numbers__list
+      li.number.numbers__list-item
+        span.number__value 40
+        span.number__label Zapojených lidí
+      li.number.numbers__list-item
+        span.number__value 2
+        span.number__label Dokončené projekty
+      li.number.numbers__list-item
+        span.number__value 5
+        span.number__label Rozjetých projektů
+      li.number.numbers__list-item
+        span.number__value 147
+        span.number__label Commitů
+  section#idea.idea
+    .idea__wrap
+      .idea__content
+        h2.g-title-h2 Co je česko.digital
+        p
+          | Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život. Máme za sebou celosvětové úspěchy a úhrnem stovky let praxe. A víme, že pomocí IT dokážeme dosáhnout velkých věcí, které stojí méně ale fungují lépe.
+        p To je Česko.Digital.
+        p
+          | Pracujete na veřejně prospěšných projektech, ale chybí vám IT profesionálové? 
+          a(href='mailto:lenka@cesko.digital') Napište nám.
+        p
+          | Studujete nebo pracujete v IT? 
+          a(href='https://slack.cesko.digital/') Pojďte do toho s námi!
+  section#team.team
+    .team__wrap
+      .team__content
+        h2.g-title-h2 Přijďte se potkat osobně!
+        p
+          | Příští meetup organizujeme již ve čtvrtek 23. května v 18h v 
+          a(href='https://node5.cz/kontakty/') Node5
+          | .
+  section#partners.partners
+  section#media.media
+    .media__wrap
+      .media__content
+        h2.g-title-h2 Pro média
+        a(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
+        br
+        a(href='assets/tiskova-zprava.pdf') Tisková zpráva Česko.Digital
+  footer.footer
+    ul.nav.nav--footer
+      li
+        a.btn.nav__link.nav__link--footer(href='#idea') Naše vize
+      li
+        a.btn.nav__link.nav__link--footer(href='#team') Kdo jsme
+      li
+        a.btn.nav__link.nav__link--footer(href='#media') Pro media
+      li
+        a.btn.nav__link.nav__link--footer(href='en.html') English
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta.g-hide-mobile(href='https://slack.cesko.digital/') Přidej se k nám
