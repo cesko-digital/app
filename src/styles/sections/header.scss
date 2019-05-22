@@ -4,6 +4,7 @@
   text-align: center;
 
   @media (min-width: $media-medium) {
+    padding-top: 10px;
     text-align: left;
     display: flex;
     justify-content: space-between;
