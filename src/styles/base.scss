@@ -20,10 +20,8 @@ a {
   background: url('../images/logo.svg');
   padding: 0 !important;
   margin-top: 20px;
-  
+
   @media (min-width: $media-medium) {
-    position: relative;
-    top: -4px;
     margin-top: 0;
   }
 
