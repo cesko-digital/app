@@ -60,6 +60,12 @@
     margin-bottom: 140px;
     padding: 0 30px;
 
+    @media (min-width: $media-small) {
+      padding: 0 50px;
+      margin-bottom: 210px;
+      max-width: 70%;
+    }
+
     @media (min-width: $media-medium) {
       margin-top: 90px;
       margin-bottom: 0;
