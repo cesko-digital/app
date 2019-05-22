@@ -23,6 +23,8 @@ a {
 
   @media (min-width: $media-medium) {
     margin-top: 0;
+    position: relative;
+    top: -4px;
   }
 
   &__inner {
