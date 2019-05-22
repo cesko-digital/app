@@ -76,6 +76,21 @@ block content
         a(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
         br
         a(href='assets/press-release.pdf') Press release Česko.Digital
+  section#faq.faq
+    .faq__wrap
+      h2.g-title-h2.g-title-h2--light Frequently asked questions
+
+      -
+        var faqs = [
+          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+        ];
+
+      each item in faqs
+        +faq(item)
   footer.footer
     ul.nav.nav--footer
       li

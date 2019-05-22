@@ -1,0 +1,38 @@
+.faq {
+  padding: 80px 30px;
+  background: #202d33;
+
+  &__wrap {
+    max-width: $layout-width;
+    margin: 0 auto;
+  }
+}
+
+.faq-item {
+  &__summary {
+    border-bottom: 1px solid #a79075;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    outline: none;
+    cursor: pointer;
+
+    @media (hover: hover) {
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__value {
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #a79075;
+    color: #fff;
+    font-size: 16px;
+  }
+}

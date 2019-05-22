@@ -75,6 +75,22 @@ block content
         a(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
         br
         a(href='assets/tiskova-zprava.pdf') Tisková zpráva Česko.Digital
+  section#faq.faq
+    .faq__wrap
+      h2.g-title-h2.g-title-h2--light Často kladené otázky
+
+      -
+        var faqs = [
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+        ];
+
+      each item in faqs
+        +faq(item)
+
   footer.footer
     ul.nav.nav--footer
       li
