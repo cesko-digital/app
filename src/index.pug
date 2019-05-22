@@ -57,17 +57,17 @@ block content
           | Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život. Máme za sebou celosvětové úspěchy a úhrnem stovky let praxe. A víme, že pomocí IT dokážeme dosáhnout velkých věcí, které stojí méně ale fungují lépe.
         p To je Česko.Digital.
         p
-          | Pracujete na veřejně prospěšných projektech, ale chybí vám IT profesionálové? 
+          | Pracujete na veřejně prospěšných projektech, ale chybí vám IT profesionálové?
           a(href='mailto:lenka@cesko.digital') Napište nám.
         p
-          | Studujete nebo pracujete v IT? 
+          | Studujete nebo pracujete v IT?
           a(href='https://slack.cesko.digital/') Pojďte do toho s námi!
   section#team.team
     .team__wrap
       .team__content
         h2.g-title-h2 Přijďte se potkat osobně!
         p
-          | Příští meetup organizujeme již ve čtvrtek 23. května v 18h v 
+          | Příští meetup organizujeme již ve čtvrtek 23. května v 18h v
           a(href='https://node5.cz/kontakty/') Node5
           | .
   section#partners.partners
@@ -80,6 +80,22 @@ block content
             a.media__list-link(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
           li
             a.media__list-link(href='assets/tiskova-zprava.pdf') Tisková zpráva Česko.Digital
+  section#faq.faq
+    .faq__wrap
+      h2.g-title-h2.g-title-h2--light Často kladené otázky
+
+      -
+        var faqs = [
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+          { title: 'Kdo stojí za česko.digital?', value: 'Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život.' },
+        ];
+
+      each item in faqs
+        +faq(item)
+
   footer.footer
     ul.nav.nav--footer
       li
