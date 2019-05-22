@@ -7,6 +7,58 @@
   cursor: pointer;
   padding: 10px;
 
+  &--hollow {
+    border: 2px solid rgba(36,33,29,0.20);
+    border-radius: 45px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 13px 30px;
+
+    @media (hover: hover) {
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        border: 2px solid rgba(36,33,29,0.60);
+      }
+    }
+  }
+
+  &--facebook,
+  &--twitter,
+  &--github {
+    position: relative;
+    padding-left: 50px;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+
+  &--facebook {
+    &:before {
+      background-image: url('../images/fb-icon.svg');
+    }
+  }
+
+  &--twitter {
+    &:before {
+      background-image: url('../images/twitter-icon.svg');
+    }
+  }
+
+  &--github {
+    &:before {
+      background-image: url('../images/gh-icon.svg');
+    }
+  }
+
   &--cta {
     background-color: #70A9A1;
     color: #ffffff;
