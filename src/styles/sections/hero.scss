@@ -2,6 +2,13 @@
   background-color: #F5E2CC;
   position: relative;
 
+  @media (min-width: $media-medium) {
+    padding: 0 30px;
+  }
+  @media (min-width: $media-large) {
+    padding: 0;
+  }
+
   &:after {
     content: '';
     background-image: linear-gradient(-180deg, #FCF2E6 0%, #F5E2CC 100%);
