@@ -71,6 +71,46 @@ block content
           a(href='https://node5.cz/kontakty/') Node5
           | .
   section#partners.partners
+  section#projects.projects
+    .projects__wrap
+      .projects__content
+        -
+          var labels = {
+            need: 'Potřebujeme',
+            contact: 'Kontakt',
+          };
+
+          var projects = [
+            {
+              title: 'Mapa exekucí',
+              stage: 'Máme zadání, máme kusy kódu',
+              need: 'Programátory (SVG, API, libovoný jazyk)',
+              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+            },
+            {
+              title: 'CitiVizor',
+              stage: 'Máme zadání, máme kusy kódu',
+              need: 'Programátory (SVG, API, libovoný jazyk)',
+              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+            },
+            {
+              title: 'Hlídač státu',
+              stage: 'Máme zadání, máme kusy kódu',
+              need: 'Programátory (SVG, API, libovoný jazyk)',
+              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+            },
+            {
+              title: 'Hlídač shopů',
+              stage: 'Máme zadání, máme kusy kódu',
+              need: 'Programátory (SVG, API, libovoný jazyk)',
+              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+            }
+          ];
+
+        h2.g-title-h2 Projekty Česko.Digital
+        .project-list
+          each project in projects
+            +project(labels, project)
   section#media.media
     .media__wrap
       .media__content
