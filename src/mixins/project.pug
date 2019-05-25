@@ -1,10 +1,14 @@
 mixin project(labels, project)
   .project-list__item.project
-    .project__summary
-      h3.project__title= project.title
-      p.project__stage= project.stage
-    .project__details
-      p.project__label= labels.need
-      p= project.need
-      p.project__label= labels.contact
-      p= project.contact
+    .project__content
+      .project__summary
+        h3.project__title= project.title
+        p.project__stage= project.stage
+      .project__details
+        p.project__label= labels.need
+        p= project.need
+        p.project__label= labels.contact
+        p= project.contact
+        .project__links
+          a.btn.btn--hollow.btn--github.project__link-btn Prohlédnout na GitHubu
+    

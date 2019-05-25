@@ -17,14 +17,25 @@
 
 .project {
   background: #FFFFFF;
-  box-shadow: 0 11px 14px 0 rgba(74,48,17,0.04);
   border-radius: 10px;
   margin-bottom: 20px;
-  padding: 20px;
-  
-  @media (min-width: $media-large) {
-    padding: 60px 70px;
-    display: flex;
+
+  @media (hover: hover) {
+    transition: box-shadow 200ms ease-in-out;
+
+    &:hover {
+      box-shadow: 0 11px 14px 0 rgba(74,48,17,0.04);
+    }
+  }
+
+  &__content {
+    padding: 20px;
+    
+    @media (min-width: $media-large) {
+      padding: 60px 70px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__title {
@@ -33,8 +44,8 @@
     color: #21262C;
     
     @media (min-width: $media-large) {
-      font-size: 54px;
-      line-height: 58px;
+      font-size: 44px;
+      line-height: 50px;
     }
   }
 
