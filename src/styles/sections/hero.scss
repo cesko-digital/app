@@ -30,13 +30,17 @@
     }
     @media (min-width: $media-medium) {
       padding: 0;
-      max-width: 370px;
+      max-width: 610px;
       padding-top: 100px;
     }
   }
 
   &__title {
     margin-bottom: 23px;
+
+    @media (min-width: $media-medium) {
+      font-size: 54px;
+    }
   }
 
   &__subtitle {
