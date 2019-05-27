@@ -138,6 +138,7 @@ block content
             a.media__list-link(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
           li
             a.media__list-link(href='assets/tiskova-zprava.pdf') Tisková zpráva Česko.Digital
+
   section#faq.faq
     .faq__wrap
       h2.g-title-h2.g-title-h2--light Často kladené otázky
@@ -154,6 +155,7 @@ block content
 
       each item in faqs
         +faq(item)
+
   section#partners.partners
     .partners__wrap
       .partners__content
@@ -172,6 +174,28 @@ block content
         ul.partners-list
           each partner in partners
             +partner(partner)
+
+  section#values.values
+    .values__wrap
+      .values__content
+        h2.g-title-h2.g-title-h2--light Hodnoty Česko.Digital
+
+        ul.value-items
+          li.value-item
+            .value-item__content
+              h3.value-item__title Pokora a pevná vůle
+          li.value-item
+            .value-item__content
+              h3.value-item__title Vést příkladem
+          li.value-item
+            .value-item__content
+              h3.value-item__title Troufnout si být jiní
+          li.value-item
+            .value-item__content
+              h3.value-item__title Pospolitost a nadšení
+          li.value-item
+            .value-item__content
+              h3.value-item__title Neutuchající volání po změnách
 
   footer.footer
     ul.nav.nav--footer

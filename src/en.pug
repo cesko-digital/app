@@ -98,6 +98,7 @@ block content
         a(href='assets/cesko-digital_logo.zip') Logo Czechia.Digital
         br
         a(href='assets/press-release.pdf') Press release Czechia.Digital
+
   section#faq.faq
     .faq__wrap
       h2.g-title-h2.g-title-h2--light Frequently asked questions
@@ -114,6 +115,7 @@ block content
 
       each item in faqs
         +faq(item)
+
   section#partners.partners
     .partners__wrap
       .partners__content
@@ -132,6 +134,30 @@ block content
         ul.partners-list
           each partner in partners
             +partner(partner)
+
+        a(href='assets/press-release.pdf') Press release Česko.Digital
+
+  section#values.values
+    .values__wrap
+      .values__content
+        h2.g-title-h2.g-title-h2--light Values of Česko.Digital
+
+        ul.value-items
+          li.value-item
+            .value-item__content
+              h3.value-item__title Humility and willpower
+          li.value-item
+            .value-item__content
+              h3.value-item__title Lead by example
+          li.value-item
+            .value-item__content
+              h3.value-item__title Dare to be different
+          li.value-item
+            .value-item__content
+              h3.value-item__title Togetherness and enthusiasm
+          li.value-item
+            .value-item__content
+              h3.value-item__title Continuous call for changes
 
   footer.footer
     ul.nav.nav--footer
