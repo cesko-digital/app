@@ -77,41 +77,18 @@ block content
       .projects__content
         -
           var labels = {
-            need: 'We need',
-            contact: 'Contact',
+            //- about: 'About project',
+            more: 'What we bring',
           };
 
           var projects = [
-            {
-              title: 'Mapa exekucí',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'CitiVizor',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'Hlídač státu',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'Hlídač shopů',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            }
           ];
 
-        h2.g-title-h2 Česko.Digital projects
-        .project-list
-          each project in projects
-            +project(labels, project)
+        if projects && projects.length
+          h2.g-title-h2 Česko.Digital projects
+          .project-list
+            each project in projects
+              +project(labels, project)
   section#media.media
     .media__wrap
       .media__content

@@ -30,9 +30,9 @@
 
   &__content {
     padding: 20px;
-    
+
     @media (min-width: $media-large) {
-      padding: 60px 70px;
+      padding: 40px 50px;
       display: flex;
       justify-content: space-between;
     }
@@ -42,7 +42,7 @@
     font-weight: bold;
     font-size: 34px;
     color: #21262C;
-    
+
     @media (min-width: $media-large) {
       font-size: 44px;
       line-height: 50px;
@@ -69,5 +69,11 @@
   &__label {
     margin-bottom: 0;
     font-weight: bold;
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 2em;
+    margin: 2em 0em;
   }
 }
