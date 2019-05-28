@@ -57,18 +57,18 @@ block content
           | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live. We have behind us worldwide success and a combined total of hundreds of years’ experience. And we know that with the help of IT we can achieve great things, which cost less but work better.
         p This is Česko.Digital.
         p
-          | Are you working on community projects, but you’re missing IT professionals? 
+          | Are you working on community projects, but you’re missing IT professionals?
           a(href='mailto:lenka@cesko.digital') Get in touch
           | .
         p
-          | Do you study or work in IT? 
+          | Do you study or work in IT?
           a(href='https://slack.cesko.digital/') Come join us
   section#team.team
     .team__wrap
       .team__content
         h2.g-title-h2 Let's meet!
         p
-          | The next meetup will happen this Thursday, May 23rd at 18h in 
+          | The next meetup will happen this Thursday, May 23rd at 18h in
           a(href='https://node5.cz/en/contacts/') Node5
           | .
   section#partners.partners
@@ -77,41 +77,18 @@ block content
       .projects__content
         -
           var labels = {
-            need: 'We need',
-            contact: 'Contact',
+            about: 'About project',
+            more: 'For more information',
           };
 
           var projects = [
-            {
-              title: 'Mapa exekucí',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'CitiVizor',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'Hlídač státu',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
-              title: 'Hlídač shopů',
-              stage: 'We have tasks and some code',
-              need: 'Programmers (SVG, API, any language)',
-              contact: 'Channel #web-ceskodigital-chat on Slacku @Jakub Nesetril on Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            }
           ];
 
-        h2.g-title-h2 Česko.Digital projects
-        .project-list
-          each project in projects
-            +project(labels, project)
+        if projects && projects.length
+          h2.g-title-h2 Česko.Digital projects
+          .project-list
+            each project in projects
+              +project(labels, project)
   section#media.media
     .media__wrap
       .media__content

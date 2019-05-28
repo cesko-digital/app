@@ -3,12 +3,12 @@ mixin project(labels, project)
     .project__content
       .project__summary
         h3.project__title= project.title
-        p.project__stage!= project.stage
+        p.project__tagline!= project.tagline
       .project__details
-        p.project__label= labels.need
-        p!= project.need
-        p.project__label= labels.contact
-        p!= project.contact
+        p.project__label= labels.about
+        p!= project.about
+        p.project__label= labels.more
+        p!= project.more
         .project__links
-          a.btn.btn--hollow.btn--github.project__link-btn Prohlédnout na GitHubu
-    
+          if project.github
+            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github) Prohlédnout na GitHubu

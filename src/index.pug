@@ -57,17 +57,17 @@ block content
           | Jsme komunita IT profesionálů - vývojářů, grafiků, produkťáků - kteří chtějí pro-bono pomáhat státu i nestátním organizacím udělat Česko lepším místem pro život. Máme za sebou celosvětové úspěchy a úhrnem stovky let praxe. A víme, že pomocí IT dokážeme dosáhnout velkých věcí, které stojí méně ale fungují lépe.
         p To je Česko.Digital.
         p
-          | Pracujete na veřejně prospěšných projektech, ale chybí vám IT profesionálové? 
+          | Pracujete na veřejně prospěšných projektech, ale chybí vám IT profesionálové?
           a(href='mailto:lenka@cesko.digital') Napište nám.
         p
-          | Studujete nebo pracujete v IT? 
+          | Studujete nebo pracujete v IT?
           a(href='https://slack.cesko.digital/') Pojďte do toho s námi!
   section#team.team
     .team__wrap
       .team__content
         h2.g-title-h2 Přijďte se potkat osobně!
         p
-          | Příští meetup organizujeme již ve čtvrtek 23. května v 18h v 
+          | Příští meetup organizujeme již ve čtvrtek 23. května v 18h v
           a(href='https://node5.cz/kontakty/') Node5
           | .
   section#partners.partners
@@ -76,41 +76,50 @@ block content
       .projects__content
         -
           var labels = {
-            need: 'Potřebujeme',
-            contact: 'Kontakt',
+            about: 'O projektu',
+            more: 'Více informací',
           };
 
           var projects = [
             {
-              title: 'Mapa exekucí',
-              stage: 'Máme zadání, máme kusy kódu',
-              need: 'Programátory (SVG, API, libovoný jazyk)',
-              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
-            },
-            {
               title: 'CitiVizor',
-              stage: 'Máme zadání, máme kusy kódu',
-              need: 'Programátory (SVG, API, libovoný jazyk)',
-              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+              tagline: 'Transparentní hospodaření pro každé město a obec',
+              about: 'Původem pochází z dílny Ministerstva spravedlnosti ČR, tento opensource projekt přináší přehlednou rozklikávací vizualizaci rozpočtu obce s detailními daty až na úroveň jednotlivých faktur a přináší tak transparenci do městského hospodaření. Rádi bychom pomohli projektu najít product-market-fit - kombinaci funkcí a marketingu, která by pomohla masivnímu šíření mezi českými radnicemi - cílem je posunout projekt z 6 měst na 600 měst.',
+              more: 'Hledáme hlavně šikovné kreativní produkťáky a analytiky, kteří pomohou najít a s uživateli otestovat produktovou strategii. Martin Kopeček je hlavní lead projeku, na Slacku Česko.Digital v kanálu <a href="https://cesko-digital.slack.com/messages/CG66HNLH4">#cityvizor</a> se lze dozvědět více.',
+              github: 'https://github.com/cityvizor/cityvizor'
             },
             {
               title: 'Hlídač státu',
-              stage: 'Máme zadání, máme kusy kódu',
-              need: 'Programátory (SVG, API, libovoný jazyk)',
-              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+              tagline: 'Největší český projekt kontroly státní správy',
+              about: 'Hlídač státu je s více než 1 milionem řádek kódu a 250GB dat suverenně největším IT projektem, který v ČR sbírá, agreguje a vizualizuje data o státní správě. Hlavní část vyvíjí primárně autor projekt Michal Bláha, ale pro nová rozšíření hledá pomoc do týmu. Aktuálně pracuje 1) na vizuálně přívětivém způsobu pro netechnické uživatele jak do Hlídače přidávat nové datové sady, 2) na vizuální prezentaci dat z Insolvečního rejstříku.',
+              more: 'Hledáme hlavně frontend vývojáře pro uvedená rozšíření, případně .NET vývojáře pro dokumentování hlavního codebase. Více detailů se dozvíte na Slacku Česko.Digital v kanálu <a href="https://cesko-digital.slack.com/messages/CGURS1HD5">#hlidac-statu</a>.',
+              github: 'https://github.com/HlidacStatu/HlidacStatu'
             },
             {
-              title: 'Hlídač shopů',
-              stage: 'Máme zadání, máme kusy kódu',
-              need: 'Programátory (SVG, API, libovoný jazyk)',
-              contact: 'Kanál #web-ceskodigital-chat na Slacku @Jakub Nesetril na Slacku <a href="https://github.com/cesko-digital/web/issues/15">github.com/cesko-digital/web/issues/15</a>'
+              title: 'Interaktivní právní interview',
+              tagline: 'Místo paragrafů sada jednoduchých otázek',
+              about: 'Právní kancelář Frank Bold připravuje projekt právní služby občanům, který usnadňuje tvorbu právních dokumentů pro časté úkony - jejich první oblastí je zakládání spolků. Na základně otázek kladených uživateli přívětivou formou v pozadí podle rozhodovacího stromu zvládne sestavovat přesný právní dokument. Inspirováno projektem <a href="https://community.lawyer/">Community Lawyer</a> a nástrojem <a href="https://docassemble.org/">DocAssemble</a>.',
+              more: 'Potřebujeme seniorní vývojáře pro technickou analýzu a návrh řešení. Více informací na Slacku Česko.Digital v kanále <a href="https://cesko-digital.slack.com/messages/CK0GJH5N2">#ipi</a> poskytne Michal Kuk.'
+            },
+            {
+              title: 'Nasipolitici.cz',
+              tagline: 'Naši politici, jasně, přehledně a detailně',
+              about: 'Transparency International chystá kompletně nové spuštění původně opuštěného projektu Nasipolitici.cz. Cílem je s pomocí výměny dat s Hlídačem Státu a dalšími daty z editorské práce TI udělat přehledný portál informací o jednotlivých politicích.',
+              more: 'Hledáme produkťáky kteří pomohou zanalyzovat projekt a připravit zadání. Více informací na Slacku Česko.Digital v kanále <a href="https://cesko-digital.slack.com/messages/CK0ER8UBG">#nasi-politici</a> poskytne Milan Eibl.'
+            },
+            {
+              title: 'Portál oddlužení',
+              tagline: 'Pomáháme lidem zjistit jejich celkové zadlužení',
+              about: 'Hlavní důvod proč lidé končí v exekuci není neochota dluhy platit, ale často nevědomost, že dluhy vůbec existují. Nejpalčivější je ten problém se státní správou, kde lze dlužit desítkám různých institucí a získat přehled je takřka nadlidský úkol. S využitím datových schránek, automaticky generovaných žádostí a doufejme i strojově čitelným odpovědím chceme vybudovat portál, který občanům usnadní získat přehled zda/kolik a kde dluží - a tak se dluhům postavit čelem.',
+              more: 'Aktuálně hledáme produkťáky, kteří pomohou s detailním návrhem zadání. Projekt vede Radek Hábl, napište mu na Slacku Česko.Digital v kanále <a href="https://cesko-digital.slack.com/messages/CHTQQN5AL">#prehled-dluhu</a>.'
             }
           ];
 
-        h2.g-title-h2 Projekty Česko.Digital
-        .project-list
-          each project in projects
-            +project(labels, project)
+        if projects && projects.length
+          h2.g-title-h2 Projekty Česko.Digital
+          .project-list
+            each project in projects
+              +project(labels, project)
   section#media.media
     .media__wrap
       .media__content
