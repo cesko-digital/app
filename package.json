@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
+    "dev": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "now-build": "npm run build && mkdir dist/dist && mv dist/*.* dist/dist && mv *.html dist"
   },

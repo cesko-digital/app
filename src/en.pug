@@ -2,7 +2,7 @@ extends layout.pug
 
 block vars
   - var lang = "en";
-  - var title = "Česko.Digital - changing Czechia for the better through ones and zeroes";
+  - var title = "Czechia.Digital - changing Czechia for the better through ones and zeroes";
   - var description = "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live."
   - var ogTitle = "Changing Czechia for the better through ones and zeroes";
   - var ogDescription = "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live.";
@@ -30,7 +30,7 @@ block content
       .hero__content
         h1.g-title-h1.hero__title Changing Czechia for the better through ones and zeroes
         p.g-subtitle-h1.hero__subtitle
-          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.
+          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make Czechia a better place to live.
         a.btn.btn--cta(href='https://slack.cesko.digital/') Join us
   section.numbers
     ul.numbers__list
@@ -49,23 +49,23 @@ block content
   section#idea.idea
     .idea__wrap
       .idea__content
-        h2.g-title-h2 About česko.digital
+        h2.g-title-h2 About Czechia.Digital
         p
-          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live. We have behind us worldwide success and a combined total of hundreds of years’ experience. And we know that with the help of IT we can achieve great things, which cost less but work better.
-        p This is Česko.Digital.
+          | We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make Czechia a better place to live. We have behind us worldwide success and a combined total of hundreds of years’ experience. And we know that with the help of IT we can achieve great things, which cost less but work better.
+        p This is Czechia.Digital.
         p
-          | Are you working on community projects, but you’re missing IT professionals? 
+          | Are you working on community projects, but you’re missing IT professionals?
           a(href='mailto:lenka@cesko.digital') Get in touch
           | .
         p
-          | Do you study or work in IT? 
+          | Do you study or work in IT?
           a(href='https://slack.cesko.digital/') Come join us
   section#team.team
     .team__wrap
       .team__content
         h2.g-title-h2 Let's meet!
         p
-          | The next meetup will happen this Thursday, May 23rd at 18h in 
+          | The next meetup will happen this Thursday, May 23rd at 18h in
           a(href='https://node5.cz/en/contacts/') Node5
           | .
   section#partners.partners
@@ -73,20 +73,21 @@ block content
     .media__wrap
       .media__content
         h2.g-title-h2 Media kit
-        a(href='assets/cesko-digital_logo.zip') Logo Česko.Digital
+        a(href='assets/cesko-digital_logo.zip') Logo Czechia.Digital
         br
-        a(href='assets/press-release.pdf') Press release Česko.Digital
+        a(href='assets/press-release.pdf') Press release Czechia.Digital
   section#faq.faq
     .faq__wrap
       h2.g-title-h2.g-title-h2--light Frequently asked questions
 
       -
         var faqs = [
-          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
-          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
-          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
-          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
-          { title: 'Who is behind česko.digital?', value: 'We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make the Czech Republic a better place to live.' },
+          { title: 'How does this work?', value: 'Our main place of work and communication is our Slack. To get started it\'s best to join there first. Most of our documentation/materials are in Czech, but feel free to ask an English question and there will be plenty of people able to talk to you.' },
+          { title: 'Yet another "hackathon for good"?', value: 'Hackathons are great for short-term bursts of creative energy, ale but long-term the resulting projects usually die from lack of maintenance. Czechia.Digital is focusing on long-term leadership and development of IT projects.' },
+          { title: 'How much do you charge for your work?', value: 'Members of Czechia.Digital work on projects in their free time, free of charge, motivated by the drive to improve the worl we live in.' },
+          { title: 'Why don\' you rather go and help _____ ?', value: 'We trust that everybody should help the best way they can. We love technology and believe we can use it (given the right idea) to help many people with great efficiency.' },
+          { title: 'I wonder who\'s paying for all this!', value: 'We try to maintain a lean, effective organization with minimal budget. We are financed purely from private donors.' },
+          { title: 'Who are the people behind Czechia.Digital?', value: 'The project was originally founded by Jakub Nešetřil in cooperation with Lenka Kováčová from Nadace OSF. But nowadays Czechia.Digital consists of hundreds of people helping us make Czechia a better place.' },
         ];
 
       each item in faqs
