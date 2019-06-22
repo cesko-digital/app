@@ -9,3 +9,16 @@
     background-image: url("../images/#{$path2x}"); 
   }
 }
+
+
+@mixin background-shorthand-2x($lowResProps, $highResProps) {
+ 
+  background: unquote($lowResProps);
+ 
+  @media all and (-webkit-min-device-pixel-ratio : 1.5),
+  all and (-o-min-device-pixel-ratio: 3/2),
+  all and (min--moz-device-pixel-ratio: 1.5),
+  all and (min-device-pixel-ratio: 1.5) {
+    background: unquote($highResProps);
+  }
+}
