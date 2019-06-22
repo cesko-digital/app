@@ -9,8 +9,8 @@
 
   @media (min-width: $media-medium) {
     @include background-shorthand-2x(
-      'url(/images/idea-desktop.jpg) calc(50% - 400px) top / 640px 594px no-repeat, linear-gradient(to bottom, #58656d 0%,#58656d 53%,#4c565f 70.2%,#5b6a71 72.4%,#5b6a71 100%) top left / 100% 594px repeat-x #5b6a71;',
-      'url(/images/idea-desktop2x.jpg) calc(50% - 400px) top / 640px 594px no-repeat, linear-gradient(to bottom, #58656d 0%,#58656d 53%,#4c565f 70.2%,#5b6a71 72.4%,#5b6a71 100%) top left / 100% 594px repeat-x #5b6a71;'
+      'url("../images/idea-desktop.jpg") calc(50% - 400px) top / 640px 594px no-repeat, linear-gradient(to bottom, #58656d 0%,#58656d 53%,#4c565f 70.2%,#5b6a71 72.4%,#5b6a71 100%) top left / 100% 594px repeat-x #5b6a71;',
+      'url("../images/idea-desktop@2x.jpg") calc(50% - 400px) top / 640px 594px no-repeat, linear-gradient(to bottom, #58656d 0%,#58656d 53%,#4c565f 70.2%,#5b6a71 72.4%,#5b6a71 100%) top left / 100% 594px repeat-x #5b6a71;'
     );
   }
 
