@@ -15,6 +15,13 @@
   }
 }
 
+.partners-title {
+  // Make title smaller in czech version on smaller screens to prevent bleeding outside of viewport
+  @media (max-width: 374px) {
+    font-size: 26px;
+  }
+}
+
 .partners-list {
   display: flex;
   flex-wrap: wrap;
