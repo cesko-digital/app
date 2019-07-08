@@ -1,3 +1,4 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -30,7 +31,15 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 8000,
-            name: '[name].[ext]'
+            name: '[name].[ext]',
+            publicPath: (url, resourcePath, context) => {
+              const relativePath = path.relative(context, resourcePath);
+
+              if (/partners/i.test(relativePath)) {
+                return `dist/${url}`;
+              }
+              return `${url}`;
+            }
           }
         }]
       }
