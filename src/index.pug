@@ -70,7 +70,6 @@ block content
           | Příští meetup zatím připravujeme, ale mezitím se můžete podívat na 
           a(href="https://slideslive.com/ceskodigital/talks") záznam z minulého meetupu
           | .
-  section#partners.partners
   section#projects.projects
     .projects__wrap
       .projects__content
@@ -155,6 +154,24 @@ block content
 
       each item in faqs
         +faq(item)
+  section#partners.partners
+    .partners__wrap
+      .partners__content
+        h2.g-title-h2.partners-title Spolupracujeme&nbsp;s
+
+        -
+          var partners = [
+            { name: 'CityVizor.cz', src: require('./images/partners/cityvizor.jpg'), link: 'https://cityvizor.cz/' },
+            { name: 'CZ.NIC', src: require('./images/partners/cz-nic.jpg'), link: 'https://www.nic.cz/' },
+            { name: 'Hlídač státu', src: require('./images/partners/hlidac-statu.jpg'), link: 'https://www.hlidacstatu.cz/' },
+            { name: 'Institut prevence a řešení předlužení', src: require('./images/partners/institut-predluzeni.jpg'), link: 'https://www.institut-predluzeni.cz/' },
+            { name: 'Nadace OSF', src: require('./images/partners/osf.jpg'), link: 'https://osf.cz/cs/' },
+            { name: 'Transparency International', src: require('./images/partners/transparency.jpg'), link: 'https://www.transparency.cz/' },
+            { name: 'Y Soft', src: require('./images/partners/ysoft.jpg'), link: 'https://www.ysoft.com/cs' },
+          ]
+        ul.partners-list
+          each partner in partners
+            +partner(partner)
 
   footer.footer
     ul.nav.nav--footer
