@@ -142,25 +142,18 @@ block content
       .values__content
         h2.g-title-h2.g-title-h2--light Values of Česko.Digital
 
+        -
+          var values = [
+            { title: 'Open by Default', value: 'Open source, data, organization, accounting - transparency helps us with involving a wide community.' },
+            { title: 'Efectiveness', value: 'We focus on quick solutions to real problems using technology, we don\'t waste time nor money.'},
+            { title: 'Profesionalism', value: 'Despite working pro-bono, we take pride in excelent work, modern technologies and work-flows.'},
+            { title: 'Participatory', value: 'Everybody should be able to join easily, regardless of their time and place.'},
+            { title: 'User-centered', value: 'We develop projects based on real user (citizen) needs. Projects without usage are projects without meaning.'},
+            { title: 'Products over Technology', value: 'We are a team of product managers, designers, developers who together work on creating a digital future kind to human beings.'}
+          ]
         ul.value-items
-          li.value-item
-            .value-item__content
-              h3.value-item__title Open by Default
-          li.value-item
-            .value-item__content
-              h3.value-item__title Efectiveness
-          li.value-item
-            .value-item__content
-              h3.value-item__title Profesionalism
-          li.value-item
-            .value-item__content
-              h3.value-item__title Participatory
-          li.value-item
-            .value-item__content
-              h3.value-item__title User-centered
-          li.value-item
-            .value-item__content
-              h3.value-item__title Products over Technology
+          each value in values
+            +value(value)
 
   footer.footer
     ul.nav.nav--footer

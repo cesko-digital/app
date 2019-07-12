@@ -180,31 +180,18 @@ block content
       .values__content
         h2.g-title-h2.g-title-h2--light Hodnoty Česko.Digital
 
+        -
+          var values = [
+            { title: 'Otevřenost je náš standard', value: 'Open source, otevřená data, otevřená organizace, transparentní účetnictví - transparentnost pomáhá snadnému zapojení co nejširší komunity.' },
+            { title: 'Efektivita', value: 'Nemrháme časem lidí ani finančními prostředky. Soustředíme se na rychlá řešení reálných problémů pomocí technologií.'},
+            { title: 'Profesionalita', value: 'Zakládáme si na kvalitní práci, moderních technologiích a postupech, přestože pracujeme pro-bono.'},
+            { title: 'Participativní', value: 'Pro každého musí být jednoduché se zapojit – bez ohledu na místo a čas.'},
+            { title: 'Uživatelé v hlavní roli', value: 'Pomáháme s projekty, které řeší skutečné potřeby koncových uživatelů. Projekty bez reálného využití nemají význam.'},
+            { title: 'Produkty > Technologie', value: 'Důležitý je výsledek, ne prostředek. Chceme, aby technologie a procesy byly užitečným nástrojem pro lidi, ne naopak.'}
+          ]
         ul.value-items
-          li.value-item
-            .value-item__content
-              h3.value-item__title Open by Default
-              p.value-item__text open source, data, organizace, účetnictví - transparentnost pomáhá snadnému zapojení co nejširší komunity
-          li.value-item
-            .value-item__content
-              h3.value-item__title Efektivita
-              p.value-item__text soustředíme se na rychlé řešení reálných problémů pomocí technologií, nemrháme časem lidí ani finančními prostředky
-          li.value-item
-            .value-item__content
-              h3.value-item__title Profesionalita
-              p.value-item__text zakládáme si na špičkové práci, moderních technologiích a postupech, přestože pracujeme pro-bono
-          li.value-item
-            .value-item__content
-              h3.value-item__title Participativní
-              p.value-item__text bez ohledu na místo a čas musí být pro každého jednoduché se zapojit
-          li.value-item
-            .value-item__content
-              h3.value-item__title Uživatel je ve středu
-              p.value-item__text vyvíjíme projekty které se odvíjejí od potřeb koncových uživatelů (občanů), projekty které se nepoužívají jsou bez významu
-          li.value-item
-            .value-item__content
-              h3.value-item__title Produkty &gt; Technologie
-              p.value-item__text jsme tým produkťáků, designerů, vývojářů kteří dohromady pomáhají vymýšlet digitální budoucnost, která je přívětivá k lidem
+          each value in values
+            +value(value)
 
   footer.footer
     ul.nav.nav--footer
