@@ -11,6 +11,8 @@ mixin project(labels, project)
         p!= project.more
         .project__links
           if project.github
-            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github) Prohlédnout na GitHubu
+            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github target="_blank") Prohlédnout na GitHubu
           if project.slack && project.slackUrl
-            a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl) Přidat se k ##{project.slack} na Slacku
+            a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl target="_blank") Přidat se k ##{project.slack} na Slacku
+          if project.trello
+            a.btn.btn--hollow.btn--trello.project__link-btn(href=project.trello target="_blank") Prohlédnout na Trellu

@@ -7,10 +7,10 @@
   }
 
   &__content {
-    padding: 80px 30px;
+    padding: 80px 30px 30px 30px;
 
     @media (min-width: $media-large) {
-      padding: 80px 0;
+      padding: 80px 0px 30px 0px;
     }
   }
 }

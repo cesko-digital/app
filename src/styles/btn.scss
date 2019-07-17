@@ -24,8 +24,9 @@
   }
 
   &--facebook,
-  &--twitter,
   &--github,
+  &--trello,
+  &--twitter,
   &--slack {
     position: relative;
     padding-left: 50px;
@@ -51,15 +52,21 @@
     }
   }
 
-  &--twitter {
-    &:before {
-      background-image: url('../images/twitter-icon.svg');
-    }
-  }
-
   &--github {
     &:before {
       background-image: url('../images/gh-icon.svg');
+    }
+  }
+
+  &--trello {
+    &:before {
+      background-image: url('../images/trello-icon.svg');
+    }
+  }
+
+  &--twitter {
+    &:before {
+      background-image: url('../images/twitter-icon.svg');
     }
   }
 
