@@ -89,4 +89,20 @@
     margin-right: 10px;
     margin-bottom: 10px;
   }
+
+  &__cta {
+    padding: 0 30px;
+
+    @media (min-width: $media-medium) {
+      margin-top: 10px;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+
+  &__cta-item {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
 }
