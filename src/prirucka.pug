@@ -1,0 +1,69 @@
+extends layout.pug
+
+block vars
+  - var lang = "cs";
+  - var title = "Česko.Digital - Skrz jedničky a nuly měníme Česko k lepšímu";
+  - var description = "Jsme komunita špičkových vývojářů, designérů a produkťáků, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu."
+  - var ogTitle = "Skrz jedničky a nuly měníme Česko k lepšímu";
+  - var ogDescription = "Jsme komunita špičkových vývojářů, designérů a produkťáků, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.";
+
+block content
+  .hero
+    header.header
+      a.btn.nav__link.nav__link--nopadding.logo(href='https://cesko.digital/', aria-label='Česko.Digital')
+        span.logo__inner
+          | cesko.digital
+          span
+      nav
+        ul.nav
+          li
+            a.btn.nav__link(href='#idea') Kdo jsme
+          li
+            a.btn.nav__link(href='#projects') Co děláme
+          li
+            a.btn.nav__link(href='https://blog.cesko.digital/') Blog
+          li
+            a.btn.nav__link(href='en.html') English
+
+
+  section#media.media
+    .media__wrap
+      .media__content
+        h2.g-title-h2 Příručka řízení státních IT&nbsp;projektů
+
+        img(src="../dist/"+require("./images/handbook.png"))
+
+        ul
+          li
+            a(href='https://github.com/cesko-digital/derisking-handbook/releases/latest/download/handbook.pdf') PDF verze
+          li
+            a(href='https://github.com/cesko-digital/derisking-handbook/releases/latest/download/handbook.epub') ePub verze
+          li
+            a(href='https://github.com/cesko-digital/derisking-handbook/releases/latest/download/handbook.mobi') Mobi verze
+          li
+            a(href='https://github.com/cesko-digital/derisking-handbook/') zdrojový kód a ostatní verze
+        
+        h2.g-title-h2 Další čtení
+        div
+          | I český stát má kvalitní dokumentaci, která obsahuje z části podobná doporučení. Je na čase se jimi začít řídit:
+        div
+          a(href='https://wiki.digitalnicesko.cz/wiki/Standard_digitáln%C3%AD_služby') Standard digitální služby
+
+  footer.footer
+    ul.nav.nav--footer
+      li
+        a.btn.nav__link.nav__link--footer(href='#idea') Kdo jsme
+      li
+        a.btn.nav__link.nav__link--footer(href='#projects') Co děláme
+      li
+        a.btn.nav__link.nav__link--footer(href='https://blog.cesko.digital/') Blog
+      li
+        a.btn.nav__link.nav__link--footer(href='en.html') English
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta.g-hide-mobile(href='https://slack.cesko.digital/') Přidej se k nám
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta(href="https://www.facebook.com/cesko.digital" target="_blank" rel="noopener noreferrer") Facebook
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta(href="https://twitter.com/CeskoDigital" target="_blank" rel="noopener noreferrer") Twitter
+      li
+        a.btn.nav__link.nav__link--footer.nav__link--cta(href="http://github.com/cesko-digital" target="_blank" rel="noopener noreferrer") GitHub

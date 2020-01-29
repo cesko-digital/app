@@ -54,6 +54,10 @@ module.exports = {
       filename: '../index.html'
     }),
     new HtmlWebpackPlugin({
+      template: 'src/prirucka.pug',
+      filename: '../prirucka/index.html'
+    }),
+    new HtmlWebpackPlugin({
       template: 'src/en.pug',
       filename: '../en.html'
     }),
