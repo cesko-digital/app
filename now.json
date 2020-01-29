@@ -10,7 +10,7 @@
     ],
     "routes": [
         {
-            "src": "/prirucka",
+            "src": "/prirucka(.*)",
             "status": 302,
             "headers": { "Location": "https://github.com/cesko-digital/derisking-handbook/releases/tag/v1.0.6" }
         }
