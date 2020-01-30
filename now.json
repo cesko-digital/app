@@ -9,11 +9,7 @@
         { "src": "package.json", "use": "@now/static-build" }
     ],
     "routes": [
-        {
-            "src": "/prirucka(.*)",
-            "status": 302,
-            "headers": { "Location": "https://github.com/cesko-digital/derisking-handbook/releases/tag/v1.0.6" }
-        }
+        { "src": "/prirucka/(.*)", "dest": "prirucka/$1" }
     ],
     "github": {
         "enabled": true,
