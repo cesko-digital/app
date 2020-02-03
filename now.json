@@ -12,7 +12,7 @@
         {
             "src": "/prirucka(.*)",
             "status": 302,
-            "headers": { "Location": "https://github.com/cesko-digital/derisking-handbook/releases/tag/v1.0.6" }
+            "headers": { "Location": "https://github.com/cesko-digital/derisking-handbook#ke-sta%C5%BEen%C3%AD" }
         }
     ],
     "github": {
