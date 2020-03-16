@@ -1,4 +1,9 @@
 mixin project(labels, project)
+  - var label_github = {cs : "Prohlédnout na GitHubu", en : "View on Github"};
+  - var label_trello = {cs : "Prohlédnout na Trellu", en : "View on Trello"};
+  - var label_slack_prefix = {cs : "Přidat se k", en : "Join"};
+  - var label_slack_suffix = {cs : "na Slacku", en: "on Slack"};
+  
   .project-list__item.project
     .project__content
       .project__summary
@@ -11,8 +16,8 @@ mixin project(labels, project)
         p!= project.more
         .project__links
           if project.github
-            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github target="_blank") Prohlédnout na GitHubu
+            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github target="_blank") #{label_github[lang]}
           if project.slack && project.slackUrl
-            a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl target="_blank") Přidat se k ##{project.slack} na Slacku
+            a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl target="_blank") #{label_slack_prefix[lang]} ##{project.slack} #{label_slack_suffix[lang]} 
           if project.trello
-            a.btn.btn--hollow.btn--trello.project__link-btn(href=project.trello target="_blank") Prohlédnout na Trellu
+            a.btn.btn--hollow.btn--trello.project__link-btn(href=project.trello target="_blank") #{label_trello[lang]}
