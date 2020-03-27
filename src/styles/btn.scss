@@ -27,7 +27,8 @@
   &--github,
   &--trello,
   &--twitter,
-  &--slack {
+  &--slack,
+  &--web {
     position: relative;
     padding-left: 50px;
     margin-right: 10px;
@@ -72,6 +73,12 @@
   &--slack {
     &:before {
       background-image: url("../images/slack-icon.svg");
+    }
+  }
+
+  &--web {
+    &:before {
+      background-image: url("../images/web-icon.svg");
     }
   }
 
