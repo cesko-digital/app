@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: cesko-digital/web
+  branch: master
+
+display_url: http://localhost:8000
+media_folder: static/assets
+public_folder: assets
+site_url: https://cesko.digital
+locale: 'cs'
+
+collections:
+  - name: mdx
+    label: Mdx Example
+    description: Documentation
+    folder: content/mdx
+    extension: mdx
+    format: frontmatter
+    widget: mdx
+    create: true
+    fields:
+      - { label: Title, name: title, widget: string, required: true }
+      - { label: Body, name: body, widget: mdx }
+
+  - name: blog
+    label: Blog
+    folder: content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: Template Key,
+          name: templateKey,
+          widget: hidden,
+          default: blog-post,
+        }
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Description, name: description, widget: text }
+      - { label: Tags, name: tags, widget: list }
+      - { label: Body, name: body, widget: markdown }
