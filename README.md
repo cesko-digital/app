@@ -79,19 +79,17 @@ Netlify CMS starts in parallel with Gatsby. You can access it at `http://localho
 
 `yarn test`: Run jest using jes.config.js file.
 
-## 💅 Styling
+## 🛠 Tools
 
-We are using [Styled Components](https://styled-components.com/) and [Rebass](https://rebassjs.org/) for styling components and also for layout.
+### Styling
 
-Rebass contains robust layout capabalities with flexbox or grid and also simple [theming](https://rebassjs.org/theming).
+We are using [Styled Components](https://styled-components.com/docs) and [Rebass](https://rebassjs.org/getting-started) for styling components and also for layout. Rebass provides easy [theming](https://rebassjs.org/theming).
 
-## 🛠 Linting
+### Linting
 
-We use [TSLint](https://palantir.github.io/tslint/) to lint our code in combination with [Prettier](https://prettier.io/).
+We use [TSLint](https://palantir.github.io/tslint/) to lint our code in combination with [Prettier](https://prettier.io/). Setting up TSLint was inspired by [Maxime Heckel](https://blog.maximeheckel.com/posts/getting-started-with-typescript-on-gatsby-8544b47c1d27).
 
-Setting up TSLint was inspired by [Maxime Heckel](https://blog.maximeheckel.com/posts/getting-started-with-typescript-on-gatsby-8544b47c1d27).
-
-## MDX
+### MDX
 
 For more information how to set up MDX inside Gatsby refer to [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx).
 
