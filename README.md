@@ -4,6 +4,10 @@
 
 ## 🚀 Quick start
 
+1.  **Requirements**
+
+	This project requires Node v12+ and Yarn v1.22+.
+
 1.  **Clone website**
 
     Clone repository to `cesko-digital-web` folder:
