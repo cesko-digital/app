@@ -2,20 +2,26 @@ module.exports = {
   siteMetadata: {
     title: `česko.digital`,
     description: `Skrz jedničky a nuly měníme Česko k lepšímu`,
-    author: `cesko.digital`,
+    author: `@ceskodigital`,
   },
   plugins: [
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/
     `gatsby-plugin-react-helmet`,
     {
+      // Docs: https://www.gatsbyjs.org/packages/gatsby-source-filesystem/
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
     },
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-transformer-sharp/
     `gatsby-transformer-sharp`,
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-sharp/
     `gatsby-plugin-sharp`,
     {
+      // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cms/
+      // Netlify CMS admin config also in /static/admin/config.yml
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         // This loads settings for Netlify CMS, custom widgets etc.
@@ -30,6 +36,7 @@ module.exports = {
       },
     },
     {
+      // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -52,10 +59,13 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/
     `gatsby-plugin-typescript`,
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-tslint/
     `gatsby-plugin-tslint`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // This (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
+    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/
     // `gatsby-plugin-offline`,
   ],
 }
