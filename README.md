@@ -22,15 +22,14 @@
     code .
     ```
     
-    and start developing with:
+    install required node packages and start developing with:
 
     ```sh
+    yarn
     yarn start
     ```
 
-    This invokes `gatsby develop` which is used to start up development version of the webiste.
-
-    Your site is now running at `http://localhost:8000`.
+    This invokes `gatsby develop` which is used to start up development version of the webiste running at `http://localhost:8000`.
 
     Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data.
     
