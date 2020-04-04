@@ -1,51 +1,71 @@
 {
-  "name": "web",
-  "version": "1.0.0",
-  "description": "website for cesko.digital",
-  "main": "webpack.config.js",
+  "name": "cesko-digital-web",
+  "private": true,
+  "description": "Website cesko.digital",
+  "version": "0.1.0",
+  "author": "cesko.digital",
+  "license": "BSD 3-Clause License",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "now-build": "npm run build && mkdir dist/dist && mv dist/*.* dist/dist && mv *.html dist"
+    "develop": "gatsby develop",
+    "start": "yarn develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.5.8",
+    "@mdx-js/react": "^1.5.8",
+    "gatsby": "^2.19.45",
+    "gatsby-image": "^2.2.44",
+    "gatsby-plugin-manifest": "^2.2.48",
+    "gatsby-plugin-mdx": "^1.1.4",
+    "gatsby-plugin-netlify-cms": "^4.2.2",
+    "gatsby-plugin-offline": "^3.0.41",
+    "gatsby-plugin-react-helmet": "^3.1.24",
+    "gatsby-plugin-sharp": "^2.4.13",
+    "gatsby-plugin-tslint": "^0.0.2",
+    "gatsby-plugin-typescript": "^2.3.1",
+    "gatsby-source-filesystem": "^2.1.56",
+    "gatsby-transformer-sharp": "^2.3.19",
+    "netlify-cms-app": "^2.12.0",
+    "netlify-cms-locales": "^1.10.1",
+    "netlify-cms-widget-mdx": "^0.4.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "rebass": "^4.0.7",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.5",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.15",
+    "@types/react-test-renderer": "^16.9.2",
+    "babel-jest": "^25.2.3",
+    "babel-preset-gatsby": "^0.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.2.3",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.3.0",
+    "tslint-react": "^4.2.0",
+    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cesko-digital/web.git"
+    "url": "https://github.com/cesko-digital/web"
   },
-  "keywords": [
-    "czech",
-    "czechia",
-    "cesko",
-    "digital",
-    "help",
-    "volunteers",
-    "code4",
-    "nonprofit",
-    "web"
-  ],
-  "author": "cesko.digital",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/cesko-digital/web/issues"
-  },
-  "homepage": "https://github.com/cesko-digital/web#readme",
-  "devDependencies": {
-    "css-loader": "^2.1.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.12.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.32.0",
-    "webpack-cli": "^3.3.2"
-  },
-  "dependencies": {
-    "pug": "^2.0.3",
-    "pug-loader": "^2.4.0"
   }
 }
