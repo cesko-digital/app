@@ -15,13 +15,7 @@ interface IAirtable {
 
 class Airtable(secrets: Secrets) : IAirtable {
 
-    lateinit var airtableApi: AirtableApi
-
-    init {
-        if (!this::airtableApi.isInitialized) {
-            airtableApi = AirtableApi(secrets.airtableSecret, AirtableExecutor.newInstance(true, 2))
-        }
-    }
+    val airtableApi: AirtableApi = AirtableApi(secrets.airtableSecret, AirtableExecutor.newInstance(true, 2))
 
     override fun unsubscribe(userId: String, appId: String, tableName: String): Boolean {
         val recordToUpdate = AirtableRecord()

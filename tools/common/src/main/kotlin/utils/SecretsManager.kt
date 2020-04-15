@@ -14,52 +14,35 @@ import java.lang.Exception
 import java.security.InvalidParameterException
 
 interface ISecretsManager {
-    var secrets: Secrets?
-
-    fun get(): Secrets
+    val secrets: Secrets
 }
 
 /*
     Loads secrets from AWS secrets manager, endpoint configuration is in local config file.
  */
 class AWSSecretsManager(
-    val config: Config,
-    override var secrets: Secrets? = null
+        val config: Config
 ) : ISecretsManager {
 
-    override fun get(): Secrets {
-        if (secrets == null) {
-            initSecrets()
-        }
+    override val secrets: Secrets = initSecrets()
 
-        return secrets!!
-    }
-
-    private fun initSecrets() {
+    private fun initSecrets(): Secrets {
         val endpoint = config.getString("secrets.aws.endpoint")
         val region = config.getString("secrets.aws.region")
         val secretsId = config.getString("secrets.aws.secretsId")
 
         val config = AwsClientBuilder.EndpointConfiguration(endpoint, region)
         val client = AWSSecretsManagerClientBuilder.standard()
-            .withCredentials(EnvironmentVariableCredentialsProvider())
-            .withEndpointConfiguration(config)
-            .build()
+                .withCredentials(EnvironmentVariableCredentialsProvider())
+                .withEndpointConfiguration(config)
+                .build()
 
         val getSecretValueRequest = GetSecretValueRequest()
-            .withSecretId(secretsId)
+                .withSecretId(secretsId)
 
-        try {
-            this.secrets = jacksonObjectMapper().readValue(
+        return jacksonObjectMapper().readValue(
                 client.getSecretValue(getSecretValueRequest).secretString
-            )
-        } catch (e: ResourceNotFoundException) {
-            System.out.println("The requested secret was not found")
-        } catch (e: InvalidRequestException) {
-            System.out.println("The request was invalid due to: " + e.message)
-        } catch (e: InvalidParameterException) {
-            System.out.println("The request had invalid params: " + e.message)
-        }
+        )
     }
 }
 
@@ -68,30 +51,22 @@ class AWSSecretsManager(
     hardcoded values.)
  */
 class LocalSecretsManager(
-    val config: Config,
-    override var secrets: Secrets? = null
+        val config: Config
 ) : ISecretsManager {
+    override val secrets: Secrets = initSecrets()
 
-    override fun get(): Secrets {
-        if (secrets == null) {
-            initSecrets()
-        }
-
-        return secrets!!
-    }
-
-    private fun initSecrets() {
-        this.secrets = Secrets(
-            airtableSecret = try {
-                config.getString("secrets.local.airtableSecret")
-            } catch (e: Exception) {
-                ""
-            }
+    private fun initSecrets(): Secrets {
+        return Secrets(
+                airtableSecret = try {
+                    config.getString("secrets.local.airtableSecret")
+                } catch (e: Exception) {
+                    ""
+                }
         )
     }
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Secrets(
-    val airtableSecret: String
+        val airtableSecret: String
 )

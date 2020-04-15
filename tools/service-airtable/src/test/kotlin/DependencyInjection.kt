@@ -14,7 +14,7 @@ val testModule = module {
 
     single<IAirtable> {
         Airtable(
-            secrets = this.get<ISecretsManager>().get()
+            secrets = this.get<ISecretsManager>().secrets
         )
     }
 }
