@@ -1,0 +1,38 @@
+service: service-airtable
+
+plugins:
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  region: eu-west-2
+  role: arn:aws:iam::313370994665:role/cd-tools # IAM Role with access to all necessary AWS services
+  runtime: java8
+  memorySize: 512
+  versionFunctions: false
+  timeout: 30
+  profile: cesko.digital # Name of the profile for AWS Credentials
+
+package:
+  artifact: ./build/libs/service-airtable-${opt:version, ''}-all.jar
+
+functions:
+  unsubscribe:
+    handler: lambda.Unsubscribe
+    events:
+      - http:
+          path: unsubscribe
+          method: get
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    prod: cesko.digital
+    dev: ceskodigital.net
+  customDomain:
+    domainName: 'tools.${self:custom.domains.${self:custom.stage}}'
+    certificateName: '*.${self:custom.domains.${self:custom.stage}}'
+    basePath: ''
+    stage: ${self:custom.stage}
+    createRoute53Record: false
+    endpointType: edge
