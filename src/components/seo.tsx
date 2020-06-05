@@ -4,6 +4,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
+// tslint:disable: object-literal-sort-keys
 
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
