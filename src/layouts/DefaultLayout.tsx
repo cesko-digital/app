@@ -1,10 +1,10 @@
 import React from 'react'
 
-interface Props {
+interface IProps {
   children: any
 }
 
-export default ({ children }: Props) => (
+export default ({ children }: IProps) => (
   <div>
     <h1>Default layout</h1>
 
