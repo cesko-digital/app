@@ -14,7 +14,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project .",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.5.8",
@@ -42,6 +44,10 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.19",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.27",
@@ -49,12 +55,15 @@
     "@types/react-helmet": "^5.0.15",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.2.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-remove-graphql-queries": "^2.9.3",
     "babel-preset-gatsby": "^0.3.1",
+    "babel-preset-react-app": "^9.1.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.3",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.13.1",
-    "tslint": "^6.1.0",
+    "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
     "tslint-plugin-prettier": "^2.3.0",
