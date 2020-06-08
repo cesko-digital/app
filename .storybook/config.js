@@ -18,8 +18,8 @@ function withTheme(storyFn) {
 // Apply decorator for 
 addDecorator(withTheme)
 
-// Import all files in stories folder ending in *.stories.js
-configure(require.context('../stories', true, /\.stories\.tsx$/), module)
+// Import all files in stories folder ending in *.stories.ts(x)
+configure(require.context('../stories', true, /\.stories\.tsx?$/), module)
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
