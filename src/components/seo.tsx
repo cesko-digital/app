@@ -4,13 +4,12 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-// tslint:disable: object-literal-sort-keys
 
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
-interface IPureSEOProps {
+interface PureSEOProps {
   data: any
   description?: string
   lang?: string
@@ -18,7 +17,7 @@ interface IPureSEOProps {
   title?: string
 }
 
-interface ISEOProps {
+interface SEOProps {
   description?: string
   lang?: string
   meta?: []
@@ -31,7 +30,7 @@ export const PureSEO = ({
   lang,
   meta,
   title,
-}: IPureSEOProps) => {
+}: PureSEOProps) => {
   const metaDescription = description || data.site.siteMetadata.description
 
   return (
@@ -79,7 +78,7 @@ export const PureSEO = ({
   )
 }
 
-const SEO = ({ description, lang, meta, title }: ISEOProps) => {
+const SEO = ({ description, lang, meta, title }: SEOProps) => {
   const data = useStaticQuery(
     graphql`
       query {

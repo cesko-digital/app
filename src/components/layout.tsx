@@ -10,11 +10,11 @@ import React from 'react'
 
 import { Theme } from '../theme'
 
-interface IProps {
+interface Props {
   children?: any
 }
 
-const Layout = ({ children }: IProps) => {
+const Layout = ({ children }: Props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

@@ -24,9 +24,7 @@ configure(require.context('../stories', true, /\.stories\.tsx?$/), module)
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
 global.___loader = {
-  // tslint:disable-next-line: no-empty
   enqueue: () => {},
-  // tslint:disable-next-line: no-empty
   hovering: () => {},
 }
 

@@ -1,11 +1,11 @@
 import * as React from 'react'
 
-interface IProps {
+interface Props {
   children: string
 }
 
 // This will be imported from src/components, once components are created
-const H1 = ({ children }: IProps) => {
+const H1 = ({ children }: Props) => {
   return <h1>{children}</h1>
 }
 
