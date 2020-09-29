@@ -1,0 +1,11 @@
+.sdg {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  z-index: 1000;
+  width: 60px;
+
+  @media (min-width: $media-medium) {
+	width: 90px;
+  }
+}
