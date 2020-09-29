@@ -23,7 +23,7 @@ const MDXWidget = (props) => (
 // The preview window which renders MDX content.
 // Docs: https://www.netlifycms.org/docs/customization/
 
-const PreviewWindow = props => {
+const PreviewWindow = (props) => {
   const iframe = document.getElementsByTagName('iframe')[0]
   const iframeHeadElem = iframe.contentDocument.head
 

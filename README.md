@@ -6,7 +6,7 @@
 
 1.  **Requirements**
 
-	This project requires Node v12+ and Yarn v1.22+.
+    This project requires Node v12+ and Yarn v1.22+.
 
 1.  **Clone website**
 
@@ -20,12 +20,12 @@
 1.  **Open the source code and start editing!**
 
     Go to `cesko-digital-web` directory and open the project in your editor of choice:
-    
+
     ```sh
     cd cesko-digital-web
     code .
     ```
-    
+
     install required node packages and start developing with:
 
     ```sh
@@ -36,7 +36,7 @@
     This invokes `gatsby develop` which is used to start up development version of the webiste running at `http://localhost:8000`.
 
     Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data.
-    
+
 ## 📝 Netlify CMS
 
 _Netlify CMS is an open source content management system for your Git workflow that enables you to provide editors with a friendly UI and intuitive workflows._ — [Netlify CMS Docs](https://www.netlifycms.org/docs/intro/)
@@ -136,8 +136,8 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 1.  **`LICENSE`**: This site is licensed under the BSD 3-Clause License.
 
-1. **`yarn.lock`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly, but don't forget to push it to repository).**
+1.  **`yarn.lock`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly, but don't forget to push it to repository).**
 
-1. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-1. **`README.md`**: A text file containing useful reference information about your project.
+1.  **`README.md`**: A text file containing useful reference information about your project.
