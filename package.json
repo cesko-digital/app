@@ -74,6 +74,9 @@
     "tslint-react": "^5.0.0",
     "typescript": "^3.9.6"
   },
+  "resolutions": {
+    "@types/react": "^16.9.49"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cesko-digital/web"
