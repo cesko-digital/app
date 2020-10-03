@@ -15,7 +15,7 @@ export const LayoutComponents = {
 }
 
 export const UIComponents = {
-  Button: props => <Button {...props}>{props.children}</Button>,
+  Button: (props) => <Button {...props}>{props.children}</Button>,
 }
 
 export const Theme = ({ children }) => (
