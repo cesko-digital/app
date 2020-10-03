@@ -5,7 +5,11 @@
     "prettier": true,
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
-    "import-name": false,
-    "no-boolean-literal-compare": false
+    "no-implicit-dependencies": false,
+    "object-literal-sort-keys": false,
+    "interface-name": [true, "never-prefix"]
+  },
+  "jsRules": {
+    "object-literal-sort-keys": false
   }
 }

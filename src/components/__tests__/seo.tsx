@@ -1,6 +1,3 @@
-// tslint:disable: no-implicit-dependencies
-// react-test-renderer is in devDependencies
-
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { PureSEO as SEO } from '../seo'
