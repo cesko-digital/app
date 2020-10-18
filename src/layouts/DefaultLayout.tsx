@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface Props {
-  children: any
+  children: ReactNode
 }
 
-export default ({ children }: Props) => (
+const DefaultLayout: React.FC<Props> = ({ children }: Props) => (
   <div>
     <h1>Default layout</h1>
 
     <div>{children}</div>
   </div>
 )
+export default DefaultLayout
