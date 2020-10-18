@@ -9,8 +9,20 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
+interface SiteMetadata {
+  description: string
+  title: string
+  author: string
+}
+
+export type GraphQLData = {
+  site: {
+    siteMetadata: SiteMetadata
+  }
+}
+
 interface PureSEOProps {
-  data: any
+  data: GraphQLData
   description?: string
   lang?: string
   meta?: []
@@ -24,11 +36,10 @@ interface SEOProps {
   title: string
 }
 
-export const PureSEO = ({
+export const PureSEO: React.FC<PureSEOProps> = ({
   data,
   description,
   lang,
-  meta,
   title,
 }: PureSEOProps) => {
   const metaDescription = description || data.site.siteMetadata.description
@@ -78,7 +89,7 @@ export const PureSEO = ({
   )
 }
 
-const SEO = ({ description, lang, meta, title }: SEOProps) => {
+const SEO: React.FC<SEOProps> = ({ description }: SEOProps) => {
   const data = useStaticQuery(
     graphql`
       query {

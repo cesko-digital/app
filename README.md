@@ -37,28 +37,6 @@
 
     Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data.
 
-## 📝 Netlify CMS
-
-_Netlify CMS is an open source content management system for your Git workflow that enables you to provide editors with a friendly UI and intuitive workflows._ — [Netlify CMS Docs](https://www.netlifycms.org/docs/intro/)
-
-Netlify CMS starts in parallel with Gatsby. You can access it at `http://localhost:8000/admin/`.
-
-`/admin/` path can be changed by changing `publicPath` option in `gatsby-config.js`:
-
-```js
-...
-{
-  resolve: `gatsby-plugin-netlify-cms`,
-  options: {
-    modulePath: `${__dirname}/src/cms/cms.jsx`,
-    enableIdentityWidget: false,
-    publicPath: 'admin',
-    htmlTitle: 'Admin cesko.digital',
-  },
-},
-...
-```
-
 ## ⌨️ Commands
 
 `yarn develop`: Start development version of the project.
@@ -86,11 +64,7 @@ Netlify CMS starts in parallel with Gatsby. You can access it at `http://localho
 
 ### Styling
 
-We are using [Styled Components](https://styled-components.com/docs) and [Rebass](https://rebassjs.org/getting-started) for styling components and also for layout. Rebass provides easy [theming](https://rebassjs.org/theming).
-
-### Linting
-
-We use [TSLint](https://palantir.github.io/tslint/) to lint our code in combination with [Prettier](https://prettier.io/). Setting up TSLint was inspired by [Maxime Heckel](https://blog.maximeheckel.com/posts/getting-started-with-typescript-on-gatsby-8544b47c1d27).
+We are using [Styled Components](https://styled-components.com/docs).
 
 ### MDX
 
