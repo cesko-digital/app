@@ -20,22 +20,6 @@ module.exports = {
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-sharp/
     `gatsby-plugin-sharp`,
     {
-      // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cms/
-      // Netlify CMS admin config also in /static/admin/config.yml
-      resolve: `gatsby-plugin-netlify-cms`,
-      options: {
-        // This loads settings for Netlify CMS, custom widgets etc.
-        modulePath: `${__dirname}/src/cms/cms.jsx`,
-        // Do no bundle Identity Widget
-        // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cms/#enableidentitywidget
-        enableIdentityWidget: false,
-        // Specifies public path to administration
-        publicPath: 'admin',
-        // Browser title displayed in administration
-        htmlTitle: 'Admin cesko.digital',
-      },
-    },
-    {
       // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -61,8 +45,6 @@ module.exports = {
     },
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/
     `gatsby-plugin-typescript`,
-    // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-tslint/
-    `gatsby-plugin-tslint`,
     // This (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/
