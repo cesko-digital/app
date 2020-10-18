@@ -1,14 +1,15 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { PureSEO as SEO } from '../seo'
+import { GraphQLData, PureSEO as SEO } from '../seo'
 
 describe('SEO', () => {
   it('renders correctly', () => {
-    // Created using the query from SEO.js
-    const data = {
+    const data: GraphQLData = {
       site: {
         siteMetadata: {
           title: 'cesko.digital',
+          description: 'lorem ipsum',
+          author: 'Jose',
         },
       },
     }
