@@ -9,6 +9,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React, { ReactNode } from 'react'
 
 import { Theme } from '../theme'
+import { Button, ButtonSize, ButtonType } from './Button'
 
 interface Props {
   children: ReactNode
@@ -28,7 +29,10 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
     <Theme>
       <main>{children}</main>
-
+      <Button>Hello</Button>
+      <Button buttonType={ButtonType.Secondary}>Hello</Button>
+      <Button size={ButtonSize.Small}>Hello</Button>
+      <Button buttonType={ButtonType.Secondary} size={ButtonSize.Small}>Hello</Button>
       <footer>Copyright &copy; {data.site.siteMetadata.title}</footer>
     </Theme>
   )
