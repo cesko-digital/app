@@ -14,7 +14,7 @@
 
     ```sh
     # Clone cesko-digital/web
-    git clone cesko-digital-web https://github.com/cesko-digital/web.git
+    git clone https://github.com/cesko-digital/web.git cesko-digital-web
     ```
 
 1.  **Open the source code and start editing!**
