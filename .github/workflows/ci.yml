@@ -13,3 +13,4 @@ jobs:
         yarn lint
         yarn type-check
         yarn test
+        yarn cy:ci

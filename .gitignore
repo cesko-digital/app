@@ -53,6 +53,7 @@ typings/
 
 # dotenv environment variable files
 .env*
+!.env.example
 
 # gatsby and storybook files
 .cache/
@@ -69,5 +70,12 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-# VSCode setings
+# IDE - VSCode
 .vscode
+
+# IDE - IntelliJ
+.idea
+
+# Cypress
+cypress/videos
+cypress/screenshots
