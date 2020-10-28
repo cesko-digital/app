@@ -61,7 +61,6 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.0",
     "@types/react-test-renderer": "^16.9.2",
-    "@types/rebass": "^4.0.7",
     "@types/styled-components": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
