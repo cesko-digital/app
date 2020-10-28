@@ -10,6 +10,11 @@ export const defaultTheme: DefaultTheme = {
     md: '52em',
     lg: '64em',
   },
+  animation: {
+    duration: {
+      base: '250ms',
+    },
+  },
   fontSizes: {
     xxxl: 44,
     xxl: 35,
@@ -34,7 +39,7 @@ export const defaultTheme: DefaultTheme = {
 
     yellow: '#FFF6A3',
   },
-  contentSize: 1140,
+  contentSize: 1160,
   space: {
     none: 0,
     small: 4,
