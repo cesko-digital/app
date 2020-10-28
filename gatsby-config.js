@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `česko.digital`,
@@ -51,5 +53,11 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-cd-airtable`,
+      options: {
+        projectsTableName: 'Projects',
+      },
+    },
   ],
 }
