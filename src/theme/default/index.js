@@ -1,10 +1,18 @@
 export const defaultTheme = {
-  borderRadius: {
-    none: 0,
-    base: 8,
+  breakpoints: {
+    sm: '40em',
+    md: '52em',
+    lg: '64em',
   },
-  breakpoints: ['40em', '52em', '64em'],
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
+  fontSizes: {
+    xxxl: '44px',
+    xxl: '35px',
+    xl: '28px',
+    lg: '25px',
+    md: '23px',
+    base: '18px',
+    small: '15px',
+  },
   colors: {
     darkGrey: '#080831',
     asphalt: '#47475B',
@@ -19,7 +27,17 @@ export const defaultTheme = {
 
     yellow: '#FFF6A3',
   },
-  space: [0, 4, 8, 16, 32, 64, 128, 256],
+  contentSize: '1140px',
+  space: {
+    none: 0,
+    small: 4,
+    base: 8,
+    md: 16,
+    lg: 32,
+    xl: 64,
+    xxl: 128,
+    xxxl: 256,
+  },
   fonts: {
     body: 'system-ui, sans-serif',
     heading: 'inherit',
