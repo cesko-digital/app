@@ -15,12 +15,14 @@ declare module 'styled-components' {
       xxxl: number
       xxl: number
       xl: number
+      l: number
       lg: number
       md: number
       base: number
       small: number
     }
     colors: {
+      lightGray: string
       darkGrey: string
       asphalt: string
       gravel: string
