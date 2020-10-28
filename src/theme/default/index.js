@@ -1,17 +1,21 @@
 export const defaultTheme = {
+  borderRadius: {
+    none: 0,
+    base: 8,
+  },
   breakpoints: {
     sm: '40em',
     md: '52em',
     lg: '64em',
   },
   fontSizes: {
-    xxxl: '44px',
-    xxl: '35px',
-    xl: '28px',
-    lg: '25px',
-    md: '23px',
-    base: '18px',
-    small: '15px',
+    xxxl: 44,
+    xxl: 35,
+    xl: 28,
+    lg: 25,
+    md: 23,
+    base: 18,
+    small: 15,
   },
   colors: {
     darkGrey: '#080831',
