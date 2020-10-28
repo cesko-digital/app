@@ -57,6 +57,8 @@ Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTIN
 
 Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
 
+## 🛠 Tools
+
 ## Kontakty
 
 **Koordinátoři:** [Tomáš Jeřábek](https://github.com/tjerabek), [Jindřich Oukropec](https://github.com/miiila)

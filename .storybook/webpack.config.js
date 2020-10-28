@@ -15,7 +15,7 @@ module.exports = ({ config }) => {
 
   // fonts
   config.module.rules.push({
-    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    test: /\.(woff|woff2|eot|ttf)$/,
     use: [
       {
         loader: 'file-loader',
