@@ -17,4 +17,12 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     'react/prop-types': ['off', { ignore: ['children'] }],
   },
+  overrides: [
+    {
+      files: ['gatsby-config.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
 }
