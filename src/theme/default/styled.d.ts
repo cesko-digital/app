@@ -11,6 +11,11 @@ declare module 'styled-components' {
       md: string
       lg: string
     }
+    animation: {
+      duration: {
+        base: string
+      }
+    }
     fontSizes: {
       xxxl: number
       xxl: number
