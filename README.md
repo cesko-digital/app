@@ -59,7 +59,6 @@
 
 `yarn type-check`: Transpile TypeScript files without emmiting output.
 
-
 ## 🛠 Tools
 
 ### Styling
