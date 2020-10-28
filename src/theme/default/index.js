@@ -43,9 +43,9 @@ export const defaultTheme = {
     xxxl: 256,
   },
   fonts: {
-    body: 'system-ui, sans-serif',
+    body: '"Cesko Digital", system-ui, sans-serif',
     heading: 'inherit',
-    monospace: 'Menlo, monospace',
+    monospace: '"Cesko Digital Mono", Menlo, monospace',
   },
   fontWeights: {
     body: 400,
