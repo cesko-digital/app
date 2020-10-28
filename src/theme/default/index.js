@@ -29,6 +29,7 @@ export const defaultTheme = {
   lineHeights: {
     body: 1.5,
     heading: 1.3,
+    button: 1.3,
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',
