@@ -2,7 +2,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `česko.digital`,
+    title: `Česko.digital`,
     description: `Skrz jedničky a nuly měníme Česko k lepšímu`,
     author: `@ceskodigital`,
   },

@@ -28,4 +28,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: ${(props) => props.theme.fonts.body};
   }
+
+  html,
+  body,
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    height: 100%;
+  }
 `
