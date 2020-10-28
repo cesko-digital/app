@@ -1,4 +1,6 @@
-export const defaultTheme = {
+import { DefaultTheme } from 'styled-components'
+
+export const defaultTheme: DefaultTheme = {
   borderRadius: {
     none: 0,
     base: 8,
@@ -31,7 +33,7 @@ export const defaultTheme = {
 
     yellow: '#FFF6A3',
   },
-  contentSize: '1140px',
+  contentSize: 1140,
   space: {
     none: 0,
     small: 4,
