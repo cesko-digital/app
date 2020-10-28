@@ -1,27 +1,32 @@
 import * as React from 'react'
 import * as S from './styles'
 
-export enum ButtonType {
-  Primary,
-  Secondary
-}
-
 export enum ButtonSize {
   Normal,
-  Small
+  Small,
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface StyledButtonProps {
+  inverted?: boolean
+  size: ButtonSize
+  disabled?: boolean
+}
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    Partial<StyledButtonProps> {
   children: React.ReactChild
-  buttonType?: ButtonType
-  size?: ButtonSize
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   size = ButtonSize.Normal,
-  buttonType = ButtonType.Primary,
+  inverted,
   ...rest
 }: ButtonProps) => (
-  <S.Button buttonType={buttonType} size={size} {...rest}>{children}</S.Button>
+  <S.Button inverted={inverted} size={size} {...rest}>
+    {children}
+  </S.Button>
 )
+
+export default Button
