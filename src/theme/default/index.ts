@@ -18,13 +18,15 @@ export const defaultTheme: DefaultTheme = {
   fontSizes: {
     xxxl: 44,
     xxl: 35,
-    xl: 28,
+    xl: 32,
+    l: 28,
     lg: 25,
     md: 23,
     base: 18,
     small: 15,
   },
   colors: {
+    lightGray: '#EDEDEF',
     darkGrey: '#080831',
     asphalt: '#47475B',
     gravel: '#A9A9B1',
