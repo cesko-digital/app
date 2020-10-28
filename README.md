@@ -1,71 +1,69 @@
 ![cesko.digital](cesko-digital_logo.png)
 
-# Website cesko.digital
+# Web Česko.Digital
 
-## 🚀 Quick start
+## 🚀 Setup projektu
 
-1.  **Requirements**
+1.  **Požadavky**
 
-    This project requires Node v12+ and Yarn v1.22+.
+    Projekt vyžaduje Node v12+ a Yarn v1.22+.
 
-1.  **Clone website**
+1.  **Repozitář**
 
-    Clone repository to `cesko-digital-web` folder:
+    Naklonujte si repozitář do složky `cesko-digital-web`:
 
-    ```sh
-    # Clone cesko-digital/web
+    ```shell script
     git clone https://github.com/cesko-digital/web.git cesko-digital-web
     ```
 
-1.  **Open the source code and start editing!**
+1.  **Instalace a spuštění**
 
-    Go to `cesko-digital-web` directory and open the project in your editor of choice:
+    Ve složce `cesko-digital-web`  nainstalujte požadované závislosti:
 
-    ```sh
+    ```shell script
     cd cesko-digital-web
-    code .
+    yarn
     ```
 
-    install required node packages and start developing with:
+    poté lze spustit vývojový režim:
 
-    ```sh
-    yarn
+    ```shell script
     yarn start
     ```
 
-    This invokes `gatsby develop` which is used to start up development version of the webiste running at `http://localhost:8000`.
+    Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj. 
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data.
+## ⌨️ Základní příkazy
 
-## ⌨️ Commands
+`yarn start`: Start vývojového režimu
 
-`yarn develop`: Start development version of the project.
+`yarn lint`: Lint kontrola kódu a formátování
 
-`yarn lint`: Lint TypeScript files using tsconfig.json file.
+`yarn test`: Spuštění testů
 
-`yarn test`: Run jest using jes.config.js file.
+`yarn storybook`: Start dokumentace komponent
 
-`yarn storybook`: Start component library documentation (Storybook)
+`yarn build`: Build produkční verze webu
 
-`yarn start`: Alias for `yarn develop`.
+`yarn serve`: Spuštění produkčního buildu
 
-`yarn build`: Build production version of the project.
-
-`yarn serve`: Serve production build of the project on local machine.
-
-`yarn clean`: Clean .cache and public directories. Useful after installing new packages.
-
-`yarn format`: Format source code with Prettier. This should be done automatically in code editor.
-
-`yarn type-check`: Transpile TypeScript files without emmiting output.
+`yarn format`: Formátování kódu 
 
 
-## 🛠 Tools
 
-### Styling
+## 🛠 Jak přispívat
 
-We are using [Styled Components](https://styled-components.com/docs).
+Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTING.md), který obsahuje informace o všech konvencích repozitáře. 
 
-### MDX
 
-For more information how to set up MDX inside Gatsby refer to [gatsby-plugin-mdx](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx).
+## Licence
+
+Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).    
+
+## Kontakty
+
+**Koordinátoři:** [Tomáš Jeřábek](https://github.com/tjerabek), [Jindřich Oukropec](https://github.com/miiila)
+
+**Tech leads:** [Matěj 'Horm' Horák](https://github.com/HormCodes), [Míla Votradovec](https://github.com/miiila)
+
+**Wiki:** [Redesign webu Česko.Digital](https://wiki.cesko.digital/pages/viewpage.action?pageId=1574868)
