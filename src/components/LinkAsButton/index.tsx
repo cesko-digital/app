@@ -5,7 +5,7 @@ import { applyLinkStyles } from '../Link/styles'
 import { StyledLinkProps } from '../Link'
 
 const StyledLink = styled.button<StyledLinkProps>`
-    ${p => applyLinkStyles({ size: p.size, disabled: p.disabled })}
+  ${(p) => applyLinkStyles({ size: p.size, disabled: p.disabled })}
 `
 
 export interface LinkAsButtonProps
@@ -19,9 +19,9 @@ const LinkAsButton: React.FC<LinkAsButtonProps> = ({
   size = ButtonSize.Normal,
   ...rest
 }: LinkAsButtonProps) => (
-    <StyledLink size={size} {...rest}>
-      {children}
-    </StyledLink>
-  )
+  <StyledLink size={size} {...rest}>
+    {children}
+  </StyledLink>
+)
 
 export default LinkAsButton

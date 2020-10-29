@@ -33,39 +33,69 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
     <Theme>
       <main>{children}</main>
       <Link href="#hi">Link</Link>
-      <Link size={ButtonSize.Small} href="#hi">Link</Link>
-      <Link disabled href="#hi">Link</Link>
-      <Link disabled size={ButtonSize.Small} href="#hi">Link</Link>
+      <Link size={ButtonSize.Small} href="#hi">
+        Link
+      </Link>
+      <Link disabled href="#hi">
+        Link
+      </Link>
+      <Link disabled size={ButtonSize.Small} href="#hi">
+        Link
+      </Link>
 
-      <hr/>
+      <hr />
 
       <LinkAsButton>Link</LinkAsButton>
       <LinkAsButton size={ButtonSize.Small}>Link</LinkAsButton>
       <LinkAsButton disabled>Link</LinkAsButton>
-      <LinkAsButton disabled size={ButtonSize.Small}>Link</LinkAsButton>
+      <LinkAsButton disabled size={ButtonSize.Small}>
+        Link
+      </LinkAsButton>
 
-      <hr/>
+      <hr />
 
       <Button>Link</Button>
       <Button size={ButtonSize.Small}>Link</Button>
       <Button disabled>Link</Button>
-      <Button disabled size={ButtonSize.Small}>Link</Button>
+      <Button disabled size={ButtonSize.Small}>
+        Link
+      </Button>
       <Button inverted>Link</Button>
-      <Button inverted size={ButtonSize.Small}>Link</Button>
-      <Button inverted disabled>Link</Button>
-      <Button inverted disabled size={ButtonSize.Small}>Link</Button>
+      <Button inverted size={ButtonSize.Small}>
+        Link
+      </Button>
+      <Button inverted disabled>
+        Link
+      </Button>
+      <Button inverted disabled size={ButtonSize.Small}>
+        Link
+      </Button>
 
-      <hr/>
+      <hr />
 
       <ButtonAsLink href="#hi">Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" size={ButtonSize.Small}>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" disabled>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" disabled size={ButtonSize.Small}>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" inverted>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" inverted size={ButtonSize.Small}>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" inverted disabled>Link</ButtonAsLink>
-      <ButtonAsLink href="#hi" inverted disabled size={ButtonSize.Small}>Link</ButtonAsLink>
-      
+      <ButtonAsLink href="#hi" size={ButtonSize.Small}>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" disabled>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" disabled size={ButtonSize.Small}>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" inverted>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" inverted size={ButtonSize.Small}>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" inverted disabled>
+        Link
+      </ButtonAsLink>
+      <ButtonAsLink href="#hi" inverted disabled size={ButtonSize.Small}>
+        Link
+      </ButtonAsLink>
+
       <footer>Copyright &copy; {data.site.siteMetadata.title}</footer>
     </Theme>
   )

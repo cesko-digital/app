@@ -1,11 +1,16 @@
-import styled, { css } from 'styled-components'
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
 import { ButtonSize, StyledButtonProps } from '.'
 
 export const applyButtonStyles = ({
   size,
   disabled,
   inverted,
-}: StyledButtonProps) => {
+}: StyledButtonProps): FlattenInterpolation<ThemeProps<DefaultTheme>> => {
   return css`
     display: inline-flex;
 

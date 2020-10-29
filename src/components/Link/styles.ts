@@ -1,12 +1,20 @@
-import styled, { css } from 'styled-components'
-import { StyledStyledProps } from '.'
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components'
+import { StyledLinkProps } from '.'
 import { ButtonSize } from '../Button'
 
-export const Link = styled.a<StyledStyledProps>`
-  ${p => applyLinkStyles({ size: p.size, disabled: p.disabled })}
+export const Link = styled.a<StyledLinkProps>`
+  ${(p) => applyLinkStyles({ size: p.size, disabled: p.disabled })}
 `
 
-export const applyLinkStyles = ({ size, disabled }: StyledStyledProps) => {
+export const applyLinkStyles = ({
+  size,
+  disabled,
+}: StyledLinkProps): FlattenInterpolation<ThemeProps<DefaultTheme>> => {
   return css`
     display: inline-flex;
     text-decoration: none;

@@ -4,7 +4,12 @@ import { ButtonSize, StyledButtonProps } from '../Button'
 import { applyButtonStyles } from '../Button/styles'
 
 const StyledButton = styled.a<StyledButtonProps>`
-    ${p => applyButtonStyles({ size: p.size, disabled: p.disabled, inverted: p.inverted })}
+  ${(p) =>
+    applyButtonStyles({
+      size: p.size,
+      disabled: p.disabled,
+      inverted: p.inverted,
+    })}
 `
 
 export interface ButtonAsLinkProps
