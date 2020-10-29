@@ -14,12 +14,14 @@ export const applyButtonStyles = ({
   return css`
     display: inline-flex;
 
+    font-family: ${(p) => p.theme.fonts.body};
+
     height: ${() => (size === ButtonSize.Normal ? 52 : 30)}px;
 
     padding: 0 ${() => (size === ButtonSize.Normal ? 30 : 14)}px;
 
-    font-weight: 600;
-    line-height: 1.3;
+    font-weight: ${(p) => p.theme.fontWeights.button};
+    line-height: ${(p) => p.theme.lineHeights.button};
 
     align-items: center;
 
@@ -28,26 +30,31 @@ export const applyButtonStyles = ({
 
     position: relative;
 
-    border-radius: 0;
-
     text-decoration: none;
 
-    background-color: ${() => (inverted ? 'white' : 'blue')};
-    color: ${() => (inverted ? 'blue' : 'white')};
+    background-color: ${(p) =>
+      inverted ? p.theme.colors.white : p.theme.colors.it};
+    color: ${(p) => (inverted ? p.theme.colors.it : p.theme.colors.white)};
 
     cursor: ${() => (disabled ? 'not-allowed' : 'pointer')};
 
-    font-size: ${() => (size === ButtonSize.Normal ? 18 : 15)}px;
+    font-size: ${(p) =>
+      size === ButtonSize.Normal
+        ? p.theme.fontSizes.base
+        : p.theme.fontSizes.small}px;
 
-    border-radius: 8px;
+    border-radius: ${(p) => p.theme.borderRadius.base}px;
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08),
       0px 1px 2px rgba(8, 8, 49, 0.12);
 
     ${() => {
+      const outlineThickness = 2
       return disabled
         ? css`
-            background: ${() => (inverted ? 'white' : '#a9a9b1')};
-            color: ${() => (inverted ? '#a9a9b1' : 'white')};
+            background: ${(p) =>
+              inverted ? p.theme.colors.white : p.theme.colors.gravel};
+            color: ${(p) =>
+              inverted ? p.theme.colors.gravel : p.theme.colors.white};
             box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08),
               0px 1px 2px rgba(8, 8, 49, 0.12);
             &:before {
@@ -62,13 +69,14 @@ export const applyButtonStyles = ({
               &:before {
                 content: '';
                 position: absolute;
-                top: -2px;
-                left: -2px;
-                right: -2px;
-                bottom: -2px;
+                top: -${outlineThickness}px;
+                left: -${outlineThickness}px;
+                right: -${outlineThickness}px;
+                bottom: -${outlineThickness}px;
                 z-index: -1;
-                border-radius: 10px;
-                border: 2px solid #ccccff;
+                border-radius: ${(p) =>
+                  p.theme.borderRadius.base + outlineThickness}px;
+                border: ${outlineThickness}px solid #ccccff;
               }
             }
 

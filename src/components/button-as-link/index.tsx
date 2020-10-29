@@ -1,7 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { ButtonSize, StyledButtonProps } from '../Button'
-import { applyButtonStyles } from '../Button/styles'
+import { ButtonSize, StyledButtonProps } from '../button'
+import { applyButtonStyles } from '../button/styles'
+
+/**
+ * The component is used where we need to have
+ * a Button which behaves AS a Link
+ */
 
 const StyledButton = styled.a<StyledButtonProps>`
   ${(p) =>

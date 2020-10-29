@@ -2,8 +2,8 @@ import * as React from 'react'
 import * as S from './styles'
 
 export enum ButtonSize {
-  Normal,
-  Small,
+  Normal = 'Normal',
+  Small = 'Small',
 }
 
 export interface StyledButtonProps {

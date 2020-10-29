@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ButtonSize } from '../Button'
+import { ButtonSize } from '../button'
 import * as S from './styles'
 
 export interface StyledLinkProps {

@@ -5,7 +5,7 @@ import styled, {
   ThemeProps,
 } from 'styled-components'
 import { StyledLinkProps } from '.'
-import { ButtonSize } from '../Button'
+import { ButtonSize } from '../button'
 
 export const Link = styled.a<StyledLinkProps>`
   ${(p) => applyLinkStyles({ size: p.size, disabled: p.disabled })}
@@ -20,10 +20,17 @@ export const applyLinkStyles = ({
     text-decoration: none;
     background: none;
 
-    font-weight: ${() => (size === ButtonSize.Small ? 500 : 600)};
+    font-family: ${(p) => p.theme.fonts.body};
 
-    font-size: ${() => (size === ButtonSize.Small ? 15 : 18)}px;
-    line-height: 1.3;
+    font-weight: ${(p) =>
+      size === ButtonSize.Small ? 500 : p.theme.fontWeights.button};
+
+    font-size: ${(p) =>
+      size === ButtonSize.Normal
+        ? p.theme.fontSizes.base
+        : p.theme.fontSizes.small}px;
+
+    line-height: ${(p) => p.theme.lineHeights.button};
 
     align-items: center;
 
@@ -34,14 +41,19 @@ export const applyLinkStyles = ({
 
     position: relative;
 
-    border-radius: 0;
+    border-radius: ${(p) => p.theme.borderRadius.none};
 
     cursor: ${() => (disabled ? 'not-allowed' : 'pointer')};
 
-    color: ${() =>
-      disabled ? '#a9a9b1' : size === ButtonSize.Normal ? 'blue' : '#080831'};
+    color: ${(p) =>
+      disabled
+        ? p.theme.colors.gravel
+        : size === ButtonSize.Normal
+        ? p.theme.colors.it
+        : p.theme.colors.darkGrey};
     border-bottom: ${() => (size === ButtonSize.Normal ? '2px solid' : 'none')};
-    border-color: ${() => (disabled ? '#f9f9f9' : '#e5e5ff')};
+    border-color: ${(p) =>
+      disabled ? p.theme.colors.pebble : p.theme.colors.lightViolet};
     text-decoration: ${() =>
       size === ButtonSize.Small ? 'underline' : 'none'};
 
@@ -51,9 +63,10 @@ export const applyLinkStyles = ({
         : css`
             &:hover,
             &:focus {
-              border-color: #9999ff;
+              border-color: ${(p) => p.theme.colors.purple};
               text-decoration: none;
-              font-weight: ${() => (size === ButtonSize.Small ? 300 : 600)};
+              font-weight: ${(p) =>
+                size === ButtonSize.Small ? 300 : p.theme.fontWeights.button};
             }
           `}
   `
