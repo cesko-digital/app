@@ -2,7 +2,7 @@ import React, { Fragment, ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import { defaultTheme as theme } from './default'
-import { GlobalStyle } from './GlobalStyle'
+import { GlobalStyle } from './global-style'
 
 interface Props {
   children: ReactNode
