@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 // omit extension in path, assumes woff2, woff & eot present
-const useFont = (name, weight, path) => `
+const useFont = (name: string, weight: number, path: string): string => `
   @font-face {
     font-family: '${name}';
     src: 
