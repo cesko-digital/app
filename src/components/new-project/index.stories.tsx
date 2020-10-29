@@ -10,7 +10,11 @@ const story: Meta = {
 }
 
 const Template: Story<NewProjectProps> = () => (
-  <NewProject name="test" description="test" icon="test" linkToSlack="test" />
+  <NewProject
+    name="Mám nápad na projekt"
+    description="Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?"
+    icon="icon"
+  />
 )
 
 export const NewProjectExample = Template.bind({})

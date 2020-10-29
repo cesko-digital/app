@@ -1,22 +1,22 @@
 import React from 'react'
+import * as S from './styles'
 
+// TODO: link to slack
 export interface NewProjectProps {
   name: string
   description: string
   icon: string
-  linkToSlack: string
 }
 
 export const NewProject: React.FC<NewProjectProps> = ({
   name,
   description,
   icon,
-  linkToSlack,
 }: NewProjectProps) => (
-  <div>
-    <span>{name}</span>
-    <span>{description}</span>
+  <S.Wrapper>
     <span>{icon}</span>
-    <span>{linkToSlack}</span>
-  </div>
+    <S.Title color="#080831">{name}</S.Title>
+    <S.Description color="#080831">{description}</S.Description>
+    <button>Zadat project</button>
+  </S.Wrapper>
 )
