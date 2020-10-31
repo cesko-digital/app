@@ -8,7 +8,7 @@ export const defaultTheme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     body: '"Cesko Digital", system-ui, sans-serif',
-    heading: 'inherit',
+    heading: '"Cesko Digital", system-ui, sans-serif',
     monospace: '"Cesko Digital Mono", Menlo, monospace',
   },
   fontWeights: {
