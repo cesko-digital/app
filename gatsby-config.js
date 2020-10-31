@@ -43,6 +43,8 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    // Docs: https://www.gatsbyjs.com/plugins/gatsby-plugin-styled-components/
+    `gatsby-plugin-styled-components`,
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/
     `gatsby-plugin-typescript`,
     // This (optional) plugin enables Progressive Web App + Offline functionality
