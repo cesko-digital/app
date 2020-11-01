@@ -5,6 +5,7 @@
     "target": "es5",
     "jsx": "react",
     "lib": ["dom", "es2015"],
+    "baseUrl": "src",
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
