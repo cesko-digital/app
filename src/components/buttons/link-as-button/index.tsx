@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { StyledLinkProps } from '../../links/link'
-import { applyLinkStyles } from '../../links/link/styles'
-import { ButtonSize } from '..'
+import { StyledLinkProps } from 'components/links/link'
+import { applyLinkStyles } from 'components/links/link/styles'
+import { ButtonSize } from 'components/buttons'
 
 /**
  * The component is used where we need to have

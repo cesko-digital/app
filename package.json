@@ -16,8 +16,8 @@
     "lint": "eslint './{src,stories}/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './{src,stories}/**/*.{ts,tsx,js,jsx}'",
     "test": "jest",
-    "storybook": "start-storybook -p 6060 -c .storybook watch-css -s ./",
-    "build-storybook": "build-storybook"
+    "storybook": "NODE_ENV=production start-storybook -s ./static -p 6060 -c .storybook watch-css",
+    "build-storybook": "gatsby build && NODE_ENV=production build-storybook -s ./static"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.6",
