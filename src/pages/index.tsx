@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Layout, Section, SectionContent } from 'components/layout'
+import { Link } from 'components/links'
+import { ThemeContext } from 'styled-components'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { Link } from '../components/links'
+const IndexPage: React.FC = () => {
+  const theme = useContext(ThemeContext)
+  return (
+    <Layout>
+      <Section>
+        <SectionContent>
+          <h1>Česko.Digital</h1>
+          <p>Hello World</p>
+        </SectionContent>
+      </Section>
 
-const IndexPage: React.FC = () => (
-  <Layout>
-    <SEO title="Home" />
+      <Section backgroundColor={theme.colors.lightViolet}>
+        <SectionContent>
+          <Link to="/page-2/">Go to page 2</Link>
+        </SectionContent>
+      </Section>
 
-    <h1>cesko.digital</h1>
-
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+      <Section>
+        <SectionContent>
+          <Link to="/mdx-page">Go to MDX page</Link>
+        </SectionContent>
+      </Section>
+    </Layout>
+  )
+}
 
 export default IndexPage

@@ -54,9 +54,10 @@ typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
+# gatsby and storybook files
 .cache/
 public
+storybook-static
 
 # Mac files
 .DS_Store

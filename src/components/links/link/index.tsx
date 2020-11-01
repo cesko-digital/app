@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as S from './styles'
-import { ButtonSize } from '../../buttons'
+import { ButtonSize } from 'components/buttons'
 import { GatsbyLinkProps } from 'gatsby-link'
 
 export interface StyledLinkProps {
