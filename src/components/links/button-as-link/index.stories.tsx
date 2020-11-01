@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import ButtonAsLink, { ButtonAsLinkProps } from '.'
-import { ButtonSize } from '../../buttons'
+import { ButtonSize } from 'components/buttons'
 
 const story: Meta = {
   title: 'Links/ButtonAsLink',

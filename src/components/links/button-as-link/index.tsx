@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { StyledButtonProps } from '../../buttons/button'
-import { applyButtonStyles } from '../../buttons/button/styles'
-import { ButtonSize } from '../../buttons'
+import { StyledButtonProps } from 'components/buttons/button'
+import { applyButtonStyles } from 'components/buttons/button/styles'
+import { ButtonSize } from 'components/buttons'
 import { default as GatsbyLink, GatsbyLinkProps } from 'gatsby-link'
 
 /**
