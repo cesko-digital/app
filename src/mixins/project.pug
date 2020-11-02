@@ -1,6 +1,7 @@
 mixin project(labels, project)
   - var label_github = {cs : "Prohlédnout na GitHubu", en : "View on Github"};
   - var label_trello = {cs : "Prohlédnout na Trellu", en : "View on Trello"};
+  - var label_wiki = {cs : "Wiki projektu", en : "Project Wiki"};
   - var label_slack_prefix = {cs : "Přidat se k", en : "Join"};
   - var label_slack_suffix = {cs : "na Slacku", en: "on Slack"};
   
@@ -15,11 +16,19 @@ mixin project(labels, project)
         p.project__label= labels.more
         p!= project.more
         .project__links
-          if project.web
-            a.btn.btn--hollow.btn--web.project__link-btn(href=project.web target="_blank") #{project.web}
-          if project.github
-            a.btn.btn--hollow.btn--github.project__link-btn(href=project.github target="_blank") #{label_github[lang]}
-          if project.slack && project.slackUrl
-            a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl target="_blank") #{label_slack_prefix[lang]} ##{project.slack} #{label_slack_suffix[lang]} 
-          if project.trello
-            a.btn.btn--hollow.btn--trello.project__link-btn(href=project.trello target="_blank") #{label_trello[lang]}
+          ul
+            if project.web
+              li
+                a.btn.btn--hollow.btn--web.project__link-btn(href=project.web target="_blank") #{project.web}
+            if project.wiki
+              li
+                a.btn.btn--hollow.btn--wiki.project__link-btn(href=project.wiki target="_blank") #{label_wiki[lang]}
+            if project.github
+              li
+                a.btn.btn--hollow.btn--github.project__link-btn(href=project.github target="_blank") #{label_github[lang]}
+            if project.slack && project.slackUrl
+              li
+                a.btn.btn--hollow.btn--slack.project__link-btn(href=project.slackUrl target="_blank") #{label_slack_prefix[lang]} ##{project.slack} #{label_slack_suffix[lang]} 
+            if project.trello
+              li
+                a.btn.btn--hollow.btn--trello.project__link-btn(href=project.trello target="_blank") #{label_trello[lang]}

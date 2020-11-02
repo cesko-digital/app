@@ -28,6 +28,7 @@
   &--trello,
   &--twitter,
   &--slack,
+  &--wiki,
   &--web {
     position: relative;
     padding-left: 50px;
@@ -73,6 +74,12 @@
   &--slack {
     &:before {
       background-image: url("../images/slack-icon.svg");
+    }
+  }
+  
+  &--wiki {
+    &:before {
+      background-image: url("../images/wiki-icon.svg");
     }
   }
 
