@@ -6,15 +6,11 @@
  */
 
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import { Theme } from '../theme'
 
-interface Props {
-  children: ReactNode
-}
-
-const Layout: React.FC<Props> = ({ children }: Props) => {
+const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
