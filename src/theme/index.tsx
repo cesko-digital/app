@@ -1,18 +1,12 @@
-import React, { Fragment, ReactNode } from 'react'
+import React, { Fragment } from 'react'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
-
-import { defaultTheme } from './default'
 import { GlobalStyle } from './global-style'
 
 interface Props {
-  theme?: DefaultTheme
-  children: ReactNode
+  theme: DefaultTheme
 }
 
-export const Theme: React.FC<Props> = ({
-  children,
-  theme = defaultTheme,
-}: Props) => (
+export const Theme: React.FC<Props> = ({ children, theme }) => (
   <ThemeProvider theme={theme}>
     <Fragment>
       <GlobalStyle />
