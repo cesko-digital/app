@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
+    '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
   },
   settings: {
     react: {
