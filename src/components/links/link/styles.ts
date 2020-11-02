@@ -85,6 +85,8 @@ export const applyLinkStyles = ({
 }: StyledLinkProps): CssWithTheme => {
   const { Normal, Small } = ButtonSize
   return css`
+    width: max-content;
+
     display: inline-flex;
     text-decoration: none;
     background: none;
