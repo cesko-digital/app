@@ -15,7 +15,7 @@ interface SiteMetadata {
   author: string
 }
 
-export type GraphQLData = {
+export interface GraphQLData {
   site: {
     siteMetadata: SiteMetadata
   }
@@ -42,7 +42,7 @@ export const PureSEO: React.FC<PureSEOProps> = ({
   lang,
   title,
 }: PureSEOProps) => {
-  const metaDescription = description || data.site.siteMetadata.description
+  const metaDescription = description ?? data.site.siteMetadata.description
 
   return (
     <Helmet
