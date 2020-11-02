@@ -19,6 +19,7 @@ module.exports = {
     'react/prop-types': ['off', { ignore: ['children'] }],
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
+    '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
   },
   settings: {
     react: {
