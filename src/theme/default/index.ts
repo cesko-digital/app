@@ -27,6 +27,7 @@ export const defaultTheme: DefaultTheme = {
     white: '#FFFFFF',
 
     it: '#0000FF',
+    darkIt: '#3333FF',
     purple: '#9999FF',
     violet: '#CCCCFF',
     lightViolet: '#E5E5FF',
@@ -53,6 +54,7 @@ export const defaultTheme: DefaultTheme = {
     body: 400,
     heading: 700,
     bold: 700,
+    button: 600,
   },
   lineHeights: {
     body: 1.5,

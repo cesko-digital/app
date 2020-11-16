@@ -28,6 +28,7 @@ declare module 'styled-components' {
       white: string
 
       it: string
+      darkIt: string
       purple: string
       violet: string
       lightViolet: string
@@ -54,6 +55,7 @@ declare module 'styled-components' {
       body: number
       heading: number
       bold: number
+      button: number
     }
     lineHeights: {
       body: number
@@ -73,4 +75,6 @@ declare module 'styled-components' {
       }
     }
   }
+
+  export type CssWithTheme = FlattenInterpolation<ThemeProps<DefaultTheme>>
 }
