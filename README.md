@@ -18,7 +18,7 @@
 
 1.  **Instalace a spuštění**
 
-    Ve složce `cesko-digital-web`  nainstalujte požadované závislosti:
+    Ve složce `cesko-digital-web` nainstalujte požadované závislosti:
 
     ```shell script
     cd cesko-digital-web
@@ -31,7 +31,7 @@
     yarn start
     ```
 
-    Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj. 
+    Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj.
 
 ## ⌨️ Základní příkazy
 
@@ -47,18 +47,15 @@
 
 `yarn serve`: Spuštění produkčního buildu
 
-`yarn format`: Formátování kódu 
-
-
+`yarn format`: Formátování kódu
 
 ## 🛠 Jak přispívat
 
-Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTING.md), který obsahuje informace o všech konvencích repozitáře. 
-
+Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTING.md), který obsahuje informace o všech konvencích repozitáře.
 
 ## Licence
 
-Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).    
+Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
 
 ## Kontakty
 
