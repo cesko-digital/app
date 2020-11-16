@@ -17,19 +17,19 @@ V českém jazyce:
 
 ## Issues
 
-Prosíme vás, snažte se strávit nějaký čas nad dobrým názvem a popisem issue. 
+Prosíme vás, snažte se strávit nějaký čas nad dobrým názvem a popisem issue.
 
 ## Pull requesty
 
-Pokud se nejedná o fork branch, prosím použijte následující formát pro svou branch: `{feature,bugfix,content}/slug` nebo `{feature,bugfix,content}/rework/slug`. 
+Pokud se nejedná o fork branch, prosím použijte následující formát pro svou branch: `{feature,bugfix,content}/slug` nebo `{feature,bugfix,content}/rework/slug`.
 
-Všechny pull requesty by měly projít code review. Code review může provést jakýkoliv dobrovolník, který je dlouhdobě aktivní na projektu. Techlead se postará o to, že review má kdo provést a bude provedeno.  
+Všechny pull requesty by měly projít code review. Code review může provést jakýkoliv dobrovolník, který je dlouhdobě aktivní na projektu. Techlead se postará o to, že review má kdo provést a bude provedeno.
 
-Snažíme se udržovat čistou Git historii. Je tedy doporučeno před požádáním o review historii pročistit pomocí interactive rebase. 
+Snažíme se udržovat čistou Git historii. Je tedy doporučeno před požádáním o review historii pročistit pomocí interactive rebase.
 
 ## Code Style
 
-O spoustu věcí se stará ESLint a Prettier. Pokud víte o pravidlu, které zde by nemělo chybět, neváhejte ho navrhnout. 
+O spoustu věcí se stará ESLint a Prettier. Pokud víte o pravidlu, které zde by nemělo chybět, neváhejte ho navrhnout.
 
 ### Organizace souborů
 
@@ -54,8 +54,8 @@ src
 
 ### Styled Components
 
-Používejte následující import ze `styles.tsx` pro jasné oddělení, že se jedná o CSS komponentu: 
+Používejte následující import ze `styles.tsx` pro jasné oddělení, že se jedná o CSS komponentu:
 
 ```typescript
-import * as S from './styles';
+import * as S from './styles'
 ```
