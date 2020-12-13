@@ -12,9 +12,9 @@
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["cypress", "jest"]
   },
-  "include": ["src/**/*", "stories/**/*"],
   "exclude": [
     "node_modules",
     "public",
@@ -22,6 +22,6 @@
     "build",
     "webpack",
     "jest",
-    "**/*/*.test.ts"
+    "**/*/*.test.ts",
   ]
 }

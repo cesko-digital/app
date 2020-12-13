@@ -8,11 +8,19 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'plugin:react/recommended',
+    'plugin:cypress/recommended',
+  ],
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+    'import',
+    'unused-imports',
+    'cypress',
   ],
   rules: {
+    'prettier/prettier': 'error',
     'no-console': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
@@ -21,18 +29,24 @@ module.exports = {
     '@typescript-eslint/prefer-optional-chain': 'error',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+    'unused-imports/no-unused-vars-ts': 'off',
+    'unused-imports/no-unused-imports-ts': 'error',
+    'import/no-cycle': 'error',
+    'import/order': 'error',
+    'prefer-arrow-callback': 'warn',
+    'no-multiple-empty-lines': 'warn',
+    eqeqeq: ['warn', 'always'],
+    'default-case': 'error',
+    'arrow-body-style': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
   },
   settings: {
-    react: {
-      version: 'detect',
-    },
+    react: { version: 'detect' },
   },
   overrides: [
     {
       files: ['**/*.tsx'],
-      rules: {
-        'react/prop-types': 'off',
-      },
+      rules: { 'react/prop-types': 'off' },
     },
   ],
   env: {
@@ -41,12 +55,4 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  overrides: [
-    {
-      files: ['gatsby-config.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
-  ],
 }
