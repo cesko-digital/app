@@ -59,3 +59,11 @@ Používejte následující import ze `styles.tsx` pro jasné oddělení, že se
 ```typescript
 import * as S from './styles'
 ```
+
+Pro props využijte object destructuring: 
+
+```typescript jsx
+const Component = styled.div`
+  color: ${({ theme }) => theme.colors.blue};
+`
+```
