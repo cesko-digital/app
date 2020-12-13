@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import Link, { LinkProps } from '.'
 import { ButtonSize } from 'components/buttons'
+import Link, { LinkProps } from '.'
 
 const { Normal, Small: SmallSize } = ButtonSize
 const story: Meta = {

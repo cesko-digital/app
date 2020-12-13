@@ -1,7 +1,7 @@
 import styled, { css, CssWithTheme } from 'styled-components'
 import { default as GatsbyLink } from 'gatsby-link'
-import { StyledLinkProps } from '.'
 import { ButtonSize } from '../../buttons'
+import { StyledLinkProps } from '.'
 
 function getDefaultBorderStyle(disabled: boolean) {
   if (disabled) {
@@ -79,10 +79,7 @@ export const Link = styled(GatsbyLink)<StyledLinkProps>`
   ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
 `
 
-export const applyLinkStyles = ({
-  size,
-  disabled,
-}: StyledLinkProps): CssWithTheme => {
+export const applyLinkStyles = ({ size, disabled }: StyledLinkProps): CssWithTheme => {
   const { Normal, Small } = ButtonSize
   return css`
     display: inline-flex;
@@ -91,11 +88,9 @@ export const applyLinkStyles = ({
 
     font-family: ${({ theme }) => theme.fonts.body};
 
-    font-weight: ${({ theme }) =>
-      size === Small ? 500 : theme.fontWeights.button};
+    font-weight: ${({ theme }) => (size === Small ? 500 : theme.fontWeights.button)};
 
-    font-size: ${({ theme }) =>
-      size === Normal ? theme.fontSizes.base : theme.fontSizes.small}px;
+    font-size: ${({ theme }) => (size === Normal ? theme.fontSizes.base : theme.fontSizes.small)}px;
 
     line-height: ${({ theme }) => theme.lineHeights.button};
 
@@ -117,8 +112,7 @@ export const applyLinkStyles = ({
 
     &:hover,
     &:focus {
-      font-weight: ${({ theme }) =>
-        size === Small ? 300 : theme.fontWeights.button};
+      font-weight: ${({ theme }) => (size === Small ? 300 : theme.fontWeights.button)};
     }
   `
 }

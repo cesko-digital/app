@@ -1,6 +1,6 @@
 import styled, { css, CssWithTheme } from 'styled-components'
-import { StyledButtonProps } from './index'
 import { ButtonSize } from './enums'
+import { StyledButtonProps } from './index'
 
 const { Normal } = ButtonSize
 
@@ -35,10 +35,7 @@ function getInvertedColorStyle(disabled: boolean) {
   `
 }
 
-function getColorStyle({
-  inverted,
-  disabled,
-}: StyledButtonProps): CssWithTheme {
+function getColorStyle({ inverted, disabled }: StyledButtonProps): CssWithTheme {
   if (inverted) {
     return getInvertedColorStyle(!!disabled)
   }
@@ -63,11 +60,7 @@ function getBoxShadow({ disabled }: StyledButtonProps): CssWithTheme {
   `
 }
 
-export const applyButtonStyles = ({
-  size,
-  disabled,
-  inverted,
-}: StyledButtonProps): CssWithTheme => {
+export const applyButtonStyles = ({ size, disabled, inverted }: StyledButtonProps): CssWithTheme => {
   const outlineSize = 2
   return css`
     display: inline-flex;
@@ -95,8 +88,7 @@ export const applyButtonStyles = ({
 
     cursor: ${() => (disabled ? 'not-allowed' : 'pointer')};
 
-    font-size: ${({ theme }) =>
-      size === Normal ? theme.fontSizes.base : theme.fontSizes.small}px;
+    font-size: ${({ theme }) => (size === Normal ? theme.fontSizes.base : theme.fontSizes.small)}px;
 
     border-radius: ${({ theme }) => theme.borderRadius.base}px;
     &:focus {
@@ -108,8 +100,7 @@ export const applyButtonStyles = ({
         top: -${outlineSize}px;
         left: -${outlineSize}px;
         border: ${outlineSize}px solid ${({ theme }) => theme.colors.violet};
-        border-radius: ${({ theme }) =>
-          theme.borderRadius.base + outlineSize}px;
+        border-radius: ${({ theme }) => theme.borderRadius.base + outlineSize}px;
       }
     }
   `

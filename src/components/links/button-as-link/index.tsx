@@ -19,19 +19,11 @@ const StyledLink = styled(GatsbyLink)<StyledButtonProps>`
     })}
 `
 
-export interface ButtonAsLinkProps
-  extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
-    Partial<StyledButtonProps> {
+export interface ButtonAsLinkProps extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>, Partial<StyledButtonProps> {
   children: React.ReactChild
 }
 
-const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
-  children,
-  size = ButtonSize.Normal,
-  to: url,
-  inverted,
-  ...rest
-}: ButtonAsLinkProps) => {
+const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({ children, size = ButtonSize.Normal, to: url, inverted, ...rest }: ButtonAsLinkProps) => {
   const href = rest.disabled ? '' : url
   return (
     <StyledLink inverted={inverted} size={size} {...rest} to={href}>

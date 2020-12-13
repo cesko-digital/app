@@ -11,10 +11,7 @@ describe('Projects', () => {
         .getByCy('project__name')
         .should('contain.text', projects[i].name)
         .getByCy('project__tagline')
-        .should(
-          projects[i].tagline === null ? 'be.empty' : 'contain.text',
-          projects[i].tagline
-        )
+        .should(projects[i].tagline === null ? 'be.empty' : 'contain.text', projects[i].tagline)
     })
   })
 })

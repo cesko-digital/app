@@ -9,14 +9,10 @@ export interface SectionContentProps {
 
 const Container = styled.div<SectionContentProps>`
   max-width: 1200px;
-  padding: ${({ verticalPadding = 20 }) => verticalPadding}px
-    ${({ horizontalPadding = 20 }) => horizontalPadding}px;
+  padding: ${({ verticalPadding = 20 }) => verticalPadding}px ${({ horizontalPadding = 20 }) => horizontalPadding}px;
   margin: auto;
 `
 
-const SectionContent: React.FC<SectionContentProps> = ({
-  children,
-  ...rest
-}) => <Container {...rest}>{children}</Container>
+const SectionContent: React.FC<SectionContentProps> = ({ children, ...rest }) => <Container {...rest}>{children}</Container>
 
 export default SectionContent

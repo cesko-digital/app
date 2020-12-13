@@ -1,8 +1,7 @@
+import fetch from 'node-fetch'
 import { loadData } from '../src/load-data'
 
 jest.mock('node-fetch')
-
-import fetch from 'node-fetch'
 
 describe('loadData', () => {
   test('should throw an error when no key is provided', async () => {
@@ -55,9 +54,7 @@ describe('loadData', () => {
     afterAll(() => jest.restoreAllMocks())
 
     test('should throw error when no table name is provided', async () => {
-      await expect(
-        async () => await loadData((null as unknown) as string)
-      ).rejects.toThrow()
+      await expect(async () => await loadData((null as unknown) as string)).rejects.toThrow()
     })
     test('should send request to table url', () => {
       loadData('foo')
@@ -67,9 +64,7 @@ describe('loadData', () => {
     })
     test('should return data when request was successful', async () => {
       const data = await loadData('foo')
-      expect(data).toEqual([
-        { id: '1', fields: { Name: 'name', 'Tagline CS': ' tagline' } },
-      ])
+      expect(data).toEqual([{ id: '1', fields: { Name: 'name', 'Tagline CS': ' tagline' } }])
     })
     test('should throw an error when request was unsuccessful', async () => {
       await expect(async () => await loadData('foo')).rejects.toThrow()

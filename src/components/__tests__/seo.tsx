@@ -13,9 +13,7 @@ describe('SEO', () => {
         },
       },
     }
-    const tree = renderer
-      .create(<SEO data={data} title={data.site.siteMetadata.title} />)
-      .toJSON()
+    const tree = renderer.create(<SEO data={data} title={data.site.siteMetadata.title} />).toJSON()
 
     expect(tree).toMatchSnapshot()
   })

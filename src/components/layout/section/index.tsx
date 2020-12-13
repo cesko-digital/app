@@ -13,21 +13,14 @@ interface StyledProps extends SectionProps {
 
 const Container = styled.section<StyledProps>`
   overflow: auto;
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor || theme.colors.white};
+  background-color: ${({ backgroundColor, theme }) => backgroundColor ?? theme.colors.white};
 `
 
-const Section: React.FC<SectionProps> = ({
-  children,
-  as,
-  ...rest
-}: SectionProps) => {
+const Section: React.FC<SectionProps> = ({ children, as, ...rest }: SectionProps) => (
   // As needs to be casted as undefined due wrong type definition
-  return (
-    <Container as={as as undefined} {...rest}>
-      {children}
-    </Container>
-  )
-}
+  <Container as={as as undefined} {...rest}>
+    {children}
+  </Container>
+)
 
 export default Section

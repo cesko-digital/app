@@ -12,9 +12,7 @@ interface ProjectsPageProps {
   }
 }
 
-const ProjectsPage: React.FC<ProjectsPageProps> = ({
-  data,
-}: ProjectsPageProps) => (
+const ProjectsPage: React.FC<ProjectsPageProps> = ({ data }: ProjectsPageProps) => (
   <ul>
     {data.allProject.edges.map((project) => (
       <li key={project.node.originalId}>

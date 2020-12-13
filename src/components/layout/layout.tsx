@@ -8,15 +8,13 @@ export interface LayoutProps {
   children: ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
-  return (
-    <>
-      <Head />
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </>
-  )
-}
+const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => (
+  <>
+    <Head />
+    <Header />
+    <main>{children}</main>
+    <Footer />
+  </>
+)
 
 export default Layout

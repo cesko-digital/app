@@ -1,8 +1,8 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Section, { SectionProps } from '.'
 import { defaultTheme } from 'theme/default'
+import Section, { SectionProps } from '.'
 
 const story: Meta = {
   title: 'Layout/Section',
@@ -19,9 +19,7 @@ const story: Meta = {
   },
 }
 
-const Template: Story<SectionProps> = (args: SectionProps) => (
-  <Section {...args}>Hello Česko.Digital</Section>
-)
+const Template: Story<SectionProps> = (args: SectionProps) => <Section {...args}>Hello Česko.Digital</Section>
 
 export const Default = Template.bind({})
 Default.args = {}

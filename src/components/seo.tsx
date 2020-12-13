@@ -36,12 +36,7 @@ interface SEOProps {
   title: string
 }
 
-export const PureSEO: React.FC<PureSEOProps> = ({
-  data,
-  description,
-  lang,
-  title,
-}: PureSEOProps) => {
+export const PureSEO: React.FC<PureSEOProps> = ({ data, description, lang, title }: PureSEOProps) => {
   const metaDescription = description ?? data.site.siteMetadata.description
 
   return (

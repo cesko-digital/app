@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import LinkAsButton, { LinkAsButtonProps } from '.'
 import { ButtonSize } from '..'
+import LinkAsButton, { LinkAsButtonProps } from '.'
 
 const { Normal, Small: SmallSize } = ButtonSize
 const story: Meta = {
@@ -27,9 +27,7 @@ const story: Meta = {
   },
 }
 
-const Template: Story<LinkAsButtonProps> = (args: LinkAsButtonProps) => (
-  <LinkAsButton {...args} />
-)
+const Template: Story<LinkAsButtonProps> = (args: LinkAsButtonProps) => <LinkAsButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

@@ -5,6 +5,6 @@
 const React = require('react')
 const Theme = require('./src/theme').Theme
 
-exports.wrapPageElement = ({ element, props }) => {
-  return <Theme {...props}>{element}</Theme>
-}
+const wrapPageElement = ({ element, props }) => <Theme {...props}>{element}</Theme>
+
+exports.wrapPageElement = wrapPageElement

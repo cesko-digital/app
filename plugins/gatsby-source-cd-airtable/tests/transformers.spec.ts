@@ -1,31 +1,32 @@
 import { transformProject } from '../src/transformers'
+import 'jest'
 
 describe('transformers', () => {
   describe('transformProject', () => {
     test('should transform project without tagline', () => {
-      expect(
-        transformProject({
-          id: 'id',
-          fields: {
-            Name: 'name',
-          },
-        })
-      ).toEqual({
+      const result = transformProject({
+        id: 'id',
+        fields: {
+          Name: 'name',
+        },
+      })
+
+      expect(result).toEqual({
         originalId: 'id',
         name: 'name',
         tagline: null,
       })
     })
     test('should transform project with tagline', () => {
-      expect(
-        transformProject({
-          id: 'id',
-          fields: {
-            Name: 'name',
-            'Tagline CS': 'tagline',
-          },
-        })
-      ).toEqual({
+      const result = transformProject({
+        id: 'id',
+        fields: {
+          Name: 'name',
+          'Tagline CS': 'tagline',
+        },
+      })
+
+      expect(result).toEqual({
         originalId: 'id',
         name: 'name',
         tagline: 'tagline',

@@ -1,11 +1,7 @@
 import { NodeInput, SourceNodesArgs } from 'gatsby'
 import { SourceNode } from './interfaces/source-node'
 
-export const createNodesFactory = ({
-  actions: { createNode },
-  createNodeId,
-  createContentDigest,
-}: SourceNodesArgs) => (
+export const createNodesFactory = ({ actions: { createNode }, createNodeId, createContentDigest }: SourceNodesArgs) => (
   type: string
 ): ((nodeSources: SourceNode[]) => void) => {
   if (!type) {

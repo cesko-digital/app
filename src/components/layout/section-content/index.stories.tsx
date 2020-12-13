@@ -28,9 +28,7 @@ const story: Meta = {
   },
 }
 
-const Template: Story<SectionContentProps> = (args) => (
-  <SectionContent {...args}>Content container</SectionContent>
-)
+const Template: Story<SectionContentProps> = (args) => <SectionContent {...args}>Content container</SectionContent>
 
 export const Default = Template.bind({})
 Default.args = {}

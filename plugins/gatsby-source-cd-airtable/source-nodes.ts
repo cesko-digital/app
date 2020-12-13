@@ -7,10 +7,7 @@ import { AirTableProject } from './src/interfaces/airtable-project'
 import { ConnectionError } from './src/errors/connection-error'
 import { getMockProjects } from './src/mocks/mock-projects'
 
-export const sourceNodes = async (
-  sourceNodesArgs: SourceNodesArgs,
-  options: PluginOptions
-): Promise<void> => {
+export const sourceNodes = async (sourceNodesArgs: SourceNodesArgs, options: PluginOptions): Promise<void> => {
   const nodesFactory = createNodesFactory(sourceNodesArgs)
   const createProjects = nodesFactory('Project')
 
@@ -19,15 +16,10 @@ export const sourceNodes = async (
     createProjects(projects.map(transformProject))
   } catch (e) {
     if (e instanceof ConnectionError) {
-      sourceNodesArgs.reporter.warn(
-        'Data sourcing failed because of connection error. Using internal mock data instead.'
-      )
+      sourceNodesArgs.reporter.warn('Data sourcing failed because of connection error. Using internal mock data instead.')
       createProjects(getMockProjects())
     } else {
-      sourceNodesArgs.reporter.panic(
-        'Data sourcing failed because of following error:',
-        e
-      )
+      sourceNodesArgs.reporter.panic('Data sourcing failed because of following error:', e)
     }
   }
 }

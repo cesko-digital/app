@@ -8,18 +8,11 @@ export interface StyledButtonProps {
   disabled?: boolean
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    Partial<StyledButtonProps> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Partial<StyledButtonProps> {
   children: React.ReactChild
 }
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  size = ButtonSize.Normal,
-  inverted,
-  ...rest
-}: ButtonProps) => (
+const Button: React.FC<ButtonProps> = ({ children, size = ButtonSize.Normal, inverted, ...rest }: ButtonProps) => (
   <S.Button inverted={inverted} size={size} {...rest}>
     {children}
   </S.Button>
