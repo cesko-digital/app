@@ -1,3 +1,4 @@
+import { Link } from 'components/links/link/styles'
 import styled from 'styled-components'
 import logo from 'images/logo.svg'
 import mobileLogo from 'images/logo-mobile.svg'
@@ -43,7 +44,7 @@ export const MobileMenu = styled.div`
   display: none;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: grid;
-    grid-row-gap: 40px;
+    grid-row-gap: 15px;
     align-content: start;
     justify-items: end;
     padding-left: 40px;
@@ -55,6 +56,13 @@ export const MobileMenu = styled.div`
     left: 0;
     z-index: 1;
     background: rgba(255, 255, 255, 0.9);
+  }
+
+  > ${Link} {
+    display: grid;
+    justify-self: stretch;
+    height: 48px;
+    text-align: right;
   }
 `
 
