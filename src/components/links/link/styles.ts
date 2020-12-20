@@ -114,11 +114,5 @@ export const applyLinkStyles = ({
 
     ${getColor({ size, disabled })};
     ${getBorderStyle({ size, disabled })};
-
-    &:hover,
-    &:focus {
-      font-weight: ${({ theme }) =>
-        size === Small ? 300 : theme.fontWeights.button};
-    }
   `
 }
