@@ -16,6 +16,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     'react/prop-types': ['off', { ignore: ['children'] }],
+    '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
   },
   overrides: [
     {

@@ -15,7 +15,7 @@ interface SiteMetadata {
   author: string
 }
 
-export type GraphQLData = {
+export interface GraphQLData {
   site: {
     siteMetadata: SiteMetadata
   }
