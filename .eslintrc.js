@@ -17,6 +17,10 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     'react/prop-types': ['off', { ignore: ['children'] }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+    'no-warning-comments': [
+      'error',
+      { terms: ['todo', 'fixme'], location: 'anywhere' },
+    ],
   },
   overrides: [
     {
