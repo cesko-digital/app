@@ -82,3 +82,6 @@ cypress/screenshots
 
 # Translations are generated from airtable
 locale/**/translation.json
+
+# Vercel
+.vercel
