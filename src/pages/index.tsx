@@ -1,16 +1,19 @@
-import React, { useContext } from 'react'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { Link } from 'components/links'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
+import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 
 const IndexPage: React.FC = () => {
+  const { t } = useTranslation()
   const theme = useContext(ThemeContext)
+
   return (
     <Layout>
       <Section>
         <SectionContent>
-          <h1>Česko.Digital</h1>
-          <p>Hello World</p>
+          <h1>{t('someTranslation')}</h1>
+          <p>{t('nested.firstTranslation')}</p>
         </SectionContent>
       </Section>
 

@@ -3,3 +3,5 @@ declare module '*.svg' {
   const content: CSSObject
   export default content
 }
+
+declare module 'gatsby-plugin-translate-urls'
