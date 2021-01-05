@@ -1,7 +1,7 @@
 import styled, { css, CssWithTheme } from 'styled-components'
-import { default as GatsbyLink } from 'gatsby-link'
 import { StyledLinkProps } from '.'
 import { ButtonSize } from '../../buttons'
+import { TranslatedLink } from 'gatsby-plugin-translate-urls'
 
 function getDefaultBorderStyle(disabled: boolean) {
   if (disabled) {
@@ -75,7 +75,7 @@ function getBorderStyle({ size, disabled }: StyledLinkProps): CssWithTheme {
   return getDefaultBorderStyle(!!disabled)
 }
 
-export const Link = styled(GatsbyLink)<StyledLinkProps>`
+export const Link = styled(TranslatedLink)<StyledLinkProps>`
   ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
 `
 
