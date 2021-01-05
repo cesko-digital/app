@@ -54,6 +54,31 @@ module.exports = {
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/
     // `gatsby-plugin-offline`,
     {
+      // Docs: https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        path: `${__dirname}/locale`,
+        languages: [`en`, `cs`],
+        defaultLanguage: `cs`,
+        redirect: false,
+        i18nextOptions: {
+          defaultNS: 'translation',
+        },
+      },
+    },
+    {
+      // Docs: https://www.npmjs.com/package/gatsby-plugin-translate-urls
+      resolve: `gatsby-plugin-translate-urls`,
+      options: {
+        defaultLocale: 'cs',
+        prefix: 'urls.',
+        translations: {
+          en: require('./locale/en/translation.json'),
+          cs: require('./locale/cs/translation.json'),
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-cd-airtable`,
       options: {
         projectsTableName: 'Projects',
