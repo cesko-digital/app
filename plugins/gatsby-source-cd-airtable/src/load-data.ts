@@ -3,12 +3,10 @@ import { ConnectionError } from './errors/connection-error'
 
 export const loadData = async <T>(tableName: string): Promise<T[]> => {
   if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_URL) {
-    return Promise.reject(
-      new ConnectionError('API key and base url are both required')
-    )
+    throw new ConnectionError('API key and base url are both required')
   }
   if (!tableName) {
-    return Promise.reject(new Error('Table Name is required'))
+    throw new Error('Table Name is required')
   }
 
   const response = await fetch(
@@ -21,7 +19,7 @@ export const loadData = async <T>(tableName: string): Promise<T[]> => {
   )
 
   if (!response.ok) {
-    return Promise.reject(new Error(`Loading data from ${tableName} failed.`))
+    throw new Error(`Loading data from ${tableName} failed.`)
   }
 
   const data: { records: T[] } = await response.json()
