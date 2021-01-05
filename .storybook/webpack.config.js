@@ -28,10 +28,7 @@ module.exports = ({ config }) => {
   })
 
   // Resolve absolute paths
-  config.resolve.modules = [
-    path.resolve(__dirname, "../src"),
-    "node_modules",
-  ]
+  config.resolve.modules = [path.resolve(__dirname, '../src'), 'node_modules']
 
   return config
 }
