@@ -38,7 +38,8 @@ const Header: React.FC = () => {
       label: t.links.contribute,
     },
     {
-      link: '#',
+      link: '/',
+      locale: 'en',
       label: t.links.english,
     },
   ]
@@ -51,8 +52,13 @@ const Header: React.FC = () => {
             <S.Logo />
           </GatsbyLink>
           <S.DesktopLinksContainer>
-            {links.map(({ link, label }) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
+            {links.map(({ link, label, locale }) => (
+              <Link
+                key={label}
+                to={link}
+                size={ButtonSize.Small}
+                locale={locale}
+              >
                 {label}
               </Link>
             ))}
@@ -73,8 +79,13 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <S.MobileMenu>
-            {links.map(({ link, label }) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
+            {links.map(({ link, label, locale }) => (
+              <Link
+                key={label}
+                to={link}
+                size={ButtonSize.Small}
+                locale={locale}
+              >
                 {label}
               </Link>
             ))}

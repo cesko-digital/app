@@ -33,6 +33,10 @@
 
     Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj.
 
+## Překlady
+
+[Dokumentace](./doc/translations.md)
+
 ## ⌨️ Základní příkazy
 
 `yarn start`: Start vývojového režimu
