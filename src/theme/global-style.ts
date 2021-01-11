@@ -14,14 +14,14 @@ const useFont = (name: string, weight: number, path: string): string => `
 `
 
 export const GlobalStyle = createGlobalStyle`
-  ${useFont('Cesko Digital', 400, 'fonts/cesko.digital-regular')}
-  ${useFont('Cesko Digital', 500, 'fonts/cesko.digital-medium')}
-  ${useFont('Cesko Digital', 600, 'fonts/cesko.digital-semibold')}
-  ${useFont('Cesko Digital', 700, 'fonts/cesko.digital-bold')}
-  ${useFont('Cesko Digital Mono', 400, 'fonts/cesko.digital.mono-regular')}
-  ${useFont('Cesko Digital Mono', 500, 'fonts/cesko.digital.mono-medium')}
-  ${useFont('Cesko Digital Mono', 600, 'fonts/cesko.digital.mono-semibold')}
-  ${useFont('Cesko Digital Mono', 700, 'fonts/cesko.digital.mono-bold')}
+  ${useFont('Cesko Digital', 400, '/fonts/cesko.digital-regular')}
+  ${useFont('Cesko Digital', 500, '/fonts/cesko.digital-medium')}
+  ${useFont('Cesko Digital', 600, '/fonts/cesko.digital-semibold')}
+  ${useFont('Cesko Digital', 700, '/fonts/cesko.digital-bold')}
+  ${useFont('Cesko Digital Mono', 400, '/fonts/cesko.digital.mono-regular')}
+  ${useFont('Cesko Digital Mono', 500, '/fonts/cesko.digital.mono-medium')}
+  ${useFont('Cesko Digital Mono', 600, '/fonts/cesko.digital.mono-semibold')}
+  ${useFont('Cesko Digital Mono', 700, '/fonts/cesko.digital.mono-bold')}
 
   html, body {
     margin: 0;
