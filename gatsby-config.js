@@ -73,8 +73,8 @@ module.exports = {
         defaultLocale: 'cs',
         prefix: 'urls.',
         translations: {
-          en: require('./locale/en/translation.json'),
-          cs: require('./locale/cs/translation.json'),
+          en: require('./locale/en/pages.json'),
+          cs: require('./locale/cs/pages.json'),
         },
       },
     },
