@@ -4,7 +4,7 @@ import { getMockProjects } from '../../../plugins/gatsby-source-cd-airtable/src/
 
 describe('Projects', () => {
   it('should successfully load', () => {
-    cy.visit('/projects')
+    cy.visit('/projekty')
     const projects = getMockProjects()
     cy.getByCy('project').each(($project, i) => {
       cy.wrap($project)
