@@ -1,7 +1,8 @@
 import * as React from 'react'
 import * as S from './styles'
-import Link from '../../links/link'
-import { ButtonSize } from '../../buttons'
+import { Link } from 'components/links'
+import { ButtonSize } from 'components/buttons'
+import { areCrumbsValid, transformCrumbs } from './helpers'
 
 export interface Crumb {
   label: string
@@ -14,59 +15,44 @@ export interface BreadcrumbProps {
   homeLink?: string
 }
 
-function transformCrumbs(
-  crumbs: Crumb[]
-): { firstCrumbs: Crumb[]; lastCrumb?: Crumb } {
-  let firstCrumbs = [...crumbs]
-  const lastCrumb = firstCrumbs.pop()
-
-  return {
-    firstCrumbs,
-    lastCrumb,
-  }
-}
-
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   crumbs,
   homeLabel = 'Homepage',
   homeLink = '/',
 }: BreadcrumbProps) => {
+  if (!areCrumbsValid(crumbs)) {
+    return null
+  }
+
   const { firstCrumbs, lastCrumb } = transformCrumbs(crumbs)
+
   return (
     <S.OrderedList>
-      {crumbs.length > 0 && (
-        <S.ListItem>
-          <Link size={ButtonSize.Small} to={homeLink}>
-            {homeLabel}
-          </Link>
-        </S.ListItem>
-      )}
-
-      {firstCrumbs.map((c, i) => {
-        return (
-          <>
-            <S.Separator>/</S.Separator>
-            <S.ListItem>
-              {c.path ? (
-                <Link size={ButtonSize.Small} to={c.path}>
-                  {c.label}
-                </Link>
-              ) : (
-                <S.Current>{c.label}</S.Current>
-              )}
-            </S.ListItem>
-          </>
-        )
-      })}
-
-      {lastCrumb && (
+      <S.ListItem>
+        <Link size={ButtonSize.Small} to={homeLink}>
+          {homeLabel}
+        </Link>
+      </S.ListItem>
+      {firstCrumbs.map((crumb) => (
         <>
           <S.Separator>/</S.Separator>
           <S.ListItem>
-            <S.Current>{lastCrumb.label}</S.Current>
+            {crumb.path ? (
+              <Link size={ButtonSize.Small} to={crumb.path}>
+                {crumb.label}
+              </Link>
+            ) : (
+              <S.Current>{crumb.label}</S.Current>
+            )}
           </S.ListItem>
         </>
-      )}
+      ))}
+      <>
+        <S.Separator>/</S.Separator>
+        <S.ListItem>
+          <S.Current>{lastCrumb.label}</S.Current>
+        </S.ListItem>
+      </>
     </S.OrderedList>
   )
 }
