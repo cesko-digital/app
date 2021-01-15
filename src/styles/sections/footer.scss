@@ -1,5 +1,13 @@
 .footer {
-  background: #202D33;
+  background: #202d33;
   text-align: center;
   padding: 30px;
+}
+
+.cookies-note {
+  color: white;
+  font-size: 14px;
+  @media (max-width: $media-medium) {
+    margin-top: 10px;
+  }
 }
