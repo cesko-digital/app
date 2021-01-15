@@ -2,6 +2,8 @@
 
 # Web Česko.Digital
 
+Zdroje pro nový web Česko.Digital, na kterém se pracuje. Zdroje pro starou verzi webu, která je aktuálně na produkci, naleznete v [`master`](https://github.com/cesko-digital/web/tree/master).
+
 ## 🚀 Setup projektu
 
 1.  **Požadavky**
