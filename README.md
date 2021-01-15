@@ -67,6 +67,6 @@ Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
 
 **Koordinátoři:** [Tomáš Jeřábek](https://github.com/tjerabek), [Jindřich Oukropec](https://github.com/miiila)
 
-**Tech leads:** [Matěj 'Horm' Horák](https://github.com/HormCodes), [Míla Votradovec](https://github.com/miiila)
+**Tech leads:** [Matěj 'Horm' Horák](https://github.com/HormCodes), [Tuan Phung](https://github.com/tuanphungcz)
 
 **Wiki:** [Redesign webu Česko.Digital](https://wiki.cesko.digital/pages/viewpage.action?pageId=1574868)
