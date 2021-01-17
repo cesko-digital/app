@@ -1,5 +1,5 @@
 .hero {
-  background-color: #F5E2CC;
+  background-color: #f5e2cc;
   position: relative;
 
   @media (min-width: $media-medium) {
@@ -11,7 +11,7 @@
 
   &:after {
     content: '';
-    background-image: linear-gradient(-180deg, #FCF2E6 0%, #F5E2CC 100%);
+    background-image: linear-gradient(-180deg, #fcf2e6 0%, #f5e2cc 100%);
     height: 160px;
     position: absolute;
     left: 0;
