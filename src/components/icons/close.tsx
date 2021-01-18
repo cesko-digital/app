@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const Close: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       width={24}
@@ -21,4 +21,4 @@ const Close: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   )
 }
 
-export default Close
+export default CloseIcon

@@ -11,7 +11,7 @@ export interface StyledButtonProps {
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     Partial<StyledButtonProps> {
-  children: React.ReactChild
+  children: React.ReactNode
 }
 
 const Button: React.FC<ButtonProps> = ({
