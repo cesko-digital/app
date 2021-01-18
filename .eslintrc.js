@@ -21,6 +21,7 @@ module.exports = {
       'error',
       { terms: ['todo', 'fixme'], location: 'anywhere' },
     ],
+    'object-shorthand': 'error',
   },
   overrides: [
     {
