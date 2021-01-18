@@ -51,8 +51,7 @@ export const Input = styled(InputComponent).attrs(() => ({
 
 export const ErrorMessage = styled(InputError).attrs(() => ({
   dark: true,
-}))<{ visible: boolean }>`
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+}))`
   grid-area: message;
 `
 

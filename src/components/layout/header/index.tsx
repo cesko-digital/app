@@ -3,8 +3,7 @@ import Section from '../section'
 import SectionContent from '../section-content'
 import { ButtonAsLink, Link } from 'components/links'
 import { ButtonSize } from 'components/buttons'
-import Close from 'components/icons/close'
-import Menu from 'components/icons/menu'
+import { CloseIcon, MenuIcon } from 'components/icons'
 import GatsbyLink from 'gatsby-link'
 
 import * as S from './styles'
@@ -72,7 +71,7 @@ const Header: React.FC = () => {
               {t.links.signUp}
             </ButtonAsLink>
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <Close /> : <Menu />}
+              {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </S.IconButton>
           </S.MobileLinksContainer>
         </S.Container>
