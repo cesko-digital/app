@@ -67,3 +67,12 @@ const Component = styled.div`
   color: ${({ theme }) => theme.colors.blue};
 `
 ```
+
+Barvy definujte pomocí HEX řetězců: 
+
+```typescript jsx
+const theme = {
+  white: "#FFFFFF",
+  wrongWhite: "white",
+}
+```
