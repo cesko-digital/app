@@ -68,7 +68,6 @@ export const applyButtonStyles = ({
   disabled,
   inverted,
 }: StyledButtonProps): CssWithTheme => {
-  const outlineSize = 2
   return css`
     display: inline-flex;
 
@@ -105,21 +104,22 @@ export const applyButtonStyles = ({
         position: absolute;
         width: 100%;
         height: 100%;
-        top: -${outlineSize}px;
-        left: -${outlineSize}px;
-        border: ${outlineSize}px solid ${({ theme }) => theme.colors.violet};
+        top: -${({ theme }) => theme.borderWidth.normal}px;
+        left: -${({ theme }) => theme.borderWidth.normal}px;
+        border: ${({ theme }) => theme.borderWidth.normal}px solid
+          ${({ theme }) => theme.colors.violet};
         border-radius: ${({ theme }) =>
-          theme.borderRadius.base + outlineSize}px;
+          theme.borderRadius.base + theme.borderWidth.normal}px;
       }
     }
   `
 }
 
 export const Button = styled.button<StyledButtonProps>`
-  ${(p) =>
+  ${({ size, disabled, inverted }) =>
     applyButtonStyles({
-      size: p.size,
-      disabled: p.disabled,
-      inverted: p.inverted,
+      size,
+      disabled,
+      inverted,
     })}
 `

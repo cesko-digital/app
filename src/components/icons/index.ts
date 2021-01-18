@@ -1,2 +1,5 @@
 export { default as BulbIcon } from './bulb'
 export { default as SlackIcon } from './slack'
+export { default as CloseIcon } from './close'
+export { default as MenuIcon } from './menu'
+export { default as MailIcon } from './mail'
