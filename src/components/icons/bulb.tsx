@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 
-const BulbIcon = (): ReactElement => {
+const BulbIcon: React.FC<React.SVGProps<SVGSVGElement>> = () => {
   return (
     <svg width={81} height={81} fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

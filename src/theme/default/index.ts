@@ -5,6 +5,10 @@ export const defaultTheme: DefaultTheme = {
     none: 0,
     base: 8,
   },
+  borderWidth: {
+    none: 0,
+    normal: 2,
+  },
   breakpoints: {
     sm: '40em',
     md: '52em',
@@ -35,11 +39,14 @@ export const defaultTheme: DefaultTheme = {
 
     it: '#0000FF',
     darkIt: '#3333FF',
+    martinique: '#2D2D50',
     purple: '#9999FF',
     violet: '#CCCCFF',
     lightViolet: '#E5E5FF',
 
     yellow: '#FFF6A3',
+    orange: '#FF7247',
+    darkRed: '#A82700',
   },
   contentSize: 1160,
   space: {
@@ -79,5 +86,8 @@ export const defaultTheme: DefaultTheme = {
       color: 'white',
       bg: 'primary',
     },
+  },
+  controlHeights: {
+    normal: 56,
   },
 }

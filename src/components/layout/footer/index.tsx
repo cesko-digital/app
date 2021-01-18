@@ -1,6 +1,7 @@
 import React from 'react'
 import { ButtonSize } from 'components/buttons'
 import { Link } from 'components/links'
+import NewsletterBox from './newsletter-form'
 import * as S from './styles'
 
 const Footer: React.FC = () => {
@@ -8,7 +9,6 @@ const Footer: React.FC = () => {
     headings: {
       ceskoDigital: 'Česko.Digital',
       online: 'Online',
-      newsletter: 'Newsletter',
     },
     info: {
       projects: ['Projekty', '#'],
@@ -22,13 +22,6 @@ const Footer: React.FC = () => {
       twitter: ['Twitter', '#'],
       github: ['GitHub', '#'],
       slack: ['Slack', '#'],
-    },
-    newsletter: {
-      note:
-        'Chcete vědět, na čem pracujeme? Jednou za měsíc shrneme, co se v komunitě událo a co chystáme.',
-      inputPlaceholder: 'Zadejte e-mail',
-      inputErr: 'Zadejte prosím validní e-mailovou adresu.',
-      subscribe: 'Odebírat',
     },
     footnote: 'cesko.digital © 2020, Tento web používa cookies ¯\\_(ツ)_/¯',
   }
@@ -67,6 +60,7 @@ const Footer: React.FC = () => {
               </S.Navigation>
             </S.InfoBlock>
           </S.Info>
+          <NewsletterBox />
           <S.Note>{t.footnote}</S.Note>
         </S.Container>
       </S.Outer>

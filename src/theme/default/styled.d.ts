@@ -6,6 +6,10 @@ declare module 'styled-components' {
       none: number
       base: number
     }
+    borderWidth: {
+      none: number
+      normal: number
+    }
     breakpoints: {
       sm: string
       md: string
@@ -36,11 +40,14 @@ declare module 'styled-components' {
 
       it: string
       darkIt: string
+      martinique: string
       purple: string
       violet: string
       lightViolet: string
 
       yellow: string
+      orange: string
+      darkRed: string
     }
     contentSize: number
     space: {
@@ -80,6 +87,9 @@ declare module 'styled-components' {
         color: string
         bg: string
       }
+    }
+    controlHeights: {
+      normal: number
     }
   }
 
