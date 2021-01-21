@@ -1,55 +1,43 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Section from '../section'
 import SectionContent from '../section-content'
 import { ButtonAsLink, Link } from 'components/links'
 import { ButtonSize } from 'components/buttons'
 import { CloseIcon, MenuIcon } from 'components/icons'
-import GatsbyLink from 'gatsby-link'
+import {
+  TranslatedLink,
+  TranslateUrlsContext,
+} from 'gatsby-plugin-translate-urls'
 
 import * as S from './styles'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { getLinks } from './helpers'
 
 const Header: React.FC = () => {
+  const { locale } = useContext(TranslateUrlsContext)
+  const { t } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const t = {
-    links: {
-      projects: 'Projekty',
+  const links = getLinks({
+    locale,
+    translations: {
+      projects: t('header.projects'),
+      czech: t('header.czech'),
+      english: t('header.english'),
       blog: 'Blog',
-      contribute: 'Přispět',
-      english: 'English',
-      signUp: 'Chci se zapojit',
-      close: 'Zavřít',
-      menu: 'Menu',
+      contribute: t('header.contribute'),
     },
-  }
+  })
 
-  const links = [
-    {
-      link: '#',
-      label: t.links.projects,
-    },
-    {
-      link: '#',
-      label: t.links.blog,
-    },
-    {
-      link: '#',
-      label: t.links.contribute,
-    },
-    {
-      link: '/',
-      locale: 'en',
-      label: t.links.english,
-    },
-  ]
+  const signUpText = t('header.signUp')
 
   return (
     <Section as={'header'}>
       <SectionContent verticalPadding={0}>
         <S.Container>
-          <GatsbyLink to="/">
+          <TranslatedLink to="/">
             <S.Logo />
-          </GatsbyLink>
+          </TranslatedLink>
           <S.DesktopLinksContainer>
             {links.map(({ link, label, locale }) => (
               <Link
@@ -63,12 +51,12 @@ const Header: React.FC = () => {
             ))}
 
             <ButtonAsLink to="#" size={ButtonSize.Normal} inverted>
-              {t.links.signUp}
+              {signUpText}
             </ButtonAsLink>
           </S.DesktopLinksContainer>
           <S.MobileLinksContainer>
             <ButtonAsLink to="#" size={ButtonSize.Small} inverted>
-              {t.links.signUp}
+              {signUpText}
             </ButtonAsLink>
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
