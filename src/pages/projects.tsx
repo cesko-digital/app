@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Project } from '../../plugins/gatsby-source-cd-airtable/src/interfaces/project'
+import { Layout, Section, SectionContent } from 'components/layout'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 interface ProjectsPageProps {
   data: {
@@ -14,18 +16,29 @@ interface ProjectsPageProps {
 
 const ProjectsPage: React.FC<ProjectsPageProps> = ({
   data,
-}: ProjectsPageProps) => (
-  <ul>
-    {data.allProject.edges.map((project) => (
-      <li key={project.node.originalId}>
-        <ul data-cy="project">
-          <li data-cy="project__name">{project.node.name}</li>
-          <li data-cy="project__tagline">{project.node.tagline}</li>
-        </ul>
-      </li>
-    ))}
-  </ul>
-)
+}: ProjectsPageProps) => {
+  const { t } = useTranslation()
+  return (
+    <Layout crumbs={[{ label: t('pages.projects.navigation.projects') }]}>
+      <Section>
+        <SectionContent>
+          <h1>{t('pages.projects.title')}</h1>
+          <p>{t('pages.projects.description')}</p>
+          <ul>
+            {data.allProject.edges.map((project) => (
+              <li key={project.node.originalId}>
+                <ul data-cy="project">
+                  <li data-cy="project__name">{project.node.name}</li>
+                  <li data-cy="project__tagline">{project.node.tagline}</li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </SectionContent>
+      </Section>
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query {
