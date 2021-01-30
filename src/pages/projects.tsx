@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Project } from '../../plugins/gatsby-source-cd-airtable/src/interfaces/project'
+import { JoinUs } from 'components/sections'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
@@ -34,6 +35,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
               </li>
             ))}
           </ul>
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <JoinUs />
         </SectionContent>
       </Section>
     </Layout>

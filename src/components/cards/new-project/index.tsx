@@ -10,20 +10,24 @@ export interface NewProjectProps {
   linkText: string
 }
 
-const NewProject: React.FC<NewProjectProps> = ({
-  name,
-  description,
-  linkUrl,
-  linkText,
-}: NewProjectProps) => (
-  <S.Wrapper>
-    <BulbIcon />
-    <S.Title>{name}</S.Title>
-    <S.Description>{description}</S.Description>
-    <S.ButtonWrapper>
-      <ButtonAsLink to={linkUrl}>{linkText}</ButtonAsLink>
-    </S.ButtonWrapper>
-  </S.Wrapper>
-)
+const NewProject: React.FC<NewProjectProps> = () => {
+  const t = {
+    name: 'Mám nápad na projekt',
+    description:
+      'Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?',
+    linkUrl: 'https://cesko-digital.slack.com/archives/CHG9NA23D',
+    linkText: 'Zadat projekt',
+  }
+  return (
+    <S.Wrapper>
+      <BulbIcon />
+      <S.Title>{t.name}</S.Title>
+      <S.Description>{t.description}</S.Description>
+      <S.ButtonWrapper>
+        <ButtonAsLink to={t.linkUrl}>{t.linkText}</ButtonAsLink>
+      </S.ButtonWrapper>
+    </S.Wrapper>
+  )
+}
 
 export default NewProject

@@ -1,6 +1,6 @@
 Fixes # .
 
-Checklist pro nové změny: 
+Checklist pro nové změny:
 
 - [ ] Kód je v souladu s [Contribution Guidelines](../CONTRIBUTING.md)
 - [ ] Nové vizuální komponenty jsou ve Storybooku včetně dokumentace jejich rozhraní

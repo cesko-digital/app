@@ -1,5 +1,6 @@
 import { Layout, Section, SectionContent } from 'components/layout'
 import { Link } from 'components/links'
+import { JoinUs } from 'components/sections'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
@@ -26,6 +27,12 @@ const IndexPage: React.FC = () => {
       <Section>
         <SectionContent>
           <Link to="/mdx-page">Go to MDX page</Link>
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <JoinUs />
         </SectionContent>
       </Section>
     </Layout>

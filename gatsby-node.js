@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require('path'); // eslint-disable-line
+const path = require('path') // eslint-disable-line
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
