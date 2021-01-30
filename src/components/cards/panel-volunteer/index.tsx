@@ -5,7 +5,7 @@ import { SlackIcon } from 'components/icons'
 import * as S from './styles'
 
 export interface Props {
-  name: string
+  title: string
   description: string
   cover: string
   slackLink: string
@@ -13,7 +13,7 @@ export interface Props {
 
 const PanelVolunteer: React.FC<Props> = () => {
   const t = {
-    name: 'Jsem Dobrovolník',
+    title: 'Jsem Dobrovolník',
     description:
       'Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.',
     cover:
@@ -26,7 +26,7 @@ const PanelVolunteer: React.FC<Props> = () => {
         <S.Image url={t.cover} />
       </S.Cover>
       <S.Content>
-        <S.Title>{t.name}</S.Title>
+        <S.Title>{t.title}</S.Title>
         <S.Description>{t.description}</S.Description>
         <ButtonAsLink inverted to={t.slackLink}>
           <>

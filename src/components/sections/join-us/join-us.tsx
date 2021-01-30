@@ -5,13 +5,13 @@ import * as S from './styles'
 
 export interface JoinUsProps {
   volunteer: {
-    name: string
+    title: string
     description: string
     cover: string
     slackLink: string
   }
   project: {
-    title: string
+    name: string
     description: string
     cover: string
     linkUrl: string
