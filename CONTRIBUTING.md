@@ -60,7 +60,7 @@ Používejte následující import ze `styles.tsx` pro jasné oddělení, že se
 import * as S from './styles'
 ```
 
-Pro props využijte object destructuring: 
+Pro props využijte object destructuring:
 
 ```typescript jsx
 const Component = styled.div`
@@ -68,11 +68,11 @@ const Component = styled.div`
 `
 ```
 
-Barvy definujte pomocí HEX řetězců: 
+Barvy definujte pomocí HEX řetězců:
 
 ```typescript jsx
 const theme = {
-  white: "#FFFFFF",
-  wrongWhite: "white",
+  white: '#FFFFFF',
+  wrongWhite: 'white',
 }
 ```

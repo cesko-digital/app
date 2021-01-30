@@ -1,1 +1,4 @@
-{"someTranslation":"Hello","nested":{"firstTranslation":"community","secondTranslation":"projects"}}
+{
+  "someTranslation": "Hello",
+  "nested": { "firstTranslation": "community", "secondTranslation": "projects" }
+}
