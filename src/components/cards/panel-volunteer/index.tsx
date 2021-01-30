@@ -4,15 +4,15 @@ import { SlackIcon } from 'components/icons'
 
 import * as S from './styles'
 
-export interface Props {
+interface Volunteer {
   title: string
   description: string
   cover: string
   slackLink: string
 }
 
-const PanelVolunteer: React.FC<Props> = () => {
-  const t = {
+const PanelVolunteer: React.FC = () => {
+  const t: Volunteer = {
     title: 'Jsem Dobrovolník',
     description:
       'Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.',

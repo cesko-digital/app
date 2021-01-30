@@ -3,30 +3,14 @@ import React from 'react'
 
 import * as S from './styles'
 
-export interface JoinUsProps {
-  volunteer: {
-    title: string
-    description: string
-    cover: string
-    slackLink: string
-  }
-  project: {
-    name: string
-    description: string
-    cover: string
-    linkUrl: string
-    linkText: string
-  }
-}
-
-const JoinUs: React.FC<JoinUsProps> = ({ volunteer, project }: JoinUsProps) => {
+const JoinUs: React.FC = () => {
   return (
     <S.Container>
       <S.Title>Zapojte se</S.Title>
       <S.CircleCover />
       <S.Card>
-        <PanelVolunteer {...volunteer} />
-        <NewProject {...project} />
+        <PanelVolunteer />
+        <NewProject />
       </S.Card>
     </S.Container>
   )

@@ -3,15 +3,15 @@ import * as S from './styles'
 import ButtonAsLink from '../../links/button-as-link'
 import { BulbIcon } from 'components/icons'
 
-export interface NewProjectProps {
+interface Project {
   name: string
   description: string
   linkUrl: string
   linkText: string
 }
 
-const NewProject: React.FC<NewProjectProps> = () => {
-  const t = {
+const NewProject: React.FC = () => {
+  const t: Project = {
     name: 'Mám nápad na projekt',
     description:
       'Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?',
