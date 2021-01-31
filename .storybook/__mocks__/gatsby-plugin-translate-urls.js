@@ -7,3 +7,5 @@ export const TranslatedLink = (params) =>
     ...params,
     href: params.to,
   })
+
+export const TranslateUrlsContext = React.createContext({ locale: 'cs' })
