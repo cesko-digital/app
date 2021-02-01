@@ -76,3 +76,17 @@ const theme = {
   wrongWhite: "white",
 }
 ```
+
+Používejte `px` místo `rem` nebo `em`
+
+```typescript jsx
+// ✅ Correct
+const Component = styled.div`
+  padding: 8px;
+`
+
+//  ❌ Wrong
+const Component = styled.div`
+  padding: 8em;
+`
+```
