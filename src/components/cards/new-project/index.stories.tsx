@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import NewProject, { NewProjectProps } from '.'
+import NewProject from '.'
 
 const story: Meta = {
   title: 'Cards/NewProject',
@@ -34,9 +34,7 @@ const story: Meta = {
   },
 }
 
-const Template: Story<NewProjectProps> = (args: NewProjectProps) => (
-  <NewProject {...args} />
-)
+const Template: Story = (args) => <NewProject {...args} />
 
 export const Default = Template.bind({})
 
