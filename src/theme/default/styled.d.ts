@@ -5,6 +5,7 @@ declare module 'styled-components' {
     borderRadius: {
       none: number
       base: number
+      small: number
     }
     borderWidth: {
       none: number

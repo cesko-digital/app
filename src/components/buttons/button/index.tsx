@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as S from './styles'
 import { ButtonSize } from './enums'
 
-export interface StyledButtonProps {
+export interface ClickerProps {
   inverted?: boolean
   size: ButtonSize
   disabled?: boolean
@@ -10,7 +10,7 @@ export interface StyledButtonProps {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    Partial<StyledButtonProps> {
+    Partial<ClickerProps> {
   children: React.ReactNode
 }
 
@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   inverted,
   ...rest
 }: ButtonProps) => (
-  <S.Button inverted={inverted} size={size} {...rest}>
+  <S.Button $inverted={inverted} size={size} {...rest}>
     {children}
   </S.Button>
 )

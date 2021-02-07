@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as S from './styles'
 import { ButtonSize } from 'components/buttons'
 import { GatsbyLinkProps } from 'gatsby-link'
+import { isExternalURL } from 'utils/is-url-external'
 
 export interface StyledLinkProps {
   disabled?: boolean
@@ -11,7 +12,7 @@ export interface StyledLinkProps {
 export interface LinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
     Partial<StyledLinkProps> {
-  children: React.ReactChild
+  children: React.ReactNode
   locale?: string
 }
 
@@ -22,11 +23,13 @@ const Link: React.FC<LinkProps> = ({
   ...rest
 }: LinkProps) => {
   const href = rest.disabled ? '' : url
-  return (
-    <S.Link to={href} size={size} {...rest}>
-      {children}
-    </S.Link>
-  )
+  const Component = isExternalURL(href) ? S.ExternalLink : S.InternalLink
+  const props = {
+    size,
+    [isExternalURL(href) ? 'href' : 'to']: href,
+    ...rest,
+  }
+  return <Component {...props}>{children}</Component>
 }
 
 export default Link

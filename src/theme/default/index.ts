@@ -4,6 +4,7 @@ export const defaultTheme: DefaultTheme = {
   borderRadius: {
     none: 0,
     base: 8,
+    small: 4,
   },
   borderWidth: {
     none: 0,

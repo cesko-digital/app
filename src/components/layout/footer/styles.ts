@@ -1,4 +1,4 @@
-import { Link } from 'components/links/link/styles'
+import { InternalLink, ExternalLink } from 'components/links/link/styles'
 import styled from 'styled-components'
 import czechiaMapArrows from 'images/czechia-map-arrows.png'
 import czechiaMapArrows2x from 'images/czechia-map-arrows@2x.png'
@@ -138,7 +138,7 @@ export const LinkItem = styled.li`
     margin-top: ${({ theme }) => theme.space.md}px;
   }
 
-  > ${Link} {
+  > ${InternalLink}, ${ExternalLink} {
     color: ${({ theme }) => theme.colors.white};
   }
 `

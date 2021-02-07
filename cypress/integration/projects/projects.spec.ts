@@ -5,18 +5,7 @@ import { getMockProjects } from '../../../plugins/gatsby-source-cd-airtable/src/
 describe('Projects', () => {
   it('should successfully load', () => {
     cy.visit('/projekty')
-    const projects = getMockProjects().filter(
-      (project) => project.lang === 'cs'
-    )
-    cy.getByCy('project').each(($project, i) => {
-      cy.wrap($project)
-        .getByCy('project__name')
-        .should('contain.text', projects[i].name)
-        .getByCy('project__tagline')
-        .should(
-          projects[i].tagline === null ? 'be.empty' : 'contain.text',
-          projects[i].tagline
-        )
-    })
+    const projects = getMockProjects()
+    cy.getByCy('project').should('have.length', projects.length - 1) // consider the first is highlighted
   })
 })

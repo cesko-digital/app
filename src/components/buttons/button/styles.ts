@@ -1,6 +1,12 @@
 import styled, { css, CssWithTheme } from 'styled-components'
-import { StyledButtonProps } from './index'
 import { ButtonSize } from './enums'
+
+export interface StyledButtonProps {
+  // https://styled-components.com/docs/api#transient-props
+  $inverted?: boolean
+  size: ButtonSize
+  disabled?: boolean
+}
 
 const { Normal } = ButtonSize
 
@@ -36,14 +42,12 @@ function getInvertedColorStyle(disabled: boolean) {
 }
 
 function getColorStyle({
-  inverted,
+  $inverted,
   disabled,
 }: StyledButtonProps): CssWithTheme {
-  if (inverted) {
-    return getInvertedColorStyle(!!disabled)
-  }
-
-  return getDefaultColorStyle(!!disabled)
+  return $inverted
+    ? getInvertedColorStyle(!!disabled)
+    : getDefaultColorStyle(!!disabled)
 }
 
 function getBoxShadow({ disabled }: StyledButtonProps): CssWithTheme {
@@ -66,7 +70,7 @@ function getBoxShadow({ disabled }: StyledButtonProps): CssWithTheme {
 export const applyButtonStyles = ({
   size,
   disabled,
-  inverted,
+  $inverted,
 }: StyledButtonProps): CssWithTheme => {
   return css`
     display: inline-flex;
@@ -89,8 +93,8 @@ export const applyButtonStyles = ({
 
     text-decoration: none;
 
-    ${getColorStyle({ size, disabled, inverted })};
-    ${getBoxShadow({ size, disabled, inverted })};
+    ${getColorStyle({ size, disabled, $inverted })};
+    ${getBoxShadow({ size, disabled, $inverted })};
 
     cursor: ${() => (disabled ? 'not-allowed' : 'pointer')};
 
@@ -116,10 +120,10 @@ export const applyButtonStyles = ({
 }
 
 export const Button = styled.button<StyledButtonProps>`
-  ${({ size, disabled, inverted }) =>
+  ${({ size, disabled, $inverted }) =>
     applyButtonStyles({
       size,
       disabled,
-      inverted,
+      $inverted,
     })}
 `

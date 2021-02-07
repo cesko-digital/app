@@ -1,4 +1,4 @@
-import { Link } from 'components/links/link/styles'
+import { InternalLink, ExternalLink } from 'components/links/link/styles'
 import styled from 'styled-components'
 import logo from 'images/logo.svg'
 import mobileLogo from 'images/logo-mobile.svg'
@@ -58,7 +58,7 @@ export const MobileMenu = styled.div`
     background: rgba(255, 255, 255, 0.9);
   }
 
-  > ${Link} {
+  > ${InternalLink}, ${ExternalLink} {
     display: grid;
     justify-self: stretch;
     height: 48px;

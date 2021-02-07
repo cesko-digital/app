@@ -16,7 +16,7 @@ const StyledLink = styled.button<StyledLinkProps>`
 export interface LinkAsButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     Partial<StyledLinkProps> {
-  children: React.ReactChild
+  children: React.ReactNode
 }
 
 const LinkAsButton: React.FC<LinkAsButtonProps> = ({
