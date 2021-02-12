@@ -8,9 +8,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 interface ProjectsPageProps {
   data: {
     allProject: {
-      edges: {
-        node: Project
-      }[]
+      nodes: Project[]
     }
   }
 }
@@ -26,11 +24,11 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
           <h1>{t('pages.projects.title')}</h1>
           <p>{t('pages.projects.description')}</p>
           <ul>
-            {data.allProject.edges.map((project) => (
-              <li key={project.node.originalId}>
+            {data.allProject.nodes.map((project) => (
+              <li key={project.slug}>
                 <ul data-cy="project">
-                  <li data-cy="project__name">{project.node.name}</li>
-                  <li data-cy="project__tagline">{project.node.tagline}</li>
+                  <li data-cy="project__name">{project.name}</li>
+                  <li data-cy="project__tagline">{project.tagline}</li>
                 </ul>
               </li>
             ))}
@@ -48,13 +46,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
 }
 
 export const query = graphql`
-  query {
-    allProject {
-      edges {
-        node {
-          name
-          tagline
-        }
+  query($locale: String!) {
+    allProject(filter: { lang: { eq: $locale } }) {
+      nodes {
+        name
+        slug
+        tagline
       }
     }
   }

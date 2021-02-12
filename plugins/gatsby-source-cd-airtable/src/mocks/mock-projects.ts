@@ -1,19 +1,48 @@
-import { Project } from '../interfaces/project'
+import { Language, Project } from '../interfaces/project'
 
 export const getMockProjects: () => Project[] = () => [
   {
+    name: 'První projekt',
+    rowId: '1',
+    lang: Language.Czech,
+    slug: 'prvni-projekt',
+    tagline: 'Lorem ipsum',
+    coverUrl: 'https://via.placeholder.com/400x200',
+    logoUrl: 'https://via.placeholder.com/100',
+    highlighted: true,
+    tags: ['1'],
+  },
+  {
     name: 'First project',
-    originalId: '1',
-    tagline: 'This is first mocked project',
+    rowId: '1',
+    lang: Language.English,
+    slug: 'first-project',
+    tagline: 'Lorem ipsum',
+    coverUrl: 'https://via.placeholder.com/400x200',
+    logoUrl: 'https://via.placeholder.com/100',
+    highlighted: true,
+    tags: ['1'],
+  },
+  {
+    name: 'Druhý projekt',
+    rowId: '2',
+    lang: Language.Czech,
+    slug: 'druhy-projekt',
+    tagline: 'Lorem ipsum',
+    coverUrl: 'https://via.placeholder.com/400x200',
+    logoUrl: 'https://via.placeholder.com/100',
+    highlighted: false,
+    tags: [],
   },
   {
     name: 'Second project',
-    originalId: '2',
-    tagline: 'This is second mocked project',
-  },
-  {
-    name: 'Third project',
-    originalId: '3',
-    tagline: null,
+    rowId: '2',
+    lang: Language.English,
+    slug: 'second-project',
+    tagline: 'Lorem ipsum',
+    coverUrl: 'https://via.placeholder.com/400x200',
+    logoUrl: 'https://via.placeholder.com/100',
+    highlighted: false,
+    tags: [],
   },
 ]

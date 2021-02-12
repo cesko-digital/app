@@ -14,7 +14,7 @@
     "allowJs": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "stories/**/*", "scripts/**/*", "api/**/*"],
+  "include": ["src/**/*", "stories/**/*", "scripts/**/*", "api/**/*", "plugins/**/*"],
   "exclude": [
     "node_modules",
     "public",

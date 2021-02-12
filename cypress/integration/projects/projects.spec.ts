@@ -5,7 +5,9 @@ import { getMockProjects } from '../../../plugins/gatsby-source-cd-airtable/src/
 describe('Projects', () => {
   it('should successfully load', () => {
     cy.visit('/projekty')
-    const projects = getMockProjects()
+    const projects = getMockProjects().filter(
+      (project) => project.lang === 'cs'
+    )
     cy.getByCy('project').each(($project, i) => {
       cy.wrap($project)
         .getByCy('project__name')
