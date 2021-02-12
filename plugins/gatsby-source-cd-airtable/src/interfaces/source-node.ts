@@ -1,3 +1,3 @@
 export interface SourceNode {
-  originalId: string
+  rowId: string
 }
