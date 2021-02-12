@@ -15,7 +15,7 @@
     "translations:mock": "cp ./locale/translation.example.json ./locale/en/translation.json && cp ./locale/translation.example.json ./locale/cs/translation.json",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "lint": "eslint \"./{api,src,stories,scripts}/**/*.{ts,tsx,js,jsx}\"",
+    "lint": "eslint \"./{api,src,stories,scripts,plugins}/**/*.{ts,tsx,js,jsx}\"",
     "lint:fix": "eslint --fix \"./{api,src,stories,scripts}/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",
     "storybook": "cp -r ./public/page-data/sq/d ./public/static && NODE_ENV=production start-storybook -s ./static -p 6060 -c .storybook watch-css",
