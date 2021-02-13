@@ -1,7 +1,7 @@
 import { Layout, Section, SectionContent } from 'components/layout'
 import { Link } from 'components/links'
 import { JoinUs } from 'components/sections'
-import { OurValues } from './sections'
+import { OurValues, Numbers } from './sections'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
@@ -17,6 +17,12 @@ const IndexPage: React.FC = () => {
         <SectionContent>
           <Heading1>{t('someTranslation')}</Heading1>
           <Body>{t('nested.firstTranslation')}</Body>
+        </SectionContent>
+      </Section>
+
+      <Section backgroundColor={theme.colors.pebble}>
+        <SectionContent verticalPadding={70}>
+          <Numbers />
         </SectionContent>
       </Section>
 
