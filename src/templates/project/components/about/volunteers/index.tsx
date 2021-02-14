@@ -12,7 +12,7 @@ interface Props {
   volunteers: Volunteer[]
 }
 
-const VolunteersGrid: React.FC<Props> = ({ volunteers }) => {
+const Volunteers: React.FC<Props> = ({ volunteers }) => {
   return (
     <S.Grid>
       {volunteers.map((volunteer, index) => (
@@ -27,4 +27,4 @@ const VolunteersGrid: React.FC<Props> = ({ volunteers }) => {
   )
 }
 
-export default VolunteersGrid
+export default Volunteers

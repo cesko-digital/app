@@ -33,8 +33,10 @@ declare module 'styled-components' {
     }
     colors: {
       lightGray: string
+      mediumGray: string
       darkGrey: string
       asphalt: string
+      stone: string
       gravel: string
       pebble: string
       white: string

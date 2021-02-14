@@ -3,9 +3,12 @@ import { Layout, Section, SectionContent } from 'components/layout'
 import { graphql } from 'gatsby'
 import { Heading1 } from 'components/typography'
 import { Project } from 'generated/graphql-types'
-import { AboutProject } from './components/about'
+import AboutProject from './components/about'
 import * as S from './styles'
-import { Volunteer } from './components/volunteers'
+import { Volunteer } from './components/about/volunteers'
+import ProjectCard from './components/project-card'
+import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 interface ProjectPageProps {
   data: {
@@ -25,13 +28,19 @@ const mockedVolunteers: Volunteer[] = Array.from({ length: 8 }).map(
 )
 
 const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
+  const { t } = useTranslation()
+  const { lang, name } = data.project
   return (
-    <Layout>
+    <Layout
+      crumbs={[
+        { path: '/projects', label: t(PROJECT_PAGE_NAVIGATION_KEY) },
+        { label: name },
+      ]}
+    >
       <Section>
         <SectionContent>
           <Heading1>
-            Hello, I am {data.project.name} in{' '}
-            {data.project.lang === 'en' ? '🇺🇸' : '🇨🇿'}
+            Hello, I am {name} in {lang === 'en' ? '🇺🇸' : '🇨🇿'}
           </Heading1>
         </SectionContent>
       </Section>
@@ -46,7 +55,23 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
                 }
               />
             </S.DescriptionWrapper>
-            <S.ProjectCardWrapper>Project card goes here</S.ProjectCardWrapper>
+            <S.ProjectCardWrapper>
+              <ProjectCard
+                githubUrl={'https://github.com/cesko-digital/web'}
+                name={name}
+                url={'https://github.com/cesko-digital/web'}
+                progress={10}
+                projectLead={{
+                  company: 'Česko.Digital',
+                  name: 'Eva Pavlíková',
+                  profilePictureUrl:
+                    'https://picsum.photos/320?random=${index}',
+                }}
+                slackChannelName={'projekt'}
+                slackChannelUrl={'https://github.com/cesko-digital/web'}
+                trelloUrl={'https://github.com/cesko-digital/web'}
+              />
+            </S.ProjectCardWrapper>
           </S.AboutSectionWrapper>
         </SectionContent>
       </Section>
