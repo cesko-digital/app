@@ -4,7 +4,6 @@ import { ButtonSize } from 'components/buttons'
 import { GatsbyLinkProps } from 'gatsby-link'
 import * as S from './styles'
 import { isExternalURL } from 'utils/is-url-external'
-import { StyledButtonProps } from 'components/buttons/button/styles'
 
 /**
  * The component is used where we need to have
@@ -25,18 +24,21 @@ const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
 }: ButtonAsLinkProps) => {
   const href = rest.disabled ? '' : url
 
-  const Component: React.ElementType<StyledButtonProps> = isExternalURL(href)
-    ? S.ExternalLink
-    : S.InternalLink
-
   const props = {
     $inverted: inverted,
     size,
-    [isExternalURL(href) ? 'href' : 'to']: href,
     ...rest,
   }
 
-  return <Component {...props}>{children}</Component>
+  return isExternalURL(href) ? (
+    <S.ExternalLink href={href} {...props}>
+      {children}
+    </S.ExternalLink>
+  ) : (
+    <S.InternalLink to={href} {...props}>
+      {children}
+    </S.InternalLink>
+  )
 }
 
 export default ButtonAsLink

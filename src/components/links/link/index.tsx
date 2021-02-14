@@ -23,13 +23,17 @@ const Link: React.FC<LinkProps> = ({
   ...rest
 }: LinkProps) => {
   const href = rest.disabled ? '' : url
-  const Component = isExternalURL(href) ? S.ExternalLink : S.InternalLink
-  const props = {
-    size,
-    [isExternalURL(href) ? 'href' : 'to']: href,
-    ...rest,
-  }
-  return <Component {...props}>{children}</Component>
+  const props = { size, ...rest }
+
+  return isExternalURL(href) ? (
+    <S.ExternalLink href={href} {...props}>
+      {children}
+    </S.ExternalLink>
+  ) : (
+    <S.InternalLink to={href} {...props}>
+      {children}
+    </S.InternalLink>
+  )
 }
 
 export default Link
