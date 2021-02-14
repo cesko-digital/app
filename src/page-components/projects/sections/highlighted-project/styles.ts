@@ -21,7 +21,7 @@ export const Content = styled.div`
     rgba(71, 71, 91, 0.5) 100%
   );
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     border-radius: ${({ theme }) => theme.borderRadius.base}px;
   }
 
@@ -52,7 +52,7 @@ export const ProjectImage = styled.div<{ src: string }>`
   background-repeat: no-repeat;
   background-position: center left;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     border-top-right-radius: ${({ theme }) => theme.borderRadius.base}px;
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.base}px;
   }

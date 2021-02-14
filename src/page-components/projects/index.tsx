@@ -2,7 +2,7 @@ import React from 'react'
 import { Project } from '../../../plugins/gatsby-source-cd-airtable/src/interfaces/project'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { HighlightedProject } from './sections'
+import { HighlightedProject, OngoingProject } from './sections'
 import { JoinUs } from 'components/sections'
 
 // Data are coming from page query defined in 'pages/project.tsx'
@@ -34,7 +34,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
         <SectionContent>
           <h1>{t('pages.projects.title')}</h1>
           <p>{t('pages.projects.description')}</p>
-          <ul>
+          {/* <ul>
             {restProjects.map((project) => (
               <li key={project.node.originalId}>
                 <ul data-cy="project">
@@ -45,11 +45,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
                 </ul>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </SectionContent>
       </Section>
       <Section>
         <SectionContent>
+          <h2>{t('pages.projects.ongoing')}</h2>
           <HighlightedProject
             projectImageSrc="https://via.placeholder.com/1000x700"
             avatarSrc="https://via.placeholder.com/82"
@@ -58,6 +59,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
             tags={['javascript', 'wordpress', 'covid19']}
             link="#"
           />
+          <OngoingProject />
         </SectionContent>
       </Section>
 
