@@ -32,8 +32,10 @@ export const defaultTheme: DefaultTheme = {
   },
   colors: {
     lightGray: '#EDEDEF',
+    mediumGray: '#E7E7E7',
     darkGrey: '#080831',
     asphalt: '#47475B',
+    stone: '#CCCCCC',
     gravel: '#A9A9B1',
     pebble: '#F9F9F9',
     white: '#FFFFFF',
