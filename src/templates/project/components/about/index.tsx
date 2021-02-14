@@ -1,5 +1,5 @@
 import React from 'react'
-import VolunteersGrid, { Volunteer } from '../volunteers'
+import Volunteers, { Volunteer } from './volunteers'
 import { Body, Heading2 } from 'components/typography'
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
@@ -9,7 +9,7 @@ interface Props {
   volunteers: Volunteer[]
 }
 
-export const AboutProject: React.FC<Props> = ({ volunteers, description }) => {
+const AboutProject: React.FC<Props> = ({ volunteers, description }) => {
   const { t } = useTranslation()
   return (
     <S.Wrapper>
@@ -19,7 +19,9 @@ export const AboutProject: React.FC<Props> = ({ volunteers, description }) => {
         {volunteers.length}&nbsp;{t('pages.project.about.volunteers.title')}
       </Heading2>
       <Body>{t('pages.project.about.volunteers.subtitle')}</Body>
-      <VolunteersGrid volunteers={volunteers} />
+      <Volunteers volunteers={volunteers} />
     </S.Wrapper>
   )
 }
+
+export default AboutProject

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AboutSectionWrapper = styled.main`
+export const AboutSectionWrapper = styled.div`
   margin: 30px 0;
   display: flex;
 

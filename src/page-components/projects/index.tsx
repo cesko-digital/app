@@ -17,6 +17,8 @@ interface ProjectsPageProps {
   }
 }
 
+export const NAVIGATION_KEY = 'pages.projects.navigation.projects'
+
 const ProjectsPage: React.FC<ProjectsPageProps> = ({
   data,
 }: ProjectsPageProps) => {
@@ -24,7 +26,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
   const { otherProjects, highlightedProject } = data
 
   return (
-    <Layout crumbs={[{ label: t('pages.projects.navigation.projects') }]}>
+    <Layout crumbs={[{ label: t(NAVIGATION_KEY) }]}>
       <Section>
         <SectionContent>
           <S.Heading>{t('pages.projects.title')}</S.Heading>
