@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Heading2, BodyBig, bodyBigStyles } from 'components/typography'
 
 export const Container = styled.div`
   padding: 130px 0;
@@ -9,25 +10,16 @@ export const Container = styled.div`
   }
 `
 
-export const MainTitle = styled.h2`
+export const MainTitle = styled(Heading2)`
   margin: 0 0 12px;
-
-  font-weight: ${({ theme }) => theme.fontWeights.heading};
-  font-size: ${({ theme }) => theme.fontSizes.xxl}px;
-  line-height: ${({ theme }) => theme.lineHeights.heading};
-  color: ${({ theme }) => theme.colors.darkGrey};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 6px;
-
-    font-size: ${({ theme }) => theme.fontSizes.l}px;
   }
 `
-export const MainPerex = styled.p`
+export const MainPerex = styled(BodyBig)`
   margin-bottom: 104px;
 
-  font-size: ${({ theme }) => theme.fontSizes.md}px;
-  line-height: ${({ theme }) => theme.lineHeights.body};
   color: ${({ theme }) => theme.colors.asphalt};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -36,6 +28,7 @@ export const MainPerex = styled.p`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 72%;
+    ${bodyBigStyles}
   }
 `
 

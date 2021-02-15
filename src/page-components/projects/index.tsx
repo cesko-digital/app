@@ -5,6 +5,7 @@ import { HighlightedProject, OngoingProject } from './sections'
 import { JoinUs } from 'components/sections'
 import { Project } from 'pages/projects'
 import { mapTags } from './utils/map-tags'
+import * as S from './styles'
 
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {
@@ -26,13 +27,13 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
     <Layout crumbs={[{ label: t('pages.projects.navigation.projects') }]}>
       <Section>
         <SectionContent>
-          <h1>{t('pages.projects.title')}</h1>
-          <p>{t('pages.projects.description')}</p>
+          <S.Heading>{t('pages.projects.title')}</S.Heading>
+          <S.Tagline>{t('pages.projects.description')}</S.Tagline>
         </SectionContent>
       </Section>
       <Section>
         <SectionContent>
-          <h2>{t('pages.projects.ongoing')}</h2>
+          <S.ProjectsHeading>{t('pages.projects.ongoing')}</S.ProjectsHeading>
           {highlightedProject && (
             <HighlightedProject
               cover={highlightedProject.coverUrl}

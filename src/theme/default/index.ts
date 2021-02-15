@@ -72,6 +72,7 @@ export const defaultTheme: DefaultTheme = {
     button: 600,
   },
   lineHeights: {
+    text: 1.6,
     body: 1.5,
     heading: 1.3,
     button: 1.3,

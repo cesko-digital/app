@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Heading2, Body, bodyStyles } from 'components/typography'
 
 const AVATAR_SIZE = 82
 const DESKTOP_CONTENT_RELATIVE_SIZE = 34
@@ -75,19 +76,19 @@ export const Avatar = styled.div<{ src: string }>`
   }
 `
 
-export const Name = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.xxl}px;
-  line-height: ${({ theme }) => theme.lineHeights.heading};
+export const Name = styled(Heading2)`
   color: ${({ theme }) => theme.colors.white};
   margin: 0 0 ${({ theme }) => theme.space.md}px;
 `
 
-export const Tagline = styled.p`
-  font-size: 20px;
-  line-height: ${({ theme }) => theme.lineHeights.body};
+export const Tagline = styled(Body)`
   color: ${({ theme }) => theme.colors.white};
   opacity: 0.8;
   margin: 0 0 19px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    ${bodyStyles}
+  }
 `
 
 export const Tags = styled.div`

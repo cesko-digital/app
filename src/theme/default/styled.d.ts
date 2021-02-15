@@ -73,6 +73,7 @@ declare module 'styled-components' {
       button: number
     }
     lineHeights: {
+      text: number
       body: number
       heading: number
       button: number

@@ -79,7 +79,7 @@ export const applyButtonStyles = ({
 
     height: ${() => (size === Normal ? 52 : 30)}px;
 
-    padding: 0 ${() => (size === Normal ? 30 : 14)}px;
+    padding: 0 ${() => (size === Normal ? 40 : 14)}px;
 
     font-weight: ${({ theme }) => theme.fontWeights.button};
     line-height: ${({ theme }) => theme.lineHeights.button};
