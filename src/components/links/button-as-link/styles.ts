@@ -3,9 +3,9 @@ import {
   applyButtonStyles,
   StyledButtonProps,
 } from 'components/buttons/button/styles'
-import { default as GatsbyLink } from 'gatsby-link'
+import { TranslatedLink } from 'gatsby-plugin-translate-urls'
 
-export const InternalLink = styled(GatsbyLink)<StyledButtonProps>`
+export const InternalLink = styled(TranslatedLink)<StyledButtonProps>`
   ${(p) =>
     applyButtonStyles({
       size: p.size,

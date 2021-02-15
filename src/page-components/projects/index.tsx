@@ -40,7 +40,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
               description={highlightedProject.tagline}
               title={highlightedProject.name}
               tags={mapTags(highlightedProject.tags)}
-              link={highlightedProject.slug}
+              link={`/projects/${highlightedProject.slug}`}
             />
           )}
           <OngoingProject projects={otherProjects.nodes} />

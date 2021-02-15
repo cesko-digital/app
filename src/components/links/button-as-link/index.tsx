@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ClickerProps } from 'components/buttons/button'
+import { StyledButtonProps } from 'components/buttons/button'
 import { ButtonSize } from 'components/buttons'
 import { GatsbyLinkProps } from 'gatsby-link'
 import * as S from './styles'
@@ -11,7 +11,7 @@ import { isExternalURL } from 'utils/is-url-external'
  */
 export interface ButtonAsLinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
-    Partial<ClickerProps> {
+    Partial<StyledButtonProps> {
   children: React.ReactNode
 }
 
@@ -30,11 +30,14 @@ const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
     ...rest,
   }
 
-  return isExternalURL(href) ? (
-    <S.ExternalLink href={href} {...props}>
-      {children}
-    </S.ExternalLink>
-  ) : (
+  if (isExternalURL(href)) {
+    return (
+      <S.ExternalLink href={href} {...props}>
+        {children}
+      </S.ExternalLink>
+    )
+  }
+  return (
     <S.InternalLink to={href} {...props}>
       {children}
     </S.InternalLink>

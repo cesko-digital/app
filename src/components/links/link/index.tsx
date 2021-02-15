@@ -25,11 +25,14 @@ const Link: React.FC<LinkProps> = ({
   const href = rest.disabled ? '' : url
   const props = { size, ...rest }
 
-  return isExternalURL(href) ? (
-    <S.ExternalLink href={href} {...props}>
-      {children}
-    </S.ExternalLink>
-  ) : (
+  if (isExternalURL(href)) {
+    return (
+      <S.ExternalLink href={href} {...props}>
+        {children}
+      </S.ExternalLink>
+    )
+  }
+  return (
     <S.InternalLink to={href} {...props}>
       {children}
     </S.InternalLink>
