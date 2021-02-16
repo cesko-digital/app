@@ -3,6 +3,7 @@ import { Input as InputComponent, InputError } from 'components/inputs'
 import { Button as ButtonComponent } from 'components/buttons'
 import { MailIcon } from 'components/icons'
 import { Heading } from '../styles'
+import { Heading3, heading3Styles } from 'components/typography'
 
 export const Container = styled.section`
   grid-area: newsletter;
@@ -16,12 +17,15 @@ export const Container = styled.section`
   }
 `
 
-export const Info = styled.strong`
+export const Info = styled(Heading3)`
   max-width: 480px;
   display: inline-block;
-  font-size: ${({ theme }) => theme.fontSizes.l}px;
-  line-height: ${({ theme }) => theme.lineHeights.heading};
   margin-bottom: ${({ theme }) => theme.space.lg}px;
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    ${heading3Styles}
+  }
 `
 
 export const Form = styled.form`

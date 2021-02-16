@@ -1,7 +1,8 @@
-import { Link } from 'components/links/link/styles'
+import { InternalLink, ExternalLink } from 'components/links/link/styles'
 import styled from 'styled-components'
 import czechiaMapArrows from 'images/czechia-map-arrows.png'
 import czechiaMapArrows2x from 'images/czechia-map-arrows@2x.png'
+import { Heading4 } from 'components/typography'
 
 export const Wrapper = styled.footer`
   display: flex;
@@ -103,10 +104,9 @@ export const InfoBlock = styled.div`
   }
 `
 
-export const Heading = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes.md}px;
-  line-height: ${({ theme }) => theme.lineHeights.heading};
+export const Heading = styled(Heading4)`
   margin-bottom: ${({ theme }) => theme.space.lg}px;
+  color: ${({ theme }) => theme.colors.white};
 `
 
 export const Note = styled.section`
@@ -138,7 +138,7 @@ export const LinkItem = styled.li`
     margin-top: ${({ theme }) => theme.space.md}px;
   }
 
-  > ${Link} {
+  > ${InternalLink}, ${ExternalLink} {
     color: ${({ theme }) => theme.colors.white};
   }
 `

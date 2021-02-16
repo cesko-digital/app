@@ -50,9 +50,9 @@ const Header: React.FC = () => {
               </Link>
             ))}
 
-            <ButtonAsLink to="#" size={ButtonSize.Normal} inverted>
+            <S.HeaderButton to="#" size={ButtonSize.Normal} inverted>
               {signUpText}
-            </ButtonAsLink>
+            </S.HeaderButton>
           </S.DesktopLinksContainer>
           <S.MobileLinksContainer>
             <ButtonAsLink to="#" size={ButtonSize.Small} inverted>
