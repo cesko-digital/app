@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   inverted,
   ...rest
 }: ButtonProps) => (
-  <S.Button inverted={inverted} size={size} {...rest}>
+  <S.Button $inverted={inverted} size={size} {...rest}>
     {children}
   </S.Button>
 )
