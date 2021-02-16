@@ -37,7 +37,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <S.Title>{title}</S.Title>
         <S.TagList>
           {tags.map((tag) => (
-            <S.Tag key={tag}>{tag}</S.Tag>
+            <S.Tag key={tag}>#{tag}</S.Tag>
           ))}
         </S.TagList>
         <S.Description>{description}</S.Description>
