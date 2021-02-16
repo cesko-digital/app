@@ -24,14 +24,14 @@ export const Card = styled.section`
   justify-content: space-between;
   overflow: hidden;
   flex: 1;
-  padding: ${({ theme }) => theme.space.lg}px 0 ${({ theme }) =>
-  theme.space.small}px;
+  padding: 50px 0 ${({ theme }) => theme.space.small}px;
     0;
   max-width: ${({ theme }) => theme.contentSize}px;
   box-sizing: content-box;
   z-index: 0;
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: ${({ theme }) => theme.space.none}px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 17px 0 0;
   }
 `
 
@@ -49,16 +49,4 @@ export const Content = styled.div`
   padding-top: 30px;
   background-color: ${({ theme }) => theme.colors.darkGrey};
   color: ${({ theme }) => theme.colors.pebble};
-`
-
-export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.xl}px;
-  font-weight: ${({ theme }) => theme.fontWeights.heading};
-  line-height: ${({ theme }) => theme.lineHeights.heading};
-  margin: 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: ${({ theme }) => theme.fontSizes.md}px;
-    margin-bottom: 24px;
-  }
 `

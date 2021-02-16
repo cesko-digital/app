@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Heading4, Body, bodyStyles } from 'components/typography'
 
 export const ValueWrapper = styled.div`
   width: 326px;
@@ -11,21 +12,16 @@ export const ValueWrapper = styled.div`
   }
 `
 
-export const ValueTitle = styled.h3`
+export const ValueTitle = styled(Heading4)`
   margin: 25px 0 0;
-
-  font-weight: ${({ theme }) => theme.fontWeights.heading};
-  font-size: ${({ theme }) => theme.fontSizes.md}px;
-  line-height: ${({ theme }) => theme.lineHeights.body};
-  color: ${({ theme }) => theme.colors.darkGrey};
 `
-export const ValuePerex = styled.p`
+export const ValuePerex = styled(Body)`
   margin: 0;
-
-  font-size: 20px;
-  line-height: ${({ theme }) => theme.lineHeights.body};
-  color: ${({ theme }) => theme.colors.darkGrey};
   opacity: 0.8;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    ${bodyStyles}
+  }
 `
 
 const ICON_SIZE = 72
