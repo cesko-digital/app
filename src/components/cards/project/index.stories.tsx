@@ -19,7 +19,7 @@ Default.args = {
   cover: 'https://via.placeholder.com/400x200',
   logo: 'https://via.placeholder.com/100',
   link: '#',
-  tags: ['#javascript'],
+  tags: ['javascript'],
 }
 
 export default story
