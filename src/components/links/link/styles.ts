@@ -75,7 +75,11 @@ function getBorderStyle({ size, disabled }: StyledLinkProps): CssWithTheme {
   return getDefaultBorderStyle(!!disabled)
 }
 
-export const Link = styled(TranslatedLink)<StyledLinkProps>`
+export const InternalLink = styled(TranslatedLink)<StyledLinkProps>`
+  ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
+`
+
+export const ExternalLink = styled.a<StyledLinkProps>`
   ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
 `
 

@@ -1,28 +1,18 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import { StyledButtonProps } from 'components/buttons/button'
-import { applyButtonStyles } from 'components/buttons/button/styles'
 import { ButtonSize } from 'components/buttons'
-import { default as GatsbyLink, GatsbyLinkProps } from 'gatsby-link'
+import { GatsbyLinkProps } from 'gatsby-link'
+import * as S from './styles'
+import { isExternalURL } from 'utils/is-url-external'
 
 /**
  * The component is used where we need to have
  * a Button which behaves AS a Link
  */
-
-const StyledLink = styled(GatsbyLink)<StyledButtonProps>`
-  ${(p) =>
-    applyButtonStyles({
-      size: p.size,
-      disabled: p.disabled,
-      inverted: p.inverted,
-    })}
-`
-
 export interface ButtonAsLinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
     Partial<StyledButtonProps> {
-  children: React.ReactChild
+  children: React.ReactNode
 }
 
 const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
@@ -33,10 +23,24 @@ const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
   ...rest
 }: ButtonAsLinkProps) => {
   const href = rest.disabled ? '' : url
+
+  const props = {
+    $inverted: inverted,
+    size,
+    ...rest,
+  }
+
+  if (isExternalURL(href)) {
+    return (
+      <S.ExternalLink href={href} {...props}>
+        {children}
+      </S.ExternalLink>
+    )
+  }
   return (
-    <StyledLink inverted={inverted} size={size} {...rest} to={href}>
+    <S.InternalLink to={href} {...props}>
       {children}
-    </StyledLink>
+    </S.InternalLink>
   )
 }
 
