@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Heading4 } from 'components/typography'
 
 export const Card = styled.div`
   display: flex;
@@ -57,9 +58,8 @@ export const Content = styled.div`
   margin: ${({ theme }) => theme.space.lg}px;
 `
 
-export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.md}px;
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+export const Title = styled(Heading4)`
+  margin-bottom: 9px;
 `
 
 export const TagList = styled.ul`
@@ -83,5 +83,6 @@ export const Tag = styled.li`
 `
 
 export const Description = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.base}px;
   flex-grow: 1;
 `

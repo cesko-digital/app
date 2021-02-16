@@ -5,6 +5,7 @@ declare module 'styled-components' {
     borderRadius: {
       none: number
       base: number
+      small: number
     }
     borderWidth: {
       none: number
@@ -72,6 +73,7 @@ declare module 'styled-components' {
       button: number
     }
     lineHeights: {
+      text: number
       body: number
       heading: number
       button: number

@@ -5,6 +5,7 @@ import { OurValues } from './sections'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { Heading1, Body } from 'components/typography'
 
 const IndexPage: React.FC = () => {
   const { t } = useTranslation()
@@ -14,8 +15,8 @@ const IndexPage: React.FC = () => {
     <Layout>
       <Section>
         <SectionContent>
-          <h1>{t('someTranslation')}</h1>
-          <p>{t('nested.firstTranslation')}</p>
+          <Heading1>{t('someTranslation')}</Heading1>
+          <Body>{t('nested.firstTranslation')}</Body>
         </SectionContent>
       </Section>
 
