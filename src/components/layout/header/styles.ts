@@ -1,7 +1,8 @@
-import { Link } from 'components/links/link/styles'
+import { InternalLink, ExternalLink } from 'components/links/link/styles'
 import styled from 'styled-components'
 import logo from 'images/logo.svg'
 import mobileLogo from 'images/logo-mobile.svg'
+import { ButtonAsLink } from 'components/links'
 
 export const Container = styled.div`
   display: flex;
@@ -20,6 +21,12 @@ export const Logo = styled.div`
     background-size: contain;
     width: 32px;
   }
+`
+
+export const HeaderButton = styled(ButtonAsLink)`
+  height: 44px;
+  padding: 0 24px;
+  font-size: ${({ theme }) => theme.fontSizes.small}px;
 `
 
 export const DesktopLinksContainer = styled.div`
@@ -58,7 +65,7 @@ export const MobileMenu = styled.div`
     background: rgba(255, 255, 255, 0.9);
   }
 
-  > ${Link} {
+  > ${InternalLink}, ${ExternalLink} {
     display: grid;
     justify-self: stretch;
     height: 48px;
