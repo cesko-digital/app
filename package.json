@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.6",
-    "@mdx-js/react": "^1.6.6",
+    "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.11.1",
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
