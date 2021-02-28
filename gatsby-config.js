@@ -64,6 +64,17 @@ module.exports = {
         i18nextOptions: {
           defaultNS: 'translation',
         },
+        pages: [
+          {
+            matchPath: '/projekty/:uid',
+            languages: ['cs'],
+          },
+          {
+            matchPath: '/:lang?/projects/:uid',
+            getLanguageFromPath: true,
+            languages: ['en'],
+          },
+        ],
       },
     },
     {

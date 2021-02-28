@@ -4,7 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require('path'); // eslint-disable-line
+const path = require('path') // eslint-disable-line
+const { onCreatePage, createPages } = require('./gatsby-utils/gatsby-node') // eslint-disable-line
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -13,3 +14,5 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   })
 }
+exports.createPages = createPages
+exports.onCreatePage = onCreatePage
