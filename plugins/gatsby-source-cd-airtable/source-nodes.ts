@@ -17,6 +17,17 @@ export const sourceNodes = async (
 ): Promise<void> => {
   const createTagSourceNodes = createTagNodesFactory(sourceNodesArgs)
   const createProjectSourceNodes = createProjectNodesFactory(sourceNodesArgs)
+
+  // For Cypress tests, yarn develop fails with NODE_ENV=test
+  if (process.env.USE_MOCKS) {
+    sourceNodesArgs.reporter.warn(
+      'Mock data ENV var enabled. Using internal mock data instead.'
+    )
+    createTagSourceNodes(getMockTags())
+    createProjectSourceNodes(getMockProjects())
+    return
+  }
+
   try {
     const [airTableTags, airtableProjects] = await Promise.all([
       loadData<AirTableProject>(options.tagsTableName),
