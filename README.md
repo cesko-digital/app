@@ -34,6 +34,15 @@ Zdroje pro nový web Česko.Digital, na kterém se pracuje. Zdroje pro starou ve
     ```
 
     Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj.
+    Na [localhost:8000/___graphql](http://localhost:8000/___graphql) by měl běžet lokální GraphQL playground pro datové query.
+    
+    Komponenty využívají typy generované na základě GraphQL schéma. Při změně schéma je nutné vygenerovat nové:
+
+    ```shell script
+    yarn gen:types
+    ```
+    
+    Tento příkaz zároveň vygeneruje soubor [schema.graphql](./schema.graphql), který lze využít pro [IDE podporu](https://plugins.jetbrains.com/plugin/8097-js-graphql) pro datové query. 
 
 ## Překlady
 
