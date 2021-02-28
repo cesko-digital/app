@@ -1,4 +1,5 @@
 import { mapTags } from '../map-tags'
+import { Tag } from 'generated/graphql-types'
 
 describe('map-tags', () => {
   it('should returned hashed slugs from Tags', () => {
@@ -22,7 +23,7 @@ describe('map-tags', () => {
           name: 'React',
           lang: 'cs',
         },
-      ])
+      ] as Tag[])
     ).toStrictEqual(['js', 'html', 'react'])
   })
 })

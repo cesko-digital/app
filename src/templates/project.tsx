@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { graphql } from 'gatsby'
 import { Heading1 } from 'components/typography'
-import { Project } from 'pages/projects'
+import { Project } from 'generated/graphql-types'
 
 interface ProjectPageProps {
   data: {

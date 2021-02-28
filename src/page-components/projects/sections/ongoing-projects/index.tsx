@@ -1,8 +1,8 @@
 import React from 'react'
 import ProjectCard from 'components/cards/project'
 import styled from 'styled-components'
-import { Project } from 'pages/projects'
 import { mapTags } from 'utils/map-tags'
+import { Project } from 'generated/graphql-types'
 
 interface Props {
   projects: Omit<Project, 'lang' | 'highlighted'>[]

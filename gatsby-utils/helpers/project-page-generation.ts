@@ -1,13 +1,8 @@
 import { CreatePagesArgs, CreatePageArgs } from 'gatsby'
 import path from 'path'
+import { Project } from '../../src/generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project.tsx'
-
-interface Project {
-  lang: string
-  id: string
-  slug: string
-}
 
 export const getProjectUrl = (node: Project) => {
   if (node.lang === 'cs') {

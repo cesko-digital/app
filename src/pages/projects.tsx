@@ -1,22 +1,4 @@
 import { graphql } from 'gatsby'
-export interface Tag {
-  rowId: string
-  name: string
-  slug: string
-  lang: string
-}
-
-export interface Project {
-  rowId: string
-  name: string
-  tagline: string
-  lang: string
-  slug: string
-  coverUrl: string
-  logoUrl: string
-  highlighted: boolean
-  tags: Tag[]
-}
 
 // Page query needs to be in 'pages' directory
 export const query = graphql`
