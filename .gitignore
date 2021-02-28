@@ -59,6 +59,7 @@ typings/
 .cache/
 public
 storybook-static
+schema.graphql
 
 # Mac files
 .DS_Store
