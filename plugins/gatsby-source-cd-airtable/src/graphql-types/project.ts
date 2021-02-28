@@ -14,6 +14,6 @@ export const Project = `
     coverUrl: String!
     logoUrl: String!
     highlighted: Boolean!
-    tags: [Tag]
+    tags: [Tag!]!
   }
 `

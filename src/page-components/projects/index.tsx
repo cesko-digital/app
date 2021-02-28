@@ -3,9 +3,9 @@ import { Layout, Section, SectionContent } from 'components/layout'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { HighlightedProject, OngoingProjects } from './sections'
 import { JoinUs } from 'components/sections'
-import { Project } from 'pages/projects'
 import * as S from './styles'
 import { mapTags } from 'utils/map-tags'
+import { Project } from 'generated/graphql-types'
 
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {

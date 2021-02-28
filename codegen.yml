@@ -1,0 +1,18 @@
+schema: http://localhost:8000/___graphql
+generates:
+  ./src/generated/graphql-types.ts:
+    plugins:
+      - typescript
+      - add:
+          content: >
+            /**
+             * THIS IS GENERATED FILE. DO NOT MODIFY IT DIRECTLY, RUN 'yarn gen:types' INSTEAD.
+             */
+
+            /* eslint-disable */
+    config:
+      namingConvention:
+        enumValues: keep # To avoid key duplicates
+  ./schema.graphql:
+    plugins:
+      - schema-ast
