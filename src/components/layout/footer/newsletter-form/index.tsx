@@ -47,8 +47,26 @@ export const useNewsletterForm = ({
   }
 }
 
-export const onSubmitNewsletterForm = (values: NewsletterFormValues): void => {
-  alert(JSON.stringify(values, null, 2))
+export const onSubmitNewsletterForm = async (
+  values: NewsletterFormValues
+): Promise<void> => {
+  try {
+    const apiResponse = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (apiResponse.ok) {
+      alert('TODO: Success')
+    } else {
+      alert('TODO: Error')
+    }
+  } catch (error) {
+    alert('TODO: Error')
+  }
 }
 
 const Newsletter: React.FC = () => {
