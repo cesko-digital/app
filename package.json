@@ -13,7 +13,7 @@
     "clean": "gatsby clean",
     "gen:types": "graphql-codegen --config codegen.yml",
     "translations:get": "ts-node ./scripts/get-translations && yarn clean",
-    "translations:mock": "cp ./locale/translation.example.json ./locale/en/translation.json && cp ./locale/translation.example.json ./locale/cs/translation.json",
+    "translations:mock": "cp ./locale/translation.example.json ./locale/en/translation.json && cp ./locale/translation.example.json ./locale/cs/translation.json && yarn clean",
     "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "type-check": "tsc --noEmit",
     "lint": "eslint \"./{api,src,stories,scripts,plugins}/**/*.{ts,tsx,js,jsx}\"",
