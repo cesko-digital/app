@@ -46,7 +46,7 @@ Zdroje pro nový web Česko.Digital, na kterém se pracuje. Zdroje pro starou ve
 
 ## Překlady
 
-[Dokumentace](./doc/translations.md)
+Projekt má všechny [texty v AirTable](https://airtable.com/shraCQhMJdGUu1xhk) kvůli překladům. Detailní dokumentace je k nalezení [zde](docs/translations.md).
 
 ## ⌨️ Základní příkazy
 
