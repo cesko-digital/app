@@ -1648,7 +1648,6 @@ export type Project = Node & {
   lead: Volunteer;
   projectRoles: Array<ProjectRole>;
   rowId?: Maybe<Scalars['String']>;
-  volunteers?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1749,6 +1748,7 @@ export enum ProjectFieldsEnum {
   lead___profilePictureUrl = 'lead___profilePictureUrl',
   lead___rowId = 'lead___rowId',
   lead___NewProjects = 'lead___NewProjects',
+  lead___NewProjects_copy = 'lead___NewProjects_copy',
   lead___ProjectRoles = 'lead___ProjectRoles',
   lead___id = 'lead___id',
   lead___parent___id = 'lead___parent___id',
@@ -1795,6 +1795,7 @@ export enum ProjectFieldsEnum {
   projectRoles___volunteer___profilePictureUrl = 'projectRoles___volunteer___profilePictureUrl',
   projectRoles___volunteer___rowId = 'projectRoles___volunteer___rowId',
   projectRoles___volunteer___NewProjects = 'projectRoles___volunteer___NewProjects',
+  projectRoles___volunteer___NewProjects_copy = 'projectRoles___volunteer___NewProjects_copy',
   projectRoles___volunteer___ProjectRoles = 'projectRoles___volunteer___ProjectRoles',
   projectRoles___volunteer___id = 'projectRoles___volunteer___id',
   projectRoles___volunteer___parent___id = 'projectRoles___volunteer___parent___id',
@@ -1852,7 +1853,6 @@ export enum ProjectFieldsEnum {
   projectRoles___internal___owner = 'projectRoles___internal___owner',
   projectRoles___internal___type = 'projectRoles___internal___type',
   rowId = 'rowId',
-  volunteers = 'volunteers',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -1961,7 +1961,6 @@ export type ProjectFilterInput = {
   lead?: Maybe<VolunteerFilterInput>;
   projectRoles?: Maybe<ProjectRoleFilterListInput>;
   rowId?: Maybe<StringQueryOperatorInput>;
-  volunteers?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2026,6 +2025,7 @@ export enum ProjectRoleFieldsEnum {
   volunteer___profilePictureUrl = 'volunteer___profilePictureUrl',
   volunteer___rowId = 'volunteer___rowId',
   volunteer___NewProjects = 'volunteer___NewProjects',
+  volunteer___NewProjects_copy = 'volunteer___NewProjects_copy',
   volunteer___ProjectRoles = 'volunteer___ProjectRoles',
   volunteer___id = 'volunteer___id',
   volunteer___parent___id = 'volunteer___parent___id',
@@ -2397,6 +2397,7 @@ export type QueryVolunteerArgs = {
   profilePictureUrl?: Maybe<StringQueryOperatorInput>;
   rowId?: Maybe<StringQueryOperatorInput>;
   NewProjects?: Maybe<StringQueryOperatorInput>;
+  NewProjects_copy?: Maybe<StringQueryOperatorInput>;
   ProjectRoles?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2473,7 +2474,6 @@ export type QueryProjectArgs = {
   lead?: Maybe<VolunteerFilterInput>;
   projectRoles?: Maybe<ProjectRoleFilterListInput>;
   rowId?: Maybe<StringQueryOperatorInput>;
-  volunteers?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3954,7 +3954,8 @@ export type Volunteer = Node & {
   email: Scalars['String'];
   profilePictureUrl?: Maybe<Scalars['String']>;
   rowId?: Maybe<Scalars['String']>;
-  NewProjects?: Maybe<Array<Maybe<Scalars['String']>>>;
+  NewProjects?: Maybe<Scalars['String']>;
+  NewProjects_copy?: Maybe<Array<Maybe<Scalars['String']>>>;
   ProjectRoles?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -3998,6 +3999,7 @@ export enum VolunteerFieldsEnum {
   profilePictureUrl = 'profilePictureUrl',
   rowId = 'rowId',
   NewProjects = 'NewProjects',
+  NewProjects_copy = 'NewProjects_copy',
   ProjectRoles = 'ProjectRoles',
   id = 'id',
   parent___id = 'parent___id',
@@ -4094,6 +4096,7 @@ export type VolunteerFilterInput = {
   profilePictureUrl?: Maybe<StringQueryOperatorInput>;
   rowId?: Maybe<StringQueryOperatorInput>;
   NewProjects?: Maybe<StringQueryOperatorInput>;
+  NewProjects_copy?: Maybe<StringQueryOperatorInput>;
   ProjectRoles?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;

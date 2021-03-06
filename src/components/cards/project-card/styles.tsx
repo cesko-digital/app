@@ -9,7 +9,7 @@ export const Card = styled.div`
   background-color: white;
 
   border-radius: ${({ theme }) => theme.borderRadius.base}px;
-  border: 2px solid ${({ theme }) => theme.colors.pebble};
+  border: 2px solid ${({ theme }) => theme.colors.lightGray};
   overflow: hidden;
 `
 

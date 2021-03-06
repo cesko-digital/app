@@ -1,5 +1,5 @@
 import React from 'react'
-import ProjectCard from 'components/cards/project'
+import { ProjectCard } from 'components/cards'
 import styled from 'styled-components'
 import { mapTags } from 'utils/map-tags'
 import { Project } from 'generated/graphql-types'

@@ -8,9 +8,10 @@ export interface SectionContentProps {
 }
 
 const Container = styled.div<SectionContentProps>`
-  max-width: 1160px;
-  padding: ${({ verticalPadding = 20 }) => verticalPadding}px
-    ${({ horizontalPadding = 20 }) => horizontalPadding}px;
+  max-width: ${({ theme }) => theme.contentSize}px;
+  padding: ${({ theme, verticalPadding = theme.space.outer }) =>
+      verticalPadding}px
+    ${({ theme, horizontalPadding = theme.space.outer }) => horizontalPadding}px;
   margin: auto;
 `
 
