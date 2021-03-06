@@ -57,6 +57,7 @@ export const defaultTheme: DefaultTheme = {
     small: 4,
     base: 8,
     md: 16,
+    outer: 20,
     lg: 32,
     xl: 64,
     xxl: 128,
