@@ -58,6 +58,7 @@ declare module 'styled-components' {
       xxl: number
       xl: number
       lg: number
+      outer: number
       md: number
       base: number
       small: number

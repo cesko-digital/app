@@ -1,15 +1,25 @@
 import { Layout, Section, SectionContent } from 'components/layout'
 import { Link } from 'components/links'
-import { JoinUs } from 'components/sections'
+import { JoinUs, Projects } from 'components/sections'
 import { OurValues, Numbers } from './sections'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Heading1, Body } from 'components/typography'
+import { Project } from 'generated/graphql-types'
 
-const IndexPage: React.FC = () => {
+interface IndexPageProps {
+  data: {
+    projects: {
+      nodes: Project[]
+    }
+  }
+}
+
+const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
   const { t } = useTranslation()
   const theme = useContext(ThemeContext)
+  const projects = data.projects.nodes
 
   return (
     <Layout>
@@ -23,6 +33,12 @@ const IndexPage: React.FC = () => {
       <Section backgroundColor={theme.colors.pebble}>
         <SectionContent verticalPadding={70}>
           <Numbers />
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <Projects projects={projects} />
         </SectionContent>
       </Section>
 

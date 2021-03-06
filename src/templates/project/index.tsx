@@ -9,10 +9,14 @@ import ProjectCard from './components/project-card'
 import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { mapVolunteers } from 'utils/map-volunteers'
+import { Projects } from '../../components/sections'
 
 interface ProjectPageProps {
   data: {
     project: Project
+    otherProjects: {
+      nodes: Project[]
+    }
   }
 }
 
@@ -31,6 +35,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     slackChannelUrl,
     slackChannelName,
   } = data.project
+  const otherProjects = data.otherProjects.nodes
   return (
     <Layout
       crumbs={[
@@ -69,12 +74,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
           </S.AboutSectionWrapper>
         </SectionContent>
       </Section>
+      <Section>
+        <SectionContent>
+          <Projects projects={otherProjects} otherProjects={true} />
+        </SectionContent>
+      </Section>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $locale: String!) {
     project(id: { eq: $id }) {
       name
       lang
@@ -97,6 +107,22 @@ export const query = graphql`
       githubUrl
       trelloUrl
       url
+    }
+    otherProjects: allProject(
+      filter: { id: { ne: $id }, lang: { eq: $locale } }
+      limit: 3
+    ) {
+      nodes {
+        name
+        tagline
+        coverUrl
+        logoUrl
+        slug
+        tags {
+          name
+          slug
+        }
+      }
     }
   }
 `
