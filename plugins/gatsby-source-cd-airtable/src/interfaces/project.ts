@@ -11,6 +11,18 @@ export interface Tag extends SourceNode {
   lang: Language
 }
 
+export interface Volunteer extends SourceNode {
+  name: string
+  profilePictureUrl?: string
+  email: string
+  company: string
+}
+export interface ProjectRole extends SourceNode {
+  name: string
+  volunteer: string
+  lang: Language
+}
+
 export interface Project extends SourceNode {
   name: string
   tagline: string
@@ -20,4 +32,12 @@ export interface Project extends SourceNode {
   logoUrl: string
   highlighted: boolean
   tags: string[]
+  description: string
+  progress: number
+  contributeText: string
+  trelloUrl?: string
+  githubUrl?: string
+  url: string
+  lead: string
+  projectRoles: string[]
 }

@@ -5,7 +5,7 @@ import * as S from './styles'
 export interface Volunteer {
   name: string
   role: string
-  profilePictureUrl?: string
+  profilePictureUrl?: string | null
 }
 
 interface Props {
