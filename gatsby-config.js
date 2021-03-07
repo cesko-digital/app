@@ -92,8 +92,10 @@ module.exports = {
     {
       resolve: `gatsby-source-cd-airtable`,
       options: {
-        projectsTableName: 'NewProjects',
+        projectsTableName: 'Projects',
         tagsTableName: 'Tags',
+        volunteersTableName: 'Volunteers',
+        projectRolesTableName: 'ProjectRoles',
       },
     },
   ],
