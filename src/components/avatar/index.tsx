@@ -4,7 +4,7 @@ import * as S from './styles'
 export interface Props {
   title: string
   subtitle: string
-  pictureUrl?: string
+  pictureUrl?: string | null
 }
 
 export const Avatar: React.FC<Props> = ({ title, subtitle, pictureUrl }) => {
