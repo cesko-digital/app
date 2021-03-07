@@ -11,10 +11,10 @@ import { ButtonAsLink } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 interface ProjectCardProps {
-  slackChannelUrl: string
-  slackChannelName: string
-  trelloUrl: string
-  githubUrl: string
+  slackChannelUrl?: string | null
+  slackChannelName?: string | null
+  trelloUrl?: string | null
+  githubUrl?: string | null
   url: string
   projectLead: ProjectLeadProps
   name: string
