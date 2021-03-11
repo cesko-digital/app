@@ -2967,8 +2967,8 @@ export type SitePageContextI18nFilterInput = {
 
 export type SitePageContextI18nResources = {
   __typename?: 'SitePageContextI18nResources';
-  en: Maybe<SitePageContextI18nResourcesEn>;
   cs: Maybe<SitePageContextI18nResourcesCs>;
+  en: Maybe<SitePageContextI18nResourcesEn>;
 };
 
 export type SitePageContextI18nResourcesCs = {
@@ -3060,8 +3060,8 @@ export type SitePageContextI18nResourcesEnTranslationNestedFilterInput = {
 };
 
 export type SitePageContextI18nResourcesFilterInput = {
-  en: Maybe<SitePageContextI18nResourcesEnFilterInput>;
   cs: Maybe<SitePageContextI18nResourcesCsFilterInput>;
+  en: Maybe<SitePageContextI18nResourcesEnFilterInput>;
 };
 
 export type SitePageEdge = {
@@ -4204,7 +4204,7 @@ export type ProjectPageQuery = (
   { __typename?: 'Query' }
   & { project: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'progress' | 'githubUrl' | 'trelloUrl' | 'url'>
+    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'progress' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url'>
     & { projectRoles: Array<(
       { __typename?: 'ProjectRole' }
       & Pick<ProjectRole, 'name'>

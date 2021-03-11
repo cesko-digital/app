@@ -18,11 +18,12 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
   const { t } = useTranslation()
   const {
-    lang,
     name,
     url,
     trelloUrl,
     githubUrl,
+    coverUrl,
+    tagline,
     projectRoles,
     lead,
     progress,
@@ -40,9 +41,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     >
       <Section>
         <SectionContent>
-          <Heading1>
-            Hello, I am {name} in {lang === 'en' ? '🇺🇸' : '🇨🇿'}
-          </Heading1>
+          <Heading1>{name}</Heading1>
+          <S.Tagline>{tagline}</S.Tagline>
+          <S.CoverImageWrapper>
+            <S.CoverImage src={coverUrl} loading="lazy" />
+          </S.CoverImageWrapper>
         </SectionContent>
       </Section>
       <Section>
@@ -87,6 +90,8 @@ export const query = graphql`
       slackChannelName
       slackChannelUrl
       progress
+      tagline
+      coverUrl
       githubUrl
       trelloUrl
       url
