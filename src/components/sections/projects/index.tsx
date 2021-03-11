@@ -2,14 +2,15 @@ import React from 'react'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 import * as S from './styles'
-import { Project } from 'generated/graphql-types'
+import { Project, Tag } from 'generated/graphql-types'
 import { mapTags } from 'utils/map-tags'
 
 export interface ProjectsProps {
-  projects: Pick<
-    Project,
-    'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'tags'
-  >[]
+  projects: Array<
+    Pick<Project, 'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl'> & {
+      tags: Pick<Tag, 'slug'>[]
+    }
+  >
   otherProjects?: boolean
 }
 
