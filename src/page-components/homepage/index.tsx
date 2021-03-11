@@ -6,14 +6,10 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Heading1, Body } from 'components/typography'
-import { Project } from 'generated/graphql-types'
+import { HomepageQuery } from 'generated/graphql-types'
 
 interface IndexPageProps {
-  data: {
-    projects: {
-      nodes: Project[]
-    }
-  }
+  data: HomepageQuery
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {

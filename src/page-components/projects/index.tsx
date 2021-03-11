@@ -5,16 +5,11 @@ import { HighlightedProject, OngoingProjects } from './sections'
 import { JoinUs } from 'components/sections'
 import * as S from './styles'
 import { mapTags } from 'utils/map-tags'
-import { Project } from 'generated/graphql-types'
+import { ProjectsPageQuery } from 'generated/graphql-types'
 
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {
-  data: {
-    otherProjects: {
-      nodes: Project[]
-    }
-    highlightedProject?: Project | null
-  }
+  data: ProjectsPageQuery
 }
 
 export const NAVIGATION_KEY = 'pages.projects.navigation.projects'

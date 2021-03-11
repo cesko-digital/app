@@ -1,8 +1,11 @@
 schema: http://localhost:8000/___graphql
+documents:
+  - ./src/**/*.{ts,tsx}
 generates:
   ./src/generated/graphql-types.ts:
     plugins:
       - typescript
+      - typescript-operations
       - add:
           content: >
             /**
@@ -11,6 +14,8 @@ generates:
 
             /* eslint-disable */
     config:
+      avoidOptionals: true
+      maybeValue: T
       namingConvention:
         enumValues: keep # To avoid key duplicates
   ./schema.graphql:
