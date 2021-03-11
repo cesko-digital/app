@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { graphql } from 'gatsby'
 import { Heading1 } from 'components/typography'
-import { Project } from 'generated/graphql-types'
+import { ProjectPageQuery } from 'generated/graphql-types'
 import AboutProject from './components/about'
 import * as S from './styles'
 import ProjectCard from './components/project-card'
@@ -12,12 +12,7 @@ import { mapVolunteers } from 'utils/map-volunteers'
 import { Projects } from '../../components/sections'
 
 interface ProjectPageProps {
-  data: {
-    project: Project
-    otherProjects: {
-      nodes: Project[]
-    }
-  }
+  data: ProjectPageQuery
 }
 
 const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
@@ -84,11 +79,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
 }
 
 export const query = graphql`
-  query($id: String!, $locale: String!) {
+  query ProjectPage($id: String!, $locale: String!) {
     project(id: { eq: $id }) {
       name
       lang
       description
+      slackChannelName
+      slackChannelUrl
+      progress
+      githubUrl
+      trelloUrl
+      url
       projectRoles {
         name
         volunteer {
@@ -101,12 +102,6 @@ export const query = graphql`
         company
         profilePictureUrl
       }
-      slackChannelName
-      slackChannelUrl
-      progress
-      githubUrl
-      trelloUrl
-      url
     }
     otherProjects: allProject(
       filter: { id: { ne: $id }, lang: { eq: $locale } }
