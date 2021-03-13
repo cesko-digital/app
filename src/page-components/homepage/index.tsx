@@ -1,11 +1,10 @@
 import { Layout, Section, SectionContent } from 'components/layout'
 import { Link } from 'components/links'
 import { JoinUs } from 'components/sections'
-import { OurValues, Numbers } from './sections'
+import { Hero, OurValues, Numbers } from './sections'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Heading1, Body } from 'components/typography'
 
 const IndexPage: React.FC = () => {
   const { t } = useTranslation()
@@ -14,10 +13,7 @@ const IndexPage: React.FC = () => {
   return (
     <Layout>
       <Section>
-        <SectionContent>
-          <Heading1>{t('someTranslation')}</Heading1>
-          <Body>{t('nested.firstTranslation')}</Body>
-        </SectionContent>
+          <Hero />
       </Section>
 
       <Section backgroundColor={theme.colors.pebble}>
