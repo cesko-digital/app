@@ -20,8 +20,6 @@ export const ShiftedButton = styled(ButtonAsLink)`
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-left: 0;
     margin-top: 10px;
-    display: flex;
-    width: intrinsic;
   }
 `
 
@@ -77,22 +75,23 @@ export const image1 = styled.div`
   }
 `
 
-export const image2 = styled.div`
-  background-image: url('${heroImg2}');
-  background-repeat: no-repeat;
+export const Circle = styled.div`
+  background: #fff6a3;
+  border-radius: 50%;
   width: 30px;
   height: 30px;
-  position: absolute;
-  top: calc(${({ theme }) => theme.space.xxl}px + 135px);
-  left: 150px;
 
-  @media (max-width: 1600px) {
-    top: 80px;
+  position: absolute;
+  top: 160px;
+  left: -74px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    top: -20px;
     left: 20px;
   }
 `
 
-export const image3 = styled.div`
+export const CountryImage = styled.div`
   background-image: url('${heroImg3}');
   background-repeat: no-repeat;
   width: 200px;
@@ -100,7 +99,6 @@ export const image3 = styled.div`
   position: absolute;
   left: 50%;
   top: 560px;
-  z-index: 200;
 
   display: block;
   
@@ -151,9 +149,12 @@ export const CzechiaMap = styled(CzechiaMapArrows)`
 
 export const CzechiaMapMobile = styled(CzechiaMapArrows)`
   position: absolute;
-  bottom: 0;
-  right: -400px;
+  bottom: -80px;
+  right: -500px;
+  left: 50%;
   display: none;
+  width: 700px;
+  height: 400px;
   z-index: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
@@ -162,5 +163,5 @@ export const CzechiaMapMobile = styled(CzechiaMapArrows)`
 `
 
 export const Section = styled(SectionContent)`
-  position: static;
+  position: relative;
 `
