@@ -1,4 +1,12 @@
 import styled, { css } from 'styled-components'
+import { Section } from 'components/layout'
+
+export const CustomSection = styled(Section)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    position: relative;
+    z-index: 5;
+  }
+`
 
 export const Wrapper = styled.div`
   display: grid;
