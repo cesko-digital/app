@@ -12,7 +12,6 @@ interface StyledProps extends SectionProps {
 }
 
 const Container = styled.section<StyledProps>`
-  overflow: auto;
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.colors.white};
 `
