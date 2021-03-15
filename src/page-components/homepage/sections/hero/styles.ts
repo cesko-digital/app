@@ -91,14 +91,14 @@ export const Circle = styled.div`
   }
 `
 
-export const CountryImage = styled.div`
+export const Image3 = styled.div`
   background-image: url('${heroImg3}');
   background-repeat: no-repeat;
   width: 200px;
   height: 200px;
   position: absolute;
   left: 50%;
-  top: 560px;
+  top: 460px;
 
   display: block;
   
