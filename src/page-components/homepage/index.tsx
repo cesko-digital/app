@@ -16,11 +16,7 @@ const IndexPage: React.FC = () => {
           <Hero />
       </Section>
 
-      <Section backgroundColor={theme.colors.pebble}>
-        <SectionContent verticalPadding={70}>
-          <Numbers />
-        </SectionContent>
-      </Section>
+      <Numbers />
 
       <Section>
         <SectionContent>
