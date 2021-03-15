@@ -59,8 +59,3 @@ export const Description = styled(Body)`
     margin: 7px 0 18px;
   }
 `
-export const ButtonLabel = styled.span`
-  display: inline-flex;
-  margin-left: 10px;
-  color: ${({ theme }) => theme.colors.darkGrey};
-`

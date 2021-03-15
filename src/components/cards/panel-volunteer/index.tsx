@@ -1,7 +1,6 @@
 import * as React from 'react'
-import ButtonAsLink from 'components/links/button-as-link'
-import { SlackIcon } from 'components/icons'
 import volunteer from 'images/volunteer.jpg'
+import { SlackButton } from 'components/buttons'
 
 import * as S from './styles'
 
@@ -10,6 +9,7 @@ interface Volunteer {
   description: string
   cover: string
   slackLink: string
+  slackText: string
 }
 
 const PanelVolunteer: React.FC = () => {
@@ -19,6 +19,7 @@ const PanelVolunteer: React.FC = () => {
       'Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.',
     cover: volunteer,
     slackLink: 'https://cesko-digital.slack.com/archives/CHG9NA23D',
+    slackText: 'Přidat se do Slacku',
   }
   return (
     <S.Wrapper>
@@ -28,11 +29,7 @@ const PanelVolunteer: React.FC = () => {
       <S.Content>
         <S.Title>{t.title}</S.Title>
         <S.Description>{t.description}</S.Description>
-        <ButtonAsLink inverted to={t.slackLink}>
-          <>
-            <SlackIcon /> <S.ButtonLabel>Přidat se do Slacku</S.ButtonLabel>
-          </>
-        </ButtonAsLink>
+        <SlackButton slackLink={t.slackLink} slackText={t.slackText} />
       </S.Content>
     </S.Wrapper>
   )
