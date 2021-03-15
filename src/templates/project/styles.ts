@@ -46,3 +46,11 @@ export const CoverImage = styled.img`
   width: 100%;
   max-height: 560px;
 `
+export const ContributeWrapper = styled.div`
+  margin: 30px 0;
+  display: flex;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin: 100px 0;
+  }
+`
