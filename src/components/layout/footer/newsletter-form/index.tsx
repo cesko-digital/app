@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik, FormikProps } from 'formik'
 import * as S from './styles'
 import { validateFormFactory } from './validations'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 export interface NewsletterFormValues {
   email: string
@@ -52,25 +53,14 @@ export const onSubmitNewsletterForm = (values: NewsletterFormValues): void => {
 }
 
 const Newsletter: React.FC = () => {
-  const t = {
-    headings: {
-      newsletter: 'Newsletter',
-    },
-    newsletter: {
-      note:
-        'Chcete vědět, na čem pracujeme? Jednou za měsíc shrneme, co se v komunitě událo a co chystáme.',
-      inputPlaceholder: 'Zadejte e-mail',
-      inputErr: 'Zadejte prosím validní e-mailovou adresu.',
-      subscribe: 'Odebírat',
-    },
-  }
+  const { t } = useTranslation()
 
   const form = useNewsletterForm({
     onSubmit: onSubmitNewsletterForm,
     errorMessages: {
       email: {
-        invalid: t.newsletter.inputErr,
-        required: t.newsletter.inputPlaceholder,
+        invalid: t('components.sections.footer.newsletter.inputError'),
+        required: t('components.sections.footer.newsletter.inputPlaceholder'),
       },
     },
   })
@@ -80,21 +70,25 @@ const Newsletter: React.FC = () => {
   return (
     <S.Container>
       <S.Icon />
-      <S.Heading>{t.headings.newsletter}</S.Heading>
-      <S.Info>{t.newsletter.note}</S.Info>
+      <S.Heading>{t('components.sections.footer.newsletter.title')}</S.Heading>
+      <S.Info>{t('components.sections.footer.newsletter.note')}</S.Info>
       <S.Form onSubmit={form.handleSubmit}>
         <S.FormControl>
           <S.Input
             dark={true}
             name="email"
-            placeholder={t.newsletter.inputPlaceholder}
+            placeholder={t(
+              'components.sections.footer.newsletter.inputPlaceholder'
+            )}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
             value={form.values.email}
             invalid={emailInvalid}
           />
         </S.FormControl>
-        <S.Button type="submit">{t.newsletter.subscribe}</S.Button>
+        <S.Button type="submit">
+          {t('components.sections.footer.newsletter.subscribe')}
+        </S.Button>
         {emailInvalid && <S.ErrorMessage>{form.errors.email}</S.ErrorMessage>}
       </S.Form>
     </S.Container>
