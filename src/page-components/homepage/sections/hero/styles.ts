@@ -18,6 +18,8 @@ export const ShiftedButton = styled(ButtonAsLink)`
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-left: 0;
     margin-top: 10px;
+    display: flex;
+    width: max-content;
   }
 `
 
