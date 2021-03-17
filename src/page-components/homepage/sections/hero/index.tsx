@@ -42,19 +42,21 @@ const Hero: React.FC = () => {
               {t(`${HEADER_TRANSLATION_KEY}.${TranslationKeyPrefix.SignUp}`)}
             </S.ShiftedButton>
 
-            <S.image1 />
+            <S.HeroPersonTopCircleImage />
           </S.Content>
         </S.Card>
-
         <S.Card>
           <S.CzechiaMap />
-          <S.image4 />
-          <S.image5 />
+          <S.HeroTeamCircleImage />
+          <S.CircleRight>
+            <S.Circle color="#080831" />
+          </S.CircleRight>
         </S.Card>
       </S.Container>
-
-      <S.Circle />
-      <S.Image3 />
+      <S.CircleLeft>
+        <S.Circle color="#fff6a3" />
+      </S.CircleLeft>
+      <S.HeroPersonBottomCircleImage />
       <S.CzechiaMapMobile />
     </S.Section>
   )

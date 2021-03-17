@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import * as S from './styles'
-import { Section, SectionContent } from 'components/layout'
+import { SectionContent } from 'components/layout'
 import { ThemeContext } from 'styled-components'
 
 const HOMEPAGE_TRANSLATION_KEY = `pages.homepage`

@@ -1,11 +1,9 @@
 import { Body } from 'components/typography'
 import ButtonAsLink from 'components/links/button-as-link'
-import styled from 'styled-components'
+import styled, { css, CssWithTheme } from 'styled-components'
 import heroImg1 from 'images/hero-img-1.png'
-import heroImg2 from 'images/hero-img-2.png'
 import heroImg3 from 'images/hero-img-3.png'
 import heroImg4 from 'images/hero-img-4.png'
-import heroImg5 from 'images/hero-img-5.png'
 import CzechiaMapArrows from 'images/czechia-map-arrows'
 import { SectionContent } from 'components/layout'
 
@@ -27,25 +25,21 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: ${({ theme }) => `${theme.space.md}px ${theme.space.md}px`};
-
   height: 602px;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
     height: 530px;
   }
-
-  position: relative;
-  overflow: hidden;
 `
 
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-
   min-height: 454px;
   background-color: white;
-
   overflow: hidden;
   position: relative;
 `
@@ -60,7 +54,7 @@ export const Content = styled.div`
   }
 `
 
-export const image1 = styled.div`
+export const HeroPersonTopCircleImage = styled.div`
   background-image: url('${heroImg1}');
   background-repeat: no-repeat;
   width: 82px;
@@ -75,12 +69,27 @@ export const image1 = styled.div`
   }
 `
 
-export const Circle = styled.div`
-  background: #fff6a3;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+export interface CircleProps {
+  color: string
+}
 
+export const applyCircleStyles = ({ color }: CircleProps): CssWithTheme => {
+  return css`
+    background: ${color};
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  `
+}
+
+export const Circle = styled.div<CircleProps>`
+  ${({ color }) =>
+    applyCircleStyles({
+      color,
+    })}
+`
+
+export const CircleLeft = styled.div`
   position: absolute;
   top: 160px;
   left: -74px;
@@ -90,8 +99,17 @@ export const Circle = styled.div`
     left: 20px;
   }
 `
+export const CircleRight = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 147px;
 
-export const Image3 = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: none;
+  }
+`
+
+export const HeroPersonBottomCircleImage = styled.div`
   background-image: url('${heroImg3}');
   background-repeat: no-repeat;
   width: 200px;
@@ -99,7 +117,6 @@ export const Image3 = styled.div`
   position: absolute;
   left: 50%;
   top: 460px;
-
   display: block;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
@@ -107,7 +124,7 @@ export const Image3 = styled.div`
   }
 `
 
-export const image4 = styled.div`
+export const HeroTeamCircleImage = styled.div`
   background-image: url('${heroImg4}');
   background-repeat: no-repeat;
   width: 114px;
@@ -115,23 +132,6 @@ export const image4 = styled.div`
   position: absolute;
   left: 50%;
   top: 193px;
-
-  display: block;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: none;
-  }
-`
-
-export const image5 = styled.div`
-  background-image: url('${heroImg5}');
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 0;
-  bottom: 147px;
-
   display: block;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
