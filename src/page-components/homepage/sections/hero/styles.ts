@@ -1,15 +1,17 @@
 import { Body } from 'components/typography'
 import ButtonAsLink from 'components/links/button-as-link'
 import styled, { css, CssWithTheme } from 'styled-components'
-import heroImg1 from 'images/hero-img-1.png'
-import heroImg3 from 'images/hero-img-3.png'
-import heroImg4 from 'images/hero-img-4.png'
+import heroPersonTopCircleImage from 'images/hero-person-top-circle-image.png'
+import heroPersonBottomCircleImage from 'images/hero-person-bottom-circle-image.png'
+import heroTeamCircleImage from 'images/hero-team-circle-image.png'
 import CzechiaMapArrows from 'images/czechia-map-arrows'
 import { SectionContent } from 'components/layout'
 
 export const ShiftedBody = styled(Body)`
   margin-top: 10px;
   margin-bottom: 32px;
+  line-height: 32px
+  color:  ${({ theme }) => theme.colors.asphalt} 
 `
 
 export const ShiftedButton = styled(ButtonAsLink)`
@@ -57,7 +59,7 @@ export const Content = styled.div`
 `
 
 export const HeroPersonTopCircleImage = styled.div`
-  background-image: url('${heroImg1}');
+  background-image: url('${heroPersonTopCircleImage}');
   background-repeat: no-repeat;
   width: 82px;
   height: 82px;
@@ -112,7 +114,7 @@ export const CircleRight = styled.div`
 `
 
 export const HeroPersonBottomCircleImage = styled.div`
-  background-image: url('${heroImg3}');
+  background-image: url('${heroPersonBottomCircleImage}');
   background-repeat: no-repeat;
   width: 200px;
   height: 200px;
@@ -127,7 +129,7 @@ export const HeroPersonBottomCircleImage = styled.div`
 `
 
 export const HeroTeamCircleImage = styled.div`
-  background-image: url('${heroImg4}');
+  background-image: url('${heroTeamCircleImage}');
   background-repeat: no-repeat;
   width: 114px;
   height: 114px;
