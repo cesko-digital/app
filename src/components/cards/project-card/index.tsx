@@ -19,10 +19,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
   logo,
   link,
   tags,
+  ...rest
 }) => {
   const { t } = useTranslation()
   return (
-    <S.Card>
+    <S.Card {...rest}>
       <S.Header>
         <S.Cover
           url={cover}
@@ -41,7 +42,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           ))}
         </S.TagList>
         <S.Description>{description}</S.Description>
-        <Link to={link}>{t('cards.project.projectDetail').toString()}</Link>
+        <Link to={link}>{t('cards.project.projectDetail')}</Link>
       </S.Content>
     </S.Card>
   )

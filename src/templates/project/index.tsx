@@ -2,34 +2,38 @@ import React from 'react'
 import { Layout, Section, SectionContent } from 'components/layout'
 import { graphql } from 'gatsby'
 import { Heading1 } from 'components/typography'
-import { Project } from 'generated/graphql-types'
-import AboutProject from './components/about'
+import { ProjectPageQuery } from 'generated/graphql-types'
 import * as S from './styles'
-import { Volunteer } from './components/about/volunteers'
+import AboutProject from './components/about'
 import ProjectCard from './components/project-card'
+import Contribute from './components/contribute'
 import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { mapVolunteers } from 'utils/map-volunteers'
+import { Projects } from '../../components/sections'
 
 interface ProjectPageProps {
-  data: {
-    project: Pick<Project, 'name' | 'lang'>
-  }
+  data: ProjectPageQuery
 }
-
-const mockedVolunteers: Volunteer[] = Array.from({ length: 8 }).map(
-  (val, index) => ({
-    name: 'Eva Pavlikova',
-    role: 'Project lead',
-    profilePictureUrl:
-      Math.random() > 0.2
-        ? `https://picsum.photos/320?random=${index}`
-        : undefined,
-  })
-)
 
 const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
   const { t } = useTranslation()
-  const { lang, name } = data.project
+  const {
+    name,
+    url,
+    trelloUrl,
+    githubUrl,
+    coverUrl,
+    tagline,
+    projectRoles,
+    lead,
+    progress,
+    description,
+    slackChannelUrl,
+    slackChannelName,
+    contributeText,
+  } = data.project
+  const otherProjects = data.otherProjects.nodes
   return (
     <Layout
       crumbs={[
@@ -39,9 +43,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     >
       <Section>
         <SectionContent>
-          <Heading1>
-            Hello, I am {name} in {lang === 'en' ? '🇺🇸' : '🇨🇿'}
-          </Heading1>
+          <Heading1>{name}</Heading1>
+          <S.Tagline>{tagline}</S.Tagline>
+          <S.CoverImageWrapper>
+            <S.CoverImage src={coverUrl} loading="lazy" />
+          </S.CoverImageWrapper>
         </SectionContent>
       </Section>
       <Section>
@@ -49,30 +55,35 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
           <S.AboutSectionWrapper>
             <S.DescriptionWrapper>
               <AboutProject
-                volunteers={mockedVolunteers}
-                description={
-                  'Opensource projekt, původně z dílny Ministerstva financí ČR, přináší přehlednou vizualizaci rozpočtu obce s detailními daty až na úroveň jednotlivých faktur a otevírá tím její hospodaření.'
-                }
+                volunteers={mapVolunteers(projectRoles)}
+                description={description}
               />
             </S.DescriptionWrapper>
             <S.ProjectCardWrapper>
               <ProjectCard
-                githubUrl={'https://github.com/cesko-digital/web'}
+                githubUrl={githubUrl}
                 name={name}
-                url={'https://github.com/cesko-digital/web'}
-                progress={10}
-                projectLead={{
-                  company: 'Česko.Digital',
-                  name: 'Eva Pavlíková',
-                  profilePictureUrl:
-                    'https://picsum.photos/320?random=${index}',
-                }}
-                slackChannelName={'projekt'}
-                slackChannelUrl={'https://github.com/cesko-digital/web'}
-                trelloUrl={'https://github.com/cesko-digital/web'}
+                url={url}
+                progress={progress}
+                projectLead={lead}
+                slackChannelName={slackChannelName}
+                slackChannelUrl={slackChannelUrl}
+                trelloUrl={trelloUrl}
               />
             </S.ProjectCardWrapper>
           </S.AboutSectionWrapper>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionContent>
+          <S.ContributeWrapper>
+            <Contribute contributeText={contributeText} />
+          </S.ContributeWrapper>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionContent>
+          <Projects projects={otherProjects} otherProjects={true} />
         </SectionContent>
       </Section>
     </Layout>
@@ -80,10 +91,48 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query ProjectPage($id: String!, $locale: String!) {
     project(id: { eq: $id }) {
       name
       lang
+      description
+      slackChannelName
+      slackChannelUrl
+      progress
+      tagline
+      coverUrl
+      githubUrl
+      trelloUrl
+      url
+      contributeText
+      projectRoles {
+        name
+        volunteer {
+          name
+          profilePictureUrl
+        }
+      }
+      lead {
+        name
+        company
+        profilePictureUrl
+      }
+    }
+    otherProjects: allProject(
+      filter: { id: { ne: $id }, lang: { eq: $locale } }
+      limit: 3
+    ) {
+      nodes {
+        name
+        tagline
+        coverUrl
+        logoUrl
+        slug
+        tags {
+          name
+          slug
+        }
+      }
     }
   }
 `

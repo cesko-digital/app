@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 
 // Page query needs to be in 'pages' directory
 export const query = graphql`
-  query($locale: String!) {
+  query ProjectsPage($locale: String!) {
     highlightedProject: project(
       highlighted: { eq: true }
       lang: { eq: $locale }

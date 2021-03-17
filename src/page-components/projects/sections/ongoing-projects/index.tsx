@@ -1,11 +1,18 @@
 import React from 'react'
-import ProjectCard from 'components/cards/project'
+import { ProjectCard } from 'components/cards'
 import styled from 'styled-components'
 import { mapTags } from 'utils/map-tags'
-import { Project } from 'generated/graphql-types'
+import { Project, Tag } from 'generated/graphql-types'
 
 interface Props {
-  projects: Omit<Project, 'lang' | 'highlighted'>[]
+  projects: Array<
+    Pick<
+      Project,
+      'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'rowId'
+    > & {
+      tags: Pick<Tag, 'slug'>[]
+    }
+  >
 }
 
 export const Container = styled.div`
