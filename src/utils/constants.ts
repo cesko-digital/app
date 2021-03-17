@@ -1,0 +1,1 @@
+export const FINISHED_PROJECT_PROGRESS = 100

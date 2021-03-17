@@ -1,3 +1,5 @@
+import { FINISHED_PROJECT_PROGRESS } from 'utils/constants'
+
 export const getTitle = ({
   percent,
   translations: { finished, incubator, ongoing },
@@ -9,7 +11,7 @@ export const getTitle = ({
     return incubator
   }
 
-  if (percent >= 100) {
+  if (percent >= FINISHED_PROJECT_PROGRESS) {
     return finished
   }
 

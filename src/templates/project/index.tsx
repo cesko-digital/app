@@ -11,6 +11,7 @@ import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/p
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { mapVolunteers } from 'utils/map-volunteers'
 import { Projects } from '../../components/sections'
+import { FINISHED_PROJECT_PROGRESS } from 'utils/constants'
 
 interface ProjectPageProps {
   data: ProjectPageQuery
@@ -34,6 +35,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     contributeText,
   } = data.project
   const otherProjects = data.otherProjects.nodes
+  const projectOngoing = progress < FINISHED_PROJECT_PROGRESS
   return (
     <Layout
       crumbs={[
@@ -55,7 +57,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
           <S.AboutSectionWrapper>
             <S.DescriptionWrapper>
               <AboutProject
+                progress={progress}
                 volunteers={mapVolunteers(projectRoles)}
+                finishedProjectSubtitle={contributeText} // Using same field when project finished
                 description={description}
               />
             </S.DescriptionWrapper>
@@ -74,13 +78,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
           </S.AboutSectionWrapper>
         </SectionContent>
       </Section>
-      <Section>
-        <SectionContent>
-          <S.ContributeWrapper>
-            <Contribute contributeText={contributeText} />
-          </S.ContributeWrapper>
-        </SectionContent>
-      </Section>
+      {projectOngoing && (
+        <Section>
+          <SectionContent>
+            <S.ContributeWrapper>
+              <Contribute contributeText={contributeText} />
+            </S.ContributeWrapper>
+          </SectionContent>
+        </Section>
+      )}
       <Section>
         <SectionContent>
           <Projects projects={otherProjects} otherProjects={true} />
