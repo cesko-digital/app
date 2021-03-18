@@ -11,13 +11,18 @@ export const useOnSubmitNewsletter = (): [SubmitFunction, boolean, boolean] => {
     setHasError(false)
 
     try {
-      await fetch('/api/newsletter', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
       })
+
+      if (response.status !== 200) {
+        setHasError(true)
+        return
+      }
       setHasSubscribed(true)
     } catch (error) {
       setHasError(true)
