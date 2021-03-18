@@ -17,7 +17,7 @@ const Newsletter: React.FC = () => {
 
   const form = useFormik<NewsletterFormValues>({
     initialValues: {
-      email: 'aaa',
+      email: '',
     },
     validate,
     onSubmit,
