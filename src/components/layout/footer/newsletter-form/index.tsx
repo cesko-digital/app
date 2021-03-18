@@ -1,96 +1,76 @@
 import React from 'react'
-import { useFormik, FormikProps } from 'formik'
+import { useFormik } from 'formik'
 import * as S from './styles'
-import { validateFormFactory } from './validations'
+import { useValidateNewsletter } from './validations'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { useOnSubmitNewsletter } from './submit'
+import { CheckIcon } from 'components/icons'
 
 export interface NewsletterFormValues {
   email: string
 }
 
-export interface NewsletterConfig {
-  onSubmit: (values: NewsletterFormValues) => void
-  errorMessages: ErrorMessages
-}
-
-export interface ErrorMessages {
-  email: { required: string; invalid: string }
-}
-
-export interface NewsletterProps {
-  values: NewsletterFormValues
-  errors: FormikProps<NewsletterFormValues>['errors']
-  touched: FormikProps<NewsletterFormValues>['touched']
-  handleSubmit: FormikProps<NewsletterFormValues>['handleSubmit']
-  handleChange: FormikProps<NewsletterFormValues>['handleChange']
-  handleBlur: FormikProps<NewsletterFormValues>['handleBlur']
-}
-
-export const useNewsletterForm = ({
-  onSubmit,
-  errorMessages,
-}: NewsletterConfig): NewsletterProps => {
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-    },
-    validate: validateFormFactory(errorMessages),
-    onSubmit,
-  })
-
-  return {
-    values: formik.values,
-    errors: formik.errors,
-    touched: formik.touched,
-    handleSubmit: formik.handleSubmit,
-    handleChange: formik.handleChange,
-    handleBlur: formik.handleBlur,
-  }
-}
-
-export const onSubmitNewsletterForm = (values: NewsletterFormValues): void => {
-  alert(JSON.stringify(values, null, 2))
-}
-
 const Newsletter: React.FC = () => {
   const { t } = useTranslation()
 
-  const form = useNewsletterForm({
-    onSubmit: onSubmitNewsletterForm,
-    errorMessages: {
-      email: {
-        invalid: t('components.sections.footer.newsletter.inputError'),
-        required: t('components.sections.footer.newsletter.inputPlaceholder'),
-      },
+  const validate = useValidateNewsletter()
+  const [onSubmit, hasServerError, hasSubscribed] = useOnSubmitNewsletter()
+
+  const form = useFormik<NewsletterFormValues>({
+    initialValues: {
+      email: '',
     },
+    validate,
+    onSubmit,
   })
 
   const emailInvalid = !!(form.touched.email && form.errors?.email)
+  const shouldDisplayError = hasServerError || emailInvalid
 
   return (
     <S.Container>
       <S.Icon />
       <S.Heading>{t('components.sections.footer.newsletter.title')}</S.Heading>
       <S.Info>{t('components.sections.footer.newsletter.note')}</S.Info>
-      <S.Form onSubmit={form.handleSubmit}>
-        <S.FormControl>
-          <S.Input
-            dark={true}
-            name="email"
-            placeholder={t(
-              'components.sections.footer.newsletter.inputPlaceholder'
-            )}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            value={form.values.email}
-            invalid={emailInvalid}
-          />
-        </S.FormControl>
-        <S.Button type="submit">
-          {t('components.sections.footer.newsletter.subscribe')}
-        </S.Button>
-        {emailInvalid && <S.ErrorMessage>{form.errors.email}</S.ErrorMessage>}
-      </S.Form>
+      {hasSubscribed ? (
+        <S.SubscribeDoneWrapper data-test-id="newsletter-submit-success">
+          <S.CheckIconWrapper>
+            <CheckIcon />
+          </S.CheckIconWrapper>
+          {t('components.sections.footer.newsletter.subscribed')}
+        </S.SubscribeDoneWrapper>
+      ) : (
+        <S.Form onSubmit={form.handleSubmit}>
+          <S.FormControl>
+            <S.Input
+              dark={true}
+              name="email"
+              placeholder={t(
+                'components.sections.footer.newsletter.inputPlaceholder'
+              )}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.email}
+              invalid={emailInvalid}
+              disabled={form.isSubmitting}
+            />
+          </S.FormControl>
+          <S.Button
+            type="submit"
+            loading={form.isSubmitting}
+            disabled={form.isSubmitting}
+          >
+            {t('components.sections.footer.newsletter.subscribe')}
+          </S.Button>
+          {shouldDisplayError && (
+            <S.ErrorMessage data-test-id="newsletter-submit-error">
+              {hasServerError
+                ? t('components.sections.footer.newsletter.serverError')
+                : form.errors.email}
+            </S.ErrorMessage>
+          )}
+        </S.Form>
+      )}
     </S.Container>
   )
 }
