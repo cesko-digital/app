@@ -1,38 +1,29 @@
-import { ErrorMessages, NewsletterFormValues } from './'
-import { FormikProps } from 'formik'
+import { NewsletterFormValues } from './'
+import { FormikErrors } from 'formik'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
-export function validateEmail({
-  email,
-  errorMessages,
-}: {
-  email: string
-  errorMessages: { required: string; invalid: string }
-}): string | undefined {
-  if (!email || email.length === 0) {
-    return errorMessages.required
-  }
-
-  // Just a simple validation, not 100% bulletproof...
-  if (!/^\S+@\S+\.\S+$/.test(email)) {
-    return errorMessages.invalid
-  }
-
-  return undefined
-}
-
-export function validateFormFactory(
-  errorMessages: ErrorMessages
-): (
+type ValidateFunction = (
   values: NewsletterFormValues
-) => FormikProps<NewsletterFormValues>['errors'] {
-  return (values: NewsletterFormValues) => {
-    const email = validateEmail({
-      email: values.email,
-      errorMessages: errorMessages.email,
-    })
+) => FormikErrors<NewsletterFormValues>
 
-    return {
-      ...(email && { email }),
+export const useValidateNewsletter = (): ValidateFunction => {
+  const { t } = useTranslation()
+
+  const validate = ({ email }: NewsletterFormValues) => {
+    if (!email || email.length === 0) {
+      return {
+        email: t('components.sections.footer.newsletter.emailRequiredError'),
+      }
     }
+
+    // Just a simple validation, not 100% bulletproof...
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      return {
+        email: t('components.sections.footer.newsletter.invalidEmailError'),
+      }
+    }
+    return {}
   }
+
+  return validate
 }
