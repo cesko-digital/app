@@ -32,7 +32,7 @@ const Newsletter: React.FC = () => {
       <S.Heading>{t('components.sections.footer.newsletter.title')}</S.Heading>
       <S.Info>{t('components.sections.footer.newsletter.note')}</S.Info>
       {hasSubscribed ? (
-        <S.SubscribeDoneWrapper>
+        <S.SubscribeDoneWrapper data-test-id="newsletter-submit-success">
           {t('components.sections.footer.newsletter.subscribed', {
             replace: { email: form.values.email },
           })}
@@ -56,7 +56,7 @@ const Newsletter: React.FC = () => {
             {t('components.sections.footer.newsletter.subscribe')}
           </S.Button>
           {shouldDisplayError && (
-            <S.ErrorMessage>
+            <S.ErrorMessage data-test-id="newsletter-submit-error">
               {hasServerError
                 ? t('components.sections.footer.newsletter.serverError')
                 : form.errors.email}
