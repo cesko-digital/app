@@ -67,4 +67,19 @@ export const Icon = styled(MailIcon)`
   float: right;
 `
 
+export const SubscribeDoneWrapper = styled.div`
+  background-color: #ddf0e3;
+  border: 2px solid #006622;
+  box-shadow: 0px 0px 0px 4px rgba(0, 102, 34, 0.1);
+  border-radius: 8px;
+  position: relative;
+  color: #006622;
+  padding: 16px;
+  display: flex;
+`
+
+export const CheckIconWrapper = styled.div`
+  padding-right: 12px;
+`
+
 export { Heading }

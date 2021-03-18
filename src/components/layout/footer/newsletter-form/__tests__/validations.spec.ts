@@ -1,28 +1,29 @@
-import { validateEmail } from '../validations'
+import { useValidateNewsletter } from '../validations'
+
+jest.mock('gatsby-plugin-react-i18next', () => ({
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
 
 describe('validations', () => {
   describe('validateEmail', () => {
-    const errorMessages = { required: 'Error', invalid: 'Invalid' }
+    const validate = useValidateNewsletter()
 
     it('should return undefined for valid email', () => {
       expect(
-        validateEmail({
+        validate({
           email: 'vaclav.havel@cesko.digital',
-          errorMessages,
         })
-      ).toBeUndefined()
+      ).toEqual({})
     })
 
     it('should return string for invalid email', () => {
-      expect(validateEmail({ email: '', errorMessages })).toEqual(
-        errorMessages.required
-      )
-      expect(validateEmail({ email: 'Václav', errorMessages })).toEqual(
-        errorMessages.invalid
-      )
-      expect(validateEmail({ email: 'vaclav.havel', errorMessages })).toEqual(
-        errorMessages.invalid
-      )
+      expect(validate({ email: '' }).email).toBeDefined()
+      expect(validate({ email: 'Václav' }).email).toBeDefined()
+      expect(validate({ email: 'vaclav.havel' }).email).toBeDefined()
     })
   })
 })

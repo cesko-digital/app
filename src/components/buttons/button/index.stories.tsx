@@ -58,4 +58,17 @@ Disabled.args = {
   disabled: true,
 }
 
+export const Loading = Template.bind({})
+Loading.args = {
+  children: 'Button',
+  loading: true,
+}
+
+export const DisabledLoading = Template.bind({})
+DisabledLoading.args = {
+  children: 'Button',
+  disabled: true,
+  loading: true,
+}
+
 export default story
