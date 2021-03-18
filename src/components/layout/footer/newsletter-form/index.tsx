@@ -13,7 +13,7 @@ const Newsletter: React.FC = () => {
   const { t } = useTranslation()
 
   const validate = useValidateNewsletter()
-  const [onSubmit, hasServerError] = useOnSubmitNewsletter()
+  const [onSubmit, hasServerError, hasSubscribed] = useOnSubmitNewsletter()
 
   const form = useFormik<NewsletterFormValues>({
     initialValues: {
@@ -31,31 +31,39 @@ const Newsletter: React.FC = () => {
       <S.Icon />
       <S.Heading>{t('components.sections.footer.newsletter.title')}</S.Heading>
       <S.Info>{t('components.sections.footer.newsletter.note')}</S.Info>
-      <S.Form onSubmit={form.handleSubmit}>
-        <S.FormControl>
-          <S.Input
-            dark={true}
-            name="email"
-            placeholder={t(
-              'components.sections.footer.newsletter.inputPlaceholder'
-            )}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            value={form.values.email}
-            invalid={emailInvalid}
-          />
-        </S.FormControl>
-        <S.Button type="submit">
-          {t('components.sections.footer.newsletter.subscribe')}
-        </S.Button>
-        {shouldDisplayError && (
-          <S.ErrorMessage>
-            {hasServerError
-              ? t('components.sections.footer.newsletter.serverError')
-              : form.errors.email}
-          </S.ErrorMessage>
-        )}
-      </S.Form>
+      {hasSubscribed ? (
+        <S.SubscribeDoneWrapper>
+          {t('components.sections.footer.newsletter.subscribed', {
+            replace: { email: form.values.email },
+          })}
+        </S.SubscribeDoneWrapper>
+      ) : (
+        <S.Form onSubmit={form.handleSubmit}>
+          <S.FormControl>
+            <S.Input
+              dark={true}
+              name="email"
+              placeholder={t(
+                'components.sections.footer.newsletter.inputPlaceholder'
+              )}
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.email}
+              invalid={emailInvalid}
+            />
+          </S.FormControl>
+          <S.Button type="submit">
+            {t('components.sections.footer.newsletter.subscribe')}
+          </S.Button>
+          {shouldDisplayError && (
+            <S.ErrorMessage>
+              {hasServerError
+                ? t('components.sections.footer.newsletter.serverError')
+                : form.errors.email}
+            </S.ErrorMessage>
+          )}
+        </S.Form>
+      )}
     </S.Container>
   )
 }
