@@ -1,22 +1,27 @@
 import React, { ReactNode } from 'react'
 
-import Head from 'components/head'
 import Header from './header'
 import Footer from './footer'
 import Section from './section'
 import SectionContent from './section-content'
 import Breadcrumb, { Crumb } from './breadcrumb'
 import * as S from './styles'
+import Seo, { SeoProps } from './seo'
 
 export interface LayoutProps {
   crumbs?: Crumb[]
   children: ReactNode
+  seo?: SeoProps
 }
 
-const Layout: React.FC<LayoutProps> = ({ crumbs, children }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({
+  crumbs,
+  children,
+  seo = {},
+}: LayoutProps) => {
   return (
     <S.Container>
-      <Head />
+      <Seo {...seo} />
       <Header />
       {crumbs && (
         <Section>
