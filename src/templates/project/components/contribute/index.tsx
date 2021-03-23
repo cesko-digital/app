@@ -3,6 +3,7 @@ import { Body, Heading2 } from 'components/typography'
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { ButtonSize, SlackButton } from 'components/buttons'
+import { LINKS } from 'utils/constants'
 
 interface Props {
   contributeText: string
@@ -17,7 +18,7 @@ const Contribute: React.FC<Props> = ({ contributeText }) => {
       <S.Text>
         <S.SlackLink>
           <SlackButton
-            slackLink={'https://join.cesko.digital/'}
+            slackLink={LINKS.joinUs}
             slackText={t('pages.project.about.contribute.buttonText')}
           />
         </S.SlackLink>

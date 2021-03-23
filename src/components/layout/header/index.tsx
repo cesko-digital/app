@@ -8,6 +8,7 @@ import {
   TranslatedLink,
   TranslateUrlsContext,
 } from 'gatsby-plugin-translate-urls'
+import { LINKS } from 'utils/constants'
 
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
@@ -50,12 +51,12 @@ const Header: React.FC = () => {
               </Link>
             ))}
 
-            <S.HeaderButton to="#" size={ButtonSize.Normal} inverted>
+            <S.HeaderButton to={LINKS.joinUs} size={ButtonSize.Normal} inverted>
               {signUpText}
             </S.HeaderButton>
           </S.DesktopLinksContainer>
           <S.MobileLinksContainer>
-            <ButtonAsLink to="#" size={ButtonSize.Small} inverted>
+            <ButtonAsLink to={LINKS.joinUs} size={ButtonSize.Small} inverted>
               {signUpText}
             </ButtonAsLink>
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

@@ -4,6 +4,7 @@ import { Link } from 'components/links'
 import NewsletterBox from './newsletter-form'
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { LINKS } from 'utils/constants'
 
 const Footer: React.FC = () => {
   const { t } = useTranslation()
@@ -23,7 +24,7 @@ const Footer: React.FC = () => {
     },
     {
       name: t('components.sections.footer.online.slack'),
-      url: 'https://join.cesko.digital',
+      url: LINKS.joinUs,
     },
   ]
 
@@ -38,15 +39,15 @@ const Footer: React.FC = () => {
     },
     {
       name: t('components.sections.footer.pageLinks.loginToSlack'),
-      url: 'https://join.cesko.digital',
+      url: LINKS.joinUs,
     },
     {
       name: t('components.sections.footer.pageLinks.submitProject'),
-      url: 'https://join.cesko.digital',
+      url: LINKS.submitProject,
     },
     {
       name: t('components.sections.footer.pageLinks.contribute'),
-      url: 'https://join.cesko.digital',
+      url: LINKS.joinUs,
     },
   ]
 
