@@ -1,5 +1,4 @@
 import { Layout, Section, SectionContent } from 'components/layout'
-import { Link } from 'components/links'
 import { JoinUs, Projects } from 'components/sections'
 import { Hero, OurValues, Numbers } from './sections'
 import React, { useContext } from 'react'
@@ -37,18 +36,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
       <Section backgroundColor={theme.colors.pebble}>
         <SectionContent>
           <OurValues />
-        </SectionContent>
-      </Section>
-
-      <Section backgroundColor={theme.colors.lightViolet}>
-        <SectionContent>
-          <Link to="/page-2/">Go to page 2</Link>
-        </SectionContent>
-      </Section>
-
-      <Section>
-        <SectionContent>
-          <Link to="/mdx-page">Go to MDX page</Link>
         </SectionContent>
       </Section>
     </Layout>
