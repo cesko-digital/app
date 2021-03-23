@@ -1,28 +1,29 @@
 import * as React from 'react'
-import volunteer from 'images/volunteer.jpg'
 import { SlackButton } from 'components/buttons'
 
 import * as S from './styles'
 import { LINKS } from 'utils/constants'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 const PanelVolunteer: React.FC = () => {
-  const t = {
-    title: 'Jsem Dobrovolník',
-    description:
-      'Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.',
-    cover: volunteer,
-    slackLink: 'https://cesko-digital.slack.com',
-    slackText: 'Přidat se do Slacku',
-  }
+  const { t } = useTranslation()
+
   return (
     <S.Wrapper>
       <S.Cover>
-        <S.Image url={t.cover} />
+        <S.Image
+          url={'https://data.cesko.digital/web/sections/join-us/cover.jpg'}
+        />
       </S.Cover>
       <S.Content>
-        <S.Title>{t.title}</S.Title>
-        <S.Description>{t.description}</S.Description>
-        <SlackButton slackLink={LINKS.joinUs} slackText={t.slackText} />
+        <S.Title>{t('components.cards.panelVolunteer.title')}</S.Title>
+        <S.Description>
+          {t('components.cards.panelVolunteer.description')}
+        </S.Description>
+        <SlackButton
+          slackLink={LINKS.joinUs}
+          slackText={t('components.cards.panelVolunteer.linkText')}
+        />
       </S.Content>
     </S.Wrapper>
   )
