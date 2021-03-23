@@ -1,3 +1,5 @@
+import { LINKS } from 'utils/constants'
+
 interface LinkProps {
   locale: string
   translations: {
@@ -37,7 +39,7 @@ export const getLinks = ({
       label: blog,
     },
     {
-      link: '#',
+      link: LINKS.joinUs,
       label: contribute,
     },
 
