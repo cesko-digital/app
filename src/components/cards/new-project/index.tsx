@@ -2,11 +2,11 @@ import React from 'react'
 import * as S from './styles'
 import ButtonAsLink from '../../links/button-as-link'
 import { BulbIcon } from 'components/icons'
+import { LINKS } from 'utils/constants'
 
 interface Project {
   name: string
   description: string
-  linkUrl: string
   linkText: string
 }
 
@@ -15,7 +15,6 @@ const NewProject: React.FC = () => {
     name: 'Mám nápad na projekt',
     description:
       'Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?',
-    linkUrl: 'https://cesko-digital.slack.com/archives/CHG9NA23D',
     linkText: 'Zadat projekt',
   }
   return (
@@ -24,7 +23,7 @@ const NewProject: React.FC = () => {
       <S.Title>{t.name}</S.Title>
       <S.Description>{t.description}</S.Description>
       <S.ButtonWrapper>
-        <ButtonAsLink to={t.linkUrl}>{t.linkText}</ButtonAsLink>
+        <ButtonAsLink to={LINKS.submitProject}>{t.linkText}</ButtonAsLink>
       </S.ButtonWrapper>
     </S.Wrapper>
   )
