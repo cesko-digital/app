@@ -42,6 +42,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
         { path: '/projects', label: t(PROJECT_PAGE_NAVIGATION_KEY) },
         { label: name },
       ]}
+      seo={{ title: name, description: tagline, coverUrl }}
     >
       <Section>
         <SectionContent>

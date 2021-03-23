@@ -21,7 +21,13 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
   const { otherProjects, highlightedProject } = data
 
   return (
-    <Layout crumbs={[{ label: t(NAVIGATION_KEY) }]}>
+    <Layout
+      crumbs={[{ label: t(NAVIGATION_KEY) }]}
+      seo={{
+        title: t('pages.projects.metadata.title'),
+        description: t('pages.projects.metadata.description'),
+      }}
+    >
       <Section>
         <SectionContent>
           <S.Heading>{t('pages.projects.title')}</S.Heading>
