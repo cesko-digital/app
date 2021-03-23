@@ -28,6 +28,13 @@ const Template: Story<LayoutProps> = (args: LayoutProps) => {
 }
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  crumbs: [{ label: 'Projects', path: '/path' }, { label: 'CityVizor' }],
+  seo: {
+    description: 'Transparentní hospodaření státu',
+    title: 'CityVizor',
+    coverUrl: 'https://via.placeholder.com/400x200',
+  },
+}
 
 export default story
