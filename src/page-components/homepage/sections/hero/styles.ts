@@ -1,11 +1,8 @@
 import { Body } from 'components/typography'
 import ButtonAsLink from 'components/links/button-as-link'
 import styled, { css, CssWithTheme } from 'styled-components'
-import heroPersonTopCircleImage from 'images/hero-person-top-circle-image.png'
-import heroPersonBottomCircleImage from 'images/hero-person-bottom-circle-image.png'
-import heroTeamCircleImage from 'images/hero-team-circle-image.png'
-import CzechiaMapArrows from 'images/czechia-map-arrows'
 import { SectionContent } from 'components/layout'
+import { CzechiaMapArrows } from 'components/illustrations'
 
 export const ShiftedBody = styled(Body)`
   margin-top: 10px;
@@ -59,7 +56,7 @@ export const Content = styled.div`
 `
 
 export const HeroPersonTopCircleImage = styled.div`
-  background-image: url('${heroPersonTopCircleImage}');
+  background-image: url('https://data.cesko.digital/web/sections/hero/top-circle.png');
   background-repeat: no-repeat;
   width: 82px;
   height: 82px;
@@ -67,7 +64,7 @@ export const HeroPersonTopCircleImage = styled.div`
   right: 0;
   top: 0;
   display: block;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
@@ -114,7 +111,7 @@ export const CircleRight = styled.div`
 `
 
 export const HeroPersonBottomCircleImage = styled.div`
-  background-image: url('${heroPersonBottomCircleImage}');
+  background-image: url('https://data.cesko.digital/web/sections/hero/bottom-circle.png');
   background-repeat: no-repeat;
   width: 200px;
   height: 200px;
@@ -122,14 +119,14 @@ export const HeroPersonBottomCircleImage = styled.div`
   left: 50%;
   top: 460px;
   display: block;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
 `
 
 export const HeroTeamCircleImage = styled.div`
-  background-image: url('${heroTeamCircleImage}');
+  background-image: url('https://data.cesko.digital/web/sections/hero/team-circle-image.png');
   background-repeat: no-repeat;
   width: 114px;
   height: 114px;
@@ -137,7 +134,7 @@ export const HeroTeamCircleImage = styled.div`
   left: 50%;
   top: 193px;
   display: block;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
