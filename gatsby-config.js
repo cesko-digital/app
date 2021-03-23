@@ -1,11 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
-  siteMetadata: {
-    title: `Česko.digital`,
-    description: `Skrz jedničky a nuly měníme Česko k lepšímu`,
-    author: `@ceskodigital`,
-  },
+  siteMetadata: {},
   plugins: [
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/
     `gatsby-plugin-react-helmet`,
