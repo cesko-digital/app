@@ -1,6 +1,7 @@
 import { NewsletterFormValues } from './'
 import { FormikErrors } from 'formik'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { EMAIL_REGEX } from '../../../../../api/newsletter'
 
 type ValidateFunction = (
   values: NewsletterFormValues
@@ -17,7 +18,7 @@ export const useValidateNewsletter = (): ValidateFunction => {
     }
 
     // Just a simple validation, not 100% bulletproof...
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
+    if (!EMAIL_REGEX.test(email)) {
       return {
         email: t('components.sections.footer.newsletter.invalidEmailError'),
       }
