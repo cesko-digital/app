@@ -4,6 +4,7 @@ import * as S from './styles'
 import { useValidateNewsletter } from './validations'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { useOnSubmitNewsletter } from './submit'
+import { CheckIcon } from 'components/icons'
 
 export interface NewsletterFormValues {
   email: string
@@ -33,6 +34,9 @@ const Newsletter: React.FC = () => {
       <S.Info>{t('components.sections.footer.newsletter.note')}</S.Info>
       {hasSubscribed ? (
         <S.SubscribeDoneWrapper data-test-id="newsletter-submit-success">
+          <S.CheckIconWrapper>
+            <CheckIcon />
+          </S.CheckIconWrapper>
           {t('components.sections.footer.newsletter.subscribed', {
             replace: { email: form.values.email },
           })}

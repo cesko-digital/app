@@ -74,16 +74,12 @@ export const SubscribeDoneWrapper = styled.div`
   border-radius: 8px;
   position: relative;
   color: #006622;
-  padding: 16px 16px 16px 56px;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 16px;
-    left: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5' stroke='%23062' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  }
+  padding: 16px;
+  display: flex;
+`
+
+export const CheckIconWrapper = styled.div`
+  padding-right: 12px;
 `
 
 export { Heading }
