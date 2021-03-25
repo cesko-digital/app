@@ -12,7 +12,9 @@
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "stories/**/*", "scripts/**/*", "api/**/*", "plugins/**/*"],
   "exclude": [

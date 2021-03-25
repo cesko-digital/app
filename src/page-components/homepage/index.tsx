@@ -1,6 +1,8 @@
 import { Layout, Section, SectionContent } from 'components/layout'
-import { JoinUs, Projects } from 'components/sections'
-import { Hero, OurValues, Numbers } from './sections'
+import { Projects } from 'components/sections'
+import { Hero } from './sections'
+import { JoinUs } from 'components/sections'
+import { OurValues, Numbers, ImageGallery } from './sections'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { HomepageQuery } from 'generated/graphql-types'
@@ -36,6 +38,12 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
       <Section backgroundColor={theme.colors.pebble}>
         <SectionContent>
           <OurValues />
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <ImageGallery />
         </SectionContent>
       </Section>
     </Layout>
