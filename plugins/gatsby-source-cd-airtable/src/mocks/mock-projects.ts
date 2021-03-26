@@ -1,4 +1,4 @@
-import { Language, Project } from '../interfaces/project'
+import { Language, Project } from '../interfaces'
 
 export const getMockProjects: () => Project[] = () => {
   const base = {
