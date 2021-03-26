@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Heading4 } from 'components/typography'
+import { Heading3, heading4Styles } from 'components/typography'
 
 export const Card = styled.div`
   display: flex;
@@ -58,7 +58,8 @@ export const Content = styled.div`
   margin: ${({ theme }) => theme.space.lg}px;
 `
 
-export const Title = styled(Heading4)`
+export const Title = styled(Heading3)`
+  ${heading4Styles}
   margin-bottom: 9px;
 `
 
