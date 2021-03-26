@@ -37,9 +37,7 @@ const Newsletter: React.FC = () => {
           <S.CheckIconWrapper>
             <CheckIcon />
           </S.CheckIconWrapper>
-          {t('components.sections.footer.newsletter.subscribed', {
-            replace: { email: form.values.email },
-          })}
+          {t('components.sections.footer.newsletter.subscribed')}
         </S.SubscribeDoneWrapper>
       ) : (
         <S.Form onSubmit={form.handleSubmit}>
