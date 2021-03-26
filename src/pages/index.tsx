@@ -17,6 +17,13 @@ export const query = graphql`
         }
       }
     }
+    partners: allPartner {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
   }
 `
 

@@ -1,16 +1,32 @@
 import {
-  AirTableProject,
-  AirTableProjectRole,
-  AirTableTag,
-  AirTableVolunteer,
-} from './interfaces/airtable-project'
-import {
   Language,
   Project,
   ProjectRole,
   Tag,
   Volunteer,
-} from './interfaces/project'
+  Partner,
+  AirTablePartner,
+  AirTableProject,
+  AirTableProjectRole,
+  AirTableTag,
+  AirTableVolunteer,
+} from './interfaces'
+import { SourceNode } from './interfaces/source-node'
+import { AirTableRecord } from './interfaces/airtable-record'
+
+const transformAirTableRecords = <
+  AirTableType extends AirTableRecord,
+  Type extends SourceNode
+>(
+  airTableRecords: AirTableType[]
+): Type[] =>
+  airTableRecords.map(
+    (record) =>
+      ({
+        rowId: record.id,
+        ...record.fields,
+      } as Type)
+  )
 
 export const transformProjects = (
   airtableProjects: AirTableProject[]
@@ -112,14 +128,7 @@ export const transformTags = (airTableTags: AirTableTag[]): Tag[] => {
 
 export const transformVolunteers = (
   airTableVolunteers: AirTableVolunteer[]
-): Volunteer[] => {
-  return airTableVolunteers.map((airTableVolunteer) => {
-    return {
-      rowId: airTableVolunteer.id,
-      ...airTableVolunteer.fields,
-    }
-  })
-}
+): Volunteer[] => transformAirTableRecords(airTableVolunteers)
 
 export const transformProjectRoles = (
   airTableProjectRoles: AirTableProjectRole[]
@@ -152,6 +161,10 @@ export const transformProjectRoles = (
       []
     )
 }
+
+export const transformPartners = (
+  airTablePartners: AirTablePartner[]
+): Partner[] => transformAirTableRecords(airTablePartners)
 
 interface IdParams {
   lang: string

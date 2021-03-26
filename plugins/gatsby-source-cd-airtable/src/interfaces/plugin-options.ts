@@ -3,4 +3,5 @@ export interface PluginOptions {
   tagsTableName: string
   volunteersTableName: string
   projectRolesTableName: string
+  partnersTableName: string
 }
