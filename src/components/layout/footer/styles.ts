@@ -2,7 +2,7 @@ import { InternalLink, ExternalLink } from 'components/links/link/styles'
 import styled from 'styled-components'
 import czechiaMapArrows from 'images/czechia-map-arrows.png'
 import czechiaMapArrows2x from 'images/czechia-map-arrows@2x.png'
-import { Heading4 } from 'components/typography'
+import { Heading2, heading4Styles } from 'components/typography'
 
 export const Wrapper = styled.footer`
   display: flex;
@@ -104,7 +104,8 @@ export const InfoBlock = styled.div`
   }
 `
 
-export const Heading = styled(Heading4)`
+export const Heading = styled(Heading2)`
+  ${heading4Styles}
   margin-bottom: ${({ theme }) => theme.space.lg}px;
   color: ${({ theme }) => theme.colors.white};
 `
