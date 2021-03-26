@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import { Heading2, Body, bodyStyles } from 'components/typography'
+import {
+  Body,
+  bodyStyles,
+  heading2Styles,
+  Heading3,
+} from 'components/typography'
 
 const AVATAR_SIZE = 82
 const DESKTOP_CONTENT_RELATIVE_SIZE = 34
@@ -76,7 +81,8 @@ export const Avatar = styled.div<{ src: string }>`
   }
 `
 
-export const Name = styled(Heading2)`
+export const Name = styled(Heading3)`
+  ${heading2Styles}
   color: ${({ theme }) => theme.colors.white};
   margin: 0 0 ${({ theme }) => theme.space.md}px;
 `
