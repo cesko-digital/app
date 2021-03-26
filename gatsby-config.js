@@ -92,6 +92,7 @@ module.exports = {
         tagsTableName: 'Tags',
         volunteersTableName: 'Volunteers',
         projectRolesTableName: 'ProjectRoles',
+        partnersTableName: 'Partners',
       },
     },
   ],

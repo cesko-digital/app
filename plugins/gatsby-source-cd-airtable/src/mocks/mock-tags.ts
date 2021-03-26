@@ -1,4 +1,4 @@
-import { Language, Tag } from '../interfaces/project'
+import { Language, Tag } from '../interfaces'
 
 export const getMockTags: () => Tag[] = () => [
   {

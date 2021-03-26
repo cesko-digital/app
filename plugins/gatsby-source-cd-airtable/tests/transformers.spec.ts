@@ -1,4 +1,5 @@
 import {
+  transformPartners,
   transformProjectRoles,
   transformProjects,
   transformTags,
@@ -260,6 +261,27 @@ describe('transformers', () => {
         volunteer,
         rowId: 'id',
       })
+    })
+  })
+
+  describe('transformPartners', () => {
+    it('should transform airtable partners to single lang partners', () => {
+      const name = 'name'
+      const url = 'url'
+      const logoUrl = 'logoUrl'
+      const rowId = 'id'
+      const volunteers = transformPartners([
+        {
+          id: rowId,
+          fields: {
+            name,
+            url,
+            logoUrl,
+          },
+        },
+      ])
+
+      expect(volunteers).toEqual([{ name, url, logoUrl, rowId }])
     })
   })
 })

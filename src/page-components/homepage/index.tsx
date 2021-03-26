@@ -1,8 +1,6 @@
 import { Layout, Section, SectionContent } from 'components/layout'
-import { Projects } from 'components/sections'
-import { Hero } from './sections'
-import { JoinUs } from 'components/sections'
-import { OurValues, Numbers, ImageGallery } from './sections'
+import { Projects, JoinUs } from 'components/sections'
+import { Hero, OurValues, Numbers, ImageGallery, Partners } from './sections'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { HomepageQuery } from 'generated/graphql-types'
@@ -14,6 +12,7 @@ interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
   const theme = useContext(ThemeContext)
   const projects = data.projects.nodes
+  const partners = data.partners.nodes
 
   return (
     <Layout>
@@ -46,6 +45,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
           <ImageGallery />
         </SectionContent>
       </Section>
+
+      {partners && partners.length > 0 && (
+        <Section>
+          <SectionContent>
+            <Partners partners={partners} />
+          </SectionContent>
+        </Section>
+      )}
     </Layout>
   )
 }

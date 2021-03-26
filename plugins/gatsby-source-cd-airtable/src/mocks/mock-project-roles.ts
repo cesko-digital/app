@@ -1,4 +1,4 @@
-import { Language, ProjectRole } from '../interfaces/project'
+import { Language, ProjectRole } from '../interfaces'
 
 export const getMockProjectRoles: () => ProjectRole[] = () => [
   {

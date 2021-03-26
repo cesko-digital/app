@@ -1609,6 +1609,166 @@ export type PageInfo = {
   totalCount: Scalars['Int'];
 };
 
+export type Partner = Node & {
+  __typename?: 'Partner';
+  name: Scalars['String'];
+  url: Scalars['String'];
+  logoUrl: Scalars['String'];
+  rowId: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type PartnerConnection = {
+  __typename?: 'PartnerConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<PartnerEdge>;
+  nodes: Array<Partner>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<PartnerGroupConnection>;
+};
+
+
+export type PartnerConnectionDistinctArgs = {
+  field: PartnerFieldsEnum;
+};
+
+
+export type PartnerConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: PartnerFieldsEnum;
+};
+
+export type PartnerEdge = {
+  __typename?: 'PartnerEdge';
+  next: Maybe<Partner>;
+  node: Partner;
+  previous: Maybe<Partner>;
+};
+
+export enum PartnerFieldsEnum {
+  name = 'name',
+  url = 'url',
+  logoUrl = 'logoUrl',
+  rowId = 'rowId',
+  id = 'id',
+  parent___id = 'parent___id',
+  parent___parent___id = 'parent___parent___id',
+  parent___parent___parent___id = 'parent___parent___parent___id',
+  parent___parent___parent___children = 'parent___parent___parent___children',
+  parent___parent___children = 'parent___parent___children',
+  parent___parent___children___id = 'parent___parent___children___id',
+  parent___parent___children___children = 'parent___parent___children___children',
+  parent___parent___internal___content = 'parent___parent___internal___content',
+  parent___parent___internal___contentDigest = 'parent___parent___internal___contentDigest',
+  parent___parent___internal___description = 'parent___parent___internal___description',
+  parent___parent___internal___fieldOwners = 'parent___parent___internal___fieldOwners',
+  parent___parent___internal___ignoreType = 'parent___parent___internal___ignoreType',
+  parent___parent___internal___mediaType = 'parent___parent___internal___mediaType',
+  parent___parent___internal___owner = 'parent___parent___internal___owner',
+  parent___parent___internal___type = 'parent___parent___internal___type',
+  parent___children = 'parent___children',
+  parent___children___id = 'parent___children___id',
+  parent___children___parent___id = 'parent___children___parent___id',
+  parent___children___parent___children = 'parent___children___parent___children',
+  parent___children___children = 'parent___children___children',
+  parent___children___children___id = 'parent___children___children___id',
+  parent___children___children___children = 'parent___children___children___children',
+  parent___children___internal___content = 'parent___children___internal___content',
+  parent___children___internal___contentDigest = 'parent___children___internal___contentDigest',
+  parent___children___internal___description = 'parent___children___internal___description',
+  parent___children___internal___fieldOwners = 'parent___children___internal___fieldOwners',
+  parent___children___internal___ignoreType = 'parent___children___internal___ignoreType',
+  parent___children___internal___mediaType = 'parent___children___internal___mediaType',
+  parent___children___internal___owner = 'parent___children___internal___owner',
+  parent___children___internal___type = 'parent___children___internal___type',
+  parent___internal___content = 'parent___internal___content',
+  parent___internal___contentDigest = 'parent___internal___contentDigest',
+  parent___internal___description = 'parent___internal___description',
+  parent___internal___fieldOwners = 'parent___internal___fieldOwners',
+  parent___internal___ignoreType = 'parent___internal___ignoreType',
+  parent___internal___mediaType = 'parent___internal___mediaType',
+  parent___internal___owner = 'parent___internal___owner',
+  parent___internal___type = 'parent___internal___type',
+  children = 'children',
+  children___id = 'children___id',
+  children___parent___id = 'children___parent___id',
+  children___parent___parent___id = 'children___parent___parent___id',
+  children___parent___parent___children = 'children___parent___parent___children',
+  children___parent___children = 'children___parent___children',
+  children___parent___children___id = 'children___parent___children___id',
+  children___parent___children___children = 'children___parent___children___children',
+  children___parent___internal___content = 'children___parent___internal___content',
+  children___parent___internal___contentDigest = 'children___parent___internal___contentDigest',
+  children___parent___internal___description = 'children___parent___internal___description',
+  children___parent___internal___fieldOwners = 'children___parent___internal___fieldOwners',
+  children___parent___internal___ignoreType = 'children___parent___internal___ignoreType',
+  children___parent___internal___mediaType = 'children___parent___internal___mediaType',
+  children___parent___internal___owner = 'children___parent___internal___owner',
+  children___parent___internal___type = 'children___parent___internal___type',
+  children___children = 'children___children',
+  children___children___id = 'children___children___id',
+  children___children___parent___id = 'children___children___parent___id',
+  children___children___parent___children = 'children___children___parent___children',
+  children___children___children = 'children___children___children',
+  children___children___children___id = 'children___children___children___id',
+  children___children___children___children = 'children___children___children___children',
+  children___children___internal___content = 'children___children___internal___content',
+  children___children___internal___contentDigest = 'children___children___internal___contentDigest',
+  children___children___internal___description = 'children___children___internal___description',
+  children___children___internal___fieldOwners = 'children___children___internal___fieldOwners',
+  children___children___internal___ignoreType = 'children___children___internal___ignoreType',
+  children___children___internal___mediaType = 'children___children___internal___mediaType',
+  children___children___internal___owner = 'children___children___internal___owner',
+  children___children___internal___type = 'children___children___internal___type',
+  children___internal___content = 'children___internal___content',
+  children___internal___contentDigest = 'children___internal___contentDigest',
+  children___internal___description = 'children___internal___description',
+  children___internal___fieldOwners = 'children___internal___fieldOwners',
+  children___internal___ignoreType = 'children___internal___ignoreType',
+  children___internal___mediaType = 'children___internal___mediaType',
+  children___internal___owner = 'children___internal___owner',
+  children___internal___type = 'children___internal___type',
+  internal___content = 'internal___content',
+  internal___contentDigest = 'internal___contentDigest',
+  internal___description = 'internal___description',
+  internal___fieldOwners = 'internal___fieldOwners',
+  internal___ignoreType = 'internal___ignoreType',
+  internal___mediaType = 'internal___mediaType',
+  internal___owner = 'internal___owner',
+  internal___type = 'internal___type'
+}
+
+export type PartnerFilterInput = {
+  name: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+  logoUrl: Maybe<StringQueryOperatorInput>;
+  rowId: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+export type PartnerGroupConnection = {
+  __typename?: 'PartnerGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<PartnerEdge>;
+  nodes: Array<Partner>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+};
+
+export type PartnerSortInput = {
+  fields: Maybe<Array<Maybe<PartnerFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 export type Potrace = {
   turnPolicy: Maybe<PotraceTurnPolicy>;
   turdSize: Maybe<Scalars['Float']>;
@@ -2211,6 +2371,8 @@ export type Query = {
   allTag: TagConnection;
   project: Maybe<Project>;
   allProject: ProjectConnection;
+  partner: Maybe<Partner>;
+  allPartner: PartnerConnection;
   mdx: Maybe<Mdx>;
   allMdx: MdxConnection;
   siteBuildMetadata: Maybe<SiteBuildMetadata>;
@@ -2483,6 +2645,26 @@ export type QueryProjectArgs = {
 export type QueryAllProjectArgs = {
   filter: Maybe<ProjectFilterInput>;
   sort: Maybe<ProjectSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryPartnerArgs = {
+  name: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+  logoUrl: Maybe<StringQueryOperatorInput>;
+  rowId: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllPartnerArgs = {
+  filter: Maybe<PartnerFilterInput>;
+  sort: Maybe<PartnerSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -3253,6 +3435,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___tagsTableName = 'pluginCreator___pluginOptions___tagsTableName',
   pluginCreator___pluginOptions___volunteersTableName = 'pluginCreator___pluginOptions___volunteersTableName',
   pluginCreator___pluginOptions___projectRolesTableName = 'pluginCreator___pluginOptions___projectRolesTableName',
+  pluginCreator___pluginOptions___partnersTableName = 'pluginCreator___pluginOptions___partnersTableName',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
@@ -3488,6 +3671,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___tagsTableName = 'pluginOptions___tagsTableName',
   pluginOptions___volunteersTableName = 'pluginOptions___volunteersTableName',
   pluginOptions___projectRolesTableName = 'pluginOptions___projectRolesTableName',
+  pluginOptions___partnersTableName = 'pluginOptions___partnersTableName',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
@@ -3645,6 +3829,7 @@ export type SitePluginPluginOptions = {
   tagsTableName: Maybe<Scalars['String']>;
   volunteersTableName: Maybe<Scalars['String']>;
   projectRolesTableName: Maybe<Scalars['String']>;
+  partnersTableName: Maybe<Scalars['String']>;
   pathCheck: Maybe<Scalars['Boolean']>;
 };
 
@@ -3695,6 +3880,7 @@ export type SitePluginPluginOptionsFilterInput = {
   tagsTableName: Maybe<StringQueryOperatorInput>;
   volunteersTableName: Maybe<StringQueryOperatorInput>;
   projectRolesTableName: Maybe<StringQueryOperatorInput>;
+  partnersTableName: Maybe<StringQueryOperatorInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -4141,6 +4327,12 @@ export type HomepageQuery = (
         { __typename?: 'Tag' }
         & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
       )> }
+    )> }
+  ), partners: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
     )> }
   ) }
 );
