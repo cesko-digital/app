@@ -90,3 +90,23 @@ const Component = styled.div`
   padding: 8em;
 `
 ```
+
+### Obrázky
+
+Pro ilustrace a ikony je preferovaný formát SVG. Tyto zdroje vkládejte do projektu jako [React komponentu](https://react-svgr.com/playground/) do jednoho z následujících modulů: 
+
+- [`components/icons`](./src/components/icons/index.ts)
+- [`components/illustrations`](./src/components/illustrations/index.ts)
+
+Fotky ukládejte prvně na [data.cesko.digital](https://data.cesko.digital) a poté využijte veřejnou URL souboru. V krajních případech lze využít [`images`](./src/images) a importovat obrázek:
+
+```typescript jsx
+import Logo from 'images/logo.png'
+const Image = () => <img src={Logo} loading="lazy" />
+```
+
+Pokud je to možné, obrázek by měl být lazy-loaded:
+
+```typescript jsx
+<img src="https://data.cesko.digital/web/logo.png" loading="lazy" />
+```
