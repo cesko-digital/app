@@ -1,5 +1,5 @@
 import { SourceNodesArgs } from 'gatsby'
-import { Project, ProjectRole, Tag, Volunteer } from './interfaces/project'
+import { Project, ProjectRole, Tag, Volunteer, Partner } from './interfaces'
 import {
   getProjectId,
   getProjectRoleId,
@@ -86,6 +86,22 @@ export const createProjectRoleNodesFactory = ({
       },
       volunteer: undefined,
       volunteer___NODE: getVolunteerId(projectRole.volunteer),
+    })
+  })
+}
+
+export const createPartnerNodesFactory = ({
+  actions: { createNode },
+  createContentDigest,
+}: SourceNodesArgs): ((partners: Partner[]) => void) => (partners) => {
+  partners.forEach((partner) => {
+    createNode({
+      ...partner,
+      id: `Partner-${partner.rowId}`,
+      internal: {
+        type: 'Partner',
+        contentDigest: createContentDigest(partner),
+      },
     })
   })
 }

@@ -1,5 +1,6 @@
-export interface AirTableProject {
-  id: string
+import { AirTableRecord } from './airtable-record'
+
+export interface AirTableProject extends AirTableRecord {
   fields: {
     csName: string
     enName: string
@@ -26,8 +27,7 @@ export interface AirTableProject {
   }
 }
 
-export interface AirTableTag {
-  id: string
+export interface AirTableTag extends AirTableRecord {
   fields: {
     csName: string
     enName: string
@@ -36,8 +36,7 @@ export interface AirTableTag {
   }
 }
 
-export interface AirTableVolunteer {
-  id: string
+export interface AirTableVolunteer extends AirTableRecord {
   fields: {
     name: string
     company: string
@@ -46,8 +45,7 @@ export interface AirTableVolunteer {
   }
 }
 
-export interface AirTableProjectRole {
-  id: string
+export interface AirTableProjectRole extends AirTableRecord {
   fields: {
     csName: string
     enName: string
