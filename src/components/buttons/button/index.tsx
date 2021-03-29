@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as S from './styles'
 import { ButtonSize } from './enums'
+import { Loader } from 'components/loader'
 
 export interface StyledButtonProps {
   inverted?: boolean
   size: ButtonSize
   disabled?: boolean
+  loading?: boolean
 }
 
 export interface ButtonProps
@@ -18,10 +20,11 @@ const Button: React.FC<ButtonProps> = ({
   children,
   size = ButtonSize.Normal,
   inverted,
+  loading,
   ...rest
 }: ButtonProps) => (
   <S.Button $inverted={inverted} size={size} {...rest}>
-    {children}
+    {loading ? <Loader /> : children}
   </S.Button>
 )
 
