@@ -52,9 +52,14 @@ const Newsletter: React.FC = () => {
               onBlur={form.handleBlur}
               value={form.values.email}
               invalid={emailInvalid}
+              disabled={form.isSubmitting}
             />
           </S.FormControl>
-          <S.Button type="submit">
+          <S.Button
+            type="submit"
+            loading={form.isSubmitting}
+            disabled={form.isSubmitting}
+          >
             {t('components.sections.footer.newsletter.subscribe')}
           </S.Button>
           {shouldDisplayError && (
