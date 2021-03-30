@@ -32,6 +32,7 @@ export const transformProjects = (
   airtableProjects: AirTableProject[]
 ): Project[] => {
   return airtableProjects
+    .filter((airtableProject) => !airtableProject?.fields?.draft)
     .map((airTableProject) => {
       const {
         csTagline,
