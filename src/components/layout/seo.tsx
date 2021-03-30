@@ -69,7 +69,12 @@ export const Seo: React.FC<SeoProps> = ({
           content: coverUrl,
         },
       ].concat()}
-    />
+    >
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+      />
+    </Helmet>
   )
 }
 

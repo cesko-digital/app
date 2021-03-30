@@ -6,7 +6,6 @@ import { JoinUs } from 'components/sections'
 import * as S from './styles'
 import { mapTags } from 'utils/map-tags'
 import { ProjectsPageQuery } from 'generated/graphql-types'
-
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {
   data: ProjectsPageQuery

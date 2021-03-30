@@ -5,13 +5,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: ${(props) => props.theme.fonts.body};
-    overflow-x: hidden;
   }
 
-  html,
-  body,
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    height: 100%;
+  
+  #___gatsby {
+    overflow-x: hidden;
   }
 `
