@@ -24,6 +24,7 @@ export const Info = styled.p`
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.space.lg}px;
   color: ${({ theme }) => theme.colors.white};
+  font-weight: 600;
 `
 
 export const Form = styled.form`

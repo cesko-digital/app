@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { SlackButton } from 'components/buttons'
 
 import * as S from './styles'
 import { LINKS } from 'utils/constants'
@@ -20,7 +19,7 @@ const PanelVolunteer: React.FC = () => {
         <S.Description>
           {t('components.cards.panelVolunteer.description')}
         </S.Description>
-        <SlackButton
+        <S.SlackButtonElement
           slackLink={LINKS.joinUs}
           slackText={t('components.cards.panelVolunteer.linkText')}
         />

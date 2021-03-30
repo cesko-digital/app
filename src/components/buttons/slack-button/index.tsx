@@ -9,9 +9,13 @@ export interface SlackButtonProps {
   slackText: string
 }
 
-const SlackButton: React.FC<SlackButtonProps> = ({ slackLink, slackText }) => {
+const SlackButton: React.FC<SlackButtonProps> = ({
+  slackLink,
+  slackText,
+  ...other
+}) => {
   return (
-    <ButtonAsLink inverted to={slackLink}>
+    <ButtonAsLink inverted to={slackLink} {...other}>
       <>
         <SlackIcon /> <S.ButtonLabel>{slackText}</S.ButtonLabel>
       </>
