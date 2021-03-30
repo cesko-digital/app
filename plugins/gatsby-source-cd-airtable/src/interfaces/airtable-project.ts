@@ -2,6 +2,7 @@ import { AirTableRecord } from './airtable-record'
 
 export interface AirTableProject extends AirTableRecord {
   fields: {
+    draft?: boolean
     csName: string
     enName: string
     csSlug: string

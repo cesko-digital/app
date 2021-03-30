@@ -5,6 +5,7 @@ import {
   transformTags,
   transformVolunteers,
 } from '../src/transformers'
+import { AirTableProject } from '../src/interfaces'
 
 describe('transformers', () => {
   describe('transformProjects', () => {
@@ -175,6 +176,14 @@ describe('transformers', () => {
         progress: 50,
         rowId: 'id',
       })
+    })
+
+    it('should skip draft project', () => {
+      expect(
+        transformProjects([
+          { id: '1', fields: { draft: true } } as AirTableProject,
+        ])
+      ).toEqual([])
     })
   })
 
