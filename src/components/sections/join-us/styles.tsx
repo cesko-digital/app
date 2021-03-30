@@ -5,6 +5,10 @@ export const Container = styled.div`
   margin: 96px auto;
   position: relative;
   z-index: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin: 32px auto;
+  }
 `
 
 export const CircleCover = styled(Circle)`
@@ -25,7 +29,6 @@ export const Card = styled.section`
   overflow: hidden;
   flex: 1;
   padding: 50px 0 ${({ theme }) => theme.space.small}px;
-    0;
   max-width: ${({ theme }) => theme.contentSize}px;
   box-sizing: content-box;
   z-index: 0;

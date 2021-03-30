@@ -24,6 +24,7 @@ export const MainPerex = styled(BodyBig)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: ${({ theme }) => theme.space.lg}px;
+    font-size: ${({ theme }) => theme.fontSizes.md}px;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Body } from 'components/typography'
+import { ButtonAsLink } from 'components/links'
 
 export const Wrapper = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
@@ -16,7 +17,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 24px;
+    padding: ${({ theme }) => theme.space.outer}px;
   }
 `
 
@@ -26,7 +27,6 @@ export const Title = styled.h3`
   line-height: ${({ theme }) => theme.lineHeights.heading};
   text-align: left;
   font-weight: bold;
-  margin: 60px 0 0 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 100%;
@@ -41,5 +41,15 @@ export const ButtonWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     justify-content: center;
+  }
+`
+
+export const ButtonAsLinkElement = styled(ButtonAsLink)`
+  display: flex;
+  justify-content: flex-start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0px 60px;
+    white-space: nowrap;
   }
 `

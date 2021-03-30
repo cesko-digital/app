@@ -7,12 +7,26 @@ import { CzechiaMapArrows } from 'components/illustrations'
 export const ShiftedBody = styled(Body)`
   margin-top: 10px;
   margin-bottom: 32px;
-  line-height: 32px
-  color:  ${({ theme }) => theme.colors.asphalt} 
+  line-height: 32px;
+  position: relative;
+  color: ${({ theme }) => theme.colors.asphalt};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 20px;
+  }
+`
+
+export const ButtonAsLinkElement = styled(ButtonAsLink)`
+  z-index: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 0 60px;
+  }
 `
 
 export const ShiftedButton = styled(ButtonAsLink)`
   margin-left: 24px;
+  z-index: 2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-left: 0;
@@ -26,13 +40,13 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: ${({ theme }) => `${theme.space.md}px ${theme.space.md}px`};
-  height: 602px;
   position: relative;
   overflow: hidden;
+  height: 530px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
-    height: 530px;
+    height: 620px;
   }
 `
 
@@ -41,7 +55,6 @@ export const Card = styled.div`
   flex-direction: column;
   min-height: 454px;
   background-color: white;
-  overflow: hidden;
   position: relative;
 `
 
