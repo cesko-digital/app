@@ -10,7 +10,6 @@ export const Card = styled.div`
 
   border-radius: ${({ theme }) => theme.borderRadius.base}px;
   border: 2px solid ${({ theme }) => theme.colors.lightGray};
-  overflow: hidden;
 `
 
 export const Header = styled.div`

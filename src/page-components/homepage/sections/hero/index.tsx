@@ -1,5 +1,4 @@
 import React from 'react'
-import ButtonAsLink from 'components/links/button-as-link'
 import { Heading1 } from 'components/typography'
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
@@ -33,11 +32,11 @@ const Hero: React.FC = () => {
               )}
             </S.ShiftedBody>
 
-            <ButtonAsLink to="/projects">
+            <S.ButtonAsLinkElement to="/projects">
               {t(
                 `${HOMEPAGE_TRANSLATION_KEY}.${TranslationKeyPrefix.WhatWeDo}`
               )}
-            </ButtonAsLink>
+            </S.ButtonAsLinkElement>
 
             <S.ShiftedButton inverted to={LINKS.joinUs}>
               {t(`${HEADER_TRANSLATION_KEY}.${TranslationKeyPrefix.SignUp}`)}

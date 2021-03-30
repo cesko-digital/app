@@ -6,8 +6,8 @@ export interface props {
 
 export const Container = styled.div`
   max-width: 1160px;
-  display: flex;
   margin: 0 0 20px;
+  display: flex;
 `
 
 export const Logo = styled.span`

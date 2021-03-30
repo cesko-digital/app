@@ -6,7 +6,11 @@ export const Container = styled.div`
   align-items: center;
   max-width: 1760px;
   margin: auto;
-  padding: 48px 16px;
+  padding: 32px 16px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 96px 32px;
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 130px 32px;

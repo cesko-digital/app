@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Body } from 'components/typography'
+import { SlackButton } from 'components/buttons'
 
 export const Wrapper = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
@@ -26,7 +27,6 @@ export const Image = styled.div<{ url: string }>`
 `
 
 export const Content = styled.div`
-  height: 223px;
   padding: ${({ theme }) => theme.space.lg}px;
   background-color: ${({ theme }) => theme.colors.darkGrey};
   color: ${({ theme }) => theme.colors.pebble};
@@ -58,5 +58,10 @@ export const Description = styled(Body)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: 7px 0 18px;
+  }
+`
+export const SlackButtonElement = styled(SlackButton)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 16px;
   }
 `
