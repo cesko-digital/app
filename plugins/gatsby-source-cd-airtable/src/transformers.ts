@@ -35,18 +35,13 @@ export const transformProjects = (
       const {
         csTagline,
         tags,
-        enSlug,
-        enTagline,
         csName,
         coverUrl,
         csSlug,
         highlighted,
-        enName,
         logoUrl,
         csContributeText,
-        enContributeText,
         csDescription,
-        enDescription,
         githubUrl,
         coordinators,
         finished,
@@ -71,15 +66,6 @@ export const transformProjects = (
         coordinators: coordinators || [],
       }
 
-      const enProject: Project = {
-        ...base,
-        name: enName || '',
-        tagline: enTagline || '',
-        slug: enSlug,
-        description: enDescription || '',
-        contributeText: enContributeText || '',
-        lang: Language.English,
-      }
       const csProject: Project = {
         ...base,
         name: csName || '',
@@ -90,7 +76,7 @@ export const transformProjects = (
         lang: Language.Czech,
       }
 
-      return [enProject, csProject]
+      return [csProject]
     })
     .reduce(
       (projects: Project[], langProjects) => [...projects, ...langProjects],
