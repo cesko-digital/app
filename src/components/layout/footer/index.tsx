@@ -53,6 +53,14 @@ const Footer: React.FC = () => {
       name: t('components.sections.footer.pageLinks.supportUs'),
       url: LINKS.supportUs,
     },
+    {
+      name: t('components.sections.footer.pageLinks.logo'),
+      url: LINKS.logo,
+    },
+    {
+      name: t('components.sections.footer.pageLinks.mediaContact'),
+      url: 'mailto:pr@cesko.digital',
+    },
   ]
 
   return (
