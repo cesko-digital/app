@@ -57,26 +57,6 @@ describe('transformers', () => {
         },
       ])
       expect(projects).toContainEqual({
-        lang: 'en',
-        name: enName,
-        tagline: enTagline,
-        tags,
-        highlighted,
-        logoUrl,
-        coverUrl,
-        slug: enSlug,
-        description: enDescription,
-        contributeText: enContributeText,
-        trelloUrl,
-        slackChannelName,
-        slackChannelUrl,
-        githubUrl,
-        url,
-        coordinators,
-        rowId: 'id',
-        finished: false,
-      })
-      expect(projects).toContainEqual({
         lang: 'cs',
         name: csName,
         tagline: csTagline,
@@ -125,26 +105,7 @@ describe('transformers', () => {
           },
         },
       ])
-      expect(projects).toContainEqual({
-        lang: 'en',
-        name: enName,
-        tagline: enTagline,
-        tags,
-        highlighted: false,
-        logoUrl,
-        coverUrl,
-        slug: enSlug,
-        description: enDescription,
-        contributeText: enContributeText,
-        trelloUrl,
-        slackChannelName,
-        slackChannelUrl,
-        githubUrl,
-        url,
-        coordinators,
-        rowId: 'id',
-        finished: false,
-      })
+
       expect(projects).toContainEqual({
         lang: 'cs',
         name: csName,
