@@ -9,7 +9,7 @@ import ProjectCard from './components/project-card'
 import Contribute from './components/contribute'
 import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { Projects } from '../../components/sections'
+import { Projects } from 'components/sections'
 
 interface ProjectPageProps {
   data: ProjectPageQuery
@@ -24,7 +24,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     githubUrl,
     coverUrl,
     tagline,
-    lead,
+    coordinators,
     finished,
     description,
     slackChannelUrl,
@@ -64,7 +64,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
                 githubUrl={githubUrl}
                 name={name}
                 url={url}
-                projectLead={lead}
+                coordinators={coordinators}
                 slackChannelName={slackChannelName}
                 slackChannelUrl={slackChannelUrl}
                 trelloUrl={trelloUrl}
@@ -106,7 +106,7 @@ export const query = graphql`
       trelloUrl
       url
       contributeText
-      lead {
+      coordinators {
         name
         company
         profilePictureUrl

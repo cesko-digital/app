@@ -17,7 +17,7 @@ describe('transformers', () => {
     const csSlug = 'projekt'
     const enSlug = 'project'
     const tags = ['rowId']
-    const lead = ['leadRowId']
+    const coordinators = ['volunteerRowId']
     const csDescription = 'Popis'
     const enDescription = 'Description'
     const csContributeText = 'Zapoj se'
@@ -43,7 +43,7 @@ describe('transformers', () => {
             logoUrl,
             csSlug,
             enSlug,
-            lead,
+            coordinators,
             csDescription,
             enDescription,
             csContributeText,
@@ -72,7 +72,7 @@ describe('transformers', () => {
         slackChannelUrl,
         githubUrl,
         url,
-        lead: 'leadRowId',
+        coordinators,
         rowId: 'id',
         finished: false,
       })
@@ -92,7 +92,7 @@ describe('transformers', () => {
         slackChannelUrl,
         githubUrl,
         url,
-        lead: 'leadRowId',
+        coordinators,
         rowId: 'id',
         finished: false,
       })
@@ -112,7 +112,7 @@ describe('transformers', () => {
             logoUrl,
             csSlug,
             enSlug,
-            lead,
+            coordinators,
             csDescription,
             enDescription,
             csContributeText,
@@ -141,7 +141,7 @@ describe('transformers', () => {
         slackChannelUrl,
         githubUrl,
         url,
-        lead: 'leadRowId',
+        coordinators,
         rowId: 'id',
         finished: false,
       })
@@ -161,7 +161,7 @@ describe('transformers', () => {
         slackChannelUrl,
         githubUrl,
         url,
-        lead: 'leadRowId',
+        coordinators,
         rowId: 'id',
         finished: false,
       })

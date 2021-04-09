@@ -8,7 +8,7 @@ export const getMockProjects: () => Project[] = () => {
     trelloUrl: 'https://cesko.digital',
     githubUrl: 'https://cesko.digital',
     url: 'https://cesko.digital',
-    lead: '1',
+    coordinators: ['1'],
     tagline: 'Lorem ipsum',
     coverUrl: 'https://via.placeholder.com/400x200',
     logoUrl: 'https://via.placeholder.com/100',

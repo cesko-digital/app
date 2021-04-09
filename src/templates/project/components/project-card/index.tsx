@@ -4,10 +4,11 @@ import { ArrowIcon } from 'components/icons'
 import { GithubIcon } from 'components/icons'
 import { TrelloIcon } from 'components/icons'
 import { SlackIcon } from 'components/icons'
-import Avatar, { ProjectLeadProps } from './project-lead'
+import Coordinators from './coordinators'
 import SocialMedia from './social-media'
 import { ButtonAsLink } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { Volunteer } from '../../../../generated/graphql-types'
 
 interface ProjectCardProps {
   slackChannelUrl?: string | null
@@ -15,7 +16,7 @@ interface ProjectCardProps {
   trelloUrl?: string | null
   githubUrl?: string | null
   url: string
-  projectLead: ProjectLeadProps
+  coordinators: Pick<Volunteer, 'name' | 'profilePictureUrl' | 'company'>[]
   name: string
 }
 
@@ -28,14 +29,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slackChannelUrl,
   githubUrl,
   url,
-  projectLead,
+  coordinators,
 }) => {
   const { t } = useTranslation()
   return (
     <S.Container>
-      <S.Wrapper>
-        <Avatar {...projectLead} />
-      </S.Wrapper>
+      {Array.isArray(coordinators) && coordinators.length > 0 && (
+        <S.Wrapper>
+          <Coordinators coordinators={coordinators} />
+        </S.Wrapper>
+      )}
       <S.Social>
         <S.Title>{t(`${COMPONENT_TRANSLATION_KEY}.links`)}</S.Title>
         {githubUrl && (
