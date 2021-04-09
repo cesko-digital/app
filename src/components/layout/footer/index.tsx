@@ -46,8 +46,8 @@ const Footer: React.FC = () => {
       url: LINKS.submitProject,
     },
     {
-      name: t('components.sections.footer.pageLinks.contribute'),
-      url: LINKS.joinUs,
+      name: t('components.sections.footer.pageLinks.supportUs'),
+      url: LINKS.supportUs,
     },
   ]
 
