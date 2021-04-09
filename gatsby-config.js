@@ -91,7 +91,6 @@ module.exports = {
         projectsTableName: 'Projects',
         tagsTableName: 'Tags',
         volunteersTableName: 'Volunteers',
-        projectRolesTableName: 'ProjectRoles',
         partnersTableName: 'Partners',
       },
     },
