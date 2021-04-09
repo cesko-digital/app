@@ -54,7 +54,7 @@ module.exports = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         path: `${__dirname}/locale`,
-        languages: [`en`, `cs`],
+        languages: [`cs`],
         defaultLanguage: `cs`,
         redirect: false,
         i18nextOptions: {
@@ -64,11 +64,6 @@ module.exports = {
           {
             matchPath: '/projekty/:uid',
             languages: ['cs'],
-          },
-          {
-            matchPath: '/:lang?/projects/:uid',
-            getLanguageFromPath: true,
-            languages: ['en'],
           },
         ],
       },
@@ -80,7 +75,6 @@ module.exports = {
         defaultLocale: 'cs',
         prefix: 'urls.',
         translations: {
-          en: require('./locale/en/pages.json'),
           cs: require('./locale/cs/pages.json'),
         },
       },
