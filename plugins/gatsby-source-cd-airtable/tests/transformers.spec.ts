@@ -1,6 +1,5 @@
 import {
   transformPartners,
-  transformProjectRoles,
   transformProjects,
   transformTags,
   transformVolunteers,
@@ -19,7 +18,6 @@ describe('transformers', () => {
     const enSlug = 'project'
     const tags = ['rowId']
     const lead = ['leadRowId']
-    const projectRoles = ['projectRoleRowId']
     const csDescription = 'Popis'
     const enDescription = 'Description'
     const csContributeText = 'Zapoj se'
@@ -29,7 +27,6 @@ describe('transformers', () => {
     const url = 'url'
     const slackChannelUrl = 'slackUrl'
     const slackChannelName = 'slackName'
-    const progress = 0.5
     it('should transform airtable projects to lang version projects', () => {
       const highlighted = true
       const projects = transformProjects([
@@ -47,14 +44,12 @@ describe('transformers', () => {
             csSlug,
             enSlug,
             lead,
-            projectRoles,
             csDescription,
             enDescription,
             csContributeText,
             enContributeText,
             trelloUrl,
             githubUrl,
-            progress,
             slackChannelName,
             slackChannelUrl,
             url,
@@ -78,9 +73,9 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        projectRoles,
-        progress: 50,
+        progress: 100,
         rowId: 'id',
+        finished: false,
       })
       expect(projects).toContainEqual({
         lang: 'cs',
@@ -99,9 +94,9 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        projectRoles,
-        progress: 50,
+        progress: 100,
         rowId: 'id',
+        finished: false,
       })
     })
 
@@ -120,14 +115,12 @@ describe('transformers', () => {
             csSlug,
             enSlug,
             lead,
-            projectRoles,
             csDescription,
             enDescription,
             csContributeText,
             enContributeText,
             trelloUrl,
             githubUrl,
-            progress,
             slackChannelName,
             slackChannelUrl,
             url,
@@ -151,9 +144,9 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        projectRoles,
-        progress: 50,
+        progress: 100,
         rowId: 'id',
+        finished: false,
       })
       expect(projects).toContainEqual({
         lang: 'cs',
@@ -172,9 +165,9 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        projectRoles,
-        progress: 50,
+        progress: 100,
         rowId: 'id',
+        finished: false,
       })
     })
 
@@ -240,36 +233,6 @@ describe('transformers', () => {
       expect(volunteers).toEqual([
         { name, profilePictureUrl, company, email, rowId },
       ])
-    })
-  })
-
-  describe('transformProjectRoles', () => {
-    it('should transform airtable project roles to lang version project roles', () => {
-      const csName = 'csName'
-      const enName = 'enName'
-      const volunteer = 'volunteerRowId'
-      const projectRoles = transformProjectRoles([
-        {
-          id: 'id',
-          fields: {
-            csName,
-            enName,
-            volunteer: [volunteer],
-          },
-        },
-      ])
-      expect(projectRoles).toContainEqual({
-        lang: 'cs',
-        name: csName,
-        rowId: 'id',
-        volunteer,
-      })
-      expect(projectRoles).toContainEqual({
-        lang: 'en',
-        name: enName,
-        volunteer,
-        rowId: 'id',
-      })
     })
   })
 

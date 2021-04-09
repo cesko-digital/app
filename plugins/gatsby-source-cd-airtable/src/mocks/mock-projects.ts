@@ -10,7 +10,6 @@ export const getMockProjects: () => Project[] = () => {
     url: 'https://cesko.digital',
     progress: 88,
     lead: '1',
-    projectRoles: ['1'],
     tagline: 'Lorem ipsum',
     coverUrl: 'https://via.placeholder.com/400x200',
     logoUrl: 'https://via.placeholder.com/100',
@@ -23,6 +22,7 @@ export const getMockProjects: () => Project[] = () => {
       lang: Language.Czech,
       slug: 'prvni-projekt',
       highlighted: true,
+      finished: false,
       ...base,
     },
     {
@@ -31,6 +31,7 @@ export const getMockProjects: () => Project[] = () => {
       lang: Language.English,
       slug: 'first-project',
       highlighted: true,
+      finished: false,
       ...base,
     },
     {
@@ -39,6 +40,7 @@ export const getMockProjects: () => Project[] = () => {
       lang: Language.Czech,
       slug: 'druhy-projekt',
       highlighted: false,
+      finished: true,
       ...base,
     },
     {
@@ -47,6 +49,7 @@ export const getMockProjects: () => Project[] = () => {
       lang: Language.English,
       slug: 'second-project',
       highlighted: false,
+      finished: true,
       ...base,
     },
   ]

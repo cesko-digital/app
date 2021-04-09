@@ -1,7 +1,6 @@
 import { SourceNodesArgs } from 'gatsby'
 import {
   transformPartners,
-  transformProjectRoles,
   transformProjects,
   transformTags,
   transformVolunteers,
@@ -11,7 +10,6 @@ import {
   PluginOptions,
   AirTablePartner,
   AirTableProject,
-  AirTableProjectRole,
   AirTableTag,
   AirTableVolunteer,
 } from './src/interfaces'
@@ -19,7 +17,6 @@ import { ConnectionError } from './src/errors/connection-error'
 import {
   createPartnerNodesFactory,
   createProjectNodesFactory,
-  createProjectRoleNodesFactory,
   createTagNodesFactory,
   createVolunteerNodesFactory,
 } from './src/create-nodes-factory'
@@ -27,7 +24,6 @@ import {
   getMockProjects,
   getMockTags,
   getMockVolunteers,
-  getMockProjectRoles,
   getMockPartners,
 } from './src/mocks'
 
@@ -39,16 +35,12 @@ export const sourceNodes = async (
   const createVolunteerSourceNodes = createVolunteerNodesFactory(
     sourceNodesArgs
   )
-  const createProjectRoleSourceNodes = createProjectRoleNodesFactory(
-    sourceNodesArgs
-  )
   const createTagSourceNodes = createTagNodesFactory(sourceNodesArgs)
   const createProjectSourceNodes = createProjectNodesFactory(sourceNodesArgs)
 
   const setupMockData = () => {
     createPartnerSourceNodes(getMockPartners())
     createVolunteerSourceNodes(getMockVolunteers())
-    createProjectRoleSourceNodes(getMockProjectRoles())
     createTagSourceNodes(getMockTags())
     createProjectSourceNodes(getMockProjects())
   }
@@ -67,26 +59,22 @@ export const sourceNodes = async (
     const [
       airTablePartners,
       airTableVolunteers,
-      airTableProjectRoles,
       airTableTags,
       airtableProjects,
     ] = await Promise.all([
       loadData<AirTablePartner>(options.partnersTableName),
       loadData<AirTableVolunteer>(options.volunteersTableName),
-      loadData<AirTableProjectRole>(options.projectRolesTableName),
       loadData<AirTableTag>(options.tagsTableName),
       loadData<AirTableProject>(options.projectsTableName),
     ])
 
     const partners = transformPartners(airTablePartners)
     const volunteers = transformVolunteers(airTableVolunteers)
-    const projectRoles = transformProjectRoles(airTableProjectRoles)
     const tags = transformTags(airTableTags)
     const projects = transformProjects(airtableProjects)
 
     createPartnerSourceNodes(partners)
     createVolunteerSourceNodes(volunteers)
-    createProjectRoleSourceNodes(projectRoles)
     createTagSourceNodes(tags)
     createProjectSourceNodes(projects)
   } catch (e) {
