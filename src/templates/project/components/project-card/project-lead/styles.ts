@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `
 
 export const Title = styled.h2`
-  margin: 32px 0 20px;
+  margin: 0 0 20px;
   font-weight: ${({ theme }) => theme.fontWeights.heading};
   font-size: ${({ theme }) => theme.fontSizes.base}px;
   line-height: ${({ theme }) => theme.lineHeights.body};
