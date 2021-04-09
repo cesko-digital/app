@@ -36,6 +36,7 @@ const AVATAR_SIZE = 60
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 `
 
 export const Image = styled.div<{ url: string }>`
