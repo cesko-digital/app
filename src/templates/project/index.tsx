@@ -25,7 +25,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
     coverUrl,
     tagline,
     lead,
-    progress,
     finished,
     description,
     slackChannelUrl,
@@ -65,7 +64,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
                 githubUrl={githubUrl}
                 name={name}
                 url={url}
-                progress={progress}
                 projectLead={lead}
                 slackChannelName={slackChannelName}
                 slackChannelUrl={slackChannelUrl}
@@ -101,7 +99,6 @@ export const query = graphql`
       description
       slackChannelName
       slackChannelUrl
-      progress
       finished
       tagline
       coverUrl
