@@ -6,10 +6,7 @@ import { Project, Tag } from 'generated/graphql-types'
 
 interface Props {
   projects: Array<
-    Pick<
-      Project,
-      'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'rowId'
-    > & {
+    Pick<Project, 'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl'> & {
       tags: Pick<Tag, 'slug'>[]
     }
   >
@@ -30,7 +27,7 @@ const OngoingProjects: React.FC<Props> = ({ projects }) => (
   <Container>
     {projects.map((project) => (
       <ProjectCard
-        key={project.rowId}
+        key={project.slug}
         title={project.name}
         description={project.tagline}
         cover={project.coverUrl}

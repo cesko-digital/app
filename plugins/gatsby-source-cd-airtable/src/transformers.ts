@@ -1,13 +1,11 @@
 import {
   Language,
   Project,
-  ProjectRole,
   Tag,
   Volunteer,
   Partner,
   AirTablePartner,
   AirTableProject,
-  AirTableProjectRole,
   AirTableTag,
   AirTableVolunteer,
 } from './interfaces'
@@ -51,17 +49,17 @@ export const transformProjects = (
         enDescription,
         githubUrl,
         lead,
-        progress,
+        finished,
         slackChannelName,
         slackChannelUrl,
         trelloUrl,
         url,
-        projectRoles,
       } = airTableProject.fields
 
       const base = {
         tags: tags || [],
         highlighted: !!highlighted, // Field can be missing in AirTable record
+        finished: !!finished, // Field can be missing in AirTable record
         coverUrl,
         logoUrl,
         trelloUrl,
@@ -69,28 +67,27 @@ export const transformProjects = (
         slackChannelUrl,
         slackChannelName,
         url,
-        progress: progress * 100,
+        progress: 100,
         rowId: airTableProject.id,
         lead: lead[0],
-        projectRoles: projectRoles || [],
       }
 
       const enProject: Project = {
         ...base,
-        name: enName,
-        tagline: enTagline,
+        name: enName || '',
+        tagline: enTagline || '',
         slug: enSlug,
-        description: enDescription,
-        contributeText: enContributeText,
+        description: enDescription || '',
+        contributeText: enContributeText || '',
         lang: Language.English,
       }
       const csProject: Project = {
         ...base,
-        name: csName,
-        tagline: csTagline,
+        name: csName || '',
+        tagline: csTagline || '',
         slug: csSlug,
-        description: csDescription,
-        contributeText: csContributeText,
+        description: csDescription || '',
+        contributeText: csContributeText || '',
         lang: Language.Czech,
       }
 
@@ -131,38 +128,6 @@ export const transformVolunteers = (
   airTableVolunteers: AirTableVolunteer[]
 ): Volunteer[] => transformAirTableRecords(airTableVolunteers)
 
-export const transformProjectRoles = (
-  airTableProjectRoles: AirTableProjectRole[]
-): ProjectRole[] => {
-  return airTableProjectRoles
-    .map((airTableProjectRole) => {
-      const { csName, enName, volunteer } = airTableProjectRole.fields
-      const base = {
-        rowId: airTableProjectRole.id,
-        volunteer: volunteer[0],
-      }
-      return [
-        {
-          ...base,
-          name: enName,
-          lang: Language.English,
-        },
-        {
-          ...base,
-          name: csName,
-          lang: Language.Czech,
-        },
-      ]
-    })
-    .reduce(
-      (projectRoles: ProjectRole[], langProjectRoles) => [
-        ...projectRoles,
-        ...langProjectRoles,
-      ],
-      []
-    )
-}
-
 export const transformPartners = (
   airTablePartners: AirTablePartner[]
 ): Partner[] => transformAirTableRecords(airTablePartners)
@@ -179,6 +144,3 @@ export const getTagId = ({ lang, rowId }: IdParams): string =>
   `${lang}-Tag-${rowId}`
 
 export const getVolunteerId = (rowId: string): string => `Volunteer-${rowId}`
-
-export const getProjectRoleId = ({ lang, rowId }: IdParams): string =>
-  `${lang}-Volunteer-${rowId}`

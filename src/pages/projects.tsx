@@ -8,7 +8,6 @@ export const query = graphql`
       lang: { eq: $locale }
     ) {
       name
-      rowId
       lang
       slug
       tagline
@@ -27,7 +26,6 @@ export const query = graphql`
     ) {
       nodes {
         name
-        rowId
         lang
         slug
         tagline

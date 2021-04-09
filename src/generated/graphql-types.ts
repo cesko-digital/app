@@ -1802,6 +1802,7 @@ export type Project = Node & {
   tags: Array<Tag>;
   contributeText: Scalars['String'];
   progress: Scalars['Int'];
+  finished: Scalars['Boolean'];
   description: Scalars['String'];
   trelloUrl: Maybe<Scalars['String']>;
   githubUrl: Maybe<Scalars['String']>;
@@ -1809,7 +1810,6 @@ export type Project = Node & {
   slackChannelName: Maybe<Scalars['String']>;
   url: Scalars['String'];
   lead: Volunteer;
-  projectRoles: Array<ProjectRole>;
   rowId: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
@@ -1899,6 +1899,7 @@ export enum ProjectFieldsEnum {
   tags___internal___type = 'tags___internal___type',
   contributeText = 'contributeText',
   progress = 'progress',
+  finished = 'finished',
   description = 'description',
   trelloUrl = 'trelloUrl',
   githubUrl = 'githubUrl',
@@ -1950,69 +1951,6 @@ export enum ProjectFieldsEnum {
   lead___internal___mediaType = 'lead___internal___mediaType',
   lead___internal___owner = 'lead___internal___owner',
   lead___internal___type = 'lead___internal___type',
-  projectRoles = 'projectRoles',
-  projectRoles___volunteer___name = 'projectRoles___volunteer___name',
-  projectRoles___volunteer___company = 'projectRoles___volunteer___company',
-  projectRoles___volunteer___email = 'projectRoles___volunteer___email',
-  projectRoles___volunteer___profilePictureUrl = 'projectRoles___volunteer___profilePictureUrl',
-  projectRoles___volunteer___rowId = 'projectRoles___volunteer___rowId',
-  projectRoles___volunteer___ProjectRoles = 'projectRoles___volunteer___ProjectRoles',
-  projectRoles___volunteer___Projects = 'projectRoles___volunteer___Projects',
-  projectRoles___volunteer___id = 'projectRoles___volunteer___id',
-  projectRoles___volunteer___parent___id = 'projectRoles___volunteer___parent___id',
-  projectRoles___volunteer___parent___children = 'projectRoles___volunteer___parent___children',
-  projectRoles___volunteer___children = 'projectRoles___volunteer___children',
-  projectRoles___volunteer___children___id = 'projectRoles___volunteer___children___id',
-  projectRoles___volunteer___children___children = 'projectRoles___volunteer___children___children',
-  projectRoles___volunteer___internal___content = 'projectRoles___volunteer___internal___content',
-  projectRoles___volunteer___internal___contentDigest = 'projectRoles___volunteer___internal___contentDigest',
-  projectRoles___volunteer___internal___description = 'projectRoles___volunteer___internal___description',
-  projectRoles___volunteer___internal___fieldOwners = 'projectRoles___volunteer___internal___fieldOwners',
-  projectRoles___volunteer___internal___ignoreType = 'projectRoles___volunteer___internal___ignoreType',
-  projectRoles___volunteer___internal___mediaType = 'projectRoles___volunteer___internal___mediaType',
-  projectRoles___volunteer___internal___owner = 'projectRoles___volunteer___internal___owner',
-  projectRoles___volunteer___internal___type = 'projectRoles___volunteer___internal___type',
-  projectRoles___name = 'projectRoles___name',
-  projectRoles___lang = 'projectRoles___lang',
-  projectRoles___rowId = 'projectRoles___rowId',
-  projectRoles___id = 'projectRoles___id',
-  projectRoles___parent___id = 'projectRoles___parent___id',
-  projectRoles___parent___parent___id = 'projectRoles___parent___parent___id',
-  projectRoles___parent___parent___children = 'projectRoles___parent___parent___children',
-  projectRoles___parent___children = 'projectRoles___parent___children',
-  projectRoles___parent___children___id = 'projectRoles___parent___children___id',
-  projectRoles___parent___children___children = 'projectRoles___parent___children___children',
-  projectRoles___parent___internal___content = 'projectRoles___parent___internal___content',
-  projectRoles___parent___internal___contentDigest = 'projectRoles___parent___internal___contentDigest',
-  projectRoles___parent___internal___description = 'projectRoles___parent___internal___description',
-  projectRoles___parent___internal___fieldOwners = 'projectRoles___parent___internal___fieldOwners',
-  projectRoles___parent___internal___ignoreType = 'projectRoles___parent___internal___ignoreType',
-  projectRoles___parent___internal___mediaType = 'projectRoles___parent___internal___mediaType',
-  projectRoles___parent___internal___owner = 'projectRoles___parent___internal___owner',
-  projectRoles___parent___internal___type = 'projectRoles___parent___internal___type',
-  projectRoles___children = 'projectRoles___children',
-  projectRoles___children___id = 'projectRoles___children___id',
-  projectRoles___children___parent___id = 'projectRoles___children___parent___id',
-  projectRoles___children___parent___children = 'projectRoles___children___parent___children',
-  projectRoles___children___children = 'projectRoles___children___children',
-  projectRoles___children___children___id = 'projectRoles___children___children___id',
-  projectRoles___children___children___children = 'projectRoles___children___children___children',
-  projectRoles___children___internal___content = 'projectRoles___children___internal___content',
-  projectRoles___children___internal___contentDigest = 'projectRoles___children___internal___contentDigest',
-  projectRoles___children___internal___description = 'projectRoles___children___internal___description',
-  projectRoles___children___internal___fieldOwners = 'projectRoles___children___internal___fieldOwners',
-  projectRoles___children___internal___ignoreType = 'projectRoles___children___internal___ignoreType',
-  projectRoles___children___internal___mediaType = 'projectRoles___children___internal___mediaType',
-  projectRoles___children___internal___owner = 'projectRoles___children___internal___owner',
-  projectRoles___children___internal___type = 'projectRoles___children___internal___type',
-  projectRoles___internal___content = 'projectRoles___internal___content',
-  projectRoles___internal___contentDigest = 'projectRoles___internal___contentDigest',
-  projectRoles___internal___description = 'projectRoles___internal___description',
-  projectRoles___internal___fieldOwners = 'projectRoles___internal___fieldOwners',
-  projectRoles___internal___ignoreType = 'projectRoles___internal___ignoreType',
-  projectRoles___internal___mediaType = 'projectRoles___internal___mediaType',
-  projectRoles___internal___owner = 'projectRoles___internal___owner',
-  projectRoles___internal___type = 'projectRoles___internal___type',
   rowId = 'rowId',
   id = 'id',
   parent___id = 'parent___id',
@@ -2113,6 +2051,7 @@ export type ProjectFilterInput = {
   tags: Maybe<TagFilterListInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
   progress: Maybe<IntQueryOperatorInput>;
+  finished: Maybe<BooleanQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   trelloUrl: Maybe<StringQueryOperatorInput>;
   githubUrl: Maybe<StringQueryOperatorInput>;
@@ -2120,7 +2059,6 @@ export type ProjectFilterInput = {
   slackChannelName: Maybe<StringQueryOperatorInput>;
   url: Maybe<StringQueryOperatorInput>;
   lead: Maybe<VolunteerFilterInput>;
-  projectRoles: Maybe<ProjectRoleFilterListInput>;
   rowId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2136,214 +2074,6 @@ export type ProjectGroupConnection = {
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue: Maybe<Scalars['String']>;
-};
-
-export type ProjectRole = Node & {
-  __typename?: 'ProjectRole';
-  volunteer: Volunteer;
-  name: Scalars['String'];
-  lang: Scalars['String'];
-  rowId: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-export type ProjectRoleConnection = {
-  __typename?: 'ProjectRoleConnection';
-  totalCount: Scalars['Int'];
-  edges: Array<ProjectRoleEdge>;
-  nodes: Array<ProjectRole>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<ProjectRoleGroupConnection>;
-};
-
-
-export type ProjectRoleConnectionDistinctArgs = {
-  field: ProjectRoleFieldsEnum;
-};
-
-
-export type ProjectRoleConnectionGroupArgs = {
-  skip: Maybe<Scalars['Int']>;
-  limit: Maybe<Scalars['Int']>;
-  field: ProjectRoleFieldsEnum;
-};
-
-export type ProjectRoleEdge = {
-  __typename?: 'ProjectRoleEdge';
-  next: Maybe<ProjectRole>;
-  node: ProjectRole;
-  previous: Maybe<ProjectRole>;
-};
-
-export enum ProjectRoleFieldsEnum {
-  volunteer___name = 'volunteer___name',
-  volunteer___company = 'volunteer___company',
-  volunteer___email = 'volunteer___email',
-  volunteer___profilePictureUrl = 'volunteer___profilePictureUrl',
-  volunteer___rowId = 'volunteer___rowId',
-  volunteer___ProjectRoles = 'volunteer___ProjectRoles',
-  volunteer___Projects = 'volunteer___Projects',
-  volunteer___id = 'volunteer___id',
-  volunteer___parent___id = 'volunteer___parent___id',
-  volunteer___parent___parent___id = 'volunteer___parent___parent___id',
-  volunteer___parent___parent___children = 'volunteer___parent___parent___children',
-  volunteer___parent___children = 'volunteer___parent___children',
-  volunteer___parent___children___id = 'volunteer___parent___children___id',
-  volunteer___parent___children___children = 'volunteer___parent___children___children',
-  volunteer___parent___internal___content = 'volunteer___parent___internal___content',
-  volunteer___parent___internal___contentDigest = 'volunteer___parent___internal___contentDigest',
-  volunteer___parent___internal___description = 'volunteer___parent___internal___description',
-  volunteer___parent___internal___fieldOwners = 'volunteer___parent___internal___fieldOwners',
-  volunteer___parent___internal___ignoreType = 'volunteer___parent___internal___ignoreType',
-  volunteer___parent___internal___mediaType = 'volunteer___parent___internal___mediaType',
-  volunteer___parent___internal___owner = 'volunteer___parent___internal___owner',
-  volunteer___parent___internal___type = 'volunteer___parent___internal___type',
-  volunteer___children = 'volunteer___children',
-  volunteer___children___id = 'volunteer___children___id',
-  volunteer___children___parent___id = 'volunteer___children___parent___id',
-  volunteer___children___parent___children = 'volunteer___children___parent___children',
-  volunteer___children___children = 'volunteer___children___children',
-  volunteer___children___children___id = 'volunteer___children___children___id',
-  volunteer___children___children___children = 'volunteer___children___children___children',
-  volunteer___children___internal___content = 'volunteer___children___internal___content',
-  volunteer___children___internal___contentDigest = 'volunteer___children___internal___contentDigest',
-  volunteer___children___internal___description = 'volunteer___children___internal___description',
-  volunteer___children___internal___fieldOwners = 'volunteer___children___internal___fieldOwners',
-  volunteer___children___internal___ignoreType = 'volunteer___children___internal___ignoreType',
-  volunteer___children___internal___mediaType = 'volunteer___children___internal___mediaType',
-  volunteer___children___internal___owner = 'volunteer___children___internal___owner',
-  volunteer___children___internal___type = 'volunteer___children___internal___type',
-  volunteer___internal___content = 'volunteer___internal___content',
-  volunteer___internal___contentDigest = 'volunteer___internal___contentDigest',
-  volunteer___internal___description = 'volunteer___internal___description',
-  volunteer___internal___fieldOwners = 'volunteer___internal___fieldOwners',
-  volunteer___internal___ignoreType = 'volunteer___internal___ignoreType',
-  volunteer___internal___mediaType = 'volunteer___internal___mediaType',
-  volunteer___internal___owner = 'volunteer___internal___owner',
-  volunteer___internal___type = 'volunteer___internal___type',
-  name = 'name',
-  lang = 'lang',
-  rowId = 'rowId',
-  id = 'id',
-  parent___id = 'parent___id',
-  parent___parent___id = 'parent___parent___id',
-  parent___parent___parent___id = 'parent___parent___parent___id',
-  parent___parent___parent___children = 'parent___parent___parent___children',
-  parent___parent___children = 'parent___parent___children',
-  parent___parent___children___id = 'parent___parent___children___id',
-  parent___parent___children___children = 'parent___parent___children___children',
-  parent___parent___internal___content = 'parent___parent___internal___content',
-  parent___parent___internal___contentDigest = 'parent___parent___internal___contentDigest',
-  parent___parent___internal___description = 'parent___parent___internal___description',
-  parent___parent___internal___fieldOwners = 'parent___parent___internal___fieldOwners',
-  parent___parent___internal___ignoreType = 'parent___parent___internal___ignoreType',
-  parent___parent___internal___mediaType = 'parent___parent___internal___mediaType',
-  parent___parent___internal___owner = 'parent___parent___internal___owner',
-  parent___parent___internal___type = 'parent___parent___internal___type',
-  parent___children = 'parent___children',
-  parent___children___id = 'parent___children___id',
-  parent___children___parent___id = 'parent___children___parent___id',
-  parent___children___parent___children = 'parent___children___parent___children',
-  parent___children___children = 'parent___children___children',
-  parent___children___children___id = 'parent___children___children___id',
-  parent___children___children___children = 'parent___children___children___children',
-  parent___children___internal___content = 'parent___children___internal___content',
-  parent___children___internal___contentDigest = 'parent___children___internal___contentDigest',
-  parent___children___internal___description = 'parent___children___internal___description',
-  parent___children___internal___fieldOwners = 'parent___children___internal___fieldOwners',
-  parent___children___internal___ignoreType = 'parent___children___internal___ignoreType',
-  parent___children___internal___mediaType = 'parent___children___internal___mediaType',
-  parent___children___internal___owner = 'parent___children___internal___owner',
-  parent___children___internal___type = 'parent___children___internal___type',
-  parent___internal___content = 'parent___internal___content',
-  parent___internal___contentDigest = 'parent___internal___contentDigest',
-  parent___internal___description = 'parent___internal___description',
-  parent___internal___fieldOwners = 'parent___internal___fieldOwners',
-  parent___internal___ignoreType = 'parent___internal___ignoreType',
-  parent___internal___mediaType = 'parent___internal___mediaType',
-  parent___internal___owner = 'parent___internal___owner',
-  parent___internal___type = 'parent___internal___type',
-  children = 'children',
-  children___id = 'children___id',
-  children___parent___id = 'children___parent___id',
-  children___parent___parent___id = 'children___parent___parent___id',
-  children___parent___parent___children = 'children___parent___parent___children',
-  children___parent___children = 'children___parent___children',
-  children___parent___children___id = 'children___parent___children___id',
-  children___parent___children___children = 'children___parent___children___children',
-  children___parent___internal___content = 'children___parent___internal___content',
-  children___parent___internal___contentDigest = 'children___parent___internal___contentDigest',
-  children___parent___internal___description = 'children___parent___internal___description',
-  children___parent___internal___fieldOwners = 'children___parent___internal___fieldOwners',
-  children___parent___internal___ignoreType = 'children___parent___internal___ignoreType',
-  children___parent___internal___mediaType = 'children___parent___internal___mediaType',
-  children___parent___internal___owner = 'children___parent___internal___owner',
-  children___parent___internal___type = 'children___parent___internal___type',
-  children___children = 'children___children',
-  children___children___id = 'children___children___id',
-  children___children___parent___id = 'children___children___parent___id',
-  children___children___parent___children = 'children___children___parent___children',
-  children___children___children = 'children___children___children',
-  children___children___children___id = 'children___children___children___id',
-  children___children___children___children = 'children___children___children___children',
-  children___children___internal___content = 'children___children___internal___content',
-  children___children___internal___contentDigest = 'children___children___internal___contentDigest',
-  children___children___internal___description = 'children___children___internal___description',
-  children___children___internal___fieldOwners = 'children___children___internal___fieldOwners',
-  children___children___internal___ignoreType = 'children___children___internal___ignoreType',
-  children___children___internal___mediaType = 'children___children___internal___mediaType',
-  children___children___internal___owner = 'children___children___internal___owner',
-  children___children___internal___type = 'children___children___internal___type',
-  children___internal___content = 'children___internal___content',
-  children___internal___contentDigest = 'children___internal___contentDigest',
-  children___internal___description = 'children___internal___description',
-  children___internal___fieldOwners = 'children___internal___fieldOwners',
-  children___internal___ignoreType = 'children___internal___ignoreType',
-  children___internal___mediaType = 'children___internal___mediaType',
-  children___internal___owner = 'children___internal___owner',
-  children___internal___type = 'children___internal___type',
-  internal___content = 'internal___content',
-  internal___contentDigest = 'internal___contentDigest',
-  internal___description = 'internal___description',
-  internal___fieldOwners = 'internal___fieldOwners',
-  internal___ignoreType = 'internal___ignoreType',
-  internal___mediaType = 'internal___mediaType',
-  internal___owner = 'internal___owner',
-  internal___type = 'internal___type'
-}
-
-export type ProjectRoleFilterInput = {
-  volunteer: Maybe<VolunteerFilterInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
-  rowId: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  internal: Maybe<InternalFilterInput>;
-};
-
-export type ProjectRoleFilterListInput = {
-  elemMatch: Maybe<ProjectRoleFilterInput>;
-};
-
-export type ProjectRoleGroupConnection = {
-  __typename?: 'ProjectRoleGroupConnection';
-  totalCount: Scalars['Int'];
-  edges: Array<ProjectRoleEdge>;
-  nodes: Array<ProjectRole>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-};
-
-export type ProjectRoleSortInput = {
-  fields: Maybe<Array<Maybe<ProjectRoleFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type ProjectSortInput = {
@@ -2365,8 +2095,6 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   volunteer: Maybe<Volunteer>;
   allVolunteer: VolunteerConnection;
-  projectRole: Maybe<ProjectRole>;
-  allProjectRole: ProjectRoleConnection;
   tag: Maybe<Tag>;
   allTag: TagConnection;
   project: Maybe<Project>;
@@ -2575,26 +2303,6 @@ export type QueryAllVolunteerArgs = {
 };
 
 
-export type QueryProjectRoleArgs = {
-  volunteer: Maybe<VolunteerFilterInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
-  rowId: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  internal: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllProjectRoleArgs = {
-  filter: Maybe<ProjectRoleFilterInput>;
-  sort: Maybe<ProjectRoleSortInput>;
-  skip: Maybe<Scalars['Int']>;
-  limit: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryTagArgs = {
   name: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
@@ -2626,6 +2334,7 @@ export type QueryProjectArgs = {
   tags: Maybe<TagFilterListInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
   progress: Maybe<IntQueryOperatorInput>;
+  finished: Maybe<BooleanQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   trelloUrl: Maybe<StringQueryOperatorInput>;
   githubUrl: Maybe<StringQueryOperatorInput>;
@@ -2633,7 +2342,6 @@ export type QueryProjectArgs = {
   slackChannelName: Maybe<StringQueryOperatorInput>;
   url: Maybe<StringQueryOperatorInput>;
   lead: Maybe<VolunteerFilterInput>;
-  projectRoles: Maybe<ProjectRoleFilterListInput>;
   rowId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -3155,12 +2863,10 @@ export type SitePageContextI18nResources = {
 export type SitePageContextI18nResourcesCs = {
   __typename?: 'SitePageContextI18nResourcesCs';
   pages: Maybe<SitePageContextI18nResourcesCsPages>;
-  translation: Maybe<SitePageContextI18nResourcesCsTranslation>;
 };
 
 export type SitePageContextI18nResourcesCsFilterInput = {
   pages: Maybe<SitePageContextI18nResourcesCsPagesFilterInput>;
-  translation: Maybe<SitePageContextI18nResourcesCsTranslationFilterInput>;
 };
 
 export type SitePageContextI18nResourcesCsPages = {
@@ -3174,37 +2880,13 @@ export type SitePageContextI18nResourcesCsPagesFilterInput = {
   urls_page_2: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePageContextI18nResourcesCsTranslation = {
-  __typename?: 'SitePageContextI18nResourcesCsTranslation';
-  someTranslation: Maybe<Scalars['String']>;
-  nested: Maybe<SitePageContextI18nResourcesCsTranslationNested>;
-};
-
-export type SitePageContextI18nResourcesCsTranslationFilterInput = {
-  someTranslation: Maybe<StringQueryOperatorInput>;
-  nested: Maybe<SitePageContextI18nResourcesCsTranslationNestedFilterInput>;
-};
-
-export type SitePageContextI18nResourcesCsTranslationNested = {
-  __typename?: 'SitePageContextI18nResourcesCsTranslationNested';
-  firstTranslation: Maybe<Scalars['String']>;
-  secondTranslation: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextI18nResourcesCsTranslationNestedFilterInput = {
-  firstTranslation: Maybe<StringQueryOperatorInput>;
-  secondTranslation: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePageContextI18nResourcesEn = {
   __typename?: 'SitePageContextI18nResourcesEn';
   pages: Maybe<SitePageContextI18nResourcesEnPages>;
-  translation: Maybe<SitePageContextI18nResourcesEnTranslation>;
 };
 
 export type SitePageContextI18nResourcesEnFilterInput = {
   pages: Maybe<SitePageContextI18nResourcesEnPagesFilterInput>;
-  translation: Maybe<SitePageContextI18nResourcesEnTranslationFilterInput>;
 };
 
 export type SitePageContextI18nResourcesEnPages = {
@@ -3216,28 +2898,6 @@ export type SitePageContextI18nResourcesEnPages = {
 export type SitePageContextI18nResourcesEnPagesFilterInput = {
   urls_projects: Maybe<StringQueryOperatorInput>;
   urls_page_2: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextI18nResourcesEnTranslation = {
-  __typename?: 'SitePageContextI18nResourcesEnTranslation';
-  someTranslation: Maybe<Scalars['String']>;
-  nested: Maybe<SitePageContextI18nResourcesEnTranslationNested>;
-};
-
-export type SitePageContextI18nResourcesEnTranslationFilterInput = {
-  someTranslation: Maybe<StringQueryOperatorInput>;
-  nested: Maybe<SitePageContextI18nResourcesEnTranslationNestedFilterInput>;
-};
-
-export type SitePageContextI18nResourcesEnTranslationNested = {
-  __typename?: 'SitePageContextI18nResourcesEnTranslationNested';
-  firstTranslation: Maybe<Scalars['String']>;
-  secondTranslation: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextI18nResourcesEnTranslationNestedFilterInput = {
-  firstTranslation: Maybe<StringQueryOperatorInput>;
-  secondTranslation: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextI18nResourcesFilterInput = {
@@ -3434,7 +3094,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___projectsTableName = 'pluginCreator___pluginOptions___projectsTableName',
   pluginCreator___pluginOptions___tagsTableName = 'pluginCreator___pluginOptions___tagsTableName',
   pluginCreator___pluginOptions___volunteersTableName = 'pluginCreator___pluginOptions___volunteersTableName',
-  pluginCreator___pluginOptions___projectRolesTableName = 'pluginCreator___pluginOptions___projectRolesTableName',
   pluginCreator___pluginOptions___partnersTableName = 'pluginCreator___pluginOptions___partnersTableName',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
@@ -3670,7 +3329,6 @@ export enum SitePluginFieldsEnum {
   pluginOptions___projectsTableName = 'pluginOptions___projectsTableName',
   pluginOptions___tagsTableName = 'pluginOptions___tagsTableName',
   pluginOptions___volunteersTableName = 'pluginOptions___volunteersTableName',
-  pluginOptions___projectRolesTableName = 'pluginOptions___projectRolesTableName',
   pluginOptions___partnersTableName = 'pluginOptions___partnersTableName',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
   nodeAPIs = 'nodeAPIs',
@@ -3828,7 +3486,6 @@ export type SitePluginPluginOptions = {
   projectsTableName: Maybe<Scalars['String']>;
   tagsTableName: Maybe<Scalars['String']>;
   volunteersTableName: Maybe<Scalars['String']>;
-  projectRolesTableName: Maybe<Scalars['String']>;
   partnersTableName: Maybe<Scalars['String']>;
   pathCheck: Maybe<Scalars['Boolean']>;
 };
@@ -3879,7 +3536,6 @@ export type SitePluginPluginOptionsFilterInput = {
   projectsTableName: Maybe<StringQueryOperatorInput>;
   tagsTableName: Maybe<StringQueryOperatorInput>;
   volunteersTableName: Maybe<StringQueryOperatorInput>;
-  projectRolesTableName: Maybe<StringQueryOperatorInput>;
   partnersTableName: Maybe<StringQueryOperatorInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
@@ -4346,7 +4002,7 @@ export type ProjectsPageQuery = (
   { __typename?: 'Query' }
   & { highlightedProject: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'rowId' | 'lang' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
+    & Pick<Project, 'name' | 'lang' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
     & { tags: Array<(
       { __typename?: 'Tag' }
       & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
@@ -4355,7 +4011,7 @@ export type ProjectsPageQuery = (
     { __typename?: 'ProjectConnection' }
     & { nodes: Array<(
       { __typename?: 'Project' }
-      & Pick<Project, 'name' | 'rowId' | 'lang' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
+      & Pick<Project, 'name' | 'lang' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
       & { tags: Array<(
         { __typename?: 'Tag' }
         & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
@@ -4374,15 +4030,8 @@ export type ProjectPageQuery = (
   { __typename?: 'Query' }
   & { project: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'progress' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
-    & { projectRoles: Array<(
-      { __typename?: 'ProjectRole' }
-      & Pick<ProjectRole, 'name'>
-      & { volunteer: (
-        { __typename?: 'Volunteer' }
-        & Pick<Volunteer, 'name' | 'profilePictureUrl'>
-      ) }
-    )>, lead: (
+    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'progress' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
+    & { lead: (
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'name' | 'company' | 'profilePictureUrl'>
     ) }
