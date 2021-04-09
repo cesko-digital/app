@@ -42,11 +42,10 @@ export const Container = styled.div`
   gap: ${({ theme }) => `${theme.space.md}px ${theme.space.md}px`};
   position: relative;
   overflow: hidden;
-  height: 530px;
+  height: 600px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
-    height: 620px;
   }
 `
 
