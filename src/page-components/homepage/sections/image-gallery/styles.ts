@@ -4,7 +4,13 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 130px 0;
+  max-width: 1760px;
+  margin: auto;
+  padding: 48px 16px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 130px 32px;
+  }
 `
 
 export const Grid = styled.div`
@@ -17,7 +23,7 @@ export const Grid = styled.div`
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(2, 110px);
+    grid-template-rows: repeat(2, 160px);
   }
   grid-gap: 16px;
 `
