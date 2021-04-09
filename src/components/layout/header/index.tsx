@@ -1,34 +1,33 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Section from '../section'
 import SectionContent from '../section-content'
 import { ButtonAsLink, Link } from 'components/links'
 import { ButtonSize } from 'components/buttons'
 import { CloseIcon, MenuIcon } from 'components/icons'
-import {
-  TranslatedLink,
-  TranslateUrlsContext,
-} from 'gatsby-plugin-translate-urls'
+import { TranslatedLink } from 'gatsby-plugin-translate-urls'
 import { LINKS } from 'utils/constants'
 
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { getLinks } from './helpers'
 
 const Header: React.FC = () => {
-  const { locale } = useContext(TranslateUrlsContext)
   const { t } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const links = getLinks({
-    locale,
-    translations: {
-      projects: t('header.projects'),
-      czech: t('header.czech'),
-      english: t('header.english'),
-      blog: 'Blog',
-      contribute: t('header.contribute'),
+  const links = [
+    {
+      link: '/projects',
+      label: t('header.projects'),
     },
-  })
+    {
+      link: 'https://blog.cesko.digital',
+      label: 'Blog',
+    },
+    {
+      link: LINKS.joinUs,
+      label: t('header.contribute'),
+    },
+  ]
 
   const signUpText = t('header.signUp')
 
@@ -40,13 +39,8 @@ const Header: React.FC = () => {
             <S.Logo />
           </TranslatedLink>
           <S.DesktopLinksContainer>
-            {links.map(({ link, label, locale }) => (
-              <Link
-                key={label}
-                to={link}
-                size={ButtonSize.Small}
-                locale={locale}
-              >
+            {links.map(({ link, label }) => (
+              <Link key={label} to={link} size={ButtonSize.Small}>
                 {label}
               </Link>
             ))}
@@ -67,13 +61,8 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <S.MobileMenu>
-            {links.map(({ link, label, locale }) => (
-              <Link
-                key={label}
-                to={link}
-                size={ButtonSize.Small}
-                locale={locale}
-              >
+            {links.map(({ link, label }) => (
+              <Link key={label} to={link} size={ButtonSize.Small}>
                 {label}
               </Link>
             ))}

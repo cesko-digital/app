@@ -2855,7 +2855,6 @@ export type SitePageContextI18nFilterInput = {
 
 export type SitePageContextI18nResources = {
   __typename?: 'SitePageContextI18nResources';
-  en: Maybe<SitePageContextI18nResourcesEn>;
   cs: Maybe<SitePageContextI18nResourcesCs>;
 };
 
@@ -2879,28 +2878,7 @@ export type SitePageContextI18nResourcesCsPagesFilterInput = {
   urls_page_2: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePageContextI18nResourcesEn = {
-  __typename?: 'SitePageContextI18nResourcesEn';
-  pages: Maybe<SitePageContextI18nResourcesEnPages>;
-};
-
-export type SitePageContextI18nResourcesEnFilterInput = {
-  pages: Maybe<SitePageContextI18nResourcesEnPagesFilterInput>;
-};
-
-export type SitePageContextI18nResourcesEnPages = {
-  __typename?: 'SitePageContextI18nResourcesEnPages';
-  urls_projects: Maybe<Scalars['String']>;
-  urls_page_2: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextI18nResourcesEnPagesFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>;
-  urls_page_2: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePageContextI18nResourcesFilterInput = {
-  en: Maybe<SitePageContextI18nResourcesEnFilterInput>;
   cs: Maybe<SitePageContextI18nResourcesCsFilterInput>;
 };
 
@@ -3087,7 +3065,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___pages = 'pluginCreator___pluginOptions___pages',
   pluginCreator___pluginOptions___pages___matchPath = 'pluginCreator___pluginOptions___pages___matchPath',
   pluginCreator___pluginOptions___pages___languages = 'pluginCreator___pluginOptions___pages___languages',
-  pluginCreator___pluginOptions___pages___getLanguageFromPath = 'pluginCreator___pluginOptions___pages___getLanguageFromPath',
   pluginCreator___pluginOptions___defaultLocale = 'pluginCreator___pluginOptions___defaultLocale',
   pluginCreator___pluginOptions___prefix = 'pluginCreator___pluginOptions___prefix',
   pluginCreator___pluginOptions___projectsTableName = 'pluginCreator___pluginOptions___projectsTableName',
@@ -3318,11 +3295,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___pages = 'pluginOptions___pages',
   pluginOptions___pages___matchPath = 'pluginOptions___pages___matchPath',
   pluginOptions___pages___languages = 'pluginOptions___pages___languages',
-  pluginOptions___pages___getLanguageFromPath = 'pluginOptions___pages___getLanguageFromPath',
   pluginOptions___defaultLocale = 'pluginOptions___defaultLocale',
   pluginOptions___prefix = 'pluginOptions___prefix',
-  pluginOptions___translations___en___urls_projects = 'pluginOptions___translations___en___urls_projects',
-  pluginOptions___translations___en___urls_page_2 = 'pluginOptions___translations___en___urls_page_2',
   pluginOptions___translations___cs___urls_projects = 'pluginOptions___translations___cs___urls_projects',
   pluginOptions___translations___cs___urls_page_2 = 'pluginOptions___translations___cs___urls_page_2',
   pluginOptions___projectsTableName = 'pluginOptions___projectsTableName',
@@ -3552,13 +3526,11 @@ export type SitePluginPluginOptionsPages = {
   __typename?: 'SitePluginPluginOptionsPages';
   matchPath: Maybe<Scalars['String']>;
   languages: Maybe<Array<Maybe<Scalars['String']>>>;
-  getLanguageFromPath: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsPagesFilterInput = {
   matchPath: Maybe<StringQueryOperatorInput>;
   languages: Maybe<StringQueryOperatorInput>;
-  getLanguageFromPath: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPagesFilterListInput = {
@@ -3567,7 +3539,6 @@ export type SitePluginPluginOptionsPagesFilterListInput = {
 
 export type SitePluginPluginOptionsTranslations = {
   __typename?: 'SitePluginPluginOptionsTranslations';
-  en: Maybe<SitePluginPluginOptionsTranslationsEn>;
   cs: Maybe<SitePluginPluginOptionsTranslationsCs>;
 };
 
@@ -3582,19 +3553,7 @@ export type SitePluginPluginOptionsTranslationsCsFilterInput = {
   urls_page_2: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePluginPluginOptionsTranslationsEn = {
-  __typename?: 'SitePluginPluginOptionsTranslationsEn';
-  urls_projects: Maybe<Scalars['String']>;
-  urls_page_2: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsTranslationsEnFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>;
-  urls_page_2: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePluginPluginOptionsTranslationsFilterInput = {
-  en: Maybe<SitePluginPluginOptionsTranslationsEnFilterInput>;
   cs: Maybe<SitePluginPluginOptionsTranslationsCsFilterInput>;
 };
 
@@ -3806,7 +3765,7 @@ export type Volunteer = Node & {
   rowId: Maybe<Scalars['String']>;
   ProjectRoles: Maybe<Array<Maybe<Scalars['String']>>>;
   Projects: Maybe<Array<Maybe<Scalars['String']>>>;
-  Projects_2: Maybe<Array<Maybe<Scalars['String']>>>;
+  Projects_2: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
