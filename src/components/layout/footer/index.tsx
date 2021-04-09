@@ -19,6 +19,10 @@ const Footer: React.FC = () => {
       url: 'https://twitter.com/CeskoDigital',
     },
     {
+      name: t('components.sections.footer.online.linkedin'),
+      url: 'https://www.linkedin.com/company/cesko-digital',
+    },
+    {
       name: t('components.sections.footer.online.github'),
       url: 'https://github.com/cesko-digital',
     },
