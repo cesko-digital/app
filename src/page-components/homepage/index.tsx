@@ -41,9 +41,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
       </Section>
 
       <Section>
-        <SectionContent>
-          <ImageGallery />
-        </SectionContent>
+        <ImageGallery />
       </Section>
 
       {partners && partners.length > 0 && (
