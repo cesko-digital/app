@@ -17,11 +17,6 @@ export interface Volunteer extends SourceNode {
   email: string
   company: string
 }
-export interface ProjectRole extends SourceNode {
-  name: string
-  volunteer: string
-  lang: Language
-}
 
 export interface Project extends SourceNode {
   name: string
@@ -34,10 +29,10 @@ export interface Project extends SourceNode {
   tags: string[]
   description: string
   progress: number
+  finished: boolean
   contributeText: string
   trelloUrl?: string
   githubUrl?: string
   url: string
   lead: string
-  projectRoles: string[]
 }

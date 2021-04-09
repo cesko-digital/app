@@ -6,12 +6,6 @@ export const Project = `
     profilePictureUrl: String
   }
 
-  type ProjectRole implements Node {
-    volunteer: Volunteer!
-    name: String!
-    lang: String!
-  }
-
   type Tag implements Node {
     name: String!
     slug: String!
@@ -29,6 +23,7 @@ export const Project = `
     tags: [Tag!]!
     contributeText: String!
     progress: Int!
+    finished: Boolean!
     description: String!
     trelloUrl: String
     githubUrl: String
@@ -36,6 +31,5 @@ export const Project = `
     slackChannelName: String
     url: String!
     lead: Volunteer!
-    projectRoles: [ProjectRole!]!
   }
 `
