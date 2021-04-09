@@ -67,7 +67,6 @@ export const transformProjects = (
         slackChannelUrl,
         slackChannelName,
         url,
-        progress: 100,
         rowId: airTableProject.id,
         lead: lead[0],
       }

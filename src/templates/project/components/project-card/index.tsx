@@ -6,7 +6,6 @@ import { TrelloIcon } from 'components/icons'
 import { SlackIcon } from 'components/icons'
 import Avatar, { ProjectLeadProps } from './project-lead'
 import SocialMedia from './social-media'
-import Progress from './progress'
 import { ButtonAsLink } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
@@ -18,7 +17,6 @@ interface ProjectCardProps {
   url: string
   projectLead: ProjectLeadProps
   name: string
-  progress: number
 }
 
 export const COMPONENT_TRANSLATION_KEY = 'pages.project.projectCard'
@@ -30,13 +28,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slackChannelUrl,
   githubUrl,
   url,
-  progress,
   projectLead,
 }) => {
   const { t } = useTranslation()
   return (
     <S.Container>
-      <Progress percent={progress} />
       <S.Wrapper>
         <Avatar {...projectLead} />
       </S.Wrapper>
