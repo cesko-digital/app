@@ -7,7 +7,7 @@ describe('Generated Project Page', () => {
     incorrect: '/en/projekty/prvni-projekt',
   }
 
-  const pageNotFoundText = 'NOT FOUND'
+  const pageNotFoundText = '404'
 
   it('should successfully load CS project page', () => {
     cy.visit(projectUrls.cs)
@@ -15,11 +15,11 @@ describe('Generated Project Page', () => {
       .should('not.contain.text', pageNotFoundText)
   })
 
-  it('should successfully load EN project page', () =>
-    cy
-      .visit(projectUrls.en)
+  it('should redirect 404 for EN project page', () => {
+    cy.visit(projectUrls.en)
       .get('body')
-      .should('not.contain.text', pageNotFoundText))
+      .should('contain.text', pageNotFoundText)
+  })
 
   it('should redirect 404 for mixed page', () => {
     cy.visit(projectUrls.incorrect)

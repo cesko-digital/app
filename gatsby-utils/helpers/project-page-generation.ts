@@ -3,6 +3,7 @@ import path from 'path'
 import { Project } from '../../src/generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
+const SUPPORTED_LANGUAGES = ['cs']
 
 export const getProjectUrl = (node: Project) => {
   if (node.lang === 'cs') {
@@ -28,16 +29,18 @@ export const generateProjectPages = async ({
     }
   `)
 
-  result?.data?.allProject.nodes.forEach((node: Project) => {
-    const projectUrl = getProjectUrl(node)
-    createPage({
-      path: projectUrl,
-      component: path.resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
-      context: {
-        id: node.id,
-      },
+  result?.data?.allProject.nodes
+    .filter((node) => SUPPORTED_LANGUAGES.includes(node.lang))
+    .forEach((node: Project) => {
+      const projectUrl = getProjectUrl(node)
+      createPage({
+        path: projectUrl,
+        component: path.resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
+        context: {
+          id: node.id,
+        },
+      })
     })
-  })
 }
 
 export const isValidProjectUrl = (url: string): boolean =>
