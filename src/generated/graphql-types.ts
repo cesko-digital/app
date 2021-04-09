@@ -1801,7 +1801,6 @@ export type Project = Node & {
   highlighted: Scalars['Boolean'];
   tags: Array<Tag>;
   contributeText: Scalars['String'];
-  progress: Scalars['Int'];
   finished: Scalars['Boolean'];
   description: Scalars['String'];
   trelloUrl: Maybe<Scalars['String']>;
@@ -1898,7 +1897,6 @@ export enum ProjectFieldsEnum {
   tags___internal___owner = 'tags___internal___owner',
   tags___internal___type = 'tags___internal___type',
   contributeText = 'contributeText',
-  progress = 'progress',
   finished = 'finished',
   description = 'description',
   trelloUrl = 'trelloUrl',
@@ -2050,7 +2048,6 @@ export type ProjectFilterInput = {
   highlighted: Maybe<BooleanQueryOperatorInput>;
   tags: Maybe<TagFilterListInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
-  progress: Maybe<IntQueryOperatorInput>;
   finished: Maybe<BooleanQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   trelloUrl: Maybe<StringQueryOperatorInput>;
@@ -2333,7 +2330,6 @@ export type QueryProjectArgs = {
   highlighted: Maybe<BooleanQueryOperatorInput>;
   tags: Maybe<TagFilterListInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
-  progress: Maybe<IntQueryOperatorInput>;
   finished: Maybe<BooleanQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   trelloUrl: Maybe<StringQueryOperatorInput>;
@@ -4030,7 +4026,7 @@ export type ProjectPageQuery = (
   { __typename?: 'Query' }
   & { project: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'progress' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
+    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
     & { lead: (
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'name' | 'company' | 'profilePictureUrl'>

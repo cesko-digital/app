@@ -73,7 +73,6 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        progress: 100,
         rowId: 'id',
         finished: false,
       })
@@ -94,7 +93,6 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        progress: 100,
         rowId: 'id',
         finished: false,
       })
@@ -144,7 +142,6 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        progress: 100,
         rowId: 'id',
         finished: false,
       })
@@ -165,7 +162,6 @@ describe('transformers', () => {
         githubUrl,
         url,
         lead: 'leadRowId',
-        progress: 100,
         rowId: 'id',
         finished: false,
       })

@@ -28,7 +28,6 @@ export interface Project extends SourceNode {
   highlighted: boolean
   tags: string[]
   description: string
-  progress: number
   finished: boolean
   contributeText: string
   trelloUrl?: string
