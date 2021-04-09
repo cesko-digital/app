@@ -4,11 +4,7 @@ import { ButtonAsLink } from 'components/links'
 
 export const Wrapper = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   max-width: 308px;
-  min-height: 508px;
   border: ${({ theme }) => `2px solid ${theme.colors.lightGray}`};
   border-radius: ${({ theme }) => theme.borderRadius.base}px;
   padding: ${({ theme }) => theme.space.lg}px;
@@ -17,7 +13,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.space.outer}px;
+    padding: 20px;
   }
 `
 
@@ -33,7 +29,9 @@ export const Title = styled.h3`
   }
 `
 
-export const Description = styled(Body)``
+export const Description = styled(Body)`
+  margin-bottom: 18px;
+`
 
 export const ButtonWrapper = styled.div`
   display: flex;
