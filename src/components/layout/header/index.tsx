@@ -24,8 +24,8 @@ const Header: React.FC = () => {
       label: 'Blog',
     },
     {
-      link: LINKS.joinUs,
-      label: t('header.contribute'),
+      link: LINKS.supportUs,
+      label: t('header.supportUs'),
     },
   ]
 
