@@ -48,7 +48,7 @@ export const transformProjects = (
         csDescription,
         enDescription,
         githubUrl,
-        lead,
+        coordinators,
         finished,
         slackChannelName,
         slackChannelUrl,
@@ -68,7 +68,7 @@ export const transformProjects = (
         slackChannelName,
         url,
         rowId: airTableProject.id,
-        lead: lead[0],
+        coordinators: coordinators || [],
       }
 
       const enProject: Project = {

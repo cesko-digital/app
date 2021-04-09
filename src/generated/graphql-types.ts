@@ -1808,7 +1808,7 @@ export type Project = Node & {
   slackChannelUrl: Maybe<Scalars['String']>;
   slackChannelName: Maybe<Scalars['String']>;
   url: Scalars['String'];
-  lead: Volunteer;
+  coordinators: Array<Volunteer>;
   rowId: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
@@ -1904,51 +1904,53 @@ export enum ProjectFieldsEnum {
   slackChannelUrl = 'slackChannelUrl',
   slackChannelName = 'slackChannelName',
   url = 'url',
-  lead___name = 'lead___name',
-  lead___company = 'lead___company',
-  lead___email = 'lead___email',
-  lead___profilePictureUrl = 'lead___profilePictureUrl',
-  lead___rowId = 'lead___rowId',
-  lead___ProjectRoles = 'lead___ProjectRoles',
-  lead___Projects = 'lead___Projects',
-  lead___id = 'lead___id',
-  lead___parent___id = 'lead___parent___id',
-  lead___parent___parent___id = 'lead___parent___parent___id',
-  lead___parent___parent___children = 'lead___parent___parent___children',
-  lead___parent___children = 'lead___parent___children',
-  lead___parent___children___id = 'lead___parent___children___id',
-  lead___parent___children___children = 'lead___parent___children___children',
-  lead___parent___internal___content = 'lead___parent___internal___content',
-  lead___parent___internal___contentDigest = 'lead___parent___internal___contentDigest',
-  lead___parent___internal___description = 'lead___parent___internal___description',
-  lead___parent___internal___fieldOwners = 'lead___parent___internal___fieldOwners',
-  lead___parent___internal___ignoreType = 'lead___parent___internal___ignoreType',
-  lead___parent___internal___mediaType = 'lead___parent___internal___mediaType',
-  lead___parent___internal___owner = 'lead___parent___internal___owner',
-  lead___parent___internal___type = 'lead___parent___internal___type',
-  lead___children = 'lead___children',
-  lead___children___id = 'lead___children___id',
-  lead___children___parent___id = 'lead___children___parent___id',
-  lead___children___parent___children = 'lead___children___parent___children',
-  lead___children___children = 'lead___children___children',
-  lead___children___children___id = 'lead___children___children___id',
-  lead___children___children___children = 'lead___children___children___children',
-  lead___children___internal___content = 'lead___children___internal___content',
-  lead___children___internal___contentDigest = 'lead___children___internal___contentDigest',
-  lead___children___internal___description = 'lead___children___internal___description',
-  lead___children___internal___fieldOwners = 'lead___children___internal___fieldOwners',
-  lead___children___internal___ignoreType = 'lead___children___internal___ignoreType',
-  lead___children___internal___mediaType = 'lead___children___internal___mediaType',
-  lead___children___internal___owner = 'lead___children___internal___owner',
-  lead___children___internal___type = 'lead___children___internal___type',
-  lead___internal___content = 'lead___internal___content',
-  lead___internal___contentDigest = 'lead___internal___contentDigest',
-  lead___internal___description = 'lead___internal___description',
-  lead___internal___fieldOwners = 'lead___internal___fieldOwners',
-  lead___internal___ignoreType = 'lead___internal___ignoreType',
-  lead___internal___mediaType = 'lead___internal___mediaType',
-  lead___internal___owner = 'lead___internal___owner',
-  lead___internal___type = 'lead___internal___type',
+  coordinators = 'coordinators',
+  coordinators___name = 'coordinators___name',
+  coordinators___company = 'coordinators___company',
+  coordinators___email = 'coordinators___email',
+  coordinators___profilePictureUrl = 'coordinators___profilePictureUrl',
+  coordinators___rowId = 'coordinators___rowId',
+  coordinators___ProjectRoles = 'coordinators___ProjectRoles',
+  coordinators___Projects = 'coordinators___Projects',
+  coordinators___Projects_2 = 'coordinators___Projects_2',
+  coordinators___id = 'coordinators___id',
+  coordinators___parent___id = 'coordinators___parent___id',
+  coordinators___parent___parent___id = 'coordinators___parent___parent___id',
+  coordinators___parent___parent___children = 'coordinators___parent___parent___children',
+  coordinators___parent___children = 'coordinators___parent___children',
+  coordinators___parent___children___id = 'coordinators___parent___children___id',
+  coordinators___parent___children___children = 'coordinators___parent___children___children',
+  coordinators___parent___internal___content = 'coordinators___parent___internal___content',
+  coordinators___parent___internal___contentDigest = 'coordinators___parent___internal___contentDigest',
+  coordinators___parent___internal___description = 'coordinators___parent___internal___description',
+  coordinators___parent___internal___fieldOwners = 'coordinators___parent___internal___fieldOwners',
+  coordinators___parent___internal___ignoreType = 'coordinators___parent___internal___ignoreType',
+  coordinators___parent___internal___mediaType = 'coordinators___parent___internal___mediaType',
+  coordinators___parent___internal___owner = 'coordinators___parent___internal___owner',
+  coordinators___parent___internal___type = 'coordinators___parent___internal___type',
+  coordinators___children = 'coordinators___children',
+  coordinators___children___id = 'coordinators___children___id',
+  coordinators___children___parent___id = 'coordinators___children___parent___id',
+  coordinators___children___parent___children = 'coordinators___children___parent___children',
+  coordinators___children___children = 'coordinators___children___children',
+  coordinators___children___children___id = 'coordinators___children___children___id',
+  coordinators___children___children___children = 'coordinators___children___children___children',
+  coordinators___children___internal___content = 'coordinators___children___internal___content',
+  coordinators___children___internal___contentDigest = 'coordinators___children___internal___contentDigest',
+  coordinators___children___internal___description = 'coordinators___children___internal___description',
+  coordinators___children___internal___fieldOwners = 'coordinators___children___internal___fieldOwners',
+  coordinators___children___internal___ignoreType = 'coordinators___children___internal___ignoreType',
+  coordinators___children___internal___mediaType = 'coordinators___children___internal___mediaType',
+  coordinators___children___internal___owner = 'coordinators___children___internal___owner',
+  coordinators___children___internal___type = 'coordinators___children___internal___type',
+  coordinators___internal___content = 'coordinators___internal___content',
+  coordinators___internal___contentDigest = 'coordinators___internal___contentDigest',
+  coordinators___internal___description = 'coordinators___internal___description',
+  coordinators___internal___fieldOwners = 'coordinators___internal___fieldOwners',
+  coordinators___internal___ignoreType = 'coordinators___internal___ignoreType',
+  coordinators___internal___mediaType = 'coordinators___internal___mediaType',
+  coordinators___internal___owner = 'coordinators___internal___owner',
+  coordinators___internal___type = 'coordinators___internal___type',
   rowId = 'rowId',
   id = 'id',
   parent___id = 'parent___id',
@@ -2055,7 +2057,7 @@ export type ProjectFilterInput = {
   slackChannelUrl: Maybe<StringQueryOperatorInput>;
   slackChannelName: Maybe<StringQueryOperatorInput>;
   url: Maybe<StringQueryOperatorInput>;
-  lead: Maybe<VolunteerFilterInput>;
+  coordinators: Maybe<VolunteerFilterListInput>;
   rowId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2285,6 +2287,7 @@ export type QueryVolunteerArgs = {
   rowId: Maybe<StringQueryOperatorInput>;
   ProjectRoles: Maybe<StringQueryOperatorInput>;
   Projects: Maybe<StringQueryOperatorInput>;
+  Projects_2: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -2337,7 +2340,7 @@ export type QueryProjectArgs = {
   slackChannelUrl: Maybe<StringQueryOperatorInput>;
   slackChannelName: Maybe<StringQueryOperatorInput>;
   url: Maybe<StringQueryOperatorInput>;
-  lead: Maybe<VolunteerFilterInput>;
+  coordinators: Maybe<VolunteerFilterListInput>;
   rowId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -3797,12 +3800,13 @@ export type TagSortInput = {
 export type Volunteer = Node & {
   __typename?: 'Volunteer';
   name: Scalars['String'];
-  company: Scalars['String'];
+  company: Maybe<Scalars['String']>;
   email: Scalars['String'];
   profilePictureUrl: Maybe<Scalars['String']>;
   rowId: Maybe<Scalars['String']>;
   ProjectRoles: Maybe<Array<Maybe<Scalars['String']>>>;
   Projects: Maybe<Array<Maybe<Scalars['String']>>>;
+  Projects_2: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
@@ -3846,6 +3850,7 @@ export enum VolunteerFieldsEnum {
   rowId = 'rowId',
   ProjectRoles = 'ProjectRoles',
   Projects = 'Projects',
+  Projects_2 = 'Projects_2',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -3942,10 +3947,15 @@ export type VolunteerFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>;
   ProjectRoles: Maybe<StringQueryOperatorInput>;
   Projects: Maybe<StringQueryOperatorInput>;
+  Projects_2: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
+};
+
+export type VolunteerFilterListInput = {
+  elemMatch: Maybe<VolunteerFilterInput>;
 };
 
 export type VolunteerGroupConnection = {
@@ -4027,10 +4037,10 @@ export type ProjectPageQuery = (
   & { project: Maybe<(
     { __typename?: 'Project' }
     & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
-    & { lead: (
+    & { coordinators: Array<(
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'name' | 'company' | 'profilePictureUrl'>
-    ) }
+    )> }
   )>, otherProjects: (
     { __typename?: 'ProjectConnection' }
     & { nodes: Array<(

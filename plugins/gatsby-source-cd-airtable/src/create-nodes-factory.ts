@@ -12,6 +12,9 @@ export const createProjectNodesFactory = ({
     const tagNodeIds = project.tags.map((tagRowId) =>
       getTagId({ lang: project.lang, rowId: tagRowId })
     )
+    const coordinatorNodeIds = project.coordinators.map((coordinatorRowId) =>
+      getVolunteerId(coordinatorRowId)
+    )
     createNode({
       ...project,
       id: getProjectId(project),
@@ -22,8 +25,8 @@ export const createProjectNodesFactory = ({
       // Reverse relationship (ref: https://www.gatsbyjs.com/docs/creating-a-source-plugin/#creating-the-reverse-relationship)
       tags___NODE: tagNodeIds,
       tags: undefined,
-      lead___NODE: getVolunteerId(project.lead),
-      lead: undefined,
+      coordinators___NODE: coordinatorNodeIds,
+      coordinators: undefined,
     })
   })
 }

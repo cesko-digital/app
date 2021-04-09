@@ -23,7 +23,7 @@ export interface AirTableProject extends AirTableRecord {
     enContributeText: string
     csDescription: string
     enDescription: string
-    lead: string[]
+    coordinators: string[]
   }
 }
 

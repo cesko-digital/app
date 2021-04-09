@@ -1,7 +1,7 @@
 export const Project = `
   type Volunteer implements Node {
     name: String!
-    company: String!
+    company: String
     email: String!
     profilePictureUrl: String
   }
@@ -29,6 +29,6 @@ export const Project = `
     slackChannelUrl: String
     slackChannelName: String
     url: String!
-    lead: Volunteer!
+    coordinators: [Volunteer!]!
   }
 `
