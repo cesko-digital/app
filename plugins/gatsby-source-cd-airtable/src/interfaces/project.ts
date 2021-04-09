@@ -33,5 +33,5 @@ export interface Project extends SourceNode {
   trelloUrl?: string
   githubUrl?: string
   url: string
-  lead: string
+  coordinators: string[]
 }
