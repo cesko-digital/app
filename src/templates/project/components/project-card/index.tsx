@@ -32,6 +32,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   coordinators,
 }) => {
   const { t } = useTranslation()
+  const showLinks =
+    githubUrl || trelloUrl || (slackChannelName && slackChannelUrl)
   return (
     <S.Container>
       {Array.isArray(coordinators) && coordinators.length > 0 && (
@@ -39,22 +41,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Coordinators coordinators={coordinators} />
         </S.Wrapper>
       )}
-      <S.Social>
-        <S.Title>{t(`${COMPONENT_TRANSLATION_KEY}.links`)}</S.Title>
-        {githubUrl && (
-          <SocialMedia logo={GithubIcon} url={githubUrl} name={'GitHub'} />
-        )}
-        {trelloUrl && (
-          <SocialMedia logo={TrelloIcon} url={trelloUrl} name={'Trello'} />
-        )}
-        {slackChannelName && slackChannelUrl && (
-          <SocialMedia
-            logo={SlackIcon}
-            url={slackChannelUrl}
-            name={`Slack: #${slackChannelName}`}
-          />
-        )}
-      </S.Social>
+      {showLinks && (
+        <S.Social>
+          <S.Title>{t(`${COMPONENT_TRANSLATION_KEY}.links`)}</S.Title>
+          {githubUrl && (
+            <SocialMedia logo={GithubIcon} url={githubUrl} name={'GitHub'} />
+          )}
+          {trelloUrl && (
+            <SocialMedia logo={TrelloIcon} url={trelloUrl} name={'Trello'} />
+          )}
+          {slackChannelName && slackChannelUrl && (
+            <SocialMedia
+              logo={SlackIcon}
+              url={slackChannelUrl}
+              name={`Slack: #${slackChannelName}`}
+            />
+          )}
+        </S.Social>
+      )}
       <S.ButtonWrapper>
         <ButtonAsLink to={url}>
           <S.InnerText>{name}</S.InnerText>
