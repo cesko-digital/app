@@ -14,7 +14,7 @@ interface ShowAndTellFormValues {
   email: string
 }
 
-const ShowAndTell: React.FC<ProjectsProps> = () => {
+const ShowAndTell: React.FC<ProjectsProps> = ({ location }) => {
   const [registered, setRegistered] = useState(false)
   const showEmail = new URLSearchParams(location.search).get('id') == null
 
