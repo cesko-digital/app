@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Layout, Section, SectionContent } from '../../components/layout'
 import * as S from '../../page-components/projects/styles'
-import { ProjectsProps } from '../../components/sections/projects'
 import { Input } from '../../components/inputs'
 import { Button } from '../../components/buttons'
 import { FormikErrors, useFormik } from 'formik'
 import { EMAIL_REGEX } from '../../../api/newsletter'
+import { PageProps } from 'gatsby'
 
 const submitUrl =
   'https://cd-tools-git-feature-rsvp-ceskodigital.vercel.app/rsvp'
@@ -14,7 +14,7 @@ interface ShowAndTellFormValues {
   email: string
 }
 
-const ShowAndTell: React.FC<ProjectsProps> = ({ location }) => {
+const ShowAndTell: React.FC<PageProps> = ({ location }) => {
   const [registered, setRegistered] = useState(false)
   const showEmail = new URLSearchParams(location.search).get('id') == null
 
