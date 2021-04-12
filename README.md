@@ -2,7 +2,7 @@
 
 # Web Česko.Digital
 
-Zdroje pro nový web Česko.Digital, na kterém se pracuje. Zdroje pro starou verzi webu, která je aktuálně na produkci, naleznete v [`master`](https://github.com/cesko-digital/web/tree/master).
+Zdroje pro web Česko.Digital.
 
 ## 🚀 Setup projektu
 
@@ -55,6 +55,8 @@ Projekt má všechny [texty v AirTable](https://airtable.com/shraCQhMJdGUu1xhk) 
 `yarn lint`: Lint kontrola kódu a formátování
 
 `yarn test`: Spuštění testů
+
+`yarn gen:types`: Vygenerování TS a GQL typů
 
 `yarn storybook`: Start dokumentace komponent
 
