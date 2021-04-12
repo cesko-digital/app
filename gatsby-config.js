@@ -88,5 +88,11 @@ module.exports = {
         partnersTableName: 'Partners',
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-PWGVF79',
+      },
+    },
   ],
 }
