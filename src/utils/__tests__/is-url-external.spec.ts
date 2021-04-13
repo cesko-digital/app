@@ -1,6 +1,10 @@
 import { isExternalURL } from '../is-url-external'
 
 describe('is-url-external', () => {
+  it('should return true for mailto: links', () => {
+    expect(isExternalURL('mailto:bagr@lopata.cz')).toBe(true)
+  })
+
   it('should return true for https://blog.cesko.digital/', () => {
     expect(isExternalURL('https://blog.cesko.digital/')).toBe(true)
   })
