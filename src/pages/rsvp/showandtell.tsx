@@ -37,18 +37,17 @@ const ShowAndTell: React.FC<PageProps> = ({ location }) => {
       // Fire&Forget
       setRegistered(true)
 
-      const body = showEmail
-        ? values
-        : {
-            id,
-          }
+      const userId = showEmail ? values.email : id
 
       fetch(submitUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          eventId: 'recRkEEj5rEkm92IS',
+          userId,
+        }),
       })
     }
   }
@@ -65,14 +64,17 @@ const ShowAndTell: React.FC<PageProps> = ({ location }) => {
     <Layout
       crumbs={[]}
       seo={{
-        title: '',
-        description: '',
+        title: 'Show&Tell',
+        description: 'Prezentace dobrovolníků Česko.Digital',
       }}
     >
       <Section>
         <SectionContent>
           <S.Heading1>Show&Tell</S.Heading1>
-          <p>Bude to super!</p>
+          <p>
+            Ve čtvrtek 29. dubna v 18:00 proběhne první živé výsílání Show&Tell
+            Česko.Digital.
+          </p>
           <form onSubmit={form.handleSubmit}>
             {showEmail && !registered && (
               <Input
