@@ -4,7 +4,7 @@ import * as S from 'components/typography'
 import { Input } from 'components/inputs'
 import { Button } from 'components/buttons'
 import { FormikErrors, useFormik } from 'formik'
-import { EMAIL_REGEX } from '../../../api/newsletter'
+import { EMAIL_REGEX } from '../../api/newsletter'
 import { PageProps } from 'gatsby'
 
 const submitUrl =
@@ -14,10 +14,10 @@ interface ShowAndTellFormValues {
   email: string
 }
 
-const ShowAndTell: React.FC<PageProps> = ({ location }) => {
+const Rsvp: React.FC<PageProps> = ({ location }) => {
   const [registered, setRegistered] = useState(false)
   const id = new URLSearchParams(location.search).get('id')
-  const showEmail = id === null
+  const showEmail = !id
 
   const validate = (
     values: ShowAndTellFormValues
@@ -95,4 +95,4 @@ const ShowAndTell: React.FC<PageProps> = ({ location }) => {
   )
 }
 
-export default ShowAndTell
+export default Rsvp
