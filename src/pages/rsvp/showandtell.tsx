@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Layout, Section, SectionContent } from '../../components/layout'
-import * as S from '../../page-components/projects/styles'
-import { Input } from '../../components/inputs'
-import { Button } from '../../components/buttons'
+import { Layout, Section, SectionContent } from 'components/layout'
+import * as S from 'components/typography'
+import { Input } from 'components/inputs'
+import { Button } from 'components/buttons'
 import { FormikErrors, useFormik } from 'formik'
 import { EMAIL_REGEX } from '../../../api/newsletter'
 import { PageProps } from 'gatsby'
@@ -16,7 +16,8 @@ interface ShowAndTellFormValues {
 
 const ShowAndTell: React.FC<PageProps> = ({ location }) => {
   const [registered, setRegistered] = useState(false)
-  const showEmail = new URLSearchParams(location.search).get('id') == null
+  const id = new URLSearchParams(location.search).get('id')
+  const showEmail = id === null
 
   const validate = (
     values: ShowAndTellFormValues
@@ -39,7 +40,7 @@ const ShowAndTell: React.FC<PageProps> = ({ location }) => {
       const body = showEmail
         ? values
         : {
-            id: new URLSearchParams(location.search).get('id'),
+            id,
           }
 
       fetch(submitUrl, {
@@ -70,25 +71,22 @@ const ShowAndTell: React.FC<PageProps> = ({ location }) => {
     >
       <Section>
         <SectionContent>
-          <S.Heading>Show&Tell</S.Heading>
-          <S.Tagline>Bude to super!</S.Tagline>
-        </SectionContent>
-      </Section>
-      <Section>
-        <SectionContent>
-          <S.ProjectsHeading>Program</S.ProjectsHeading>
-          {showEmail && !registered && (
-            <Input
-              name="email"
-              placeholder="Vaše emailová adresa"
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              invalid={form.errors.email != null}
-            />
-          )}
-          <Button onClick={form.handleSubmit}>
-            {registered ? 'Je to tam!' : 'Chci to do kalendáře!'}
-          </Button>
+          <S.Heading1>Show&Tell</S.Heading1>
+          <p>Bude to super!</p>
+          <form onSubmit={form.handleSubmit}>
+            {showEmail && !registered && (
+              <Input
+                name="email"
+                placeholder="Vaše emailová adresa"
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                invalid={!!form.errors.email}
+              />
+            )}
+            <Button type="submit">
+              {registered ? 'Je to tam!' : 'Chci to do kalendáře!'}
+            </Button>
+          </form>
         </SectionContent>
       </Section>
     </Layout>
