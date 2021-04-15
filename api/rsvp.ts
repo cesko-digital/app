@@ -9,7 +9,7 @@ interface Event {
 export default async (
   req: VercelRequest,
   res: VercelResponse
-): Promise<any> => {
+): Promise<void> => {
   // Only GET or POST supported
   if (req.method !== 'GET' && req.method !== 'POST') {
     res.status(501).send('Not implemented')
