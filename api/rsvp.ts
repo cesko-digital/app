@@ -6,7 +6,10 @@ interface Event {
   Attendees: string[] | undefined
 }
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (
+  req: VercelRequest,
+  res: VercelResponse
+): Promise<any> => {
   // Only GET or POST supported
   if (req.method !== 'GET' && req.method !== 'POST') {
     res.status(501).send('Not implemented')
