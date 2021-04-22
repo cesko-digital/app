@@ -5,3 +5,7 @@ dist
 en.html
 index.html
 prirucka/index.html
+.cache
+.env
+.vercel
+public
