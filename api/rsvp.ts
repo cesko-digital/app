@@ -16,7 +16,7 @@ export default async (
     return
   }
 
-  const apiToken = process.env.AIRTABLE_API_KEY
+  const apiToken = process.env.RSVP_API_KEY
   if (!apiToken) {
     res.status(500).send('Airtable API key not found in env.')
     return
