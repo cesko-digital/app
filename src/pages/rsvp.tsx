@@ -6,9 +6,10 @@ import { Button } from 'components/buttons'
 import { FormikErrors, useFormik } from 'formik'
 import { EMAIL_REGEX } from '../../api/newsletter'
 import { PageProps } from 'gatsby'
+import * as Links from 'components/links'
+import styled from 'styled-components'
 
-const submitUrl =
-  'https://cd-tools-git-feature-rsvp-ceskodigital.vercel.app/rsvp'
+const submitUrl = 'https://cesko.digital/api/rsvp'
 
 interface ShowAndTellFormValues {
   email: string
@@ -65,17 +66,28 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
       crumbs={[]}
       seo={{
         title: 'Show&Tell',
-        description: 'Prezentace dobrovolníků Česko.Digital',
+        description:
+          'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
       }}
     >
       <Section>
         <SectionContent>
           <S.Heading1>Show&Tell</S.Heading1>
           <p>
-            Ve čtvrtek 29. dubna v 18:00 proběhne první živé výsílání Show&Tell
-            Česko.Digital.
+            V rámci Česko.Digital prezentujeme krásné výsledky projektů, ale v
+            tiskových zprávách není vidět množství práce dobrovolníků, které za
+            úspšchy projektů stojí.
           </p>
-          <form onSubmit={form.handleSubmit}>
+          <p>
+            Show&Tell má cíl tohle změnit a dát šanci dobrovolníkům prezentovat
+            jejich cestu k výsledku.
+          </p>
+          <p>
+            Event se koná jednou měsíčně vždy podlení čtvrtek. Nejbližsí
+            vysílání se koná <b>29. dubna od 18:00</b> a můžete ho sledovat{' '}
+            <Links.Link to="/show-and-tell">zde</Links.Link>.
+          </p>
+          <Form onSubmit={form.handleSubmit}>
             {showEmail && !registered && (
               <Input
                 name="email"
@@ -88,11 +100,16 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
             <Button type="submit">
               {registered ? 'Je to tam!' : 'Chci to do kalendáře!'}
             </Button>
-          </form>
+          </Form>
         </SectionContent>
       </Section>
     </Layout>
   )
 }
+
+const Form = styled.form`
+  margin-top: 32px;
+  margin-bottom: 50px;
+`
 
 export default Rsvp
