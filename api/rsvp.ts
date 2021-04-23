@@ -4,6 +4,7 @@ import Airtable from 'airtable'
 interface Event {
   Name: string | undefined
   Attendees: string[] | undefined
+  Emails: string | undefined
 }
 
 export default async (
@@ -56,20 +57,39 @@ export default async (
       res.status(400).send("Required 'eventId' argument missing.")
       return
     }
-    // TBD: Is this a race condition? It probably is:
-    // https://community.airtable.com/t/append-linked-record-using-api/39420
-    // Would the window for trouble be smaller if we wrote to the User database
-    // instead of events?
-    const event = (await table.find(eventId)) as Airtable.Record<Event>
-    const attendees = event.fields['Attendees'] || []
-    if (!attendees.includes(userId)) {
-      await table.update(eventId, {
-        Attendees: attendees.concat([userId]),
-      })
+
+    if (validateEmail(userId)) {
+      // Insert email into database
+      const event = (await table.find(eventId)) as Airtable.Record<Event>
+      const emails = (event.fields['Emails'] || '').split('|')
+      if (!emails.includes(userId)) {
+        await table.update(eventId, {
+          Emails: emails.concat([userId]).join('|'),
+        })
+      }
+    } else {
+      // Insert userId into atendees
+
+      // TBD: Is this a race condition? It probably is:
+      // https://community.airtable.com/t/append-linked-record-using-api/39420
+      // Would the window for trouble be smaller if we wrote to the User database
+      // instead of events?
+      const event = (await table.find(eventId)) as Airtable.Record<Event>
+      const attendees = event.fields['Attendees'] || []
+      if (!attendees.includes(userId)) {
+        await table.update(eventId, {
+          Attendees: attendees.concat([userId]),
+        })
+      }
     }
     res.status(200).send('Díky, budeme se těšit!')
   } catch (e) {
     // TBD: Remove error logging before production deployment
     res.status(500).send(`Error: ${e}`)
   }
+}
+
+function validateEmail(email: string) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(email)
 }
