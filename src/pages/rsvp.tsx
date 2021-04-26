@@ -83,7 +83,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
             jejich cestu k výsledku.
           </p>
           <p>
-            Event se koná jednou měsíčně vždy podlení čtvrtek. Nejbližsí
+            Event se koná jednou měsíčně vždy poslední čtvrtek. Nejbližší
             vysílání se koná <b>29. dubna od 18:00</b> a můžete ho sledovat{' '}
             <Links.Link to="/show-and-tell">zde</Links.Link>.
           </p>
