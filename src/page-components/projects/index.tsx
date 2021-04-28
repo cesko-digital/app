@@ -29,8 +29,10 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
     >
       <Section>
         <SectionContent>
-          <S.Heading>{t('pages.projects.title')}</S.Heading>
-          <S.Tagline>{t('pages.projects.description')}</S.Tagline>
+          <S.Wrapper>
+            <S.Heading>{t('pages.projects.title')}</S.Heading>
+            <S.Tagline>{t('pages.projects.description')}</S.Tagline>
+          </S.Wrapper>
         </SectionContent>
       </Section>
       <Section>
