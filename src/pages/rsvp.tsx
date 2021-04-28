@@ -68,6 +68,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
         title: 'Show&Tell',
         description:
           'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
+        coverUrl: 'https://data.cesko.digital/img/show-and-tell-1.png',
       }}
     >
       <Section>
