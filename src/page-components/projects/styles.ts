@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import { Heading1, BodyBig, Heading2 } from 'components/typography'
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  overflow-wrap: break-word;
+`
+
 export const Heading = styled(Heading1)`
   margin: 50px 0 10px;
 
