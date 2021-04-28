@@ -77,7 +77,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
           <p>
             V rámci Česko.Digital prezentujeme krásné výsledky projektů, ale v
             tiskových zprávách není vidět množství práce dobrovolníků, které za
-            úspšchy projektů stojí.
+            úspěchy projektů stojí.
           </p>
           <p>
             Show&Tell má cíl tohle změnit a dát šanci dobrovolníkům prezentovat
