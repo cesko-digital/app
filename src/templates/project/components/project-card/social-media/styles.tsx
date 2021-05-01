@@ -27,4 +27,7 @@ export const Link = styled.a.attrs((props) => ({
   border-bottom: 2px solid ${({ theme }) => theme.colors.stone};
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `

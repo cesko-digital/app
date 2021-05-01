@@ -30,14 +30,21 @@ export const Social = styled.div`
 
 export const ButtonWrapper = styled.div`
   margin-top: 12px;
+  max-width: 300px;
   a {
     width: 100%;
     max-width: calc(100% - 80px);
     justify-content: center;
+  }
+  svg {
+    width: 50px;
   }
 `
 
 export const InnerText = styled.span`
   margin-right: 10px;
   font-weight: ${({ theme }) => theme.fontWeights.body};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
