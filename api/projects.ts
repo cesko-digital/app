@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import Airtable from 'airtable'
 
@@ -24,7 +25,7 @@ export default async (
   try {
     const records = await table.select({ view: 'Grid view' }).all()
     const sanitize = (obj: any) => {
-      var out: any = {}
+      const out: any = {}
       for (const key of whitelistedProps) {
         out[key] = obj[key]
       }
