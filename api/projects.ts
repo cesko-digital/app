@@ -23,7 +23,7 @@ export default async (
   )
 
   try {
-    const records = await table.select({ view: 'Grid view' }).all()
+    const records = await table.select({ view: 'Veřejný přehled' }).all()
     const sanitize = (obj: any) => {
       const out: any = {}
       for (const key of whitelistedProps) {
@@ -61,4 +61,7 @@ const whitelistedProps = [
   'slackChannelUrl',
   'githubUrl',
   'slackChannelName',
+  'finished',
+  'highlighted',
+  'draft',
 ]
