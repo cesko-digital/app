@@ -46,7 +46,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          eventId: 'recRkEEj5rEkm92IS',
+          eventId: 'reccRHessJVN2ZZnv',
           userId,
         }),
       })
@@ -68,7 +68,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
         title: 'Show&Tell',
         description:
           'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
-        coverUrl: 'https://data.cesko.digital/img/show-and-tell-1.png',
+        coverUrl: 'https://data.cesko.digital/img/show-and-tell-2.png',
       }}
     >
       <Section>
@@ -85,7 +85,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
           </p>
           <p>
             Event se koná jednou měsíčně vždy poslední čtvrtek. Nejbližší
-            vysílání se koná <b>29. dubna od 18:00</b> a můžete ho sledovat{' '}
+            vysílání se koná <b>27. května od 18:00</b> a můžete ho sledovat{' '}
             <Links.Link to="/show-and-tell">zde</Links.Link>.
           </p>
           <Form onSubmit={form.handleSubmit}>
