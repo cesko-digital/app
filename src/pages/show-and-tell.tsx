@@ -13,7 +13,7 @@ const ShowAndTell: React.FC<PageProps> = () => {
         title: 'Show&Tell',
         description:
           'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
-        coverUrl: 'https://data.cesko.digital/img/show-and-tell-1.png',
+        coverUrl: 'https://data.cesko.digital/img/show-and-tell-2.png',
       }}
     >
       <Section>
@@ -22,12 +22,12 @@ const ShowAndTell: React.FC<PageProps> = () => {
             <MainColumn>
               <S.Heading1>Show&Tell</S.Heading1>
               <p>
-                Ve čtvrtek 29. dubna v 18:00 proběhne první živé výsílání
+                Ve čtvrtek 27. května v 18:00 proběhne druhé živé výsílání
                 Show&Tell Česko.Digital.
               </p>
               <VideoWrapper>
                 <VideoIFrame
-                  src="https://www.youtube.com/embed/vnFuzxKlyb4"
+                  src="https://www.youtube.com/embed/9kgwQM2SnC4"
                   title="Show&Tell"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -38,17 +38,14 @@ const ShowAndTell: React.FC<PageProps> = () => {
             <ReminderColumn>
               <S.Heading3>Co mě čeká?</S.Heading3>
               <p>
-                V dubnovém vysílání se dozvíte detaily z vývoje a designování:
+                V květnovém vysílání se budeme soustředit na dva projekty, které
+                přešly z příprav do fáze vývoje. Dozvíte se zajímavosti z
+                designu, vývoje i plánování marketingové strategie.
               </p>
-              <ul>
-                <li>Střechy Duševního Zdraví</li>
-                <li>Nedlužím státu</li>
-                <li>Nového webu č.d</li>
-                <li>Onboardingu dobrovolníků</li>
-              </ul>
               <p>
-                Jako bonus vám představíme detaily z vývoje Projektu Tlačítko,
-                které si můžete vyzkoušet níže a přidat si nás do kalendáře.
+                Jako bonus zahájíme pravidelný příspěvek od člena leadership
+                teamu, takže se můžete těšit na zajímavosti z práce CTO v
+                Česko.Digital.
               </p>
               <Links.Link to="/rsvp">Chci to do kalendáře!</Links.Link>
             </ReminderColumn>
