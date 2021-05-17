@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
+import { insertIf } from 'utils/insert-if'
 
 export interface SeoProps {
   description?: string
@@ -68,6 +69,10 @@ export const Seo: React.FC<SeoProps> = ({
           name: 'twitter:image',
           content: coverUrl,
         },
+        ...insertIf({
+          condition: process.env.GATSBY_NO_INDEX === 'true',
+          elements: [{ name: 'robots', content: 'noindex' }],
+        }),
       ].concat()}
     />
   )

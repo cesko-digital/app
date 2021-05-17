@@ -2,7 +2,7 @@
 
 # Web Česko.Digital
 
-Zdroje pro web Česko.Digital.
+Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://cesko.digital), preview pro editaci obsahu na [web-preview.cesko.digital](https://web-preview.cesko.digital).
 
 ## 🚀 Setup projektu
 
