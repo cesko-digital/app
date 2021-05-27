@@ -1,20 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import Airtable from 'airtable'
 
 export default async (
-  req: VercelRequest,
-  res: VercelResponse
+  request: VercelRequest,
+  response: VercelResponse
 ): Promise<void> => {
   // Only GET supported
-  if (req.method !== 'GET') {
-    res.status(501).send('Not implemented')
+  if (request.method !== 'GET') {
+    response.status(501).send('Not implemented')
     return
   }
 
   const apiToken = process.env.AIRTABLE_API_KEY
   if (!apiToken) {
-    res.status(500).send('Airtable API key not found in env.')
+    response.status(500).send('Airtable API key not found in env.')
     return
   }
 
@@ -23,24 +22,31 @@ export default async (
   )
 
   try {
-    const records = await table.select({ view: 'Veřejný přehled' }).all()
-    const sanitize = (obj: any) => {
-      const out: any = {}
-      for (const key of whitelistedProps) {
-        out[key] = obj[key]
-      }
-      return out
-    }
-    const out = JSON.stringify(
-      records.map((p) => sanitize(p.fields)),
-      null,
-      2
+    const records = await table.select({ view: 'Public View' }).all()
+    const sanitizedRecords = records.map((p) =>
+      subsetProps(p.fields, whitelistedProps)
     )
-    res.setHeader('Content-Type', 'application/json')
-    res.status(200).send(out)
+    // We intentionally use this instead of response.json() to have
+    // the output pretty-printed. Because we deserve nice things!
+    const out = JSON.stringify(sanitizedRecords, null, 2)
+    response.setHeader('Content-Type', 'application/json')
+    response.status(200).send(out)
   } catch (e) {
-    res.status(500).send(`Sorry, this didn’t work, pull requests welcome :)`)
+    response
+      .status(500)
+      .send(`Sorry, this didn’t work, pull requests welcome :)`)
   }
+}
+
+function subsetProps<K extends string | number | symbol, V>(
+  obj: Record<K, V>,
+  props: readonly K[]
+): Record<typeof props[number], V> {
+  const out = {} as Record<K, V>
+  for (const key of props) {
+    out[key] = obj[key]
+  }
+  return out
 }
 
 const whitelistedProps = [
@@ -64,4 +70,4 @@ const whitelistedProps = [
   'finished',
   'highlighted',
   'draft',
-]
+] as const
