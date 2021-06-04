@@ -15,7 +15,7 @@ const Partners: React.FC<PartnersProps> = ({ partners }) => {
       <S.List>
         {partners.map((partner, index) => (
           <S.Item key={index}>
-            <S.Link href={partner.url}>
+            <S.Link href={partner.url} target="_blank">
               <S.Logo
                 alt={`${partner.name} logo`}
                 src={partner.logoUrl}
