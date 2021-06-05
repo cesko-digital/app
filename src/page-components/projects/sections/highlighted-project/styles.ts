@@ -57,6 +57,7 @@ export const ProjectImage = styled.div<{ src: string }>`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;
+  filter: grayscale(100%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     border-top-right-radius: ${({ theme }) => theme.borderRadius.base}px;
