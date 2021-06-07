@@ -12,8 +12,8 @@ import {
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-} from './src/interfaces'
-import { ConnectionError } from './src/errors/connection-error'
+  ConnectionError,
+} from './src/types'
 import {
   createPartnerNodesFactory,
   createProjectNodesFactory,

@@ -1,4 +1,4 @@
-import { Volunteer } from '../interfaces'
+import { Volunteer } from '../types'
 
 export const getMockVolunteers: () => Volunteer[] = () => [
   {

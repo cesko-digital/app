@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { ConnectionError } from './errors/connection-error'
+import { ConnectionError } from './types'
 
 export const loadData = async <T>(tableName: string): Promise<T[]> => {
   if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_URL) {

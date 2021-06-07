@@ -1,5 +1,5 @@
 import { SourceNodesArgs } from 'gatsby'
-import { Project, Tag, Volunteer, Partner } from './interfaces'
+import { Project, Tag, Volunteer, Partner } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin

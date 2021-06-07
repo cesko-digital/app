@@ -1,4 +1,4 @@
-import { Partner } from '../interfaces'
+import { Partner } from '../types'
 
 export const getMockPartners: () => Partner[] = () => [
   {

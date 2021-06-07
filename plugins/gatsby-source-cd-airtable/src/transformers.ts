@@ -8,9 +8,9 @@ import {
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-} from './interfaces'
-import { SourceNode } from './interfaces/source-node'
-import { AirTableRecord } from './interfaces/airtable-record'
+  SourceNode,
+  AirTableRecord,
+} from './types'
 
 const transformAirTableRecords = <
   AirTableType extends AirTableRecord,
