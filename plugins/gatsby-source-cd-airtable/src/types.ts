@@ -12,16 +12,9 @@ export interface AirTableRecord {
 }
 
 export interface PluginOptions {
-  projectsTableName: string
-  tagsTableName: string
-  volunteersTableName: string
-  partnersTableName: string
-}
-
-export class ConnectionError extends Error {
-  constructor(message?: string) {
-    super(message)
-  }
+  airtableApiKey: string
+  airtableBaseUrl: string
+  forceMockMode: boolean
 }
 
 export interface Partner extends SourceNode {

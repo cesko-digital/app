@@ -5,14 +5,13 @@ import {
   transformTags,
   transformVolunteers,
 } from './src/transformers'
-import { loadData } from './src/load-data'
+import { getAllAirtableRecords } from './src/load-data'
 import {
   PluginOptions,
   AirTablePartner,
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-  ConnectionError,
 } from './src/types'
 import {
   createPartnerNodesFactory,
@@ -38,57 +37,47 @@ export const sourceNodes = async (
   const createTagSourceNodes = createTagNodesFactory(sourceNodesArgs)
   const createProjectSourceNodes = createProjectNodesFactory(sourceNodesArgs)
 
-  const setupMockData = () => {
+  const haveAirtableConfig = options.airtableApiKey && options.airtableBaseUrl
+  const forceMockMode = options.forceMockMode
+  const useMockData = forceMockMode || !haveAirtableConfig
+
+  if (useMockData) {
+    const msg = forceMockMode
+      ? 'Mock data ENV var enabled. Using internal mock data instead.'
+      : 'Airtable config missing or incomplete, using internal mock data instead.'
+    sourceNodesArgs.reporter.warn(msg)
     createPartnerSourceNodes(getMockPartners())
     createVolunteerSourceNodes(getMockVolunteers())
     createTagSourceNodes(getMockTags())
     createProjectSourceNodes(getMockProjects())
-  }
-
-  // For Cypress tests, yarn develop fails with NODE_ENV=test
-  if (process.env.USE_MOCKS) {
-    sourceNodesArgs.reporter.warn(
-      'Mock data ENV var enabled. Using internal mock data instead.'
-    )
-
-    setupMockData()
     return
   }
 
   try {
+    const load = <T>(table: string): Promise<T[]> =>
+      getAllAirtableRecords(
+        options.airtableApiKey,
+        options.airtableBaseUrl,
+        table
+      )
+
     const [
       airTablePartners,
       airTableVolunteers,
       airTableTags,
       airtableProjects,
     ] = await Promise.all([
-      loadData<AirTablePartner>(options.partnersTableName),
-      loadData<AirTableVolunteer>(options.volunteersTableName),
-      loadData<AirTableTag>(options.tagsTableName),
-      loadData<AirTableProject>(options.projectsTableName),
+      load<AirTablePartner>('Partners'),
+      load<AirTableVolunteer>('Volunteers'),
+      load<AirTableTag>('Tags'),
+      load<AirTableProject>('Projects'),
     ])
 
-    const partners = transformPartners(airTablePartners)
-    const volunteers = transformVolunteers(airTableVolunteers)
-    const tags = transformTags(airTableTags)
-    const projects = transformProjects(airtableProjects)
-
-    createPartnerSourceNodes(partners)
-    createVolunteerSourceNodes(volunteers)
-    createTagSourceNodes(tags)
-    createProjectSourceNodes(projects)
+    createPartnerSourceNodes(transformPartners(airTablePartners))
+    createVolunteerSourceNodes(transformVolunteers(airTableVolunteers))
+    createTagSourceNodes(transformTags(airTableTags))
+    createProjectSourceNodes(transformProjects(airtableProjects))
   } catch (e) {
-    if (e instanceof ConnectionError) {
-      sourceNodesArgs.reporter.warn(
-        'Data sourcing failed because of connection error. Using internal mock data instead.'
-      )
-
-      setupMockData()
-    } else {
-      sourceNodesArgs.reporter.panic(
-        'Data sourcing failed because of following error:',
-        e
-      )
-    }
+    sourceNodesArgs.reporter.panic('Data sourcing failed:', e)
   }
 }

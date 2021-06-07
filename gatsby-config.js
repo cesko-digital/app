@@ -82,10 +82,9 @@ module.exports = {
     {
       resolve: `gatsby-source-cd-airtable`,
       options: {
-        projectsTableName: 'Projects',
-        tagsTableName: 'Tags',
-        volunteersTableName: 'Volunteers',
-        partnersTableName: 'Partners',
+        airtableApiKey: process.env.AIRTABLE_API_KEY,
+        airtableBaseUrl: process.env.AIRTABLE_BASE_URL,
+        forceMockMode: process.env.USE_MOCKS,
       },
     },
     {
