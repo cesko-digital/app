@@ -1,88 +1,69 @@
-import { SourceNodesArgs } from 'gatsby'
+import { NodeInput } from 'gatsby'
 import { Project, Tag, Volunteer, Partner } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin
 
-export function createProjectNodesFactory({
-  actions: { createNode },
-  createContentDigest,
-}: SourceNodesArgs): (projects: Project[]) => void {
-  return (projects) => {
-    return projects.forEach((project) => {
-      const tagNodeIds = project.tags.map((tagRowId) =>
-        getTagId({ lang: project.lang, rowId: tagRowId })
-      )
-      const coordinatorNodeIds = project.coordinators.map((coordinatorRowId) =>
-        getVolunteerId(coordinatorRowId)
-      )
-      createNode({
-        ...project,
-        id: getProjectId(project),
-        internal: {
-          type: 'Project',
-          contentDigest: createContentDigest(project),
-        },
-        // Reverse relationship (ref: https://www.gatsbyjs.com/docs/creating-a-source-plugin/#creating-the-reverse-relationship)
-        tags___NODE: tagNodeIds,
-        tags: undefined,
-        coordinators___NODE: coordinatorNodeIds,
-        coordinators: undefined,
-      })
-    })
+export function nodeFromProject(
+  project: Project,
+  contentDigest: string
+): NodeInput {
+  const tagNodeIds = project.tags.map((tagRowId) =>
+    getTagId({ lang: project.lang, rowId: tagRowId })
+  )
+  const coordinatorNodeIds = project.coordinators.map((coordinatorRowId) =>
+    getVolunteerId(coordinatorRowId)
+  )
+  return {
+    ...project,
+    id: getProjectId(project),
+    internal: {
+      type: 'Project',
+      contentDigest,
+    },
+    // Reverse relationship (ref: https://www.gatsbyjs.com/docs/creating-a-source-plugin/#creating-the-reverse-relationship)
+    tags___NODE: tagNodeIds,
+    tags: undefined,
+    coordinators___NODE: coordinatorNodeIds,
+    coordinators: undefined,
   }
 }
 
-export function createTagNodesFactory({
-  actions: { createNode },
-  createContentDigest,
-}: SourceNodesArgs): (tags: Tag[]) => void {
-  return (tags) => {
-    tags.forEach((tag) => {
-      createNode({
-        ...tag,
-        id: getTagId(tag),
-        internal: {
-          type: 'Tag',
-          contentDigest: createContentDigest(tag),
-        },
-      })
-    })
+export function nodeFromTag(tag: Tag, contentDigest: string): NodeInput {
+  return {
+    ...tag,
+    id: getTagId(tag),
+    internal: {
+      type: 'Tag',
+      contentDigest,
+    },
   }
 }
 
-export function createVolunteerNodesFactory({
-  actions: { createNode },
-  createContentDigest,
-}: SourceNodesArgs): (volunteers: Volunteer[]) => void {
-  return (volunteers) => {
-    volunteers.forEach((volunteer) => {
-      createNode({
-        ...volunteer,
-        id: getVolunteerId(volunteer.rowId),
-        internal: {
-          type: 'Volunteer',
-          contentDigest: createContentDigest(volunteer),
-        },
-      })
-    })
+export function nodeFromVolunteer(
+  volunteer: Volunteer,
+  contentDigest: string
+): NodeInput {
+  return {
+    ...volunteer,
+    id: getVolunteerId(volunteer.rowId),
+    internal: {
+      type: 'Volunteer',
+      contentDigest,
+    },
   }
 }
 
-export function createPartnerNodesFactory({
-  actions: { createNode },
-  createContentDigest,
-}: SourceNodesArgs): (partners: Partner[]) => void {
-  return (partners) => {
-    partners.forEach((partner) => {
-      createNode({
-        ...partner,
-        id: `Partner-${partner.rowId}`,
-        internal: {
-          type: 'Partner',
-          contentDigest: createContentDigest(partner),
-        },
-      })
-    })
+export function nodeFromPartner(
+  partner: Partner,
+  contentDigest: string
+): NodeInput {
+  return {
+    ...partner,
+    id: `Partner-${partner.rowId}`,
+    internal: {
+      type: 'Partner',
+      contentDigest,
+    },
   }
 }
