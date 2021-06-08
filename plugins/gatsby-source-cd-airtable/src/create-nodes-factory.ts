@@ -1,13 +1,11 @@
 import { NodeInput } from 'gatsby'
+import { createContentDigest } from 'gatsby-core-utils'
 import { Project, Tag, Volunteer, Partner } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin
 
-export function nodeFromProject(
-  project: Project,
-  contentDigest: string
-): NodeInput {
+export function nodeFromProject(project: Project): NodeInput {
   const tagNodeIds = project.tags.map((tagRowId) =>
     getTagId({ lang: project.lang, rowId: tagRowId })
   )
@@ -19,7 +17,7 @@ export function nodeFromProject(
     id: getProjectId(project),
     internal: {
       type: 'Project',
-      contentDigest,
+      contentDigest: createContentDigest(project),
     },
     // Reverse relationship (ref: https://www.gatsbyjs.com/docs/creating-a-source-plugin/#creating-the-reverse-relationship)
     tags___NODE: tagNodeIds,
@@ -29,41 +27,35 @@ export function nodeFromProject(
   }
 }
 
-export function nodeFromTag(tag: Tag, contentDigest: string): NodeInput {
+export function nodeFromTag(tag: Tag): NodeInput {
   return {
     ...tag,
     id: getTagId(tag),
     internal: {
       type: 'Tag',
-      contentDigest,
+      contentDigest: createContentDigest(tag),
     },
   }
 }
 
-export function nodeFromVolunteer(
-  volunteer: Volunteer,
-  contentDigest: string
-): NodeInput {
+export function nodeFromVolunteer(volunteer: Volunteer): NodeInput {
   return {
     ...volunteer,
     id: getVolunteerId(volunteer.rowId),
     internal: {
       type: 'Volunteer',
-      contentDigest,
+      contentDigest: createContentDigest(volunteer),
     },
   }
 }
 
-export function nodeFromPartner(
-  partner: Partner,
-  contentDigest: string
-): NodeInput {
+export function nodeFromPartner(partner: Partner): NodeInput {
   return {
     ...partner,
     id: `Partner-${partner.rowId}`,
     internal: {
       type: 'Partner',
-      contentDigest,
+      contentDigest: createContentDigest(partner),
     },
   }
 }

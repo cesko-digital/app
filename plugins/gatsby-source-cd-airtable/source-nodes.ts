@@ -30,6 +30,9 @@ export async function sourceNodes(
   sourceNodesArgs: SourceNodesArgs,
   options: PluginOptions
 ): Promise<void> {
+  const createNode = (node: NodeInput) =>
+    sourceNodesArgs.actions.createNode(node)
+
   const haveAirtableConfig = options.airtableApiKey && options.airtableBaseUrl
   const forceMockMode = options.forceMockMode
   const useMockData = forceMockMode || !haveAirtableConfig
@@ -39,10 +42,11 @@ export async function sourceNodes(
       ? 'Mock data ENV var enabled. Using internal mock data instead.'
       : 'Airtable config missing or incomplete, using internal mock data instead.'
     sourceNodesArgs.reporter.warn(msg)
-    importNodes(sourceNodesArgs, getMockPartners(), nodeFromPartner)
-    importNodes(sourceNodesArgs, getMockVolunteers(), nodeFromVolunteer)
-    importNodes(sourceNodesArgs, getMockTags(), nodeFromTag)
-    importNodes(sourceNodesArgs, getMockProjects(), nodeFromProject)
+
+    getMockPartners().map(nodeFromPartner).forEach(createNode)
+    getMockVolunteers().map(nodeFromVolunteer).forEach(createNode)
+    getMockTags().map(nodeFromTag).forEach(createNode)
+    getMockProjects().map(nodeFromProject).forEach(createNode)
     return
   }
 
@@ -66,38 +70,13 @@ export async function sourceNodes(
       load<AirTableProject>('Projects'),
     ])
 
-    importNodes(
-      sourceNodesArgs,
-      transformPartners(airTablePartners),
-      nodeFromPartner
-    )
-    importNodes(
-      sourceNodesArgs,
-      transformVolunteers(airTableVolunteers),
-      nodeFromVolunteer
-    )
-    importNodes(sourceNodesArgs, transformTags(airTableTags), nodeFromTag)
-    importNodes(
-      sourceNodesArgs,
-      transformProjects(airtableProjects),
-      nodeFromProject
-    )
+    transformPartners(airTablePartners).map(nodeFromPartner).forEach(createNode)
+    transformVolunteers(airTableVolunteers)
+      .map(nodeFromVolunteer)
+      .forEach(createNode)
+    transformTags(airTableTags).map(nodeFromTag).forEach(createNode)
+    transformProjects(airtableProjects).map(nodeFromProject).forEach(createNode)
   } catch (e) {
     sourceNodesArgs.reporter.panic('Data sourcing failed:', e)
   }
-}
-
-function importNodes<T extends object>( // eslint-disable-line
-  sourceNodesArgs: SourceNodesArgs,
-  values: T[],
-  importer: (value: T, digest: string) => NodeInput
-): void {
-  const {
-    actions: { createNode },
-    createContentDigest,
-  } = sourceNodesArgs
-  values.forEach((value) => {
-    const digest = createContentDigest(value)
-    createNode(importer(value, digest))
-  })
 }
