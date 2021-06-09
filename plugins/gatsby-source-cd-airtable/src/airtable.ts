@@ -62,6 +62,22 @@ export interface AirTableVolunteer extends AirTableRecord {
   }
 }
 
+export interface AirtableEvent extends AirTableRecord {
+  fields: {
+    'Live URL': string
+    'End Time': string
+    'RSVP URL': string
+    'Summary': string
+    'Description': string
+    'Name': string
+    'Status'?: 'draft' | 'live' | 'archived'
+    'Follow-up URL': string
+    'Competence Map': string[]
+    'RSVP Deadline': string
+    'Start Time': string
+  }
+}
+
 //
 // Helpers
 //

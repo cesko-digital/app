@@ -53,3 +53,13 @@ export interface Project extends SourceNode {
   url: string
   coordinators: string[]
 }
+
+export interface Event extends SourceNode {
+  name: string
+  summary: string
+  description: string
+  competenceMap: Record<string, number>
+  startTime: Date
+  endTime: Date
+  status: 'draft' | 'live' | 'archived' | null
+}

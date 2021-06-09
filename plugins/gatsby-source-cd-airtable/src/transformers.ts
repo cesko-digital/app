@@ -1,10 +1,19 @@
-import { Language, Project, Tag, Volunteer, Partner, SourceNode } from './types'
+import {
+  Language,
+  Project,
+  Tag,
+  Volunteer,
+  Partner,
+  SourceNode,
+  Event,
+} from './types'
 import {
   AirTablePartner,
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
   AirTableRecord,
+  AirtableEvent,
 } from './airtable'
 
 function transformAirTableRecords<
@@ -101,6 +110,31 @@ export function transformTags(airTableTags: AirTableTag[]): Tag[] {
       ]
     })
     .reduce((tags: Tag[], langTags) => [...tags, ...langTags], [])
+}
+
+export function transformEvent(event: AirtableEvent): Event | null {
+  const f = event.fields
+  return {
+    rowId: event.id,
+    name: f.Name,
+    summary: f.Summary,
+    description: f.Description,
+    competenceMap: parseCompetenceMap(f['Competence Map']),
+    startTime: new Date(f['Start Time']),
+    endTime: new Date(f['End Time']),
+    status: f.Status || null,
+  }
+}
+
+export function parseCompetenceMap(src: string[]): Record<string, number> {
+  const map: Record<string, number> = {}
+  for (const competence of src) {
+    const [name, score] = competence.split(':')
+    if (name && !isNaN(parseInt(score))) {
+      map[name] = parseInt(score)
+    }
+  }
+  return map
 }
 
 export const transformVolunteers = (

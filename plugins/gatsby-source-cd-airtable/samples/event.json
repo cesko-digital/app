@@ -1,0 +1,28 @@
+{
+    "id": "rec9ujcN8HSkE0hgh",
+    "fields": {
+        "Live URL": "https://cesko.digital/show-and-tell",
+        "End Time": "2021-06-24T18:00:00.000Z",
+        "RSVP URL": "https://cesko.digital/rsvp",
+        "Summary": "Živé vysílání bla bla bla…",
+        "Description": "Bude to **pecka**!\n",
+        "Attendees": [
+            "recm4CtcAkbzsEbZq"
+        ],
+        "Name": "Show & Tell #2",
+        "Owner": {
+            "id": "usrNdxBgElbfGfX9v",
+            "email": "zoul@cesko.digital",
+            "name": "Tomáš Znamenáček"
+        },
+        "Status": "draft",
+        "Follow-up URL": "https://cesko.digital/show-and-tell",
+        "Competence Map": [
+            "dev:100",
+            "marketing:100"
+        ],
+        "RSVP Deadline": "2021-06-24T17:00:00.000Z",
+        "Start Time": "2021-06-24T17:00:00.000Z"
+    },
+    "createdTime": "2021-06-03T16:09:12.000Z"
+}
