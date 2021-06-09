@@ -12,23 +12,22 @@ import {
   AirTableRecord,
 } from './types'
 
-const transformAirTableRecords = <
+function transformAirTableRecords<
   AirTableType extends AirTableRecord,
   Type extends SourceNode
->(
-  airTableRecords: AirTableType[]
-): Type[] =>
-  airTableRecords.map(
+>(airTableRecords: AirTableType[]): Type[] {
+  return airTableRecords.map(
     (record) =>
       ({
         rowId: record.id,
         ...record.fields,
       } as Type)
   )
+}
 
-export const transformProjects = (
+export function transformProjects(
   airtableProjects: AirTableProject[]
-): Project[] => {
+): Project[] {
   return airtableProjects
     .filter((airtableProject) => !airtableProject?.fields?.draft)
     .map((airTableProject) => {
@@ -53,8 +52,8 @@ export const transformProjects = (
 
       const base = {
         tags: tags || [],
-        highlighted: !!highlighted, // Field can be missing in AirTable record
-        finished: !!finished, // Field can be missing in AirTable record
+        highlighted: !!highlighted,
+        finished: !!finished,
         coverUrl,
         logoUrl,
         trelloUrl,
@@ -84,7 +83,7 @@ export const transformProjects = (
     )
 }
 
-export const transformTags = (airTableTags: AirTableTag[]): Tag[] => {
+export function transformTags(airTableTags: AirTableTag[]): Tag[] {
   return airTableTags
     .map((airTableTag) => {
       const { csName, enSlug, enName, csSlug } = airTableTag.fields
