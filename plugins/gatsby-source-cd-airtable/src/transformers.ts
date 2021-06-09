@@ -1,16 +1,11 @@
+import { Language, Project, Tag, Volunteer, Partner, SourceNode } from './types'
 import {
-  Language,
-  Project,
-  Tag,
-  Volunteer,
-  Partner,
   AirTablePartner,
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-  SourceNode,
   AirTableRecord,
-} from './types'
+} from './airtable'
 
 function transformAirTableRecords<
   AirTableType extends AirTableRecord,

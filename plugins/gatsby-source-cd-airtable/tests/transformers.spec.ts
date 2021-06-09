@@ -4,7 +4,7 @@ import {
   transformTags,
   transformVolunteers,
 } from '../src/transformers'
-import { AirTableProject } from '../src/types'
+import { AirTableProject } from '../src/airtable'
 
 describe('transformers', () => {
   describe('transformProjects', () => {

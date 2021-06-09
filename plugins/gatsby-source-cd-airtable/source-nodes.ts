@@ -5,14 +5,14 @@ import {
   transformTags,
   transformVolunteers,
 } from './src/transformers'
-import { getAllAirtableRecords } from './src/load-data'
+import { PluginOptions } from './src/types'
 import {
-  PluginOptions,
   AirTablePartner,
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-} from './src/types'
+  getAllAirtableRecords,
+} from './src/airtable'
 import {
   nodeFromPartner,
   nodeFromProject,
