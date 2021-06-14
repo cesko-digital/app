@@ -124,6 +124,7 @@ export function transformEvent(event: AirtableEvent): Event | null {
     endTime: new Date(f['End Time']),
     status: f.Status || null,
     owner: f.Owner[0],
+    project: f.Project.length > 0 ? f.Project[0] : undefined,
   }
 }
 

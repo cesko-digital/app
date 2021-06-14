@@ -70,5 +70,9 @@ export function nodeFromEvent(event: Event): NodeInput {
     },
     owner___NODE: getVolunteerId(event.owner),
     owner: undefined,
+    project___NODE: event.project
+      ? getProjectId({ lang: 'cs', rowId: event.project })
+      : undefined,
+    project: undefined,
   }
 }

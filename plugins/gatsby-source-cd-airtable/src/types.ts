@@ -63,4 +63,5 @@ export interface Event extends SourceNode {
   endTime: Date
   status: 'draft' | 'live' | 'archived' | null
   owner: string
+  project?: string
 }

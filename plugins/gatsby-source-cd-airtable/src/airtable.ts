@@ -76,6 +76,7 @@ export interface AirtableEvent extends AirTableRecord {
     'RSVP Deadline': string
     'Start Time': string
     'Owner': string[]
+    'Project': string[]
   }
 }
 
