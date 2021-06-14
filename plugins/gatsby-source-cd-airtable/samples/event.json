@@ -10,11 +10,9 @@
             "recm4CtcAkbzsEbZq"
         ],
         "Name": "Show & Tell #2",
-        "Owner": {
-            "id": "usrNdxBgElbfGfX9v",
-            "email": "zoul@cesko.digital",
-            "name": "Tomáš Znamenáček"
-        },
+        "Owner": [
+            "rec9ujcN8HSkEdwehgh"
+        ],
         "Status": "draft",
         "Follow-up URL": "https://cesko.digital/show-and-tell",
         "Competence Map": [

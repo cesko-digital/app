@@ -62,4 +62,5 @@ export interface Event extends SourceNode {
   startTime: Date
   endTime: Date
   status: 'draft' | 'live' | 'archived' | null
+  owner: string
 }

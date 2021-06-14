@@ -24,6 +24,7 @@ test('transformEvents', () => {
     endTime: new Date('2021-06-24T18:00:00.000Z'),
     status: 'draft',
     rowId: 'rec9ujcN8HSkE0hgh',
+    owner: 'rec9ujcN8HSkEdwehgh',
   }
   expect(received).toEqual(expected)
 })

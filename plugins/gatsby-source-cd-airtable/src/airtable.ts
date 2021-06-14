@@ -75,6 +75,7 @@ export interface AirtableEvent extends AirTableRecord {
     'Competence Map': string[]
     'RSVP Deadline': string
     'Start Time': string
+    'Owner': string[]
   }
 }
 

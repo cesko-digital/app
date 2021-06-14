@@ -68,5 +68,7 @@ export function nodeFromEvent(event: Event): NodeInput {
       type: 'Event',
       contentDigest: createContentDigest(event),
     },
+    owner___NODE: getVolunteerId(event.owner),
+    owner: undefined,
   }
 }
