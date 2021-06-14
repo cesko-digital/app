@@ -1,6 +1,6 @@
 import { NodeInput } from 'gatsby'
 import { createContentDigest } from 'gatsby-core-utils'
-import { Project, Tag, Volunteer, Partner } from './types'
+import { Project, Tag, Volunteer, Partner, Event } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin
@@ -56,6 +56,17 @@ export function nodeFromPartner(partner: Partner): NodeInput {
     internal: {
       type: 'Partner',
       contentDigest: createContentDigest(partner),
+    },
+  }
+}
+
+export function nodeFromEvent(event: Event): NodeInput {
+  return {
+    ...event,
+    id: `Event-${event.rowId}`,
+    internal: {
+      type: 'Event',
+      contentDigest: createContentDigest(event),
     },
   }
 }

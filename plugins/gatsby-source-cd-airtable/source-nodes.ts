@@ -4,6 +4,7 @@ import {
   transformProjects,
   transformTags,
   transformVolunteers,
+  transformEvent,
 } from './src/transformers'
 import { PluginOptions } from './src/types'
 import {
@@ -11,6 +12,7 @@ import {
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
+  AirtableEvent,
   getAllAirtableRecords,
 } from './src/airtable'
 import {
@@ -18,6 +20,7 @@ import {
   nodeFromProject,
   nodeFromTag,
   nodeFromVolunteer,
+  nodeFromEvent,
 } from './src/create-nodes-factory'
 import {
   getMockProjects,
@@ -63,11 +66,13 @@ export async function sourceNodes(
       airTableVolunteers,
       airTableTags,
       airtableProjects,
+      airtableEvents,
     ] = await Promise.all([
       load<AirTablePartner>('Partners'),
       load<AirTableVolunteer>('Volunteers'),
       load<AirTableTag>('Tags'),
       load<AirTableProject>('Projects'),
+      load<AirtableEvent>('Events'),
     ])
 
     transformPartners(airTablePartners).map(nodeFromPartner).forEach(createNode)
@@ -76,7 +81,16 @@ export async function sourceNodes(
       .forEach(createNode)
     transformTags(airTableTags).map(nodeFromTag).forEach(createNode)
     transformProjects(airtableProjects).map(nodeFromProject).forEach(createNode)
+    airtableEvents
+      .map(transformEvent)
+      .filter(notEmpty)
+      .map(nodeFromEvent)
+      .forEach(createNode)
   } catch (e) {
     sourceNodesArgs.reporter.panic('Data sourcing failed:', e)
   }
+}
+
+function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
+  return value !== null && value !== undefined
 }
