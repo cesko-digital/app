@@ -77,6 +77,7 @@ export interface AirtableEvent extends AirTableRecord {
     'Start Time': string
     'Owner': string[]
     'Project': string[]
+    'Tags': string[]
   }
 }
 

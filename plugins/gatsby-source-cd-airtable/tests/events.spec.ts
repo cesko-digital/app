@@ -26,6 +26,7 @@ test('transformEvents', () => {
     rowId: 'rec9ujcN8HSkE0hgh',
     owner: 'rec9ujcN8HSkEdwehgh',
     project: 'rec9ujcN8HSkdedwedd',
+    tags: ['foo', 'bar'],
   }
   expect(received).toEqual(expected)
 })

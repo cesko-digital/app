@@ -68,11 +68,16 @@ export function nodeFromEvent(event: Event): NodeInput {
       type: 'Event',
       contentDigest: createContentDigest(event),
     },
+    // Event-Owner relationship
     owner___NODE: getVolunteerId(event.owner),
     owner: undefined,
+    // Event–Project relationship
     project___NODE: event.project
       ? getProjectId({ lang: 'cs', rowId: event.project })
       : undefined,
     project: undefined,
+    // Event-Tag relationship
+    tags___NODE: event.tags.map((t) => getTagId({ lang: 'cs', rowId: t })),
+    tags: undefined,
   }
 }

@@ -64,4 +64,5 @@ export interface Event extends SourceNode {
   status: 'draft' | 'live' | 'archived' | null
   owner: string
   project?: string
+  tags: string[]
 }
