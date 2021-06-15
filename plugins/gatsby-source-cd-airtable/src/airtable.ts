@@ -31,13 +31,13 @@ export interface AirTableProject extends AirTableRecord {
     logoUrl: string
     coverUrl: string
     finished?: boolean
-    slackChannelUrl: string
-    slackChannelName: string
+    slackChannelUrl?: string
+    slackChannelName?: string
     githubUrl?: string
     trelloUrl?: string
     url: string
-    csContributeText: string
-    enContributeText: string
+    csContributeText?: string
+    enContributeText?: string
     csDescription: string
     enDescription: string
     coordinators: string[]
@@ -56,7 +56,7 @@ export interface AirTableTag extends AirTableRecord {
 export interface AirTableVolunteer extends AirTableRecord {
   fields: {
     name: string
-    company: string
+    company?: string
     email: string
     profilePictureUrl?: string
   }

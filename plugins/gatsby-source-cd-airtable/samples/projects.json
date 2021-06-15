@@ -1,0 +1,427 @@
+{
+    "records": [
+        {
+            "id": "rec4KOruzwIFU8ieR",
+            "fields": {
+                "csSlug": "loono",
+                "enName": "Loono – Prevention Guide",
+                "csName": "Loono – průvodce prevencí",
+                "enSlug": "loono",
+                "tags": [
+                    "recVa4LnmzmtfoYTg"
+                ],
+                "csTagline": "Platforma poskytující veškeré informace o prevenci přehledně a na jednom místě",
+                "enTagline": "A platform providing all information on prevention clearly and in one place.",
+                "logoUrl": "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
+                "csDescription": "Vytvoříme místo, na kterém budou dostupné kompletní informace o prevenci závažných a civilizačních onemocnění v přehledné a atraktivní podobě. Platformu, která bude publikum aktivizovat a nebude představovat pouze nástroj pasivní konzumace informací. To vše s využitím know how organizace, která se tématu zdravotní prevence věnuje přes 6 let. Největším dopadem Loono app budou lidé, kteří žijí zdravějším a kvalitnějším životem.",
+                "enDescription": "We will create a place where complete information on the prevention of serious and civilizational diseases will be available in a clear and attractive form. A platform that will activate the audience and will not be just a tool for passive consumption of information. All this using the know-how of an organization that has been dealing with the topic of health prevention for over 6 years. The biggest impact of the Loono app will be people who live healthier and better lives.",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                "enContributeText": "Thank you to all involved volunteers and staff from expert organizations.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
+                "coordinators": [
+                    "recd8xvbWp7K1nZn8",
+                    "recwOLHFJUPCoPnLX",
+                    "rec0ABdJtGIK9AeCB"
+                ],
+                "slackChannelName": "inkub-loono_pruvodce_prevenci",
+                "Events": [
+                    "recL6LSVKhgH81MBJ"
+                ]
+            },
+            "createdTime": "2021-04-08T14:09:31.000Z"
+        },
+        {
+            "id": "recAh6CmL9dLySvjH",
+            "fields": {
+                "csSlug": "verejne-zakazky-spolu",
+                "enName": "Public Contracts Together",
+                "csName": "Veřejné zakázky spolu",
+                "enSlug": "public-contracts-together",
+                "tags": [
+                    "recw8jRiiTVGrRBZM"
+                ],
+                "csTagline": "Pomáháme státu poskytovat a rozvíjet služby v souladu s technologickými trendy prostřednictvím kultivace prostředí zadávání veřejných zakázek",
+                "enTagline": "We help the state provide and develop services in line with technological trends by cultivating the public procurement environment.",
+                "logoUrl": "https://data.cesko.digital/web/projects/verejne-zakazky-spolu/logo-verejne-zakazky-spolu.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/verejne-zakazky-spolu/cover-verejne-zakazky-spolu.jpg",
+                "csDescription": "Věříme, že stát může poskytovat a rozvíjet svoje služby moderně a v souladu se současnými technologickými trendy. Nezbytným předpokladem pro tento cíl je kultivace prostředí zadávání veřejných IT zakázek. Transformace dosáhneme pomocí otevřeného dialogu mezi zadavatelem a dodavatelem, sdílením dobré praxe a jiných aktivit, které popisujeme v naší vizi. Navštivte naši wiki a podívejte se, co se nám už povedlo, a jak se můžete zapojit.",
+                "enDescription": "We believe that the state can provide and develop its services in a modern way and in accordance with current technological trends. A necessary prerequisite for this goal is the cultivation of the public IT procurement environment. We achieve transformation through an open dialogue between the contracting authority and the supplier, sharing good practice and other activities that we describe in our vision. Visit our wiki to see what we've accomplished and how you can get involved.",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací a veřejné správy.",
+                "enContributeText": "We thank all involved volunteers as well as employees from expert organizations and public administration.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1573655",
+                "trelloUrl": "https://trello.com/b/P48DP6rF/%C5%A1ablony-v%C3%BDb%C4%9Brov%C3%BDch-%C5%99%C3%ADzen%C3%AD",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/CSHURJA9L",
+                "coordinators": [
+                    "rec6hQPrLsA7vVjGD",
+                    "recheJ92XChLaVlsr",
+                    "recshDKxv31hsdyX4"
+                ],
+                "slackChannelName": "run-verejne_zakazky_spolu"
+            },
+            "createdTime": "2021-04-07T16:32:42.000Z"
+        },
+        {
+            "id": "recDZjnFw8B7jTxdg",
+            "fields": {
+                "csSlug": "dame-rousky",
+                "enName": "Giving Masks",
+                "csName": "Dáme roušky",
+                "enSlug": "giving-masks",
+                "tags": [
+                    "recNK5R39EUWEn4Ye"
+                ],
+                "csTagline": "Komunitní mapa pro distribuci ochranných pomůcek fungovala od jara do podzimu 2020",
+                "enTagline": "The community map for the distribution of protective equipment worked from spring to autumn 2020.",
+                "logoUrl": "https://data.cesko.digital/web/projects/dame-rousky/logo.png",
+                "coverUrl": "https://data.cesko.digital/web/projects/dame-rousky/cover.png",
+                "csDescription": "Na jaře 2020 mapa umožnila propojit ty, kteří roušky šijí s těmi, kteří je potřebují. Roušek se předalo mezi 600.000 až 2 500 000. Komunitní mapa, která kromě míst, které poskytovaly materiál, a lidí, kteří šili, časem zahrnovala i opraváře šicích strojů, 3D tiskaře nebo výdejní místa. Jako distribuční místo ji doporučilo Ministerstvo zdravotnictví ČR a inspirovala vznik mnoha dalších podobných projektů v zahraničí.",
+                "enDescription": "In the spring of 2020, the map made it possible to connect those who sew facemasks with those who need them. There were between 600,000 and 2,500,000 facemasks distributed.",
+                "csContributeText": "Myšlenka komunitní mapy by bez všech zapojených lidí nefungovala. Proto patří každému velké díky.",
+                "enContributeText": "The idea of a community map would not work without all the people involved. Therefore, a big thank you to everyone.",
+                "url": "https://damerousky.cz",
+                "coordinators": [
+                    "rec6hQPrLsA7vVjGD"
+                ],
+                "finished": true
+            },
+            "createdTime": "2021-02-14T21:30:43.000Z"
+        },
+        {
+            "id": "recH58QD0JhwTis0F",
+            "fields": {
+                "csSlug": "nedluzim-statu",
+                "enName": "No Government Debt",
+                "csName": "Nedlužím státu",
+                "enSlug": "no-government-debt",
+                "tags": [
+                    "recoUTPWNH9t9OCIa",
+                    "recnBrQR0KsWCT8Zz",
+                    "recamEbW4GGqqRmNG",
+                    "reccov4yRiTvzsrym",
+                    "recYWOIEZAiPX1Fg0"
+                ],
+                "csTagline": "Pracujeme na portálu, který lidem pomáhá zjistit, zda a případně kolik dluží veřejným institucím",
+                "enTagline": "We are working on a portal that helps people find out if and how much they owe to public institutions.",
+                "logoUrl": "https://data.cesko.digital/web/projects/nedluzim-statu/logo-nedluzim-statu.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/nedluzim-statu/cover-nedluzim-statu.jpg",
+                "csDescription": "S využitím datových schránek, automaticky generovaných žádostí a doufejme i strojově čitelných odpovědí, budujeme portál, který občanům usnadní zjistit, zda a případně kolik dluží ve vztahu k veřejným institucím. Jedním z důvodů, proč lidé končí v exekuci, je často právě nevědomost, že dluhy vůbec existují. V případě veřejných institucí je získání komplexního přehled takřka nadlidský úkol. Současně pomáháme zlepšit stav veřejných financí a tím i život každého v Česku.",
+                "enDescription": "Using data boxes, automatically generated requests and, hopefully, machine-readable answers, we are building a portal that will make it easier for citizens to find out if and how much they owe to public institutions. One of the reasons why people end up in execution is often the ignorance that debts exist at all. In the case of public institutions, obtaining a comprehensive overview is almost a superhuman task. At the same time, we help to improve the state of public finances and thus the life of everyone in the Czech Republic.",
+                "csContributeText": "Projekt mapující zadluženost bez všech zapojených lidí nefungovala. Proto patří každému velké díky.",
+                "enContributeText": "The debt mapping project did not work without all the people involved. Therefore, a big thank you to everyone.",
+                "url": "https://nedluzimstatu.cz",
+                "trelloUrl": "https://trello.com/b/UQaCcU62/nedlu%C5%BE%C3%ADm-st%C3%A1tu",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/CHTQQN5AL",
+                "githubUrl": "https://github.com/cesko-digital/nedluzimstatu",
+                "coordinators": [
+                    "recheJ92XChLaVlsr",
+                    "rec4aPaaf2GDZ3VoH",
+                    "rec7GkIKStJ4iXgJ6"
+                ],
+                "slackChannelName": "run-nedluzim_statu"
+            },
+            "createdTime": "2021-03-30T12:03:12.000Z"
+        },
+        {
+            "id": "recIKAscZHA0hVHBX",
+            "fields": {
+                "csSlug": "cityvizor",
+                "enName": "Cityvizor",
+                "csName": "Cityvizor",
+                "enSlug": "cityvizor",
+                "tags": [
+                    "recoUTPWNH9t9OCIa",
+                    "recw8jRiiTVGrRBZM",
+                    "rec12ME0WwCmDkr1v",
+                    "recEKKvsG611DADID",
+                    "recUJW25dKveSkQ6Z",
+                    "rec4LoZLyrBnMT1sG",
+                    "recFVrO5xifN9jog4"
+                ],
+                "csTagline": "Aplikace pro transparentní hospodaření pro každou obec, vizualizace rozpočtu až na úroveň jednotlivých faktur",
+                "enTagline": "Application for transparent management for each municipality, visualization of the budget down to the level of individual invoices.",
+                "logoUrl": "https://data.cesko.digital/web/projects/cityvizor/logo-cityvizor.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/cityvizor/cover-cityvizor.jpg",
+                "csDescription": "Cityvizor je aplikace pro všechny, které zajímá hospodaření obcí v ČR – pro občany, zastupitele, pracovníky obce i novináře. Přináší přehlednou vizualizaci rozpočtu obce s detailními daty, která jsou získávána přímo z jejích účetních systémů a následně zobrazována přehledně, srozumitelně a v souvislostech",
+                "enDescription": "Cityvizor is an application for everyone who is interested in the management of municipalities in the Czech Republic - for citizens, representatives, municipal workers and journalists. It brings a clear visualization of the municipality's budget with detailed data, which are obtained directly from its accounting systems and then displayed clearly, intelligibly and in context",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                "enContributeText": "Thank you to all involved volunteers and staff from expert organizations.",
+                "url": "https://cesko.digital",
+                "trelloUrl": "https://trello.com/b/BFJahQYG/cityvizor-organizace",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/CG66HNLH4",
+                "githubUrl": "https://github.com/cityvizor/cityvizor",
+                "coordinators": [
+                    "rec9cgf8d1RK9CJHS",
+                    "recwOLHFJUPCoPnLX",
+                    "recxcXvq41ulDzNEz",
+                    "recheJ92XChLaVlsr"
+                ],
+                "slackChannelName": "run-cityvizor",
+                "finished": true
+            },
+            "createdTime": "2021-02-08T21:53:13.000Z"
+        },
+        {
+            "id": "recJsdOY0oyGO6xxX",
+            "fields": {
+                "csSlug": "nasi-politici",
+                "enName": "Our Politics",
+                "csName": "Naši politici",
+                "enSlug": "our-politics",
+                "tags": [
+                    "recw8jRiiTVGrRBZM",
+                    "recFVrO5xifN9jog4"
+                ],
+                "csTagline": "Největší otevřená databáze českých politiků a političek",
+                "enTagline": "The largest open database of Czech politicians.",
+                "logoUrl": "https://data.cesko.digital/web/projects/nasi-politici/logo-nasi-politici.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/nasi-politici/cover-nasipolitici.jpg",
+                "csDescription": "Naši politici původně vznikli jako projekt stejnojmenného občanského sdružení v roce 2008. Po deset let se plnila unikátní databáze ručně a s využitím otevřených zdrojů, a když občanské sdružení Naši politici v roce 2018 končilo, předalo všechna data do rukou protikorupční nevládní organizaci Transparency International. Transparency následně spojila síly s Česko.Digital a Hlídačem státu a díky této spolupráci se podařilo projekt reinkarnovat a posunout na novou úroveň.",
+                "enDescription": "Our politicians were originally created as a project of the civic association of the same name in 2008. For ten years, a unique database was filled by hand and using open sources, and when the civic association Naši politici ended in 2018, it passed all data to the anti-corruption NGO Transparency International. Transparency subsequently joined forces with Česko.Digital and the State Guard, and thanks to this cooperation, the project was successfully reincarnated and moved to a new level.",
+                "url": "https://www.nasipolitici.cz",
+                "coordinators": [
+                    "recOLDM8bee0EMlKz",
+                    "recmtJGXYYovYzA5O",
+                    "recbKgbPikNgaN3NR"
+                ],
+                "finished": true
+            },
+            "createdTime": "2021-03-31T12:55:55.000Z"
+        },
+        {
+            "id": "recSci1ztMeeakzg2",
+            "fields": {
+                "csSlug": "inovace-zpravodajstvi",
+                "enName": "News Storytelling Innovation",
+                "csName": "Inovace zpravodajského storytellingu",
+                "enSlug": "news-innovation",
+                "tags": [
+                    "recMg0okYGUJRFhlc",
+                    "recYWOIEZAiPX1Fg0",
+                    "recamEbW4GGqqRmNG"
+                ],
+                "csTagline": "Navrhujeme prototypy, které zatraktivní způsob, jakým novináři sdělují zpravodajské informace",
+                "enTagline": "We design prototypes that make the attractive way in which journalists communicate intelligence.",
+                "logoUrl": "https://data.cesko.digital/web/projects/inovace-zpravodajstvi/logo-inovace-zpravodajstvi.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/inovace-zpravodajstvi/cover-inovace-zpravodajstvi.jpg",
+                "csDescription": "Podle výzkumu Češi a zpravodajství, který provedl Nadační fond nezávislé žurnalistiky, zpravodajství nesleduje až 31,3 % Čechů. Cílem projektu je proto najít 2-3 funkční prototypy (tj. minimal viable product) technologického řešení, které zatraktivní způsob, jakým dnes v Česku novináři sdělují zpravodajské informace, a přivést třetinu Česka ke zpravodajství.",
+                "enDescription": "According to a survey of Czechs and news carried out by the Endowment Fund for Independent Journalism, up to 31.3% of Czechs do not follow news. The aim of the project is therefore to find 2-3 functional prototypes (ie minimal viable product) of a technological solution that will make the attractive way in which journalists communicate intelligence information in the Czech Republic today, and to bring a third of the Czech Republic to the news.",
+                "csContributeText": "Týmy jednotlivých prototypů jsou složené z novinářů, mediálních odborníků, marketérů, designérů a IT specialistů.",
+                "enContributeText": "The teams of individual prototypes are composed of journalists, media experts, marketers, designers and IT specialists.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1575478",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C01AENB1LPP",
+                "coordinators": [
+                    "rec5g2kjJCODPpUOI",
+                    "recaakebNpMz1pj1h",
+                    "recORtmcTpBOIfLJ2",
+                    "recTGpmslRgXD65Gv",
+                    "recfv4fZJP4dBtB85"
+                ],
+                "slackChannelName": "run-inovace_zpravodajského_storytellingu"
+            },
+            "createdTime": "2021-03-31T12:51:53.000Z"
+        },
+        {
+            "id": "recX5jS7TTzUxgNbu",
+            "fields": {
+                "csSlug": "zacni-ucit",
+                "enName": "Start Teaching!",
+                "csName": "Začni učit!",
+                "enSlug": "start-teaching",
+                "tags": [
+                    "recMg0okYGUJRFhlc",
+                    "recuBWE1HG9XxWUpB",
+                    "recEqwKqTTwEsDv4J",
+                    "recO1ywJtBEG5xx30",
+                    "recz1hxkfcA9mMp1b",
+                    "recSsU5azwBeEQ2F8",
+                    "recVr7HJHIcbTJyXt"
+                ],
+                "csTagline": "Provázíme zájemce o učitelství vším, co potřebují znát, aby se mohli stát pedagogy",
+                "enTagline": "We accompany those interested in teaching with everything they need to know in order to become teachers.",
+                "logoUrl": "https://data.cesko.digital/web/projects/zacni-ucit/logo-zacni-ucit.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/zacni-ucit/cover-zacni-ucit.jpg",
+                "csDescription": "Začni učit! je informační web, na kterém najdete všechny dostupné informace, které každý budoucí a začínající učitel potřebuje znát. Jednoduše a přehledně vysvětlujeme složité pojmy a vyhlášky tak, aby byla cesta k učitelství co nejhladší a nejrychlejší. Podrobnější popis brandu a strategie Začni učit! Najdete v našem strategickém dokumentu.",
+                "enDescription": "Start teaching! is an information website where you will find all the available information that every future and beginning teacher needs to know. We explain complex concepts and decrees simply and clearly so that the path to teaching is as smooth and quick as possible. Detailed description of the brand and strategy Start learning! You will find it in our strategic document.",
+                "csContributeText": "Dobrovolníci z Česko.Digital a organizace Výluka spojili síly v projektu Začni učit! . My děkujeme každému z nich.",
+                "enContributeText": "Volunteers from Česko.Digital and the Výluka organization joined forces in the Start Learning! . We thank each of them.",
+                "url": "https://www.zacniucit.cz",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C01CDSTV8KF",
+                "githubUrl": "https://github.com/cesko-digital/zacni-ucit",
+                "coordinators": [
+                    "recq96qTt3FqC7Mt6",
+                    "recjT3JYlbBOJaUfn",
+                    "rec0ABdJtGIK9AeCB",
+                    "recjz4dPPH7bqa1l1"
+                ],
+                "slackChannelName": "run-zacni_ucit"
+            },
+            "createdTime": "2021-04-07T11:04:54.000Z"
+        },
+        {
+            "id": "recZmB7InVkjYtbnn",
+            "fields": {
+                "csSlug": "covid-portal",
+                "enName": "Covid Portal",
+                "csName": "Covid portál",
+                "enSlug": "covid-portal",
+                "tags": [
+                    "recVa4LnmzmtfoYTg",
+                    "recn0MCAz2XOknJzU",
+                    "rec29ExbBHJgx5MPg",
+                    "recFVrO5xifN9jog4",
+                    "recuBWE1HG9XxWUpB",
+                    "recNK5R39EUWEn4Ye"
+                ],
+                "csTagline": "Vládní opatření lidskou řečí",
+                "enTagline": "Government measures in human language.",
+                "logoUrl": "https://data.cesko.digital/web/projects/covid-portal/logo-covid-portal.png",
+                "coverUrl": "https://data.cesko.digital/web/projects/covid-portal/cover-covid-portal.jpg",
+                "csDescription": "Společně s vývojáři ze státní agentury NAKIT a Dominikem Ferim jsme spustili web, který srozumitelně a přehledně informuje o vládních protiepidemických opatřeních a odpovídá na celou řadu otázek z běžného života během pandemie. Web jsme předali do správy Ministerstva vnitra ČR.",
+                "enDescription": "Together with developers from the state agency NAKIT and Dominik Feri, we launched a website that provides clear and clear information about government anti-epidemic measures and answers a number of questions from everyday life during a pandemic. We handed over the website to the administration of the Ministry of the Interior of the Czech Republic.",
+                "csContributeText": "Děkujeme každému za naprosto neuvěřitelné nasazení a profesionalitu.",
+                "enContributeText": "Thank you to everyone for your absolutely incredible commitment and professionalism.",
+                "url": "https://covid.gov.cz",
+                "trelloUrl": "https://trello.com/b/XOOBy51q/covidgovcz",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C01DGSL4JFN",
+                "githubUrl": "https://github.com/cesko-digital/covid.gov.cz",
+                "coordinators": [
+                    "rec6hQPrLsA7vVjGD",
+                    "rec6MoceaMSaa4BOh",
+                    "recwOLHFJUPCoPnLX",
+                    "recdPMOKc0urpcUiP"
+                ],
+                "slackChannelName": "run-covid_portal",
+                "finished": true
+            },
+            "createdTime": "2021-03-31T12:53:18.000Z"
+        },
+        {
+            "id": "recsIWPWTCFAvE2c2",
+            "fields": {
+                "csSlug": "ucime-online",
+                "enName": "We Teach Online",
+                "csName": "Učíme online",
+                "enSlug": "online-teaching",
+                "highlighted": true,
+                "tags": [
+                    "recMg0okYGUJRFhlc"
+                ],
+                "csTagline": "Chceme být dlouhodobou hybnou silou při proměně českého školství",
+                "enTagline": "We want to be a long-term driving force in the transformation of Czech education.",
+                "logoUrl": "https://data.cesko.digital/web/projects/ucime-online/logo-ucime-online.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/ucime-online/cover-ucime-online.jpg",
+                "csDescription": "Pomáháme školám, učitelům, rodičům i studentům co nejlépe využít možnosti vzdáleného vzdělávání pomocí technologií. Pomáháme sociálně potřebným rodinám, aby měly pro vzdálené vzdělávání rovné podmínky.\n\nSnažíme se o rychlé a individuální zprovoznění online výuky na školách, ukazujeme učitelům, jak učit online, a zajišťujeme počítače pro děti, které je potřebují.\n\nAktuálně projekt zahrnuje tyto aktivity:\n\nTechnologická pomoc školám\nWebináře Učíme nanečisto\nSbírka počítačů\n",
+                "enDescription": "We help schools, teachers, parents and students to make the most of the possibilities of distance learning through technology. We help socially needy families to have a level playing field for distance learning.\n\nWe strive for the fast and individual launch of online teaching in schools, show teachers how to teach online, and provide computers for children who need them.\n\nCurrently, the project includes the following activities:\n\nTechnological assistance to schools\nDry run teaching Webinars\nCollection of computers",
+                "csContributeText": "Za projektem Učíme online stojí více než 670 dobrovolníků, kteří věnovali tisíce hodin své práce pomoci dalším.",
+                "enContributeText": "More than 670 volunteers are behind the Learn Online project, devoting thousands of hours of their work to helping others.",
+                "url": "https://www.ucimeonline.cz",
+                "trelloUrl": "https://trello.com/b/9PuegQnm/u%C4%8D%C3%ADme-online",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/CUXRHTY58",
+                "coordinators": [
+                    "recfTQpPu9LYMIAps",
+                    "recf6EM1qZxTTFkA0",
+                    "rec4N4PrvAHEddN4u",
+                    "recL8KsRVopRJPiyh",
+                    "recqScHnCjZpuSLAm",
+                    "recl1mVQmM6euzmua"
+                ],
+                "slackChannelName": "run-ucime_online",
+                "finished": true
+            },
+            "createdTime": "2021-02-08T21:53:13.000Z"
+        },
+        {
+            "id": "recvOO9ssGZZtYGux",
+            "fields": {
+                "csSlug": "spolu-na-dalku",
+                "enName": "Remote Together",
+                "csName": "Spolu na dálku",
+                "enSlug": "remote-together",
+                "tags": [
+                    "recVa4LnmzmtfoYTg"
+                ],
+                "csTagline": "Řešení pro poskytovatele sociálních a zdravotnických služeb, které pacientům a klientům umožní kontakt s blízkými prostřednictvím videohovoru na chytrém zařízení",
+                "enTagline": "Solutions for social and health care providers that allow patients and clients to contact their loved ones via video call on a smart device.",
+                "logoUrl": "https://data.cesko.digital/web/projects/spolu-na-dalku/logo-spolu-na-dalku.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/spolu-na-dalku/cover-spolu-na-dalku.jpg",
+                "csDescription": "Projekt si klade za cíl vytvořit informační příručku (manuál) a naučit nemocnice a další zařízení zřizovat a využívat kontakt pacientů a klientů s rodinou a blízkými mimo návštěvní hodiny, před zákrokem nebo v období zákazu návštěv, a to prostřednictvím videohovoru na chytrém zařízení, a zároveň je podpořit a poskytnout tipy, jak potřebný HW nebo finance na něj získat.",
+                "enDescription": "The project aims to create an information manual (manual) and teach hospitals and other facilities to establish and use contact of patients and clients with family and loved ones outside visiting hours, before the operation or during the visitor ban, through a video call on a smart device, and is to support and provide tips on how to get the necessary HW or funding for it.",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                "enContributeText": "Thank you to all involved volunteers and staff from expert organizations.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1575655",
+                "trelloUrl": "https://trello.com/invite/b/yh9LXpur/a6684b4431a44b7c006c83edf784baad/tablety-do-nemocnic",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C018PVDT4SW",
+                "coordinators": [
+                    "recheJ92XChLaVlsr",
+                    "receJeHvUSgZFvbCt",
+                    "rec013Sizh8aRBejZ"
+                ],
+                "slackChannelName": "run-spolu_na_dalku"
+            },
+            "createdTime": "2021-04-07T16:36:31.000Z"
+        },
+        {
+            "id": "recxWVIA1Ex40nWi7",
+            "fields": {
+                "csSlug": "strecha-dusevniho-zdravi",
+                "enName": "Mental Health Platform",
+                "csName": "Střecha duševního zdraví",
+                "enSlug": "mental-health-platform",
+                "tags": [
+                    "recVa4LnmzmtfoYTg"
+                ],
+                "csTagline": "Připravujeme jednotné místo pro prevenci a včasnou pomoc při duševní nepohodě či složité životní situaci",
+                "enTagline": "We are preparing a single place for prevention and timely help in case of mental discomfort or difficult life situation.",
+                "logoUrl": "https://data.cesko.digital/web/projects/strecha-dusevniho-zdravi/logo-strecha-dusevniho-zdravi.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/strecha-dusevniho-zdravi/cover-strecha-dusevniho-zdravi.jpg",
+                "csDescription": "Stěžejními cíli projektu je zkrácení doby bez pomoci díky přehlednosti, dostupnosti a komplexitě informací, motivace k pravidelné sebepéči o duševní zdraví a snížení přetížení organizací a jednotlivců pomáhajících v oblasti péče duševní zdraví.",
+                "enDescription": "The main goals of the project are to reduce the time without assistance thanks to clarity, availability and complexity of information, motivation to regularly take care of mental health and reduce the overload of organizations and individuals helping in the field of mental health care.",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                "enContributeText": "Thank you to all involved volunteers and staff from expert organizations.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1572899",
+                "trelloUrl": "https://trello.com/b/siAPWwCv/st%C5%99echa-du%C5%A1evn%C3%ADho-zdrav%C3%AD",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C01168N8XP1",
+                "coordinators": [
+                    "recUAa0VnckxGxdbM",
+                    "recheJ92XChLaVlsr",
+                    "recni1NCgzKZvdnhN"
+                ],
+                "slackChannelName": "run-strecha_dusevniho_zdravi"
+            },
+            "createdTime": "2021-04-07T10:47:03.000Z"
+        },
+        {
+            "id": "recyAlQx0HFH0kW6h",
+            "fields": {
+                "csSlug": "jehlomat",
+                "enName": "Jehlomat",
+                "csName": "Jehlomat",
+                "enSlug": "jehlomat",
+                "tags": [
+                    "recVa4LnmzmtfoYTg"
+                ],
+                "csTagline": "Bezpečná a rychlá likvidace injekčního odpadu odhozeného na veřejných prostranstvích",
+                "enTagline": "Safe and fast disposal of injectable waste discarded in public places.",
+                "logoUrl": "https://data.cesko.digital/web/projects/jehlomat/logo-jehlomat.jpg",
+                "coverUrl": "https://data.cesko.digital/web/projects/jehlomat/cover-jehlomat.jpg",
+                "csDescription": "Hlavním cílem projektu je bezpečná a rychlá likvidace injekčního odpadu odhozeného na veřejných prostranstvích. Součástí optimalizace aplikace je výzkum a spolupráce s adiktologickými službami, které se sběrem a monitoringem injekčních stříkaček zabývají.",
+                "enDescription": "The main goal of the project is the safe and fast disposal of injectable waste discarded in public places. Part of the application optimization is research and cooperation with addictology services, which deal with the collection and monitoring of syringes.",
+                "csContributeText": "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                "enContributeText": "Thank you to all involved volunteers and staff from expert organizations.",
+                "url": "https://wiki.cesko.digital/pages/viewpage.action?pageId=1573774",
+                "trelloUrl": "https://trello.com/b/bz0gEYg2/jehlomat",
+                "slackChannelUrl": "https://cesko-digital.slack.com/archives/C017VKLRRC0",
+                "coordinators": [
+                    "rec5g2kjJCODPpUOI",
+                    "recAV6IZWuquxQCuZ",
+                    "recxnKoDo13IRSbGV",
+                    "rec2tXP7Cxat1JJMR"
+                ],
+                "slackChannelName": "run-jehlomat"
+            },
+            "createdTime": "2021-03-31T12:46:44.000Z"
+        }
+    ]
+}
