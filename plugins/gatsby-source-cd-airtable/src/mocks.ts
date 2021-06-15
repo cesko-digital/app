@@ -41,6 +41,8 @@ export const getMockProjects: () => Project[] = () => {
     tagline: 'Lorem ipsum',
     coverUrl: 'https://via.placeholder.com/400x200',
     logoUrl: 'https://via.placeholder.com/100',
+    slackChannelName: '#core-team',
+    slackChannelUrl: 'https://cesko-digital.slack.com/archives/CSXGU7F0F',
   }
 
   return [
