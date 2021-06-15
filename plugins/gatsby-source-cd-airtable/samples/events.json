@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "id": "recL6LSVKhgH81MBJ",
+            "fields": {
+                "Name": "Show & Tell #2",
+                "Summary": "Živé vysílání bla bla bla…",
+                "Description": "Bude to pecka!",
+                "Competence Map": [
+                    "marketing:100",
+                    "dev:1000"
+                ],
+                "RSVP URL": "https://cesko.digital/rsvp",
+                "RSVP Deadline": "2021-06-24T17:00:00.000Z",
+                "Start Time": "2021-06-24T17:00:00.000Z",
+                "End Time": "2021-06-24T18:00:00.000Z",
+                "Live URL": "https://cesko.digital/show-and-tell",
+                "Follow-Up URL": "https://cesko.digital/show-and-tell",
+                "Status": "live",
+                "Owner": [
+                    "recA5nftMpxJmwpr4"
+                ],
+                "Project": [],
+                "Tags": [
+                    "rec12ME0WwCmDkr1v"
+                ]
+            },
+            "createdTime": "2021-06-14T12:34:52.000Z"
+        }
+    ]
+}

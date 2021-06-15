@@ -45,7 +45,7 @@ export default async (
       method: 'POST',
       body: subscriptionData,
       headers: {
-        key: API_KEY,
+        'key': API_KEY,
         'Content-Type': 'application/json',
       },
     })

@@ -1,8 +1,26 @@
-import { SourceNode } from './source-node'
+//
+// Base types
+//
+
+export interface PluginOptions {
+  airtableApiKey: string
+  airtableBaseUrl: string
+  forceMockMode: boolean
+}
+
+export interface SourceNode {
+  rowId: string
+}
 
 export enum Language {
   Czech = 'cs',
   English = 'en',
+}
+
+export interface Partner extends SourceNode {
+  name: string
+  url: string
+  logoUrl: string
 }
 
 export interface Tag extends SourceNode {
@@ -34,4 +52,17 @@ export interface Project extends SourceNode {
   githubUrl?: string
   url: string
   coordinators: string[]
+}
+
+export interface Event extends SourceNode {
+  name: string
+  summary: string
+  description: string
+  competenceMap: Record<string, number>
+  startTime: Date
+  endTime: Date
+  status?: string
+  owner: string
+  project?: string
+  tags: string[]
 }

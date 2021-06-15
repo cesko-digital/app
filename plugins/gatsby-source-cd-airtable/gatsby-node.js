@@ -7,4 +7,3 @@ require('ts-node').register({
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin
 exports.sourceNodes = require('./source-nodes').sourceNodes
-exports.createSchemaCustomization = require('./create-schema-customization').createSchemaCustomization

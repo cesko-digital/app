@@ -4,31 +4,34 @@ import {
   Tag,
   Volunteer,
   Partner,
+  SourceNode,
+  Event,
+} from './types'
+import {
   AirTablePartner,
   AirTableProject,
   AirTableTag,
   AirTableVolunteer,
-} from './interfaces'
-import { SourceNode } from './interfaces/source-node'
-import { AirTableRecord } from './interfaces/airtable-record'
+  AirTableRecord,
+  AirtableEvent,
+} from './airtable'
 
-const transformAirTableRecords = <
+function transformAirTableRecords<
   AirTableType extends AirTableRecord,
   Type extends SourceNode
->(
-  airTableRecords: AirTableType[]
-): Type[] =>
-  airTableRecords.map(
+>(airTableRecords: AirTableType[]): Type[] {
+  return airTableRecords.map(
     (record) =>
       ({
         rowId: record.id,
         ...record.fields,
       } as Type)
   )
+}
 
-export const transformProjects = (
+export function transformProjects(
   airtableProjects: AirTableProject[]
-): Project[] => {
+): Project[] {
   return airtableProjects
     .filter((airtableProject) => !airtableProject?.fields?.draft)
     .map((airTableProject) => {
@@ -53,8 +56,8 @@ export const transformProjects = (
 
       const base = {
         tags: tags || [],
-        highlighted: !!highlighted, // Field can be missing in AirTable record
-        finished: !!finished, // Field can be missing in AirTable record
+        highlighted: !!highlighted,
+        finished: !!finished,
         coverUrl,
         logoUrl,
         trelloUrl,
@@ -84,7 +87,7 @@ export const transformProjects = (
     )
 }
 
-export const transformTags = (airTableTags: AirTableTag[]): Tag[] => {
+export function transformTags(airTableTags: AirTableTag[]): Tag[] {
   return airTableTags
     .map((airTableTag) => {
       const { csName, enSlug, enName, csSlug } = airTableTag.fields
@@ -107,6 +110,34 @@ export const transformTags = (airTableTags: AirTableTag[]): Tag[] => {
       ]
     })
     .reduce((tags: Tag[], langTags) => [...tags, ...langTags], [])
+}
+
+export function transformEvent(event: AirtableEvent): Event | null {
+  const f = event.fields
+  return {
+    rowId: event.id,
+    name: f.Name,
+    summary: f.Summary,
+    description: f.Description,
+    competenceMap: parseCompetenceMap(f['Competence Map']),
+    startTime: new Date(f['Start Time']),
+    endTime: new Date(f['End Time']),
+    status: f.Status,
+    owner: f.Owner[0],
+    project: f.Project.length > 0 ? f.Project[0] : undefined,
+    tags: f.Tags,
+  }
+}
+
+export function parseCompetenceMap(src: string[]): Record<string, number> {
+  const map: Record<string, number> = {}
+  for (const competence of src) {
+    const [name, score] = competence.split(':')
+    if (name && !isNaN(parseInt(score))) {
+      map[name] = parseInt(score)
+    }
+  }
+  return map
 }
 
 export const transformVolunteers = (
