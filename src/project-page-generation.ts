@@ -1,16 +1,14 @@
 import { CreatePagesArgs, CreatePageArgs } from 'gatsby'
-import path from 'path'
+import { resolve } from 'path'
 import { Project } from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 const SUPPORTED_LANGUAGES = ['cs']
 
-export const getProjectUrl = (node: Project) => {
-  if (node.lang === 'cs') {
-    return `/projekty/${node.slug}`
-  }
-
-  return `/${node.lang}/projects/${node.slug}`
+export const getProjectUrl = (args: { lang: string; slug: string }) => {
+  return args.lang === 'cs'
+    ? `/projekty/${args.slug}`
+    : `/${args.lang}/projects/${args.slug}`
 }
 
 export const generateProjectPages = async ({
@@ -35,7 +33,7 @@ export const generateProjectPages = async ({
       const projectUrl = getProjectUrl(node)
       createPage({
         path: projectUrl,
-        component: path.resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
+        component: resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
         context: {
           id: node.id,
         },
