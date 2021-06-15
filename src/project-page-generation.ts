@@ -5,16 +5,16 @@ import { Project } from './generated/graphql-types'
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 const SUPPORTED_LANGUAGES = ['cs']
 
-export const getProjectUrl = (args: { lang: string; slug: string }) => {
+export function getProjectUrl(args: { lang: string; slug: string }): string {
   return args.lang === 'cs'
     ? `/projekty/${args.slug}`
     : `/${args.lang}/projects/${args.slug}`
 }
 
-export const generateProjectPages = async ({
+export async function generateProjectPages({
   graphql,
   actions: { createPage },
-}: CreatePagesArgs): Promise<void> => {
+}: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allProject: { nodes: Project[] } }>(`
     query {
       allProject {
@@ -44,10 +44,10 @@ export const generateProjectPages = async ({
 export const isValidProjectUrl = (url: string): boolean =>
   !url.includes('/en/projekty/')
 
-export const removeInvalidProjectPages = async ({
+export async function removeInvalidProjectPages({
   page,
   actions: { deletePage },
-}: CreatePageArgs): Promise<void> => {
+}: CreatePageArgs): Promise<void> {
   if (!isValidProjectUrl(page.path)) {
     deletePage(page)
   }
