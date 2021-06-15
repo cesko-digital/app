@@ -1,4 +1,4 @@
-import { getProjectUrl, isValidProjectUrl } from '../project-page-generation'
+import { getProjectUrl, isValidProjectUrl } from './project-page-generation'
 
 describe('project page generation helpers', () => {
   describe('getProjectUrl', () => {

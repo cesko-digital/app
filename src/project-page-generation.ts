@@ -1,6 +1,6 @@
 import { CreatePagesArgs, CreatePageArgs } from 'gatsby'
 import path from 'path'
-import { Project } from '../../src/generated/graphql-types'
+import { Project } from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 const SUPPORTED_LANGUAGES = ['cs']
