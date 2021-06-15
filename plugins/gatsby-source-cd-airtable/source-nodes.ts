@@ -21,7 +21,7 @@ import {
   nodeFromTag,
   nodeFromVolunteer,
   nodeFromEvent,
-} from './src/create-nodes-factory'
+} from './src/node-conversion'
 import {
   getMockProjects,
   getMockTags,
