@@ -70,8 +70,8 @@ export interface AirtableEvent extends AirTableRecord {
     'Summary': string
     'Description': string
     'Name': string
-    'Status'?: 'draft' | 'live' | 'archived'
-    'Follow-up URL': string
+    'Status'?: string
+    'Follow-Up URL': string
     'Competence Map': string[]
     'RSVP Deadline': string
     'Start Time': string

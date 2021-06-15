@@ -122,7 +122,7 @@ export function transformEvent(event: AirtableEvent): Event | null {
     competenceMap: parseCompetenceMap(f['Competence Map']),
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),
-    status: f.Status || null,
+    status: f.Status,
     owner: f.Owner[0],
     project: f.Project.length > 0 ? f.Project[0] : undefined,
     tags: f.Tags,

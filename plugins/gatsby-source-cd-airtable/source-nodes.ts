@@ -27,7 +27,9 @@ import {
   getMockTags,
   getMockVolunteers,
   getMockPartners,
+  getMockEvents,
 } from './src/mocks'
+import { notEmpty } from './src/graphql-types/utils'
 
 export async function sourceNodes(
   sourceNodesArgs: SourceNodesArgs,
@@ -50,6 +52,7 @@ export async function sourceNodes(
     getMockVolunteers().map(nodeFromVolunteer).forEach(createNode)
     getMockTags().map(nodeFromTag).forEach(createNode)
     getMockProjects().map(nodeFromProject).forEach(createNode)
+    getMockEvents().map(nodeFromEvent).forEach(createNode)
     return
   }
 
@@ -89,8 +92,4 @@ export async function sourceNodes(
   } catch (e) {
     sourceNodesArgs.reporter.panic('Data sourcing failed:', e)
   }
-}
-
-function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
-  return value !== null && value !== undefined
 }

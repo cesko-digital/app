@@ -61,7 +61,7 @@ export interface Event extends SourceNode {
   competenceMap: Record<string, number>
   startTime: Date
   endTime: Date
-  status: 'draft' | 'live' | 'archived' | null
+  status?: string
   owner: string
   project?: string
   tags: string[]
