@@ -1,3 +1,11 @@
+export const Partner = `
+  type Partner implements Node {
+    name: String!
+    url: String!
+    logoUrl: String!
+  }
+`
+
 export const Project = `
   type Volunteer implements Node {
     name: String!

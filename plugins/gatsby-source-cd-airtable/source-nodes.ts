@@ -29,7 +29,7 @@ import {
   getMockPartners,
   getMockEvents,
 } from './src/mocks'
-import { notEmpty } from './src/graphql-types/utils'
+import { notEmpty } from './src/utils'
 
 export async function sourceNodes(
   sourceNodesArgs: SourceNodesArgs,
