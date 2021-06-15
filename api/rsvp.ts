@@ -47,7 +47,7 @@ export default async (
         filterByFormula: `{Slack: ID} = '${slackUserId}'`,
       })
       .all()
-    if (matchingUserRecords.length != 1) {
+    if (matchingUserRecords.length !== 1) {
       res.status(400).send('Invalid number of user records matching given ID.')
       return
     }
