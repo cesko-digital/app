@@ -1,4 +1,4 @@
-import { CreatePagesArgs, CreatePageArgs } from 'gatsby'
+import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
 import { Project } from './generated/graphql-types'
 
@@ -39,16 +39,4 @@ export async function generateProjectPages({
         },
       })
     })
-}
-
-export const isValidProjectUrl = (url: string): boolean =>
-  !url.includes('/en/projekty/')
-
-export async function removeInvalidProjectPages({
-  page,
-  actions: { deletePage },
-}: CreatePageArgs): Promise<void> {
-  if (!isValidProjectUrl(page.path)) {
-    deletePage(page)
-  }
 }

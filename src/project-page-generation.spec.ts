@@ -1,4 +1,4 @@
-import { getProjectUrl, isValidProjectUrl } from './project-page-generation'
+import { getProjectUrl } from './project-page-generation'
 
 describe('project page generation helpers', () => {
   describe('getProjectUrl', () => {
@@ -11,18 +11,6 @@ describe('project page generation helpers', () => {
       expect(getProjectUrl({ slug: 'english-project', lang: 'en' })).toEqual(
         '/en/projects/english-project'
       )
-    })
-  })
-
-  describe('isValidProjectUrl', () => {
-    it('should return true for cs project url', () => {
-      expect(isValidProjectUrl('/projekty/test')).toEqual(true)
-    })
-    it('should return true for en project url', () => {
-      expect(isValidProjectUrl('/en/projects/test')).toEqual(true)
-    })
-    it('should return false for mixed en project url', () => {
-      expect(isValidProjectUrl('/en/projekty/test')).toEqual(false)
     })
   })
 })
