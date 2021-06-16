@@ -22,8 +22,9 @@ const ShowAndTell: React.FC<PageProps> = () => {
             <MainColumn>
               <S.Heading1>Show &amp; Tell</S.Heading1>
               <p>
-                Ve čtvrtek 24. června v 18:00 proběhne třetí živé vysílání
-                Show &amp; Tell Česko.Digital. Zkrátit čekání si můžeš zhlédnutím druhého dílu:
+                Ve čtvrtek 24. června v 18:00 proběhne třetí živé vysílání Show
+                &amp; Tell Česko.Digital. Zkrátit čekání si můžeš zhlédnutím
+                druhého dílu:
               </p>
               <VideoWrapper>
                 <VideoIFrame

@@ -77,10 +77,10 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
           <p>
             V rámci Česko.Digital prezentujeme krásné výsledky projektů, ale v
             tiskových zprávách není vidět množství práce dobrovolníků, kteří za
-            úspěchy projektů stojí. Show &amp; Tell má cíl tohle změnit a dát šanci
-            dobrovolníkům prezentovat jejich cestu k výsledku. Event se koná jednou
-            měsíčně vždy poslední čtvrtek. Nejbližší vysílání se koná <b>24. června
-              od 18:00</b> a můžete ho sledovat{' '}
+            úspěchy projektů stojí. Show &amp; Tell má cíl tohle změnit a dát
+            šanci dobrovolníkům prezentovat jejich cestu k výsledku. Event se
+            koná jednou měsíčně vždy poslední čtvrtek. Nejbližší vysílání se
+            koná <b>24. června od 18:00</b> a můžete ho sledovat{' '}
             <Links.Link to="/show-and-tell">zde</Links.Link>.
           </p>
           <Form onSubmit={form.handleSubmit}>
