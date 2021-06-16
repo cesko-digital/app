@@ -20,10 +20,11 @@ const ShowAndTell: React.FC<PageProps> = () => {
         <SectionContent>
           <TwoColumnLayout>
             <MainColumn>
-              <S.Heading1>Show&Tell</S.Heading1>
+              <S.Heading1>Show &amp; Tell</S.Heading1>
               <p>
-                Ve čtvrtek 27. května v 18:00 proběhne druhé živé výsílání
-                Show&Tell Česko.Digital.
+                Ve čtvrtek 24. června v 18:00 proběhne třetí živé vysílání Show
+                &amp; Tell Česko.Digital. Zkrátit čekání si můžeš zhlédnutím
+                druhého dílu:
               </p>
               <VideoWrapper>
                 <VideoIFrame
@@ -37,16 +38,7 @@ const ShowAndTell: React.FC<PageProps> = () => {
             </MainColumn>
             <ReminderColumn>
               <S.Heading3>Co mě čeká?</S.Heading3>
-              <p>
-                V květnovém vysílání se budeme soustředit na dva projekty, které
-                přešly z příprav do fáze vývoje. Dozvíte se zajímavosti z
-                designu, vývoje i plánování marketingové strategie.
-              </p>
-              <p>
-                Jako bonus zahájíme pravidelný příspěvek od člena leadership
-                teamu, takže se můžete těšit na zajímavosti z práce CTO v
-                Česko.Digital.
-              </p>
+              <p>Kompletní program představíme během následujících dní.</p>
               <Links.Link to="/rsvp">Chci to do kalendáře!</Links.Link>
             </ReminderColumn>
           </TwoColumnLayout>
@@ -87,7 +79,7 @@ const MainColumn = styled.div`
 const ReminderColumn = styled.div`
   max-width: 400px;
   margin-left: 32px;
-  
+
     @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-left: 0px;
     max-width: 1024px;s
