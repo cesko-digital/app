@@ -65,7 +65,7 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
     <Layout
       crumbs={[]}
       seo={{
-        title: 'Show&Tell',
+        title: 'Show & Tell',
         description:
           'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
         coverUrl: 'https://data.cesko.digital/img/show-and-tell-2.png',
@@ -73,19 +73,14 @@ const Rsvp: React.FC<PageProps> = ({ location }) => {
     >
       <Section>
         <SectionContent>
-          <S.Heading1>Show&Tell</S.Heading1>
+          <S.Heading1>Show &amp; Tell</S.Heading1>
           <p>
             V rámci Česko.Digital prezentujeme krásné výsledky projektů, ale v
-            tiskových zprávách není vidět množství práce dobrovolníků, které za
-            úspěchy projektů stojí.
-          </p>
-          <p>
-            Show&Tell má cíl tohle změnit a dát šanci dobrovolníkům prezentovat
-            jejich cestu k výsledku.
-          </p>
-          <p>
-            Event se koná jednou měsíčně vždy poslední čtvrtek. Nejbližší
-            vysílání se koná <b>27. května od 18:00</b> a můžete ho sledovat{' '}
+            tiskových zprávách není vidět množství práce dobrovolníků, kteří za
+            úspěchy projektů stojí. Show &amp; Tell má cíl tohle změnit a dát šanci
+            dobrovolníkům prezentovat jejich cestu k výsledku. Event se koná jednou
+            měsíčně vždy poslední čtvrtek. Nejbližší vysílání se koná <b>24. června
+              od 18:00</b> a můžete ho sledovat{' '}
             <Links.Link to="/show-and-tell">zde</Links.Link>.
           </p>
           <Form onSubmit={form.handleSubmit}>
