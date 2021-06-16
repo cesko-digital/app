@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { generateEventPages, generateProjectPages } from './src/project-page-generation'
+import { generateEventPages, generateProjectPages } from './src/page-generation'
 
 export function onCreateWebpackConfig({ actions }) {
   actions.setWebpackConfig({
