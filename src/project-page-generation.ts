@@ -1,6 +1,6 @@
 import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
-import { Project } from './generated/graphql-types'
+import { Project, Event } from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 const SUPPORTED_LANGUAGES = ['cs']
@@ -39,4 +39,31 @@ export async function generateProjectPages({
         },
       })
     })
+}
+
+export async function generateEventPages({
+  graphql,
+  actions: { createPage },
+}: CreatePagesArgs): Promise<void> {
+  const result = await graphql<{ allEvent: { nodes: Event[] } }>(`
+    query {
+      allEvent {
+        nodes {
+          id
+          name
+          rowId
+        }
+      }
+    }
+  `)
+
+  result?.data?.allEvent.nodes.forEach((node: Event) => {
+    createPage({
+      path: `/events/${node.rowId}`,
+      component: resolve('./src/templates/event/index.tsx'),
+      context: {
+        id: node.id,
+      },
+    })
+  })
 }
