@@ -23,7 +23,7 @@ const ShowAndTell: React.FC<PageProps> = () => {
               <S.Heading1>Show &amp; Tell</S.Heading1>
               <p>
                 Ve čtvrtek 24. června v 18:00 proběhne třetí vysílání Show &amp;
-                Tell Česko.Digital. Ukážeme si jak přistupujeme k agilnímu
+                Tell Česko.Digital. Ukážeme si, jak přistupujeme k agilnímu
                 řízení na projektech i v rámci samotné organizace Česko.Digital.
               </p>
               <VideoWrapper>
@@ -43,13 +43,13 @@ const ShowAndTell: React.FC<PageProps> = () => {
                 projektu vývoje mobilní aplikace pro Loono.
               </p>
               <p>
-                Jak funguje agilita v dobrovolníckém prostředí a jak nám
-                umožňuje pracovat s projekty bez garantovatelných termínu
+                Jak funguje agilita v dobrovolnickém prostředí a jak nám
+                umožňuje pracovat s projekty bez garantovatelných termínů
                 dodání.
               </p>
               <p>
-                V pravidelném pořadu Ze života kmenového týmu nám Eva
-                Zehnálková, naše CMO představí fungování marketingového týmu.
+                V pravidelném pořadu Ze života kmenového týmu nám naše CMO
+                Eva Zehnálková představí fungování marketingového týmu.
               </p>
               <Links.Link to="/rsvp">Chci to do kalendáře!</Links.Link>
             </ReminderColumn>
