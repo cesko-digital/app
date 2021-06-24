@@ -5,5 +5,5 @@ export function notEmpty<TValue>(
 }
 
 export function map<T, U>(value: T | undefined, f: (_: T) => U): U | undefined {
-  return value != undefined ? f(value) : undefined
+  return value !== undefined ? f(value) : undefined
 }

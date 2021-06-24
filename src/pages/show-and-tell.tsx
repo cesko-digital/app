@@ -48,8 +48,8 @@ const ShowAndTell: React.FC<PageProps> = () => {
                 dodání.
               </p>
               <p>
-                V pravidelném pořadu Ze života kmenového týmu nám naše CMO
-                Eva Zehnálková představí fungování marketingového týmu.
+                V pravidelném pořadu Ze života kmenového týmu nám naše CMO Eva
+                Zehnálková představí fungování marketingového týmu.
               </p>
               <Links.Link to="/rsvp">Chci to do kalendáře!</Links.Link>
             </ReminderColumn>
