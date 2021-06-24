@@ -13,7 +13,7 @@ const ShowAndTell: React.FC<PageProps> = () => {
         title: 'Show&Tell',
         description:
           'Pravidelné živé vysílání prezentace práce dobrovolníků Česko.Digital',
-        coverUrl: 'https://data.cesko.digital/img/show-and-tell-2.png',
+        coverUrl: 'https://data.cesko.digital/img/show-and-tell-3.png',
       }}
     >
       <Section>
@@ -22,13 +22,13 @@ const ShowAndTell: React.FC<PageProps> = () => {
             <MainColumn>
               <S.Heading1>Show &amp; Tell</S.Heading1>
               <p>
-                Ve čtvrtek 24. června v 18:00 proběhne třetí živé vysílání Show
-                &amp; Tell Česko.Digital. Zkrátit čekání si můžeš zhlédnutím
-                druhého dílu:
+                Ve čtvrtek 24. června v 18:00 proběhne třetí vysílání Show &amp;
+                Tell Česko.Digital. Ukážeme si jak přistupujeme k agilnímu
+                řízení na projektech i v rámci samotné organizace Česko.Digital.
               </p>
               <VideoWrapper>
                 <VideoIFrame
-                  src="https://www.youtube.com/embed/9kgwQM2SnC4"
+                  src="https://www.youtube.com/embed/cVKP-vyDGyA"
                   title="Show&Tell"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -38,7 +38,19 @@ const ShowAndTell: React.FC<PageProps> = () => {
             </MainColumn>
             <ReminderColumn>
               <S.Heading3>Co mě čeká?</S.Heading3>
-              <p>Kompletní program představíme během následujících dní.</p>
+              <p>
+                Jak jsme adoptovali agilní metodiku a jak využíváme Jiru na
+                projektu vývoje mobilní aplikace pro Loono.
+              </p>
+              <p>
+                Jak funguje agilita v dobrovolníckém prostředí a jak nám
+                umožňuje pracovat s projekty bez garantovatelných termínu
+                dodání.
+              </p>
+              <p>
+                V pravidelném pořadu Ze života kmenového týmu nám Eva
+                Zehnálková, naše CMO představí fungování marketingového týmu.
+              </p>
               <Links.Link to="/rsvp">Chci to do kalendáře!</Links.Link>
             </ReminderColumn>
           </TwoColumnLayout>
