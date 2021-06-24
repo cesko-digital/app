@@ -123,8 +123,8 @@ export function transformEvent(event: AirtableEvent): Event | null {
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),
     status: f.Status,
-    owner: f.Owner[0],
-    project: f.Project.length > 0 ? f.Project[0] : undefined,
+    owner: f.Owner ? f.Owner[0] : undefined,
+    project: f.Project?.length > 0 ? f.Project[0] : undefined,
     tags: f.Tags,
   }
 }

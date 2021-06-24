@@ -62,7 +62,7 @@ export interface Event extends SourceNode {
   startTime: Date
   endTime: Date
   status?: string
-  owner: string
+  owner?: string
   project?: string
   tags: string[]
 }

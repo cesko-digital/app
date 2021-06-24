@@ -2,6 +2,7 @@ import { NodeInput } from 'gatsby'
 import { createContentDigest } from 'gatsby-core-utils'
 import { Project, Tag, Volunteer, Partner, Event } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
+import { map } from './utils'
 
 // Docs: https://www.gatsbyjs.com/docs/creating-a-source-plugin
 
@@ -69,7 +70,7 @@ export function nodeFromEvent(event: Event): NodeInput {
       contentDigest: createContentDigest(event),
     },
     // Event-Owner relationship
-    owner___NODE: getVolunteerId(event.owner),
+    owner___NODE: map(event.owner, getVolunteerId),
     owner: undefined,
     // Event–Project relationship
     project___NODE: event.project
@@ -77,7 +78,7 @@ export function nodeFromEvent(event: Event): NodeInput {
       : undefined,
     project: undefined,
     // Event-Tag relationship
-    tags___NODE: event.tags.map((t) => getTagId({ lang: 'cs', rowId: t })),
+    tags___NODE: event.tags?.map((t) => getTagId({ lang: 'cs', rowId: t })),
     tags: undefined,
   }
 }
