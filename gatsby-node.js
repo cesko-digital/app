@@ -1,18 +1,15 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+import { resolve } from 'path'
+import { generateEventPages, generateProjectPages } from './src/page-generation'
 
-const path = require('path') // eslint-disable-line
-const { onCreatePage, createPages } = require('./gatsby-utils/gatsby-node') // eslint-disable-line
-
-exports.onCreateWebpackConfig = ({ actions }) => {
+export function onCreateWebpackConfig({ actions }) {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      modules: [resolve(__dirname, 'src'), 'node_modules'],
     },
   })
 }
-exports.createPages = createPages
-exports.onCreatePage = onCreatePage
+
+export const createPages = async (args) => {
+  await generateProjectPages(args)
+  await generateEventPages(args)
+}
