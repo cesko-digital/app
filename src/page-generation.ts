@@ -51,7 +51,7 @@ export async function generateEventPages({
         nodes {
           id
           name
-          rowId
+          slug
         }
       }
     }
@@ -59,7 +59,7 @@ export async function generateEventPages({
 
   result?.data?.allEvent.nodes.forEach((node: Event) => {
     createPage({
-      path: `/events/${node.rowId}`,
+      path: `/events/${node.slug}`,
       component: resolve('./src/templates/event/index.tsx'),
       context: {
         id: node.id,

@@ -58,11 +58,13 @@ export interface Event extends SourceNode {
   name: string
   summary: string
   description: string
-  competenceMap: Record<string, number>
+  competenceMap: Array<string>
   startTime: Date
   endTime: Date
   status?: string
   owner?: string
   project?: string
   tags: string[]
+  rsvpUrl?: string
+  slug: string
 }

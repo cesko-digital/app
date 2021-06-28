@@ -1,31 +1,184 @@
 {
-    "records": [
-        {
-            "id": "recL6LSVKhgH81MBJ",
-            "fields": {
-                "Name": "Show & Tell #2",
-                "Summary": "Živé vysílání bla bla bla…",
-                "Description": "Bude to pecka!",
-                "Competence Map": [
-                    "marketing:100",
-                    "dev:1000"
-                ],
-                "RSVP URL": "https://cesko.digital/rsvp",
-                "RSVP Deadline": "2021-06-24T17:00:00.000Z",
-                "Start Time": "2021-06-24T17:00:00.000Z",
-                "End Time": "2021-06-24T18:00:00.000Z",
-                "Live URL": "https://cesko.digital/show-and-tell",
-                "Follow-Up URL": "https://cesko.digital/show-and-tell",
-                "Status": "live",
-                "Owner": [
-                    "recA5nftMpxJmwpr4"
-                ],
-                "Project": [],
-                "Tags": [
-                    "rec12ME0WwCmDkr1v"
-                ]
-            },
-            "createdTime": "2021-06-14T12:34:52.000Z"
-        }
-    ]
+  "records": [
+    {
+      "id": "rec0EAaYDZB2XdX8w",
+      "fields": {
+        "Name": "All Hands",
+        "Summary": "Pravidelné úterní setkávání celé komunity, diskuze nad aktuálním děním v organizaci",
+        "Description": "Zveme Tě na pravidelné setkání celého Česko.Digital! \n\n🎯 Cíle setkání:\n1, Co se u nás v komunitě a na projektech děje\n2, Co chystáme v rámci komunity a potřebujeme na to feedback\n3, Kafe & pokec, jak jde život\n4, Zeptej se na cokoliv, co Tě o Česko.Digital zajímá\n\nPotkávat se i jinde než na Slacku je k nezaplacení. 🙏\n",
+        "Competence Map": [
+          "business-dev:100",
+          "marketing:100",
+          "product-owner:100",
+          "scrum-master:100",
+          "dev:100"
+        ],
+        "RSVP Deadline": "2021-07-13T14:30:00.000Z",
+        "Start Time": "2021-07-13T14:30:00.000Z",
+        "End Time": "2021-07-13T15:30:00.000Z",
+        "Owner": [
+          "rec5i9y2EIaX1ZKD2"
+        ],
+        "Project": [
+          "recxWVIA1Ex40nWi7"
+        ],
+        "Attendee Count": 0,
+        "ID": "rec0EAaYDZB2XdX8w",
+        "Slug": "all-hands"
+      },
+      "createdTime": "2021-06-24T12:10:36.000Z"
+    },
+    {
+      "id": "recL6LSVKhgH81MBJ",
+      "fields": {
+        "Name": "Show & Tell #3",
+        "Summary": "Živé vysílání bla bla bla…",
+        "Description": "Bude to pecka!",
+        "Competence Map": [
+          "marketing:100",
+          "dev:1000"
+        ],
+        "RSVP URL": "https://cesko.digital/rsvp",
+        "RSVP Deadline": "2021-06-24T17:00:00.000Z",
+        "Start Time": "2021-06-24T17:00:00.000Z",
+        "End Time": "2021-06-24T18:00:00.000Z",
+        "Live URL": "https://cesko.digital/show-and-tell",
+        "Follow-Up URL": "https://cesko.digital/show-and-tell",
+        "Status": "live",
+        "Owner": [
+          "recA5nftMpxJmwpr4"
+        ],
+        "Project": [
+          "rec4KOruzwIFU8ieR"
+        ],
+        "Tags": [
+          "recFVrO5xifN9jog4",
+          "recMg0okYGUJRFhlc"
+        ],
+        "Attendee Count": 0,
+        "ID": "recL6LSVKhgH81MBJ",
+        "Slug": "show-and-tell"
+      },
+      "createdTime": "2021-06-14T12:34:52.000Z"
+    },
+    {
+      "id": "recOr6Gwpq4a9tk3s",
+      "fields": {
+        "Name": "Česko.Digital pivo-víno-límo #2",
+        "Summary": "Komunitní neformální setkání v Praze pro všechny členy komunity",
+        "Description": "Obnovili jsme osobní setkávání, kterým se nic nevyrovná, a v červenci Vás tak zveme na druhé Česko.Digital pivo-víno-limo setkání v jednom z pražských parků - ro bližší detaily k lokalitě sledujte Slack a kanál #general.",
+        "Competence Map": [
+          "business-dev:100",
+          "marketing:100",
+          "product-owner:100",
+          "scrum-master:100",
+          "dev:100"
+        ],
+        "RSVP Deadline": "2021-07-20T15:00:00.000Z",
+        "Start Time": "2021-07-20T16:00:00.000Z",
+        "End Time": "2021-07-20T20:00:00.000Z",
+        "Owner": [
+          "recHnc5hx8wh29zqU"
+        ],
+        "Project": [
+          "recsIWPWTCFAvE2c2"
+        ],
+        "Attendee Count": 0,
+        "ID": "recOr6Gwpq4a9tk3s",
+        "Slug": "pivo-vino-limo"
+      },
+      "createdTime": "2021-06-24T12:10:43.000Z"
+    },
+    {
+      "id": "recQb8ljuKr4dm3yc",
+      "fields": {
+        "Name": "Flutter Hackday",
+        "Summary": "Červencový Hackday na podporu vyvoje mobilní aplikace pro Loono",
+        "Description": "Bude to pecka!",
+        "Competence Map": [
+          "marketing:100",
+          "dev:2000"
+        ],
+        "RSVP URL": "https://cesko.digital/rsvp",
+        "RSVP Deadline": "2021-06-24T17:00:00.000Z",
+        "Start Time": "2021-06-24T17:00:00.000Z",
+        "End Time": "2021-06-24T18:00:00.000Z",
+        "Live URL": "https://cesko.digital/show-and-tell",
+        "Follow-Up URL": "https://cesko.digital/show-and-tell",
+        "Status": "live",
+        "Owner": [
+          "recA5nftMpxJmwpr4"
+        ],
+        "Project": [
+          "rec4KOruzwIFU8ieR"
+        ],
+        "Tags": [
+          "recGK7KiBRVeFCK1v"
+        ],
+        "Attendee Count": 0,
+        "ID": "recQb8ljuKr4dm3yc",
+        "Slug": "hackday-loono-flutter"
+      },
+      "createdTime": "2021-06-25T14:32:12.000Z"
+    },
+    {
+      "id": "receCVD1xXAsf8YaA",
+      "fields": {
+        "Name": "č.edu webinář Jak na duševní hygien a wellbeing",
+        "Summary": "Hodinový webinář na téma duševní hygieny a pohody pro naš komunitu",
+        "Description": "Více informací již brzy, stay tuned!",
+        "Competence Map": [
+          "dev:100",
+          "scrum-master:100",
+          "marketing:100",
+          "business-dev:100",
+          "product-owner:100"
+        ],
+        "RSVP Deadline": "2021-07-28T10:00:00.000Z",
+        "Start Time": "2021-07-28T14:00:00.000Z",
+        "End Time": "2021-07-28T15:00:00.000Z",
+        "Owner": [
+          "recHnc5hx8wh29zqU"
+        ],
+        "Project": [
+          "recH58QD0JhwTis0F"
+        ],
+        "Tags": [
+          "recMg0okYGUJRFhlc"
+        ],
+        "Attendee Count": 0,
+        "ID": "receCVD1xXAsf8YaA",
+        "Slug": "jak-na-dusevni-zdravi"
+      },
+      "createdTime": "2021-06-24T12:06:58.000Z"
+    },
+    {
+      "id": "recxFxeHTSjHKkMJP",
+      "fields": {
+        "Name": "All Hands #2",
+        "Summary": "Pravidelné úterní setkávání celé komunity, diskuze nad aktuálním děním v organizaci",
+        "Description": "Zveme Tě na pravidelné setkání celého Česko.Digital! \n\n🎯 Cíle setkání:\n1, Co se u nás v komunitě a na projektech děje\n2, Co chystáme v rámci komunity a potřebujeme na to feedback\n3, Kafe & pokec, jak jde život\n4, Zeptej se na cokoliv, co Tě o Česko.Digital zajímá\n\nPotkávat se i jinde než na Slacku je k nezaplacení. 🙏\n",
+        "Competence Map": [
+          "business-dev:100",
+          "marketing:100",
+          "product-owner:100",
+          "scrum-master:100",
+          "dev:100"
+        ],
+        "RSVP Deadline": "2021-07-27T14:30:00.000Z",
+        "Start Time": "2021-07-27T14:30:00.000Z",
+        "End Time": "2021-07-27T15:30:00.000Z",
+        "Owner": [
+          "rec5i9y2EIaX1ZKD2"
+        ],
+        "Project": [
+          "recDZjnFw8B7jTxdg"
+        ],
+        "Attendee Count": 0,
+        "ID": "recxFxeHTSjHKkMJP",
+        "Slug": "all-hands"
+      },
+      "createdTime": "2021-06-24T12:18:20.000Z"
+    }
+  ]
 }

@@ -114,18 +114,21 @@ export function transformTags(airTableTags: AirTableTag[]): Tag[] {
 
 export function transformEvent(event: AirtableEvent): Event | null {
   const f = event.fields
+  const safeSlug = f.Slug ? f.Slug : event.id
   return {
     rowId: event.id,
     name: f.Name,
     summary: f.Summary,
     description: f.Description,
-    competenceMap: parseCompetenceMap(f['Competence Map']),
+    competenceMap: f['Competence Map'],
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),
     status: f.Status,
     owner: f.Owner ? f.Owner[0] : undefined,
     project: f.Project?.length > 0 ? f.Project[0] : undefined,
-    tags: f.Tags,
+    tags: f.Tags ? f.Tags : [],
+    slug: safeSlug,
+    rsvpUrl: f['RSVP URL'] ? f['RSVP URL'] : `/events/${safeSlug}`,
   }
 }
 
