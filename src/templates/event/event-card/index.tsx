@@ -1,4 +1,3 @@
-import { PortalEvent } from '../../../page-components/portal-dobrovolnika/types'
 import React from 'react'
 import * as S from './styles'
 import { ButtonAsLink } from '../../../components/links'

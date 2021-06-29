@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {Heading2} from "../../components/typography";
-import EventCard from "../../page-components/portal-dobrovolnika/event-card";
+import { Heading2 } from '../../components/typography'
+import EventCard from '../../page-components/portal-dobrovolnika/event-card'
 
 export const CoverImageWrapper = styled.div`
   overflow: hidden;
@@ -73,9 +73,7 @@ export const CategoryHeader = styled.div`
   align-items: flex-end;
 `
 
-export const Title = styled(Heading2)`
-
-`
+export const Title = styled(Heading2)``
 
 export const CardWrapper = styled.div`
   display: grid; // this fixes collapsed right padding in overflow

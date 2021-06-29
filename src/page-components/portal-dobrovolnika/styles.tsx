@@ -17,9 +17,7 @@ export const CategoryHeader = styled.div`
   align-items: flex-end;
 `
 
-export const Title = styled(Heading2)`
-
-`
+export const Title = styled(Heading2)``
 
 export const CardWrapper = styled.div`
   display: grid; // this fixes collapsed right padding in overflow

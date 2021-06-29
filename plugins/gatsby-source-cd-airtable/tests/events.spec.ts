@@ -16,10 +16,7 @@ test('transformEvents', () => {
     name: 'Show & Tell #2',
     summary: 'Živé vysílání bla bla bla…',
     description: 'Bude to **pecka**!\n',
-    competenceMap: {
-      dev: 100,
-      marketing: 100,
-    },
+    competenceMap: ['dev:100', 'marketing:100'],
     startTime: new Date('2021-06-24T17:00:00.000Z'),
     endTime: new Date('2021-06-24T18:00:00.000Z'),
     status: 'draft',
@@ -27,6 +24,8 @@ test('transformEvents', () => {
     owner: 'rec9ujcN8HSkEdwehgh',
     project: 'rec9ujcN8HSkdedwedd',
     tags: ['foo', 'bar'],
+    rsvpUrl: 'https://cesko.digital/rsvp',
+    slug: 'rec9ujcN8HSkE0hgh',
   }
   expect(received).toEqual(expected)
 })
