@@ -16,7 +16,7 @@ export async function generateProjectPages({
   actions: { createPage },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allProject: { nodes: Project[] } }>(`
-    query {
+    query GenerateProjectPages {
       allProject {
         nodes {
           lang
@@ -46,7 +46,7 @@ export async function generateEventPages({
   actions: { createPage },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allEvent: { nodes: Event[] } }>(`
-    query {
+    query GenerateEventPages {
       allEvent {
         nodes {
           id
