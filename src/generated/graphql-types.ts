@@ -398,12 +398,18 @@ export type EventEndTimeArgs = {
 
 export type EventCompetenceMap = {
   __typename?: 'EventCompetenceMap';
+  business_dev: Maybe<Scalars['Int']>;
   marketing: Maybe<Scalars['Int']>;
+  product_owner: Maybe<Scalars['Int']>;
+  scrum_master: Maybe<Scalars['Int']>;
   dev: Maybe<Scalars['Int']>;
 };
 
 export type EventCompetenceMapFilterInput = {
+  business_dev: Maybe<IntQueryOperatorInput>;
   marketing: Maybe<IntQueryOperatorInput>;
+  product_owner: Maybe<IntQueryOperatorInput>;
+  scrum_master: Maybe<IntQueryOperatorInput>;
   dev: Maybe<IntQueryOperatorInput>;
 };
 
@@ -527,7 +533,10 @@ export enum EventFieldsEnum {
   name = 'name',
   summary = 'summary',
   description = 'description',
+  competenceMap___business_dev = 'competenceMap___business_dev',
   competenceMap___marketing = 'competenceMap___marketing',
+  competenceMap___product_owner = 'competenceMap___product_owner',
+  competenceMap___scrum_master = 'competenceMap___scrum_master',
   competenceMap___dev = 'competenceMap___dev',
   startTime = 'startTime',
   endTime = 'endTime',
@@ -4864,6 +4873,34 @@ export type VolunteerSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type GenerateProjectPagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GenerateProjectPagesQuery = (
+  { __typename?: 'Query' }
+  & { allProject: (
+    { __typename?: 'ProjectConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Project' }
+      & Pick<Project, 'lang' | 'slug' | 'id'>
+    )> }
+  ) }
+);
+
+export type GenerateEventPagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GenerateEventPagesQuery = (
+  { __typename?: 'Query' }
+  & { allEvent: (
+    { __typename?: 'EventConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Event' }
+      & Pick<Event, 'id' | 'name' | 'rowId'>
+    )> }
+  ) }
+);
+
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
@@ -4913,20 +4950,6 @@ export type ProjectsPageQuery = (
         { __typename?: 'Tag' }
         & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
       )>>> }
-    )> }
-  ) }
-);
-
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_1_Query = (
-  { __typename?: 'Query' }
-  & { allProject: (
-    { __typename?: 'ProjectConnection' }
-    & { nodes: Array<(
-      { __typename?: 'Project' }
-      & Pick<Project, 'lang' | 'slug' | 'id'>
     )> }
   ) }
 );
