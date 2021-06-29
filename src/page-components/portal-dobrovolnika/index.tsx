@@ -26,7 +26,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
         <SectionContent>
           <Typography.Heading1>Portál dobrovolníka</Typography.Heading1>
           <Typography.Body>
-            Tržiště příležitostí, jak se zapojit a pomoct Česko.Digital
+            Tržiště příležitostí, jak se zapojit v Česko.Digital
           </Typography.Body>
         </SectionContent>
       </Section>
