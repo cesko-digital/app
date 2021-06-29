@@ -4368,7 +4368,7 @@ export type GenerateEventPagesQuery = (
     { __typename?: 'EventConnection' }
     & { nodes: Array<(
       { __typename?: 'Event' }
-      & Pick<Event, 'id' | 'name' | 'rowId'>
+      & Pick<Event, 'id' | 'name' | 'slug'>
     )> }
   ) }
 );
@@ -4445,6 +4445,49 @@ export type ProjectsPageQuery = (
       & { tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
         & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
+      )>>> }
+    )> }
+  ) }
+);
+
+export type EventPageQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type EventPageQuery = (
+  { __typename?: 'Query' }
+  & { event: Maybe<(
+    { __typename?: 'Event' }
+    & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'rsvpUrl' | 'slug' | 'startTime' | 'status' | 'summary'>
+    & { owner: Maybe<(
+      { __typename?: 'Volunteer' }
+      & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email'>
+    )>, project: Maybe<(
+      { __typename?: 'Project' }
+      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'lang' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url'>
+      & { tags: Maybe<Array<Maybe<(
+        { __typename?: 'Tag' }
+        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'lang' | 'id'>
+      )>>> }
+    )>, tags: Maybe<Array<Maybe<(
+      { __typename?: 'Tag' }
+      & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
+    )>>> }
+  )>, otherEvents: (
+    { __typename?: 'EventConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Event' }
+      & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'startTime' | 'status' | 'summary' | 'rsvpUrl' | 'slug'>
+      & { project: Maybe<(
+        { __typename?: 'Project' }
+        & Pick<Project, 'logoUrl' | 'name' | 'id' | 'coverUrl' | 'url' | 'rowId'>
+      )>, owner: Maybe<(
+        { __typename?: 'Volunteer' }
+        & Pick<Volunteer, 'id' | 'name' | 'rowId'>
+      )>, tags: Maybe<Array<Maybe<(
+        { __typename?: 'Tag' }
+        & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
       )>>> }
     )> }
   ) }

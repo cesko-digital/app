@@ -16,15 +16,15 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
 
   return (
     <Layout
-      crumbs={[{ label: 'Portál Dobrovolníka' }]}
+      crumbs={[{ label: 'Portál dobrovolníka' }]}
       seo={{
-        title: 'Portál Dobrovolníka',
-        description: 'Portál Dobrovolníka',
+        title: 'Portál dobrovolníka',
+        description: 'Portál dobrovolníka',
       }}
     >
       <Section>
         <SectionContent>
-          <Typography.Heading1>Portál Dobrovolníka</Typography.Heading1>
+          <Typography.Heading1>Portál dobrovolníka</Typography.Heading1>
           <Typography.Body>
             Tržiště příležitostí, jak se zapojit a pomoct Česko.Digital
           </Typography.Body>
