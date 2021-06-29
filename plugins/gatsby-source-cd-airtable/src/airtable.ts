@@ -20,6 +20,7 @@ export interface AirTablePartner extends AirTableRecord {
 export interface AirTableProject extends AirTableRecord {
   fields: {
     draft?: boolean
+    silent?: boolean
     csName: string
     enName: string
     csSlug: string
