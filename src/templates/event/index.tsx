@@ -156,6 +156,7 @@ export const query = graphql`
           id
           name
           rowId
+          profilePictureUrl
         }
         tags {
           id

@@ -2,17 +2,23 @@ import { PortalEvent } from '../../../page-components/portal-dobrovolnika/types'
 import React from 'react'
 import * as S from './styles'
 import { ButtonAsLink } from '../../../components/links'
+import Project from './project'
+import Garant from './garant'
+import Info from './info'
+import { PortalDetailEvent } from '../types'
 
 interface EventCardProps {
-  data: PortalEvent
+  data: PortalDetailEvent
 }
 
 const EventCard: React.FC<EventCardProps> = ({ data }) => {
   return (
     <S.Container>
-        <ButtonAsLink to={data.rsvpUrl}>
-          Zajímá mě to
-        </ButtonAsLink>
+      <Project avatarUrl={data.project.logoUrl} name={data.project.name} />
+      <Garant avatarUrl={data.owner.profilePictureUrl} name={data.owner.name} />
+      <Info title="Datum konání" content={data.startTime} />
+      <Info title="Místo konání" content="Online" />
+      <ButtonAsLink to={data.rsvpUrl}>Zajímá mě to</ButtonAsLink>
     </S.Container>
   )
 }

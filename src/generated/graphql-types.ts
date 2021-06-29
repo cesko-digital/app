@@ -4484,7 +4484,7 @@ export type EventPageQuery = (
         & Pick<Project, 'logoUrl' | 'name' | 'id' | 'coverUrl' | 'url' | 'rowId'>
       )>, owner: Maybe<(
         { __typename?: 'Volunteer' }
-        & Pick<Volunteer, 'id' | 'name' | 'rowId'>
+        & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl'>
       )>, tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
         & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
