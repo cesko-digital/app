@@ -144,6 +144,8 @@ export function transformEvent(event: AirtableEvent): Event | null {
     slug: safeSlug,
     rsvpUrl: f['RSVP URL'],
     coverUrl: f['Cover URL'],
+    locationTitle: f['Location Title'],
+    locationUrl: f['Location URL'],
   }
 }
 

@@ -31,7 +31,11 @@ const EventCard: React.FC<EventCardProps> = ({ data }) => {
         title="Datum konání"
         content={new Date(data.startTime).toLocaleString('cs-CZ')}
       />
-      <Info title="Místo konání" content="Online" />
+      <Info
+        title="Místo konání"
+        content={data.locationTitle}
+        url={data.locationUrl}
+      />
       {data.rsvpUrl && (
         <ButtonAsLink to={data.rsvpUrl}>Zajímá mě to</ButtonAsLink>
       )}

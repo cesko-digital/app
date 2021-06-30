@@ -82,6 +82,8 @@ export interface AirtableEvent extends AirTableRecord {
     'Project': string[]
     'Tags'?: string[]
     'Cover URL'?: string
+    'Location Title': string
+    'Location URL'?: string
   }
 }
 

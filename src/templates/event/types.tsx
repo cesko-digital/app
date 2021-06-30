@@ -19,6 +19,8 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
   | 'startTime'
   | 'status'
   | 'summary'
+  | 'locationTitle'
+  | 'locationUrl'
 > & {
     owner: Maybe<
       { __typename?: 'Volunteer' } & Pick<

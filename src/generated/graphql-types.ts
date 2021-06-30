@@ -378,6 +378,8 @@ export type Event = Node & {
   slug: Maybe<Scalars['String']>;
   rsvpUrl: Maybe<Scalars['String']>;
   coverUrl: Maybe<Scalars['String']>;
+  locationTitle: Maybe<Scalars['String']>;
+  locationUrl: Maybe<Scalars['String']>;
   owner: Maybe<Volunteer>;
   project: Maybe<Project>;
   tags: Maybe<Array<Maybe<Tag>>>;
@@ -526,6 +528,8 @@ export enum EventFieldsEnum {
   slug = 'slug',
   rsvpUrl = 'rsvpUrl',
   coverUrl = 'coverUrl',
+  locationTitle = 'locationTitle',
+  locationUrl = 'locationUrl',
   owner___id = 'owner___id',
   owner___parent___id = 'owner___parent___id',
   owner___parent___parent___id = 'owner___parent___parent___id',
@@ -732,6 +736,8 @@ export type EventFilterInput = {
   slug: Maybe<StringQueryOperatorInput>;
   rsvpUrl: Maybe<StringQueryOperatorInput>;
   coverUrl: Maybe<StringQueryOperatorInput>;
+  locationTitle: Maybe<StringQueryOperatorInput>;
+  locationUrl: Maybe<StringQueryOperatorInput>;
   owner: Maybe<VolunteerFilterInput>;
   project: Maybe<ProjectFilterInput>;
   tags: Maybe<TagFilterListInput>;
@@ -2720,6 +2726,8 @@ export type QueryEventArgs = {
   slug: Maybe<StringQueryOperatorInput>;
   rsvpUrl: Maybe<StringQueryOperatorInput>;
   coverUrl: Maybe<StringQueryOperatorInput>;
+  locationTitle: Maybe<StringQueryOperatorInput>;
+  locationUrl: Maybe<StringQueryOperatorInput>;
   owner: Maybe<VolunteerFilterInput>;
   project: Maybe<ProjectFilterInput>;
   tags: Maybe<TagFilterListInput>;
@@ -4482,7 +4490,7 @@ export type EventPageQuery = (
   { __typename?: 'Query' }
   & { event: Maybe<(
     { __typename?: 'Event' }
-    & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'rsvpUrl' | 'slug' | 'startTime' | 'status' | 'summary' | 'coverUrl'>
+    & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'rsvpUrl' | 'slug' | 'startTime' | 'status' | 'summary' | 'coverUrl' | 'locationTitle' | 'locationUrl'>
     & { owner: Maybe<(
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email' | 'slackId'>

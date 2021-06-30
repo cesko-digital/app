@@ -10,6 +10,11 @@ export const Content = styled.div`
   font-size: 18px;
 `
 
+export const ContentLink = styled.a`
+  font-size: 18px;
+  color: #47475b;
+`
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

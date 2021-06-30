@@ -147,6 +147,8 @@ export const query = graphql`
         slug
       }
       coverUrl
+      locationTitle
+      locationUrl
     }
     otherEvents: allEvent(
       limit: 3
