@@ -15,6 +15,7 @@ import {
   AirTableRecord,
   AirtableEvent,
 } from './airtable'
+import { Marked, Renderer } from '@ts-stack/markdown'
 
 function transformAirTableRecords<
   AirTableType extends AirTableRecord,
@@ -115,13 +116,24 @@ export function transformTags(airTableTags: AirTableTag[]): Tag[] {
 }
 
 export function transformEvent(event: AirtableEvent): Event | null {
+  Marked.setOptions({
+    renderer: new Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false,
+  })
+
   const f = event.fields
   const safeSlug = f.Slug ? f.Slug : event.id
   return {
     rowId: event.id,
     name: f.Name,
     summary: f.Summary,
-    description: f.Description,
+    description: Marked.parse(f.Description),
     competenceMap: f['Competence Map'],
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),

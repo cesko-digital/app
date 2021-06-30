@@ -47,7 +47,6 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
         <SectionContent>
           <S.TwoColumnLayout>
             <S.MainColumn>
-              <Typography.Heading2>Popis události</Typography.Heading2>
               <Typography.Body
                 dangerouslySetInnerHTML={{ __html: data.event.description }}
               />
