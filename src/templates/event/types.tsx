@@ -23,7 +23,7 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
     owner: Maybe<
       { __typename?: 'Volunteer' } & Pick<
         Volunteer,
-        'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email'
+        'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email' | 'slackId'
       >
     >
     project: Maybe<
@@ -44,6 +44,7 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
         | 'tagline'
         | 'trelloUrl'
         | 'url'
+        | 'silent'
       > & {
           tags: Maybe<
             Array<

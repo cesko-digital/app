@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from '../../../../components/links'
 
 export const OuterWrapper = styled.div`
   display: flex;
@@ -29,4 +30,16 @@ export const Title = styled.div`
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 20px;
+`
+
+export const AvatarTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`
+
+export const ContactLink = styled.a`
+  font-size: 18px;
+  color: #47475b;
 `

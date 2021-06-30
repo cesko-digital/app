@@ -19,6 +19,7 @@ export type PortalEvent = { __typename?: 'Event' } & Pick<
   | 'summary'
   | 'rsvpUrl'
   | 'slug'
+  | 'coverUrl'
 > & {
     project: Maybe<
       { __typename?: 'Project' } & Pick<

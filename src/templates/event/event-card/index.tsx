@@ -13,11 +13,28 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ data }) => {
   return (
     <S.Container>
-      <Project avatarUrl={data.project.logoUrl} name={data.project.name} />
-      <Garant avatarUrl={data.owner.profilePictureUrl} name={data.owner.name} />
-      <Info title="Datum konání" content={data.startTime} />
+      <Project
+        avatarUrl={data.project.logoUrl}
+        name={data.project.name}
+        projectUrl={`/projekty/${data.project.slug}`}
+        silent={data.project.silent}
+      />
+      <Garant
+        avatarUrl={data.owner.profilePictureUrl}
+        name={data.owner.name}
+        email={data.owner.email}
+        slack={
+          data.owner.slackId.length > 0 ? data.owner.slackId[0] : undefined
+        }
+      />
+      <Info
+        title="Datum konání"
+        content={new Date(data.startTime).toLocaleString('cs-CZ')}
+      />
       <Info title="Místo konání" content="Online" />
-      <ButtonAsLink to={data.rsvpUrl}>Zajímá mě to</ButtonAsLink>
+      {data.rsvpUrl && (
+        <ButtonAsLink to={data.rsvpUrl}>Zajímá mě to</ButtonAsLink>
+      )}
     </S.Container>
   )
 }

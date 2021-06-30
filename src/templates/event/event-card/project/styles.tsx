@@ -6,6 +6,15 @@ export const Project = styled.div`
   margin-bottom: 32px;
 `
 
+export const LinkWrapper = styled.a`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+`
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;

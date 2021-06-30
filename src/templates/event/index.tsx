@@ -18,7 +18,13 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
         { path: '/portal-dobrovolnika', label: 'Portál dobrovolníka' },
         { label: data.event.name },
       ]}
-      seo={{ title: data.event.name, description: data.event.summary }}
+      seo={{
+        title: data.event.name,
+        description: data.event.summary,
+        coverUrl: data.event.coverUrl
+          ? data.event.coverUrl
+          : data.event.project.coverUrl,
+      }}
     >
       <Section>
         <SectionContent>
@@ -26,7 +32,14 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
           <Typography.Body>{data.event.summary}</Typography.Body>
           <S.CoverImageWrapper>
             <S.CoverFilter />
-            <S.CoverImage src={data.event.project.coverUrl} loading="lazy" />
+            <S.CoverImage
+              src={
+                data.event.coverUrl
+                  ? data.event.coverUrl
+                  : data.event.project.coverUrl
+              }
+              loading="lazy"
+            />
           </S.CoverImageWrapper>
         </SectionContent>
       </Section>
@@ -94,6 +107,7 @@ export const query = graphql`
         rowId
         profilePictureUrl
         email
+        slackId
       }
       project {
         coverUrl
@@ -118,6 +132,7 @@ export const query = graphql`
         }
         trelloUrl
         url
+        silent
       }
       rowId
       rsvpUrl
@@ -132,8 +147,12 @@ export const query = graphql`
         rowId
         slug
       }
+      coverUrl
     }
-    otherEvents: allEvent(limit: 3, filter: { id: { ne: $id } }) {
+    otherEvents: allEvent(
+      limit: 3
+      filter: { id: { ne: $id }, status: { eq: "live" } }
+    ) {
       nodes {
         competenceMap
         description
@@ -167,6 +186,7 @@ export const query = graphql`
         }
         rsvpUrl
         slug
+        coverUrl
       }
     }
   }

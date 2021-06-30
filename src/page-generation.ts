@@ -47,7 +47,7 @@ export async function generateEventPages({
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allEvent: { nodes: Event[] } }>(`
     query GenerateEventPages {
-      allEvent {
+      allEvent(filter: { status: { in: ["live", "archived"] } }) {
         nodes {
           id
           name

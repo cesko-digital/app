@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 
 export const query = graphql`
   query PortalDobrovolnikaPage {
-    events: allEvent {
+    events: allEvent(filter: { status: { eq: "live" } }) {
       nodes {
         competenceMap
         description
@@ -35,6 +35,7 @@ export const query = graphql`
         }
         rsvpUrl
         slug
+        coverUrl
       }
     }
   }

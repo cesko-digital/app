@@ -60,6 +60,7 @@ export interface AirTableVolunteer extends AirTableRecord {
     company?: string
     email: string
     profilePictureUrl?: string
+    slackId?: string
   }
 }
 
@@ -80,6 +81,7 @@ export interface AirtableEvent extends AirTableRecord {
     'Owner': string[]
     'Project': string[]
     'Tags'?: string[]
+    'Cover URL'?: string
   }
 }
 

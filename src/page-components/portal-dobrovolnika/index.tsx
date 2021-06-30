@@ -33,7 +33,11 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       <Section>
         <SectionContent>
           <HighlightedEvent
-            cover={highlightedOpportunity.project.coverUrl}
+            cover={
+              highlightedOpportunity.coverUrl
+                ? highlightedOpportunity.coverUrl
+                : highlightedOpportunity.project.coverUrl
+            }
             logo={highlightedOpportunity.project.logoUrl}
             description={highlightedOpportunity.summary}
             title={highlightedOpportunity.name}
@@ -64,7 +68,11 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
                     key={index}
                     title={opportunity.name}
                     description={opportunity.summary}
-                    cover={opportunity.project.coverUrl}
+                    cover={
+                      opportunity.coverUrl
+                        ? opportunity.coverUrl
+                        : opportunity.project.coverUrl
+                    }
                     logo={opportunity.project.logoUrl}
                     link={`/events/${opportunity.slug}`}
                     tags={

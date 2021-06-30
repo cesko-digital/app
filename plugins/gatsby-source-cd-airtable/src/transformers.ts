@@ -130,7 +130,8 @@ export function transformEvent(event: AirtableEvent): Event | null {
     project: f.Project?.length > 0 ? f.Project[0] : undefined,
     tags: f.Tags ? f.Tags : [],
     slug: safeSlug,
-    rsvpUrl: f['RSVP URL'] ? f['RSVP URL'] : `/events/${safeSlug}`,
+    rsvpUrl: f['RSVP URL'],
+    coverUrl: f['Cover URL'],
   }
 }
 

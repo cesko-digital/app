@@ -36,9 +36,11 @@ const HighlightedEvent: React.FC<Props> = ({
             ))}
           </S.Tags>
           {description && <S.Tagline>{description}</S.Tagline>}
-          <ButtonAsLink inverted to={actionLink}>
-            {actionTitle}
-          </ButtonAsLink>
+          {actionLink && (
+            <ButtonAsLink inverted to={actionLink}>
+              {actionTitle}
+            </ButtonAsLink>
+          )}
           <S.DetailLink to={link}>Detail příležitosti</S.DetailLink>
         </S.ProjectInfo>
       </S.Content>
