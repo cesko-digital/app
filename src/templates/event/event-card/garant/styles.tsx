@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from '../../../../components/links'
 
 export const OuterWrapper = styled.div`
   display: flex;
