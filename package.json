@@ -37,8 +37,6 @@
     "gatsby-image": "^2.4.12",
     "gatsby-plugin-google-tagmanager": "^3.2.0",
     "gatsby-plugin-manifest": "^2.4.17",
-    "gatsby-plugin-mdx": "^1.10.0",
-    "gatsby-plugin-netlify-cms": "^5.0.0",
     "gatsby-plugin-offline": "^3.2.16",
     "gatsby-plugin-react-helmet": "^3.3.9",
     "gatsby-plugin-react-i18next": "^0.0.27",

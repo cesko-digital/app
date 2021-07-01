@@ -18,16 +18,6 @@ module.exports = {
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-sharp/
     `gatsby-plugin-sharp`,
     {
-      // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: require.resolve('./src/components/layout/mdx-layout.tsx'),
-        },
-      },
-    },
-    {
       // Plugin for generating manifest file for browsers
       // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/
       resolve: `gatsby-plugin-manifest`,
