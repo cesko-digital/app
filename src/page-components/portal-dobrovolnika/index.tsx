@@ -50,7 +50,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
             }
             link={`/events/${highlightedOpportunity.slug}`}
             actionLink={highlightedOpportunity.rsvpUrl}
-            actionTitle="Zajímá mě to"
+            actionTitle={highlightedOpportunity.rsvpTitle}
           />
         </SectionContent>
       </Section>

@@ -37,7 +37,7 @@ const EventCard: React.FC<EventCardProps> = ({ data }) => {
         url={data.locationUrl}
       />
       {data.rsvpUrl && (
-        <ButtonAsLink to={data.rsvpUrl}>Zajímá mě to</ButtonAsLink>
+        <ButtonAsLink to={data.rsvpUrl}>{data.rsvpTitle}</ButtonAsLink>
       )}
     </S.Container>
   )

@@ -34,6 +34,7 @@ export const query = graphql`
           slug
         }
         rsvpUrl
+        rsvpTitle
         slug
         coverUrl
       }

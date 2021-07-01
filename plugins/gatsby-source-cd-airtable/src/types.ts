@@ -67,6 +67,7 @@ export interface Event extends SourceNode {
   project?: string
   tags: string[]
   rsvpUrl?: string
+  rsvpTitle: string
   slug: string
   coverUrl?: string
   locationTitle: string

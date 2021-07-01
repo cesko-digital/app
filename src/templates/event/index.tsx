@@ -135,6 +135,7 @@ export const query = graphql`
       }
       rowId
       rsvpUrl
+      rsvpTitle
       slug
       startTime
       status

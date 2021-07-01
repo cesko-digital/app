@@ -70,6 +70,7 @@ export interface AirtableEvent extends AirTableRecord {
     'Live URL'?: string
     'End Time': string
     'RSVP URL'?: string
+    'RSVP Title'?: string
     'Summary': string
     'Description': string
     'Name': string

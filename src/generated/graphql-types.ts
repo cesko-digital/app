@@ -377,6 +377,7 @@ export type Event = Node & {
   status: Maybe<Scalars['String']>;
   slug: Maybe<Scalars['String']>;
   rsvpUrl: Maybe<Scalars['String']>;
+  rsvpTitle: Maybe<Scalars['String']>;
   coverUrl: Maybe<Scalars['String']>;
   locationTitle: Maybe<Scalars['String']>;
   locationUrl: Maybe<Scalars['String']>;
@@ -527,6 +528,7 @@ export enum EventFieldsEnum {
   status = 'status',
   slug = 'slug',
   rsvpUrl = 'rsvpUrl',
+  rsvpTitle = 'rsvpTitle',
   coverUrl = 'coverUrl',
   locationTitle = 'locationTitle',
   locationUrl = 'locationUrl',
@@ -735,6 +737,7 @@ export type EventFilterInput = {
   status: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
   rsvpUrl: Maybe<StringQueryOperatorInput>;
+  rsvpTitle: Maybe<StringQueryOperatorInput>;
   coverUrl: Maybe<StringQueryOperatorInput>;
   locationTitle: Maybe<StringQueryOperatorInput>;
   locationUrl: Maybe<StringQueryOperatorInput>;
@@ -2725,6 +2728,7 @@ export type QueryEventArgs = {
   status: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
   rsvpUrl: Maybe<StringQueryOperatorInput>;
+  rsvpTitle: Maybe<StringQueryOperatorInput>;
   coverUrl: Maybe<StringQueryOperatorInput>;
   locationTitle: Maybe<StringQueryOperatorInput>;
   locationUrl: Maybe<StringQueryOperatorInput>;
@@ -4439,7 +4443,7 @@ export type PortalDobrovolnikaPageQuery = (
     { __typename?: 'EventConnection' }
     & { nodes: Array<(
       { __typename?: 'Event' }
-      & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'startTime' | 'status' | 'summary' | 'rsvpUrl' | 'slug' | 'coverUrl'>
+      & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'startTime' | 'status' | 'summary' | 'rsvpUrl' | 'rsvpTitle' | 'slug' | 'coverUrl'>
       & { project: Maybe<(
         { __typename?: 'Project' }
         & Pick<Project, 'logoUrl' | 'name' | 'id' | 'coverUrl' | 'url' | 'rowId'>
@@ -4490,7 +4494,7 @@ export type EventPageQuery = (
   { __typename?: 'Query' }
   & { event: Maybe<(
     { __typename?: 'Event' }
-    & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'rsvpUrl' | 'slug' | 'startTime' | 'status' | 'summary' | 'coverUrl' | 'locationTitle' | 'locationUrl'>
+    & Pick<Event, 'competenceMap' | 'description' | 'endTime' | 'id' | 'name' | 'rowId' | 'rsvpUrl' | 'rsvpTitle' | 'slug' | 'startTime' | 'status' | 'summary' | 'coverUrl' | 'locationTitle' | 'locationUrl'>
     & { owner: Maybe<(
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email' | 'slackId'>
