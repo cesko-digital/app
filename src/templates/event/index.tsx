@@ -106,7 +106,6 @@ export const query = graphql`
         rowId
         profilePictureUrl
         email
-        slackId
       }
       project {
         coverUrl
