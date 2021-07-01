@@ -23,9 +23,6 @@ const EventCard: React.FC<EventCardProps> = ({ data }) => {
         avatarUrl={data.owner.profilePictureUrl}
         name={data.owner.name}
         email={data.owner.email}
-        slack={
-          data.owner.slackId.length > 0 ? data.owner.slackId[0] : undefined
-        }
       />
       <Info
         title="Datum konání"
