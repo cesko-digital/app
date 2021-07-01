@@ -22,12 +22,17 @@ export const query = graphql`
       }
     }
     otherProjects: allProject(
-      filter: { highlighted: { eq: false }, lang: { eq: $locale } }
+      filter: {
+        highlighted: { eq: false }
+        lang: { eq: $locale }
+        silent: { eq: false }
+      }
     ) {
       nodes {
         name
         lang
         slug
+        silent
         tagline
         coverUrl
         logoUrl

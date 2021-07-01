@@ -16,7 +16,7 @@ export async function generateProjectPages({
   actions: { createPage },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allProject: { nodes: Project[] } }>(`
-    query {
+    query GenerateProjectPages {
       allProject {
         nodes {
           lang
@@ -46,12 +46,12 @@ export async function generateEventPages({
   actions: { createPage },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allEvent: { nodes: Event[] } }>(`
-    query {
-      allEvent {
+    query GenerateEventPages {
+      allEvent(filter: { status: { in: ["live", "archived"] } }) {
         nodes {
           id
           name
-          rowId
+          slug
         }
       }
     }
@@ -59,7 +59,7 @@ export async function generateEventPages({
 
   result?.data?.allEvent.nodes.forEach((node: Event) => {
     createPage({
-      path: `/events/${node.rowId}`,
+      path: `/events/${node.slug}`,
       component: resolve('./src/templates/event/index.tsx'),
       context: {
         id: node.id,

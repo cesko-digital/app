@@ -20,6 +20,7 @@ export interface AirTablePartner extends AirTableRecord {
 export interface AirTableProject extends AirTableRecord {
   fields: {
     draft?: boolean
+    silent?: boolean
     csName: string
     enName: string
     csSlug: string
@@ -59,25 +60,31 @@ export interface AirTableVolunteer extends AirTableRecord {
     company?: string
     email: string
     profilePictureUrl?: string
+    slackId?: string
   }
 }
 
 export interface AirtableEvent extends AirTableRecord {
   fields: {
-    'Live URL': string
+    'Slug'?: string
+    'Live URL'?: string
     'End Time': string
-    'RSVP URL': string
+    'RSVP URL'?: string
+    'RSVP Title'?: string
     'Summary': string
     'Description': string
     'Name': string
     'Status'?: string
-    'Follow-Up URL': string
+    'Follow-Up URL'?: string
     'Competence Map': string[]
     'RSVP Deadline': string
     'Start Time': string
     'Owner': string[]
     'Project': string[]
-    'Tags': string[]
+    'Tags'?: string[]
+    'Cover URL'?: string
+    'Location Title': string
+    'Location URL'?: string
   }
 }
 

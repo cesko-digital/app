@@ -85,6 +85,7 @@ export const applyButtonStyles = ({
     line-height: ${({ theme }) => theme.lineHeights.button};
 
     align-items: center;
+    justify-content: center;
 
     border: none;
     outline: none;

@@ -75,6 +75,7 @@ describe('transformers', () => {
         coordinators,
         rowId: 'id',
         finished: false,
+        silent: false,
       })
     })
 
@@ -125,6 +126,7 @@ describe('transformers', () => {
         coordinators,
         rowId: 'id',
         finished: false,
+        silent: false,
       })
     })
 

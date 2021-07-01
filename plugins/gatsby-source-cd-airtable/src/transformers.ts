@@ -15,6 +15,7 @@ import {
   AirTableRecord,
   AirtableEvent,
 } from './airtable'
+import { Marked, Renderer } from '@ts-stack/markdown'
 
 function transformAirTableRecords<
   AirTableType extends AirTableRecord,
@@ -48,6 +49,7 @@ export function transformProjects(
         githubUrl,
         coordinators,
         finished,
+        silent,
         slackChannelName,
         slackChannelUrl,
         trelloUrl,
@@ -58,6 +60,7 @@ export function transformProjects(
         tags: tags || [],
         highlighted: !!highlighted,
         finished: !!finished,
+        silent: !!silent,
         coverUrl,
         logoUrl,
         trelloUrl,
@@ -113,19 +116,37 @@ export function transformTags(airTableTags: AirTableTag[]): Tag[] {
 }
 
 export function transformEvent(event: AirtableEvent): Event | null {
+  Marked.setOptions({
+    renderer: new Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false,
+  })
+
   const f = event.fields
+  const safeSlug = f.Slug ? f.Slug : event.id
   return {
     rowId: event.id,
     name: f.Name,
     summary: f.Summary,
-    description: f.Description,
-    competenceMap: parseCompetenceMap(f['Competence Map']),
+    description: Marked.parse(f.Description),
+    competenceMap: f['Competence Map'],
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),
     status: f.Status,
     owner: f.Owner ? f.Owner[0] : undefined,
     project: f.Project?.length > 0 ? f.Project[0] : undefined,
-    tags: f.Tags,
+    tags: f.Tags ? f.Tags : [],
+    slug: safeSlug,
+    rsvpUrl: f['RSVP URL'],
+    rsvpTitle: f['RSVP Title'] ? f['RSVP Title'] : 'Zajímá mě to',
+    coverUrl: f['Cover URL'],
+    locationTitle: f['Location Title'],
+    locationUrl: f['Location URL'],
   }
 }
 

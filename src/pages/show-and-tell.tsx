@@ -92,9 +92,9 @@ const ReminderColumn = styled.div`
   max-width: 400px;
   margin-left: 32px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-left: 0px;
-    max-width: 1024px;s
+    max-width: 1024px;
   }
 `
 

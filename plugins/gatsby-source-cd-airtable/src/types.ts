@@ -34,6 +34,7 @@ export interface Volunteer extends SourceNode {
   profilePictureUrl?: string
   email: string
   company: string
+  slackId?: string
 }
 
 export interface Project extends SourceNode {
@@ -58,11 +59,17 @@ export interface Event extends SourceNode {
   name: string
   summary: string
   description: string
-  competenceMap: Record<string, number>
+  competenceMap: Array<string>
   startTime: Date
   endTime: Date
   status?: string
   owner?: string
   project?: string
   tags: string[]
+  rsvpUrl?: string
+  rsvpTitle: string
+  slug: string
+  coverUrl?: string
+  locationTitle: string
+  locationUrl?: string
 }
