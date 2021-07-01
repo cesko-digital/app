@@ -15,7 +15,9 @@ const Garant: React.FC<GarantProps> = (props) => {
         <S.Avatar src={props.avatarUrl} />
         <S.AvatarTitleWrapper>
           <S.AvatarTitle>
-            <S.ContactLink href={`mailto:${props.email}`}>{props.name}</S.ContactLink>
+            <S.ContactLink href={`mailto:${props.email}`}>
+              {props.name}
+            </S.ContactLink>
           </S.AvatarTitle>
         </S.AvatarTitleWrapper>
       </S.Wrapper>
