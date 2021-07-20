@@ -26,7 +26,13 @@ const EventCard: React.FC<EventCardProps> = ({ data }) => {
       />
       <Info
         title="Datum konání"
-        content={new Date(data.startTime).toLocaleString('cs-CZ')}
+        content={new Date(data.startTime).toLocaleString('cs-CZ', {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        })}
       />
       <Info
         title="Místo konání"
