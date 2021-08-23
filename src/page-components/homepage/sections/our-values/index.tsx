@@ -43,10 +43,6 @@ const VALUES_DATA = [
     translationKey: 'users',
     Icon: UsersIcon,
   },
-  {
-    translationKey: 'technologies',
-    Icon: TechnologiesIcon,
-  },
 ]
 
 const OurValues: React.FC = () => {
