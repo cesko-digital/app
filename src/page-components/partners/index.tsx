@@ -3,6 +3,7 @@ import { Layout, Section, SectionContent } from 'components/layout'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import * as S from './styles'
 import FinancialPartners from './sections/financial'
+import Tabs from 'components/tabs'
 
 export const NAVIGATION_KEY = 'pages.partners.navigation.partners'
 
@@ -21,6 +22,13 @@ const PartnersPage: React.FC = () => {
         <SectionContent>
           <S.Heading>{t('pages.partners.title')}</S.Heading>
           <S.Tagline>{t('pages.partners.description')}</S.Tagline>
+          <Tabs
+            items={[
+              { key: 'financial', label: 'Financni partneri' },
+              { key: 'experts', label: 'Expertni partneri' },
+              { key: 'cooperations', label: 'Spolupracujeme' },
+            ]}
+          />
         </SectionContent>
       </Section>
       <FinancialPartners />
