@@ -7,7 +7,6 @@ import {
   EfficiencyIcon,
   ParticipatoryIcon,
   UsersIcon,
-  TechnologiesIcon,
   WadgeIcon,
 } from 'components/icons'
 import * as S from './styles'

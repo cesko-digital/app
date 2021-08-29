@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { CardRow, Section, SectionContent } from 'components/layout'
-import { Body, Heading2, Heading3 } from 'components/typography'
+import { Heading2, Heading3 } from 'components/typography'
 import LogoList from 'components/logo-list'
 import {
   mapPartnerLogoInfoToLogo,
