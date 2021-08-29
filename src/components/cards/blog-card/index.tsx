@@ -3,7 +3,7 @@ import * as S from './styles'
 import { Link } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
-interface BlogCardProps {
+export interface BlogCardProps {
   title: string
   description: string
   cover: string

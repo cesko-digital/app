@@ -4,6 +4,7 @@ import { Heading3, heading4Styles } from 'components/typography'
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   min-height: 454px;
   background-color: white;
