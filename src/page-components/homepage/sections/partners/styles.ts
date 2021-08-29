@@ -8,3 +8,7 @@ export const MainTitle = styled(Heading2)`
     margin-bottom: 40px;
   }
 `
+
+export const Wrapper = styled.div`
+  margin: 0 0 150px;
+`

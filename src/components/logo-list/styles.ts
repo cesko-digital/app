@@ -18,7 +18,6 @@ export const List = styled.ul`
   grid-template-columns: repeat(auto-fill, ${LOGO_WIDTH_PX}px);
   list-style-type: none;
   padding: 0;
-  margin: 0 0 150px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: repeat(auto-fill, ${LOGO_MOBILE_WIDTH_PX}px);
