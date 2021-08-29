@@ -9,9 +9,9 @@ export const Heading = styled(Heading1)`
   }
 `
 export const Tagline = styled(BodyBig)`
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 16px;
+    margin-bottom: 28px;
   }
 `
