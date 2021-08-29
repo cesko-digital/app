@@ -5,6 +5,7 @@ import { PortalDobrovolnikaPageQuery } from '../../generated/graphql-types'
 import { PortalEvent } from './types'
 import * as S from './styles'
 import HighlightedEvent from './highlighted-event'
+import { CardRow } from 'components/layout'
 
 interface PortalDobrovolnikaProps {
   data: PortalDobrovolnikaPageQuery
@@ -62,7 +63,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
               <S.Title>Všechny příležitosti</S.Title>
             </S.CategoryHeader>
             <S.CardWrapper>
-              <S.CardRow>
+              <CardRow>
                 {sortedOpportunities.slice(1).map((opportunity, index) => (
                   <S.ProjectCard
                     key={index}
@@ -84,7 +85,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
                     }
                   />
                 ))}
-              </S.CardRow>
+              </CardRow>
             </S.CardWrapper>
           </S.Container>
         </SectionContent>

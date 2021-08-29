@@ -6,6 +6,7 @@ import { Layout, Section, SectionContent } from '../../components/layout'
 import * as S from './styles'
 import EventCard from './event-card'
 import { Link } from 'components/links'
+import { CardRow } from 'components/layout'
 
 interface EventPageProps {
   data: EventPageQuery
@@ -65,7 +66,7 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
               <Link to="/portal-dobrovolnika">Všechny příležitosti</Link>
             </S.CategoryHeader>
             <S.CardWrapper>
-              <S.CardRow>
+              <CardRow>
                 {data.otherEvents.nodes.map((opportunity, index) => (
                   <S.ProjectCard
                     key={index}
@@ -83,7 +84,7 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
                     }
                   />
                 ))}
-              </S.CardRow>
+              </CardRow>
             </S.CardWrapper>
           </S.Container>
         </SectionContent>
