@@ -20,6 +20,10 @@ const Header: React.FC = () => {
       label: t('header.projects'),
     },
     {
+      link: '/partners',
+      label: t('header.partners'),
+    },
+    {
       link: 'https://blog.cesko.digital',
       label: 'Blog',
     },
