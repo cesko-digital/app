@@ -1,20 +1,20 @@
 import React from 'react'
 import * as S from './styles'
 
-interface Logo {
+export interface Logo {
   name: string
   logoUrl: string
   linkUrl: string
 }
 
 interface LogoListProps {
-  logos: Logo[]
+  items: Logo[]
 }
 
-const LogoList: React.FC<LogoListProps> = ({ logos }) => {
+const LogoList: React.FC<LogoListProps> = ({ items }) => {
   return (
     <S.List>
-      {logos.map((logo, index) => (
+      {items.map((logo, index) => (
         <S.Item key={index}>
           <S.Link href={logo.linkUrl} target="_blank">
             <S.Logo
