@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Heading1, BodyBig } from 'components/typography'
+import { Heading1, BodyBig, Body } from 'components/typography'
 
 export const Heading = styled(Heading1)`
   margin: 50px 0 10px;
@@ -13,5 +13,13 @@ export const Tagline = styled(BodyBig)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 28px;
+  }
+`
+
+export const PaddedBody = styled(Body)`
+  padding: 34px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 16px 0;
   }
 `

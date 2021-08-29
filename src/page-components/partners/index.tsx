@@ -6,26 +6,37 @@ import FinancialPartners from './sections/financial'
 import ExpertsPartners from './sections/experts'
 import CooperationsPartners from './sections/cooperations'
 import Tabs from 'components/tabs'
+import { HomepageQuery } from 'generated/graphql-types'
 
 export const NAVIGATION_KEY = 'pages.partners.navigation.partners'
 
-const PartnersPage: React.FC = () => {
+interface PartnersPageProps {
+  data: HomepageQuery
+}
+
+const PartnersPage: React.FC<PartnersPageProps> = (props) => {
   const { t } = useTranslation()
   const sections = [
     {
       key: 'financial',
       label: t('pages.partners.tabs.financial.title'),
-      component: FinancialPartners,
+      component: (
+        <FinancialPartners
+          mainPartnersLogos={props.data.partners.nodes}
+          regularPartnersLogos={props.data.partners.nodes}
+          grantsLogos={props.data.partners.nodes}
+        />
+      ),
     },
     {
       key: 'experts',
       label: t('pages.partners.tabs.experts.title'),
-      component: ExpertsPartners,
+      component: <ExpertsPartners />,
     },
     {
       key: 'cooperations',
       label: t('pages.partners.tabs.cooperations.title'),
-      component: CooperationsPartners,
+      component: <CooperationsPartners />,
     },
   ]
 
@@ -56,7 +67,7 @@ const PartnersPage: React.FC = () => {
           <Tabs items={sections} onChange={setActiveSectionKey} />
         </SectionContent>
       </Section>
-      <ActiveSection />
+      {ActiveSection}
     </Layout>
   )
 }
