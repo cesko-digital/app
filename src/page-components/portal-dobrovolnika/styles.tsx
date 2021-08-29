@@ -29,17 +29,6 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const CardRow = styled.section`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: none;
-    padding: 0 ${({ theme }) => theme.space.outer}px;
-  }
-`
-
 export const ProjectCard = styled(EventCard)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     min-width: 264px;
