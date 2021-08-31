@@ -61,7 +61,13 @@ const PartnersPage: React.FC<PartnersPageProps> = (props) => {
     {
       key: 'experts',
       label: t('pages.partners.tabs.experts.title'),
-      component: <ExpertsPartners />,
+      component: (
+        <ExpertsPartners
+          submitterPartnersLogos={props.data.partners.nodes}
+          expertPartnersLogos={props.data.partners.nodes}
+          supportersLogos={props.data.partners.nodes}
+        />
+      ),
     },
   ]
 
