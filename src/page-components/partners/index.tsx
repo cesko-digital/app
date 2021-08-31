@@ -4,7 +4,6 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 import * as S from './styles'
 import FinancialPartners from './sections/financial'
 import ExpertsPartners from './sections/experts'
-import CooperationsPartners from './sections/cooperations'
 import Tabs from 'components/tabs'
 import { HomepageQuery } from 'generated/graphql-types'
 import { BlogCardProps } from 'components/cards/blog-card'
@@ -62,11 +61,6 @@ const PartnersPage: React.FC<PartnersPageProps> = (props) => {
       key: 'experts',
       label: t('pages.partners.tabs.experts.title'),
       component: <ExpertsPartners />,
-    },
-    {
-      key: 'cooperations',
-      label: t('pages.partners.tabs.cooperations.title'),
-      component: <CooperationsPartners />,
     },
   ]
 
