@@ -7,6 +7,7 @@ import ExpertsPartners from './sections/experts'
 import Tabs from 'components/tabs'
 import { HomepageQuery } from 'generated/graphql-types'
 import { BlogCardProps } from 'components/cards/blog-card'
+import BecomePartner from './sections/become-partner'
 
 export const NAVIGATION_KEY = 'pages.partners.navigation.partners'
 
@@ -92,6 +93,7 @@ const PartnersPage: React.FC<PartnersPageProps> = (props) => {
         </SectionContent>
       </Section>
       {ActiveSection}
+      <BecomePartner />
     </Layout>
   )
 }
