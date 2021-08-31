@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-const bodyBase = css`
+export const bodyBase = css`
   margin: 0;
   font-weight: ${({ theme }) => theme.fontWeights.body};
   line-height: ${({ theme }) => theme.lineHeights.body};
