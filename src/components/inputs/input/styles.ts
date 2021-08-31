@@ -96,6 +96,14 @@ export const Input = styled.input<StyledInputProps>`
     })}
 `
 
+export const TextArea = styled.textarea<StyledInputProps>`
+  ${({ dark, invalid }) =>
+    applyInputStyles({
+      dark,
+      invalid,
+    })}
+`
+
 export const InputLabel = styled.label`
   ${bodyBase}
   ${bodySmallStyles}
