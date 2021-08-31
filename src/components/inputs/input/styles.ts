@@ -1,6 +1,7 @@
 import styled, { css, CssWithTheme, DefaultTheme } from 'styled-components'
 import { StyledInputProps } from './index'
 import { transparentize } from 'polished'
+import { bodyBase, bodySmallStyles } from 'components/typography'
 
 function getBorderColor(
   { dark, invalid }: StyledInputProps,
@@ -93,4 +94,12 @@ export const Input = styled.input<StyledInputProps>`
       dark,
       invalid,
     })}
+`
+
+export const InputLabel = styled.label`
+  ${bodyBase}
+  ${bodySmallStyles}
+  font-weight: ${({ theme }) => theme.fontWeights.button};
+  display: block;
+  margin: 12px 0;
 `

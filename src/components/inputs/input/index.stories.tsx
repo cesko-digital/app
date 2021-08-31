@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import Input, { InputProps } from '.'
+import { InputLabel } from '..'
 
 const story: Meta = {
   title: 'Inputs/Input',
@@ -35,5 +36,13 @@ DarkInvalid.args = {
   dark: true,
   invalid: true,
 }
+
+export const WithLabel: Story<InputProps> = (args: InputProps) => (
+  <>
+    <InputLabel>Label</InputLabel>
+    <Input {...args} />
+  </>
+)
+WithLabel.args = Default.args
 
 export default story
