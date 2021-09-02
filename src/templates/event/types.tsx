@@ -26,7 +26,7 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
     owner: Maybe<
       { __typename?: 'Volunteer' } & Pick<
         Volunteer,
-        'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email' | 'slackId'
+        'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email'
       >
     >
     project: Maybe<
