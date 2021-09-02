@@ -5,6 +5,7 @@ import {
   transformTags,
   transformVolunteers,
   transformEvent,
+  transformOpportunity,
 } from './src/transformers'
 import { PluginOptions } from './src/types'
 import {
@@ -14,6 +15,7 @@ import {
   AirTableVolunteer,
   AirtableEvent,
   getAllAirtableRecords,
+  AirtableOpportunity,
 } from './src/airtable'
 import {
   nodeFromPartner,
@@ -21,6 +23,7 @@ import {
   nodeFromTag,
   nodeFromVolunteer,
   nodeFromEvent,
+  nodeFromOpportunity,
 } from './src/node-conversion'
 import {
   getMockProjects,
@@ -28,6 +31,7 @@ import {
   getMockVolunteers,
   getMockPartners,
   getMockEvents,
+  getMockOpportunities,
 } from './src/mocks'
 import { notEmpty } from './src/utils'
 
@@ -53,6 +57,7 @@ export async function sourceNodes(
     getMockTags().map(nodeFromTag).forEach(createNode)
     getMockProjects().map(nodeFromProject).forEach(createNode)
     getMockEvents().map(nodeFromEvent).forEach(createNode)
+    getMockOpportunities().map(nodeFromOpportunity).forEach(createNode)
     return
   }
 
@@ -70,12 +75,14 @@ export async function sourceNodes(
       airTableTags,
       airtableProjects,
       airtableEvents,
+      airtableOpportunities,
     ] = await Promise.all([
       load<AirTablePartner>('Partners'),
       load<AirTableVolunteer>('Volunteers'),
       load<AirTableTag>('Tags'),
       load<AirTableProject>('Projects'),
       load<AirtableEvent>('Events'),
+      load<AirtableOpportunity>('Opportunities'),
     ])
 
     transformPartners(airTablePartners).map(nodeFromPartner).forEach(createNode)
@@ -88,6 +95,11 @@ export async function sourceNodes(
       .map(transformEvent)
       .filter(notEmpty)
       .map(nodeFromEvent)
+      .forEach(createNode)
+    airtableOpportunities
+      .map(transformOpportunity)
+      .filter(notEmpty)
+      .map(nodeFromOpportunity)
       .forEach(createNode)
   } catch (e) {
     sourceNodesArgs.reporter.panic('Data sourcing failed:', e)

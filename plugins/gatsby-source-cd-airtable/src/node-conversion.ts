@@ -1,6 +1,6 @@
 import { NodeInput } from 'gatsby'
 import { createContentDigest } from 'gatsby-core-utils'
-import { Project, Tag, Volunteer, Partner, Event } from './types'
+import { Project, Tag, Volunteer, Partner, Event, Opportunity } from './types'
 import { getProjectId, getTagId, getVolunteerId } from './transformers'
 import { map } from './utils'
 
@@ -80,5 +80,24 @@ export function nodeFromEvent(event: Event): NodeInput {
     // Event-Tag relationship
     tags___NODE: event.tags?.map((t) => getTagId({ lang: 'cs', rowId: t })),
     tags: undefined,
+  }
+}
+
+export function nodeFromOpportunity(opportunity: Opportunity): NodeInput {
+  return {
+    ...opportunity,
+    id: `Opportunity-${opportunity.rowId}`,
+    internal: {
+      type: 'Opportunity',
+      contentDigest: createContentDigest(opportunity),
+    },
+    // Opportunity-Owner relationship
+    owner___NODE: map(opportunity.owner, getVolunteerId),
+    owner: undefined,
+    // Opportunity–Project relationship
+    project___NODE: opportunity.project
+      ? getProjectId({ lang: 'cs', rowId: opportunity.project })
+      : undefined,
+    project: undefined,
   }
 }
