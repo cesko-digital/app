@@ -88,6 +88,16 @@ export interface AirtableEvent extends AirTableRecord {
   }
 }
 
+export interface AirtableOpportunity extends AirTableRecord {
+  fields: {
+    'Name'?: string
+    'Project': string[]
+    'Owner': string[]
+    'Status'?: string
+    'Cover URL'?: string
+  }
+}
+
 //
 // Helpers
 //

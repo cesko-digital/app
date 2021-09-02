@@ -1,6 +1,6 @@
 import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
-import { Project, Event } from './generated/graphql-types'
+import { Project, Event, Opportunity } from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 const SUPPORTED_LANGUAGES = ['cs']
@@ -61,6 +61,33 @@ export async function generateEventPages({
     createPage({
       path: `/events/${node.slug}`,
       component: resolve('./src/templates/event/index.tsx'),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}
+
+export async function generateOpportunityPages({
+  graphql,
+  actions: { createPage },
+}: CreatePagesArgs): Promise<void> {
+  const result = await graphql<{ allOpportunity: { nodes: Opportunity[] } }>(`
+    query GenerateOpportunityPages {
+      allOpportunity(filter: { status: { in: ["live", "unlisted"] } }) {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+    }
+  `)
+
+  result?.data?.allOpportunity.nodes.forEach((node: Opportunity) => {
+    createPage({
+      path: `/opportunities/${node.slug}`,
+      component: resolve('./src/templates/opportunity/index.tsx'),
       context: {
         id: node.id,
       },
