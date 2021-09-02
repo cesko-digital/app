@@ -60,7 +60,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-syntax-export-namespace-from": "^7.8.3",
     "@graphql-codegen/add": "^2.0.2",
-    "@graphql-codegen/cli": "^1.21.1",
+    "@graphql-codegen/cli": "^2.1.1",
     "@graphql-codegen/schema-ast": "^1.18.1",
     "@graphql-codegen/typescript": "^1.21.0",
     "@graphql-codegen/typescript-operations": "^1.17.15",
