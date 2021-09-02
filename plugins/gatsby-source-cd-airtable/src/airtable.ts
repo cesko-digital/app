@@ -88,6 +88,22 @@ export interface AirtableEvent extends AirTableRecord {
   }
 }
 
+export interface AirtableOpportunity extends AirTableRecord {
+  fields: {
+    'Name'?: string
+    'Project': string[]
+    'Cover URL'?: string
+    'Summary'?: string
+    'Time Requirements'?: string
+    'Starred'?: boolean
+    'Skills': string[]
+    'Junior Friendly'?: boolean
+    'RSVP URL'?: string
+    'Owner'?: string[]
+    'Status'?: string
+  }
+}
+
 //
 // Helpers
 //

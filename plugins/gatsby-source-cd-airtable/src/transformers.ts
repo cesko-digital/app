@@ -6,6 +6,7 @@ import {
   Partner,
   SourceNode,
   Event,
+  Opportunity,
 } from './types'
 import {
   AirTablePartner,
@@ -14,6 +15,7 @@ import {
   AirTableVolunteer,
   AirTableRecord,
   AirtableEvent,
+  AirtableOpportunity,
 } from './airtable'
 import { Marked, Renderer } from '@ts-stack/markdown'
 
@@ -153,6 +155,27 @@ export function transformEvent(event: AirtableEvent): Event | null {
     coverUrl: f['Cover URL'],
     locationTitle: f['Location Title'],
     locationUrl: f['Location URL'],
+  }
+}
+
+export function transformOpportunity(
+  opportunity: AirtableOpportunity
+): Opportunity | null {
+  const f = opportunity.fields
+  return {
+    rowId: opportunity.id,
+    slug: opportunity.id,
+    name: f.Name ?? '',
+    project: f.Project?.length > 0 ? f.Project[0] : undefined,
+    coverUrl: f['Cover URL'],
+    summary: f.Summary ?? '',
+    timeRequirements: f['Time Requirements'],
+    skills: f['Skills'],
+    starred: f.Starred || false,
+    juniorFriendly: f['Junior Friendly'] || false,
+    owner: f.Owner ? f.Owner[0] : undefined,
+    contactUrl: f['RSVP URL'],
+    status: f.Status,
   }
 }
 
