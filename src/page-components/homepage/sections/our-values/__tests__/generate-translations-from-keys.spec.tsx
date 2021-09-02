@@ -27,8 +27,6 @@ describe('generate-translations-from-keys', () => {
     'pages.homepage.sections.ourValues.participatory.perex',
     'pages.homepage.sections.ourValues.users.title',
     'pages.homepage.sections.ourValues.users.perex',
-    'pages.homepage.sections.ourValues.technologies.title',
-    'pages.homepage.sections.ourValues.technologies.perex',
   ]
   const getComponent = () => {
     const component = mount(
@@ -39,9 +37,9 @@ describe('generate-translations-from-keys', () => {
     return component
   }
 
-  it('renders 6 elements', () => {
+  it('renders 5 elements', () => {
     const component = getComponent()
-    expect(component.find(Value).length).toBe(6)
+    expect(component.find(Value).length).toBe(5)
   })
 
   it('renders content with proper translation keys', () => {
