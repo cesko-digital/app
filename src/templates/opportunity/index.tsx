@@ -1,26 +1,21 @@
 import React from 'react'
 import { Layout, Section, SectionContent } from '../../components/layout'
 
-interface OpportunityPageProps {
-}
-
-const OpportunityPage: React.FC<OpportunityPageProps> = ({}) => {
+const OpportunityPage: React.FC<void> = () => {
   return (
     <Layout
       crumbs={[
         { path: '/portal-dobrovolnika', label: 'Portál dobrovolníka' },
-        { label: "TBD" },
+        { label: 'TBD' },
       ]}
       seo={{
-        title: "TBD",
-        description: "TBD",
-        coverUrl: "TBD",
+        title: 'TBD',
+        description: 'TBD',
+        coverUrl: 'TBD',
       }}
     >
       <Section>
-        <SectionContent>
-            Here be dragons.
-        </SectionContent>
+        <SectionContent>Here be dragons.</SectionContent>
       </Section>
     </Layout>
   )
