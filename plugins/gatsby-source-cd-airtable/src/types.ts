@@ -77,8 +77,13 @@ export interface Event extends SourceNode {
 export interface Opportunity extends SourceNode {
   name: string
   project?: string
-  owner?: string
-  status?: string
   coverUrl?: string
+  summary: string
+  timeRequirements?: string
+  starred: boolean
+  juniorFriendly: boolean
+  owner?: string
+  contactUrl?: string
+  status?: string
   slug: string
 }

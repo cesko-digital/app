@@ -159,10 +159,16 @@ export function transformOpportunity(
   return {
     rowId: opportunity.id,
     slug: opportunity.id,
-    status: f.Status,
     name: f.Name ?? '',
-    owner: f.Owner ? f.Owner[0] : undefined,
     project: f.Project?.length > 0 ? f.Project[0] : undefined,
+    coverUrl: f['Cover URL'],
+    summary: f.Summary ?? '',
+    timeRequirements: f['Time Requirements'],
+    starred: f.Starred || false,
+    juniorFriendly: f['Junior Friendly'] || false,
+    owner: f.Owner ? f.Owner[0] : undefined,
+    contactUrl: f['RSVP URL'],
+    status: f.Status,
   }
 }
 

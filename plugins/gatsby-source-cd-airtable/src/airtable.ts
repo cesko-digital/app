@@ -92,9 +92,14 @@ export interface AirtableOpportunity extends AirTableRecord {
   fields: {
     'Name'?: string
     'Project': string[]
-    'Owner': string[]
-    'Status'?: string
     'Cover URL'?: string
+    'Summary'?: string
+    'Time Requirements'?: string
+    'Starred'?: boolean
+    'Junior Friendly'?: boolean
+    'RSVP URL'?: string
+    'Owner'?: string[]
+    'Status'?: string
   }
 }
 
