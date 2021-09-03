@@ -80,6 +80,7 @@ export interface Opportunity extends SourceNode {
   coverUrl?: string
   summary: string
   timeRequirements?: string
+  skills: string[]
   starred: boolean
   juniorFriendly: boolean
   owner?: string

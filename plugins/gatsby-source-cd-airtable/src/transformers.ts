@@ -164,6 +164,7 @@ export function transformOpportunity(
     coverUrl: f['Cover URL'],
     summary: f.Summary ?? '',
     timeRequirements: f['Time Requirements'],
+    skills: f['Skills'],
     starred: f.Starred || false,
     juniorFriendly: f['Junior Friendly'] || false,
     owner: f.Owner ? f.Owner[0] : undefined,

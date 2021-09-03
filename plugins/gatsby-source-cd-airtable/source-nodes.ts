@@ -31,6 +31,7 @@ import {
   getMockVolunteers,
   getMockPartners,
   getMockEvents,
+  getMockOpportunities,
 } from './src/mocks'
 import { notEmpty } from './src/utils'
 
@@ -56,6 +57,7 @@ export async function sourceNodes(
     getMockTags().map(nodeFromTag).forEach(createNode)
     getMockProjects().map(nodeFromProject).forEach(createNode)
     getMockEvents().map(nodeFromEvent).forEach(createNode)
+    getMockOpportunities().map(nodeFromOpportunity).forEach(createNode)
     return
   }
 

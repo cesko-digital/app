@@ -96,6 +96,7 @@ export interface AirtableOpportunity extends AirTableRecord {
     'Summary'?: string
     'Time Requirements'?: string
     'Starred'?: boolean
+    'Skills': string[]
     'Junior Friendly'?: boolean
     'RSVP URL'?: string
     'Owner'?: string[]
