@@ -12,8 +12,6 @@ import { Button } from 'components/buttons/button/styles'
 import { ButtonSize } from 'components/buttons'
 import BlogCard, { BlogCardProps } from 'components/cards/blog-card'
 import { BlogHeader } from './styles'
-import { Link } from 'components/links'
-import { LINKS } from 'utils/constants'
 
 interface FinancialPartnersProps {
   mainPartnersLogos: PartnerLogoInfo[]
@@ -50,7 +48,7 @@ const FinancialPartners: React.FC<FinancialPartnersProps> = ({
         <SectionContent>
           <BlogHeader>
             <Heading3>{t('pages.partners.blog.title')}</Heading3>
-            <Link to={LINKS.blog}>{t('pages.partners.blog.linkAll')}</Link>
+            {/* <Link to={LINKS.blog}>{t('pages.partners.blog.linkAll')}</Link> */}
           </BlogHeader>
           <CardRow>
             {blogCards.map((card) => (

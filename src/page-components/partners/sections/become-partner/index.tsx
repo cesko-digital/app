@@ -15,9 +15,9 @@ const BecomePartner: React.FC = () => {
               {t('pages.partners.becomePartner.aboveTitle')}
             </S.Subtitle>
             <S.Title>{t('pages.partners.becomePartner.title')}</S.Title>
-            <S.Subtitle>
+            {/* <S.Subtitle>
               <a href="mailto:partneri@cesko.digital">partneri@cesko.digital</a>
-            </S.Subtitle>
+            </S.Subtitle> */}
           </S.CenteredTextWrapper>
           <div>
             <BecomePartnerForm />
