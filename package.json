@@ -30,6 +30,7 @@
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.22",
     "@ts-stack/markdown": "^1.4.0",
+    "@types/sharp": "^0.28.5",
     "babel-plugin-styled-components": "^1.12.0",
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
@@ -52,6 +53,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.8.7",
+    "sharp": "^0.29.0",
     "styled-components": "^5.2.1",
     "ts-node": "^9.1.1"
   },
