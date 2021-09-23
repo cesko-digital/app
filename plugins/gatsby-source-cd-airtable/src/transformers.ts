@@ -129,12 +129,18 @@ export function transformEvent(event: AirtableEvent): Event | null {
 
   const f = event.fields
   const safeSlug = f.Slug ? f.Slug : event.id
+
+  if (!f.Status) {
+    // Ignore, not even a Draft, probably won’t validate at all
+    return null
+  }
+
   return {
     rowId: event.id,
     name: f.Name,
     summary: f.Summary,
     description: Marked.parse(f.Description),
-    competenceMap: f['Competence Map'],
+    competenceMap: f['Competence Map'] || [],
     startTime: new Date(f['Start Time']),
     endTime: new Date(f['End Time']),
     status: f.Status,
