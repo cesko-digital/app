@@ -10,5 +10,8 @@
             "destination": "http://data.cesko.digital/spolunadalku/prirucka.pdf",
             "statusCode": 302
         }
-    ]
+    ],
+    "github": {
+        "silent": true
+    }
 }
