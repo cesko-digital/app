@@ -152,11 +152,10 @@ export default async (
 
     response.status(200).send(preparedImageData.processedImage)
   } catch (e) {
-    if (e.hasOwnProperty('statusCode')) {
-      response.status(e.statusCode).send(e.message)
-      return
-    }
-
-    response.status(500).send(`Error: ${e.message}`)
+    const [code, msg] =
+      e instanceof ValidationError
+        ? [e.statusCode, e.message]
+        : [500, 'Unexpected error, pull requests welcome :)']
+    response.status(code).send(msg)
   }
 }
