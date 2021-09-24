@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from '@vercel/node'
+import { VercelRequest, VercelResponse } from '@vercel/node'
 import fetch from 'node-fetch'
 
 const API_KEY = process.env.ECOMAIL_API_KEY || ''
@@ -13,8 +13,8 @@ const SUBSCRIPTION_SUCCESS = 'User subscription was successful'
 export const EMAIL_REGEX = /^\S+@\S+\.\S+$/
 
 export default async (
-  request: NowRequest,
-  response: NowResponse
+  request: VercelRequest,
+  response: VercelResponse
 ): Promise<void> => {
   const { body } = request
 
