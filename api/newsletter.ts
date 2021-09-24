@@ -51,8 +51,7 @@ export default async (
     })
 
     if (!ecoMailResponse.ok) {
-      const resData = await ecoMailResponse.json()
-      response.status(500).json({ error: resData.message })
+      response.status(500).json({ error: UNEXPECTED_ERROR })
       return
     }
 
