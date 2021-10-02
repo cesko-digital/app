@@ -25,9 +25,7 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({
     <Section>
       <SectionContent verticalPadding={60}>
         <Heading2>{t('pages.partners.experts.heading.title')}</Heading2>
-        <S.PaddedBody>
-          {t('pages.partners.experts.heading.perex')}{' '}
-        </S.PaddedBody>
+        <S.PaddedBody>{t('pages.partners.experts.heading.perex')}</S.PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={0}>
         <Heading3>{t('pages.partners.experts.submitters.title')}</Heading3>

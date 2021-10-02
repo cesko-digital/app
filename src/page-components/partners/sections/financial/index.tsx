@@ -32,7 +32,7 @@ const FinancialPartners: React.FC<FinancialPartnersProps> = ({
       <SectionContent verticalPadding={60}>
         <Heading2>{t('pages.partners.financial.heading.title')}</Heading2>
         <S.PaddedBody>
-          {t('pages.partners.financial.heading.perex')}{' '}
+          {t('pages.partners.financial.heading.perex')}
         </S.PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={0}>
