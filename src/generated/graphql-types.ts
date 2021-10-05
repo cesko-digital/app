@@ -5730,6 +5730,20 @@ export type HomepageQuery = (
   ) }
 );
 
+export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PartnersQuery = (
+  { __typename?: 'Query' }
+  & { partners: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ) }
+);
+
 export type PortalDobrovolnikaPageQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
