@@ -5,14 +5,14 @@ import * as S from './styles'
 import FinancialPartners from './sections/financial'
 import ExpertsPartners from './sections/experts'
 import Tabs from 'components/tabs'
-import { HomepageQuery } from 'generated/graphql-types'
+import { PartnersQuery } from 'generated/graphql-types'
 import { BlogCardProps } from 'components/cards/blog-card'
 import BecomePartner from './sections/become-partner'
 
 export const NAVIGATION_KEY = 'pages.partners.navigation.partners'
 
 interface PartnersPageProps {
-  data: HomepageQuery
+  data: PartnersQuery
 }
 
 // temporary variable, this should come dynamically from gatsby data instead
@@ -51,9 +51,9 @@ const PartnersPage: React.FC<PartnersPageProps> = (props) => {
       label: t('pages.partners.tabs.financial.title'),
       component: (
         <FinancialPartners
-          mainPartnersLogos={props.data.partners.nodes}
-          regularPartnersLogos={props.data.partners.nodes}
-          grantsLogos={props.data.partners.nodes}
+          mainPartnersLogos={props.data.main.nodes}
+          regularPartnersLogos={props.data.regular.nodes}
+          grantsLogos={props.data.grants.nodes}
           blogCards={blogCards}
         />
       ),
@@ -63,9 +63,9 @@ const PartnersPage: React.FC<PartnersPageProps> = (props) => {
       label: t('pages.partners.tabs.experts.title'),
       component: (
         <ExpertsPartners
-          submitterPartnersLogos={props.data.partners.nodes}
-          expertPartnersLogos={props.data.partners.nodes}
-          supportersLogos={props.data.partners.nodes}
+          submitterPartnersLogos={props.data.submitters.nodes}
+          expertPartnersLogos={props.data.experts.nodes}
+          supportersLogos={props.data.supporters.nodes}
         />
       ),
     },

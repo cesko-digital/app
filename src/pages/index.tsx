@@ -17,7 +17,7 @@ export const query = graphql`
         }
       }
     }
-    partners: allPartner {
+    partners: allPartner(filter: { category: { eq: "homepage" } }) {
       nodes {
         name
         url

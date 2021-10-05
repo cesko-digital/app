@@ -8,6 +8,7 @@ import {
   PartnerLogoInfo,
 } from 'components/logo-list/utils'
 import * as S from '../../styles'
+import { graphql } from 'gatsby'
 
 interface ExpertsPartnersProps {
   submitterPartnersLogos: PartnerLogoInfo[]
@@ -61,3 +62,29 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({
 }
 
 export default ExpertsPartners
+
+export const query = graphql`
+  fragment ExpertPartners on Query {
+    submitters: allPartner(filter: { category: { eq: "experts.submitters" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+    experts: allPartner(filter: { category: { eq: "experts.experts" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+    supporters: allPartner(filter: { category: { eq: "experts.supporters" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+  }
+`

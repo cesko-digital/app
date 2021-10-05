@@ -12,6 +12,7 @@ import { Button } from 'components/buttons/button/styles'
 import { ButtonSize } from 'components/buttons'
 import BlogCard, { BlogCardProps } from 'components/cards/blog-card'
 import { BlogHeader } from './styles'
+import { graphql } from 'gatsby'
 
 interface FinancialPartnersProps {
   mainPartnersLogos: PartnerLogoInfo[]
@@ -95,3 +96,29 @@ const FinancialPartners: React.FC<FinancialPartnersProps> = ({
 }
 
 export default FinancialPartners
+
+export const query = graphql`
+  fragment FinancialPartners on Query {
+    main: allPartner(filter: { category: { eq: "financial.main" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+    regular: allPartner(filter: { category: { eq: "financial.regular" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+    grants: allPartner(filter: { category: { eq: "financial.grants" } }) {
+      nodes {
+        name
+        url
+        logoUrl
+      }
+    }
+  }
+`
