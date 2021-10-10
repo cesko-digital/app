@@ -24,6 +24,15 @@ export const query = graphql`
         logoUrl
       }
     }
+    locales: allLocale(filter: { language: { eq: $locale } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
   }
 `
 
