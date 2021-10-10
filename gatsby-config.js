@@ -39,17 +39,22 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // Docs: https://www.gatsbyjs.org/packages/gatsby-plugin-offline/
     // `gatsby-plugin-offline`,
+    // Docs: https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
     {
-      // Docs: https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
-      resolve: `gatsby-plugin-react-i18next`,
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/locale`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        siteUrl: `https://cesko.digital/`,
         languages: [`cs`],
         defaultLanguage: `cs`,
         redirect: false,
-        i18nextOptions: {
-          defaultNS: 'translation',
-        },
         pages: [
           {
             matchPath: '/projekty/:uid',
