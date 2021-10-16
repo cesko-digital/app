@@ -1,5 +1,5 @@
 import { Layout, SectionContent, Section } from 'components/layout'
-import RolesFilter from 'page-components/portal-dobrovolnika/roles/roles-filter'
+//import RolesFilter from 'page-components/portal-dobrovolnika/roles/roles-filter'
 import * as Typography from 'components/typography'
 import React from 'react'
 import styled from 'styled-components'
@@ -32,11 +32,11 @@ const Roles: React.FC<RolesProps> = (props) => {
                 <Typography.Heading1>Volné pozice <RolesCountSpan>{roles.length}</RolesCountSpan></Typography.Heading1>
             </SectionContent>
         </Section>
-        <Section>
+        {/* <Section>
             <SectionContent>
                 <RolesFilter data=""></RolesFilter>
             </SectionContent>
-        </Section>
+        </Section> */}
         <Section>
             <SectionContent>
           {roles.map((r) => (
