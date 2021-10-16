@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 50px 0 50px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin: 48px -${({ theme }) => theme.space.outer}px;
+    margin: 40px -${({ theme }) => theme.space.outer}px;
   }
 `
 
