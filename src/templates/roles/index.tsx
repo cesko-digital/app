@@ -4,15 +4,18 @@ import { graphql } from 'gatsby'
 import { Layout, Section, SectionContent } from '../../components/layout'
 import { Heading1 } from 'components/typography'
 import * as S from './styles'
+import { BodySmall, Body } from 'components/typography'
+import { OwnerName, RoleMetaRow } from './styles'
+import TimeIcon from '../../components/icons/time'
 
 interface RolePageProps {
   data: {
-    opportunity: Opportunity;
+    opportunity: Opportunity
   }
 }
 
 const RolePage: React.FC<RolePageProps> = (props) => {
-  const role = props.data.opportunity;
+  const role = props.data.opportunity
   return (
     <Layout
       crumbs={[
@@ -29,9 +32,39 @@ const RolePage: React.FC<RolePageProps> = (props) => {
       <Section>
         <SectionContent>
           <Heading1>{role.name}</Heading1>
-          <S.CoverImageWrapper>
-            <S.CoverImage src={role.project.coverUrl} loading="lazy" />
-          </S.CoverImageWrapper>
+          <S.RoleHeader>
+            <S.CoverImageWrapper>
+              <S.CoverImage src={role.project.coverUrl} loading="lazy" />
+            </S.CoverImageWrapper>
+            <S.RoleContactCard>
+              <S.RoleMetaRow>
+                <S.RoleProjectImg src={role.project.logoUrl} />
+                <a href={`/roles/${role.slug}`}>
+                  <Body>{role.project.name}</Body>
+                </a>
+              </S.RoleMetaRow>
+              <RoleMetaRow>
+                <TimeIcon />
+                <Body>{role.timeRequirements}</Body>
+              </RoleMetaRow>
+              <S.RoleOwnerWrapper>
+                <Body>Kontaktní osoba</Body>
+                <S.OwnerWrapper>
+                  <S.OwnerImage src={role.owner.profilePictureUrl} />
+                  <div>
+                    <OwnerName>{role.owner.name}</OwnerName>
+                    <BodySmall>{role.project.name}</BodySmall>
+                  </div>
+                </S.OwnerWrapper>
+              </S.RoleOwnerWrapper>
+              <a href={role.project.slackChannelUrl} target="blank">
+                <S.RoleSlackButton>Kontaktovat přes Slack</S.RoleSlackButton>
+              </a>
+            </S.RoleContactCard>
+          </S.RoleHeader>
+          <S.RoleDescription>
+            <Body>{role.summary}</Body>
+          </S.RoleDescription>
         </SectionContent>
       </Section>
     </Layout>
@@ -44,6 +77,15 @@ export const query = graphql`
       id
       name
       slug
+      summary
+      timeRequirements
+      contactUrl
+      owner {
+        email
+        name
+        profilePictureUrl
+      }
+      juniorFriendly
       project {
         coverUrl
         description

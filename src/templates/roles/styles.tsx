@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { Heading4 } from 'components/typography'
+import { Button } from '../../components/buttons'
 
 export const CoverImageWrapper = styled.div`
   overflow: hidden;
   border-radius: 8px;
-  margin-top: 50px;
   position: relative;
   max-height: 560px;
 
@@ -16,4 +17,69 @@ export const CoverImageWrapper = styled.div`
 export const CoverImage = styled.img`
   width: 100%;
   filter: grayscale(100%);
+`
+
+export const RoleContactCard = styled.div`
+  width: 375px;
+  margin-left: 16px;
+  border-radius: 8px;
+  padding: 0 24px 24px;
+  background: #f9f9f9;
+`
+
+export const RoleHeader = styled.div`
+  display: flex;
+  margin-top: 50px;
+  a {
+    text-decoration: none;
+  }
+`
+export const OwnerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 8px 0 0;
+`
+
+export const RoleOwnerWrapper = styled.div`
+  padding: 24px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+`
+
+export const OwnerImage = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background: blue;
+`
+
+export const OwnerName = styled(Heading4)`
+  font-size: 18px;
+`
+
+export const RoleMetaRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+  svg {
+    fill: ${({ theme }) => theme.colors.darkGrey};
+  }
+`
+export const RoleDescription = styled.div`
+  padding: 24px 0;
+  max-width: 830px;
+`
+
+export const RoleProjectImg = styled.img`
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+`
+
+export const RoleSlackButton = styled(Button)`
+  font-size: 16px;
+  width: 100%;
 `
