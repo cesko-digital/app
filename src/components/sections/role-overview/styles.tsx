@@ -10,6 +10,9 @@ export const RoleWrapper = styled.div`
   justify-content: space-between;
   padding: 22px 0;
   border-bottom: 1px solid #f0f0f2;
+  a {
+    text-decoration: none;
+  }
 `
 
 export const RoleMetaWrapper = styled.div`

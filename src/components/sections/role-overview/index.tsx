@@ -44,7 +44,7 @@ const RoleItem = ({
   return <Container>
     <RoleWrapper id={id}>
       <div>
-        <Heading3><a href={link}>{name}</a></Heading3>
+        <a href={link}><Heading3>{name}</Heading3></a>
         <RoleMetaWrapper>
           <BodySmall>{timeRequirements}</BodySmall>
           {skills.map((s) => (
