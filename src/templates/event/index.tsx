@@ -71,7 +71,7 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
                     key={index}
                     title={opportunity.name}
                     description={opportunity.summary}
-                    cover={opportunity.project.coverUrl}
+                    cover={opportunity.coverUrl}
                     logo={opportunity.project.logoUrl}
                     link={`/events/${opportunity.slug}`}
                     tags={
