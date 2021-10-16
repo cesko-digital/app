@@ -46,6 +46,7 @@ const Roles: React.FC<RolesProps> = (props) => {
               skills={r.skills}
               project={r.project}
               timeRequirements={r.timeRequirements}
+              slug={r.slug}
             />
           ))}
             </SectionContent>
