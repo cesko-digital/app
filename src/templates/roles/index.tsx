@@ -7,15 +7,21 @@ import * as S from './styles'
 import { BodySmall, Body } from 'components/typography'
 import { OwnerName, RoleMetaRow } from './styles'
 import TimeIcon from '../../components/icons/time'
+import RoleItem from '../../components/sections/role-overview'
+import { RolesMainWrapper } from '../../page-components/portal-dobrovolnika/styles'
 
 interface RolePageProps {
   data: {
     opportunity: Opportunity
+    roles: {
+      nodes: Opportunity[]
+    }
   }
 }
 
 const RolePage: React.FC<RolePageProps> = (props) => {
   const role = props.data.opportunity
+  const sortedRoles = props.data.roles.nodes
   return (
     <Layout
       crumbs={[
@@ -66,6 +72,20 @@ const RolePage: React.FC<RolePageProps> = (props) => {
             <Body>{role.summary}</Body>
           </S.RoleDescription>
         </SectionContent>
+      </Section>
+      <Section>
+        <RolesMainWrapper>
+          {sortedRoles.map((r) => (
+            <RoleItem
+              name={r.name}
+              id={r.id}
+              skills={r.skills}
+              project={r.project}
+              timeRequirements={r.timeRequirements}
+              slug={r.slug}
+            />
+          ))}
+        </RolesMainWrapper>
       </Section>
     </Layout>
   )

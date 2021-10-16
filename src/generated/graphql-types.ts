@@ -819,6 +819,7 @@ export type Opportunity = Node & {
   project: Maybe<Project>;
 };
 
+
 export type Locale = Node & {
   __typename?: 'Locale';
   id: Scalars['ID'];

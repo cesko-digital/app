@@ -1,13 +1,7 @@
 import React from 'react'
 import { Heading3, BodySmall, Body } from 'components/typography'
+import * as S from './styles'
 
-import {
-  RoleMetaWrapper,
-  RoleRightWrapper,
-  RoleLogo,
-  RoleWrapper,
-  Container,
-} from './styles'
 import { Project } from 'templates/event/event-card/project/styles'
 
 interface Props {
@@ -25,41 +19,35 @@ interface Project {
   logoUrl: string
 }
 
-interface Skills {
-  name: string
-  url: string
-  logoUrl: string
-}
-
-const RoleItem = ({
+const RoleItem: React.FC<Props> = ({
   id,
   name,
   skills,
   project,
   timeRequirements,
   slug,
-}: Props) => {
+}) => {
   const link = 'roles/' + slug
   return (
-    <Container>
-      <RoleWrapper key={id}>
+    <S.Container>
+      <S.RoleWrapper key={id}>
         <div>
           <a href={link}>
             <Heading3>{name}</Heading3>
           </a>
-          <RoleMetaWrapper>
+          <S.RoleMetaWrapper>
             <BodySmall>{timeRequirements}</BodySmall>
             <BodySmall>{skills.join(', ')}</BodySmall>
-          </RoleMetaWrapper>
+          </S.RoleMetaWrapper>
         </div>
-        <RoleRightWrapper>
+        <S.RoleRightWrapper>
           <a href={project.url}>
             <Body>{project.name}</Body>
           </a>
-          <RoleLogo src={project.logoUrl} />
-        </RoleRightWrapper>
-      </RoleWrapper>
-    </Container>
+          <S.RoleLogo src={project.logoUrl} />
+        </S.RoleRightWrapper>
+      </S.RoleWrapper>
+    </S.Container>
   )
 }
 
