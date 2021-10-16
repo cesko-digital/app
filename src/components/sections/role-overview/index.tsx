@@ -13,7 +13,7 @@ import { Project } from 'templates/event/event-card/project/styles'
 interface Props {
   id: string
   name: string
-  skills: Array<Skills>
+  skills: Array<string>
   project: Project
   timeRequirements: string
   slug: string
@@ -47,9 +47,7 @@ const RoleItem = ({
         <a href={link}><Heading3>{name}</Heading3></a>
         <RoleMetaWrapper>
           <BodySmall>{timeRequirements}</BodySmall>
-          {skills.map((s) => (
-            <BodySmall>{skills}</BodySmall>
-          ))}
+          <BodySmall>{skills.join(", ")}</BodySmall>
         </RoleMetaWrapper>
       </div>
       <RoleRightWrapper>
