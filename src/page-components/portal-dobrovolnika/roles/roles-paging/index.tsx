@@ -1,6 +1,4 @@
-import { Current } from 'components/layout/breadcrumb/styles'
 import React, { FC } from 'react'
-import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 
 interface IRolesPageSelected {
@@ -42,9 +40,9 @@ const RolesPaging: FC<RolesPagingProps> = (props) => {
     const target = event.currentTarget
     if (target.dataset.index) {
       const indexStr = target.dataset.index
-      if (indexStr == '<<') {
+      if (indexStr === '<<') {
         props.onPageSelected(props.currentPage - 1)
-      } else if (indexStr == '>>') {
+      } else if (indexStr === '>>') {
         props.onPageSelected(props.currentPage + 1)
       } else {
         const index = Number.parseInt(indexStr)
@@ -59,14 +57,14 @@ const RolesPaging: FC<RolesPagingProps> = (props) => {
   }
   return (
     <div>
-      {RenderPagingButton(props.currentPage == 1, 'prev', '<<')} |{' '}
+      {RenderPagingButton(props.currentPage === 1, 'prev', '<<')} |{' '}
       {links
         .map<React.ReactNode>((ix) =>
-          RenderPagingButton(ix == props.currentPage, 'page' + ix, ix)
+          RenderPagingButton(ix === props.currentPage, 'page' + ix, ix)
         )
         .reduce((prev, curr) => [prev, ' | ', curr])}{' '}
       |{' '}
-      {RenderPagingButton(props.currentPage == props.totalPages, 'next', '>>')}
+      {RenderPagingButton(props.currentPage === props.totalPages, 'next', '>>')}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { Layout, SectionContent, Section } from 'components/layout'
 import * as Typography from 'components/typography'
 import React from 'react'
 /*import { PortalDobrovolnikaPageQuery } from '../../generated/graphql-types'*/
+import { Event, Opportunity } from 'generated/graphql-types'
 import { PortalEvent } from './types'
 import * as S from './styles'
 /*import HighlightedEvent from './highlighted-event'
@@ -11,13 +12,16 @@ import { Button } from '../../components/buttons'
 import { ButtonWrapper, RolesMainWrapper } from './styles'
 
 interface PortalDobrovolnikaProps {
-  data: any
+  data: {
+    roles:  { nodes: Opportunity[] },
+    events: { nodes: Event[] }
+  }
 }
 
 const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
   const sortedOpportunities = sortOpportunities(props.data.events.nodes)
   /*  const highlightedOpportunity = sortedOpportunities[0]*/
-  const sortedRoles = props.data.roles.nodes as any[]
+  const sortedRoles = props.data.roles.nodes as Opportunity[]
 
   return (
     <Layout
@@ -41,6 +45,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
           <RolesMainWrapper>
             {sortedRoles.map((r) => (
               <RoleItem
+                key={r.id}
                 name={r.name}
                 id={r.id}
                 skills={r.skills}
