@@ -39,6 +39,19 @@ export const query = graphql`
         coverUrl
       }
     }
+    roles: allOpportunity(limit: 3, filter: { status: { eq: "live" } }) {
+      nodes {
+          id
+          name
+          timeRequirements
+          skills
+          project {
+              name
+              logoUrl
+              url
+          }
+      }
+    }
     locales: allLocale(filter: { language: { eq: $locale } }) {
       edges {
         node {
