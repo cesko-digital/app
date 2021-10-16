@@ -20,17 +20,19 @@ interface RolesProps {
 const RolesCountSpan = styled.span`
   color: gray;
 `
-const PAGE_SIZE: number = 15
+const PAGE_SIZE = 15
 
 const Roles: React.FC<RolesProps> = (props) => {
-
-  const [currentPage, setPage] = useState(props.page || 1);
+  const [currentPage, setPage] = useState(props.page || 1)
   const onPageSelected = (index: number) => {
-    setPage(index);
+    setPage(index)
   }
 
-  const allRoles = props.data.roles.nodes 
-  const roles = allRoles.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+  const allRoles = props.data.roles.nodes
+  const roles = allRoles.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  )
   return (
     <Layout
       crumbs={[
@@ -71,9 +73,9 @@ const Roles: React.FC<RolesProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          <RolesPaging 
-            currentPage={currentPage} 
-            totalPages={Math.ceil(allRoles.length/PAGE_SIZE)}
+          <RolesPaging
+            currentPage={currentPage}
+            totalPages={Math.ceil(allRoles.length / PAGE_SIZE)}
             onPageSelected={onPageSelected}
           />
         </SectionContent>

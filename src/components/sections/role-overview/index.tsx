@@ -38,26 +38,29 @@ const RoleItem = ({
   project,
   timeRequirements,
   slug,
-}: Props) =>
-{
-  const link = "roles/" + slug;
-  return <Container>
-    <RoleWrapper key={id}>
-      <div>
-        <a href={link}><Heading3>{name}</Heading3></a>
-        <RoleMetaWrapper>
-          <BodySmall>{timeRequirements}</BodySmall>
-          <BodySmall>{skills.join(", ")}</BodySmall>
-        </RoleMetaWrapper>
-      </div>
-      <RoleRightWrapper>
-        <a href={project.url}>
-          <Body>{project.name}</Body>
-        </a>
-        <RoleLogo src={project.logoUrl} />
-      </RoleRightWrapper>
-    </RoleWrapper>
-  </Container>
+}: Props) => {
+  const link = 'roles/' + slug
+  return (
+    <Container>
+      <RoleWrapper key={id}>
+        <div>
+          <a href={link}>
+            <Heading3>{name}</Heading3>
+          </a>
+          <RoleMetaWrapper>
+            <BodySmall>{timeRequirements}</BodySmall>
+            <BodySmall>{skills.join(', ')}</BodySmall>
+          </RoleMetaWrapper>
+        </div>
+        <RoleRightWrapper>
+          <a href={project.url}>
+            <Body>{project.name}</Body>
+          </a>
+          <RoleLogo src={project.logoUrl} />
+        </RoleRightWrapper>
+      </RoleWrapper>
+    </Container>
+  )
 }
 
 export default RoleItem

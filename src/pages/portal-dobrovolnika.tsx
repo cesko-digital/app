@@ -41,16 +41,16 @@ export const query = graphql`
     }
     roles: allOpportunity(limit: 3, filter: { status: { eq: "live" } }) {
       nodes {
-          id
+        id
+        name
+        timeRequirements
+        skills
+        slug
+        project {
           name
-          timeRequirements
-          skills
-          slug
-          project {
-              name
-              logoUrl
-              url
-          }
+          logoUrl
+          url
+        }
       }
     }
     locales: allLocale(filter: { language: { eq: $locale } }) {
