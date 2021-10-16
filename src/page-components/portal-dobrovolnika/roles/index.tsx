@@ -10,7 +10,28 @@ interface RolesProps {
 }
 
 const Roles: React.FC<RolesProps> = (props) => {
-    return <h1>Portal dobrovolnika role</h1>;
+    const roles = props.data.roles.nodes as any[];
+    return <Layout
+        crumbs={[{ label: 'Portál dobrovolníka' }]}
+        seo={{
+        title: 'Portál dobrovolníka',
+        description: 'Portál dobrovolníka',
+        }}
+    >
+        <Section>
+            <SectionContent>
+                <Typography.Heading1>Portál dobrovolníka - role</Typography.Heading1>
+                <Typography.Body>
+                    Tržiště příležitostí, jak se zapojit v Česko.Digital
+                </Typography.Body>
+            </SectionContent>
+        </Section>
+        <Section>
+            <SectionContent>
+                {roles.map(r => r.name)}
+            </SectionContent>
+        </Section>
+    </Layout>;
 }
 
 export default Roles;
