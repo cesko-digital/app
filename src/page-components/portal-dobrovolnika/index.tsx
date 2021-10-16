@@ -57,10 +57,10 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
 
       <Section>
         <SectionContent>
-          <S.Container>
-            <S.CategoryHeader>
-              <S.Title>Všechny příležitosti</S.Title>
-            </S.CategoryHeader>
+          <S.CategoryHeader>
+            <S.Title>Všechny příležitosti</S.Title>
+          </S.CategoryHeader>
+		  <S.Container>
             <S.CardWrapper>
               <S.CardRow>
                 {sortedOpportunities.slice(1).map((opportunity, index) => (
