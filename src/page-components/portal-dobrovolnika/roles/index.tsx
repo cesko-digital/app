@@ -1,6 +1,8 @@
 import { Layout, SectionContent, Section } from 'components/layout'
+import RolesFilter from 'page-components/portal-dobrovolnika/roles/roles-filter'
 import * as Typography from 'components/typography'
 import React from 'react'
+import styled from 'styled-components'
 import { PortalDobrovolnikaPageQuery } from '../../../generated/graphql-types'
 //import {  } from '../types'
 import * as S from '../styles'
@@ -9,21 +11,29 @@ interface RolesProps {
     data: any;
 }
 
+const RolesCountSpan = styled.span`
+    color: gray;
+`
 const Roles: React.FC<RolesProps> = (props) => {
     const roles = props.data.roles.nodes as any[];
     return <Layout
-        crumbs={[{ label: 'Portál dobrovolníka' }]}
+        crumbs={[
+            { label: 'Portál dobrovolníka', path: '../portal-dobrovolnika' },
+            { label: 'Volné pozice' }
+        ]}
         seo={{
-        title: 'Portál dobrovolníka',
-        description: 'Portál dobrovolníka',
+        title: 'Volné pozice - Portál dobrovolníka',
+        description: 'Volné pozice - Portál dobrovolníka',
         }}
     >
         <Section>
             <SectionContent>
-                <Typography.Heading1>Portál dobrovolníka - role</Typography.Heading1>
-                <Typography.Body>
-                    Tržiště příležitostí, jak se zapojit v Česko.Digital
-                </Typography.Body>
+                <Typography.Heading1>Volné pozice <RolesCountSpan>{roles.length}</RolesCountSpan></Typography.Heading1>
+            </SectionContent>
+        </Section>
+        <Section>
+            <SectionContent>
+                <RolesFilter data=""></RolesFilter>
             </SectionContent>
         </Section>
         <Section>
