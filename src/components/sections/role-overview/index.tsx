@@ -8,6 +8,7 @@ import {
   RoleWrapper,
   Container,
 } from './styles'
+import { Project } from 'templates/event/event-card/project/styles'
 
 interface Props {
   id: string
@@ -15,6 +16,7 @@ interface Props {
   skills: Array<Skills>
   project: Project
   timeRequirements: string
+  slug: string
 }
 
 interface Project {
@@ -29,11 +31,20 @@ interface Skills {
   logoUrl: string
 }
 
-const RoleItem = ({ id, name, skills, project, timeRequirements }: Props) => (
-  <Container>
+const RoleItem = ({
+  id,
+  name,
+  skills,
+  project,
+  timeRequirements,
+  slug,
+}: Props) =>
+{
+  const link = "roles/" + slug;
+  return <Container>
     <RoleWrapper id={id}>
       <div>
-        <Heading3>{name}</Heading3>
+        <Heading3><a href={link}>{name}</a></Heading3>
         <RoleMetaWrapper>
           <BodySmall>{timeRequirements}</BodySmall>
           {skills.map((s) => (
@@ -49,6 +60,6 @@ const RoleItem = ({ id, name, skills, project, timeRequirements }: Props) => (
       </RoleRightWrapper>
     </RoleWrapper>
   </Container>
-)
+}
 
 export default RoleItem

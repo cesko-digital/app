@@ -8,6 +8,7 @@ export const query = graphql`
                 name
                 timeRequirements
                 skills
+                slug
                 project {
                     name
                     logoUrl
