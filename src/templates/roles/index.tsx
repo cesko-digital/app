@@ -77,6 +77,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
         <RolesMainWrapper>
           {sortedRoles.map((r) => (
             <RoleItem
+              key={r.id}
               name={r.name}
               id={r.id}
               skills={r.skills}
