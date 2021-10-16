@@ -94,3 +94,32 @@ export async function generateRolePages({
     })
   })
 }
+
+export async function generateContentPages({
+  graphql,
+  actions: { createPage },
+}: CreatePagesArgs): Promise<void> {
+  const result = await graphql<{ allContent: { nodes: any[] } }>(`
+    query GenerateContentPages {
+      allMarkdownRemark() {
+      edges {
+        node {
+          fields {
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  result?.data?.allContent.nodes.forEach((node: any) => {
+    createPage({
+      path: `/content/${node.slug}`,
+      component: resolve('./src/templates/content/index.tsx'),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}

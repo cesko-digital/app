@@ -44,6 +44,7 @@
     "gatsby-plugin-styled-components": "^4.14.0",
     "gatsby-plugin-typescript": "^3.14.0",
     "gatsby-source-filesystem": "^3.14.0",
+    "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "graphql": "^15.6.1",
     "i18next": "^19.8.7",
