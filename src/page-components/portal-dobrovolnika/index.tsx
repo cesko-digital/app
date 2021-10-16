@@ -10,11 +10,11 @@ import { ButtonWrapper, RolesMainWrapper } from './styles'
 
 interface PortalDobrovolnikaProps {
   data: {
-    roles:  { 
-      nodes: Opportunity[] 
+    roles: {
+      nodes: Opportunity[]
     }
-    events: { 
-      nodes: Event[] 
+    events: {
+      nodes: Event[]
     }
   }
 }
