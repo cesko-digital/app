@@ -58,8 +58,9 @@ const Roles: React.FC<RolesProps> = (props) => {
         <SectionContent>
           {roles.map((r) => (
             <RoleItem
-              name={r.name}
+              key={r.id}
               id={r.id}
+              name={r.name}
               skills={r.skills}
               project={r.project}
               timeRequirements={r.timeRequirements}

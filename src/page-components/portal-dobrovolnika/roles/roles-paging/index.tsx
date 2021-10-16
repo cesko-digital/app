@@ -23,10 +23,10 @@ const AvailableIndex = styled.span`
 
 const RolesPaging: FC<RolesPagingProps> = (props) => {
     
-    function RenderPagingButton(condition: boolean, ix: number | string): React.ReactNode {
+    function RenderPagingButton(condition: boolean, key: string, ix: number | string): React.ReactNode {
         return condition 
-                ? <SelectedIndex>{ix}</SelectedIndex> 
-                : <AvailableIndex><a href="#" data-index={ix} onClick={onPageClick}>{ix}</a></AvailableIndex>;
+                ? <SelectedIndex key={key}>{ix}</SelectedIndex> 
+                : <AvailableIndex key={key}><a href="#" data-index={ix} onClick={onPageClick}>{ix}</a></AvailableIndex>;
     }
         
     const onPageClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
@@ -51,11 +51,11 @@ const RolesPaging: FC<RolesPagingProps> = (props) => {
         links.push(ix)
     }
     return <div>
-        {RenderPagingButton(props.currentPage == 1, "<<")} | {
+        {RenderPagingButton(props.currentPage == 1, "prev", "<<")} | {
         links
-            .map<React.ReactNode>(ix => RenderPagingButton(ix == props.currentPage, ix))
+            .map<React.ReactNode>(ix => RenderPagingButton(ix == props.currentPage, "page" + ix, ix))
             .reduce((prev, curr) => [prev, ' | ', curr])
-        } | {RenderPagingButton(props.currentPage == props.totalPages, ">>")}
+        } | {RenderPagingButton(props.currentPage == props.totalPages, "next", ">>")}
     </div>
 }
 

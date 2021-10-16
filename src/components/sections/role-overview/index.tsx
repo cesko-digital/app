@@ -42,7 +42,7 @@ const RoleItem = ({
 {
   const link = "roles/" + slug;
   return <Container>
-    <RoleWrapper id={id}>
+    <RoleWrapper key={id}>
       <div>
         <a href={link}><Heading3>{name}</Heading3></a>
         <RoleMetaWrapper>
