@@ -22,6 +22,7 @@ interface RolePageProps {
 const RolePage: React.FC<RolePageProps> = (props) => {
   const role = props.data.opportunity
   const sortedRoles = props.data.roles.nodes
+
   return (
     <Layout
       crumbs={[
@@ -131,6 +132,20 @@ export const query = graphql`
         trelloUrl
         url
         silent
+      }
+    }
+    roles: allOpportunity(limit: 3, filter: { status: { eq: "live" } }) {
+      nodes {
+        id
+        name
+        timeRequirements
+        skills
+        slug
+        project {
+          name
+          logoUrl
+          url
+        }
       }
     }
     locales: allLocale(filter: { language: { eq: $locale } }) {
