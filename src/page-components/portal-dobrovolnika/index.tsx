@@ -46,6 +46,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
                 skills={r.skills}
                 project={r.project}
                 timeRequirements={r.timeRequirements}
+                slug={r.slug}
               />
             ))}
           </RolesMainWrapper>
