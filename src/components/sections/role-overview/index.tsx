@@ -13,7 +13,7 @@ interface Props {
   id: string
   name: string
   skills: Array<Skills>
-  project: Array<Project>
+  project: Project
   timeRequirements: string
 }
 
@@ -29,13 +29,7 @@ interface Skills {
   logoUrl: string
 }
 
-const RoleOverview = ({
-  id,
-  name,
-  skills,
-  project,
-  timeRequirements,
-}: Props) => (
+const RoleItem = ({ id, name, skills, project, timeRequirements }: Props) => (
   <Container>
     <RoleWrapper id={id}>
       <div>
@@ -57,4 +51,4 @@ const RoleOverview = ({
   </Container>
 )
 
-export default RoleOverview
+export default RoleItem
