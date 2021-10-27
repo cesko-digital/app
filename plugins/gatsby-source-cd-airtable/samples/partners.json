@@ -5,7 +5,8 @@
             "fields": {
                 "name": "Nadace České spořitelny",
                 "logoUrl": "https://data.cesko.digital/web/sections/partners/nadace-ceske-sporitelny-logo.png",
-                "url": "https://www.nadacecs.cz/"
+                "url": "https://www.nadacecs.cz/",
+                "category": ["financial.main"]
             },
             "createdTime": "2021-03-26T10:33:37.000Z"
         },
@@ -14,7 +15,8 @@
             "fields": {
                 "name": "Livesport",
                 "logoUrl": "https://data.cesko.digital/web/sections/partners/livesport-logo.png",
-                "url": "https://www.livesport.eu/"
+                "url": "https://www.livesport.eu/",
+                "category": ["financial.main"]
             },
             "createdTime": "2021-03-26T10:38:29.000Z"
         },
@@ -23,7 +25,8 @@
             "fields": {
                 "name": "Bakala Foundation",
                 "logoUrl": "https://data.cesko.digital/web/sections/partners/bakala-foundation-logo.png",
-                "url": "https://www.bakalafoundation.org/"
+                "url": "https://www.bakalafoundation.org/",
+                "category": ["financial.main"]
             },
             "createdTime": "2021-04-09T11:50:41.000Z"
         }
