@@ -1,9 +1,18 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  query Partners {
+  query Partners($locale: String!) {
     ...FinancialPartners
     ...ExpertPartners
+    locales: allLocale(filter: { language: { eq: $locale } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
   }
 `
 
