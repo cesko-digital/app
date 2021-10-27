@@ -128,3 +128,12 @@ export const Button = styled.button<StyledButtonProps>`
       $inverted,
     })}
 `
+
+export const ButtonLink = styled.a<StyledButtonProps>`
+  ${({ size, disabled, $inverted }) =>
+    applyButtonStyles({
+      size,
+      disabled,
+      $inverted,
+    })}
+`

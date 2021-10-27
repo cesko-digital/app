@@ -1,7 +1,9 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Input, { InputProps } from '.'
+import Input, { InputProps, StyledInputProps } from '.'
+import { InputLabel } from '..'
+import { TextArea } from './styles'
 
 const story: Meta = {
   title: 'Inputs/Input',
@@ -35,5 +37,23 @@ DarkInvalid.args = {
   dark: true,
   invalid: true,
 }
+
+export const WithLabel: Story<InputProps> = (args: InputProps) => (
+  <>
+    <InputLabel>Label</InputLabel>
+    <Input {...args} />
+  </>
+)
+WithLabel.args = Default.args
+
+export const TextAreaWithLabel: Story<StyledInputProps> = (
+  args: StyledInputProps
+) => (
+  <>
+    <InputLabel>Label</InputLabel>
+    <TextArea {...args} />
+  </>
+)
+TextAreaWithLabel.args = Default.args
 
 export default story

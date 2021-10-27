@@ -5653,6 +5653,52 @@ export type EventSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type ExpertPartnersFragment = (
+  { __typename?: 'Query' }
+  & { submitters: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ), experts: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ), supporters: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ) }
+);
+
+export type FinancialPartnersFragment = (
+  { __typename?: 'Query' }
+  & { main: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ), regular: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ), grants: (
+    { __typename?: 'PartnerConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Partner' }
+      & Pick<Partner, 'name' | 'url' | 'logoUrl'>
+    )> }
+  ) }
+);
+
 export type GenerateProjectPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -5728,6 +5774,15 @@ export type HomepageQuery = (
       ) }
     )> }
   ) }
+);
+
+export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PartnersQuery = (
+  { __typename?: 'Query' }
+  & FinancialPartnersFragment
+  & ExpertPartnersFragment
 );
 
 export type PortalDobrovolnikaPageQueryVariables = Exact<{

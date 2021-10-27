@@ -4,6 +4,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 import * as S from './styles'
 import { Project, Tag } from 'generated/graphql-types'
 import { mapTags } from 'utils/map-tags'
+import { CardRow } from 'components/layout'
 
 export interface ProjectsProps {
   projects: Array<
@@ -38,7 +39,7 @@ const Projects: React.FC<ProjectsProps> = ({
         </S.ShowAll>
       </S.TitleRow>
       <S.CardWrapper>
-        <S.CardRow>
+        <CardRow>
           {projects.map((project, index) => (
             <S.ProjectCard
               key={index}
@@ -50,7 +51,7 @@ const Projects: React.FC<ProjectsProps> = ({
               tags={mapTags(project.tags)}
             />
           ))}
-        </S.CardRow>
+        </CardRow>
       </S.CardWrapper>
     </S.Container>
   )

@@ -9,5 +9,6 @@ export { default as Footer } from './footer'
 export { default as Section } from './section'
 export { default as SectionContent } from './section-content'
 export { default as Breadcrumb } from './breadcrumb'
+export { default as CardRow } from './card-row'
 
 export type { SectionProps, SectionContentProps, LayoutProps, BreadcrumbProps }

@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import ProjectCard from '.'
+import { CardRow } from 'components/layout'
 
 const story: Meta = {
   title: 'Cards/ProjectCard',
@@ -10,8 +11,13 @@ const story: Meta = {
 }
 
 export const Default: Story<ComponentProps<typeof ProjectCard>> = (args) => (
-  <ProjectCard {...args} />
+  <CardRow>
+    {Array.from({ length: 3 }).map((_, i) => (
+      <ProjectCard key={i} {...args} />
+    ))}
+  </CardRow>
 )
+
 Default.args = {
   title: 'Project name',
   description:
