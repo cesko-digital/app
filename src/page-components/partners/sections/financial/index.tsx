@@ -8,7 +8,7 @@ import {
   PartnerLogoInfo,
 } from 'components/logo-list/utils'
 import * as S from '../../styles'
-import { Button } from 'components/buttons/button/styles'
+import { Button, ButtonLink } from 'components/buttons/button/styles'
 import { ButtonSize } from 'components/buttons'
 import BlogCard, { BlogCardProps } from 'components/cards/blog-card'
 import { BlogHeader } from './styles'
@@ -77,9 +77,13 @@ const FinancialPartners: React.FC<FinancialPartnersProps> = ({
           {t('pages.partners.financial.donators.perex')}
         </S.PaddedBody>
         <S.PaddedBody>
-          <Button size={ButtonSize.Normal}>
+          <ButtonLink
+            size={ButtonSize.Normal}
+            href="https://www.darujme.cz/projekt/1203553"
+            target="_blank"
+          >
             {t('pages.partners.financial.donators.button')}
-          </Button>
+          </ButtonLink>
         </S.PaddedBody>
       </SectionContent>
       <SectionContent>
