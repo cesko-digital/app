@@ -5,13 +5,13 @@ import { TextArea } from 'components/inputs/input/styles'
 import { Button } from 'components/buttons/button/styles'
 
 export const Wrapper = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 45px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: 1fr;
-  }
+  } */
 `
 
 export const CenteredTextWrapper = styled.div`
