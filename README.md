@@ -76,6 +76,6 @@ Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
 
 ## Kontakty
 
-**Koordinátoři:** [Tomáš Jeřábek](https://github.com/tjerabek), [Jindřich Oukropec](https://github.com/miiila)
+**Koordinátoři:** [Tomáš Znamenáček](https://github.com/zoul)
 
-**Tech leads:** [Matěj 'Horm' Horák](https://github.com/HormCodes), [Tuan Phung](https://github.com/tuanphungcz)
+**Tech leads:** [Tomáš Znamenáček](https://github.com/zoul)
