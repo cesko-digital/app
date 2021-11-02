@@ -7,6 +7,7 @@ export const CoverImageWrapper = styled.div`
   border-radius: 8px;
   position: relative;
   max-height: 560px;
+  margin-top: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin: 24px -20px -20px -20px;
@@ -19,21 +20,31 @@ export const CoverImage = styled.img`
   filter: grayscale(100%);
 `
 
-export const RoleContactCard = styled.div`
-  width: 375px;
-  margin-left: 16px;
-  border-radius: 8px;
-  padding: 0 24px 24px;
-  background: #f9f9f9;
-`
-
 export const RoleHeader = styled.div`
   display: flex;
   margin-top: 50px;
   a {
     text-decoration: none;
   }
+
+  flex-direction: row;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-direction: column;
+  }
 `
+export const RoleContactCard = styled.div`
+  width: 350px;
+  margin-left: 32px;
+  border-radius: 8px;
+  padding: 0 24px 24px;
+  background: #f9f9f9;
+  flex-shrink: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    width: auto;
+    margin: 0;
+  }
+`
+
 export const OwnerWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -70,7 +81,7 @@ export const RoleMetaRow = styled.div`
 `
 export const RoleDescription = styled.div`
   padding: 24px 0;
-  max-width: 830px;
+  flex-grow: 1;
 `
 
 export const RoleProjectImg = styled.img`

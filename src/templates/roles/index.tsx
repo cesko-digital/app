@@ -39,10 +39,13 @@ const RolePage: React.FC<RolePageProps> = (props) => {
       <Section>
         <SectionContent>
           <Heading1>{role.name}</Heading1>
-          <S.RoleHeader>
-            <S.CoverImageWrapper>
+          <S.CoverImageWrapper>
               <S.CoverImage src={role.project.coverUrl} loading="lazy" />
-            </S.CoverImageWrapper>
+          </S.CoverImageWrapper>
+          <S.RoleHeader>
+            <S.RoleDescription>
+              <Body>{role.summary}</Body>
+            </S.RoleDescription>
             <S.RoleContactCard>
               <S.RoleMetaRow>
                 <S.RoleProjectImg src={role.project.logoUrl} />
@@ -69,9 +72,6 @@ const RolePage: React.FC<RolePageProps> = (props) => {
               </a>
             </S.RoleContactCard>
           </S.RoleHeader>
-          <S.RoleDescription>
-            <Body>{role.summary}</Body>
-          </S.RoleDescription>
         </SectionContent>
       </Section>
       <Section>
