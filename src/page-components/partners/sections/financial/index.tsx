@@ -8,7 +8,7 @@ import {
   PartnerLogoInfo,
 } from 'components/logo-list/utils'
 import * as S from '../../styles'
-import { Button, ButtonLink } from 'components/buttons/button/styles'
+import { ButtonLink } from 'components/buttons/button/styles'
 import { ButtonSize } from 'components/buttons'
 import BlogCard, { BlogCardProps } from 'components/cards/blog-card'
 import { BlogHeader } from './styles'
