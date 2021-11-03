@@ -40,7 +40,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
         <SectionContent>
           <Heading1>{role.name}</Heading1>
           <S.CoverImageWrapper>
-              <S.CoverImage src={role.project.coverUrl} loading="lazy" />
+            <S.CoverImage src={role.project.coverUrl} loading="lazy" />
           </S.CoverImageWrapper>
           <S.RoleHeader>
             <S.RoleDescription>
