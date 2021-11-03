@@ -1,4 +1,5 @@
 ![cesko.digital](cesko-digital_logo.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcesko-digital%2Fweb.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcesko-digital%2Fweb?ref=badge_shield)
 
 # Web Česko.Digital
 
@@ -73,6 +74,9 @@ Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTIN
 ## Licence
 
 Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcesko-digital%2Fweb.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcesko-digital%2Fweb?ref=badge_large)
 
 ## Kontakty
 
