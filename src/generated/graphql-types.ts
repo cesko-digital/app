@@ -795,8 +795,8 @@ export type Partner = Node & {
   rowId: Maybe<Scalars['String']>;
   name: Maybe<Scalars['String']>;
   logoUrl: Maybe<Scalars['String']>;
-  url: Maybe<Scalars['String']>;
   category: Maybe<Array<Maybe<Scalars['String']>>>;
+  url: Maybe<Scalars['String']>;
 };
 
 export type Opportunity = Node & {
@@ -1231,8 +1231,8 @@ export type QueryPartnerArgs = {
   rowId: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   logoUrl: Maybe<StringQueryOperatorInput>;
-  url: Maybe<StringQueryOperatorInput>;
   category: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -4637,8 +4637,8 @@ export enum PartnerFieldsEnum {
   rowId = 'rowId',
   name = 'name',
   logoUrl = 'logoUrl',
-  url = 'url',
-  category = 'category'
+  category = 'category',
+  url = 'url'
 }
 
 export type PartnerGroupConnection = {
@@ -4691,8 +4691,8 @@ export type PartnerFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   logoUrl: Maybe<StringQueryOperatorInput>;
-  url: Maybe<StringQueryOperatorInput>;
   category: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
 };
 
 export type PartnerSortInput = {
@@ -5741,6 +5741,25 @@ export type GenerateOpportunityPagesQuery = (
   ) }
 );
 
+export type NotFoundQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type NotFoundQuery = (
+  { __typename?: 'Query' }
+  & { locales: (
+    { __typename?: 'LocaleConnection' }
+    & { edges: Array<(
+      { __typename?: 'LocaleEdge' }
+      & { node: (
+        { __typename?: 'Locale' }
+        & Pick<Locale, 'ns' | 'data' | 'language'>
+      ) }
+    )> }
+  ) }
+);
+
 export type HomepageQueryVariables = Exact<{
   locale: Scalars['String'];
 }>;
@@ -5776,11 +5795,23 @@ export type HomepageQuery = (
   ) }
 );
 
-export type PartnersQueryVariables = Exact<{ [key: string]: never; }>;
+export type PartnersQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
 
 
 export type PartnersQuery = (
   { __typename?: 'Query' }
+  & { locales: (
+    { __typename?: 'LocaleConnection' }
+    & { edges: Array<(
+      { __typename?: 'LocaleEdge' }
+      & { node: (
+        { __typename?: 'Locale' }
+        & Pick<Locale, 'ns' | 'data' | 'language'>
+      ) }
+    )> }
+  ) }
   & FinancialPartnersFragment
   & ExpertPartnersFragment
 );

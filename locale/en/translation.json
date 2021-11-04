@@ -1,0 +1,197 @@
+{
+    "cards": {
+        "blog": {},
+        "project": {
+            "coverAriaLabel": "Cover photo of the project",
+            "logoAriaLabel": "Logo of the project",
+            "projectDetail": "Project detail"
+        }
+    },
+    "components": {
+        "cards": {
+            "newProject": {
+                "description": "We develop ideas that help improve life in the Czech Republic through IT, have no commercial alternative and are sustainable. Do you have such a project, or are you working on it but lack expert volunteers?",
+                "linkText": "Submit project",
+                "title": "I have project idea"
+            },
+            "panelVolunteer": {
+                "description": "Developer? Projectionist? Marketer? Projects work best because of the diversity of teams and the sharing of experiences. If you have the desire and the time, whether an hour or ten a week, join in.",
+                "linkText": "Sign Up to Slack",
+                "title": "I want to be a volunteer"
+            }
+        },
+        "sections": {
+            "footer": {
+                "footNote": "Česko.Digital © 2021, This site uses cookies ¯\\_(ツ)_/¯",
+                "newsletter": {
+                    "emailRequiredError": "Zadej, prosím, platnou e-mailovou adresu.",
+                    "inputError": "Please enter a valid email address. ",
+                    "inputPlaceholder": "Enter e-mail",
+                    "invalidEmailError": "Please enter a valid email address. ",
+                    "note": "Want to know what we're working on? Once a month, we'll recap what's been happening in the community and what's coming up.",
+                    "serverError": "Something went wrong, please try again.",
+                    "subscribe": "Subscribe",
+                    "subscribed": "You're already with us! We have successfully registered your email to our newsletter.",
+                    "title": "Newsletter"
+                },
+                "online": {
+                    "facebook": "Facebook",
+                    "github": "GitHub",
+                    "linkedin": "LinkedIn",
+                    "slack": "Slack",
+                    "title": "Online",
+                    "twitter": "Twitter"
+                },
+                "pageLinks": {
+                    "blog": "Blog",
+                    "loginToSlack": "Login to Slack",
+                    "logo": "Logo",
+                    "mediaContact": "Media contact",
+                    "projects": "Projects",
+                    "submitProject": "Submit project",
+                    "supportUs": "Contribute",
+                    "title": "Česko.Digital"
+                }
+            },
+            "projects": {
+                "otherProjects": "Other projects",
+                "ourProjects": "Our projects",
+                "showAll": "See all projects"
+            }
+        }
+    },
+    "header": {
+        "czech": "Czech",
+        "english": "English",
+        "partners": "Partners",
+        "projects": "Projects",
+        "signUp": "Sign Up",
+        "supportUs": "Contribute"
+    },
+    "metadata": {
+        "description": "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live.",
+        "title": "Česko.Digital - changing Czechia for the better through ones and zeroes"
+    },
+    "pages": {
+        "homepage": {
+            "sections": {
+                "numbers": {
+                    "first": {
+                        "subtitle": "Volunteers",
+                        "value": "4000+"
+                    },
+                    "fourth": {
+                        "subtitle": "Ongoing projects",
+                        "value": "16+"
+                    },
+                    "second": {
+                        "subtitle": "Finished projects",
+                        "value": "8"
+                    },
+                    "third": {
+                        "subtitle": "People used our projects",
+                        "value": "4 000 000+"
+                    }
+                },
+                "ourValues": {
+                    "efficiency": {
+                        "perex": "We do not waste people’s time or financial resources. We focus on quick solutions to real problems using technology.",
+                        "title": "Efficiency"
+                    },
+                    "main": {
+                        "perex": "We do not waste people’s time or financial resources. We focus on quick solutions to real problems using technology.",
+                        "title": "Our Values"
+                    },
+                    "openness": {
+                        "perex": "We take pride in open communication and access to information and data. We speak up and ask when we do not know. With honesty and respect.",
+                        "title": "Openness"
+                    },
+                    "participatory": {
+                        "perex": "It’s easy for everyone to get involved regardless of location or time because of the willingness and help of others in the community.",
+                        "title": "Collaboration"
+                    },
+                    "professionalism": {
+                        "perex": "We are professionals  that are learning from professionals, inspiring each other beyond our community. We are clear on our expectations from each other.",
+                        "title": "Professionalism"
+                    },
+                    "technologies": {},
+                    "users": {
+                        "perex": "We use technology, as a mean not as an objective, to design solutions for real end-user needs.",
+                        "title": "Users in the main role"
+                    }
+                },
+                "partners": {
+                    "title": "Partners"
+                }
+            },
+            "subtitle": "We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make Czechia a better place to live.",
+            "title": "Changing Czechia for the better through ones and zeroes",
+            "whatWeDo": "What we do"
+        },
+        "partners": {
+            "becomePartner": {},
+            "blog": {},
+            "cooperations": {
+                "heading": {}
+            },
+            "experts": {
+                "heading": {},
+                "regularPartners": {},
+                "submitters": {},
+                "supporters": {}
+            },
+            "financial": {
+                "donators": {},
+                "grants": {},
+                "heading": {},
+                "mainPartners": {},
+                "regularPartners": {}
+            },
+            "form": {
+                "button": {},
+                "email": {},
+                "message": {},
+                "name": {}
+            },
+            "metadata": {
+                "title": "Partners"
+            },
+            "navigation": {
+                "partners": "Partners"
+            },
+            "tabs": {
+                "cooperations": {},
+                "experts": {},
+                "financial": {}
+            }
+        },
+        "project": {
+            "about": {
+                "contribute": {
+                    "buttonText": "Join Slack",
+                    "note": "Do you have any questions? Read",
+                    "noteLink": "how we operate",
+                    "title": "Contribute"
+                },
+                "title": "About Project"
+            },
+            "projectCard": {
+                "coordinators": "Project Coordinators",
+                "links": "Links"
+            }
+        },
+        "projects": {
+            "description": "Thanks to expert volunteering, we can achieve great things and change life in the Czech Republic for the better. See how we do it.",
+            "metadata": {
+                "description": "Thanks to expert volunteering, we can achieve great things and change life in the Czech Republic for the better. See how we do it.",
+                "title": "Projects"
+            },
+            "navigation": {
+                "projects": "Projects"
+            },
+            "ongoing": "Ongoing Projects",
+            "title": "Česko.Digital Projects",
+            "title copy": "Česko.Digital Projects"
+        }
+    }
+}
