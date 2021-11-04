@@ -89,7 +89,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
               />
             ))}
           </RolesMainWrapper>
-        </SectionContent>  
+        </SectionContent>
       </Section>
     </Layout>
   )

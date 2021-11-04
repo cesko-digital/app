@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading3, BodySmall, Body } from 'components/typography'
+import { BodySmall, Body } from 'components/typography'
 import * as S from './styles'
 
 import { Project } from 'templates/event/event-card/project/styles'
