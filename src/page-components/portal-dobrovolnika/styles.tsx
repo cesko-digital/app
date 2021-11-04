@@ -56,6 +56,4 @@ export const ButtonWrapper = styled.div`
 
 export const RolesMainWrapper = styled.div`
   margin-top: 18px;
-  padding: ${({ theme }) => theme.space.outer}px
-    ${({ theme }) => theme.space.outer}px;
 `

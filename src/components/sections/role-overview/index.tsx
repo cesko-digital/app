@@ -33,7 +33,7 @@ const RoleItem: React.FC<Props> = ({
       <S.RoleWrapper key={id}>
         <div>
           <a href={link}>
-            <Heading3>{name}</Heading3>
+            <S.RoleHeading>{name}</S.RoleHeading>
           </a>
           <S.RoleMetaWrapper>
             <BodySmall>{timeRequirements}</BodySmall>

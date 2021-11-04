@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { heading4Styles } from 'components/typography'
 
 export const Container = styled.div`
   max-width: ${({ theme }) => theme.contentSize}px;
@@ -13,6 +14,12 @@ export const RoleWrapper = styled.div`
   a {
     text-decoration: none;
   }
+`
+
+export const RoleHeading = styled.div`
+  ${heading4Styles}
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.darkGrey};
 `
 
 export const RoleMetaWrapper = styled.div`

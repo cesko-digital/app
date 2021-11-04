@@ -75,19 +75,21 @@ const RolePage: React.FC<RolePageProps> = (props) => {
         </SectionContent>
       </Section>
       <Section>
-        <RolesMainWrapper>
-          {sortedRoles.map((r) => (
-            <RoleItem
-              key={r.id}
-              name={r.name}
-              id={r.id}
-              skills={r.skills}
-              project={r.project}
-              timeRequirements={r.timeRequirements}
-              slug={r.slug}
-            />
-          ))}
-        </RolesMainWrapper>
+        <SectionContent>
+          <RolesMainWrapper>
+            {sortedRoles.map((r) => (
+              <RoleItem
+                key={r.id}
+                name={r.name}
+                id={r.id}
+                skills={r.skills}
+                project={r.project}
+                timeRequirements={r.timeRequirements}
+                slug={r.slug}
+              />
+            ))}
+          </RolesMainWrapper>
+        </SectionContent>  
       </Section>
     </Layout>
   )
