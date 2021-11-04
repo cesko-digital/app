@@ -15,8 +15,8 @@ const NotFoundPage: React.FC = () => (
 )
 
 export const query = graphql`
-  query NotFound($locale: String!) {
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+  query NotFound {
+    locales: allLocale(filter: { language: { eq: "cs" } }) {
       edges {
         node {
           ns
