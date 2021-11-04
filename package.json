@@ -18,8 +18,8 @@
     "lint:fix": "eslint --fix \"./{api,src,stories,scripts}/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",
     "storybook": "NODE_ENV=production start-storybook -s ./static -p 6060 -c .storybook watch-css",
-    "storybook:build": "yarn translations:mock && yarn build && STORYBOOK=true NODE_ENV=production build-storybook -s ./static",
-    "cy:start": "yarn translations:mock && USE_MOCKS=true yarn develop",
+    "storybook:build": "yarn build && STORYBOOK=true NODE_ENV=production build-storybook -s ./static",
+    "cy:start": "USE_MOCKS=true yarn develop",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cy:ci": "start-server-and-test cy:start http://localhost:8000 cy:run"
