@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
 import { Layout, Section, SectionContent } from 'components/layout'
 
@@ -12,5 +13,19 @@ const NotFoundPage: React.FC = () => (
     </Section>
   </Layout>
 )
+
+export const query = graphql`
+  query NotFound($locale: String!) {
+    locales: allLocale(filter: { language: { eq: $locale } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`
 
 export default NotFoundPage
