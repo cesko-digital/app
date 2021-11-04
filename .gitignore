@@ -81,8 +81,5 @@ yarn-error.log
 cypress/videos
 cypress/screenshots
 
-# Translations are generated from airtable
-locale/**/translation.json
-
 # Vercel
 .vercel
