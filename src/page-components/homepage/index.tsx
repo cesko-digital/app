@@ -18,7 +18,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
   const partners = data.partners.nodes
 
   const isCzech = locale === 'cs'
-  const isEnglish = locale === 'en'
 
   return (
     <Layout>
@@ -43,8 +42,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
           </SectionContent>
         </Section>
       )}
-
-      {isEnglish && <div>Test</div>}
 
       <Section backgroundColor={theme.colors.pebble}>
         <SectionContent>

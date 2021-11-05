@@ -413,10 +413,17 @@ export type SitePluginPluginOptionsPages = {
 export type SitePluginPluginOptionsTranslations = {
   __typename?: 'SitePluginPluginOptionsTranslations';
   cs: Maybe<SitePluginPluginOptionsTranslationsCs>;
+  en: Maybe<SitePluginPluginOptionsTranslationsEn>;
 };
 
 export type SitePluginPluginOptionsTranslationsCs = {
   __typename?: 'SitePluginPluginOptionsTranslationsCs';
+  urls_projects: Maybe<Scalars['String']>;
+  urls_page_2: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsTranslationsEn = {
+  __typename?: 'SitePluginPluginOptionsTranslationsEn';
   urls_projects: Maybe<Scalars['String']>;
   urls_page_2: Maybe<Scalars['String']>;
 };
@@ -2742,9 +2749,15 @@ export type SitePluginPluginOptionsPagesFilterInput = {
 
 export type SitePluginPluginOptionsTranslationsFilterInput = {
   cs: Maybe<SitePluginPluginOptionsTranslationsCsFilterInput>;
+  en: Maybe<SitePluginPluginOptionsTranslationsEnFilterInput>;
 };
 
 export type SitePluginPluginOptionsTranslationsCsFilterInput = {
+  urls_projects: Maybe<StringQueryOperatorInput>;
+  urls_page_2: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsTranslationsEnFilterInput = {
   urls_projects: Maybe<StringQueryOperatorInput>;
   urls_page_2: Maybe<StringQueryOperatorInput>;
 };
@@ -3204,6 +3217,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___prefix = 'pluginOptions___prefix',
   pluginOptions___translations___cs___urls_projects = 'pluginOptions___translations___cs___urls_projects',
   pluginOptions___translations___cs___urls_page_2 = 'pluginOptions___translations___cs___urls_page_2',
+  pluginOptions___translations___en___urls_projects = 'pluginOptions___translations___en___urls_projects',
+  pluginOptions___translations___en___urls_page_2 = 'pluginOptions___translations___en___urls_page_2',
   pluginOptions___airtableApiKey = 'pluginOptions___airtableApiKey',
   pluginOptions___airtableBaseUrl = 'pluginOptions___airtableBaseUrl',
   pluginOptions___id = 'pluginOptions___id',

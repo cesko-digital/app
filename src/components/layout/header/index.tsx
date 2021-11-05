@@ -20,6 +20,7 @@ const Header: React.FC = () => {
   const { locale } = useContext(TranslateUrlsContext)
 
   const isCzech = locale === 'cs'
+  const isEnglish = locale === 'en'
 
   const EN_MENU = [
     {
@@ -30,11 +31,6 @@ const Header: React.FC = () => {
   ]
 
   const CS_MENU = [
-    {
-      link: '/en',
-      label: 'English',
-      locale: 'en',
-    },
     {
       link: '/projects',
       label: t('header.projects'),
@@ -54,6 +50,7 @@ const Header: React.FC = () => {
   ]
 
   const MENU = isCzech ? CS_MENU : EN_MENU
+  const EN_PATH = '/en'
 
   const signUpText = t('header.signUp')
 
@@ -76,17 +73,58 @@ const Header: React.FC = () => {
               </Link>
             ))}
 
-            <S.HeaderButton to={LINKS.joinUs} size={ButtonSize.Normal} inverted>
-              {signUpText}
-            </S.HeaderButton>
+            {isCzech && (
+              <S.HeaderButton
+                to={LINKS.joinUs}
+                size={ButtonSize.Normal}
+                inverted
+              >
+                {signUpText}
+              </S.HeaderButton>
+            )}
+
+            {isCzech && (
+              <Link
+                key={t('header.english')}
+                to={EN_PATH}
+                size={ButtonSize.Small}
+                locale="en"
+              >
+                {t('header.english')}
+              </Link>
+            )}
           </S.DesktopLinksContainer>
           <S.MobileLinksContainer>
-            <ButtonAsLink to={LINKS.joinUs} size={ButtonSize.Small} inverted>
-              {signUpText}
-            </ButtonAsLink>
-            <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-            </S.IconButton>
+            {isCzech && (
+              <Link
+                key={t('header.english')}
+                to={EN_PATH}
+                size={ButtonSize.Small}
+                locale="en"
+              >
+                {t('header.english')}
+              </Link>
+            )}
+            {isCzech && (
+              <ButtonAsLink to={LINKS.joinUs} size={ButtonSize.Small} inverted>
+                {signUpText}
+              </ButtonAsLink>
+            )}
+            {isCzech && (
+              <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              </S.IconButton>
+            )}
+            {isEnglish && (
+              <Link
+                key={t('header.czech')}
+                to="/"
+                size={ButtonSize.Small}
+                locale="cs"
+              >
+                {t('header.czech')}
+              </Link>
+            )}
           </S.MobileLinksContainer>
         </S.Container>
 
