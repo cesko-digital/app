@@ -22,34 +22,29 @@ const Header: React.FC = () => {
   const isCzech = locale === 'cs'
   const isEnglish = locale === 'en'
 
-  const EN_MENU = [
-    {
-      link: '/',
-      label: 'Czech',
-      locale: 'cs',
-    },
-  ]
-
-  const CS_MENU = [
+  const MENU = [
     {
       link: '/projects',
       label: t('header.projects'),
+      locale: 'cs',
     },
     {
       link: '/partners',
       label: t('header.partners'),
+      locale: 'cs',
     },
     {
       link: 'https://blog.cesko.digital',
       label: 'Blog',
+      locale: 'cs',
     },
     {
       link: LINKS.supportUs,
       label: t('header.supportUs'),
+      locale: 'cs',
     },
   ]
 
-  const MENU = isCzech ? CS_MENU : EN_MENU
   const EN_PATH = '/en'
 
   const signUpText = t('header.signUp')
@@ -62,16 +57,17 @@ const Header: React.FC = () => {
             <S.Logo />
           </TranslatedLink>
           <S.DesktopLinksContainer>
-            {MENU.map(({ link, label, locale }) => (
-              <Link
-                key={label}
-                to={link}
-                size={ButtonSize.Small}
-                locale={locale}
-              >
-                {label}
-              </Link>
-            ))}
+            {isCzech &&
+              MENU.map(({ link, label, locale }) => (
+                <Link
+                  key={label}
+                  to={link}
+                  size={ButtonSize.Small}
+                  locale={locale}
+                >
+                  {label}
+                </Link>
+              ))}
 
             {isCzech && (
               <S.HeaderButton
@@ -85,7 +81,7 @@ const Header: React.FC = () => {
 
             {isCzech && (
               <Link
-                key={t('header.english')}
+                key={t('header.english') as string}
                 to={EN_PATH}
                 size={ButtonSize.Small}
                 locale="en"
@@ -93,11 +89,21 @@ const Header: React.FC = () => {
                 {t('header.english')}
               </Link>
             )}
+            {isEnglish && (
+              <Link
+                key={t('header.czech') as string}
+                to="/"
+                size={ButtonSize.Small}
+                locale="cs"
+              >
+                {t('header.czech')}
+              </Link>
+            )}
           </S.DesktopLinksContainer>
           <S.MobileLinksContainer>
             {isCzech && (
               <Link
-                key={t('header.english')}
+                key={t('header.english') as string}
                 to={EN_PATH}
                 size={ButtonSize.Small}
                 locale="en"
@@ -117,7 +123,7 @@ const Header: React.FC = () => {
             )}
             {isEnglish && (
               <Link
-                key={t('header.czech')}
+                key={t('header.czech') as string}
                 to="/"
                 size={ButtonSize.Small}
                 locale="cs"
