@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Section from '../section'
 import SectionContent from '../section-content'
 import { ButtonAsLink, Link } from 'components/links'
 import { ButtonSize } from 'components/buttons'
 import { CloseIcon, MenuIcon } from 'components/icons'
-import { TranslatedLink } from 'gatsby-plugin-translate-urls'
+import {
+  TranslatedLink,
+  TranslateUrlsContext,
+} from 'gatsby-plugin-translate-urls'
 import { LINKS } from 'utils/constants'
 
 import * as S from './styles'
@@ -14,7 +17,24 @@ const Header: React.FC = () => {
   const { t } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const links = [
+  const { locale } = useContext(TranslateUrlsContext)
+
+  const isCzech = locale === 'cs'
+
+  const EN_MENU = [
+    {
+      link: '/',
+      label: 'Czech',
+      locale: 'cs',
+    },
+  ]
+
+  const CS_MENU = [
+    {
+      link: '/en',
+      label: 'English',
+      locale: 'en',
+    },
     {
       link: '/projects',
       label: t('header.projects'),
@@ -33,6 +53,8 @@ const Header: React.FC = () => {
     },
   ]
 
+  const MENU = isCzech ? CS_MENU : EN_MENU
+
   const signUpText = t('header.signUp')
 
   return (
@@ -43,8 +65,13 @@ const Header: React.FC = () => {
             <S.Logo />
           </TranslatedLink>
           <S.DesktopLinksContainer>
-            {links.map(({ link, label }) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
+            {MENU.map(({ link, label, locale }) => (
+              <Link
+                key={label}
+                to={link}
+                size={ButtonSize.Small}
+                locale={locale}
+              >
                 {label}
               </Link>
             ))}
@@ -65,8 +92,13 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <S.MobileMenu>
-            {links.map(({ link, label }) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
+            {MENU.map(({ link, label, locale }) => (
+              <Link
+                key={label}
+                to={link}
+                size={ButtonSize.Small}
+                locale={locale}
+              >
                 {label}
               </Link>
             ))}
