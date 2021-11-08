@@ -7,6 +7,7 @@ import * as S from './styles'
 import RoleItem from '../../components/sections/role-overview'
 import { Button } from '../../components/buttons'
 import { ButtonWrapper, RolesMainWrapper } from './styles'
+import { CardRow } from 'components/layout'
 
 interface PortalDobrovolnikaProps {
   data: {
