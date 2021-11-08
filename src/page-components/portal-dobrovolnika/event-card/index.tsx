@@ -43,7 +43,7 @@ const EventCard: FC<EventCardProps> = ({
           ))}
         </S.TagList>
         <S.Description>{description}</S.Description>
-        <Link to={link}>Detail příležitosti</Link>
+        <Link to={link}>Detail akce</Link>
       </S.Content>
     </S.Card>
   )

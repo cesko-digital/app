@@ -62,7 +62,7 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
         <SectionContent>
           <S.Container>
             <S.CategoryHeader>
-              <S.Title>Další příležitosti</S.Title>
+              <S.Title>Další akce</S.Title>
               <Link to="/portal-dobrovolnika">Všechny příležitosti</Link>
             </S.CategoryHeader>
             <S.CardWrapper>

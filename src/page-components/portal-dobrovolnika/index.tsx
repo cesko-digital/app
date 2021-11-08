@@ -66,7 +66,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       <Section>
         <SectionContent>
           <S.CategoryHeader>
-            <S.Title>Všechny příležitosti</S.Title>
+            <S.Title>Nejbližší akce</S.Title>
           </S.CategoryHeader>
           <S.Container>
             <S.CardWrapper>

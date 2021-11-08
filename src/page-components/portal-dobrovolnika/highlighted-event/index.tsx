@@ -41,7 +41,7 @@ const HighlightedEvent: React.FC<Props> = ({
               {actionTitle}
             </ButtonAsLink>
           )}
-          <S.DetailLink to={link}>Detail příležitosti</S.DetailLink>
+          <S.DetailLink to={link}>Detail akce</S.DetailLink>
         </S.ProjectInfo>
       </S.Content>
     </S.Container>
