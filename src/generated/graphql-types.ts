@@ -5727,10 +5727,10 @@ export type GenerateEventPagesQuery = (
   ) }
 );
 
-export type GenerateOpportunityPagesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GenerateRolePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GenerateOpportunityPagesQuery = (
+export type GenerateRolePagesQuery = (
   { __typename?: 'Query' }
   & { allOpportunity: (
     { __typename?: 'OpportunityConnection' }
@@ -5741,9 +5741,7 @@ export type GenerateOpportunityPagesQuery = (
   ) }
 );
 
-export type NotFoundQueryVariables = Exact<{
-  locale: Scalars['String'];
-}>;
+export type NotFoundQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type NotFoundQuery = (
@@ -5839,6 +5837,16 @@ export type PortalDobrovolnikaPageQuery = (
         & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
       )>>> }
     )> }
+  ), roles: (
+    { __typename?: 'OpportunityConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Opportunity' }
+      & Pick<Opportunity, 'id' | 'name' | 'timeRequirements' | 'skills' | 'slug'>
+      & { project: Maybe<(
+        { __typename?: 'Project' }
+        & Pick<Project, 'name' | 'logoUrl' | 'url'>
+      )> }
+    )> }
   ), locales: (
     { __typename?: 'LocaleConnection' }
     & { edges: Array<(
@@ -5874,6 +5882,35 @@ export type ProjectsPageQuery = (
         { __typename?: 'Tag' }
         & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
       )>>> }
+    )> }
+  ), locales: (
+    { __typename?: 'LocaleConnection' }
+    & { edges: Array<(
+      { __typename?: 'LocaleEdge' }
+      & { node: (
+        { __typename?: 'Locale' }
+        & Pick<Locale, 'ns' | 'data' | 'language'>
+      ) }
+    )> }
+  ) }
+);
+
+export type OpportunitiesQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type OpportunitiesQuery = (
+  { __typename?: 'Query' }
+  & { roles: (
+    { __typename?: 'OpportunityConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Opportunity' }
+      & Pick<Opportunity, 'id' | 'name' | 'timeRequirements' | 'skills' | 'slug'>
+      & { project: Maybe<(
+        { __typename?: 'Project' }
+        & Pick<Project, 'name' | 'logoUrl' | 'url'>
+      )> }
     )> }
   ), locales: (
     { __typename?: 'LocaleConnection' }
@@ -5964,6 +6001,50 @@ export type ProjectPageQuery = (
         { __typename?: 'Tag' }
         & Pick<Tag, 'name' | 'slug'>
       )>>> }
+    )> }
+  ), locales: (
+    { __typename?: 'LocaleConnection' }
+    & { edges: Array<(
+      { __typename?: 'LocaleEdge' }
+      & { node: (
+        { __typename?: 'Locale' }
+        & Pick<Locale, 'ns' | 'data' | 'language'>
+      ) }
+    )> }
+  ) }
+);
+
+export type RolePageQueryVariables = Exact<{
+  id: Scalars['String'];
+  locale: Scalars['String'];
+}>;
+
+
+export type RolePageQuery = (
+  { __typename?: 'Query' }
+  & { opportunity: Maybe<(
+    { __typename?: 'Opportunity' }
+    & Pick<Opportunity, 'id' | 'name' | 'slug' | 'summary' | 'timeRequirements' | 'contactUrl' | 'juniorFriendly'>
+    & { owner: Maybe<(
+      { __typename?: 'Volunteer' }
+      & Pick<Volunteer, 'email' | 'name' | 'profilePictureUrl'>
+    )>, project: Maybe<(
+      { __typename?: 'Project' }
+      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'lang' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url' | 'silent'>
+      & { tags: Maybe<Array<Maybe<(
+        { __typename?: 'Tag' }
+        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'lang' | 'id'>
+      )>>> }
+    )> }
+  )>, roles: (
+    { __typename?: 'OpportunityConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Opportunity' }
+      & Pick<Opportunity, 'id' | 'name' | 'timeRequirements' | 'skills' | 'slug'>
+      & { project: Maybe<(
+        { __typename?: 'Project' }
+        & Pick<Project, 'name' | 'logoUrl' | 'url'>
+      )> }
     )> }
   ), locales: (
     { __typename?: 'LocaleConnection' }

@@ -68,12 +68,12 @@ export async function generateEventPages({
   })
 }
 
-export async function generateOpportunityPages({
+export async function generateRolePages({
   graphql,
   actions: { createPage },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allOpportunity: { nodes: Opportunity[] } }>(`
-    query GenerateOpportunityPages {
+    query GenerateRolePages {
       allOpportunity(filter: { status: { in: ["live", "unlisted"] } }) {
         nodes {
           id
@@ -86,8 +86,8 @@ export async function generateOpportunityPages({
 
   result?.data?.allOpportunity.nodes.forEach((node: Opportunity) => {
     createPage({
-      path: `/opportunities/${node.slug}`,
-      component: resolve('./src/templates/opportunity/index.tsx'),
+      path: `/roles/${node.slug}`,
+      component: resolve('./src/templates/roles/index.tsx'),
       context: {
         id: node.id,
       },

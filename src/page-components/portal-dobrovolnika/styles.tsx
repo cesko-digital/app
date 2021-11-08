@@ -34,3 +34,15 @@ export const ProjectCard = styled(EventCard)`
     min-width: 264px;
   }
 `
+
+export const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-top: 22px;
+  a {
+    text-decoration: none;
+  }
+`
+
+export const RolesMainWrapper = styled.div`
+  margin-top: 18px;
+`

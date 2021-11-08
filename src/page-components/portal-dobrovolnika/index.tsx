@@ -1,19 +1,27 @@
 import { Layout, SectionContent, Section } from 'components/layout'
 import * as Typography from 'components/typography'
 import React from 'react'
-import { PortalDobrovolnikaPageQuery } from '../../generated/graphql-types'
+import { Event, Opportunity } from 'generated/graphql-types'
 import { PortalEvent } from './types'
 import * as S from './styles'
-import HighlightedEvent from './highlighted-event'
-import { CardRow } from 'components/layout'
+import RoleItem from '../../components/sections/role-overview'
+import { Button } from '../../components/buttons'
+import { ButtonWrapper, RolesMainWrapper } from './styles'
 
 interface PortalDobrovolnikaProps {
-  data: PortalDobrovolnikaPageQuery
+  data: {
+    roles: {
+      nodes: Opportunity[]
+    }
+    events: {
+      nodes: Event[]
+    }
+  }
 }
 
 const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
   const sortedOpportunities = sortOpportunities(props.data.events.nodes)
-  const highlightedOpportunity = sortedOpportunities[0]
+  const sortedRoles = props.data.roles.nodes as Opportunity[]
 
   return (
     <Layout
@@ -33,29 +41,27 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          <HighlightedEvent
-            cover={
-              highlightedOpportunity.coverUrl
-                ? highlightedOpportunity.coverUrl
-                : highlightedOpportunity.project.coverUrl
-            }
-            logo={highlightedOpportunity.project.logoUrl}
-            description={highlightedOpportunity.summary}
-            title={highlightedOpportunity.name}
-            tags={
-              highlightedOpportunity.tags
-                ? highlightedOpportunity.tags.map((tag) => {
-                    return tag.name
-                  })
-                : []
-            }
-            link={`/events/${highlightedOpportunity.slug}`}
-            actionLink={highlightedOpportunity.rsvpUrl}
-            actionTitle={highlightedOpportunity.rsvpTitle}
-          />
+          <Typography.Heading3>Právě hledáme</Typography.Heading3>
+          <RolesMainWrapper>
+            {sortedRoles.map((r) => (
+              <RoleItem
+                key={r.id}
+                name={r.name}
+                id={r.id}
+                skills={r.skills}
+                project={r.project}
+                timeRequirements={r.timeRequirements}
+                slug={r.slug}
+              />
+            ))}
+          </RolesMainWrapper>
+          <ButtonWrapper>
+            <a href={'/roles'}>
+              <Button>Více volných pozic</Button>
+            </a>
+          </ButtonWrapper>
         </SectionContent>
       </Section>
-
       <Section>
         <SectionContent>
           <S.CategoryHeader>
