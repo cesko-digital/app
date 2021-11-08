@@ -28,10 +28,10 @@
                     "inputError": "Please enter a valid email address. ",
                     "inputPlaceholder": "Enter e-mail",
                     "invalidEmailError": "Please enter a valid email address. ",
-                    "note": "Want to know what we're working on? Once a month, we'll recap what's been happening in the community and what's coming up.",
+                    "note": "Want to know what we’re working on? Once a month, we’ll recap what’s been happening in the community and what’s coming up.",
                     "serverError": "Something went wrong, please try again.",
                     "subscribe": "Subscribe",
-                    "subscribed": "You're already with us! We have successfully registered your email to our newsletter.",
+                    "subscribed": "You’re already with us! We have successfully registered your email to our newsletter.",
                     "title": "Newsletter"
                 },
                 "online": {
@@ -69,7 +69,7 @@
         "supportUs": "Contribute"
     },
     "metadata": {
-        "description": "We are a community of top developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live.",
+        "description": "We are a community of developers, designers and product people who want to use their free time to help state and non-governmental organizations and make the Czechia a better place to live.",
         "title": "Česko.Digital - changing Czechia for the better through ones and zeroes"
     },
     "pages": {
@@ -99,15 +99,15 @@
                         "title": "Efficiency"
                     },
                     "main": {
-                        "perex": "In our free time, we're helping non-governmental organizations and government institutions with digital transformation, to make Czechia a better place to live. We want to become a leader in expert volunteering in the areas of innovation and digital technologies in Europe.",
+                        "perex": "In our free time we are helping non-governmental organizations and government institutions with digital transformation, to make Czechia a better place to live. We want to become a leader in expert volunteering in the areas of innovation and digital technologies in Europe.",
                         "title": "Our Values"
                     },
                     "openness": {
-                        "perex": "We take pride in open communication and access to information and data. We speak up, with honesty and respect to others. We ask when we don't know.",
+                        "perex": "We take pride in open communication and access to information and data. We speak up, with honesty and respect to others. We ask when we don’t know.",
                         "title": "Openness"
                     },
                     "participatory": {
-                        "perex": "We work in teams and tandems, learning from each other. We seek a way for everzbody to get involved, regardless of location or time.",
+                        "perex": "We work in teams and tandems, learning from each other. We seek a way for everybody to get involved, regardless of location or time.",
                         "title": "Collaboration"
                     },
                     "professionalism": {
@@ -124,7 +124,7 @@
                     "title": "Partners"
                 }
             },
-            "subtitle": "We are a community of top developers, designers and production people who want to use their free time to help state and non-governmental organizations and make Czechia a better place to live.",
+            "subtitle": "We are a community of developers, designers and production people who want to use their free time to help state and non-governmental organizations and make Czechia a better place to live.",
             "title": "Changing Czechia for the better through ones and zeroes",
             "whatWeDo": "What we do"
         },
