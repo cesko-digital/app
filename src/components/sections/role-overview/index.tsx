@@ -27,7 +27,7 @@ const RoleItem: React.FC<Props> = ({
   timeRequirements,
   slug,
 }) => {
-  const link = 'roles/' + slug
+  const link = '/roles/' + slug
   return (
     <S.Container>
       <S.RoleWrapper key={id}>
