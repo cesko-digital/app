@@ -42,7 +42,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          <Typography.Heading3>Právě hledáme</Typography.Heading3>
+          <Typography.Heading2>Právě hledáme</Typography.Heading2>
           <RolesMainWrapper>
             {sortedRoles.map((r) => (
               <RoleItem
