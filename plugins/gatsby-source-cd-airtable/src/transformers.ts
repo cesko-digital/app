@@ -132,8 +132,8 @@ export function transformEvent(event: AirtableEvent): Event | null {
   const f = event.fields
   const safeSlug = f.Slug ? f.Slug : event.id
 
-  if (!f.Status) {
-    // Ignore, not even a Draft, probably won’t validate at all
+  if (!f.Status || !f['Start Time']) {
+    // Ignore, probably won’t validate at all
     return null
   }
 
