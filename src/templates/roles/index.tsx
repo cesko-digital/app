@@ -32,8 +32,8 @@ const RolePage: React.FC<RolePageProps> = (props) => {
       ]}
       seo={{
         title: role.name,
-        description: 'Detail volné pozice',
-        coverUrl: 'TBD',
+        description: role.summary,
+        coverUrl: role.project.coverUrl,
       }}
     >
       <Section>
