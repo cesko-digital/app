@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Heading1 } from 'components/typography'
 import * as S from './styles'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
 import { LINKS } from 'utils/constants'
 
 const HOMEPAGE_TRANSLATION_KEY = `pages.homepage`
@@ -16,6 +17,10 @@ enum TranslationKeyPrefix {
 
 const Hero: React.FC = () => {
   const { t } = useTranslation()
+
+  const { locale } = useContext(TranslateUrlsContext)
+
+  const isCzech = locale === 'cs'
 
   return (
     <S.Section>
@@ -32,15 +37,19 @@ const Hero: React.FC = () => {
               )}
             </S.ShiftedBody>
 
-            <S.ButtonAsLinkElement to="/projects">
-              {t(
-                `${HOMEPAGE_TRANSLATION_KEY}.${TranslationKeyPrefix.WhatWeDo}`
-              )}
-            </S.ButtonAsLinkElement>
+            {isCzech && (
+              <S.ButtonAsLinkElement to="/projects">
+                {t(
+                  `${HOMEPAGE_TRANSLATION_KEY}.${TranslationKeyPrefix.WhatWeDo}`
+                )}
+              </S.ButtonAsLinkElement>
+            )}
 
-            <S.ShiftedButton inverted to={LINKS.joinUs}>
-              {t(`${HEADER_TRANSLATION_KEY}.${TranslationKeyPrefix.SignUp}`)}
-            </S.ShiftedButton>
+            {isCzech && (
+              <S.ShiftedButton inverted to={LINKS.joinUs}>
+                {t(`${HEADER_TRANSLATION_KEY}.${TranslationKeyPrefix.SignUp}`)}
+              </S.ShiftedButton>
+            )}
 
             <S.HeroPersonTopCircleImage />
           </S.Content>

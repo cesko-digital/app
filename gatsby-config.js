@@ -52,7 +52,7 @@ module.exports = {
       options: {
         localeJsonSourceName: `locale`,
         siteUrl: `https://cesko.digital/`,
-        languages: [`cs`],
+        languages: [`cs`, 'en'],
         defaultLanguage: `cs`,
         redirect: false,
         pages: [
@@ -71,6 +71,7 @@ module.exports = {
         prefix: 'urls.',
         translations: {
           cs: require('./locale/cs/pages.json'),
+          en: require('./locale/en/pages.json'),
         },
       },
     },

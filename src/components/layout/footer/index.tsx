@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ButtonSize } from 'components/buttons'
 import { Link } from 'components/links'
 import NewsletterBox from './newsletter-form'
 import * as S from './styles'
+import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { LINKS } from 'utils/constants'
 
 const Footer: React.FC = () => {
   const { t } = useTranslation()
+
+  const { locale } = useContext(TranslateUrlsContext)
+
+  const isCzech = locale === 'cs'
 
   const SOCIAL_LINKS = [
     {
@@ -36,30 +41,37 @@ const Footer: React.FC = () => {
     {
       name: t('components.sections.footer.pageLinks.projects'),
       url: '/projects',
+      displayLocale: ['cs'],
     },
     {
       name: t('components.sections.footer.pageLinks.blog'),
       url: 'https://blog.cesko.digital',
+      displayLocale: ['cs'],
     },
     {
       name: t('components.sections.footer.pageLinks.loginToSlack'),
       url: LINKS.joinUs,
+      displayLocale: ['cs'],
     },
     {
       name: t('components.sections.footer.pageLinks.submitProject'),
       url: LINKS.submitProject,
+      displayLocale: ['cs'],
     },
     {
       name: t('components.sections.footer.pageLinks.supportUs'),
       url: LINKS.supportUs,
+      displayLocale: ['cs'],
     },
     {
       name: t('components.sections.footer.pageLinks.logo'),
       url: LINKS.logo,
+      displayLocale: ['cs', 'en'],
     },
     {
       name: t('components.sections.footer.pageLinks.mediaContact'),
       url: 'mailto:pr@cesko.digital',
+      displayLocale: ['cs', 'en'],
     },
   ]
 
@@ -74,7 +86,9 @@ const Footer: React.FC = () => {
               </S.Heading>
               <S.Navigation>
                 <S.Links>
-                  {PAGE_LINKS.map(({ name, url }, i) => (
+                  {PAGE_LINKS.filter((l) =>
+                    l.displayLocale.includes(locale)
+                  ).map(({ name, url }, i) => (
                     <S.LinkItem key={i}>
                       <Link size={ButtonSize.Small} to={url}>
                         {name}
@@ -101,7 +115,7 @@ const Footer: React.FC = () => {
               </S.Navigation>
             </S.InfoBlock>
           </S.Info>
-          <NewsletterBox />
+          {isCzech && <NewsletterBox />}
           <S.Note>{t('components.sections.footer.footNote')}</S.Note>
         </S.Container>
       </S.Outer>
