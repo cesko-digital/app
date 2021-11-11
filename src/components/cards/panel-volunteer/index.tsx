@@ -3,6 +3,7 @@ import * as React from 'react'
 import * as S from './styles'
 import { LINKS } from 'utils/constants'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { getResizedImgUrl } from '../../../utils/get-resized-img-url'
 
 const PanelVolunteer: React.FC = () => {
   const { t } = useTranslation()
@@ -11,7 +12,7 @@ const PanelVolunteer: React.FC = () => {
     <S.Wrapper>
       <S.Cover>
         <S.Image
-          url={'https://data.cesko.digital/web/sections/join-us/cover.jpg'}
+          url={getResizedImgUrl('https://data.cesko.digital/web/sections/join-us/cover.jpg', 769)}
         />
       </S.Cover>
       <S.Content>

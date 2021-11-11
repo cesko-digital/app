@@ -7,6 +7,7 @@ import * as S from './styles'
 import EventCard from './event-card'
 import { Link } from 'components/links'
 import { CardRow } from 'components/layout'
+import { getResizedImgUrl } from '../../utils/get-resized-img-url'
 
 interface EventPageProps {
   data: EventPageQuery
@@ -35,9 +36,9 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
             <S.CoverFilter />
             <S.CoverImage
               src={
-                data.event.coverUrl
+                getResizedImgUrl(data.event.coverUrl
                   ? data.event.coverUrl
-                  : data.event.project.coverUrl
+                  : data.event.project.coverUrl, 1160)
               }
               loading="lazy"
             />
