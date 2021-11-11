@@ -52,9 +52,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
             </S.RoleDescription>
             <S.RoleContactCard>
               <S.RoleMetaRow>
-                <S.RoleProjectImg
-                  src={getResizedImgUrl(role.project.logoUrl, 35)}
-                />
+                <S.RoleProjectImg src={role.project.logoUrl} />
                 <a href={`/roles/${role.slug}`}>
                   <Body>{role.project.name}</Body>
                 </a>
@@ -66,9 +64,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
               <S.RoleOwnerWrapper>
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
-                  <S.OwnerImage
-                    src={getResizedImgUrl(role.owner.profilePictureUrl, 60)}
-                  />
+                  <S.OwnerImage src={role.owner.profilePictureUrl} />
                   <div>
                     <OwnerName>{role.owner.name}</OwnerName>
                     <BodySmall>{role.project.name}</BodySmall>

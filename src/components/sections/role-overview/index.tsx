@@ -1,7 +1,6 @@
 import React from 'react'
 import { BodySmall, Body } from 'components/typography'
 import * as S from './styles'
-import { getResizedImgUrl } from '../../../utils/get-resized-img-url'
 
 import { Project } from 'templates/event/event-card/project/styles'
 
@@ -45,7 +44,7 @@ const RoleItem: React.FC<Props> = ({
           <a href={project.url}>
             <Body>{project.name}</Body>
           </a>
-          <S.RoleLogo src={getResizedImgUrl(project.logoUrl, 80)} />
+          <S.RoleLogo src={project.logoUrl} />
         </S.RoleRightWrapper>
       </S.RoleWrapper>
     </S.Container>

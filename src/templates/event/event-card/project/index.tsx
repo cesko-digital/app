@@ -1,6 +1,5 @@
 import * as S from './styles'
 import React from 'react'
-import { getResizedImgUrl } from '../../../../utils/get-resized-img-url'
 
 interface ProjectProps {
   avatarUrl: string
@@ -14,14 +13,14 @@ const Project: React.FC<ProjectProps> = (props) => {
   if (props.silent) {
     wrapper = (
       <S.Wrapper>
-        <S.Avatar src={getResizedImgUrl(props.avatarUrl, 60)} />
+        <S.Avatar src={props.avatarUrl} />
         <S.AvatarTitle>{props.name}</S.AvatarTitle>
       </S.Wrapper>
     )
   } else {
     wrapper = (
       <S.LinkWrapper href={props.projectUrl}>
-        <S.Avatar src={getResizedImgUrl(props.avatarUrl, 60)} />
+        <S.Avatar src={props.avatarUrl} />
         <S.AvatarTitle>{props.name}</S.AvatarTitle>
       </S.LinkWrapper>
     )
