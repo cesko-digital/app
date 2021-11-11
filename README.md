@@ -33,15 +33,15 @@ Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://ces
     ```
 
     Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj.
-    Na [localhost:8000/___graphql](http://localhost:8000/___graphql) by měl běžet lokální GraphQL playground pro datové query.
-    
+    Na [localhost:8000/\_\_\_graphql](http://localhost:8000/___graphql) by měl běžet lokální GraphQL playground pro datové query.
+
     Komponenty využívají typy generované na základě GraphQL schéma. Při změně schéma je nutné vygenerovat nové. Pro tento příkaz musí běžet proces spuštěný přes yarn start:
 
     ```shell script
     yarn gen:types
     ```
-    
-    Tento příkaz zároveň vygeneruje soubor [schema.graphql](./schema.graphql), který lze využít pro [IDE podporu](https://plugins.jetbrains.com/plugin/8097-js-graphql) pro datové query. 
+
+    Tento příkaz zároveň vygeneruje soubor [schema.graphql](./schema.graphql), který lze využít pro [IDE podporu](https://plugins.jetbrains.com/plugin/8097-js-graphql) pro datové query.
 
 ## Překlady
 
@@ -73,14 +73,13 @@ Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTIN
 
 `yarn format`: prettier
 
-`yarn lint --fix`: kontrola formátování s opravou, nemělo by vrátit (neopravitelnou) chybu 
+`yarn lint --fix`: kontrola formátování s opravou, nemělo by vrátit (neopravitelnou) chybu
 
 `yarn test`: testy, všechny musí projít
 
-`yarn start`: aplikace se musí spustit bez chyb
-
 `yarn type-check`: kontrola TS
 
+`yarn build`: aplikace se musí zbuildit bez chyb
 
 ## Licence
 

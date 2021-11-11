@@ -9,6 +9,7 @@ import { OwnerName, RoleMetaRow } from './styles'
 import TimeIcon from '../../components/icons/time'
 import RoleItem from '../../components/sections/role-overview'
 import { RolesMainWrapper } from '../../page-components/portal-dobrovolnika/styles'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
 
 interface RolePageProps {
   data: {
@@ -40,7 +41,10 @@ const RolePage: React.FC<RolePageProps> = (props) => {
         <SectionContent>
           <Heading1>{role.name}</Heading1>
           <S.CoverImageWrapper>
-            <S.CoverImage src={role.project.coverUrl} loading="lazy" />
+            <S.CoverImage
+              src={getResizedImgUrl(role.project.coverUrl, 1160)}
+              loading="lazy"
+            />
           </S.CoverImageWrapper>
           <S.RoleHeader>
             <S.RoleDescription>

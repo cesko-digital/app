@@ -6,6 +6,8 @@ import { JoinUs } from 'components/sections'
 import * as S from './styles'
 import { mapTags } from 'utils/map-tags'
 import { ProjectsPageQuery } from 'generated/graphql-types'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
+
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {
   data: ProjectsPageQuery
@@ -40,7 +42,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
           <S.ProjectsHeading>{t('pages.projects.ongoing')}</S.ProjectsHeading>
           {highlightedProject && (
             <HighlightedProject
-              cover={highlightedProject.coverUrl}
+              cover={getResizedImgUrl(highlightedProject.coverUrl, 1160)}
               logo={highlightedProject.logoUrl}
               description={highlightedProject.tagline}
               title={highlightedProject.name}
