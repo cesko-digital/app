@@ -15,7 +15,7 @@ Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://ces
     Naklonujte si repozitář do složky `cesko-digital-web`:
 
     ```shell script
-    git clone https://github.com/cesko-digital/web.git cesko-digital-web
+    git clone https://github.com/cesko-digital/web.git cesko-digital-web && cd cesko-digital-web
     ```
 
 1.  **Instalace a spuštění**
@@ -23,7 +23,6 @@ Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://ces
     Ve složce `cesko-digital-web` nainstalujte požadované závislosti:
 
     ```shell script
-    cd cesko-digital-web
     yarn
     ```
 
@@ -36,7 +35,7 @@ Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://ces
     Na [localhost:8000](http://localhost:8000) by měla běžet lokální verze webu a podporující live reload pro pohodlný vývoj.
     Na [localhost:8000/___graphql](http://localhost:8000/___graphql) by měl běžet lokální GraphQL playground pro datové query.
     
-    Komponenty využívají typy generované na základě GraphQL schéma. Při změně schéma je nutné vygenerovat nové:
+    Komponenty využívají typy generované na základě GraphQL schéma. Při změně schéma je nutné vygenerovat nové. Pro tento příkaz musí běžet proces spuštěný přes yarn start:
 
     ```shell script
     yarn gen:types
@@ -56,7 +55,7 @@ Projekt má všechny [texty v AirTable](https://airtable.com/shraCQhMJdGUu1xhk) 
 
 `yarn test`: Spuštění testů
 
-`yarn gen:types`: Vygenerování TS a GQL typů
+`yarn gen:types`: Vygenerování TS a GQL typů (pro tento příkaz musí běžet proces spuštěný přes yarn start)
 
 `yarn storybook`: Start dokumentace komponent
 
