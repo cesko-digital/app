@@ -1,256 +1,256 @@
 {
+  "cards": {
+    "blog": {
+      "readMore": "Přečíst článek"
+    },
+    "project": {
+      "coverAriaLabel": "Přečtěte si, jak fungujeme.",
+      "logoAriaLabel": "Logo projektu",
+      "projectDetail": "Detail projektu"
+    }
+  },
+  "components": {
     "cards": {
-        "blog": {
-            "readMore": "Přečíst článek"
+      "newProject": {
+        "description": "Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?",
+        "linkText": "Zadat projekt",
+        "title": "Mám nápad na projekt"
+      },
+      "panelVolunteer": {
+        "description": "Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.",
+        "linkText": "Přidat se do Slacku",
+        "title": "Chci být dobrovolníkem"
+      }
+    },
+    "sections": {
+      "footer": {
+        "footNote": "Česko.Digital © 2021, Tento web používá cookies ¯\\_(ツ)_/¯",
+        "newsletter": {
+          "emailRequiredError": "Zadejte e-mail",
+          "inputError": "Prosíme, zadejte platnou e-mailovou adresu.",
+          "inputPlaceholder": "Zadejte e-mail",
+          "invalidEmailError": "Zadej, prosím, platnou e-mailovou adresu.",
+          "note": "Chcete vědět, na čem pracujeme? Jednou za měsíc shrneme, co se v komunitě událo a co chystáme.",
+          "serverError": "Něco se pokazilo, zkus to, prosím, ještě jednou.",
+          "subscribe": "Posílat",
+          "subscribed": "Už jsi s námi! Tvůj e-mail jsme úspěšně registrovali do našeho newsletteru.",
+          "title": "Newsletter"
         },
-        "project": {
-            "coverAriaLabel": "Přečtěte si, jak fungujeme.",
-            "logoAriaLabel": "Logo projektu",
-            "projectDetail": "Detail projektu"
-        }
-    },
-    "components": {
-        "cards": {
-            "newProject": {
-                "description": "Rozvíjíme nápady, které skrze IT pomáhají zlepšovat život v Česku, nemají komerční alternativu a jsou udržitelné. Máte takový projekt, nebo na něm pracujete, ale chybí vám expertní dobrovolníci?",
-                "linkText": "Zadat projekt",
-                "title": "Mám nápad na projekt"
-            },
-            "panelVolunteer": {
-                "description": "Vývojář? Projekťák? Marketér? Projekty fungují nejlépe právě díky rozmanitosti týmů a sdílení zkušeností. Pokud máte chuť a čas, ať už hodinu nebo deset týdně, přidejte se.",
-                "linkText": "Přidat se do Slacku",
-                "title": "Chci být dobrovolníkem"
-            }
+        "online": {
+          "facebook": "Facebook",
+          "github": "GitHub",
+          "linkedin": "LinkedIn",
+          "slack": "Slack",
+          "title": "Online",
+          "twitter": "Twitter"
         },
-        "sections": {
-            "footer": {
-                "footNote": "Česko.Digital © 2021, Tento web používá cookies ¯\\_(ツ)_/¯",
-                "newsletter": {
-                    "emailRequiredError": "Zadejte e-mail",
-                    "inputError": "Prosíme, zadejte platnou e-mailovou adresu.",
-                    "inputPlaceholder": "Zadejte e-mail",
-                    "invalidEmailError": "Zadej, prosím, platnou e-mailovou adresu.",
-                    "note": "Chcete vědět, na čem pracujeme? Jednou za měsíc shrneme, co se v komunitě událo a co chystáme.",
-                    "serverError": "Něco se pokazilo, zkus to, prosím, ještě jednou.",
-                    "subscribe": "Posílat",
-                    "subscribed": "Už jsi s námi! Tvůj e-mail jsme úspěšně registrovali do našeho newsletteru.",
-                    "title": "Newsletter"
-                },
-                "online": {
-                    "facebook": "Facebook",
-                    "github": "GitHub",
-                    "linkedin": "LinkedIn",
-                    "slack": "Slack",
-                    "title": "Online",
-                    "twitter": "Twitter"
-                },
-                "pageLinks": {
-                    "blog": "Blog",
-                    "loginToSlack": "Přidej se k nám",
-                    "logo": "Logo",
-                    "mediaContact": "Kontakt pro média",
-                    "projects": "Projekty",
-                    "submitProject": "Zadat projekt",
-                    "supportUs": "Přispět",
-                    "title": "Česko.Digital"
-                }
-            },
-            "projects": {
-                "otherProjects": "Další projekty",
-                "ourProjects": "Naše projekty",
-                "showAll": "Prohlédnout všechny projekty"
-            }
+        "pageLinks": {
+          "blog": "Blog",
+          "loginToSlack": "Přidej se k nám",
+          "logo": "Logo",
+          "mediaContact": "Kontakt pro média",
+          "projects": "Projekty",
+          "submitProject": "Zadat projekt",
+          "supportUs": "Přispět",
+          "title": "Česko.Digital"
         }
-    },
-    "header": {
-        "czech": "Czech",
-        "english": "English",
-        "partners": "Partneři",
-        "projects": "Projekty",
-        "signUp": "Chci se zapojit",
-        "supportUs": "Přispět"
-    },
-    "metadata": {
-        "description": "Jsme komunita špičkových specialistů z mnoha oborů od IT přes projektové řízení až po marketing, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.",
-        "title": "Česko.Digital - Skrz jedničky a nuly měníme Česko k lepšímu"
-    },
-    "pages": {
-        "homepage": {
-            "sections": {
-                "numbers": {
-                    "first": {
-                        "subtitle": "dobrovolníků",
-                        "value": "4000+"
-                    },
-                    "fourth": {
-                        "subtitle": "rozjetých projektů",
-                        "value": "16+"
-                    },
-                    "second": {
-                        "subtitle": "dokončených projektů",
-                        "value": "8"
-                    },
-                    "third": {
-                        "subtitle": "lidí využilo naše projekty",
-                        "value": "4 000 000+"
-                    }
-                },
-                "ourValues": {
-                    "efficiency": {
-                        "perex": "Nemrháme časem lidí ani finančními prostředky. Soustředíme se na rychlá řešení reálných problémů pomocí technologií.",
-                        "title": "Efektivita"
-                    },
-                    "main": {
-                        "perex": "Ve svém volném čase pomáháme neziskovým organizacím a státu s digitalizací a měníme tak Česko v lepší místo pro život. Chceme se stát lídrem v expertním dobrovolnictví v oblasti inovací a digitálních technologií v Evropě.",
-                        "title": "Naše hodnoty"
-                    },
-                    "openness": {
-                        "perex": "Jsme otevřená organizace - zakládáme si na otevřené komunikaci a přístupnosti informací i dat. Vyjadřujeme se nahlas, upřímně a s respektem k ostatním. Nebojíme se nevědět a zeptat se.",
-                        "title": "Otevřenost"
-                    },
-                    "participatory": {
-                        "perex": "Pracujeme v týmech a tandemech, učíme sebe i ostatní. Hledáme uplatnění pro všechny, kteří se chtějí zapojit.",
-                        "title": "Spolupráce"
-                    },
-                    "professionalism": {
-                        "perex": "Máme jasně nastavená a pojmenovaná očekávání jeden od druhého. V týmu i mimo organizaci jednáme profesionálně. Inspirujeme a učíme se od profesionálů v komunitě i mimo ni.",
-                        "title": "Profesionalita"
-                    },
-                    "technologies": {},
-                    "users": {
-                        "perex": "Řešení plánujeme tak, aby výsledný produkt nebo služba co nejvíce odrážely skutečné potřeby koncových uživatelů. Technologie je pro nás prostředek, nikoliv cíl.",
-                        "title": "Užitečnost"
-                    }
-                },
-                "partners": {
-                    "title": "Partneři"
-                }
-            },
-            "subtitle": "Jsme komunita špičkových specialistů z mnoha oborů od IT přes projektové řízení až po marketing, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.",
-            "title": "Skrz jedničky a nuly měníme Česko k lepšímu",
-            "whatWeDo": "Co děláme"
+      },
+      "projects": {
+        "otherProjects": "Další projekty",
+        "ourProjects": "Naše projekty",
+        "showAll": "Prohlédnout všechny projekty"
+      }
+    }
+  },
+  "header": {
+    "czech": "Czech",
+    "english": "English",
+    "partners": "Partneři",
+    "projects": "Projekty",
+    "signUp": "Chci se zapojit",
+    "supportUs": "Přispět"
+  },
+  "metadata": {
+    "description": "Jsme komunita špičkových specialistů z mnoha oborů od IT přes projektové řízení až po marketing, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.",
+    "title": "Česko.Digital - Skrz jedničky a nuly měníme Česko k lepšímu"
+  },
+  "pages": {
+    "homepage": {
+      "sections": {
+        "numbers": {
+          "first": {
+            "subtitle": "dobrovolníků",
+            "value": "4000+"
+          },
+          "fourth": {
+            "subtitle": "rozjetých projektů",
+            "value": "16+"
+          },
+          "second": {
+            "subtitle": "dokončených projektů",
+            "value": "8"
+          },
+          "third": {
+            "subtitle": "lidí využilo naše projekty",
+            "value": "4 000 000+"
+          }
+        },
+        "ourValues": {
+          "efficiency": {
+            "perex": "Nemrháme časem lidí ani finančními prostředky. Soustředíme se na rychlá řešení reálných problémů pomocí technologií.",
+            "title": "Efektivita"
+          },
+          "main": {
+            "perex": "Ve svém volném čase pomáháme neziskovým organizacím a státu s digitalizací a měníme tak Česko v lepší místo pro život. Chceme se stát lídrem v expertním dobrovolnictví v oblasti inovací a digitálních technologií v Evropě.",
+            "title": "Naše hodnoty"
+          },
+          "openness": {
+            "perex": "Jsme otevřená organizace - zakládáme si na otevřené komunikaci a přístupnosti informací i dat. Vyjadřujeme se nahlas, upřímně a s respektem k ostatním. Nebojíme se nevědět a zeptat se.",
+            "title": "Otevřenost"
+          },
+          "participatory": {
+            "perex": "Pracujeme v týmech a tandemech, učíme sebe i ostatní. Hledáme uplatnění pro všechny, kteří se chtějí zapojit.",
+            "title": "Spolupráce"
+          },
+          "professionalism": {
+            "perex": "Máme jasně nastavená a pojmenovaná očekávání jeden od druhého. V týmu i mimo organizaci jednáme profesionálně. Inspirujeme a učíme se od profesionálů v komunitě i mimo ni.",
+            "title": "Profesionalita"
+          },
+          "technologies": {},
+          "users": {
+            "perex": "Řešení plánujeme tak, aby výsledný produkt nebo služba co nejvíce odrážely skutečné potřeby koncových uživatelů. Technologie je pro nás prostředek, nikoliv cíl.",
+            "title": "Užitečnost"
+          }
         },
         "partners": {
-            "becomePartner": {
-                "aboveTitle": "Chcete měnit Česko k lepšímu?",
-                "title": "Staňte se partnerem Česko.Digital"
-            },
-            "blog": {
-                "linkAll": "Všechny články o partnerech",
-                "title": "Z našeho blogu"
-            },
-            "cooperations": {
-                "heading": {
-                    "perex ": "Díky partnerským médiím můžeme mluvit o úspěchu i nezdaru. Obojí k nám patří. Posouvají nás a díky nim se učíme být lepší. Děkujeme, že můžeme otevřeně mluvit o naší práci.",
-                    "title": "Spolupracujeme s jednotlivci a subjekty, kteří umí  našin projektům dodat další dimenzi, komunikační dosah, odborný a nebo strategický pohled."
-                }
-            },
-            "description": "Nejsme na to sami. Prohlédněte si organizace, díky kterým tu můžeme být s Vámi a měnit Česko k lepšímu.",
-            "experts": {
-                "heading": {
-                    "perex": "Různé organizace, jejich know-how, týmy nebo i jednorázová podpora. To vše je expertní partnerská síla, která pohání projekty i komunitu. Děkujeme za odbornost, která usnadňuje cestu od myšlenek k realitě.",
-                    "title": "Sdílíme know-how, postupy a nástroje"
-                },
-                "regularPartners": {
-                    "perex": "Nepostradatelné jsou pro nás expertní spolupráce, které pomáhají svým know-how, týmy nebo softwarem. Nezáleží na původu. Děkujeme všem z komerční, neziskové či státní sféry, co s námi chtějí změnit Česko k lepšímu. ",
-                    "title": "Expertní partneři"
-                },
-                "submitters": {
-                    "perex": "Nezáleží na tom odkud k nám přicházejí nápady a projekty. Důležitá je myšlenka, reálnost a jejich dopad, který pomáhá zlepšovat naši společnost. Neziskovka, veřejná správa nebo jednotlivec. Všichni mají stejné podmínky. ",
-                    "title": "Zadavatelé"
-                },
-                "supporters": {
-                    "perex": "Každá podpora i barter má smysl a dopad. Děkujeme všem z komerční, neziskové či státní sféry, kteří byť jednorázově šli s námi. I díky vám můžeme pomáhat stále více projektům.  ",
-                    "title": "Podporovatelé"
-                }
-            },
-            "financial": {
-                "donators": {
-                    "button": "Zobrazit sbírku",
-                    "perex": "Různorodá finanční energie, která k nám putuje, například přes platformu Darujme, ukazuje sílu drobného skutku. I malý čin dokáže zázraky. Děkujeme, že jste v tom s námi.",
-                    "title": "Dárci"
-                },
-                "grants": {
-                    "perex": "Finanční podpora pomocí grantů je u nás na začátku. Chceme však využít všechny možnosti, které nás posunou a pomohou nám změnit Česko.",
-                    "title": "Granty"
-                },
-                "heading": {
-                    "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci. Děkujeme, že vidíte smysl naší práce.",
-                    "title": "Ti, bez kterých by to nešlo."
-                },
-                "mainPartners": {
-                    "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci.Děkujeme, že vidíte smysl naší práce.",
-                    "title": "Finanční partneři a sponzoři"
-                },
-                "regularPartners": {
-                    "perex": "Naše úsilí podporují i menší partneři, kteří nás udržují v běhu. Pomáhají a podporují společný směr. Jejich stopy se mohou zdát menší, ale vliv a dopad je velký. Děkujeme za každý společný krok.",
-                    "title": "Finanční partneři a sponzoři"
-                }
-            },
-            "form": {
-                "button": {
-                    "label": "Odeslat"
-                },
-                "email": {
-                    "label": "E-mail",
-                    "placeholder": "Zadejte e-mail"
-                },
-                "message": {
-                    "label": "Vaše zpráva",
-                    "placeholder": "Napište nám Vaši zprávu"
-                },
-                "name": {
-                    "label": "Jméno",
-                    "placeholder": "Zadejte jméno"
-                }
-            },
-            "metadata": {
-                "description": "Nejsme na to sami. Prohlédněte si organizace, díky kterým tu můžeme být s Vámi a měnit Česko k lepšímu.",
-                "title": "Partneři"
-            },
-            "navigation": {
-                "partners": "Partneři"
-            },
-            "tabs": {
-                "cooperations": {
-                    "title": "Spolupracujeme"
-                },
-                "experts": {
-                    "title": "Expertní partneři"
-                },
-                "financial": {
-                    "title": "Finanční partneři"
-                }
-            },
-            "title": "Partneři"
-        },
-        "project": {
-            "about": {
-                "contribute": {
-                    "buttonText": "Přidat se do Slacku",
-                    "note": "Máte nějaké otázky? Přečtěte si",
-                    "noteLink": "jak fungujeme",
-                    "title": "Zapoj se"
-                },
-                "title": "O projektu"
-            },
-            "projectCard": {
-                "coordinators": "Projektoví koordinátoři",
-                "links": "Odkazy"
-            }
-        },
-        "projects": {
-            "description": "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
-            "metadata": {
-                "description": "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
-                "title": "Projekty"
-            },
-            "navigation": {
-                "projects": "Projekty"
-            },
-            "ongoing": "Aktuální projekty",
-            "title": "Projekty Česko.Digital",
-            "title copy": "Projekty Česko.Digital"
+          "title": "Partneři"
         }
+      },
+      "subtitle": "Jsme komunita špičkových specialistů z mnoha oborů od IT přes projektové řízení až po marketing, kteří chtějí ve svém volném čase pomáhat státu i nestátním organizacím a dělat tak Česko lepším místem k životu.",
+      "title": "Skrz jedničky a nuly měníme Česko k lepšímu",
+      "whatWeDo": "Co děláme"
+    },
+    "partners": {
+      "becomePartner": {
+        "aboveTitle": "Chcete měnit Česko k lepšímu?",
+        "title": "Staňte se partnerem Česko.Digital"
+      },
+      "blog": {
+        "linkAll": "Všechny články o partnerech",
+        "title": "Z našeho blogu"
+      },
+      "cooperations": {
+        "heading": {
+          "perex ": "Díky partnerským médiím můžeme mluvit o úspěchu i nezdaru. Obojí k nám patří. Posouvají nás a díky nim se učíme být lepší. Děkujeme, že můžeme otevřeně mluvit o naší práci.",
+          "title": "Spolupracujeme s jednotlivci a subjekty, kteří umí  našin projektům dodat další dimenzi, komunikační dosah, odborný a nebo strategický pohled."
+        }
+      },
+      "description": "Nejsme na to sami. Prohlédněte si organizace, díky kterým tu můžeme být s Vámi a měnit Česko k lepšímu.",
+      "experts": {
+        "heading": {
+          "perex": "Různé organizace, jejich know-how, týmy nebo i jednorázová podpora. To vše je expertní partnerská síla, která pohání projekty i komunitu. Děkujeme za odbornost, která usnadňuje cestu od myšlenek k realitě.",
+          "title": "Sdílíme know-how, postupy a nástroje"
+        },
+        "regularPartners": {
+          "perex": "Nepostradatelné jsou pro nás expertní spolupráce, které pomáhají svým know-how, týmy nebo softwarem. Nezáleží na původu. Děkujeme všem z komerční, neziskové či státní sféry, co s námi chtějí změnit Česko k lepšímu. ",
+          "title": "Expertní partneři"
+        },
+        "submitters": {
+          "perex": "Nezáleží na tom odkud k nám přicházejí nápady a projekty. Důležitá je myšlenka, reálnost a jejich dopad, který pomáhá zlepšovat naši společnost. Neziskovka, veřejná správa nebo jednotlivec. Všichni mají stejné podmínky. ",
+          "title": "Zadavatelé"
+        },
+        "supporters": {
+          "perex": "Každá podpora i barter má smysl a dopad. Děkujeme všem z komerční, neziskové či státní sféry, kteří byť jednorázově šli s námi. I díky vám můžeme pomáhat stále více projektům.  ",
+          "title": "Podporovatelé"
+        }
+      },
+      "financial": {
+        "donators": {
+          "button": "Zobrazit sbírku",
+          "perex": "Různorodá finanční energie, která k nám putuje, například přes platformu Darujme, ukazuje sílu drobného skutku. I malý čin dokáže zázraky. Děkujeme, že jste v tom s námi.",
+          "title": "Dárci"
+        },
+        "grants": {
+          "perex": "Finanční podpora pomocí grantů je u nás na začátku. Chceme však využít všechny možnosti, které nás posunou a pomohou nám změnit Česko.",
+          "title": "Granty"
+        },
+        "heading": {
+          "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci. Děkujeme, že vidíte smysl naší práce.",
+          "title": "Ti, bez kterých by to nešlo."
+        },
+        "mainPartners": {
+          "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci.Děkujeme, že vidíte smysl naší práce.",
+          "title": "Finanční partneři a sponzoři"
+        },
+        "regularPartners": {
+          "perex": "Naše úsilí podporují i menší partneři, kteří nás udržují v běhu. Pomáhají a podporují společný směr. Jejich stopy se mohou zdát menší, ale vliv a dopad je velký. Děkujeme za každý společný krok.",
+          "title": "Finanční partneři a sponzoři"
+        }
+      },
+      "form": {
+        "button": {
+          "label": "Odeslat"
+        },
+        "email": {
+          "label": "E-mail",
+          "placeholder": "Zadejte e-mail"
+        },
+        "message": {
+          "label": "Vaše zpráva",
+          "placeholder": "Napište nám Vaši zprávu"
+        },
+        "name": {
+          "label": "Jméno",
+          "placeholder": "Zadejte jméno"
+        }
+      },
+      "metadata": {
+        "description": "Nejsme na to sami. Prohlédněte si organizace, díky kterým tu můžeme být s Vámi a měnit Česko k lepšímu.",
+        "title": "Partneři"
+      },
+      "navigation": {
+        "partners": "Partneři"
+      },
+      "tabs": {
+        "cooperations": {
+          "title": "Spolupracujeme"
+        },
+        "experts": {
+          "title": "Expertní partneři"
+        },
+        "financial": {
+          "title": "Finanční partneři"
+        }
+      },
+      "title": "Partneři"
+    },
+    "project": {
+      "about": {
+        "contribute": {
+          "buttonText": "Přidat se do Slacku",
+          "note": "Máte nějaké otázky? Přečtěte si",
+          "noteLink": "jak fungujeme",
+          "title": "Zapoj se"
+        },
+        "title": "O projektu"
+      },
+      "projectCard": {
+        "coordinators": "Projektoví koordinátoři",
+        "links": "Odkazy"
+      }
+    },
+    "projects": {
+      "description": "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
+      "metadata": {
+        "description": "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
+        "title": "Projekty"
+      },
+      "navigation": {
+        "projects": "Projekty"
+      },
+      "ongoing": "Aktuální projekty",
+      "title": "Projekty Česko.Digital",
+      "title copy": "Projekty Česko.Digital"
     }
+  }
 }

@@ -22,7 +22,7 @@ module.exports = {
       { terms: ['todo', 'fixme'], location: 'anywhere' },
     ],
     'object-shorthand': 'error',
-    eqeqeq: ['error', 'always'],
+    'eqeqeq': ['error', 'always'],
   },
   overrides: [
     {

@@ -16,12 +16,8 @@
         "Start Time": "2021-07-13T14:30:00.000Z",
         "End Time": "2021-07-13T15:30:00.000Z",
         "Status": "live",
-        "Owner": [
-          "rec5i9y2EIaX1ZKD2"
-        ],
-        "Project": [
-          "recJsdOY0oyGO6xxX"
-        ],
+        "Owner": ["rec5i9y2EIaX1ZKD2"],
+        "Project": ["recJsdOY0oyGO6xxX"],
         "Slug": "all-hands",
         "Attendee Count": 0,
         "ID": "rec0EAaYDZB2XdX8w",
@@ -35,10 +31,7 @@
       "fields": {
         "Name": "Show & Tell #3",
         "Summary": "Živé vysílání bla bla bla…",
-        "Competence Map": [
-          "marketing:100",
-          "dev:1000"
-        ],
+        "Competence Map": ["marketing:100", "dev:1000"],
         "RSVP URL": "https://cesko.digital/rsvp",
         "RSVP Deadline": "2021-06-24T17:00:00.000Z",
         "Start Time": "2021-06-24T17:00:00.000Z",
@@ -46,16 +39,9 @@
         "Live URL": "https://cesko.digital/show-and-tell",
         "Follow-Up URL": "https://cesko.digital/show-and-tell",
         "Status": "live",
-        "Owner": [
-          "recA5nftMpxJmwpr4"
-        ],
-        "Project": [
-          "recJsdOY0oyGO6xxX"
-        ],
-        "Tags": [
-          "recFVrO5xifN9jog4",
-          "recMg0okYGUJRFhlc"
-        ],
+        "Owner": ["recA5nftMpxJmwpr4"],
+        "Project": ["recJsdOY0oyGO6xxX"],
+        "Tags": ["recFVrO5xifN9jog4", "recMg0okYGUJRFhlc"],
         "Slug": "show-and-tell-3",
         "Cover URL": "https://data.cesko.digital/web/projects/cityvizor/cover-cityvizor.jpg",
         "Attendee Count": 0,
@@ -82,12 +68,8 @@
         "Start Time": "2021-07-20T16:00:00.000Z",
         "End Time": "2021-07-20T20:00:00.000Z",
         "Status": "unlisted",
-        "Owner": [
-          "recHnc5hx8wh29zqU"
-        ],
-        "Project": [
-          "recSci1ztMeeakzg2"
-        ],
+        "Owner": ["recHnc5hx8wh29zqU"],
+        "Project": ["recSci1ztMeeakzg2"],
         "Slug": "pivo-vino-limo",
         "Attendee Count": 0,
         "ID": "recOr6Gwpq4a9tk3s",
@@ -101,10 +83,7 @@
       "fields": {
         "Name": "Flutter Hackday",
         "Summary": "Červencový Hackday na podporu vyvoje mobilní aplikace pro Loono",
-        "Competence Map": [
-          "marketing:100",
-          "dev:2000"
-        ],
+        "Competence Map": ["marketing:100", "dev:2000"],
         "RSVP URL": "https://cesko-digital.atlassian.net/l/c/nhPy13HS",
         "RSVP Deadline": "2021-06-24T17:00:00.000Z",
         "Start Time": "2021-06-24T17:00:00.000Z",
@@ -112,15 +91,9 @@
         "Live URL": "https://cesko.digital/show-and-tell",
         "Follow-Up URL": "https://cesko.digital/show-and-tell",
         "Status": "live",
-        "Owner": [
-          "recA5nftMpxJmwpr4"
-        ],
-        "Project": [
-          "recJsdOY0oyGO6xxX"
-        ],
-        "Tags": [
-          "recGK7KiBRVeFCK1v"
-        ],
+        "Owner": ["recA5nftMpxJmwpr4"],
+        "Project": ["recJsdOY0oyGO6xxX"],
+        "Tags": ["recGK7KiBRVeFCK1v"],
         "Slug": "hackday-loono-flutter",
         "Attendee Count": 0,
         "ID": "recQb8ljuKr4dm3yc",
@@ -146,15 +119,9 @@
         "Start Time": "2021-07-28T14:00:00.000Z",
         "End Time": "2021-07-28T15:00:00.000Z",
         "Status": "draft",
-        "Owner": [
-          "recHnc5hx8wh29zqU"
-        ],
-        "Project": [
-          "recvOO9ssGZZtYGux"
-        ],
-        "Tags": [
-          "recMg0okYGUJRFhlc"
-        ],
+        "Owner": ["recHnc5hx8wh29zqU"],
+        "Project": ["recvOO9ssGZZtYGux"],
+        "Tags": ["recMg0okYGUJRFhlc"],
         "Attendee Count": 0,
         "ID": "receCVD1xXAsf8YaA",
         "Description": "Více informací již brzy, stay tuned!\n",
@@ -178,12 +145,8 @@
         "Start Time": "2021-07-27T14:30:00.000Z",
         "End Time": "2021-07-27T15:30:00.000Z",
         "Status": "unlisted",
-        "Owner": [
-          "rec5i9y2EIaX1ZKD2"
-        ],
-        "Project": [
-          "recvOO9ssGZZtYGux"
-        ],
+        "Owner": ["rec5i9y2EIaX1ZKD2"],
+        "Project": ["recvOO9ssGZZtYGux"],
         "Slug": "all-hands",
         "Attendee Count": 0,
         "ID": "recxFxeHTSjHKkMJP",
