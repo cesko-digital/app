@@ -46,7 +46,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
           <Heading1>{name}</Heading1>
           <S.Tagline>{tagline}</S.Tagline>
           <S.CoverImageWrapper>
-            <S.CoverImage src={getResizedImgUrl(coverUrl, 1160)} loading="lazy" />
+            <S.CoverImage
+              src={getResizedImgUrl(coverUrl, 1160)}
+              loading="lazy"
+            />
           </S.CoverImageWrapper>
         </SectionContent>
       </Section>

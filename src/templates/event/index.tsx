@@ -35,11 +35,12 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
           <S.CoverImageWrapper>
             <S.CoverFilter />
             <S.CoverImage
-              src={
-                getResizedImgUrl(data.event.coverUrl
+              src={getResizedImgUrl(
+                data.event.coverUrl
                   ? data.event.coverUrl
-                  : data.event.project.coverUrl, 1160)
-              }
+                  : data.event.project.coverUrl,
+                1160
+              )}
               loading="lazy"
             />
           </S.CoverImageWrapper>

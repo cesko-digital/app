@@ -41,7 +41,10 @@ const RolePage: React.FC<RolePageProps> = (props) => {
         <SectionContent>
           <Heading1>{role.name}</Heading1>
           <S.CoverImageWrapper>
-            <S.CoverImage src={getResizedImgUrl(role.project.coverUrl, 1160)} loading="lazy" />
+            <S.CoverImage
+              src={getResizedImgUrl(role.project.coverUrl, 1160)}
+              loading="lazy"
+            />
           </S.CoverImageWrapper>
           <S.RoleHeader>
             <S.RoleDescription>
@@ -49,7 +52,9 @@ const RolePage: React.FC<RolePageProps> = (props) => {
             </S.RoleDescription>
             <S.RoleContactCard>
               <S.RoleMetaRow>
-                <S.RoleProjectImg src={getResizedImgUrl(role.project.logoUrl, 35)} />
+                <S.RoleProjectImg
+                  src={getResizedImgUrl(role.project.logoUrl, 35)}
+                />
                 <a href={`/roles/${role.slug}`}>
                   <Body>{role.project.name}</Body>
                 </a>
@@ -61,7 +66,9 @@ const RolePage: React.FC<RolePageProps> = (props) => {
               <S.RoleOwnerWrapper>
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
-                  <S.OwnerImage src={getResizedImgUrl(role.owner.profilePictureUrl, 60)} />
+                  <S.OwnerImage
+                    src={getResizedImgUrl(role.owner.profilePictureUrl, 60)}
+                  />
                   <div>
                     <OwnerName>{role.owner.name}</OwnerName>
                     <BodySmall>{role.project.name}</BodySmall>

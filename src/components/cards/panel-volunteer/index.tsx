@@ -12,7 +12,10 @@ const PanelVolunteer: React.FC = () => {
     <S.Wrapper>
       <S.Cover>
         <S.Image
-          url={getResizedImgUrl('https://data.cesko.digital/web/sections/join-us/cover.jpg', 769)}
+          url={getResizedImgUrl(
+            'https://data.cesko.digital/web/sections/join-us/cover.jpg',
+            769
+          )}
         />
       </S.Cover>
       <S.Content>
