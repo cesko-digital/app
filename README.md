@@ -69,6 +69,19 @@ Projekt má všechny [texty v AirTable](https://airtable.com/shraCQhMJdGUu1xhk) 
 
 Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTING.md), který obsahuje informace o všech konvencích repozitáře.
 
+### Checklist před vytvořením PR
+
+`yarn format`: prettier
+
+`yarn lint --fix`: kontrola formátování s opravou, nemělo by vrátit (neopravitelnou) chybu 
+
+`yarn test`: testy, všechny musí projít
+
+`yarn start`: aplikace se musí spustit bez chyb
+
+`yarn type-check`: kontrola TS
+
+
 ## Licence
 
 Zdroje jsou zveřejněny pod [licencí BSD 3-Clause](LICENSE).
