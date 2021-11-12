@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import * as S from './styles'
 import { Link } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { getResizedImgUrl } from '../../../utils/get-resized-img-url'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
 
 interface EventCardProps {
   title: string

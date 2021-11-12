@@ -6,7 +6,7 @@ import { JoinUs } from 'components/sections'
 import * as S from './styles'
 import { mapTags } from 'utils/map-tags'
 import { ProjectsPageQuery } from 'generated/graphql-types'
-import { getResizedImgUrl } from '../../utils/get-resized-img-url'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
 
 // Data are coming from page query defined in 'pages/project.tsx'
 interface ProjectsPageProps {

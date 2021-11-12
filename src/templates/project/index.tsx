@@ -10,7 +10,7 @@ import Contribute from './components/contribute'
 import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { Projects } from 'components/sections'
-import { getResizedImgUrl } from '../../utils/get-resized-img-url'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
 
 interface ProjectPageProps {
   data: ProjectPageQuery

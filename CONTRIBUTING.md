@@ -60,7 +60,7 @@ Používejte následující import ze `styles.tsx` pro jasné oddělení, že se
 import * as S from './styles'
 ```
 
-Pro props využijte object destructuring: 
+Pro props využijte object destructuring:
 
 ```typescript jsx
 const Component = styled.div`
@@ -68,12 +68,12 @@ const Component = styled.div`
 `
 ```
 
-Barvy definujte pomocí HEX řetězců: 
+Barvy definujte pomocí HEX řetězců:
 
 ```typescript jsx
 const theme = {
-  white: "#FFFFFF",
-  wrongWhite: "white",
+  white: '#FFFFFF',
+  wrongWhite: 'white',
 }
 ```
 
@@ -93,7 +93,7 @@ const Component = styled.div`
 
 ### Obrázky
 
-Pro ilustrace a ikony je preferovaný formát SVG. Tyto zdroje vkládejte do projektu jako [React komponentu](https://react-svgr.com/playground/) do jednoho z následujících modulů: 
+Pro ilustrace a ikony je preferovaný formát SVG. Tyto zdroje vkládejte do projektu jako [React komponentu](https://react-svgr.com/playground/) do jednoho z následujících modulů:
 
 - [`components/icons`](./src/components/icons/index.ts)
 - [`components/illustrations`](./src/components/illustrations/index.ts)

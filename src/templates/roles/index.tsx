@@ -9,7 +9,7 @@ import { OwnerName, RoleMetaRow } from './styles'
 import TimeIcon from '../../components/icons/time'
 import RoleItem from '../../components/sections/role-overview'
 import { RolesMainWrapper } from '../../page-components/portal-dobrovolnika/styles'
-import { getResizedImgUrl } from '../../utils/get-resized-img-url'
+import { getResizedImgUrl } from 'utils/get-resized-img-url'
 
 interface RolePageProps {
   data: {
