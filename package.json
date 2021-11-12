@@ -30,7 +30,7 @@
     "@mdx-js/react": "^1.6.22",
     "@ts-stack/markdown": "^1.4.0",
     "@types/sharp": "^0.29.2",
-    "babel-plugin-styled-components": "^1.12.0",
+    "babel-plugin-styled-components": "^1.13.3",
     "dotenv": "^10.0.0",
     "formik": "^2.2.6",
     "gatsby": "^3.14.2",
