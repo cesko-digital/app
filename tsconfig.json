@@ -16,7 +16,13 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "stories/**/*", "scripts/**/*", "api/**/*", "plugins/**/*"],
+  "include": [
+    "src/**/*",
+    "stories/**/*",
+    "scripts/**/*",
+    "api/**/*",
+    "plugins/**/*"
+  ],
   "exclude": [
     "node_modules",
     "public",
