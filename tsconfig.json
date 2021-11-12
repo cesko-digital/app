@@ -4,7 +4,7 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "es2015", "esnext.string"],
     "baseUrl": "src",
     "strict": true,
     "noEmit": true,
