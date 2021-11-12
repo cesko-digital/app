@@ -22,7 +22,8 @@
     "cy:start": "USE_MOCKS=true yarn develop",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "cy:ci": "start-server-and-test cy:start http://localhost:8000 cy:run"
+    "cy:ci": "start-server-and-test cy:start http://localhost:8000 cy:run",
+    "postinstall": "rm -rf node_modules/babel-plugin-lodash/node_modules/lodash"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.6",
