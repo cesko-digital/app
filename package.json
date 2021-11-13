@@ -26,6 +26,7 @@
     "postinstall": "rm -rf node_modules/babel-plugin-lodash/node_modules/lodash"
   },
   "dependencies": {
+    "@deckdeckgo/highlight-code": "^3.4.3",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.22",
     "@ts-stack/markdown": "^1.4.0",
@@ -43,6 +44,7 @@
     "gatsby-plugin-sharp": "^3.14.1",
     "gatsby-plugin-styled-components": "^4.14.0",
     "gatsby-plugin-typescript": "^3.14.0",
+    "gatsby-remark-highlight-code": "^3.0.1",
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
