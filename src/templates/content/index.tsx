@@ -12,7 +12,6 @@ import {
 } from './styles'
 import { CreditsBox, ResourceBox, TableOfContentBox } from './content-box'
 import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader'
-deckDeckGoHighlightElement()
 
 interface ContentPageProps {
   data: ContentPageQuery
@@ -24,6 +23,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ data , location}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    deckDeckGoHighlightElement()
   }, [])
 
   return (
