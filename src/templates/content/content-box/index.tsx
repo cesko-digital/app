@@ -1,5 +1,10 @@
 import React from 'react'
-import {BoxWrapper, CreditsCell, ResourceCell, TableOfContentCell} from './styles'
+import {
+  BoxWrapper,
+  CreditsCell,
+  ResourceCell,
+  TableOfContentCell,
+} from './styles'
 import * as Typography from '../../../components/typography'
 import {
   MarkdownRemarkFrontmatterCredits,

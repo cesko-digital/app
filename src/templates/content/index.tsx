@@ -18,7 +18,7 @@ interface ContentPageProps {
   location: Location
 }
 
-const ContentPage: React.FC<ContentPageProps> = ({ data , location}) => {
+const ContentPage: React.FC<ContentPageProps> = ({ data, location }) => {
   const start = new URLSearchParams(location.search).get('start') ?? '0'
 
   useEffect(() => {
