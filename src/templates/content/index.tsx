@@ -10,7 +10,7 @@ import {
   VideoIframe,
   VideoWrapper,
 } from './styles'
-import {CreditsBox, ResourceBox, TableOfContentBox} from './content-box'
+import { CreditsBox, ResourceBox, TableOfContentBox } from './content-box'
 import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader'
 deckDeckGoHighlightElement()
 
@@ -19,7 +19,7 @@ interface ContentPageProps {
   location: Location
 }
 
-const ContentPage: React.FC<ContentPageProps> = ({ data }) => {
+const ContentPage: React.FC<ContentPageProps> = ({ data , location}) => {
   const start = new URLSearchParams(location.search).get('start') ?? '0'
 
   useEffect(() => {
