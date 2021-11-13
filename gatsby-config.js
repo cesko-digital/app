@@ -41,19 +41,19 @@ module.exports = {
     // `gatsby-plugin-offline`,
     // Docs: https://www.gatsbyjs.com/plugins/gatsby-plugin-react-i18next/
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        path: `${__dirname}/locale`,
-        name: `locale`,
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: 'carbon',
+              theme: 'one-light',
+            },
+          },
+        ],
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content`,
-      },
-    },
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
@@ -83,6 +83,19 @@ module.exports = {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: 'GTM-PWGVF79',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locale`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content`,
       },
     },
   ],
