@@ -159,10 +159,6 @@
                     "perex": "Nezáleží na tom odkud k nám přicházejí nápady a projekty. Důležitá je myšlenka, reálnost a jejich dopad, který pomáhá zlepšovat naši společnost. Neziskovka, veřejná správa nebo jednotlivec. Všichni mají stejné podmínky. ",
                     "title": "Zadavatelé"
                 },
-                "supporters": {
-                    "perex": "Každá podpora i barter má smysl a dopad. Děkujeme všem z komerční, neziskové či státní sféry, kteří byť jednorázově šli s námi. I díky vám můžeme pomáhat stále více projektům.  ",
-                    "title": "Podporovatelé"
-                }
             },
             "financial": {
                 "donators": {
@@ -170,21 +166,13 @@
                     "perex": "Různorodá finanční energie, která k nám putuje, například přes platformu Darujme, ukazuje sílu drobného skutku. I malý čin dokáže zázraky. Děkujeme, že jste v tom s námi.",
                     "title": "Dárci"
                 },
-                "grants": {
-                    "perex": "Finanční podpora pomocí grantů je u nás na začátku. Chceme však využít všechny možnosti, které nás posunou a pomohou nám změnit Česko.",
-                    "title": "Granty"
-                },
-                "heading": {
-                    "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci. Děkujeme, že vidíte smysl naší práce.",
-                    "title": "Ti, bez kterých by to nešlo."
-                },
                 "mainPartners": {
-                    "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci.Děkujeme, že vidíte smysl naší práce.",
-                    "title": "Finanční partneři a sponzoři"
+                    "perex": "Finanční podpora a pomoc přicházejí z mnoha směrů. Od velkých partnerství po jednotlivce. Každá podpora má smysl a dopad na naši práci. Děkujeme, že vidíte smysl naší práce.",
+                    "title": "Hlavní finanční partneři"
                 },
                 "regularPartners": {
                     "perex": "Naše úsilí podporují i menší partneři, kteří nás udržují v běhu. Pomáhají a podporují společný směr. Jejich stopy se mohou zdát menší, ale vliv a dopad je velký. Děkujeme za každý společný krok.",
-                    "title": "Finanční partneři a sponzoři"
+                    "title": "Dárci a sponzoři"
                 }
             },
             "form": {
