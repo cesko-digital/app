@@ -37,7 +37,6 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
         | 'finished'
         | 'githubUrl'
         | 'id'
-        | 'lang'
         | 'logoUrl'
         | 'name'
         | 'rowId'
@@ -54,7 +53,7 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
               Maybe<
                 { __typename?: 'Tag' } & Pick<
                   Tag,
-                  'name' | 'rowId' | 'slug' | 'lang' | 'id'
+                  'name' | 'rowId' | 'slug' | 'id'
                 >
               >
             >
@@ -64,10 +63,7 @@ export type PortalDetailEvent = { __typename?: 'Event' } & Pick<
     tags: Maybe<
       Array<
         Maybe<
-          { __typename?: 'Tag' } & Pick<
-            Tag,
-            'id' | 'lang' | 'name' | 'rowId' | 'slug'
-          >
+          { __typename?: 'Tag' } & Pick<Tag, 'id' | 'name' | 'rowId' | 'slug'>
         >
       >
     >

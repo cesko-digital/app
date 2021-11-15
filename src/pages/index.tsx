@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 
 export const query = graphql`
   query Homepage($locale: String!) {
-    projects: allProject(limit: 3, filter: { lang: { eq: $locale } }) {
+    projects: allProject(limit: 3) {
       nodes {
         name
         slug
@@ -13,7 +13,6 @@ export const query = graphql`
           rowId
           slug
           name
-          lang
         }
       }
     }

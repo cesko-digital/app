@@ -116,7 +116,6 @@ export const query = graphql`
         finished
         githubUrl
         id
-        lang
         logoUrl
         name
         rowId
@@ -128,7 +127,6 @@ export const query = graphql`
           name
           rowId
           slug
-          lang
           id
         }
         trelloUrl
@@ -144,7 +142,6 @@ export const query = graphql`
       summary
       tags {
         id
-        lang
         name
         rowId
         slug
@@ -183,7 +180,6 @@ export const query = graphql`
         }
         tags {
           id
-          lang
           name
           rowId
           slug

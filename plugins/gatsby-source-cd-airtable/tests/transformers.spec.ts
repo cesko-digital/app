@@ -27,7 +27,7 @@ describe('transformers', () => {
     const url = 'url'
     const slackChannelUrl = 'slackUrl'
     const slackChannelName = 'slackName'
-    it('should transform airtable projects to lang version projects', () => {
+    it('should transform airtable projects to gatsby projects', () => {
       const highlighted = true
       const projects = transformProjects([
         {
@@ -57,7 +57,6 @@ describe('transformers', () => {
         },
       ])
       expect(projects).toContainEqual({
-        lang: 'cs',
         name: csName,
         tagline: csTagline,
         tags,
@@ -108,7 +107,6 @@ describe('transformers', () => {
       ])
 
       expect(projects).toContainEqual({
-        lang: 'cs',
         name: csName,
         tagline: csTagline,
         tags,
@@ -140,7 +138,7 @@ describe('transformers', () => {
   })
 
   describe('transformTags', () => {
-    it('should transform airtable tags to lang version tags', () => {
+    it('should transform airtable tags to gatsby tags', () => {
       const csName = 'Aplikace'
       const enName = 'Applications'
       const csSlug = 'aplikace'
@@ -157,21 +155,14 @@ describe('transformers', () => {
         },
       ])
       expect(tags).toContainEqual({
-        lang: 'cs',
         name: csName,
         slug: csSlug,
-        rowId: 'id',
-      })
-      expect(tags).toContainEqual({
-        lang: 'en',
-        name: enName,
-        slug: enSlug,
         rowId: 'id',
       })
     })
   })
   describe('transformVolunteers', () => {
-    it('should transform airtable volunteers to single lang volunteers', () => {
+    it('should transform airtable volunteers to gatsby volunteers', () => {
       const name = 'name'
       const profilePictureUrl = 'url'
       const company = 'company'
@@ -196,7 +187,7 @@ describe('transformers', () => {
   })
 
   describe('transformPartners', () => {
-    it('should transform airtable partners to single lang partners', () => {
+    it('should transform airtable partners to gatsby partners', () => {
       const name = 'name'
       const url = 'url'
       const logoUrl = 'logoUrl'

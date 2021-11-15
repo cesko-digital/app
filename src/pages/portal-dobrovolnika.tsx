@@ -28,7 +28,6 @@ export const query = graphql`
         }
         tags {
           id
-          lang
           name
           rowId
           slug
