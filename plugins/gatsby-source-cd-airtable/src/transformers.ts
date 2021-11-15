@@ -1,5 +1,4 @@
 import {
-  Language,
   Project,
   Tag,
   Volunteer,
@@ -74,47 +73,34 @@ export function transformProjects(
         coordinators: coordinators || [],
       }
 
-      const csProject: Project = {
+      const project: Project = {
         ...base,
         name: csName || '',
         tagline: csTagline || '',
         slug: csSlug,
         description: csDescription || '',
         contributeText: csContributeText || '',
-        lang: Language.Czech,
       }
 
-      return [csProject]
+      return project
     })
-    .reduce(
-      (projects: Project[], langProjects) => [...projects, ...langProjects],
-      []
-    )
 }
 
 export function transformTags(airTableTags: AirTableTag[]): Tag[] {
-  return airTableTags
-    .map((airTableTag) => {
-      const { csName, enSlug, enName, csSlug } = airTableTag.fields
-      const base = {
-        rowId: airTableTag.id,
-      }
-      return [
-        {
-          ...base,
-          name: enName,
-          slug: enSlug,
-          lang: Language.English,
-        },
-        {
-          ...base,
-          name: csName,
-          slug: csSlug,
-          lang: Language.Czech,
-        },
-      ]
-    })
-    .reduce((tags: Tag[], langTags) => [...tags, ...langTags], [])
+  return airTableTags.map((airTableTag) => {
+    const { csName, csSlug } = airTableTag.fields
+    const base = {
+      rowId: airTableTag.id,
+    }
+
+    const tag: Tag = {
+      ...base,
+      name: csName,
+      slug: csSlug,
+    }
+
+    return tag
+  })
 }
 
 export function transformEvent(event: AirtableEvent): Event | null {
@@ -199,14 +185,11 @@ export const transformPartners = (
 ): Partner[] => transformAirTableRecords(airTablePartners)
 
 interface IdParams {
-  lang: string
   rowId: string
 }
 
-export const getProjectId = ({ lang, rowId }: IdParams): string =>
-  `${lang}-Project-${rowId}`
+export const getProjectId = ({ rowId }: IdParams): string => `Project-${rowId}`
 
-export const getTagId = ({ lang, rowId }: IdParams): string =>
-  `${lang}-Tag-${rowId}`
+export const getTagId = ({ rowId }: IdParams): string => `Tag-${rowId}`
 
 export const getVolunteerId = (rowId: string): string => `Volunteer-${rowId}`

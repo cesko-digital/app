@@ -8,7 +8,7 @@ import { map } from './utils'
 
 export function nodeFromProject(project: Project): NodeInput {
   const tagNodeIds = project.tags.map((tagRowId) =>
-    getTagId({ lang: project.lang, rowId: tagRowId })
+    getTagId({ rowId: tagRowId })
   )
   const coordinatorNodeIds = project.coordinators.map((coordinatorRowId) =>
     getVolunteerId(coordinatorRowId)
@@ -74,11 +74,11 @@ export function nodeFromEvent(event: Event): NodeInput {
     owner: undefined,
     // Event–Project relationship
     project___NODE: event.project
-      ? getProjectId({ lang: 'cs', rowId: event.project })
+      ? getProjectId({ rowId: event.project })
       : undefined,
     project: undefined,
     // Event-Tag relationship
-    tags___NODE: event.tags?.map((t) => getTagId({ lang: 'cs', rowId: t })),
+    tags___NODE: event.tags?.map((t) => getTagId({ rowId: t })),
     tags: undefined,
   }
 }
@@ -96,7 +96,7 @@ export function nodeFromOpportunity(opportunity: Opportunity): NodeInput {
     owner: undefined,
     // Opportunity–Project relationship
     project___NODE: opportunity.project
-      ? getProjectId({ lang: 'cs', rowId: opportunity.project })
+      ? getProjectId({ rowId: opportunity.project })
       : undefined,
     project: undefined,
   }

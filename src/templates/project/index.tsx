@@ -99,7 +99,6 @@ export const query = graphql`
   query ProjectPage($id: String!, $locale: String!) {
     project(id: { eq: $id }) {
       name
-      lang
       description
       slackChannelName
       slackChannelUrl
@@ -116,10 +115,7 @@ export const query = graphql`
         profilePictureUrl
       }
     }
-    otherProjects: allProject(
-      filter: { id: { ne: $id }, lang: { eq: $locale } }
-      limit: 3
-    ) {
+    otherProjects: allProject(filter: { id: { ne: $id } }, limit: 3) {
       nodes {
         name
         tagline

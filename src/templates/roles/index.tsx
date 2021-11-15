@@ -120,7 +120,6 @@ export const query = graphql`
         finished
         githubUrl
         id
-        lang
         logoUrl
         name
         rowId
@@ -132,7 +131,6 @@ export const query = graphql`
           name
           rowId
           slug
-          lang
           id
         }
         trelloUrl

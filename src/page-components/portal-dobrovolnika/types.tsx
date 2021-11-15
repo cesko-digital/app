@@ -34,10 +34,7 @@ export type PortalEvent = { __typename?: 'Event' } & Pick<
     tags: Maybe<
       Array<
         Maybe<
-          { __typename?: 'Tag' } & Pick<
-            Tag,
-            'id' | 'lang' | 'name' | 'rowId' | 'slug'
-          >
+          { __typename?: 'Tag' } & Pick<Tag, 'id' | 'name' | 'rowId' | 'slug'>
         >
       >
     >

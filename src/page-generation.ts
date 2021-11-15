@@ -1,15 +1,8 @@
 import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
-import { Project, Event, Opportunity } from './generated/graphql-types'
+import { Event, Opportunity, Project } from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
-const SUPPORTED_LANGUAGES = ['cs']
-
-export function getProjectUrl(args: { lang: string; slug: string }): string {
-  return args.lang === 'cs'
-    ? `/projekty/${args.slug}`
-    : `/${args.lang}/projects/${args.slug}`
-}
 
 export async function generateProjectPages({
   graphql,
@@ -19,7 +12,6 @@ export async function generateProjectPages({
     query GenerateProjectPages {
       allProject {
         nodes {
-          lang
           slug
           id
         }
@@ -27,18 +19,16 @@ export async function generateProjectPages({
     }
   `)
 
-  result?.data?.allProject.nodes
-    .filter((node) => SUPPORTED_LANGUAGES.includes(node.lang))
-    .forEach((node: Project) => {
-      const projectUrl = getProjectUrl(node)
-      createPage({
-        path: projectUrl,
-        component: resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
-        context: {
-          id: node.id,
-        },
-      })
+  result?.data?.allProject.nodes.forEach((node: Project) => {
+    const projectUrl = `/projekty/${node.slug}`
+    createPage({
+      path: projectUrl,
+      component: resolve(PROJECT_TEMPLATE_RELATIVE_PATH),
+      context: {
+        id: node.id,
+      },
     })
+  })
 }
 
 export async function generateEventPages({

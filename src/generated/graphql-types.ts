@@ -736,7 +736,6 @@ export type Tag = Node & {
   rowId: Maybe<Scalars['String']>
   name: Maybe<Scalars['String']>
   slug: Maybe<Scalars['String']>
-  lang: Maybe<Scalars['String']>
 }
 
 export type Project = Node & {
@@ -761,7 +760,6 @@ export type Project = Node & {
   slug: Maybe<Scalars['String']>
   description: Maybe<Scalars['String']>
   contributeText: Maybe<Scalars['String']>
-  lang: Maybe<Scalars['String']>
   tags: Maybe<Array<Maybe<Tag>>>
   coordinators: Maybe<Array<Maybe<Volunteer>>>
 }
@@ -788,6 +786,7 @@ export type Opportunity = Node & {
   rowId: Maybe<Scalars['String']>
   slug: Maybe<Scalars['String']>
   name: Maybe<Scalars['String']>
+  coverUrl: Maybe<Scalars['String']>
   summary: Maybe<Scalars['String']>
   timeRequirements: Maybe<Scalars['String']>
   skills: Maybe<Array<Maybe<Scalars['String']>>>
@@ -1135,7 +1134,6 @@ export type QueryTagArgs = {
   rowId: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
-  lang: Maybe<StringQueryOperatorInput>
 }
 
 export type QueryAllTagArgs = {
@@ -1166,7 +1164,6 @@ export type QueryProjectArgs = {
   slug: Maybe<StringQueryOperatorInput>
   description: Maybe<StringQueryOperatorInput>
   contributeText: Maybe<StringQueryOperatorInput>
-  lang: Maybe<StringQueryOperatorInput>
   tags: Maybe<TagFilterListInput>
   coordinators: Maybe<VolunteerFilterListInput>
 }
@@ -1205,6 +1202,7 @@ export type QueryOpportunityArgs = {
   rowId: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
+  coverUrl: Maybe<StringQueryOperatorInput>
   summary: Maybe<StringQueryOperatorInput>
   timeRequirements: Maybe<StringQueryOperatorInput>
   skills: Maybe<StringQueryOperatorInput>
@@ -3975,7 +3973,6 @@ export enum TagFieldsEnum {
   rowId = 'rowId',
   name = 'name',
   slug = 'slug',
-  lang = 'lang',
 }
 
 export type TagGroupConnection = {
@@ -4023,7 +4020,6 @@ export type TagFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
-  lang: Maybe<StringQueryOperatorInput>
 }
 
 export type TagSortInput = {
@@ -4184,7 +4180,6 @@ export enum ProjectFieldsEnum {
   slug = 'slug',
   description = 'description',
   contributeText = 'contributeText',
-  lang = 'lang',
   tags = 'tags',
   tags___id = 'tags___id',
   tags___parent___id = 'tags___parent___id',
@@ -4227,7 +4222,6 @@ export enum ProjectFieldsEnum {
   tags___rowId = 'tags___rowId',
   tags___name = 'tags___name',
   tags___slug = 'tags___slug',
-  tags___lang = 'tags___lang',
   coordinators = 'coordinators',
   coordinators___id = 'coordinators___id',
   coordinators___parent___id = 'coordinators___parent___id',
@@ -4336,7 +4330,6 @@ export type ProjectFilterInput = {
   slug: Maybe<StringQueryOperatorInput>
   description: Maybe<StringQueryOperatorInput>
   contributeText: Maybe<StringQueryOperatorInput>
-  lang: Maybe<StringQueryOperatorInput>
   tags: Maybe<TagFilterListInput>
   coordinators: Maybe<VolunteerFilterListInput>
 }
@@ -4668,6 +4661,7 @@ export enum OpportunityFieldsEnum {
   rowId = 'rowId',
   slug = 'slug',
   name = 'name',
+  coverUrl = 'coverUrl',
   summary = 'summary',
   timeRequirements = 'timeRequirements',
   skills = 'skills',
@@ -4776,7 +4770,6 @@ export enum OpportunityFieldsEnum {
   project___slug = 'project___slug',
   project___description = 'project___description',
   project___contributeText = 'project___contributeText',
-  project___lang = 'project___lang',
   project___tags = 'project___tags',
   project___tags___id = 'project___tags___id',
   project___tags___parent___id = 'project___tags___parent___id',
@@ -4795,7 +4788,6 @@ export enum OpportunityFieldsEnum {
   project___tags___rowId = 'project___tags___rowId',
   project___tags___name = 'project___tags___name',
   project___tags___slug = 'project___tags___slug',
-  project___tags___lang = 'project___tags___lang',
   project___coordinators = 'project___coordinators',
   project___coordinators___id = 'project___coordinators___id',
   project___coordinators___parent___id = 'project___coordinators___parent___id',
@@ -4867,6 +4859,7 @@ export type OpportunityFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
+  coverUrl: Maybe<StringQueryOperatorInput>
   summary: Maybe<StringQueryOperatorInput>
   timeRequirements: Maybe<StringQueryOperatorInput>
   skills: Maybe<StringQueryOperatorInput>
@@ -5304,7 +5297,6 @@ export enum EventFieldsEnum {
   project___slug = 'project___slug',
   project___description = 'project___description',
   project___contributeText = 'project___contributeText',
-  project___lang = 'project___lang',
   project___tags = 'project___tags',
   project___tags___id = 'project___tags___id',
   project___tags___parent___id = 'project___tags___parent___id',
@@ -5323,7 +5315,6 @@ export enum EventFieldsEnum {
   project___tags___rowId = 'project___tags___rowId',
   project___tags___name = 'project___tags___name',
   project___tags___slug = 'project___tags___slug',
-  project___tags___lang = 'project___tags___lang',
   project___coordinators = 'project___coordinators',
   project___coordinators___id = 'project___coordinators___id',
   project___coordinators___parent___id = 'project___coordinators___parent___id',
@@ -5390,7 +5381,6 @@ export enum EventFieldsEnum {
   tags___rowId = 'tags___rowId',
   tags___name = 'tags___name',
   tags___slug = 'tags___slug',
-  tags___lang = 'tags___lang',
 }
 
 export type EventGroupConnection = {
@@ -5499,9 +5489,7 @@ export type GenerateProjectPagesQueryVariables = Exact<{ [key: string]: never }>
 
 export type GenerateProjectPagesQuery = { __typename?: 'Query' } & {
   allProject: { __typename?: 'ProjectConnection' } & {
-    nodes: Array<
-      { __typename?: 'Project' } & Pick<Project, 'lang' | 'slug' | 'id'>
-    >
+    nodes: Array<{ __typename?: 'Project' } & Pick<Project, 'slug' | 'id'>>
   }
 }
 
@@ -5552,10 +5540,7 @@ export type HomepageQuery = { __typename?: 'Query' } & {
           tags: Maybe<
             Array<
               Maybe<
-                { __typename?: 'Tag' } & Pick<
-                  Tag,
-                  'rowId' | 'slug' | 'name' | 'lang'
-                >
+                { __typename?: 'Tag' } & Pick<Tag, 'rowId' | 'slug' | 'name'>
               >
             >
           >
@@ -5637,7 +5622,7 @@ export type PortalDobrovolnikaPageQuery = { __typename?: 'Query' } & {
               Maybe<
                 { __typename?: 'Tag' } & Pick<
                   Tag,
-                  'id' | 'lang' | 'name' | 'rowId' | 'slug'
+                  'id' | 'name' | 'rowId' | 'slug'
                 >
               >
             >
@@ -5680,22 +5665,11 @@ export type ProjectsPageQuery = { __typename?: 'Query' } & {
   highlightedProject: Maybe<
     { __typename?: 'Project' } & Pick<
       Project,
-      | 'name'
-      | 'lang'
-      | 'slug'
-      | 'tagline'
-      | 'coverUrl'
-      | 'logoUrl'
-      | 'highlighted'
+      'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'
     > & {
         tags: Maybe<
           Array<
-            Maybe<
-              { __typename?: 'Tag' } & Pick<
-                Tag,
-                'rowId' | 'slug' | 'name' | 'lang'
-              >
-            >
+            Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'rowId' | 'slug' | 'name'>>
           >
         >
       }
@@ -5705,7 +5679,6 @@ export type ProjectsPageQuery = { __typename?: 'Query' } & {
       { __typename?: 'Project' } & Pick<
         Project,
         | 'name'
-        | 'lang'
         | 'slug'
         | 'silent'
         | 'tagline'
@@ -5716,10 +5689,7 @@ export type ProjectsPageQuery = { __typename?: 'Query' } & {
           tags: Maybe<
             Array<
               Maybe<
-                { __typename?: 'Tag' } & Pick<
-                  Tag,
-                  'rowId' | 'slug' | 'name' | 'lang'
-                >
+                { __typename?: 'Tag' } & Pick<Tag, 'rowId' | 'slug' | 'name'>
               >
             >
           >
@@ -5809,7 +5779,6 @@ export type EventPageQuery = { __typename?: 'Query' } & {
             | 'finished'
             | 'githubUrl'
             | 'id'
-            | 'lang'
             | 'logoUrl'
             | 'name'
             | 'rowId'
@@ -5826,7 +5795,7 @@ export type EventPageQuery = { __typename?: 'Query' } & {
                   Maybe<
                     { __typename?: 'Tag' } & Pick<
                       Tag,
-                      'name' | 'rowId' | 'slug' | 'lang' | 'id'
+                      'name' | 'rowId' | 'slug' | 'id'
                     >
                   >
                 >
@@ -5838,7 +5807,7 @@ export type EventPageQuery = { __typename?: 'Query' } & {
             Maybe<
               { __typename?: 'Tag' } & Pick<
                 Tag,
-                'id' | 'lang' | 'name' | 'rowId' | 'slug'
+                'id' | 'name' | 'rowId' | 'slug'
               >
             >
           >
@@ -5879,7 +5848,7 @@ export type EventPageQuery = { __typename?: 'Query' } & {
               Maybe<
                 { __typename?: 'Tag' } & Pick<
                   Tag,
-                  'id' | 'lang' | 'name' | 'rowId' | 'slug'
+                  'id' | 'name' | 'rowId' | 'slug'
                 >
               >
             >
@@ -5909,7 +5878,6 @@ export type ProjectPageQuery = { __typename?: 'Query' } & {
     { __typename?: 'Project' } & Pick<
       Project,
       | 'name'
-      | 'lang'
       | 'description'
       | 'slackChannelName'
       | 'slackChannelUrl'
@@ -5988,7 +5956,6 @@ export type RolePageQuery = { __typename?: 'Query' } & {
             | 'finished'
             | 'githubUrl'
             | 'id'
-            | 'lang'
             | 'logoUrl'
             | 'name'
             | 'rowId'
@@ -6005,7 +5972,7 @@ export type RolePageQuery = { __typename?: 'Query' } & {
                   Maybe<
                     { __typename?: 'Tag' } & Pick<
                       Tag,
-                      'name' | 'rowId' | 'slug' | 'lang' | 'id'
+                      'name' | 'rowId' | 'slug' | 'id'
                     >
                   >
                 >

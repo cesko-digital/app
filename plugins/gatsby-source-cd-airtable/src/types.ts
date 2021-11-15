@@ -12,11 +12,6 @@ export interface SourceNode {
   rowId: string
 }
 
-export enum Language {
-  Czech = 'cs',
-  English = 'en',
-}
-
 export interface Partner extends SourceNode {
   name: string
   url: string
@@ -26,7 +21,6 @@ export interface Partner extends SourceNode {
 export interface Tag extends SourceNode {
   name: string
   slug: string
-  lang: Language
 }
 
 export interface Volunteer extends SourceNode {
@@ -40,7 +34,6 @@ export interface Volunteer extends SourceNode {
 export interface Project extends SourceNode {
   name: string
   tagline: string
-  lang: Language
   slug: string
   coverUrl: string
   logoUrl: string
