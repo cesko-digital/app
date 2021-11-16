@@ -50,6 +50,7 @@
           "logo": "Logo",
           "mediaContact": "Kontakt pro média",
           "projects": "Projekty",
+          "portal": "Portál dobrovolníka",
           "submitProject": "Zadat projekt",
           "supportUs": "Přispět",
           "title": "Česko.Digital"
@@ -66,6 +67,7 @@
     "czech": "Czech",
     "english": "English",
     "partners": "Partneři",
+    "portal": "Portál dobrovolníka",
     "projects": "Projekty",
     "signUp": "Chci se zapojit",
     "supportUs": "Přispět"

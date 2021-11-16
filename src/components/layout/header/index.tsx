@@ -29,6 +29,11 @@ const Header: React.FC = () => {
       locale: 'cs',
     },
     {
+      link: '/portal-dobrovolnika',
+      label: t('header.portal'),
+      locale: 'cs',
+    },
+    {
       link: '/partners',
       label: t('header.partners'),
       locale: 'cs',
