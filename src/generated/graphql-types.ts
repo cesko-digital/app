@@ -381,6 +381,7 @@ export type SitePluginPluginOptions = {
 export type SitePluginPluginOptionsPages = {
   __typename?: 'SitePluginPluginOptionsPages'
   matchPath: Maybe<Scalars['String']>
+  getLanguageFromPath: Maybe<Scalars['Boolean']>
   languages: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
@@ -2616,6 +2617,7 @@ export type SitePluginPluginOptionsPagesFilterListInput = {
 
 export type SitePluginPluginOptionsPagesFilterInput = {
   matchPath: Maybe<StringQueryOperatorInput>
+  getLanguageFromPath: Maybe<BooleanQueryOperatorInput>
   languages: Maybe<StringQueryOperatorInput>
 }
 
@@ -2844,6 +2846,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___redirect = 'pluginCreator___pluginOptions___redirect',
   pluginCreator___pluginOptions___pages = 'pluginCreator___pluginOptions___pages',
   pluginCreator___pluginOptions___pages___matchPath = 'pluginCreator___pluginOptions___pages___matchPath',
+  pluginCreator___pluginOptions___pages___getLanguageFromPath = 'pluginCreator___pluginOptions___pages___getLanguageFromPath',
   pluginCreator___pluginOptions___pages___languages = 'pluginCreator___pluginOptions___pages___languages',
   pluginCreator___pluginOptions___airtableApiKey = 'pluginCreator___pluginOptions___airtableApiKey',
   pluginCreator___pluginOptions___airtableBaseUrl = 'pluginCreator___pluginOptions___airtableBaseUrl',
@@ -3052,6 +3055,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___redirect = 'pluginOptions___redirect',
   pluginOptions___pages = 'pluginOptions___pages',
   pluginOptions___pages___matchPath = 'pluginOptions___pages___matchPath',
+  pluginOptions___pages___getLanguageFromPath = 'pluginOptions___pages___getLanguageFromPath',
   pluginOptions___pages___languages = 'pluginOptions___pages___languages',
   pluginOptions___airtableApiKey = 'pluginOptions___airtableApiKey',
   pluginOptions___airtableBaseUrl = 'pluginOptions___airtableBaseUrl',
