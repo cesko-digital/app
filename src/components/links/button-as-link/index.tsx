@@ -13,7 +13,7 @@ export interface ButtonAsLinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
     Partial<StyledButtonProps> {
   children: React.ReactNode
-  locale?: string
+  language?: string
 }
 
 const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({

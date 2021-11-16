@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { Heading1 } from 'components/typography'
 import * as S from './styles'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
+import { I18nextContext, useTranslation } from 'gatsby-plugin-react-i18next'
 import { LINKS } from 'utils/constants'
 
 const HOMEPAGE_TRANSLATION_KEY = `pages.homepage`
@@ -17,10 +16,9 @@ enum TranslationKeyPrefix {
 
 const Hero: React.FC = () => {
   const { t } = useTranslation()
+  const { language } = useContext(I18nextContext)
 
-  const { locale } = useContext(TranslateUrlsContext)
-
-  const isCzech = locale === 'cs'
+  const isCzech = language === 'cs'
 
   return (
     <S.Section>
@@ -38,7 +36,7 @@ const Hero: React.FC = () => {
             </S.ShiftedBody>
 
             {isCzech && (
-              <S.ButtonAsLinkElement to="/projects">
+              <S.ButtonAsLinkElement to="/projekty">
                 {t(
                   `${HOMEPAGE_TRANSLATION_KEY}.${TranslationKeyPrefix.WhatWeDo}`
                 )}

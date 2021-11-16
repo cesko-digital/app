@@ -34,7 +34,7 @@ const Projects: React.FC<ProjectsProps> = ({
     <S.Container>
       <S.TitleRow>
         <S.Title>{t(getTitleTranslationKey(otherProjects))}</S.Title>
-        <S.ShowAll to={'/projects'}>
+        <S.ShowAll to={'/projekty'}>
           {t(`${COMPONENT_TRANSLATION_KEY}.showAll`)}
         </S.ShowAll>
       </S.TitleRow>
@@ -47,7 +47,7 @@ const Projects: React.FC<ProjectsProps> = ({
               description={project.tagline}
               cover={project.coverUrl}
               logo={project.logoUrl}
-              link={`/projects/${project.slug}`}
+              link={`/projekty/${project.slug}`}
               tags={mapTags(project.tags)}
             />
           ))}

@@ -3,7 +3,7 @@ import {
   applyButtonStyles,
   StyledButtonProps,
 } from 'components/buttons/button/styles'
-import { TranslatedLink } from 'gatsby-plugin-translate-urls'
+import { Link as TranslatedLink } from 'gatsby-plugin-react-i18next'
 
 export const InternalLink = styled(TranslatedLink)<StyledButtonProps>`
   ${(p) =>

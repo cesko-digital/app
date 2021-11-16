@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  query PortalDobrovolnikaPage($locale: String!) {
+  query PortalDobrovolnikaPage($language: String!) {
     events: allEvent(filter: { status: { eq: "live" } }) {
       nodes {
         competenceMap
@@ -52,7 +52,7 @@ export const query = graphql`
         }
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

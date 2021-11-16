@@ -1,7 +1,7 @@
 import styled, { css, CssWithTheme } from 'styled-components'
 import { StyledLinkProps } from '.'
 import { ButtonSize } from '../../buttons'
-import { TranslatedLink } from 'gatsby-plugin-translate-urls'
+import { Link as TranslatedLink } from 'gatsby-plugin-react-i18next'
 
 function getDefaultBorderStyle(disabled: boolean) {
   if (disabled) {

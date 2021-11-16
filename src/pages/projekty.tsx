@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 
 // Page query needs to be in 'pages' directory
 export const query = graphql`
-  query ProjectsPage($locale: String!) {
+  query ProjectsPage($language: String!) {
     highlightedProject: project(highlighted: { eq: true }) {
       name
       slug
@@ -34,7 +34,7 @@ export const query = graphql`
         }
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns
@@ -46,4 +46,4 @@ export const query = graphql`
   }
 `
 
-export { default } from 'page-components/projects'
+export { default } from 'page-components/projekty'

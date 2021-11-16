@@ -37,12 +37,6 @@ module.exports = {
       },
     })
 
-    config.resolve.alias = {
-      'gatsby-plugin-translate-urls': require.resolve(
-        './__mocks__/gatsby-plugin-translate-urls.js'
-      ),
-    }
-
     config.resolve.extensions.push('.ts', '.tsx')
 
     return config

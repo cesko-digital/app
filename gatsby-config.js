@@ -63,18 +63,7 @@ module.exports = {
         ],
       },
     },
-    {
-      // Docs: https://www.npmjs.com/package/gatsby-plugin-translate-urls
-      resolve: `gatsby-plugin-translate-urls`,
-      options: {
-        defaultLocale: 'cs',
-        prefix: 'urls.',
-        translations: {
-          cs: require('./locale/cs/pages.json'),
-          en: require('./locale/en/pages.json'),
-        },
-      },
-    },
+
     {
       resolve: `gatsby-source-cd-airtable`,
       options: {

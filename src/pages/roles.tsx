@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  query Opportunities($locale: String!) {
+  query Opportunities($language: String!) {
     roles: allOpportunity(filter: { status: { eq: "live" } }) {
       nodes {
         id
@@ -16,7 +16,7 @@ export const query = graphql`
         }
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

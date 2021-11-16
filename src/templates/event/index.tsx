@@ -96,7 +96,7 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
 }
 
 export const query = graphql`
-  query EventPage($id: String!, $locale: String!) {
+  query EventPage($id: String!, $language: String!) {
     event(id: { eq: $id }) {
       competenceMap
       description
@@ -189,7 +189,7 @@ export const query = graphql`
         coverUrl
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

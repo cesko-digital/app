@@ -36,7 +36,7 @@ const OngoingProjects: React.FC<Props> = ({ projects }) => (
         description={project.tagline}
         cover={project.coverUrl}
         logo={project.logoUrl}
-        link={`/projects/${project.slug}`}
+        link={`/projekty/${project.slug}`}
         tags={mapTags(project.tags)}
       />
     ))}

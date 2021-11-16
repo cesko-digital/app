@@ -303,8 +303,6 @@ export type SitePageContext = {
   id: Maybe<Scalars['String']>
   language: Maybe<Scalars['String']>
   i18n: Maybe<SitePageContextI18n>
-  locale: Maybe<Scalars['String']>
-  originalUrl: Maybe<Scalars['String']>
 }
 
 export type SitePageContextI18n = {
@@ -370,9 +368,6 @@ export type SitePluginPluginOptions = {
   defaultLanguage: Maybe<Scalars['String']>
   redirect: Maybe<Scalars['Boolean']>
   pages: Maybe<Array<Maybe<SitePluginPluginOptionsPages>>>
-  defaultLocale: Maybe<Scalars['String']>
-  prefix: Maybe<Scalars['String']>
-  translations: Maybe<SitePluginPluginOptionsTranslations>
   airtableApiKey: Maybe<Scalars['String']>
   airtableBaseUrl: Maybe<Scalars['String']>
   id: Maybe<Scalars['String']>
@@ -389,30 +384,13 @@ export type SitePluginPluginOptionsPages = {
   languages: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
-export type SitePluginPluginOptionsTranslations = {
-  __typename?: 'SitePluginPluginOptionsTranslations'
-  cs: Maybe<SitePluginPluginOptionsTranslationsCs>
-  en: Maybe<SitePluginPluginOptionsTranslationsEn>
-}
-
-export type SitePluginPluginOptionsTranslationsCs = {
-  __typename?: 'SitePluginPluginOptionsTranslationsCs'
-  urls_projects: Maybe<Scalars['String']>
-  urls_page_2: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsTranslationsEn = {
-  __typename?: 'SitePluginPluginOptionsTranslationsEn'
-  urls_projects: Maybe<Scalars['String']>
-  urls_page_2: Maybe<Scalars['String']>
-}
-
 export type SitePluginPackageJson = {
   __typename?: 'SitePluginPackageJson'
   name: Maybe<Scalars['String']>
   description: Maybe<Scalars['String']>
   version: Maybe<Scalars['String']>
   main: Maybe<Scalars['String']>
+  author: Maybe<Scalars['String']>
   license: Maybe<Scalars['String']>
   dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>
   devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>
@@ -2560,8 +2538,6 @@ export type SitePageContextFilterInput = {
   id: Maybe<StringQueryOperatorInput>
   language: Maybe<StringQueryOperatorInput>
   i18n: Maybe<SitePageContextI18nFilterInput>
-  locale: Maybe<StringQueryOperatorInput>
-  originalUrl: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageContextI18nFilterInput = {
@@ -2624,9 +2600,6 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultLanguage: Maybe<StringQueryOperatorInput>
   redirect: Maybe<BooleanQueryOperatorInput>
   pages: Maybe<SitePluginPluginOptionsPagesFilterListInput>
-  defaultLocale: Maybe<StringQueryOperatorInput>
-  prefix: Maybe<StringQueryOperatorInput>
-  translations: Maybe<SitePluginPluginOptionsTranslationsFilterInput>
   airtableApiKey: Maybe<StringQueryOperatorInput>
   airtableBaseUrl: Maybe<StringQueryOperatorInput>
   id: Maybe<StringQueryOperatorInput>
@@ -2646,26 +2619,12 @@ export type SitePluginPluginOptionsPagesFilterInput = {
   languages: Maybe<StringQueryOperatorInput>
 }
 
-export type SitePluginPluginOptionsTranslationsFilterInput = {
-  cs: Maybe<SitePluginPluginOptionsTranslationsCsFilterInput>
-  en: Maybe<SitePluginPluginOptionsTranslationsEnFilterInput>
-}
-
-export type SitePluginPluginOptionsTranslationsCsFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>
-  urls_page_2: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPluginOptionsTranslationsEnFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>
-  urls_page_2: Maybe<StringQueryOperatorInput>
-}
-
 export type SitePluginPackageJsonFilterInput = {
   name: Maybe<StringQueryOperatorInput>
   description: Maybe<StringQueryOperatorInput>
   version: Maybe<StringQueryOperatorInput>
   main: Maybe<StringQueryOperatorInput>
+  author: Maybe<StringQueryOperatorInput>
   license: Maybe<StringQueryOperatorInput>
   dependencies: Maybe<SitePluginPackageJsonDependenciesFilterListInput>
   devDependencies: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>
@@ -2844,8 +2803,6 @@ export enum SitePageFieldsEnum {
   context___i18n___routed = 'context___i18n___routed',
   context___i18n___originalPath = 'context___i18n___originalPath',
   context___i18n___path = 'context___i18n___path',
-  context___locale = 'context___locale',
-  context___originalUrl = 'context___originalUrl',
   pluginCreator___resolve = 'pluginCreator___resolve',
   pluginCreator___name = 'pluginCreator___name',
   pluginCreator___version = 'pluginCreator___version',
@@ -2888,8 +2845,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___pages = 'pluginCreator___pluginOptions___pages',
   pluginCreator___pluginOptions___pages___matchPath = 'pluginCreator___pluginOptions___pages___matchPath',
   pluginCreator___pluginOptions___pages___languages = 'pluginCreator___pluginOptions___pages___languages',
-  pluginCreator___pluginOptions___defaultLocale = 'pluginCreator___pluginOptions___defaultLocale',
-  pluginCreator___pluginOptions___prefix = 'pluginCreator___pluginOptions___prefix',
   pluginCreator___pluginOptions___airtableApiKey = 'pluginCreator___pluginOptions___airtableApiKey',
   pluginCreator___pluginOptions___airtableBaseUrl = 'pluginCreator___pluginOptions___airtableBaseUrl',
   pluginCreator___pluginOptions___id = 'pluginCreator___pluginOptions___id',
@@ -2902,6 +2857,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
   pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
   pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
+  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
   pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
   pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
   pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
@@ -3097,12 +3053,6 @@ export enum SitePluginFieldsEnum {
   pluginOptions___pages = 'pluginOptions___pages',
   pluginOptions___pages___matchPath = 'pluginOptions___pages___matchPath',
   pluginOptions___pages___languages = 'pluginOptions___pages___languages',
-  pluginOptions___defaultLocale = 'pluginOptions___defaultLocale',
-  pluginOptions___prefix = 'pluginOptions___prefix',
-  pluginOptions___translations___cs___urls_projects = 'pluginOptions___translations___cs___urls_projects',
-  pluginOptions___translations___cs___urls_page_2 = 'pluginOptions___translations___cs___urls_page_2',
-  pluginOptions___translations___en___urls_projects = 'pluginOptions___translations___en___urls_projects',
-  pluginOptions___translations___en___urls_page_2 = 'pluginOptions___translations___en___urls_page_2',
   pluginOptions___airtableApiKey = 'pluginOptions___airtableApiKey',
   pluginOptions___airtableBaseUrl = 'pluginOptions___airtableBaseUrl',
   pluginOptions___id = 'pluginOptions___id',
@@ -3115,6 +3065,7 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
+  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -5527,7 +5478,7 @@ export type NotFoundQuery = { __typename?: 'Query' } & {
 }
 
 export type HomepageQueryVariables = Exact<{
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type HomepageQuery = { __typename?: 'Query' } & {
@@ -5565,7 +5516,7 @@ export type HomepageQuery = { __typename?: 'Query' } & {
 }
 
 export type PartnersQueryVariables = Exact<{
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type PartnersQuery = { __typename?: 'Query' } & {
@@ -5583,7 +5534,7 @@ export type PartnersQuery = { __typename?: 'Query' } & {
   ExpertPartnersFragment
 
 export type PortalDobrovolnikaPageQueryVariables = Exact<{
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type PortalDobrovolnikaPageQuery = { __typename?: 'Query' } & {
@@ -5658,7 +5609,7 @@ export type PortalDobrovolnikaPageQuery = { __typename?: 'Query' } & {
 }
 
 export type ProjectsPageQueryVariables = Exact<{
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type ProjectsPageQuery = { __typename?: 'Query' } & {
@@ -5709,7 +5660,7 @@ export type ProjectsPageQuery = { __typename?: 'Query' } & {
 }
 
 export type OpportunitiesQueryVariables = Exact<{
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type OpportunitiesQuery = { __typename?: 'Query' } & {
@@ -5742,7 +5693,7 @@ export type OpportunitiesQuery = { __typename?: 'Query' } & {
 
 export type EventPageQueryVariables = Exact<{
   id: Scalars['String']
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type EventPageQuery = { __typename?: 'Query' } & {
@@ -5870,7 +5821,7 @@ export type EventPageQuery = { __typename?: 'Query' } & {
 
 export type ProjectPageQueryVariables = Exact<{
   id: Scalars['String']
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type ProjectPageQuery = { __typename?: 'Query' } & {
@@ -5927,7 +5878,7 @@ export type ProjectPageQuery = { __typename?: 'Query' } & {
 
 export type RolePageQueryVariables = Exact<{
   id: Scalars['String']
-  locale: Scalars['String']
+  language: Scalars['String']
 }>
 
 export type RolePageQuery = { __typename?: 'Query' } & {
