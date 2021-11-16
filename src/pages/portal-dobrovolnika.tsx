@@ -52,6 +52,33 @@ export const query = graphql`
         }
       }
     }
+    cedu: allMarkdownRemark {
+      nodes {
+        frontmatter {
+          cover
+          description
+          date
+          slug
+          tableOfContent {
+            time
+            title
+            start
+          }
+          sources {
+            title
+            type
+            url
+          }
+          title
+          videoUrl
+          credits {
+            title
+            name
+          }
+          tags
+        }
+      }
+    }
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {

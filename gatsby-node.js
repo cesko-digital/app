@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import {
+  generateContentPages,
   generateEventPages,
   generateRolePages,
   generateProjectPages,
@@ -16,5 +17,6 @@ export function onCreateWebpackConfig({ actions }) {
 export const createPages = async (args) => {
   await generateProjectPages(args)
   await generateEventPages(args)
+  await generateContentPages(args)
   await generateRolePages(args)
 }

@@ -1,13 +1,14 @@
 import { Layout, SectionContent, Section } from 'components/layout'
 import * as Typography from 'components/typography'
 import React from 'react'
-import { Event, Opportunity } from 'generated/graphql-types'
+import { Event, MarkdownRemark, Opportunity } from 'generated/graphql-types'
 import { PortalEvent } from './types'
 import * as S from './styles'
 import RoleItem from '../../components/sections/role-overview'
 import { Button } from '../../components/buttons'
 import { ButtonWrapper, RolesMainWrapper } from './styles'
 import { CardRow } from 'components/layout'
+import CeduCard from './cedu-card'
 
 interface PortalDobrovolnikaProps {
   data: {
@@ -16,6 +17,9 @@ interface PortalDobrovolnikaProps {
     }
     events: {
       nodes: Event[]
+    }
+    cedu: {
+      nodes: MarkdownRemark[]
     }
   }
 }
@@ -62,6 +66,36 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
               <Button>Více volných pozic</Button>
             </a>
           </ButtonWrapper>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionContent>
+          <S.CategoryHeader>
+            <S.Title>Vzdělávání - č.edu</S.Title>
+          </S.CategoryHeader>
+          <S.Container>
+            <S.CardWrapper>
+              <CardRow>
+                {props.data.cedu.nodes.map((remark, index) => (
+                  <CeduCard
+                    key={index}
+                    title={remark.frontmatter.title}
+                    description={remark.frontmatter.description}
+                    cover={remark.frontmatter.cover}
+                    logo="https://data.cesko.digital/web/projects/cesko-digital/logo.png"
+                    link={`/cedu/${remark.frontmatter.slug}`}
+                    tags={
+                      remark.frontmatter.tags
+                        ? remark.frontmatter.tags.map((tag) => {
+                            return tag
+                          })
+                        : []
+                    }
+                  />
+                ))}
+              </CardRow>
+            </S.CardWrapper>
+          </S.Container>
         </SectionContent>
       </Section>
       <Section>

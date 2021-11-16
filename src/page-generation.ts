@@ -1,6 +1,11 @@
 import { CreatePagesArgs } from 'gatsby'
 import { resolve } from 'path'
-import { Event, Opportunity, Project } from './generated/graphql-types'
+import {
+  Project,
+  Event,
+  Opportunity,
+  MarkdownRemark,
+} from './generated/graphql-types'
 
 const PROJECT_TEMPLATE_RELATIVE_PATH = './src/templates/project/index.tsx'
 
@@ -78,6 +83,50 @@ export async function generateRolePages({
     createPage({
       path: `/roles/${node.slug}`,
       component: resolve('./src/templates/roles/index.tsx'),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}
+
+export async function generateContentPages({
+  graphql,
+  actions: { createPage },
+}: CreatePagesArgs): Promise<void> {
+  const result = await graphql<{
+    allMarkdownRemark: { nodes: MarkdownRemark[] }
+  }>(`
+    query GenerateContentPages {
+      allMarkdownRemark {
+        nodes {
+          html
+          id
+          frontmatter {
+            cover
+            date
+            description
+            slug
+            sources {
+              title
+              type
+              url
+            }
+            tableOfContent {
+              time
+              title
+            }
+            title
+          }
+        }
+      }
+    }
+  `)
+
+  result?.data?.allMarkdownRemark.nodes.forEach((node: MarkdownRemark) => {
+    createPage({
+      path: `/cedu/${node.frontmatter.slug}`,
+      component: resolve('./src/templates/content/index.tsx'),
       context: {
         id: node.id,
       },
