@@ -30,6 +30,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       seo={{
         title: 'Portál dobrovolníka',
         description: 'Portál dobrovolníka',
+        coverUrl: 'https://data.cesko.digital/img/bcbb8e4a.png',
       }}
     >
       <Section>
