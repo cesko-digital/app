@@ -313,14 +313,14 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath: Maybe<Scalars['String']>;
-  isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>;
-  pluginCreator: Maybe<SitePlugin>;
-  pluginCreatorId: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>;
   context: Maybe<SitePageContext>;
+  pluginCreator: Maybe<SitePlugin>;
+  pluginCreatorId: Maybe<Scalars['String']>;
 };
 
 export type SitePageContext = {
@@ -328,8 +328,6 @@ export type SitePageContext = {
   id: Maybe<Scalars['String']>;
   language: Maybe<Scalars['String']>;
   i18n: Maybe<SitePageContextI18n>;
-  locale: Maybe<Scalars['String']>;
-  originalUrl: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextI18n = {
@@ -399,9 +397,6 @@ export type SitePluginPluginOptions = {
   defaultLanguage: Maybe<Scalars['String']>;
   redirect: Maybe<Scalars['Boolean']>;
   pages: Maybe<Array<Maybe<SitePluginPluginOptionsPages>>>;
-  defaultLocale: Maybe<Scalars['String']>;
-  prefix: Maybe<Scalars['String']>;
-  translations: Maybe<SitePluginPluginOptionsTranslations>;
   airtableApiKey: Maybe<Scalars['String']>;
   airtableBaseUrl: Maybe<Scalars['String']>;
   id: Maybe<Scalars['String']>;
@@ -434,30 +429,13 @@ export type SitePluginPluginOptionsPages = {
   languages: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type SitePluginPluginOptionsTranslations = {
-  __typename?: 'SitePluginPluginOptionsTranslations';
-  cs: Maybe<SitePluginPluginOptionsTranslationsCs>;
-  en: Maybe<SitePluginPluginOptionsTranslationsEn>;
-};
-
-export type SitePluginPluginOptionsTranslationsCs = {
-  __typename?: 'SitePluginPluginOptionsTranslationsCs';
-  urls_projects: Maybe<Scalars['String']>;
-  urls_page_2: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsTranslationsEn = {
-  __typename?: 'SitePluginPluginOptionsTranslationsEn';
-  urls_projects: Maybe<Scalars['String']>;
-  urls_page_2: Maybe<Scalars['String']>;
-};
-
 export type SitePluginPackageJson = {
   __typename?: 'SitePluginPackageJson';
   name: Maybe<Scalars['String']>;
   description: Maybe<Scalars['String']>;
   version: Maybe<Scalars['String']>;
   main: Maybe<Scalars['String']>;
+  author: Maybe<Scalars['String']>;
   license: Maybe<Scalars['String']>;
   dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -895,7 +873,6 @@ export type Tag = Node & {
   rowId: Maybe<Scalars['String']>;
   name: Maybe<Scalars['String']>;
   slug: Maybe<Scalars['String']>;
-  lang: Maybe<Scalars['String']>;
 };
 
 export type Project = Node & {
@@ -920,7 +897,6 @@ export type Project = Node & {
   slug: Maybe<Scalars['String']>;
   description: Maybe<Scalars['String']>;
   contributeText: Maybe<Scalars['String']>;
-  lang: Maybe<Scalars['String']>;
   tags: Maybe<Array<Maybe<Tag>>>;
   coordinators: Maybe<Array<Maybe<Volunteer>>>;
 };
@@ -1205,14 +1181,14 @@ export type QuerySitePageArgs = {
   internalComponentName: Maybe<StringQueryOperatorInput>;
   componentChunkName: Maybe<StringQueryOperatorInput>;
   matchPath: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator: Maybe<SitePluginFilterInput>;
-  pluginCreatorId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
   context: Maybe<SitePageContextFilterInput>;
+  pluginCreator: Maybe<SitePluginFilterInput>;
+  pluginCreatorId: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1348,7 +1324,6 @@ export type QueryTagArgs = {
   rowId: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -1381,7 +1356,6 @@ export type QueryProjectArgs = {
   slug: Maybe<StringQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
   tags: Maybe<TagFilterListInput>;
   coordinators: Maybe<VolunteerFilterListInput>;
 };
@@ -3048,6 +3022,22 @@ export type SiteFunctionSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type SitePageContextFilterInput = {
+  id: Maybe<StringQueryOperatorInput>;
+  language: Maybe<StringQueryOperatorInput>;
+  i18n: Maybe<SitePageContextI18nFilterInput>;
+};
+
+export type SitePageContextI18nFilterInput = {
+  language: Maybe<StringQueryOperatorInput>;
+  languages: Maybe<StringQueryOperatorInput>;
+  defaultLanguage: Maybe<StringQueryOperatorInput>;
+  generateDefaultLanguagePage: Maybe<BooleanQueryOperatorInput>;
+  routed: Maybe<BooleanQueryOperatorInput>;
+  originalPath: Maybe<StringQueryOperatorInput>;
+  path: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePluginFilterInput = {
   resolve: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
@@ -3102,9 +3092,6 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultLanguage: Maybe<StringQueryOperatorInput>;
   redirect: Maybe<BooleanQueryOperatorInput>;
   pages: Maybe<SitePluginPluginOptionsPagesFilterListInput>;
-  defaultLocale: Maybe<StringQueryOperatorInput>;
-  prefix: Maybe<StringQueryOperatorInput>;
-  translations: Maybe<SitePluginPluginOptionsTranslationsFilterInput>;
   airtableApiKey: Maybe<StringQueryOperatorInput>;
   airtableBaseUrl: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -3142,26 +3129,12 @@ export type SitePluginPluginOptionsPagesFilterInput = {
   languages: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePluginPluginOptionsTranslationsFilterInput = {
-  cs: Maybe<SitePluginPluginOptionsTranslationsCsFilterInput>;
-  en: Maybe<SitePluginPluginOptionsTranslationsEnFilterInput>;
-};
-
-export type SitePluginPluginOptionsTranslationsCsFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>;
-  urls_page_2: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsTranslationsEnFilterInput = {
-  urls_projects: Maybe<StringQueryOperatorInput>;
-  urls_page_2: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePluginPackageJsonFilterInput = {
   name: Maybe<StringQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   version: Maybe<StringQueryOperatorInput>;
   main: Maybe<StringQueryOperatorInput>;
+  author: Maybe<StringQueryOperatorInput>;
   license: Maybe<StringQueryOperatorInput>;
   dependencies: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -3194,24 +3167,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPackageJsonPeerDependenciesFilterInput = {
   name: Maybe<StringQueryOperatorInput>;
   version: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextFilterInput = {
-  id: Maybe<StringQueryOperatorInput>;
-  language: Maybe<StringQueryOperatorInput>;
-  i18n: Maybe<SitePageContextI18nFilterInput>;
-  locale: Maybe<StringQueryOperatorInput>;
-  originalUrl: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextI18nFilterInput = {
-  language: Maybe<StringQueryOperatorInput>;
-  languages: Maybe<StringQueryOperatorInput>;
-  defaultLanguage: Maybe<StringQueryOperatorInput>;
-  generateDefaultLanguagePage: Maybe<BooleanQueryOperatorInput>;
-  routed: Maybe<BooleanQueryOperatorInput>;
-  originalPath: Maybe<StringQueryOperatorInput>;
-  path: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageConnection = {
@@ -3267,122 +3222,6 @@ export enum SitePageFieldsEnum {
   internalComponentName = 'internalComponentName',
   componentChunkName = 'componentChunkName',
   matchPath = 'matchPath',
-  isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  pluginCreator___resolve = 'pluginCreator___resolve',
-  pluginCreator___name = 'pluginCreator___name',
-  pluginCreator___version = 'pluginCreator___version',
-  pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
-  pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
-  pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
-  pluginCreator___pluginFilepath = 'pluginCreator___pluginFilepath',
-  pluginCreator___pluginOptions___plugins = 'pluginCreator___pluginOptions___plugins',
-  pluginCreator___pluginOptions___plugins___resolve = 'pluginCreator___pluginOptions___plugins___resolve',
-  pluginCreator___pluginOptions___plugins___id = 'pluginCreator___pluginOptions___plugins___id',
-  pluginCreator___pluginOptions___plugins___name = 'pluginCreator___pluginOptions___plugins___name',
-  pluginCreator___pluginOptions___plugins___version = 'pluginCreator___pluginOptions___plugins___version',
-  pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
-  pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
-  pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
-  pluginCreator___pluginOptions___base64Width = 'pluginCreator___pluginOptions___base64Width',
-  pluginCreator___pluginOptions___stripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
-  pluginCreator___pluginOptions___defaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
-  pluginCreator___pluginOptions___failOnError = 'pluginCreator___pluginOptions___failOnError',
-  pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
-  pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
-  pluginCreator___pluginOptions___background_color = 'pluginCreator___pluginOptions___background_color',
-  pluginCreator___pluginOptions___theme_color = 'pluginCreator___pluginOptions___theme_color',
-  pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
-  pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
-  pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator___pluginOptions___theme_color_in_head',
-  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
-  pluginCreator___pluginOptions___crossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
-  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
-  pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
-  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
-  pluginCreator___pluginOptions___fileName = 'pluginCreator___pluginOptions___fileName',
-  pluginCreator___pluginOptions___minify = 'pluginCreator___pluginOptions___minify',
-  pluginCreator___pluginOptions___namespace = 'pluginCreator___pluginOptions___namespace',
-  pluginCreator___pluginOptions___transpileTemplateLiterals = 'pluginCreator___pluginOptions___transpileTemplateLiterals',
-  pluginCreator___pluginOptions___pure = 'pluginCreator___pluginOptions___pure',
-  pluginCreator___pluginOptions___disableVendorPrefixes = 'pluginCreator___pluginOptions___disableVendorPrefixes',
-  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
-  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
-  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
-  pluginCreator___pluginOptions___terminal = 'pluginCreator___pluginOptions___terminal',
-  pluginCreator___pluginOptions___theme = 'pluginCreator___pluginOptions___theme',
-  pluginCreator___pluginOptions___localeJsonSourceName = 'pluginCreator___pluginOptions___localeJsonSourceName',
-  pluginCreator___pluginOptions___siteUrl = 'pluginCreator___pluginOptions___siteUrl',
-  pluginCreator___pluginOptions___languages = 'pluginCreator___pluginOptions___languages',
-  pluginCreator___pluginOptions___defaultLanguage = 'pluginCreator___pluginOptions___defaultLanguage',
-  pluginCreator___pluginOptions___redirect = 'pluginCreator___pluginOptions___redirect',
-  pluginCreator___pluginOptions___pages = 'pluginCreator___pluginOptions___pages',
-  pluginCreator___pluginOptions___pages___matchPath = 'pluginCreator___pluginOptions___pages___matchPath',
-  pluginCreator___pluginOptions___pages___languages = 'pluginCreator___pluginOptions___pages___languages',
-  pluginCreator___pluginOptions___defaultLocale = 'pluginCreator___pluginOptions___defaultLocale',
-  pluginCreator___pluginOptions___prefix = 'pluginCreator___pluginOptions___prefix',
-  pluginCreator___pluginOptions___airtableApiKey = 'pluginCreator___pluginOptions___airtableApiKey',
-  pluginCreator___pluginOptions___airtableBaseUrl = 'pluginCreator___pluginOptions___airtableBaseUrl',
-  pluginCreator___pluginOptions___id = 'pluginCreator___pluginOptions___id',
-  pluginCreator___pluginOptions___includeInDevelopment = 'pluginCreator___pluginOptions___includeInDevelopment',
-  pluginCreator___pluginOptions___routeChangeEventName = 'pluginCreator___pluginOptions___routeChangeEventName',
-  pluginCreator___pluginOptions___enableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
-  pluginCreator___pluginOptions___selfHostedOrigin = 'pluginCreator___pluginOptions___selfHostedOrigin',
-  pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
-  pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
-  pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
-  pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
-  pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
-  pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
-  pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
-  pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
-  pluginCreator___packageJson___dependencies___version = 'pluginCreator___packageJson___dependencies___version',
-  pluginCreator___packageJson___devDependencies = 'pluginCreator___packageJson___devDependencies',
-  pluginCreator___packageJson___devDependencies___name = 'pluginCreator___packageJson___devDependencies___name',
-  pluginCreator___packageJson___devDependencies___version = 'pluginCreator___packageJson___devDependencies___version',
-  pluginCreator___packageJson___peerDependencies = 'pluginCreator___packageJson___peerDependencies',
-  pluginCreator___packageJson___peerDependencies___name = 'pluginCreator___packageJson___peerDependencies___name',
-  pluginCreator___packageJson___peerDependencies___version = 'pluginCreator___packageJson___peerDependencies___version',
-  pluginCreator___packageJson___keywords = 'pluginCreator___packageJson___keywords',
-  pluginCreator___subPluginPaths = 'pluginCreator___subPluginPaths',
-  pluginCreator___id = 'pluginCreator___id',
-  pluginCreator___parent___id = 'pluginCreator___parent___id',
-  pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
-  pluginCreator___parent___parent___children = 'pluginCreator___parent___parent___children',
-  pluginCreator___parent___children = 'pluginCreator___parent___children',
-  pluginCreator___parent___children___id = 'pluginCreator___parent___children___id',
-  pluginCreator___parent___children___children = 'pluginCreator___parent___children___children',
-  pluginCreator___parent___internal___content = 'pluginCreator___parent___internal___content',
-  pluginCreator___parent___internal___contentDigest = 'pluginCreator___parent___internal___contentDigest',
-  pluginCreator___parent___internal___description = 'pluginCreator___parent___internal___description',
-  pluginCreator___parent___internal___fieldOwners = 'pluginCreator___parent___internal___fieldOwners',
-  pluginCreator___parent___internal___ignoreType = 'pluginCreator___parent___internal___ignoreType',
-  pluginCreator___parent___internal___mediaType = 'pluginCreator___parent___internal___mediaType',
-  pluginCreator___parent___internal___owner = 'pluginCreator___parent___internal___owner',
-  pluginCreator___parent___internal___type = 'pluginCreator___parent___internal___type',
-  pluginCreator___children = 'pluginCreator___children',
-  pluginCreator___children___id = 'pluginCreator___children___id',
-  pluginCreator___children___parent___id = 'pluginCreator___children___parent___id',
-  pluginCreator___children___parent___children = 'pluginCreator___children___parent___children',
-  pluginCreator___children___children = 'pluginCreator___children___children',
-  pluginCreator___children___children___id = 'pluginCreator___children___children___id',
-  pluginCreator___children___children___children = 'pluginCreator___children___children___children',
-  pluginCreator___children___internal___content = 'pluginCreator___children___internal___content',
-  pluginCreator___children___internal___contentDigest = 'pluginCreator___children___internal___contentDigest',
-  pluginCreator___children___internal___description = 'pluginCreator___children___internal___description',
-  pluginCreator___children___internal___fieldOwners = 'pluginCreator___children___internal___fieldOwners',
-  pluginCreator___children___internal___ignoreType = 'pluginCreator___children___internal___ignoreType',
-  pluginCreator___children___internal___mediaType = 'pluginCreator___children___internal___mediaType',
-  pluginCreator___children___internal___owner = 'pluginCreator___children___internal___owner',
-  pluginCreator___children___internal___type = 'pluginCreator___children___internal___type',
-  pluginCreator___internal___content = 'pluginCreator___internal___content',
-  pluginCreator___internal___contentDigest = 'pluginCreator___internal___contentDigest',
-  pluginCreator___internal___description = 'pluginCreator___internal___description',
-  pluginCreator___internal___fieldOwners = 'pluginCreator___internal___fieldOwners',
-  pluginCreator___internal___ignoreType = 'pluginCreator___internal___ignoreType',
-  pluginCreator___internal___mediaType = 'pluginCreator___internal___mediaType',
-  pluginCreator___internal___owner = 'pluginCreator___internal___owner',
-  pluginCreator___internal___type = 'pluginCreator___internal___type',
-  pluginCreatorId = 'pluginCreatorId',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -3469,6 +3308,7 @@ export enum SitePageFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
+  isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
   context___language = 'context___language',
   context___i18n___language = 'context___i18n___language',
@@ -3478,8 +3318,120 @@ export enum SitePageFieldsEnum {
   context___i18n___routed = 'context___i18n___routed',
   context___i18n___originalPath = 'context___i18n___originalPath',
   context___i18n___path = 'context___i18n___path',
-  context___locale = 'context___locale',
-  context___originalUrl = 'context___originalUrl'
+  pluginCreator___resolve = 'pluginCreator___resolve',
+  pluginCreator___name = 'pluginCreator___name',
+  pluginCreator___version = 'pluginCreator___version',
+  pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
+  pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
+  pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
+  pluginCreator___pluginFilepath = 'pluginCreator___pluginFilepath',
+  pluginCreator___pluginOptions___plugins = 'pluginCreator___pluginOptions___plugins',
+  pluginCreator___pluginOptions___plugins___resolve = 'pluginCreator___pluginOptions___plugins___resolve',
+  pluginCreator___pluginOptions___plugins___id = 'pluginCreator___pluginOptions___plugins___id',
+  pluginCreator___pluginOptions___plugins___name = 'pluginCreator___pluginOptions___plugins___name',
+  pluginCreator___pluginOptions___plugins___version = 'pluginCreator___pluginOptions___plugins___version',
+  pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
+  pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
+  pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
+  pluginCreator___pluginOptions___base64Width = 'pluginCreator___pluginOptions___base64Width',
+  pluginCreator___pluginOptions___stripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
+  pluginCreator___pluginOptions___defaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
+  pluginCreator___pluginOptions___failOnError = 'pluginCreator___pluginOptions___failOnError',
+  pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
+  pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
+  pluginCreator___pluginOptions___background_color = 'pluginCreator___pluginOptions___background_color',
+  pluginCreator___pluginOptions___theme_color = 'pluginCreator___pluginOptions___theme_color',
+  pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
+  pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
+  pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator___pluginOptions___theme_color_in_head',
+  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  pluginCreator___pluginOptions___crossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
+  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
+  pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
+  pluginCreator___pluginOptions___fileName = 'pluginCreator___pluginOptions___fileName',
+  pluginCreator___pluginOptions___minify = 'pluginCreator___pluginOptions___minify',
+  pluginCreator___pluginOptions___namespace = 'pluginCreator___pluginOptions___namespace',
+  pluginCreator___pluginOptions___transpileTemplateLiterals = 'pluginCreator___pluginOptions___transpileTemplateLiterals',
+  pluginCreator___pluginOptions___pure = 'pluginCreator___pluginOptions___pure',
+  pluginCreator___pluginOptions___disableVendorPrefixes = 'pluginCreator___pluginOptions___disableVendorPrefixes',
+  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
+  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
+  pluginCreator___pluginOptions___terminal = 'pluginCreator___pluginOptions___terminal',
+  pluginCreator___pluginOptions___theme = 'pluginCreator___pluginOptions___theme',
+  pluginCreator___pluginOptions___localeJsonSourceName = 'pluginCreator___pluginOptions___localeJsonSourceName',
+  pluginCreator___pluginOptions___siteUrl = 'pluginCreator___pluginOptions___siteUrl',
+  pluginCreator___pluginOptions___languages = 'pluginCreator___pluginOptions___languages',
+  pluginCreator___pluginOptions___defaultLanguage = 'pluginCreator___pluginOptions___defaultLanguage',
+  pluginCreator___pluginOptions___redirect = 'pluginCreator___pluginOptions___redirect',
+  pluginCreator___pluginOptions___pages = 'pluginCreator___pluginOptions___pages',
+  pluginCreator___pluginOptions___pages___matchPath = 'pluginCreator___pluginOptions___pages___matchPath',
+  pluginCreator___pluginOptions___pages___languages = 'pluginCreator___pluginOptions___pages___languages',
+  pluginCreator___pluginOptions___airtableApiKey = 'pluginCreator___pluginOptions___airtableApiKey',
+  pluginCreator___pluginOptions___airtableBaseUrl = 'pluginCreator___pluginOptions___airtableBaseUrl',
+  pluginCreator___pluginOptions___id = 'pluginCreator___pluginOptions___id',
+  pluginCreator___pluginOptions___includeInDevelopment = 'pluginCreator___pluginOptions___includeInDevelopment',
+  pluginCreator___pluginOptions___routeChangeEventName = 'pluginCreator___pluginOptions___routeChangeEventName',
+  pluginCreator___pluginOptions___enableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
+  pluginCreator___pluginOptions___selfHostedOrigin = 'pluginCreator___pluginOptions___selfHostedOrigin',
+  pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
+  pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
+  pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
+  pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
+  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
+  pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
+  pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
+  pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
+  pluginCreator___packageJson___dependencies___version = 'pluginCreator___packageJson___dependencies___version',
+  pluginCreator___packageJson___devDependencies = 'pluginCreator___packageJson___devDependencies',
+  pluginCreator___packageJson___devDependencies___name = 'pluginCreator___packageJson___devDependencies___name',
+  pluginCreator___packageJson___devDependencies___version = 'pluginCreator___packageJson___devDependencies___version',
+  pluginCreator___packageJson___peerDependencies = 'pluginCreator___packageJson___peerDependencies',
+  pluginCreator___packageJson___peerDependencies___name = 'pluginCreator___packageJson___peerDependencies___name',
+  pluginCreator___packageJson___peerDependencies___version = 'pluginCreator___packageJson___peerDependencies___version',
+  pluginCreator___packageJson___keywords = 'pluginCreator___packageJson___keywords',
+  pluginCreator___subPluginPaths = 'pluginCreator___subPluginPaths',
+  pluginCreator___id = 'pluginCreator___id',
+  pluginCreator___parent___id = 'pluginCreator___parent___id',
+  pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
+  pluginCreator___parent___parent___children = 'pluginCreator___parent___parent___children',
+  pluginCreator___parent___children = 'pluginCreator___parent___children',
+  pluginCreator___parent___children___id = 'pluginCreator___parent___children___id',
+  pluginCreator___parent___children___children = 'pluginCreator___parent___children___children',
+  pluginCreator___parent___internal___content = 'pluginCreator___parent___internal___content',
+  pluginCreator___parent___internal___contentDigest = 'pluginCreator___parent___internal___contentDigest',
+  pluginCreator___parent___internal___description = 'pluginCreator___parent___internal___description',
+  pluginCreator___parent___internal___fieldOwners = 'pluginCreator___parent___internal___fieldOwners',
+  pluginCreator___parent___internal___ignoreType = 'pluginCreator___parent___internal___ignoreType',
+  pluginCreator___parent___internal___mediaType = 'pluginCreator___parent___internal___mediaType',
+  pluginCreator___parent___internal___owner = 'pluginCreator___parent___internal___owner',
+  pluginCreator___parent___internal___type = 'pluginCreator___parent___internal___type',
+  pluginCreator___children = 'pluginCreator___children',
+  pluginCreator___children___id = 'pluginCreator___children___id',
+  pluginCreator___children___parent___id = 'pluginCreator___children___parent___id',
+  pluginCreator___children___parent___children = 'pluginCreator___children___parent___children',
+  pluginCreator___children___children = 'pluginCreator___children___children',
+  pluginCreator___children___children___id = 'pluginCreator___children___children___id',
+  pluginCreator___children___children___children = 'pluginCreator___children___children___children',
+  pluginCreator___children___internal___content = 'pluginCreator___children___internal___content',
+  pluginCreator___children___internal___contentDigest = 'pluginCreator___children___internal___contentDigest',
+  pluginCreator___children___internal___description = 'pluginCreator___children___internal___description',
+  pluginCreator___children___internal___fieldOwners = 'pluginCreator___children___internal___fieldOwners',
+  pluginCreator___children___internal___ignoreType = 'pluginCreator___children___internal___ignoreType',
+  pluginCreator___children___internal___mediaType = 'pluginCreator___children___internal___mediaType',
+  pluginCreator___children___internal___owner = 'pluginCreator___children___internal___owner',
+  pluginCreator___children___internal___type = 'pluginCreator___children___internal___type',
+  pluginCreator___internal___content = 'pluginCreator___internal___content',
+  pluginCreator___internal___contentDigest = 'pluginCreator___internal___contentDigest',
+  pluginCreator___internal___description = 'pluginCreator___internal___description',
+  pluginCreator___internal___fieldOwners = 'pluginCreator___internal___fieldOwners',
+  pluginCreator___internal___ignoreType = 'pluginCreator___internal___ignoreType',
+  pluginCreator___internal___mediaType = 'pluginCreator___internal___mediaType',
+  pluginCreator___internal___owner = 'pluginCreator___internal___owner',
+  pluginCreator___internal___type = 'pluginCreator___internal___type',
+  pluginCreatorId = 'pluginCreatorId'
 }
 
 export type SitePageGroupConnection = {
@@ -3530,14 +3482,14 @@ export type SitePageFilterInput = {
   internalComponentName: Maybe<StringQueryOperatorInput>;
   componentChunkName: Maybe<StringQueryOperatorInput>;
   matchPath: Maybe<StringQueryOperatorInput>;
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
-  pluginCreator: Maybe<SitePluginFilterInput>;
-  pluginCreatorId: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
   context: Maybe<SitePageContextFilterInput>;
+  pluginCreator: Maybe<SitePluginFilterInput>;
+  pluginCreatorId: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageSortInput = {
@@ -3645,12 +3597,6 @@ export enum SitePluginFieldsEnum {
   pluginOptions___pages = 'pluginOptions___pages',
   pluginOptions___pages___matchPath = 'pluginOptions___pages___matchPath',
   pluginOptions___pages___languages = 'pluginOptions___pages___languages',
-  pluginOptions___defaultLocale = 'pluginOptions___defaultLocale',
-  pluginOptions___prefix = 'pluginOptions___prefix',
-  pluginOptions___translations___cs___urls_projects = 'pluginOptions___translations___cs___urls_projects',
-  pluginOptions___translations___cs___urls_page_2 = 'pluginOptions___translations___cs___urls_page_2',
-  pluginOptions___translations___en___urls_projects = 'pluginOptions___translations___en___urls_projects',
-  pluginOptions___translations___en___urls_page_2 = 'pluginOptions___translations___en___urls_page_2',
   pluginOptions___airtableApiKey = 'pluginOptions___airtableApiKey',
   pluginOptions___airtableBaseUrl = 'pluginOptions___airtableBaseUrl',
   pluginOptions___id = 'pluginOptions___id',
@@ -3663,6 +3609,7 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
+  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -4777,8 +4724,7 @@ export enum TagFieldsEnum {
   internal___type = 'internal___type',
   rowId = 'rowId',
   name = 'name',
-  slug = 'slug',
-  lang = 'lang'
+  slug = 'slug'
 }
 
 export type TagGroupConnection = {
@@ -4831,7 +4777,6 @@ export type TagFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
 };
 
 export type TagSortInput = {
@@ -4997,7 +4942,6 @@ export enum ProjectFieldsEnum {
   slug = 'slug',
   description = 'description',
   contributeText = 'contributeText',
-  lang = 'lang',
   tags = 'tags',
   tags___id = 'tags___id',
   tags___parent___id = 'tags___parent___id',
@@ -5040,7 +4984,6 @@ export enum ProjectFieldsEnum {
   tags___rowId = 'tags___rowId',
   tags___name = 'tags___name',
   tags___slug = 'tags___slug',
-  tags___lang = 'tags___lang',
   coordinators = 'coordinators',
   coordinators___id = 'coordinators___id',
   coordinators___parent___id = 'coordinators___parent___id',
@@ -5154,7 +5097,6 @@ export type ProjectFilterInput = {
   slug: Maybe<StringQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
   contributeText: Maybe<StringQueryOperatorInput>;
-  lang: Maybe<StringQueryOperatorInput>;
   tags: Maybe<TagFilterListInput>;
   coordinators: Maybe<VolunteerFilterListInput>;
 };
@@ -5610,7 +5552,6 @@ export enum OpportunityFieldsEnum {
   project___slug = 'project___slug',
   project___description = 'project___description',
   project___contributeText = 'project___contributeText',
-  project___lang = 'project___lang',
   project___tags = 'project___tags',
   project___tags___id = 'project___tags___id',
   project___tags___parent___id = 'project___tags___parent___id',
@@ -5629,7 +5570,6 @@ export enum OpportunityFieldsEnum {
   project___tags___rowId = 'project___tags___rowId',
   project___tags___name = 'project___tags___name',
   project___tags___slug = 'project___tags___slug',
-  project___tags___lang = 'project___tags___lang',
   project___coordinators = 'project___coordinators',
   project___coordinators___id = 'project___coordinators___id',
   project___coordinators___parent___id = 'project___coordinators___parent___id',
@@ -6159,7 +6099,6 @@ export enum EventFieldsEnum {
   project___slug = 'project___slug',
   project___description = 'project___description',
   project___contributeText = 'project___contributeText',
-  project___lang = 'project___lang',
   project___tags = 'project___tags',
   project___tags___id = 'project___tags___id',
   project___tags___parent___id = 'project___tags___parent___id',
@@ -6178,7 +6117,6 @@ export enum EventFieldsEnum {
   project___tags___rowId = 'project___tags___rowId',
   project___tags___name = 'project___tags___name',
   project___tags___slug = 'project___tags___slug',
-  project___tags___lang = 'project___tags___lang',
   project___coordinators = 'project___coordinators',
   project___coordinators___id = 'project___coordinators___id',
   project___coordinators___parent___id = 'project___coordinators___parent___id',
@@ -6244,8 +6182,7 @@ export enum EventFieldsEnum {
   tags___internal___type = 'tags___internal___type',
   tags___rowId = 'tags___rowId',
   tags___name = 'tags___name',
-  tags___slug = 'tags___slug',
-  tags___lang = 'tags___lang'
+  tags___slug = 'tags___slug'
 }
 
 export type EventGroupConnection = {
@@ -6374,7 +6311,7 @@ export type GenerateProjectPagesQuery = (
     { __typename?: 'ProjectConnection' }
     & { nodes: Array<(
       { __typename?: 'Project' }
-      & Pick<Project, 'lang' | 'slug' | 'id'>
+      & Pick<Project, 'slug' | 'id'>
     )> }
   ) }
 );
@@ -6450,7 +6387,7 @@ export type NotFoundQuery = (
 );
 
 export type HomepageQueryVariables = Exact<{
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6463,7 +6400,7 @@ export type HomepageQuery = (
       & Pick<Project, 'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl'>
       & { tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
+        & Pick<Tag, 'rowId' | 'slug' | 'name'>
       )>>> }
     )> }
   ), partners: (
@@ -6485,7 +6422,7 @@ export type HomepageQuery = (
 );
 
 export type PartnersQueryVariables = Exact<{
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6506,7 +6443,7 @@ export type PartnersQuery = (
 );
 
 export type PortalDobrovolnikaPageQueryVariables = Exact<{
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6525,7 +6462,7 @@ export type PortalDobrovolnikaPageQuery = (
         & Pick<Volunteer, 'id' | 'name' | 'rowId'>
       )>, tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
+        & Pick<Tag, 'id' | 'name' | 'rowId' | 'slug'>
       )>>> }
     )> }
   ), roles: (
@@ -6570,7 +6507,7 @@ export type PortalDobrovolnikaPageQuery = (
 );
 
 export type ProjectsPageQueryVariables = Exact<{
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6578,19 +6515,19 @@ export type ProjectsPageQuery = (
   { __typename?: 'Query' }
   & { highlightedProject: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'lang' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
+    & Pick<Project, 'name' | 'slug' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
     & { tags: Maybe<Array<Maybe<(
       { __typename?: 'Tag' }
-      & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
+      & Pick<Tag, 'rowId' | 'slug' | 'name'>
     )>>> }
   )>, otherProjects: (
     { __typename?: 'ProjectConnection' }
     & { nodes: Array<(
       { __typename?: 'Project' }
-      & Pick<Project, 'name' | 'lang' | 'slug' | 'silent' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
+      & Pick<Project, 'name' | 'slug' | 'silent' | 'tagline' | 'coverUrl' | 'logoUrl' | 'highlighted'>
       & { tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'rowId' | 'slug' | 'name' | 'lang'>
+        & Pick<Tag, 'rowId' | 'slug' | 'name'>
       )>>> }
     )> }
   ), locales: (
@@ -6606,7 +6543,7 @@ export type ProjectsPageQuery = (
 );
 
 export type OpportunitiesQueryVariables = Exact<{
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6673,7 +6610,7 @@ export type ContentPageQuery = (
 
 export type EventPageQueryVariables = Exact<{
   id: Scalars['String'];
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6687,14 +6624,14 @@ export type EventPageQuery = (
       & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl' | 'email'>
     )>, project: Maybe<(
       { __typename?: 'Project' }
-      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'lang' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url' | 'silent'>
+      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url' | 'silent'>
       & { tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'lang' | 'id'>
+        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'id'>
       )>>> }
     )>, tags: Maybe<Array<Maybe<(
       { __typename?: 'Tag' }
-      & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
+      & Pick<Tag, 'id' | 'name' | 'rowId' | 'slug'>
     )>>> }
   )>, otherEvents: (
     { __typename?: 'EventConnection' }
@@ -6709,7 +6646,7 @@ export type EventPageQuery = (
         & Pick<Volunteer, 'id' | 'name' | 'rowId' | 'profilePictureUrl'>
       )>, tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'id' | 'lang' | 'name' | 'rowId' | 'slug'>
+        & Pick<Tag, 'id' | 'name' | 'rowId' | 'slug'>
       )>>> }
     )> }
   ), locales: (
@@ -6726,7 +6663,7 @@ export type EventPageQuery = (
 
 export type ProjectPageQueryVariables = Exact<{
   id: Scalars['String'];
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6734,7 +6671,7 @@ export type ProjectPageQuery = (
   { __typename?: 'Query' }
   & { project: Maybe<(
     { __typename?: 'Project' }
-    & Pick<Project, 'name' | 'lang' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
+    & Pick<Project, 'name' | 'description' | 'slackChannelName' | 'slackChannelUrl' | 'finished' | 'tagline' | 'coverUrl' | 'githubUrl' | 'trelloUrl' | 'url' | 'contributeText'>
     & { coordinators: Maybe<Array<Maybe<(
       { __typename?: 'Volunteer' }
       & Pick<Volunteer, 'name' | 'company' | 'profilePictureUrl'>
@@ -6763,7 +6700,7 @@ export type ProjectPageQuery = (
 
 export type RolePageQueryVariables = Exact<{
   id: Scalars['String'];
-  locale: Scalars['String'];
+  language: Scalars['String'];
 }>;
 
 
@@ -6777,10 +6714,10 @@ export type RolePageQuery = (
       & Pick<Volunteer, 'email' | 'name' | 'profilePictureUrl'>
     )>, project: Maybe<(
       { __typename?: 'Project' }
-      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'lang' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url' | 'silent'>
+      & Pick<Project, 'coverUrl' | 'description' | 'finished' | 'githubUrl' | 'id' | 'logoUrl' | 'name' | 'rowId' | 'slackChannelName' | 'slackChannelUrl' | 'slug' | 'tagline' | 'trelloUrl' | 'url' | 'silent'>
       & { tags: Maybe<Array<Maybe<(
         { __typename?: 'Tag' }
-        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'lang' | 'id'>
+        & Pick<Tag, 'name' | 'rowId' | 'slug' | 'id'>
       )>>> }
     )> }
   )>, roles: (
