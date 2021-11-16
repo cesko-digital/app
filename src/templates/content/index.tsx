@@ -81,7 +81,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ data, location }) => {
 }
 
 export const query = graphql`
-  query ContentPage($id: String!, $locale: String!) {
+  query ContentPage($id: String!, $language: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         cover
@@ -108,7 +108,7 @@ export const query = graphql`
       }
       html
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns
