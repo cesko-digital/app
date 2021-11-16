@@ -1,5 +1,16 @@
 require('dotenv').config()
 
+const subPagePaths = [
+  'partners',
+  'portal-dobrovolnika',
+  'projekty',
+  'roles',
+  'rsvp',
+  'show-and-tell',
+  'events',
+  '404',
+]
+
 module.exports = {
   siteMetadata: {},
   plugins: [
@@ -62,12 +73,11 @@ module.exports = {
         languages: [`cs`, 'en'],
         defaultLanguage: `cs`,
         redirect: false,
-        pages: [
-          {
-            matchPath: '/projekty/:uid',
-            languages: ['cs'],
-          },
-        ],
+        pages: subPagePaths.map((path) => ({
+          matchPath: `/:lang?/${path}/:uid?`,
+          getLanguageFromPath: true,
+          languages: ['cs'],
+        })),
       },
     },
 
