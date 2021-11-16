@@ -100,7 +100,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
 }
 
 export const query = graphql`
-  query RolePage($id: String!, $locale: String!) {
+  query RolePage($id: String!, $language: String!) {
     opportunity(id: { eq: $id }) {
       id
       name
@@ -152,7 +152,7 @@ export const query = graphql`
         }
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

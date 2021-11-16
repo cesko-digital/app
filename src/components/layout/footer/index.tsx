@@ -3,16 +3,14 @@ import { ButtonSize } from 'components/buttons'
 import { Link } from 'components/links'
 import NewsletterBox from './newsletter-form'
 import * as S from './styles'
-import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { I18nextContext, useTranslation } from 'gatsby-plugin-react-i18next'
 import { LINKS } from 'utils/constants'
 
 const Footer: React.FC = () => {
   const { t } = useTranslation()
+  const { language } = useContext(I18nextContext)
 
-  const { locale } = useContext(TranslateUrlsContext)
-
-  const isCzech = locale === 'cs'
+  const isCzech = language === 'cs'
 
   const SOCIAL_LINKS = [
     {
@@ -40,7 +38,7 @@ const Footer: React.FC = () => {
   const PAGE_LINKS = [
     {
       name: t('components.sections.footer.pageLinks.projects'),
-      url: '/projects',
+      url: '/projekty',
       displayLocale: ['cs'],
     },
     {
@@ -87,7 +85,7 @@ const Footer: React.FC = () => {
               <S.Navigation>
                 <S.Links>
                   {PAGE_LINKS.filter((l) =>
-                    l.displayLocale.includes(locale)
+                    l.displayLocale.includes(language)
                   ).map(({ name, url }, i) => (
                     <S.LinkItem key={i}>
                       <Link size={ButtonSize.Small} to={url}>

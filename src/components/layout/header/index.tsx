@@ -4,48 +4,39 @@ import SectionContent from '../section-content'
 import { ButtonAsLink, Link } from 'components/links'
 import { ButtonSize } from 'components/buttons'
 import { CloseIcon, MenuIcon } from 'components/icons'
-import {
-  TranslatedLink,
-  TranslateUrlsContext,
-} from 'gatsby-plugin-translate-urls'
+import { Link as TranslatedLink } from 'gatsby-plugin-react-i18next'
 import { LINKS } from 'utils/constants'
 
 import * as S from './styles'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
+import { I18nextContext, useTranslation } from 'gatsby-plugin-react-i18next'
 
 const Header: React.FC = () => {
   const { t } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const { locale } = useContext(TranslateUrlsContext)
+  const { language } = useContext(I18nextContext)
 
-  const isCzech = locale === 'cs'
-  const isEnglish = locale === 'en'
+  const isCzech = language === 'cs'
+  const isEnglish = language === 'en'
 
   const MENU = [
     {
-      link: '/projects',
+      link: '/projekty',
       label: t('header.projects'),
-      locale: 'cs',
     },
     {
       link: '/partners',
       label: t('header.partners'),
-      locale: 'cs',
     },
     {
       link: 'https://blog.cesko.digital',
       label: 'Blog',
-      locale: 'cs',
     },
     {
       link: LINKS.supportUs,
       label: t('header.supportUs'),
-      locale: 'cs',
     },
   ]
-
-  const EN_PATH = '/en'
 
   const signUpText = t('header.signUp')
 
@@ -58,13 +49,8 @@ const Header: React.FC = () => {
           </TranslatedLink>
           <S.DesktopLinksContainer>
             {isCzech &&
-              MENU.map(({ link, label, locale }) => (
-                <Link
-                  key={label}
-                  to={link}
-                  size={ButtonSize.Small}
-                  locale={locale}
-                >
+              MENU.map(({ link, label }) => (
+                <Link key={label} to={link} size={ButtonSize.Small}>
                   {label}
                 </Link>
               ))}
@@ -82,9 +68,9 @@ const Header: React.FC = () => {
             {isCzech && (
               <Link
                 key={t('header.english') as string}
-                to={EN_PATH}
+                to={'/'}
                 size={ButtonSize.Small}
-                locale="en"
+                language="en"
               >
                 {t('header.english')}
               </Link>
@@ -94,7 +80,7 @@ const Header: React.FC = () => {
                 key={t('header.czech') as string}
                 to="/"
                 size={ButtonSize.Small}
-                locale="cs"
+                language="cs"
               >
                 {t('header.czech')}
               </Link>
@@ -104,9 +90,9 @@ const Header: React.FC = () => {
             {isCzech && (
               <Link
                 key={t('header.english') as string}
-                to={EN_PATH}
+                to={'/'}
                 size={ButtonSize.Small}
-                locale="en"
+                language="en"
               >
                 {t('header.english')}
               </Link>
@@ -126,7 +112,7 @@ const Header: React.FC = () => {
                 key={t('header.czech') as string}
                 to="/"
                 size={ButtonSize.Small}
-                locale="cs"
+                language="cs"
               >
                 {t('header.czech')}
               </Link>
@@ -136,13 +122,8 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <S.MobileMenu>
-            {MENU.map(({ link, label, locale }) => (
-              <Link
-                key={label}
-                to={link}
-                size={ButtonSize.Small}
-                locale={locale}
-              >
+            {MENU.map(({ link, label }) => (
+              <Link key={label} to={link} size={ButtonSize.Small}>
                 {label}
               </Link>
             ))}

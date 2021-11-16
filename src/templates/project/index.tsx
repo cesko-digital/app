@@ -7,7 +7,7 @@ import * as S from './styles'
 import AboutProject from './components/about'
 import ProjectCard from './components/project-card'
 import Contribute from './components/contribute'
-import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projects'
+import { NAVIGATION_KEY as PROJECT_PAGE_NAVIGATION_KEY } from 'page-components/projekty'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { Projects } from 'components/sections'
 import { getResizedImgUrl } from 'utils/get-resized-img-url'
@@ -36,7 +36,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
   return (
     <Layout
       crumbs={[
-        { path: '/projects', label: t(PROJECT_PAGE_NAVIGATION_KEY) },
+        { path: '/projekty', label: t(PROJECT_PAGE_NAVIGATION_KEY) },
         { label: name },
       ]}
       seo={{ title: name, description: tagline, coverUrl }}
@@ -96,7 +96,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ data }) => {
 }
 
 export const query = graphql`
-  query ProjectPage($id: String!, $locale: String!) {
+  query ProjectPage($id: String!, $language: String!) {
     project(id: { eq: $id }) {
       name
       description
@@ -128,7 +128,7 @@ export const query = graphql`
         }
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

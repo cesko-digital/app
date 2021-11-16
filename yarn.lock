@@ -13338,11 +13338,6 @@ gatsby-plugin-styled-components@^4.14.0:
   dependencies:
     "@babel/runtime" "^7.15.4"
 
-gatsby-plugin-translate-urls@^1.0.0-beta.4:
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-translate-urls/-/gatsby-plugin-translate-urls-1.0.0-beta.4.tgz"
-  integrity sha512-oS1kbtkacsZ8vQhxfHq/dUbzVWaiZpify38LBnUyLKVbgc6YGG4/y0PhBxUPGqsKbbAVnkA0vFct4qQ/2eQj7w==
-
 gatsby-plugin-typescript@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-3.14.0.tgz#5f079f59576f768025cad0d79feaf62c00812a96"

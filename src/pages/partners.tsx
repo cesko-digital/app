@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  query Partners($locale: String!) {
+  query Partners($language: String!) {
     ...FinancialPartners
     ...ExpertPartners
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

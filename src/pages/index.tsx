@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  query Homepage($locale: String!) {
+  query Homepage($language: String!) {
     projects: allProject(limit: 3) {
       nodes {
         name
@@ -23,7 +23,7 @@ export const query = graphql`
         logoUrl
       }
     }
-    locales: allLocale(filter: { language: { eq: $locale } }) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

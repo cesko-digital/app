@@ -13,7 +13,7 @@ export interface LinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'>,
     Partial<StyledLinkProps> {
   children: React.ReactNode
-  locale?: string
+  language?: string
 }
 
 const Link: React.FC<LinkProps> = ({

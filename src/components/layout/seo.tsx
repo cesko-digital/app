@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import Helmet from 'react-helmet'
-import { useTranslation } from 'gatsby-plugin-react-i18next'
-import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
+import { I18nextContext, useTranslation } from 'gatsby-plugin-react-i18next'
 import { insertIf } from 'utils/insert-if'
 
 export interface SeoProps {
@@ -15,7 +14,7 @@ export const Seo: React.FC<SeoProps> = ({
   title,
   coverUrl = 'https://data.cesko.digital/web/metadata-cover.png',
 }: SeoProps) => {
-  const { locale } = useContext(TranslateUrlsContext)
+  const { language } = useContext(I18nextContext)
   const { t } = useTranslation()
   const metaDescription = description || t('metadata.description')
 
@@ -23,7 +22,7 @@ export const Seo: React.FC<SeoProps> = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang: locale,
+        lang: language,
       }}
       title={title}
       defaultTitle={metadataTitle}

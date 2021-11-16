@@ -4,20 +4,20 @@ import { Hero, OurValues, Numbers, ImageGallery, Partners } from './sections'
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { HomepageQuery } from 'generated/graphql-types'
-import { TranslateUrlsContext } from 'gatsby-plugin-translate-urls'
+import { I18nextContext } from 'gatsby-plugin-react-i18next'
 
 interface IndexPageProps {
   data: HomepageQuery
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({ data }: IndexPageProps) => {
-  const { locale } = useContext(TranslateUrlsContext)
+  const { language } = useContext(I18nextContext)
 
   const theme = useContext(ThemeContext)
   const projects = data.projects.nodes
   const partners = data.partners.nodes
 
-  const isCzech = locale === 'cs'
+  const isCzech = language === 'cs'
 
   return (
     <Layout>
