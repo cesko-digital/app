@@ -12,6 +12,10 @@ export const BoxWrapper = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    min-width: 0px;
+  }
 `
 
 export const TableOfContentCell = styled.a`
