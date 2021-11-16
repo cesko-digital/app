@@ -32,8 +32,8 @@ const Footer: React.FC = () => {
       url: 'https://github.com/cesko-digital',
     },
     {
-      name: t('components.sections.footer.online.slack'),
-      url: LINKS.joinUs,
+      name: t('components.sections.footer.online.youtube'),
+      url: 'https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg',
     },
   ]
 
