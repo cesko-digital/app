@@ -5748,6 +5748,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@snyk/protect@^1.763.0":
+  version "1.763.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.763.0.tgz#0c620fc4a45a66e9e78eaf4814e58fd9d41e84a8"
+  integrity sha512-Zn1iYdVwmjHTyJ5lBgDJnoVtwPVmXiaq7MeYRSAG3cuIUcjLi2K6bE1lc+37IQia1qTqlmYdL9p4+MlgmkuI3g==
+
 "@storybook/addon-actions@6.1.11", "@storybook/addon-actions@^6.1.11":
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.1.11.tgz"

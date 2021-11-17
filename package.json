@@ -23,7 +23,9 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cy:ci": "start-server-and-test cy:start http://localhost:8000 cy:run",
-    "postinstall": "rm -rf node_modules/babel-plugin-lodash/node_modules/lodash"
+    "postinstall": "rm -rf node_modules/babel-plugin-lodash/node_modules/lodash",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "@deckdeckgo/highlight-code": "^3.4.3",
@@ -57,7 +59,8 @@
     "react-i18next": "^11.12.0",
     "sharp": "^0.29.2",
     "styled-components": "^5.3.1",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -117,5 +120,6 @@
   },
   "bugs": {
     "url": "https://github.com/cesko-digital/web/issues"
-  }
+  },
+  "snyk": true
 }
