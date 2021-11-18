@@ -111,7 +111,6 @@ const Roles: React.FC<RolesProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          <Typography.Heading2>Filtr dle kompetencí</Typography.Heading2>
           {allSkills.map((s) => [
             <CompetencyFilterRadio
               key={'competencyInput' + s.name}
@@ -130,7 +129,7 @@ const Roles: React.FC<RolesProps> = (props) => {
                 if (target) target.click()
               }}
             >
-              {s.name + '(' + s.count + ')'}
+              {s.name + ' (' + s.count + ')'}
             </CompetencyFilterLabel>,
           ])}
         </SectionContent>
