@@ -10,7 +10,6 @@ interface RolesProps {
   data: {
     roles: { nodes: Opportunity[] }
   }
-  page: number
   selectedSkill: string
 }
 
