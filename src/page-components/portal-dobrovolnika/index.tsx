@@ -71,7 +71,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       <Section>
         <SectionContent>
           <S.CategoryHeader>
-            <S.Title>Vzdělávání - č.edu</S.Title>
+            <S.Title>Vzdělávání – č.edu</S.Title>
           </S.CategoryHeader>
           <S.Container>
             <S.CardWrapper>
