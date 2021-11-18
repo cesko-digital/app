@@ -42,6 +42,11 @@ const Footer: React.FC = () => {
       displayLocale: ['cs'],
     },
     {
+      name: t('components.sections.footer.pageLinks.portal'),
+      url: '/portal-dobrovolnika',
+      displayLocale: ['cs'],
+    },
+    {
       name: t('components.sections.footer.pageLinks.blog'),
       url: 'https://blog.cesko.digital',
       displayLocale: ['cs'],
