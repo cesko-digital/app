@@ -43,7 +43,7 @@ const CeduCard: FC<CeduCardProps> = ({
           ))}
         </S.TagList>
         <S.Description>{description}</S.Description>
-        <Link to={link}>Chci se vzdělávat!</Link>
+        <Link to={link}>To mě zajímá!</Link>
       </S.Content>
     </S.Card>
   )
