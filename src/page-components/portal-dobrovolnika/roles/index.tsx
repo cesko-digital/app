@@ -1,10 +1,9 @@
 import { Layout, SectionContent, Section } from 'components/layout'
-import RolesPaging from 'page-components/portal-dobrovolnika/roles/roles-paging'
 import * as Typography from 'components/typography'
 import { Opportunity } from 'generated/graphql-types'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import RoleItem from '../../../components/sections/role-overview'
+import RoleItem from 'components/sections/role-overview'
 import { CompetencyFilterLabel, CompetencyFilterRadio } from '../styles'
 
 interface RolesProps {
@@ -18,23 +17,14 @@ interface RolesProps {
 const RolesCountSpan = styled.span`
   color: gray;
 `
-const PAGE_SIZE = 15
-
 const Roles: React.FC<RolesProps> = (props) => {
-  const [currentPage, setPage] = useState(props.page || 1)
   const [selectedSkill, updateSelectedSkill] = useState(
     props.selectedSkill || 'Vše'
   )
-  const onPageSelected = (index: number) => {
-    setPage(index)
-  }
 
   function handleSkillSelectionChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newSelectedSkill = e.target.value
     updateSelectedSkill(newSelectedSkill)
-
-    // If the selection changed, we go to first page, because it makes sense - if we stayed at a later page, different set of entries would be on the previous ones.
-    if (currentPage > 1 && newSelectedSkill !== selectedSkill) setPage(1)
   }
 
   function filterRoles() {
@@ -50,10 +40,6 @@ const Roles: React.FC<RolesProps> = (props) => {
         })
       })
     }
-    paginatedRoles = filteredRoles.slice(
-      (currentPage - 1) * PAGE_SIZE,
-      currentPage * PAGE_SIZE
-    )
   }
 
   function getSkills() {
@@ -87,8 +73,7 @@ const Roles: React.FC<RolesProps> = (props) => {
 
   const allRoles = props.data.roles.nodes
   const allSkills = getSkills()
-  let filteredRoles: Opportunity[] = [],
-    paginatedRoles: Opportunity[] = []
+  let filteredRoles: Opportunity[] = []
   filterRoles()
 
   return (
@@ -136,7 +121,7 @@ const Roles: React.FC<RolesProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          {paginatedRoles.map((r) => (
+          {filteredRoles.map((r) => (
             <RoleItem
               key={r.id}
               id={r.id}
@@ -147,15 +132,6 @@ const Roles: React.FC<RolesProps> = (props) => {
               slug={r.slug}
             />
           ))}
-        </SectionContent>
-      </Section>
-      <Section>
-        <SectionContent>
-          <RolesPaging
-            currentPage={currentPage}
-            totalPages={Math.ceil(filteredRoles.length / PAGE_SIZE)}
-            onPageSelected={onPageSelected}
-          />
         </SectionContent>
       </Section>
     </Layout>
