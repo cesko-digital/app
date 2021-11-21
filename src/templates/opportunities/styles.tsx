@@ -20,7 +20,7 @@ export const CoverImage = styled.img`
   filter: grayscale(100%);
 `
 
-export const RoleHeader = styled.div`
+export const OpportunityHeader = styled.div`
   display: flex;
   margin-top: 50px;
   a {
@@ -32,7 +32,7 @@ export const RoleHeader = styled.div`
     flex-direction: column;
   }
 `
-export const RoleContactCard = styled.div`
+export const OpportunityContactCard = styled.div`
   width: 350px;
   margin-left: 32px;
   border-radius: 8px;
@@ -51,7 +51,7 @@ export const OwnerWrapper = styled.div`
   margin: 8px 0 0;
 `
 
-export const RoleOwnerWrapper = styled.div`
+export const OpportunityOwnerWrapper = styled.div`
   padding: 24px 0;
   margin-bottom: 24px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
@@ -69,7 +69,7 @@ export const OwnerName = styled(Heading4)`
   font-size: 18px;
 `
 
-export const RoleMetaRow = styled.div`
+export const OpportunityMetaRow = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
@@ -79,18 +79,18 @@ export const RoleMetaRow = styled.div`
     fill: ${({ theme }) => theme.colors.darkGrey};
   }
 `
-export const RoleDescription = styled.div`
+export const OpportunityDescription = styled.div`
   padding: 24px 0;
   flex-grow: 1;
 `
 
-export const RoleProjectImg = styled.img`
+export const OpportunityProjectImg = styled.img`
   width: 35px;
   height: 35px;
   border-radius: 50%;
 `
 
-export const RoleSlackButton = styled(Button)`
+export const OpportunitySlackButton = styled(Button)`
   font-size: 16px;
   width: 100%;
 `

@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import {
   generateContentPages,
   generateEventPages,
-  generateRolePages,
+  generateOpportunityPages,
   generateProjectPages,
 } from './src/page-generation'
 
@@ -18,5 +18,5 @@ export const createPages = async (args) => {
   await generateProjectPages(args)
   await generateEventPages(args)
   await generateContentPages(args)
-  await generateRolePages(args)
+  await generateOpportunityPages(args)
 }

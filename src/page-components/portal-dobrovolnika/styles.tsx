@@ -43,7 +43,7 @@ export const ButtonWrapper = styled.div`
   }
 `
 
-export const RolesMainWrapper = styled.div`
+export const OpportunitiesMainWrapper = styled.div`
   margin-top: 18px;
 `
 

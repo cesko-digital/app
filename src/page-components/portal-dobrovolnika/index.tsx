@@ -4,15 +4,15 @@ import React from 'react'
 import { Event, MarkdownRemark, Opportunity } from 'generated/graphql-types'
 import { PortalEvent } from './types'
 import * as S from './styles'
-import RoleItem from '../../components/sections/role-overview'
+import OpportunityItem from '../../components/sections/opportunity-overview'
 import { Button } from '../../components/buttons'
-import { ButtonWrapper, RolesMainWrapper } from './styles'
+import { ButtonWrapper, OpportunitiesMainWrapper } from './styles'
 import { CardRow } from 'components/layout'
 import CeduCard from './cedu-card'
 
 interface PortalDobrovolnikaProps {
   data: {
-    roles: {
+    opportunities: {
       nodes: Opportunity[]
     }
     events: {
@@ -25,8 +25,8 @@ interface PortalDobrovolnikaProps {
 }
 
 const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
-  const sortedOpportunities = sortOpportunities(props.data.events.nodes)
-  const sortedRoles = props.data.roles.nodes as Opportunity[]
+  const sortedEvents = sortEvents(props.data.events.nodes)
+  const sortedOpportunities = props.data.opportunities.nodes as Opportunity[]
 
   return (
     <Layout
@@ -48,9 +48,9 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       <Section>
         <SectionContent>
           <Typography.Heading2>Právě hledáme</Typography.Heading2>
-          <RolesMainWrapper>
-            {sortedRoles.map((r) => (
-              <RoleItem
+          <OpportunitiesMainWrapper>
+            {sortedOpportunities.map((r) => (
+              <OpportunityItem
                 key={r.id}
                 name={r.name}
                 id={r.id}
@@ -60,9 +60,9 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
                 slug={r.slug}
               />
             ))}
-          </RolesMainWrapper>
+          </OpportunitiesMainWrapper>
           <ButtonWrapper>
-            <a href={'/roles'}>
+            <a href={'/opportunities'}>
               <Button>Více volných pozic</Button>
             </a>
           </ButtonWrapper>
@@ -106,21 +106,19 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
           <S.Container>
             <S.CardWrapper>
               <CardRow>
-                {sortedOpportunities.map((opportunity, index) => (
+                {sortedEvents.map((event, index) => (
                   <S.ProjectCard
                     key={index}
-                    title={opportunity.name}
-                    description={opportunity.summary}
+                    title={event.name}
+                    description={event.summary}
                     cover={
-                      opportunity.coverUrl
-                        ? opportunity.coverUrl
-                        : opportunity.project.coverUrl
+                      event.coverUrl ? event.coverUrl : event.project.coverUrl
                     }
-                    logo={opportunity.project.logoUrl}
-                    link={`/events/${opportunity.slug}`}
+                    logo={event.project.logoUrl}
+                    link={`/events/${event.slug}`}
                     tags={
-                      opportunity.tags
-                        ? opportunity.tags.map((tag) => {
+                      event.tags
+                        ? event.tags.map((tag) => {
                             return tag.name
                           })
                         : []
@@ -145,7 +143,7 @@ function biggestCompetence(event: PortalEvent): number {
   )
 }
 
-function sortOpportunities(events: Array<PortalEvent>): Array<PortalEvent> {
+function sortEvents(events: Array<PortalEvent>): Array<PortalEvent> {
   return events.sort((first, second) => {
     return biggestCompetence(second) - biggestCompetence(first)
   })

@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 
 export const query = graphql`
   query Opportunities($language: String!) {
-    roles: allOpportunity(filter: { status: { eq: "live" } }) {
+    opportunities: allOpportunity(filter: { status: { eq: "live" } }) {
       nodes {
         id
         name
@@ -28,4 +28,4 @@ export const query = graphql`
   }
 `
 
-export { default } from 'page-components/portal-dobrovolnika/roles'
+export { default } from 'page-components/portal-dobrovolnika/opportunities'

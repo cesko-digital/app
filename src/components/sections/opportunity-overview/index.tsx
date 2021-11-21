@@ -19,7 +19,7 @@ interface Project {
   logoUrl: string
 }
 
-const RoleItem: React.FC<Props> = ({
+const OpportunityItem: React.FC<Props> = ({
   id,
   name,
   skills,
@@ -27,28 +27,28 @@ const RoleItem: React.FC<Props> = ({
   timeRequirements,
   slug,
 }) => {
-  const link = '/roles/' + slug
+  const link = '/opportunities/' + slug
   return (
     <S.Container>
-      <S.RoleWrapper key={id}>
+      <S.OpportunityWrapper key={id}>
         <div>
           <a href={link}>
-            <S.RoleHeading>{name}</S.RoleHeading>
+            <S.OpportunityHeading>{name}</S.OpportunityHeading>
           </a>
-          <S.RoleMetaWrapper>
+          <S.OpportunityMetaWrapper>
             <BodySmall>{timeRequirements}</BodySmall>
             <BodySmall>{skills.join(', ')}</BodySmall>
-          </S.RoleMetaWrapper>
+          </S.OpportunityMetaWrapper>
         </div>
-        <S.RoleRightWrapper>
+        <S.OpportunityRightWrapper>
           <a href={project.url}>
             <Body>{project.name}</Body>
           </a>
-          <S.RoleLogo src={project.logoUrl} />
-        </S.RoleRightWrapper>
-      </S.RoleWrapper>
+          <S.OpportunityLogo src={project.logoUrl} />
+        </S.OpportunityRightWrapper>
+      </S.OpportunityWrapper>
     </S.Container>
   )
 }
 
-export default RoleItem
+export default OpportunityItem
