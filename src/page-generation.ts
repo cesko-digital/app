@@ -87,13 +87,13 @@ export async function generateOpportunityPages({
         id: node.id,
       },
     })
-    
+
     createRedirect({
       fromPath: `/roles/${node.slug}`,
       toPath: `/opportunities/${node.slug}`,
       isPermanent: true,
-      redirectInBrowser: true
-    });
+      redirectInBrowser: true,
+    })
   })
 }
 

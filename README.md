@@ -71,6 +71,8 @@ Před zahájením vývoje si prosím projděte soubor [CONTRIBUTING](CONTRIBUTIN
 
 ### Checklist před vytvořením PR
 
+`yarn format && yarn lint --fix && yarn test && yarn type-check && yarn build`
+
 `yarn format`: prettier
 
 `yarn lint --fix`: kontrola formátování s opravou, nemělo by vrátit (neopravitelnou) chybu

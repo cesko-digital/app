@@ -109,7 +109,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-client-side-redirect`
-    }
+      resolve: `gatsby-plugin-client-side-redirect`,
+    },
   ],
 }
