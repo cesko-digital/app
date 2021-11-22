@@ -65,7 +65,7 @@ export async function generateEventPages({
 
 export async function generateOpportunityPages({
   graphql,
-  actions: { createPage },
+  actions: { createPage, createRedirect },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allOpportunity: { nodes: Opportunity[] } }>(`
     query GenerateOpportunityPages {
@@ -87,6 +87,13 @@ export async function generateOpportunityPages({
         id: node.id,
       },
     })
+    
+    createRedirect({
+      fromPath: `/roles/${node.slug}`,
+      toPath: `/opportunities/${node.slug}`,
+      isPermanent: true,
+      redirectInBrowser: true
+    });
   })
 }
 

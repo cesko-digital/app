@@ -4,7 +4,7 @@ const subPagePaths = [
   'partners',
   'portal-dobrovolnika',
   'projekty',
-  'roles',
+  'opportunities',
   'rsvp',
   'show-and-tell',
   'events',
@@ -108,5 +108,8 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    {
+      resolve: `gatsby-plugin-client-side-redirect`
+    }
   ],
 }
