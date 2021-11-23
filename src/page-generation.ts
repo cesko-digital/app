@@ -140,3 +140,15 @@ export async function generateContentPages({
     })
   })
 }
+
+// This was created during https://github.com/cesko-digital/web/pull/351, when "roles" and "opportunities" were unified.
+export async function generateRolesToOpportunitiesRedirect({
+  actions: { createRedirect },
+}: CreatePagesArgs): Promise<void> {
+  createRedirect({
+    fromPath: `/roles`,
+    toPath: `/opportunities`,
+    isPermanent: true,
+    redirectInBrowser: true,
+  })
+}
