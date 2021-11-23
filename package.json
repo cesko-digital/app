@@ -48,7 +48,7 @@
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
-    "graphql": "^15.6.1",
+    "graphql": "^16.0.1",
     "i18next": "^21.3.3",
     "node-fetch": "^2.6.1",
     "react": "^16.12.0",
