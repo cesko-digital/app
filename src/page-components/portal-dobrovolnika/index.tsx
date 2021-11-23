@@ -106,7 +106,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
           <S.Container>
             <S.CardWrapper>
               <CardRow>
-                {sortedOpportunities.slice(1).map((opportunity, index) => (
+                {sortedOpportunities.map((opportunity, index) => (
                   <S.ProjectCard
                     key={index}
                     title={opportunity.name}
