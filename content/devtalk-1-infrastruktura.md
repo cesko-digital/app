@@ -665,4 +665,4 @@ A na závěr jsme se bavili, že AWS není nutně drahá věc, že to může kli
 
 Martin: Bylo to naprosto vyčerpávající. Kdyby měli diváci nějaké otázky, jak jim můžeme pomoci?
 
-Jsme pro vás k dispozici ve Slacku Česko.Digital, nejlépe v kanálu [\#ceskodigital-tech](https://cesko-digital.slack.com/archives/CS7RPPVUL), a moc se na vás těšíme. Vyzkoušejte si to, repo je k mání na GitHubu, takže se můžete podívat na všechny příklady, můžete je využít jako zdroj dalšího *copy and paste*, stejně jako jsme to udělali my. A budeme se těšit na vaše dotazy, připomínky. Ať vám to funguje!
+Jsme pro vás k dispozici ve Slacku Česko.Digital, nejlépe v kanálu [\#ceskodigital-tech](https://cesko-digital.slack.com/archives/CS7RPPVUL), a moc se na vás těšíme. Vyzkoušejte si to, repo je k mání na GitHubu, takže se můžete podívat na všechny příklady, můžete je využít jako zdroj dalšího _copy and paste_, stejně jako jsme to udělali my. A budeme se těšit na vaše dotazy, připomínky. Ať vám to funguje!

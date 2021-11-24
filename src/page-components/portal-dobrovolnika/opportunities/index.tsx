@@ -3,20 +3,20 @@ import * as Typography from 'components/typography'
 import { Opportunity } from 'generated/graphql-types'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import RoleItem from 'components/sections/role-overview'
+import OpportunityItem from '../../../components/sections/opportunity-overview'
 import { CompetencyFilterLabel, CompetencyFilterRadio } from '../styles'
 
-interface RolesProps {
+interface OpportunitiesProps {
   data: {
-    roles: { nodes: Opportunity[] }
+    opportunities: { nodes: Opportunity[] }
   }
   selectedSkill: string
 }
 
-const RolesCountSpan = styled.span`
+const OpportunitiesCountSpan = styled.span`
   color: gray;
 `
-const Roles: React.FC<RolesProps> = (props) => {
+const Opportunities: React.FC<OpportunitiesProps> = (props) => {
   const [selectedSkill, updateSelectedSkill] = useState(
     props.selectedSkill || 'Vše'
   )
@@ -26,15 +26,15 @@ const Roles: React.FC<RolesProps> = (props) => {
     updateSelectedSkill(newSelectedSkill)
   }
 
-  function filterRoles() {
-    if (selectedSkill === 'Vše') filteredRoles = allRoles
+  function filterOpportunities() {
+    if (selectedSkill === 'Vše') filteredOpportunities = allOpportunities
     else {
-      filteredRoles = []
+      filteredOpportunities = []
 
-      allRoles.forEach((r) => {
+      allOpportunities.forEach((r) => {
         r.skills.some((rs) => {
           if (rs === selectedSkill) {
-            filteredRoles.push(r)
+            filteredOpportunities.push(r)
           }
         })
       })
@@ -43,7 +43,7 @@ const Roles: React.FC<RolesProps> = (props) => {
 
   function getSkills() {
     let toReturn: { name: string; count: number }[] = []
-    allRoles.forEach((r) => {
+    allOpportunities.forEach((r) => {
       r.skills &&
         r.skills.forEach((s) => {
           if (!toReturn.find((t) => t.name === s))
@@ -56,7 +56,7 @@ const Roles: React.FC<RolesProps> = (props) => {
     })
 
     // Add "Vše"
-    toReturn.push({ name: 'Vše', count: allRoles.length })
+    toReturn.push({ name: 'Vše', count: allOpportunities.length })
 
     // We sort; "Vše" goes to the beginning
     toReturn = toReturn.sort((a, b) => {
@@ -70,10 +70,10 @@ const Roles: React.FC<RolesProps> = (props) => {
     return toReturn
   }
 
-  const allRoles = props.data.roles.nodes
+  const allOpportunities = props.data.opportunities.nodes
   const allSkills = getSkills()
-  let filteredRoles: Opportunity[] = []
-  filterRoles()
+  let filteredOpportunities: Opportunity[] = []
+  filterOpportunities()
 
   return (
     <Layout
@@ -89,7 +89,10 @@ const Roles: React.FC<RolesProps> = (props) => {
       <Section>
         <SectionContent>
           <Typography.Heading1>
-            Volné pozice <RolesCountSpan>{allRoles.length}</RolesCountSpan>
+            Volné pozice{' '}
+            <OpportunitiesCountSpan>
+              {allOpportunities.length}
+            </OpportunitiesCountSpan>
           </Typography.Heading1>
         </SectionContent>
       </Section>
@@ -120,8 +123,8 @@ const Roles: React.FC<RolesProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          {filteredRoles.map((r) => (
-            <RoleItem
+          {filteredOpportunities.map((r) => (
+            <OpportunityItem
               key={r.id}
               id={r.id}
               name={r.name}
@@ -137,4 +140,4 @@ const Roles: React.FC<RolesProps> = (props) => {
   )
 }
 
-export default Roles
+export default Opportunities

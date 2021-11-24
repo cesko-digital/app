@@ -38,7 +38,10 @@ export const query = graphql`
         coverUrl
       }
     }
-    roles: allOpportunity(limit: 3, filter: { status: { eq: "live" } }) {
+    opportunities: allOpportunity(
+      limit: 3
+      filter: { status: { eq: "live" } }
+    ) {
       nodes {
         id
         name

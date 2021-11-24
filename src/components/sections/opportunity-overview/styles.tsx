@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `
 
-export const RoleWrapper = styled.div`
+export const OpportunityWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 22px 0;
@@ -16,19 +16,19 @@ export const RoleWrapper = styled.div`
   }
 `
 
-export const RoleHeading = styled.div`
+export const OpportunityHeading = styled.div`
   ${heading4Styles}
   font-weight: 700;
   color: ${({ theme }) => theme.colors.darkGrey};
 `
 
-export const RoleMetaWrapper = styled.div`
+export const OpportunityMetaWrapper = styled.div`
   display: flex;
   gap: 12px;
   margin-top: 14px;
 `
 
-export const RoleRightWrapper = styled.div`
+export const OpportunityRightWrapper = styled.div`
   display: flex;
   gap: 24px;
   text-align: right;
@@ -37,7 +37,7 @@ export const RoleRightWrapper = styled.div`
   }
 `
 
-export const RoleLogo = styled.img`
+export const OpportunityLogo = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;

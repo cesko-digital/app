@@ -63,12 +63,12 @@ export async function generateEventPages({
   })
 }
 
-export async function generateRolePages({
+export async function generateOpportunityPages({
   graphql,
-  actions: { createPage },
+  actions: { createPage, createRedirect },
 }: CreatePagesArgs): Promise<void> {
   const result = await graphql<{ allOpportunity: { nodes: Opportunity[] } }>(`
-    query GenerateRolePages {
+    query GenerateOpportunityPages {
       allOpportunity(filter: { status: { in: ["live", "unlisted"] } }) {
         nodes {
           id
@@ -81,11 +81,18 @@ export async function generateRolePages({
 
   result?.data?.allOpportunity.nodes.forEach((node: Opportunity) => {
     createPage({
-      path: `/roles/${node.slug}`,
-      component: resolve('./src/templates/roles/index.tsx'),
+      path: `/opportunities/${node.slug}`,
+      component: resolve('./src/templates/opportunities/index.tsx'),
       context: {
         id: node.id,
       },
+    })
+
+    createRedirect({
+      fromPath: `/roles/${node.slug}`,
+      toPath: `/opportunities/${node.slug}`,
+      isPermanent: true,
+      redirectInBrowser: true,
     })
   })
 }
@@ -131,5 +138,17 @@ export async function generateContentPages({
         id: node.id,
       },
     })
+  })
+}
+
+// This was created during https://github.com/cesko-digital/web/pull/351, when "roles" and "opportunities" were unified.
+export async function generateRolesToOpportunitiesRedirect({
+  actions: { createRedirect },
+}: CreatePagesArgs): Promise<void> {
+  createRedirect({
+    fromPath: `/roles`,
+    toPath: `/opportunities`,
+    isPermanent: true,
+    redirectInBrowser: true,
   })
 }
