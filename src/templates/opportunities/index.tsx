@@ -71,7 +71,7 @@ const OpportunityPage: React.FC<OpportunityPageProps> = (props) => {
                   </div>
                 </S.OwnerWrapper>
               </S.OpportunityOwnerWrapper>
-              <a href={opportunity.project.slackChannelUrl} target="blank">
+              <a href={opportunity.contactUrl} target="blank">
                 <S.OpportunitySlackButton>
                   Kontaktovat přes Slack
                 </S.OpportunitySlackButton>
