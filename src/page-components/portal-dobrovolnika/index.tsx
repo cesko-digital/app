@@ -2,7 +2,6 @@ import { Layout, SectionContent, Section } from 'components/layout'
 import * as Typography from 'components/typography'
 import React from 'react'
 import { Event, MarkdownRemark, Opportunity } from 'generated/graphql-types'
-import { PortalEvent } from './types'
 import * as S from './styles'
 import OpportunityItem from '../../components/sections/opportunity-overview'
 import { Button } from '../../components/buttons'
@@ -25,7 +24,9 @@ interface PortalDobrovolnikaProps {
 }
 
 const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
-  const sortedEvents = sortEvents(props.data.events.nodes)
+  const compareEventsByTime = (a: Event, b: Event) =>
+    Date.parse(a.startTime) - Date.parse(b.startTime)
+  const sortedEvents = [...props.data.events.nodes].sort(compareEventsByTime)
   const sortedOpportunities = props.data.opportunities.nodes as Opportunity[]
 
   return (
@@ -132,21 +133,6 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
       </Section>
     </Layout>
   )
-}
-
-function biggestCompetence(event: PortalEvent): number {
-  return Math.max(
-    ...event.competenceMap.map((competence) => {
-      const [, score] = competence.split(':')
-      return parseInt(score)
-    })
-  )
-}
-
-function sortEvents(events: Array<PortalEvent>): Array<PortalEvent> {
-  return events.sort((first, second) => {
-    return biggestCompetence(second) - biggestCompetence(first)
-  })
 }
 
 export default PortalDobrovolnika
