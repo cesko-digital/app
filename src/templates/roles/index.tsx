@@ -71,7 +71,7 @@ const RolePage: React.FC<RolePageProps> = (props) => {
                   </div>
                 </S.OwnerWrapper>
               </S.RoleOwnerWrapper>
-              <a href={role.project.slackChannelUrl} target="blank">
+              <a href={role.contactUrl} target="blank">
                 <S.RoleSlackButton>Kontaktovat přes Slack</S.RoleSlackButton>
               </a>
             </S.RoleContactCard>
