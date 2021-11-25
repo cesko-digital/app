@@ -112,6 +112,9 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
                     key={index}
                     title={event.name}
                     description={event.summary}
+                    startTime={event.startTime}
+                    endTime={event.endTime}
+                    locationTitle={event.locationTitle}
                     cover={
                       event.coverUrl ? event.coverUrl : event.project.coverUrl
                     }

@@ -99,3 +99,16 @@ export const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.base}px;
   flex-grow: 1;
 `
+
+export const ShortInfoBubble = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.base}px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: ${({ theme }) => theme.borderRadius.base / 2};
+  padding: ${({ theme }) => theme.space.small}px;
+  margin-right: ${({ theme }) => (theme.space.md + theme.space.small) / 2}px;
+  margin-bottom: ${({ theme }) => theme.space.md}px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+`
