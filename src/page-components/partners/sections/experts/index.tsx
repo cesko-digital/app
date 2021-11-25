@@ -18,7 +18,6 @@ interface ExpertsPartnersProps {
 
 const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({
   submitterPartnersLogos,
-  expertPartnersLogos,
   supportersLogos,
 }) => {
   const { t } = useTranslation()

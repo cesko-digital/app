@@ -24,7 +24,6 @@ interface FinancialPartnersProps {
 const FinancialPartners: React.FC<FinancialPartnersProps> = ({
   mainPartnersLogos,
   regularPartnersLogos,
-  grantsLogos,
   blogCards = [],
 }) => {
   const { t } = useTranslation()
