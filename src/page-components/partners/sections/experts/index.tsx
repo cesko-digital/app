@@ -45,15 +45,6 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({
           {t('pages.partners.experts.regularPartners.perex')}
         </S.PaddedBody>
         <S.PaddedBody>
-          <LogoList items={expertPartnersLogos.map(mapPartnerLogoInfoToLogo)} />
-        </S.PaddedBody>
-      </SectionContent>
-      <SectionContent>
-        <Heading3>{t('pages.partners.experts.supporters.title')}</Heading3>
-        <S.PaddedBody>
-          {t('pages.partners.experts.supporters.perex')}
-        </S.PaddedBody>
-        <S.PaddedBody>
           <LogoList items={supportersLogos.map(mapPartnerLogoInfoToLogo)} />
         </S.PaddedBody>
       </SectionContent>
