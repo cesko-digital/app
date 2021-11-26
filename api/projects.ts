@@ -55,7 +55,7 @@ interface HubUser {
   profilePictureUrl: string
 }
 
-function parseHubProject(src: AirtableProject): HubProject | string {
+function parseHubProject(src: AirtableProject): HubProject {
   const requiredKeys: (keyof AirtableProject)[] = [
     'csName',
     'csSlug',
@@ -68,7 +68,7 @@ function parseHubProject(src: AirtableProject): HubProject | string {
   ]
   for (const key of requiredKeys) {
     if (!src[key]) {
-      return `Chybí hodnota povinného sloupce „${key}.“`
+      throw `Chybí hodnota povinného sloupce „${key}“`
     }
   }
   return {
@@ -93,6 +93,33 @@ function parseHubProject(src: AirtableProject): HubProject | string {
   }
 }
 
+interface InvalidRecord<T> {
+  error: string
+  payload: T
+}
+
+function parseAndSort<T, U>(
+  sources: T[],
+  parser: (src: T) => U
+): {
+  valid: U[]
+  invalid: InvalidRecord<T>[]
+} {
+  var valid: U[] = []
+  var invalid: InvalidRecord<T>[] = []
+  for (const item of sources) {
+    try {
+      valid.push(parser(item))
+    } catch (e) {
+      invalid.push({ error: `${e}`, payload: item })
+    }
+  }
+  return {
+    valid,
+    invalid,
+  }
+}
+
 export default async (
   request: VercelRequest,
   response: VercelResponse
@@ -108,9 +135,13 @@ export default async (
         maxRecords: 100,
       })
       .all()
-    const projects = records.map((r) => r.fields).map(parseHubProject)
+    const airtableProjects = records.map((r) => r.fields)
     response.setHeader('Content-Type', 'application/json')
-    response.status(200).send(JSON.stringify(projects, null, 2))
+    response
+      .status(200)
+      .send(
+        JSON.stringify(parseAndSort(airtableProjects, parseHubProject), null, 2)
+      )
   } catch (e) {
     response.status(500).send(e)
   }
