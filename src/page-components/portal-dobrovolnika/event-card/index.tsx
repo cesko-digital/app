@@ -44,14 +44,16 @@ const EventCard: FC<EventCardProps> = ({
         />
       </S.Header>
       <S.Content>
-        <div>
+        <S.ShortInfoBubbles>
           <S.ShortInfoBubble>
-            {getRelativeDate(startTime, endTime)}
+            {getRelativeDate(startTime, endTime, new Date())}
           </S.ShortInfoBubble>
-          {locationTitle && locationTitle !== '' && (
-            <S.ShortInfoBubble>{locationTitle}</S.ShortInfoBubble>
+          {locationTitle && (
+            <S.ShortInfoBubble title={locationTitle}>
+              {locationTitle}
+            </S.ShortInfoBubble>
           )}
-        </div>
+        </S.ShortInfoBubbles>
         <S.Title>{title}</S.Title>
         <S.TagList>
           {tags.map((tag) => (

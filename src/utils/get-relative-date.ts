@@ -8,11 +8,11 @@ function isSameDay(date1: Date, date2: Date): boolean {
 
 export function getRelativeDate(
   startDateString: string,
-  endDateString: string
+  endDateString: string,
+  nowDate: Date
 ): string {
   const startDate = new Date(Date.parse(startDateString))
   const endDate = new Date(Date.parse(endDateString))
-  const nowDate = new Date()
 
   if (nowDate > endDate) return 'Proběhlo'
   else if (nowDate > startDate) return 'Probíhá'
@@ -25,17 +25,15 @@ export function getRelativeDate(
       tomorrowDate.setDate(tomorrowDate.getDate() + 1)
       if (isSameDay(startDate, tomorrowDate)) toReturn = 'Zítra'
       else {
-        toReturn = startDate.getDate() + '.' + (startDate.getMonth() + 1)
+        toReturn = startDate.getDate() + '.' + (startDate.getMonth() + 1) + '.'
         if (startDate.getFullYear() !== nowDate.getFullYear())
-          toReturn += '.' + startDate.getFullYear()
+          toReturn += startDate.getFullYear()
       }
     }
 
     toReturn +=
       ', ' +
-      ('0' + startDate.getHours()).slice(-2) +
-      ':' +
-      ('0' + startDate.getMinutes()).slice(-2)
+      startDate.toLocaleString('cs-CZ', { hour: '2-digit', minute: '2-digit' })
 
     return toReturn
   }
