@@ -5,6 +5,7 @@ export interface SectionProps {
   children: ReactNode
   backgroundColor?: string
   as?: string
+  id?: string
 }
 
 interface StyledProps extends SectionProps {

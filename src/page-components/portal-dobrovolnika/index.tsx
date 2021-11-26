@@ -69,7 +69,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
           </ButtonWrapper>
         </SectionContent>
       </Section>
-      <Section>
+      <Section id="section-cedu">
         <SectionContent>
           <S.CategoryHeader>
             <S.Title>Vzdělávání – č.edu</S.Title>
@@ -99,7 +99,7 @@ const PortalDobrovolnika: React.FC<PortalDobrovolnikaProps> = (props) => {
           </S.Container>
         </SectionContent>
       </Section>
-      <Section>
+      <Section id="section-events">
         <SectionContent>
           <S.CategoryHeader>
             <S.Title>Nejbližší akce</S.Title>
