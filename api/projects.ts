@@ -109,6 +109,7 @@ export default async (
       })
       .all()
     const projects = records.map((r) => r.fields).map(parseHubProject)
+    response.setHeader('Content-Type', 'application/json')
     response.status(200).send(JSON.stringify(projects, null, 2))
   } catch (e) {
     response.status(500).send(e)
