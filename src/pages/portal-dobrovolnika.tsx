@@ -11,6 +11,7 @@ export const query = graphql`
         name
         rowId
         startTime
+        locationTitle
         status
         summary
         project {

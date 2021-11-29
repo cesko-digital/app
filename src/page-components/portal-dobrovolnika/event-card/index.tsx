@@ -3,6 +3,7 @@ import * as S from './styles'
 import { Link } from 'components/links'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import { getResizedImgUrl } from 'utils/get-resized-img-url'
+import { getRelativeDate } from 'utils/get-relative-date'
 
 interface EventCardProps {
   title: string
@@ -11,6 +12,9 @@ interface EventCardProps {
   logo: string
   link: string
   tags: string[]
+  startTime: string
+  endTime: string
+  locationTitle?: string
 }
 
 const EventCard: FC<EventCardProps> = ({
@@ -20,6 +24,9 @@ const EventCard: FC<EventCardProps> = ({
   logo,
   link,
   tags,
+  startTime,
+  endTime,
+  locationTitle,
   ...rest
 }) => {
   const { t } = useTranslation()
@@ -37,6 +44,16 @@ const EventCard: FC<EventCardProps> = ({
         />
       </S.Header>
       <S.Content>
+        <S.ShortInfoBubbles>
+          <S.ShortInfoBubble>
+            {getRelativeDate(startTime, endTime, new Date())}
+          </S.ShortInfoBubble>
+          {locationTitle && (
+            <S.ShortInfoBubble title={locationTitle}>
+              {locationTitle}
+            </S.ShortInfoBubble>
+          )}
+        </S.ShortInfoBubbles>
         <S.Title>{title}</S.Title>
         <S.TagList>
           {tags.map((tag) => (

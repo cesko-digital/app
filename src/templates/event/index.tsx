@@ -69,17 +69,20 @@ const EventPage: React.FC<EventPageProps> = ({ data }) => {
             </S.CategoryHeader>
             <S.CardWrapper>
               <CardRow>
-                {data.otherEvents.nodes.map((opportunity, index) => (
+                {data.otherEvents.nodes.map((event, index) => (
                   <S.ProjectCard
                     key={index}
-                    title={opportunity.name}
-                    description={opportunity.summary}
-                    cover={opportunity.coverUrl}
-                    logo={opportunity.project.logoUrl}
-                    link={`/events/${opportunity.slug}`}
+                    title={event.name}
+                    description={event.summary}
+                    cover={event.coverUrl}
+                    logo={event.project.logoUrl}
+                    startTime={event.startTime}
+                    locationTitle={event.locationTitle}
+                    endTime={event.endTime}
+                    link={`/events/${event.slug}`}
                     tags={
-                      opportunity.tags
-                        ? opportunity.tags.map((tag) => {
+                      event.tags
+                        ? event.tags.map((tag) => {
                             return tag.name
                           })
                         : []
@@ -162,6 +165,7 @@ export const query = graphql`
         name
         rowId
         startTime
+        locationTitle
         status
         summary
         project {
