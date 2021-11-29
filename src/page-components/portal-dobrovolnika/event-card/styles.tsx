@@ -89,6 +89,7 @@ export const Tag = styled.li`
   border-radius: ${({ theme }) => theme.borderRadius.base / 2}px;
 
   font-size: ${({ theme }) => theme.fontSizes.small}px;
+  text-transform: lowercase;
 
   margin-right: ${({ theme }) => theme.space.small}px;
   margin-bottom: ${({ theme }) => theme.space.small}px;
