@@ -86,9 +86,9 @@ export const TagList = styled.ul`
 
 export const Tag = styled.li`
   background-color: ${({ theme }) => theme.colors.pebble};
-  border-radius: ${({ theme }) => theme.borderRadius.base / 2};
+  border-radius: ${({ theme }) => theme.borderRadius.base / 2}px;
 
-  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.small}px;
 
   margin-right: ${({ theme }) => theme.space.small}px;
   margin-bottom: ${({ theme }) => theme.space.small}px;
