@@ -104,15 +104,14 @@ export const Description = styled.p`
 export const ShortInfoBubbles = styled.div`
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   margin-bottom: ${({ theme }) => theme.space.md}px;
 `
 
 export const ShortInfoBubble = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small}px;
-  display: inline;
-  background-color: #eee;
-  border-radius: ${({ theme }) => theme.borderRadius.base * 1.25}px;
+  display: inline-block;
+  background-color: ${({ theme }) => theme.colors.pebble};
+  border-radius: ${({ theme }) => theme.borderRadius.base / 2}px;
   padding: ${({ theme }) => theme.space.small}px
     ${({ theme }) => theme.space.small * 2}px;
   margin-right: ${({ theme }) => (theme.space.md + theme.space.small) / 2}px;
