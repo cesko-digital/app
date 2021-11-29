@@ -52,13 +52,13 @@ Zdroje pro web Česko.Digital. Web je k dispozici na [cesko.digital](https://ces
 1.  **Nastavení**
 
     Zkopíruj soubor .env.example do .env
-    
+
     V něm nastav dvě konfigurační položky:
+
     ```
     AIRTABLE_API_KEY ... to je personální API klíč, ten nastav podle https://support.airtable.com/hc/en-us/articles/219046777
     AIRTABLE_BASE_URL ... to je URL té Airtable Base, jdi na https://airtable.com/api a tam bys měl/a vidět 'Web' pod "Bases shared with me", klikni na to a na té detailní stránce té Base už bude ten BASE identifikátor - tím nahraď BASE_KEY
     ```
-
 
 ## Překlady
 

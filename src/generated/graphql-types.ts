@@ -382,6 +382,8 @@ export type SitePluginPluginOptions = {
   enableWebVitalsTracking: Maybe<Scalars['Boolean']>
   selfHostedOrigin: Maybe<Scalars['String']>
   pathCheck: Maybe<Scalars['Boolean']>
+  airtableApiKey: Maybe<Scalars['String']>
+  airtableBaseUrl: Maybe<Scalars['String']>
 }
 
 export type SitePluginPluginOptionsPlugins = {
@@ -826,8 +828,10 @@ export type Volunteer = Node & {
   profilePictureUrl: Maybe<Scalars['String']>
   name: Maybe<Scalars['String']>
   Projects: Maybe<Array<Maybe<Scalars['String']>>>
+  ID: Maybe<Scalars['String']>
+  Owned_Events: Maybe<Array<Maybe<Scalars['String']>>>
+  Opportunities: Maybe<Array<Maybe<Scalars['String']>>>
   company: Maybe<Scalars['String']>
-  Events: Maybe<Array<Maybe<Scalars['String']>>>
 }
 
 export type Tag = Node & {
@@ -889,6 +893,7 @@ export type Opportunity = Node & {
   rowId: Maybe<Scalars['String']>
   slug: Maybe<Scalars['String']>
   name: Maybe<Scalars['String']>
+  coverUrl: Maybe<Scalars['String']>
   summary: Maybe<Scalars['String']>
   timeRequirements: Maybe<Scalars['String']>
   skills: Maybe<Array<Maybe<Scalars['String']>>>
@@ -1245,8 +1250,10 @@ export type QueryVolunteerArgs = {
   profilePictureUrl: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
   Projects: Maybe<StringQueryOperatorInput>
+  ID: Maybe<StringQueryOperatorInput>
+  Owned_Events: Maybe<StringQueryOperatorInput>
+  Opportunities: Maybe<StringQueryOperatorInput>
   company: Maybe<StringQueryOperatorInput>
-  Events: Maybe<StringQueryOperatorInput>
 }
 
 export type QueryAllVolunteerArgs = {
@@ -1332,6 +1339,7 @@ export type QueryOpportunityArgs = {
   rowId: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
+  coverUrl: Maybe<StringQueryOperatorInput>
   summary: Maybe<StringQueryOperatorInput>
   timeRequirements: Maybe<StringQueryOperatorInput>
   skills: Maybe<StringQueryOperatorInput>
@@ -2986,6 +2994,8 @@ export type SitePluginPluginOptionsFilterInput = {
   enableWebVitalsTracking: Maybe<BooleanQueryOperatorInput>
   selfHostedOrigin: Maybe<StringQueryOperatorInput>
   pathCheck: Maybe<BooleanQueryOperatorInput>
+  airtableApiKey: Maybe<StringQueryOperatorInput>
+  airtableBaseUrl: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
@@ -3257,6 +3267,8 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___enableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
   pluginCreator___pluginOptions___selfHostedOrigin = 'pluginCreator___pluginOptions___selfHostedOrigin',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___airtableApiKey = 'pluginCreator___pluginOptions___airtableApiKey',
+  pluginCreator___pluginOptions___airtableBaseUrl = 'pluginCreator___pluginOptions___airtableBaseUrl',
   pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
   pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
@@ -3475,6 +3487,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___enableWebVitalsTracking = 'pluginOptions___enableWebVitalsTracking',
   pluginOptions___selfHostedOrigin = 'pluginOptions___selfHostedOrigin',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
+  pluginOptions___airtableApiKey = 'pluginOptions___airtableApiKey',
+  pluginOptions___airtableBaseUrl = 'pluginOptions___airtableBaseUrl',
   packageJson___name = 'packageJson___name',
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
@@ -4349,8 +4363,10 @@ export enum VolunteerFieldsEnum {
   profilePictureUrl = 'profilePictureUrl',
   name = 'name',
   Projects = 'Projects',
+  ID = 'ID',
+  Owned_Events = 'Owned_Events',
+  Opportunities = 'Opportunities',
   company = 'company',
-  Events = 'Events',
 }
 
 export type VolunteerGroupConnection = {
@@ -4400,8 +4416,10 @@ export type VolunteerFilterInput = {
   profilePictureUrl: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
   Projects: Maybe<StringQueryOperatorInput>
+  ID: Maybe<StringQueryOperatorInput>
+  Owned_Events: Maybe<StringQueryOperatorInput>
+  Opportunities: Maybe<StringQueryOperatorInput>
   company: Maybe<StringQueryOperatorInput>
-  Events: Maybe<StringQueryOperatorInput>
 }
 
 export type VolunteerSortInput = {
@@ -4834,8 +4852,10 @@ export enum ProjectFieldsEnum {
   coordinators___profilePictureUrl = 'coordinators___profilePictureUrl',
   coordinators___name = 'coordinators___name',
   coordinators___Projects = 'coordinators___Projects',
+  coordinators___ID = 'coordinators___ID',
+  coordinators___Owned_Events = 'coordinators___Owned_Events',
+  coordinators___Opportunities = 'coordinators___Opportunities',
   coordinators___company = 'coordinators___company',
-  coordinators___Events = 'coordinators___Events',
 }
 
 export type ProjectGroupConnection = {
@@ -5227,6 +5247,7 @@ export enum OpportunityFieldsEnum {
   rowId = 'rowId',
   slug = 'slug',
   name = 'name',
+  coverUrl = 'coverUrl',
   summary = 'summary',
   timeRequirements = 'timeRequirements',
   skills = 'skills',
@@ -5277,8 +5298,10 @@ export enum OpportunityFieldsEnum {
   owner___profilePictureUrl = 'owner___profilePictureUrl',
   owner___name = 'owner___name',
   owner___Projects = 'owner___Projects',
+  owner___ID = 'owner___ID',
+  owner___Owned_Events = 'owner___Owned_Events',
+  owner___Opportunities = 'owner___Opportunities',
   owner___company = 'owner___company',
-  owner___Events = 'owner___Events',
   project___id = 'project___id',
   project___parent___id = 'project___parent___id',
   project___parent___parent___id = 'project___parent___parent___id',
@@ -5371,8 +5394,10 @@ export enum OpportunityFieldsEnum {
   project___coordinators___profilePictureUrl = 'project___coordinators___profilePictureUrl',
   project___coordinators___name = 'project___coordinators___name',
   project___coordinators___Projects = 'project___coordinators___Projects',
+  project___coordinators___ID = 'project___coordinators___ID',
+  project___coordinators___Owned_Events = 'project___coordinators___Owned_Events',
+  project___coordinators___Opportunities = 'project___coordinators___Opportunities',
   project___coordinators___company = 'project___coordinators___company',
-  project___coordinators___Events = 'project___coordinators___Events',
 }
 
 export type OpportunityGroupConnection = {
@@ -5420,6 +5445,7 @@ export type OpportunityFilterInput = {
   rowId: Maybe<StringQueryOperatorInput>
   slug: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
+  coverUrl: Maybe<StringQueryOperatorInput>
   summary: Maybe<StringQueryOperatorInput>
   timeRequirements: Maybe<StringQueryOperatorInput>
   skills: Maybe<StringQueryOperatorInput>
@@ -5799,8 +5825,10 @@ export enum EventFieldsEnum {
   owner___profilePictureUrl = 'owner___profilePictureUrl',
   owner___name = 'owner___name',
   owner___Projects = 'owner___Projects',
+  owner___ID = 'owner___ID',
+  owner___Owned_Events = 'owner___Owned_Events',
+  owner___Opportunities = 'owner___Opportunities',
   owner___company = 'owner___company',
-  owner___Events = 'owner___Events',
   project___id = 'project___id',
   project___parent___id = 'project___parent___id',
   project___parent___parent___id = 'project___parent___parent___id',
@@ -5893,8 +5921,10 @@ export enum EventFieldsEnum {
   project___coordinators___profilePictureUrl = 'project___coordinators___profilePictureUrl',
   project___coordinators___name = 'project___coordinators___name',
   project___coordinators___Projects = 'project___coordinators___Projects',
+  project___coordinators___ID = 'project___coordinators___ID',
+  project___coordinators___Owned_Events = 'project___coordinators___Owned_Events',
+  project___coordinators___Opportunities = 'project___coordinators___Opportunities',
   project___coordinators___company = 'project___coordinators___company',
-  project___coordinators___Events = 'project___coordinators___Events',
   tags = 'tags',
   tags___id = 'tags___id',
   tags___parent___id = 'tags___parent___id',
@@ -6606,6 +6636,7 @@ export type OpportunityPageQuery = { __typename?: 'Query' } & {
       | 'summary'
       | 'timeRequirements'
       | 'contactUrl'
+      | 'coverUrl'
       | 'juniorFriendly'
     > & {
         owner: Maybe<
