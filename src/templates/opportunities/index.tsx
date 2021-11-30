@@ -34,7 +34,9 @@ const OpportunityPage: React.FC<OpportunityPageProps> = (props) => {
       seo={{
         title: opportunity.name,
         description: opportunity.summary,
-        coverUrl: opportunity.project.coverUrl,
+        coverUrl: opportunity.coverUrl
+          ? opportunity.coverUrl
+          : opportunity.project.coverUrl,
       }}
     >
       <Section>
@@ -42,7 +44,12 @@ const OpportunityPage: React.FC<OpportunityPageProps> = (props) => {
           <Heading1>{opportunity.name}</Heading1>
           <S.CoverImageWrapper>
             <S.CoverImage
-              src={getResizedImgUrl(opportunity.project.coverUrl, 1160)}
+              src={getResizedImgUrl(
+                opportunity.coverUrl
+                  ? opportunity.coverUrl
+                  : opportunity.project.coverUrl,
+                1160
+              )}
               loading="lazy"
             />
           </S.CoverImageWrapper>
@@ -110,6 +117,7 @@ export const query = graphql`
       summary
       timeRequirements
       contactUrl
+      coverUrl
       owner {
         email
         name
