@@ -18,8 +18,8 @@ const AboutProject: React.FC<Props> = ({
   return (
     <S.Wrapper>
       <Heading2>{t('pages.project.about.title')}</Heading2>
-      <S.Description>{description}</S.Description>
-      {finished && <Body>{thankYouText}</Body>}
+      <Body dangerouslySetInnerHTML={{ __html: description }} />
+      {finished && <Body dangerouslySetInnerHTML={{ __html: thankYouText }} />}
     </S.Wrapper>
   )
 }

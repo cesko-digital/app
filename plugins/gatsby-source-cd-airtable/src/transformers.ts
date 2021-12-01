@@ -31,9 +31,24 @@ function transformAirTableRecords<
   )
 }
 
+function setMarkedOptions(): void {
+  Marked.setOptions({
+    renderer: new Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false,
+  })
+}
+
 export function transformProjects(
   airtableProjects: AirTableProject[]
 ): Project[] {
+  setMarkedOptions()
+
   return airtableProjects
     .filter((airtableProject) => !airtableProject?.fields?.draft)
     .map((airTableProject) => {
@@ -78,8 +93,8 @@ export function transformProjects(
         name: csName || '',
         tagline: csTagline || '',
         slug: csSlug,
-        description: csDescription || '',
-        contributeText: csContributeText || '',
+        description: Marked.parse(csDescription || ''),
+        contributeText: Marked.parse(csContributeText || ''),
       }
 
       return project
@@ -104,16 +119,7 @@ export function transformTags(airTableTags: AirTableTag[]): Tag[] {
 }
 
 export function transformEvent(event: AirtableEvent): Event | null {
-  Marked.setOptions({
-    renderer: new Renderer(),
-    gfm: true,
-    tables: true,
-    breaks: true,
-    pedantic: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: false,
-  })
+  setMarkedOptions()
 
   const f = event.fields
   const safeSlug = f.Slug ? f.Slug : event.id
@@ -147,6 +153,8 @@ export function transformEvent(event: AirtableEvent): Event | null {
 export function transformOpportunity(
   opportunity: AirtableOpportunity
 ): Opportunity | null {
+  setMarkedOptions()
+
   const f = opportunity.fields
   return {
     rowId: opportunity.id,
@@ -154,7 +162,7 @@ export function transformOpportunity(
     name: f.Name ?? '',
     project: f.Project?.length > 0 ? f.Project[0] : undefined,
     coverUrl: f['Cover URL'],
-    summary: f.Summary ?? '',
+    summary: Marked.parse(f.Summary ?? ''),
     timeRequirements: f['Time Requirements'],
     skills: f['Skills'],
     starred: f.Starred || false,

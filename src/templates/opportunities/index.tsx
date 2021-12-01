@@ -2,9 +2,8 @@ import { Opportunity } from 'generated/graphql-types'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Layout, Section, SectionContent } from '../../components/layout'
-import { Heading1 } from 'components/typography'
+import { Heading1, BodySmall, Body } from 'components/typography'
 import * as S from './styles'
-import { BodySmall, Body } from 'components/typography'
 import { OwnerName, OpportunityMetaRow } from './styles'
 import TimeIcon from '../../components/icons/time'
 import OpportunityItem from '../../components/sections/opportunity-overview'
@@ -55,13 +54,7 @@ const OpportunityPage: React.FC<OpportunityPageProps> = (props) => {
           </S.CoverImageWrapper>
           <S.OpportunityHeader>
             <S.OpportunityDescription>
-              <Body>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: opportunity.summary.replaceAll('\n', '<br>'),
-                  }}
-                />
-              </Body>
+              <Body dangerouslySetInnerHTML={{ __html: opportunity.summary }} />
             </S.OpportunityDescription>
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
