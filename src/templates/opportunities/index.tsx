@@ -55,7 +55,13 @@ const OpportunityPage: React.FC<OpportunityPageProps> = (props) => {
           </S.CoverImageWrapper>
           <S.OpportunityHeader>
             <S.OpportunityDescription>
-              <Body>{opportunity.summary}</Body>
+              <Body>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: opportunity.summary.replaceAll('\n', '<br>'),
+                  }}
+                />
+              </Body>
             </S.OpportunityDescription>
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
