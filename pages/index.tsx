@@ -6,13 +6,16 @@ type PageProps = {
   projects: PortalProject[];
 };
 
-const Home: NextPage<PageProps> = ({ projects }) => {
+const Page: NextPage<PageProps> = ({ projects }) => {
   return (
     <div>
       <h1>Česko.Digital</h1>
       <ul>
         <li>
           <a href="/projekty">Projects ({projects.length})</a>
+        </li>
+        <li>
+          <a href="/events">Events</a>
         </li>
       </ul>
     </div>
@@ -28,4 +31,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   };
 };
 
-export default Home;
+export default Page;
