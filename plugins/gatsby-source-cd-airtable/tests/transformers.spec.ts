@@ -18,10 +18,12 @@ describe('transformers', () => {
     const enSlug = 'project'
     const tags = ['rowId']
     const coordinators = ['volunteerRowId']
-    const csDescription = 'Popis'
-    const enDescription = 'Description'
-    const csContributeText = 'Zapoj se'
-    const enContributeText = 'Contribute'
+    const csDescription = '**Popis**'
+    const parsedCsDescription = '<p><strong>Popis</strong></p>\n'
+    const enDescription = 'Description _emphasized_'
+    const csContributeText = '# Zapoj se'
+    const parsedCsContributeText = '<h1 id="zapoj-se">Zapoj se</h1>\n'
+    const enContributeText = '[Contribute](google.com)'
     const trelloUrl = 'trello'
     const githubUrl = 'github'
     const url = 'url'
@@ -64,8 +66,8 @@ describe('transformers', () => {
         logoUrl,
         coverUrl,
         slug: csSlug,
-        description: csDescription,
-        contributeText: csContributeText,
+        description: parsedCsDescription,
+        contributeText: parsedCsContributeText,
         trelloUrl,
         slackChannelName,
         slackChannelUrl,
@@ -114,8 +116,8 @@ describe('transformers', () => {
         logoUrl,
         coverUrl,
         slug: csSlug,
-        description: csDescription,
-        contributeText: csContributeText,
+        description: parsedCsDescription,
+        contributeText: parsedCsContributeText,
         trelloUrl,
         slackChannelName,
         slackChannelUrl,
