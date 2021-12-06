@@ -27,10 +27,10 @@ export function parsePortalProject(data: AirtableRecord): PortalProject {
     id: data.id,
     name: f.csName,
     slug: f.csSlug,
-    tagline: f.csTagline,
-    description: f.csDescription,
+    tagline: f.csTagline || null,
+    description: f.csDescription || null,
     url: f.url,
-    contributeText: f.csContributeText,
+    contributeText: f.csContributeText || null,
     coverImageUrl: f.coverUrl,
     logoUrl: f.logoUrl,
     highlighted: f.highlighted || false,
@@ -38,8 +38,8 @@ export function parsePortalProject(data: AirtableRecord): PortalProject {
     draft: f.draft || false,
     tagIds: f.tags || [],
     coordinatorIds: f.coordinators || [],
-    slackChannelUrl: f.slackChannelUrl,
-    slackChannelName: f.slackChannelName,
+    slackChannelUrl: f.slackChannelUrl || null,
+    slackChannelName: f.slackChannelName || null,
   };
 }
 
@@ -97,6 +97,9 @@ async function getAllRecords<T>(args: {
     .select({ view: args.viewName, maxRecords: 100 /* TBD */ })
     .all();
   var parsedRecords: T[] = [];
+  console.debug(
+    `Successfully loaded ${response.length} rows from table ${args.tableName}.`
+  );
   response.forEach((record, index) => {
     try {
       parsedRecords.push(args.parser(record));
