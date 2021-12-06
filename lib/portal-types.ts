@@ -38,6 +38,7 @@ export interface PortalUser {
 export interface PortalEvent {
   id: string;
   name: string;
+  slug: string;
   summary: string;
   description: MarkdownString;
   startTime: Date;
@@ -47,7 +48,6 @@ export interface PortalEvent {
   registrationUrl: string;
   registrationTitle: string;
 
-  customSlug?: string;
   endTime?: Date;
   tagIds: string[];
   coverImageUrl?: string;
