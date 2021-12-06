@@ -25,5 +25,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
+  },
+  "prettier": {
+    "quoteProps": "consistent"
   }
 }
