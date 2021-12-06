@@ -32,7 +32,6 @@ export interface PortalProject {
 export interface PortalUser {
   id: string;
   name: string;
-  email: string;
   profilePictureUrl: string;
 }
 
