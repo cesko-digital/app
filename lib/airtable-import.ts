@@ -56,7 +56,7 @@ export function parsePortalEvent(data: AirtableRecord): PortalEvent {
     status: f.Status,
     registrationUrl: f["RSVP URL"],
     registrationTitle: f["RSVP Title"],
-    customSlug: f.Slug,
+    slug: f.Slug || data.id,
     endTime: new Date(f["End Time"]),
     tagIds: f.Tags,
     coverImageUrl: f["Cover URL"],

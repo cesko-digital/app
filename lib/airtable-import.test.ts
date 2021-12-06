@@ -112,7 +112,7 @@ test("Import portal event from Airtable", () => {
     status: "draft",
     registrationUrl: "https://cesko.digital/rsvp",
     registrationTitle: "Sleduj!",
-    customSlug: "show-and-tell-2",
+    slug: "show-and-tell-2",
     endTime: new Date("2021-06-24T18:00:00.000Z"),
     tagIds: ["foo", "bar"],
   });
