@@ -73,7 +73,6 @@ test("Import portal user from Airtable", () => {
   expect(parsePortalUser(data)).toEqual({
     id: "recA5nftMpxJmwpr4",
     name: "Tomáš Znamenáček",
-    email: "zoul@cesko.digital",
     profilePictureUrl: "https://data.cesko.digital/people/tomas-znamenacek.jpg",
   });
 });

@@ -4,6 +4,7 @@ import {
   PortalProject,
   PortalUser,
 } from "./portal-types";
+import Airtable from "airtable";
 
 // TODO: All the parsing here is VERY simplistic. We should do null checks
 // at the very least, but type assertions would be even nicer to make sure
@@ -16,7 +17,6 @@ export function parsePortalUser(data: AirtableRecord): PortalUser {
   return {
     id: data.id,
     name: f.name,
-    email: f.email,
     profilePictureUrl: f.profilePictureUrl,
   };
 }
@@ -83,3 +83,64 @@ export function parsePortalOpportunity(
     status: f.Status,
   };
 }
+
+async function getAllRecords<T>(args: {
+  apiKey: string;
+  baseId: string;
+  tableName: string;
+  viewName: string;
+  parser: (data: AirtableRecord) => T;
+}): Promise<T[]> {
+  const base = new Airtable({ apiKey: args.apiKey }).base(args.baseId);
+  const table = base(args.tableName);
+  const response = await table
+    .select({ view: args.viewName, maxRecords: 100 /* TBD */ })
+    .all();
+  var parsedRecords: T[] = [];
+  response.forEach((record, index) => {
+    try {
+      parsedRecords.push(args.parser(record));
+    } catch (e) {
+      console.error(
+        `Parse error for record #${index} in table ${args.tableName}: ${e}`
+      );
+    }
+  });
+  return parsedRecords;
+}
+
+export const getAllProjects = async (key: string) =>
+  await getAllRecords({
+    apiKey: key,
+    baseId: "appkn1DkvgVI5jpME",
+    tableName: "Projects",
+    viewName: "Grid view",
+    parser: parsePortalProject,
+  });
+
+export const getAllUsers = async (key: string) =>
+  await getAllRecords({
+    apiKey: key,
+    baseId: "appkn1DkvgVI5jpME",
+    tableName: "Volunteers",
+    viewName: "Grid view",
+    parser: parsePortalUser,
+  });
+
+export const getAllEvents = async (key: string) =>
+  await getAllRecords({
+    apiKey: key,
+    baseId: "appkn1DkvgVI5jpME",
+    tableName: "Events",
+    viewName: "All Events",
+    parser: parsePortalEvent,
+  });
+
+export const getAllOpportunities = async (key: string) =>
+  await getAllRecords({
+    apiKey: key,
+    baseId: "appkn1DkvgVI5jpME",
+    tableName: "Opportunities",
+    viewName: "Grid view",
+    parser: parsePortalOpportunity,
+  });
