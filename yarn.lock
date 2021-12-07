@@ -13492,10 +13492,10 @@ gatsby-recipes@^0.25.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-remark-highlight-code@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-highlight-code/-/gatsby-remark-highlight-code-3.0.1.tgz#5ffcebf8e91a57743126c8f658967196483e9741"
-  integrity sha512-ehcaabfiYZn6iPdN3cb+EJKfhIxU13w7AA3AzAj4zVbUx5NVRa8dmJgzC1wIXur84vInTGn7LLovvq91Hbmx0A==
+gatsby-remark-highlight-code@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-highlight-code/-/gatsby-remark-highlight-code-3.1.0.tgz#d799caf3613f70170b7e24c23cec45cd60ba46af"
+  integrity sha512-UGMWwHOVH7SNhN6e3h0enI8cV0SPh7AUTVGuN6JMJH1No4bk0ROcqizjI2KEHp7OYZEQzKgxtcfzKgKIXh0JYg==
   dependencies:
     gatsby-node-helpers "^1.2.1"
     lodash "^4.17.21"
