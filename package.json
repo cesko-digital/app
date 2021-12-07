@@ -26,7 +26,7 @@
     "postinstall": "rm -rf node_modules/babel-plugin-lodash/node_modules/lodash"
   },
   "dependencies": {
-    "@deckdeckgo/highlight-code": "^3.4.3",
+    "@deckdeckgo/highlight-code": "^3.5.0",
     "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.22",
     "@ts-stack/markdown": "^1.4.0",

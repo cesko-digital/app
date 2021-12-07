@@ -4315,10 +4315,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@deckdeckgo/highlight-code@^3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@deckdeckgo/highlight-code/-/highlight-code-3.4.3.tgz#4caa67c67b05e45b1e59515a3a6b66fd9496bdd4"
-  integrity sha512-le4JpclZjoPVfNB/A6j/2F67JV7tjsqRxXgUElEeTUJeMid4b8H6Xz7SjjqLZ5k9HJwsVZerkhOHu2/IPhdJ+w==
+"@deckdeckgo/highlight-code@^3.5.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@deckdeckgo/highlight-code/-/highlight-code-3.6.0.tgz#7fa990fbba850ccb107b03171a9e961e556ffa1e"
+  integrity sha512-3MUXcnuQwiE3n5v6dsiBWFlfg5st//c8/tvkzuMj+2kejzn5bpW80JlF8zK9tZUNxXNwN0mdtC3L5e+FNsOHZw==
   dependencies:
     "@deckdeckgo/utils" "^2.4.0"
     prismjs "^1.25.0"
