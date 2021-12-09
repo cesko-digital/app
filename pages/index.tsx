@@ -17,6 +17,9 @@ const Page: NextPage<PageProps> = ({ projects }) => {
         <li>
           <a href="/events">Events</a>
         </li>
+        <li>
+          <a href="/opportunities">Opportunities</a>
+        </li>
       </ul>
     </div>
   );
