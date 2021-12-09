@@ -85,6 +85,8 @@ export function parsePortalOpportunity(
   };
 }
 
+const cache: Record<string, any> = {};
+
 async function getAllRecords<T>(args: {
   apiKey: string;
   baseId: string;
@@ -92,6 +94,17 @@ async function getAllRecords<T>(args: {
   viewName: string;
   parser: (data: AirtableRecord) => T;
 }): Promise<T[]> {
+  const cacheKey = [
+    args.apiKey,
+    args.baseId,
+    args.tableName,
+    args.viewName,
+  ].join(":");
+
+  if (cacheKey in cache) {
+    return cache[cacheKey];
+  }
+
   const base = new Airtable({ apiKey: args.apiKey }).base(args.baseId);
   const table = base(args.tableName);
   const response = await table
@@ -110,6 +123,8 @@ async function getAllRecords<T>(args: {
       );
     }
   });
+
+  cache[cacheKey] = parsedRecords;
   return parsedRecords;
 }
 
