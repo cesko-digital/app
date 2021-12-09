@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllEvents } from "../../lib/airtable-import";
-import { PortalEvent } from "../../lib/portal-types";
-import { prepareToSerialize } from "../../lib/utils";
+import { getAllEvents } from "lib/airtable-import";
+import { PortalEvent } from "lib/portal-types";
+import { prepareToSerialize } from "lib/utils";
 
 type PageProps = {
   events: PortalEvent[];
