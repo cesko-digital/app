@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllProjects } from "../../lib/airtable-import";
-import { PortalProject } from "../../lib/portal-types";
+import { getAllProjects } from "lib/airtable-import";
+import { PortalProject } from "lib/portal-types";
 
 type PageProps = {
   projects: PortalProject[];

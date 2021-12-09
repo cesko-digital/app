@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAllOpportunities } from "../../lib/airtable-import";
+import { getAllOpportunities } from "lib/airtable-import";
 
 export default async function handler(
   request: NextApiRequest,
