@@ -72,6 +72,7 @@ export function parsePortalOpportunity(
   return {
     id: data.id,
     name: f.Name,
+    slug: data.id,
     projectId: f.Project[0],
     summary: { source: f.Summary },
     timeRequirements: f["Time Requirements"],
