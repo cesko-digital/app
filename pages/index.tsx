@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 import { getAllProjects } from "lib/airtable-import";
 import { PortalProject } from "lib/portal-types";
+import strings from "content/strings.json";
 
 type PageProps = {
   projects: PortalProject[];
@@ -10,6 +11,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
   return (
     <div>
       <h1>Česko.Digital</h1>
+      <h2>{strings.pages.homepage.title}</h2>
       <ul>
         <li>
           <a href="/projekty">Projects ({projects.length})</a>
