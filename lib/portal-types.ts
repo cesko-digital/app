@@ -59,6 +59,7 @@ export interface PortalEvent {
 export interface PortalOpportunity {
   id: string;
   name: string;
+  slug: string;
   projectId: string;
   summary: MarkdownString;
   timeRequirements: string;

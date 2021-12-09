@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const events = await getAllOpportunities(apiKey);
   const paths = events.map((opportunity) => ({
-    params: { id: opportunity.id },
+    params: { slug: opportunity.slug },
   }));
   return {
     paths,
@@ -33,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const opportunities = await getAllOpportunities(apiKey);
-  const opportunity = opportunities.find((o) => o.id === params!.id)!;
+  const opportunity = opportunities.find((o) => o.slug === params!.slug)!;
   return {
     props: prepareToSerialize({ opportunity: opportunity }),
     revalidate: 1,

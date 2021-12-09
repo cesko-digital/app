@@ -140,6 +140,7 @@ test("Parse portal opportunity from Airtable", () => {
   expect(parsePortalOpportunity(data)).toEqual({
     id: "reclKrwSllzgEWOnl",
     name: "Frontend developer - React (PWA)",
+    slug: "reclKrwSllzgEWOnl",
     projectId: "recSci1ztMeeakzg2",
     summary: { source: "- Práce na **mobilní** _aplikaci_." },
     timeRequirements: "3–5 hodin týdně",
