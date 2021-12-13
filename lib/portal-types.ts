@@ -19,6 +19,7 @@ export interface PortalProject {
   highlighted: boolean;
   finished: boolean;
   draft: boolean;
+  silent: boolean;
 
   tagIds: string[];
   coordinatorIds: string[];

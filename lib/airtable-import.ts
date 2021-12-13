@@ -36,6 +36,7 @@ export function parsePortalProject(data: AirtableRecord): PortalProject {
     highlighted: f.highlighted || false,
     finished: f.finished || false,
     draft: f.draft || false,
+    silent: f.silent || false,
     tagIds: f.tags || [],
     coordinatorIds: f.coordinators || [],
     slackChannelUrl: f.slackChannelUrl || null,

@@ -45,6 +45,7 @@ test("Import portal project from Airtable", () => {
     logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
     highlighted: false,
     finished: false,
+    silent: false,
     draft: false,
     tagIds: ["recVa4LnmzmtfoYTg"],
     coordinatorIds: [
