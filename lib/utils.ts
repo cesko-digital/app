@@ -15,6 +15,7 @@ export function getResizedImgUrl(
   originalUrl: string,
   targetWidth: number
 ): string {
+  console.log(`Original URL: ${originalUrl}`);
   return originalUrl
     ? originalUrl.replaceAll(
         "data.cesko.digital",
