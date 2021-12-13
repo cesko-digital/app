@@ -71,3 +71,18 @@ export interface PortalOpportunity {
   juniorFriendly: boolean;
   status: "draft" | "live" | "unlisted";
 }
+
+export interface PortalPartner {
+  id: string;
+  name: string;
+  logoUrl: string;
+  url?: string;
+  categories: (
+    | "homepage"
+    | "financial.main"
+    | "financial.grants"
+    | "financial.regular"
+    | "expert.submitters"
+    | "expert.supporters"
+  )[];
+}

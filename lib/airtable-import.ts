@@ -1,6 +1,7 @@
 import {
   PortalEvent,
   PortalOpportunity,
+  PortalPartner,
   PortalProject,
   PortalUser,
 } from "./portal-types";
@@ -86,6 +87,17 @@ export function parsePortalOpportunity(
   };
 }
 
+export function parsePortalPartner(data: AirtableRecord): PortalPartner {
+  const f = data.fields;
+  return {
+    id: data.id,
+    name: f.name,
+    logoUrl: f.logoUrl,
+    url: f.url || null,
+    categories: f.category || [],
+  };
+}
+
 const cache: Record<string, any> = {};
 
 async function getAllRecords<T>(args: {
@@ -163,4 +175,13 @@ export const getAllOpportunities = async (key: string) =>
     tableName: "Opportunities",
     viewName: "Grid view",
     parser: parsePortalOpportunity,
+  });
+
+export const getAllPartners = async (key: string) =>
+  await getAllRecords({
+    apiKey: key,
+    baseId: "appkn1DkvgVI5jpME",
+    tableName: "Partners",
+    viewName: "Grid view",
+    parser: parsePortalPartner,
   });
