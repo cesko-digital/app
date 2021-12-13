@@ -63,9 +63,13 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
+  const projects = (await getAllProjects(apiKey)).filter(
+    (p) => !p.draft && !p.silent
+  );
+
   return {
     props: {
-      projects: await getAllProjects(apiKey),
+      projects: projects,
     },
   };
 };

@@ -20,9 +20,11 @@ const ProjectPage: NextPage<PageProps> = ({ project }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const projects = await getAllProjects(apiKey);
-  const paths = projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
+  const paths = projects
+    .filter((p) => !p.draft && !p.silent)
+    .map((project) => ({
+      params: { slug: project.slug },
+    }));
   return {
     paths,
     fallback: false,
