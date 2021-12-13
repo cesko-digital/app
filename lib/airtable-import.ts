@@ -93,7 +93,7 @@ export function parsePortalPartner(data: AirtableRecord): PortalPartner {
     id: data.id,
     name: f.name,
     logoUrl: f.logoUrl,
-    url: f.url || null,
+    linkUrl: f.url || null,
     categories: f.category || [],
   };
 }
