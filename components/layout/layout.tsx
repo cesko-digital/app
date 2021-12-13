@@ -10,14 +10,14 @@ import * as S from "./styles";
 export interface LayoutProps {
   crumbs?: Crumb[];
   children: ReactNode;
-  //seo?: SeoProps;
+  seo?: any; // TBD
 }
 
 const Layout: React.FC<LayoutProps> = ({
   crumbs,
   children,
-}: //seo = {},
-LayoutProps) => {
+  seo = {},
+}: LayoutProps) => {
   return (
     <S.Container>
       {/*<Seo {...seo} /> TBD */}

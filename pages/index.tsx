@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from "next";
 import { getAllProjects } from "lib/airtable-import";
 import { PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
-//import { Projects, JoinUs } from "components/sections";
+import { Projects, JoinUs } from "components/sections";
 import { Hero, OurValues, Numbers, ImageGallery } from "components/home";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
@@ -23,19 +23,13 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 
       <Section>
         <SectionContent>
-          TBD: Projects
-          {/*
-          <Projects projects={projects} />
-          */}
+          <Projects projects={projects.slice(0, 3)} />
         </SectionContent>
       </Section>
 
       <Section>
         <SectionContent>
-          TBD: Join Us
-          {/*
           <JoinUs />
-          */}
         </SectionContent>
       </Section>
 
