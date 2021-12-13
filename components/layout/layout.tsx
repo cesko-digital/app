@@ -5,12 +5,12 @@ import Section from "./section";
 import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
-//import Seo, { SeoProps } from './seo'
+import Seo, { SeoProps } from "./seo";
 
 export interface LayoutProps {
   crumbs?: Crumb[];
   children: ReactNode;
-  seo?: any; // TBD
+  seo?: SeoProps;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({
 }: LayoutProps) => {
   return (
     <S.Container>
-      {/*<Seo {...seo} /> TBD */}
+      <Seo {...seo} />
       <Header />
       {crumbs && (
         <Section>
