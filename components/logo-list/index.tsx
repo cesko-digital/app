@@ -3,7 +3,7 @@ import * as S from "./styles";
 export interface Logo {
   name: string;
   logoUrl: string;
-  linkUrl: string;
+  linkUrl?: string;
 }
 
 interface LogoListProps {

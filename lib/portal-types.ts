@@ -76,13 +76,23 @@ export interface PortalPartner {
   id: string;
   name: string;
   logoUrl: string;
-  url?: string;
+  linkUrl?: string;
   categories: (
     | "homepage"
     | "financial.main"
     | "financial.grants"
     | "financial.regular"
-    | "expert.submitters"
-    | "expert.supporters"
+    | "experts.submitters"
+    | "experts.supporters"
   )[];
 }
+
+export function filterPartnersByCategory(
+  partners: PortalPartner[],
+  category: ArrayElement<PortalPartner["categories"]>
+) {
+  return partners.filter((p) => p.categories.some((c) => c === category));
+}
+
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
