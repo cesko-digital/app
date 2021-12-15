@@ -12,6 +12,7 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
+import { prepareToSerialize } from "lib/utils";
 
 type PageProps = {
   projects: PortalProject[];
@@ -68,10 +69,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     p.categories.some((c) => c === "homepage")
   );
   return {
-    props: {
+    props: prepareToSerialize({
       projects: await getAllProjects(apiKey),
       partners: homepagePartners,
-    },
+    }),
   };
 };
 
