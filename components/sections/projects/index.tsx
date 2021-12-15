@@ -3,16 +3,18 @@ import { CardRow } from "components/layout";
 import { PortalProject } from "lib/portal-types";
 import strings from "content/strings.json";
 
+const msg = strings.components.sections.projects;
+
 export type Props = {
+  title?: string;
   projects: PortalProject[];
 };
 
-const Projects: React.FC<Props> = ({ projects }) => {
-  const msg = strings.components.sections.projects;
+const Projects: React.FC<Props> = ({ projects, title = msg.ourProjects }) => {
   return (
     <S.Container>
       <S.TitleRow>
-        <S.Title>{msg.ourProjects}</S.Title>
+        <S.Title>{title}</S.Title>
         <S.ShowAll to={"/projekty"}>{msg.showAll}</S.ShowAll>
       </S.TitleRow>
       <S.CardWrapper>
