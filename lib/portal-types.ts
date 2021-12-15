@@ -1,6 +1,4 @@
-export type MarkdownString = {
-  source: string;
-};
+import { MarkdownString } from "./utils";
 
 export interface PortalProject {
   id: string;
@@ -8,10 +6,10 @@ export interface PortalProject {
   name: string;
   slug: string;
   tagline: string;
-  description: string;
+  description: MarkdownString;
   url: string;
 
-  contributeText?: string;
+  contributeText?: MarkdownString;
 
   coverImageUrl: string;
   logoUrl: string;

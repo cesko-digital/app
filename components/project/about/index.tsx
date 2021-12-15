@@ -1,10 +1,12 @@
 import { Body, Heading2 } from "components/typography";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { MarkdownString } from "lib/utils";
+import RenderMarkdown from "components/markdown";
 
 interface Props {
-  description: string;
-  thankYouText?: string;
+  description: MarkdownString;
+  thankYouText?: MarkdownString;
   finished: boolean;
 }
 
@@ -16,9 +18,13 @@ const AboutProject: React.FC<Props> = ({
   return (
     <S.Wrapper>
       <Heading2>{strings.pages.project.about.title}</Heading2>
-      <Body dangerouslySetInnerHTML={{ __html: description }} />
+      <Body>
+        <RenderMarkdown source={description} />
+      </Body>
       {finished && thankYouText && (
-        <Body dangerouslySetInnerHTML={{ __html: thankYouText }} />
+        <Body>
+          <RenderMarkdown source={thankYouText} />
+        </Body>
       )}
     </S.Wrapper>
   );

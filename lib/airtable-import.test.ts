@@ -36,10 +36,12 @@ test("Import portal project from Airtable", () => {
     slug: "loono",
     tagline:
       "Platforma poskytující veškeré informace o prevenci přehledně a na jednom místě",
-    description: "Vytvoříme místo!",
+    description: { source: "Vytvoříme místo!" },
     url: "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
-    contributeText:
-      "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+    contributeText: {
+      source:
+        "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+    },
     coverImageUrl:
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
