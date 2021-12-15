@@ -1,7 +1,7 @@
 import { ButtonSize } from "components/buttons";
 import NewsletterBox from "./newsletter-form";
 import * as S from "./styles";
-import { Links } from "components/common-links";
+import { Route } from "lib/routing";
 import { Link } from "components/links";
 import strings from "content/strings.json";
 
@@ -22,10 +22,10 @@ const Footer: React.FC = () => {
     [p.projects, "/projekty"],
     [p.portal, "/portal-dobrovolnika"],
     [p.blog, "https://blog.cesko.digital"],
-    [p.loginToSlack, Links.joinUs],
-    [p.submitProject, Links.submitProject],
-    [p.supportUs, Links.supportUs],
-    [p.logo, Links.logo],
+    [p.loginToSlack, Route.joinUs],
+    [p.submitProject, Route.submitProject],
+    [p.supportUs, Route.supportUs],
+    [p.logo, Route.brandManual],
     [p.mediaContact, "mailto:pr@cesko.digital"],
   ];
 

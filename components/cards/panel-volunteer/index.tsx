@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Links } from "components/common-links";
+import { Route } from "lib/routing";
 import { getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
 
@@ -19,7 +19,7 @@ const PanelVolunteer: React.FC = () => {
         <S.Title>{msg.title}</S.Title>
         <S.Description>{msg.description}</S.Description>
         <S.SlackButtonElement
-          slackLink={Links.joinUs}
+          slackLink={Route.joinUs}
           slackText={msg.linkText}
         />
       </S.Content>

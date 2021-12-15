@@ -10,6 +10,7 @@ import { JoinUs } from "components/sections";
 import * as S from "components/projects/styles";
 import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
+import { Route } from "lib/routing";
 
 type PageProps = {
   projects: PortalProject[];
@@ -45,7 +46,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
               description={highlightedProject.tagline}
               title={highlightedProject.name}
               tags={[] /* TBD */}
-              link={`/projekty/${highlightedProject.slug}`}
+              link={Route.toProject(highlightedProject)}
             />
           )}
           <OngoingProjects projects={otherProjects} />

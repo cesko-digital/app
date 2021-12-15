@@ -1,4 +1,5 @@
 import { ProjectCard } from "components/cards";
+import { Route } from "lib/routing";
 import { PortalProject } from "lib/portal-types";
 import styled from "styled-components";
 
@@ -15,7 +16,7 @@ const OngoingProjects: React.FC<Props> = ({ projects }) => (
         description={project.tagline}
         cover={project.coverImageUrl}
         logo={project.logoUrl}
-        link={`/projekty/${project.slug}`}
+        link={Route.toProject(project)}
         tags={[] /* TBD */}
       />
     ))}

@@ -2,6 +2,7 @@ import type { NextPage, GetStaticProps } from "next";
 import { getAllEvents } from "lib/airtable-import";
 import { PortalEvent } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
+import { Route } from "lib/routing";
 
 type PageProps = {
   events: PortalEvent[];
@@ -23,8 +24,7 @@ const Page: NextPage<PageProps> = ({ events }) => {
 };
 
 const EventLink: React.FC<PortalEvent> = (event) => {
-  const path = `/events/${event.slug}`;
-  return <a href={path}>{event.name}</a>;
+  return <a href={Route.toEvent(event)}>{event.name}</a>;
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
