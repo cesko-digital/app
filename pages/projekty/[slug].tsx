@@ -1,9 +1,9 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
-import AboutProject from "components/project/components/about";
-import ProjectCard from "components/project/components/project-card";
-import Contribute from "components/project/components/contribute";
+import AboutProject from "components/project/about";
+import ProjectCard from "components/project/project-card";
+import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { getAllProjects, getAllUsers } from "lib/airtable-import";
