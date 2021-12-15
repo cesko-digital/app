@@ -1,6 +1,6 @@
 import { Body, Heading2 } from "components/typography";
 import { ButtonSize, SlackButton } from "components/buttons";
-import { Links } from "components/common-links";
+import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
 import { MarkdownString } from "lib/utils";
@@ -20,7 +20,7 @@ const Contribute: React.FC<Props> = ({ text }) => {
       </S.Description>
       <S.Text>
         <S.SlackLink>
-          <SlackButton slackLink={Links.joinUs} slackText={msg.buttonText} />
+          <SlackButton slackLink={Route.joinUs} slackText={msg.buttonText} />
         </S.SlackLink>
         <Body>
           <S.Note>

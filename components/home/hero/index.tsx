@@ -1,5 +1,5 @@
 import { Heading1 } from "components/typography";
-import { Links } from "components/common-links";
+import { Route } from "lib/routing";
 import strings from "content/strings.json";
 import * as S from "./styles";
 
@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
             <S.ButtonAsLinkElement to="/projekty">
               {strings.pages.homepage.whatWeDo}
             </S.ButtonAsLinkElement>
-            <S.ShiftedButton inverted to={Links.joinUs}>
+            <S.ShiftedButton inverted to={Route.joinUs}>
               {strings.header.signUp}
             </S.ShiftedButton>
             <S.HeroPersonTopCircleImage />

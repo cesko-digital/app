@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { BulbIcon } from "components/icons";
-import { Links } from "components/common-links";
+import { Route } from "lib/routing";
 import strings from "content/strings.json";
 
 const NewProject: React.FC = () => {
@@ -13,7 +13,7 @@ const NewProject: React.FC = () => {
       </div>
       <S.Description>{msg.description}</S.Description>
       <S.ButtonWrapper>
-        <S.ButtonAsLinkElement to={Links.submitProject}>
+        <S.ButtonAsLinkElement to={Route.submitProject}>
           {msg.linkText}
         </S.ButtonAsLinkElement>
       </S.ButtonWrapper>

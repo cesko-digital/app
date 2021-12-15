@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { CardRow } from "components/layout";
 import { PortalProject } from "lib/portal-types";
 import strings from "content/strings.json";
+import { Route } from "lib/routing";
 
 const msg = strings.components.sections.projects;
 
@@ -26,7 +27,7 @@ const Projects: React.FC<Props> = ({ projects, title = msg.ourProjects }) => {
               description={project.tagline}
               cover={project.coverImageUrl}
               logo={project.logoUrl}
-              link={`/projekty/${project.slug}`}
+              link={Route.toProject(project)}
               tags={[] /* TBD */}
             />
           ))}
