@@ -29,9 +29,11 @@ export function parsePortalProject(data: AirtableRecord): PortalProject {
     name: f.csName,
     slug: f.csSlug,
     tagline: f.csTagline || null,
-    description: { source: f.csDescription || null },
+    description: { source: f.csDescription },
     url: f.url,
-    contributeText: { source: f.csContributeText || null },
+    contributeText: f.csContributeText
+      ? { source: f.csContributeText }
+      : undefined,
     coverImageUrl: f.coverUrl,
     logoUrl: f.logoUrl,
     highlighted: f.highlighted || false,

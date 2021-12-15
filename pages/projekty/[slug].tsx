@@ -5,7 +5,7 @@ import AboutProject from "components/project/about";
 import ProjectCard from "components/project/project-card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
-import { getResizedImgUrl } from "lib/utils";
+import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
 import { getAllProjects, getAllUsers } from "lib/airtable-import";
 import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
@@ -109,11 +109,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
     (id) => allUsers.find((user) => user.id === id)!
   );
   return {
-    props: {
+    props: prepareToSerialize({
       allProjects,
       coordinators,
       project,
-    },
+    }),
     revalidate: 1,
   };
 };

@@ -8,7 +8,7 @@ import {
 } from "components/projects/sections";
 import { JoinUs } from "components/sections";
 import * as S from "components/projects/styles";
-import { getResizedImgUrl } from "lib/utils";
+import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
 
 type PageProps = {
@@ -68,9 +68,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   );
 
   return {
-    props: {
+    props: prepareToSerialize({
       projects: projects,
-    },
+    }),
   };
 };
 
