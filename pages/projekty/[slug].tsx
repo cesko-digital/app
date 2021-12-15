@@ -67,7 +67,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.ContributeWrapper>
-              <Contribute contributeText={project.contributeText} />
+              <Contribute text={project.contributeText} />
             </S.ContributeWrapper>
           </SectionContent>
         </Section>
