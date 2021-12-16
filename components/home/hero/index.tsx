@@ -17,12 +17,16 @@ const Hero: React.FC<Props> = ({ lang = "cs" }) => {
           <S.Content>
             <Heading1>{strings.pages.homepage.title}</Heading1>
             <S.ShiftedBody>{strings.pages.homepage.subtitle}</S.ShiftedBody>
-            <S.ButtonAsLinkElement to="/projekty">
-              {strings.pages.homepage.whatWeDo}
-            </S.ButtonAsLinkElement>
-            <S.ShiftedButton inverted to={Route.joinUs}>
-              {strings.header.signUp}
-            </S.ShiftedButton>
+            {lang === "cs" && (
+              <>
+                <S.ButtonAsLinkElement to="/projekty">
+                  {strings.pages.homepage.whatWeDo}
+                </S.ButtonAsLinkElement>
+                <S.ShiftedButton inverted to={Route.joinUs}>
+                  {strings.header.signUp}
+                </S.ShiftedButton>
+              </>
+            )}
             <S.HeroPersonTopCircleImage />
           </S.Content>
         </S.Card>
