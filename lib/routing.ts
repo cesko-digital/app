@@ -15,6 +15,8 @@ export const Route = {
   // Static routes
   opportunities: "/opportunities",
   volunteerPortal: "/portal-dobrovolnika",
+  partners: "/partners",
+  projects: "/projekty",
   // Dynamic routes
   toProject: (p: PortalProject) => `/projekt/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
