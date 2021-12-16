@@ -77,6 +77,7 @@ test("Import portal user from Airtable", () => {
     id: "recA5nftMpxJmwpr4",
     name: "Tomáš Znamenáček",
     profilePictureUrl: "https://data.cesko.digital/people/tomas-znamenacek.jpg",
+    email: "zoul@cesko.digital",
   });
 });
 
@@ -109,14 +110,14 @@ test("Import portal event from Airtable", () => {
     name: "Show & Tell #2",
     summary: "Živé vysílání bla bla bla…",
     description: { source: "Bude to **pecka**!\n" },
-    startTime: new Date("2021-06-24T17:00:00.000Z"),
+    startTime: "2021-06-24T17:00:00.000Z",
     ownerId: "rec9ujcN8HSkEdwehgh",
     projectId: "rec9ujcN8HSkdedwedd",
     status: "draft",
     registrationUrl: "https://cesko.digital/rsvp",
     registrationTitle: "Sleduj!",
     slug: "show-and-tell-2",
-    endTime: new Date("2021-06-24T18:00:00.000Z"),
+    endTime: "2021-06-24T18:00:00.000Z",
     tagIds: ["foo", "bar"],
   });
 });
