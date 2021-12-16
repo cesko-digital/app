@@ -20,7 +20,7 @@ type PageProps = {
 const Page: NextPage<PageProps> = ({ partners }) => {
   const theme = useContext(ThemeContext);
   return (
-    <Layout>
+    <Layout lang="en">
       <Section>
         <Hero lang="en" />
       </Section>
