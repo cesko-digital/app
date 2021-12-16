@@ -102,7 +102,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const events = await getAllEvents(apiKey);
   const event = events.find((e) => e.slug === params!.slug)!;
   const projects = await getAllProjects(apiKey);
-  const project = projects.find((p) => p.id === event.projectId);
+  const project = projects.find((p) => p.id === event.projectId)!;
   const users = await getAllUsers(apiKey);
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
