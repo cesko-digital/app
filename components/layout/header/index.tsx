@@ -11,11 +11,11 @@ import strings from "content/strings.json";
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const Menu = [
-    ["/projekty", strings.header.projects],
-    ["/portal-dobrovolnika", strings.header.portal],
-    ["/partners", strings.header.partners],
-    ["https://blog.cesko.digital", "Blog"],
+  const menu = [
+    [Route.projects, strings.header.projects],
+    [Route.volunteerPortal, strings.header.portal],
+    [Route.partners, strings.header.partners],
+    [Route.blog, "Blog"],
     [Route.supportUs, strings.header.supportUs],
   ];
 
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
           </Link>
 
           <S.DesktopLinksContainer>
-            {Menu.map(([link, label]) => (
+            {menu.map(([link, label]) => (
               <Link key={label} to={link} size={ButtonSize.Small}>
                 {label}
               </Link>
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
 
         {mobileMenuOpen && (
           <S.MobileMenu>
-            {Menu.map(([link, label]) => (
+            {menu.map(([link, label]) => (
               <Link key={label} to={link} size={ButtonSize.Small}>
                 {label}
               </Link>
