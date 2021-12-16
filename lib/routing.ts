@@ -18,7 +18,7 @@ export const Route = {
   partners: "/partners",
   projects: "/projekty",
   // Dynamic routes
-  toProject: (p: PortalProject) => `/projekt/${p.slug}`,
+  toProject: (p: PortalProject) => `/projekty/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
   toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
 };
