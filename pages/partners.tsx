@@ -39,7 +39,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
     );
 
     return componentToRender?.component ?? FinancialPartners;
-  }, [activeSectionKey]);
+  }, [activeSectionKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Layout
