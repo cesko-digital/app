@@ -24,6 +24,7 @@ export const Seo: React.FC<SeoProps> = ({
       <meta name="og:image" content={coverUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
+      <link rel="stylesheet" href="/fonts.css" />
     </Head>
   );
 };

@@ -2,9 +2,7 @@ import type { AppProps } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { defaultTheme } from "components/theme/default";
 
-// TODO: Styled Components complain about the `@import`, let’s switch to something else.
 const GlobalStyle = createGlobalStyle`
-  @import url(/fonts.css);
   body {
     margin: 0;
     padding: 0;
