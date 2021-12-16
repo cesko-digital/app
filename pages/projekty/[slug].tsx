@@ -114,7 +114,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
       coordinators,
       project,
     }),
-    revalidate: 1,
   };
 };
 

@@ -107,7 +107,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
     props: prepareToSerialize({ event, allEvents: events, project, owner }),
-    revalidate: 1,
   };
 };
 
