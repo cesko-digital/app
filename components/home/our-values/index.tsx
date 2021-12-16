@@ -6,10 +6,16 @@ import {
   UsersIcon,
   WadgeIcon,
 } from "components/icons";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 import * as S from "./styles";
 
-const OurValues: React.FC = () => {
+interface Props {
+  lang?: "cs" | "en";
+}
+
+const OurValues: React.FC<Props> = ({ lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
   const ourValues = strings.pages.homepage.sections.ourValues;
   return (
     <S.Container>
