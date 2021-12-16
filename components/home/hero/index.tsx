@@ -1,9 +1,15 @@
 import { Heading1 } from "components/typography";
 import { Route } from "lib/routing";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 import * as S from "./styles";
 
-const Hero: React.FC = () => {
+interface Props {
+  lang?: "cs" | "en";
+}
+
+const Hero: React.FC<Props> = ({ lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
   return (
     <S.Section>
       <S.Container>
