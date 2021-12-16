@@ -19,6 +19,7 @@ export function parsePortalUser(data: AirtableRecord): PortalUser {
     id: data.id,
     name: f.name,
     profilePictureUrl: f.profilePictureUrl,
+    email: f.email,
   };
 }
 
@@ -54,14 +55,14 @@ export function parsePortalEvent(data: AirtableRecord): PortalEvent {
     name: f.Name,
     summary: f.Summary,
     description: { source: f.Description },
-    startTime: new Date(f["Start Time"]),
+    startTime: f["Start Time"],
     ownerId: f.Owner[0],
     projectId: f.Project[0],
     status: f.Status,
     registrationUrl: f["RSVP URL"],
     registrationTitle: f["RSVP Title"],
     slug: f.Slug || data.id,
-    endTime: new Date(f["End Time"]),
+    endTime: f["End Time"],
     tagIds: f.Tags,
     coverImageUrl: f["Cover URL"],
     locationTitle: f["Location Title"],

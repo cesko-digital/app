@@ -32,6 +32,7 @@ export interface PortalUser {
   id: string;
   name: string;
   profilePictureUrl: string;
+  email: string;
 }
 
 export interface PortalEvent {
@@ -40,14 +41,14 @@ export interface PortalEvent {
   slug: string;
   summary: string;
   description: MarkdownString;
-  startTime: Date;
+  startTime: string;
   ownerId: string;
   projectId: string;
   status: "draft" | "live" | "unlisted";
   registrationUrl: string;
   registrationTitle: string;
 
-  endTime?: Date;
+  endTime?: string;
   tagIds: string[];
   coverImageUrl?: string;
 
