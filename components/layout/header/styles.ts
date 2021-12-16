@@ -1,7 +1,5 @@
 import { InternalLink, ExternalLink } from "components/links/link/styles";
 import styled from "styled-components";
-import logo from "public/images/logo.svg";
-import mobileLogo from "public/images/logo-mobile.svg";
 import { ButtonAsLink } from "components/links";
 
 export const Container = styled.div`
@@ -12,11 +10,11 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.div`
-  background-image: url(${logo});
+  background-image: url("/images/logo.svg");
   width: 182px;
   height: 36px;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    background-image: url(${mobileLogo});
+    background-image: url("/images/logo-mobile.svg");
     background-repeat: no-repeat;
     background-size: contain;
     width: 32px;
