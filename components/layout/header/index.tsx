@@ -8,7 +8,7 @@ import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
 
-const Header: React.FC = () => {
+const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menu = [
@@ -70,4 +70,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default HeaderCS;

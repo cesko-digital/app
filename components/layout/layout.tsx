@@ -1,27 +1,31 @@
 import { ReactNode } from "react";
-import Header from "./header";
+import HeaderCS from "./header";
 import Footer from "./footer";
 import Section from "./section";
 import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
 import Seo, { SeoProps } from "./seo";
+import HeaderEN from "./header/english";
 
-export interface LayoutProps {
+export interface Props {
   crumbs?: Crumb[];
   children: ReactNode;
   seo?: SeoProps;
+  lang?: "cs" | "en";
 }
 
-const Layout: React.FC<LayoutProps> = ({
+const Layout: React.FC<Props> = ({
   crumbs,
   children,
   seo = {},
-}: LayoutProps) => {
+  lang = "cs",
+}: Props) => {
   return (
     <S.Container>
       <Seo {...seo} />
-      <Header />
+      {lang === "cs" && <HeaderCS />}
+      {lang === "en" && <HeaderEN />}
       {crumbs && (
         <Section>
           <SectionContent>
