@@ -36,5 +36,8 @@
   },
   "prettier": {
     "quoteProps": "consistent"
+  },
+  "eslintConfig": {
+    "extends": "next/core-web-vitals"
   }
 }

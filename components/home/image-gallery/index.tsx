@@ -27,7 +27,12 @@ const ImageGallery: React.FC = () => (
         );
         return (
           positions && (
-            <Image key={imageItem.id} {...imageItem} positions={positions} />
+            <Image
+              key={imageItem.id}
+              {...imageItem}
+              positions={positions}
+              alt=""
+            />
           )
         );
       })}
