@@ -2,7 +2,6 @@ import type { NextPage, GetStaticProps } from "next";
 import { getAllEvents } from "lib/airtable-import";
 import { PortalEvent } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
-import { Route } from "lib/routing";
 
 type PageProps = {
   events: PortalEvent[];
@@ -12,19 +11,15 @@ const Page: NextPage<PageProps> = ({ events }) => {
   return (
     <div>
       <h1>Events</h1>
-      <ul>
-        {events.map((event) => (
-          <li>
-            <EventLink {...event} />
-          </li>
-        ))}
-      </ul>
+      <p>
+        Tohle ještě není implementované. Nechtěli byste nám s tím pomoct?{" "}
+        <a href="https://github.com/cesko-digital/web/issues/356">
+          Tady je příslušný ticket
+        </a>
+        .
+      </p>
     </div>
   );
-};
-
-const EventLink: React.FC<PortalEvent> = (event) => {
-  return <a href={Route.toEvent(event)}>{event.name}</a>;
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
