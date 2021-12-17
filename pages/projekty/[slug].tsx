@@ -10,12 +10,17 @@ import { getAllProjects, getAllUsers } from "lib/airtable-import";
 import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
+import { ParsedUrlQuery } from "querystring";
 
-type PageProps = {
+interface PageProps {
   project: PortalProject;
   coordinators: PortalUser[];
   allProjects: PortalProject[];
-};
+}
+
+interface QueryParams extends ParsedUrlQuery {
+  slug: string;
+}
 
 const ProjectPage: NextPage<PageProps> = (props) => {
   const { project, coordinators, allProjects } = props;
@@ -84,8 +89,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
   );
 };
 
-// TODO: Can we type this tighter?
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const projects = await getAllProjects(apiKey);
   const paths = projects
@@ -99,12 +103,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-// TODO: Can we type this tighter?
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
+  context
+) => {
+  const { slug } = context.params!;
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const allProjects = await getAllProjects(apiKey);
   const allUsers = await getAllUsers(apiKey);
-  const project = allProjects.find((p) => p.slug === params!.slug)!;
+  const project = allProjects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => allUsers.find((user) => user.id === id)!
   );

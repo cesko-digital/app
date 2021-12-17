@@ -10,13 +10,18 @@ import { Link } from "components/links";
 import { CardRow } from "components/layout";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
+import { ParsedUrlQuery } from "querystring";
 
-type PageProps = {
+interface PageProps {
   event: PortalEvent;
   project: PortalProject;
   allEvents: PortalEvent[];
   owner: PortalUser;
-};
+}
+
+interface QueryParams extends ParsedUrlQuery {
+  slug: string;
+}
 
 const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
@@ -83,8 +88,7 @@ const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
   );
 };
 
-// TODO: Can we type this tighter?
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const events = await getAllEvents(apiKey);
   const paths = events.map((event) => ({
@@ -96,11 +100,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-// TODO: Can we type this tighter?
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
+  context
+) => {
+  const { slug } = context.params!;
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const events = await getAllEvents(apiKey);
-  const event = events.find((e) => e.slug === params!.slug)!;
+  const event = events.find((e) => e.slug === slug)!;
   const projects = await getAllProjects(apiKey);
   const project = projects.find((p) => p.id === event.projectId)!;
   const users = await getAllUsers(apiKey);
