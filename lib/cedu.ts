@@ -31,7 +31,7 @@ export interface PortalVideoResource {
 
 export interface PortalVideoCredit {
   title: string;
-  names: string;
+  name: string;
 }
 
 const postsDirectory = join(process.cwd(), "content/cedu");
