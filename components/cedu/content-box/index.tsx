@@ -65,7 +65,7 @@ export const CreditsBox: React.FC<CreditsBoxProps> = ({ credits }) => {
         return (
           <CreditsCell key={index}>
             <Typography.BodySmall>{credit.title}</Typography.BodySmall>
-            <Typography.BodyBig>{credit.names}</Typography.BodyBig>
+            <Typography.BodyBig>{credit.name}</Typography.BodyBig>
           </CreditsCell>
         );
       })}
