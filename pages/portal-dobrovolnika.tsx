@@ -18,11 +18,14 @@ import {
 } from "lib/airtable-import";
 import { prepareToSerialize } from "lib/utils";
 import { Route } from "lib/routing";
+import CeduCard from "components/portal-dobrovolnika/cedu-card";
+import { getAllVideos, PortalVideo } from "lib/cedu";
 
 interface PageProps {
   opportunities: PortalOpportunity[];
   events: PortalEvent[];
   allProjects: PortalProject[];
+  videos: PortalVideo[];
 }
 
 const PortalDobrovolnika: NextPage<PageProps> = (props) => {
@@ -45,6 +48,7 @@ const PortalDobrovolnika: NextPage<PageProps> = (props) => {
       </Section>
       <OpportunitiesSection {...props} />
       <EventsSection {...props} />
+      <CeduSection {...props} />
     </Layout>
   );
 };
@@ -113,15 +117,38 @@ const EventsSection: React.FC<PageProps> = ({ events, allProjects }) => {
   );
 };
 
+const CeduSection: React.FC<PageProps> = ({ videos }) => {
+  return (
+    <Section id="section-cedu">
+      <SectionContent>
+        <S.CategoryHeader>
+          <S.Title>Vzdělávání – č.edu</S.Title>
+        </S.CategoryHeader>
+        <S.Container>
+          <S.CardWrapper>
+            <CardRow>
+              {videos.map((video, index) => (
+                <CeduCard key={index} video={video} />
+              ))}
+            </CardRow>
+          </S.CardWrapper>
+        </S.Container>
+      </SectionContent>
+    </Section>
+  );
+};
+
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const events = await getAllEvents(apiKey);
   const opportunities = await getAllOpportunities(apiKey);
   const allProjects = await getAllProjects(apiKey);
+  const videos = await getAllVideos();
   return {
     props: prepareToSerialize({
       events,
       opportunities,
+      videos,
       allProjects,
     }),
   };

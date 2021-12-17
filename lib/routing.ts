@@ -3,6 +3,7 @@ import {
   PortalOpportunity,
   PortalProject,
 } from "lib/portal-types";
+import { PortalVideo } from "./cedu";
 
 /** Create URLs for frequently used routes */
 export const Route = {
@@ -21,4 +22,5 @@ export const Route = {
   toProject: (p: PortalProject) => `/projekty/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
   toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
+  toVideo: (v: PortalVideo) => `/cedu/${v.slug}`,
 };
