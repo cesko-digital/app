@@ -19,13 +19,18 @@ import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles"
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { Route } from "lib/routing";
+import { ParsedUrlQuery } from "querystring";
 
-type PageProps = {
+interface PageProps {
   opportunity: PortalOpportunity;
   allOpportunities: PortalOpportunity[];
   allUsers: PortalUser[];
   projects: PortalProject[];
-};
+}
+
+interface QueryParams extends ParsedUrlQuery {
+  slug: string;
+}
 
 const Page: NextPage<PageProps> = (props) => {
   const { opportunity, allOpportunities, allUsers, projects } = props;
@@ -112,8 +117,7 @@ const Page: NextPage<PageProps> = (props) => {
   );
 };
 
-// TODO: Can we type this tighter?
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const opportunities = await getAllOpportunities(apiKey);
   const paths = opportunities.map((opportunity) => ({
@@ -125,13 +129,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-// TODO: Can we type this tighter?
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
+  context
+) => {
+  const { slug } = context.params!;
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const opportunities = await getAllOpportunities(apiKey);
   const projects = await getAllProjects(apiKey);
   const allUsers = await getAllUsers(apiKey);
-  const opportunity = opportunities.find((o) => o.slug === params!.slug)!;
+  const opportunity = opportunities.find((o) => o.slug === slug)!;
   return {
     props: prepareToSerialize({
       opportunity: opportunity,
