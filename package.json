@@ -10,6 +10,7 @@
   "dependencies": {
     "airtable": "^0.11.1",
     "formik": "^2.2.9",
+    "gray-matter": "^4.0.3",
     "marked": "^4.0.7",
     "next": "12.0.7",
     "node-fetch": "^3.1.0",
