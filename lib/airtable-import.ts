@@ -1,105 +1,13 @@
-import {
-  PortalEvent,
-  PortalOpportunity,
-  PortalPartner,
-  PortalProject,
-  PortalUser,
-} from "./portal-types";
 import Airtable from "airtable";
+import {
+  decodeEvent,
+  decodeOpportunity,
+  decodePartner,
+  decodeProject,
+  decodeUser,
+} from "./portal-types";
 
-// TODO: All the parsing here is VERY simplistic. We should do null checks
-// at the very least, but type assertions would be even nicer to make sure
-// the type signatures hold.
-
-export type AirtableRecord = Record<string, any>;
-
-export function parsePortalUser(data: AirtableRecord): PortalUser {
-  const f = data.fields;
-  return {
-    id: data.id,
-    name: f.name,
-    profilePictureUrl: f.profilePictureUrl,
-    email: f.email,
-  };
-}
-
-export function parsePortalProject(data: AirtableRecord): PortalProject {
-  const f = data.fields;
-  return {
-    id: data.id,
-    name: f.csName,
-    slug: f.csSlug,
-    tagline: f.csTagline || null,
-    description: { source: f.csDescription },
-    url: f.url,
-    contributeText: f.csContributeText
-      ? { source: f.csContributeText }
-      : undefined,
-    coverImageUrl: f.coverUrl,
-    logoUrl: f.logoUrl,
-    highlighted: f.highlighted || false,
-    finished: f.finished || false,
-    draft: f.draft || false,
-    silent: f.silent || false,
-    tagIds: f.tags || [],
-    coordinatorIds: f.coordinators || [],
-    slackChannelUrl: f.slackChannelUrl || null,
-    slackChannelName: f.slackChannelName || null,
-  };
-}
-
-export function parsePortalEvent(data: AirtableRecord): PortalEvent {
-  const f = data.fields;
-  return {
-    id: data.id,
-    name: f.Name,
-    summary: f.Summary,
-    description: { source: f.Description },
-    startTime: f["Start Time"],
-    ownerId: f.Owner[0],
-    projectId: f.Project[0],
-    status: f.Status,
-    registrationUrl: f["RSVP URL"],
-    registrationTitle: f["RSVP Title"],
-    slug: f.Slug || data.id,
-    endTime: f["End Time"],
-    tagIds: f.Tags,
-    coverImageUrl: f["Cover URL"],
-    locationTitle: f["Location Title"],
-    locationUrl: f["Location URL"],
-  };
-}
-
-export function parsePortalOpportunity(
-  data: AirtableRecord
-): PortalOpportunity {
-  const f = data.fields;
-  return {
-    id: data.id,
-    name: f.Name,
-    slug: data.id,
-    projectId: f.Project[0],
-    summary: { source: f.Summary },
-    timeRequirements: f["Time Requirements"],
-    ownerId: f.Owner[0],
-    contactUrl: f["RSVP URL"],
-    coverImageUrl: f["Cover URL"],
-    skills: f.Skills,
-    juniorFriendly: f["Junior Friendly"] || false,
-    status: f.Status,
-  };
-}
-
-export function parsePortalPartner(data: AirtableRecord): PortalPartner {
-  const f = data.fields;
-  return {
-    id: data.id,
-    name: f.name,
-    logoUrl: f.logoUrl,
-    linkUrl: f.url || null,
-    categories: f.category || [],
-  };
-}
+type AirtableRecord = Record<string, any>;
 
 const cache: Record<string, any> = {};
 
@@ -108,7 +16,7 @@ async function getAllRecords<T>(args: {
   baseId: string;
   tableName: string;
   viewName: string;
-  parser: (data: AirtableRecord) => T;
+  decoder: (data: AirtableRecord) => T;
 }): Promise<T[]> {
   const cacheKey = [
     args.apiKey,
@@ -121,6 +29,12 @@ async function getAllRecords<T>(args: {
     return cache[cacheKey];
   }
 
+  // Merge the Airtable record ID with other fields so they can all be parsed together
+  const mergeAirtableRecord = (data: AirtableRecord) => ({
+    id: data.id,
+    ...data.fields,
+  });
+
   const base = new Airtable({ apiKey: args.apiKey }).base(args.baseId);
   const table = base(args.tableName);
   const response = await table
@@ -132,7 +46,7 @@ async function getAllRecords<T>(args: {
   );
   response.forEach((record, index) => {
     try {
-      parsedRecords.push(args.parser(record));
+      parsedRecords.push(args.decoder(mergeAirtableRecord(record)));
     } catch (e) {
       console.error(
         `Parse error for record #${index} in table ${args.tableName}: ${e}`
@@ -150,7 +64,7 @@ export const getAllProjects = async (key: string) =>
     baseId: "appkn1DkvgVI5jpME",
     tableName: "Projects",
     viewName: "Grid view",
-    parser: parsePortalProject,
+    decoder: decodeProject,
   });
 
 export const getAllUsers = async (key: string) =>
@@ -159,7 +73,7 @@ export const getAllUsers = async (key: string) =>
     baseId: "appkn1DkvgVI5jpME",
     tableName: "Volunteers",
     viewName: "Grid view",
-    parser: parsePortalUser,
+    decoder: decodeUser,
   });
 
 export const getAllEvents = async (key: string) =>
@@ -168,7 +82,7 @@ export const getAllEvents = async (key: string) =>
     baseId: "appkn1DkvgVI5jpME",
     tableName: "Events",
     viewName: "All Events",
-    parser: parsePortalEvent,
+    decoder: decodeEvent,
   });
 
 export const getAllOpportunities = async (key: string) =>
@@ -177,7 +91,7 @@ export const getAllOpportunities = async (key: string) =>
     baseId: "appkn1DkvgVI5jpME",
     tableName: "Opportunities",
     viewName: "Grid view",
-    parser: parsePortalOpportunity,
+    decoder: decodeOpportunity,
   });
 
 export const getAllPartners = async (key: string) =>
@@ -186,5 +100,5 @@ export const getAllPartners = async (key: string) =>
     baseId: "appkn1DkvgVI5jpME",
     tableName: "Partners",
     viewName: "Grid view",
-    parser: parsePortalPartner,
+    decoder: decodePartner,
   });

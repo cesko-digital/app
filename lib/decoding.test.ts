@@ -1,14 +1,14 @@
 import {
-  parsePortalEvent,
-  parsePortalOpportunity,
-  parsePortalProject,
-  parsePortalUser,
-} from "./airtable-import";
+  decodeEvent,
+  decodeOpportunity,
+  decodeProject,
+  decodeUser,
+} from "./portal-types";
 
-test("Import portal project from Airtable", () => {
-  const data = {
-    id: "rec4KOruzwIFU8ieR",
-    fields: {
+test("Decode portal project", () => {
+  expect(
+    decodeProject({
+      id: "rec4KOruzwIFU8ieR",
       csSlug: "loono",
       csName: "Loono – průvodce prevencí",
       tags: ["recVa4LnmzmtfoYTg"],
@@ -27,10 +27,8 @@ test("Import portal project from Airtable", () => {
         "rec0ABdJtGIK9AeCB",
       ],
       slackChannelName: "inkub-loono_pruvodce_prevenci",
-    },
-    createdTime: "2021-04-08T14:09:31.000Z",
-  };
-  expect(parsePortalProject(data)).toEqual({
+    })
+  ).toEqual({
     id: "rec4KOruzwIFU8ieR",
     name: "Loono – průvodce prevencí",
     slug: "loono",
@@ -60,20 +58,16 @@ test("Import portal project from Airtable", () => {
   });
 });
 
-test("Import portal user from Airtable", () => {
-  const data = {
-    id: "recA5nftMpxJmwpr4",
-    fields: {
+test("Decode portal user", () => {
+  expect(
+    decodeUser({
+      id: "recA5nftMpxJmwpr4",
       email: "zoul@cesko.digital",
       profilePictureUrl:
         "https://data.cesko.digital/people/tomas-znamenacek.jpg",
       name: "Tomáš Znamenáček",
-      company: "Česko.Digital",
-      Events: ["recL6LSVKhgH81MBJ"],
-    },
-    createdTime: "2021-06-14T12:38:43.000Z",
-  };
-  expect(parsePortalUser(data)).toEqual({
+    })
+  ).toEqual({
     id: "recA5nftMpxJmwpr4",
     name: "Tomáš Znamenáček",
     profilePictureUrl: "https://data.cesko.digital/people/tomas-znamenacek.jpg",
@@ -81,10 +75,10 @@ test("Import portal user from Airtable", () => {
   });
 });
 
-test("Import portal event from Airtable", () => {
-  const data = {
-    id: "rec9ujcN8HSkE0hgh",
-    fields: {
+test("Decode portal event", () => {
+  expect(
+    decodeEvent({
+      "id": "rec9ujcN8HSkE0hgh",
       "Live URL": "https://cesko.digital/show-and-tell",
       "End Time": "2021-06-24T18:00:00.000Z",
       "RSVP URL": "https://cesko.digital/rsvp",
@@ -102,10 +96,8 @@ test("Import portal event from Airtable", () => {
       "Competence Map": ["dev:100", "marketing:100"],
       "RSVP Deadline": "2021-06-24T17:00:00.000Z",
       "Start Time": "2021-06-24T17:00:00.000Z",
-    },
-    createdTime: "2021-06-03T16:09:12.000Z",
-  };
-  expect(parsePortalEvent(data)).toEqual({
+    })
+  ).toEqual({
     id: "rec9ujcN8HSkE0hgh",
     name: "Show & Tell #2",
     summary: "Živé vysílání bla bla bla…",
@@ -122,10 +114,10 @@ test("Import portal event from Airtable", () => {
   });
 });
 
-test("Parse portal opportunity from Airtable", () => {
-  const data = {
-    id: "reclKrwSllzgEWOnl",
-    fields: {
+test("Decode portal opportunity", () => {
+  expect(
+    decodeOpportunity({
+      "id": "reclKrwSllzgEWOnl",
       "Name": "Frontend developer - React (PWA)",
       "Project": ["recSci1ztMeeakzg2"],
       "Owner": ["rec0ABdJtGIK9AeCB"],
@@ -138,10 +130,8 @@ test("Parse portal opportunity from Airtable", () => {
       "Junior Friendly": true,
       "Skills": ["Dev"],
       "Created Time": "2021-09-02T17:20:26.000Z",
-    },
-    createdTime: "2021-09-02T17:20:26.000Z",
-  };
-  expect(parsePortalOpportunity(data)).toEqual({
+    })
+  ).toEqual({
     id: "reclKrwSllzgEWOnl",
     name: "Frontend developer - React (PWA)",
     slug: "reclKrwSllzgEWOnl",
