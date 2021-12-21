@@ -36,6 +36,7 @@ async function getAllRecords<T>(args: {
   });
 
   const base = new Airtable({ apiKey: args.apiKey }).base(args.baseId);
+  const verbose = process.env.VERBOSE_LOG;
   const table = base(args.tableName);
   const response = await table
     .select({ view: args.viewName, maxRecords: 100 /* TBD */ })
@@ -48,8 +49,10 @@ async function getAllRecords<T>(args: {
     try {
       parsedRecords.push(args.decoder(mergeAirtableRecord(record)));
     } catch (e) {
-      console.error(
-        `Parse error for record #${index} in table ${args.tableName}: ${e}`
+      console.warn(
+        verbose
+          ? `Parse error for record #${index} in table ${args.tableName}: ${e}`
+          : `Parse error for record #${index} in table ${args.tableName}, skipping (set VERBOSE_LOG to see more).`
       );
     }
   });
