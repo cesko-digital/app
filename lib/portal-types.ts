@@ -1,90 +1,117 @@
-import { MarkdownString } from "./utils";
+import { markdown, takeFirst, withDefault } from "./decoding";
+import {
+  array,
+  boolean,
+  decodeType,
+  field,
+  fields,
+  optional,
+  record,
+  string,
+  union,
+} from "typescript-json-decoder";
 
-export interface PortalProject {
-  id: string;
+/*
+ * The types in here are not written by hand because we would then need to
+ * repeat almost the same code when writing decoders to read the values from
+ * Airtable. So we turn the thing around, write the decoders first and infer
+ * the types from them. This way there’s no code duplication. Hopefully this
+ * is not too smart for our own good :)
+ */
 
-  name: string;
-  slug: string;
-  tagline: string;
-  description: MarkdownString;
-  url: string;
+export type PortalProject = decodeType<typeof decodeProject>;
+export type PortalUser = decodeType<typeof decodeUser>;
+export type PortalEvent = decodeType<typeof decodeEvent>;
+export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
+export type PortalPartner = decodeType<typeof decodePartner>;
 
-  contributeText?: MarkdownString;
+export const decodeProject = record({
+  id: string,
+  name: field("csName", string),
+  slug: field("csSlug", string),
+  tagline: field("csTagline", string),
+  description: field("csDescription", markdown),
+  url: string,
+  contributeText: field("csContributeText", optional(markdown)),
+  coverImageUrl: field("coverUrl", string),
+  logoUrl: string,
+  highlighted: withDefault(boolean, false),
+  finished: withDefault(boolean, false),
+  draft: withDefault(boolean, false),
+  silent: withDefault(boolean, false),
+  tagIds: field("tags", withDefault(array(string), [])),
+  coordinatorIds: field("coordinators", array(string)),
+  trelloUrl: optional(string),
+  githubUrl: optional(string),
+  slackChannelUrl: optional(string),
+  slackChannelName: optional(string),
+});
 
-  coverImageUrl: string;
-  logoUrl: string;
+export const decodeUser = record({
+  id: string,
+  name: string,
+  profilePictureUrl: string,
+  email: string,
+});
 
-  highlighted: boolean;
-  finished: boolean;
-  draft: boolean;
-  silent: boolean;
+export const decodeEvent = record({
+  id: string,
+  name: field("Name", string),
+  slug: fields(
+    // Read slug from the `Slug` field and fall
+    // back to `id` if the `Slug` field is empty.
+    { Slug: optional(string), id: string },
+    ({ Slug, id }) => Slug ?? id
+  ),
+  summary: field("Summary", string),
+  description: field("Description", markdown),
+  startTime: field("Start Time", string),
+  ownerId: field("Owner", takeFirst(array(string))),
+  projectId: field("Project", takeFirst(array(string))),
+  status: field("Status", union("draft", "live", "unlisted")),
+  registrationUrl: field("RSVP URL", string),
+  registrationTitle: field("RSVP Title", string),
+  endTime: field("End Time", optional(string)),
+  tagIds: field("Tags", withDefault(array(string), [])),
+  coverImageUrl: field("Cover URL", optional(string)),
+  locationTitle: field("Location Title", optional(string)),
+  locationUrl: field("Location URL", optional(string)),
+});
 
-  tagIds: string[];
-  coordinatorIds: string[];
+export const decodeOpportunity = record({
+  id: string,
+  name: field("Name", string),
+  slug: field("id", string),
+  projectId: field("Project", takeFirst(array(string))),
+  summary: field("Summary", markdown),
+  timeRequirements: field("Time Requirements", string),
+  ownerId: field("Owner", takeFirst(array(string))),
+  contactUrl: field("RSVP URL", string),
+  coverImageUrl: field("Cover URL", optional(string)),
+  skills: field("Skills", array(string)),
+  juniorFriendly: field("Junior Friendly", withDefault(boolean, false)),
+  status: field("Status", union("draft", "live", "unlisted")),
+});
 
-  trelloUrl?: string;
-  githubUrl?: string;
-  slackChannelUrl?: string;
-  slackChannelName?: string;
-}
-
-export interface PortalUser {
-  id: string;
-  name: string;
-  profilePictureUrl: string;
-  email: string;
-}
-
-export interface PortalEvent {
-  id: string;
-  name: string;
-  slug: string;
-  summary: string;
-  description: MarkdownString;
-  startTime: string;
-  ownerId: string;
-  projectId: string;
-  status: "draft" | "live" | "unlisted";
-  registrationUrl: string;
-  registrationTitle: string;
-
-  endTime?: string;
-  tagIds: string[];
-  coverImageUrl?: string;
-
-  locationTitle?: string;
-  locationUrl?: string;
-}
-
-export interface PortalOpportunity {
-  id: string;
-  name: string;
-  slug: string;
-  projectId: string;
-  summary: MarkdownString;
-  timeRequirements: string;
-  ownerId: string;
-  contactUrl: string;
-  coverImageUrl?: string;
-  skills: string[];
-  juniorFriendly: boolean;
-  status: "draft" | "live" | "unlisted";
-}
-
-export interface PortalPartner {
-  id: string;
-  name: string;
-  logoUrl: string;
-  linkUrl?: string;
-  categories: (
-    | "homepage"
-    | "financial.main"
-    | "financial.grants"
-    | "financial.regular"
-    | "experts.submitters"
-    | "experts.supporters"
-  )[];
-}
+export const decodePartner = record({
+  id: string,
+  name: string,
+  logoUrl: string,
+  linkUrl: field("url", optional(string)),
+  categories: field(
+    "category",
+    array(
+      union(
+        "homepage",
+        "financial.main",
+        "financial.grants",
+        "financial.regular",
+        "experts.submitters",
+        "experts.supporters"
+      )
+    )
+  ),
+});
 
 export function filterPartnersByCategory(
   partners: PortalPartner[],
