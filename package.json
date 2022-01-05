@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@babel/core": "7",
-    "@types/airtable": "^0.10.1",
     "@types/jest": "^27.0.3",
     "@types/marked": "^4.0.1",
     "@types/node": "16.11.11",
