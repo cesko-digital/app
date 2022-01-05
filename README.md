@@ -22,6 +22,8 @@ $ yarn dev
 
 Pokud byste rádi s něčím pomohli, mrkněte na tickety označené jako [good first issue](https://github.com/cesko-digital/web/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
+Další informace najdete v souboru [CONTRIBUTING](CONTRIBUTING.md).
+
 # Kontakt
 
 Nejvíc se probere na Slacku v kanálu [\#run-ceskodigital_web](https://cesko-digital.slack.com/archives/CHG9NA23D). Pokud nejste na Slacku Česko.Digital, [můžete se přidat tady](https://join.cesko.digital).
