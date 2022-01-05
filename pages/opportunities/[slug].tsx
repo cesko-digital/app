@@ -73,9 +73,14 @@ const Page: NextPage<PageProps> = (props) => {
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
                 <S.OpportunityProjectImg src={parentProject.logoUrl} />
-                <a href={Route.toProject(parentProject)}>
+                { parentProject.silent &&
                   <Body>{parentProject.name}</Body>
-                </a>
+                }
+                { !parentProject.silent &&
+                  <a href={Route.toProject(parentProject)}>
+                    <Body>{parentProject.name}</Body>
+                  </a>
+                }
               </S.OpportunityMetaRow>
               <OpportunityMetaRow>
                 <TimeIcon />
