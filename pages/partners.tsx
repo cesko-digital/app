@@ -9,6 +9,7 @@ import BecomePartner from "components/partners/sections/become-partner";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
+import { prepareToSerialize } from "lib/utils";
 
 type PageProps = {
   partners: PortalPartner[];
@@ -64,10 +65,11 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
+  const partners = await getAllPartners(apiKey);
   return {
-    props: {
-      partners: await getAllPartners(apiKey),
-    },
+    props: prepareToSerialize({
+      partners,
+    }),
   };
 };
 
