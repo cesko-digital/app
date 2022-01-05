@@ -7,7 +7,7 @@
 
 Pro některé funkce jsou potřeba proměnné prostředí. Tyhle používáme:
 
-* `AIRTABLE_API_KEY` je API klíč pro přístup do Airtable, naší DB. Bez něj se web momentálně nepřeloží, což bychom výhledově chtěli spravit.
+* `AIRTABLE_API_KEY` je API klíč pro přístup do Airtable, naší DB. Bez něj se web momentálně nepřeloží, což bychom výhledově chtěli spravit ([\#418](https://github.com/cesko-digital/web/issues/418)).
 * `ECOMAIL_API_KEY` je API klíč pro zapisování nových zájemců o newsletter do Ecomailu.
 
 Velmi elegantně se ty proměnné dají nastavit pomocí souboru `.env.local`, [viz dokumentaci Next.js](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables).
