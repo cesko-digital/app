@@ -1,3 +1,8 @@
+# Style Guide
+
+* V dokumentaci, pull requestech a issues používejte češtinu, v commitech a zdrojovém kódu angličtinu.
+* Zapněte si automatické formátování kódu pomocí Prettier. Nemusíme všichni souhlasit se všemi změnami, které Prettier udělá, ale nechat to na něm je lepší než se o tom donekonečna přít :)
+
 # Proměnné prostředí
 
 Pro některé funkce jsou potřeba proměnné prostředí. Tyhle používáme:
