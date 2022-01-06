@@ -2,6 +2,7 @@ import fs from "fs";
 import {
   PortalEvent,
   PortalOpportunity,
+  PortalPartner,
   PortalProject,
   PortalUser,
 } from "./portal-types";
@@ -18,5 +19,6 @@ function loader<T>(file: string): () => Promise<T[]> {
 export const getAllProjects = loader<PortalProject>("projects.json");
 export const getAllUsers = loader<PortalUser>("users.json");
 export const getAllEvents = loader<PortalEvent>("events.json");
+export const getAllPartners = loader<PortalPartner>("partners.json");
 export const getAllOpportunities =
   loader<PortalOpportunity>("opportunities.json");
