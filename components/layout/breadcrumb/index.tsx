@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { areCrumbsValid, transformCrumbs } from "./helpers";
+import { Fragment } from "react";
 
 export interface Crumb {
   label: string;
@@ -27,13 +28,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <S.OrderedList>
-      <S.ListItem>
+      <S.ListItem key="home">
         <Link size={ButtonSize.Small} to={homeLink}>
           {homeLabel}
         </Link>
       </S.ListItem>
-      {firstCrumbs.map((crumb) => (
-        <>
+      {firstCrumbs.map((crumb, index) => (
+        <Fragment key={index}>
           <S.Separator>/</S.Separator>
           <S.ListItem>
             {crumb.path ? (
@@ -44,11 +45,11 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
               <S.Current>{crumb.label}</S.Current>
             )}
           </S.ListItem>
-        </>
+        </Fragment>
       ))}
       <>
-        <S.Separator>/</S.Separator>
-        <S.ListItem>
+        <S.Separator key="sep-last">/</S.Separator>
+        <S.ListItem key="current">
           <S.Current>{lastCrumb.label}</S.Current>
         </S.ListItem>
       </>
