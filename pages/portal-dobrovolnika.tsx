@@ -6,20 +6,16 @@ import EventCard from "components/portal-dobrovolnika/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
+import { prepareToSerialize } from "lib/utils";
+import { Route } from "lib/routing";
+import CeduCard from "components/portal-dobrovolnika/cedu-card";
+import { PortalVideo } from "lib/cedu";
 import {
   PortalEvent,
   PortalOpportunity,
   PortalProject,
 } from "lib/portal-types";
-import {
-  getAllEvents,
-  getAllOpportunities,
-  getAllProjects,
-} from "lib/airtable-import";
-import { prepareToSerialize } from "lib/utils";
-import { Route } from "lib/routing";
-import CeduCard from "components/portal-dobrovolnika/cedu-card";
-import { getAllVideos, PortalVideo } from "lib/cedu";
+import { dataSource } from "lib/data-source";
 
 interface PageProps {
   opportunities: PortalOpportunity[];
@@ -139,10 +135,10 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const events = await getAllEvents();
-  const opportunities = await getAllOpportunities();
-  const allProjects = await getAllProjects();
-  const videos = await getAllVideos();
+  const events = await dataSource.getAllEvents();
+  const opportunities = await dataSource.getAllOpportunities();
+  const allProjects = await dataSource.getAllProjects();
+  const videos = await dataSource.getAllVideos();
   return {
     props: prepareToSerialize({
       events,

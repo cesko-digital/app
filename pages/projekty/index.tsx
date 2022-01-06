@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllProjects } from "lib/airtable-import";
 import { PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import {
@@ -11,6 +10,7 @@ import * as S from "components/projects/styles";
 import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
 import { Route } from "lib/routing";
+import { dataSource } from "lib/data-source";
 
 type PageProps = {
   projects: PortalProject[];
@@ -63,7 +63,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const projects = (await getAllProjects()).filter(
+  const projects = (await dataSource.getAllProjects()).filter(
     (p) => !p.draft && !p.silent
   );
 

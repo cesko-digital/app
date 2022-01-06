@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllEvents } from "lib/airtable-import";
 import { PortalEvent } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
+import { dataSource } from "lib/data-source";
 
 type PageProps = {
   events: PortalEvent[];
@@ -23,7 +23,7 @@ const Page: NextPage<PageProps> = ({ events }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const events = await getAllEvents();
+  const events = await dataSource.getAllEvents();
   return {
     props: {
       events: prepareToSerialize(events),

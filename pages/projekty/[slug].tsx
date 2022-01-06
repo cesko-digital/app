@@ -6,11 +6,11 @@ import ProjectCard from "components/project/project-card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
-import { getAllProjects, getAllUsers } from "lib/airtable-import";
 import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
+import { dataSource } from "lib/data-source";
 
 interface PageProps {
   project: PortalProject;
@@ -90,7 +90,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const projects = await getAllProjects();
+  const projects = await dataSource.getAllProjects();
   const paths = projects
     .filter((p) => !p.draft && !p.silent)
     .map((project) => ({
@@ -106,8 +106,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const allProjects = await getAllProjects();
-  const allUsers = await getAllUsers();
+  const allProjects = await dataSource.getAllProjects();
+  const allUsers = await dataSource.getAllUsers();
   const project = allProjects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => allUsers.find((user) => user.id === id)!

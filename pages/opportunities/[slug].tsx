@@ -1,9 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import {
-  getAllOpportunities,
-  getAllProjects,
-  getAllUsers,
-} from "lib/airtable-import";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
 import { Layout, Section, SectionContent } from "components/layout";
@@ -20,6 +15,7 @@ import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
+import { dataSource } from "lib/data-source";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -121,7 +117,7 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const opportunities = await getAllOpportunities();
+  const opportunities = await dataSource.getAllOpportunities();
   const paths = opportunities.map((opportunity) => ({
     params: { slug: opportunity.slug },
   }));
@@ -135,9 +131,9 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const opportunities = await getAllOpportunities();
-  const projects = await getAllProjects();
-  const allUsers = await getAllUsers();
+  const opportunities = await dataSource.getAllOpportunities();
+  const projects = await dataSource.getAllProjects();
+  const allUsers = await dataSource.getAllUsers();
   const opportunity = opportunities.find((o) => o.slug === slug)!;
   return {
     props: prepareToSerialize({

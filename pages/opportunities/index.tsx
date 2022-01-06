@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllOpportunities, getAllProjects } from "lib/airtable-import";
 import { PortalOpportunity, PortalProject } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
 import { Layout, SectionContent, Section } from "components/layout";
@@ -12,6 +11,7 @@ import {
 } from "components/portal-dobrovolnika/styles";
 import { Route } from "lib/routing";
 import { useState } from "react";
+import { dataSource } from "lib/data-source";
 
 type PageProps = {
   opportunities: PortalOpportunity[];
@@ -147,9 +147,9 @@ const OpportunitiesCountSpan = styled.span`
   color: gray;
 `;
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const opportunities = await getAllOpportunities();
-  const projects = await getAllProjects();
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const opportunities = await dataSource.getAllOpportunities();
+  const projects = await dataSource.getAllProjects();
   return {
     props: prepareToSerialize({
       opportunities: opportunities.filter((o) => o.status === "live"),

@@ -1,10 +1,11 @@
 import type { NextPage, GetStaticProps } from "next";
-import { getAllPartners, getAllProjects } from "lib/airtable-import";
 import { PortalPartner, PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
+import { prepareToSerialize } from "lib/utils";
+import { dataSource } from "lib/data-source";
 import {
   Hero,
   OurValues,
@@ -12,7 +13,6 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
-import { prepareToSerialize } from "lib/utils";
 
 type PageProps = {
   projects: PortalProject[];
@@ -63,13 +63,13 @@ const Page: NextPage<PageProps> = ({ projects, partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const allPartners = await getAllPartners();
+  const allPartners = await dataSource.getAllPartners();
   const homepagePartners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   return {
     props: prepareToSerialize({
-      projects: await getAllProjects(),
+      projects: await dataSource.getAllProjects(),
       partners: homepagePartners,
     }),
   };

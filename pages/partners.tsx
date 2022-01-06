@@ -1,4 +1,3 @@
-import { getAllPartners } from "lib/airtable-import";
 import { PortalPartner } from "lib/portal-types";
 import type { NextPage, GetStaticProps } from "next";
 import { useMemo, useState } from "react";
@@ -10,6 +9,7 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
 import { prepareToSerialize } from "lib/utils";
+import { dataSource } from "lib/data-source";
 
 type PageProps = {
   partners: PortalPartner[];
@@ -64,7 +64,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const partners = await getAllPartners();
+  const partners = await dataSource.getAllPartners();
   return {
     props: prepareToSerialize({
       partners,
