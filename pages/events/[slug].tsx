@@ -89,8 +89,7 @@ const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const events = await getAllEvents(apiKey);
+  const events = await getAllEvents();
   const paths = events.map((event) => ({
     params: { slug: event.slug },
   }));
@@ -104,12 +103,11 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const events = await getAllEvents(apiKey);
+  const events = await getAllEvents();
   const event = events.find((e) => e.slug === slug)!;
-  const projects = await getAllProjects(apiKey);
+  const projects = await getAllProjects();
   const project = projects.find((p) => p.id === event.projectId)!;
-  const users = await getAllUsers(apiKey);
+  const users = await getAllUsers();
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
     props: prepareToSerialize({ event, allEvents: events, project, owner }),

@@ -11,19 +11,27 @@ type AirtableRecord = Record<string, any>;
 
 const cache: Record<string, any> = {};
 
+/**
+ * Airtable API key read from the `AIRTABLE_API_KEY` env variable
+ *
+ * It’s not the best idea to read from env here, it would be better
+ * for callers to supply the key from wherever they want. But let’s
+ * start with this and change it later if we run into problems.
+ */
+const apiKey = process.env.AIRTABLE_API_KEY;
+
+/** ID of the Airtable database to read data from */
+const airtableBaseId = "appkn1DkvgVI5jpME";
+
 async function getAllRecords<T>(args: {
-  apiKey: string;
   baseId: string;
   tableName: string;
   viewName: string;
   decoder: (data: AirtableRecord) => T;
 }): Promise<T[]> {
-  const cacheKey = [
-    args.apiKey,
-    args.baseId,
-    args.tableName,
-    args.viewName,
-  ].join(":");
+  const cacheKey = [apiKey, args.baseId, args.tableName, args.viewName].join(
+    ":"
+  );
 
   if (cacheKey in cache) {
     return cache[cacheKey];
@@ -35,7 +43,13 @@ async function getAllRecords<T>(args: {
     ...data.fields,
   });
 
-  const base = new Airtable({ apiKey: args.apiKey }).base(args.baseId);
+  if (!apiKey) {
+    console.warn(
+      "Airtable API key not found in env, things will probably break."
+    );
+  }
+
+  const base = new Airtable({ apiKey }).base(args.baseId);
   const verbose = process.env.VERBOSE_LOG;
   const table = base(args.tableName);
   const response = await table
@@ -61,46 +75,41 @@ async function getAllRecords<T>(args: {
   return parsedRecords;
 }
 
-export const getAllProjects = async (key: string) =>
+export const getAllProjects = async () =>
   await getAllRecords({
-    apiKey: key,
-    baseId: "appkn1DkvgVI5jpME",
+    baseId: airtableBaseId,
     tableName: "Projects",
     viewName: "Grid view",
     decoder: decodeProject,
   });
 
-export const getAllUsers = async (key: string) =>
+export const getAllUsers = async () =>
   await getAllRecords({
-    apiKey: key,
-    baseId: "appkn1DkvgVI5jpME",
+    baseId: airtableBaseId,
     tableName: "Volunteers",
     viewName: "Grid view",
     decoder: decodeUser,
   });
 
-export const getAllEvents = async (key: string) =>
+export const getAllEvents = async () =>
   await getAllRecords({
-    apiKey: key,
-    baseId: "appkn1DkvgVI5jpME",
+    baseId: airtableBaseId,
     tableName: "Events",
     viewName: "All Events",
     decoder: decodeEvent,
   });
 
-export const getAllOpportunities = async (key: string) =>
+export const getAllOpportunities = async () =>
   await getAllRecords({
-    apiKey: key,
-    baseId: "appkn1DkvgVI5jpME",
+    baseId: airtableBaseId,
     tableName: "Opportunities",
     viewName: "Grid view",
     decoder: decodeOpportunity,
   });
 
-export const getAllPartners = async (key: string) =>
+export const getAllPartners = async () =>
   await getAllRecords({
-    apiKey: key,
-    baseId: "appkn1DkvgVI5jpME",
+    baseId: airtableBaseId,
     tableName: "Partners",
     viewName: "Grid view",
     decoder: decodePartner,

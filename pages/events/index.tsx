@@ -23,8 +23,7 @@ const Page: NextPage<PageProps> = ({ events }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const events = await getAllEvents(apiKey);
+  const events = await getAllEvents();
   return {
     props: {
       events: prepareToSerialize(events),

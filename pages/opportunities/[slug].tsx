@@ -73,14 +73,12 @@ const Page: NextPage<PageProps> = (props) => {
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
                 <S.OpportunityProjectImg src={parentProject.logoUrl} />
-                { parentProject.silent &&
-                  <Body>{parentProject.name}</Body>
-                }
-                { !parentProject.silent &&
+                {parentProject.silent && <Body>{parentProject.name}</Body>}
+                {!parentProject.silent && (
                   <a href={Route.toProject(parentProject)}>
                     <Body>{parentProject.name}</Body>
                   </a>
-                }
+                )}
               </S.OpportunityMetaRow>
               <OpportunityMetaRow>
                 <TimeIcon />
@@ -123,8 +121,7 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const opportunities = await getAllOpportunities(apiKey);
+  const opportunities = await getAllOpportunities();
   const paths = opportunities.map((opportunity) => ({
     params: { slug: opportunity.slug },
   }));
@@ -138,10 +135,9 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const opportunities = await getAllOpportunities(apiKey);
-  const projects = await getAllProjects(apiKey);
-  const allUsers = await getAllUsers(apiKey);
+  const opportunities = await getAllOpportunities();
+  const projects = await getAllProjects();
+  const allUsers = await getAllUsers();
   const opportunity = opportunities.find((o) => o.slug === slug)!;
   return {
     props: prepareToSerialize({
