@@ -90,8 +90,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const projects = await getAllProjects(apiKey);
+  const projects = await getAllProjects();
   const paths = projects
     .filter((p) => !p.draft && !p.silent)
     .map((project) => ({
@@ -107,9 +106,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const allProjects = await getAllProjects(apiKey);
-  const allUsers = await getAllUsers(apiKey);
+  const allProjects = await getAllProjects();
+  const allUsers = await getAllUsers();
   const project = allProjects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => allUsers.find((user) => user.id === id)!

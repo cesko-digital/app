@@ -63,9 +63,8 @@ const Page: NextPage<PageProps> = ({ partners }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const partners = await getAllPartners(apiKey);
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const partners = await getAllPartners();
   return {
     props: prepareToSerialize({
       partners,

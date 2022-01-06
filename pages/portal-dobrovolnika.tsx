@@ -138,11 +138,10 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const events = await getAllEvents(apiKey);
-  const opportunities = await getAllOpportunities(apiKey);
-  const allProjects = await getAllProjects(apiKey);
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const events = await getAllEvents();
+  const opportunities = await getAllOpportunities();
+  const allProjects = await getAllProjects();
   const videos = await getAllVideos();
   return {
     props: prepareToSerialize({

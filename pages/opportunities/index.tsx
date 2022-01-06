@@ -148,9 +148,8 @@ const OpportunitiesCountSpan = styled.span`
 `;
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const opportunities = await getAllOpportunities(apiKey);
-  const projects = await getAllProjects(apiKey);
+  const opportunities = await getAllOpportunities();
+  const projects = await getAllProjects();
   return {
     props: prepareToSerialize({
       opportunities: opportunities.filter((o) => o.status === "live"),
