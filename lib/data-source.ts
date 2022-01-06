@@ -39,10 +39,7 @@ const localDataSource: DataSource = {
   getAllOpportunities: Local.getAllOpportunities,
   getAllUsers: Local.getAllUsers,
   getAllEvents: Local.getAllEvents,
-  getAllPartners: () =>
-    Promise.resolve([
-      /*TODO*/
-    ]),
+  getAllPartners: Local.getAllPartners,
   getAllVideos,
 };
 

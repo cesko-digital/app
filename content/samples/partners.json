@@ -1,0 +1,259 @@
+[
+  {
+    "id": "recsd8GgVFXdJnA8y",
+    "name": "Livesport",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/livesport-logo.png",
+    "linkUrl": "https://www.livesport.eu/",
+    "categories": [
+      "homepage",
+      "financial.main"
+    ]
+  },
+  {
+    "id": "rectC4THs8vPjNRXl",
+    "name": "Bakala Foundation",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/bakala-foundation-logo.png",
+    "linkUrl": "https://www.bakalafoundation.org/",
+    "categories": [
+      "homepage",
+      "financial.main"
+    ]
+  },
+  {
+    "id": "recGPtiBOyQfsqjrk",
+    "name": "Nadace PPF",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/zna__ka_nadace_ppf.png",
+    "linkUrl": "https://nadaceppf.cz",
+    "categories": [
+      "homepage",
+      "financial.main"
+    ]
+  },
+  {
+    "id": "recQR5HOnzMpH5Up3",
+    "name": "GRANTOVÁ AGENTURA ČESKÉ REPUBLIKY",
+    "logoUrl": "https://www.tf.jcu.cz/files/loga/gacr-2.png/@@images/image.png",
+    "linkUrl": "https://gacr.cz/",
+    "categories": [
+      "financial.grants"
+    ]
+  },
+  {
+    "id": "rec502gQtjQqsXyrZ",
+    "name": "MINISTERSTVO ŠKOLSTVÍ, MLÁDEŽE A TĚLOVÝCHOVY",
+    "logoUrl": "https://www.msmt.cz/uploads/gallery/full/9208.jpg",
+    "linkUrl": "https://www.msmt.cz/",
+    "categories": [
+      "financial.grants"
+    ]
+  },
+  {
+    "id": "recSzcVmzHP6TwGLz",
+    "name": "Nadační fond rodiny Orlických ",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/nadacnifondorlickych.png",
+    "linkUrl": "http://www.nfro.cz/",
+    "categories": [
+      "financial.regular"
+    ]
+  },
+  {
+    "id": "rec8myEg0GakEGC8p",
+    "name": "Deloitte",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/deloittelogo.png",
+    "linkUrl": "https://www2.deloitte.com/cz/cs.html",
+    "categories": [
+      "financial.regular"
+    ]
+  },
+  {
+    "id": "recg6ZyUOpuUMWqYB",
+    "name": "Otevřená města",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/otevrenamesta.png",
+    "linkUrl": "https://www.otevrenamesta.cz",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "recs5tnQST2Xcm0K2",
+    "name": "Výluka",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/zacniucit.png",
+    "linkUrl": "https://vyluka.org/",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "recvrxlFxg7NcmPOj",
+    "name": "Loono",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/loono.png",
+    "linkUrl": "https://www.loono.cz/",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "rec2PpIvOdUKw4XeP",
+    "name": "Radek Hábl",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/institutpredluzeni.png",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "recVNNfa5EflnPGqy",
+    "name": "Magdaléna o.p.s. ",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/magdalenaopslogo.png",
+    "linkUrl": "http://www.magdalena-ops.eu/cz/",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "rec4NMmC1ERCql84K",
+    "name": "CENIA",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/cenialogo.png",
+    "linkUrl": "https://www.cenia.cz/",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recVn0uz4VMrt9NGq",
+    "name": "Nadace OSF ",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/nadaceOSF.png",
+    "linkUrl": "https://osf.cz/",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recIvrgGOKaIQ8Xtl",
+    "name": "NFNZ",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/NFNZ.png",
+    "linkUrl": "https://www.nfnz.cz/",
+    "categories": [
+      "experts.submitters"
+    ]
+  },
+  {
+    "id": "rec0C4AkuKCYfVnHD",
+    "name": "Red Button",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/redbutton.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recoZBrnUtwJfp25m",
+    "name": "Morosystems",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/morosystem.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recsi1eT0YLtsQ2EG",
+    "name": "Snyk",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/snyklogo.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recB0QWb4B4eGWyEB",
+    "name": "NAKIT",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/nakitlogo.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recJudWLILGF5qCIe",
+    "name": "NPI",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/npi.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recMorVjtVo5XcLxB",
+    "name": "Transparency International",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/TransparencyInternationalcr.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recndUuTmpVVst7PE",
+    "name": "NUDZ",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/logocs.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recwknefZQnE2bWH2",
+    "name": "ASWA",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/aswa.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recSaajPIgqdxKvdN",
+    "name": "Hlídač státu",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/Hlidacstatuctverec.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recDfc43s9JHdheI4",
+    "name": "Replug.me",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/replugme.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recPnJmuy8p5wAIeW",
+    "name": "Centrum Locika",
+    "logoUrl": "http://data.cesko.digital/web/sections/partners/centrumlocikalogo.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recoUIiZTFVB6YYZ7",
+    "name": "Nevypusť duši",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/banner.jpg",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "reclbzLkV0n3ynGuy",
+    "name": "Czechitas",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/czechitas.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recadaA9agBaisPDO",
+    "name": "Opero",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/logo.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  },
+  {
+    "id": "recvZruxtUGy5rySQ",
+    "name": "Pábení",
+    "logoUrl": "https://data.cesko.digital/web/sections/partners/pabeni.png",
+    "categories": [
+      "experts.supporters"
+    ]
+  }
+]
