@@ -1,0 +1,898 @@
+[
+  {
+    "id": "recGB4TJTxCgdxLZe",
+    "name": "Skvělý Scrum Master: agilně i v nezisku",
+    "slug": "skvely-scrum-master",
+    "summary": "Inspirujte se světem start-upů a buďte ve svých projektech efektivnější, flexibilnější a rychlejší.",
+    "description": {
+      "source": "**Nebojte se vyměnit projektového manažera za Scrum Mastera a Product Ownera.** Agilní týmy snadno reagují na změny, jsou efektivní a přinášejí rychlé výsledky. Chceme s Vámi sdílet zkušenosti s agilním řízením v dobročinných projektech.\n\n**V úterý 7. 12. Vás v 17:30 **seznámíme s opravdu skvělými Scrum Masterkami, kteří v Česko.Digital přináší agilní prvky do neziskových projektů. \n\nAdéla Kalusová, Kristýna Tvrdá a Markéta Ryklová během hodiny a půl nasdílí agilní zkušenosti z projektů z oblasti duševního zdraví, adiktologie a včasné prevence závažných onemocnění.\n\nModeruje Jakub Štogr.\n"
+    },
+    "startTime": "2021-12-07T16:30:00.000Z",
+    "ownerId": "rec5g2kjJCODPpUOI",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shrRdNY33xfp6MZzS",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-12-07T18:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc",
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/Skvely-Scrum_Master_blog-2.png",
+    "locationTitle": "Online / Google Meet",
+    "locationUrl": "https://meet.google.com/yfr-cweh-gqi"
+  },
+  {
+    "id": "reccW1lZyOwBj4n2s",
+    "name": "Livesport Talk XI: Radosti a strasti softwarového vývoje",
+    "slug": "statni-sprava-a-technologie",
+    "summary": "Společně s naším partnerem Livesport se podíváme na nástrahy a radosti při softwarovém vývoji.",
+    "description": {
+      "source": "Událost organizuje Livesport, náš hlavní partner, který zastoupí **Petr Burian**, zkušený CTO firmy. Dále přijala pozvání naše CEO, **Eva Pavlíková** a také **Petr Michalík**, Open Bank Designer a API Evangelist z České spořitelny. \nCelým večerem vás provede a naše panelisty vyzpovídá **Eliška Čejpová** – spolumoderátorka talk show Live Talk z dílny další komunity dobrovolníků GUG.cz, bývalá vývojářka a nadšená agile evangelizátorka, chapter lead GDG Prague a #WomenTechmakers v Česku.\nZačínáme již v 18 hodin a prostor bude i na pár dotazů z publika.\n"
+    },
+    "startTime": "2021-12-01T17:00:00.000Z",
+    "ownerId": "rec6hQPrLsA7vVjGD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "live",
+    "endTime": "2021-12-01T18:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/LS_CD-event.jpg",
+    "locationTitle": "Facebook Live",
+    "locationUrl": "https://www.facebook.com/events/383660190108050/?active_tab=discussion"
+  },
+  {
+    "id": "recO8d5J1Bwfwaim5",
+    "name": "Slavnostní vyhlášení výsledků cen v soutěži Kříšťálová Lupa ",
+    "slug": "vyhlaseni-souteze-kristalova-lupa",
+    "summary": "Anketa Křišťálová Lupa 2021 – Cena českého Internetu oceňuje nejoblíbenější a nejzajímavější projekty a služby českého Internetu za rok 2021.",
+    "description": {
+      "source": "Letos proběhne již 16. ročník nejvýznamnější internetové ankety kterou pořádá server o českém Internetu Lupa.cz.\n\n"
+    },
+    "startTime": "2021-11-25T18:00:00.000Z",
+    "ownerId": "rec6hQPrLsA7vVjGD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://www.tuesday.cz/akce/kristalova-lupa-2021/registrace/",
+    "registrationTitle": "Registrace ",
+    "endTime": "2021-11-25T19:00:00.000Z",
+    "tagIds": []
+  },
+  {
+    "id": "recKxzD7lt61I3Dnu",
+    "name": "Show & Tell #8",
+    "slug": "show-and-tell-8",
+    "summary": "Další díl pravidelného pořadu, ve kterém se dozvíte, zač je toho dobrovolník",
+    "description": {
+      "source": "## Show & Tell #8 \n**Show&Tell**, pořad, ve kterém dobrovolníci mluví o tom, na čem pracují a jak se jim to daří. Osmý díl si pusťte už ve čtvrtek 25. listopadu v 18:00.\n\n- Jako první se rozpovídá Marek Mencl z Pábení, který vás uvede do světa systému OKRs. Dozvíte se, jak funguje a proč je užitečný při nastavování priorit, které mají posílit organizaci – ať už směrem dovnitř nebo ven.\n- V druhém vstupu vám Michaela Rudolfová představí, jak probíhal nedávný hackday Česko.Digital. Uvidíte, že i úplný IT začátečník se nemusí takové akce bát. ;-)\n- Skoro již tradičně zakonečníme Lumírem Kajnarem, který v poslední části svého povídání uzavře svůj seriál o vizuální identitě Česko.Digital.\n\nDoufáme, že jsme vás dostatečně navnadili, a těšíme se ve čtvrtek v 18.00.\n\nTým Show&Tell\n\n\n\n"
+    },
+    "startTime": "2021-11-25T17:00:00.000Z",
+    "ownerId": "recvuuD8Q7t5RHY93",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "live",
+    "registrationTitle": "Sleduj na Youtube",
+    "endTime": "2021-11-25T18:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/show-tell-8-small.jpeg",
+    "locationTitle": "Online",
+    "locationUrl": "https://youtu.be/wwUa-Bv2v7w"
+  },
+  {
+    "id": "recRNYHrkX9aYf4pT",
+    "name": "Od (neziskové) myšlenky k (digitálnímu) úspěchu: Příběh projektů Začni učit! a Nedlužím státu",
+    "slug": "od-myslenky-k-uspechu-zu-ns",
+    "summary": "Připojte se k rozhovoru se zástupci dvou organizací, které s námi realizovaly své myšlenky a vize do podoby digitálních produktů.",
+    "description": {
+      "source": "Zajímá vás, jak funguje spolupráce s Česko.Digital? Kdy a s jakou myšlenkou se na Česko.Digital obrátit a co může taková spolupráce přinést vaší neziskové organizaci? Nebo jaké kroky jsou potřeba při plánování digitálního produktu v neziskovém prostředí?\n\nZveme vás ke sledování **živého přenosu rozhovoru s Janou Fryzelkovou z organizace Výluka a Radkem Háblem z Institutu prevence a řešení předlužení.** Budeme se bavit o projektech Začni učit! a Nedlužím státu, které jejich organizace ve spolupráci s Česko.Digital rozvíjely. **Rozhovor povede Eva Pavlíková**, CEO Česko.Digital.\n\nDozvíte se, jak se společná práce odrazila na procesech organizace, jak to ovlivnilo práci na digitálních projektech a co vlastně pro organizace znamená taková spolupráce. Povíme si také o jejich očekáváních a tom, jak odpovídaly skutečnosti.\n\nDiskusi budeme vysílat **živě na našem[ YouTube kanálu](https://www.youtube.com/watch?v=ep2y01MGN1w).**\n\nBudete-li se chtít aktivně zapojit, **otázky můžete pokládat před akcí i během ní prostřednictvím [Slido](https://app.sli.do/event/2kpcbo9t)**. \n\nPokud se nestihnete zúčastnit, ale téma Vás zajímá, záznam akce bude dostupný i ke zpětnému shlédnutí.\n\n"
+    },
+    "startTime": "2021-11-25T08:00:00.000Z",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrTu49qAztWZxrMl",
+    "registrationTitle": "Registrace",
+    "endTime": "2021-11-25T09:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc",
+      "recoUTPWNH9t9OCIa",
+      "recnIR0L7B02JBPMm"
+    ],
+    "locationTitle": "YouTube Stream – Live",
+    "locationUrl": "https://www.youtube.com/watch?v=ep2y01MGN1w"
+  },
+  {
+    "id": "recIKpU2CyAdDkCim",
+    "name": "Sbírka počítačů aneb proč je důležité pomáhat",
+    "slug": "sbirka-pocitacu",
+    "summary": "Dejme technice novou šanci a přispějme k rozvoji digitální gramotnosti dětí. Online diskuse o významu a budoucnosti Sbírky počítačů.",
+    "description": {
+      "source": "Jak funguje Sbírka počítačů? Jaký je její význam při podpoře digitální gramotnosti dětí? Má darování počítačů stále smysl? Jak se i Vaše organizace může zapojit?\n\nZveme Vás na online diskusi, během níž **Eva Pavlíková a Gabriela Chladilová z Česko.Digital **popíší vznik a vývoj Sbírky počítačů a **Šimon Pánek se Zuzanou Ramajzlovou** přiblíží, proč se **Člověk v tísni** rozhodl tento projekt převzít a dále rozvíjet. Společně budou diskutovat na téma budoucnosti Sbírky a jejích sociálních i environmentálních dopadů.\n\nS dalšími hosty z řad dosavadních dárců, podporovatelů a příjemců Sbírky probereme, jaké jsou jejich reálné zkušenosti, jaká byla motivace se do Sbírky připojit a jak vnímají dopad svého zapojení. \n\nV roli moderátorky nás diskusí provede **Dana Vaníčková**. Budeme vysílat **[živě na našem YouTube kanálu](https://youtu.be/OsRIU2ZXg84). **\n\nBudeme rádi, když se k nám přidáte s Vašimi dotazy na cokoliv, co vás ohledně tohoto tématu zajímá. Otázky budete moci pokládat online.\n\nPokud se nestihnete zúčastnit, ale téma Vás zajímá, záznam akce bude dostupný i ke zpětnému shlédnutí.\n"
+    },
+    "startTime": "2021-11-24T15:00:00.000Z",
+    "ownerId": "recf6EM1qZxTTFkA0",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrvpR2DALh0ilyfJ",
+    "registrationTitle": "Registrace",
+    "endTime": "2021-11-24T16:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc",
+      "recnIR0L7B02JBPMm"
+    ],
+    "locationTitle": "Live Stream",
+    "locationUrl": "https://youtu.be/OsRIU2ZXg84"
+  },
+  {
+    "id": "rechmxhcytUPGWtB0",
+    "name": "Civic Tech Open: Občanský sektor digitálně",
+    "slug": "civic-tech-open-21",
+    "summary": "Jediná soutěž pro neziskové aplikace postavené nad otevřenými daty v ČR",
+    "description": {
+      "source": "V úterý 23. listopadu pořádá Nadace OSF v Auditoriu Centra současného umění DOX druhý ročník slavnostní události projektu Náš stát, naše data s názvem Civic Tech Open. V průběhu akce se ohlédne za uplynulým projektovým rokem, představí aktuální aktivity, výstupy i partnery projektu Náš stát, naše data. Těšit se můžete na prezentaci společných aktivit s Rekonstrukcí státu nebo s Česko.Digital. Akce vyvrcholí slavnostním vyhlášením výherců/kyň [IX. ročníku soutěže Společně otevíráme data](https://osf.cz/programy/ziva-demokracie/nas-stat-nase-data/soutez-spolecne-otevirame-data-2021/) o nejlepší neziskové aplikace postavené nad otevřenými daty.\n"
+    },
+    "startTime": "2021-11-23T08:00:00.000Z",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://osf.cz/programy/ziva-demokracie/nas-stat-nase-data/civic-tech-open-21/",
+    "registrationTitle": "Více informací",
+    "endTime": "2021-11-23T17:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/civic-tech-open.png",
+    "locationTitle": "Auditorium Centra současného umění DOX ",
+    "locationUrl": "https://goo.gl/maps/jXKDrvHotJYsgmTM9"
+  },
+  {
+    "id": "recS1eQ1rZX1EatEy",
+    "name": "WebTop100 2021: Osobnost českého digitálního světa pro rok 2021 - Slavnostní vyhlášení vítězů",
+    "slug": "recS1eQ1rZX1EatEy",
+    "summary": "Eva Pavlíková, CEO Česko.Digital a dalších osm osobností českého digitálního světa je nominováno v letošním ročníku Osobnost českého digitálu.",
+    "description": {
+      "source": "Spojení odborných vystoupení a představení digitálních projektů v jeden den a na jednom pódiu. Celodenní konferencí WebTop100 vygraduje celý letošní ročník.\n"
+    },
+    "startTime": "2021-11-16T08:00:00.000Z",
+    "ownerId": "rec6hQPrLsA7vVjGD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "endTime": "2021-11-16T17:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://www.tuesday.cz/akce/konference-webtop100-2021/"
+  },
+  {
+    "id": "rectGJQJ2VkUkKTXe",
+    "name": "Creative Bureaucracy Festival Prague 2021",
+    "slug": "creative-bureaucracy-festival-prague2021",
+    "summary": "Festival na podporu komunikace soukromého, neziskového a veřejného sektoru.",
+    "description": {
+      "source": "Česko potřebuje kompetentní a sebevědomou veřejnou správu. Propojit a podpořit ty nejlepší z českých úředníků, abychom zvládli výzvy, před kterými naše společnost stojí. Najít nové talenty a zlepšit pověst byrokracie jako prostředí pro tvůrčí a smysluplnou práci ve veřejném zájmu.\n\nProto Kreativní Praha, Magistrát hlavního města Prahy, Institut plánování a rozvoje hl. m. Prahy a Česko.Digital chystá 8. a 9. listopadu 2021 první ročník FESTIVALU KREATIVNÍ BYROKRACIE v Praze. Ve spolupráci s berlínským předobrazem ([creativebureaucracy.org](https://www.culturenet.cz/akce/prvni-rocnik-festivalu-kreativni-byrokracie/creativebureaucracy.org)) se v Praze budou konat dva dny plné konverzací, pracovních setkání a inspirace, které by společně měly přispět k propojení lidí v české veřejné správě. Čeká vás zahraniční inspirace, skrytí i známí hrdinové českých úřadů a experti, kteří se státem či samosprávami pracují. A také večer příkladů špatné praxe, bez které nikdy žádná dobrá praxe nevznikla.\n"
+    },
+    "startTime": "2021-11-08T08:00:00.000Z",
+    "ownerId": "recheJ92XChLaVlsr",
+    "projectId": "recAh6CmL9dLySvjH",
+    "status": "unlisted",
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSckdeUTSqfsRe0OS7Pk3pHOAHegHauAKJ106aZZr1J9DIidaQ/viewform",
+    "registrationTitle": "Registruj se",
+    "endTime": "2021-11-09T15:00:00.000Z",
+    "tagIds": [],
+    "locationTitle": "CAMP - Centrum architektury a městského plánování",
+    "locationUrl": "https://g.page/camppraha?share"
+  },
+  {
+    "id": "recGdYAAuObxsM6MC",
+    "name": "Nenásilná komunikace #2 (Emoce)",
+    "slug": "nenasilna-komunikace-2",
+    "summary": "Pokračování webinářového seriálu se Sandrou Fridrichovou",
+    "description": {
+      "source": "Proč je důležité v komunikaci a zejména v obtížné komunikaci mluvit o emocích?\nJak se o nich mluví? A kdy je jich už moc? A lze je nějak zastavit?\nJaký mají vliv na to, co říkáme a také na to, co slyšíme?\nA kolik emocí znáte? \nJak odpovídáte na otázku, jak se máš? A jaký jiný rozměr může mít tahle otázka?\nNa dalším povídání nasvítíme slovník emocí a pocitů a zaplujeme do jejich tajů.. a věříme, že je i trochu oddemistifikujeme a zkorigujeme. Zejména tu častou frázi, že _\"do práce emoce nepatří\"_.\n"
+    },
+    "startTime": "2021-11-04T15:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recgHexe37XeWVy8N",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrb6lVFkV6Z5Aj4F",
+    "registrationTitle": "Zaregistruj se ",
+    "endTime": "2021-11-04T16:30:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "http://data.cesko.digital/events/nenasilna_komunikace_2-cover.png",
+    "locationTitle": "Google Meet",
+    "locationUrl": "Bude zasláno registrovaným"
+  },
+  {
+    "id": "recfhrYQOpN6VWhCd",
+    "name": "Show & Tell #7",
+    "slug": "show-and-tell-7",
+    "summary": "Další díl pravidelného pořadu, ve kterém se dozvíte, zač je toho dobrovolník",
+    "description": {
+      "source": "## Show & Tell #7 \n**Show&Tell,** pořad, ve kterém dobrovolníci mluví o tom, na čem pracují a jak se jim to daří. Sedmý díl si pusťte už ve čtvrtek 28. října v 18:00. \n\n- Prvním speakerem je **Jana Soukupová**, která bude mluvit o tom,  jak ve spolupráci **Youth, Speak Up! a česko.digital **vznikl **volební rozcestník [Volbypromlade.cz](https://www.volbypromlade.cz/)**, který měl těm nejmladším voličům pomoci rozhodnout se, kterou stranu volit. \n- Naváže **Martin Ladecký**, který poodkryje, jak vzniká **[aplikace Včas](https://www.loono.cz/aplikace)**. Dozvíte se, jakým způsobem **zapojují analýzy, testování **a jak **přistupují k problémům a nachází jejich řešení** na tomto náročném projektu. \n- Na závěr se můžete těšit na pokračování rozhovoru s **Lumírem Kajnarem**, který naváže na **[předchozí díl](https://youtu.be/c-HE42agnq0)** a bude dál povídat **o vzniku vizuální identity česko.digital.**\n\nDoufáme, že jsme vás dostatečně navnadili a těšíme se ve čtvrtek v 18.00.\n\nTým Show&Tell\n\n\n\n"
+    },
+    "startTime": "2021-10-28T16:00:00.000Z",
+    "ownerId": "recvuuD8Q7t5RHY93",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://youtu.be/WrsYndsdNsA",
+    "registrationTitle": "Sleduj na Youtube",
+    "endTime": "2021-10-28T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/show-tell-7-small.jpeg",
+    "locationTitle": "Portál dobrovolníka / YouTube / Facebook",
+    "locationUrl": "https://youtu.be/WrsYndsdNsA"
+  },
+  {
+    "id": "recyBpl51a4vzK6oA",
+    "name": "Prague City Data Congress",
+    "slug": "prague-city-data-congress",
+    "summary": "Congress showcase of studies and drive networking, urban planning and municipal coordination.",
+    "description": {
+      "source": "Prague City Data Congress is organized by the municipal company Operátor ICT, which is responsible for Smart City solutions. The aim of the congress is to showcase studies and drive networking in the fields of data, urban planning, and municipal coordination.\n\nIn the 2021 edition, defined by the times of altered balance and changing perceptions, PCDC will focus on accessible design, data visualizations, and data-based storytelling. Together with leading experts, we will look beyond the numbers and discover the role that city data plays in our new reality!\n"
+    },
+    "startTime": "2021-10-26T07:00:00.000Z",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://praguedatacongress.com/#registration",
+    "registrationTitle": "Registruj se",
+    "endTime": "2021-10-27T16:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/prague-city-data-congress.png",
+    "locationTitle": "CAMP - Centrum architektury a městského plánování",
+    "locationUrl": "https://g.page/camppraha?share"
+  },
+  {
+    "id": "rec5Ct5F5tEa3SADn",
+    "name": "č.edu webinář Strategie vytváření hodnoty",
+    "slug": "strategie-vytvareni-hodnoty",
+    "summary": "Zveme vás na webinář o strategickém přemýšlení nad projekty pro všechny, co chtějí přetvářet nápady v hodnoty a minimalizovat chyby. Rychleji,  lépe a levněji.",
+    "description": {
+      "source": "Proč?\nAbychom používali zdroje co nejlépe k dosažení našich cílů. Neplýtvat!\n\nO čem?\nO logice a disciplíně v proměňování nápadů do projektů, které vedou k vytváření hodnoty.\n\nTématem strategického marketingu nás provede Martin Fejk, marketér a design thinker s 25 lety zkušeností z různých marketingových pozic ve společnostech Levi Strauss a Tetra Pak a dále pak se zkušenostmi s formováním a vedením byznysu a s digitální transformací.\n"
+    },
+    "startTime": "2021-10-25T16:00:00.000Z",
+    "ownerId": "recjnYNK3rcvn5roQ",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shr0ZAeHPWgyFiKyV",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-25T17:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/cedu/strategie-vytvareni-hodnoty.png",
+    "locationTitle": "Google Meet",
+    "locationUrl": "meet.google.com/mqz-bmjt-ahh"
+  },
+  {
+    "id": "rec2gDGD2BIaTRmFn",
+    "name": "Atos Hackaton Brno 2021",
+    "slug": "atos-hackaton-vzs",
+    "summary": "Úžasné výzvy, moderní technologie, IT odborníci, 30 hodin a TY!",
+    "description": {
+      "source": "Těšit se můžete na 5 tracků. Řešení každého z nich může mít pozitivní dopad na širší společnost. Touto aktivitou tedy opět naplňujeme heslo Česko.Digital - chtějme lepší Česko!\nKromě DevOps tracku se můžete těšit na zadání z oblasti AI, IoT, na wellbeingové přednášky a workshopy, atraktivní ceny (3D tiskárny, jízdy v Tesle aj.).\n"
+    },
+    "startTime": "2021-10-23T07:00:00.000Z",
+    "ownerId": "recheJ92XChLaVlsr",
+    "projectId": "recAh6CmL9dLySvjH",
+    "status": "unlisted",
+    "registrationUrl": "https://hackathon.atoscz.net/",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-24T12:29:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/atos-hackaton2021.png",
+    "locationTitle": " Impact Hub, Brno (Cyrilská 7, 60200 Brno)",
+    "locationUrl": "https://goo.gl/maps/bM2qjwdcHCGLz9Lw9"
+  },
+  {
+    "id": "rec4I483o79lYuI0C",
+    "name": "Česko.Digital a NPI: Digitální budoucnost českého vzdělávání",
+    "slug": "ucime-online-npi",
+    "summary": "Učíme online, projekt komunity Česko.Digital, se propojuje s Národním pedagogickým institutem České republiky. Co nás společně čeká v budoucnosti digitálního vzdělávání? ",
+    "description": {
+      "source": "Česko.Digital spojilo síly s [Národním pedagogickým institutem](https://www.npi.cz/) a částečně pod jeho křídla předává projekt Učíme online.\n\nRádi bychom vás pozvali k **přímému přenosu debaty**, kde se pokusíme odpovědět na nejčastější otázky spojené s touto změnou, ale také na to, jaké hlavní výzvy před námi stojí, jaká je obecně **budoucnost digitálního vzdělávání v Česku** a jak k tomu můžeme pomoci našimi aktivitami. \n\nPozvání přijali:\nZa Česko.Digital a projekt Učíme online: \nMartina Habová a Tereza Gagnon \nZa NPI: \nIvo Jupa, ředitel NPI, a Ondřej Neumajer, garant digitálního vzdělávání\nDebatou nás provede Josef Dašek, vedoucí projektu DigiKoalice.\n\nK akci se můžete připojit prostřednictvím [YouTube streamu](https://www.youtube.com/watch?v=yam9yKVdWA0).\n"
+    },
+    "startTime": "2021-10-21T16:00:00.000Z",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "unlisted",
+    "endTime": "2021-10-21T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "locationTitle": "Online - YouTube stream"
+  },
+  {
+    "id": "recY50SY1dLeJ9Hvy",
+    "name": "č.edu webinář Jak psát pro novináře",
+    "slug": "jak-psat-pro-novinare-cedu",
+    "summary": "Teorie psaní pro média, ukázky tiskových zpráv, očekávání médií",
+    "description": {
+      "source": "Zveme Vás na webinář s Lilly Ahou Král, zakladatelkou Ahou PR, a Janem Kulhavým, šéfredaktorem vydavatelství Ambit Media, na téma “Jak psát pro novináře”. Co nás čeká:\n1\\. Krátká teorie (co lze od medií, novinářů, redakcí očekávat)\n2\\. Ukázky tiskových zpráv (dle forem medií), textů, sdělení s diskusí, proč se to tak píše (např. co je v tiskové zprávě perex a proč musí být, atd.), jaké je očekávaní medií, jaký přínos by měl vnímat zadavatel\n3\\. Prostor k diskusi\n"
+    },
+    "startTime": "2021-10-20T15:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shr0iE0hMtPzoH24S",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-20T16:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm",
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/jak-psat-pro-novinare.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "rec9RUTGKLCTiejqe",
+    "name": "Webinář o prevenci #prsakoule od Loono",
+    "slug": "loono-prsa-koule",
+    "summary": "Naučíme vás, jak předcházet a včas odhalit rakovinu prsu, varlat, prostaty a tlustého střeva.",
+    "description": {
+      "source": "Ročně v Česku onemocní rakovinou 87 000 lidí.\nNaučíme vás, jak předcházet a včas odhalit rakovinu prsu, varlat, prostaty a tlustého střeva.\nNezapomeneme ale ani na prevenci rakoviny\nděložního čípku a kůže. Na závěr připomeneme, kam\na kdy zajít na preventivní prohlídku.\n\nŠkolit vás budou mladí doktoři a studenti lékařských univerzit, kteří již během studia chtějí pomáhat a učit veřejnost, že včasná prevence a péče o zdraví skutečně zachrání nejeden život.\nZáštitu nad námi převzala 1. lékařská fakulta UK. Našimi odbornými garanty jsou lékaři z oborů gynekologie, urologie, kardiologie i praktického lékařství.\n\nO Loono\nV Loono učíme veřejnost, jak se starat o své zdraví a ukazujeme ji, jak je prevence důležitá. Jsme tým mladých lékařů, studentů medicíny a dalších profesionálů. Společně pořádáme workshopy a webináře ve školách, firmách či na festivalech. Vzděláváme v oblastech prevence infarktu a mrtvice (#zijessrdcem), onkologických (#prsakoule) a civilizačních onemocnění nebo oblasti reprodukčního zdraví (#doledobry). Nedávno jsme do našeho výběru zařadili také novou kampaň na téma duševního zdraví (#dobrenitro).\n"
+    },
+    "startTime": "2021-10-19T16:00:00.000Z",
+    "ownerId": "recjnYNK3rcvn5roQ",
+    "projectId": "rec4KOruzwIFU8ieR",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shr1JZshcoStHDwYB",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-19T17:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/cedu/prsakoule.png",
+    "locationTitle": "Google Meet",
+    "locationUrl": "\tmeet.google.com/aqs-ying-xaj"
+  },
+  {
+    "id": "recCuIXizCVCrK0U8",
+    "name": "Hack day Česko.Digital",
+    "slug": "hackday-cesko-digital",
+    "summary": "Za oknem podzim, v ruce klávesnice a před vámi budoucnost Česko.Digital! Pojďte si užít společnou sobotu.",
+    "description": {
+      "source": "V Česko.Digital budujeme prostředí, kde se každý z vás může co nejrychleji zapojit do digitalizace a světa technologií – ať už chcete pomoct digitalizovat neziskový projekt, získat nové digitální kompetence, sdílet své digitální know-how nebo cokoliv dalšího.\n\nJako správný startup jsme za dva roky existence vyzkoušeli nepřeberně cest, jak věci nedělat 😁 Přece jen jsme ale přišli i na pár věcí, které naopak dělat chceme – například jsme přišli na to, že k budování takové komunity potřebujeme vlastní digitální nástroje. (Thank you, Captain Obvious!)\n\nPojďte nám pomoct **nastartovat vývoj nové generace digitálních nástrojů, které nám usnadní budování a zapojování komunity Česko.Digital**. Můžete to brát jako skvělou investici do digitalizace Česka – ale nebudeme se zlobit ani na ty, co si prostě na den rádi zaprogramují a zadesignují v dobré společnosti :)\n\nBudou se nám hodit zejména **programátoři v Typescriptu a Reactu**, ale užijeme i samotný Typescript, rádi bychom měli **aspoň jednoho grafika** a pokud prostě chcete být u toho, tak prostě přijďte, i kdybyste naposledi programovali výkazy v Cobolu! Pracovat budeme především na našem Portálu dobrovolníka.\n\nSejdeme se v prostorách **[Siesta Casa](https://siesta.casa/)**, které budeme mít na celý den k dispozici. Káva, čaj, občerstvení i předchystaný backlog se spoustou zajímavých problémů na vás čekají. A možná přijde i pivo! Tak doražte, změníme Česko.Digital k lepšímu.\n\n"
+    },
+    "startTime": "2021-10-16T07:00:00.000Z",
+    "ownerId": "recA5nftMpxJmwpr4",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://forms.gle/GZsvLeU8GexUdc189",
+    "registrationTitle": "Zaregistrovat",
+    "endTime": "2021-10-16T17:00:00.000Z",
+    "tagIds": [
+      "recFVrO5xifN9jog4",
+      "recuBWE1HG9XxWUpB",
+      "recn0MCAz2XOknJzU"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/hackday-cd-cover.jpg",
+    "locationTitle": "Siesta Casa, Praha",
+    "locationUrl": "https://siesta.casa/"
+  },
+  {
+    "id": "recUSKTKIcv3N9DBt",
+    "name": "č.edu webinář Google Analytics #2",
+    "slug": "google-analytics-2-cedu",
+    "summary": "#2 Lehce pokročilé věci v Google Analytics",
+    "description": {
+      "source": "Minule jsme si ukázali základní věci a je na čase trochu přitvrdit. 😄\nZ Google Analytics se dá dostat spousta zajímavých informací, ale nestačí jen vložit měřící kód. Dneska si ukážeme jak pracovat s filtry, trackovat reklamní kampaně a používat události pro měření interakcí návštěvníků s webem. Také si povíme co bude pro měření návštěvnosti znamenat novela zákona o elektronických komunikacích a co nás čeká s Google Analytics 4.\n"
+    },
+    "startTime": "2021-10-13T15:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrlxTK7qU5J8cSnl",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-13T16:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/GA-2.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "rec9D7Ywm6xAGayHZ",
+    "name": "Česko.Digital pivo-víno-limo #3",
+    "slug": "pivo-vino-limo-3",
+    "summary": "Neformální setkání v Praze pro všechny členy komunity",
+    "description": {
+      "source": "**Přidej se na neformální setkání komunity Česko.Digital.**\n\nOsobnímu setkávání se nic nevyrovná. \nChceš se osobně potkat s parťáky a parťačkami ze svého projektu i těch ostatních? Zanetworkovat? Probrat dění v Česko.Digital i mimo něj? \nPak určitě** přijď v úterý 12. října po 18. hodině **na třetí po-covidové Česko.Digital pivo-víno-limo setkání. \n\nPro bližší detaily nejen k přesně lokalitě si napiš o pozvánku do kalendáře a sleduj náš Slack kanál #meetup.\n"
+    },
+    "startTime": "2021-10-12T16:30:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/CSXGU7F0F/p1631780625341800",
+    "registrationTitle": "Napiš si o pozvánku",
+    "endTime": "2021-10-12T20:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/pivo-vino-limo-3.png",
+    "locationTitle": "Praha / Karlín"
+  },
+  {
+    "id": "recLC2hSZK0EBIIBp",
+    "name": "Konference FUTURE SUMMIT",
+    "slug": "future-summit",
+    "summary": "Připojte se k druhému ročníku online konference FUTURE SUMMIT. a objevte potenciál digitálního prodeje.",
+    "description": {
+      "source": "Jak se bude vyvíjet digitální byznys v následujících letech? Které nástroje vám umožní oslovit nové zákazníky, opakovaně zaujmout ty stávající a přesvědčit je, aby se k vám rádi a často vraceli? Jak se posunout od tabulek v Excelu a obvolávání potenciálních klientů k automatizovanému sales a marketingovému procesu?\n\n[Merkle](https://merkleinc.cz/cs) a [FUTURE SALES](https://futuresales.cz/) organizují druhý ročník úspěšné konference FUTURE SUMMIT. Úspěch témat na první konferenci v dubnu 2021 a množství účastníků z nejrůznějších odvětví pro nás byly mimořádnou inspirací pro druhé kolo.\n"
+    },
+    "startTime": "2021-10-07T07:00:00.000Z",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "projectId": "recgHexe37XeWVy8N",
+    "status": "unlisted",
+    "registrationUrl": "https://futuresales.typeform.com/to/RAQgJAis?typeform-source=futuresummit.cz",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-07T16:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/future-summit.png",
+    "locationTitle": "Virtuální prostor ",
+    "locationUrl": "Odkaz na připojení obdržíte po registraci "
+  },
+  {
+    "id": "recHDOkZ7peOaAYgJ",
+    "name": "č.edu webinář Google Analytics #1",
+    "slug": "google-analytics-1-cedu",
+    "summary": "#1 Základy Google Analytics",
+    "description": {
+      "source": "Pokud s Google Analytics zatím nemáte zkušenosti, nebo se do nich jen občas kouknete a nevíte co která hodnota znamená, odnesete si z workshopu nejvíce. Při našem prvním setkání vám přiblížím terminologii, na kterou v Google Analytics narazíte na každém rohu. Provedu vás rozhraním Google Analytics a ukážu reporty, které má smysl sledovat. Zastavíme se u toho, jak dostat měřící kód na web a co je potřeba nastavit, abyste z měření dostali maximum. Vše, co budu ukazovat, si můžete rovnou zkoušet na svých Google Analytics. 💪\n"
+    },
+    "startTime": "2021-10-05T16:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrSJazKDTIkurpNV",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-10-05T17:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/GA-1.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "rec4mOzfgdjNRJpfy",
+    "name": "IxDD Brno 2021: Solidarity & Transformation",
+    "slug": "world-interaction-design-day-2021",
+    "summary": "World Interaction Design Day is an annual event where we come together as a united global community to show how interaction design improves the human condition.",
+    "description": {
+      "source": "This year we’ll look into topics: TRANSFORMATION AND SOLIDARITY - which are in the context of the global IXDD closely linked to the pandemic situation.\nWe’ll focus mainly on the concept of: Design in the Background - the areas most affected by covid events - such as education, healthcare, and travel. These have undergone the greatest transformations, but people still know little about all the changes, that happened, challenges overcome, the initiatives and projects created and what they are trying to achieve.\n\nFollowing these topics, you’ll be able to meet and chat with a group of inspiring people from mentioned above areas and take a lot of valuable insights and ideas away with you.\nAlso, you’re welcome to enjoy drinks and food with us during the program :)\n\nIMPORTANT UPDATE:\nThis time we’ll meet in-person for an offline event 🤩\n——————\nAgenda:\n17:00. Doors open\n18:00 Official IXDD introduction + short intro from our venue host\n18:15 - 18:45 Anežka Muller - \"Učíme online\", Česko Digital\nCoffee&Cupcake break\n18:55 - 19:25 Blanka&Otakar - \"VČAS app project and prevention\", Loono\nCoffee&Cupcake break\n19.35 - 20:05 Jana Hřebecká - Start Again, Pábení\n20:05 - 20:35 Adam Vodička, Anybody - Hotel that doesn't exist\n20:05 - free networking time + edu-point with practical prevention displays from Loono experts\n\n+ we can move to the bar together afterwards 🍹\n\n⭐ all talks are English only\n"
+    },
+    "startTime": "2021-10-05T16:00:00.000Z",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "unlisted",
+    "registrationUrl": "https://www.meetup.com/asociace-ux/events/280942000/",
+    "registrationTitle": "Registruj se",
+    "endTime": "2021-10-05T19:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/IxDD.png",
+    "locationTitle": "KUMST  Údolní 495/19 · Brno-střed",
+    "locationUrl": "https://goo.gl/maps/GprD7iqjkhzrY9mU8"
+  },
+  {
+    "id": "recuFv8anuGSy7p0t",
+    "name": "Hackday Jehlomat",
+    "slug": "hackday-jehlomat",
+    "summary": "Dostaňme jehly z ulic pryč! Hledáme React a Java/Kotlin vývojáře na jednodenní akci v Brně (SAP Labs) 2. října 2021.",
+    "description": {
+      "source": "## Hackday Jehlomat Brno\n\nNebezpečné injekční stříkačky ve veřejném prostoru jsou problém, který v ČR řeší hned několik specializovaných organizací. Jednou z nich je Magdalena, která oslovila komunitu s nápadem na aplikaci Jehlomat.\n\nPřijď** v sobotu 2. října **do SAP Labs a přidej se do jednoho ze tří týmů, které budou **dle hotového designu a zpracovaných user stories zpracovávat MVP**. Dostaneš zpětnou vazbu od zkušených tech-leadů i CTO a poznáš další dobrovolníky Česko.Digital.\n\nJak poznáš, že je akce pro tebe?\n**React** - umíš vytvořit komponentu, poslat do ní props. Znáš redux a ovládáš základní stylování komponent.\n**Kotlin** - máš zkušenosti s Javou nebo Kotlinem. Postavil/a jsi backendové REST API a nejsou ti cizí pojmy jako JWT, PostgreSQL, ORM.\n\nPočet míst je omezen.\n\n**Program:**\n9:00-9:30 Snídaně & seznamování\n9:30-10:00 Úvod: představení projektu, wireframes a agendy\n10:00-10:15 Rozdělení do týmu\n10:15-12:30 Práce \n12:30-13:30 Oběd & pokec\n13:30-17:00 Práce \n17:00-17:30 Prezentace\n17:30-18:00 Uzavření Hackatonu a další kroky (tj. jak se zapojit) \n18:00-19:30 Pivo & pokec\n"
+    },
+    "startTime": "2021-10-02T07:00:00.000Z",
+    "ownerId": "rec5g2kjJCODPpUOI",
+    "projectId": "recyAlQx0HFH0kW6h",
+    "status": "unlisted",
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeQlvMdr4qroanLFvKEq27gqqVkoFsOBCNLEIOoKeQuanCyLQ/viewform",
+    "registrationTitle": "Přihlaš se",
+    "endTime": "2021-10-02T17:00:00.000Z",
+    "tagIds": [
+      "recuBWE1HG9XxWUpB",
+      "rec12ME0WwCmDkr1v",
+      "recamEbW4GGqqRmNG"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/web/projects/jehlomat/cover-jehlomat.jpg",
+    "locationTitle": "SAP Labs, Brno",
+    "locationUrl": "https://g.page/SAPLabsCZ?share"
+  },
+  {
+    "id": "reclHXp0utLYkAgKG",
+    "name": "Show & Tell #6",
+    "slug": "show-and-tell-6",
+    "summary": "Další díl pravidelného pořadu, ve kterém se dozvíte, zač je toho dobrovolník",
+    "description": {
+      "source": "## Show & Tell #6 \nVe čtvrtek 30. 9. v 18:00 v rámci aktivit Česko.Digital vysíláme další díl Show & Tell. Již šestý díl pravidelného pořadu, ve kterém se Vám představují naši dobrovolníci a projekty, na kterých aktuálně pracují.\n\n**Těšit se můžete opět na tři sdílení o fungování různých projektů v rámci Č.D:**\n- Martin Mička sdílí jaká je jeho práce na webu Česko.Digital a poodhaluje proces nasazení nových funkcí tak, aby byl web top po všech stránkách.\n- Juraj Kisztner z projektu Jehlomat promluví na téma přípravné práce k aplikaci, co má umět, na jaké problémy po cestě narazili.\n- O vizuální identitě Česko.Digital nám poví Lumír Kajnar, konkrétně to jak vznikala v Česko.Digital nebo jaká jsou její pravidla.\n\n\n"
+    },
+    "startTime": "2021-09-30T16:00:00.000Z",
+    "ownerId": "recvuuD8Q7t5RHY93",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://youtu.be/c-HE42agnq0",
+    "registrationTitle": "Sleduj na Youtube",
+    "endTime": "2021-09-30T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/show-tell-6.jpg",
+    "locationTitle": "Portál dobrovolníka / YouTube / Facebook",
+    "locationUrl": "https://youtu.be/c-HE42agnq0"
+  },
+  {
+    "id": "rec3ecrKLv6GWNMiY",
+    "name": "č.edu webinář Nenásilná komunikace #1 (Pozorování & blokátory komunikace) se Sandrou Fridrichovou",
+    "slug": "nenasilna-komunikace-cedu",
+    "summary": "Pokračování webináře na téma zpětné vazby, tentokrát se podíváme na techniku nenásilné komunikace",
+    "description": {
+      "source": "Stává se vám někdy v konverzaci, že vám někdo začne vyprávět příběh nebo se vyjadřuje k tématu a vám se odpojují uši a přestáváte poslouchat? Nebo cítíte podivný tlak, který narůstá ve vašem těla a z konverzace utíkáte? Nebo začnete protiargumentovat?\nKomunikace je něco, co všichni umíme a známe. To, co nevíme je, že malé drobné formulace způsobují v druhém reakci, která otevřenému dialogu zabraňuje. V Česko.Digital bychom vám rádi ukázali způsob komunikace, který vám umožní vyjádřit vše, co potřebujete. Tenhle způsob přemýšlení a dialogu vám pomůže zachovat nejen vztah s druhým, ale prohloubit ho. Vycházíme z konceptu nenásilné komunikace.\nV tomto webináři se budeme věnovat tomu, jak zahájit obtížný rozhovor. Řekneme si, jaká slova nebo formulace odpojují druhé lidi z konverzací a prozkoumáme svoje vlastní vzorce, které používáme a  podíváme se na to, jak je proměnit.\n"
+    },
+    "startTime": "2021-09-30T15:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrOeQWeDAWrKA0H9",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-09-30T16:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/nenasilna-komunikace-1.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "recoT7qdfQ0K8FKtL",
+    "name": "č.edu webinář Organizační porno",
+    "slug": "organizacni-porno-cedu",
+    "summary": "Aneb to jediné porno na světě, které vám vaše okolí schválí!",
+    "description": {
+      "source": "List s “to-do” se vám kupí a nevíte co dřív? Rádi byste dělali mnohem více věcí, ale nevíte, jak si to uspořádat tak, abyste všechno stíhali? Nebo máte na starost projekt, ve kterém je to více chaos než přehledné zadání? Tak se přijďte dozvědět něco o tom, jak si věci dát do kupy a jak stíhat více věcí, být produktivnější a organizovanější.\n\nCo se na workshopu naučíte?\n- Jak si nejefektivněji zorganizovat čas a priority a mít klid na soustředění se na to podstatné.\n- Jak řídit sebe i druhé.\n- Jak vybrat nástroje, které vám usnadní každý pracovní den.\n- Jak být produktivnější a šťastnější.\n\n\n"
+    },
+    "startTime": "2021-09-22T15:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrIYPhZN1POgiClz",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-09-22T16:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/organizacni-porno-coverphoto.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "recbCTfEb1mzhvb5T",
+    "name": "FutureEdu",
+    "slug": "future-edu",
+    "summary": "Budoucnost vzdělávání v digitální době",
+    "description": {
+      "source": "_Zkušenosti uplynulého roku pomohly znovu a z jiné perspektivy nasvítit některá dlouhodobá témata a výzvy českého vzdělávacího systému. _\nMají všichni studenti přístup ke kvalitnímu vzdělávání? Připravují naše školy lidi na život v digitální době, s jejími výhodami i riziky? Mají pedagogové i studenti možnost a potřebu se vzdělávat celoživotně? Jak má vypadat škola a výuka v době úplné dostupnosti informací?\nOdborná konference FutureEdu si klade za cíl přispět k definici vize českého vzdělávacího systému. Jejím obsahem bude sdílení lokální dobré praxe příkladů řešení definovaných výzev, diskuse mezi klíčovými institucionálními a státními stakeholdery a diskutovat světové trendy ve vzdělávání. \nHlavní řečníci:\n- **Salman Khan** (founder Khan Academy)\n- **Robert Plaga** (ministr školství ČR)\n- **Andreas Schleicher **(OECD)\n"
+    },
+    "startTime": "2021-09-15T07:00:00.000Z",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "unlisted",
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdRc9IAk_kL-X-8Gnz-BGSY1TdXBAk8Wa7nikrObsMyYdLZqw/viewform",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-09-15T15:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "locationTitle": "Opero",
+    "locationUrl": "https://opero.cz/cs/akce/futureedu"
+  },
+  {
+    "id": "rec9w2dEuhOORf73v",
+    "name": "Kruh sdílení (online)",
+    "slug": "kruh-sdileni-2",
+    "summary": "Sdílení zkušeností a hledání inspirace",
+    "description": {
+      "source": "Vytvořili jsme v komunitě bezpečný prostor - [poradní kruh](https://cs.wikipedia.org/wiki/Poradn%C3%AD_kruh) - pro sdílení a diskuzi nad společnými (a často hlubšími) tématy. \n\nTéma a otázky našeho prvního setkání: _Proč dobrovolničím? Co je tím smyslem, který v tom vidím já? Jakou potřebu si tím sytím? Je dostatečně sycena nebo ne? Co při dobrovolničení zažívám?_\n\nSetkáním nás provede [Lenka Papadakisová](https://www.linkedin.com/in/lenkapapadakisova/?originalSubdomain=cz). Tentokrát se potkáme online na Google Meet a kapacita je omezena na 10 lidí.\n"
+    },
+    "startTime": "2021-09-02T14:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "registrationTitle": "Napiš si o pozvánku",
+    "endTime": "2021-09-02T16:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/96f4a1a7.png",
+    "locationTitle": "Online / Google Meet",
+    "locationUrl": "meet.google.com/bow-mjuy-rfp"
+  },
+  {
+    "id": "recElQKl7BvXRFhe0",
+    "name": "č.edu webinář Zpětná vazba a jak na ni",
+    "slug": "zpetna-vazba-cedu",
+    "summary": "Webinář na téma zpětné vazby - jak na tu pozitivní i negativní co nejlépe? ",
+    "description": {
+      "source": "V Česko.Digital se dlouhodobě věnujeme tématu zlepšování komunikace. Tentokrát míříme do základů. Na téma, které je snad 100x ohrané. Jak říct někomu, že nejste spokojeni? Že se vám s ním spolupracuje těžce? Umíte to? Většina z nás ví, co nefunguje...sendvič! Ale co funguje? Jak být upřímný a zároveň toho druhého neztratit? Jak zpětnou vazbou docílit lepší spolupráce? Pojďte si posvítit na tipy a triky **zpětné vazby. ** \n\n**🪄 Odnesete si tipy, jak:**\n- změnit slovník a z **pochvaly udělat nástroj pro motivaci a rozvoj**\n- se **připravit na obtížný rozhovor**, když chcete říct to, co druhý/a neuslyší rád/a\n- **být upřímný** a zároveň **zachovat** motivaci a **vztah** s kolegou nebo partnerem\n- se **připravit na reakci**, která nutně přijde po kritice\n\n"
+    },
+    "startTime": "2021-08-30T14:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrD8UUwwL3ZIJ71p",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-08-30T15:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/8b268175.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "recrztIzo0Qxo7cfq",
+    "name": "Česko.Digital jede na výlet",
+    "slug": "vylet-cesko-digital",
+    "summary": "Výlet komunity Česko.Digital 28.8.",
+    "description": {
+      "source": "Přidejte se k nám na společný výlet. Vyrážíme v sobotu 28.8. za Prahu - do okolí lomu Velká Amerika.\nMůže se přidat úplně kdokoliv a vzít s sebou partnery, děti, psi a všechny naše další příznivce. \nVíce informací hledej [zde](https://www.google.com/url?q=https://docs.google.com/document/d/1zwuXQDQmRG7dAIzvBI4XxI9beC1Oo3vQpFLD4TkLBWo/edit?usp%3Dsharing&sa=D&source=calendar&ust=1630230925964881&usg=AOvVaw0Y0xcsqCfWwTP6t1KgeyZ9), v kanálu #meetup nebo u Lucie Zajíčkové.\n"
+    },
+    "startTime": "2021-08-28T08:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "registrationTitle": "Napiš si o pozvánku a detaily",
+    "endTime": "2021-08-28T15:30:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/8dec0b43.jpg",
+    "locationTitle": "Praha a okolí"
+  },
+  {
+    "id": "recJ2ktMRwq87qqF1",
+    "name": "Komunitní sraz Česko.Digital v Brně",
+    "slug": "komunitni-sraz-brno",
+    "summary": "Neformální setkání v Brně pro všechny členy komunity",
+    "description": {
+      "source": "**Přidej se na další neformální setkání komunity Česko.Digital.**\n\nPotkáváme se pravidelně online, známe se ze Slacku, ale stejně je prima vidět se jednou za čas naživo. \nProto pořádáme další **setkání komunity v Brně**, pro ty, co to mají do Brna blíž než do Prahy, i pro ty, co si za námi chtějí udělat výlet. \n\nPojď se potkat s lidmi z ostatních projektů, probrat dění v Česko.Digital i mimo něj a užít si konec prázdnin spolu s dalšími lidmi z komunity.\nRezervuj si v kalendáři **pátek 27. srpna odpoledne**, potkáme se **od 16h v Park Lane Cafe **(Lužánecká 1885/4a). \n\nTěšíme se na tebe!\n"
+    },
+    "startTime": "2021-08-27T14:00:00.000Z",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/CG07ST9ME/p1626946422097000",
+    "registrationTitle": "Napiš si o pozvánku",
+    "endTime": "2021-08-27T19:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/6e0b348c.png",
+    "locationTitle": "Park Lane Cafe",
+    "locationUrl": "http://www.parklanecafe.cz/"
+  },
+  {
+    "id": "recvEHPFZzDPZXp18",
+    "name": "Kruh sdílení #1 (offline v Praze)",
+    "slug": "kruh-sdileni-1",
+    "summary": "Sdílení zkušeností a hledání inspirace",
+    "description": {
+      "source": "Vytvořili jsme v komunitě bezpečný prostor - [poradní kruh](https://cs.wikipedia.org/wiki/Poradn%C3%AD_kruh) - pro sdílení a diskuzi nad společnými (a často hlubšími) tématy. \n\n**Téma a otázky našeho prvního setkání: **_Proč dobrovolničím? Co je tím smyslem, který v tom vidím já? Jakou potřebu si tím sytím? Je dostatečně sycena nebo ne? Co při dobrovolničení zažívám?_\n\nSetkáním nás provede [Lenka Papadakisová](https://www.linkedin.com/in/lenkapapadakisova/?originalSubdomain=cz). Tentokrát se potkáme osobně v Operu a kapacita je omezena na 10 lidí.\n"
+    },
+    "startTime": "2021-08-27T08:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "registrationTitle": "Napiš si o pozvánku",
+    "endTime": "2021-08-27T10:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/253de0ba.png",
+    "locationTitle": "Opero, Praha 1",
+    "locationUrl": "https://goo.gl/maps/dyw3GnWvQCedAkP47"
+  },
+  {
+    "id": "recBLP2I1WYRcgi7X",
+    "name": "Show & Tell #5",
+    "slug": "show-and-tell-5",
+    "summary": "Další díl pravidelného pořadu, ve kterém se dozvíte, zač je toho dobrovolník",
+    "description": {
+      "source": "## Show & Tell #5 \n\nVe čtvrtek 26/8 v 18:00 v rámci aktivit Česko.Digital vysíláme další díl pravidelného pořadu Show & Tell, ve kterém se Vám představují naši dobrovolníci a projekty, na kterých aktuálně pracují. Opět Vás čeká smršť zajímavých lidí, problémů a řešení, tak to nezmeškejte! \n\n### A co náš čeká tentokrát?\n- Marek Mencl z Pábení nám přiblíží zákulisí přípravy strategického workshopu pro leadership Česko.Digital\n- V českém školství chybí několik tisíc učitelů. To se snaží napravit projekt Začni učit! a Ondřej Sliš nám poví jak dostávat lidi z praxe za katedru a jak motivovat stávající pedagogy.\n- Lucka Zajíčková z Č.D bude povídat o své pozici Chief of People & Community a přiblíží nám co obnáší tato role pečovatelky, jak se třeba hledají nové posily do projektů nebo jak měří spokojenost celé komunity.\n\n"
+    },
+    "startTime": "2021-08-26T16:00:00.000Z",
+    "ownerId": "recvuuD8Q7t5RHY93",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://youtu.be/KanMK3QaQXw",
+    "registrationTitle": "Sleduj na Youtube",
+    "endTime": "2021-08-26T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/show-and-tell-5a.png",
+    "locationTitle": "Portál dobrovolníka / YouTube / Facebook"
+  },
+  {
+    "id": "recrQQ03SXa3YZQl0",
+    "name": "č.edu webinář Energy management aneb pracuj vědomě se svou ženskou cykličností",
+    "slug": "energy-management-cedu",
+    "summary": "Webinář na téma ženské cykličnosti v kontextu práce a businessu s Martinou Habovou",
+    "description": {
+      "source": "Na webináři se budeme věnovat následujícím tématům:\n\\- Proč bych měla pracovat vědomě se svou ženskou cykličností?\n\\- Za všechno můžou hormony - proč je dobré o svých hormonech vědět více než jen to, že je mám?\n\\- Čtyři fáze ženského cyklu\n\\- Poznejme své přirozené silné stránky podle jednotlivých fází našeho cyklu \n\\- Jak se svou cykličností vědomě pracovat a jak ji využívat v náš prospěch?\n\nTéma je ženské, nicméně na webináři je vítán je zcela kdokoliv. :) \n"
+    },
+    "startTime": "2021-08-19T15:30:00.000Z",
+    "ownerId": "recjnYNK3rcvn5roQ",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrxJA0AivWniH08y",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-08-19T16:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/08a50948.png",
+    "locationTitle": "Online / Google Meet"
+  },
+  {
+    "id": "rec0EAaYDZB2XdX8w",
+    "name": "All Hands",
+    "slug": "all-hands",
+    "summary": "Pravidelné úterní setkávání celé komunity, diskuze nad aktuálním děním v organizaci",
+    "description": {
+      "source": "Zveme Tě na pravidelné setkání celého Česko.Digital! \n\n## 🎯 Cíle setkání:\n1. Co se u nás v komunitě a na projektech děje\n2. Co chystáme v rámci komunity a potřebujeme na to feedback\n3. Kafe & pokec, jak jde život\n4. Zeptej se na cokoliv, co Tě o Česko.Digital zajímá\n\nPotkávat se i jinde než na Slacku je k nezaplacení. 🙏\n\nZápis z předchozího setkání najdeš [zde](https://cesko-digital.atlassian.net/l/c/hwLhRCht) a [tady](https://cesko-digital.atlassian.net/l/c/utWEH8dJ) zase agendu na All Hands nadcházející. \n"
+    },
+    "startTime": "2021-08-10T14:30:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://meet.google.com/tto-hvzj-jwv",
+    "registrationTitle": "Připoj se na Google Meet",
+    "endTime": "2021-08-10T15:30:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "locationTitle": "Online / Google Meet",
+    "locationUrl": "https://meet.google.com/tto-hvzj-jwv"
+  },
+  {
+    "id": "recqkGGCcW6KtDCia",
+    "name": "Show & Tell #4",
+    "slug": "show-and-tell-4",
+    "summary": "Další díl pravidelného pořadu, ve kterém se dozvíte, zač je toho dobrovolník",
+    "description": {
+      "source": "## Show & Tell #4\n"
+    },
+    "startTime": "2021-07-29T16:00:00.000Z",
+    "ownerId": "recvuuD8Q7t5RHY93",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "endTime": "2021-07-29T17:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "http://data.cesko.digital/img/showtell4-3.png",
+    "locationTitle": "Portál dobrovolníka / YouTube"
+  },
+  {
+    "id": "receCVD1xXAsf8YaA",
+    "name": "č.edu webinář Jak na duševní hygienu a wellbeing",
+    "slug": "wellbeing-cedu",
+    "summary": "Webinář na téma duševní hygieny a pohody pro naši komunitu",
+    "description": {
+      "source": "Webinář na téma „Well-being & duševní hygiena“, které se stává v naší společnosti čím dál tím důležitější. Společně s naší dobrovolnicí Petrou Fritsch si odpovíme na následující otázky:\n- _Jak souvisí psychohygiena s dobrovolničením? _\n- _Jak dobrovolničení ovlivňuje duševní zdraví? _\n- _Jaká jsou specifika dobrovolničení v Česko.Digital oproti běžně ustálené představě dobrovolničení? _\n- _Jak si nastavovat hranice (aneb i když bych rád/a, nemůžu zvládnout všechno)? V_\n- _arovné signály duševní nepohody: Kdy je třeba zpozornět? _\n- _Co nám funguje v péči o naše duševní zdraví? _\n\n**Více informací najdeš [zde](https://cesko-digital.atlassian.net/l/c/kK1dCcRU).**\n"
+    },
+    "startTime": "2021-07-27T16:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrb0kHdnihLvr9eA",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2021-07-27T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/cedu_wellbeing.png",
+    "locationTitle": "Online / Google Meet",
+    "locationUrl": "https://meet.google.com/vng-wgmr-hsv"
+  },
+  {
+    "id": "recEFloHqySPBVFfn",
+    "name": "Ptejte se CTO",
+    "slug": "ptejte-se-cto",
+    "summary": "Náš CTO + vaše dotazy = ❤️",
+    "description": {
+      "source": "Zajímá vás, jaké technologie v Česko.Digital používáme? Jak pracujeme například s GitHubem, Vercelem, AWS nebo Terraformem? Jak funguje vývoj v prostředí dobrovolnické organizace? Zajímá vás, kde byste se mohli zapojit?\n\nPřipojte se kdykoliv v sobotu 24. července do našeho kanálu [#ceskodigital-tech](https://cesko-digital.slack.com/archives/CS7RPPVUL), zapněte živý audiochat Huddle a zeptejte se našeho CTO Martina Wenische!\n"
+    },
+    "startTime": "2021-07-24T08:00:00.000Z",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
+    "registrationTitle": "Otevřít Slack",
+    "endTime": "2021-07-24T16:00:00.000Z",
+    "tagIds": [],
+    "locationTitle": "Online / Slack",
+    "locationUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL"
+  },
+  {
+    "id": "recOr6Gwpq4a9tk3s",
+    "name": "Česko.Digital pivo-víno-limo #2",
+    "slug": "pivo-vino-limo",
+    "summary": "Neformální setkání v Praze pro všechny členy komunity",
+    "description": {
+      "source": "**Přidej se na neformální setkání komunity Česko.Digital.**\n\nOsobnímu setkávání se nic nevyrovná. \nChceš se osobně potkat s parťáky a parťačkami ze svého projektu i těch ostatních? Zanetworkovat? Probrat dění v Česko.Digital i mimo něj? \nPak určitě** přijď v úterý 20. července po 18. hodině na Vyšehrad **na druhé po-covidové Česko.Digital pivo-víno-limo setkání. \n\nPro bližší detaily nejen k přesně lokalitě sleduj náš Slack a kanál #general.\n"
+    },
+    "startTime": "2021-07-20T16:00:00.000Z",
+    "ownerId": "recHnc5hx8wh29zqU",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/CSXGU7F0F/p1626093317093200",
+    "registrationTitle": "Napiš si o pozvánku",
+    "endTime": "2021-07-20T20:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/8dec0b43.jpg",
+    "locationTitle": "Praha / Vyšehrad",
+    "locationUrl": "https://mapy.cz/s/dahuhocuja"
+  },
+  {
+    "id": "recQb8ljuKr4dm3yc",
+    "name": "Flutter Hackday",
+    "slug": "hackday-loono-flutter",
+    "summary": "Červencový Hackday na podporu vývoje mobilní aplikace Průvodce prevencí pro Loono",
+    "description": {
+      "source": "## **Zajímá tě vývoj ve Flutter?**\nChceš se o něm dozvědět více a **vyzkoušet si vývoj v praxi** pod mentorským vedením **seniorních Flutter vývojářů**? \nJsi (frontend) vývojář, který Flutter už umí nebo se ho chceš naučit?\nRád by ses chopil šance **vytvořit aplikaci Průvodce prevencí neziskové organizace Loono, **která představuje** účinný a nákladově efektivní pro zlepšování zdraví populace**?\nPokud tě tato zkušenost zaujala, čti dále – právě pro tebe je tato příležitost jak vyšitá!\n## **Jak to celé proběhne?**\nPotkáme se v** 9:00 v prostorách HubHub v paláci Ara,** kde začneme společnou kávou, seznámením se a představením agendy dne.\n\nNa úvod nám Blanka Sigmundová (ředitelka Loono) představí záměr a aktuality na projektu a Martin Wenisch (CTO Česko.Digital) sdělí to nejdůležitější **o vývoji ve Flutter a o tom, co nás ten den konkrétně čeká**.\nPráce bude probíhat ve **3-4 týmech se seniorním Flutter vývojářem, **mentorem týmu. Jednotlivé týmy si rozeberou připravené úkoly v Jiře a pustí se do práce.\nV poledne je v plánu společný oběd přímo v HubHub (pizza, bagety…). \n\nCelodenní nasazení týmů zakončíme** prezentací výsledků, přínosů celého dne** a představením následujících kroků s **možností dalšího zapojení **v projektu Průvodce prevencí v rámci komunity Česko.Digital.\nPracovně strávený čas završíme pivem a neformálním networkingem. Konec akce je plánovaný na 19.00 hod.\n\n## Kdo bude tvým mentorem?\n- [Dominik Šimoník](https://www.linkedin.com/in/dominik-simonik/)\n- [Martin Wenisch](https://www.linkedin.com/in/mwenisch/)\n- [Martin Georgiu](https://www.linkedin.com/in/martin-georgiu-43a78b166/)\n\n## Co je aplikace Průvodce prevencí?\nTato vyvíjená aplikace od neziskové organizace Loono má přispět k vzdělané veřejnosti, která ví, kam a proč má chodit na preventivní prohlídky. Současně má za cíl být aktivizačním nástrojem - tedy aktivně lidem připomínat prevenci a motivovat je k jejímu plnění. Samozřejmostí je relevantní a ověřený obsah o zdraví a prevenci.\n\nVíce se o aplikaci dovíš [zde](https://www.loono.cz/aplikace).\n\nLoono už 7 let učí veřejnost, jak předcházet závažným onemocněním. Nová aplikace pomůže Čechům vést delší a kvalitnější život, naučí je chodit na preventivní prohlídky a převzít odpovědnost za své zdraví.\n\nDěkujeme partnerovi [HUBHUB](https://www.hubhub.com/en/space/#palacara) za poskytnutí prostoru a příležitost vytvořit skvělé věci. \n"
+    },
+    "startTime": "2021-07-17T07:00:00.000Z",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "projectId": "rec4KOruzwIFU8ieR",
+    "status": "unlisted",
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfYeB7RAhNbXxTg_g6OiO2ZjMW71dJvdZn8382LWWx5VBWpUQ/viewform",
+    "registrationTitle": "Zaregistrovat se",
+    "endTime": "2021-07-17T17:00:00.000Z",
+    "tagIds": [
+      "recGK7KiBRVeFCK1v"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/14d7cfb6.png",
+    "locationTitle": "HUBHUB v Paláci Ara",
+    "locationUrl": "https://g.page/hubhubpalacara?share"
+  },
+  {
+    "id": "reczMtzaPCM5amfva",
+    "name": "Tech Talk #1: Infrastruktura",
+    "slug": "tech-talk-1",
+    "summary": "Naši CTO vám představí, jak v Česko.Digital pracujeme s DevOps technologiemi. GitHubem, AWS, Terraformem, Vercelem, …",
+    "description": {
+      "source": "# DevOps v Česko.Digital\nNa našem Slacku v channelu [#ceskodigital-tech](https://cesko-digital.slack.com/archives/CS7RPPVUL) můžete ve čtvrtek odpoledne diskutovat s našimi CTO o vývojářských technologiích, které pohánějí projekty Česko.Digital.\n\n- Probereme naší práci s GitHubem, co jsme se za dva roky fungování naučili, co funguje a co nám naopak nefungovalo.\n- Jak rešíme infrastrukturu a proč je výhodné používat IaC (Infrastructure as Code) principy a verzovat Terraform konfigurace v GitHubu.\n- Co je potřeba splnit, aby byl projekt lehce předatelný. Abychom měli jistotu, že žádná důležitá součást skládanky nestojí pouze na know-how jednoho dobrovolníka.\n- Jak uvažovat v rámci neziskového sektoru o ceně deploymentu, kde dělat kompromisy a které kompromisy za to naopak vůbec nestojí.\n\n## Místo a čas\nPrvní Tech talk proběhne na novém voice chatu Huddle přímo ve Slacku v kanálu #ceskodigital-tech. Budeme tam online **tento čtvrtek 15. 7. od 15.00** celý zbytek odpoledne.\n\nBěhem té doby se můžete kdykoli připojit a zeptat se na cokoli k tématu.\n"
+    },
+    "startTime": "2021-07-15T13:00:00.000Z",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
+    "registrationTitle": "Připoj se na Slacku",
+    "endTime": "2021-07-15T16:00:00.000Z",
+    "tagIds": [
+      "reccov4yRiTvzsrym",
+      "recYWOIEZAiPX1Fg0",
+      "recn0MCAz2XOknJzU"
+    ],
+    "locationTitle": "Online / Slack",
+    "locationUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL"
+  },
+  {
+    "id": "recnRUVBbgsCW2VR5",
+    "name": "V Česko.Digital nás spojují 1 a 0 a slavíme spolu 2 roky",
+    "slug": "narozeniny",
+    "summary": "Už 2 roky mění Česko.Digital život v Česku k lepšímu! A to je třeba oslavit, protože bez tebe a dalších expertních dobrovolníků bychom tu nebyli. Pojďme slavit společně, inspirovat se a taky se pobavit.",
+    "description": {
+      "source": "## Přidej se na týden komunitních oslav 12.–17. 7. 2021\n\n### Rozhovor s leadership týmem Česko.Digital: 12. 7. 18.30\nSlavíme 2 roky a oslavy zahajujeme živým setkáním komunity. Přijď se potkat a slavnostně si s námi připít do krásných prostor [Opero](https://opero.cz/cs/kontakt) v Salvatorské ulici v Praze 1 a poslechnout si panelovou diskuzi se členy leadership teamu, kteří budou nejen bilancovat nad uplynulými 2 lety, ale i nastíní vize a plány do následujících měsíců. \n\n<div style=\"padding-top:56.25%; position: relative\"><iframe src=\"https://www.youtube.com/embed/F28a72dX1RQ\" title=\"Slavíme 2 roky\" frameBorder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowFullScreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"></iframe></div>\n\n\n**KDY:** **Pondělí, 12. 7. 2021 v 18.30**\n**KDE:** živě v [Opero](https://opero.cz/cs/kontakt), Salvátorská 931/8, Praha 1 nebo online\n**DETAILY: **detaily o akci a odkazy k přihlášení najdeš _[zde](https://cesko-digital.atlassian.net/l/c/V3sDLK3S)_\n\nZa poskytnutí prostor děkujeme našemu partnerovi a celému týmu [Opero](https://opero.cz/cs/kontakt).\n\n\n### Brněnský meetup\nNarozeniny Česko.Digital se budou slavit nejen v Praze, ale i v Brně. Detaily řešíme ve Slacku, kontaktní osoby jsou @Gabriela Chladilová @Jiří Marek a Lukáš Sochor.\n**KDY:**  **čtvrtek 15.7**. ve **20.00 hod. **\n**KDE:**  v** [Café Morgal](https://www.morgal.cz/kontakty)**[ (na Moravském nám. 1)](https://www.morgal.cz/kontakty)\nDETAILY: detaily o akci a odkazy k přihlášení najdeš _[zde](https://cesko-digital.atlassian.net/l/c/V3sDLK3S)_\n### \n### Online únikovka\nČesko.Digital je parta přes 4000 lidí, kteří jsou experti ve svých oborech a společně ve volném čase pracují na tom, aby se v Česku žilo lépe, rozvíjí nápady a inovují. A o tom je i naše úniková hra plná šifer a hádanek o našich projektech.\nPřijdeš si s námi zahrát a pobavit se?\n**DETAILY:** detaily a odkaz k přihlášení najdeš _[zde](https://cesko-digital.atlassian.net/l/c/V3sDLK3S)_\n\n\n### Podcasty s experty z projektů Česko.Digital\nStay tuned! Připravili jsme pro tebe inspirativní povídání s experty z vybraných projektů Česko.Digital.\n**DETAILY: **detaily a odkazy najdeš _[zde](https://cesko-digital.atlassian.net/l/c/V3sDLK3S)_\n\n\n### Hackday s Loono\n**Pojď pomoci týmu Loono s vývojem aplikace pro průvodce zdraví a prevencí.** Jsi juniorní vývojář/vývojářka, orientuješ se alespoň trochu ve Flutter a vyhlížíš tu pravou příležitost pro zapojení v Česko.Digital? Chceš si zkusit jedinečnou příležitost pod vedením zkušených Flutter vývojářů a mentorů? Tady je! \n**KDY: Sobota**, 17. 7. 2021 v 9.00\n**KDE: **[HUBHUB v Paláci Ara](https://g.page/hubhubpalacara?share)\n**DETAILY: **detaily a odkaz k přihlášení najdeš[ _zde_** **](https://cesko.digital/events/hackday-loono-flutter)\n\n\n### Pár slov od Jakuba Nešetřila\nJak vidí uplynulé dva roky Česko.Digital jeden ze zakladatelů Jakub Nešetřil? Co doporučuje novým dobrovolníkům a co nám přeje do dalších let? \n**KDY:** kdykoli během celých komunitních oslav\n**KDE:** detaily najdeš[ ](https://cesko.digital/events/hackday-loono-flutter)_[zde](https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/592413098/V+esko.Digital+n+s+spojuj+1+a+0...)_[ ](https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/592413098/V+esko.Digital+n+s+spojuj+1+a+0...)\n\n\n**Přidej se a oslavuj s námi 2 roky výročí Česko.Digital.**\n**Veškeré informace, zajímavosti i odkazy průběžně aktualizujeme na naší [wiki Česko.Digital](https://cesko-digital.atlassian.net/l/c/V3sDLK3S).**\n\nTěšíme se na tebe!\n#spoluproceskodigital\n"
+    },
+    "startTime": "2021-07-12T16:30:00.000Z",
+    "ownerId": "recjnYNK3rcvn5roQ",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationTitle": "Zaregistrovat se",
+    "endTime": "2021-07-12T17:00:00.000Z",
+    "tagIds": [
+      "recVKW9CEiJhe2c4M"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/cd_narozeniny_pozadi.png",
+    "locationTitle": "Opero, Praha 1 a online",
+    "locationUrl": "https://cesko-digital.atlassian.net/l/c/V3sDLK3S"
+  }
+]

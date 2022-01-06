@@ -1,11 +1,6 @@
 import { getAllVideos, PortalVideo } from "./cedu";
-import {
-  getAllProjects,
-  getAllOpportunities,
-  getAllEvents,
-  getAllPartners,
-  getAllUsers,
-} from "./airtable-import";
+import * as Local from "./local-data";
+import * as Airtable from "./airtable-import";
 import {
   PortalEvent,
   PortalOpportunity,
@@ -30,11 +25,24 @@ export interface DataSource {
 
 /** Main data source that reads data from Airtable (mostly everything) and local filesystem (videos) */
 const mainDataSource: DataSource = {
-  getAllProjects,
-  getAllOpportunities,
-  getAllUsers,
-  getAllEvents,
-  getAllPartners,
+  getAllProjects: Airtable.getAllProjects,
+  getAllOpportunities: Airtable.getAllOpportunities,
+  getAllUsers: Airtable.getAllUsers,
+  getAllEvents: Airtable.getAllEvents,
+  getAllPartners: Airtable.getAllPartners,
+  getAllVideos,
+};
+
+/** Local data source that uses sample data and doesn’t need any API keys */
+const localDataSource: DataSource = {
+  getAllProjects: Local.getAllProjects,
+  getAllOpportunities: Local.getAllOpportunities,
+  getAllUsers: Local.getAllUsers,
+  getAllEvents: Local.getAllEvents,
+  getAllPartners: () =>
+    Promise.resolve([
+      /*TODO*/
+    ]),
   getAllVideos,
 };
 
