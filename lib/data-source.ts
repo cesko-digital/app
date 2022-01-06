@@ -52,11 +52,11 @@ const localDataSource: DataSource = {
  * data source when running a production build.
  */
 function pickDataSource(): DataSource {
-  const isProduction = process.env.VERCEL_ENV === "production";
-  const forceLocal = process.env.DATA_SOURCE_LOCAL;
+  const isProductionBuild = process.env.VERCEL_ENV === "production";
+  const forceLocal = !!process.env.DATA_SOURCE_LOCAL;
   if (forceLocal) {
     // User explicitly requested local data source
-    if (isProduction) {
+    if (isProductionBuild) {
       console.error("Refusing to use local data source for production build.");
       process.exit(1);
     }
@@ -68,7 +68,7 @@ function pickDataSource(): DataSource {
     return mainDataSource;
   } else {
     // Airtable not available, use local data source if possible
-    if (isProduction) {
+    if (isProductionBuild) {
       console.error(
         "We’re running a production build and Airtable is not available."
       );
