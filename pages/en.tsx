@@ -1,10 +1,10 @@
 import { NextPage, GetStaticProps } from "next";
-import { getAllPartners } from "lib/airtable-import";
 import { PortalPartner } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 import { prepareToSerialize } from "lib/utils";
+import { dataSource } from "lib/data-source";
 import {
   Hero,
   OurValues,
@@ -47,7 +47,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const allPartners = await getAllPartners();
+  const allPartners = await dataSource.getAllPartners();
   const homepagePartners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );

@@ -1,10 +1,13 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { getAllVideos, PortalVideo } from "lib/cedu";
+import { PortalVideo } from "lib/cedu";
 import { prepareToSerialize } from "lib/utils";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { Layout, Section, SectionContent } from "components/layout";
-import * as Typography from "../../components/typography";
+import * as Typography from "components/typography";
+import { Route } from "lib/routing";
+import RenderMarkdown from "components/markdown";
+import { dataSource } from "lib/data-source";
 import {
   BoxesColumn,
   MainColumn,
@@ -17,8 +20,6 @@ import {
   ResourceBox,
   TableOfContentBox,
 } from "components/cedu/content-box";
-import { Route } from "lib/routing";
-import RenderMarkdown from "components/markdown";
 
 interface PageProps {
   video: PortalVideo;
@@ -78,7 +79,7 @@ const Page: NextPage<PageProps> = ({ video }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const videos = await getAllVideos();
+  const videos = await dataSource.getAllVideos();
   const paths = videos.map((video) => ({
     params: { slug: video.slug },
   }));
@@ -92,7 +93,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const videos = await getAllVideos();
+  const videos = await dataSource.getAllVideos();
   const video = videos.find((v) => v.slug === slug)!;
   return {
     props: prepareToSerialize({

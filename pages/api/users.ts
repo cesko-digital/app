@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAllUsers } from "lib/airtable-import";
+import { dataSource } from "lib/data-source";
 
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
 ) {
-  const users = await getAllUsers();
+  const users = await dataSource.getAllUsers();
   response.setHeader("Content-Type", "application/json");
   response.status(200).send(JSON.stringify(users, null, 2));
 }

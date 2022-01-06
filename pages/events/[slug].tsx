@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { getAllEvents, getAllProjects, getAllUsers } from "lib/airtable-import";
 import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
 import * as Typography from "components/typography";
@@ -11,6 +10,7 @@ import { CardRow } from "components/layout";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
+import { dataSource } from "lib/data-source";
 
 interface PageProps {
   event: PortalEvent;
@@ -89,7 +89,7 @@ const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const events = await getAllEvents();
+  const events = await dataSource.getAllEvents();
   const paths = events.map((event) => ({
     params: { slug: event.slug },
   }));
@@ -103,11 +103,11 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const events = await getAllEvents();
+  const events = await dataSource.getAllEvents();
   const event = events.find((e) => e.slug === slug)!;
-  const projects = await getAllProjects();
+  const projects = await dataSource.getAllProjects();
   const project = projects.find((p) => p.id === event.projectId)!;
-  const users = await getAllUsers();
+  const users = await dataSource.getAllUsers();
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
     props: prepareToSerialize({ event, allEvents: events, project, owner }),
