@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "update": "node lib/update-local-data.mjs",
     "test": "jest"
   },
   "dependencies": {
