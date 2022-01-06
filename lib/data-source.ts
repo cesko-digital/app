@@ -43,4 +43,41 @@ const localDataSource: DataSource = {
   getAllVideos,
 };
 
-export const dataSource = mainDataSource;
+/**
+ * Pick a suitable data source
+ *
+ * We prefer to use the production Airtable data source. If that’s not available,
+ * the local data source will be used instead (you can also force it by setting the
+ * `DATA_SOURCE_LOCAL` env variable). Either way, we make sure not to use the local
+ * data source when running a production build.
+ */
+function pickDataSource(): DataSource {
+  const isProduction = process.env.VERCEL_ENV === "production";
+  const forceLocal = process.env.DATA_SOURCE_LOCAL;
+  if (forceLocal) {
+    // User explicitly requested local data source
+    if (isProduction) {
+      console.error("Refusing to use local data source for production build.");
+      process.exit(1);
+    }
+    console.warn("Using local data source as requested.");
+    return localDataSource;
+  } else if (Airtable.isAvailable) {
+    // Data source not set explicitly, Airtable available
+    console.log("Using Airtable as the data source.");
+    return mainDataSource;
+  } else {
+    // Airtable not available, use local data source if possible
+    if (isProduction) {
+      console.error(
+        "We’re running a production build and Airtable is not available."
+      );
+      process.exit(1);
+    }
+    console.warn("Airtable not available, using the local data source.");
+    console.warn("Set AIRTABLE_API_KEY in .env.local to use Airtable instead.");
+    return localDataSource;
+  }
+}
+
+export const dataSource = pickDataSource();

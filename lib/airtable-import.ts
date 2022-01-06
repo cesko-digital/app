@@ -23,6 +23,9 @@ const apiKey = process.env.AIRTABLE_API_KEY;
 /** ID of the Airtable database to read data from */
 const airtableBaseId = "appkn1DkvgVI5jpME";
 
+/** Is the Airtable data source available? */
+export const isAvailable = apiKey != null;
+
 async function getAllRecords<T>(args: {
   baseId: string;
   tableName: string;
