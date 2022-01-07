@@ -26,6 +26,7 @@ export const Seo: React.FC<SeoProps> = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
       <link rel="stylesheet" href="/fonts.css" />
+      <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     </Head>
   );
 };
