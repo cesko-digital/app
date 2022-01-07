@@ -9,8 +9,6 @@ import {
 
 type AirtableRecord = Record<string, any>;
 
-const cache: Record<string, any> = {};
-
 /**
  * Airtable API key read from the `AIRTABLE_API_KEY` env variable
  *
@@ -32,14 +30,6 @@ async function getAllRecords<T>(args: {
   viewName: string;
   decoder: (data: AirtableRecord) => T;
 }): Promise<T[]> {
-  const cacheKey = [apiKey, args.baseId, args.tableName, args.viewName].join(
-    ":"
-  );
-
-  if (cacheKey in cache) {
-    return cache[cacheKey];
-  }
-
   // Merge the Airtable record ID with other fields so they can all be parsed together
   const mergeAirtableRecord = (data: AirtableRecord) => ({
     id: data.id,
@@ -74,7 +64,6 @@ async function getAllRecords<T>(args: {
     }
   });
 
-  cache[cacheKey] = parsedRecords;
   return parsedRecords;
 }
 
