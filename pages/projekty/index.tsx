@@ -10,7 +10,7 @@ import * as S from "components/projects/styles";
 import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
 import { Route } from "lib/routing";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 
 type PageProps = {
   projects: PortalProject[];
@@ -63,13 +63,10 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const projects = (await dataSource.getAllProjects()).filter(
-    (p) => !p.draft && !p.silent
-  );
-
+  const projects = appState.projects.filter((p) => !p.draft && !p.silent);
   return {
     props: prepareToSerialize({
-      projects: projects,
+      projects,
     }),
   };
 };

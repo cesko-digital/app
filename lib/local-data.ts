@@ -7,6 +7,7 @@ import {
   PortalUser,
 } from "./portal-types";
 
+// The weird signature is here to make the data source type-compatible with the Airtable data source
 function loader<T>(file: string): () => Promise<T[]> {
   return () => {
     const path = "content/samples/" + file;

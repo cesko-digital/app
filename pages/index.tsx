@@ -5,7 +5,7 @@ import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 import { prepareToSerialize } from "lib/utils";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 import {
   Hero,
   OurValues,
@@ -62,14 +62,14 @@ const Page: NextPage<PageProps> = ({ projects, partners }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const allPartners = await dataSource.getAllPartners();
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const allPartners = appState.partners;
   const homepagePartners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   return {
     props: prepareToSerialize({
-      projects: await dataSource.getAllProjects(),
+      projects: appState.projects,
       partners: homepagePartners,
     }),
   };

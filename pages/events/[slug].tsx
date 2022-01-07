@@ -10,12 +10,12 @@ import { CardRow } from "components/layout";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 
 interface PageProps {
   event: PortalEvent;
   project: PortalProject;
-  allEvents: PortalEvent[];
+  events: PortalEvent[];
   owner: PortalUser;
 }
 
@@ -23,9 +23,9 @@ interface QueryParams extends ParsedUrlQuery {
   slug: string;
 }
 
-const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
+const Page: NextPage<PageProps> = ({ event, project, owner, events }) => {
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
-  const otherEvents = allEvents.filter(
+  const otherEvents = events.filter(
     (e) => e.status === "live" && e.id !== event.id
   );
   return (
@@ -89,8 +89,7 @@ const Page: NextPage<PageProps> = ({ event, project, owner, allEvents }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const events = await dataSource.getAllEvents();
-  const paths = events.map((event) => ({
+  const paths = appState.events.map((event) => ({
     params: { slug: event.slug },
   }));
   return {
@@ -103,14 +102,12 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const events = await dataSource.getAllEvents();
-  const event = events.find((e) => e.slug === slug)!;
-  const projects = await dataSource.getAllProjects();
+  const { projects, users, events } = appState;
+  const event = appState.events.find((e) => e.slug === slug)!;
   const project = projects.find((p) => p.id === event.projectId)!;
-  const users = await dataSource.getAllUsers();
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
-    props: prepareToSerialize({ event, allEvents: events, project, owner }),
+    props: prepareToSerialize({ event, events, project, owner }),
   };
 };
 

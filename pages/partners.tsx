@@ -9,7 +9,7 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
 import { prepareToSerialize } from "lib/utils";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 
 type PageProps = {
   partners: PortalPartner[];
@@ -64,10 +64,9 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const partners = await dataSource.getAllPartners();
   return {
     props: prepareToSerialize({
-      partners,
+      partners: appState.partners,
     }),
   };
 };
