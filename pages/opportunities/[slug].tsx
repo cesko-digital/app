@@ -15,7 +15,7 @@ import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -117,7 +117,7 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = appState.opportunities.map((opportunity) => ({
+  const paths = siteData.opportunities.map((opportunity) => ({
     params: { slug: opportunity.slug },
   }));
   return {
@@ -130,7 +130,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { opportunities, projects, users } = appState;
+  const { opportunities, projects, users } = siteData;
   const opportunity = opportunities.find((o) => o.slug === slug)!;
   return {
     props: prepareToSerialize({

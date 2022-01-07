@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 import { PortalEvent } from "lib/portal-types";
 import { prepareToSerialize } from "lib/utils";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 type PageProps = {
   events: PortalEvent[];
@@ -25,7 +25,7 @@ const Page: NextPage<PageProps> = ({ events }) => {
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   return {
     props: {
-      events: prepareToSerialize(appState.events),
+      events: prepareToSerialize(siteData.events),
     },
   };
 };

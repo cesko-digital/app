@@ -10,7 +10,7 @@ import { CardRow } from "components/layout";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 interface PageProps {
   event: PortalEvent;
@@ -89,7 +89,7 @@ const Page: NextPage<PageProps> = ({ event, project, owner, events }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = appState.events.map((event) => ({
+  const paths = siteData.events.map((event) => ({
     params: { slug: event.slug },
   }));
   return {
@@ -102,8 +102,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, users, events } = appState;
-  const event = appState.events.find((e) => e.slug === slug)!;
+  const { projects, users, events } = siteData;
+  const event = siteData.events.find((e) => e.slug === slug)!;
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {

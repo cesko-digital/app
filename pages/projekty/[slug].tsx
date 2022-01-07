@@ -10,7 +10,7 @@ import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 interface PageProps {
   project: PortalProject;
@@ -90,7 +90,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = appState.projects
+  const paths = siteData.projects
     .filter((p) => !p.draft && !p.silent)
     .map((project) => ({
       params: { slug: project.slug },
@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, users } = appState;
+  const { projects, users } = siteData;
   const project = projects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => users.find((user) => user.id === id)!
