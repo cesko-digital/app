@@ -15,7 +15,7 @@ import {
   PortalOpportunity,
   PortalProject,
 } from "lib/portal-types";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 interface PageProps {
   opportunities: PortalOpportunity[];
@@ -135,7 +135,7 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { projects, events, opportunities, videos } = appState;
+  const { projects, events, opportunities, videos } = siteData;
   return {
     props: prepareToSerialize({
       events,

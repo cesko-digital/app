@@ -11,7 +11,7 @@ import {
 } from "components/portal-dobrovolnika/styles";
 import { Route } from "lib/routing";
 import { useState } from "react";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 type PageProps = {
   opportunities: PortalOpportunity[];
@@ -148,7 +148,7 @@ const OpportunitiesCountSpan = styled.span`
 `;
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { opportunities, projects } = appState;
+  const { opportunities, projects } = siteData;
   return {
     props: prepareToSerialize({
       opportunities: opportunities.filter((o) => o.status === "live"),

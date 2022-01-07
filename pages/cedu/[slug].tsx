@@ -7,7 +7,7 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as Typography from "components/typography";
 import { Route } from "lib/routing";
 import RenderMarkdown from "components/markdown";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 import {
   BoxesColumn,
   MainColumn,
@@ -79,7 +79,7 @@ const Page: NextPage<PageProps> = ({ video }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = appState.videos.map((video) => ({
+  const paths = siteData.videos.map((video) => ({
     params: { slug: video.slug },
   }));
   return {
@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const video = appState.videos.find((v) => v.slug === slug)!;
+  const video = siteData.videos.find((v) => v.slug === slug)!;
   return {
     props: prepareToSerialize({
       video,

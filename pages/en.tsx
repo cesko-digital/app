@@ -11,7 +11,7 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
-import { appState } from "lib/app-state";
+import { siteData } from "lib/site-data";
 
 type PageProps = {
   partners: PortalPartner[];
@@ -47,7 +47,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const homepagePartners = appState.partners.filter((p) =>
+  const homepagePartners = siteData.partners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   return {

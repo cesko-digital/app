@@ -9,7 +9,7 @@ import {
   PortalUser,
 } from "./portal-types";
 
-export interface AppState {
+export interface SiteData {
   projects: PortalProject[];
   opportunities: PortalOpportunity[];
   users: PortalUser[];
@@ -18,7 +18,7 @@ export interface AppState {
   videos: PortalVideo[];
 }
 
-async function loadAppState(): Promise<AppState> {
+async function loadSiteData(): Promise<SiteData> {
   const forceLocal = !!process.env.DATA_SOURCE_LOCAL;
   const useLocalData = forceLocal || !Airtable.isAvailable;
   const isProductionBuild = process.env.VERCEL_ENV === "production";
@@ -51,4 +51,4 @@ async function loadAppState(): Promise<AppState> {
 }
 
 // TODO: Prune data to only keep relevant objects?
-export const appState = await loadAppState();
+export const siteData = await loadSiteData();
