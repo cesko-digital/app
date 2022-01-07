@@ -3,14 +3,13 @@
 * V dokumentaci, pull requestech a issues používejte češtinu, v commitech a zdrojovém kódu angličtinu.
 * Zapněte si automatické formátování kódu pomocí Prettier. Nemusíme všichni souhlasit se všemi změnami, které Prettier udělá, ale nechat to na něm je lepší než se o tom donekonečna přít :)
 
-# Proměnné prostředí
+# Zdroje dat
 
-Pro některé funkce jsou potřeba proměnné prostředí. Tyhle používáme:
-
-* `AIRTABLE_API_KEY` je API klíč pro přístup do Airtable, naší DB. Bez něj se web momentálně nepřeloží, což bychom výhledově chtěli spravit ([\#418](https://github.com/cesko-digital/web/issues/418)).
-* `ECOMAIL_API_KEY` je API klíč pro zapisování nových zájemců o newsletter do Ecomailu.
-
-Velmi elegantně se ty proměnné dají nastavit pomocí souboru `.env.local`, [viz dokumentaci Next.js](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables).
+* Web načítá data přes API z [Airtable](https://airtable.com).
+* Abyste nemuseli řešit klíče pro přístup k API, existuje také lokální kopie dat (viz `content/samples/`), která se automaticky použije, když není k dispozici klíč k Airtable.
+* Pokud chcete lokální data aktualizovat z Airtable, spusťte `yarn update-data`.
+* Pokud chcete vynutit použití lokálních dat, i když máte klíč k Airtable, nastavte proměnnou prostředí `DATA_SOURCE_LOCAL`, například `DATA_SOURCE_LOCAL=1 yarn dev`. Takhle si můžete snadno vyzkoušet například změny DB schématu.
+* Pokud máte API klíč k Airtable, uložte ho do proměnné `AIRTABLE_API_KEY`. Nejen tahle proměnná se dá elegantně nastavit pomocí souboru `.env.local`, [viz dokumentaci Next.js](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables).
 
 # Poznámky k architektuře
 
