@@ -4,7 +4,6 @@ import { Layout, Section, SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 import { prepareToSerialize } from "lib/utils";
-import { dataSource } from "lib/data-source";
 import {
   Hero,
   OurValues,
@@ -12,6 +11,7 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
+import { appState } from "lib/app-state";
 
 type PageProps = {
   partners: PortalPartner[];
@@ -47,8 +47,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const allPartners = await dataSource.getAllPartners();
-  const homepagePartners = allPartners.filter((p) =>
+  const homepagePartners = appState.partners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   return {

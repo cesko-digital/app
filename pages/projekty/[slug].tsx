@@ -10,12 +10,12 @@ import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 
 interface PageProps {
   project: PortalProject;
   coordinators: PortalUser[];
-  allProjects: PortalProject[];
+  projects: PortalProject[];
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -23,8 +23,8 @@ interface QueryParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<PageProps> = (props) => {
-  const { project, coordinators, allProjects } = props;
-  const otherProjects = allProjects.filter((p) => p != project).slice(0, 3);
+  const { project, coordinators, projects } = props;
+  const otherProjects = projects.filter((p) => p != project).slice(0, 3);
   return (
     <Layout
       crumbs={[
@@ -90,8 +90,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const projects = await dataSource.getAllProjects();
-  const paths = projects
+  const paths = appState.projects
     .filter((p) => !p.draft && !p.silent)
     .map((project) => ({
       params: { slug: project.slug },
@@ -106,17 +105,16 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const allProjects = await dataSource.getAllProjects();
-  const allUsers = await dataSource.getAllUsers();
-  const project = allProjects.find((p) => p.slug === slug)!;
+  const { projects, users } = appState;
+  const project = projects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
-    (id) => allUsers.find((user) => user.id === id)!
+    (id) => users.find((user) => user.id === id)!
   );
   return {
     props: prepareToSerialize({
-      allProjects,
-      coordinators,
       project,
+      projects,
+      coordinators,
     }),
   };
 };

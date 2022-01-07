@@ -15,12 +15,12 @@ import {
   PortalOpportunity,
   PortalProject,
 } from "lib/portal-types";
-import { dataSource } from "lib/data-source";
+import { appState } from "lib/app-state";
 
 interface PageProps {
   opportunities: PortalOpportunity[];
   events: PortalEvent[];
-  allProjects: PortalProject[];
+  projects: PortalProject[];
   videos: PortalVideo[];
 }
 
@@ -51,10 +51,10 @@ const PortalDobrovolnika: NextPage<PageProps> = (props) => {
 
 const OpportunitiesSection: React.FC<PageProps> = ({
   opportunities,
-  allProjects,
+  projects,
 }) => {
   const opportunityProject = (o: PortalOpportunity) =>
-    allProjects.find((p) => p.id === o.projectId)!;
+    projects.find((p) => p.id === o.projectId)!;
   // How should we sort this? How about a random sort?
   const featuredOpportunities = opportunities.slice(0, 3);
   return (
@@ -80,7 +80,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   );
 };
 
-const EventsSection: React.FC<PageProps> = ({ events, allProjects }) => {
+const EventsSection: React.FC<PageProps> = ({ events, projects }) => {
   const compareEventsByTime = (a: PortalEvent, b: PortalEvent) =>
     Date.parse(b.startTime) - Date.parse(a.startTime); /* TBD */
   const upcomingEvents = [...events]
@@ -88,7 +88,7 @@ const EventsSection: React.FC<PageProps> = ({ events, allProjects }) => {
     .sort(compareEventsByTime)
     .slice(0, 3);
   const eventProject = (e: PortalEvent) =>
-    allProjects.find((p) => p.id === e.projectId)!;
+    projects.find((p) => p.id === e.projectId)!;
   return (
     <Section id="section-events">
       <SectionContent>
@@ -135,16 +135,13 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const events = await dataSource.getAllEvents();
-  const opportunities = await dataSource.getAllOpportunities();
-  const allProjects = await dataSource.getAllProjects();
-  const videos = await dataSource.getAllVideos();
+  const { projects, events, opportunities, videos } = appState;
   return {
     props: prepareToSerialize({
       events,
       opportunities,
       videos,
-      allProjects,
+      projects,
     }),
   };
 };
