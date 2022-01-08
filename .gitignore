@@ -4,3 +4,4 @@ node_modules
 .vercel
 .output
 .env.local
+tsconfig.tsbuildinfo

@@ -6,6 +6,7 @@
     "start": "next start",
     "lint": "next lint",
     "update-data": "node lib/update-local-data.mjs",
+    "typecheck": "tsc --noEmit",
     "test": "jest"
   },
   "dependencies": {
