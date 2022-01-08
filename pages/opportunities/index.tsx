@@ -14,8 +14,8 @@ import { useState } from "react";
 import { siteData } from "lib/site-data";
 
 type PageProps = {
-  opportunities: PortalOpportunity[];
-  projects: PortalProject[];
+  opportunities: readonly PortalOpportunity[];
+  projects: readonly PortalProject[];
   selectedSkill?: string;
 };
 
@@ -39,7 +39,7 @@ const Page: NextPage<PageProps> = (props) => {
 
   function filterOpportunities() {
     if (selectedSkill === "Vše") {
-      filteredOpportunities = opportunities;
+      filteredOpportunities = [...opportunities];
     } else {
       filteredOpportunities = [];
       opportunities.forEach((r) => {

@@ -12,7 +12,7 @@ import { prepareToSerialize } from "lib/utils";
 import { siteData } from "lib/site-data";
 
 type PageProps = {
-  partners: PortalPartner[];
+  partners: readonly PortalPartner[];
 };
 
 const Page: NextPage<PageProps> = ({ partners }) => {

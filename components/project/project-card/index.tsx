@@ -8,7 +8,7 @@ import strings from "content/strings.json";
 
 interface Props {
   project: PortalProject;
-  coordinators: PortalUser[];
+  coordinators: readonly PortalUser[];
 }
 
 const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {

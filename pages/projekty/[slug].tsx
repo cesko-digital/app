@@ -14,8 +14,8 @@ import { siteData } from "lib/site-data";
 
 interface PageProps {
   project: PortalProject;
-  coordinators: PortalUser[];
-  projects: PortalProject[];
+  coordinators: readonly PortalUser[];
+  projects: readonly PortalProject[];
 }
 
 interface QueryParams extends ParsedUrlQuery {

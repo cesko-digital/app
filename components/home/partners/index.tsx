@@ -5,7 +5,7 @@ import enstrings from "content/strings-en.json";
 import { PortalPartner } from "lib/portal-types";
 
 interface Props {
-  partners: PortalPartner[];
+  partners: readonly PortalPartner[];
   lang?: "cs" | "en";
 }
 
