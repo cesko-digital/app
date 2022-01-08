@@ -7,7 +7,7 @@ export interface Logo {
 }
 
 interface LogoListProps {
-  items: Logo[];
+  items: readonly Logo[];
 }
 
 const LogoList: React.FC<LogoListProps> = ({ items }) => {

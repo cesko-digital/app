@@ -6,7 +6,7 @@ import * as S from "../../styles";
 import strings from "content/strings.json";
 
 interface ExpertsPartnersProps {
-  partners: PortalPartner[];
+  partners: readonly PortalPartner[];
 }
 
 const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({ partners }) => {

@@ -15,8 +15,8 @@ import {
 } from "components/home";
 
 type PageProps = {
-  projects: PortalProject[];
-  partners: PortalPartner[];
+  projects: readonly PortalProject[];
+  partners: readonly PortalPartner[];
 };
 
 const Page: NextPage<PageProps> = ({ projects, partners }) => {

@@ -4,7 +4,7 @@ import { prepareToSerialize } from "lib/utils";
 import { siteData } from "lib/site-data";
 
 type PageProps = {
-  events: PortalEvent[];
+  events: readonly PortalEvent[];
 };
 
 const Page: NextPage<PageProps> = ({ events }) => {

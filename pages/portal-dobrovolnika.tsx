@@ -18,10 +18,10 @@ import {
 import { siteData } from "lib/site-data";
 
 interface PageProps {
-  opportunities: PortalOpportunity[];
-  events: PortalEvent[];
-  projects: PortalProject[];
-  videos: PortalVideo[];
+  opportunities: readonly PortalOpportunity[];
+  events: readonly PortalEvent[];
+  projects: readonly PortalProject[];
+  videos: readonly PortalVideo[];
 }
 
 const PortalDobrovolnika: NextPage<PageProps> = (props) => {

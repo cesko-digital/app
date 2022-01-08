@@ -19,9 +19,9 @@ import { siteData } from "lib/site-data";
 
 interface PageProps {
   opportunity: PortalOpportunity;
-  opportunities: PortalOpportunity[];
-  users: PortalUser[];
-  projects: PortalProject[];
+  opportunities: readonly PortalOpportunity[];
+  users: readonly PortalUser[];
+  projects: readonly PortalProject[];
 }
 
 interface QueryParams extends ParsedUrlQuery {

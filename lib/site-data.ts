@@ -10,12 +10,12 @@ import {
 } from "./portal-types";
 
 export interface SiteData {
-  projects: PortalProject[];
-  opportunities: PortalOpportunity[];
-  users: PortalUser[];
-  events: PortalEvent[];
-  partners: PortalPartner[];
-  videos: PortalVideo[];
+  projects: readonly PortalProject[];
+  opportunities: readonly PortalOpportunity[];
+  users: readonly PortalUser[];
+  events: readonly PortalEvent[];
+  partners: readonly PortalPartner[];
+  videos: readonly PortalVideo[];
 }
 
 async function loadSiteData(): Promise<SiteData> {

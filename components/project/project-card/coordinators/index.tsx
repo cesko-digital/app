@@ -3,7 +3,7 @@ import strings from "content/strings.json";
 import * as S from "./styles";
 
 interface Props {
-  coordinators: PortalUser[];
+  coordinators: readonly PortalUser[];
 }
 
 const Coordinators: React.FC<Props> = ({ coordinators }) => {

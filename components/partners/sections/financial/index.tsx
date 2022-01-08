@@ -12,7 +12,7 @@ import { BlogHeader } from "./styles";
 import { filterPartnersByCategory, PortalPartner } from "lib/portal-types";
 
 interface Props {
-  partners: PortalPartner[];
+  partners: readonly PortalPartner[];
 }
 
 const FinancialPartners: React.FC<Props> = ({ partners }) => {

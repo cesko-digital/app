@@ -15,7 +15,7 @@ import { siteData } from "lib/site-data";
 interface PageProps {
   event: PortalEvent;
   project: PortalProject;
-  events: PortalEvent[];
+  events: readonly PortalEvent[];
   owner: PortalUser;
 }
 
