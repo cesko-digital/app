@@ -8,7 +8,7 @@ interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
   let wrapper;
-  if (project.silent) {
+  if (project.state === "draft") {
     wrapper = (
       <S.Wrapper>
         <S.Avatar src={project.logoUrl} />

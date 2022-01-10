@@ -52,8 +52,8 @@ const Page: NextPage<PageProps> = ({ projects }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const projects = siteData.projects.filter((p) => !p.draft && !p.silent);
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const projects = siteData.projects.filter((p) => p.state !== "draft");
   return {
     props: prepareToSerialize({
       projects,

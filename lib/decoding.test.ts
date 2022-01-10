@@ -44,9 +44,7 @@ test("Decode portal project", () => {
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
     highlighted: false,
-    finished: false,
-    silent: false,
-    draft: false,
+    state: "draft",
     tagIds: ["recVa4LnmzmtfoYTg"],
     coordinatorIds: [
       "recd8xvbWp7K1nZn8",

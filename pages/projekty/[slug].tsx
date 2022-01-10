@@ -57,7 +57,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
           <S.AboutSectionWrapper>
             <S.DescriptionWrapper>
               <AboutProject
-                finished={project.finished}
+                finished={project.state === "finished"}
                 thankYouText={project.contributeText} // Using same field when project finished
                 description={project.description}
               />
@@ -68,7 +68,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
           </S.AboutSectionWrapper>
         </SectionContent>
       </Section>
-      {!project.finished && project.contributeText && (
+      {project.state !== "finished" && project.contributeText && (
         <Section>
           <SectionContent>
             <S.ContributeWrapper>
@@ -91,7 +91,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const paths = siteData.projects
-    .filter((p) => !p.draft && !p.silent)
+    .filter((p) => p.state !== "draft")
     .map((project) => ({
       params: { slug: project.slug },
     }));
