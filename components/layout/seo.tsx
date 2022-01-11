@@ -22,7 +22,7 @@ export const Seo: React.FC<SeoProps> = ({
         name="description"
         content={description || strings.metadata.description}
       />
-      <meta name="og:image" content={coverUrl} />
+      <meta property="og:image" content={coverUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
       <link rel="stylesheet" href="/fonts.css" />
