@@ -23,7 +23,7 @@ const OngoingProjects: React.FC<Props> = ({ projects }) => (
   </Container>
 );
 
-export const Container = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => `${theme.space.md}px ${theme.space.md}px`};
