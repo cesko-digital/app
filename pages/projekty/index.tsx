@@ -7,9 +7,8 @@ import {
 } from "components/projects/sections";
 import { JoinUs } from "components/sections";
 import * as S from "components/projects/styles";
-import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
+import { prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
-import { Route } from "lib/routing";
 import { siteData } from "lib/site-data";
 
 type PageProps = {
@@ -40,14 +39,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
         <SectionContent>
           <S.ProjectsHeading>{msg.ongoing}</S.ProjectsHeading>
           {highlightedProject && (
-            <HighlightedProject
-              cover={getResizedImgUrl(highlightedProject.coverImageUrl, 1160)}
-              logo={highlightedProject.logoUrl}
-              description={highlightedProject.tagline}
-              title={highlightedProject.name}
-              tags={[] /* TBD */}
-              link={Route.toProject(highlightedProject)}
-            />
+            <HighlightedProject project={highlightedProject} />
           )}
           <OngoingProjects projects={otherProjects} />
         </SectionContent>

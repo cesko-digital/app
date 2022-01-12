@@ -1,38 +1,24 @@
 import * as S from "./styles";
 import { ButtonAsLink } from "components/links";
 import strings from "content/strings.json";
+import { PortalProject } from "lib/portal-types";
+import { Route } from "lib/routing";
+import { getResizedImgUrl } from "lib/utils";
 
 interface Props {
-  title: string;
-  description: string;
-  cover: string;
-  logo: string;
-  link: string;
-  tags: string[];
+  project: PortalProject;
 }
 
-const HighlightedProject: React.FC<Props> = ({
-  title,
-  description,
-  cover,
-  logo,
-  link,
-  tags,
-}) => {
+const HighlightedProject: React.FC<Props> = ({ project }) => {
   return (
     <S.Container data-cy="highlighted-project">
-      <S.ProjectImage src={cover} />
+      <S.ProjectImage src={getResizedImgUrl(project.coverImageUrl, 1160)} />
       <S.Content>
         <S.ProjectInfo>
-          <S.Avatar src={logo} />
-          <S.Name>{title}</S.Name>
-          <S.Tags>
-            {tags.map((tag, index) => (
-              <S.Tag key={index}>#{tag}</S.Tag>
-            ))}
-          </S.Tags>
-          {description && <S.Tagline>{description}</S.Tagline>}
-          <ButtonAsLink inverted to={link}>
+          <S.Avatar src={project.logoUrl} />
+          <S.Name>{project.name}</S.Name>
+          <S.Tagline>{project.tagline}</S.Tagline>
+          <ButtonAsLink inverted to={Route.toProject(project)}>
             {strings.cards.project.projectDetail}
           </ButtonAsLink>
         </S.ProjectInfo>
