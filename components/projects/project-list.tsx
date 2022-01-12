@@ -7,7 +7,7 @@ interface Props {
   projects: PortalProject[];
 }
 
-const OngoingProjects: React.FC<Props> = ({ projects }) => (
+const ProjectList: React.FC<Props> = ({ projects }) => (
   <Container>
     {projects.map((project) => (
       <ProjectCard
@@ -38,4 +38,4 @@ const Container = styled.div`
   }
 `;
 
-export default OngoingProjects;
+export default ProjectList;
