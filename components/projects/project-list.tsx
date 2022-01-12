@@ -1,5 +1,4 @@
 import { ProjectCard } from "components/cards";
-import { Route } from "lib/routing";
 import { PortalProject } from "lib/portal-types";
 import styled from "styled-components";
 
@@ -10,15 +9,7 @@ interface Props {
 const ProjectList: React.FC<Props> = ({ projects }) => (
   <Container>
     {projects.map((project) => (
-      <ProjectCard
-        key={project.slug}
-        title={project.name}
-        description={project.tagline}
-        cover={project.coverImageUrl}
-        logo={project.logoUrl}
-        link={Route.toProject(project)}
-        tags={[] /* TBD */}
-      />
+      <ProjectCard key={project.slug} project={project} />
     ))}
   </Container>
 );
