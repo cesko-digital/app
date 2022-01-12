@@ -16,20 +16,12 @@ const Projects: React.FC<Props> = ({ projects, title = msg.ourProjects }) => {
     <S.Container>
       <S.TitleRow>
         <S.Title>{title}</S.Title>
-        <S.ShowAll to={"/projekty"}>{msg.showAll}</S.ShowAll>
+        <S.ShowAll to={Route.projects}>{msg.showAll}</S.ShowAll>
       </S.TitleRow>
       <S.CardWrapper>
         <CardRow>
           {projects.map((project, index) => (
-            <S.ProjectCard
-              key={index}
-              title={project.name}
-              description={project.tagline}
-              cover={project.coverImageUrl}
-              logo={project.logoUrl}
-              link={Route.toProject(project)}
-              tags={[] /* TBD */}
-            />
+            <S.ProjectCard key={index} project={project} />
           ))}
         </CardRow>
       </S.CardWrapper>
