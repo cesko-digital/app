@@ -30,7 +30,7 @@ export const decodeProject = record({
   name: field("csName", string),
   slug: field("csSlug", string),
   tagline: field("csTagline", string),
-  description: field("csDescription", markdown),
+  description: markdown,
   url: string,
   contributeText: field("csContributeText", optional(markdown)),
   coverImageUrl: field("coverUrl", string),
