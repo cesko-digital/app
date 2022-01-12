@@ -2,7 +2,7 @@ import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
 import AboutProject from "components/project/about";
-import ProjectCard from "components/project/project-card";
+import ProjectCard from "components/project/card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
