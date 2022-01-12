@@ -16,7 +16,7 @@ test("Decode portal project", () => {
         "Platforma poskytující veškeré informace o prevenci přehledně a na jednom místě",
       logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
       coverUrl: "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
-      csDescription: "Vytvoříme místo!",
+      description: "Vytvoříme místo!",
       csContributeText:
         "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
       url: "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
