@@ -11,7 +11,7 @@ interface Props {
 
 const HighlightedProject: React.FC<Props> = ({ project }) => {
   return (
-    <S.Container data-cy="highlighted-project">
+    <S.Container>
       <S.ProjectImage src={getResizedImgUrl(project.coverImageUrl, 1160)} />
       <S.Content>
         <S.ProjectInfo>
