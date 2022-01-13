@@ -15,7 +15,10 @@ type PageProps = {
 const Page: NextPage<PageProps> = ({ projects }) => {
   const msg = strings.pages.projects;
   const highlightedProject = projects.find((p) => p.highlighted);
-  const otherProjects = projects.filter((p) => p != highlightedProject);
+  const otherRunningProjects = projects.filter(
+    (p) => p != highlightedProject && p.state === "running"
+  );
+  const finishedProjects = projects.filter((p) => p.state === "finished");
   return (
     <Layout
       crumbs={[{ label: msg.navigation.projects }]}
@@ -32,13 +35,21 @@ const Page: NextPage<PageProps> = ({ projects }) => {
           </S.Wrapper>
         </SectionContent>
       </Section>
+
       <Section>
         <SectionContent>
           <S.ProjectsHeading>{msg.ongoing}</S.ProjectsHeading>
           {highlightedProject && (
             <HighlightedProject project={highlightedProject} />
           )}
-          <ProjectList projects={otherProjects} />
+          <ProjectList projects={otherRunningProjects} />
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <S.ProjectsHeading>{msg.finished}</S.ProjectsHeading>
+          <ProjectList projects={finishedProjects} />
         </SectionContent>
       </Section>
 
