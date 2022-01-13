@@ -16,15 +16,16 @@ export const Heading = styled(Heading1)`
   }
 `;
 export const Tagline = styled(BodyBig)`
-  margin-bottom: 130px;
+  margin-bottom: 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 56px;
+    margin-bottom: 26px;
   }
 `;
 
 export const ProjectsHeading = styled(Heading2)`
   margin-bottom: 30px;
+  margin-top: 30px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: 17px;
