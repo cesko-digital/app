@@ -5,7 +5,7 @@ import AboutProject from "components/project/about";
 import ProjectCard from "components/project/card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
-import { getResizedImgUrl, prepareToSerialize } from "lib/utils";
+import { getResizedImgUrl } from "lib/utils";
 import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
@@ -111,11 +111,11 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     (id) => users.find((user) => user.id === id)!
   );
   return {
-    props: prepareToSerialize({
+    props: {
       project,
       projects,
       coordinators,
-    }),
+    },
   };
 };
 

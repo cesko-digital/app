@@ -4,10 +4,6 @@ export type MarkdownString = {
   source: string;
 };
 
-// This is a hack, see https://github.com/vercel/next.js/issues/11993
-export const prepareToSerialize = <T>(data: T): T =>
-  JSON.parse(JSON.stringify(data));
-
 export function isExternalURL(url: string): boolean {
   const lc = url.toLowerCase();
   return (

@@ -1,6 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalVideo } from "lib/cedu";
-import { prepareToSerialize } from "lib/utils";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { Layout, Section, SectionContent } from "components/layout";
@@ -94,9 +93,9 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const { slug } = context.params!;
   const video = siteData.videos.find((v) => v.slug === slug)!;
   return {
-    props: prepareToSerialize({
+    props: {
       video,
-    }),
+    },
   };
 };
 

@@ -6,7 +6,6 @@ import EventCard from "components/portal-dobrovolnika/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
-import { prepareToSerialize } from "lib/utils";
 import { Route } from "lib/routing";
 import CeduCard from "components/portal-dobrovolnika/cedu-card";
 import { PortalVideo } from "lib/cedu";
@@ -137,12 +136,12 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events, opportunities, videos } = siteData;
   return {
-    props: prepareToSerialize({
+    props: {
       events,
       opportunities,
       videos,
       projects,
-    }),
+    },
   };
 };
 

@@ -4,7 +4,6 @@ import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
-import { prepareToSerialize } from "lib/utils";
 import { siteData } from "lib/site-data";
 import {
   Hero,
@@ -68,10 +67,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     p.categories.some((c) => c === "homepage")
   );
   return {
-    props: prepareToSerialize({
+    props: {
       projects: siteData.projects,
       partners: homepagePartners,
-    }),
+    },
   };
 };
 

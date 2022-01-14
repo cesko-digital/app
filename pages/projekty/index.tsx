@@ -3,7 +3,6 @@ import { PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { JoinUs } from "components/sections";
 import * as S from "components/project/index-styles";
-import { prepareToSerialize } from "lib/utils";
 import strings from "content/strings.json";
 import { siteData } from "lib/site-data";
 import HighlightedProject from "components/project/highlighted";
@@ -55,9 +54,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const projects = siteData.projects.filter((p) => p.state !== "draft");
   return {
-    props: prepareToSerialize({
-      projects,
-    }),
+    props: { projects },
   };
 };
 

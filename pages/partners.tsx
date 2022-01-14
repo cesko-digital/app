@@ -8,7 +8,6 @@ import BecomePartner from "components/partners/sections/become-partner";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
-import { prepareToSerialize } from "lib/utils";
 import { siteData } from "lib/site-data";
 
 type PageProps = {
@@ -65,9 +64,9 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   return {
-    props: prepareToSerialize({
+    props: {
       partners: siteData.partners,
-    }),
+    },
   };
 };
 

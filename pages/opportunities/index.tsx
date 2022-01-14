@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
 import { PortalOpportunity, PortalProject } from "lib/portal-types";
-import { prepareToSerialize } from "lib/utils";
 import { Layout, SectionContent, Section } from "components/layout";
 import * as Typography from "components/typography";
 import OpportunityItem from "components/sections/opportunity-overview";
@@ -150,10 +149,10 @@ const OpportunitiesCountSpan = styled.span`
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { opportunities, projects } = siteData;
   return {
-    props: prepareToSerialize({
+    props: {
       opportunities: opportunities.filter((o) => o.status === "live"),
       projects,
-    }),
+    },
   };
 };
 
