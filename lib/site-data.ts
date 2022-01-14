@@ -40,9 +40,15 @@ async function loadSiteData(): Promise<SiteData> {
 
   const DataSource = useLocalData ? Local : Airtable;
 
+  const projects = await DataSource.getAllProjects();
+  const opportunities = (await DataSource.getAllOpportunities())
+    // Filter out opportunities that point to nonexisting projects
+    // (ie. projects that have been ignored because of parse errors).
+    .filter((o) => projects.some((p) => p.id === o.projectId));
+
   return filterUndefines({
-    projects: await DataSource.getAllProjects(),
-    opportunities: await DataSource.getAllOpportunities(),
+    projects,
+    opportunities,
     users: await DataSource.getAllUsers(),
     events: await DataSource.getAllEvents(),
     partners: await DataSource.getAllPartners(),
