@@ -1,5 +1,39 @@
 [
   {
+    "id": "recv4L134viSo1N0b",
+    "name": "Frontend Developer React pro Jehlomat",
+    "slug": "recv4L134viSo1N0b",
+    "projectId": "recyAlQx0HFH0kW6h",
+    "summary": {
+      "source": "Vyvíjíme aplikaci, která má šanci zbavit ČR injekčních stříkaček a ušetřit stovky hodin práce terénních pracovníků. Jsme na konci, chybí nám 2 sprinty a aktuálně hledáme posilu v podobě FE vývojáře se zkušeností v Reactu. Dle našeho dovednostního matrixu je role vhodná pro lidi s kompetencí Frontend / Webový vývoj.\nPředpokládáme, že práce na projektu ti zabere cca 3-5 hodin týdně. Projekt vedeme v agilně v 19-denních sprintech, které zahrnují i dva víkendy. Na konci každého sprintu se potkáváme online k sprint-review, kde si práci vyhodnocujeme a dáváme zpětnou vazbu - tá nás posouvá vpřed. Používáme nástroje Jira a GitHub.\nNejsi na to sám/sama. K ruce máš jak zkušeného Scrum Master @Markèta Ryklovà , Tech-Leada @Juraj Kisztner i BE vývojáře @Radek Ludačka a @Tomáš Fechtner . Otevřená komunikace je pro nás základ, a proto jsme ti všichni k dispozici v našem vývojovém kanál #run-jehlomat-dev, pro jakékoliv dotazy.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recAV6IZWuquxQCuZ",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C017VKLRRC0",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recn2d3AOMdBmEM8a",
+    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu IV",
+    "slug": "recn2d3AOMdBmEM8a",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
     "id": "recbg3CqUtjxzykSj",
     "name": "Konzultace nového webu pro Jídelnu Kuchařek bez domova",
     "slug": "recbg3CqUtjxzykSj",
@@ -100,23 +134,6 @@
       "Marketing"
     ],
     "juniorFriendly": false,
-    "status": "live"
-  },
-  {
-    "id": "rec0YZ3onWofJxctJ",
-    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu",
-    "slug": "rec0YZ3onWofJxctJ",
-    "projectId": "recgHexe37XeWVy8N",
-    "summary": {
-      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
-    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": true,
     "status": "live"
   },
   {
@@ -290,6 +307,40 @@
     "status": "live"
   },
   {
+    "id": "rec718yAOsp0YORnY",
+    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu III",
+    "slug": "rec718yAOsp0YORnY",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec786HcvUIMtgaBQ",
+    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu II",
+    "slug": "rec786HcvUIMtgaBQ",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
     "id": "recp7PP8LGRqj9ylu",
     "name": "Produktový/UX designér (placená role!)",
     "slug": "recp7PP8LGRqj9ylu",
@@ -357,6 +408,23 @@
       "Design"
     ],
     "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec0YZ3onWofJxctJ",
+    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu I",
+    "slug": "rec0YZ3onWofJxctJ",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
     "status": "unlisted"
   },
   {

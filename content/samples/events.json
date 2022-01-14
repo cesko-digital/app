@@ -7,15 +7,15 @@
     "description": {
       "source": "Během webináře si popíšeme principy fungování Google Tag Manageru a jak vám pomůže s efektivní správou vašich měřících a reklamních kódů na webu.Seznámím vás se základními pojmy, jako je tag, trigger, kontejner atd. Společně si projdeme typické nasazení měřících kódů Google Analytics pomocí Google Tag manageru.V kurzu nebudu příliš zabíhat do technických detailů, takže si z něj odnese hodně i úplný začátečník. Nicméně alespoň základní povědomí o HTML by se hodilo.\n"
     },
-    "startTime": "2022-01-18T16:00:00.000Z",
+    "startTime": "2022-02-01T16:00:00.000Z",
     "ownerId": "rec5ZFu9U1MxOKjrd",
     "projectId": "recgHexe37XeWVy8N",
     "status": "live",
     "registrationUrl": "https://airtable.com/shrWtBDOR8ehaQGLD",
     "registrationTitle": "Zaregistruj se",
-    "endTime": "2022-01-18T17:30:00.000Z",
+    "endTime": "2022-02-01T17:30:00.000Z",
     "tagIds": [],
-    "coverImageUrl": "http://data.cesko.digital/img/Google_Tag_Manager-zaklady.png",
+    "coverImageUrl": "https://data.cesko.digital/img/Google_Tag_Manager-zaklady.png",
     "locationTitle": "Google Meet",
     "locationUrl": "https://meet.google.com/xfb-ocwp-kgb"
   },

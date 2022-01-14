@@ -11,9 +11,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/ucime-online/cover-ucime-online.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/ucime-online/logo-ucime-online.jpg",
     "highlighted": true,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "running",
     "tagIds": [
       "recMg0okYGUJRFhlc"
     ],
@@ -45,9 +43,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/cityvizor/cover-cityvizor.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/cityvizor/logo-cityvizor.jpg",
     "highlighted": false,
-    "finished": true,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recoUTPWNH9t9OCIa",
       "recw8jRiiTVGrRBZM",
@@ -83,9 +79,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/dame-rousky/cover.png",
     "logoUrl": "https://data.cesko.digital/web/projects/dame-rousky/logo.png",
     "highlighted": false,
-    "finished": true,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recNK5R39EUWEn4Ye"
     ],
@@ -108,9 +102,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/nedluzim-statu/cover-nedluzim-statu.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/nedluzim-statu/logo-nedluzim-statu.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recoUTPWNH9t9OCIa",
       "recnBrQR0KsWCT8Zz",
@@ -143,9 +135,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/jehlomat/cover-jehlomat.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/jehlomat/logo-jehlomat.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "running",
     "tagIds": [
       "recVa4LnmzmtfoYTg"
     ],
@@ -174,9 +164,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/inovace-zpravodajstvi/cover-inovace-zpravodajstvi.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/inovace-zpravodajstvi/logo-inovace-zpravodajstvi.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recMg0okYGUJRFhlc",
       "recYWOIEZAiPX1Fg0",
@@ -207,9 +195,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/covid-portal/cover-covid-portal.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/covid-portal/logo-covid-portal.png",
     "highlighted": false,
-    "finished": true,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recVa4LnmzmtfoYTg",
       "recn0MCAz2XOknJzU",
@@ -241,9 +227,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/nasi-politici/cover-nasipolitici.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/nasi-politici/logo-nasi-politici.jpg",
     "highlighted": false,
-    "finished": true,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recw8jRiiTVGrRBZM",
       "recFVrO5xifN9jog4"
@@ -269,9 +253,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/strecha-dusevniho-zdravi/cover-strecha-dusevniho-zdravi.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/strecha-dusevniho-zdravi/logo-strecha-dusevniho-zdravi.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "running",
     "tagIds": [
       "recVa4LnmzmtfoYTg"
     ],
@@ -299,9 +281,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/zacni-ucit/cover-zacni-ucit.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/zacni-ucit/logo-zacni-ucit.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recMg0okYGUJRFhlc",
       "recuBWE1HG9XxWUpB",
@@ -336,9 +316,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/verejne-zakazky-spolu/cover-verejne-zakazky-spolu.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/verejne-zakazky-spolu/logo-verejne-zakazky-spolu.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "running",
     "tagIds": [
       "recw8jRiiTVGrRBZM"
     ],
@@ -366,9 +344,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/spolu-na-dalku/cover-spolu-na-dalku.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/spolu-na-dalku/logo-spolu-na-dalku.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recVa4LnmzmtfoYTg"
     ],
@@ -396,9 +372,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": false,
+    "state": "running",
     "tagIds": [
       "recVa4LnmzmtfoYTg"
     ],
@@ -422,9 +396,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/cesko-digital/cover.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/cesko-digital/logo.png",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": true,
+    "state": "draft",
     "tagIds": [],
     "coordinatorIds": [
       "recwHYEjFtK8eKLWD",
@@ -446,9 +418,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/pohyb-je-reseni/cover-pohyb-je-reseni.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/pohyb-je-reseni/logo-pohyb-je-reseni.jpg",
     "highlighted": false,
-    "finished": true,
-    "draft": false,
-    "silent": false,
+    "state": "finished",
     "tagIds": [
       "recRiLN6Kgk8ryFGj"
     ],
@@ -470,9 +440,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/cesko-digital/cover.jpg",
     "logoUrl": "https://eu.ui-avatars.com/api/?name=EDU&size=500",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": true,
+    "state": "draft",
     "tagIds": [],
     "coordinatorIds": [
       "recHnc5hx8wh29zqU"
@@ -492,9 +460,7 @@
     "coverImageUrl": "https://data.cesko.digital/web/projects/cesko-digital/cover.jpg",
     "logoUrl": "https://data.cesko.digital/web/projects/market-place/marketplace_logo.png",
     "highlighted": false,
-    "finished": false,
-    "draft": false,
-    "silent": true,
+    "state": "draft",
     "tagIds": [],
     "coordinatorIds": [
       "recf6EM1qZxTTFkA0"
