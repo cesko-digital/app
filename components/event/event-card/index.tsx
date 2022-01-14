@@ -12,6 +12,7 @@ interface EventCardProps {
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
+  const duration = getEventDuration(event);
   return (
     <S.Container>
       <Project project={project} />
@@ -26,6 +27,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
           minute: "2-digit",
         })}
       />
+      {duration && <Info title="Délka akce" content={`${duration} minut`} />}
       {event.locationTitle && (
         <Info
           title="Místo konání"
@@ -41,5 +43,19 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
     </S.Container>
   );
 };
+
+function getEventDuration(event: PortalEvent): number | null {
+  if (event.endTime) {
+    const start = new Date(event.startTime);
+    const end = new Date(event.endTime);
+    const ms = end.getTime() - start.getTime();
+    const minutes = ms / 1000 / 60;
+    const minutesPerDay = 60 * 24;
+    // Do a basic sanity check
+    return minutes > 0 && minutes < minutesPerDay ? minutes : null;
+  } else {
+    return null;
+  }
+}
 
 export default EventCard;
