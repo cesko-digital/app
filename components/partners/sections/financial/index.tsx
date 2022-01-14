@@ -9,7 +9,8 @@ import BlogCard from "components/cards/blog-card";
 import blogPosts from "content/partner-posts.json";
 import strings from "content/strings.json";
 import { BlogHeader } from "./styles";
-import { filterPartnersByCategory, PortalPartner } from "lib/portal-types";
+import { PortalPartner } from "lib/portal-types";
+import { filterPartnersByCategory } from "lib/portal-type-utils";
 
 interface Props {
   partners: readonly PortalPartner[];
