@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Heading1, Heading2 } from "components/typography";
+import { Heading1 } from "components/typography";
 import AboutProject from "components/project/about";
 import ProjectCard from "components/project/card";
 import Contribute from "components/project/contribute";
@@ -8,11 +8,13 @@ import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
+import * as PS from "components/sections/projects/styles";
 import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import OpportunityItem from "components/sections/opportunity-overview";
+import { Route } from "lib/routing";
 
 interface PageProps {
   project: PortalProject;
@@ -76,7 +78,12 @@ const ProjectPage: NextPage<PageProps> = (props) => {
       {opportunities.length > 0 && (
         <Section>
           <SectionContent>
-            <Heading2>Právě hledáme</Heading2>
+            <PS.TitleRow>
+              <PS.Title>Právě hledáme</PS.Title>
+              <PS.ShowAll to={Route.opportunities}>
+                Prohlédnout pozice napříč projekty
+              </PS.ShowAll>
+            </PS.TitleRow>
             <OpportunitiesMainWrapper>
               {opportunities.map((op) => (
                 <OpportunityItem key={op.id} opportunity={op} />
