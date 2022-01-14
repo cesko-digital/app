@@ -22,7 +22,7 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
           </S.OpportunityMetaWrapper>
         </div>
         <S.OpportunityRightWrapper>
-          <a href={relatedProject.url}>
+          <a href={Route.toProject(relatedProject)}>
             <Body>{relatedProject.name}</Body>
           </a>
           <S.OpportunityLogo src={relatedProject.logoUrl} />
