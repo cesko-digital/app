@@ -79,11 +79,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             <Heading2>Právě hledáme</Heading2>
             <OpportunitiesMainWrapper>
               {opportunities.map((op) => (
-                <OpportunityItem
-                  key={op.id}
-                  opportunity={op}
-                  relatedProject={project}
-                />
+                <OpportunityItem key={op.id} opportunity={op} />
               ))}
             </OpportunitiesMainWrapper>
           </SectionContent>
