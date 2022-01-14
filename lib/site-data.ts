@@ -40,15 +40,18 @@ async function loadSiteData(): Promise<SiteData> {
 
   const DataSource = useLocalData ? Local : Airtable;
 
-  return {
+  return filterUndefines({
     projects: await DataSource.getAllProjects(),
     opportunities: await DataSource.getAllOpportunities(),
     users: await DataSource.getAllUsers(),
     events: await DataSource.getAllEvents(),
     partners: await DataSource.getAllPartners(),
     videos: await getAllVideos(),
-  };
+  });
 }
+
+// This is a hack, see https://github.com/vercel/next.js/issues/11993
+const filterUndefines = <T>(data: T): T => JSON.parse(JSON.stringify(data));
 
 // TODO: Prune data to only keep relevant objects?
 export const siteData = await loadSiteData();

@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
-import { prepareToSerialize } from "lib/utils";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1, BodySmall, Body } from "components/typography";
 import * as S from "components/portal-dobrovolnika/opportunity/styles";
@@ -135,12 +134,12 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const { opportunities, projects, users } = siteData;
   const opportunity = opportunities.find((o) => o.slug === slug)!;
   return {
-    props: prepareToSerialize({
+    props: {
       opportunity,
       opportunities: opportunities.filter((o) => o.status === "live"),
       projects,
       users,
-    }),
+    },
   };
 };
 

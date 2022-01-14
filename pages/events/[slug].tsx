@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
-import { prepareToSerialize } from "lib/utils";
 import * as Typography from "components/typography";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/event/styles";
@@ -107,7 +106,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
-    props: prepareToSerialize({ event, events, project, owner }),
+    props: { event, events, project, owner },
   };
 };
 

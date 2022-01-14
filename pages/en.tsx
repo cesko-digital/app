@@ -3,7 +3,6 @@ import { PortalPartner } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
-import { prepareToSerialize } from "lib/utils";
 import {
   Hero,
   OurValues,
@@ -51,9 +50,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
     p.categories.some((c) => c === "homepage")
   );
   return {
-    props: prepareToSerialize({
+    props: {
       partners: homepagePartners,
-    }),
+    },
   };
 };
 
