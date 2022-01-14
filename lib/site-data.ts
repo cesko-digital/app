@@ -41,18 +41,22 @@ async function loadSiteData(): Promise<SiteData> {
   const DataSource = useLocalData ? Local : Airtable;
 
   const projects = await DataSource.getAllProjects();
+  const users = await DataSource.getAllUsers();
   const opportunities = (await DataSource.getAllOpportunities())
     // Filter out opportunities that point to nonexisting projects
     // (ie. projects that have been ignored because of parse errors).
     .filter((o) => projects.some((p) => p.id === o.projectId));
+  const events = (await DataSource.getAllEvents())
+    // Filter out events that are owned by nonexisting users
+    .filter((e) => users.some((u) => u.id === e.ownerId));
 
   return filterUndefines({
-    projects,
-    opportunities,
-    users: await DataSource.getAllUsers(),
-    events: await DataSource.getAllEvents(),
     partners: await DataSource.getAllPartners(),
     videos: await getAllVideos(),
+    projects,
+    opportunities,
+    users,
+    events,
   });
 }
 
