@@ -56,33 +56,37 @@ test("Decode portal project", () => {
   });
 });
 
-test("Decode portal user", () => {
-  expect(
-    decodeUser({
+describe("Decode portal user", () => {
+  test("Decode valid payload", () => {
+    expect(
+      decodeUser({
+        id: "recA5nftMpxJmwpr4",
+        email: "zoul@cesko.digital",
+        profilePictureUrl:
+          "https://data.cesko.digital/people/tomas-znamenacek.jpg",
+        name: "Tomáš Znamenáček",
+      })
+    ).toEqual({
       id: "recA5nftMpxJmwpr4",
-      email: "zoul@cesko.digital",
+      name: "Tomáš Znamenáček",
       profilePictureUrl:
         "https://data.cesko.digital/people/tomas-znamenacek.jpg",
-      name: "Tomáš Znamenáček",
-    })
-  ).toEqual({
-    id: "recA5nftMpxJmwpr4",
-    name: "Tomáš Znamenáček",
-    profilePictureUrl: "https://data.cesko.digital/people/tomas-znamenacek.jpg",
-    email: "zoul@cesko.digital",
-  });
-  // Supply a generic profile picture
-  expect(
-    decodeUser({
-      id: "recA5nftMpxJmwpr4",
       email: "zoul@cesko.digital",
+    });
+  });
+  test("Supply default profile picture", () => {
+    expect(
+      decodeUser({
+        id: "recA5nftMpxJmwpr4",
+        email: "zoul@cesko.digital",
+        name: "Tomáš Znamenáček",
+      })
+    ).toEqual({
+      id: "recA5nftMpxJmwpr4",
       name: "Tomáš Znamenáček",
-    })
-  ).toEqual({
-    id: "recA5nftMpxJmwpr4",
-    name: "Tomáš Znamenáček",
-    profilePictureUrl: "https://data.cesko.digital/people/generic.png",
-    email: "zoul@cesko.digital",
+      profilePictureUrl: "https://data.cesko.digital/people/generic.png",
+      email: "zoul@cesko.digital",
+    });
   });
 });
 
