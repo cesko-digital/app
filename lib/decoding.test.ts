@@ -71,6 +71,19 @@ test("Decode portal user", () => {
     profilePictureUrl: "https://data.cesko.digital/people/tomas-znamenacek.jpg",
     email: "zoul@cesko.digital",
   });
+  // Supply a generic profile picture
+  expect(
+    decodeUser({
+      id: "recA5nftMpxJmwpr4",
+      email: "zoul@cesko.digital",
+      name: "Tomáš Znamenáček",
+    })
+  ).toEqual({
+    id: "recA5nftMpxJmwpr4",
+    name: "Tomáš Znamenáček",
+    profilePictureUrl: "https://data.cesko.digital/people/generic.png",
+    email: "zoul@cesko.digital",
+  });
 });
 
 test("Decode portal event", () => {

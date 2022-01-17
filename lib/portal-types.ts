@@ -48,7 +48,10 @@ export const decodeProject = record({
 export const decodeUser = record({
   id: string,
   name: string,
-  profilePictureUrl: string,
+  profilePictureUrl: withDefault(
+    string,
+    "https://data.cesko.digital/people/generic.png"
+  ),
   email: string,
 });
 
