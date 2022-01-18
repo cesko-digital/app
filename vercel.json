@@ -9,6 +9,16 @@
       "source": "/go/spolu",
       "destination": "http://data.cesko.digital/spolunadalku/prirucka.pdf",
       "statusCode": 302
+    },
+    {
+      "source": "/portal-dobrovolnika",
+      "destination": "http://cesko.digital/dashboard",
+      "statusCode": 302
+    },
+    {
+      "source": "/projekty",
+      "destination": "http://cesko.digital/projects",
+      "statusCode": 302
     }
   ],
   "github": {

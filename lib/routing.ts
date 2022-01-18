@@ -15,11 +15,11 @@ export const Route = {
   blog: "https://blog.cesko.digital",
   // Static routes
   opportunities: "/opportunities",
-  volunteerPortal: "/portal-dobrovolnika",
+  volunteerPortal: "/dashboard",
   partners: "/partners",
-  projects: "/projekty",
+  projects: "/projects",
   // Dynamic routes
-  toProject: (p: PortalProject) => `/projekty/${p.slug}`,
+  toProject: (p: PortalProject) => `/projects/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
   toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
   toVideo: (v: PortalVideo) => `/cedu/${v.slug}`,

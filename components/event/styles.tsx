@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Heading2 } from "components/typography";
-import EventCard from "components/portal-dobrovolnika/event-card";
+import EventCard from "components/dashboard/event-card";
 
 export const CoverImageWrapper = styled.div`
   overflow: hidden;

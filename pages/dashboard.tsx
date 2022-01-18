@@ -1,13 +1,13 @@
 import type { NextPage, GetStaticProps } from "next";
 import { Layout, SectionContent, Section } from "components/layout";
 import * as Typography from "components/typography";
-import * as S from "components/portal-dobrovolnika/styles";
-import EventCard from "components/portal-dobrovolnika/event-card";
+import * as S from "components/dashboard/styles";
+import EventCard from "components/dashboard/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
 import { Route } from "lib/routing";
-import CeduCard from "components/portal-dobrovolnika/cedu-card";
+import CeduCard from "components/dashboard/cedu-card";
 import { PortalVideo } from "lib/cedu";
 import {
   PortalEvent,
