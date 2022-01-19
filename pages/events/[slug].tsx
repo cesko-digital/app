@@ -14,6 +14,7 @@ import { siteData } from "lib/site-data";
 interface PageProps {
   event: PortalEvent;
   project: PortalProject;
+  projects: readonly PortalProject[];
   events: readonly PortalEvent[];
   owner: PortalUser;
 }
@@ -22,8 +23,11 @@ interface QueryParams extends ParsedUrlQuery {
   slug: string;
 }
 
-const Page: NextPage<PageProps> = ({ event, project, owner, events }) => {
+const Page: NextPage<PageProps> = (props) => {
+  const { event, project, projects, owner, events } = props;
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
+  const getEventProject = (e: PortalEvent) =>
+    projects.find((p) => p.id === e.projectId)!;
   const otherEvents = events.filter(
     (e) => e.status === "live" && e.id !== event.id
   );
@@ -76,7 +80,11 @@ const Page: NextPage<PageProps> = ({ event, project, owner, events }) => {
             <S.CardWrapper>
               <CardRow>
                 {otherEvents.slice(0, 3).map((event, index) => (
-                  <S.ProjectCard key={index} event={event} project={project} />
+                  <S.ProjectCard
+                    key={index}
+                    event={event}
+                    project={getEventProject(event)}
+                  />
                 ))}
               </CardRow>
             </S.CardWrapper>
@@ -106,7 +114,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
-    props: { event, events, project, owner },
+    props: { event, events, project, projects, owner },
   };
 };
 
