@@ -19,6 +19,10 @@ export const Seo: React.FC<SeoProps> = ({
         {title ? `${title} | Česko.Digital` : strings.metadata.title}
       </title>
       <meta
+        name="viewport"
+        content="width=device-width, minimum-scale=1, initial-scale=1, viewport-fit=cover"
+      />
+      <meta
         name="description"
         content={description || strings.metadata.description}
       />
