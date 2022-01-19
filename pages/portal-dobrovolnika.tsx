@@ -15,6 +15,7 @@ import {
   PortalProject,
 } from "lib/portal-types";
 import { siteData } from "lib/site-data";
+import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];
@@ -80,19 +81,18 @@ const OpportunitiesSection: React.FC<PageProps> = ({
 };
 
 const EventsSection: React.FC<PageProps> = ({ events, projects }) => {
-  const compareEventsByTime = (a: PortalEvent, b: PortalEvent) =>
-    Date.parse(b.startTime) - Date.parse(a.startTime); /* TBD */
   const upcomingEvents = [...events]
     .filter((e) => e.status === "live")
+    .filter((e) => !isEventPast(e))
     .sort(compareEventsByTime)
-    .slice(0, 3);
+    .slice(0, 6);
   const eventProject = (e: PortalEvent) =>
     projects.find((p) => p.id === e.projectId)!;
   return (
     <Section id="section-events">
       <SectionContent>
         <S.CategoryHeader>
-          <S.Title>Vybrané akce</S.Title>
+          <S.Title>Nejbližší akce</S.Title>
         </S.CategoryHeader>
         <S.Container>
           <S.CardWrapper>
