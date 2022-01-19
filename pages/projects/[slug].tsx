@@ -8,7 +8,7 @@ import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
-import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles";
+import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
@@ -33,7 +33,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
     <Layout
       crumbs={[
         {
-          path: "/projekty",
+          path: Route.projects,
           label: strings.pages.projects.navigation.projects,
         },
         { label: project.name },

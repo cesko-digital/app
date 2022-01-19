@@ -19,9 +19,9 @@ const Footer: React.FC = () => {
 
   const p = footer.pageLinks;
   const pageLinks = [
-    [p.projects, "/projekty"],
-    [p.portal, "/dashboard"],
-    [p.blog, "https://blog.cesko.digital"],
+    [p.projects, Route.projects],
+    [p.portal, Route.dashboard],
+    [p.blog, Route.blog],
     [p.loginToSlack, Route.joinUs],
     [p.submitProject, Route.submitProject],
     [p.supportUs, Route.supportUs],

@@ -12,12 +12,12 @@
     },
     {
       "source": "/portal-dobrovolnika",
-      "destination": "http://cesko.digital/dashboard",
+      "destination": "/dashboard",
       "statusCode": 302
     },
     {
       "source": "/projekty",
-      "destination": "http://cesko.digital/projects",
+      "destination": "/projects",
       "statusCode": 302
     }
   ],

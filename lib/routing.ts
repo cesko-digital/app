@@ -15,7 +15,7 @@ export const Route = {
   blog: "https://blog.cesko.digital",
   // Static routes
   opportunities: "/opportunities",
-  volunteerPortal: "/dashboard",
+  dashboard: "/dashboard",
   partners: "/partners",
   projects: "/projects",
   // Dynamic routes
