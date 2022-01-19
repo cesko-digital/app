@@ -11,6 +11,7 @@ export const AboutSectionWrapper = styled.div`
     flex-direction: column-reverse;
   }
 `;
+
 export const DescriptionWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex: 5;
@@ -20,6 +21,7 @@ export const DescriptionWrapper = styled.div`
     margin-right: 100px;
   }
 `;
+
 export const ProjectCardWrapper = styled.div`
   flex: 2;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -46,6 +48,7 @@ export const CoverImage = styled.img`
   width: 100%;
   max-height: 560px;
 `;
+
 export const ContributeWrapper = styled.div`
   margin: 30px 0;
   display: flex;
