@@ -8,7 +8,6 @@ import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
-import * as PS from "components/sections/projects/styles";
 import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
@@ -78,12 +77,12 @@ const ProjectPage: NextPage<PageProps> = (props) => {
       {opportunities.length > 0 && (
         <Section>
           <SectionContent>
-            <PS.TitleRow>
-              <PS.Title>Právě hledáme</PS.Title>
-              <PS.ShowAll to={Route.opportunities}>
+            <S.TitleRow>
+              <S.Title>Právě hledáme</S.Title>
+              <S.AccessoryLink to={Route.opportunities}>
                 Prohlédnout pozice napříč projekty
-              </PS.ShowAll>
-            </PS.TitleRow>
+              </S.AccessoryLink>
+            </S.TitleRow>
             <OpportunitiesMainWrapper>
               {opportunities.map((op) => (
                 <OpportunityItem key={op.id} opportunity={op} />
