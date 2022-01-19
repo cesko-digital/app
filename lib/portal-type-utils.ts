@@ -42,5 +42,18 @@ export function filterPartnersByCategory(
   return partners.filter((p) => p.categories.some((c) => c === category));
 }
 
+/** Is event’s start time in the past? */
+export function isEventPast(
+  event: PortalEvent,
+  date: Date = new Date()
+): boolean {
+  const eventDate = new Date(event.startTime);
+  return eventDate.getTime() < date.getTime();
+}
+
+/** Compare events by start time, can be used to sort events by start time */
+export const compareEventsByTime = (a: PortalEvent, b: PortalEvent) =>
+  Date.parse(a.startTime) - Date.parse(b.startTime);
+
 type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
