@@ -78,9 +78,9 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.TitleRow>
-              <S.Title>Právě hledáme</S.Title>
+              <S.Title>{strings.pages.project.opportunities.title}</S.Title>
               <S.AccessoryLink to={Route.opportunities}>
-                Prohlédnout pozice napříč projekty
+                {strings.pages.project.opportunities.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
             <OpportunitiesMainWrapper>
