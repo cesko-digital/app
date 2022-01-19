@@ -1,5 +1,6 @@
-import { BodyBig } from "components/typography";
 import styled from "styled-components";
+import { BodyBig, Heading2 } from "components/typography";
+import { Link } from "components/links";
 
 export const AboutSectionWrapper = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ export const AboutSectionWrapper = styled.div`
     flex-direction: column-reverse;
   }
 `;
+
 export const DescriptionWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex: 5;
@@ -20,6 +22,7 @@ export const DescriptionWrapper = styled.div`
     margin-right: 100px;
   }
 `;
+
 export const ProjectCardWrapper = styled.div`
   flex: 2;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -46,6 +49,7 @@ export const CoverImage = styled.img`
   width: 100%;
   max-height: 560px;
 `;
+
 export const ContributeWrapper = styled.div`
   margin: 30px 0;
   display: flex;
@@ -53,4 +57,24 @@ export const ContributeWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     margin: 100px 0;
   }
+`;
+
+export const TitleRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+    padding: 0;
+  }
+`;
+
+export const Title = styled(Heading2)`
+  margin-bottom: 14px;
+`;
+
+export const AccessoryLink = styled(Link)`
+  margin-bottom: 18px;
 `;

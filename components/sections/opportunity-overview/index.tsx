@@ -5,7 +5,7 @@ import * as S from "./styles";
 
 interface Props {
   opportunity: PortalOpportunity;
-  relatedProject: PortalProject;
+  relatedProject?: PortalProject;
 }
 
 const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
@@ -21,12 +21,14 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
             <BodySmall>{opportunity.skills.join(", ")}</BodySmall>
           </S.OpportunityMetaWrapper>
         </div>
-        <S.OpportunityRightWrapper>
-          <a href={relatedProject.url}>
-            <Body>{relatedProject.name}</Body>
-          </a>
-          <S.OpportunityLogo src={relatedProject.logoUrl} />
-        </S.OpportunityRightWrapper>
+        {relatedProject && (
+          <S.OpportunityRightWrapper>
+            <a href={Route.toProject(relatedProject)}>
+              <Body>{relatedProject.name}</Body>
+            </a>
+            <S.OpportunityLogo src={relatedProject.logoUrl} />
+          </S.OpportunityRightWrapper>
+        )}
       </S.OpportunityWrapper>
     </S.Container>
   );

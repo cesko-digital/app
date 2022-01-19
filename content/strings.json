@@ -236,6 +236,10 @@
             "projectCard": {
                 "coordinators": "Projektoví koordinátoři",
                 "links": "Odkazy"
+            },
+            "opportunities": {
+                "title": "Právě hledáme",
+                "seeAll": "Všechny volné pozice"
             }
         },
         "projects": {

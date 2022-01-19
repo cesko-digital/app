@@ -6,16 +6,20 @@ import ProjectCard from "components/project/card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
-import { PortalProject, PortalUser } from "lib/portal-types";
+import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
+import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
+import OpportunityItem from "components/sections/opportunity-overview";
+import { Route } from "lib/routing";
 
 interface PageProps {
   project: PortalProject;
   coordinators: readonly PortalUser[];
   projects: readonly PortalProject[];
+  opportunities: readonly PortalOpportunity[];
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -23,7 +27,7 @@ interface QueryParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<PageProps> = (props) => {
-  const { project, coordinators, projects } = props;
+  const { project, coordinators, projects, opportunities } = props;
   const otherProjects = projects.filter((p) => p != project).slice(0, 3);
   return (
     <Layout
@@ -52,6 +56,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
           </S.CoverImageWrapper>
         </SectionContent>
       </Section>
+
       <Section>
         <SectionContent>
           <S.AboutSectionWrapper>
@@ -68,6 +73,25 @@ const ProjectPage: NextPage<PageProps> = (props) => {
           </S.AboutSectionWrapper>
         </SectionContent>
       </Section>
+
+      {opportunities.length > 0 && (
+        <Section>
+          <SectionContent>
+            <S.TitleRow>
+              <S.Title>{strings.pages.project.opportunities.title}</S.Title>
+              <S.AccessoryLink to={Route.opportunities}>
+                {strings.pages.project.opportunities.seeAll}
+              </S.AccessoryLink>
+            </S.TitleRow>
+            <OpportunitiesMainWrapper>
+              {opportunities.map((op) => (
+                <OpportunityItem key={op.id} opportunity={op} />
+              ))}
+            </OpportunitiesMainWrapper>
+          </SectionContent>
+        </Section>
+      )}
+
       {project.state !== "finished" && project.contributeText && (
         <Section>
           <SectionContent>
@@ -77,6 +101,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
           </SectionContent>
         </Section>
       )}
+
       <Section>
         <SectionContent>
           <Projects
@@ -110,11 +135,15 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const coordinators = project.coordinatorIds.map(
     (id) => users.find((user) => user.id === id)!
   );
+  const opportunities = siteData.opportunities.filter(
+    (o) => o.projectId === project.id && o.status === "live"
+  );
   return {
     props: {
       project,
       projects,
       coordinators,
+      opportunities,
     },
   };
 };
