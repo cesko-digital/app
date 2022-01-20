@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {
   CompetencyFilterLabel,
   CompetencyFilterRadio,
-} from "components/portal-dobrovolnika/styles";
+} from "components/dashboard/styles";
 import { Route } from "lib/routing";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
@@ -84,7 +84,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { label: "Portál dobrovolníka", path: Route.volunteerPortal },
+        { label: "Portál dobrovolníka", path: Route.dashboard },
         { label: "Volné pozice" },
       ]}
       seo={{

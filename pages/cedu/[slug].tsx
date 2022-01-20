@@ -35,7 +35,7 @@ const Page: NextPage<PageProps> = ({ video }) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.volunteerPortal, label: "Portál dobrovolníka" },
+        { path: Route.dashboard, label: "Portál dobrovolníka" },
         { label: video.title },
       ]}
       seo={{

@@ -19,7 +19,7 @@ const Hero: React.FC<Props> = ({ lang = "cs" }) => {
             <S.ShiftedBody>{strings.pages.homepage.subtitle}</S.ShiftedBody>
             {lang === "cs" && (
               <>
-                <S.ButtonAsLinkElement to="/projekty">
+                <S.ButtonAsLinkElement to={Route.projects}>
                   {strings.pages.homepage.whatWeDo}
                 </S.ButtonAsLinkElement>
                 <S.ShiftedButton inverted to={Route.joinUs}>

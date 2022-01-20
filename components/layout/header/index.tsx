@@ -13,7 +13,7 @@ const HeaderCS: React.FC = () => {
 
   const menu = [
     [Route.projects, strings.header.projects],
-    [Route.volunteerPortal, strings.header.portal],
+    [Route.dashboard, strings.header.portal],
     [Route.partners, strings.header.partners],
     [Route.blog, "Blog"],
     [Route.supportUs, strings.header.supportUs],

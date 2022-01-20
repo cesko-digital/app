@@ -2,14 +2,14 @@ import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1, BodySmall, Body } from "components/typography";
-import * as S from "components/portal-dobrovolnika/opportunity/styles";
+import * as S from "components/dashboard/opportunity/styles";
 import {
   OwnerName,
   OpportunityMetaRow,
-} from "components/portal-dobrovolnika/opportunity/styles";
+} from "components/dashboard/opportunity/styles";
 import TimeIcon from "components/icons/time";
 import OpportunityItem from "components/sections/opportunity-overview";
-import { OpportunitiesMainWrapper } from "components/portal-dobrovolnika/styles";
+import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { Route } from "lib/routing";
@@ -43,7 +43,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: "/portal-dobrovolnika", label: "Portál dobrovolníka" },
+        { path: "/dashboard", label: "Portál dobrovolníka" },
         { path: "/opportunities", label: "Volné pozice" },
         { label: opportunity.name },
       ]}

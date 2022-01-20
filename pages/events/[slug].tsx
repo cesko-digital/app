@@ -34,7 +34,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: "/portal-dobrovolnika", label: "Portál dobrovolníka" },
+        { path: "/dashboard", label: "Portál dobrovolníka" },
         { label: event.name },
       ]}
       seo={{
@@ -75,7 +75,7 @@ const Page: NextPage<PageProps> = (props) => {
           <S.Container>
             <S.CategoryHeader>
               <S.Title>Další akce</S.Title>
-              <Link to="/portal-dobrovolnika">Všechny příležitosti</Link>
+              <Link to="/dashboard">Všechny příležitosti</Link>
             </S.CategoryHeader>
             <S.CardWrapper>
               <CardRow>
