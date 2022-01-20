@@ -43,8 +43,8 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: "/dashboard", label: "Portál dobrovolníka" },
-        { path: "/opportunities", label: "Volné pozice" },
+        { path: Route.dashboard, label: "Portál dobrovolníka" },
+        { path: Route.opportunities, label: "Volné pozice" },
         { label: opportunity.name },
       ]}
       seo={{

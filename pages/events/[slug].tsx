@@ -10,6 +10,7 @@ import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
+import { Route } from "lib/routing";
 
 interface PageProps {
   event: PortalEvent;
@@ -34,7 +35,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: "/dashboard", label: "Portál dobrovolníka" },
+        { path: Route.dashboard, label: "Portál dobrovolníka" },
         { label: event.name },
       ]}
       seo={{
@@ -75,7 +76,7 @@ const Page: NextPage<PageProps> = (props) => {
           <S.Container>
             <S.CategoryHeader>
               <S.Title>Další akce</S.Title>
-              <Link to="/dashboard">Všechny příležitosti</Link>
+              <Link to={Route.dashboard}>Všechny příležitosti</Link>
             </S.CategoryHeader>
             <S.CardWrapper>
               <CardRow>
