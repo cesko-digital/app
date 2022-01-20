@@ -5,25 +5,25 @@ import Section from "./section";
 import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
-import Seo, { SeoProps } from "./seo";
+import CustomHead, { CustomHeadProps } from "./head";
 import HeaderEN from "./header/english";
 
 export interface Props {
   crumbs?: Crumb[];
   children: ReactNode;
-  seo?: SeoProps;
+  head?: CustomHeadProps;
   lang?: "cs" | "en";
 }
 
 const Layout: React.FC<Props> = ({
   crumbs,
   children,
-  seo = {},
+  head: seo = {},
   lang = "cs",
 }: Props) => {
   return (
     <S.Container>
-      <Seo {...seo} />
+      <CustomHead {...seo} />
       {lang === "cs" && <HeaderCS />}
       {lang === "en" && <HeaderEN />}
       {crumbs && (

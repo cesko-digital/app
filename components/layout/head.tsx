@@ -2,17 +2,17 @@
 import Head from "next/head";
 import strings from "content/strings.json";
 
-export interface SeoProps {
+export interface CustomHeadProps {
   description?: string;
   title?: string;
   coverUrl?: string;
 }
 
-export const Seo: React.FC<SeoProps> = ({
+export const CustomHead: React.FC<CustomHeadProps> = ({
   description,
   title,
   coverUrl = "https://data.cesko.digital/web/metadata-cover.png",
-}: SeoProps) => {
+}: CustomHeadProps) => {
   return (
     <Head>
       <title>
@@ -35,4 +35,4 @@ export const Seo: React.FC<SeoProps> = ({
   );
 };
 
-export default Seo;
+export default CustomHead;
