@@ -47,7 +47,7 @@ const Page: NextPage<PageProps> = (props) => {
         { path: Route.opportunities, label: "Volné pozice" },
         { label: opportunity.name },
       ]}
-      seo={{
+      head={{
         title: opportunity.name,
         description: opportunity.summary.source, // TODO: We should have a plain text summary and a Markdown description
         coverUrl: coverImageUrl,

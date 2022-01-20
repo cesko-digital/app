@@ -22,7 +22,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
   return (
     <Layout
       crumbs={[{ label: msg.navigation.projects }]}
-      seo={{
+      head={{
         title: msg.metadata.title,
         description: msg.metadata.description,
       }}

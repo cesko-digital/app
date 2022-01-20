@@ -87,7 +87,7 @@ const Page: NextPage<PageProps> = (props) => {
         { label: "Portál dobrovolníka", path: Route.dashboard },
         { label: "Volné pozice" },
       ]}
-      seo={{
+      head={{
         title: "Volné pozice - Portál dobrovolníka",
         description: "Volné pozice - Portál dobrovolníka",
       }}

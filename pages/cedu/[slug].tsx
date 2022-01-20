@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = ({ video }) => {
         { path: Route.dashboard, label: "Portál dobrovolníka" },
         { label: video.title },
       ]}
-      seo={{
+      head={{
         title: video.title,
         description: video.description,
         coverUrl: video.cover,

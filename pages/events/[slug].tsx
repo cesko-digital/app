@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = (props) => {
         { path: Route.dashboard, label: "Portál dobrovolníka" },
         { label: event.name },
       ]}
-      seo={{
+      head={{
         title: event.name,
         description: event.summary,
         coverUrl: coverImageUrl,

@@ -38,7 +38,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         },
         { label: project.name },
       ]}
-      seo={{
+      head={{
         title: project.name,
         description: project.tagline,
         coverUrl: project.coverImageUrl,

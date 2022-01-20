@@ -28,7 +28,7 @@ const PortalDobrovolnika: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[{ label: "Portál dobrovolníka" }]}
-      seo={{
+      head={{
         title: "Portál dobrovolníka",
         description: "Tržiště příležitostí, jak se zapojit v Česko.Digital",
         coverUrl: "https://data.cesko.digital/img/bcbb8e4a.png",
