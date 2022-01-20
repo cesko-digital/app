@@ -8,7 +8,6 @@ import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
-import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
@@ -87,11 +86,11 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 {strings.pages.project.opportunities.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
-            <OpportunitiesMainWrapper>
+            <S.RelatedContentWrapper>
               {opportunities.map((op) => (
                 <OpportunityItem key={op.id} opportunity={op} />
               ))}
-            </OpportunitiesMainWrapper>
+            </S.RelatedContentWrapper>
           </SectionContent>
         </Section>
       )}
@@ -105,11 +104,13 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 Blog Česko.Digital
               </S.AccessoryLink>
             </S.TitleRow>
-            <CardRow>
-              {blogPosts.map((post) => (
-                <BlogCard key={post.url} link={post.url} {...post} />
-              ))}
-            </CardRow>
+            <S.RelatedContentWrapper>
+              <CardRow>
+                {blogPosts.map((post) => (
+                  <BlogCard key={post.url} link={post.url} {...post} />
+                ))}
+              </CardRow>
+            </S.RelatedContentWrapper>
           </SectionContent>
         </Section>
       )}
