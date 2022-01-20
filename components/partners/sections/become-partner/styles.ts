@@ -20,6 +20,7 @@ export const CenteredTextWrapper = styled.div`
   justify-content: center;
   overflow: hidden;
   overflow-wrap: anywhere;
+  margin-bottom: 64px;
 `;
 
 export const Subtitle = styled(BodyBig)`
