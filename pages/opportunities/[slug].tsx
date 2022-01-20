@@ -33,6 +33,9 @@ const Page: NextPage<PageProps> = (props) => {
     projects.find((p) => p.id === o.projectId)!;
   const opportunityOwner = (o: PortalOpportunity) =>
     users.find((u) => u.id === o.ownerId)!;
+  const otherOpportunities = opportunities.filter(
+    (o) => o.id !== opportunity.id
+  );
   const parentProject = opportunityProject(opportunity);
   const owner = opportunityOwner(opportunity);
   const coverImageUrl =
@@ -103,7 +106,7 @@ const Page: NextPage<PageProps> = (props) => {
       <Section>
         <SectionContent>
           <OpportunitiesMainWrapper>
-            {opportunities.slice(0, 3).map((o) => (
+            {otherOpportunities.slice(0, 3).map((o) => (
               <OpportunityItem
                 key={o.id}
                 opportunity={o}
