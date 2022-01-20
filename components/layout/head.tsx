@@ -30,6 +30,7 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
       <link rel="stylesheet" href="/fonts.css" />
+      <link rel="stylesheet" href="/global.css" />
       <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     </Head>
   );
