@@ -102,7 +102,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             <S.TitleRow>
               <S.Title>Vybíráme z našeho blogu</S.Title>
               <S.AccessoryLink to={Route.blog}>
-                blog.cesko.digital
+                Blog Česko.Digital
               </S.AccessoryLink>
             </S.TitleRow>
             <CardRow>
