@@ -104,13 +104,13 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 Blog Česko.Digital
               </S.AccessoryLink>
             </S.TitleRow>
-            <S.RelatedContentWrapper>
+            <S.BlogCardsWrapper>
               <CardRow>
                 {blogPosts.map((post) => (
                   <BlogCard key={post.url} link={post.url} {...post} />
                 ))}
               </CardRow>
-            </S.RelatedContentWrapper>
+            </S.BlogCardsWrapper>
           </SectionContent>
         </Section>
       )}
