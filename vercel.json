@@ -13,17 +13,17 @@
     {
       "source": "/portal-dobrovolnika",
       "destination": "/dashboard",
-      "statusCode": 302
+      "statusCode": 301
     },
     {
       "source": "/projekty",
       "destination": "/projects",
-      "statusCode": 302
+      "statusCode": 301
     },
     {
       "source": "/projekty/(.*)",
       "destination": "/projects/$1",
-      "statusCode": 302
+      "statusCode": 301
     }
   ],
   "github": {
