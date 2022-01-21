@@ -30,7 +30,7 @@ export const CoverWrap = styled.div`
   background-color: rgba(0, 0, 255, 0.5);
   border-top-left-radius: ${({ theme }) => theme.borderRadius.base}px;
   border-top-right-radius: ${({ theme }) => theme.borderRadius.base}px;
-`
+`;
 
 export const Cover = styled.div<{ url: string }>`
   position: absolute;
@@ -43,10 +43,10 @@ export const Cover = styled.div<{ url: string }>`
   filter: grayscale(100%);
   border-top-left-radius: ${({ theme }) => theme.borderRadius.base}px;
   border-top-right-radius: ${({ theme }) => theme.borderRadius.base}px;
-`
+`;
 Cover.defaultProps = {
-  role: 'img',
-}
+  role: "img",
+};
 
 export const Logo = styled.div<{ url: string }>`
   position: absolute;
@@ -63,22 +63,22 @@ export const Logo = styled.div<{ url: string }>`
 
   border-radius: 50%;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(8, 8, 50, 0.12);
-`
+`;
 Logo.defaultProps = {
-  role: 'img',
-}
+  role: "img",
+};
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   margin: ${({ theme }) => theme.space.lg}px;
-`
+`;
 
 export const Title = styled(Heading3)`
   ${heading4Styles}
   margin-bottom: 9px;
-`
+`;
 
 export const TagList = styled.ul`
   display: flex;
@@ -87,7 +87,7 @@ export const TagList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`
+`;
 
 export const Tag = styled.li`
   background-color: ${({ theme }) => theme.colors.pebble};
@@ -99,18 +99,18 @@ export const Tag = styled.li`
   margin-right: ${({ theme }) => theme.space.small}px;
   margin-bottom: ${({ theme }) => theme.space.small}px;
   padding: ${({ theme }) => theme.space.small}px;
-`
+`;
 
 export const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.base}px;
   flex-grow: 1;
-`
+`;
 
 export const ShortInfoBubbles = styled.div`
   overflow: hidden;
   white-space: nowrap;
   margin-bottom: ${({ theme }) => theme.space.md}px;
-`
+`;
 
 export const ShortInfoBubble = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small}px;
@@ -123,4 +123,4 @@ export const ShortInfoBubble = styled.div`
   &:last-of-type {
     margin-right: 0;
   }
-`
+`;
