@@ -25,8 +25,8 @@ import {
 
 interface PageProps {
   project: PortalProject;
+  otherProjects: PortalProject[];
   coordinators: readonly PortalUser[];
-  projects: readonly PortalProject[];
   opportunities: readonly PortalOpportunity[];
   relatedBlogPosts: readonly Article[];
   relatedEvents: readonly PortalEvent[];
@@ -37,10 +37,14 @@ interface QueryParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<PageProps> = (props) => {
-  const { project, coordinators, projects, opportunities, relatedEvents } =
-    props;
-  const otherProjects = projects.filter((p) => p != project).slice(0, 3);
-  const blogPosts = [...props.relatedBlogPosts].reverse().slice(0, 3);
+  const {
+    project,
+    coordinators,
+    otherProjects,
+    opportunities,
+    relatedBlogPosts,
+    relatedEvents,
+  } = props;
   const msg = strings.pages.project;
   return (
     <Layout
@@ -125,7 +129,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         </Section>
       )}
 
-      {blogPosts.length > 0 && (
+      {relatedBlogPosts.length > 0 && (
         <Section>
           <SectionContent>
             <S.TitleRow>
@@ -136,7 +140,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             </S.TitleRow>
             <S.BlogCardsWrapper>
               <CardRow>
-                {blogPosts.map((post) => (
+                {relatedBlogPosts.map((post) => (
                   <BlogCard key={post.url} link={post.url} {...post} />
                 ))}
               </CardRow>
@@ -194,13 +198,14 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const relatedBlogPosts = siteData.blogPosts.filter((post) =>
     post.tags.some((tag) => tag === project.slug)
   );
+  const otherProjects = projects.filter((p) => p != project).slice(0, 3);
   const relatedEvents = events
     .filter((e) => !isEventPast(e) && e.projectId === project.id)
     .slice(0, 3);
   return {
     props: {
       project,
-      projects,
+      otherProjects,
       coordinators,
       relatedBlogPosts,
       opportunities,
