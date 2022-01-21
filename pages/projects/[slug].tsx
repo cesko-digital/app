@@ -41,6 +41,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
     props;
   const otherProjects = projects.filter((p) => p != project).slice(0, 3);
   const blogPosts = [...props.relatedBlogPosts].reverse().slice(0, 3);
+  const msg = strings.pages.project;
   return (
     <Layout
       crumbs={[
@@ -90,9 +91,9 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.TitleRow>
-              <S.Title>{strings.pages.project.opportunities.title}</S.Title>
+              <S.Title>{msg.opportunities.title}</S.Title>
               <S.AccessoryLink to={Route.opportunities}>
-                {strings.pages.project.opportunities.seeAll}
+                {msg.opportunities.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
             <S.RelatedContentWrapper>
@@ -108,9 +109,9 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.TitleRow>
-              <S.Title>{strings.pages.project.events.title}</S.Title>
+              <S.Title>{msg.events.title}</S.Title>
               <S.AccessoryLink to={Route.events}>
-                {strings.pages.project.events.seeAll}
+                {msg.events.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
             <S.RelatedContentWrapper>
