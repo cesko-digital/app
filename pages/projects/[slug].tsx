@@ -108,15 +108,15 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.TitleRow>
-              <S.Title>Chystané akce</S.Title>
-              <S.AccessoryLink to={Route.opportunities}>
-                {strings.pages.project.opportunities.seeAll}
+              <S.Title>{strings.pages.project.events.title}</S.Title>
+              <S.AccessoryLink to={Route.events}>
+                {strings.pages.project.events.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
             <S.RelatedContentWrapper>
               <CardRow>
-                {relatedEvents.map((event, index) => (
-                  <EventCard key={index} event={event} project={project} />
+                {relatedEvents.map((event) => (
+                  <EventCard key={event.id} event={event} project={project} />
                 ))}
               </CardRow>
             </S.RelatedContentWrapper>
