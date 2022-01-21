@@ -118,13 +118,13 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 {msg.events.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
-            <S.RelatedContentWrapper>
+            <S.CardRowWrapper>
               <CardRow>
                 {relatedEvents.map((event) => (
                   <EventCard key={event.id} event={event} project={project} />
                 ))}
               </CardRow>
-            </S.RelatedContentWrapper>
+            </S.CardRowWrapper>
           </SectionContent>
         </Section>
       )}
@@ -138,13 +138,13 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 Blog Česko.Digital
               </S.AccessoryLink>
             </S.TitleRow>
-            <S.BlogCardsWrapper>
+            <S.CardRowWrapper>
               <CardRow>
                 {relatedBlogPosts.map((post) => (
                   <BlogCard key={post.url} link={post.url} {...post} />
                 ))}
               </CardRow>
-            </S.BlogCardsWrapper>
+            </S.CardRowWrapper>
           </SectionContent>
         </Section>
       )}
