@@ -240,6 +240,10 @@
             "opportunities": {
                 "title": "Právě hledáme",
                 "seeAll": "Všechny volné pozice"
+            },
+            "events": {
+                "title": "Chystané akce",
+                "seeAll": "Všechny chystané akce"
             }
         },
         "projects": {

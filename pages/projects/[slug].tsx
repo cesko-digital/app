@@ -6,7 +6,6 @@ import ProjectCard from "components/project/card";
 import Contribute from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
-import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
@@ -15,13 +14,22 @@ import OpportunityItem from "components/sections/opportunity-overview";
 import { Route } from "lib/routing";
 import { Article } from "lib/related-blog-posts";
 import { BlogCard } from "components/cards";
+import EventCard from "components/dashboard/event-card";
+import { isEventPast } from "lib/portal-type-utils";
+import {
+  PortalEvent,
+  PortalOpportunity,
+  PortalProject,
+  PortalUser,
+} from "lib/portal-types";
 
 interface PageProps {
   project: PortalProject;
+  otherProjects: PortalProject[];
   coordinators: readonly PortalUser[];
-  projects: readonly PortalProject[];
   opportunities: readonly PortalOpportunity[];
   relatedBlogPosts: readonly Article[];
+  relatedEvents: readonly PortalEvent[];
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -29,9 +37,15 @@ interface QueryParams extends ParsedUrlQuery {
 }
 
 const ProjectPage: NextPage<PageProps> = (props) => {
-  const { project, coordinators, projects, opportunities } = props;
-  const otherProjects = projects.filter((p) => p != project).slice(0, 3);
-  const blogPosts = [...props.relatedBlogPosts].reverse().slice(0, 3);
+  const {
+    project,
+    coordinators,
+    otherProjects,
+    opportunities,
+    relatedBlogPosts,
+    relatedEvents,
+  } = props;
+  const msg = strings.pages.project;
   return (
     <Layout
       crumbs={[
@@ -81,9 +95,9 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.TitleRow>
-              <S.Title>{strings.pages.project.opportunities.title}</S.Title>
+              <S.Title>{msg.opportunities.title}</S.Title>
               <S.AccessoryLink to={Route.opportunities}>
-                {strings.pages.project.opportunities.seeAll}
+                {msg.opportunities.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
             <S.RelatedContentWrapper>
@@ -95,7 +109,27 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         </Section>
       )}
 
-      {blogPosts.length > 0 && (
+      {relatedEvents.length > 0 && (
+        <Section>
+          <SectionContent>
+            <S.TitleRow>
+              <S.Title>{msg.events.title}</S.Title>
+              <S.AccessoryLink to={Route.events}>
+                {msg.events.seeAll}
+              </S.AccessoryLink>
+            </S.TitleRow>
+            <S.CardRowWrapper>
+              <CardRow>
+                {relatedEvents.map((event) => (
+                  <EventCard key={event.id} event={event} project={project} />
+                ))}
+              </CardRow>
+            </S.CardRowWrapper>
+          </SectionContent>
+        </Section>
+      )}
+
+      {relatedBlogPosts.length > 0 && (
         <Section>
           <SectionContent>
             <S.TitleRow>
@@ -104,13 +138,13 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 Blog Česko.Digital
               </S.AccessoryLink>
             </S.TitleRow>
-            <S.BlogCardsWrapper>
+            <S.CardRowWrapper>
               <CardRow>
-                {blogPosts.map((post) => (
+                {relatedBlogPosts.map((post) => (
                   <BlogCard key={post.url} link={post.url} {...post} />
                 ))}
               </CardRow>
-            </S.BlogCardsWrapper>
+            </S.CardRowWrapper>
           </SectionContent>
         </Section>
       )}
@@ -153,7 +187,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, users } = siteData;
+  const { projects, users, events } = siteData;
   const project = projects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => users.find((user) => user.id === id)!
@@ -161,16 +195,23 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const opportunities = siteData.opportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );
-  const relatedBlogPosts = siteData.blogPosts.filter((post) =>
-    post.tags.some((tag) => tag === project.slug)
-  );
+  const relatedBlogPosts = siteData.blogPosts
+    .filter((post) => post.tags.some((tag) => tag === project.slug))
+    .slice(0, 3);
+  const otherProjects = projects
+    .filter((p) => p != project && p.state === "running")
+    .slice(0, 3);
+  const relatedEvents = events
+    .filter((e) => !isEventPast(e) && e.projectId === project.id)
+    .slice(0, 3);
   return {
     props: {
       project,
-      projects,
+      otherProjects,
       coordinators,
       relatedBlogPosts,
       opportunities,
+      relatedEvents,
     },
   };
 };

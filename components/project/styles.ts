@@ -64,7 +64,7 @@ export const RelatedContentWrapper = styled.div`
   margin-bottom: 70px;
 `;
 
-export const BlogCardsWrapper = styled.div`
+export const CardRowWrapper = styled.div`
   margin-top: 18px;
   margin-bottom: 70px;
 
