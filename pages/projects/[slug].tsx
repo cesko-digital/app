@@ -198,7 +198,9 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const relatedBlogPosts = siteData.blogPosts.filter((post) =>
     post.tags.some((tag) => tag === project.slug)
   );
-  const otherProjects = projects.filter((p) => p != project).slice(0, 3);
+  const otherProjects = projects
+    .filter((p) => p != project && p.state === "running")
+    .slice(0, 3);
   const relatedEvents = events
     .filter((e) => !isEventPast(e) && e.projectId === project.id)
     .slice(0, 3);
