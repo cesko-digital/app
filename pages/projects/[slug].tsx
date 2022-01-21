@@ -25,7 +25,7 @@ import {
 
 interface PageProps {
   project: PortalProject;
-  otherProjects: PortalProject[];
+  otherProjects: readonly PortalProject[];
   coordinators: readonly PortalUser[];
   opportunities: readonly PortalOpportunity[];
   relatedBlogPosts: readonly Article[];

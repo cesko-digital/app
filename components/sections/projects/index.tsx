@@ -8,7 +8,7 @@ const msg = strings.components.sections.projects;
 
 export type Props = {
   title?: string;
-  projects: PortalProject[];
+  projects: readonly PortalProject[];
 };
 
 const Projects: React.FC<Props> = ({ projects, title = msg.ourProjects }) => {
