@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Heading3, heading4Styles } from 'components/typography'
+import styled from "styled-components";
+import { Heading3, heading4Styles } from "components/typography";
 
 export const Card = styled.div`
   display: flex;
@@ -12,12 +12,17 @@ export const Card = styled.div`
 
   border-radius: ${({ theme }) => theme.borderRadius.base}px;
   border: 2px solid ${({ theme }) => theme.colors.lightGray};
-`
+`;
+
+export const FadedCard = styled(Card)`
+  filter: grayscale(1);
+  opacity: 0.5;
+`;
 
 export const Header = styled.div`
   position: relative;
   height: 170px;
-`
+`;
 export const CoverWrap = styled.div`
   position: absolute;
   width: 100%;
