@@ -121,7 +121,12 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             <S.CardRowWrapper>
               <CardRow>
                 {relatedEvents.map((event) => (
-                  <EventCard key={event.id} event={event} project={project} />
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    project={project}
+                    faded={isEventPast(event)}
+                  />
                 ))}
               </CardRow>
             </S.CardRowWrapper>
@@ -202,7 +207,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .filter((p) => p != project && p.state === "running")
     .slice(0, 3);
   const relatedEvents = events
-    .filter((e) => !isEventPast(e) && e.projectId === project.id)
+    .filter((e) => e.projectId === project.id)
     .slice(0, 3);
   return {
     props: {

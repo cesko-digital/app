@@ -9,12 +9,14 @@ import DateTime from "components/datetime";
 interface Props {
   event: PortalEvent;
   project: PortalProject;
+  faded?: boolean;
 }
 
-const EventCard: React.FC<Props> = ({ event, project }) => {
+const EventCard: React.FC<Props> = ({ event, project, faded = false }) => {
   const coverUrl = event.coverImageUrl || project.coverImageUrl;
+  const CardElem = faded ? S.FadedCard : S.Card;
   return (
-    <S.Card>
+    <CardElem>
       <S.Header>
         <S.Cover
           url={getResizedImgUrl(coverUrl, 372)}
@@ -41,7 +43,7 @@ const EventCard: React.FC<Props> = ({ event, project }) => {
         <S.Description>{event.summary}</S.Description>
         <Link to={Route.toEvent(event)}>Detail akce</Link>
       </S.Content>
-    </S.Card>
+    </CardElem>
   );
 };
 
