@@ -15,7 +15,7 @@ import { Route } from "lib/routing";
 import { Article } from "lib/related-blog-posts";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
-import { isEventPast } from "lib/portal-type-utils";
+import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 import {
   PortalEvent,
   PortalOpportunity,
@@ -205,6 +205,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .slice(0, 3);
   const relatedEvents = events
     .filter((e) => e.projectId === project.id)
+    .sort(compareEventsByTime)
+    .reverse()
     .slice(0, 3);
   return {
     props: {
