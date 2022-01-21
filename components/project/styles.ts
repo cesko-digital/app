@@ -59,6 +59,23 @@ export const ContributeWrapper = styled.div`
   }
 `;
 
+export const RelatedContentWrapper = styled.div`
+  margin-top: 18px;
+  margin-bottom: 70px;
+`;
+
+export const BlogCardsWrapper = styled.div`
+  margin-top: 18px;
+  margin-bottom: 70px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+    margin-left: -${({ theme }) => theme.space.outer}px;
+    margin-right: -${({ theme }) => theme.space.outer}px;
+    margin-bottom: 20px;
+  }
+`;
+
 export const TitleRow = styled.div`
   display: flex;
   flex-wrap: wrap;

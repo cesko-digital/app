@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { Layout, Section, SectionContent } from "components/layout";
+import { CardRow, Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
 import AboutProject from "components/project/about";
 import ProjectCard from "components/project/card";
@@ -8,18 +8,20 @@ import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "components/project/styles";
-import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Route } from "lib/routing";
+import { Article } from "lib/related-blog-posts";
+import { BlogCard } from "components/cards";
 
 interface PageProps {
   project: PortalProject;
   coordinators: readonly PortalUser[];
   projects: readonly PortalProject[];
   opportunities: readonly PortalOpportunity[];
+  relatedBlogPosts: readonly Article[];
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -29,6 +31,7 @@ interface QueryParams extends ParsedUrlQuery {
 const ProjectPage: NextPage<PageProps> = (props) => {
   const { project, coordinators, projects, opportunities } = props;
   const otherProjects = projects.filter((p) => p != project).slice(0, 3);
+  const blogPosts = [...props.relatedBlogPosts].reverse().slice(0, 3);
   return (
     <Layout
       crumbs={[
@@ -83,11 +86,31 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                 {strings.pages.project.opportunities.seeAll}
               </S.AccessoryLink>
             </S.TitleRow>
-            <OpportunitiesMainWrapper>
+            <S.RelatedContentWrapper>
               {opportunities.map((op) => (
                 <OpportunityItem key={op.id} opportunity={op} />
               ))}
-            </OpportunitiesMainWrapper>
+            </S.RelatedContentWrapper>
+          </SectionContent>
+        </Section>
+      )}
+
+      {blogPosts.length > 0 && (
+        <Section>
+          <SectionContent>
+            <S.TitleRow>
+              <S.Title>Vybíráme z našeho blogu</S.Title>
+              <S.AccessoryLink to={Route.blog}>
+                Blog Česko.Digital
+              </S.AccessoryLink>
+            </S.TitleRow>
+            <S.BlogCardsWrapper>
+              <CardRow>
+                {blogPosts.map((post) => (
+                  <BlogCard key={post.url} link={post.url} {...post} />
+                ))}
+              </CardRow>
+            </S.BlogCardsWrapper>
           </SectionContent>
         </Section>
       )}
@@ -138,11 +161,15 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const opportunities = siteData.opportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );
+  const relatedBlogPosts = siteData.blogPosts.filter((post) =>
+    post.tags.some((tag) => tag === project.slug)
+  );
   return {
     props: {
       project,
       projects,
       coordinators,
+      relatedBlogPosts,
       opportunities,
     },
   };
