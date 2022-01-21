@@ -1,5 +1,108 @@
 [
   {
+    "id": "recDwHlOSBHyIhD9P",
+    "name": "Produktový/UX designér/ka",
+    "slug": "recDwHlOSBHyIhD9P",
+    "projectId": "recFAG24teJRpENoQ",
+    "summary": {
+      "source": "Pro seniory, rodiče samoživitele a další lidi v nouzi není teplé a výživově hodnotné jídlo samozřejmostí. Přitom v každé komerční jídelně zbyde denně až 25 kg nevydaných pokrmů, které se vyhodí. Chceme, aby se vařené jídlo dostalo k těm, kdo ho skutečně potřebují.\n\nHledá se designér, který by pomohl s přípravou a realizací služby darování přebytečných pokrmů z jídelen a cateringu charitativním organizacím, které pracují s lidmi v nouzi. Na základě navrženého procesu by pak mělo vzniknout digitální řešení, které by umožnilo snadné darování.\n\nCo bude práce obnášet:\n• Projít si materiály, které Zachraň jídlo dalo dohromady a které popisují současnou situaci \n• Promluvit si se stakeholdery a analyzovat jejich potřeby/možnosti \n• Navrhnout odpovídající design služby a formu technologického řešení\n• Společně s vývojáři spolupracovat na vývoji technologického řešení\n\nTvůj profil:\n• Máš zkušenost ideálně s designem služeb, nebo s výzkumem, UX a UI\n• Na jakoukoliv z kompetencí (výzkum, UX, UI, podpora vývoje) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n• Možnost stavět na znalostech shromážděných díky dvouletému projektu Darování jídla šetří klima (desítky rozhovorů a rešerší) a dotáhnout ho do smysluplného závěru\n• Možnost podílet se na projektu, který má zároveň ekologický a společenský přínos.\n• Nadšení týmu Zachraň jídlo, který s čímkoliv rád vypomůže."
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02U3RZLT5J",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recEYYngHScQpNaIE",
+    "name": "Talent Manager & HR – autor příručky č.d",
+    "slug": "recEYYngHScQpNaIE",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec7nvFj05etQkgKq",
+    "name": "Agilní coach – autor příručky č.d",
+    "slug": "rec7nvFj05etQkgKq",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master",
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recgzKkdrsHVsb2m1",
+    "name": "Business konzultant & mentor – autor příručky č.d",
+    "slug": "recgzKkdrsHVsb2m1",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Business Dev"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec1zQ3Qcag3nIp4J",
+    "name": "Product Owner – autor příručky č.d",
+    "slug": "rec1zQ3Qcag3nIp4J",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Product Owner"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rece58lg1uXKSo65v",
+    "name": "ScrumMaster – autor příručky č.d",
+    "slug": "rece58lg1uXKSo65v",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
     "id": "recv4L134viSo1N0b",
     "name": "Frontend Developer React pro Jehlomat",
     "slug": "recv4L134viSo1N0b",
@@ -64,23 +167,6 @@
     "contactUrl": "https://cesko-digital.slack.com/archives/D02CD2TUZRB",
     "skills": [
       "Other"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
-    "id": "recRlIFb9fyJZJclI",
-    "name": "🔥 Marketingový/á koordinátor/ka",
-    "slug": "recRlIFb9fyJZJclI",
-    "projectId": "recgHexe37XeWVy8N",
-    "summary": {
-      "source": "Hledá se posila pro koordinaci marketingových a komunikačních aktivit na projektu Česko.Digital Edu, náš komunitní vzdělávací a rozvojový program.\n\nCo budeš mít na starosti:\n- aktualizace marketingové strategie (společně s podporou seniorního strategického marketéra)\n- realizace vypracované marketingové strategie\n- příprava zadání/ briefů pro tým specialistů (copywriter, grafik, UX dizajner, event manager, PR koordinátor)\n- koordinace úkolů v týmu specialistů na projektu (copywriter, grafik, atp.)\n- průběžné vyhodnocování výsledků (metriky např. návštěvnost akcí, dosah videí, dosah social postů, atd) a jejich komunikace projektovému týmu\n- sběr příběhů jednotlivých dobrovolníků podílejících se na daném projektu"
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C01S44WHHST",
-    "skills": [
-      "Marketing"
     ],
     "juniorFriendly": false,
     "status": "live"
@@ -307,6 +393,24 @@
     "status": "live"
   },
   {
+    "id": "recyILpcjWmhMOByt",
+    "name": "Product Designer ",
+    "slug": "recyILpcjWmhMOByt",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Do inkubovaného projektu Hotová jídla pomáhají (neziskové org. Zachraň jídlo) hledáme Product Designera s přesahem do UX, který by pomohl s přípravnou fázi projektu a výběru vhodného tech řešení dle potřeby cílovky a ostatních stakeholders"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Design",
+      "Product Owner"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
     "id": "rec718yAOsp0YORnY",
     "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu III",
     "slug": "rec718yAOsp0YORnY",
@@ -338,6 +442,23 @@
       "Marketing"
     ],
     "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recRlIFb9fyJZJclI",
+    "name": "🔥 Marketingový/á koordinátor/ka",
+    "slug": "recRlIFb9fyJZJclI",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Hledá se posila pro koordinaci marketingových a komunikačních aktivit na projektu Česko.Digital Edu, náš komunitní vzdělávací a rozvojový program.\n\nCo budeš mít na starosti:\n- aktualizace marketingové strategie (společně s podporou seniorního strategického marketéra)\n- realizace vypracované marketingové strategie\n- příprava zadání/ briefů pro tým specialistů (copywriter, grafik, UX dizajner, event manager, PR koordinátor)\n- koordinace úkolů v týmu specialistů na projektu (copywriter, grafik, atp.)\n- průběžné vyhodnocování výsledků (metriky např. návštěvnost akcí, dosah videí, dosah social postů, atd) a jejich komunikace projektovému týmu\n- sběr příběhů jednotlivých dobrovolníků podílejících se na daném projektu"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C01S44WHHST",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
     "status": "unlisted"
   },
   {

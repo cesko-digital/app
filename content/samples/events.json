@@ -1,11 +1,57 @@
 [
   {
+    "id": "recVh1RpzhRI7GGNs",
+    "name": "Hack day Jehlomat Praha",
+    "slug": "hackday-jehlomat-praha",
+    "summary": "Dostaňme jehly z ulic pryč! Hledáme React vývojáře na jednodenní akci v Praze začátkem února 2022. ",
+    "description": {
+      "source": "## **Hack day Jehlomat Praha**\n\nNebezpečné injekční stříkačky ve veřejném prostoru jsou problém, který v ČR řeší hned několik specializovaných organizací. Jednou z nich je Magdalena, která oslovila komunitu s nápadem na aplikaci Jehlomat.\n\nPřidej se do jednoho ze tří týmů, které budou **dle hotového designu a zpracovaných user stories zpracovávat MVP**. Dostaneš zpětnou vazbu od zkušených tech-leadů a poznáš další dobrovolníky Česko.Digital.\n\nJak poznáš, že je akce pro tebe?\n**React** - umíš vytvořit komponentu, poslat do ní props. Znáš redux a ovládáš základní stylování komponent.\nPočet míst je omezen.\n\n**Program:**\n9:00-9:30 Snídaně & seznamování\n9:30-10:00 Úvod: představení projektu, wireframes a agendy\n10:00-10:15 Rozdělení do týmu\n10:15-12:30 Práce\n12:30-13:30 Oběd & pokec\n13:30-17:00 Práce\n17:00-17:30 Prezentace\n17:30-18:00 Uzavření Hack daye a další kroky (tj. jak se zapojit)\n18:00-19:30 Pivo & pokec\n"
+    },
+    "startTime": "2022-02-05T08:00:00.000Z",
+    "ownerId": "rec5g2kjJCODPpUOI",
+    "projectId": "recyAlQx0HFH0kW6h",
+    "status": "live",
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeQlvMdr4qroanLFvKEq27gqqVkoFsOBCNLEIOoKeQuanCyLQ/viewformhttps://airtable.com/shr8k2OI2zhHL7uka",
+    "registrationTitle": "Přihlaš se",
+    "endTime": "2022-02-05T17:00:00.000Z",
+    "tagIds": [
+      "recuBWE1HG9XxWUpB"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/web/projects/jehlomat/cover-jehlomat.jpg",
+    "locationTitle": "Siesta Casa",
+    "locationUrl": "https://siesta.casa/"
+  },
+  {
+    "id": "recbuEws1PvaTnP79",
+    "name": "Mastermind – Pilot",
+    "slug": "mentoring-1-to-many",
+    "summary": "Cílem Mastermindu je nasdílet zkušenosti a zpětnou vazbu od většího počtu osob v rychlém formátu. Zveme tě na první setkání v č.d",
+    "description": {
+      "source": "Na Mastermind setkání je prostor **položit otázku, představit nápad, zmínit problém nebo potřebu**, se kterou se potýkáš. Na toto téma pak od ostatních dostaneš zpětnou vazbu, postřehy a nové úhly pohledu a zkušeností. Při sdílení hledáme s ostatními cesty, jak vyřešit nebo posunout téma. \n\nVarianta, kterou jsme zvolili na **pilotní  Mastermind setkání 2. 2. 2022, 17:00-19:00**, je formát tzv. **horkého křesla**, kdy je během setkání zaměřena pozornost pouze na **jednoho účastníka**, kterým bude Martina Cílková z kmenového týmu č.d **s tématem TechForum**. Moderátorem akce je Jindřich Fialka z Q Designers ([zde LinkedIn](https://www.linkedin.com/in/jindrichfialka/)).\n\n_Koncept TechForum navazuje na změnu vize Česko.Digital, která proběhla v létě 202-1, přináší vytvoření 4 otevřených tematických platforem: vzdělávání, zdraví, veřejná správa a práce s daty. Pojďte nám dát feedback na to, co plánujeme, a ovlivnit, jak se všichni rozjedeme společně dále! _\n\n1. **Mastermind k tématu je na 90 min**\n    1. cca 20 min představení tématu (ideálně formou pitch prezentace)\n    2. následují cca 2 odpovědi za každého účastníka, které poskytují **své postřehy, zkušenosti nebo zdroje**\n2. **30 min. zpětná vazba nového formátu sdílení a předávání zkušeností v č.d**\n3. **Další informace:**\n    1. **1. setkání bude nahráváno, aby sloužilo jako zdroj pro účastníky dalších setkání **\n    2. **pro sběr informací a podnětů k 1. tématu je první Mastermind pro 20 účastníků [(přihlásit se můžete zde)](https://airtable.com/shr2SjAqjm5nCDIgi)**\n    3. **s navazující diskuzí chceme pokračovat v #general**\n    4. **pokud máš zájem příští setkání prezentovat svůj nápad nebo položit otázku, dej vědět v kanále #mentoring-consulting [Romaně Pokorné](https://cesko-digital.slack.com/team/U011FB26K7Y).**\n\nDiskuse bude probíhat se všemi registrovanými účastníky prostřednictvím Google Meet.\n\nPokud se nestihnete zúčastnit, ale téma vás zajímá, záznam akce bude dostupný i k pozdějšímu zhlédnutí a jako inspirace pro účastníky dalšího Mastermind.\n"
+    },
+    "startTime": "2022-02-02T16:00:00.000Z",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shr2SjAqjm5nCDIgi",
+    "registrationTitle": "Zaregistruj se",
+    "endTime": "2022-02-02T18:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc",
+      "recnIR0L7B02JBPMm",
+      "rec2j4eIGsvlPV0Yg"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/hackday-cd-cover.jpg",
+    "locationTitle": "Google Meet ",
+    "locationUrl": "https://meet.google.com/tca-iiyj-vov?authuser=0"
+  },
+  {
     "id": "recEQL2gmFo02pJZn",
     "name": "Google Tag Manager (základy)",
     "slug": "google-tag-manager-zaklady",
-    "summary": "Během webináře si popíšeme principy fungování Google Tag Manageru.",
+    "summary": "Jak si udělat pořádek v měřících kódech pomocí Google Tag Manageru?",
     "description": {
-      "source": "Během webináře si popíšeme principy fungování Google Tag Manageru a jak vám pomůže s efektivní správou vašich měřících a reklamních kódů na webu.Seznámím vás se základními pojmy, jako je tag, trigger, kontejner atd. Společně si projdeme typické nasazení měřících kódů Google Analytics pomocí Google Tag manageru.V kurzu nebudu příliš zabíhat do technických detailů, takže si z něj odnese hodně i úplný začátečník. Nicméně alespoň základní povědomí o HTML by se hodilo.\n"
+      "source": "Během webináře si popíšeme principy fungování Google Tag Manageru a jak vám pomůže s efektivní správou vašich měřících a reklamních kódů na webu. Seznámím vás se základními pojmy, jako je tag, trigger, kontejner atd. Společně si projdeme typické nasazení měřících kódů Google Analytics pomocí Google Tag manageru. V kurzu nebudu příliš zabíhat do technických detailů, takže si z něj odnese hodně i úplný začátečník. Nicméně alespoň základní povědomí o HTML by se hodilo.\n"
     },
     "startTime": "2022-02-01T16:00:00.000Z",
     "ownerId": "rec5ZFu9U1MxOKjrd",
@@ -18,6 +64,53 @@
     "coverImageUrl": "https://data.cesko.digital/img/Google_Tag_Manager-zaklady.png",
     "locationTitle": "Google Meet",
     "locationUrl": "https://meet.google.com/xfb-ocwp-kgb"
+  },
+  {
+    "id": "recNFh6COdQNL2fQG",
+    "name": "Od myšlenky k úspěchu: Příběh aplikace Loono",
+    "slug": "od-myslenky-k-uspechu_pribeh-aplikace-loono",
+    "summary": "Připojte se k moderované diskuzi, která bude zasvěcena neziskové organizaci Loono a jejich nové aplikaci Preventivka.",
+    "description": {
+      "source": "Škálujte aktivity své organizace či projektu pomocí digitálních technologií. IT nástroje zvyšují efektivitu, pomáhají zajímavou formou oslovit více lidí a přináší jim užitek. \n\nVe čtvrtek 27. 1. od 17 hod. vám na příběhu neziskové organizace Loono a jejich vznikající aplikaci Preventivka představíme, jak moderní technologie pomáhají v nezisku a proč je dobré do nich investovat svůj čas. \n\nZajímá vás, jak se z devítiměsíčního dobrovolničení může stát placená spolupráce? Své zkušenosti nejen z přípravy, ale i realizace nasdílí během společného rozhovoru: \n- Product Owner: Adéla Sedláčková\n- Scrum Master: Adéla Kalusová\n- Product Designer: Otakar Hyps\n- Tech Lead: Martin Ladecký\n- IT Analytik: Jana Hejnová \n\nAkci moderuje mentor projektu (marketing & strategie) Lukáš Přikryl. Během rozhovoru se dotkneme témat: \n- Jak a proč se Loono rozhodlo pro aplikaci \n- Jakou roli má tato aplikace v rámci neziskové organizace a jak ovlivnila strategii a aktivity Loono\n- Jak agilní řízení zasáhlo do chodu Loono a jak těžké bylo do role Product Ownera naskočit \n- Jak aplikace vznikala a co bylo třeba připravit \n- Jaké role v rámci týmu existují\n- Jak funguje (remote) komunikace v (dobro) týmu \n\nLoono již 7 let vzdělává společnost o důležitosti prevence a [nová aplikace Preventivka](https://www.loono.cz/aplikace) (spuštění v březnu 2022) hravou formou připomíná návštěvy praktického lékaře, samovyšetření a nabídne vám ověřené a srozumitelné informace o zdraví.\n\nDiskuse bude probíhat se všemi registrovanými účastníky prostřednictvím Google Meet.\n\nBudete-li se chtít aktivně zapojit, otázky můžete pokládat před akcí i během ní prostřednictvím [Slido](https://app.sli.do/event/6SGiTsz2bCCk9pbT6s6GWC). \n\nPokud se nestihnete zúčastnit, ale téma vás zajímá, záznam akce bude dostupný i k pozdějšímu zhlédnutí.\n\n"
+    },
+    "startTime": "2022-01-27T16:00:00.000Z",
+    "ownerId": "recDmNZFm4iahKvkO",
+    "projectId": "rec4KOruzwIFU8ieR",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shrh7K2gPsHSWo25x",
+    "registrationTitle": "Zaregistruj se! ",
+    "endTime": "2022-01-27T18:00:00.000Z",
+    "tagIds": [
+      "recVa4LnmzmtfoYTg",
+      "recMg0okYGUJRFhlc",
+      "recnIR0L7B02JBPMm",
+      "rec12ME0WwCmDkr1v",
+      "recGK7KiBRVeFCK1v",
+      "recLLqzCsubvde2JY",
+      "rec2ZJ70L9B00ufHh"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/od_myslenky_k_uspechu2.png",
+    "locationTitle": "Google Meet",
+    "locationUrl": "https://airtable.com/shrh7K2gPsHSWo25x"
+  },
+  {
+    "id": "recAYCiQfwiDFbxZt",
+    "name": "Meet-up: Výběr technologií do veřejného IT projektu",
+    "slug": "vyber-technologii-verejne-IT",
+    "summary": "Jak modernizovat veřejný sektor a podporovat digitální inovaci? Jak vybrat správnou technologickou platformu pro projekty ve veřejné správě?",
+    "description": {
+      "source": "Jedním z témat bude také otevřenost/uzavřenost kódu, výhody a nevýhody open source a proprietárního software. Je možné využít open source na komerčním software řešení? Jaká je vůbec definice open source? Jaké řešení je optimální pro řízení velkých státních IT projektů?\n"
+    },
+    "startTime": "2022-01-18T14:00:00.000Z",
+    "ownerId": "rec6hQPrLsA7vVjGD",
+    "projectId": "recAh6CmL9dLySvjH",
+    "status": "live",
+    "registrationUrl": "https://www.contractors.cz/vzdelavani/dle-oboru/meetupy/453-vyber-technologii-do-verejneho-it-projektu",
+    "endTime": "2022-01-18T16:00:00.000Z",
+    "tagIds": [],
+    "coverImageUrl": "https://data.cesko.digital/events/vyber-technologii.png",
+    "locationTitle": "Online",
+    "locationUrl": "https://www.contractors.cz/vzdelavani/dle-oboru/meetupy/453-vyber-technologii-do-verejneho-it-projektu"
   },
   {
     "id": "recGB4TJTxCgdxLZe",
@@ -90,7 +183,7 @@
     "startTime": "2021-11-25T17:00:00.000Z",
     "ownerId": "recvuuD8Q7t5RHY93",
     "projectId": "recZqAUagJLM40GnI",
-    "status": "live",
+    "status": "unlisted",
     "registrationTitle": "Sleduj na Youtube",
     "endTime": "2021-11-25T18:00:00.000Z",
     "tagIds": [
@@ -491,7 +584,7 @@
   },
   {
     "id": "recuFv8anuGSy7p0t",
-    "name": "Hackday Jehlomat",
+    "name": "Hackday Jehlomat Brno",
     "slug": "hackday-jehlomat",
     "summary": "Dostaňme jehly z ulic pryč! Hledáme React a Java/Kotlin vývojáře na jednodenní akci v Brně (SAP Labs) 2. října 2021.",
     "description": {
