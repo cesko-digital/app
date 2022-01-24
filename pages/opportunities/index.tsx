@@ -11,6 +11,7 @@ import {
 import { Route } from "lib/routing";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
+import strings from "content/strings.json";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];
@@ -25,7 +26,7 @@ const Page: NextPage<PageProps> = (props) => {
   let filteredOpportunities: PortalOpportunity[] = [];
 
   const [selectedSkill, updateSelectedSkill] = useState(
-    props.selectedSkill || "Vše"
+    props.selectedSkill || strings.pages.opportunities.all
   );
 
   const projectForOpportunity = (o: PortalOpportunity) =>
@@ -37,7 +38,7 @@ const Page: NextPage<PageProps> = (props) => {
   }
 
   function filterOpportunities() {
-    if (selectedSkill === "Vše") {
+    if (selectedSkill === strings.pages.opportunities.all) {
       filteredOpportunities = [...opportunities];
     } else {
       filteredOpportunities = [];
@@ -64,13 +65,13 @@ const Page: NextPage<PageProps> = (props) => {
         });
     });
 
-    // Add "Vše"
-    toReturn.push({ name: "Vše", count: opportunities.length });
+    // Add strings.pages.opportunities.all
+    toReturn.push({ name: strings.pages.opportunities.all, count: opportunities.length });
 
-    // We sort; "Vše" goes to the beginning
+    // We sort; strings.pages.opportunities.all goes to the beginning
     toReturn = toReturn.sort((a, b) => {
-      if (a.name === "Vše") return -1;
-      else if (b.name === "Vše") return 1;
+      if (a.name === strings.pages.opportunities.all) return -1;
+      else if (b.name === strings.pages.opportunities.all) return 1;
       else if (a.name < b.name) return -1;
       else if (a.name > b.name) return 1;
       else return 0;
@@ -84,12 +85,12 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { label: "Portál dobrovolníka", path: Route.dashboard },
-        { label: "Volné pozice" },
+        { label: strings.crumbs.dashboard, path: Route.dashboard },
+        { label: strings.pages.opportunities.opportunities },
       ]}
       head={{
-        title: "Volné pozice - Portál dobrovolníka",
-        description: "Volné pozice - Portál dobrovolníka",
+        title: strings.pages.opportunities.opportunities + " - " + strings.crumbs.dashboard,
+        description: strings.pages.opportunities.opportunities + " - " + strings.crumbs.dashboard,
       }}
     >
       <Section>
@@ -108,7 +109,7 @@ const Page: NextPage<PageProps> = (props) => {
             <CompetencyFilterRadio
               key={"competencyInput" + s.name}
               type="radio"
-              defaultChecked={s.name === "Vše"}
+              defaultChecked={s.name === strings.pages.opportunities.all}
               value={s.name}
               name="competencyInputRadio"
               onChange={handleSkillSelectionChange}

@@ -5,6 +5,7 @@ import Garant from "./garant";
 import Info from "./info";
 import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
 import { getEventDuration } from "lib/portal-type-utils";
+import strings from "content/strings.json";
 
 interface EventCardProps {
   event: PortalEvent;
@@ -19,7 +20,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
       <Project project={project} />
       <Garant user={owner} />
       <Info
-        title="Datum konání"
+        title={strings.components.cards.eventCard.date}
         content={new Date(event.startTime).toLocaleString("cs-CZ", {
           weekday: "short",
           day: "numeric",
@@ -28,10 +29,10 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
           minute: "2-digit",
         })}
       />
-      {duration && <Info title="Délka akce" content={duration} />}
+      {duration && <Info title={strings.components.cards.eventCard.duration} content={duration} />}
       {event.locationTitle && (
         <Info
-          title="Místo konání"
+          title={strings.components.cards.eventCard.place}
           content={event.locationTitle}
           url={event.locationUrl}
         />

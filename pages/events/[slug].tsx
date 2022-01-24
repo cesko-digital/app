@@ -11,6 +11,7 @@ import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import { Route } from "lib/routing";
+import strings from "content/strings.json";
 
 interface PageProps {
   event: PortalEvent;
@@ -35,7 +36,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.dashboard, label: "Portál dobrovolníka" },
+        { path: Route.dashboard, label: strings.crumbs.dashboard },
         { label: event.name },
       ]}
       head={{
