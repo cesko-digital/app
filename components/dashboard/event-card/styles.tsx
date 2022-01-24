@@ -4,6 +4,7 @@ import { Heading3, heading4Styles } from "components/typography";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 
   min-height: 454px;
   background-color: white;
@@ -17,6 +18,18 @@ export const Card = styled.div`
 export const FadedCard = styled(Card)`
   filter: grayscale(1);
   opacity: 0.5;
+`;
+
+export const FadedTag = styled.div`
+  font-weight: bold;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  text-align: right;
+  padding: 4px 8px;
 `;
 
 export const Header = styled.div`
