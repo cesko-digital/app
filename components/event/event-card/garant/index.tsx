@@ -1,5 +1,6 @@
 import { PortalUser } from "lib/portal-types";
 import * as S from "./styles";
+import strings from "content/strings.json";
 
 interface GarantProps {
   user: PortalUser;
@@ -8,7 +9,7 @@ interface GarantProps {
 const Garant: React.FC<GarantProps> = ({ user }) => {
   return (
     <S.OuterWrapper>
-      <S.Title>Kontakt</S.Title>
+      <S.Title>{strings.components.cards.eventCard.contact}</S.Title>
       <S.Wrapper>
         <S.Avatar src={user.profilePictureUrl} />
         <S.AvatarTitleWrapper>

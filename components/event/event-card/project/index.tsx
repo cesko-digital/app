@@ -1,6 +1,7 @@
 import { PortalProject } from "lib/portal-types";
 import { Route } from "lib/routing";
 import * as S from "./styles";
+import strings from "content/strings.json";
 
 interface ProjectProps {
   project: PortalProject;
@@ -25,7 +26,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   }
   return (
     <S.Project>
-      <S.Title>Projekt</S.Title>
+      <S.Title>{strings.components.cards.eventCard.project}</S.Title>
       {wrapper}
     </S.Project>
   );

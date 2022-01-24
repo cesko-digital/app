@@ -30,7 +30,7 @@ const CeduCard: React.FC<Props> = ({ video, ...rest }) => {
           ))}
         </S.TagList>
         <S.Description>{video.description}</S.Description>
-        <Link to={Route.toVideo(video)}>To mě zajímá!</Link>
+        <Link to={Route.toVideo(video)}>{strings.components.cards.ceduCard.interested}</Link>
       </S.Content>
     </S.Card>
   );

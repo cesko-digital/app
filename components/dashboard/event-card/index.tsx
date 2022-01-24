@@ -39,7 +39,7 @@ const EventCard: React.FC<Props> = ({ event, project }) => {
         </S.ShortInfoBubbles>
         <S.Title>{event.name}</S.Title>
         <S.Description>{event.summary}</S.Description>
-        <Link to={Route.toEvent(event)}>Detail akce</Link>
+        <Link to={Route.toEvent(event)}>{strings.components.cards.eventCard.detail}</Link>
       </S.Content>
     </S.Card>
   );

@@ -10,6 +10,7 @@ import {
   ResourceCell,
   TableOfContentCell,
 } from "./styles";
+import strings from "content/strings.json";
 
 interface TableOfContentBoxProps {
   segments: PortalVideoSegment[];
@@ -20,7 +21,7 @@ export const TableOfContentBox: React.FC<TableOfContentBoxProps> = ({
 }) => {
   return (
     <BoxWrapper>
-      <h2>Obsah</h2>
+      <h2>{strings.components.cards.ceduContentBox.content}</h2>
       {segments.map((segment, index) => {
         return (
           <TableOfContentCell key={index} href={"?start=" + segment.start}>
@@ -40,7 +41,7 @@ interface ResourcesBoxProps {
 export const ResourceBox: React.FC<ResourcesBoxProps> = ({ resources }) => {
   return (
     <BoxWrapper>
-      <h2>Zdroje</h2>
+      <h2>{strings.components.cards.ceduContentBox.resources}</h2>
       {resources.map((resource, index) => {
         return (
           <ResourceCell key={index} href={resource.url} target="_blank">
@@ -60,7 +61,7 @@ interface CreditsBoxProps {
 export const CreditsBox: React.FC<CreditsBoxProps> = ({ credits }) => {
   return (
     <BoxWrapper>
-      <h2>Vytvořili</h2>
+      <h2>{strings.components.cards.ceduContentBox.madeBy}</h2>
       {credits.map((credit, index) => {
         return (
           <CreditsCell key={index}>

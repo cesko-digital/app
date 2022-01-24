@@ -19,6 +19,7 @@ import {
   ResourceBox,
   TableOfContentBox,
 } from "components/cedu/content-box";
+import strings from "content/strings.json";
 
 interface PageProps {
   video: PortalVideo;
@@ -35,7 +36,7 @@ const Page: NextPage<PageProps> = ({ video }) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.dashboard, label: "Portál dobrovolníka" },
+        { path: Route.dashboard, label: strings.crumbs.dashboard },
         { label: video.title },
       ]}
       head={{

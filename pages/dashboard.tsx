@@ -16,6 +16,7 @@ import {
 } from "lib/portal-types";
 import { siteData } from "lib/site-data";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
+import strings from "content/strings.json";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];
@@ -24,21 +25,23 @@ interface PageProps {
   videos: readonly PortalVideo[];
 }
 
-const PortalDobrovolnika: NextPage<PageProps> = (props) => {
+const Dashboard: NextPage<PageProps> = (props) => {
   return (
     <Layout
-      crumbs={[{ label: "Portál dobrovolníka" }]}
+      crumbs={[{ label: strings.crumbs.dashboard }]}
       head={{
-        title: "Portál dobrovolníka",
-        description: "Tržiště příležitostí, jak se zapojit v Česko.Digital",
+        title: strings.crumbs.dashboard,
+        description: strings.header.dashboardDescription,
         coverUrl: "https://data.cesko.digital/img/bcbb8e4a.png",
       }}
     >
       <Section>
         <SectionContent>
-          <Typography.Heading1>Portál dobrovolníka</Typography.Heading1>
+          <Typography.Heading1>
+            {strings.header.dashboard}
+          </Typography.Heading1>
           <Typography.Body>
-            Tržiště příležitostí, jak se zapojit v Česko.Digital
+            {strings.header.dashboardDescription}
           </Typography.Body>
         </SectionContent>
       </Section>
@@ -60,7 +63,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   return (
     <Section>
       <SectionContent>
-        <Typography.Heading2>Právě hledáme</Typography.Heading2>
+        <Typography.Heading2>{strings.pages.dashboard.currentOpportunities}</Typography.Heading2>
         <S.OpportunitiesMainWrapper>
           {featuredOpportunities.map((op) => (
             <OpportunityItem
@@ -72,7 +75,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
           <a href={Route.opportunities}>
-            <Button>Více volných pozic</Button>
+            <Button>{strings.pages.dashboard.moreOpportunities}</Button>
           </a>
         </S.ButtonWrapper>
       </SectionContent>
@@ -92,7 +95,7 @@ const EventsSection: React.FC<PageProps> = ({ events, projects }) => {
     <Section id="section-events">
       <SectionContent>
         <S.CategoryHeader>
-          <S.Title>Nejbližší akce</S.Title>
+          <S.Title>{strings.pages.dashboard.comingEvents}</S.Title>
         </S.CategoryHeader>
         <S.Container>
           <S.CardWrapper>
@@ -117,7 +120,7 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
     <Section id="section-cedu">
       <SectionContent>
         <S.CategoryHeader>
-          <S.Title>Vzdělávání – č.edu</S.Title>
+          <S.Title>{strings.pages.dashboard.cedu}</S.Title>
         </S.CategoryHeader>
         <S.Container>
           <S.CardWrapper>
@@ -145,4 +148,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   };
 };
 
-export default PortalDobrovolnika;
+export default Dashboard;
