@@ -18,6 +18,7 @@ const EventCard: React.FC<Props> = ({ event, project, faded = false }) => {
   return (
     <CardElem>
       <S.Header>
+        {faded && (<S.FadedTag>Proběhlo</S.FadedTag>)}
         <S.Cover
           url={getResizedImgUrl(coverUrl, 372)}
           aria-label={`${strings.cards.project.coverAriaLabel} ${event.name}`}
