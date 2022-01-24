@@ -20,7 +20,12 @@ export const FadedCard = styled(Card)`
   opacity: 0.5;
 `;
 
-export const FadedTag = styled.div`
+export const Header = styled.div`
+  position: relative;
+  height: 170px;
+`;
+
+export const Note = styled.div`
   font-weight: bold;
   position: absolute;
   bottom: 0px;
@@ -32,10 +37,6 @@ export const FadedTag = styled.div`
   padding: 4px 8px;
 `;
 
-export const Header = styled.div`
-  position: relative;
-  height: 170px;
-`;
 export const CoverWrap = styled.div`
   position: absolute;
   width: 100%;

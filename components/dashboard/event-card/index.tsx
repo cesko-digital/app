@@ -9,16 +9,16 @@ import DateTime from "components/datetime";
 interface Props {
   event: PortalEvent;
   project: PortalProject;
-  faded?: boolean;
+  past?: boolean;
 }
 
-const EventCard: React.FC<Props> = ({ event, project, faded = false }) => {
+const EventCard: React.FC<Props> = ({ event, project, past = false }) => {
   const coverUrl = event.coverImageUrl || project.coverImageUrl;
-  const CardElem = faded ? S.FadedCard : S.Card;
+  const CardElem = past ? S.FadedCard : S.Card;
   return (
     <CardElem>
       <S.Header>
-        {faded && (<S.FadedTag>Proběhlo</S.FadedTag>)}
+        {past && (<S.Note>Proběhlo</S.Note>)}
         <S.Cover
           url={getResizedImgUrl(coverUrl, 372)}
           aria-label={`${strings.cards.project.coverAriaLabel} ${event.name}`}
