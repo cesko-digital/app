@@ -125,7 +125,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                     key={event.id}
                     event={event}
                     project={project}
-                    faded={isEventPast(event)}
+                    past={isEventPast(event)}
                   />
                 ))}
               </CardRow>
