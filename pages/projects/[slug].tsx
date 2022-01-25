@@ -117,12 +117,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             <S.CardRowWrapper>
               <CardRow>
                 {relatedEvents.map((event) => (
-                  <EventCard
-                    key={event.id}
-                    event={event}
-                    project={project}
-                    past={isEventPast(event)}
-                  />
+                  <EventCard key={event.id} event={event} project={project} />
                 ))}
               </CardRow>
             </S.CardRowWrapper>

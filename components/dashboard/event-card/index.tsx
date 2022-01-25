@@ -5,20 +5,20 @@ import { PortalEvent, PortalProject } from "lib/portal-types";
 import strings from "content/strings.json";
 import { Route } from "lib/routing";
 import DateTime from "components/datetime";
+import { isEventPast } from "lib/portal-type-utils";
 
 interface Props {
   event: PortalEvent;
   project: PortalProject;
-  past?: boolean;
 }
 
-const EventCard: React.FC<Props> = ({ event, project, past = false }) => {
+const EventCard: React.FC<Props> = ({ event, project }) => {
   const coverUrl = event.coverImageUrl || project.coverImageUrl;
-  const CardElem = past ? S.FadedCard : S.Card;
+  const CardElem = isEventPast(event) ? S.FadedCard : S.Card;
   return (
     <CardElem>
       <S.Header>
-        {past && (<S.Note>Proběhlo</S.Note>)}
+        {isEventPast(event) && <S.Note>Proběhlo</S.Note>}
         <S.Cover
           url={getResizedImgUrl(coverUrl, 372)}
           aria-label={`${strings.cards.project.coverAriaLabel} ${event.name}`}
