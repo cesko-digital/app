@@ -27,6 +27,7 @@ const FinancialPartners: React.FC<Props> = ({ partners }) => {
     <Section>
       <SectionContent verticalPadding={60}>
         <Heading2>{msg.heading.title}</Heading2>
+        <S.PaddedBody>{msg.heading.perex}</S.PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={0}>
         <Heading3>{msg.mainPartners.title}</Heading3>
