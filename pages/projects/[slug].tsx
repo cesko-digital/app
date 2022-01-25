@@ -78,11 +78,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <SectionContent>
           <S.AboutSectionWrapper>
             <S.DescriptionWrapper>
-              <AboutProject
-                finished={project.state === "finished"}
-                thankYouText={project.contributeText} // Using same field when project finished
-                description={project.description}
-              />
+              <AboutProject text={project.description} />
             </S.DescriptionWrapper>
             <S.ProjectCardWrapper>
               <ProjectCard project={project} coordinators={coordinators} />
@@ -149,11 +145,16 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         </Section>
       )}
 
-      {project.state !== "finished" && project.contributeText && (
+      {project.state !== "finished" && (
         <Section>
           <SectionContent>
             <S.ContributeWrapper>
-              <Contribute text={project.contributeText} />
+              <Contribute
+                text={{
+                  source:
+                    "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
+                }}
+              />
             </S.ContributeWrapper>
           </SectionContent>
         </Section>

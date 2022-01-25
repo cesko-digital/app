@@ -17,8 +17,6 @@ test("Decode portal project", () => {
       logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
       coverUrl: "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
       description: "Vytvoříme místo!",
-      csContributeText:
-        "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
       url: "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
       slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
       coordinators: [
@@ -36,10 +34,6 @@ test("Decode portal project", () => {
       "Platforma poskytující veškeré informace o prevenci přehledně a na jednom místě",
     description: { source: "Vytvoříme místo!" },
     url: "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
-    contributeText: {
-      source:
-        "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
-    },
     coverImageUrl:
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
