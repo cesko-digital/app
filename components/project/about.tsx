@@ -1,5 +1,5 @@
 import { Body, Heading2 } from "components/typography";
-import * as S from "./styles";
+import styled from "styled-components";
 import strings from "content/strings.json";
 import { MarkdownString } from "lib/utils";
 import RenderMarkdown from "components/markdown";
@@ -10,13 +10,19 @@ interface Props {
 
 const AboutProject: React.FC<Props> = ({ text: description }) => {
   return (
-    <S.Wrapper>
+    <Wrapper>
       <Heading2>{strings.pages.project.about.title}</Heading2>
       <Body>
         <RenderMarkdown source={description} />
       </Body>
-    </S.Wrapper>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  > ${Body} {
+    margin-top: 12px;
+  }
+`;
 
 export default AboutProject;
