@@ -105,7 +105,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         </Section>
       )}
 
-      {relatedEvents.length > 0 && (
+      {relatedEvents.length > 0 && relatedEvents.some((e) => !isEventPast(e)) && (
         <Section>
           <SectionContent>
             <S.TitleRow>
