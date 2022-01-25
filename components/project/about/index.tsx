@@ -5,27 +5,16 @@ import { MarkdownString } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 
 interface Props {
-  description: MarkdownString;
-  thankYouText?: MarkdownString;
-  finished: boolean;
+  text: MarkdownString;
 }
 
-const AboutProject: React.FC<Props> = ({
-  description,
-  thankYouText,
-  finished,
-}) => {
+const AboutProject: React.FC<Props> = ({ text: description }) => {
   return (
     <S.Wrapper>
       <Heading2>{strings.pages.project.about.title}</Heading2>
       <Body>
         <RenderMarkdown source={description} />
       </Body>
-      {finished && thankYouText && (
-        <Body>
-          <RenderMarkdown source={thankYouText} />
-        </Body>
-      )}
     </S.Wrapper>
   );
 };

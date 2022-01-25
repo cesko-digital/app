@@ -32,7 +32,6 @@ export const decodeProject = record({
   tagline: field("csTagline", string),
   description: markdown,
   url: string,
-  contributeText: field("csContributeText", optional(markdown)),
   coverImageUrl: field("coverUrl", string),
   logoUrl: string,
   highlighted: withDefault(boolean, false),
