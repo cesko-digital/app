@@ -3,20 +3,15 @@ import { ButtonSize, SlackButton } from "components/buttons";
 import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
-import { MarkdownString } from "lib/utils";
-import RenderMarkdown from "components/markdown";
 
-interface Props {
-  text: MarkdownString;
-}
-
-const Contribute: React.FC<Props> = ({ text }) => {
+const Contribute: React.FC = () => {
   const msg = strings.pages.project.about.contribute;
   return (
     <S.Wrapper>
       <Heading2>{msg.title}</Heading2>
       <S.Description>
-        <RenderMarkdown source={text} />
+        Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních
+        organizací.
       </S.Description>
       <S.Text>
         <S.SlackLink>

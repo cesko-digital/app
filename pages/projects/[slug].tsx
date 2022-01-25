@@ -149,12 +149,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.ContributeWrapper>
-              <Contribute
-                text={{
-                  source:
-                    "Děkujeme všem zapojeným dobrovolníkům i pracovníkům z expertních organizací.",
-                }}
-              />
+              <Contribute />
             </S.ContributeWrapper>
           </SectionContent>
         </Section>
