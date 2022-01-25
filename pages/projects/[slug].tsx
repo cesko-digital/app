@@ -3,7 +3,7 @@ import { CardRow, Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
 import AboutProject from "components/project/about";
 import ProjectCard from "components/project/card";
-import Contribute from "components/project/contribute";
+import ContributeBox from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import * as S from "components/project/styles";
@@ -149,7 +149,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         <Section>
           <SectionContent>
             <S.ContributeWrapper>
-              <Contribute />
+              <ContributeBox />
             </S.ContributeWrapper>
           </SectionContent>
         </Section>
