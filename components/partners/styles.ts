@@ -15,7 +15,6 @@ export const Tagline = styled(BodyBig)`
     margin-bottom: 28px;
   }
 `
-
 export const PaddedBody = styled(Body)`
   padding: 34px 0;
 
