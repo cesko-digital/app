@@ -4,7 +4,7 @@ import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
 
-const Contribute: React.FC = () => {
+const ContributeBox: React.FC = () => {
   const msg = strings.pages.project.about.contribute;
   return (
     <S.Wrapper>
@@ -30,4 +30,4 @@ const Contribute: React.FC = () => {
   );
 };
 
-export default Contribute;
+export default ContributeBox;
