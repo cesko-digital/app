@@ -7,6 +7,9 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    z-index: 100;
+  }
 `;
 
 export const Logo = styled.div`
@@ -18,6 +21,7 @@ export const Logo = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     width: 32px;
+    z-index: 100;
   }
 `;
 
@@ -42,6 +46,7 @@ export const MobileLinksContainer = styled.div`
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 24px;
+    z-index: 100;
   }
 `;
 
@@ -54,12 +59,13 @@ export const MobileMenu = styled.div`
     justify-items: end;
     padding-left: 40px;
     padding-right: 40px;
+    padding-top: 100px;
     position: fixed;
-    top: 100px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 90;
     background: rgba(255, 255, 255, 0.9);
   }
 
