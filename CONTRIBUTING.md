@@ -10,6 +10,7 @@
 * Pokud chcete lokální data aktualizovat z Airtable, spusťte `yarn update-data`.
 * Pokud chcete vynutit použití lokálních dat, i když máte klíč k Airtable, nastavte proměnnou prostředí `DATA_SOURCE_LOCAL`, například `DATA_SOURCE_LOCAL=1 yarn dev`. Takhle si můžete snadno vyzkoušet například změny DB schématu.
 * Pokud máte API klíč k Airtable, uložte ho do proměnné `AIRTABLE_API_KEY`. Nejen tahle proměnná se dá elegantně nastavit pomocí souboru `.env.local`, [viz dokumentaci Next.js](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables).
+* Více úvah o databázích [najdete na wiki](https://github.com/cesko-digital/web/wiki/Databáze).
 
 ⚠️ Pokud měníš schéma databáze, nezapomeň se podívat, jestli není potřeba aktualizovat Airtable Interfaces a případně přegenerovat ukázková data (`yarn update-data`).
 
