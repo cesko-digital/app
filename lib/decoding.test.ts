@@ -78,7 +78,8 @@ describe("Decode portal user", () => {
     ).toEqual({
       id: "recA5nftMpxJmwpr4",
       name: "Tomáš Znamenáček",
-      profilePictureUrl: "https://data.cesko.digital/people/generic.png",
+      profilePictureUrl:
+        "https://data.cesko.digital/people/generic-profile.jpg",
       email: "zoul@cesko.digital",
     });
   });

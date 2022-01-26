@@ -49,7 +49,7 @@ export const decodeUser = record({
   name: string,
   profilePictureUrl: withDefault(
     string,
-    "https://data.cesko.digital/people/generic.png"
+    "https://data.cesko.digital/people/generic-profile.jpg"
   ),
   email: string,
 });
