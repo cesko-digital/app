@@ -1,7 +1,7 @@
+import { env } from "lib/env";
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 
-const API_KEY = process.env.ECOMAIL_API_KEY || "";
 const API_URL = "https://api2.ecomailapp.cz/lists/2/subscribe";
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
@@ -38,7 +38,7 @@ const handler = async (
       method: "POST",
       body: subscriptionData,
       headers: {
-        "key": API_KEY,
+        "key": env.ecomailApiKey || "<missing>",
         "Content-Type": "application/json",
       },
     });
