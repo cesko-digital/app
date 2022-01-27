@@ -42,7 +42,6 @@ export const decodeProject = record({
   jiraUrl: optional(string),
   githubUrl: optional(string),
   slackChannelUrl: optional(string),
-  slackChannelName: optional(string),
 });
 
 export const decodeUser = record({

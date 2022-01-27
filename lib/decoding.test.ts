@@ -25,7 +25,6 @@ test("Decode portal project", () => {
         "recwOLHFJUPCoPnLX",
         "rec0ABdJtGIK9AeCB",
       ],
-      slackChannelName: "inkub-loono_pruvodce_prevenci",
     })
   ).toEqual({
     id: "rec4KOruzwIFU8ieR",
@@ -47,7 +46,6 @@ test("Decode portal project", () => {
       "rec0ABdJtGIK9AeCB",
     ],
     slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
-    slackChannelName: "inkub-loono_pruvodce_prevenci",
   });
 });
 
