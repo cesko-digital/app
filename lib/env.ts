@@ -1,4 +1,11 @@
+/**
+ * Vercel deployment type
+ *
+ * See https://vercel.com/docs/concepts/projects/environment-variables#environments
+ */
 export type VercelDeploymentType = "production" | "preview" | "development";
+
+/** Names of the env variables we use to customize the build */
 export type SystemEnvKeys =
   | "VERBOSE_LOG"
   | "INCLUDE_DRAFT_DATA"
@@ -7,13 +14,26 @@ export type SystemEnvKeys =
   | "ECOMAIL_API_KEY"
   | "VERCEL_ENV";
 
+/** Parsed environment variables that customize the build */
 export type Env = {
+  /** Airtable API key. If not present, we will attempt to use local data. */
   airtableApiKey?: string;
+  /** Ecomail API key, used to subscribe people to our newsletter */
   ecomailApiKey?: string;
+  /** If set, code will log details where appropriate */
   verboseLog: boolean;
+  /** If set, will also include draft data in generated website */
   includeDraftData: boolean;
+  /** Vercel deployment type, ie. are we building a pull request or what? */
   vercelDeploymentType?: VercelDeploymentType;
+  /** Should we use local data sources where possible? */
   useLocalData: boolean;
+  /**
+   * Should we allow robots and track views?
+   *
+   * We want to make sure we don’t spam our analytics or even harm our SEO
+   * by tracking and exposing our draft or development builds.
+   */
   allowRobots: boolean;
 };
 
