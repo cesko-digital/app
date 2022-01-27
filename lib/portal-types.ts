@@ -39,6 +39,7 @@ export const decodeProject = record({
   tagIds: field("tags", withDefault(array(string), [])),
   coordinatorIds: field("coordinators", array(string)),
   trelloUrl: optional(string),
+  jiraUrl: field("JIRAUrl", optional(string)),
   githubUrl: optional(string),
   slackChannelUrl: optional(string),
   slackChannelName: optional(string),
