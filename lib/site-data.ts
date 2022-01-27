@@ -34,15 +34,27 @@ async function loadSiteData(): Promise<SiteData> {
 
   const DataSource = env.useLocalData ? Local : Airtable;
 
-  const projects = await DataSource.getAllProjects();
-  const users = await DataSource.getAllUsers();
-  const opportunities = (await DataSource.getAllOpportunities())
-    // Filter out opportunities that point to nonexisting projects
-    // (ie. projects that have been ignored because of parse errors).
-    .filter((o) => projects.some((p) => p.id === o.projectId));
-  const events = (await DataSource.getAllEvents())
-    // Filter out events that are owned by nonexisting users
-    .filter((e) => users.some((u) => u.id === e.ownerId));
+  let projects = await DataSource.getAllProjects();
+  let users = await DataSource.getAllUsers();
+  let opportunities = await DataSource.getAllOpportunities();
+  let events = await DataSource.getAllEvents();
+
+  // Filter out draft data
+  if (!env.includeDraftData) {
+    projects = projects.filter((p) => p.state !== "draft");
+    opportunities = opportunities.filter((o) => o.status !== "draft");
+    events = events.filter((e) => e.status !== "draft");
+  }
+
+  // Filter out objects with dangling references
+  opportunities = opportunities.filter((o) =>
+    projects.some((p) => p.id === o.projectId)
+  );
+  events = events.filter(
+    (e) =>
+      users.some((u) => u.id === e.ownerId) &&
+      projects.some((p) => p.id === e.projectId)
+  );
 
   return filterUndefines({
     partners: await DataSource.getAllPartners(),
