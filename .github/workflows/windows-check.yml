@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: 0 0 * * *
 
+env:
+  DATA_SOURCE_LOCAL: yes
+
 jobs:
   build:
     runs-on: windows-latest
@@ -22,4 +25,4 @@ jobs:
     - run: yarn config set network-timeout 600000 -g
     - run: yarn install
     - run: yarn test
-    - run: DATA_SOURCE_LOCAL=y yarn build
+    - run: yarn build
