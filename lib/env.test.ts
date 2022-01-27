@@ -6,6 +6,7 @@ describe("Import environment vars", () => {
       verboseLog: false,
       includeDraftData: false,
       useLocalData: true,
+      allowRobots: false,
     });
   });
   test("Verbose log", () => {
@@ -13,6 +14,7 @@ describe("Import environment vars", () => {
       verboseLog: true,
       includeDraftData: false,
       useLocalData: true,
+      allowRobots: false,
     });
   });
   test("Include draft data", () => {
@@ -20,13 +22,16 @@ describe("Import environment vars", () => {
       verboseLog: false,
       includeDraftData: true,
       useLocalData: true,
+      allowRobots: false,
     });
   });
   test("Have Airtable API keys", () => {
     expect(importEnv({ AIRTABLE_API_KEY: "foo" })).toEqual<Env>({
       verboseLog: false,
       includeDraftData: false,
+      airtableApiKey: "foo",
       useLocalData: false,
+      allowRobots: false,
     });
   });
   test("Have Airtable API keys, force local data", () => {
@@ -35,7 +40,9 @@ describe("Import environment vars", () => {
     ).toEqual<Env>({
       verboseLog: false,
       includeDraftData: false,
+      airtableApiKey: "foo",
       useLocalData: true,
+      allowRobots: false,
     });
   });
   test("Read Vercel env", () => {
@@ -44,6 +51,7 @@ describe("Import environment vars", () => {
       includeDraftData: false,
       useLocalData: true,
       vercelDeploymentType: "development",
+      allowRobots: false,
     });
   });
   test("Refuse to create a production build with local data", () => {
@@ -57,6 +65,19 @@ describe("Import environment vars", () => {
       includeDraftData: false,
       useLocalData: true,
       ecomailApiKey: "foo",
+      allowRobots: false,
+    });
+  });
+  test("Allow robots for production builds", () => {
+    expect(
+      importEnv({ AIRTABLE_API_KEY: "foo", VERCEL_ENV: "production" })
+    ).toEqual<Env>({
+      verboseLog: false,
+      includeDraftData: false,
+      useLocalData: false,
+      vercelDeploymentType: "production",
+      airtableApiKey: "foo",
+      allowRobots: true,
     });
   });
 });
