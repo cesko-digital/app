@@ -17,7 +17,7 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
     project.githubUrl ||
     project.trelloUrl ||
     project.jiraUrl ||
-    (project.slackChannelName && project.slackChannelUrl);
+    project.slackChannelUrl;
   return (
     <S.Container>
       {project.coordinatorIds.length > 0 && (
@@ -38,11 +38,11 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
           {project.jiraUrl && (
             <SocialMedia logo={JiraIcon} url={project.jiraUrl} name={"Jira"} />
           )}
-          {project.slackChannelName && project.slackChannelUrl && (
+          {project.slackChannelUrl && (
             <SocialMedia
               logo={SlackIcon}
               url={project.slackChannelUrl}
-              name="Slack" // We have quite long channel names, so let’s not use the channel name here
+              name="Slack"
             />
           )}
         </S.Social>
