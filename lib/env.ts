@@ -10,10 +10,11 @@ export type SystemEnvKeys =
 export type Env = {
   airtableApiKey?: string;
   ecomailApiKey?: string;
-  useLocalData: boolean;
   verboseLog: boolean;
   includeDraftData: boolean;
   vercelDeploymentType?: VercelDeploymentType;
+  useLocalData: boolean;
+  allowRobots: boolean;
 };
 
 export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
@@ -28,6 +29,9 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
     | VercelDeploymentType
     | undefined;
 
+  const allowRobots =
+    !useLocalData && !includeDraftData && vercelDeploymentType === "production";
+
   if (useLocalData && vercelDeploymentType === "production") {
     throw "Refusing to use local data source for production build.";
   }
@@ -37,6 +41,8 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
     verboseLog,
     includeDraftData,
     vercelDeploymentType,
+    allowRobots,
+    airtableApiKey,
     ecomailApiKey,
   };
 }
@@ -45,7 +51,7 @@ function importEnvOrDie(): Env {
   try {
     return importEnv(process.env as any);
   } catch (e) {
-    console.error(`Failed to create environment: ${e}`);
+    console.error(`Failed to import environment: ${e}`);
     process.exit(1);
   }
 }
