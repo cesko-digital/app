@@ -19,6 +19,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
+    - run: yarn config set network-timeout 600000 -g
     - run: yarn install
     - run: yarn test
     - run: DATA_SOURCE_LOCAL=y yarn build
