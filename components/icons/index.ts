@@ -12,6 +12,7 @@ export { default as TechnologiesIcon } from "./technologies";
 export { default as WadgeIcon } from "./wadge";
 export { default as QuestionIcon } from "./question";
 export { default as TrelloIcon } from "./trello";
+export { default as JiraIcon } from "./jira";
 export { default as GithubIcon } from "./github";
 export { default as ArrowIcon } from "./arrow";
 export { default as CheckIcon } from "./check";

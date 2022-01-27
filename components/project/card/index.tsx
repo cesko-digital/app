@@ -1,4 +1,4 @@
-import { ArrowIcon, GithubIcon, TrelloIcon, SlackIcon } from "components/icons";
+import { ArrowIcon, GithubIcon, JiraIcon, SlackIcon } from "components/icons";
 import Coordinators from "./coordinators";
 import SocialMedia from "./social-media";
 import { ButtonAsLink } from "components/links";
@@ -16,6 +16,7 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
   const haveLinks =
     project.githubUrl ||
     project.trelloUrl ||
+    project.jiraUrl ||
     (project.slackChannelName && project.slackChannelUrl);
   return (
     <S.Container>
@@ -34,12 +35,8 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
               name={"GitHub"}
             />
           )}
-          {project.trelloUrl && (
-            <SocialMedia
-              logo={TrelloIcon}
-              url={project.trelloUrl}
-              name={"Trello"}
-            />
+          {project.jiraUrl && (
+            <SocialMedia logo={JiraIcon} url={project.jiraUrl} name={"Jira"} />
           )}
           {project.slackChannelName && project.slackChannelUrl && (
             <SocialMedia
