@@ -71,7 +71,7 @@ export const getAllProjects = async () =>
   await getAllRecords({
     baseId: airtableBaseId,
     tableName: "Projects",
-    viewName: "Grid view",
+    viewName: "API view",
     decoder: decodeProject,
   });
 
@@ -79,7 +79,7 @@ export const getAllUsers = async () =>
   await getAllRecords({
     baseId: airtableBaseId,
     tableName: "Volunteers",
-    viewName: "Grid view",
+    viewName: "API view",
     decoder: decodeUser,
   });
 
@@ -87,7 +87,7 @@ export const getAllEvents = async () =>
   await getAllRecords({
     baseId: airtableBaseId,
     tableName: "Events",
-    viewName: "All Events",
+    viewName: "API view",
     decoder: decodeEvent,
   });
 
@@ -95,7 +95,7 @@ export const getAllOpportunities = async () =>
   await getAllRecords({
     baseId: airtableBaseId,
     tableName: "Opportunities",
-    viewName: "Grid view",
+    viewName: "API view",
     decoder: decodeOpportunity,
   });
 
