@@ -1,6 +1,6 @@
 ---
 title: "DevTalk #1 – Infrastruktura"
-cover: https://data.cesko.digital/web/projects/cesko-digital/cover.jpg
+cover: https://data.cesko.digital/img/080fd790.jpg
 date: 2021-11-13-10-10
 description: "V prvním dílu série DevTalk se podíváme na infrastrukturu a DevOps, jak se na ně koukáme v rámci Česko.Digital. Na příkladu si ukážeme Terraform, Github Actions a jak to vše zapadá do našeho dobrovolnického workflow."
 videoUrl: "https://www.youtube.com/embed/5IlYHMlIZCc"
