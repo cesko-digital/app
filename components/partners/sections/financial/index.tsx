@@ -6,17 +6,18 @@ import * as S from "../../styles";
 import { ButtonLink } from "components/buttons/button/styles";
 import { ButtonSize } from "components/buttons";
 import BlogCard from "components/cards/blog-card";
-import blogPosts from "content/partner-posts.json";
 import strings from "content/strings.json";
 import { BlogHeader } from "./styles";
 import { PortalPartner } from "lib/portal-types";
 import { filterPartnersByCategory } from "lib/portal-type-utils";
+import { Article } from "lib/related-blog-posts";
 
 interface Props {
   partners: readonly PortalPartner[];
+  blogPosts: readonly Article[];
 }
 
-const FinancialPartners: React.FC<Props> = ({ partners }) => {
+const FinancialPartners: React.FC<Props> = ({ partners, blogPosts }) => {
   const msg = strings.pages.partners.financial;
   const mainPartners = filterPartnersByCategory(partners, "financial.main");
   const regularPartners = filterPartnersByCategory(
@@ -43,7 +44,7 @@ const FinancialPartners: React.FC<Props> = ({ partners }) => {
           </BlogHeader>
           <CardRow>
             {blogPosts.map((post) => (
-              <BlogCard key={post.link} {...post} />
+              <BlogCard key={post.url} link={post.url} {...post} />
             ))}
           </CardRow>
         </SectionContent>

@@ -9,18 +9,22 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
 import { siteData } from "lib/site-data";
+import { Article } from "lib/related-blog-posts";
 
 type PageProps = {
   partners: readonly PortalPartner[];
+  blogPosts: readonly Article[];
 };
 
-const Page: NextPage<PageProps> = ({ partners }) => {
+const Page: NextPage<PageProps> = ({ partners, blogPosts }) => {
   const msg = strings.pages.partners;
   const sections = [
     {
       key: "financial",
       label: msg.tabs.financial.title,
-      component: <FinancialPartners partners={partners} />,
+      component: (
+        <FinancialPartners partners={partners} blogPosts={blogPosts} />
+      ),
     },
     {
       key: "experts",
@@ -63,9 +67,14 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const partners = siteData.partners;
+  const blogPosts = siteData.blogPosts
+    .filter((post) => post.tags.some((t) => t === "partners"))
+    .reverse();
   return {
     props: {
-      partners: siteData.partners,
+      partners,
+      blogPosts,
     },
   };
 };
