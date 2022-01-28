@@ -143,13 +143,8 @@ const handler = async (
     // Attempt to fetch and transform provided image
     const preparedImageData = await prepareImageFromSource(data);
 
-    response.setHeader(
-      "Cache-Control",
-      "max-age=0, s-maxage=60, stale-while-revalidate=60"
-    );
-
+    response.setHeader("Cache-Control", "max-age=86400, s-maxage=86400");
     response.setHeader("Content-Type", preparedImageData.contentType);
-
     response.status(200).send(preparedImageData.processedImage);
   } catch (e) {
     const [code, msg] =
