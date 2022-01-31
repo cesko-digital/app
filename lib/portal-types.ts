@@ -35,7 +35,10 @@ export const decodeProject = record({
   coverImageUrl: string,
   logoUrl: string,
   highlighted: withDefault(boolean, false),
-  state: withDefault(union("draft", "running", "finished"), "draft"),
+  state: withDefault(
+    union("draft", "running", "finished", "incubating", "internal"),
+    "draft"
+  ),
   tagIds: field("tags", withDefault(array(string), [])),
   coordinatorIds: field("coordinators", array(string)),
   trelloUrl: optional(string),
