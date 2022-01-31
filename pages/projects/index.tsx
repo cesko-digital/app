@@ -63,7 +63,9 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const projects = siteData.projects.filter((p) => p.state !== "draft");
+  const projects = siteData.projects.filter(
+    (p) => p.state !== "draft" && p.state !== "internal"
+  );
   return {
     props: { projects },
   };

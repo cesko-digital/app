@@ -72,14 +72,16 @@ const Page: NextPage<PageProps> = (props) => {
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
                 <S.OpportunityProjectImg src={parentProject.logoUrl} />
-                {parentProject.state === "draft" && (
-                  <Body>{parentProject.name}</Body>
-                )}
-                {parentProject.state !== "draft" && (
-                  <a href={Route.toProject(parentProject)}>
+                {parentProject.state === "draft" ||
+                  (parentProject.state === "internal" && (
                     <Body>{parentProject.name}</Body>
-                  </a>
-                )}
+                  ))}
+                {parentProject.state !== "draft" &&
+                  parentProject.state !== "internal" && (
+                    <a href={Route.toProject(parentProject)}>
+                      <Body>{parentProject.name}</Body>
+                    </a>
+                  )}
               </S.OpportunityMetaRow>
               <OpportunityMetaRow>
                 <TimeIcon />
