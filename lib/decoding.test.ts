@@ -9,13 +9,14 @@ test("Decode portal project", () => {
   expect(
     decodeProject({
       id: "rec4KOruzwIFU8ieR",
-      csSlug: "loono",
-      csName: "Loono – průvodce prevencí",
+      slug: "loono",
+      name: "Loono – průvodce prevencí",
       tags: ["recVa4LnmzmtfoYTg"],
-      csTagline:
+      tagline:
         "Platforma poskytující veškeré informace o prevenci přehledně a na jednom místě",
       logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
-      coverUrl: "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
+      coverImageUrl:
+        "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
       description: "Vytvoříme místo!",
       url: "https://wiki.cesko.digital/pages/viewpage.action?pageId=1584556",
       slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
