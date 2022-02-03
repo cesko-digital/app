@@ -7,7 +7,8 @@
     "lint": "next lint",
     "update-data": "node lib/update-local-data.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "airtable": "^0.11.1",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "7",
+    "@playwright/test": "^1.18.1",
     "@types/jest": "^27.0.3",
     "@types/marked": "^4.0.1",
     "@types/node": "16.11.11",
