@@ -1,6 +1,6 @@
 {
     "crumbs": {
-      "dashboard": "Portál dobrovolníka"
+        "dashboard": "Portál dobrovolníka"
     },
     "cards": {
         "blog": {
@@ -25,20 +25,20 @@
                 "title": "Chci být dobrovolníkem"
             },
             "eventCard": {
-              "contact": "Kontakt",
-              "project": "Projekt",
-              "date": "Datum konání",
-              "place": "Místo konání",
-              "duration": "Délka akce",
-              "detail": "Detail akce"
+                "contact": "Kontakt",
+                "project": "Projekt",
+                "date": "Datum konání",
+                "place": "Místo konání",
+                "duration": "Délka akce",
+                "detail": "Detail akce"
             },
             "ceduCard": {
-              "interested": "To mě zajímá!"
+                "interested": "To mě zajímá!"
             },
             "ceduContentBox": {
-              "madeBy": "Vytvořili",
-              "content": "Obsah",
-              "resources": "Zdroje"
+                "madeBy": "Vytvořili",
+                "content": "Obsah",
+                "resources": "Zdroje"
             }
         },
         "sections": {
@@ -285,10 +285,10 @@
             "opportunities": "Volné pozice"
         },
         "dashboard": {
-          "cedu": "Vzdělávání – č.edu",
-          "comingEvents": "Nejbližší akce",
-          "currentOpportunities": "Právě hledáme",
-          "moreOpportunities": "Více volných pozic"
+            "cedu": "Vzdělávání – č.edu",
+            "comingEvents": "Nejbližší akce",
+            "currentOpportunities": "Právě hledáme",
+            "moreOpportunities": "Více volných pozic"
         }
     }
 }
