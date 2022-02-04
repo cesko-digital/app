@@ -8,7 +8,7 @@
     "update-data": "node lib/update-local-data.mjs",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "e2e": "playwright test"
+    "e2e": "npx playwright test"
   },
   "dependencies": {
     "airtable": "^0.11.1",
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@babel/core": "7",
-    "@playwright/test": "^1.18.1",
     "@types/jest": "^27.0.3",
     "@types/marked": "^4.0.1",
     "@types/node": "16.11.11",
@@ -38,7 +37,8 @@
     "jest": "^27.4.3",
     "react-is": "16",
     "ts-jest": "^27.1.0",
-    "typescript": "4.5.2"
+    "typescript": "4.5.2",
+    "@playwright/test": "1.18.1"
   },
   "jest": {
     "preset": "ts-jest",
