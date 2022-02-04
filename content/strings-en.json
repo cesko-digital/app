@@ -24,7 +24,7 @@
     },
     "sections": {
       "footer": {
-        "footNote": "Česko.Digital © 2021, This site uses cookies ¯\\_(ツ)_/¯",
+        "footNote": "© Česko.Digital",
         "newsletter": {
           "emailRequiredError": "Please enter a valid email address.",
           "inputError": "Please enter a valid email address.",
