@@ -25,4 +25,5 @@ jobs:
         cache: 'yarn'
     - run: yarn install
     - run: yarn test
+    - run: npx playwright install
     - run: yarn e2e
