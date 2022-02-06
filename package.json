@@ -42,6 +42,7 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "testPathIgnorePatterns": ["spec\\.ts"],
     "testEnvironment": "node"
   },
   "prettier": {
