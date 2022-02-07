@@ -18,23 +18,36 @@ export type SystemEnvKeys =
 export type Env = {
   /** Airtable API key. If not present, we will attempt to use local data. */
   airtableApiKey?: string;
+
   /** Ecomail API key, used to subscribe people to our newsletter */
   ecomailApiKey?: string;
+
   /** If set, code will log details where appropriate */
   verboseLog: boolean;
+
   /** If set, will also include draft data in generated website */
   includeDraftData: boolean;
+
   /** Vercel deployment type, ie. are we building a pull request or what? */
   vercelDeploymentType?: VercelDeploymentType;
+
   /** Should we use local data sources where possible? */
   useLocalData: boolean;
+
   /**
-   * Should we allow robots and track views?
+   * Should we allow robots?
    *
-   * We want to make sure we don’t spam our analytics or even harm our SEO
-   * by tracking and exposing our draft or development builds.
+   * We want to make sure we don’t harm our SEO by exposing
+   * our draft or development builds.
    */
   allowRobots: boolean;
+
+  /**
+   * Should we collect analytics for this build?
+   *
+   * We don’t want to skew our stats by tracking development builds.
+   */
+  allowAnalytics: boolean;
 };
 
 export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
@@ -51,6 +64,7 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
 
   const allowRobots =
     !useLocalData && !includeDraftData && vercelDeploymentType === "production";
+  const allowAnalytics = allowRobots;
 
   if (useLocalData && vercelDeploymentType === "production") {
     throw "Refusing to use local data source for production build.";
@@ -62,6 +76,7 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
     includeDraftData,
     vercelDeploymentType,
     allowRobots,
+    allowAnalytics,
     airtableApiKey,
     ecomailApiKey,
   };
