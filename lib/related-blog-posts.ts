@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { array, decodeType, record, string } from "typescript-json-decoder";
 import { withDefault } from "./decoding";
-import { env } from "./env";
+import { buildEnv } from "./build-env";
 
 /**
  * A blog posts from our blog
@@ -32,7 +32,7 @@ export async function getArticleIndex(): Promise<Article[]> {
       articles.push(decodeArticle(item));
     } catch (e) {
       console.warn(
-        env.verboseLog
+        buildEnv.verboseLog
           ? `Parse error for record #${index} in article index: ${e}`
           : `Parse error for record #${index} in article index, skipping (set VERBOSE_LOG to see more).`
       );

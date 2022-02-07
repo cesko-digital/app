@@ -1,5 +1,5 @@
 import Airtable from "airtable";
-import { env } from "./env";
+import { buildEnv } from "./build-env";
 import {
   decodeEvent,
   decodeOpportunity,
@@ -25,7 +25,7 @@ async function getAllRecords<T>(args: {
     ...data.fields,
   });
 
-  const apiKey = env.airtableApiKey;
+  const apiKey = buildEnv.airtableApiKey;
   if (!apiKey) {
     console.warn(
       "Airtable API key not found in env, things will probably break."
@@ -46,7 +46,7 @@ async function getAllRecords<T>(args: {
       parsedRecords.push(args.decoder(mergeAirtableRecord(record)));
     } catch (e) {
       console.warn(
-        env.verboseLog
+        buildEnv.verboseLog
           ? `Parse error for record #${index} in table ${args.tableName}: ${e}`
           : `Parse error for record #${index} in table ${args.tableName}, skipping (set VERBOSE_LOG to see more).`
       );

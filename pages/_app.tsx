@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { defaultTheme } from "components/theme/default";
 import Script from "next/script";
-import { env } from "lib/env";
+import { buildEnv } from "lib/build-env";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      {env.allowAnalytics && (
+      {buildEnv.allowAnalytics && (
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

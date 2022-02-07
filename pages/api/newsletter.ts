@@ -1,4 +1,4 @@
-import { env } from "lib/env";
+import { buildEnv } from "lib/build-env";
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 
@@ -38,7 +38,7 @@ const handler = async (
       method: "POST",
       body: subscriptionData,
       headers: {
-        "key": env.ecomailApiKey || "<missing>",
+        "key": buildEnv.ecomailApiKey || "<missing>",
         "Content-Type": "application/json",
       },
     });

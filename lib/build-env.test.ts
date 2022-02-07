@@ -1,8 +1,8 @@
-import { Env, importEnv } from "./env";
+import { BuildEnv, importEnv } from "./build-env";
 
 describe("Import environment vars", () => {
   test("Import from empty env", () => {
-    expect(importEnv({})).toEqual<Env>({
+    expect(importEnv({})).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       useLocalData: true,
@@ -11,7 +11,7 @@ describe("Import environment vars", () => {
     });
   });
   test("Verbose log", () => {
-    expect(importEnv({ VERBOSE_LOG: "yes, please" })).toEqual<Env>({
+    expect(importEnv({ VERBOSE_LOG: "yes, please" })).toEqual<BuildEnv>({
       verboseLog: true,
       includeDraftData: false,
       useLocalData: true,
@@ -20,7 +20,7 @@ describe("Import environment vars", () => {
     });
   });
   test("Include draft data", () => {
-    expect(importEnv({ INCLUDE_DRAFT_DATA: "yes, please" })).toEqual<Env>({
+    expect(importEnv({ INCLUDE_DRAFT_DATA: "yes, please" })).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: true,
       useLocalData: true,
@@ -29,7 +29,7 @@ describe("Import environment vars", () => {
     });
   });
   test("Have Airtable API keys", () => {
-    expect(importEnv({ AIRTABLE_API_KEY: "foo" })).toEqual<Env>({
+    expect(importEnv({ AIRTABLE_API_KEY: "foo" })).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       airtableApiKey: "foo",
@@ -41,7 +41,7 @@ describe("Import environment vars", () => {
   test("Have Airtable API keys, force local data", () => {
     expect(
       importEnv({ AIRTABLE_API_KEY: "foo", DATA_SOURCE_LOCAL: "yes" })
-    ).toEqual<Env>({
+    ).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       airtableApiKey: "foo",
@@ -51,7 +51,7 @@ describe("Import environment vars", () => {
     });
   });
   test("Read Vercel env", () => {
-    expect(importEnv({ VERCEL_ENV: "development" })).toEqual<Env>({
+    expect(importEnv({ VERCEL_ENV: "development" })).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       useLocalData: true,
@@ -66,7 +66,7 @@ describe("Import environment vars", () => {
     ).toThrow();
   });
   test("Read Ecomail API key", () => {
-    expect(importEnv({ ECOMAIL_API_KEY: "foo" })).toEqual<Env>({
+    expect(importEnv({ ECOMAIL_API_KEY: "foo" })).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       useLocalData: true,
@@ -78,7 +78,7 @@ describe("Import environment vars", () => {
   test("Allow robots for production builds", () => {
     expect(
       importEnv({ AIRTABLE_API_KEY: "foo", VERCEL_ENV: "production" })
-    ).toEqual<Env>({
+    ).toEqual<BuildEnv>({
       verboseLog: false,
       includeDraftData: false,
       useLocalData: false,

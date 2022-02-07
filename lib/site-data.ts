@@ -1,6 +1,6 @@
 import { getAllVideos, PortalVideo } from "./cedu";
 import { Article, getArticleIndex } from "./related-blog-posts";
-import { env } from "./env";
+import { buildEnv } from "./build-env";
 import * as Airtable from "./airtable-import";
 import * as Local from "./local-data";
 import {
@@ -22,7 +22,7 @@ export interface SiteData {
 }
 
 async function loadSiteData(): Promise<SiteData> {
-  if (env.useLocalData) {
+  if (buildEnv.useLocalData) {
     console.warn(
       "Loading app data from local sources, set AIRTABLE_API_KEY to load from Airtable."
     );
@@ -32,7 +32,7 @@ async function loadSiteData(): Promise<SiteData> {
     );
   }
 
-  const DataSource = env.useLocalData ? Local : Airtable;
+  const DataSource = buildEnv.useLocalData ? Local : Airtable;
 
   let projects = await DataSource.getAllProjects();
   let users = await DataSource.getAllUsers();

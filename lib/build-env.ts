@@ -15,7 +15,7 @@ export type SystemEnvKeys =
   | "VERCEL_ENV";
 
 /** Parsed environment variables that customize the build */
-export type Env = {
+export type BuildEnv = {
   /** Airtable API key. If not present, we will attempt to use local data. */
   airtableApiKey?: string;
 
@@ -50,7 +50,9 @@ export type Env = {
   allowAnalytics: boolean;
 };
 
-export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
+export function importEnv(
+  sysEnv: Partial<Record<SystemEnvKeys, string>>
+): BuildEnv {
   const verboseLog = !!sysEnv.VERBOSE_LOG;
   const includeDraftData = !!sysEnv.INCLUDE_DRAFT_DATA;
   const forceLocal = !!sysEnv.DATA_SOURCE_LOCAL;
@@ -82,7 +84,7 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
   };
 }
 
-function censor(env: Env): Env {
+function censor(env: BuildEnv): BuildEnv {
   const {
     useLocalData,
     verboseLog,
@@ -103,7 +105,7 @@ function censor(env: Env): Env {
   };
 }
 
-function importEnvOrDie(): Env {
+function importEnvOrDie(): BuildEnv {
   try {
     const env = importEnv(process.env as any);
     console.debug(`Environment: ${JSON.stringify(censor(env), null, 2)}`);
@@ -114,4 +116,4 @@ function importEnvOrDie(): Env {
   }
 }
 
-export const env = importEnvOrDie();
+export const buildEnv = importEnvOrDie();
