@@ -82,9 +82,32 @@ export function importEnv(sysEnv: Partial<Record<SystemEnvKeys, string>>): Env {
   };
 }
 
+function censor(env: Env): Env {
+  const {
+    useLocalData,
+    verboseLog,
+    includeDraftData,
+    vercelDeploymentType,
+    allowRobots,
+    allowAnalytics,
+  } = env;
+  return {
+    useLocalData,
+    verboseLog,
+    includeDraftData,
+    vercelDeploymentType,
+    allowRobots,
+    allowAnalytics,
+    airtableApiKey: env.airtableApiKey ? "***" : undefined,
+    ecomailApiKey: env.ecomailApiKey ? "***" : undefined,
+  };
+}
+
 function importEnvOrDie(): Env {
   try {
-    return importEnv(process.env as any);
+    const env = importEnv(process.env as any);
+    console.debug(`Environment: ${JSON.stringify(censor(env), null, 2)}`);
+    return env;
   } catch (e) {
     console.error(`Failed to import environment: ${e}`);
     process.exit(1);
