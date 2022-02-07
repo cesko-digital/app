@@ -29,10 +29,10 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
                   <Body>{relatedProject.name}</Body>
                 </a>
               )}
-            {relatedProject.state === "draft" ||
-              (relatedProject.state === "internal" && (
-                <Body>{relatedProject.name}</Body>
-              ))}
+            {(relatedProject.state === "draft" ||
+              relatedProject.state === "internal") && (
+              <Body>{relatedProject.name}</Body>
+            )}
             <S.OpportunityLogo src={relatedProject.logoUrl} />
           </S.OpportunityRightWrapper>
         )}
