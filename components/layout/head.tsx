@@ -27,7 +27,7 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
         name="description"
         content={description || strings.metadata.description}
       />
-      {env.allowRobots && (
+      {env.allowAnalytics && (
         <script
           defer
           data-domain="cesko.digital"

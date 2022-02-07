@@ -7,6 +7,7 @@ describe("Import environment vars", () => {
       includeDraftData: false,
       useLocalData: true,
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Verbose log", () => {
@@ -15,6 +16,7 @@ describe("Import environment vars", () => {
       includeDraftData: false,
       useLocalData: true,
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Include draft data", () => {
@@ -23,6 +25,7 @@ describe("Import environment vars", () => {
       includeDraftData: true,
       useLocalData: true,
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Have Airtable API keys", () => {
@@ -32,6 +35,7 @@ describe("Import environment vars", () => {
       airtableApiKey: "foo",
       useLocalData: false,
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Have Airtable API keys, force local data", () => {
@@ -43,6 +47,7 @@ describe("Import environment vars", () => {
       airtableApiKey: "foo",
       useLocalData: true,
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Read Vercel env", () => {
@@ -52,6 +57,7 @@ describe("Import environment vars", () => {
       useLocalData: true,
       vercelDeploymentType: "development",
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Refuse to create a production build with local data", () => {
@@ -66,6 +72,7 @@ describe("Import environment vars", () => {
       useLocalData: true,
       ecomailApiKey: "foo",
       allowRobots: false,
+      allowAnalytics: false,
     });
   });
   test("Allow robots for production builds", () => {
@@ -78,6 +85,7 @@ describe("Import environment vars", () => {
       vercelDeploymentType: "production",
       airtableApiKey: "foo",
       allowRobots: true,
+      allowAnalytics: true,
     });
   });
 });
