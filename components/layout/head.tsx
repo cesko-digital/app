@@ -27,11 +27,13 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
         name="description"
         content={description || strings.metadata.description}
       />
-      <script
-        defer
-        data-domain="cesko.digital"
-        src="https://plausible.io/js/plausible.js"
-      ></script>
+      {env.allowRobots && (
+        <script
+          defer
+          data-domain="cesko.digital"
+          src="https://plausible.io/js/plausible.js"
+        ></script>
+      )}
       <meta property="og:image" content={coverUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
