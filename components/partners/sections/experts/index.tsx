@@ -15,7 +15,7 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({ partners }) => {
   const supporters = filterPartnersByCategory(partners, "experts.supporters");
   const msg = strings.pages.partners.experts;
   return (
-    <Section>
+    <Section id="partners-experts">
       <SectionContent verticalPadding={60}>
         <Heading2>{msg.heading.title}</Heading2>
         <S.PaddedBody>{msg.heading.perex}</S.PaddedBody>
@@ -23,14 +23,14 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({ partners }) => {
       <SectionContent verticalPadding={0}>
         <Heading3>{msg.submitters.title}</Heading3>
         <S.PaddedBody>{msg.submitters.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <S.PaddedBody id="partners-submitters">
           <LogoList items={submitters} />
         </S.PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={60}>
         <Heading3>{msg.regularPartners.title}</Heading3>
         <S.PaddedBody>{msg.regularPartners.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <S.PaddedBody id="partners-supporters">
           <LogoList items={supporters} />
         </S.PaddedBody>
       </SectionContent>

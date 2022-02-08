@@ -25,7 +25,7 @@ const FinancialPartners: React.FC<Props> = ({ partners, blogPosts }) => {
     "financial.regular"
   );
   return (
-    <Section>
+    <Section id="partners-financial">
       <SectionContent verticalPadding={60}>
         <Heading2>{msg.heading.title}</Heading2>
         <S.PaddedBody>{msg.heading.perex}</S.PaddedBody>
