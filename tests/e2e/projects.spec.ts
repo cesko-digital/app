@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("should have section with ongoing projects", async ({ page }) => {
   await page.goto("/projects");
-  expect(await page.title()).toBe("Projekty | Česko.Digital");
+  expect(page).toHaveTitle("Projekty | Česko.Digital");
   const section = page.locator("#projects-ongoing");
   const header2 = section.locator("h2");
   await expect(header2).toContainText("Aktuální projekty");
@@ -12,7 +12,7 @@ test("should have section with ongoing projects", async ({ page }) => {
 
 test("should have section with finished projects", async ({ page }) => {
   await page.goto("/projects");
-  expect(await page.title()).toBe("Projekty | Česko.Digital");
+  expect(page).toHaveTitle("Projekty | Česko.Digital");
   const section = page.locator("#projects-finished");
   const header2 = section.locator("h2");
   await expect(header2).toContainText("Dokončené projekty");

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("should show financial partners", async ({page}) => {
     await page.goto("/partners");
-    expect(await page.title()).toBe("Partneři | Česko.Digital");
+    expect(page).toHaveTitle("Partneři | Česko.Digital");
     await page.click("text=Finanční partneři");
     const section = page.locator("#partners-financial");
     const partners = section.locator("ul > li");
@@ -11,7 +11,7 @@ test("should show financial partners", async ({page}) => {
 
 test("should show expert partners", async ({page}) => {
     await page.goto("/partners");
-    expect(await page.title()).toBe("Partneři | Česko.Digital");
+    expect(page).toHaveTitle("Partneři | Česko.Digital");
     await page.click("text=Expertní partneři");
     const section = page.locator("#partners-experts");
     const submitters = section.locator("#partners-submitters");
