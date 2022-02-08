@@ -20,7 +20,7 @@ import strings from "content/strings.json";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];
-  events: readonly PortalEvent[];
+  upcomingEvents: readonly PortalEvent[];
   projects: readonly PortalProject[];
   videos: readonly PortalVideo[];
 }
@@ -37,16 +37,14 @@ const Dashboard: NextPage<PageProps> = (props) => {
     >
       <Section>
         <SectionContent>
-          <Typography.Heading1>
-            {strings.header.dashboard}
-          </Typography.Heading1>
+          <Typography.Heading1>{strings.header.dashboard}</Typography.Heading1>
           <Typography.Body>
             {strings.header.dashboardDescription}
           </Typography.Body>
         </SectionContent>
       </Section>
       <OpportunitiesSection {...props} />
-      <EventsSection {...props} />
+      {props.upcomingEvents.length > 0 && <EventsSection {...props} />}
       <CeduSection {...props} />
     </Layout>
   );
@@ -63,7 +61,9 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   return (
     <Section>
       <SectionContent>
-        <Typography.Heading2>{strings.pages.dashboard.currentOpportunities}</Typography.Heading2>
+        <Typography.Heading2>
+          {strings.pages.dashboard.currentOpportunities}
+        </Typography.Heading2>
         <S.OpportunitiesMainWrapper>
           {featuredOpportunities.map((op) => (
             <OpportunityItem
@@ -83,12 +83,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   );
 };
 
-const EventsSection: React.FC<PageProps> = ({ events, projects }) => {
-  const upcomingEvents = [...events]
-    .filter((e) => e.status === "live")
-    .filter((e) => !isEventPast(e))
-    .sort(compareEventsByTime)
-    .slice(0, 6);
+const EventsSection: React.FC<PageProps> = ({ upcomingEvents, projects }) => {
   const eventProject = (e: PortalEvent) =>
     projects.find((p) => p.id === e.projectId)!;
   return (
@@ -138,9 +133,14 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events, opportunities, videos } = siteData;
+  const upcomingEvents = [...events]
+    .filter((e) => e.status === "live")
+    .filter((e) => !isEventPast(e))
+    .sort(compareEventsByTime)
+    .slice(0, 6);
   return {
     props: {
-      events,
+      upcomingEvents,
       opportunities,
       videos,
       projects,

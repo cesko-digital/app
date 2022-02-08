@@ -16,7 +16,9 @@ const Page: NextPage<PageProps> = ({ projects }) => {
   const msg = strings.pages.projects;
   const highlightedProject = projects.find((p) => p.highlighted);
   const otherRunningProjects = projects.filter(
-    (p) => p != highlightedProject && p.state === "running"
+    (p) =>
+      p != highlightedProject &&
+      (p.state === "running" || p.state === "incubating")
   );
   const finishedProjects = projects.filter((p) => p.state === "finished");
   return (
@@ -63,7 +65,9 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const projects = siteData.projects.filter((p) => p.state !== "draft");
+  const projects = siteData.projects.filter(
+    (p) => p.state !== "draft" && p.state !== "internal"
+  );
   return {
     props: { projects },
   };

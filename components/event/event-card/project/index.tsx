@@ -9,7 +9,7 @@ interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
   let wrapper;
-  if (project.state === "draft") {
+  if (project.state === "draft" || project.state === "internal") {
     wrapper = (
       <S.Wrapper>
         <S.Avatar src={project.logoUrl} />
