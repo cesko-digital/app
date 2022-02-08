@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
         </SectionContent>
       </Section>
 
-      <Section>
+      <Section id="projects-ongoing">
         <SectionContent>
           <S.ProjectsHeading>{msg.ongoing}</S.ProjectsHeading>
           {highlightedProject && (
@@ -48,7 +48,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
         </SectionContent>
       </Section>
 
-      <Section>
+      <Section id="projects-finished">
         <SectionContent>
           <S.ProjectsHeading>{msg.finished}</S.ProjectsHeading>
           <ProjectList projects={finishedProjects} />
