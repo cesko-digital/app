@@ -3,10 +3,10 @@ import path from 'path'
 
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   testDir: path.join(__dirname, 'tests'),
   testMatch: 'e2e/**/*.spec.ts',
-  retries: 0,
+  retries: process.env.CI ? 2: 0,
   outputDir: 'tests/results/',
 
   webServer: {
