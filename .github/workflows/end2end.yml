@@ -17,6 +17,5 @@ jobs:
           node-version: "14"
           cache: "yarn"
       - run: yarn install
-      - run: yarn dev
       - run: npx playwright install
       - run: npx playwright test 

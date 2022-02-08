@@ -55,7 +55,7 @@ async function loadSiteData(): Promise<SiteData> {
   return filterUndefines({
     partners: await DataSource.getAllPartners(),
     videos: await getAllVideos(),
-    blogPosts: await getArticleIndex(),
+    blogPosts: process.env.CI ? await Local.getAllArticles() : await getArticleIndex(),
     projects,
     opportunities,
     users,
