@@ -11,6 +11,6 @@ export default async function handler(
     (o) => o.status === "live"
   );
   const mdown = renderOpportunities(opportunities, projects, users);
-  response.setHeader("Content-Type", "text/markdown");
+  response.setHeader("Content-Type", "text/markdown; charset=UTF-8");
   response.status(200).send(mdown.source);
 }
