@@ -11,7 +11,9 @@ export function renderOpportunity(
   return {
     source: `**[${opportunity.name}](${linkTo(opportunity)})** pro projekt ${
       project.name
-    }, kontaktní osoba [${owner.name}](mailto:${owner.email})`,
+    }, kontaktní osoba [${owner.name}](mailto:${
+      owner.email
+    }?subject=${encodeURIComponent(opportunity.name)})`,
   };
 }
 
