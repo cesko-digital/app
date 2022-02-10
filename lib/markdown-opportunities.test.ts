@@ -19,7 +19,7 @@ describe("Render opportunities to Markdown", () => {
       )
     ).toEqual<MarkdownString>({
       source:
-        "**[Scrum Master](https://cesko.digital/opportunities/scrum-master)** pro projekt Pohyb je řešení, kontaktní osoba [Anežka Müller](mailto:anezka@cesko.digital?subject=Scrum%20Master)",
+        "**[Scrum Master](https://cesko.digital/opportunities/scrum-master?utm_medium=newsletter)** pro projekt Pohyb je řešení, kontaktní osoba [Anežka Müller](mailto:anezka@cesko.digital?subject=Scrum%20Master)",
     });
   });
   test("Render list", () => {

@@ -7,7 +7,7 @@ export function renderOpportunity(
   owner: Pick<PortalUser, "name" | "email">
 ): MarkdownString {
   const linkTo = (o: typeof opportunity) =>
-    `https://cesko.digital/opportunities/${o.slug}`;
+    `https://cesko.digital/opportunities/${o.slug}?utm_medium=newsletter`;
   return {
     source: `**[${opportunity.name}](${linkTo(opportunity)})** pro projekt ${
       project.name
