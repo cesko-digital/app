@@ -61,7 +61,7 @@ export function renderOpportunitiesBySkill(
       const heading = skill === "Other" ? "Ostatní" : skill;
       result += `## ${heading}\n\n`;
       result += renderOpportunities(relevantOps, projects, users).source;
-      result += "\n";
+      result += "\n\n";
     }
   }
 
