@@ -40,3 +40,30 @@ export function renderOpportunities(
     renderOpportunity(o, projectFor(o), userFor(o));
   return renderList(ops, renderItem);
 }
+
+export function renderOpportunitiesBySkill(
+  ops: readonly PortalOpportunity[],
+  projects: readonly PortalProject[],
+  users: readonly PortalUser[]
+): MarkdownString {
+  let allSkills = unique(ops.flatMap((o) => o.skills));
+  allSkills = allSkills.filter((s) => s !== "Other");
+  allSkills.push("Other");
+
+  const opportunitiesWithSkill = (skill: string) =>
+    ops.filter((o) => o.skills.some((s) => s === skill));
+  let result = "";
+  for (const skill of allSkills) {
+    const relevantOps = opportunitiesWithSkill(skill);
+    if (relevantOps.length > 0) {
+      const heading = skill === "Other" ? "Ostatní" : skill;
+      result += `## ${heading}\n`;
+      result += renderOpportunities(relevantOps, projects, users).source;
+      result += "\n";
+    }
+  }
+
+  return { source: result };
+}
+
+const unique = <T>(a: T[]) => [...new Set(a)];
