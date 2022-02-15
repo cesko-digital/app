@@ -3,12 +3,9 @@ import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1, BodySmall, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
-import {
-  OwnerName,
-  OpportunityMetaRow,
-} from "components/dashboard/opportunity/styles";
 import TimeIcon from "components/icons/time";
 import OpportunityItem from "components/sections/opportunity-overview";
+import OwnerContact from "components/dashboard/opportunity";
 import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
@@ -83,16 +80,16 @@ const Page: NextPage<PageProps> = (props) => {
                     </a>
                   )}
               </S.OpportunityMetaRow>
-              <OpportunityMetaRow>
+              <S.OpportunityMetaRow>
                 <TimeIcon />
                 <Body>{opportunity.timeRequirements}</Body>
-              </OpportunityMetaRow>
-              <S.OpportunityOwnerWrapper>
+              </S.OpportunityMetaRow>
+              <S.OpportunityOwnerWrapper className="owner">
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
                   <S.OwnerImage src={owner.profilePictureUrl} />
                   <div>
-                    <OwnerName>{owner.name}</OwnerName>
+                    <OwnerContact email={owner.email} name={owner.name} />
                     <BodySmall>{parentProject.name}</BodySmall>
                   </div>
                 </S.OwnerWrapper>
