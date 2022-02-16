@@ -42,10 +42,8 @@ export function decodeFields(value: Pojo): Field[] {
 
 export async function loadAllSkills(): Promise<Field[]> {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
-  const results = await base("Skills")
-    .select({ maxRecords: 200, view: "Veřejný pohled" })
-    .all();
+  const base = new Airtable({ apiKey }).base("appkn1DkvgVI5jpME");
+  const results = await base("Skills").select({ maxRecords: 200 }).all();
   const recordsWithIDs = results.map((record) => ({
     id: record.id,
     ...record.fields,
