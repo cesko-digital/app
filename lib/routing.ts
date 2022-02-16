@@ -9,12 +9,12 @@ import { PortalVideo } from "./cedu";
 export const Route = {
   // External links
   submitProject: "https://airtable.com/shrP207QR9RrHTZEi",
-  joinUs: "https://join.cesko.digital/",
   supportUs: "https://www.darujme.cz/projekt/1203553",
   brandManual: "https://znacka.cesko.digital/",
   blog: "https://blog.cesko.digital",
   // Static routes
   opportunities: "/opportunities",
+  joinUs: "/join",
   // We don’t have a dedicated all-events page yet, see
   // https://github.com/cesko-digital/web/issues/356
   events: "/dashboard#section-events",
