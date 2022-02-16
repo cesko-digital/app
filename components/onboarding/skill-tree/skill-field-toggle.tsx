@@ -55,7 +55,10 @@ const SkillFieldToggle = (props: Props) => {
   );
 
   const getCountTemplateString = (count: number) =>
-    Strings[`skills_selected_${count}`].replace(/(\%{count})/g, selectedCount);
+    (Strings as any)[`skills_selected_${count}`].replace(
+      /(\%{count})/g,
+      selectedCount
+    );
 
   const SelectedCount = () => {
     let templateString = getCountTemplateString(1);

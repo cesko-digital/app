@@ -116,7 +116,7 @@ const OnboardingForm = (props: OnboardingFormProps) => {
 
   const validateFieldSkills = async () => {
     const onlyFieldSkills = props.skills
-      .map((field) => (field.details ? field.details.map((s) => s.id) : []))
+      .map((field) => (field.skills ? field.skills.map((s) => s.id) : []))
       .flat();
 
     const fieldSkillsSelected = onlyFieldSkills.some(
