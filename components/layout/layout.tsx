@@ -28,7 +28,7 @@ const Layout: React.FC<Props> = ({
   return (
     <S.Container>
       <CustomHead {...seo} />
-      {showBanner && <Banner /> }
+      {showBanner && <Banner />}
       {lang === "cs" && <HeaderCS />}
       {lang === "en" && <HeaderEN />}
       {crumbs && (
