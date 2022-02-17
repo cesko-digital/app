@@ -1,5 +1,5 @@
 import { getAllVideos, PortalVideo } from "./cedu";
-import { Article, getArticleIndex } from "./related-blog-posts";
+import { Article } from "./related-blog-posts";
 import * as Airtable from "./airtable-import";
 import * as Local from "./local-data";
 import {
@@ -55,7 +55,7 @@ async function loadSiteData(): Promise<SiteData> {
   return filterUndefines({
     partners: await DataSource.getAllPartners(),
     videos: await getAllVideos(),
-    blogPosts: process.env.CI ? await Local.getAllArticles() : await getArticleIndex(),
+    blogPosts: await DataSource.getAllArticles(),
     projects,
     opportunities,
     users,

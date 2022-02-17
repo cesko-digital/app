@@ -6,6 +6,7 @@ import {
   decodeProject,
   decodeUser,
 } from "./portal-types";
+import { getArticleIndex } from "./related-blog-posts";
 
 type AirtableRecord = Record<string, any>;
 
@@ -106,3 +107,5 @@ export const getAllPartners = async () =>
     viewName: "Grid view",
     decoder: decodePartner,
   });
+
+export const getAllArticles = async () => await getArticleIndex();
