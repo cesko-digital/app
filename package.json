@@ -26,24 +26,34 @@
   },
   "devDependencies": {
     "@babel/core": "7",
+    "@playwright/test": "1.18.1",
+    "@testing-library/react": "^12.1.3",
     "@types/jest": "^27.0.3",
     "@types/marked": "^4.0.1",
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/sharp": "^0.29.4",
     "@types/styled-components": "^5.1.17",
     "eslint": "8.4.0",
     "eslint-config-next": "12.0.7",
     "jest": "^27.4.3",
     "react-is": "16",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.0",
-    "typescript": "4.5.2",
-    "@playwright/test": "1.18.1"
+    "typescript": "4.5.2"
   },
   "jest": {
     "preset": "ts-jest",
-    "testPathIgnorePatterns": ["spec\\.ts"],
-    "testEnvironment": "node"
+    "testPathIgnorePatterns": [
+      "spec\\.ts"
+    ],
+    "testEnvironment": "node",
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.jest.json"
+      }
+    }
   },
   "prettier": {
     "quoteProps": "consistent"

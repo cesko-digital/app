@@ -12,6 +12,20 @@
 - Pokud máte API klíč k Airtable, uložte ho do proměnné `AIRTABLE_API_KEY`. Nejen tahle proměnná se dá elegantně nastavit pomocí souboru `.env.local`, [viz dokumentaci Next.js](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables).
 - Více úvah o databázích [najdete na wiki](https://github.com/cesko-digital/web/wiki/Databáze).
 
+# Testy
+
+Máme k dispozici následující hierarchii testů:
+
+1. Typový systém
+2. Jednotkové (unit) testy
+3. Testy renderingu komponent
+4. End-to-end (E2E) testy
+
+Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat test renderingu namísto E2E testu, je to lepší. A pokud jde napsat jednotkový test nebo danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
+
+Ukázkové testy renderingu komponent najdete v adresáři `components/testing`.
+
+
 # Poznámky k architektuře
 
 - Nebojte se psát delší soubory. Mít každou drobnost v samostatném souboru je čistě režie navíc. Lze i zobecnit – míra „procesů“ (abstrakce, dělení do souborů, dělení do funkcí, …) musí odpovídat velikosti řešeného problému. Pokud zakládáte nový soubor kvůli čtyřem řádkům kódu, je slušná šance, že děláte něco špatně.
