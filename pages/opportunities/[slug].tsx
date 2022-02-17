@@ -84,7 +84,7 @@ const Page: NextPage<PageProps> = (props) => {
                 <TimeIcon />
                 <Body>{opportunity.timeRequirements}</Body>
               </S.OpportunityMetaRow>
-              <S.OpportunityOwnerWrapper className="owner">
+              <S.OpportunityOwnerWrapper>
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
                   <S.OwnerImage src={owner.profilePictureUrl} />
