@@ -21,6 +21,7 @@ const SkillTree = (props: Props) => {
       {props.skills.map((skillField) => (
         <S.TreeListItem key={skillField.name}>
           <SkillFieldToggle
+            id={skillField.name}
             skillField={skillField}
             selected={props.selected}
             handleChange={props.handleChange}

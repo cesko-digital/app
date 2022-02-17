@@ -6,7 +6,7 @@ import { Field } from "lib/skills";
 
 export interface Props {
   skillField: Field;
-  id?: string;
+  id: string;
   selected: string[];
   handleChange: (id: string) => void;
 }
@@ -21,8 +21,6 @@ const SkillFieldToggle = (props: Props) => {
   useEffect(() => {
     setSelectedCount(calculateSelectedCount());
   }, [props.selected]);
-
-  const id = props.id || Math.random().toString(36).substr(2, 7);
 
   const isSelected = (id: string) => props.selected.indexOf(id) !== -1;
 
@@ -98,6 +96,8 @@ const SkillFieldToggle = (props: Props) => {
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.handleChange(e.target.id);
   };
+
+  const { id } = props;
 
   return skills.length ? (
     <>
