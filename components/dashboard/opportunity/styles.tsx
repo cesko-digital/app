@@ -72,11 +72,14 @@ export const OwnerName = styled(Heading4)`
 
 export const OwnerMailto = styled(Link)`
   color: ${({ theme }) => theme.colors.darkGrey};
-  font-weight: ${({ theme }) => theme.fontWeights.heading};
-  border-color: ${({ theme }) => theme.colors.lightGray};
+  font-size: ${({ theme }) => theme.fontSizes.small}px;
+  font-weight: ${({ theme }) => theme.fontWeights.body};
+  border-color: ${({ theme }) => theme.colors.darkGrey};
+  border-width: 1px;
   
   &:hover {
     border-color: ${({ theme }) => theme.colors.darkGrey};
+    background-color: ${({ theme }) => theme.colors.lightViolet};
   }
 `;
 

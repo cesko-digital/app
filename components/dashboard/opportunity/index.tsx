@@ -1,18 +1,29 @@
+import { isOwnerEmailDisplayed } from "lib/utils";
+
+import { BodySmall } from "components/typography";
+
 import * as S from "./styles";
 
 interface Props {
-  email: string,
+  email?: string,
   name: string,
 }
 
 const OwnerContact: React.FC<Props> = ({ email, name }) => {
-  if (email.length > 0) {
+  if (email && email.length > 0 && isOwnerEmailDisplayed(email)) {
     return (
-      <S.OwnerName><S.OwnerMailto to={'mailto:'+email}>{name}</S.OwnerMailto></S.OwnerName>
+      <div>
+        <S.OwnerName>{name}</S.OwnerName>
+        <BodySmall>
+          <S.OwnerMailto to={'mailto:'+email}>{email}</S.OwnerMailto>
+        </BodySmall>
+      </div>
     );
   } else {
     return (
-      <S.OwnerName>{name}</S.OwnerName>
+      <div>
+        <S.OwnerName>{name}</S.OwnerName>
+      </div>
     );
   }
 };

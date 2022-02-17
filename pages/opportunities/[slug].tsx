@@ -88,10 +88,7 @@ const Page: NextPage<PageProps> = (props) => {
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
                   <S.OwnerImage src={owner.profilePictureUrl} />
-                  <div>
-                    <OwnerContact email={owner.email} name={owner.name} />
-                    <BodySmall>{parentProject.name}</BodySmall>
-                  </div>
+                  <OwnerContact email={owner.email} name={owner.name} />
                 </S.OwnerWrapper>
               </S.OpportunityOwnerWrapper>
               <a href={opportunity.contactUrl} target="blank">
