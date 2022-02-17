@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
-import OnboardingForm from "components/onboarding/form/onboarding-form";
+import OnboardingForm from "components/onboarding/form";
 import { Field, loadAllSkills } from "lib/skills";
 import * as S from "components/onboarding/styles";
 

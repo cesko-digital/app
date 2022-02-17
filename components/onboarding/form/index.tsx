@@ -1,5 +1,5 @@
-import { Field, loadAllSkills } from "lib/skills";
-import React, { useState, useEffect } from "react";
+import { Field } from "lib/skills";
+import { createContext, useState } from "react";
 import Form from "./onboarding-form";
 
 export enum FormStatus {
@@ -16,30 +16,12 @@ export interface FormContextProps {
   setStatus: React.Dispatch<React.SetStateAction<FormStatus>>;
 }
 
-export const FormContext = React.createContext<FormContextProps>(
+export const FormContext = createContext<FormContextProps>(
   {} as FormContextProps
 );
 
-const OnboardingFormContainer = () => {
-  const [skills, setSkills] = useState<Field[]>([]);
-  const [status, setStatus] = useState<FormStatus>(
-    FormStatus.FETCHING_PROGRESS
-  );
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await loadAllSkills();
-        setSkills(data);
-        setStatus(FormStatus.FETCHING_SUCCESS);
-      } catch (e) {
-        setStatus(FormStatus.FETCHING_ERROR);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+const OnboardingFormContainer: React.FC<{ skills: Field[] }> = ({ skills }) => {
+  const [status, setStatus] = useState<FormStatus>(FormStatus.FETCHING_SUCCESS);
   return (
     <FormContext.Provider value={{ status, setStatus }}>
       <Form skills={skills} />
