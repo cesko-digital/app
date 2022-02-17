@@ -292,6 +292,6 @@
         }
     },
     "banner": {
-        "message": "This is an **important message** from `strings.json`.\n\nNew lines are supported."
+        "message": "### Lepší Česko skrz  jedničky a nuly\n\nJsme nezávislá nezisková organizace s transparentním hospodařením. Každý váš dar pomůže efektivněji zapojit dobrovolníky pracující na digitalizaci naší společnosti."
     }
 }
