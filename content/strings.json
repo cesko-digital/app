@@ -290,5 +290,8 @@
           "currentOpportunities": "Právě hledáme",
           "moreOpportunities": "Více volných pozic"
         }
+    },
+    "banner": {
+        "message": "This is an **important message** from `strings.json`.\n\nNew lines are supported."
     }
 }

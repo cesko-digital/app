@@ -21,7 +21,8 @@ type PageProps = {
 const Page: NextPage<PageProps> = ({ projects, partners }) => {
   const theme = useContext(ThemeContext);
   return (
-    <Layout>
+    // TODO: Dynamic display of banner based on URL parameter
+    <Layout showBanner={true}>
       <Section>
         <Hero />
       </Section>

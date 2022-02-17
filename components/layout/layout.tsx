@@ -8,11 +8,14 @@ import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
 import HeaderEN from "./header/english";
 
+import Banner from "components/banner";
+
 export interface Props {
   crumbs?: Crumb[];
   children: ReactNode;
   head?: CustomHeadProps;
   lang?: "cs" | "en";
+  showBanner?: boolean;
 }
 
 const Layout: React.FC<Props> = ({
@@ -20,10 +23,12 @@ const Layout: React.FC<Props> = ({
   children,
   head: seo = {},
   lang = "cs",
+  showBanner,
 }: Props) => {
   return (
     <S.Container>
       <CustomHead {...seo} />
+      {showBanner && <Banner /> }
       {lang === "cs" && <HeaderCS />}
       {lang === "en" && <HeaderEN />}
       {crumbs && (
