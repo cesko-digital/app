@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { defaultTheme } from "components/theme/default";
 import { SectionContent } from "components/layout";
-import arrowsBackground from "./images/bg-arrows.svg";
 
 const onboardingTheme = {
   fontSizes: {
@@ -64,8 +63,9 @@ export const SectionIntroductionContent = styled(SectionContent)`
     padding-top: ${({ theme }) => theme.space.lg}px;
     padding-bottom: ${({ theme }) => theme.space.lg}px;
     margin-top: 50px;
-    background: url(${arrowsBackground}) calc(80% + 100px) 0% no-repeat,
-      url(${arrowsBackground}) 80% calc(0% + 144px) no-repeat;
+    background: url(/images/onboarding/bg-arrows.svg) calc(80% + 100px) 0%
+        no-repeat,
+      url(/images/onboarding/bg-arrows.svg) 80% calc(0% + 144px) no-repeat;
   }
 `;
 

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import checkmark from "../../images/checkbox-checkmark.svg";
 
 export const CheckboxWrapper = styled.div`
   display: flex;
@@ -62,7 +61,7 @@ export const Input = styled.input<{ isValid?: boolean }>`
 
       &:before {
         background-color: ${({ theme }) => theme.colors.it};
-        background-image: url(${checkmark});
+        background-image: url(/images/onboarding/checkbox-checkmark.svg);
         background-repeat: no-repeat;
         background-position: center;
         border-color: ${({ theme }) => theme.colors.it};

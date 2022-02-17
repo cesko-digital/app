@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { defaultTheme } from "components/theme/default";
 import { Props as CalloutProps } from "./";
-import Octagon from "../images/x-octagon.svg";
-import Check from "../images/check.svg";
 
 const getCalloutToneColor = (type: CalloutProps["type"]) => {
   switch (type) {
@@ -18,9 +16,9 @@ const getCalloutToneColor = (type: CalloutProps["type"]) => {
 const getCalloutIcon = (type: CalloutProps["type"]) => {
   switch (type) {
     case "success":
-      return Check;
+      return "/images/onboarding/check.svg";
     case "error":
-      return Octagon;
+      return "/images/onboarding/x-octagon.svg";
     default:
       return null;
   }
