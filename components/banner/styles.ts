@@ -4,6 +4,7 @@ export const Section = styled.section`
   color: #fff;
   background: ${({ theme }) => theme.colors.darkGrey};
   margin-bottom: 20px;
+  min-height: 200px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin-bottom: 0;
