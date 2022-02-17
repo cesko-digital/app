@@ -51,7 +51,7 @@
     "testEnvironment": "node",
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
+        "tsconfig": "tests/tsconfig.jest.json"
       }
     }
   },

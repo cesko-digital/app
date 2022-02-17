@@ -23,7 +23,7 @@ Máme k dispozici následující hierarchii testů:
 
 Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat test renderingu namísto E2E testu, je to lepší. A pokud jde napsat jednotkový test nebo danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
 
-Ukázkové testy renderingu komponent najdete v adresáři `components/testing`.
+Ukázkové testy renderingu komponent najdete v adresáři `tests/rendering`.
 
 
 # Poznámky k architektuře
