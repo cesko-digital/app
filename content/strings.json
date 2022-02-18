@@ -290,5 +290,8 @@
           "currentOpportunities": "Právě hledáme",
           "moreOpportunities": "Více volných pozic"
         }
+    },
+    "banner": {
+        "message": "### Lepší Česko skrz  jedničky a nuly\n\nJsme nezávislá nezisková organizace s transparentním hospodařením. Každý váš dar pomůže efektivněji zapojit dobrovolníky pracující na digitalizaci naší společnosti."
     }
 }

@@ -1,10 +1,14 @@
 import type { NextPage, GetStaticProps } from "next";
+import { useRouter } from 'next/router'
+import { useContext } from "react";
+
 import { PortalPartner, PortalProject } from "lib/portal-types";
+import { siteData } from "lib/site-data";
+
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
-import { useContext } from "react";
-import { siteData } from "lib/site-data";
+
 import {
   Hero,
   OurValues,
@@ -20,8 +24,11 @@ type PageProps = {
 
 const Page: NextPage<PageProps> = ({ projects, partners }) => {
   const theme = useContext(ThemeContext);
+  const router = useRouter();
+  const displayBanner = !!router.query.banner;
+
   return (
-    <Layout>
+    <Layout showBanner={displayBanner}>
       <Section>
         <Hero />
       </Section>
