@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import strings from "content/strings.json";
 
@@ -29,8 +28,6 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
       <meta property="og:image" content={coverUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
-      <link rel="stylesheet" href="/fonts.css" />
-      <link rel="stylesheet" href="/global.css" />
       <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     </Head>
   );
