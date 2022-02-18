@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Heading4 } from "components/typography";
 import { Button } from "components/buttons";
+import { Link } from "components/links";
 
 export const CoverImageWrapper = styled.div`
   overflow: hidden;
@@ -67,6 +68,19 @@ export const OwnerImage = styled.img`
 
 export const OwnerName = styled(Heading4)`
   font-size: 18px;
+`;
+
+export const OwnerMailto = styled(Link)`
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-size: ${({ theme }) => theme.fontSizes.small}px;
+  font-weight: ${({ theme }) => theme.fontWeights.body};
+  border-color: ${({ theme }) => theme.colors.darkGrey};
+  border-width: 1px;
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.darkGrey};
+    background-color: ${({ theme }) => theme.colors.lightViolet};
+  }
 `;
 
 export const OpportunityMetaRow = styled.div`

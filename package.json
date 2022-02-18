@@ -49,6 +49,7 @@
       "spec\\.ts"
     ],
     "testEnvironment": "node",
+    "moduleDirectories": ["node_modules", "."],
     "globals": {
       "ts-jest": {
         "tsconfig": "tests/tsconfig.jest.json"

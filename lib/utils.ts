@@ -35,3 +35,7 @@ export function getResizedImgUrl(
         targetWidth
     : "";
 }
+
+export function isOwnerEmailDisplayed(input: string): boolean {
+  return /^anezka@cesko.digital|^gabriela@cesko.digital/.test(input)
+}
