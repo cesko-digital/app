@@ -12,6 +12,7 @@ export const Route = {
   supportUs: "https://www.darujme.cz/projekt/1203553",
   brandManual: "https://znacka.cesko.digital/",
   blog: "https://blog.cesko.digital",
+  slackOnboarding: "https://slack.cesko.digital/",
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",

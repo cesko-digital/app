@@ -7,6 +7,7 @@ import { Field } from "lib/skills";
 import Strings from "../strings.json";
 import * as Components from "components/onboarding/styles";
 import * as S from "./styles";
+import { Route } from "lib/routing";
 
 export interface OnboardingFormProps {
   skills: Field[];
@@ -143,14 +144,19 @@ const OnboardingForm = (props: OnboardingFormProps) => {
   const sendFormData = async () => {
     setStatus(FormStatus.SUBMIT_PROGRESS);
     try {
-      /* TBD
-      await OnboardingService.submitVolunteer({
+      const payload = {
         name: state.name,
         email: state.email,
         skills: state.selectedSkills,
+      };
+      const response = await fetch("/api/registrations", {
+        method: "post",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
       });
-      */
-      setStatus(FormStatus.SUBMIT_SUCCESS);
+      setStatus(
+        response.ok ? FormStatus.SUBMIT_SUCCESS : FormStatus.SUBMIT_ERROR
+      );
     } catch (e) {
       setStatus(FormStatus.SUBMIT_ERROR);
       throw e;
@@ -166,8 +172,9 @@ const OnboardingForm = (props: OnboardingFormProps) => {
     } catch (e) {
       return;
     }
+    // FIXME: Don’t redirect on error
     const redirect = setTimeout(() => {
-      document.location.href = process.env.GATSBY_FORM_REDIRECT_URL || "/";
+      document.location.href = Route.slackOnboarding;
     }, 8000);
   };
 
