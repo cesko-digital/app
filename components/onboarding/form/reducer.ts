@@ -56,7 +56,8 @@ export const areSkillsValid = (state: State) =>
   state.selectedSkillIds.length >= 1;
 
 export const canSubmitForm = (state: State) =>
-  state.submissionState === "fillingIn" &&
+  (state.submissionState === "fillingIn" ||
+    state.submissionState === "error") &&
   isValidName(state.name) &&
   isValidEmail(state.email) &&
   areSkillsValid(state);
