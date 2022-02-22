@@ -10,7 +10,7 @@ import { Route } from "lib/routing";
 import {
   areSkillsValid,
   canSubmitForm,
-  initialState,
+  createState,
   isValidEmail,
   isValidName,
   reduce,
@@ -28,7 +28,7 @@ export interface OnboardingFormProps {
 }
 
 const OnboardingForm: React.FC<OnboardingFormProps> = (props) => {
-  const [state, updateState] = useReducer(reduce, initialState);
+  const [state, updateState] = useReducer(reduce, createState(props.skills));
   const submitting = state.submissionState === "submitting";
 
   // TODO: Do we need to valide the form?

@@ -3,6 +3,7 @@ import { canSubmitForm } from "./reducer";
 test("Can resubmit after error", () => {
   expect(
     canSubmitForm({
+      skills: [],
       name: "John Smith",
       email: "john@smith.name",
       selectedSkillIds: ["foo", "bar"],
@@ -14,6 +15,7 @@ test("Can resubmit after error", () => {
 test("Can’t submit with no skills selected", () => {
   expect(
     canSubmitForm({
+      skills: [],
       name: "John Smith",
       email: "john@smith.name",
       selectedSkillIds: [],
