@@ -16,41 +16,40 @@ import {
   reduce,
 } from "./reducer";
 
+export interface RegistrationData {
+  name: string;
+  email: string;
+  skills: string[];
+}
+
 export interface OnboardingFormProps {
   skills: Field[];
+  onSubmit: (data: RegistrationData) => Promise<boolean>;
 }
 
 const OnboardingForm: React.FC<OnboardingFormProps> = (props) => {
   const [state, updateState] = useReducer(reduce, initialState);
   const submitting = state.submissionState === "submitting";
 
-  const sendFormData = async () => {
-    updateState({ action: "submit" });
-    try {
-      const payload = {
-        name: state.name,
-        email: state.email,
-        skills: state.selectedSkillIds,
-      };
-      const response = await fetch("/api/registrations", {
-        method: "post",
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
-      });
-      updateState({ action: "receiveResponse", success: response.ok });
-    } catch (e) {
-      updateState({ action: "receiveResponse", success: false });
-    }
-  };
-
   // TODO: Do we need to valide the form?
   const submitForm = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    await sendFormData();
-    // FIXME: Don’t redirect on error
-    const redirect = setTimeout(() => {
-      document.location.href = Route.slackOnboarding;
-    }, 8000);
+
+    updateState({ action: "submit" });
+    const { name, email, selectedSkillIds } = state;
+    const success = await props.onSubmit({
+      name,
+      email,
+      skills: selectedSkillIds,
+    });
+    updateState({ action: "receiveResponse", success });
+
+    // It would be better to have this side effect somewhere else
+    if (success) {
+      setTimeout(() => {
+        document.location.href = Route.slackOnboarding;
+      }, 8000);
+    }
   };
 
   return (
