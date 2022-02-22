@@ -31,15 +31,8 @@ export const FormValidationError = styled(ValidationMessage)`
   margin-top: 8px;
 `;
 
-const getErrorStyles = ({
-  skills,
-  fetching,
-}: {
-  skills: SkillTreeProps["skills"];
-  fetching: SkillTreeProps["fetching"];
-}) =>
+const getErrorStyles = ({ skills }: { skills: SkillTreeProps["skills"] }) =>
   skills.length === 0 &&
-  !fetching &&
   `
   margin: 0;
   min-height: 0;
@@ -49,15 +42,15 @@ const getErrorStyles = ({
 export const StyledSkillTree = styled(SkillTree)`
   position: relative;
   transition: 3s all linear;
-  max-height: ${({ fetching }) => (fetching ? "80px" : "5000px")};
+  max-height: 5000px;
   min-height: 80px;
   overflow: hidden;
-  ${({ skills, fetching }) => getErrorStyles({ skills, fetching })}
+  ${({ skills }) => getErrorStyles({ skills })}
 
   &:after {
     content: "";
-    pointer-events: ${({ fetching }) => (fetching ? "initial" : "none")};
-    opacity: ${({ fetching }) => (fetching ? "1" : "0")};
+    pointer-events: none;
+    opacity: 0;
     display: block;
     position: absolute;
     top: 0;

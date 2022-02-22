@@ -1,32 +1,143 @@
+import React, { useReducer } from "react";
+import Input from "components/onboarding/form/input";
+import { Button } from "components/buttons";
+import Callout from "components/onboarding/callout";
 import { Field } from "lib/skills";
-import { createContext, useState } from "react";
-import Form from "./onboarding-form";
+import Strings from "../strings.json";
+import * as Components from "components/onboarding/styles";
+import * as S from "./styles";
+import { Route } from "lib/routing";
+import {
+  areSkillsValid,
+  canSubmitForm,
+  initialState,
+  isValidEmail,
+  isValidName,
+  reduce,
+} from "./reducer";
 
-export enum FormStatus {
-  FETCHING_PROGRESS = "fetching-progress",
-  FETCHING_SUCCESS = "fetching-success",
-  FETCHING_ERROR = "fetching-error",
-  SUBMIT_PROGRESS = "submit-progress",
-  SUBMIT_SUCCESS = "submit-success",
-  SUBMIT_ERROR = "submit-error",
+export interface OnboardingFormProps {
+  skills: Field[];
 }
 
-export interface FormContextProps {
-  status: FormStatus;
-  setStatus: React.Dispatch<React.SetStateAction<FormStatus>>;
-}
+const OnboardingForm: React.FC<OnboardingFormProps> = (props) => {
+  const [state, updateState] = useReducer(reduce, initialState);
+  const submitting = state.submissionState === "submitting";
 
-export const FormContext = createContext<FormContextProps>(
-  {} as FormContextProps
-);
+  const sendFormData = async () => {
+    updateState({ action: "submit" });
+    try {
+      const payload = {
+        name: state.name,
+        email: state.email,
+        skills: state.selectedSkillIds,
+      };
+      const response = await fetch("/api/registrations", {
+        method: "post",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+      });
+      updateState({ action: "receiveResponse", success: response.ok });
+    } catch (e) {
+      updateState({ action: "receiveResponse", success: false });
+    }
+  };
 
-const OnboardingFormContainer: React.FC<{ skills: Field[] }> = ({ skills }) => {
-  const [status, setStatus] = useState<FormStatus>(FormStatus.FETCHING_SUCCESS);
+  // TODO: Do we need to valide the form?
+  const submitForm = async (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+    await sendFormData();
+    // FIXME: Don’t redirect on error
+    const redirect = setTimeout(() => {
+      document.location.href = Route.slackOnboarding;
+    }, 8000);
+  };
+
   return (
-    <FormContext.Provider value={{ status, setStatus }}>
-      <Form skills={skills} />
-    </FormContext.Provider>
+    <S.Form onSubmit={submitForm}>
+      <Components.H4>{Strings.form_heading}</Components.H4>
+      <Input
+        type="text"
+        id="name"
+        name="name"
+        label={Strings.field_name}
+        placeholder="celé jméno"
+        onChange={(e) =>
+          updateState({ action: "updateName", value: e.target.value })
+        }
+        isValid={isValidName(state.name)}
+        maxLength={60}
+        validationMessage={Strings.validation_name}
+        disabled={submitting}
+      />
+      <Input
+        type="email"
+        id="email"
+        name="email"
+        label={Strings.field_email}
+        placeholder="@"
+        onChange={(e) =>
+          updateState({ action: "updateEmail", value: e.target.value })
+        }
+        isValid={isValidEmail(state.email)}
+        validationMessage={Strings.validation_email}
+        disabled={submitting}
+      />
+
+      <Components.H4>{Strings.skills_heading}</Components.H4>
+      <Components.Body>{Strings.skills_body}</Components.Body>
+      <S.StyledSkillTree
+        selected={state.selectedSkillIds}
+        skills={props.skills}
+        disabled={submitting}
+        handleChange={(skillId) =>
+          updateState({ action: "toggleSkill", skillId })
+        }
+      />
+
+      {!areSkillsValid(state) && (
+        <S.FormValidationError role="alert">
+          {Strings.skills_none}
+        </S.FormValidationError>
+      )}
+
+      {state.submissionState === "error" && (
+        <Callout type="error">{Strings.form_submit_error}</Callout>
+      )}
+      {state.submissionState === "success" && (
+        <Callout type="success">
+          <TemplateStringWithLink template={Strings.form_submit_success} />
+        </Callout>
+      )}
+
+      <S.Footer>
+        <Button type="submit" disabled={!canSubmitForm(state)}>
+          {Strings.form_submit}
+        </Button>
+      </S.Footer>
+    </S.Form>
   );
 };
 
-export default OnboardingFormContainer;
+const TemplateStringWithLink: React.FC<{ template: string }> = ({
+  template,
+}) => {
+  const linkTemplates = template.match(/(\[([^\]]+)\])\(([^)]+)\)/g);
+  if (linkTemplates === null) return <>template</>;
+  // we only count that there will be one link
+  const linkText = linkTemplates[0].match(/(\[([^\]]+)\])/);
+  const linkUrl = linkTemplates[0].match(/(\(([^\)]+)\))/);
+  if (linkText === null || linkUrl === null) return <>template</>;
+  const partialStrings = template.split(linkTemplates[0]);
+  return (
+    <>
+      {partialStrings[0]}
+      <a href={linkUrl[0].replace(/[\(\)]/g, "")}>
+        {linkText[0].replace(/[\[\]]/g, "")}
+      </a>
+      {partialStrings[1]}
+    </>
+  );
+};
+
+export default OnboardingForm;

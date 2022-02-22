@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { FormContext, FormStatus } from "components/onboarding/form/";
+import React, { useState, useEffect } from "react";
 import Strings from "../strings.json";
 import * as S from "./styles";
 import { Field } from "lib/skills";
@@ -7,29 +6,28 @@ import { Field } from "lib/skills";
 export interface Props {
   skillField: Field;
   id: string;
-  selected: string[];
+  selectedIds: string[];
   handleChange: (id: string) => void;
+  disabled: boolean;
 }
 
 const SkillFieldToggle = (props: Props) => {
   const contentRef: React.RefObject<HTMLDivElement> = React.createRef();
   const [toggle, setToggle] = useState<boolean>(false);
   const [selectedCount, setSelectedCount] = useState<number>(0);
-
-  const { status } = useContext(FormContext);
+  const isSelected = (id: string) => props.selectedIds.indexOf(id) !== -1;
 
   useEffect(() => {
+    const isSelected = (id: string) => props.selectedIds.indexOf(id) !== -1;
+    const calculateSelectedCount = () =>
+      (props.skillField.skills || [])
+        .map((s) => s.id)
+        .reduce((count, s) => {
+          return isSelected(s) ? ++count : count;
+        }, 0);
+
     setSelectedCount(calculateSelectedCount());
-  }, [props.selected]);
-
-  const isSelected = (id: string) => props.selected.indexOf(id) !== -1;
-
-  const calculateSelectedCount = () =>
-    (props.skillField.skills || [])
-      .map((s) => s.id)
-      .reduce((count, s) => {
-        return isSelected(s) ? ++count : count;
-      }, 0);
+  }, [props.selectedIds, props.skillField]);
 
   const skills =
     props.skillField.skills && props.skillField.skills.length
@@ -45,7 +43,7 @@ const SkillFieldToggle = (props: Props) => {
             label={skill.name}
             onChange={onCheckboxChange}
             checked={isSelected(skill.id)}
-            disabled={status === FormStatus.SUBMIT_PROGRESS}
+            disabled={props.disabled}
           />
         </S.SkillsListItem>
       ))}
@@ -99,7 +97,7 @@ const SkillFieldToggle = (props: Props) => {
 
   const { id } = props;
 
-  return skills.length ? (
+  return (
     <>
       <S.ToggleInput type="checkbox" id={id} onChange={onToggleChange} />
       <S.ToggleLabel htmlFor={id}>
@@ -121,7 +119,7 @@ const SkillFieldToggle = (props: Props) => {
               label={Strings.skills_senior}
               onChange={onCheckboxChange}
               checked={isSelected(props.skillField.seniorSkillId)}
-              disabled={status === FormStatus.SUBMIT_PROGRESS}
+              disabled={props.disabled}
             />
           )}
           {props.skillField.mentorSkillId && (
@@ -131,13 +129,13 @@ const SkillFieldToggle = (props: Props) => {
               label={Strings.skills_mentor}
               onChange={onCheckboxChange}
               checked={isSelected(props.skillField.mentorSkillId)}
-              disabled={status === FormStatus.SUBMIT_PROGRESS}
+              disabled={props.disabled}
             />
           )}
         </S.ToggleContentContainer>
       </S.ToggleContent>
     </>
-  ) : null;
+  );
 };
 
 export default SkillFieldToggle;
