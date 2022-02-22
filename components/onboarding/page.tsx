@@ -46,6 +46,11 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
               hned přivítá robot, který ti pomůže s orientací v komunitních
               kanálech a předá ti další důležité informace.
             </S.Body>
+            <S.Body color={"darkGrey"}>
+              Odesláním formuláře souhlasíš s tím, že ti jednou měsíčně pošleme
+              newsletter s tím, co je nového. (V každém vydání je samozřejmě
+              odkaz na odhlášení.)
+            </S.Body>
           </S.IntroductionHeader>
         </S.SectionIntroductionContent>
       </Section>
