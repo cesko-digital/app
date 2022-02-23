@@ -43,7 +43,7 @@
         },
         "sections": {
             "footer": {
-                "footNote": "Česko.Digital © 2021, Tento web používá cookies ¯\\_(ツ)_/¯",
+                "footNote": "© Česko.Digital",
                 "newsletter": {
                     "emailRequiredError": "Zadejte e-mail",
                     "inputError": "Prosíme, zadejte platnou e-mailovou adresu.",
