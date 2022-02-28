@@ -14,10 +14,10 @@ interface Props {
 const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
   const msg = strings.pages.project.projectCard;
   const haveLinks =
-    project.githubUrl ||
-    project.trelloUrl ||
-    project.jiraUrl ||
-    project.slackChannelUrl;
+    project.githubUrl.length ||
+    project.trelloUrl.length ||
+    project.jiraUrl.length ||
+    project.slackChannelUrl.length;
   return (
     <S.Container>
       {project.coordinatorIds.length > 0 && (
@@ -28,23 +28,30 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
       {haveLinks && (
         <S.Social>
           <S.Title>{msg.links}</S.Title>
-          {project.githubUrl && (
+          {project.githubUrl.map((url, index) => (
             <SocialMedia
+              key={`github-${index}`}
               logo={GithubIcon}
-              url={project.githubUrl}
+              url={url}
               name={"GitHub"}
             />
-          )}
-          {project.jiraUrl && (
-            <SocialMedia logo={JiraIcon} url={project.jiraUrl} name={"Jira"} />
-          )}
-          {project.slackChannelUrl && (
+          ))}
+          {project.jiraUrl.map((url, index) => (
             <SocialMedia
+              key={`jira-${index}`}
+              logo={JiraIcon}
+              url={url}
+              name={"Jira"}
+            />
+          ))}
+          {project.slackChannelUrl.map((url, index) => (
+            <SocialMedia
+              key={`slack-${index}`}
               logo={SlackIcon}
-              url={project.slackChannelUrl}
+              url={url}
               name="Slack"
             />
-          )}
+          ))}
         </S.Social>
       )}
       <S.ButtonWrapper>

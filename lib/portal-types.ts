@@ -1,4 +1,9 @@
-import { markdown, takeFirst, withDefault } from "./decoding";
+import {
+  commaSeparatedList,
+  markdown,
+  takeFirst,
+  withDefault,
+} from "./decoding";
 import {
   array,
   boolean,
@@ -41,10 +46,10 @@ export const decodeProject = record({
   ),
   tagIds: field("tags", withDefault(array(string), [])),
   coordinatorIds: field("coordinators", array(string)),
-  trelloUrl: optional(string),
-  jiraUrl: optional(string),
-  githubUrl: optional(string),
-  slackChannelUrl: optional(string),
+  trelloUrl: commaSeparatedList,
+  jiraUrl: commaSeparatedList,
+  githubUrl: commaSeparatedList,
+  slackChannelUrl: commaSeparatedList,
 });
 
 export const decodeUser = record({

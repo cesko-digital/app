@@ -30,3 +30,13 @@ export const withDefault = <T>(
     }
   };
 };
+
+export function commaSeparatedList(value: Pojo): string[] {
+  try {
+    return string(value)
+      .split(/,\s+/)
+      .filter((s) => !!s);
+  } catch {
+    return [];
+  }
+}

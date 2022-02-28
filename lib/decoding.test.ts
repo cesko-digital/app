@@ -1,3 +1,4 @@
+import { commaSeparatedList } from "./decoding";
 import {
   decodeEvent,
   decodeOpportunity,
@@ -45,7 +46,10 @@ test("Decode portal project", () => {
       "recwOLHFJUPCoPnLX",
       "rec0ABdJtGIK9AeCB",
     ],
-    slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
+    slackChannelUrl: ["https://cesko-digital.slack.com/archives/C01P6CK0DDY"],
+    jiraUrl: [],
+    githubUrl: [],
+    trelloUrl: [],
   });
 });
 
@@ -155,4 +159,11 @@ test("Decode portal opportunity", () => {
     juniorFriendly: true,
     status: "live",
   });
+});
+
+test("Decode comma-separated list", () => {
+  expect(commaSeparatedList("")).toEqual([]);
+  expect(commaSeparatedList("foo,bar")).toEqual(["foo,bar"]);
+  expect(commaSeparatedList("foo, bar")).toEqual(["foo", "bar"]);
+  expect(commaSeparatedList("foo,  bar")).toEqual(["foo", "bar"]);
 });
