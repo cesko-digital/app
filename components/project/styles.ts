@@ -38,6 +38,7 @@ export const CoverImageWrapper = styled.div`
   overflow: hidden;
   border-radius: 8px;
   margin-top: 50px;
+  max-height: 560px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin: 24px -20px -20px -20px;
@@ -47,7 +48,6 @@ export const CoverImageWrapper = styled.div`
 
 export const CoverImage = styled.img`
   width: 100%;
-  max-height: 560px;
 `;
 
 export const ContributeWrapper = styled.div`
