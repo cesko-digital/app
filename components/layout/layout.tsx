@@ -50,7 +50,7 @@ const Layout: React.FC<Props> = ({
         </Section>
       )}
       <main>{children}</main>
-      <Footer />
+      <Footer lang={lang} />
     </S.Container>
   );
 };

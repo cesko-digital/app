@@ -3,9 +3,15 @@ import NewsletterBox from "./newsletter-form";
 import * as S from "./styles";
 import { Route } from "lib/routing";
 import { Link } from "components/links";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 
-const Footer: React.FC = () => {
+interface Props {
+  lang?: "cs" | "en";
+}
+
+const Footer: React.FC<Props> = ({ lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
   const footer = strings.components.sections.footer;
 
   const o = footer.online;
@@ -17,17 +23,28 @@ const Footer: React.FC = () => {
     [o.youtube, "https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg"],
   ];
 
-  const p = footer.pageLinks;
-  const pageLinks = [
-    [p.projects, Route.projects],
-    [p.dashboard, Route.dashboard],
-    [p.blog, Route.blog],
-    [p.loginToSlack, Route.joinUs],
-    [p.submitProject, Route.submitProject],
-    [p.supportUs, Route.supportUs],
-    [p.logo, Route.brandManual],
-    [p.mediaContact, "mailto:pr@cesko.digital"],
-  ];
+  const pageLinksCS = () => {
+    const p = csstrings.components.sections.footer.pageLinks;
+    return [
+      [p.projects, Route.projects],
+      [p.dashboard, Route.dashboard],
+      [p.blog, Route.blog],
+      [p.loginToSlack, Route.joinUs],
+      [p.submitProject, Route.submitProject],
+      [p.supportUs, Route.supportUs],
+      [p.logo, Route.brandManual],
+      [p.mediaContact, "mailto:pr@cesko.digital"],
+    ];
+  };
+
+  const pageLinksEN = () => {
+    const p = enstrings.components.sections.footer.pageLinks;
+    return [      
+      [p.mediaContact, "mailto:pr@cesko.digital"],
+    ];
+  };
+
+  const pageLinks = lang === "cs" ? pageLinksCS() : pageLinksEN();
 
   return (
     <S.Wrapper>
@@ -63,7 +80,7 @@ const Footer: React.FC = () => {
               </S.Navigation>
             </S.InfoBlock>
           </S.Info>
-          <NewsletterBox />
+          <NewsletterBox lang={lang} />
           <S.Note>{footer.footNote}</S.Note>
         </S.Container>
       </S.Outer>

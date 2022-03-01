@@ -2,16 +2,22 @@ import { useFormik, FormikErrors } from "formik";
 import { useState } from "react";
 import * as S from "./styles";
 import { CheckIcon } from "components/icons";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 
-const msg = strings.components.sections.footer.newsletter;
+interface Props {
+  lang?: "cs" | "en";
+}
 
 export interface NewsletterFormValues {
   email: string;
 }
 
-const Newsletter: React.FC = () => {
-  const validate = useValidateNewsletter();
+const Newsletter: React.FC<Props> = ({ lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
+  const msg = strings.components.sections.footer.newsletter;
+
+  const validate = useValidateNewsletter(msg);
   const [onSubmit, hasServerError, hasSubscribed] = useOnSubmitNewsletter();
 
   const form = useFormik<NewsletterFormValues>({
@@ -104,7 +110,10 @@ type ValidateFunction = (
   values: NewsletterFormValues
 ) => FormikErrors<NewsletterFormValues>;
 
-export const useValidateNewsletter = (): ValidateFunction => {
+export const useValidateNewsletter = (msg: {
+  emailRequiredError: string;
+  invalidEmailError: string;
+}): ValidateFunction => {
   const validate = ({ email }: NewsletterFormValues) => {
     if (!email || email.length === 0) {
       return {
