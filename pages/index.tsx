@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
 import { PortalPartner, PortalProject } from "lib/portal-types";
@@ -16,13 +16,14 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
+import { shuffleInPlace } from "lib/utils";
 
 type PageProps = {
-  projects: readonly PortalProject[];
+  featuredProjects: readonly PortalProject[];
   partners: readonly PortalPartner[];
 };
 
-const Page: NextPage<PageProps> = ({ projects, partners }) => {
+const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
   const theme = useContext(ThemeContext);
   const router = useRouter();
   const displayBanner = !!router.query.banner;
@@ -37,7 +38,7 @@ const Page: NextPage<PageProps> = ({ projects, partners }) => {
 
       <Section>
         <SectionContent>
-          <Projects projects={projects.slice(0, 3)} />
+          <Projects projects={featuredProjects} />
         </SectionContent>
       </Section>
 
@@ -70,13 +71,18 @@ const Page: NextPage<PageProps> = ({ projects, partners }) => {
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const allPartners = siteData.partners;
-  const homepagePartners = allPartners.filter((p) =>
+  const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
+  const isProjectInteresting = (p: PortalProject) =>
+    p.state === "finished" || p.state === "incubating" || p.state === "running";
+  const featuredProjects = shuffleInPlace(
+    siteData.projects.filter(isProjectInteresting)
+  ).slice(0, 3);
   return {
     props: {
-      projects: siteData.projects,
-      partners: homepagePartners,
+      featuredProjects,
+      partners,
     },
   };
 };
