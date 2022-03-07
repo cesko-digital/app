@@ -74,10 +74,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
-  const isProjectInteresting = (p: PortalProject) =>
+  const canBeFeatured = (p: PortalProject) =>
     p.state === "finished" || p.state === "incubating" || p.state === "running";
   const featuredProjects = shuffleInPlace(
-    siteData.projects.filter(isProjectInteresting)
+    siteData.projects.filter(canBeFeatured)
   ).slice(0, 3);
   return {
     props: {
