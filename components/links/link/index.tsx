@@ -3,7 +3,6 @@ import { ButtonSize } from "components/buttons";
 import { isExternalURL } from "lib/utils";
 
 export interface StyledLinkProps {
-  disabled?: boolean;
   size: ButtonSize;
 }
 
@@ -19,18 +18,17 @@ const Link: React.FC<LinkProps> = ({
   to: url,
   ...rest
 }: LinkProps) => {
-  const href = rest.disabled ? "" : url;
   const props = { size, ...rest };
 
-  if (isExternalURL(href)) {
+  if (isExternalURL(url)) {
     return (
-      <S.ExternalLink href={href} {...props}>
+      <S.ExternalLink href={url} {...props}>
         {children}
       </S.ExternalLink>
     );
   }
   return (
-    <S.InternalLink href={href} {...props}>
+    <S.InternalLink href={url} {...props}>
       {children}
     </S.InternalLink>
   );
