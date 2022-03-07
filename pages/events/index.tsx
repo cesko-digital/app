@@ -1,27 +1,17 @@
-import type { NextPage, GetStaticProps } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { PortalEvent } from "lib/portal-types";
 import { siteData } from "lib/site-data";
+import EventOverviewPage from "components/event/overview";
 
 type PageProps = {
   events: readonly PortalEvent[];
 };
 
 const Page: NextPage<PageProps> = ({ events }) => {
-  return (
-    <div>
-      <h1>Events</h1>
-      <p>
-        Tohle ještě není implementované. Nechtěli byste nám s tím pomoct?{" "}
-        <a href="https://github.com/cesko-digital/web/issues/356">
-          Tady je příslušný ticket
-        </a>
-        .
-      </p>
-    </div>
-  );
+  return <EventOverviewPage events={events} />;
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
   return {
     props: {
       events: siteData.events,
