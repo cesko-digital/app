@@ -8,6 +8,7 @@ import CustomHead, { CustomHeadProps } from "./head";
 import HeaderEN from "./header/english";
 import Banner from "components/banner";
 import Script from "next/script";
+import { analyticsId } from "lib/utils";
 
 export interface Props {
   crumbs?: Crumb[];
@@ -35,7 +36,7 @@ const Layout: React.FC<Props> = ({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'UA-140227366-1', { client_storage: 'none', anonymize_ip: true });
+          gtag('config', '${analyticsId}', { client_storage: 'none', anonymize_ip: true });
       `}
       </Script>
       <CustomHead {...seo} />

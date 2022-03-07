@@ -1,5 +1,8 @@
 import { marked } from "marked";
 
+/** Our Google Analytics tracking ID */
+export const analyticsId = "UA-140227366-1";
+
 export type MarkdownString = {
   source: string;
 };
