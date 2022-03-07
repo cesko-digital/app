@@ -2,24 +2,8 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalVideo } from "lib/cedu";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
-import { Layout, Section, SectionContent } from "components/layout";
-import * as Typography from "components/typography";
-import { Route } from "lib/routing";
-import RenderMarkdown from "components/markdown";
 import { siteData } from "lib/site-data";
-import {
-  BoxesColumn,
-  MainColumn,
-  TwoColumnLayout,
-  VideoIframe,
-  VideoWrapper,
-} from "components/cedu/styles";
-import {
-  CreditsBox,
-  ResourceBox,
-  TableOfContentBox,
-} from "components/cedu/content-box";
-import strings from "content/strings.json";
+import CeduVideoPage from "components/cedu";
 
 interface PageProps {
   video: PortalVideo;
@@ -32,50 +16,7 @@ interface QueryParams extends ParsedUrlQuery {
 const Page: NextPage<PageProps> = ({ video }) => {
   const router = useRouter();
   const { start } = router.query;
-
-  return (
-    <Layout
-      crumbs={[
-        { path: Route.dashboard, label: strings.crumbs.dashboard },
-        { label: video.title },
-      ]}
-      head={{
-        title: video.title,
-        description: video.description,
-        coverUrl: video.cover,
-      }}
-    >
-      <Section>
-        <SectionContent>
-          <Typography.Heading1>{video.title}</Typography.Heading1>
-        </SectionContent>
-      </Section>
-      <Section>
-        <SectionContent>
-          <TwoColumnLayout>
-            <MainColumn>
-              <VideoWrapper>
-                <VideoIframe
-                  src={video.videoUrl + "?start=" + start}
-                  title={video.title}
-                  frameBorder="0"
-                  allowFullScreen
-                />
-              </VideoWrapper>
-              <Typography.Body>
-                <RenderMarkdown source={video.transcript} />
-              </Typography.Body>
-            </MainColumn>
-            <BoxesColumn>
-              <TableOfContentBox segments={video.toc} />
-              <ResourceBox resources={video.resources} />
-              <CreditsBox credits={video.credits} />
-            </BoxesColumn>
-          </TwoColumnLayout>
-        </SectionContent>
-      </Section>
-    </Layout>
-  );
+  return <CeduVideoPage video={video} startTime={start} />;
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
