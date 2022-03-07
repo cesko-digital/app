@@ -1,6 +1,5 @@
 import * as S from "./styles";
 import { ButtonSize } from "components/buttons";
-import { isExternalURL } from "lib/utils";
 
 export interface StyledLinkProps {
   size: ButtonSize;
@@ -19,18 +18,10 @@ const Link: React.FC<LinkProps> = ({
   ...rest
 }: LinkProps) => {
   const props = { size, ...rest };
-
-  if (isExternalURL(url)) {
-    return (
-      <S.ExternalLink href={url} {...props}>
-        {children}
-      </S.ExternalLink>
-    );
-  }
   return (
-    <S.InternalLink href={url} {...props}>
+    <S.StyledLink href={url} {...props}>
       {children}
-    </S.InternalLink>
+    </S.StyledLink>
   );
 };
 

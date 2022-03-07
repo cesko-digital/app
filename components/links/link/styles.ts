@@ -55,11 +55,7 @@ function getBorderStyle({ size }: StyledLinkProps) {
   return getDefaultBorderStyle();
 }
 
-export const InternalLink = styled.a<StyledLinkProps>`
-  ${({ size }) => applyLinkStyles({ size })}
-`;
-
-export const ExternalLink = styled.a<StyledLinkProps>`
+export const StyledLink = styled.a<StyledLinkProps>`
   ${({ size }) => applyLinkStyles({ size })}
 `;
 
