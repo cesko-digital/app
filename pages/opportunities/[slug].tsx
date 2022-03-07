@@ -13,6 +13,7 @@ import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
+import Link from "next/link";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -75,9 +76,11 @@ const Page: NextPage<PageProps> = (props) => {
                   ))}
                 {parentProject.state !== "draft" &&
                   parentProject.state !== "internal" && (
-                    <a href={Route.toProject(parentProject)}>
-                      <Body>{parentProject.name}</Body>
-                    </a>
+                    <Link href={Route.toProject(parentProject)}>
+                      <a>
+                        <Body>{parentProject.name}</Body>
+                      </a>
+                    </Link>
                   )}
               </S.OpportunityMetaRow>
               <S.OpportunityMetaRow>

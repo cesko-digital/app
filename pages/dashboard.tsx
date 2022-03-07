@@ -17,6 +17,7 @@ import {
 import { siteData } from "lib/site-data";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 import strings from "content/strings.json";
+import Link from "next/link";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];
@@ -74,9 +75,11 @@ const OpportunitiesSection: React.FC<PageProps> = ({
           ))}
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
-          <a href={Route.opportunities}>
-            <Button>{strings.pages.dashboard.moreOpportunities}</Button>
-          </a>
+          <Link href={Route.opportunities}>
+            <a>
+              <Button>{strings.pages.dashboard.moreOpportunities}</Button>
+            </a>
+          </Link>
         </S.ButtonWrapper>
       </SectionContent>
     </Section>
