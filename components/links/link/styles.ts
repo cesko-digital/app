@@ -2,14 +2,7 @@ import styled, { css } from "styled-components";
 import { StyledLinkProps } from ".";
 import { ButtonSize } from "../../buttons";
 
-function getDefaultBorderStyle(disabled: boolean) {
-  if (disabled) {
-    return css`
-      border-bottom: 2px solid;
-      border-color: ${({ theme }) => theme.colors.pebble};
-    `;
-  }
-
+function getDefaultBorderStyle() {
   return css`
     &:hover,
     &:focus {
@@ -31,58 +24,42 @@ function getSmallSizeBorderStyle() {
   `;
 }
 
-function getDefaultColor(disabled: boolean) {
-  if (disabled) {
-    return css`
-      color: ${({ theme }) => theme.colors.gravel};
-    `;
-  }
-
+function getDefaultColor() {
   return css`
     color: ${({ theme }) => theme.colors.darkGrey};
   `;
 }
 
-function getNormalSizeColor(disabled: boolean) {
-  if (disabled) {
-    return css`
-      color: ${({ theme }) => theme.colors.gravel};
-    `;
-  }
-
+function getNormalSizeColor() {
   return css`
     color: ${({ theme }) => theme.colors.it};
   `;
 }
 
-function getColor({ size, disabled }: StyledLinkProps) {
+function getColor({ size }: StyledLinkProps) {
   const { Normal } = ButtonSize;
 
   if (size === Normal) {
-    return getNormalSizeColor(!!disabled);
+    return getNormalSizeColor();
   }
 
-  return getDefaultColor(!!disabled);
+  return getDefaultColor();
 }
 
-function getBorderStyle({ size, disabled }: StyledLinkProps) {
+function getBorderStyle({ size }: StyledLinkProps) {
   const { Small } = ButtonSize;
   if (size === Small) {
     return getSmallSizeBorderStyle();
   }
 
-  return getDefaultBorderStyle(!!disabled);
+  return getDefaultBorderStyle();
 }
 
-export const InternalLink = styled.a<StyledLinkProps>`
-  ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
+export const StyledLink = styled.a<StyledLinkProps>`
+  ${({ size }) => applyLinkStyles({ size })}
 `;
 
-export const ExternalLink = styled.a<StyledLinkProps>`
-  ${({ size, disabled }) => applyLinkStyles({ size, disabled })}
-`;
-
-export const applyLinkStyles = ({ size, disabled }: StyledLinkProps) => {
+export const applyLinkStyles = ({ size }: StyledLinkProps) => {
   const { Normal, Small } = ButtonSize;
   return css`
     width: max-content;
@@ -112,9 +89,9 @@ export const applyLinkStyles = ({ size, disabled }: StyledLinkProps) => {
 
     border-radius: ${({ theme }) => theme.borderRadius.none};
 
-    cursor: ${() => (disabled ? "not-allowed" : "pointer")};
+    cursor: pointer;
 
-    ${getColor({ size, disabled })};
-    ${getBorderStyle({ size, disabled })};
+    ${getColor({ size })};
+    ${getBorderStyle({ size })};
   `;
 };

@@ -1,9 +1,8 @@
 import * as S from "./styles";
+import { default as NextLink } from "next/link";
 import { ButtonSize } from "components/buttons";
-import { isExternalURL } from "lib/utils";
 
 export interface StyledLinkProps {
-  disabled?: boolean;
   size: ButtonSize;
 }
 
@@ -19,20 +18,11 @@ const Link: React.FC<LinkProps> = ({
   to: url,
   ...rest
 }: LinkProps) => {
-  const href = rest.disabled ? "" : url;
   const props = { size, ...rest };
-
-  if (isExternalURL(href)) {
-    return (
-      <S.ExternalLink href={href} {...props}>
-        {children}
-      </S.ExternalLink>
-    );
-  }
   return (
-    <S.InternalLink href={href} {...props}>
-      {children}
-    </S.InternalLink>
+    <NextLink href={url} passHref>
+      <S.StyledLink {...props}>{children}</S.StyledLink>
+    </NextLink>
   );
 };
 
