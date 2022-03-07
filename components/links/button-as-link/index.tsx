@@ -1,5 +1,6 @@
 import { StyledButtonProps } from "components/buttons/button";
 import { ButtonSize } from "components/buttons";
+import { default as NextLink } from "next/link";
 import * as S from "./styles";
 
 /**
@@ -28,9 +29,9 @@ const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
   };
 
   return (
-    <S.StyledLink href={href} {...props}>
-      {children}
-    </S.StyledLink>
+    <NextLink href={href} passHref>
+      <S.StyledLink {...props}>{children}</S.StyledLink>
+    </NextLink>
   );
 };
 
