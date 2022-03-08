@@ -9,12 +9,12 @@ import BecomePartner from "./sections/become-partner";
 import * as S from "./styles";
 import Tabs from "./tabs";
 
-type PageProps = {
+export type PageProps = {
   partners: readonly PortalPartner[];
   blogPosts: readonly Article[];
 };
 
-const PartnersPage: React.FC<PageProps> = ({ partners, blogPosts }) => {
+export const PartnersPage: React.FC<PageProps> = ({ partners, blogPosts }) => {
   const msg = strings.pages.partners;
   const sections = [
     {
@@ -63,5 +63,3 @@ const PartnersPage: React.FC<PageProps> = ({ partners, blogPosts }) => {
     </Layout>
   );
 };
-
-export default PartnersPage;

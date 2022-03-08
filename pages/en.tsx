@@ -1,15 +1,6 @@
-import { NextPage, GetStaticProps } from "next";
-import { PortalPartner } from "lib/portal-types";
+import { GetStaticProps } from "next";
 import { siteData } from "lib/site-data";
-import EnglishHomePage from "components/home/english";
-
-type PageProps = {
-  partners: PortalPartner[];
-};
-
-const Page: NextPage<PageProps> = ({ partners }) => {
-  return <EnglishHomePage partners={partners} />;
-};
+import { EnglishHomePage, PageProps } from "components/home/english";
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const homepagePartners = siteData.partners.filter((p) =>
@@ -22,4 +13,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   };
 };
 
-export default Page;
+export default EnglishHomePage;

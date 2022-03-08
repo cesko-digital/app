@@ -1,16 +1,13 @@
-import type { NextPage, GetStaticProps } from "next";
-import { PortalPartner, PortalProject } from "lib/portal-types";
+import { NextPage, GetStaticProps } from "next";
+import { PortalProject } from "lib/portal-types";
 import { siteData } from "lib/site-data";
 import { shuffleInPlace } from "lib/utils";
-import HomePage from "components/home";
+import { HomePage, PageProps } from "components/home";
 import { useRouter } from "next/router";
 
-type PageProps = {
-  featuredProjects: readonly PortalProject[];
-  partners: readonly PortalPartner[];
-};
+type StaticPageProps = Omit<PageProps, "displayDonationBanner">;
 
-const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
+const Page: NextPage<StaticPageProps> = ({ featuredProjects, partners }) => {
   const router = useRouter();
   const displayBanner = !!router.query.banner;
   return (
@@ -22,7 +19,7 @@ const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
+export const getStaticProps: GetStaticProps<StaticPageProps> = async () => {
   const allPartners = siteData.partners;
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")

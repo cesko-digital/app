@@ -9,16 +9,15 @@ import OurValues from "./our-values";
 import ImageGallery from "./image-gallery";
 import Partners from "./partners";
 
-interface Props {
+export type PageProps = {
   featuredProjects: readonly PortalProject[];
   partners: readonly PortalPartner[];
   displayDonationBanner?: boolean;
-}
+};
 
-const HomePage: React.FC<Props> = (props) => {
+export const HomePage: React.FC<PageProps> = (props) => {
   const theme = useContext(ThemeContext);
   const { featuredProjects, partners, displayDonationBanner = false } = props;
-
   return (
     <Layout showBanner={displayDonationBanner}>
       <Section>
@@ -59,5 +58,3 @@ const HomePage: React.FC<Props> = (props) => {
     </Layout>
   );
 };
-
-export default HomePage;

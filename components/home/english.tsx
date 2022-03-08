@@ -8,11 +8,11 @@ import OurValues from "./our-values";
 import ImageGallery from "./image-gallery";
 import Partners from "./partners";
 
-type PageProps = {
+export type PageProps = {
   partners: PortalPartner[];
 };
 
-const EnglishHomePage: React.FC<PageProps> = ({ partners }) => {
+export const EnglishHomePage: React.FC<PageProps> = ({ partners }) => {
   const theme = useContext(ThemeContext);
   return (
     <Layout lang="en">
@@ -40,5 +40,3 @@ const EnglishHomePage: React.FC<PageProps> = ({ partners }) => {
     </Layout>
   );
 };
-
-export default EnglishHomePage;

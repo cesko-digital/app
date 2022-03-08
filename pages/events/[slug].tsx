@@ -1,24 +1,11 @@
-import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
-import EventPage from "components/events/page";
-
-interface PageProps {
-  event: PortalEvent;
-  project: PortalProject;
-  projects: readonly PortalProject[];
-  events: readonly PortalEvent[];
-  owner: PortalUser;
-}
+import { EventPage, PageProps } from "components/events/page";
 
 interface QueryParams extends ParsedUrlQuery {
   slug: string;
 }
-
-const Page: NextPage<PageProps> = (props) => {
-  return <EventPage {...props} />;
-};
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const paths = siteData.events.map((event) => ({
@@ -43,4 +30,4 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   };
 };
 
-export default Page;
+export default EventPage;

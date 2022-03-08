@@ -13,12 +13,15 @@ import {
   VideoWrapper,
 } from "./styles";
 
-type PageProps = {
+export type PageProps = {
   video: PortalVideo;
   startTime?: any;
 };
 
-const CeduVideoPage: React.FC<PageProps> = ({ video, startTime = "" }) => {
+export const CeduVideoPage: React.FC<PageProps> = ({
+  video,
+  startTime = "",
+}) => {
   return (
     <Layout
       crumbs={[
@@ -63,5 +66,3 @@ const CeduVideoPage: React.FC<PageProps> = ({ video, startTime = "" }) => {
     </Layout>
   );
 };
-
-export default CeduVideoPage;

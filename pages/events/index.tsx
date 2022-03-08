@@ -1,15 +1,6 @@
-import { NextPage, GetStaticProps } from "next";
-import { PortalEvent } from "lib/portal-types";
+import { GetStaticProps } from "next";
 import { siteData } from "lib/site-data";
-import EventOverviewPage from "components/events/overview";
-
-type PageProps = {
-  events: readonly PortalEvent[];
-};
-
-const Page: NextPage<PageProps> = ({ events }) => {
-  return <EventOverviewPage events={events} />;
-};
+import { EventOverviewPage, PageProps } from "components/events/overview";
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   return {
@@ -19,4 +10,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   };
 };
 
-export default Page;
+export default EventOverviewPage;

@@ -16,14 +16,14 @@ import {
   PortalProject,
 } from "lib/portal-types";
 
-type PageProps = {
+export type PageProps = {
   opportunities: readonly PortalOpportunity[];
   upcomingEvents: readonly PortalEvent[];
   projects: readonly PortalProject[];
   videos: readonly PortalVideo[];
 };
 
-const DashboardPage: React.FC<PageProps> = (props) => {
+export const DashboardPage: React.FC<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[{ label: strings.crumbs.dashboard }]}
@@ -130,5 +130,3 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
     </Section>
   );
 };
-
-export default DashboardPage;

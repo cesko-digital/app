@@ -1,22 +1,7 @@
-import type { NextPage, GetStaticProps } from "next";
-import { PortalVideo } from "lib/cedu";
+import { GetStaticProps } from "next";
 import { siteData } from "lib/site-data";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
-import DashboardPage from "components/dashboard/page";
-import {
-  PortalEvent,
-  PortalOpportunity,
-  PortalProject,
-} from "lib/portal-types";
-
-interface PageProps {
-  opportunities: readonly PortalOpportunity[];
-  upcomingEvents: readonly PortalEvent[];
-  projects: readonly PortalProject[];
-  videos: readonly PortalVideo[];
-}
-
-const Dashboard: NextPage<PageProps> = (props) => <DashboardPage {...props} />;
+import { DashboardPage, PageProps } from "components/dashboard/page";
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events, opportunities, videos } = siteData;
@@ -35,4 +20,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   };
 };
 
-export default Dashboard;
+export default DashboardPage;

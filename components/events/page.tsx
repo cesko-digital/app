@@ -9,15 +9,15 @@ import EventCard from "./event-card";
 import * as Typography from "components/typography";
 import * as S from "./styles";
 
-interface PageProps {
+export type PageProps = {
   event: PortalEvent;
   project: PortalProject;
   projects: readonly PortalProject[];
   events: readonly PortalEvent[];
   owner: PortalUser;
-}
+};
 
-const EventPage: React.FC<PageProps> = (props) => {
+export const EventPage: React.FC<PageProps> = (props) => {
   const { event, project, projects, owner, events } = props;
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
   const getEventProject = (e: PortalEvent) =>
@@ -88,5 +88,3 @@ const EventPage: React.FC<PageProps> = (props) => {
     </Layout>
   );
 };
-
-export default EventPage;

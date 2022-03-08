@@ -1,10 +1,10 @@
 import { PortalEvent } from "lib/portal-types";
 
-type PageProps = {
+export type PageProps = {
   events: readonly PortalEvent[];
 };
 
-const EventOverviewPage: React.FC<PageProps> = ({ events }) => {
+export const EventOverviewPage: React.FC<PageProps> = ({ events }) => {
   return (
     <div>
       <h1>Events</h1>
@@ -18,5 +18,3 @@ const EventOverviewPage: React.FC<PageProps> = ({ events }) => {
     </div>
   );
 };
-
-export default EventOverviewPage;
