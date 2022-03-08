@@ -1,7 +1,7 @@
 import Section from "../section";
 import SectionContent from "../section-content";
-import { Link } from "components/links";
-import { ButtonSize } from "components/buttons";
+import Link from "components/shared/link";
+import { ButtonSize } from "components/shared/buttons";
 import * as S from "./styles";
 import strings from "content/strings-en.json";
 

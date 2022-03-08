@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Input as InputComponent, InputError } from "components/inputs";
-import { Button as ButtonComponent } from "components/buttons";
-import { MailIcon } from "components/icons";
+import { Input as InputComponent, InputError } from "components/shared/inputs";
+import { Button as ButtonComponent } from "components/shared/buttons";
+import { MailIcon } from "components/shared/icons";
 import { Heading } from "../styles";
 import { heading3Styles, headingBase } from "components/typography";
 

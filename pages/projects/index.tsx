@@ -1,12 +1,12 @@
-import type { NextPage, GetStaticProps } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { JoinUs } from "components/sections";
-import * as S from "components/project/index-styles";
+import * as S from "components/projects/index-styles";
 import strings from "content/strings.json";
 import { siteData } from "lib/site-data";
-import HighlightedProject from "components/project/highlighted";
-import ProjectList from "components/project/card-list";
+import HighlightedProject from "components/projects/highlighted";
+import ProjectList from "components/projects/card-list";
 
 type PageProps = {
   projects: PortalProject[];

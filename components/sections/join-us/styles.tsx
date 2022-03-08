@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Circle } from "components/illustrations";
+import Circle from "./circle";
 
 export const Container = styled.div`
   margin: 96px auto;

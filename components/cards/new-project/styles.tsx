@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Body } from "components/typography";
-import { ButtonAsLink } from "components/links";
+import ButtonAsLink from "components/shared/button-as-link";
 
 export const Wrapper = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};

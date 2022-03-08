@@ -1,10 +1,10 @@
 import * as S from "./styles";
-import { Link } from "components/links";
+import Link from "components/shared/link";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalEvent, PortalProject } from "lib/portal-types";
 import strings from "content/strings.json";
 import { Route } from "lib/routing";
-import DateTime from "components/datetime";
+import DateTime from "components/shared/datetime";
 import { isEventPast } from "lib/portal-type-utils";
 
 interface Props {
@@ -42,7 +42,9 @@ const EventCard: React.FC<Props> = ({ event, project }) => {
         </S.ShortInfoBubbles>
         <S.Title>{event.name}</S.Title>
         <S.Description>{event.summary}</S.Description>
-        <Link to={Route.toEvent(event)}>{strings.components.cards.eventCard.detail}</Link>
+        <Link to={Route.toEvent(event)}>
+          {strings.components.cards.eventCard.detail}
+        </Link>
       </S.Content>
     </CardElem>
   );

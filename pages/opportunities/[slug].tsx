@@ -1,14 +1,14 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Heading1, BodySmall, Body } from "components/typography";
+import { Heading1, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
-import TimeIcon from "components/icons/time";
+import { TimeIcon } from "components/shared/icons";
 import OpportunityItem from "components/sections/opportunity-overview";
 import OwnerContact from "components/dashboard/opportunity";
 import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import { getResizedImgUrl } from "lib/utils";
-import RenderMarkdown from "components/markdown";
+import RenderMarkdown from "components/shared/markdown";
 import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";

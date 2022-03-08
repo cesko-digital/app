@@ -7,7 +7,7 @@ import ExpertsPartners from "components/partners/sections/experts";
 import BecomePartner from "components/partners/sections/become-partner";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
-import Tabs from "components/tabs";
+import Tabs from "components/partners/tabs";
 import { siteData } from "lib/site-data";
 import { Article } from "lib/related-blog-posts";
 

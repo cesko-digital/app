@@ -5,7 +5,7 @@ import {
   ParticipatoryIcon,
   UsersIcon,
   WadgeIcon,
-} from "components/icons";
+} from "components/shared/icons";
 import csstrings from "content/strings.json";
 import enstrings from "content/strings-en.json";
 import * as S from "./styles";

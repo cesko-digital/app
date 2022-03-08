@@ -1,15 +1,15 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+import Link from "components/shared/link";
 import {
   Body,
   bodyStyles,
   heading2Styles,
   Heading3,
-} from 'components/typography'
-import { Link } from '../../../components/links'
+} from "components/typography";
 
-const AVATAR_SIZE = 82
-const DESKTOP_CONTENT_RELATIVE_SIZE = 34
-const MOBILE_CONTENT_RELATIVE_SIZE = 58
+const AVATAR_SIZE = 82;
+const DESKTOP_CONTENT_RELATIVE_SIZE = 34;
+const MOBILE_CONTENT_RELATIVE_SIZE = 58;
 
 export const Container = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ export const Container = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin: 0 -20px;
   }
-`
+`;
 
 export const Content = styled.div`
   padding: 100px;
@@ -40,7 +40,7 @@ export const Content = styled.div`
       rgba(0, 0, 255, 0.5) 100%
     );
   }
-`
+`;
 
 export const ProjectInfo = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -49,7 +49,7 @@ export const ProjectInfo = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
   }
-`
+`;
 
 export const ProjectImage = styled.div<{ src: string }>`
   width: ${100 - DESKTOP_CONTENT_RELATIVE_SIZE}%;
@@ -70,7 +70,7 @@ export const ProjectImage = styled.div<{ src: string }>`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: ${100 - MOBILE_CONTENT_RELATIVE_SIZE}%;
   }
-`
+`;
 
 export const Avatar = styled.div<{ src: string }>`
   width: ${AVATAR_SIZE}px;
@@ -84,13 +84,13 @@ export const Avatar = styled.div<{ src: string }>`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-bottom: ${({ theme }) => theme.space.base}px;
   }
-`
+`;
 
 export const Name = styled(Heading3)`
   ${heading2Styles}
   color: ${({ theme }) => theme.colors.white};
   margin: 0 0 ${({ theme }) => theme.space.md}px;
-`
+`;
 
 export const Tagline = styled(Body)`
   color: ${({ theme }) => theme.colors.white};
@@ -104,12 +104,12 @@ export const Tagline = styled(Body)`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     max-width: 376px;
   }
-`
+`;
 
 export const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-`
+`;
 export const Tag = styled.div`
   padding: 0px 6px;
   background: ${({ theme }) => theme.colors.white};
@@ -127,7 +127,7 @@ export const Tag = styled.div`
     color: ${({ theme }) => theme.colors.it};
     background: ${({ theme }) => theme.colors.violet};
   }
-`
+`;
 
 export const DetailLink = styled(Link)`
   color: white;
@@ -142,4 +142,4 @@ export const DetailLink = styled(Link)`
     margin-left: 0px;
     margin-top: 15px;
   }
-`
+`;

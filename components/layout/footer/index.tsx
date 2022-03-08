@@ -1,8 +1,8 @@
-import { ButtonSize } from "components/buttons";
+import { ButtonSize } from "components/shared/buttons";
 import NewsletterBox from "./newsletter-form";
 import * as S from "./styles";
 import { Route } from "lib/routing";
-import { Link } from "components/links";
+import Link from "components/shared/link";
 import strings from "content/strings.json";
 
 const Footer: React.FC = () => {

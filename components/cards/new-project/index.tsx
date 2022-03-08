@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { BulbIcon } from "components/icons";
+import { BulbIcon } from "components/shared/icons";
 import { Route } from "lib/routing";
 import strings from "content/strings.json";
 

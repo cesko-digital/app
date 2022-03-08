@@ -1,12 +1,12 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { CardRow, Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
-import AboutProject from "components/project/about";
-import ProjectCard from "components/project/card";
-import ContributeBox from "components/project/contribute";
+import AboutProject from "components/projects/about";
+import ProjectCard from "components/projects/card";
+import ContributeBox from "components/projects/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
-import * as S from "components/project/styles";
+import * as S from "components/projects/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";

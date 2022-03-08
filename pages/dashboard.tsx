@@ -4,7 +4,7 @@ import * as Typography from "components/typography";
 import * as S from "components/dashboard/styles";
 import EventCard from "components/dashboard/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
-import { Button } from "components/buttons";
+import { Button } from "components/shared/buttons";
 import { CardRow } from "components/layout";
 import { Route } from "lib/routing";
 import CeduCard from "components/dashboard/cedu-card";

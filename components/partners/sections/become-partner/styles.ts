@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { BodyBig, Heading2 } from "components/typography";
-import { Input } from "components/inputs";
-import { TextArea } from "components/inputs/input/styles";
-import { Button } from "components/buttons/button/styles";
+import { Input } from "components/shared/inputs";
+import { TextArea } from "components/shared/inputs/input/styles";
+import { Button } from "components/shared/buttons/button/styles";
 
 export const Wrapper = styled.div`
   /* display: grid;

@@ -1,7 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
 import { PortalEvent } from "lib/portal-types";
 import { siteData } from "lib/site-data";
-import EventOverviewPage from "components/event/overview";
+import EventOverviewPage from "components/events/overview";
 
 type PageProps = {
   events: readonly PortalEvent[];

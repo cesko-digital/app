@@ -1,4 +1,4 @@
-import { StyledLink } from "components/links/link/styles";
+import { StyledLink } from "components/shared/link/styles";
 import { Heading2, heading4Styles } from "components/typography";
 import styled from "styled-components";
 

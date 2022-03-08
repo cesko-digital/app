@@ -1,8 +1,8 @@
 import { Body } from "components/typography";
-import ButtonAsLink from "components/links/button-as-link";
+import ButtonAsLink from "components/shared/button-as-link";
 import styled, { css, CssWithTheme } from "styled-components";
 import { SectionContent } from "components/layout";
-import { CzechiaMapArrows } from "components/illustrations";
+import CzechiaMapArrows from "./czechia-map-arrows";
 
 export const ShiftedBody = styled(Body)`
   margin-top: 10px;

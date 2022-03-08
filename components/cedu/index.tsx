@@ -1,7 +1,7 @@
 import { PortalVideo } from "lib/cedu";
 import { CreditsBox, ResourceBox, TableOfContentBox } from "./content-box";
 import { Layout, Section, SectionContent } from "components/layout";
-import RenderMarkdown from "components/markdown";
+import RenderMarkdown from "components/shared/markdown";
 import * as Typography from "components/typography";
 import strings from "content/strings.json";
 import { Route } from "lib/routing";

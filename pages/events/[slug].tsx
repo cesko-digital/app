@@ -2,7 +2,7 @@ import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
-import EventPage from "components/event/page";
+import EventPage from "components/events/page";
 
 interface PageProps {
   event: PortalEvent;

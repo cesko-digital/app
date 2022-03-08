@@ -1,17 +1,17 @@
-import React from 'react'
-import * as S from './styles'
-import { ButtonAsLink } from 'components/links'
+import React from "react";
+import * as S from "./styles";
+import ButtonAsLink from "components/shared/button-as-link";
 import strings from "content/strings.json";
 
 interface Props {
-  title: string
-  description: string
-  cover: string
-  logo: string
-  link: string
-  tags: string[]
-  actionLink: string
-  actionTitle: string
+  title: string;
+  description: string;
+  cover: string;
+  logo: string;
+  link: string;
+  tags: string[];
+  actionLink: string;
+  actionTitle: string;
 }
 
 const HighlightedEvent: React.FC<Props> = ({
@@ -42,11 +42,13 @@ const HighlightedEvent: React.FC<Props> = ({
               {actionTitle}
             </ButtonAsLink>
           )}
-          <S.DetailLink to={link}>{strings.components.cards.eventCard.detail}</S.DetailLink>
+          <S.DetailLink to={link}>
+            {strings.components.cards.eventCard.detail}
+          </S.DetailLink>
         </S.ProjectInfo>
       </S.Content>
     </S.Container>
-  )
-}
+  );
+};
 
-export default HighlightedEvent
+export default HighlightedEvent;
