@@ -4,6 +4,7 @@ import * as S from "./styles";
 import { Route } from "lib/routing";
 import { Link } from "components/links";
 import strings from "content/strings.json";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Footer: React.FC = () => {
   const footer = strings.components.sections.footer;
@@ -64,10 +65,29 @@ const Footer: React.FC = () => {
             </S.InfoBlock>
           </S.Info>
           <NewsletterBox />
-          <S.Note>{footer.footNote}</S.Note>
+          <S.Note>
+            {footer.footNote} • <SessionInfo />
+          </S.Note>
         </S.Container>
       </S.Outer>
     </S.Wrapper>
+  );
+};
+
+const SessionInfo: React.FC = () => {
+  const { data: session } = useSession();
+  if (session && session.user) {
+    return (
+      <>
+        Přihlášen jako {session.user.email} •{" "}
+        <a onClick={() => signOut()}>Odhlásit</a>
+      </>
+    );
+  }
+  return (
+    <>
+      <a onClick={() => signIn("slack")}>Přihlásit přes Slack</a>
+    </>
   );
 };
 
