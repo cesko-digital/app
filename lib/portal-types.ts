@@ -33,7 +33,10 @@ export const decodeProject = record({
   description: markdown,
   url: string,
   coverImageUrl: string,
-  logoUrl: string,
+  logoUrl: withDefault(
+    string,
+    "https://data.cesko.digital/web/projects/generic-logo.png"
+  ),
   highlighted: withDefault(boolean, false),
   state: withDefault(
     union("draft", "running", "finished", "incubating", "internal"),
