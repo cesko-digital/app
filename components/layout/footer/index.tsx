@@ -80,15 +80,23 @@ const SessionInfo: React.FC = () => {
     return (
       <>
         Přihlášen jako {session.user.email} •{" "}
-        <a onClick={() => signOut()}>Odhlásit</a>
+        <ClickableLink onClick={() => signOut()}>Odhlásit</ClickableLink>
       </>
     );
   }
   return (
     <>
-      <a onClick={() => signIn("slack")}>Přihlásit přes Slack</a>
+      <ClickableLink onClick={() => signIn("slack")}>
+        Přihlásit přes Slack
+      </ClickableLink>
     </>
   );
 };
+
+const ClickableLink: React.FC<{ onClick: () => void }> = (props) => (
+  <a onClick={props.onClick} style={{ cursor: "pointer" }}>
+    {props.children}
+  </a>
+);
 
 export default Footer;
