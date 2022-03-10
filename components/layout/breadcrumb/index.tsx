@@ -1,6 +1,6 @@
 import * as S from "./styles";
-import Link from "components/shared/link";
-import { ButtonSize } from "components/shared/buttons";
+import { Link } from "components/links";
+import { ButtonSize } from "components/buttons";
 import { areCrumbsValid, transformCrumbs } from "./helpers";
 import { Fragment } from "react";
 

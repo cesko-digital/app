@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import Link from "components/shared/link";
+import { Link } from "components/links";
 import { getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/portal-types";

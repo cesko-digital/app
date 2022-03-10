@@ -1,11 +1,13 @@
 import type { NextPage, GetStaticProps } from "next";
 import { RegistrationData } from "components/onboarding/form";
-import { loadAllSkills } from "lib/skills";
-import { OnboardingPage, PageProps } from "components/onboarding/page";
+import { Field, loadAllSkills } from "lib/skills";
+import OnboardingPage from "components/onboarding/page";
 
-type StaticPageProps = Omit<PageProps, "onSubmit">;
+type PageProps = {
+  skills: Field[];
+};
 
-const Page: NextPage<StaticPageProps> = ({ skills }) => {
+const Page: NextPage<PageProps> = ({ skills }) => {
   return <OnboardingPage skills={skills} onSubmit={submitRegistrationData} />;
 };
 
@@ -25,7 +27,7 @@ async function submitRegistrationData(
   }
 }
 
-export const getStaticProps: GetStaticProps<StaticPageProps> = async () => {
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const skills = await loadAllSkills();
   return {
     props: { skills },

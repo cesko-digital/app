@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultTheme } from "components/shared/theme/default";
+import { defaultTheme } from "components/theme/default";
 import { Props as CalloutProps } from "./";
 
 const getCalloutToneColor = (type: CalloutProps["type"]) => {

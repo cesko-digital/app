@@ -1,25 +1,75 @@
-import { NextPage, GetStaticProps } from "next";
-import { PortalProject } from "lib/portal-types";
-import { siteData } from "lib/site-data";
-import { shuffleInPlace } from "lib/utils";
-import { HomePage, PageProps } from "components/home";
+import type { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import { useContext } from "react";
 
-type StaticPageProps = Omit<PageProps, "displayDonationBanner">;
+import { PortalPartner, PortalProject } from "lib/portal-types";
+import { siteData } from "lib/site-data";
 
-const Page: NextPage<StaticPageProps> = ({ featuredProjects, partners }) => {
+import { Layout, Section, SectionContent } from "components/layout";
+import { Projects, JoinUs } from "components/sections";
+import { ThemeContext } from "styled-components";
+
+import {
+  Hero,
+  OurValues,
+  Numbers,
+  ImageGallery,
+  Partners,
+} from "components/home";
+import { shuffleInPlace } from "lib/utils";
+
+type PageProps = {
+  featuredProjects: readonly PortalProject[];
+  partners: readonly PortalPartner[];
+};
+
+const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
+  const theme = useContext(ThemeContext);
   const router = useRouter();
   const displayBanner = !!router.query.banner;
+
   return (
-    <HomePage
-      featuredProjects={featuredProjects}
-      partners={partners}
-      displayDonationBanner={displayBanner}
-    />
+    <Layout showBanner={displayBanner}>
+      <Section>
+        <Hero />
+      </Section>
+
+      <Numbers />
+
+      <Section>
+        <SectionContent>
+          <Projects projects={featuredProjects} />
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <JoinUs />
+        </SectionContent>
+      </Section>
+
+      <Section backgroundColor={theme.colors.pebble}>
+        <SectionContent>
+          <OurValues />
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <ImageGallery />
+      </Section>
+
+      {partners.length > 0 && (
+        <Section>
+          <SectionContent>
+            <Partners partners={partners} />
+          </SectionContent>
+        </Section>
+      )}
+    </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps<StaticPageProps> = async () => {
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const allPartners = siteData.partners;
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
