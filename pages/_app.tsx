@@ -4,6 +4,7 @@ import { defaultTheme } from "components/theme/default";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { analyticsId } from "lib/utils";
+import { SessionProvider } from "next-auth/react";
 import "components/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -23,9 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <SessionProvider session={pageProps.session}>
+      <ThemeProvider theme={defaultTheme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
 
