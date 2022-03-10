@@ -2,6 +2,7 @@ name: Vercel PR
 on:
   pull_request:
     branches: [master]
+    types: [opened]
 jobs:
   example_comment_pr:
     runs-on: ubuntu-latest
