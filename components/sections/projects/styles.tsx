@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ProjectCard as OriginalProjectCard } from "components/cards";
-import { Link } from "components/links";
+import Link from "components/shared/link";
 import { Heading2 } from "components/typography";
 
 export const Container = styled.div`

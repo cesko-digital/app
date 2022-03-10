@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Link } from "components/links";
+import Link from "components/shared/link";
 import strings from "content/strings.json";
 
 export interface BlogCardProps {

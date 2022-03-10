@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import Input from "components/onboarding/form/input";
-import { Button } from "components/buttons";
+import { Button } from "components/shared/buttons";
 import Callout from "components/onboarding/callout";
 import { Field } from "lib/skills";
 import Strings from "../strings.json";

@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "components/theme/default";
+import { defaultTheme } from "components/shared/theme/default";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { analyticsId } from "lib/utils";

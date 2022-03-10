@@ -1,10 +1,10 @@
 import React from "react";
 import { CardRow, Section, SectionContent } from "components/layout";
 import { Heading2, Heading3 } from "components/typography";
-import LogoList from "components/logo-list";
-import * as S from "../../styles";
-import { ButtonLink } from "components/buttons/button/styles";
-import { ButtonSize } from "components/buttons";
+import LogoList from "components/partners/logo-list";
+import * as S from "components/partners/styles";
+import { ButtonLink } from "components/shared/buttons/button/styles";
+import { ButtonSize } from "components/shared/buttons";
 import BlogCard from "components/cards/blog-card";
 import strings from "content/strings.json";
 import { BlogHeader } from "./styles";

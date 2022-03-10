@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import LogoList from "components/logo-list";
+import LogoList from "components/partners/logo-list";
 import csstrings from "content/strings.json";
 import enstrings from "content/strings-en.json";
 import { PortalPartner } from "lib/portal-types";

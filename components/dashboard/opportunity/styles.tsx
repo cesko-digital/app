@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Heading4 } from "components/typography";
-import { Button } from "components/buttons";
-import { Link } from "components/links";
+import { Button } from "components/shared/buttons";
+import Link from "components/shared/link";
 
 export const CoverImageWrapper = styled.div`
   overflow: hidden;
@@ -76,7 +76,7 @@ export const OwnerMailto = styled(Link)`
   font-weight: ${({ theme }) => theme.fontWeights.body};
   border-color: ${({ theme }) => theme.colors.darkGrey};
   border-width: 1px;
-  
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.darkGrey};
     background-color: ${({ theme }) => theme.colors.lightViolet};

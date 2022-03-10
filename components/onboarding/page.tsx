@@ -5,12 +5,12 @@ import { useContext } from "react";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/onboarding/styles";
 
-interface Props {
+export type PageProps = {
   skills: Field[];
   onSubmit: (data: RegistrationData) => Promise<boolean>;
-}
+};
 
-const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
+export const OnboardingPage: React.FC<PageProps> = ({ skills, onSubmit }) => {
   const theme = useContext(ThemeContext);
   return (
     <Layout
@@ -63,5 +63,3 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
     </Layout>
   );
 };
-
-export default OnboardingPage;

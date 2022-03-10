@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Body } from "components/typography";
-import { SlackButton } from "components/buttons";
+import { SlackButton } from "components/shared/buttons";
 
 export const Wrapper = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};

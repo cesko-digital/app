@@ -1,7 +1,7 @@
 import { useFormik, FormikErrors } from "formik";
 import { useState } from "react";
 import * as S from "./styles";
-import { CheckIcon } from "components/icons";
+import { CheckIcon } from "components/shared/icons";
 import strings from "content/strings.json";
 
 const msg = strings.components.sections.footer.newsletter;

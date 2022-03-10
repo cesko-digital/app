@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Section from "../section";
 import SectionContent from "../section-content";
-import { ButtonAsLink, Link } from "components/links";
-import { ButtonSize } from "components/buttons";
-import { CloseIcon, MenuIcon } from "components/icons";
+import ButtonAsLink from "components/shared/button-as-link";
+import Link from "components/shared/link";
+import { ButtonSize } from "components/shared/buttons";
+import { CloseIcon, MenuIcon } from "components/shared/icons";
 import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";

@@ -1,6 +1,6 @@
-import { StyledLink } from "components/links/link/styles";
+import { StyledLink } from "components/shared/link/styles";
+import ButtonAsLink from "components/shared/button-as-link";
 import styled from "styled-components";
-import { ButtonAsLink } from "components/links";
 
 export const Container = styled.div`
   display: flex;
