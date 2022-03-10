@@ -14,6 +14,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
-            const { GITHUB_REF_NAME } = process.env;
-            const deploymentUrl = `https://web-git-${GITHUB_REF_NAME}-ceskodigital.vercel.app`;
+            const { GITHUB_HEAD_REF } = process.env;
+            const deploymentUrl = `https://web-git-${GITHUB_HEAD_REF}-ceskodigital.vercel.app`;
             github.issues.createComment({ issue_number, owner, repo, body: `PR se nasadí sem: ${deploymentUrl}` });
