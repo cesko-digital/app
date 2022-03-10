@@ -16,6 +16,7 @@
     "gray-matter": "^4.0.3",
     "marked": "^4.0.11",
     "next": "12.1.0",
+    "next-auth": "^4.2.1",
     "node-fetch": "^3.2.0",
     "polished": "^4.1.4",
     "react": "17.0.2",
@@ -49,7 +50,10 @@
       "spec\\.ts"
     ],
     "testEnvironment": "node",
-    "moduleDirectories": ["node_modules", "."],
+    "moduleDirectories": [
+      "node_modules",
+      "."
+    ],
     "globals": {
       "ts-jest": {
         "tsconfig": "tests/tsconfig.jest.json"
