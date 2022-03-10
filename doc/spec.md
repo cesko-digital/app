@@ -25,3 +25,13 @@ Projekt běží a je v realizační fázi. (Před kterou mohl a nemusel projít 
 ## Finished
 
 Projekt byl „dokončen“. Neznamená to, že zavřel krám – projekty, které se u nás inkubovaly, mohou přikročit k realizaci, a projekty, které u nás byly v realizační fázi, mohou po dokončení například hledat další rozvoj nebo údržbu jinde.
+
+# Proměnné prostředí
+
+Pokud potřebujete nějakou hodnotu nastavit během vývoje, můžete ji uložit do souboru `.env.local`, Next.js si ji sám načte.
+
+* `AIRTABLE_API_KEY` je klíč k Airtable
+* `ECOMAIL_API_KEY` je klíč k Ecomailu, používáme ho pro registraci nových zájemců o newsletter
+* `SLACK_CLIENT_ID` a `SLACK_CLIENT_SECRET` slouží pro přihlašování uživatelů přes funkci _Sign in With Slack_
+* `NEXTAUTH_URL` je URL, na které se má přesměrovat OAuth flow při přihlašování k webu
+* `NEXTAUTH_SECRET` je tajemství používané pro podepisování sessions
