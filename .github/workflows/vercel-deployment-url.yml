@@ -15,6 +15,6 @@ jobs:
           script: |
             const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
             const { GITHUB_HEAD_REF } = process.env;
-            const escapedBranchName = GITHUB_HEAD_REF.replaceAll("/", "-");
+            const escapedBranchName = GITHUB_HEAD_REF.replace("/", "-");
             const deploymentUrl = `https://web-git-${escapedBranchName}-ceskodigital.vercel.app`;
             github.issues.createComment({ issue_number, owner, repo, body: `📌 PR se bude nasazovat sem: ${deploymentUrl}.` });
