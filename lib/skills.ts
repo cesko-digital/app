@@ -7,6 +7,7 @@ import {
   record,
   string,
 } from "typescript-json-decoder";
+import { unique } from "./utils";
 
 export type Skill = decodeType<typeof decodeSkill>;
 
@@ -52,5 +53,3 @@ export async function loadAllSkills(): Promise<Field[]> {
 }
 
 const decodeSkills = array(decodeSkill);
-
-const unique = <T>(a: T[]) => [...new Set(a)];
