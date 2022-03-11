@@ -41,3 +41,8 @@ export function shuffleInPlace<T>(array: T[]): T[] {
   }
   return array;
 }
+
+export const unique = <T>(a: T[]) => [...new Set(a)];
+
+export const getRandomElem = <T>(a: T[]) =>
+  a[Math.floor(Math.random() * a.length)];
