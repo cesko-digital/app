@@ -6,9 +6,9 @@ import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
 import { Route } from "lib/routing";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { DefaultSession } from "next-auth";
 import * as S from "./styles";
 import strings from "content/strings.json";
-import { StyledLink } from "components/links/link/styles";
 
 const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -71,7 +71,7 @@ const HeaderCS: React.FC = () => {
 const ManageSession = () => {
   const { data: session } = useSession();
   if (session && session.user) {
-    return <UserProfileButton />;
+    return <UserProfileButton user={session.user} />;
   } else {
     return <SignInButton />;
   }
@@ -89,11 +89,28 @@ const SignInButton = () => {
   );
 };
 
-const UserProfileButton = () => {
+const UserProfileButton: React.FC<{
+  user: NonNullable<DefaultSession["user"]>;
+}> = ({ user }) => {
+  const imageUrl =
+    user.image || "https://data.cesko.digital/people/generic-profile.jpg";
+  const email = user.email || "<neznámý e-mail>";
   return (
-    <StyledLink size={ButtonSize.Small} onClick={() => signOut()}>
-      Odhlásit
-    </StyledLink>
+    /* eslint-disable @next/next/no-img-element */
+    <img
+      src={imageUrl}
+      onClick={() => signOut()}
+      title={`Přihlášen jako ${email}, kliknutím odhlásíte`}
+      alt="Odhlásit"
+      style={{
+        height: "44px",
+        width: "44px",
+        borderRadius: "44px",
+        cursor: "pointer",
+        border: "2px solid #ddd",
+        boxShadow: "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
+      }}
+    />
   );
 };
 
