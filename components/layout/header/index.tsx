@@ -79,9 +79,13 @@ const ManageSession = () => {
 
 const SignInButton = () => {
   return (
-    <StyledLink size={ButtonSize.Small} onClick={() => signIn("slack")}>
+    <S.HeaderButton
+      size={ButtonSize.Small}
+      onClick={() => signIn("slack")}
+      inverted
+    >
       Přihlásit
-    </StyledLink>
+    </S.HeaderButton>
   );
 };
 
