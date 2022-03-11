@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Section from "../section";
 import SectionContent from "../section-content";
-import { ButtonAsLink, Link } from "components/links";
+import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
 import { Route } from "lib/routing";
+import { useSession, signIn, signOut } from "next-auth/react";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { StyledLink } from "components/links/link/styles";
 
 const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,9 +36,7 @@ const HeaderCS: React.FC = () => {
               </Link>
             ))}
 
-            <S.HeaderButton to={Route.joinUs} size={ButtonSize.Normal} inverted>
-              {strings.header.signUp}
-            </S.HeaderButton>
+            <ManageSession />
 
             <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
@@ -47,9 +47,7 @@ const HeaderCS: React.FC = () => {
             <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
             </Link>
-            <ButtonAsLink to={Route.joinUs} size={ButtonSize.Small} inverted>
-              {strings.header.signUp}
-            </ButtonAsLink>
+            <ManageSession />
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </S.IconButton>
@@ -67,6 +65,31 @@ const HeaderCS: React.FC = () => {
         )}
       </SectionContent>
     </Section>
+  );
+};
+
+const ManageSession = () => {
+  const { data: session } = useSession();
+  if (session && session.user) {
+    return <UserProfileButton />;
+  } else {
+    return <SignInButton />;
+  }
+};
+
+const SignInButton = () => {
+  return (
+    <StyledLink size={ButtonSize.Small} onClick={() => signIn("slack")}>
+      Přihlásit
+    </StyledLink>
+  );
+};
+
+const UserProfileButton = () => {
+  return (
+    <StyledLink size={ButtonSize.Small} onClick={() => signOut()}>
+      Odhlásit
+    </StyledLink>
   );
 };
 
