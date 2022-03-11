@@ -135,7 +135,10 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { projects, events, opportunities, videos } = siteData;
+  const { projects, events, videos } = siteData;
+  const opportunities = siteData.opportunities.filter(
+    (o) => o.status === "live"
+  );
   const upcomingEvents = [...events]
     .filter((e) => e.status === "live")
     .filter((e) => !isEventPast(e))
