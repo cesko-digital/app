@@ -84,7 +84,7 @@ const SignInButton = () => {
       onClick={() => signIn("slack")}
       inverted
     >
-      Přihlásit
+      Přihlásit se
     </S.HeaderButton>
   );
 };
