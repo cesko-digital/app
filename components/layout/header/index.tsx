@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Section from "../section";
 import SectionContent from "../section-content";
-import { ButtonAsLink, Link } from "components/links";
+import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
 import { Route } from "lib/routing";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { DefaultSession } from "next-auth";
 import * as S from "./styles";
 import strings from "content/strings.json";
 
@@ -34,9 +36,7 @@ const HeaderCS: React.FC = () => {
               </Link>
             ))}
 
-            <S.HeaderButton to={Route.joinUs} size={ButtonSize.Normal} inverted>
-              {strings.header.signUp}
-            </S.HeaderButton>
+            <ManageSession />
 
             <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
@@ -47,9 +47,7 @@ const HeaderCS: React.FC = () => {
             <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
             </Link>
-            <ButtonAsLink to={Route.joinUs} size={ButtonSize.Small} inverted>
-              {strings.header.signUp}
-            </ButtonAsLink>
+            <ManageSession />
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </S.IconButton>
@@ -67,6 +65,52 @@ const HeaderCS: React.FC = () => {
         )}
       </SectionContent>
     </Section>
+  );
+};
+
+const ManageSession = () => {
+  const { data: session } = useSession();
+  if (session && session.user) {
+    return <UserProfileButton user={session.user} />;
+  } else {
+    return <SignInButton />;
+  }
+};
+
+const SignInButton = () => {
+  return (
+    <S.HeaderButton
+      size={ButtonSize.Small}
+      onClick={() => signIn("slack")}
+      inverted
+    >
+      Přihlásit se
+    </S.HeaderButton>
+  );
+};
+
+const UserProfileButton: React.FC<{
+  user: NonNullable<DefaultSession["user"]>;
+}> = ({ user }) => {
+  const imageUrl =
+    user.image || "https://data.cesko.digital/people/generic-profile.jpg";
+  const email = user.email || "<neznámý e-mail>";
+  return (
+    /* eslint-disable @next/next/no-img-element */
+    <img
+      src={imageUrl}
+      onClick={() => signOut()}
+      title={`Přihlášen jako ${email}, kliknutím odhlásíte`}
+      alt="Odhlásit"
+      style={{
+        height: "44px",
+        width: "44px",
+        borderRadius: "44px",
+        cursor: "pointer",
+        border: "2px solid #ddd",
+        boxShadow: "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
+      }}
+    />
   );
 };
 
