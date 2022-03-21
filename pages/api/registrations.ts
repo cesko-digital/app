@@ -1,6 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import Airtable from "airtable";
 
+/** Create a new, unconfirmed user profile */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
@@ -21,14 +22,16 @@ export default async function handler(
   try {
     const apiKey = process.env.AIRTABLE_API_KEY;
     const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
+    const state = "unconfirmed";
     const registration = {
       fields: {
-        Name: name,
-        Email: email,
-        Skills: skills,
+        name,
+        email,
+        skills,
+        state,
       },
     };
-    await base("Registrations").create([registration]);
+    await base("Profiles 2.0").create([registration]);
     response.status(201).send("Registration created.");
   } catch (e) {
     response.status(500).send("Sorry :(");
