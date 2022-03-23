@@ -17,6 +17,8 @@ import {
 import { siteData } from "lib/site-data";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 import strings from "content/strings.json";
+import Link from "next/link";
+import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];
@@ -57,7 +59,6 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   const opportunityProject = (o: PortalOpportunity) =>
     projects.find((p) => p.id === o.projectId)!;
   // How should we sort this? How about a random sort?
-  const featuredOpportunities = opportunities.slice(0, 3);
   return (
     <Section>
       <SectionContent>
@@ -65,7 +66,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
           {strings.pages.dashboard.currentOpportunities}
         </Typography.Heading2>
         <S.OpportunitiesMainWrapper>
-          {featuredOpportunities.map((op) => (
+          {opportunities.map((op) => (
             <OpportunityItem
               key={op.id}
               opportunity={op}
@@ -74,9 +75,11 @@ const OpportunitiesSection: React.FC<PageProps> = ({
           ))}
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
-          <a href={Route.opportunities}>
-            <Button>{strings.pages.dashboard.moreOpportunities}</Button>
-          </a>
+          <Link href={Route.opportunities}>
+            <a>
+              <Button>{strings.pages.dashboard.moreOpportunities}</Button>
+            </a>
+          </Link>
         </S.ButtonWrapper>
       </SectionContent>
     </Section>
@@ -132,7 +135,10 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { projects, events, opportunities, videos } = siteData;
+  const { projects, events, videos } = siteData;
+  const opportunities = getFeaturedOpportunities(
+    siteData.opportunities.filter((o) => o.status === "live")
+  );
   const upcomingEvents = [...events]
     .filter((e) => e.status === "live")
     .filter((e) => !isEventPast(e))
@@ -147,5 +153,25 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     },
   };
 };
+
+function getFeaturedOpportunities(
+  opportunities: PortalOpportunity[],
+  count = 3
+): PortalOpportunity[] {
+  // Let’s pick `count` projects to feature
+  const featuredProjectIds = shuffleInPlace(
+    unique(opportunities.map((o) => o.projectId))
+  ).slice(0, count);
+  if (featuredProjectIds.length < count) {
+    // If we don’t have that many, just return random `count` opportunities
+    return shuffleInPlace(opportunities.slice(0, count));
+  } else {
+    // Otherwise pick a random opportunity from each featured project
+    return featuredProjectIds
+      .map((id) => opportunities.filter((o) => o.projectId === id))
+      .map((ops) => getRandomElem(ops))
+      .flat();
+  }
+}
 
 export default Dashboard;

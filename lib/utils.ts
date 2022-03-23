@@ -1,17 +1,11 @@
 import { marked } from "marked";
 
+/** Our Google Analytics tracking ID */
+export const analyticsId = "UA-140227366-1";
+
 export type MarkdownString = {
   source: string;
 };
-
-export function isExternalURL(url: string): boolean {
-  const lc = url.toLowerCase();
-  return (
-    lc.startsWith("http://") ||
-    lc.startsWith("https://") ||
-    lc.startsWith("mailto:")
-  );
-}
 
 export function markdownToHTML(source: string): string {
   return marked.parse(source, {
@@ -37,5 +31,18 @@ export function getResizedImgUrl(
 }
 
 export function isOwnerEmailDisplayed(input: string): boolean {
-  return /^anezka@cesko.digital|^gabriela@cesko.digital/.test(input)
+  return /^anezka@cesko.digital|^gabriela@cesko.digital/.test(input);
 }
+
+export function shuffleInPlace<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+export const unique = <T>(a: T[]) => [...new Set(a)];
+
+export const getRandomElem = <T>(a: T[]) =>
+  a[Math.floor(Math.random() * a.length)];
