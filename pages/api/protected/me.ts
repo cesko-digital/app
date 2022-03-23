@@ -46,6 +46,7 @@ export default async function handler(
         response.status(200).send(JSON.stringify(profile, null, 2));
         break;
       case "PATCH":
+        // Make sure we do NOT include the `slackId` field nor `state` here
         const { name, email, skills } = request.body;
         await send(
           table,

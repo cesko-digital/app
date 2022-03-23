@@ -9,7 +9,6 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
-import { assert } from "console";
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -42,19 +41,24 @@ export const decodeUserProfile = record({
 });
 
 /** Get user profile with given Slack ID */
-export function getUserProfile(
-  slackId: string
+export const getUserProfile = (slackId: string) =>
+  getFirstMatchingUserProfile(`{slackId} = "${slackId}"`);
+
+/** Get user profile with given e-mail */
+export const getUserProfileByMail = (email: string) =>
+  getFirstMatchingUserProfile(`{email} = "${email}"`);
+
+/** Return first user profile that matches given formula query */
+export function getFirstMatchingUserProfile(
+  filterByFormula: string
 ): SelectRequest<UserProfile | undefined, Schema> {
   return {
     method: "SELECT",
     params: {
-      filterByFormula: `{slackId} = "${slackId}"`,
+      filterByFormula,
+      maxRecords: 1,
     },
     decodeResponse: (records) => {
-      assert(
-        records.length <= 1,
-        `Multiple user rows with same Slack ID “${slackId}” exist.`
-      );
       if (records.length > 0) {
         const fields = mergeFields(records[0]) as any;
         return decodeUserProfile(fields);
@@ -68,7 +72,9 @@ export function getUserProfile(
 /** Update user profile with given Airtable record ID */
 export function updateUserProfile(
   recordId: string,
-  fields: Pick<UserProfile, "name" | "email" | "skills">
+  fields: Partial<
+    Pick<UserProfile, "name" | "email" | "skills" | "slackId" | "state">
+  >
 ): UpdateRequest<UserProfile, Schema> {
   return {
     method: "UPDATE",
