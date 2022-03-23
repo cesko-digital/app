@@ -26,19 +26,21 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
         </div>
         {relatedProject && (
           <S.OpportunityRightWrapper>
-            {relatedProject.state !== "draft" &&
-              relatedProject.state !== "internal" && (
-                <Link href={Route.toProject(relatedProject)}>
-                  <a>
-                    <Body>{relatedProject.name}</Body>
-                  </a>
-                </Link>
+            <S.OpportunityRightContent>
+              {relatedProject.state !== "draft" &&
+                relatedProject.state !== "internal" && (
+                  <Link href={Route.toProject(relatedProject)}>
+                    <a>
+                      <BodySmall>{relatedProject.name}</BodySmall>
+                    </a>
+                  </Link>
+                )}
+              {(relatedProject.state === "draft" ||
+                relatedProject.state === "internal") && (
+                <BodySmall>{relatedProject.name}</BodySmall>
               )}
-            {(relatedProject.state === "draft" ||
-              relatedProject.state === "internal") && (
-              <Body>{relatedProject.name}</Body>
-            )}
-            <S.OpportunityLogo src={relatedProject.logoUrl} />
+              <S.OpportunityLogo src={relatedProject.logoUrl} />
+            </S.OpportunityRightContent>
           </S.OpportunityRightWrapper>
         )}
       </S.OpportunityWrapper>
