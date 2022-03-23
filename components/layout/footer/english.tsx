@@ -1,9 +1,8 @@
 import { ButtonSize } from "components/buttons";
-import NewsletterBox from "./newsletter-form";
+import ButtonAsLink from "components/links/button-as-link";
 import * as S from "./styles";
-import { Route } from "lib/routing";
 import { Link } from "components/links";
-import strings from "content/strings.json";
+import strings from "content/strings-en.json";
 
 const Footer: React.FC = () => {
   const footer = strings.components.sections.footer;
@@ -17,18 +16,6 @@ const Footer: React.FC = () => {
     [o.youtube, "https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg"],
   ];
 
-  const p = strings.components.sections.footer.pageLinks;
-  const pageLinks = [
-    [p.projects, Route.projects],
-    [p.dashboard, Route.dashboard],
-    [p.blog, Route.blog],
-    [p.loginToSlack, Route.joinUs],
-    [p.submitProject, Route.submitProject],
-    [p.supportUs, Route.supportUs],
-    [p.logo, Route.brandManual],
-    [p.mediaContact, "mailto:pr@cesko.digital"],
-  ];
-
   return (
     <S.Wrapper>
       <S.Outer>
@@ -38,20 +25,6 @@ const Footer: React.FC = () => {
               <S.Heading>{footer.pageLinks.title}</S.Heading>
               <S.Navigation>
                 <S.Links>
-                  {pageLinks.map(([name, url], i) => (
-                    <S.LinkItem key={i}>
-                      <Link size={ButtonSize.Small} to={url}>
-                        {name}
-                      </Link>
-                    </S.LinkItem>
-                  ))}
-                </S.Links>
-              </S.Navigation>
-            </S.InfoBlock>
-            <S.InfoBlock>
-              <S.Heading>{footer.online.title}</S.Heading>
-              <S.Navigation>
-                <S.Links>
                   {socialLinks.map(([name, url], index) => (
                     <S.LinkItem key={index}>
                       <Link size={ButtonSize.Small} to={url}>
@@ -59,11 +32,21 @@ const Footer: React.FC = () => {
                       </Link>
                     </S.LinkItem>
                   ))}
+                  <S.LinkItem key={socialLinks.length}>
+                    <ButtonAsLink
+                      size={ButtonSize.Small}
+                      to={"mailto:pr@cesko.digital"}
+                    >
+                      {
+                        strings.components.sections.footer.pageLinks
+                          .mediaContact
+                      }
+                    </ButtonAsLink>
+                  </S.LinkItem>
                 </S.Links>
               </S.Navigation>
             </S.InfoBlock>
           </S.Info>
-          <NewsletterBox />
           <S.Note>{footer.footNote}</S.Note>
         </S.Container>
       </S.Outer>

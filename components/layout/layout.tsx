@@ -1,11 +1,12 @@
 import HeaderCS from "./header";
-import Footer from "./footer";
+import FooterCS from "./footer";
 import Section from "./section";
 import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
 import HeaderEN from "./header/english";
+import FooterEN from "./footer/english";
 import Banner from "components/banner";
 import Script from "next/script";
 import { analyticsId } from "lib/utils";
@@ -51,7 +52,8 @@ const Layout: React.FC<Props> = ({
         </Section>
       )}
       <main>{children}</main>
-      <Footer lang={lang} />
+      {lang === "cs" && <FooterCS />}
+      {lang === "en" && <FooterEN />}
     </S.Container>
   );
 };
