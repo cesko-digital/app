@@ -1,7 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { decodeUserProfile } from "lib/user-profile";
+import { send } from "lib/airtable-request";
+import { assert } from "console";
 import Airtable from "airtable";
+import {
+  getUserProfile,
+  updateUserProfile,
+  userProfileTable,
+} from "lib/user-profile";
 
 /**
  * Retrieve or update user profile
@@ -19,46 +25,37 @@ export default async function handler(
     return;
   }
 
-  const apiKey = process.env.AIRTABLE_API_KEY;
-  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM")(
-    "Profiles 2.0"
-  );
+  assert(token.sub, "Slack ID missing in JWT token.");
 
-  const { method } = request;
+  const apiKey = process.env.AIRTABLE_API_KEY;
+  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
+  const table = userProfileTable(base);
 
   try {
+    const profile = await send(table, getUserProfile(token.sub!));
+    if (!profile) {
+      response.status(404).send("User not found");
+      return;
+    }
+
+    const { method } = request;
+
     switch (method) {
       case "GET":
-        const userRecords = await base
-          .select({
-            filterByFormula: `{slackId} = "${token.sub}"`,
-          })
-          .all();
-        if (userRecords.length === 0) {
-          response.status(404).send("User not found");
-          return;
-        }
-        const record = userRecords[0];
-        const profile = decodeUserProfile({ id: record.id, ...record.fields });
         response.setHeader("Content-Type", "application/json");
         response.status(200).send(JSON.stringify(profile, null, 2));
         break;
       case "PATCH":
-        const existingRecords = await base
-          .select({ filterByFormula: `{slackId} = "${token.sub}"` })
-          .all();
-        if (existingRecords.length === 0) {
-          response.status(404).send("User with given slackId not found");
-          return;
-        }
-        const databaseId = existingRecords[0].id;
         const { name, email, skills } = request.body;
-        await base.update(databaseId, { name, email, skills });
+        await send(
+          table,
+          updateUserProfile(profile.id, { name, email, skills })
+        );
         response.status(200).send("Updated");
         break;
       default:
         response.setHeader("Allow", ["GET", "PATCH"]);
-        response.status(405).end(`Method ${method} Not Allowed`);
+        response.status(405).end(`Method ${method} not allowed`);
     }
   } catch (e) {
     console.error(e);
