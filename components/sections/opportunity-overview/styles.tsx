@@ -62,7 +62,7 @@ export const OpportunityRightContent = styled.div`
     flex-direction: column-reverse;
     align-items: center;
     text-align: center;
-    gap: 16px;
+    gap: 0;
     width: 120px;
   }
 `;
@@ -72,4 +72,8 @@ export const OpportunityLogo = styled.img`
   height: 80px;
   border-radius: 50%;
   background: gray;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: 16px;
+  }
 `;
