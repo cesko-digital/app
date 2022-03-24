@@ -13,7 +13,7 @@ export default async function handler(
         return;
       case "event_callback":
         console.log(JSON.stringify(request.body), null, 2);
-        response.status(204);
+        response.status(204).end();
         return;
     }
   } catch (e) {
