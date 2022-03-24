@@ -12,8 +12,6 @@ export function getMessageSignature(
   version = "v0"
 ): string {
   const payload = [version, timestamp, body].join(":");
-  const hmac = createHmac("sha256", secret);
-  hmac.update(payload);
-  const hash = hmac.digest("hex");
+  const hash = createHmac("sha256", secret).update(payload).digest("hex");
   return `${version}=${hash}`;
 }
