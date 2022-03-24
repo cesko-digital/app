@@ -1,3 +1,4 @@
+import { samplePayload } from "./user";
 import {
   decodeEndpointHandshake,
   decodeEventCallback,
@@ -20,6 +21,7 @@ test("Decode event callback", () => {
     api_app_id: "AXXXXXXXXX",
     event: {
       type: "team_join",
+      user: samplePayload,
     },
     type: "event_callback",
     event_context: "EC12345",
@@ -34,6 +36,7 @@ test("Decode event callback", () => {
     type: "event_callback",
     event: {
       type: "team_join",
+      user: expect.anything(),
     },
   });
 });

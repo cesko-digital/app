@@ -6,11 +6,13 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+import { decodeSlackUser } from "./user";
 
 /** A team join event */
 export type TeamJoinEvent = decodeType<typeof decodeTeamJoinEvent>;
 export const decodeTeamJoinEvent = record({
-  type: "team_join",
+  type: literal("team_join"),
+  user: decodeSlackUser,
 });
 
 /** A generic event callback with a customizable event decoder */
