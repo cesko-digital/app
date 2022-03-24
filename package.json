@@ -25,6 +25,7 @@
     "react-select": "^5.2.2",
     "sharp": "^0.30.4",
     "styled-components": "^5.3.5",
+    "slack": "^11.0.2",
     "typescript-json-decoder": "^1.0.4"
   },
   "devDependencies": {
