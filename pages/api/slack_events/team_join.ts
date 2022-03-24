@@ -12,7 +12,7 @@ export default async function handler(
         response.status(200).send(msg.challenge);
         return;
       case "event_callback":
-        console.log(JSON.stringify(request.body), null, 2);
+        console.log(JSON.stringify(request.body, null, 2));
         response.status(204).end();
         return;
     }
