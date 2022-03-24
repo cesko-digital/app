@@ -5,6 +5,7 @@ test("Encode request", () => {
     method: "SELECT",
     params: {
       filterByFormula: `{slackId} = "slack-id"`,
+      maxRecords: 1,
     },
     decodeResponse: expect.any(Function),
   });
