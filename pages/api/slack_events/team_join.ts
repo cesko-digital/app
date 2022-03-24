@@ -18,6 +18,7 @@ export const config = {
   },
 };
 
+/** Mark user account as confirmed when user successfully signs in to Slack */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse

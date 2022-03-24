@@ -6,6 +6,7 @@ import {
   string,
 } from "typescript-json-decoder";
 
+/** Slack user profile with information such as read name or e-mail */
 export type SlackProfile = decodeType<typeof decodeSlackProfile>;
 export const decodeSlackProfile = record({
   real_name: string,
@@ -13,6 +14,7 @@ export const decodeSlackProfile = record({
   email: optional(string),
 });
 
+/** Slack user with information such as user ID, team ID or profile */
 export type SlackUser = decodeType<typeof decodeSlackUser>;
 export const decodeSlackUser = record({
   id: string,
@@ -24,6 +26,7 @@ export const decodeSlackUser = record({
   profile: decodeSlackProfile,
 });
 
+/** Sample Slack profile to use in tests */
 export const sampleProfilePayload = {
   title: "",
   phone: "",
@@ -50,6 +53,7 @@ export const sampleProfilePayload = {
   team: "TG21XF887",
 };
 
+/** Sample Slack user to use in tests */
 export const sampleUserPayload = {
   id: "U038G4SGK9Q",
   team_id: "TG21XF887",
