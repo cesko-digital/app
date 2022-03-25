@@ -20,6 +20,7 @@
     "polished": "^4.1.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-select": "^5.2.2",
     "sharp": "^0.30.2",
     "styled-components": "^5.3.3",
     "typescript-json-decoder": "^1.0.4"
@@ -49,7 +50,10 @@
       "spec\\.ts"
     ],
     "testEnvironment": "node",
-    "moduleDirectories": ["node_modules", "."],
+    "moduleDirectories": [
+      "node_modules",
+      "."
+    ],
     "globals": {
       "ts-jest": {
         "tsconfig": "tests/tsconfig.jest.json"

@@ -12,6 +12,7 @@ import { Route } from "lib/routing";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
+import Select from "../../components/select";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];
@@ -66,7 +67,10 @@ const Page: NextPage<PageProps> = (props) => {
     });
 
     // Add strings.pages.opportunities.all
-    toReturn.push({ name: strings.pages.opportunities.all, count: opportunities.length });
+    toReturn.push({
+      name: strings.pages.opportunities.all,
+      count: opportunities.length,
+    });
 
     // We sort; strings.pages.opportunities.all goes to the beginning
     toReturn = toReturn.sort((a, b) => {
@@ -80,6 +84,14 @@ const Page: NextPage<PageProps> = (props) => {
     return toReturn;
   }
 
+  const selectChangeHandler = (e: any) => {
+    updateSelectedSkill(e.value);
+    const target: HTMLInputElement | null = document.querySelector(
+      `input[value="${e.value}"]`
+    );
+    if (target) target.checked = true;
+  };
+
   filterOpportunities();
 
   return (
@@ -89,8 +101,14 @@ const Page: NextPage<PageProps> = (props) => {
         { label: strings.pages.opportunities.opportunities },
       ]}
       head={{
-        title: strings.pages.opportunities.opportunities + " - " + strings.crumbs.dashboard,
-        description: strings.pages.opportunities.opportunities + " - " + strings.crumbs.dashboard,
+        title:
+          strings.pages.opportunities.opportunities +
+          " - " +
+          strings.crumbs.dashboard,
+        description:
+          strings.pages.opportunities.opportunities +
+          " - " +
+          strings.crumbs.dashboard,
       }}
     >
       <Section>
@@ -105,27 +123,35 @@ const Page: NextPage<PageProps> = (props) => {
       </Section>
       <Section>
         <SectionContent>
-          {allSkills.map((s) => [
-            <CompetencyFilterRadio
-              key={"competencyInput" + s.name}
-              type="radio"
-              defaultChecked={s.name === strings.pages.opportunities.all}
-              value={s.name}
-              name="competencyInputRadio"
-              onChange={handleSkillSelectionChange}
-            />,
-            <CompetencyFilterLabel
-              key={"competencyLabel" + s.name}
-              onClick={() => {
-                const target: HTMLInputElement | null = document.querySelector(
-                  'input[value="' + s.name + '"]'
-                );
-                if (target) target.click();
-              }}
-            >
-              {s.name + " (" + s.count + ")"}
-            </CompetencyFilterLabel>,
-          ])}
+          <FiltersDesktop>
+            {allSkills.map((s) => [
+              <CompetencyFilterRadio
+                key={"competencyInput" + s.name}
+                type="radio"
+                defaultChecked={s.name === selectedSkill}
+                value={s.name}
+                name="competencyInputRadio"
+                onChange={handleSkillSelectionChange}
+              />,
+              <CompetencyFilterLabel
+                key={"competencyLabel" + s.name}
+                onClick={() => {
+                  const target: HTMLInputElement | null =
+                    document.querySelector('input[value="' + s.name + '"]');
+                  if (target) target.click();
+                }}
+              >
+                {s.name + " (" + s.count + ")"}
+              </CompetencyFilterLabel>,
+            ])}
+          </FiltersDesktop>
+          <FiltersMobile>
+            <Select
+              allSkills={allSkills}
+              selectedSkill={selectedSkill}
+              onChange={selectChangeHandler}
+            />
+          </FiltersMobile>
         </SectionContent>
       </Section>
       <Section>
@@ -145,6 +171,19 @@ const Page: NextPage<PageProps> = (props) => {
 
 const OpportunitiesCountSpan = styled.span`
   color: gray;
+`;
+
+const FiltersDesktop = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const FiltersMobile = styled.div`
+  display: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: unset;
+  }
 `;
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
