@@ -7,7 +7,11 @@ import {
   updateUserProfile,
   userProfileTable,
 } from "lib/user-profile";
-import { getMessageSignature, SlackHeader } from "lib/slack/signing";
+import {
+  signatureHeader,
+  timestampHeader,
+  validateTeamJoinEvent,
+} from "lib/slack/signing";
 
 // By default Next.js would parse `request.body` to JSON automatically.
 // But we need the raw request body to compute the request signature, so
@@ -38,37 +42,43 @@ export default async function handler(
       // the Slack user ID.
       case "event_callback":
         // Validate message signature
-        const timestamp = request.headers[SlackHeader.timestamp] as string;
-        const presentedSignature = request.headers[SlackHeader.signature];
-        const secret = process.env.SLACK_SIGNING_SECRET as string;
-        if (!timestamp || !presentedSignature) {
-          response.status(401).send("Missing request timestamp or signature");
-          return;
-        }
-        const computedSignature = getMessageSignature(
+        const timestamp = request.headers[timestampHeader] as string;
+        const expectedSignature = request.headers[signatureHeader] as string;
+        const signingSecret = process.env.SLACK_SIGNING_SECRET as string;
+        const status = validateTeamJoinEvent({
           timestamp,
-          rawBody,
-          secret
-        );
-        if (computedSignature !== presentedSignature) {
-          response.status(401).send("Message signature does not match");
-          return;
-        }
+          expectedSignature,
+          signingSecret,
+          messageBody: rawBody,
+          profile: msg.event.user,
+        });
 
-        // Confirm user account
-        const {
-          id,
-          profile: { email },
-        } = msg.event.user;
-        if (email) {
-          await confirmUserAccount(id, email);
-        } else {
-          console.error(
-            `Email field in Slack profile empty when trying to confirm user “${id}”`
-          );
+        switch (status) {
+          case "signature_mismatch":
+            response.status(401).send("Message signature does not match");
+            return;
+          case "timestamp_expired":
+            response.status(401).send("Timestamp invalid");
+            return;
+          case "wrong_team":
+            response.status(401).send("Wrong Slack team");
+            return;
+          case "ok":
+            // Confirm user account
+            const {
+              id,
+              profile: { email },
+            } = msg.event.user;
+            if (email) {
+              await confirmUserAccount(id, email);
+            } else {
+              console.error(
+                `Email field in Slack profile empty when trying to confirm user “${id}”`
+              );
+            }
+            response.status(204).end();
+            return;
         }
-        response.status(204).end();
-        return;
     }
   } catch (e) {
     console.log(e);
