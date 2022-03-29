@@ -1,7 +1,9 @@
 import Airtable from "airtable";
 import { send } from "lib/airtable-request";
-import { decodeIncomingMessage } from "lib/slack/events";
+import { decodeIncomingMessage, EventCallback } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
+import { decodeSlackUser } from "lib/slack/user";
+import * as slack from "slack";
 import {
   getUserProfileByMail,
   updateUserProfile,
@@ -64,16 +66,30 @@ export default async function handler(
             response.status(401).send("Wrong Slack team");
             return;
           case "ok":
-            // Confirm user account
-            const {
-              id,
-              profile: { email },
-            } = msg.event.user;
-            if (email) {
-              await confirmUserAccount(id, email);
+            // The `user` object from Slack does not include the email,
+            // so we have to make an extra API request to get that.
+            const userId = msg.event.user.id;
+            const token = process.env.SLACK_EVENTS_TOKEN;
+            const slackResponse = await slack.users.info({
+              token,
+              user: userId,
+            });
+            if (slackResponse.ok) {
+              try {
+                const user = decodeSlackUser(slackResponse.user);
+                if (user.profile.email) {
+                  confirmUserAccount(userId, user.profile.email);
+                } else {
+                  console.error(`Missing email addres for user ${userId}`);
+                }
+              } catch (e) {
+                console.error(
+                  `Failed to decode user profile for user ${userId}`
+                );
+              }
             } else {
               console.error(
-                `Email field in Slack profile empty when trying to confirm user “${id}”`
+                `Error querying Slack API to confirm user ${userId}`
               );
             }
             response.status(204).end();

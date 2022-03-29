@@ -9,7 +9,7 @@ import {
 /** Slack user profile with information such as read name or e-mail */
 export type SlackProfile = decodeType<typeof decodeSlackProfile>;
 export const decodeSlackProfile = record({
-  real_name: string,
+  real_name: optional(string),
   display_name: string,
   email: optional(string),
 });
@@ -20,9 +20,9 @@ export const decodeSlackUser = record({
   id: string,
   team_id: string,
   name: string,
-  real_name: string,
+  real_name: optional(string),
   is_bot: boolean,
-  is_email_confirmed: boolean,
+  is_email_confirmed: optional(boolean),
   profile: decodeSlackProfile,
 });
 
