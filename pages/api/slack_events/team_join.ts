@@ -78,7 +78,7 @@ export default async function handler(
               try {
                 const user = decodeSlackUser(slackResponse.user);
                 if (user.profile.email) {
-                  confirmUserAccount(userId, user.profile.email);
+                  await confirmUserAccount(userId, user.profile.email);
                 } else {
                   console.error(`Missing email addres for user ${userId}`);
                 }
