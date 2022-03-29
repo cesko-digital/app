@@ -4,6 +4,7 @@ import {
   decodeProject,
   decodeUser,
 } from "./portal-types";
+import {decodeUrl} from "./decoding";
 
 test("Decode portal project", () => {
   expect(
@@ -156,3 +157,29 @@ test("Decode portal opportunity", () => {
     status: "live",
   });
 });
+
+describe('test decodeUrl', function () {
+    test("Decode invalid value", () => {
+        expect(() => decodeUrl(null))
+            .toThrowError('The value `null` is not of type `string`, but is of type `object`')
+        expect(() => decodeUrl({}))
+            .toThrowError('The value `{}` is not of type `string`, but is of type `object`')
+        expect(() => decodeUrl([]))
+            .toThrowError('The value `[]` is not of type `string`, but is of type `object`')
+        expect(() => decodeUrl(''))
+            .toThrowError('Invalid URL')
+        expect(() => decodeUrl('notalink'))
+            .toThrowError('Invalid URL')
+    });
+    test("Decode valid url", () => {
+        const links = [
+            'app://deeplink',
+            'https://cesko-digital.slack.com/archives/C01AENB1LPP',
+            'mailto://email@test.cz',
+            'http://cesko.digital/test?query=1',
+        ];
+        for (const value of links) {
+            expect(decodeUrl(value)).toEqual(value)
+        }
+    });
+})

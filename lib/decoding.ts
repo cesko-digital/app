@@ -30,3 +30,10 @@ export const withDefault = <T>(
     }
   };
 };
+
+
+export const decodeUrl = (value: Pojo): string => {
+  const src = string(value);
+
+  return (new URL(src)).toString();
+};

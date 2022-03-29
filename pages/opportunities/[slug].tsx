@@ -1,11 +1,9 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Heading1, BodySmall, Body } from "components/typography";
+import { Heading1, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
-import TimeIcon from "components/icons/time";
 import OpportunityItem from "components/sections/opportunity-overview";
-import OwnerContact from "components/dashboard/opportunity";
 import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
@@ -13,7 +11,7 @@ import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
-import Link from "next/link";
+import OpportunityContactCard from "../../components/sections/opportunity-contact-card";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -67,39 +65,7 @@ const Page: NextPage<PageProps> = (props) => {
                 <RenderMarkdown source={opportunity.summary} />
               </Body>
             </S.OpportunityDescription>
-            <S.OpportunityContactCard>
-              <S.OpportunityMetaRow>
-                <S.OpportunityProjectImg src={parentProject.logoUrl} />
-                {parentProject.state === "draft" ||
-                  (parentProject.state === "internal" && (
-                    <Body>{parentProject.name}</Body>
-                  ))}
-                {parentProject.state !== "draft" &&
-                  parentProject.state !== "internal" && (
-                    <Link href={Route.toProject(parentProject)}>
-                      <a>
-                        <Body>{parentProject.name}</Body>
-                      </a>
-                    </Link>
-                  )}
-              </S.OpportunityMetaRow>
-              <S.OpportunityMetaRow>
-                <TimeIcon />
-                <Body>{opportunity.timeRequirements}</Body>
-              </S.OpportunityMetaRow>
-              <S.OpportunityOwnerWrapper>
-                <Body>Kontaktní osoba</Body>
-                <S.OwnerWrapper>
-                  <S.OwnerImage src={owner.profilePictureUrl} />
-                  <OwnerContact email={owner.email} name={owner.name} />
-                </S.OwnerWrapper>
-              </S.OpportunityOwnerWrapper>
-              <a href={opportunity.contactUrl} target="blank">
-                <S.OpportunitySlackButton>
-                  Kontaktovat přes Slack
-                </S.OpportunitySlackButton>
-              </a>
-            </S.OpportunityContactCard>
+            <OpportunityContactCard opportunity={opportunity} parentProject={parentProject} owner={owner} />
           </S.OpportunityHeader>
         </SectionContent>
       </Section>
