@@ -12,7 +12,7 @@ import { Route } from "lib/routing";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
-import Select from "../../components/select";
+import Select from "components/select";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];
