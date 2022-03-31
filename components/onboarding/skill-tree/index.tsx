@@ -4,7 +4,7 @@ import { Field } from "lib/skills";
 
 export interface Props extends React.HTMLAttributes<HTMLUListElement> {
   selected: string[];
-  skills: Field[];
+  skills: readonly Field[];
   handleChange: (id: string) => void;
   disabled: boolean;
 }

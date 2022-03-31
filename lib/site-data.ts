@@ -1,5 +1,6 @@
 import { getAllVideos, PortalVideo } from "./cedu";
 import { Article, getArticleIndex } from "./related-blog-posts";
+import { Field, getAllSkills } from "./skills";
 import * as Airtable from "./airtable-import";
 import * as Local from "./local-data";
 import {
@@ -18,6 +19,7 @@ export interface SiteData {
   partners: readonly PortalPartner[];
   videos: readonly PortalVideo[];
   blogPosts: readonly Article[];
+  skills: readonly Field[];
 }
 
 async function loadSiteData(): Promise<SiteData> {
@@ -52,10 +54,15 @@ async function loadSiteData(): Promise<SiteData> {
     // Filter out events that are owned by nonexisting users
     .filter((e) => users.some((u) => u.id === e.ownerId));
 
+  const skills = useLocalData
+    ? await Local.getAllSkills()
+    : await getAllSkills();
+
   return filterUndefines({
     partners: await DataSource.getAllPartners(),
     videos: await getAllVideos(),
     blogPosts: await getArticleIndex(),
+    skills,
     projects,
     opportunities,
     users,

@@ -6,6 +6,7 @@ import {
   PortalProject,
   PortalUser,
 } from "./portal-types";
+import { Field } from "./skills";
 
 // The weird signature is here to make the data source type-compatible with the Airtable data source
 function loader<T>(file: string): () => Promise<T[]> {
@@ -21,5 +22,6 @@ export const getAllProjects = loader<PortalProject>("projects.json");
 export const getAllUsers = loader<PortalUser>("users.json");
 export const getAllEvents = loader<PortalEvent>("events.json");
 export const getAllPartners = loader<PortalPartner>("partners.json");
+export const getAllSkills = loader<Field>("skills.json");
 export const getAllOpportunities =
   loader<PortalOpportunity>("opportunities.json");
