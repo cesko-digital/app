@@ -2,6 +2,7 @@ import { UserProfile } from "lib/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, Heading1 } from "./typography";
 import { Button } from "./buttons";
+import { Skill } from "lib/skills";
 
 export type UserProfilePageState =
   | "loading"
@@ -10,6 +11,7 @@ export type UserProfilePageState =
   | "signed_in";
 
 export type UserProfilePageProps = {
+  userSkills: Skill[];
   state: UserProfilePageState;
   profile?: UserProfile;
   signIn: () => void;
@@ -44,16 +46,38 @@ const PageContent: React.FC<UserProfilePageProps> = (props) => {
 
 const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   const profile = props.profile!;
-  const { signOut } = props;
+  const { signOut, userSkills } = props;
   return (
     <MainContainer>
       <Heading>{profile.name}</Heading>
-      <Button onClick={signOut} inverted>
+      <SkillBox skills={userSkills} />
+      <Button onClick={signOut} style={{ marginTop: "40px" }} inverted>
         Odhlásit
       </Button>
     </MainContainer>
   );
 };
+
+const SkillBox: React.FC<{ skills: Skill[] }> = ({ skills }) => (
+  <div style={{ marginBottom: "20px" }}>
+    {skills.map((skill, index) => (
+      <SkillPill key={index} {...skill} />
+    ))}
+  </div>
+);
+
+const SkillPill = (skill: Skill) => (
+  <span
+    style={{
+      background: "#eee",
+      padding: "1ex 2ex 1ex 2ex",
+      borderRadius: "8px",
+      marginRight: "2ex",
+    }}
+  >
+    {skill.field.toLocaleLowerCase()} / {skill.name.toLocaleLowerCase()}
+  </span>
+);
 
 const SignedOutPage: React.FC<{ signIn: () => void }> = ({ signIn }) => (
   <MainContainer>

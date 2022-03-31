@@ -41,6 +41,28 @@ export function decodeFields(value: Pojo): Field[] {
   }));
 }
 
+export function flattenSkills(allSkills: Field[]): Skill[] {
+  let skills: Skill[] = [];
+  for (const field of allSkills) {
+    if (field.mentorSkillId) {
+      skills.push({
+        id: field.mentorSkillId,
+        field: field.name,
+        name: "mentor",
+      });
+    }
+    if (field.seniorSkillId) {
+      skills.push({
+        id: field.seniorSkillId,
+        field: field.name,
+        name: "senior",
+      });
+    }
+    skills.push(...field.skills);
+  }
+  return skills;
+}
+
 export async function loadAllSkills(): Promise<Field[]> {
   const apiKey = process.env.AIRTABLE_API_KEY as string;
   const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
