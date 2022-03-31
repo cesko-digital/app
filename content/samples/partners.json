@@ -58,15 +58,6 @@
     ]
   },
   {
-    "id": "recSzcVmzHP6TwGLz",
-    "name": "Nadační fond rodiny Orlických ",
-    "logoUrl": "https://data.cesko.digital/web/sections/partners/nadacnifondorlickych.png",
-    "linkUrl": "http://www.nfro.cz/",
-    "categories": [
-      "financial.regular"
-    ]
-  },
-  {
     "id": "rec8myEg0GakEGC8p",
     "name": "Deloitte",
     "logoUrl": "https://data.cesko.digital/web/sections/partners/deloittelogo.png",
@@ -135,15 +126,6 @@
     "linkUrl": "https://osf.cz/",
     "categories": [
       "experts.supporters"
-    ]
-  },
-  {
-    "id": "recIvrgGOKaIQ8Xtl",
-    "name": "NFNZ",
-    "logoUrl": "https://data.cesko.digital/web/sections/partners/NFNZ.png",
-    "linkUrl": "https://www.nfnz.cz/",
-    "categories": [
-      "experts.submitters"
     ]
   },
   {

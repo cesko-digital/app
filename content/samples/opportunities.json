@@ -1,66 +1,246 @@
 [
   {
-    "id": "rec8IkvvNuEzsaJ78",
-    "name": "Grafik pro Učíme online",
-    "slug": "rec8IkvvNuEzsaJ78",
-    "projectId": "recsIWPWTCFAvE2c2",
+    "id": "rec15CAUlZLwSFoVg",
+    "name": "Mobilní aplikace Movapp pro iOS a Android",
+    "slug": "rec15CAUlZLwSFoVg",
+    "projectId": "recWaDUpWHNzkY0ZC",
     "summary": {
-      "source": "Hledáme dobrovolníka na výpomoc s tvorbou grafických materiálů pro projekt Učíme online.\n\nJedná se především o tvorbu podkladů pro webináře Učíme nanečisto - úvodní slidy pro prezentace, cover obrázky na sociální sítě a úvodní obrázky k videozáznamům z webinářů a jejich jednotlivým kapitolám, které jsou pak součástí naší Videotéky jako mikrokurzy.\n\nVýpomoc hledáme na několik následujících měsíců, jedná se částečně o nepravidelnou nárazovou činnost. Připravujeme zpravidla jeden webinář týdně, ale velkou část grafiky potřebujeme připravit ve chvíli otevírání registrací, které otevíráme, jakmile dostaneme podklady od lektorů, někdy tedy tři webináře za týden, někdy dva týdny nic :)\n\nCo lze dopředu odhadnout lépe je potřeba se zpracovávání videozáznamu, což probíhá pravidelně jednou týdně po jeho odvysílání.\n\nPodklady máme ve Figmě a Lukáš Návesník, který má pod palcem produkci v Česko.Digital, je připravený vysvětlit, kde co najít, jaké jsou potřeby projektu z hlediska grafiky a případně i ukázat základy práce s Figmou :)\n\nMáš chuť to zkusit? Ozvi se, rádi řekneme více!"
+      "source": "Naším cílem je usnadnit Čechům a Ukrajincům společnou komunikaci. Proto vytváříme a neustále zlepšujeme jazykovou aplikaci Movapp a rozcestník materiálů ke studiu obou jazyků.\n\nDo týmu hledáme **vývojáře\\*ky mobilní aplikace pro iOS/Android.**\n\nMáš chuť to zkusit? Ozvi se do kanálu, Táni na Slacku, nebo nám napiš na pryvit@movapp.cz.\n"
     },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "recfTQpPu9LYMIAps",
-    "contactUrl": "https://app.slack.com/client/TG21XF887/CUXRHTY58/",
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recnluAvd10A1MPVB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C036GLKL7ME",
     "skills": [
-      "Design"
-    ],
-    "juniorFriendly": true,
-    "status": "live"
-  },
-  {
-    "id": "recDwHlOSBHyIhD9P",
-    "name": "Produktový/UX designér/ka",
-    "slug": "recDwHlOSBHyIhD9P",
-    "projectId": "recFAG24teJRpENoQ",
-    "summary": {
-      "source": "Pro seniory, rodiče samoživitele a další lidi v nouzi není teplé a výživově hodnotné jídlo samozřejmostí. Přitom v každé komerční jídelně zbyde denně až 25 kg nevydaných pokrmů, které se vyhodí. Chceme, aby se vařené jídlo dostalo k těm, kdo ho skutečně potřebují.\n\nHledá se designér, který by pomohl s přípravou a realizací služby darování přebytečných pokrmů z jídelen a cateringu charitativním organizacím, které pracují s lidmi v nouzi. Na základě navrženého procesu by pak mělo vzniknout digitální řešení, které by umožnilo snadné darování.\n\nCo bude práce obnášet:\n• Projít si materiály, které Zachraň jídlo dalo dohromady a které popisují současnou situaci \n• Promluvit si se stakeholdery a analyzovat jejich potřeby/možnosti \n• Navrhnout odpovídající design služby a formu technologického řešení\n• Společně s vývojáři spolupracovat na vývoji technologického řešení\n\nTvůj profil:\n• Máš zkušenost ideálně s designem služeb, nebo s výzkumem, UX a UI\n• Na jakoukoliv z kompetencí (výzkum, UX, UI, podpora vývoje) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n• Možnost stavět na znalostech shromážděných díky dvouletému projektu Darování jídla šetří klima (desítky rozhovorů a rešerší) a dotáhnout ho do smysluplného závěru\n• Možnost podílet se na projektu, který má zároveň ekologický a společenský přínos.\n• Nadšení týmu Zachraň jídlo, který s čímkoliv rád vypomůže."
-    },
-    "timeRequirements": "5–10 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C02U3RZLT5J",
-    "skills": [
-      "Design"
+      "Dev"
     ],
     "juniorFriendly": false,
     "status": "live"
   },
   {
-    "id": "recEYYngHScQpNaIE",
-    "name": "Talent Manager & HR – autor příručky č.d",
-    "slug": "recEYYngHScQpNaIE",
-    "projectId": "recZqAUagJLM40GnI",
+    "id": "rec9fS7nK34zjsgpL",
+    "name": "Marketing / PR + Copy pomoc pro Movapp",
+    "slug": "rec9fS7nK34zjsgpL",
+    "projectId": "recWaDUpWHNzkY0ZC",
     "summary": {
-      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+      "source": "Naším cílem je usnadnit Čechům a Ukrajincům společnou komunikaci. Proto vytváříme a neustále zlepšujeme jazykovou aplikaci Movapp a rozcestník materiálů ke studiu obou jazyků. \n\nMarketingu se zatím v Movappu věnuje Monika, které má na starosti hlavně sociální sítě. Abychom Movapp dostali k co nejvíc uživatelům, hledáme do týmu hned několik dobrovolníků z oblasti marketingu:\n\n- **Markeťáka/čku** - tvým prvním úkolem bude definice cílové skupiny a vytvoření obsahové strategie se zaměřením na zlepšení povědomí o Movappu v ní\n\n- **PR Specialistu/ku -** máme v plánu kontaktovat různé instituce a média a hledáme někoho, kdo by celé PR zaštítil i realizoval\n\n- **Copywritery** - pro psaní příspěvků na sociální sítě i pro interní komunikační kanály, tiskové zprávy, atd.\n\nPozice nejsou přesně definovány a můžou se i prolínat podle zkušeností/zájmu, v ideálním případě bychom rádi přivítali 3 kolegy na dlouhodobější spolupráci, no možná je i kratší výpomoc.\n\nOdměnou je smysluplná práce a možnost realizace vlastních nápadů.\nMáš chuť to zkusit? Ozvi se do kanálu, Táni na Slacku, nebo nám napiš na [pryvit@movapp.cz](mailto:privyt@movapp.cz).\n"
     },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recnluAvd10A1MPVB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C036GLKL7ME",
     "skills": [
-      "Scrum Master"
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "reckbfJYwFcDyZZS2",
+    "name": "Tester/ka pro Movapp",
+    "slug": "reckbfJYwFcDyZZS2",
+    "projectId": "recWaDUpWHNzkY0ZC",
+    "summary": {
+      "source": "Naším cílem je usnadnit Čechům a Ukrajincům společnou komunikaci. Vytváříme proto jazykovou aplikaci Movapp a rozcestník materiálů ke studiu obou jazyků. \n\nV týmu bychom nyní ocenili člověka, který bude dohlížet na to, zda vše funguje jak má, reportovat případné problémy a pomůže nám udržet aplikaci bez bugů. Plusem, ne však podmínkou, je schopnost a chuť testy automatizovat.\n\n\nOdměnou je smysluplná práce  na open source projektu s obrovským dopadem.\n\nMáš chuť to zkusit? Ozvi se do kanálu, Táni na Slacku, nebo nám napiš na pryvit@movapp.cz.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recnluAvd10A1MPVB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C036GLKL7ME",
+    "skills": [
+      "Dev",
+      "Other"
     ],
     "juniorFriendly": true,
     "status": "live"
   },
   {
-    "id": "rec7nvFj05etQkgKq",
-    "name": "Agilní coach – autor příručky č.d",
-    "slug": "rec7nvFj05etQkgKq",
+    "id": "recyfwwJED4QUdhPE",
+    "name": "Koordinátor/ka produkce podcastu Česko.Digital",
+    "slug": "recyfwwJED4QUdhPE",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+      "source": " Ahoj, rádi bychom začali šířit obsah tvořený v komunitě dalším kanálem! - A tak nějak vznikl nápad podcastu Česko.Digital.\nDo produkčního týmu hledáme nadšeného koordinátora nebo koordinátorku podcastu, kde budeme produkovat audio nahrávky, které se budou vytvářet buďto transformací našeho video obsahu do audio podoby a do budoucna chceme využít podcastovou platformu pro tvorbu dalšího obsahu. Kreativitě se meze nekladou! \n\nA co ti to přinese? \nZapojíš se do skvělého produkčního týmu kreativců, kteří jsou nadšení do tvorby, budeš mít možnost podílet se na vzniku a rozvoji podcastu a na aktivitách, kde Česko.Digital právě pomáhá a dozvíš se určitě spoustu nového. \n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec4RP1qETXJHFlcB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "coverImageUrl": "https://data.cesko.digital/img/podcast-cd.jpg",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recyLjIhMGNMY6yFN",
+    "name": "Textař/ka podcastu Česko.Digital",
+    "slug": "recyLjIhMGNMY6yFN",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Ahoj, rádi bychom začali šířit obsah tvořený v komunitě dalším kanálem! - A tak nějak vznikl nápad podcastu Česko.Digital.\nDo produkčního týmu hledáme nadšeného textaře nebo textařku audio nahrávek, které se budou vytvářet buďto transformací našeho video obsahu do audio podoby a do budoucna chceme využít podcastovou platformu pro tvorbu dalšího obsahu. Kreativitě se meze nekladou! \n\nA co ti to přinese? \nZapojíš se do skvělého produkčního týmu kreativců, kteří jsou nadšení do tvorby, budeš mít možnost podílet se na vzniku a rozvoji podcastu a na aktivitách, kde Česko.Digital právě pomáhá a dozvíš se určitě spoustu nového. \n"
     },
     "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
+    "ownerId": "rec4RP1qETXJHFlcB",
     "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "coverImageUrl": "https://data.cesko.digital/img/podcast-cd.jpg",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recKrnPdKG6EjEUiA",
+    "name": "Střihač/ka podcastu Česko.Digital",
+    "slug": "recKrnPdKG6EjEUiA",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Ahoj, rádi bychom začali šířit obsah tvořený v komunitě dalším kanálem! - A tak nějak vznikl nápad podcastu Česko.Digital.\nDo produkčního týmu hledáme nadšeného střihače audio nahrávek, které se budou vytvářet buďto transformací našeho video obsahu do audio podoby a do budoucna chceme využít podcastovou platformu pro tvorbu dalšího obsahu. Kreativitě se meze nekladou! \n\nA co ti to přinese? \nZapojíš se do skvělého produkčního týmu kreativců, kteří jsou nadšení do tvorby, budeš mít možnost podílet se na vzniku a rozvoji podcastu a na aktivitách, kde Česko.Digital právě pomáhá a dozvíš se určitě spoustu nového. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec4RP1qETXJHFlcB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "coverImageUrl": "https://data.cesko.digital/img/podcast-cd.jpg",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recICYUpHO6TrI6tz",
+    "name": "TypeScript Developer",
+    "slug": "recICYUpHO6TrI6tz",
+    "projectId": "rec3jCr9o3jrohoD9",
+    "summary": {
+      "source": "Pro pomoc s vývojem a další rozvoj platformy <https://pomahejukrajine.cz> dáváme dohromady vývojářský tým a hledáme posily!\n\nJaké technologie používáme:\n\\* TypeScript pro frontend i backend\n\\* GitHub Actions pro deployment\n\\* GitHub Issues pro plánování a workflow\n\nO <https://pomahejukrajine.cz>:\n\\* v tuto chvíli jde o trižiště nabídek pomoci Ukrajině, kde mohou jednotlivci i organizace vkládat nabídky, z nichž některé jsou přímo zveřejněny a mohou na ně reagovat ti, kdo pomoc potřebují, a některé (hlavně ubytování) jdou k rukám neziskových organizací nebo obcí\n\\* do budoucna je v plánu rozšiřovat funkcionalitu a také vylepšit stávající možnosti portálu\n\\* odbornou záštitu a roli Product Ownera zajišťuje Konsorcium nevládních organizací pracujících s migranty v ČR\n\\* Česko.Digital nabídlo pomocnou ruku v oblasti technologické a podporu vývoje \n\\* spuštění portálu bylo reakcí na aktuální situaci na Ukrajině, ale počítá se s jeho dlouhodobým využíváním i pro jiné potřeby\n\nCo nás v nejbližších dnech čeká?\n\\* ujasnit si další směřování a cíle projektu \n\\* postavit vývojový tým\n\\* rozjet další vývoj :) \n\nCo ti můžeme nabídnout?\n\\* možnost podílet se na důležitém a společensky prospěšném projektu s velkým dopadem \n\\* nadšení a podporu komunity Česko.Digital\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, ozvi se na Anežce Müller na Slacku nebo na anezka@cesko.digital.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/C034TATED4K/",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recCTeYbYmMMXUOdH",
+    "name": "Backend engineer",
+    "slug": "recCTeYbYmMMXUOdH",
+    "projectId": "recW2VsVydOsR16zE",
+    "summary": {
+      "source": "Expertní dobrovolníci pod vedením Tomáše Bederky a Jana Štefanidese, ve spolupráci s MŠMT a pedagogickou fakultou UK rozvíjí řešení na sledování nabídek a poptávek volných míst ve školách a školkách.\n\nCo tě čeká:\n\\- Naskočení do vývojářského týmu pod vedením Tech Leada Jana Štefanidese - Společná práce na vývoji vhodného technického řešení \n\\- Technologie jsou Sonáta a Docker\n\\- Frontend technologie bude pravděpodobně částečně v mapách na [mapotic.com/mapa-odborne-pomoci-pro-ukrajinu](http://mapotic.com/mapa-odborne-pomoci-pro-ukrajinu))\n\nKoho hledáme: \n\\- zkušenosti s nocode/lowcode platformách výhodou\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C035ZPG6U6L",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/vzdelavani-ua-deti/cover.png",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rectpkvqnNONnjC2K",
+    "name": "Frontend engineer",
+    "slug": "rectpkvqnNONnjC2K",
+    "projectId": "recW2VsVydOsR16zE",
+    "summary": {
+      "source": "Expertní dobrovolníci pod vedením Tomáše Bederky a Jana Štefanidese, ve spolupráci s MŠMT a pedagogickou fakultou UK rozvíjí řešení na sledování nabídek a poptávek volných míst ve školách a školkách.\n\nCo tě čeká:\n\\- Naskočení do vývojářského týmu pod vedením Tech Leada Jana Štefanidese - Společná práce na vývoji vhodného technického řešení \n\\- Technologie jsou Sonáta a Docker\n\\- Frontend technologie bude pravděpodobně částečně v mapách na [mapotic.com/mapa-odborne-pomoci-pro-ukrajinu](http://mapotic.com/mapa-odborne-pomoci-pro-ukrajinu))\n\nKoho hledáme: \n\\- zkušenosti s nocode/lowcode platformách výhodou\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C035ZPG6U6L",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/vzdelavani-ua-deti/cover.png",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec0RvwceZM5Zq4Yi",
+    "name": "Backend engineer pro web a mobilní aplikaci",
+    "slug": "rec0RvwceZM5Zq4Yi",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa zobrazující všechna důležitá místa a informace**, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako Backend Engineer na starosti?**\n**Do týmu potřebujeme BE, který má alespoň 10h týdně času k dispozici.** Pokud jseš to ty, budeš na projektu pracovat v prostředích **Python, Django, Postgre SQL** a podílet se na vývoji a rozvoji datových konektorů pro mapu a také na multijazyčnosti webové i mobilní aplikace.\n\n## **Jaké dovednosti se Ti v roli budou hodit?**\nVyužiješ svůj **přehled o fungování webových služeb** a různých frameworcích. Pro práci v projektu se hodí ovládání **efektivní komunikace, analytické myšlení**, asertivitu a schopnost pracovat samostatně, ale i v týmu.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc.** Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recjKYZPnjuYeNl6c",
+    "name": "Frontend engineer pro web a mapu",
+    "slug": "recjKYZPnjuYeNl6c",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa zobrazující všechna důležitá místa a informace**, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako Frontend Engineer na starosti?**\n**Do týmu potřebujeme FE, který má alespoň 8h týdně času k dispozici.** Pokud jseš to ty, budeš se na projektu ve frameworku **Angular **podílet na rozvoji webové části mapy a rozvoji funkcí embbedded mapy. Budeš také **spolupracovat s backendovým a produktovým týmem** a ostatními frontendisty.\n\n## **Jaké dovednosti se Ti v roli Frontend Engineer budou hodit?**\n**Zkušenosti s HTML/CSS, Java, Angular jsou hlavním předpokladem pro tuto roli.** Pro práci v projektu využiješ **efektivní komunikaci, důslednost**, proaktivní přístup a schopnost pracovat samostatně, ale i v týmu. \n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recMy8e0Ly7X2xlQ7",
+    "name": "Vývojář/ka pro mobilní aplikaci – React Native",
+    "slug": "recMy8e0Ly7X2xlQ7",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa zobrazující všechna důležitá místa a informace**, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako vývojář na starosti?**\n**Budeš pomáhat s vývojem mobilní aplikace UMAPA v React Native.** Společně s dalšími vývojáři budeš pracovat na **komponentech a jednotlivých modulech** aplikace a úpravách a tvorbě modulů dle požadavků.\n\n## **Jaké dovednosti se Ti v roli vývojáře budou hodit?**\n**Vedle dovedností je třeba mít chuť a zejména čas v řádu několika hodin týdně.** K tomu přidat hard i soft skills alespoň mírně zkušeného vývojáře, jako jsou zkušenosti s vývojem v technologii **React Native**; hodí se též znalost JavaScriptu, HTML, CSS; schopnost **spolupráce v týmu s dalšími rolemi – UX, backend, aplikační servery**. A v neposlední řadě se mimořádně cení nadšení a zápal pro věc.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recIG2Hy7m4icV0O4",
+    "name": "Ви розмовляєте українською? Ukrajinsky mluvící pro jazykovou aplikaci",
+    "slug": "recIG2Hy7m4icV0O4",
+    "projectId": "recWaDUpWHNzkY0ZC",
+    "summary": {
+      "source": "Naším cílem je usnadnit Čechům a Ukrajincům společnou komunikaci. Vytváříme proto jazykovou aplikaci Movapp a rozcestník materiálů ku studiu obou jazyků. \n\nDo týmu hledáme bilingvní nadšence na pomoc s tvorbou textů, obsahu, nebo i kontrolu a korekci materiálů. \n\nRádi přivítáme někoho na dlouhodobou i kratší / nárazovou spolupráci, klidně jenom na pár hodin týdně. Odměnou je smysluplná práce a volnost v realizaci vlastních nápadů! \n\nMáš chuť to zkusit? Ozvi se do kanálu nebo Táni na Slacku. \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recnluAvd10A1MPVB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C036GLKL7ME",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recKz1YQgtB6zEe5H",
+    "name": "Projektový koordinátor/ka",
+    "slug": "recKz1YQgtB6zEe5H",
+    "projectId": "recmeRJIosxXb4hG4",
+    "summary": {
+      "source": "V rámci rozcestníku stojimezaukrajinou.cz velmi záhy vznikla potřeba mít aktuální informace o stavu ukrajinských hraničních přechodů. **Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [mapu ukrajinských hraničních přechodů](https://www.mapotic.com/ukraine-border-crossings).** Všechny zúčastněné strany - od jednotlivců, neziskových organizací, samozvaných koordinátorů a koordinátorek sbírek přes dopravce až po transport vojenského materiálu a léků na frontu díky ní mají aktualizované informace o dopravním vytížení, ale také časové náročnosti transportu přes hraniční přechod. \n\n## **Co budeš mít jako projektový koordinátor na starosti?**\n**Budeš se aktivně podílet na posouvání projektu Mapy ukrajinských hraničních přechodů kupředu.** Budeš hlídat termíny, svolávat online meetingy, dohlížet nad plněním úkolů a aktivně se podílet na dosažení cíle. \n\n## **Jaké dovednosti se ti v roli budou hodit?**\nV této roli se ti budou hodit **organizační schopnosti, flexibilita a týmová práce**. Smysl pro detail a tah na branku. Komunikační dovednosti a efektivní přístup k řešení problémů ti k tomu budou skvělými parťáky. **Vítána je znalost angličtiny nebo ukrajinštiny či ruštiny** tak, aby jsi mohl/a komunikovat s koordinátory/kami na obou stranách hranice.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0369FJGU4R",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-ukrajinskych-hranicnich-prechodu/cover.png",
     "skills": [
       "Scrum Master",
       "Other"
@@ -69,12 +249,337 @@
     "status": "live"
   },
   {
+    "id": "recMQrBH8aB61MvVv",
+    "name": "Copywriter/ka",
+    "slug": "recMQrBH8aB61MvVv",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu Umapa](http://www.stojimezaukrajinou.cz/umapa)** zobrazující všechna důležitá místa a informace, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti, ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako copywriter/ka na starosti?**\nBudeš se podílet na tvorbě mnoha rozdílných materiálů a široké škále obsahu. V týmu už nás pár je a můžeme se tak domluvit, co by tě bavilo nejvíc. **Pod našima rukama vznikají informační texty, příspěvky pro sociální sítě i interní komunikační kanály, blogové články či tiskové zprávy.**\n\n## **Jaké dovednosti se ti v této roli budou hodit?**\n**Kreativita a tvůrčí přístup.** Práce ti půjde skvěle od ruky, pokud sebejistě vládneš písmem a znalostí pravidel českého jazyka. Umapa ale funguje a bude fungovat pro stále více zemí, **jakýkoliv jazyk navíc je tak rozhodně plus**. Přidáš se do týmu, kde se podporujeme, **pomáháme si** a na všechno jsme v tom spolu. Oceňujeme také **aktivní přístup** i samostatnost.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad. **A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu: **_„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu: **_„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recfUKjV33Z1ObGQn",
+    "name": "Překladatel/ka do ukrajinštiny (z ČJ nebo AJ)",
+    "slug": "recfUKjV33Z1ObGQn",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa** zobrazující všechna důležitá místa a informace, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n \n## **Co budeš mít jako překladatel/ka na starosti?**\n**Dle aktuálního vývoje projektu budeš mít za úkol některý z překladů** - jedná se buď o jednorázový větší překlad platformy z CZ nebo AJ do UA, nebo jednorázový větší překlad atributů, popisů některých míst, ale jde také o pravidelné menší překlady při aktualizaci míst. Určitě v tom nebudeš sám/sama, a tak se neboj ozvat, ať už jsou tvé časové možnosti jakékoliv!\n\n## **Jaké dovednosti se ti v roli překladatele/ky budou hodit?**\nVzhledem k charakteru role se cení **samostatnost i schopnost práce v týmu**. Očekáváme jistý písemný projev a znalost pravidel ukrajinského jazyka. Aktivní přístup je u nás více, než vítán :-)\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni.\n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu: **_„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Other",
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recvEa7aKwwhl2GSr",
+    "name": "Zajištění mezinárodního dosahu",
+    "slug": "recvEa7aKwwhl2GSr",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "Co tě čeká:\n\\- přemýšlet o datech mimo ČR, abychom to lépe mohli komunikovat a ukazovat partnerům v zahraničí\n\\- začít rešeršovat zdroje dat mimo ČR a oslovovat projekty a databáze, které by se mohly zapojit\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Marketing",
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recyMYxMPw8BPDXAQ",
+    "name": "Zabezpečení udržitelnosti projektu",
+    "slug": "recyMYxMPw8BPDXAQ",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "Co tě čeká:\n\\- pomoc s oslovováním míst ukrajinské komunity a hledání organizací, které by měly zájem si dlouhodobě platformu převzít a rozvíjet\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Marketing",
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec7PwqtffU6BMCrT",
+    "name": "Komunikační a zákaznická podpora",
+    "slug": "rec7PwqtffU6BMCrT",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa** zobrazující všechna důležitá místa a informace, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako komunikační podpora na starosti?**\n**Tvým úkolem bude šíření mapy do odborných sítí a zjišťování zájmu ohledně zapojení do mapy.** K tomu budeš mít na starosti komunikaci s konkrétními místy, které pomoc nabízí, a domluvení jejich umístění na mapu. Budeš jako stěžejní bod - customer support - pro zapojené subjekty a budeš se podílet na rozšiřování databáze míst a institucí. \n\n## **Jaké dovednosti se ti v roli budou hodit?**\nSkvěle ti poslouží **pokročilé komunikační dovednosti a srozumitelné vyjadřování**. Práci ti usnadní a nakonec i zpříjemní, pokud mezi tvé silné stránky patří trpělivost a empatie společně se schopností efektivního přístupu k řešení problémů. \n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad. **A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu: **_„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Marketing",
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec38zVagf6GwxRSZ",
+    "name": "Koordinátor/ka marketingu",
+    "slug": "rec38zVagf6GwxRSZ",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "Co tě čeká:\n\\- vytvořit strategii kde a jak mapu komunikovat\n\\- vytvořit seznam míst, které oslovit\n\\- pomoc s náborem lidi k oslovování\n\\- koordinace lidí\n\\- komunikace přímo v mapě ve feedu\n\nO čem projekt je? Zjisti více na <https://cesko.digital/projects/mapa-ukrajinske-komunity-v-cr>.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recYIWlSDlcXgQ377",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Marketing",
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recNV76puMw89dNjt",
+    "name": "Datový analytik/analytička",
+    "slug": "recNV76puMw89dNjt",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa zobrazující všechna důležitá místa a informace**, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako datový analytik na starosti?**\n**Role datového analytika obnáší především spoustu manuální práce. Budeš procházet různé zdroje** - jako jsou weby, mapy, sociální sítě a hledat nové body pomoci pro další rozšíření naší digitální mapy. Budeš si ověřovat či potvrzovat, zda nalezená místa skutečně poskytují pomoc a případně zda hovoří ukrajinsky, popř. anglicky apod. Získané informace budeš zanášet do tabulky a následně je aktualizovat. \n\n## **Jaké dovednosti se Ti v roli datový analytik budou hodit?**\nV roli datového analytika se Ti hodí **trpělivost, preciznost** a samozřejmě technické schopnosti pro práci s různými pracovními nástroji, jako je **Excel, Google Sheets** apod.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni.\n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recS6VDZLzBixrLHn",
+    "name": "Koordinátor/ka plnění a aktualizace dat",
+    "slug": "recS6VDZLzBixrLHn",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa zobrazující všechna důležitá místa a informace**, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako koordinátor/ka plnění a aktualizace dat na starosti?**\n**V rámci projektu budeš koordinovat práci s daty všech členů týmu.** Budeš mít na starost péči a rozvoj týmu s spolu s koordinátorem/koordinátorkou projektu. Spolu s recruiterem/recruiterkou budete hledat vhodné kolegy do týmu.\n\n## **Jaké dovednosti se Ti v roli koordinátor/ka plnění a aktualizace dat budou hodit?**\nUžiješ své **zkušenosti s vedením týmu, schopností motivovat**. Hodí se otevřený přístup k řešení problému a celkově pozitivní naladění a **flexibilita **v myšlení.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni.\n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Other",
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recg3Qg7GWOXLaulU",
+    "name": "Projektový koordinátor/ka",
+    "slug": "recg3Qg7GWOXLaulU",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "**Expertní dobrovolníci Česko.Digital ve spolupráci s Mapotic vytvořili [komunitní mapu](http://www.stojimezaukrajinou.cz/umapa) Umapa** zobrazující všechna důležitá místa a informace, které budou lidé přicházející z Ukrajiny v důsledku invaze v novém nebo dočasném domově potřebovat. V mapě naleznou (i ukrajinsky hovořící) lékaře, psychology, veterináře, právníky, školy a školky přijímající ukrajinské děti ale také materiální sbírky ad. Neustále se pracuje na jejím vylepšení a aktualizaci. \n\n## **Co budeš mít jako projektový koordinátor na starosti?**\n**Budeš se aktivně podílet na rozvoji a nastavování strategie projektu Umapa.** Mezi tvé kompetence bude patřit zadávání úkolů a dohlížení na jejich plnění napříč několika sekcemi - od dat přes customer care, marketing, překlady až po navazování spolupráce s partnery. Společně s dalšími koordinátory budete udávat směr a určovat priority. V neposlední řadě budeš jedním z článků, který bude u rozvoje projektu do dalších zemí. Je to výzva a je to jízda. A nemusíš se bát, protože na to rozhodně nebudeš sám/sama. Takže pokud máš velkou chuť a nějaký čas k dispozici, čekáme na tebe! \n\n## **Jaké dovednosti se ti v této roli budou hodit?**\nV této roli se Ti budou hodit **organizační schopnosti, flexibilita a týmová práce**. Smysl pro detail a tah na branku. Komunikační dovednosti a efektivní přístup k řešení problémů ti k tomu budou skvělými parťáky.\n\n## **Co s námi můžeš získat?**\n**Budeš se podílet na úspěšném a společensky prospěšném projektu, který má už teď obrovský dopad.** A můžeš pomoct mnohým lidem poznávat svůj nový nebo dočasný domov. Nakazíš se obrovským nadšením a zápalem pro věc. **Navíc získáš nové zkušenosti**, podíváš se pod ruce zkušeným lídrům, kde jsme si ale všichni rovní a tvůj názor bude vždycky slyšet. Nezískáš tak jen ty, díky společné práci a nadšení si od sebe bereme spoustu užitečného všichni. \n\n## A co říkají dobrovolníci, kteří se už zapojili?\n**Tereza Vaisová – marketingová koordinátorka projektu:** _„Jsem moc ráda a pyšná, že jsem součástí tak skvělý komunity. To, co pod všema rukama vzniká, v tempu, v jakým se teď na všech projektech jede, je neskutečný! Konečně mám pocit, že v tom, co se ve světě děje, můžu dělat dost pro to, abych mohla pomoct.“_\n\n**Monika Pavlovičová – ilustrátorka a grafička projektu:** _„Je skvělý, že vznikají takovýhle projekty! Mít možnost se zapojit a pomáhat je pro mě důležitý, a díky týhle komunitě je to i zážitek –⁠ nepřestávám žasnout, jak je možný organizovat a dotáhnout tolik prospěšnejch projektů najednou. Klobouk dolů Česko.Digital, jste plný skvělejch lidí.“_\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, **ozvi se nám v projektovém kanálu na Slacku nebo kontaktuj odpovědnou osobu** v tomto inzerátu!\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Scrum Master",
+      "Other"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recoElACWcomcVOEi",
+    "name": "Kapitán překladů Stojíme Za Ukrajinou (ukrajinština)",
+    "slug": "recoElACWcomcVOEi",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "summary": {
+      "source": "Chceš pomoct Ukrajině webu stojímezaakrajinou.cz? Nejdůležitější je teď dostat důležité informace k těm správným lidem. Proto hledáme Kapitána překladů, který mluví plynule česky a ukrajinsky, má cit pro detail a smysl pro organizaci.\n\nJedná se o pár hodin týdně po dobu jednoho měsíce. Budeš pracovat s Kapitánem dne, který dle zpětné vazby provádí změny na webu a budeš zajišťovat překlad v ukrajinštině. \n\nNení to jen o překladech. Napadá Tě, co by mělo na webech chybí nebo přebývá? Tvá role zajišťuje, že Ukrajinci najdou to, co hledají. Počítáme, že si jednou za týden projdeš českou verzi webu a zhodnotíš, zda je tvá svěřená jazykové verze v pořádku.\n\nChceš pomoci? Napiš Jindřichovi na Slacku nebo jindrich@cesko.digital\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec5g2kjJCODPpUOI",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C035J508K6U",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/stojime_za_ukrajinou/cover-stojimezaukrajinou.jpg",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recwKEOVPQsKiR4ko",
+    "name": "CSS/HTML vývoj pro maďarskou Volební Kalkulačku",
+    "slug": "recwKEOVPQsKiR4ko",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Pro spuštění Volební Kalkulačky v nadcházejících Maďarských volbách hledáme Frontend vývojáře pro rychlé úpravy.\n\nPříklad aktuální kalkulačky na <https://www.volebnikalkulacka.cz/cs/volby-2021/question/1/>, potřebujeme drobné úpravy typu:\n\n\\- CSS pro responzivní design, aktuální verze nefunguje pro delší texty (btw. věděli jste, ze stejný text je mnohem delší v maďarštině než například v Češtině?)\n\\- Úprava carouselu otázek.\n\\- Správné sdílení na sociální sítě\n\nA další drobnosti, které můžou výrazně zlepšit user experience kalkulačky.\n"
+    },
+    "timeRequirements": "jednorázová výpomoc",
+    "ownerId": "recKf2gXTdcc5y3yt",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recKfuT4GR8PwqXgF",
+    "name": "OKR Master",
+    "slug": "recKfuT4GR8PwqXgF",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Hledáme OKR mastera pro interní rozvojové projekty Česko.Digital. Jako organizace se musíme interně vyvíjet a pro stanovení cílů a měření úspěšnosti tohoto vývoje používáme metodiku OKR. Jako OKR Master budeš:\n\\- Dohlížet na OKR plánovací proces - budeš koordinovat přípravy a plánování, pomáhat týmům jako kouč s definicí OKR.\n\\- Moderovat OKR kvartální meetingy - prezentaci výsledků, vyhodnocení kvartálů, lessons learned.\n\\- Pomáhat s OKR onboardingem - pro nově příchozí členy budeš sloužit jako primární kontaktní osoba ohledně tématu OKR a jejich principu fungování, definince, vyhodhocování a agilního procesu okolo těchto témat.\n\\- Rozvíjet a udržovat agilní proces na bázi Scrumu, který týmy používají pro iterativní dosažení nadefinovaných cílů.\n\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec4aPaaf2GDZ3VoH",
+    "contactUrl": "https://cesko-digital.slack.com/archives/CSXGU7F0F",
+    "skills": [
+      "Scrum Master",
+      "Other"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recpRl1OuAGchlqPC",
+    "name": "Frontend Developer React pro Jehlomat",
+    "slug": "recpRl1OuAGchlqPC",
+    "projectId": "recyAlQx0HFH0kW6h",
+    "summary": {
+      "source": "Chceme zbavit ČR injekčních stříkaček a ušetřit stovky hodin práce terénních pracovníků. Chybí nám už jen kus vývoje a proto hledáme posilu FE vývojáře se zkušeností v Reactu. \n\nMůžeš pomoci s pár tasky na JIRA nebo to s námi dotáhnout do konce, zbývá jen pár týdnů, každá pomoc se hodí. \n\nPracujeme standardně ve sprintech, vývoj vede Juraj Kisztner, o všechny se s láskou stará Scrum Masterka Markéta Ryklová. Vše k vývoji řešíme v #run-jehlomat\\_vyvoj, neváhej se přidat, podívat a zeptat na cokoliv.\n\nDává ti to smysl? Napiš rovnou Jurajovi nebo Lucce na Slacku.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recAV6IZWuquxQCuZ",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C017VKLRRC0",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recWKFbujt2NN9qWv",
+    "name": "Copywriter pro Digi Průvodce ",
+    "slug": "recWKFbujt2NN9qWv",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Digi průvodce má důležitou roli ve škálování projektů v Česko.Digital - více zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací (Loono, Výluka, Nedlužím státu, Nepanikař a další). \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nKaždé téma má svého autora/autorku, kteří ho obsahově zpracovávají a potřebují pomoci s čtivostí textu. \n\nJestli máš chuť se kreativně realizovat a navrhnout, jak texty přetavit do hravé a pochopitelné formy, napiš nám.\n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "rec5AdPSDsLy860Tr",
+    "name": "Grafik/čka pro Digi Průvodce ",
+    "slug": "rec5AdPSDsLy860Tr",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Digi průvodce má důležitou roli ve škálování projektů v Česko.Digital - více zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací (Loono, Výluka, Nedlužím státu, Nepanikař a další). \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nKaždé téma má svého autora/autorku, kteří ho obsahově zpracovávají. Pro pochopení a užitečnost je důležitá grafická podoba (např. infografika), která zarámuje úvod do problematiky a pomůže s jeho kompaktním pochopením. Např. proces projektu od nápadu po realizaci zde: <https://bit.ly/344K6Q6>.\n\nJestli máš chuť se kreativně realizovat a navrhnout, jak texty přetavit do hravé a pochopitelné formy, napiš nám.\n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recymHXHGHAXZ2wy1",
+    "name": "Copywriter/ka v týmu pro komunitní vzdělávací aktivity č.edu",
+    "slug": "recymHXHGHAXZ2wy1",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě tvorba textů a máš v měsíci několik hodin volného času, které můžeš věnovat dobré věci? Chceš se podílet na vzdělávacích aktivitách Česko.Digital?\n\nPro naši komunitu i pro veřejnost připravujeme pravidelné vzdělávací akce v různých oblastech, od soft-skills témat po různé technologie a nástroje.\n\nRádi bychom náš obsah dostali co nejvhodnější formou k co nejvíce lidem, a proto hledáme do našeho dobro-týmu posilu pro copywriting.\n \nJde především o tvorbu propagačních a informačních textů o našich webinářích pro web, sociální sítě a interní komunikační kanály. Dostaneš také návod, co vše je při propagaci potřeba napsat.\n\nCo ti to může přinést?\n\\- Získáš reference, které se budou propagovat na různých komunikačních kanálech Česko.Digital.\n\\- Nahlídneš do procesu vzniku a propagace webinářů.\n\\- Budeš mít možnost oslovit mentory v obsahovém týmu, kteří ti dají zpětnou vazbu na tvé výstupy.\n\\- A spoustu dalšího!\n\nJaké akce už máme za sebou najdeš tady: <https://cesko-digital.atlassian.net/l/c/N7s5vhJa>\n\nPokud by tě to zajímalo a chceš se dozvědět víc, ozvi se!\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/C01S44WHHST",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "live"
+  },
+  {
+    "id": "recPydBVTxrWmlM8T",
+    "name": "Scrum Master (do tandemu)",
+    "slug": "recPydBVTxrWmlM8T",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Hledáme zkušeného Scrum Mastera do tandemu s projektovou koordinátorkou/scrum masterkou, která by potřebovala podpořit v rámci nastavení agilních ceremonií v novém projektu Volební kalkulačka, a proto bychom tě rádi zapojili hned na začátku projektu.  \n\nCo tě čeká? \nSpolečně s dalším Scrum Mastrem při rozjezdu projektu budete mít na starosti zavést vhodné nástroje a týmové agilní ceremonie a ve vzájemné součinnosti dohlížet na koordinaci zadaných úkolů v souladu s potřebami dobro týmu = týmu nadšených lidí pro projekt, kteří ve svém volném čase pomohou smysluplné věci.  \n\nRole je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nCo ti to může dát? \nZkušenosti s koordinací dobrovolníků na projektu, nové propojení a jiný způsob práce a také smyslupnost toho, že posouváš věci k lepšímu.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recf6EM1qZxTTFkA0",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/volebni-kalkulacka/cover.jpg",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
+    "id": "recjA3jYo1vObkZEF",
+    "name": "Tech lead",
+    "slug": "recjA3jYo1vObkZEF",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Hledáme tech leada pro modernizaci Volební kalkulačky. Chceme zlepšit její možnosti integrace do partnerských webů (například velkých médií) a přidat nové funkcionality, především možnost vyplňování kalkulačky ve skupině (například ve třídě), historii vyplňování a porovnávání odpovědí v čase. \n\nCo tě čeká:\n\n\\- Analyzovat současný stav a navrhnout novou technickou podobu, která zjednoduší integrace pro partnerské weby.\n\\- Návrh technického řešení nových featur.\n\\- Vytvoření dobrovolnické komunity vývojářů kolem projektu a jejich vedení.\n\\- Udržování vysoké kvality kódu přes code review a mentoring juniornějších vývojářů.\n\nCo nabízíme:\n\n\\- Budeš se podílet na open source projektu s obrovským dopadem.\n\\- Podporu a mentoring od zkušených vývojářů z komunity Česko.Digital.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "live"
+  },
+  {
     "id": "recgzKkdrsHVsb2m1",
-    "name": "Business konzultant & mentor – autor příručky č.d",
+    "name": "Business konzultant / startupista pro Digi průvodce",
     "slug": "recgzKkdrsHVsb2m1",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+      "source": "Digi průvodce má důležitou roli ve škálování projektů v Česko.Digital - více zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací. \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup (tady můžeš pomoci)\n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nNa každé téma hledáme alespoň tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec0ABdJtGIK9AeCB",
@@ -87,105 +592,20 @@
   },
   {
     "id": "rec1zQ3Qcag3nIp4J",
-    "name": "Product Owner – autor příručky č.d",
+    "name": "Product Designer pro Digi průvodce",
     "slug": "rec1zQ3Qcag3nIp4J",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
+      "source": "Digi průvodce má důležitou roli ve škálování projektů v Česko.Digital - více zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací. \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design (tady můžeš pomoci)\n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nNa každé téma hledáme alespoň tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec0ABdJtGIK9AeCB",
     "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
     "skills": [
-      "Product Owner"
+      "Design",
+      "Business Dev"
     ],
     "juniorFriendly": true,
-    "status": "live"
-  },
-  {
-    "id": "rece58lg1uXKSo65v",
-    "name": "ScrumMaster – autor příručky č.d",
-    "slug": "rece58lg1uXKSo65v",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Příručka č.d dává na jedno místo informace o tom, jak stavět skvělé projekty a týmy. \nNa každé téma hledáme tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n"
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
-    "skills": [
-      "Scrum Master"
-    ],
-    "juniorFriendly": true,
-    "status": "live"
-  },
-  {
-    "id": "recv4L134viSo1N0b",
-    "name": "Frontend Developer React pro Jehlomat",
-    "slug": "recv4L134viSo1N0b",
-    "projectId": "recyAlQx0HFH0kW6h",
-    "summary": {
-      "source": "Vyvíjíme aplikaci, která má šanci zbavit ČR injekčních stříkaček a ušetřit stovky hodin práce terénních pracovníků. Jsme na konci, chybí nám 2 sprinty a aktuálně hledáme posilu v podobě FE vývojáře se zkušeností v Reactu. Dle našeho dovednostního matrixu je role vhodná pro lidi s kompetencí Frontend / Webový vývoj.\nPředpokládáme, že práce na projektu ti zabere cca 3-5 hodin týdně. Projekt vedeme v agilně v 19-denních sprintech, které zahrnují i dva víkendy. Na konci každého sprintu se potkáváme online k sprint-review, kde si práci vyhodnocujeme a dáváme zpětnou vazbu - tá nás posouvá vpřed. Používáme nástroje Jira a GitHub.\nNejsi na to sám/sama. K ruce máš jak zkušeného Scrum Master @Markèta Ryklovà , Tech-Leada @Juraj Kisztner i BE vývojáře @Radek Ludačka a @Tomáš Fechtner . Otevřená komunikace je pro nás základ, a proto jsme ti všichni k dispozici v našem vývojovém kanál #run-jehlomat-dev, pro jakékoliv dotazy.\n"
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "recAV6IZWuquxQCuZ",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C017VKLRRC0",
-    "skills": [
-      "Dev"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
-    "id": "recn2d3AOMdBmEM8a",
-    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu IV",
-    "slug": "recn2d3AOMdBmEM8a",
-    "projectId": "recgHexe37XeWVy8N",
-    "summary": {
-      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
-    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": true,
-    "status": "live"
-  },
-  {
-    "id": "recbg3CqUtjxzykSj",
-    "name": "Konzultace nového webu pro Jídelnu Kuchařek bez domova",
-    "slug": "recbg3CqUtjxzykSj",
-    "projectId": "recllqNV9YxnSjkMF",
-    "summary": {
-      "source": "JÍDELNA KUCHAŘEK BEZ DOMOVA POTŘEBUJE WEB! \n\nV sociálním podniku - Jídelně Kuchařek bez domova připravují ženy se zkušeností s bezdomovectvím lahodné, čistě rostlinné menu a cateringy. Aby se o jejich umu mohlo dozvědět víc lidí a jejich dobroty s přesahem doputovaly do nejrůznějších míst, ženy z Jídelny se usnesly, že by moc rády měly vlastní web.\n\nStavíme na zelené louce a hledáme někoho, kdo nám pomůže vyspecifikovat požadavky, ať vůbec víme, co potřebujeme. Na webu bychom rády informovaly o tom, jak Jídelna funguje, inzerovaly tam naše menu, nabídku cateringu a zprovoznily tam malý eshop na nějaké ty lahůdky od Kuchařek.\n\nNěco o Jídelně může každý, kdo by chtěl, přečíst na těchto stránkách: http://jakodoma.org/kucharky-bez-domova-2/ nebo na facebooku https://www.facebook.com/jidelnakbd\n\nMáš chuť pomoci? Ozvi se Kristýně Kosinové:\nkosinova.k@gmail.com, případně 608 740 181\n"
-    },
-    "timeRequirements": "jednorázová výpomoc",
-    "ownerId": "recfTQpPu9LYMIAps",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CLVAH28P3/p1639658832157900",
-    "skills": [
-      "Dev",
-      "Design"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
-    "id": "rech8cq1ePSe2ts5e",
-    "name": "Coaching v komunitě Česko.Digital",
-    "slug": "rech8cq1ePSe2ts5e",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Jsi akreditovaný kouč a dává ti smysl kromě technologických kompetenci pomoci rozvinout v naší komunitě také měkké dovednosti jako pohled na leadership, emoční inteligenci nebo komunikační vzorce? Chceš pomoci rozvíjet a posouvat někoho na cestě k vytyčeným cílům? Umíš pokládat ty správné otázky a směřovat cílené rady? Hledáme pro členy komunity coache, kteří chtějí věnovat cca hodinu za 3 týdny pro minimálně 3 setkání   rozvoji dalších členů komunity. \n\n<br>\n<i>Jak se můžeš zapojit nebo jak můžeš nabídnout svou pomoc?</i>\n\nPro core tým Česko.Digital hledáme coache, kteří můžou pomoci se směřováním a osobním rozvojem. Díky tomu tým, který pečuje o komunitu, vytváří nástroje a prostředí pro zapojení dobrovolníků může dále růst a získávat potřebné kompetence a dovednosti.\n"
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
-    "contactUrl": "https://cesko-digital.slack.com/archives/D02CD2TUZRB",
-    "skills": [
-      "Other"
-    ],
-    "juniorFriendly": false,
     "status": "live"
   },
   {
@@ -206,40 +626,6 @@
     "status": "live"
   },
   {
-    "id": "rechK7Q40TLmcFJWV",
-    "name": "Konzultace & mentoring v komunitě Česko.Digital",
-    "slug": "rechK7Q40TLmcFJWV",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "<b>Konzultace</b> \n\nMáš za sebou hluboké zkušenosti a rád dáváš někomu tipy a triky, aby se na věci mohl podívat čerstvýma očima?\n\nSvé nabídky na konzultaci v oblasti designu, vývoje, marketingu a dalších můžeš nabídnout přímo naší komunitě na Slacku v kanálu <b><a href=\"https://cesko-digital.slack.com/archives/CLVAH28P3\">#market-place</a></b> nebo si můžeš přečíst poptávky od jednotlivců, neziskovek či státní správy a nabídnout jim svou pomoc. \n<br>\n\n<b>Mentoring</b>\n\nChceš předávat pravidelně své znalosti a zkušenosti? Chceš pomoci někomu dalšímu nahlédnout na jeho profesní rozvoj z jiného úhlu pohledu? Dáváš upřímné rady a poskytuješ odpovědi, dokážeš povzbudit, motivovat a inspirovat? Pak je tato příležitost šitá na míru právě pro tebe. \nHledáme pro členy komunity mentory, kteří budou věnovat cca hodinu za dva týdny (nebo dle domluvy) rozvoji dalších členů komunity po dobu minimálně 2 měsíců. \n\n<i>Příklad:</i> Pro Aplikaci Včas (s neziskovou organizací Loono) máme seniorního kolegu, který konzultuje a mentoruje juniorní design tým (přibližně 2 hodiny za 14 dní). Díky tomu může vzniknout kvalitní výstup pro aplikaci a tým může získávat praktickou zkušenost přímo na projektu.\n\n<i>Příklad:</i> Pro core tým Česko.Digital máme mentory/mentorky, kteří pomáhají s osobním rozvojem, seniorní zpětnou vazbou a nadhledem. Díky tomu tým, který pečuje o komunitu, vytváří nástroje a prostředí pro zapojení dobrovolníků může dále růst a získávat kompetence, typicky jde o hodinu 1 x za 14 dní. \n\n- copywritting \n- vedení týmu \n- delivery projektů \n- community management \n- agile a scrum\n\n\nPokud máš zájem nabídnout své mentoring zkušenosti, napiš přímo naší komunitě na Slacku do kanálu <b><a href=\"https://cesko-digital.slack.com/archives/CV2MPBA1Y\">#mentoring-consulting</a></b> nebo napiš na Slacku Romaně Pokorné (<a href=\"mailto:romana@cesko.digital\">romana@cesko.digital</a>)"
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CV2MPBA1Y",
-    "skills": [
-      "Other"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
-    "id": "recXCFWXdRsPY3dm9",
-    "name": "Senior marketing konzultant",
-    "slug": "recXCFWXdRsPY3dm9",
-    "projectId": "recyAlQx0HFH0kW6h",
-    "summary": {
-      "source": "Potřebujeme dohlednout na komunikační aktivity ke spuštění Jehlomatu s cílem dostat aplikaci k co největšímu počtu potenciálních uživatelů. Rovněž potřebujeme pomoc s dohlédnutím nad strategií (případně její úpravou) ke spuštění aplikace a její exekuci."
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "rec5g2kjJCODPpUOI",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CV9HAUVPU/p1637082168011800",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
     "id": "recoeycEtMBeov7xe",
     "name": "Google Meet Support pro Česko.Digital Edu",
     "slug": "recoeycEtMBeov7xe",
@@ -248,7 +634,7 @@
       "source": "Hledáme posily, které během našich živých webinářů budou zajišťovat lektorům podporu, starat se o hladký průběh a ulehčit práci moderátorovi.\nCo to přesně znamená? Spouštíš Google Meet, vpouštíš dovnitř účastníky, zapínáš nahrávání, jsi průběžně k dispozici, kdyby bylo potřeba něco urgentně řešit (dostaneš pohotovostní kontakty), po konci webináře vypínáš nahrávání a ukončuješ Meet. Není to náročná role, ale klíčová pro úspěšné zrealizování našich vysílání.\n"
     },
     "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
+    "ownerId": "recfTQpPu9LYMIAps",
     "contactUrl": "https://cesko-digital.slack.com/archives/C01S44WHHST",
     "skills": [
       "Other"
@@ -262,7 +648,7 @@
     "slug": "recVCyXaFwnXwittD",
     "projectId": "recsIWPWTCFAvE2c2",
     "summary": {
-      "source": "Do týmu postpropdukce webinářů Učíme nanečisto hledáme posilu pro zpracování videozánamů z jednotlivých webinářů do naší videotéky. \nTvým úkolem bude sestříhat dle připravených pokynů webináře o délce 1,5 hodiny do několika krátkých videí. Nejsou potřeba žádné efekty, nevkládají se titulky, vkládá se jen už připravený intro a outro slide.\nJak vypadají vysledky naší práce najdeš zde: https://www.ucimeonline.cz/aktivity/ucime-nanecisto/videoteka/ "
+      "source": "Do týmu postpropdukce webinářů Učíme nanečisto hledáme posilu pro zpracování videozánamů z jednotlivých webinářů do naší videotéky. \nTvým úkolem bude sestříhat dle připravených pokynů webináře o délce 1,5 hodiny do několika krátkých videí. Nejsou potřeba žádné efekty, nevkládají se titulky, vkládá se jen už připravený intro a outro slide.\nJak vypadají vysledky naší práce najdeš zde: <https://www.ucimeonline.cz/aktivity/ucime-nanecisto/videoteka/> \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec4RP1qETXJHFlcB",
@@ -279,7 +665,7 @@
     "slug": "rec0n2mdVjleCM3pi",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Hledáme 2-3 parťáky a parťačky, kteří nám napříč projekty pomohou vymyslet marketingovou strategii a následně navrhnout marcom plán a potřebné role tak, aby byl realizovatelný dobrovolnicky."
+      "source": "Hledáme 2-3 parťáky a parťačky, kteří nám napříč projekty pomohou vymyslet marketingovou strategii a následně navrhnout marcom plán a potřebné role tak, aby byl realizovatelný dobrovolnicky.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recjnYNK3rcvn5roQ",
@@ -296,7 +682,7 @@
     "slug": "rec5JAdpnzBmPn37v",
     "projectId": "recsIWPWTCFAvE2c2",
     "summary": {
-      "source": "Pro webináře Učime nanečisto hledáme posilu do týmu moderátorů. Tvým úkolem bude ulehčit práci lektorovi, což zahrnuje interakci s účastníky během webináře v chatu, provedení úvodem a závěrem webináře, představení lektora a zprostředkování otázek od účastníků. Vše vysvětlíme, ukážeme, naučíme :) "
+      "source": "Pro webináře Učime nanečisto hledáme posilu do týmu moderátorů. Tvým úkolem bude ulehčit práci lektorovi, což zahrnuje interakci s účastníky během webináře v chatu, provedení úvodem a závěrem webináře, představení lektora a zprostředkování otázek od účastníků. Vše vysvětlíme, ukážeme, naučíme :) \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec4N4PrvAHEddN4u",
@@ -308,29 +694,12 @@
     "status": "live"
   },
   {
-    "id": "rec7uVJvGyjPrVRZr",
-    "name": "Copywriter (cílovka ZŠ)",
-    "slug": "rec7uVJvGyjPrVRZr",
-    "projectId": "recxWVIA1Ex40nWi7",
-    "summary": {
-      "source": "Hledáme někoho, kdo má cit pro cílovku dětí 2. stupně ZŠ (pracujeme hlavně s cílovkou 13-15 let), má zkušenosti s tvorbou obsahu.\n\nCo tě čeká: tvorba textů z připraveného obsahu nebo zdrojů od naší obsahové koordinátorky, které budou sloužit nejen jako část jednotlivých témat, ale zároveň jako podklady pro naše grafiky a ilustrátory, a spolupráce na audiovizuálním obsahu"
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C01168N8XP1",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": false,
-    "status": "live"
-  },
-  {
     "id": "receT3alAPVqjRHIU",
     "name": "Copywriter/ka v obsahovém týmu Česko.Digital",
     "slug": "receT3alAPVqjRHIU",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Chceš se rozvíjet v copywritingu a psát o různých tématech v různých komunikačních kanálech? Chybí ti zpětná vazba na tvé texty? Hledáš možnost, jak rozšířit své portfolio a jak začít psát? Nebo si vždycky chtěl/a mít vlastní blog, ale potřebuješ nakopnout a nejprve se rozepsat?\n\nTo všechno zažiješ v dobrovolnickém obsahovém týmu Česko.Digital! 💪\n\nBudeš tvořit blogové články a příspěvky na sociální sítě, pracovat na newsletteru, dělat na zajímavých rozhovorech, připravovat tiskové zprávy nebo se zapojíš kdekoliv jinde – dobrého obsahu jsou u nás potřeba stohy. 🤗 Dáváme lidem prostor projevit jejich talent a máme dostatek zkušených a laskavých kolegů, kteří vždy ochotně poradí.\n\n„Chtěla jsem pomoct tam, kde to podle mě dává smysl. Zároveň, trochu sobecky, i z toho důvodu, abych si vyzkoušela a naučila se něco nového. Česku.Digital vděčím z pracovního pohledu za všechno. Otevřelo mi dveře do online marketingu, do kterého jsem se díky tomu pustila na plno. Zároveň mě „donutilo“ vystoupit z mé komfortní zóny, sednout si před kameru a naučit se pracovat v týmu. Díky za všechno, co děláte nejen pro mě, ale hlavně pro společnost!“\nAlena Teclová – copywriterka, marketérka, členka obsahového týmu"
+      "source": "Chceš se rozvíjet v copywritingu a psát o různých tématech v různých komunikačních kanálech? Chybí ti zpětná vazba na tvé texty? Hledáš možnost, jak rozšířit své portfolio a jak začít psát? Nebo si vždycky chtěl/a mít vlastní blog, ale potřebuješ nakopnout a nejprve se rozepsat?\n\nTo všechno zažiješ v dobrovolnickém obsahovém týmu Česko.Digital! 💪\n\nBudeš tvořit blogové články a příspěvky na sociální sítě, pracovat na newsletteru, dělat na zajímavých rozhovorech, připravovat tiskové zprávy nebo se zapojíš kdekoliv jinde – dobrého obsahu jsou u nás potřeba stohy. 🤗 Dáváme lidem prostor projevit jejich talent a máme dostatek zkušených a laskavých kolegů, kteří vždy ochotně poradí.\n\n„Chtěla jsem pomoct tam, kde to podle mě dává smysl. Zároveň, trochu sobecky, i z toho důvodu, abych si vyzkoušela a naučila se něco nového. Česku.Digital vděčím z pracovního pohledu za všechno. Otevřelo mi dveře do online marketingu, do kterého jsem se díky tomu pustila na plno. Zároveň mě „donutilo“ vystoupit z mé komfortní zóny, sednout si před kameru a naučit se pracovat v týmu. Díky za všechno, co děláte nejen pro mě, ale hlavně pro společnost!“\nAlena Teclová – copywriterka, marketérka, členka obsahového týmu\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recYIWlSDlcXgQ377",
@@ -343,11 +712,11 @@
   },
   {
     "id": "recGSoQFdv5Ca6CsG",
-    "name": "Google Meet Support pro webináře",
+    "name": "Péče o Google Meet - Webináře Učíme nanečisto",
     "slug": "recGSoQFdv5Ca6CsG",
     "projectId": "recsIWPWTCFAvE2c2",
     "summary": {
-      "source": "Pro tým webinářů Učíme nanečisto hledáme posilu, která by se starala o realizaci webinářů prostřednicvím Google Meet. \nTvým úkolem by bylo zajistit, že Google Meet běží, že je webinář nahrávaný a vše funguje, jak má.\nMáme pro tuto roli podrobně zpracovaný návod, není čeho se bát a nejde o technicky náročné úkony, role je ale pro realizaci webinářů klíčová a budeme velmi vděční za pomoc. "
+      "source": "Pro tým webinářů Učíme nanečisto hledáme posilu, která by se starala o realizaci webinářů prostřednicvím Google Meet. \nTvým úkolem by bylo zajistit, že Google Meet běží, že je webinář nahrávaný a vše funguje, jak má.\nMáme pro tuto roli podrobně zpracovaný návod, není čeho se bát a nejde o technicky náročné úkony, role je ale pro realizaci webinářů klíčová a budeme velmi vděční za pomoc. \nChceš vědět víc? Ozvi se Kačce Beranové buď přes Slack, nebo na katerina.beranova@cesko.digital. \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec4N4PrvAHEddN4u",
@@ -364,7 +733,7 @@
     "slug": "recOAS3eWt8yVwNKg",
     "projectId": "recxWVIA1Ex40nWi7",
     "summary": {
-      "source": "Hledáme někoho, kdo má předchozí zkušenost s tvorbou grafického/výtvarného online řešení, kreativní přístup. Budeš pracovat na grafických materiálech a klíčových vizuálech pro web, mobilní aplikaci i doprovodnou marketingovou kampaň (on i offline) pro několik životních situací, které se týkají duševního zdraví žáků 2. stupně ZŠ. Budeš spolupracovat s brand designérem, UX/UI designéry i dalšími v týmu."
+      "source": "Hledáme někoho, kdo má předchozí zkušenost s tvorbou grafického/výtvarného online řešení, kreativní přístup. Budeš pracovat na grafických materiálech a klíčových vizuálech pro web, mobilní aplikaci i doprovodnou marketingovou kampaň (on i offline) pro několik životních situací, které se týkají duševního zdraví žáků 2. stupně ZŠ. Budeš spolupracovat s brand designérem, UX/UI designéry i dalšími v týmu.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "rec4aPaaf2GDZ3VoH",
@@ -398,7 +767,7 @@
     "slug": "recTD8KYb7kgFTGq3",
     "projectId": "recsIWPWTCFAvE2c2",
     "summary": {
-      "source": "Pro postprodukční tým webinářů Učíme nanečisto hledáme pomoc při zpracovávání podkladů pro střihače videí. \nTvým úkolem bude zhlédnout videozáznam webináře a navrhnout střih do jednotlivých kapitol, ze kterých bude zpracovaný kurz do naší videotéky.\nNejde o mechanickou práci, je třeba pracovat s citem a s ohledem na funkčnost výsledku pro naši cílovou skupinu, kterou jsou zpravidla učitelé hledající inspiraci a nové podněty. \nJak vypadají zpracované záznamy se můžeš podívat zde: https://www.ucimeonline.cz/aktivity/ucime-nanecisto/videoteka/ "
+      "source": "Pro postprodukční tým webinářů Učíme nanečisto hledáme pomoc při zpracovávání podkladů pro střihače videí. \nTvým úkolem bude zhlédnout videozáznam webináře a navrhnout střih do jednotlivých kapitol, ze kterých bude zpracovaný kurz do naší videotéky.\nNejde o mechanickou práci, je třeba pracovat s citem a s ohledem na funkčnost výsledku pro naši cílovou skupinu, kterou jsou zpravidla učitelé hledající inspiraci a nové podněty. \nJak vypadají zpracované záznamy se můžeš podívat zde: <https://www.ucimeonline.cz/aktivity/ucime-nanecisto/videoteka/> \n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "rec0w0pWOKwmsecJm",
@@ -410,12 +779,450 @@
     "status": "live"
   },
   {
+    "id": "recBUZkBvTeDqaoXe",
+    "name": "Grafik/Grafička do produkčního týmu Česko.Digital",
+    "slug": "recBUZkBvTeDqaoXe",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "### \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec4RP1qETXJHFlcB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02KTMXCXB6",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recA6JYv7vD8exyRN",
+    "name": "Zpracovatel/ka podkladů pro střih webinářů č.edu",
+    "slug": "recA6JYv7vD8exyRN",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "### O co jde? \nBaví tě se vzdělávat, pracovat s informacemi a videem a máš pár hodin měsíčně, které můžeš věnovat komunitě Česko.Digital?\nPro naši komunitu i pro veřejnost připravujeme pravidelné vzdělávací akce v různých oblastech, od soft-skills témat po různé technologie a nástroje.\nV produkčním dobro-týmu webinářů č.edu** hledáme další ruku a hlavu na zpracování odvysílaných webinářů** do podkladů pro následný střih. Podklady jsou stěžejní bod pro náš tým dobro.střihačů.  \nKonkrétněji jde o to se na webinář podívat a rozdělit ho do hlavních částí a navrhnout střihy do jednotlivých kapitol, ze kterých se pak udělají kratší videa do naší videotéky a na náš [Youtube kanál](https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg).\n\n### Co ti to může přinést?\n- Budeš se podílet na vzniku vzdělávacích videí, které v komunitě produkujeme. \n- Nahlídneš do procesu vzniku a propagace webinářů.\n- Super tým lidí podílející se na č.edu. \n- A spoustu dalšího!\n\nK ruce ti bude dobrovolnice Verča, která tuto roli už nějakou dobu zastupuje. A co na to Verča?\n_\"Díky tomu, že se webinář musí naposlouchat a pak rozepsat do hlavních částí, spojím tak touhle činností příjemné s užitečným a každý díl se učím nové věci. Někdy jsou to Google Analytics jindy zas třeba Jak na timemanagement.\"_\n\nPokud tě nabídka zaujala a chceš se dozvědět víc, určitě se neváhej ozvat! :) \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec4RP1qETXJHFlcB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02KTMXCXB6",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec7miVCTj7caaOWg",
+    "name": "Product Designer*ka",
+    "slug": "rec7miVCTj7caaOWg",
+    "projectId": "rec3jCr9o3jrohoD9",
+    "summary": {
+      "source": "Pro pomoc s vývojem a další rozvoj platformy <https://pomahejukrajine.cz> hledáme do týmu posilu - Product Designera\\*ku. Hlavním úkolem je pomoci Product Ownerovi s nastavením priorit při dalším vývoji, se směrem dalšího rozvoje a vizí dlouhodobé udržitelnosti a využitelnosti platformy i mimo současnou pomoc Ukrajině.\n\nCo budeš mít na starosti?\n\\* projít si současný stav platformy\n\\* probrat se zástupci všech zúčastněných stran jejich potřeby a možnosti\n\\* navrhnout odpovídající směr a obrysy výsledného stavu\n\\* společně s vývojáři spolupracovat na vývoji technologického řešení\n\nO <https://pomahejukrajine.cz>:\n\\* v tuto chvíli jde o trižiště nabídek pomoci Ukrajině, kde mohou jednotlivci i organizace vkládat nabídky, z nichž některé jsou přímo zveřejněny a mohou na ně reagovat ti, kdo pomoc potřebují, a některé (hlavně ubytování) jdou k rukám neziskových organizací nebo obcí\n\\* do budoucna je v plánu rozšiřovat funkcionalitu a také vylepšit stávající možnosti portálu\n\\* odbornou záštitu a roli Product Ownera zajišťuje Konsorcium nevládních organizací pracujících s migranty v ČR\n\\* Česko.Digital nabídlo pomocnou ruku v oblasti technologické a podporu vývoje \n\\* spuštění portálu bylo reakcí na aktuální situaci na Ukrajině, ale počítá se s jeho dlouhodobým využíváním i pro jiné potřeby\n\nCo nás v nejbližších dnech čeká?\n\\* ujasnit si další směřování a cíle projektu \n\\* postavit vývojový tým\n\\* rozjet další vývoj :) \n\nCo ti můžeme nabídnout?\n\\* možnost podílet se na důležitém a společensky prospěšném projektu s velkým dopadem \n\\* nadšení a podporu komunity Česko.Digital\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, ozvi se na Anežce Müller na Slacku nebo na anezka@cesko.digital.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/C034TATED4K/",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recq2aSkn7e3g3H0v",
+    "name": "Scrum Master / Koordinátor/ka",
+    "slug": "recq2aSkn7e3g3H0v",
+    "projectId": "recW2VsVydOsR16zE",
+    "summary": {
+      "source": "Expertní dobrovolníci pod vedením Tomáše Bederky a Jana Štefanidese, ve spolupráci s MŠMT a pedagogickou fakultou UK rozvíjí řešení na sledování nabídek a poptávek volných míst ve školách a školkách.\n\nScrum Master by měl pomoci s koordinací projektu a v delším čase jeho přechodu na Scrum. \n\nRole  je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nScrum Master je typicky parťák k Product Ownerovi (Tomáš Bederka) za stranu zadavatele (neziskovka / stát), kterému pomáháš s pochopením agilního řízení a iterativního postupu. \n\nJe pro tebe důležitá dobrá komunikace v týmu, vytváření bezpečného prostředí a podpora samořízeného týmu. \n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C035ZPG6U6L",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/vzdelavani-ua-deti/cover.png",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec4iiMFFN5TDWaSU",
+    "name": "Marketing Lead",
+    "slug": "rec4iiMFFN5TDWaSU",
+    "projectId": "recVbN6EHVYOo0yng",
+    "summary": {
+      "source": "Hledáme do týmu Marketing Leada na pomoc modernizace aplikace Nepanikař. Chceme přinést možnosti vylepšení \"user experience\" pro uživatele, pomoci s designem a také přidat nové funkce (ukládání dat).\n\nCo tě čeká:\n\n\\- Pomoci týmu a hlavně product ownerce a zakladatelce projektu Veronice Kamenské s marketingovou a komunikační strategií (zpětná vazba, další tipy)\n\\- Realizace marketingové a komunikační strategie (pro redesign produktu)\n\\- Propagace projektu v komunitě Česko.Digital (blog, web, sociální sítě) pro větší zapojení komunity a vnímání dopadu projektu  \n\nCo nabízíme:\n\n\\- Budeš se podílet na velmi úspěšném projektu s obrovským dopadem.\n\\- Na jakoukoliv z kompetencí marketingu (copy, design, PR...) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034D2W8LVA",
+    "coverImageUrl": "https://data.cesko.digital/img/nepanikar.jpg",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recDrdV4pQ13cIQDA",
+    "name": "Marketing Lead",
+    "slug": "recDrdV4pQ13cIQDA",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "summary": {
+      "source": "Platforma Stojíme za Ukrajinou vznikala s cílem zamezit tříštění informací, duplikaci práce a zefektivnění pomoci. Samotné tvorbě webových stránek předcházela intenzivní komunikace a propojování mezi různými organizacemi. Na webu se zároveň propojují a odkazují další aktivity dobrovolnických týmu z Česko.Digital (Umapa, Pomáhej Ukrajině...). \n\nHledá se Marketing Lead, který/á zaštítí celkovou komunikaci projektu ve spolupráci s Product Ownerckou (Katka Jiřinová) a marketingovou managerkou z Česko.Digital (Martina Hábová). \n\nCo bude práce obnášet:\n• Projít si materiály, které popisují současnou situaci \n• Projít si web \n• Navrhnout a realizovat komunikační strategii projektu \n\nTvůj profil:\n• Máš zkušenost s tvořením komunikační strategie \n• Na jakoukoliv z kompetencí (copy, PR...) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n• Možnost pracovat na klíčovém projektu na pomoc Ukrajině s týmem profíků a dotáhnout ho do udržitelné podoby \n• Možnost podílet se na projektu, který má zároveň velký společenský a socioekonomický přínos.\n• Nadšení komunity Česko.Digital a chuť přiložit ruku k dílu.\n\n \n\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034T19KMS7",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/stojime_za_ukrajinou/cover-stojimezaukrajinou.jpg",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rectIzuEA77FeinsU",
+    "name": "Scrum Master",
+    "slug": "rectIzuEA77FeinsU",
+    "projectId": "rec3jCr9o3jrohoD9",
+    "summary": {
+      "source": "Pro koordinaci vývojového týmu pro rozvoj platformy <https://pomahejukrajine.cz> hledáme do dobrovolnického týmu posilu - Scrum Mastera. \nBudeš pravou rukou Product Ownera a tvým úkolem bude od začátku v týmu podporovat práci dle agilních metod. \n\nCo budeš mít jako Scrum Master na starosti?\n\\* úzkou spolupráci s Product Ownerem a Tech Leadem\n\\* koordinaci vývojového týmu\n\\* tvorbu user stories\n\\* nastavení a vedení ceremonií\n\\* účast na strategických setkáních\n\nCo se ti bude hodit?\n\\* zkušenost s agilním řízením týmu dle metodiky Scrum\n\\* výhodou je jakákoliv zkušenost s dalšími agilními principy a technikami\n\\* velmi dobré komunikační dovednosti a empatie\n\\* zkušenosti s koordinací týmu\n\nO <https://pomahejukrajine.cz>:\n\\* v tuto chvíli jde o trižiště nabídek pomoci Ukrajině, kde mohou jednotlivci i organizace vkládat nabídky, z nichž některé jsou přímo zveřejněny a mohou na ně reagovat ti, kdo pomoc potřebují, a některé (hlavně ubytování) jdou k rukám neziskových organizací nebo obcí\n\\* do budoucna je v plánu rozšiřovat funkcionalitu a také vylepšit stávající možnosti portálu\n\\* odbornou záštitu zajišťuje Konsorcium nevládních organizací pracujících s migranty v ČR\n\\* Česko.Digital nabídlo pomocnou ruku v oblasti technologické a podporu vývoje\n\\* projekt vyvíjíme v TypeScriptu a využíváme GitHub Actions pro deployment \n\\* pro pracovní workflow budeme používat GitHub Issues\n\\* spuštění portálu bylo reakcí na aktuální situaci na Ukrajině, ale počítá se s jeho dlouhodobým využíváním i pro jiné potřeby\n\nCo nás v nejbližších dnech čeká?\n\\* ujasnit si směřování projektu ve spolupráci zadavatelů s produktovým designerem\n\\* postavit vývojový tým\n\\* rozjet další vývoj :) \n\nCo ti můžeme nabídnout?\n\\* možnost podílet se na důležitém a společensky prospěšném projektu s velkým dopadem \n\\* nadšení a podporu komunity Česko.Digital\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, ozvi se na Anežce Müller na Slacku nebo na anezka@cesko.digital.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/C034TATED4K/",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rechkLt3PVBuTv44Y",
+    "name": "Editor/ka obsahu (web)",
+    "slug": "rechkLt3PVBuTv44Y",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "summary": {
+      "source": "Platforma Stojíme za Ukrajinou vznikala s cílem zamezit tříštění informací, duplikaci práce a zefektivnění pomoci. Samotné tvorbě webových stránek předcházela intenzivní komunikace a propojování mezi různými organizacemi. Na webu se zároveň propojují a odkazují další aktivity dobrovolnických týmu z Česko.Digital (Umapa, Pomáhej Ukrajině...). \n\nHledá se Editor/ka obsahu, který/á pomůže Product Ownerce (Katka Jiřinová) a product designerovi (hledá se) s učesáním webu, přetavením vize projektu do podoby webu a nastavení dlouhodobosti ohledně jeho dalšího vývoje. \n\nCo bude práce obnášet:\n• Projít si materiály, které popisují současnou situaci \n• Projít si web a jeho jazykové mutace\n• Navrhnout odpovídající systém práce na tvorbě obsahu s copy a překladatelským týmem (aby docházelo k úpravám webu ideálně 1 x týdně) \n• Připravit kritéria co (ne)patří na web, kde by měly být dohledatelné hlavně celonárodní informace z důvěryhodných zdrojů \n• Aktivně se podílet na tvorbě a úpravě obsahu\n\nTvůj profil:\n• Máš zkušenost ideálně s tvorbou (strategického) obsahu a copy webu\n• Máš analytické myšlení \n• Na jakoukoliv z kompetencí (copy, překlad, marketing) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n• Možnost pracovat na klíčovém projektu na pomoc Ukrajině s týmem profíků a dotáhnout ho do udržitelné podoby \n• Možnost podílet se na projektu, který má zároveň velký společenský a socioekonomický přínos.\n• Nadšení komunity Česko.Digital a chuť přiložit ruku k dílu.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034T19KMS7",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/stojime_za_ukrajinou/cover-stojimezaukrajinou.jpg",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recMsmTHVYgs9tOfp",
+    "name": "Senior Product/UX Designer ",
+    "slug": "recMsmTHVYgs9tOfp",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "summary": {
+      "source": "Platforma Stojíme za Ukrajinou vznikala s cílem zamezit tříštění informací, duplikaci práce a zefektivnění pomoci. Samotné tvorbě webových stránek předcházela intenzivní komunikace a propojování mezi různými organizacemi. Na webu se zároveň propojují a odkazují další aktivity dobrovolnických týmu z Česko.Digital (Umapa, Pomáhej Ukrajině...). \n\nHledá se designér, který pomůže Product Ownerce (Katka Jiřinová) s učesáním webu, přetavením vize projektu do podoby webu a nastavení dlouhodobosti ohledně jeho dalšího vývoje. \n\nCo bude práce obnášet:\n• Projít si materiály, které popisují současnou situaci \n• Projít si web a jeho jazykové mutace\n• Promluvit si s uživateli a analyzovat jejich potřeby/možnosti a jak je současný web plní \n• Navrhnout odpovídající design webu a systém práce s design týmem\n• Společně s vývojáři spolupracovat na vývoji technologického řešení\n\nTvůj profil:\n• Máš zkušenost ideálně s designem webu nebo výzkumem, UX a UI\n• Na jakoukoliv z kompetencí (výzkum, UX, UI, tester, podpora vývoje) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ (za pomoci recruitera).\n\nCo nabízíme:\n• Možnost pracovat na klíčovém projektu na pomoc Ukrajině s týmem profíků a dotáhnout ho do udržitelné podoby \n• Možnost podílet se na projektu, který má zároveň velký společenský a socioekonomický přínos.\n• Nadšení komunity Česko.Digital a chuť přiložit ruku k dílu.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034T19KMS7",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/stojime_za_ukrajinou/cover-stojimezaukrajinou.jpg",
+    "skills": [
+      "Design",
+      "Product Owner"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recduveNFHS3xACAZ",
+    "name": "Tech Lead ",
+    "slug": "recduveNFHS3xACAZ",
+    "projectId": "rec3jCr9o3jrohoD9",
+    "summary": {
+      "source": "Pro koordinaci vývoje a další rozvoj platformy <https://pomahejukrajine.cz> hledáme do týmu posilu - Tech Leada, který by zaštítil technickou kvalitu projektu. Projekt vyvíjíme v TypeScriptu a hojně využíváme GitHub Actions pro deployment.\n\nCo budeš mít jako Tech lead na starosti?\n\\* koordinaci vývoje v repozitáři na GitHubu\n\\* code review pro vývoj nových funkcí\n\\* udržování a zlepšování procesu deploymentu\n\\* garantování technické kvality projektu\n\\* návrhy na technická vylepšení projektu\n\nO <https://pomahejukrajine.cz>:\n\\* v tuto chvíli jde o trižiště nabídek pomoci Ukrajině, kde mohou jednotlivci i organizace vkládat nabídky, z nichž některé jsou přímo zveřejněny a mohou na ně reagovat ti, kdo pomoc potřebují, a některé (hlavně ubytování) jdou k rukám neziskových organizací nebo obcí\n\\* do budoucna je v plánu rozšiřovat funkcionalitu a také vylepšit stávající možnosti portálu\n\\* odbornou záštitu zajišťuje Konsorcium nevládních organizací pracujících s migranty v ČR\n\\* Česko.Digital nabídlo pomocnou ruku v oblasti technologické a podporu vývoje \n\\* spuštění portálu bylo reakcí na aktuální situaci na Ukrajině, ale počítá se s jeho dlouhodobým využíváním i pro jiné potřeby\n\nCo nás v nejbližších dnech čeká?\n\\* ujasnit si směřování projektu ve spolupráci zadavatelů s produktovým designerem\n\\* postavit vývojový tým\n\\* rozjet další vývoj :) \n\nCo ti můžeme nabídnout?\n\\* možnost podílet se na důležitém a společensky prospěšném projektu s velkým dopadem \n\\* nadšení a podporu komunity Česko.Digital a chuť přiložit ruku k dílu\n\nPokud se chceš dozvědět víc nebo se rovnou na roli přihlásit, ozvi se na Anežce Müller na Slacku nebo na anezka@cesko.digital.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/C034TATED4K/",
+    "skills": [
+      "Dev"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recgDXCpADqXbqAqk",
+    "name": "Scrum Master",
+    "slug": "recgDXCpADqXbqAqk",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "summary": {
+      "source": "Hledáme Scrum Mastera, který/á se pravidelně zapojí do rozvoje stránky Stojíme za Ukrajinou (<https://www.stojimezaukrajinou.cz/>).\n\nPlatforma Stojíme za Ukrajinou vznikala s cílem zamezit tříštění informací a duplikaci práce. Samotné tvorbě webových stránek tak předcházela intenzivní komunikace a propojování mezi různými organizacemi.\n\nScrum Master by měl pomoci s koordinací projektu a v delším čase jeho přechodu na Scrum. \n\nRole  je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nScrum Master je typicky parťák k Product Ownerovi (Tereza Gagnon z Česko.Digital) za stranu zadavatele (neziskovka / stát), kterému pomáháš s pochopením agilního řízení a iterativního postupu. \n\nJe pro tebe důležitá dobrá komunikace v týmu, vytváření bezpečného prostředí a podpora samořízeného týmu. \n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034T19KMS7",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recHaPjclolooFlKF",
+    "name": "Zadavatel/ka dat z terénu",
+    "slug": "recHaPjclolooFlKF",
+    "projectId": "recmeRJIosxXb4hG4",
+    "summary": {
+      "source": "Co tě čeká:\n\\- 2x za den kontaktovat koordinátory a koordinátorky na přechodech a zadat info od nich do mapy \n\\- validace automatizovaných dat\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recukxWJDZaoJclDh",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0369FJGU4R",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-ukrajinskych-hranicnich-prechodu/cover.png",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recMKqIAlpYGvwyTM",
+    "name": "Copywriter/ka",
+    "slug": "recMKqIAlpYGvwyTM",
+    "projectId": "recmeRJIosxXb4hG4",
+    "summary": {
+      "source": "Co tě čeká:\n\\- kompletní copywriting pro projekt\n\\- příspěvky k propagaci na sociálních sítích\n\nO čem projekt je? Zjisti více na <https://cesko.digital/projects/mapa-ukrajinskych-hranicnich-prechodu>.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recYIWlSDlcXgQ377",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0369FJGU4R",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-ukrajinskych-hranicnich-prechodu/cover.png",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recwoFfzrIMIcOqNa",
+    "name": "Koordinátor/ka překladů",
+    "slug": "recwoFfzrIMIcOqNa",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "Co tě čeká:\n\\- koordinace překladů na projektu\n\\- péče a rozvoj týmu spolu s koordinátorem/koordinátorkou projektu\n\\- hledání vhodných kolegů do týmu spolu s recruiterem/recruiterkou\n\nO čem projekt je? Zjisti více na <https://cesko.digital/projects/mapa-ukrajinske-komunity-v-cr>.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recYIWlSDlcXgQ377",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Other",
+      "Scrum Master",
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recIYzf3MsaeRu2Ku",
+    "name": "Recruiter/ka",
+    "slug": "recIYzf3MsaeRu2Ku",
+    "projectId": "reckK5IZ5e9FYLgeO",
+    "summary": {
+      "source": "Co tě čeká:\n\\- hledání vhodných kolegů do týmu\n\\- práce s databází a evidencí dobrovolníků\n\\- příprava a textace poptávek pro jednotlivé role\n\\- komunikace s uchazeči o role\n\nO čem projekt je? Zjisti více na <https://cesko.digital/projects/mapa-ukrajinske-komunity-v-cr>.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recYIWlSDlcXgQ377",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0365BM2HKK",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/mapa-podpory-ua-komunity-v-cr/cover.png",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recaAkuYno2sayPK2",
+    "name": "Senior UX Designer/ka  ",
+    "slug": "recaAkuYno2sayPK2",
+    "projectId": "recVbN6EHVYOo0yng",
+    "summary": {
+      "source": "Hledáme UX designéra pro modernizaci aplikace Nepanikař. Chceme přinést možnosti vylepšení \"user experience\" pro uživatele, pomoci s designem a také přidat nové funkce (ukládání dat).\n\nCo tě čeká:\n\n\\- Na základě zkušeností týmu Nepanikař, dat o používání aplikace a chování uživatelů navrhneš vylepšení.\n\\- Ověříš novou funkcionalitu s uživateli.\n\nCo nabízíme:\n\n\\- Budeš se podílet na velmi úspěšném projektu s obrovským dopadem.\n\\- Na jakoukoliv z kompetencí Výzkum, UX, UI, podpora vývoje je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034D2W8LVA",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recgBRGWeBBuny3v6",
+    "name": "Scrum Master (do tandemu)",
+    "slug": "recgBRGWeBBuny3v6",
+    "projectId": "recVbN6EHVYOo0yng",
+    "summary": {
+      "source": "Hledáme zkušeného Scrum Mastera do tandemu s projektovou koordinátorkou/scrum masterkou, která by potřebovala podpořit v rámci nastavení agilních ceremonií v projektu Nepanikař, a proto bychom tě rádi zapojili hned na začátku projektu.  \n\nCo tě čeká? \nSpolečně s dalším Scrum Mastrem při rozjezdu projektu budete mít na starosti zavést vhodné nástroje a týmové agilní ceremonie a ve vzájemné součinnosti dohlížet na koordinaci zadaných úkolů v souladu s potřebami dobro týmu = týmu nadšených lidí pro projekt, kteří ve svém volném čase pomohou smysluplné věci.  \n\nRole Scrum Mastera je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nCo ti to může dát? \nZkušenosti s koordinací dobrovolníků na projektu, nové propojení a jiný způsob práce a také smyslupnost toho, že posouváš věci k lepšímu.\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recwHYEjFtK8eKLWD",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C034D2W8LVA",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec1SGEPd72QgD5J2",
+    "name": "Marketing Lead",
+    "slug": "rec1SGEPd72QgD5J2",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Do projektu Volební kalkulačky hledáme Marketing Leada.\n \nCo tě čeká:\nSmyslem kalkulačky je poskytnout voličům jednoduché rozhraní, pomocí kterého si ověří své voličské preference. Aktuálně do projektu potřebujeme najít seniorního marketéra/ku, který/á je schopný/á vymyslet a naplánovat to jak a kde Volební kalkulačku promovat a zajistit tím růst počtu uživatelů. \nJedním z prvních úkolů bude upozornit na případné nedostatky v social lean canvas z pohledu marketingu a identifikovat marketingové příležitosti projektu, později přijde na řad vypracování a realizace marketingové strategie. \n \nObecně máme roli Marketing Leada popsanou zde - <https://bit.ly/3uOW9vD> a informace k projektu zase najdeš tady - <https://cesko.digital/projects/volebni-kalkulacka>.\n \nSpolupracovat budeš s Product Ownerem (Michal Škop z organizace KohoVolit.eu) za stranu zadavatele a týmem nadšených dobrovolníků z Česko.digital.\n \nCo ti to může dát?\nZkušenosti s koordinací dobrovolníků na projektu, nové propojení a jiný způsob práce a také smysluplnost toho, že posouváš věci k lepšímu.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "recf6EM1qZxTTFkA0",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "reclNxpED0An2KfZL",
+    "name": "UX Designer",
+    "slug": "reclNxpED0An2KfZL",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Hledáme UX designéra pro modernizaci Volební kalkulačky. Chceme přidat nové funkce, především přidat možnost vyplňování kalkulačky ve skupině (například ve třídě), historii vyplňování a porovnávání odpovědí v čase.\n\nCo tě čeká:\n\n\\- Na základě dat o používání Volební kalkulačky, zkušeností týmu a uživatelů navrhneš vylepšení.\n\\- Ověříš novou funkcionalitu s uživateli.\n\\- Budeš spolupracovat vývojáři, kteří kalkulačku integrují do svých webů (například v médiích).\n\nCo nabízíme:\n\n\\- Budeš se podílet na open source projektu s obrovským dopadem.\n\\- Na jakoukoliv z kompetencí Výzkum, UX, UI, podpora vývoje je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec4x1nrgt2HbMUpA",
+    "name": "Výzkumnice/výzkumník pro zpracování kvalitativních dat",
+    "slug": "rec4x1nrgt2HbMUpA",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Právě probíhá třetí měření naší komunitní spokojenosti, které nám pomůže vylepšovat prostředí v Česko.Digital. \n\nDo týmu People & Community hledáme VÝZKUMNICE a VÝZKUMNÍKY, kteří nám pomohou s finálním vyhodnocováním tohoto kvalitativního výzkumu. \n\nDotazník je k dispozici zde: <https://airtable.com/shrvEAGlYWulURPSY>, více informací k celému včetně předchozích reportů je na wiki: <https://cesko-digital.atlassian.net/l/c/wrRuSZ3J>.\n\nZpracování dat a následného reportu odhadujeme na 15 - 20 hodin. Výsledky z dotazníku začneme zpracovávat už 21. 2. 2022, hotovo by mělo být do konce února ⏰ \n\nDíky moc a těšíme se na spolupráci! 🤝\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0198U4M0HY",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recfsZsbOAcBXkwMB",
+    "name": "Scrum Master / Projektový koordinátor",
+    "slug": "recfsZsbOAcBXkwMB",
+    "projectId": "rec6UeTza7Yq0qkjN",
+    "summary": {
+      "source": "Chceš pomoci s projektem Volební kalkulačka a tak mít dopad na to, aby si voliči mohli informovaně vybrat tu stranu či kandidáta, která/rý reprezentuje jejich zájmy?\n\nHledáme Scrum Mastera a současně trochu i projektového koordinátora, který/á se může zapojit do nově vznikajícího projektu v Česko.Digital.\n\nJako Scrum Master při rozjezdu projektu budeš mít na starosti zavést vhodné týmové agilní ceremonie a pravidelně dohlížet na koordinaci zadaných úkolů v souladu s potřebami dobro týmu = týmu nadšených lidí pro projekt, kteří ve svém volném čase pomohou smysluplné věci.  \n\nRole je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nScrum Master je typicky parťák k Product Ownerovi (Michal Škop z organizace KohoVolit.eu) za stranu zadavatele, kterému pomáháš s koordinací týmu a posováním navržených úkolů dopředu dle zvoleného tempa a harmonogramu.\n\nCo ti to může dát? Zkušenosti s koordinací dobrovolníků na projektu, nové propojení a jiný způsob práce a také smyslupnost toho, že posouváš věci k lepšímu.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "recf6EM1qZxTTFkA0",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0311K8LHFX",
+    "coverImageUrl": "https://data.cesko.digital/web/projects/volebni-kalkulacka/cover.jpg",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "recg2KQ9YeAq6sFrQ",
+    "name": "HR koordinátor",
+    "slug": "recg2KQ9YeAq6sFrQ",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Hledáme dobrovolnickou posilu na roli koordinátora nebo koordinátorky lidských zdrojů pro potřebnou administrativu a zároveň náboráře nebo náborářku na koordinaci hledání a náboru dobrovolníků do našich projektů napříč celým Česko.Digital.\n\n\\- práce s databází a evidence dobrovolníků\n\\- pravidelné zjišťování potřeb nových posil v rámci projektů\n\\- psaní poptávek (texty pro projektové stránky, Portál dobrovolníka, Cocuma, Slack) na základě podkladů od členů jednotlivých projektových týmů\n\\- předvýběr a komunikace s uchazeči o role (seznámení s Česko.Digital, obecný úvod do role, představení hodnot Česko.Digital a pojmu komunita) ve spolupráci s Product Ownerem projektu\n\\- organizace a účast na pohovorech v týmech, kam je role třeba.\n\nCo získáš zapojením do projektu:\n\n\\- možnost podílet se na projektech s velkým dopadem\n\\- fungování v remote first organizaci\n\\- spolupráci s dalšími dobrovolníky z různých oblastí od veřejné správy po komerční sektor\n\\- pravidelná možnost osobního rozvoje a vzdělávání v oboru i mimo něj prostřednictvím Česko.Digital Edu\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recheJ92XChLaVlsr",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C0198U4M0HY",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recsm5giXpqFt1VgA",
+    "name": "Scrum Master ",
+    "slug": "recsm5giXpqFt1VgA",
+    "projectId": "recFAG24teJRpENoQ",
+    "summary": {
+      "source": "Hledáme Scrum Mastera, který/á se pravidelně zapojí do nově inkubovaného projektu v Česko.Digital. \n\nScrum Master při rozjezdu projektu zavádí na vhodné Scrum eventy a vytváří prostředí v Jira. \n\nRole  je blíže popsaná zde: <https://bit.ly/3L2J08b>.\n\nScrum Master je typicky parťák k Product Ownerovi (Anna Strejcová ze Zachraň Jídlo) za stranu zadavatele (neziskovka / stát), kterému pomáháš s pochopením agilního řízení a iterativního postupu. \n\nJe pro tebe důležitá dobrá komunikace v týmu, vytváření bezpečného prostředí a podpora samořízeného týmu. \n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C01AMGXT9HQ",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec8IkvvNuEzsaJ78",
+    "name": "Grafik pro Učíme online",
+    "slug": "rec8IkvvNuEzsaJ78",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "summary": {
+      "source": "Hledáme dobrovolníka na výpomoc s tvorbou grafických materiálů pro projekt Učíme online.\n\nJedná se především o tvorbu podkladů pro webináře Učíme nanečisto - úvodní slidy pro prezentace, cover obrázky na sociální sítě a úvodní obrázky k videozáznamům z webinářů a jejich jednotlivým kapitolám, které jsou pak součástí naší Videotéky jako mikrokurzy.\n\nVýpomoc hledáme na několik následujících měsíců, jedná se částečně o nepravidelnou nárazovou činnost. Připravujeme zpravidla jeden webinář týdně, ale velkou část grafiky potřebujeme připravit ve chvíli otevírání registrací, které otevíráme, jakmile dostaneme podklady od lektorů, někdy tedy tři webináře za týden, někdy dva týdny nic :)\n\nCo lze dopředu odhadnout lépe je potřeba se zpracovávání videozáznamu, což probíhá pravidelně jednou týdně po jeho odvysílání.\n\nPodklady máme ve Figmě a Lukáš Návesník, který má pod palcem produkci v Česko.Digital, je připravený vysvětlit, kde co najít, jaké jsou potřeby projektu z hlediska grafiky a případně i ukázat základy práce s Figmou :)\n\nMáš chuť to zkusit? Ozvi se, rádi řekneme více!\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://app.slack.com/client/TG21XF887/CUXRHTY58/",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recDwHlOSBHyIhD9P",
+    "name": "Produktový/UX designér/ka",
+    "slug": "recDwHlOSBHyIhD9P",
+    "projectId": "recFAG24teJRpENoQ",
+    "summary": {
+      "source": "Pro seniory, rodiče samoživitele a další lidi v nouzi není teplé a výživově hodnotné jídlo samozřejmostí. Přitom v každé komerční jídelně zbyde denně až 25 kg nevydaných pokrmů, které se vyhodí. Chceme, aby se vařené jídlo dostalo k těm, kdo ho skutečně potřebují.\n\nHledá se designér, který by pomohl s přípravou a realizací služby darování přebytečných pokrmů z jídelen a cateringu charitativním organizacím, které pracují s lidmi v nouzi. Na základě navrženého procesu by pak mělo vzniknout digitální řešení, které by umožnilo snadné darování.\n\nCo bude práce obnášet:\n• Projít si materiály, které Zachraň jídlo dalo dohromady a které popisují současnou situaci \n• Promluvit si se stakeholdery a analyzovat jejich potřeby/možnosti \n• Navrhnout odpovídající design služby a formu technologického řešení\n• Společně s vývojáři spolupracovat na vývoji technologického řešení\n\nTvůj profil:\n• Máš zkušenost ideálně s designem služeb, nebo s výzkumem, UX a UI\n• Na jakoukoliv z kompetencí (výzkum, UX, UI, podpora vývoje) je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n• Možnost stavět na znalostech shromážděných díky dvouletému projektu Darování jídla šetří klima (desítky rozhovorů a rešerší) a dotáhnout ho do smysluplného závěru\n• Možnost podílet se na projektu, který má zároveň ekologický a společenský přínos.\n• Nadšení týmu Zachraň jídlo, který s čímkoliv rád vypomůže.\n"
+    },
+    "timeRequirements": "5–10 hodin týdně",
+    "ownerId": "rec5i9y2EIaX1ZKD2",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02U3RZLT5J",
+    "skills": [
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
     "id": "recyILpcjWmhMOByt",
     "name": "Product Designer ",
     "slug": "recyILpcjWmhMOByt",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Do inkubovaného projektu Hotová jídla pomáhají (neziskové org. Zachraň jídlo) hledáme Product Designera s přesahem do UX, který by pomohl s přípravnou fázi projektu a výběru vhodného tech řešení dle potřeby cílovky a ostatních stakeholders"
+      "source": "Do inkubovaného projektu Hotová jídla pomáhají (neziskové org. Zachraň jídlo) hledáme Product Designera s přesahem do UX, který by pomohl s přípravnou fázi projektu a výběru vhodného tech řešení dle potřeby cílovky a ostatních stakeholders\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "rec0ABdJtGIK9AeCB",
@@ -428,12 +1235,81 @@
     "status": "unlisted"
   },
   {
+    "id": "recEYYngHScQpNaIE",
+    "name": "Talent Manager & HR – autor příručky č.d",
+    "slug": "recEYYngHScQpNaIE",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Digi příručka má důležitou roli ve škálování projektů v Česko.Digital - více o ní zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací. \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nNa každé téma hledáme alespoň tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "rec7nvFj05etQkgKq",
+    "name": "Agilní coach – autor příručky č.d",
+    "slug": "rec7nvFj05etQkgKq",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Digi příručka má důležitou roli ve škálování projektů v Česko.Digital - více o ní zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací. \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nNa každé téma hledáme alespoň tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master",
+      "Other"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "rece58lg1uXKSo65v",
+    "name": "ScrumMaster – autor příručky č.d",
+    "slug": "rece58lg1uXKSo65v",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Digi příručka má důležitou roli ve škálování projektů v Česko.Digital - více o ní zde: <https://bit.ly/346lTZC>.\n\nDíky tipům z Česko.Digital a praxi z jiných organizací v ČR i ve světě pomůžeme s rozjezdem většího počtu digitálních projektů od státních a neziskových organizací. \n\nV prvním kroku (MVP) půjde primárně o tipy, jak stavět skvělé projekty a týmy. Témata jsou: \n\\- Product Design \n\\- Lean Canvas a Lean Startup \n\\- Agilní řízení \n\\- Složení týmu a kompetenční model \n\\- Práce a motivace v dobrovolnickém prostředí \n\nNa každé téma hledáme alespoň tandem juniora a seniora, který dané téma zpracuje - postup, myšlenková mapa, checklist či článek ze zahraničí tak, aby neziskové organizace měly pomocníka o kterého se při při rozjezdu digitálních projektů opřít. \n\nProduct Ownerka na projektu je Romana Pokorná, která je v Česko.Digital 1.5 roku a má na starosti projektovou metodiku v inkubátoru a akcelerátoru. Je připravena s čímkoliv pomoci. \n\nPlánované aktivity na projektu jsou zapsány v Jira: <https://bit.ly/3HlmmFw>.  \n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/C02T7QPHGA3",
+    "skills": [
+      "Scrum Master"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
+    "id": "recn2d3AOMdBmEM8a",
+    "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu IV",
+    "slug": "recn2d3AOMdBmEM8a",
+    "projectId": "recgHexe37XeWVy8N",
+    "summary": {
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n\\- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n\\- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n\\- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n\\- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D014RCN73CK",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": true,
+    "status": "unlisted"
+  },
+  {
     "id": "rec718yAOsp0YORnY",
     "name": "Koordinátor/ka webinářů a živých vysílání pro Česko.Digital Edu III",
     "slug": "rec718yAOsp0YORnY",
     "projectId": "recgHexe37XeWVy8N",
     "summary": {
-      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n\\- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n\\- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n\\- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n\\- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝\n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -450,7 +1326,7 @@
     "slug": "rec786HcvUIMtgaBQ",
     "projectId": "recgHexe37XeWVy8N",
     "summary": {
-      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n\\- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n\\- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n\\- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n\\- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝\n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -462,12 +1338,47 @@
     "status": "unlisted"
   },
   {
+    "id": "recbg3CqUtjxzykSj",
+    "name": "Konzultace nového webu pro Jídelnu Kuchařek bez domova",
+    "slug": "recbg3CqUtjxzykSj",
+    "projectId": "recllqNV9YxnSjkMF",
+    "summary": {
+      "source": "JÍDELNA KUCHAŘEK BEZ DOMOVA POTŘEBUJE WEB! \n\nV sociálním podniku - Jídelně Kuchařek bez domova připravují ženy se zkušeností s bezdomovectvím lahodné, čistě rostlinné menu a cateringy. Aby se o jejich umu mohlo dozvědět víc lidí a jejich dobroty s přesahem doputovaly do nejrůznějších míst, ženy z Jídelny se usnesly, že by moc rády měly vlastní web.\n\nStavíme na zelené louce a hledáme někoho, kdo nám pomůže vyspecifikovat požadavky, ať vůbec víme, co potřebujeme. Na webu bychom rády informovaly o tom, jak Jídelna funguje, inzerovaly tam naše menu, nabídku cateringu a zprovoznily tam malý eshop na nějaké ty lahůdky od Kuchařek.\n\nNěco o Jídelně může každý, kdo by chtěl, přečíst na těchto stránkách: <http://jakodoma.org/kucharky-bez-domova-2/> nebo na facebooku <https://www.facebook.com/jidelnakbd>\n\nMáš chuť pomoci? Ozvi se Kristýně Kosinové:\nkosinova.k@gmail.com, případně 608 740 181\n"
+    },
+    "timeRequirements": "jednorázová výpomoc",
+    "ownerId": "recfTQpPu9LYMIAps",
+    "contactUrl": "https://cesko-digital.slack.com/archives/CLVAH28P3/p1639658832157900",
+    "skills": [
+      "Dev",
+      "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rech8cq1ePSe2ts5e",
+    "name": "Coaching v komunitě Česko.Digital",
+    "slug": "rech8cq1ePSe2ts5e",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "Jsi akreditovaný kouč a dává ti smysl kromě technologických kompetenci pomoci rozvinout v naší komunitě také měkké dovednosti jako pohled na leadership, emoční inteligenci nebo komunikační vzorce? Chceš pomoci rozvíjet a posouvat někoho na cestě k vytyčeným cílům? Umíš pokládat ty správné otázky a směřovat cílené rady? Hledáme pro členy komunity coache, kteří chtějí věnovat cca hodinu za 3 týdny pro minimálně 3 setkání   rozvoji dalších členů komunity. \n\n<br>\n<i>Jak se můžeš zapojit nebo jak můžeš nabídnout svou pomoc?</i>\n\nPro core tým Česko.Digital hledáme coache, kteří můžou pomoci se směřováním a osobním rozvojem. Díky tomu tým, který pečuje o komunitu, vytváří nástroje a prostředí pro zapojení dobrovolníků může dále růst a získávat potřebné kompetence a dovednosti.\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/D02CD2TUZRB",
+    "skills": [
+      "Other"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
     "id": "recRlIFb9fyJZJclI",
     "name": "🔥 Marketingový/á koordinátor/ka",
     "slug": "recRlIFb9fyJZJclI",
     "projectId": "recgHexe37XeWVy8N",
     "summary": {
-      "source": "Hledá se posila pro koordinaci marketingových a komunikačních aktivit na projektu Česko.Digital Edu, náš komunitní vzdělávací a rozvojový program.\n\nCo budeš mít na starosti:\n- aktualizace marketingové strategie (společně s podporou seniorního strategického marketéra)\n- realizace vypracované marketingové strategie\n- příprava zadání/ briefů pro tým specialistů (copywriter, grafik, UX dizajner, event manager, PR koordinátor)\n- koordinace úkolů v týmu specialistů na projektu (copywriter, grafik, atp.)\n- průběžné vyhodnocování výsledků (metriky např. návštěvnost akcí, dosah videí, dosah social postů, atd) a jejich komunikace projektovému týmu\n- sběr příběhů jednotlivých dobrovolníků podílejících se na daném projektu"
+      "source": "Hledá se posila pro koordinaci marketingových a komunikačních aktivit na projektu Česko.Digital Edu, náš komunitní vzdělávací a rozvojový program.\n\nCo budeš mít na starosti:\n\\- aktualizace marketingové strategie (společně s podporou seniorního strategického marketéra)\n\\- realizace vypracované marketingové strategie\n\\- příprava zadání/ briefů pro tým specialistů (copywriter, grafik, UX dizajner, event manager, PR koordinátor)\n\\- koordinace úkolů v týmu specialistů na projektu (copywriter, grafik, atp.)\n\\- průběžné vyhodnocování výsledků (metriky např. návštěvnost akcí, dosah videí, dosah social postů, atd) a jejich komunikace projektovému týmu\n\\- sběr příběhů jednotlivých dobrovolníků podílejících se na daném projektu\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -484,7 +1395,7 @@
     "slug": "recp7PP8LGRqj9ylu",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Hledá se UX/produktový designér s UI kompetencí, který zaštítí produktový design v rámci celé organizace Česko.Digital – konkrétně pak aktuálně pro vývoj Portálu dobrovolníka.\n\nCo konkrétně budeš mít na starost:\n\n• Sesbírat požadavky všech našich person na všech úrovních dobrovolnické pyramidy (výzkum).\n• Vytvořit na základě toho UX cesty dobrovolníka Česko.Digital, kam zakomponuješ plány a požadavky všech týmů a interních projektů.\n• Navrhnout odpovídající nástroje a UI (možná existují i lepší řešení/produkty pro náš problém než je Portál dobrovolníka).\n• Společně s vývojáři/dalšími implementátory spolupracovat na vývoji.\n• Budeš mít možnost také podporovat, konzultovat a mentorovat v oblasti designu projekty Česko.Digital s neziskovými partnery.\n\nTvůj profil:  \n\n• Máš zkušenost s výzkumem, UX i UI\n• Na jakoukoliv z kompetencí Výzkum, UX, UI, podpora vývoje je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n\n• Placenou spolupráci na plný úvazek alespoň na 6 měsíců.\n• Open source projekt s dopadem.\n• Možnost práce odkudkoliv s flexibilní pracovní dobou – jsme remote first. Osobní kontakt však nic nenahradí a tak, když je to možné, se jednou za dva týdny potkáváme i osobně v naší kanceláři v centru Prahy.\n• Možnost zažít organizaci řízenou skrz sdílené hodnoty a vizi."
+      "source": "Hledá se UX/produktový designér s UI kompetencí, který zaštítí produktový design v rámci celé organizace Česko.Digital – konkrétně pak aktuálně pro vývoj Portálu dobrovolníka.\n\nCo konkrétně budeš mít na starost:\n\n• Sesbírat požadavky všech našich person na všech úrovních dobrovolnické pyramidy (výzkum).\n• Vytvořit na základě toho UX cesty dobrovolníka Česko.Digital, kam zakomponuješ plány a požadavky všech týmů a interních projektů.\n• Navrhnout odpovídající nástroje a UI (možná existují i lepší řešení/produkty pro náš problém než je Portál dobrovolníka).\n• Společně s vývojáři/dalšími implementátory spolupracovat na vývoji.\n• Budeš mít možnost také podporovat, konzultovat a mentorovat v oblasti designu projekty Česko.Digital s neziskovými partnery.\n\nTvůj profil:  \n\n• Máš zkušenost s výzkumem, UX i UI\n• Na jakoukoliv z kompetencí Výzkum, UX, UI, podpora vývoje je případně možné využít dobrovolnickou komunitu, kterou si kolem sebe vybuduješ.\n\nCo nabízíme:\n\n• Placenou spolupráci na plný úvazek alespoň na 6 měsíců.\n• Open source projekt s dopadem.\n• Možnost práce odkudkoliv s flexibilní pracovní dobou – jsme remote first. Osobní kontakt však nic nenahradí a tak, když je to možné, se jednou za dva týdny potkáváme i osobně v naší kanceláři v centru Prahy.\n• Možnost zažít organizaci řízenou skrz sdílené hodnoty a vizi.\n"
     },
     "timeRequirements": "fulltime",
     "ownerId": "recA5nftMpxJmwpr4",
@@ -492,6 +1403,23 @@
     "skills": [
       "Product Owner",
       "Design"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
+    "id": "rechK7Q40TLmcFJWV",
+    "name": "Konzultace & mentoring v komunitě Česko.Digital",
+    "slug": "rechK7Q40TLmcFJWV",
+    "projectId": "recZqAUagJLM40GnI",
+    "summary": {
+      "source": "<b>Konzultace</b> \n\nMáš za sebou hluboké zkušenosti a rád dáváš někomu tipy a triky, aby se na věci mohl podívat čerstvýma očima?\n\nSvé nabídky na konzultaci v oblasti designu, vývoje, marketingu a dalších můžeš nabídnout přímo naší komunitě na Slacku v kanálu <b><a href=\"<https://cesko-digital.slack.com/archives/CLVAH28P3>\">#market-place</a></b> nebo si můžeš přečíst poptávky od jednotlivců, neziskovek či státní správy a nabídnout jim svou pomoc. \n<br>\n\n<b>Mentoring</b>\n\nChceš předávat pravidelně své znalosti a zkušenosti? Chceš pomoci někomu dalšímu nahlédnout na jeho profesní rozvoj z jiného úhlu pohledu? Dáváš upřímné rady a poskytuješ odpovědi, dokážeš povzbudit, motivovat a inspirovat? Pak je tato příležitost šitá na míru právě pro tebe. \nHledáme pro členy komunity mentory, kteří budou věnovat cca hodinu za dva týdny (nebo dle domluvy) rozvoji dalších členů komunity po dobu minimálně 2 měsíců. \n\n<i>Příklad:</i> Pro Aplikaci Včas (s neziskovou organizací Loono) máme seniorního kolegu, který konzultuje a mentoruje juniorní design tým (přibližně 2 hodiny za 14 dní). Díky tomu může vzniknout kvalitní výstup pro aplikaci a tým může získávat praktickou zkušenost přímo na projektu.\n\n<i>Příklad:</i> Pro core tým Česko.Digital máme mentory/mentorky, kteří pomáhají s osobním rozvojem, seniorní zpětnou vazbou a nadhledem. Díky tomu tým, který pečuje o komunitu, vytváří nástroje a prostředí pro zapojení dobrovolníků může dále růst a získávat kompetence, typicky jde o hodinu 1 x za 14 dní. \n\n\\- copywritting \n\\- vedení týmu \n\\- delivery projektů \n\\- community management \n\\- agile a scrum\n\n\nPokud máš zájem nabídnout své mentoring zkušenosti, napiš přímo naší komunitě na Slacku do kanálu <b><a href=\"<https://cesko-digital.slack.com/archives/CV2MPBA1Y>\">#mentoring-consulting</a></b> nebo napiš na Slacku Romaně Pokorné (<a href=\"<mailto:romana@cesko.digital>\">\\romana@cesko.digital</a>)\n"
+    },
+    "timeRequirements": "0–2 hodin týdně",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "contactUrl": "https://cesko-digital.slack.com/archives/CV2MPBA1Y",
+    "skills": [
+      "Other"
     ],
     "juniorFriendly": false,
     "status": "unlisted"
@@ -514,12 +1442,29 @@
     "status": "unlisted"
   },
   {
+    "id": "recXCFWXdRsPY3dm9",
+    "name": "Senior marketing konzultant",
+    "slug": "recXCFWXdRsPY3dm9",
+    "projectId": "recyAlQx0HFH0kW6h",
+    "summary": {
+      "source": "Potřebujeme dohlednout na komunikační aktivity ke spuštění Jehlomatu s cílem dostat aplikaci k co největšímu počtu potenciálních uživatelů. Rovněž potřebujeme pomoc s dohlédnutím nad strategií (případně její úpravou) ke spuštění aplikace a její exekuci.\n"
+    },
+    "timeRequirements": "3–5 hodin týdně",
+    "ownerId": "rec5g2kjJCODPpUOI",
+    "contactUrl": "https://cesko-digital.slack.com/archives/CV9HAUVPU/p1637082168011800",
+    "skills": [
+      "Marketing"
+    ],
+    "juniorFriendly": false,
+    "status": "unlisted"
+  },
+  {
     "id": "recCYY7RdPge3XE4A",
     "name": "Programátor/ka Typescript + React (placená role!)",
     "slug": "recCYY7RdPge3XE4A",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Hledá se programátor/ka pro vývoj Portálu dobrovolníka, na kterém budeš spolupracovat s designérem/kou a dalšími programátory.\n\nChceme pokročilou znalost Typescript + React. Jde o open source projekt, takže velký bonus, pokud máš zkušenosti s open source vývojem – fungoval(a) bys vlastně jako placený maintainer, který projekt roztáhne a pomůže na něm zapojovat dobrovolníky."
+      "source": "Hledá se programátor/ka pro vývoj Portálu dobrovolníka, na kterém budeš spolupracovat s designérem/kou a dalšími programátory.\n\nChceme pokročilou znalost Typescript + React. Jde o open source projekt, takže velký bonus, pokud máš zkušenosti s open source vývojem – fungoval(a) bys vlastně jako placený maintainer, který projekt roztáhne a pomůže na něm zapojovat dobrovolníky.\n"
     },
     "timeRequirements": "fulltime",
     "ownerId": "recA5nftMpxJmwpr4",
@@ -537,7 +1482,7 @@
     "slug": "recos1hwwuNY0jv0r",
     "projectId": "recAh6CmL9dLySvjH",
     "summary": {
-      "source": "Hledáme někoho, kdo nám pomůže navrhnout prototypu webu a bude úzce spolupracovat s týmem mladých grafiků ze střední grafické školy (pod vedením zkušeného profesora). Budeme si rozumět, pokud máš zkušenosti v oblasti UX designu, tvorbou User Stories, person a storyboardů), máš velmi dobré komunikační dovednosti, máš analytický přístup a znáš nástroje k tvorbě prototypů (v Česko.Digital používáme hlavně Figmu). "
+      "source": "Hledáme někoho, kdo nám pomůže navrhnout prototypu webu a bude úzce spolupracovat s týmem mladých grafiků ze střední grafické školy (pod vedením zkušeného profesora). Budeme si rozumět, pokud máš zkušenosti v oblasti UX designu, tvorbou User Stories, person a storyboardů), máš velmi dobré komunikační dovednosti, máš analytický přístup a znáš nástroje k tvorbě prototypů (v Česko.Digital používáme hlavně Figmu). \n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -554,7 +1499,7 @@
     "slug": "rec0YZ3onWofJxctJ",
     "projectId": "recgHexe37XeWVy8N",
     "summary": {
-      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝"
+      "source": "Baví tě vzdělávání, koordinace akcí a máš cca 2 hodiny týdně? Hledáme někoho, kdo nám pomůže koordinovat všechny aktivity kolem webinářů, hlídat termíny, pečovat o naše lektory a lektorky a komunikovat s nimi v rámci příprav.\n\nVšechny aktivity od propagace po sběr feedbacku budeš koordinovat společně s dalšími dobrovolnickými koordinátory a koordinátorkami týmu č.edu.\n\nHledáme tě, pokud:\n\n\\- jsi týmový parťák, rád/a komunikuješ s lidmi, koordinuješ různé aktivity\n\\- máš cca 2 - 3 hodiny týdně (začít můžeš hned)\n\\- zkušenost s koordinací projektů nebo event managementem - je výhodou, ale ne podmínkou\n\\- zajímá tě vzdělávání a rozvoj\n\nJsme cca osmičlenný tým a pořádáme cca 3 webináře či workshopy pro komunitu měsíčně a následně z nich tvoříme videokurzy.\n\nTěšíme se na spolupráci! 🤝\n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -571,7 +1516,7 @@
     "slug": "rec0wIxDbLre14w5H",
     "projectId": "recAh6CmL9dLySvjH",
     "summary": {
-      "source": "Hledáme někoho, kdo pomůže tvořit naši marketingovou strategii, naplánuje a zkoordinuje z ní vyplývající aktivity a případně bude řídit i svůj marketingový minitým.\nHledáme někoho, koho baví marketing i koordinace, nebojí se sdílet nápady a nezalekne se administrativy. Ideálně tě zajímá problematika veřejných zakázek a můžeš věnovat nějaký čas i samostudiu k tématu."
+      "source": "Hledáme někoho, kdo pomůže tvořit naši marketingovou strategii, naplánuje a zkoordinuje z ní vyplývající aktivity a případně bude řídit i svůj marketingový minitým.\nHledáme někoho, koho baví marketing i koordinace, nebojí se sdílet nápady a nezalekne se administrativy. Ideálně tě zajímá problematika veřejných zakázek a můžeš věnovat nějaký čas i samostudiu k tématu.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -588,7 +1533,7 @@
     "slug": "reclKrwSllzgEWOnl",
     "projectId": "recSci1ztMeeakzg2",
     "summary": {
-      "source": "- Práce na mobilní aplikaci, která bude postavená v Typescriptu pomocí Reactu a PWA frameworku\n- Typescript / React\n- PWA (Progressive web app)\n- GraphQL\nHTML, CSS a práce s Figmou\n"
+      "source": "\\- Práce na mobilní aplikaci, která bude postavená v Typescriptu pomocí Reactu a PWA frameworku\n\\- Typescript / React\n\\- PWA (Progressive web app)\n\\- GraphQL\nHTML, CSS a práce s Figmou\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recoK3s2M2KzJ2JoC",
@@ -605,7 +1550,7 @@
     "slug": "recnXKdqgbbV3HE6F",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Hledáme někoho, kdo nám pomůže zefektivnit propagaci hledaných rolí na projektech a eventů a odstranit bariéry pro zapojení do komunity. Rádi bychom propojili náš nový web se Slackem a udělali z něj funkční nástroj pro snadné zapojení dobrovolníků v komunitě. V první řadě zveřejňování poptávaných rolí a interních eventů a snadné přihlašování na ně."
+      "source": "Hledáme někoho, kdo nám pomůže zefektivnit propagaci hledaných rolí na projektech a eventů a odstranit bariéry pro zapojení do komunity. Rádi bychom propojili náš nový web se Slackem a udělali z něj funkční nástroj pro snadné zapojení dobrovolníků v komunitě. V první řadě zveřejňování poptávaných rolí a interních eventů a snadné přihlašování na ně.\n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec5i9y2EIaX1ZKD2",
@@ -622,7 +1567,7 @@
     "slug": "recpEZ4KyIQ2VTVsO",
     "projectId": "recgHexe37XeWVy8N",
     "summary": {
-      "source": "Hledají se dobrovolníci na podporu a moderování živých vysílání #run-ceskodigital_edu. Začínáme od dubna a cca za dva týdny bude první vysílání."
+      "source": "Hledají se dobrovolníci na podporu a moderování živých vysílání #run-ceskodigital\\_edu. Začínáme od dubna a cca za dva týdny bude první vysílání.\n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -639,7 +1584,7 @@
     "slug": "rectcCHNzA1lrLjq8",
     "projectId": "recxWVIA1Ex40nWi7",
     "summary": {
-      "source": "Hledáme koordinátora obsahu, který převezme předjednanou spolupráci od našeho partnership týmu a domluví se s nimi, jak obsah potřebujeme, případně ho z materiálů vytvoří a zajistí, aby ho organizace pak zvalidovala."
+      "source": "Hledáme koordinátora obsahu, který převezme předjednanou spolupráci od našeho partnership týmu a domluví se s nimi, jak obsah potřebujeme, případně ho z materiálů vytvoří a zajistí, aby ho organizace pak zvalidovala.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -656,7 +1601,7 @@
     "slug": "recWuZXNIYxTLS194",
     "projectId": "recSci1ztMeeakzg2",
     "summary": {
-      "source": "Hledáme jednorázovou posilu na zprovoznění prototypu, který dostane zprávy do uší\n\nOvládáš React Native stejně dobře jako češtinu? Pár tvých hodin týdně může pomoci velké změně 🙏\n\n👉🏻 Máme rozdělaný prototyp jedné z inovací, které mohou přiblížit zpravodajství blíže k lidem formou změny textu na audio formát. Během jednoho měsíce by ses podílel/a pár hodinami týdně podílel na finalizaci aplikace, kterou jsme s novináři, Josefem Šlerkou a Nadačním fondem nezávislé žurnalistiky navrhovali během jara."
+      "source": "Hledáme jednorázovou posilu na zprovoznění prototypu, který dostane zprávy do uší\n\nOvládáš React Native stejně dobře jako češtinu? Pár tvých hodin týdně může pomoci velké změně 🙏\n\n👉🏻 Máme rozdělaný prototyp jedné z inovací, které mohou přiblížit zpravodajství blíže k lidem formou změny textu na audio formát. Během jednoho měsíce by ses podílel/a pár hodinami týdně podílel na finalizaci aplikace, kterou jsme s novináři, Josefem Šlerkou a Nadačním fondem nezávislé žurnalistiky navrhovali během jara.\n"
     },
     "timeRequirements": "jednorázová výpomoc",
     "ownerId": "recoK3s2M2KzJ2JoC",
@@ -673,7 +1618,7 @@
     "slug": "rec0fSF2Hc4GrFQMe",
     "projectId": "recZqAUagJLM40GnI",
     "summary": {
-      "source": "Rádi bychom propojili náš nový web se Slackem a udělali z něj funkční nástroj pro snadné zapojení dobrovolníků v komunitě. V první řadě zveřejňování poptávaných rolí a interních eventů a snadné přihlašování na ně."
+      "source": "Rádi bychom propojili náš nový web se Slackem a udělali z něj funkční nástroj pro snadné zapojení dobrovolníků v komunitě. V první řadě zveřejňování poptávaných rolí a interních eventů a snadné přihlašování na ně.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "rec5i9y2EIaX1ZKD2",
@@ -690,7 +1635,7 @@
     "slug": "rec2bJGrqlqlLGp61",
     "projectId": "rec6oc72Z1zxWdC42",
     "summary": {
-      "source": "Rozjíždíme práci na novém projektu a chceme jej stavět na pevných základech. V přípravné fázi proto plánujeme ověření hypotéz, na nichž je postaveno současné zadání a celkový záměr. K tomu bude zapotřebí jak výzkum od stolu, tak i rozhovory (nejen) s primární cílovou skupinou. Na základě výsledků chceme navrhnout prototyp a ten pak podrobit kvalitativnímu ověřování. "
+      "source": "Rozjíždíme práci na novém projektu a chceme jej stavět na pevných základech. V přípravné fázi proto plánujeme ověření hypotéz, na nichž je postaveno současné zadání a celkový záměr. K tomu bude zapotřebí jak výzkum od stolu, tak i rozhovory (nejen) s primární cílovou skupinou. Na základě výsledků chceme navrhnout prototyp a ten pak podrobit kvalitativnímu ověřování. \n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recfTQpPu9LYMIAps",
@@ -707,7 +1652,7 @@
     "slug": "recc17zuaH4QzZs8H",
     "projectId": "rec4KOruzwIFU8ieR",
     "summary": {
-      "source": "Do design týmu hledáme k UX leadovi dalšího seniora, který může dávat zpětnou vazbu kolegům v týmu (medioři). "
+      "source": "Do design týmu hledáme k UX leadovi dalšího seniora, který může dávat zpětnou vazbu kolegům v týmu (medioři). \n"
     },
     "timeRequirements": "0–2 hodin týdně",
     "ownerId": "rec0ABdJtGIK9AeCB",
@@ -724,7 +1669,7 @@
     "slug": "recj7IPiDIBQTHnrJ",
     "projectId": "recsIWPWTCFAvE2c2",
     "summary": {
-      "source": "Na krátkodobou výpomoc hledáme UI designera či designerku, co nám pomůže dokončit aktualizaci a úpravu stránek Učíme online.\nÚkol je vhodný i pro juniora, jedná se především o práci s již hotovou grafikou a novými texty, jednoduché úpravy, pracujeme ve Figmě."
+      "source": "Na krátkodobou výpomoc hledáme UI designera či designerku, co nám pomůže dokončit aktualizaci a úpravu stránek Učíme online.\nÚkol je vhodný i pro juniora, jedná se především o práci s již hotovou grafikou a novými texty, jednoduché úpravy, pracujeme ve Figmě.\n"
     },
     "timeRequirements": "jednorázová výpomoc",
     "ownerId": "recfTQpPu9LYMIAps",
@@ -741,7 +1686,7 @@
     "slug": "recw5yBqwCqi3RWmu",
     "projectId": "recxWVIA1Ex40nWi7",
     "summary": {
-      "source": "Hledáme někoho, kdo pomůže doladit naši marketingovou strategii, naplánuje a zkoordinuje z ní vyplývající aktivity a případně bude řídit i svůj marketingový minitým.\nHledáme někoho, koho baví marketing i koordinace, nebojí se sdílet nápady a nezalekne se administrativy."
+      "source": "Hledáme někoho, kdo pomůže doladit naši marketingovou strategii, naplánuje a zkoordinuje z ní vyplývající aktivity a případně bude řídit i svůj marketingový minitým.\nHledáme někoho, koho baví marketing i koordinace, nebojí se sdílet nápady a nezalekne se administrativy.\n"
     },
     "timeRequirements": "3–5 hodin týdně",
     "ownerId": "recheJ92XChLaVlsr",
@@ -758,7 +1703,7 @@
     "slug": "recznOtshHpdCp6q3",
     "projectId": "rec6oc72Z1zxWdC42",
     "summary": {
-      "source": "Do rozbíhajícího se projektu s pracovním názvem Pohyb je řešení hledáme Scrum Mastera, který by nám pomohl s implementací a udržováním agilních procesů a který by pomáhal dovést tým co nejlépe k cíli. "
+      "source": "Do rozbíhajícího se projektu s pracovním názvem Pohyb je řešení hledáme Scrum Mastera, který by nám pomohl s implementací a udržováním agilních procesů a který by pomáhal dovést tým co nejlépe k cíli. \n"
     },
     "timeRequirements": "5–10 hodin týdně",
     "ownerId": "recfTQpPu9LYMIAps",
@@ -784,176 +1729,6 @@
       "Marketing"
     ],
     "juniorFriendly": false,
-    "status": "unlisted"
-  },
-  {
-    "id": "recEia6oJFzFPNBCE",
-    "name": "Analytik (podpora k Product Owner) pro Inkubátor",
-    "slug": "recEia6oJFzFPNBCE",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Hledáme Product Owners, kteří se roli věnuji profesně nebo se o ni zajímají a chtějí se v ní rozvíjet. PO je typicky parťák k PO od zadavatele (neziskovka \n/ stát) a pomáhá mu s prioritizací backlogu, zadávání úkolu týmu, review. Také pomáhá dobrovolnickému scrum masterovi. "
-    },
-    "timeRequirements": "5–10 hodin týdně",
-    "ownerId": "rec0ABdJtGIK9AeCB",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C01AMGXT9HQ",
-    "skills": [
-      "Product Owner"
-    ],
-    "juniorFriendly": false,
-    "status": "unlisted"
-  },
-  {
-    "id": "recFnBrVbutL2riek",
-    "name": "React/Gatsby vývojář",
-    "slug": "recFnBrVbutL2riek",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Rádi bychom propojili náš nový web se Slackem a udělali z něj funkční nástroj pro snadné zapojení dobrovolníků v komunitě. V první řadě zveřejňování poptávaných rolí a interních eventů a snadné přihlašování na ně."
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
-    "skills": [
-      "Dev"
-    ],
-    "juniorFriendly": true,
-    "status": "unlisted"
-  },
-  {
-    "id": "recGyqSm0UytxzQaA",
-    "name": "Frontend vývojář – React",
-    "slug": "recGyqSm0UytxzQaA",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Frontend mág pro web - hledáme někdo, kdo by nám pomohl s podstránkou pro partnery č.d? Detaily i grafický návrh zde: https://cesko-digital.slack.com/archives/CMAS7H63D/p1626684608272300\n\n"
-    },
-    "timeRequirements": "jednorázová výpomoc",
-    "ownerId": "rec5g2kjJCODPpUOI",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CHG9NA23D",
-    "skills": [
-      "Dev"
-    ],
-    "juniorFriendly": true,
-    "status": "unlisted"
-  },
-  {
-    "id": "recNp1tZvcqIecuB5",
-    "name": "UX Designer",
-    "slug": "recNp1tZvcqIecuB5",
-    "projectId": "rec6oc72Z1zxWdC42",
-    "summary": {
-      "source": "V rámci přípravné fáze projektu bychom chtěli ověřit, zda hypotézy, ze kterých vycházíme, jsou správné, a na zjištěních začít stavět řešení. Součástí by měl být i návrh prototypu. Proto hledáme do našeho týmu UX designera, který by se přidal už nyní pro počáteční průzkum a tvorbu prototypu a pokračoval pak s námi dál při samotném vývoji.  "
-    },
-    "timeRequirements": "5–10 hodin týdně",
-    "ownerId": "recfTQpPu9LYMIAps",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C02B7AAAH7E",
-    "skills": [
-      "Design"
-    ],
-    "juniorFriendly": false,
-    "status": "unlisted"
-  },
-  {
-    "id": "recReUA9chS2Eg5p1",
-    "name": "Tech-lead (Full-stack/Frontend)",
-    "slug": "recReUA9chS2Eg5p1",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Hledáme tě, pokud:\n- chceš vést vývoj projektu, který dává smysl, má společenský dopad a naplňuje základní kritéria Česko.Digital \n- toužíš po zkušenosti s vedením, tentokrát expertních dobrovolníků z oblasti vývoje (a chceš vybírat technologie a postup)\n- jsi odhodlaný/á pomoci svým časem (typicky 5h/týden), zkušenostmi a energií k řešení společenských problémů a digitalizování ČR\n- chceš dostávat zpětnou vazbu od druhého tech-leada, koordinátorů, CTO i komunity, kteří jsou tu pro tebe, aby se ti pracovalo co nejlépe"
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
-    "skills": [
-      "Dev"
-    ],
-    "juniorFriendly": false,
-    "status": "unlisted"
-  },
-  {
-    "id": "recTYylDlot0RHr5Z",
-    "name": "Frontend Developer",
-    "slug": "recTYylDlot0RHr5Z",
-    "projectId": "recxWVIA1Ex40nWi7",
-    "summary": {
-      "source": "Hledáme někoho, kdo má zkušenost s FE vývojem (pracujeme ve Webflow) a chuť se zapojit už do návrhu a dát feedback designerům, tak aby dostali podklady, které je možné dobře zpracovat. Budeš pracovat na webu Střechy duševního zdraví - od základních stavebních prvků po zapracovaní jednotlivých scénářů. Časová náročnost 3 - 5 hodin/týdně, dlouhodobá spolupráce."
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "recheJ92XChLaVlsr",
-    "contactUrl": "https://cesko-digital.slack.com/archives/C01168N8XP1",
-    "skills": [
-      "Dev"
-    ],
-    "juniorFriendly": true,
-    "status": "unlisted"
-  },
-  {
-    "id": "recT8f0cLxK3norm6",
-    "name": "Social Media Specialist",
-    "slug": "recT8f0cLxK3norm6",
-    "projectId": "recsIWPWTCFAvE2c2",
-    "summary": {
-      "source": "Do našeho dobrovolnického týmu hledáme posilu, kderá se bude podílet na tvorbě a rozvoji marketingové strategie projektu a pomůže nám efektivně pracovat s propagací projektu Učíme online na sociálních sítích. "
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "recfTQpPu9LYMIAps",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CUXRHTY58",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": true,
-    "status": "unlisted"
-  },
-  {
-    "id": "reca9TKrFVOgL6FDS",
-    "name": "Marketér pro Show&Tell",
-    "slug": "reca9TKrFVOgL6FDS",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "V dubnu proběhlo pilotní vysílání pořadu Show&Tell (https://cesko.digital/show-and-tell), kde jsme si úspěšně otestovali zájem komunity. Rádi bychom analyzovali marketing z pilotu a připravili strategii pro podporu dalších pravidelných vysílání."
-    },
-    "timeRequirements": "0–2 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": false,
-    "status": "unlisted"
-  },
-  {
-    "id": "recimgB3Eym4AdAVe",
-    "name": "Koordinátor obsahu",
-    "slug": "recimgB3Eym4AdAVe",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Hledáme obsahové koordinátory pro produkci Show&Tell obsahu."
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
-    "skills": [
-      "Marketing"
-    ],
-    "juniorFriendly": true,
-    "status": "unlisted"
-  },
-  {
-    "id": "recP7yy2zpTZD9VtB",
-    "name": "Designer pro Show&Tell",
-    "slug": "recP7yy2zpTZD9VtB",
-    "projectId": "recZqAUagJLM40GnI",
-    "summary": {
-      "source": "Pro interní pořad Show&Tell hledáme designera, který nám pomůže potunit celou prezentaci a UX přihlašování uživatelů. Pilotní verze proběhla koncem dubna zde https://cesko.digital/show-and-tell"
-    },
-    "timeRequirements": "3–5 hodin týdně",
-    "ownerId": "rec5i9y2EIaX1ZKD2",
-    "contactUrl": "https://cesko-digital.slack.com/archives/CS7RPPVUL",
-    "skills": [
-      "Design"
-    ],
-    "juniorFriendly": true,
     "status": "unlisted"
   }
 ]

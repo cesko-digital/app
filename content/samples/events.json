@@ -1,5 +1,169 @@
 [
   {
+    "id": "recJsp4JHdlc4AFy3",
+    "name": "Učíme nanečisto: Slack jako TOP nástroj pro školní i firemní komunikaci",
+    "slug": "ucime-nanecisto-slack",
+    "summary": "Pojďte s námi objevit kouzlo Slacku!",
+    "description": {
+      "source": "Slack vládne týmové komunikaci už roky. Pojďte objevit jeho kouzlo i vy. Filip vám ukáže jak naprosté základy, tak pár tipů pro pokročilé.\n\n**Co to je Slack a proč ho využívat?** Srovnáte jej s dalšími alternativami jako Messenger, Google chat, WhatsApp apod. \n**Jak Slack získat, nastavit a začít používat?** Zorientujete se v prostředí, dostanete tipy a triky pro nastavení. To vše a mnoho dalšího podle vašich dotazů.\n\n**Co Vám webinář přinese:**\n- Proč a jak využívat na komunikaci Slack\n- Jak správně nastavit pravidla hry\n- Onboarding jako základ dobrého využívání\n\n**Cílové publikum**: Od začátečníků po středně pokročilé.\nPožadavek lektora: Ideální je mít nainstalovaný Slack, ale lze s ním pracovat i v prohlížeči bez instalace.\n\n**Filip Goszler** se pohybuje v oblasti digitálních technologií dlouhé roky. Prošel vedením velkých vzdělávacích projektů, poté 5 let vedl ostravský Impact Hub. Od roku 2016 má na starost digitální komunitu GUG.cz, která ročně vzdělá tisíce učitelů, vývojářů, podnikatelů i běžných uživatelů. Pomohl založit komunity jako TechMeetup Ostrava, Startup Weekend Ostrava, je aktivní školitel moderních technologií a Google Certified Trainer.\n\nRegistrovat se můžete níže, registrace uzavíráme den před webinářem či po naplnění kapacity. Prosíme zkontrolujte si vámi zadávaný email.\n<https://bit.ly/Registrace-27-4-2022> \n\nOdpovědi na nejčastější otázky najdete zde: <https://www.ucimeonline.cz/nejcastejsi-otazky-a-odpovedi/> \n\nTěšíme se na viděnou!\n"
+    },
+    "startTime": "2022-04-27T17:00:00.000Z",
+    "ownerId": "rec4N4PrvAHEddN4u",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "live",
+    "registrationUrl": "https://bit.ly/Registrace-27-4-2022",
+    "registrationTitle": "Registrace",
+    "endTime": "2022-04-27T18:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "locationTitle": "Google Meet"
+  },
+  {
+    "id": "recSXqkYjgNvmGMZQ",
+    "name": "Sociální síť pro vývojáře? Seznam se s GitHubem!",
+    "slug": "socialni-sit-pro-vyvojare-seznamte-se-s-githubem",
+    "summary": "GitHub ti ulehčí práci. Ať už jsi vývojář amatér nebo profesionál, platforma dovoluje ukládat nejrůznější softwarové projekty.",
+    "description": {
+      "source": "### O čem webinář bude?\nNa nedávném webináři jsi se (možná) potkal/a s Honzou Pávem, který ti vysvětlil, k čemu a jak používat tabulky Airtable. U softwarové techniky ještě chvíli zůstaneme, protože naším dalším přednášejícím je **Petr Švarný**. Ten to umí s programem **GitHub** tak dobře, že budeš jen zírat. 👀 Své učení rád předá, a to na našem dalším webináři!\n\n### Na co se můžeš těšit?\nVe zkratce je **GitHub** platforma a.k.a. sociální síť pro vývojáře. Petr ti samozřejmě vysvětlí, jak s GitHubem pracovat:\n\n- Ujasní ti jeho základní funkce.\n- Podívá se na milostný vztah GitHubu a Gitu a vysvětlí, jaké jsou mezi nimi vazby.\n- Vyjmenuje možnosti, které GitHub nabízí vývojářům i manažerům.\n\n### Kdo webinář povede?\nPetr Švarný není žádným amatérem. Nejen, že GitHub zná jako své boty, ale působí i jako doktorand na Katedře kybernetiky FEL ČVUT. Mimo to už nějaký ten pátek přednáší na FF UK nebo Prague City University a věnuje se roli automatizátora.\n\n### Kam dorazit?\nS Petrem se i ty sejdeš **online** skrz odkaz, který ti po registraci zašleme do e-mailu. Do kalendáře si zapiš **21.4. 2022 od 18:00**.\n\n_Sestříhané záznamy nejen těchto akcí najdeš v naší[ videotéce](https://cesko-digital.atlassian.net/l/c/U7xC1m6f) nebo na našem[ Youtube kanálu](https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg). Pokud nechceš, aby ti nová videa unikla, nezapomeň se přihlásit k odběru!_\n\n"
+    },
+    "startTime": "2022-04-21T16:00:00.000Z",
+    "ownerId": "rec5ZFu9U1MxOKjrd",
+    "projectId": "recgHexe37XeWVy8N",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shrTcGIcbyQJoDO9E",
+    "registrationTitle": "Zaregistruj se! ",
+    "endTime": "2022-04-21T17:00:00.000Z",
+    "tagIds": [
+      "reciWUTBIZ6sIpDfh"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/cedu/cedu-github.png",
+    "locationTitle": "Google Meet"
+  },
+  {
+    "id": "rec76o4ngIDt8PMCQ",
+    "name": "Mastermind - Scrum Master v remote prostředí",
+    "slug": "mastermind-scrum-masters",
+    "summary": "Přijď poznat další lidi z praxe a sdílet s nimi navzájem své zkušenosti.",
+    "description": {
+      "source": "Mastermind je jedinečná akce , kde si účastníci pomáhají navzájem růst. Na Mastermind setkání je prostor **položit otázku, představit nápad, zmínit problém nebo potřebu**, se kterou se potýkáš. Na toto téma pak od ostatních dostaneš zpětnou vazbu, postřehy a nové úhly pohledu a zkušeností. Při sdílení hledáme s ostatními cesty, jak vyřešit nebo posunout téma. \n\nNa jaro 2022 plánujeme 3 tematické Mastermind akce pro tři různé skupiny - Scrum Mastery, Product Ownery a Mentory projektu / Product designery.\nToto je první z nich a bude věnované tématu **Scrum Master v remote prostředí**.\n\nSetkání je vhodné pro kohokoliv se zájmem o dané téma, od ostřílených expertů (předávajících zkušenosti) přes lidi v aktivní roli s palčivou otázkou až po juniory, kteří se přijdou inspirovat. \nJako účastník získáš a také poskytneš zpětnou vazbu, postřehy a zkušenosti.\n\n**Co ti může Mastermind přinést?**\n- Hloubkový rozbor tématu\n- Sdílení zkušeností\n- Budování vztahů mimo online svět\n\nModerátorem akce je **[Jindřich Fialka z Q Designers](https://www.linkedin.com/in/jindrichfialka/))**. \n\nAkce je zdarma a setkání proběhne fyzicky v prostorách společnosti Avast (Pikrtova 1737/1a, Praha 4).\nVzhledem k omezené kapacitě (12 účastníků) je třeba se registrovat a potvrdit dopředu svou [účast přes registraci.](https://airtable.com/shrCRXAQ4jU68bSQj) \n\nCo je Mastermind vysvětluje Jindřich Fialka na videu [zde](https://www.youtube.com/watch?v=AYKsioyu-Jg). \n\nTěšíme se!\n\n"
+    },
+    "startTime": "2022-04-21T15:00:00.000Z",
+    "ownerId": "rec0ABdJtGIK9AeCB",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "https://airtable.com/shrCRXAQ4jU68bSQj",
+    "registrationTitle": "Registrace",
+    "endTime": "2022-04-21T17:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "locationTitle": "Avast Software s.r.o.",
+    "locationUrl": "https://www.avast.com/cs-cz/contacts#pc"
+  },
+  {
+    "id": "recYEnQKBbEQv5Aje",
+    "name": "Učíme nanečisto: Meditace v denním životě",
+    "slug": "ucime-nanecisto-meditace",
+    "summary": "Přijďte si poslechnout,  co je meditace, jak může pomoct a jak ji začlenit do běžného života.",
+    "description": {
+      "source": "Meditace je jedním ze způsobů, jak pracovat s myslí. Tento webinář vám \npomůže zjistit, co vůbec meditace je, jak může pomoct a jak ji začlenit \ndo běžného života.\n\nNa webináři proberete, co je to meditace a jaké typy meditace existuji. Rovněž si řekneme, k čemu je meditace dobrá a jak ji praktikovat. Zkusíme si i společně na pár minut zameditovat. A na závěr se budeme věnovat vašim dotazům.\n\n**Co Vám webinář přinese:**\n- co je meditace \n- jak meditovat\n- jak ji začlenit do každodenního života\n\n**Cílové publikum**: Webinář je vhodný pro začátečníky od 18 do 99 let.Požadavek lektorů: Ideálně klidné prostředí a sluchátka.\n\n**Petra Slancová** se v pracovním životě věnuje práci s hlasem a moderováním.\n**Libor Šulák** se meditaci věnuje již 25 od doby kdy na vysoké škole hledal způsob jak zklidnit svou mysl. Meditace mu pomohla a pomáhá tento cíl naplňovat.\nOba jsou hlasy aplikace Calmio.\n\nRegistrovat se můžete níže, registrace uzavíráme den před webinářem či po naplnění kapacity. Prosíme zkontrolujte si vámi zadávaný email.\n<https://bit.ly/Registrace-14-4-2022> \n\nOdpovědi na nejčastější otázky najdete zde: <https://www.ucimeonline.cz/nejcastejsi-otazky-a-odpovedi/>   \n"
+    },
+    "startTime": "2022-04-14T17:00:00.000Z",
+    "ownerId": "rec4N4PrvAHEddN4u",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "live",
+    "registrationUrl": "https://bit.ly/Registrace-14-4-2022",
+    "registrationTitle": "Registrace",
+    "endTime": "2022-04-14T18:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "locationTitle": "Google Meet"
+  },
+  {
+    "id": "reco96gHPl63Nr6nf",
+    "name": "Jak na Airtable aneb když jsou Google Tabulky málo",
+    "slug": "jak-na-nastroje-airtable",
+    "summary": "Zveme tě na další z řady vzdělávacích webinářů. Chceš pochopit, proč si kolega vychvaluje Airtable více než Excel? Právě o něm si s Honzou Pávem popovídáme!",
+    "description": {
+      "source": "## **O čem webinář bude?**\nSpousta lidí jistě někdy slyšela o nástroji Airtable. Nástroj, který využívají podnikatelé, freelanceři, ale i účetní ve tvojí malé firmě na vesnici. Proč se v poslední době stává tak oblíbeným a proč používat nějaké cloudové úložiště, když máš Excel? I na takové otázky odpoví Honza Páv, který bude dalším hostem webináře.\n\n**Protože je to program šikovný, po přezkoumání tabulek, pohledů a datových typů se ti otevře milion možností.** Evidence kontaktů či projektů? Žádný problém! Napsat si můžeš i seznam na nákup, i když tam raději doporučujeme jiné programy.\n## **Co dalšího ti kromě sympatického Honzy webinář přinese?**\n1. Zjistíte k čemu, jak a proč se Airtable využívá.\n2. Jaké výhody Airtable má? V čem se vůbec liší od ostatních nástrojů?\n3. Jak vlastně tu tabulku vytvořit?\n4. Jaké sexy funkce ještě nástroj nabízí?\n\n## **Kdo webinář povede?**\nProtože ale nejsme nezdvořáci, musíme ti Honzu pořádně představit:\n\nHonza Páv není jen podnikatelem, ale i otcem dvou dětí a ragby hráčem, takže pozor na něj. Podle něj jsou právě velké a malé firmy to, co ze světa dělá lepší místo. Protože nikdo není vševědoucí, Honza pomůže v tom, co umí nejlépe, a to jak poznat obchodní příležitosti a potřeby zákazníků. Naučíš se pracovat s automatizovanými procesy, nebo dokonce s celými nástroji. Třeba se zmíněným Airtablem, Asanou, ale i Notionem a Retoolem. \n## **Kam dorazit?**\nWebinář se uskuteční přes Google Meet, **odkaz na Google Meet dostanou registrovaní účastníci emailem den před konáním webináře**.\n\nSestříhané záznamy nejen těchto akcí najdete v naší [videotéce](https://cesko-digital.atlassian.net/l/c/U7xC1m6f) nebo na našem [Youtube kanálu](https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg) (doporučujeme jej odebírat, aby ti neunikly žádné nové videa).\n"
+    },
+    "startTime": "2022-03-22T16:00:00.000Z",
+    "ownerId": "recjYA9kRocHPEJ3e",
+    "projectId": "recgHexe37XeWVy8N",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shrJ0U5a5a08gQ4Fo",
+    "registrationTitle": "Zaregistruj se!",
+    "endTime": "2022-03-22T17:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/jak-na-nastroje-airtable-cover.png",
+    "locationTitle": "Google Meet"
+  },
+  {
+    "id": "recTSXf9xGq4Uglbp",
+    "name": "Nenásilná komunikace #3 – Potřeby",
+    "slug": "nenasilna-komunikace-potreby",
+    "summary": "Jak nenásilně komunikovat své potřeby?",
+    "description": {
+      "source": "Zveme tě na další z řady našich bezplatných vzdělávacích webinářů na téma Nenásilná komunikace III – Potřeby.\n\n### **O čem webinář bude?**\nV nenásilné komunikaci mluvíme o 4 základních elementech. Pozorování, pocitech, potřebách a prosbách. V našem třetím webináři se zaměříme právě na **téma potřeb**.\n\nAž když přestaneme říkat, co chceme a dostaneme na pravou podstatu - na úroveň našich potřeb a nakoukneme, jak to mají ostatní lidé v našich interakcích a rozhovorech, dokážeme s ostatními najít společnou cestu. Ne, nemluvíme o kompromisu. Mluvíme o dohodě. O tom, že **existují řešení, která jsou dobrá pro obě strany**.\n\nNa webináři budeme rozebírat:\n\n1. jakou mají souvislost potřeby a emoce, které ovlivňují naše vnímání i reakce,\n2. jaký je rozdíl mezi tím, co chceme, požadujeme nebo očekáváme a co doopravdy potřebujeme,\n3. jak přijít na to, co v různých situacích potřebujeme.\n### \n\n### **Kdo webinář povede?**\n**Sandra Fridrichová** strávila většinu svého pracovního života ve světě finančních korporátů. Její pracovní zkušenosti napříč projektovým řízením, marketingem, vzděláváním a business developmentem ji dovedly ke komplexním projektům, které dnes firmy nazývají transformací firemního prostředí. \nJak sama říká, **jejím posláním je dávat nový život rozbitým a nefunkčním týmům**. Často je v roli laskavého a pevného průvodce CEOs a majitelů firem na jejich cestě při vytváření dlouhodobě udržitelného a motivujícího prostředí nebo proměny z hierarchického systému řízení na svobodné (a zodpovědné!).\n### \n### **Kde se potkáme?**\nWebinář se uskuteční přes **Google Meet**, odkaz na Google Meet dostanou registrovaní účastníci emailem den před konáním webináře.\nSestříhané záznamy nejen těchto akcí najdete v naší [videotéce](https://cesko-digital.atlassian.net/l/c/U7xC1m6f) nebo na našem [Youtube kanálu](https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg) (doporučujeme jej odebírat, aby ti neunikly žádné nové videa).\n\n"
+    },
+    "startTime": "2022-03-07T17:00:00.000Z",
+    "ownerId": "recgNrffl2cij0w5p",
+    "projectId": "recgHexe37XeWVy8N",
+    "status": "live",
+    "registrationUrl": "https://airtable.com/shrxZ9AzgLKIc5CbF",
+    "registrationTitle": "Zaregistruj se! ",
+    "endTime": "2022-03-07T18:00:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/nenasilna-komunikace-3-cover.png",
+    "locationTitle": "Google Meet"
+  },
+  {
+    "id": "recwrbsf8PCU45Uht",
+    "name": "Online: Ruská invaze na Ukrajině v otázkách žáků a studentů",
+    "slug": "ruska-invaze-na-ukrajine-v-otazkach-zaku-a-studentu",
+    "summary": "V pondělí 7. 3. dopoledne (9:45 a 12:00) proběhne debata na téma agrese Kremlu vůči Ukrajině pro všechny ZŠ a SŠ v ČR. ",
+    "description": {
+      "source": "Cílem debaty je poskytnout srozumitelný pohled z různých expertních perspektiv na současnou kritickou situaci na Ukrajině a pomoci dětem a dospívajícím pochopit, co se děje, jak se nás tato situace dotýká a jak k ní přistupovat. \n\n**Debata proběhne on-line** a čeští žáci, studenti, učitelé i rodiče ji budou moci sledovat na YouTube a Facebooku, dotazy bude možné pokládat přes aplikaci Slido už před samotnou debatou (odkazy budou doplněny).\n\nSoučasně bude v pondělí zveřejněna webová stránka, na které učitelé i rodiče najdou materiály týkající se tématu k práci v hodinách i v rodinách. K dispozici bude i doprovodný materiál pro učitele, jak přistupovat k možným konfliktům ve školách, jak vysvětlovat situaci, kam se obrátit o radu. \n\nDiskuse se budou účastnit:\n\n**Petr Gazdík**, ministr školství\n**Petr Kolář**, bývalý velvyslanec v USA a Rusku\n**Petr Pavel**, bývalý šéf vojenských jednotek NATO\n**Michael Romancov**, politický geograf soustředící se na Rusko a Ukrajinu\n**Richard Smejkal**, šéf krizového týmu Červeného kříže\n**Bob Kartous**, odborník na téma dezinformace\n\nDebatu povede moderátorka **Nora Fridrichová**.\n\nDebatu organizuje **MŠMT** a **Pražský inovační institut** ve spolupráci s **hlavním městem Praha** a **Českou televizí**. Technické zajištění poskytli Česko.Digital, Vertical Production a Smíchovská střední průmyslová škola a gymnázium.\n"
+    },
+    "startTime": "2022-03-07T08:45:00.000Z",
+    "ownerId": "rec4RP1qETXJHFlcB",
+    "projectId": "recNbIkP1TaL12Ifi",
+    "status": "live",
+    "endTime": "2022-03-07T12:00:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/events/YT-UA-event.jpg ",
+    "locationTitle": "Sleduj na Youtube!",
+    "locationUrl": "https://youtu.be/sqvi2oS1oJo"
+  },
+  {
+    "id": "recTkyyz6JTZU8q8X",
+    "name": "Učíme nanečisto: Úvod do kybernetiky",
+    "slug": "uo-uvod-do-kybernetiky",
+    "summary": "Co je to kybernetika a jaký má vliv na společnost? Připojte se na webinář s profesorem kybernetiky na ČVUT Michaelem Šebkem. ",
+    "description": {
+      "source": "Proč se svět mění a kdo za to může? Co je to kybernetika? Jaké jsou základní principy, objevy, vynálezy? Co všechno způsobily a ještě způsobí? A co s tím?\nVšechny tyto otázky si určitě kladete. A možná je jich ještě víc. Připojte se k nám 2. 3. 2022 na webinář Učíme na nečisto v rámci projektu Učíme online a pan profesor Michael Šebek vám je zodpoví.\nCo vám webinář přinese:\n-  Co je a kde se vzala kybernetika, co umí a co ne\n- Systémy a jejich sítě \n- Zpětná vazba, automatické řízení, autonomní systémy, roboti\n- K čemu je to dobré / špatné?\n- Jak se stát future-proof\n\nMichael Šebek je profesor kybernetiky na ČVUT, vedoucí Katedry řídicí techniky, vědec a učitel, zakladatel Robosoutěže pro střední a základní školy, komunikátor vědy a neúnavný bojovník za změny ve vzdělávání.\nKurz je určen pro každého.\nRegistrovat se můžete níže, registrace uzavíráme den před webinářem či po naplnění kapacity. \nProsíme, zkontrolujte si vámi zadávaný email.\n<https://bit.ly/Registrace-2-3-2022>\nOdpovědi na nejčastější otázky najdete zde: <https://www.ucimeonline.cz/nejcastejsi-otazky-a-odpovedi/>  \n"
+    },
+    "startTime": "2022-03-02T18:00:00.000Z",
+    "ownerId": "rec4N4PrvAHEddN4u",
+    "projectId": "recsIWPWTCFAvE2c2",
+    "status": "live",
+    "registrationUrl": "https://bit.ly/Registrace-2-3-2022",
+    "registrationTitle": "Registrace zde!",
+    "endTime": "2022-03-02T19:30:00.000Z",
+    "tagIds": [
+      "recMg0okYGUJRFhlc"
+    ],
+    "locationTitle": "Google Meet"
+  },
+  {
     "id": "recVh1RpzhRI7GGNs",
     "name": "Hack day Jehlomat Praha",
     "slug": "hackday-jehlomat-praha",
@@ -11,8 +175,6 @@
     "ownerId": "rec5g2kjJCODPpUOI",
     "projectId": "recyAlQx0HFH0kW6h",
     "status": "live",
-    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeQlvMdr4qroanLFvKEq27gqqVkoFsOBCNLEIOoKeQuanCyLQ/viewformhttps://airtable.com/shr8k2OI2zhHL7uka",
-    "registrationTitle": "Přihlaš se",
     "endTime": "2022-02-05T17:00:00.000Z",
     "tagIds": [
       "recuBWE1HG9XxWUpB"
@@ -32,7 +194,7 @@
     "startTime": "2022-02-02T16:00:00.000Z",
     "ownerId": "rec0ABdJtGIK9AeCB",
     "projectId": "recZqAUagJLM40GnI",
-    "status": "live",
+    "status": "unlisted",
     "registrationUrl": "https://airtable.com/shr2SjAqjm5nCDIgi",
     "registrationTitle": "Zaregistruj se",
     "endTime": "2022-02-02T18:00:00.000Z",
@@ -71,12 +233,12 @@
     "slug": "od-myslenky-k-uspechu_pribeh-aplikace-loono",
     "summary": "Připojte se k moderované diskuzi, která bude zasvěcena neziskové organizaci Loono a jejich nové aplikaci.",
     "description": {
-      "source": "Škálujte aktivity své organizace či projektu pomocí digitálních technologií. IT nástroje zvyšují efektivitu, pomáhají zajímavou formou oslovit více lidí a přináší jim užitek. \n\nVe čtvrtek 27. 1. od 17 hod. vám na příběhu neziskové organizace Loono a jejich vznikající aplikaci představíme, jak moderní technologie pomáhají v nezisku a proč je dobré do nich investovat svůj čas. \n\nZajímá vás, jak se z devítiměsíčního dobrovolničení může stát placená spolupráce? Své zkušenosti nejen z přípravy, ale i realizace nasdílí během společného rozhovoru: \n- Product Owner: Adéla Sedláčková\n- Scrum Master: Adéla Kalusová\n- Product Designer: Otakar Hyps\n- Tech Lead: Martin Ladecký\n- IT Analytik: Jana Hejnová \n\nAkci moderuje mentor projektu (marketing & strategie) Lukáš Přikryl. Během rozhovoru se dotkneme témat: \n- Jak a proč se Loono rozhodlo pro aplikaci \n- Jakou roli má tato aplikace v rámci neziskové organizace a jak ovlivnila strategii a aktivity Loono\n- Jak agilní řízení zasáhlo do chodu Loono a jak těžké bylo do role Product Ownera naskočit \n- Jak aplikace vznikala a co bylo třeba připravit \n- Jaké role v rámci týmu existují\n- Jak funguje (remote) komunikace v (dobro) týmu \n\nLoono již 7 let vzdělává společnost o důležitosti prevence a [nová aplikace](https://www.loono.cz/aplikace) (spuštění v březnu 2022) hravou formou připomíná návštěvy praktického lékaře, samovyšetření a nabídne vám ověřené a srozumitelné informace o zdraví.\n\nDiskuse bude probíhat se všemi registrovanými účastníky prostřednictvím Google Meet.\n\nBudete-li se chtít aktivně zapojit, otázky můžete pokládat před akcí i během ní prostřednictvím [Slido](https://app.sli.do/event/6SGiTsz2bCCk9pbT6s6GWC). \n\nPokud se nestihnete zúčastnit, ale téma vás zajímá, záznam akce bude dostupný i k pozdějšímu zhlédnutí.\n\n"
+      "source": "Škálujte aktivity své organizace či projektu pomocí digitálních technologií. IT nástroje zvyšují efektivitu, pomáhají zajímavou formou oslovit více lidí a přináší jim užitek. \n\nVe čtvrtek 27. 1. od 17 hod. vám na příběhu neziskové organizace Loono a jejich vznikající aplikaci představíme, jak moderní technologie pomáhají v nezisku a proč je dobré do nich investovat svůj čas. \n\nZajímá vás, jak se z devítiměsíčního dobrovolnictví může stát placená spolupráce? Své zkušenosti nejen z přípravy, ale i realizace nasdílí během společného rozhovoru: \n- Product Owner: Adéla Sedláčková\n- Scrum Master: Adéla Kalusová\n- Product Designer: Otakar Hyps\n- Tech Lead: Martin Ladecký\n- IT Analytik: Jana Hejnová \n\nAkci moderuje mentor projektu (marketing & strategie) Lukáš Přikryl. Během rozhovoru se dotkneme témat: \n- Jak a proč se Loono rozhodlo pro aplikaci \n- Jakou roli má tato aplikace v rámci neziskové organizace a jak ovlivnila strategii a aktivity Loono\n- Jak agilní řízení zasáhlo do chodu Loono a jak těžké bylo do role Product Ownera naskočit \n- Jak aplikace vznikala a co bylo třeba připravit \n- Jaké role v rámci týmu existují\n- Jak funguje (remote) komunikace v (dobro) týmu \n\nLoono již 7 let vzdělává společnost o důležitosti prevence a [nová aplikace](https://www.loono.cz/aplikace) (spuštění na jaře 2022) hravou formou připomíná návštěvy praktického lékaře, samovyšetření a nabídne vám ověřené a srozumitelné informace o zdraví.\n\nDiskuse bude probíhat se všemi registrovanými účastníky prostřednictvím Google Meet.\n\nBudete-li se chtít aktivně zapojit, otázky můžete pokládat před akcí i během ní prostřednictvím [Slido](https://app.sli.do/event/6SGiTsz2bCCk9pbT6s6GWC). \n\nPokud se nestihnete zúčastnit, ale téma vás zajímá, záznam akce bude dostupný i k pozdějšímu zhlédnutí.\n\n"
     },
     "startTime": "2022-01-27T16:00:00.000Z",
     "ownerId": "recDmNZFm4iahKvkO",
     "projectId": "rec4KOruzwIFU8ieR",
-    "status": "live",
+    "status": "unlisted",
     "registrationUrl": "https://airtable.com/shrh7K2gPsHSWo25x",
     "registrationTitle": "Zaregistruj se! ",
     "endTime": "2022-01-27T18:00:00.000Z",
@@ -104,13 +266,35 @@
     "startTime": "2022-01-18T14:00:00.000Z",
     "ownerId": "rec6hQPrLsA7vVjGD",
     "projectId": "recAh6CmL9dLySvjH",
-    "status": "live",
+    "status": "unlisted",
     "registrationUrl": "https://www.contractors.cz/vzdelavani/dle-oboru/meetupy/453-vyber-technologii-do-verejneho-it-projektu",
     "endTime": "2022-01-18T16:00:00.000Z",
     "tagIds": [],
     "coverImageUrl": "https://data.cesko.digital/events/vyber-technologii.png",
     "locationTitle": "Online",
     "locationUrl": "https://www.contractors.cz/vzdelavani/dle-oboru/meetupy/453-vyber-technologii-do-verejneho-it-projektu"
+  },
+  {
+    "id": "rec0EAaYDZB2XdX8w",
+    "name": "All Hands",
+    "slug": "all-hands",
+    "summary": "Pravidelné úterní setkávání celé komunity, diskuze nad aktuálním děním v organizaci",
+    "description": {
+      "source": "Zveme tě na pravidelné setkání celého Česko.Digital! \n\n### 🎯 Cíle setkání:\n1. Co se u nás v komunitě a na projektech děje\n2. Co chystáme v rámci komunity a potřebujeme na to feedback\n3. Kafe & pokec, jak jde život\n4. Zeptej se na cokoliv, co tě o Česko.Digital zajímá\n\nPotkávat se i jinde než na Slacku je k nezaplacení 🙏\n\nZápis z předchozího setkání a agendu pro nadcházející setkání najdeš [tady](https://cesko-digital.atlassian.net/l/c/TJRWdwUd).\n"
+    },
+    "startTime": "2022-01-04T15:30:00.000Z",
+    "ownerId": "rec6hQPrLsA7vVjGD",
+    "projectId": "recZqAUagJLM40GnI",
+    "status": "unlisted",
+    "registrationUrl": "meet.google.com/onv-mwuy-qsh",
+    "registrationTitle": "Připoj se na Google Meet",
+    "endTime": "2022-12-27T16:30:00.000Z",
+    "tagIds": [
+      "recnIR0L7B02JBPMm"
+    ],
+    "coverImageUrl": "https://data.cesko.digital/img/8dec0b43.jpg",
+    "locationTitle": "Online / Google Meet",
+    "locationUrl": "meet.google.com/onv-mwuy-qsh"
   },
   {
     "id": "recGB4TJTxCgdxLZe",
@@ -123,7 +307,7 @@
     "startTime": "2021-12-07T16:30:00.000Z",
     "ownerId": "rec5g2kjJCODPpUOI",
     "projectId": "recZqAUagJLM40GnI",
-    "status": "live",
+    "status": "unlisted",
     "registrationUrl": "https://airtable.com/shrRdNY33xfp6MZzS",
     "registrationTitle": "Zaregistruj se",
     "endTime": "2021-12-07T18:00:00.000Z",
@@ -840,27 +1024,6 @@
     ],
     "coverImageUrl": "https://data.cesko.digital/img/08a50948.png",
     "locationTitle": "Online / Google Meet"
-  },
-  {
-    "id": "rec0EAaYDZB2XdX8w",
-    "name": "All Hands",
-    "slug": "all-hands",
-    "summary": "Pravidelné úterní setkávání celé komunity, diskuze nad aktuálním děním v organizaci",
-    "description": {
-      "source": "Zveme Tě na pravidelné setkání celého Česko.Digital! \n\n## 🎯 Cíle setkání:\n1. Co se u nás v komunitě a na projektech děje\n2. Co chystáme v rámci komunity a potřebujeme na to feedback\n3. Kafe & pokec, jak jde život\n4. Zeptej se na cokoliv, co Tě o Česko.Digital zajímá\n\nPotkávat se i jinde než na Slacku je k nezaplacení. 🙏\n\nZápis z předchozího setkání najdeš [zde](https://cesko-digital.atlassian.net/l/c/hwLhRCht) a [tady](https://cesko-digital.atlassian.net/l/c/utWEH8dJ) zase agendu na All Hands nadcházející. \n"
-    },
-    "startTime": "2021-08-10T14:30:00.000Z",
-    "ownerId": "recHnc5hx8wh29zqU",
-    "projectId": "recZqAUagJLM40GnI",
-    "status": "unlisted",
-    "registrationUrl": "https://meet.google.com/tto-hvzj-jwv",
-    "registrationTitle": "Připoj se na Google Meet",
-    "endTime": "2021-08-10T15:30:00.000Z",
-    "tagIds": [
-      "recnIR0L7B02JBPMm"
-    ],
-    "locationTitle": "Online / Google Meet",
-    "locationUrl": "https://meet.google.com/tto-hvzj-jwv"
   },
   {
     "id": "recqkGGCcW6KtDCia",
