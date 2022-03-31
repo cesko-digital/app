@@ -1,4 +1,5 @@
 import Airtable from "airtable";
+import { unique } from "./utils";
 import {
   array,
   decodeType,
@@ -7,7 +8,6 @@ import {
   record,
   string,
 } from "typescript-json-decoder";
-import { unique } from "./utils";
 
 export type Skill = decodeType<typeof decodeSkill>;
 
@@ -39,6 +39,28 @@ export function decodeFields(value: Pojo): Field[] {
       (skill) => skill.field === field && !skill.name.startsWith("_")
     ),
   }));
+}
+
+export function flattenSkills(allSkills: Field[]): Skill[] {
+  let skills: Skill[] = [];
+  for (const field of allSkills) {
+    if (field.mentorSkillId) {
+      skills.push({
+        id: field.mentorSkillId,
+        field: field.name,
+        name: "mentor",
+      });
+    }
+    if (field.seniorSkillId) {
+      skills.push({
+        id: field.seniorSkillId,
+        field: field.name,
+        name: "senior",
+      });
+    }
+    skills.push(...field.skills);
+  }
+  return skills;
 }
 
 export async function getAllSkills(): Promise<Field[]> {

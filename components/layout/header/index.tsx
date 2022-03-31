@@ -5,10 +5,11 @@ import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
 import { Route } from "lib/routing";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { DefaultSession } from "next-auth";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { default as NextLink } from "next/link";
 
 const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -96,21 +97,24 @@ const UserProfileButton: React.FC<{
     user.image || "https://data.cesko.digital/people/generic-profile.jpg";
   const email = user.email || "<neznámý e-mail>";
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      src={imageUrl}
-      onClick={() => signOut()}
-      title={`Přihlášen jako ${email}, kliknutím odhlásíte`}
-      alt="Odhlásit"
-      style={{
-        height: "44px",
-        width: "44px",
-        borderRadius: "44px",
-        cursor: "pointer",
-        border: "2px solid #ddd",
-        boxShadow: "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
-      }}
-    />
+    <NextLink href={Route.profile}>
+      <a>
+        {/* eslint-disable @next/next/no-img-element */}
+        <img
+          src={imageUrl}
+          title={`Přihlášen jako ${email}`}
+          alt=""
+          style={{
+            height: "44px",
+            width: "44px",
+            borderRadius: "44px",
+            border: "2px solid #ddd",
+            boxShadow:
+              "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
+          }}
+        />
+      </a>
+    </NextLink>
   );
 };
 
