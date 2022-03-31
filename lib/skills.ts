@@ -41,7 +41,7 @@ export function decodeFields(value: Pojo): Field[] {
   }));
 }
 
-export function flattenSkills(allSkills: Field[]): Skill[] {
+export function flattenSkills(allSkills: readonly Field[]): Skill[] {
   let skills: Skill[] = [];
   for (const field of allSkills) {
     if (field.mentorSkillId) {
