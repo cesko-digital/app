@@ -10,14 +10,14 @@ export type Msg =
 export type SubmissionState = "fillingIn" | "submitting" | "success" | "error";
 
 export type State = {
-  skills: Field[];
+  skills: readonly Field[];
   email: string;
   name: string;
   selectedSkillIds: string[];
   submissionState: SubmissionState;
 };
 
-export function createState(skills: Field[]): State {
+export function createState(skills: readonly Field[]): State {
   return {
     skills,
     email: "",

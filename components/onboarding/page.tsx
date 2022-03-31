@@ -6,7 +6,7 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/onboarding/styles";
 
 interface Props {
-  skills: Field[];
+  skills: readonly Field[];
   onSubmit: (data: RegistrationData) => Promise<boolean>;
 }
 

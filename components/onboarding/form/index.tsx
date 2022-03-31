@@ -23,7 +23,7 @@ export interface RegistrationData {
 }
 
 export interface OnboardingFormProps {
-  skills: Field[];
+  skills: readonly Field[];
   onSubmit: (data: RegistrationData) => Promise<boolean>;
 }
 
