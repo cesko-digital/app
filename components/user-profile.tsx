@@ -38,11 +38,42 @@ const PageContent: React.FC<UserProfilePageProps> = (props) => {
     case "loading":
       return <LoadingPage />;
     case "loading_error":
-      return <p>Error loading user profile. Refresh page to try again.</p>;
+      return <ErrorPage />;
     case "signed_in":
       return <SignedInPage {...props} />;
   }
 };
+
+// Signed Out / Loading / Error
+
+const SignedOutPage: React.FC<{ signIn: () => void }> = ({ signIn }) => (
+  <MainContainer>
+    <Heading>Profil uživatele</Heading>
+    <Body>
+      Pro zobrazení této stránky se musíte{" "}
+      <a href="" onClick={signIn}>
+        přihlásit
+      </a>
+      .
+    </Body>
+  </MainContainer>
+);
+
+const LoadingPage = () => (
+  <MainContainer>
+    <Heading>Profil uživatele</Heading>
+    <Body>Načítám…</Body>
+  </MainContainer>
+);
+
+const ErrorPage = () => (
+  <MainContainer>
+    <Heading>Profil uživatele</Heading>
+    <Body>Při načítání profilu došlo k chybě. Zkuste obnovit stránku?</Body>
+  </MainContainer>
+);
+
+// User Profile
 
 const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   const profile = props.profile!;
@@ -79,25 +110,7 @@ const SkillPill = (skill: Skill) => (
   </span>
 );
 
-const SignedOutPage: React.FC<{ signIn: () => void }> = ({ signIn }) => (
-  <MainContainer>
-    <Heading>Profil uživatele</Heading>
-    <Body>
-      Pro zobrazení této stránky se musíte{" "}
-      <a href="" onClick={signIn}>
-        přihlásit
-      </a>
-      .
-    </Body>
-  </MainContainer>
-);
-
-const LoadingPage = () => (
-  <MainContainer>
-    <Heading>Profil uživatele</Heading>
-    <Body>Načítám…</Body>
-  </MainContainer>
-);
+// Shared components
 
 const MainContainer: React.FC = (props) => (
   <div style={{ minHeight: "400px" }}>{props.children}</div>
