@@ -24,3 +24,4 @@ jobs:
           cache: "yarn"
       - run: yarn install
       - run: yarn test
+      - run: DATA_SOURCE_LOCAL=y yarn build
