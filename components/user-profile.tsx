@@ -1,5 +1,7 @@
 import { UserProfile } from "lib/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
+import { Body, Heading1 } from "./typography";
+import { Button } from "./buttons";
 
 export type UserProfilePageState =
   | "loading"
@@ -30,16 +32,53 @@ const PageContent: React.FC<UserProfilePageProps> = (props) => {
   const { state, profile, signIn, signOut } = props;
   switch (state) {
     case "signed_out":
-      return <button onClick={signIn}>Sign In</button>;
+      return <SignedOutPage signIn={signIn} />;
     case "loading":
-      return <p>Loading…</p>;
+      return <LoadingPage />;
     case "loading_error":
       return <p>Error loading user profile. Refresh page to try again.</p>;
     case "signed_in":
-      return (
-        <p>
-          Hello, {profile!.name}! <button onClick={signOut}>Sign out</button>
-        </p>
-      );
+      return <SignedInPage {...props} />;
   }
 };
+
+const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
+  const profile = props.profile!;
+  const { signOut } = props;
+  return (
+    <MainContainer>
+      <Heading>{profile.name}</Heading>
+      <Button onClick={signOut} inverted>
+        Odhlásit
+      </Button>
+    </MainContainer>
+  );
+};
+
+const SignedOutPage: React.FC<{ signIn: () => void }> = ({ signIn }) => (
+  <MainContainer>
+    <Heading>Profil uživatele</Heading>
+    <Body>
+      Pro zobrazení této stránky se musíte{" "}
+      <a href="" onClick={signIn}>
+        přihlásit
+      </a>
+      .
+    </Body>
+  </MainContainer>
+);
+
+const LoadingPage = () => (
+  <MainContainer>
+    <Heading>Profil uživatele</Heading>
+    <Body>Načítám…</Body>
+  </MainContainer>
+);
+
+const MainContainer: React.FC = (props) => (
+  <div style={{ minHeight: "400px" }}>{props.children}</div>
+);
+
+const Heading: React.FC = (props) => (
+  <Heading1 style={{ marginBottom: "20px" }}>{props.children}</Heading1>
+);
