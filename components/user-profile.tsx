@@ -89,13 +89,18 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   );
 };
 
-const SkillBox: React.FC<{ skills: Skill[] }> = ({ skills }) => (
-  <div style={{ marginBottom: "20px" }}>
-    {skills.map((skill, index) => (
-      <SkillPill key={index} {...skill} />
-    ))}
-  </div>
-);
+const SkillBox: React.FC<{ skills: Skill[] }> = ({ skills }) => {
+  const haveSkills = skills.length > 0;
+  return (
+    <div style={{ marginBottom: "20px" }}>
+      {haveSkills &&
+        skills.map((skill, index) => <SkillPill key={index} {...skill} />)}
+      {!haveSkills && (
+        <Body>V uživatelském profilu nemáte vyplněné žádné dovednosti.</Body>
+      )}
+    </div>
+  );
+};
 
 const SkillPill = (skill: Skill) => (
   <span
