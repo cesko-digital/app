@@ -16,6 +16,7 @@ export const Route = {
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",
+  profile: "/profile",
   // We don’t have a dedicated all-events page yet, see
   // https://github.com/cesko-digital/web/issues/356
   events: "/dashboard#section-events",
