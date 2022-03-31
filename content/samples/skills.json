@@ -1,0 +1,539 @@
+[
+  {
+    "name": "Design",
+    "mentorSkillId": "rec2kb60JMQZLp9Og",
+    "seniorSkillId": "recuHVPwAMzwLu8cy",
+    "skills": [
+      {
+        "id": "rec0PbZB5kxfSL3ff",
+        "field": "Design",
+        "name": "přístupnost"
+      },
+      {
+        "id": "rec3GEDXhrdFQtjuE",
+        "field": "Design",
+        "name": "writing"
+      },
+      {
+        "id": "rec9tHUwnlbqxFdpX",
+        "field": "Design",
+        "name": "interakční"
+      },
+      {
+        "id": "recIsNMWFchxoeXsg",
+        "field": "Design",
+        "name": "vizuální"
+      },
+      {
+        "id": "recOmFoksmXYK4gyU",
+        "field": "Design",
+        "name": "informační architektura"
+      },
+      {
+        "id": "recRoGDHwf3ykSxYK",
+        "field": "Design",
+        "name": "webu"
+      },
+      {
+        "id": "recTVVf4BDglR4rah",
+        "field": "Design",
+        "name": "produktový"
+      },
+      {
+        "id": "recZZfNblTxgNveVv",
+        "field": "Design",
+        "name": " service"
+      },
+      {
+        "id": "recsclH1wnOZCqrnR",
+        "field": "Design",
+        "name": "UI"
+      },
+      {
+        "id": "rectU6gWmskawSfq8",
+        "field": "Design",
+        "name": " mobilní"
+      },
+      {
+        "id": "recxUPILbTqFpDG6M",
+        "field": "Design",
+        "name": "motion"
+      },
+      {
+        "id": "recyzexv8IgfkZs8l",
+        "field": "Design",
+        "name": "výzkum a testování"
+      }
+    ]
+  },
+  {
+    "name": "Odborná veřejnost",
+    "mentorSkillId": "rec1F4l11pygOugqr",
+    "seniorSkillId": "rec33lw11YZBQtrx4",
+    "skills": [
+      {
+        "id": "rec8jBIVxsZRSp3S3",
+        "field": "Odborná veřejnost",
+        "name": "sociolog"
+      },
+      {
+        "id": "recL69eETL4fH3ayN",
+        "field": "Odborná veřejnost",
+        "name": "lékař"
+      },
+      {
+        "id": "recgt1wL5IcmpiqeX",
+        "field": "Odborná veřejnost",
+        "name": "právník"
+      },
+      {
+        "id": "rech9LPcE5BecaAP2",
+        "field": "Odborná veřejnost",
+        "name": "ekonom"
+      },
+      {
+        "id": "recrhYw2lamHhPbDy",
+        "field": "Odborná veřejnost",
+        "name": "novinář"
+      },
+      {
+        "id": "recudTmGeM6wTn0yR",
+        "field": "Odborná veřejnost",
+        "name": "psycholog"
+      },
+      {
+        "id": "recw2LBgdXSdhkpUC",
+        "field": "Odborná veřejnost",
+        "name": "pedagog"
+      }
+    ]
+  },
+  {
+    "name": "Vývoj",
+    "mentorSkillId": "recCTG730qpBva763",
+    "seniorSkillId": "recjQ34X9btbCczqF",
+    "skills": [
+      {
+        "id": "rec1jORemi2nRO3e1",
+        "field": "Vývoj",
+        "name": "TypeScript"
+      },
+      {
+        "id": "rec2GjCfGEsPnlnSJ",
+        "field": "Vývoj",
+        "name": "Kubernetes, Puppet, Vagrant, Terraform, Ansible"
+      },
+      {
+        "id": "rec5DtHNI15QpobhA",
+        "field": "Vývoj",
+        "name": "Elasticsearch"
+      },
+      {
+        "id": "rec8ChHamvjCFx2kW",
+        "field": "Vývoj",
+        "name": "Azure, AWS, Google Cloud Platform"
+      },
+      {
+        "id": "recCkK9QXZoo1iGTB",
+        "field": "Vývoj",
+        "name": "Angular"
+      },
+      {
+        "id": "recDWWBHlOM0TXxxT",
+        "field": "Vývoj",
+        "name": "C++"
+      },
+      {
+        "id": "recGhZz7KFDwrGkGs",
+        "field": "Vývoj",
+        "name": "Gatsby"
+      },
+      {
+        "id": "recGpqOkpCRj4o8eW",
+        "field": "Vývoj",
+        "name": "Kotlin"
+      },
+      {
+        "id": "recKZC3P4tN3nDkVz",
+        "field": "Vývoj",
+        "name": "automatizace"
+      },
+      {
+        "id": "recO4AQhAgCJ2JUpU",
+        "field": "Vývoj",
+        "name": "databáze"
+      },
+      {
+        "id": "recOqxE5zTgvxzFAQ",
+        "field": "Vývoj",
+        "name": "Linux"
+      },
+      {
+        "id": "recPLuv0FM6HdTMMQ",
+        "field": "Vývoj",
+        "name": "React"
+      },
+      {
+        "id": "recPolV7Bv6BIp8Cq",
+        "field": "Vývoj",
+        "name": "Scala"
+      },
+      {
+        "id": "recQISxutTCgk5wrl",
+        "field": "Vývoj",
+        "name": "Flutter"
+      },
+      {
+        "id": "recSQCrD5fSiA7pMU",
+        "field": "Vývoj",
+        "name": "PHP"
+      },
+      {
+        "id": "recSn0yPRr4pGub02",
+        "field": "Vývoj",
+        "name": "C#"
+      },
+      {
+        "id": "recUoM44inVnOVPR0",
+        "field": "Vývoj",
+        "name": "Clojure"
+      },
+      {
+        "id": "reca7fHKnW9v0O7mS",
+        "field": "Vývoj",
+        "name": "tech leading"
+      },
+      {
+        "id": "recg3iQiL3o6EKGIv",
+        "field": "Vývoj",
+        "name": "testování"
+      },
+      {
+        "id": "recgPfRGBi4CaAFCR",
+        "field": "Vývoj",
+        "name": "Go"
+      },
+      {
+        "id": "rechtBpHuBca6U6Ta",
+        "field": "Vývoj",
+        "name": "HTML & CSS"
+      },
+      {
+        "id": "reciLfASMYE1rir3n",
+        "field": "Vývoj",
+        "name": "Android"
+      },
+      {
+        "id": "reckc6RK8zCAmC8Fw",
+        "field": "Vývoj",
+        "name": "PostgreSQL"
+      },
+      {
+        "id": "reclPTQOOSvxfMaV8",
+        "field": "Vývoj",
+        "name": "Docker"
+      },
+      {
+        "id": "recn1hN6PvSdwqalo",
+        "field": "Vývoj",
+        "name": "DevOps"
+      },
+      {
+        "id": "recnkosrZB7oH9Ncc",
+        "field": "Vývoj",
+        "name": "Java"
+      },
+      {
+        "id": "recourXvijCx96Qem",
+        "field": "Vývoj",
+        "name": "Python"
+      },
+      {
+        "id": "recqZQmJJg4bc8TYm",
+        "field": "Vývoj",
+        "name": "Node.js"
+      },
+      {
+        "id": "recrypaDwe2b37E6F",
+        "field": "Vývoj",
+        "name": "Vue.js"
+      },
+      {
+        "id": "rectqYMHl48FOyilJ",
+        "field": "Vývoj",
+        "name": "WordPress, Joomla, Drupal"
+      },
+      {
+        "id": "recx8sN9tu3Ygc2cG",
+        "field": "Vývoj",
+        "name": "iOS"
+      },
+      {
+        "id": "recztTj9lHqkHIM16",
+        "field": "Vývoj",
+        "name": "JavaScript"
+      }
+    ]
+  },
+  {
+    "name": "Analýza",
+    "mentorSkillId": "reco4Ypeg0CCOQVQZ",
+    "seniorSkillId": "rec2CLoCPD5H240RK",
+    "skills": [
+      {
+        "id": "recNH9zEQ8bCOiPlZ",
+        "field": "Analýza",
+        "name": "IT"
+      },
+      {
+        "id": "reca086PVT3RFkSjQ",
+        "field": "Analýza",
+        "name": "business"
+      },
+      {
+        "id": "recaTcnnl5NrPLQiK",
+        "field": "Analýza",
+        "name": "big data"
+      }
+    ]
+  },
+  {
+    "name": "Lidské zdroje",
+    "mentorSkillId": "rec2bcnV5yqz93kAO",
+    "seniorSkillId": "recxu1Lw8qWUAfVmP",
+    "skills": [
+      {
+        "id": "recQRjrjXOmUgq8LF",
+        "field": "Lidské zdroje",
+        "name": "vzdělávání "
+      },
+      {
+        "id": "recZKYbOSK7pncyCF",
+        "field": "Lidské zdroje",
+        "name": " administrativa"
+      },
+      {
+        "id": "recsfbiiO9C05nlMc",
+        "field": "Lidské zdroje",
+        "name": "nábor"
+      }
+    ]
+  },
+  {
+    "name": "Architektura",
+    "mentorSkillId": "recKKNAvF5H429zyX",
+    "seniorSkillId": "recJIpGYnd08E19Lx",
+    "skills": [
+      {
+        "id": "rec3hC5Z812UTgEaN",
+        "field": "Architektura",
+        "name": "solution"
+      },
+      {
+        "id": "recCVpIFfrbKOPgFL",
+        "field": "Architektura",
+        "name": "systémová"
+      },
+      {
+        "id": "recOWaHy7MXKmvzGs",
+        "field": "Architektura",
+        "name": "enterprise"
+      },
+      {
+        "id": "recqXhk7T549uEWJj",
+        "field": "Architektura",
+        "name": "business"
+      }
+    ]
+  },
+  {
+    "name": "Business",
+    "mentorSkillId": "recBjBjSD1Dv6ZddQ",
+    "seniorSkillId": "recqKsRqIiHet1kHW",
+    "skills": [
+      {
+        "id": "rec7E4c1VTKaNzGvZ",
+        "field": "Business",
+        "name": "startups"
+      },
+      {
+        "id": "recF4lsX5eYO9Qory",
+        "field": "Business",
+        "name": "development"
+      },
+      {
+        "id": "recIirkGw9Oh3qEg7",
+        "field": "Business",
+        "name": "model"
+      },
+      {
+        "id": "recNjAdAJxHybSSKb",
+        "field": "Business",
+        "name": "strategic partnership "
+      },
+      {
+        "id": "recpJRClz7516eVE2",
+        "field": "Business",
+        "name": "plan"
+      }
+    ]
+  },
+  {
+    "name": "Strategie",
+    "mentorSkillId": "recmxdRIFF8DHfiem",
+    "seniorSkillId": "recVtqeimOHPG5d0y",
+    "skills": [
+      {
+        "id": "rec7xGH2aQMij4XUS",
+        "field": "Strategie",
+        "name": "projektová"
+      },
+      {
+        "id": "recXG39S8ib2aMmPM",
+        "field": "Strategie",
+        "name": "marketingová"
+      },
+      {
+        "id": "recZjUk4FB4rLyS26",
+        "field": "Strategie",
+        "name": "produktová"
+      }
+    ]
+  },
+  {
+    "name": "Marketing",
+    "mentorSkillId": "rechBkiVtcgp6GHXn",
+    "seniorSkillId": "recS9oAhmBCzIoMBB",
+    "skills": [
+      {
+        "id": "rec8jqXvPLERoGXmS",
+        "field": "Marketing",
+        "name": "správa sociálních sítí"
+      },
+      {
+        "id": "recCVePwxPechUu0n",
+        "field": "Marketing",
+        "name": "natáčení a zpracování zvuku"
+      },
+      {
+        "id": "recK1y759IorZdNUg",
+        "field": "Marketing",
+        "name": "copywriting"
+      },
+      {
+        "id": "recVqw8P8rRlinpPi",
+        "field": "Marketing",
+        "name": "překlady"
+      },
+      {
+        "id": "recZ59khNXG6f5k4Y",
+        "field": "Marketing",
+        "name": "Public Relations"
+      },
+      {
+        "id": "recbiK3mDTHyRkvx6",
+        "field": "Marketing",
+        "name": "content writing"
+      },
+      {
+        "id": "rechfNFr4XYpkTjS2",
+        "field": "Marketing",
+        "name": "natáčení a zpracování videa"
+      },
+      {
+        "id": "rechguY6a5syLW0R1",
+        "field": "Marketing",
+        "name": "content planning"
+      },
+      {
+        "id": "reciuEbFVlNh1zyk2",
+        "field": "Marketing",
+        "name": "event management a produkce"
+      },
+      {
+        "id": "recmbJydJXLgBfItq",
+        "field": "Marketing",
+        "name": "online marketing (SEO, PPC, …)"
+      },
+      {
+        "id": "recsfRQndEyOp2QSw",
+        "field": "Marketing",
+        "name": "korektury"
+      },
+      {
+        "id": "recu0bDOIIuKfutGE",
+        "field": "Marketing",
+        "name": "fotografování"
+      },
+      {
+        "id": "recvwVUVfRbVy6ioV",
+        "field": "Marketing",
+        "name": "management"
+      }
+    ]
+  },
+  {
+    "name": "Management",
+    "mentorSkillId": "rececec1qjuIfEDZJ",
+    "seniorSkillId": "recEoKIMz6NSNvRtP",
+    "skills": [
+      {
+        "id": "rec9AvGowLuuU5anY",
+        "field": "Management",
+        "name": "projektový"
+      },
+      {
+        "id": "rec9twWRukbugmNJU",
+        "field": "Management",
+        "name": "product owner"
+      },
+      {
+        "id": "recSgF2KkvLrlqHd8",
+        "field": "Management",
+        "name": "leadership "
+      },
+      {
+        "id": "recUjqrY7PPPpehJ2",
+        "field": "Management",
+        "name": " development"
+      },
+      {
+        "id": "reccI0wo2wQiDyU75",
+        "field": "Management",
+        "name": "marketingový"
+      },
+      {
+        "id": "recysgFb5rGhhveb3",
+        "field": "Management",
+        "name": "produktový"
+      },
+      {
+        "id": "recz43RiIsPUq26B6",
+        "field": "Management",
+        "name": "Scrum Master"
+      }
+    ]
+  },
+  {
+    "name": "Finance",
+    "mentorSkillId": "recvSvkuQZe9Kpbsb",
+    "seniorSkillId": "recAwlNKdNmEjLcfE",
+    "skills": [
+      {
+        "id": "recIBjF73QjLuKsV7",
+        "field": "Finance",
+        "name": "plánování"
+      },
+      {
+        "id": "recVAjV48rxeMnA7C",
+        "field": "Finance",
+        "name": "analýza"
+      },
+      {
+        "id": "recVq08QW0sxECD5w",
+        "field": "Finance",
+        "name": "reportování "
+      }
+    ]
+  }
+]
