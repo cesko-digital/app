@@ -88,7 +88,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
       </Section>
 
       {opportunities.length > 0 && (
-        <Section>
+        <Section id="opportunities">
           <SectionContent>
             <S.TitleRow>
               <S.Title>{msg.opportunities.title}</S.Title>
