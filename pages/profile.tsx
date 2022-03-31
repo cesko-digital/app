@@ -30,6 +30,7 @@ const Page: NextPage = () => {
         break;
       case "unauthenticated":
         setState("signed_out");
+        setProfile(undefined);
         break;
       case "loading":
         setState("loading");
@@ -42,7 +43,7 @@ const Page: NextPage = () => {
       state={state}
       profile={profile}
       signIn={() => signIn("slack")}
-      signOut={signOut}
+      signOut={() => signOut({ redirect: false })}
     />
   );
 };

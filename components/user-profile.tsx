@@ -12,8 +12,8 @@ export type UserProfilePageState =
 export type UserProfilePageProps = {
   state: UserProfilePageState;
   profile?: UserProfile;
-  signIn: () => Promise<void>;
-  signOut: () => Promise<void>;
+  signIn: () => void;
+  signOut: () => void;
 };
 
 export const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
@@ -29,7 +29,7 @@ export const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
 };
 
 const PageContent: React.FC<UserProfilePageProps> = (props) => {
-  const { state, profile, signIn, signOut } = props;
+  const { state, signIn } = props;
   switch (state) {
     case "signed_out":
       return <SignedOutPage signIn={signIn} />;
