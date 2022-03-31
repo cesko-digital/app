@@ -3,7 +3,8 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { UserProfilePageState, UserProfilePage } from "components/user-profile";
 import { decodeUserProfile, UserProfile } from "lib/user-profile";
-import { flattenSkills, loadAllSkills, Skill } from "lib/skills";
+import { flattenSkills, Skill } from "lib/skills";
+import { siteData } from "lib/site-data";
 
 type PageProps = {
   allSkills: Skill[];
@@ -70,7 +71,7 @@ async function getUserProfile(): Promise<UserProfile> {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const allSkills = flattenSkills(await loadAllSkills());
+  const allSkills = flattenSkills(siteData.skills);
   return {
     props: { allSkills },
   };
