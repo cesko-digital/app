@@ -5,6 +5,7 @@ import { Button } from "./buttons";
 import { Skill } from "lib/skills";
 import { unique } from "lib/utils";
 import { useState } from "react";
+import styled from "styled-components";
 
 export type UserProfilePageState =
   | "loading"
@@ -182,7 +183,7 @@ const SkillPill: React.FC<SkillPillProps> = ({
     onClick(skill);
   };
   return (
-    <span
+    <AnimatedSpan
       onClick={toggle}
       style={{
         display: "inline-block",
@@ -196,7 +197,7 @@ const SkillPill: React.FC<SkillPillProps> = ({
       }}
     >
       {skill.name}
-    </span>
+    </AnimatedSpan>
   );
 };
 
@@ -209,3 +210,10 @@ const MainContainer: React.FC = (props) => (
 const Heading: React.FC = (props) => (
   <Heading1 style={{ marginBottom: "20px" }}>{props.children}</Heading1>
 );
+
+const AnimatedSpan = styled.span`
+  transition: transform 0.1s;
+  &:active {
+    transform: scale(0.9);
+  }
+`;
