@@ -156,7 +156,7 @@ const SkillBox: React.FC<SkillBoxProps> = ({
             style={{
               marginBottom: "20px",
               display: "inline-block",
-              background: hasSelectedSkills(field) ? "yellow" : "inherit",
+              background: hasSelectedSkills(field) ? "#FFF6A3" : "inherit",
             }}
           >
             {field}
