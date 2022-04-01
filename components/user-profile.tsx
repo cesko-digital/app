@@ -140,6 +140,9 @@ const SkillBox: React.FC<SkillBoxProps> = ({
       .filter((skill) => skill.field === field)
       .sort((a, b) => a.name.localeCompare(b.name));
 
+  const hasSelectedSkills = (field: string) =>
+    skillsForField(field).some((skill) => selectedSkills.includes(skill));
+
   return (
     <div style={{ marginBottom: "20px" }}>
       <Body style={{ marginBottom: "20px" }}>
@@ -149,7 +152,15 @@ const SkillBox: React.FC<SkillBoxProps> = ({
 
       {fields.map((field) => (
         <div key={field}>
-          <Heading2 style={{ marginBottom: "20px" }}>{field}</Heading2>
+          <Heading2
+            style={{
+              marginBottom: "20px",
+              display: "inline-block",
+              background: hasSelectedSkills(field) ? "yellow" : "inherit",
+            }}
+          >
+            {field}
+          </Heading2>
           <div style={{ lineHeight: "3ex", marginBottom: "20px" }}>
             {skillsForField(field).map((skill) => (
               <SkillPill
