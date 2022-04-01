@@ -9,6 +9,7 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+import { withDefault } from "./decoding";
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -33,7 +34,7 @@ export const decodeUserProfile = record({
   id: string,
   name: string,
   email: string,
-  skills: array(string),
+  skills: withDefault(array(string), []),
   slackId: optional(string),
   state: union("unconfirmed", "confirmed"),
   createdAt: string,

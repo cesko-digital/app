@@ -12,7 +12,6 @@ type PageProps = {
 
 const Page: NextPage<PageProps> = ({ allSkills }) => {
   const { data: session, status } = useSession();
-  const [userSkills, setUserSkills] = useState<Skill[]>([]);
   const [profile, setProfile] = useState<UserProfile | undefined>();
   const [state, setState] = useState<UserProfilePageState>("loading");
 
@@ -20,9 +19,6 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
     const triggerLoad = async () => {
       try {
         const profile = await getUserProfile();
-        setUserSkills(
-          allSkills.filter((skill) => profile.skills.includes(skill.id))
-        );
         setProfile(profile);
         setState("signed_in");
       } catch (error) {
@@ -41,7 +37,6 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
       case "unauthenticated":
         setState("signed_out");
         setProfile(undefined);
-        setUserSkills([]);
         break;
       case "loading":
         setState("loading");
@@ -49,13 +44,19 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
     }
   }, [session, status, state, allSkills]);
 
+  const saveSkills = async (skills: Skill[]) => {
+    console.debug(`Saving user skills.`);
+    await updateUserProfile(skills);
+  };
+
   return (
     <UserProfilePage
-      userSkills={userSkills}
+      allSkills={allSkills}
       state={state}
       profile={profile}
       signIn={() => signIn("slack")}
       signOut={() => signOut({ redirect: false })}
+      onUserSkillsChange={saveSkills}
     />
   );
 };
@@ -68,6 +69,20 @@ async function getUserProfile(): Promise<UserProfile> {
   } else {
     throw response.statusText;
   }
+}
+
+async function updateUserProfile(skills: Skill[]): Promise<void> {
+  const payload = {
+    // We’re only sending the skill IDs to the API
+    skills: skills.map((skill) => skill.id),
+  };
+  await fetch("/api/protected/me", {
+    method: "PATCH",
+    body: JSON.stringify(payload, null, 2),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
