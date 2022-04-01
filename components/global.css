@@ -8,6 +8,12 @@ body {
   padding: 0;
 }
 
+@keyframes push {
+  50% {
+    transform: scale(0.8);
+  }
+}
+
 @font-face {
   font-family: "Cesko Digital";
   src: url("/fonts/cesko.digital-regular.woff2") format("woff2"),
