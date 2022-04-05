@@ -1,11 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import { siteData } from "lib/site-data";
 import { renderOpportunitiesBySkill } from "lib/markdown-opportunities";
+import { addPerformanceLogging } from "lib/apm";
 
-export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse
-) {
+async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { projects, users } = siteData;
   const opportunities = siteData.opportunities.filter(
     (o) => o.status === "live"
@@ -19,3 +17,5 @@ export default async function handler(
   response.setHeader("Content-Type", "text/markdown; charset=UTF-8");
   response.status(200).send(mdown.source);
 }
+
+export default addPerformanceLogging(handler);
