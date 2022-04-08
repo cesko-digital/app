@@ -22,6 +22,41 @@ export interface SiteData {
   skills: readonly Field[];
 }
 
+type Async<T> = () => Promise<T>;
+
+interface DataSource {
+  projects: Async<PortalProject[]>;
+  opportunities: Async<PortalOpportunity[]>;
+  users: Async<PortalUser[]>;
+  events: Async<PortalEvent[]>;
+  partners: Async<PortalPartner[]>;
+  videos: Async<PortalVideo[]>;
+  blogPosts: Async<Article[]>;
+  skills: Async<Field[]>;
+}
+
+const ProductionDataSource: DataSource = {
+  projects: Airtable.getAllProjects,
+  opportunities: Airtable.getAllOpportunities,
+  users: Airtable.getAllUsers,
+  events: Airtable.getAllEvents,
+  partners: Airtable.getAllPartners,
+  videos: getAllVideos,
+  blogPosts: getArticleIndex,
+  skills: getAllSkills,
+};
+
+const SampleDataSource: DataSource = {
+  projects: Local.getAllProjects,
+  opportunities: Local.getAllOpportunities,
+  users: Local.getAllUsers,
+  events: Local.getAllEvents,
+  partners: Local.getAllPartners,
+  videos: getAllVideos, // TODO
+  blogPosts: getArticleIndex, // TODO
+  skills: Local.getAllSkills,
+};
+
 async function loadSiteData(): Promise<SiteData> {
   const forceLocal = !!process.env.DATA_SOURCE_LOCAL;
   const useLocalData = forceLocal || !Airtable.isAvailable;
@@ -42,26 +77,40 @@ async function loadSiteData(): Promise<SiteData> {
     );
   }
 
-  const DataSource = useLocalData ? Local : Airtable;
+  const dataSource = useLocalData ? SampleDataSource : ProductionDataSource;
 
-  const projects = await DataSource.getAllProjects();
-  const users = await DataSource.getAllUsers();
-  const opportunities = (await DataSource.getAllOpportunities())
-    // Filter out opportunities that point to nonexisting projects
-    // (ie. projects that have been ignored because of parse errors).
-    .filter((o) => projects.some((p) => p.id === o.projectId));
-  const events = (await DataSource.getAllEvents())
-    // Filter out events that are owned by nonexisting users
-    .filter((e) => users.some((u) => u.id === e.ownerId));
+  let [
+    projects,
+    opportunities,
+    users,
+    events,
+    partners,
+    videos,
+    blogPosts,
+    skills,
+  ] = await Promise.all([
+    dataSource.projects(),
+    dataSource.opportunities(),
+    dataSource.users(),
+    dataSource.events(),
+    dataSource.partners(),
+    dataSource.videos(),
+    dataSource.blogPosts(),
+    dataSource.skills(),
+  ]);
 
-  const skills = useLocalData
-    ? await Local.getAllSkills()
-    : await getAllSkills();
+  // Filter out opportunities that point to nonexisting projects
+  // (ie. projects that have been ignored because of parse errors).
+  opportunities = opportunities.filter((o) =>
+    projects.some((p) => p.id === o.projectId)
+  );
+  // Filter out events that are owned by nonexisting users
+  events = events.filter((e) => users.some((u) => u.id === e.ownerId));
 
   return filterUndefines({
-    partners: await DataSource.getAllPartners(),
-    videos: await getAllVideos(),
-    blogPosts: await getArticleIndex(),
+    partners,
+    videos,
+    blogPosts,
     skills,
     projects,
     opportunities,
