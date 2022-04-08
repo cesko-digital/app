@@ -1,10 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import Airtable from "airtable";
+import { addPerformanceLogging } from "lib/apm";
 
-export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse
-) {
+async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { name, email, skills } = request.body;
   if (!name) {
     response.status(400).send("Missing “name” param.");
@@ -34,3 +32,5 @@ export default async function handler(
     response.status(500).send("Sorry :(");
   }
 }
+
+export default addPerformanceLogging(handler);

@@ -1,4 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { addPerformanceLogging } from "lib/apm";
+import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 
 const API_KEY = process.env.ECOMAIL_API_KEY || "";
@@ -54,4 +55,4 @@ const handler = async (
   }
 };
 
-export default handler;
+export default addPerformanceLogging(handler);
