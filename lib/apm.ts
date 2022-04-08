@@ -1,4 +1,4 @@
-import APM from "elastic-apm-node";
+import apm from "elastic-apm-node";
 import { NextApiHandler, NextApiRequest } from "next";
 
 const {
@@ -7,8 +7,8 @@ const {
   ELASTIC_APM_SERVER_URL: serverUrl,
 } = process.env;
 
-if (!APM.isStarted() && serviceName && apiToken && serverUrl) {
-  APM.start();
+if (!apm.isStarted() && serviceName && apiToken && serverUrl) {
+  apm.start();
 }
 
 /**
@@ -19,9 +19,9 @@ if (!APM.isStarted() && serviceName && apiToken && serverUrl) {
 export function addPerformanceLogging(handler: NextApiHandler): NextApiHandler {
   return async (request, response) => {
     const name = getRequestPath(request) || "<unknown>";
-    APM.startTransaction(name);
+    apm.startTransaction(name);
     await handler(request, response);
-    APM.endTransaction(response.statusCode);
+    apm.endTransaction(response.statusCode);
   };
 }
 
