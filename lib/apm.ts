@@ -1,7 +1,13 @@
 import APM from "elastic-apm-node";
 import { NextApiHandler, NextApiRequest } from "next";
 
-if (!APM.isStarted()) {
+const {
+  ELASTIC_APM_SERVICE_NAME: apmServiceName,
+  ELASTIC_APM_SECRET_TOKEN: apmToken,
+  ELASTIC_APM_SERVER_URL: apmServerUrl,
+} = process.env;
+
+if (!APM.isStarted() && apmServiceName && apmToken && apmServerUrl) {
   APM.start();
 }
 
