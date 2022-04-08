@@ -7,9 +7,16 @@ const {
   ELASTIC_APM_SERVER_URL: serverUrl,
 } = process.env;
 
-if (!apm.isStarted() && serviceName && apiToken && serverUrl) {
+export const enableAPMLogging = () => {
+  if (!serviceName || !apiToken || !serverUrl) {
+    return;
+  }
+  if (apm.isStarted()) {
+    return;
+  }
+  console.log(`Starting APM logging for “${serviceName}”.`);
   apm.start();
-}
+};
 
 /**
  * Wrap API handler in an Application Performance Monitoring transaction
