@@ -3,6 +3,8 @@ import { Article, getArticleIndex } from "./related-blog-posts";
 import { Field, getAllSkills } from "./skills";
 import * as Airtable from "./airtable-import";
 import * as Local from "./local-data";
+import apm from "elastic-apm-node";
+import { enableAPMLogging } from "./apm";
 import {
   PortalEvent,
   PortalOpportunity,
@@ -10,6 +12,8 @@ import {
   PortalProject,
   PortalUser,
 } from "./portal-types";
+
+enableAPMLogging();
 
 export interface SiteData {
   projects: readonly PortalProject[];
@@ -78,6 +82,11 @@ async function loadSiteData(): Promise<SiteData> {
   }
 
   const dataSource = useLocalData ? SampleDataSource : ProductionDataSource;
+  const transactionTag = useLocalData
+    ? "load_sample_data"
+    : "load_production_data";
+
+  apm.startTransaction(transactionTag);
 
   let [
     projects,
@@ -98,6 +107,8 @@ async function loadSiteData(): Promise<SiteData> {
     dataSource.blogPosts(),
     dataSource.skills(),
   ]);
+
+  apm.endTransaction();
 
   // Filter out opportunities that point to nonexisting projects
   // (ie. projects that have been ignored because of parse errors).
