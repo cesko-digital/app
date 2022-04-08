@@ -6,6 +6,7 @@ import {
   field,
   fields,
   optional,
+  Pojo,
   record,
   string,
   union,
@@ -84,6 +85,22 @@ export const decodeEvent = record({
   locationUrl: field("Location URL", optional(string)),
 });
 
+/**
+ * Decode skills such as Marketing, Design, …
+ *
+ * The “Other” skill is special – it doesn’t make much sense in combination with
+ * other skills, so we only allow it when it’s the only skill specified. More here:
+ * https://cesko-digital.slack.com/archives/CHG9NA23D/p1649168585006699
+ */
+export const decodeSkills = (value: Pojo) => {
+  const skills = array(string)(value);
+  if (skills.length > 1) {
+    return skills.filter((skill) => skill !== "Other");
+  } else {
+    return skills;
+  }
+};
+
 export const decodeOpportunity = record({
   id: string,
   name: field("Name", string),
@@ -94,7 +111,7 @@ export const decodeOpportunity = record({
   ownerId: field("Owner", takeFirst(array(string))),
   contactUrl: field("RSVP URL", string),
   coverImageUrl: field("Cover URL", optional(string)),
-  skills: field("Skills", array(string)),
+  skills: field("Skills", decodeSkills),
   juniorFriendly: field("Junior Friendly", withDefault(boolean, false)),
   status: field("Status", union("draft", "live", "unlisted")),
 });
