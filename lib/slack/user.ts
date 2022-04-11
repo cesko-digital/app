@@ -14,6 +14,7 @@ export const decodeSlackProfile = record({
   real_name: optional(string),
   display_name: string,
   email: optional(string),
+  image_512: optional(string),
 });
 
 /** Slack user with information such as user ID, team ID or profile */

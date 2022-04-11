@@ -22,6 +22,7 @@ test("Decode profile", () => {
   expect(decodeSlackProfile(sampleProfilePayload)).toEqual({
     real_name: "Tomáš Znamenáček",
     display_name: "Tomáš Znamenáček",
+    image_512: "https://…512.png",
     email: undefined,
   });
 });
