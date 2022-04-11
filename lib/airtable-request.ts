@@ -37,10 +37,18 @@ export interface UpdateRequest<Result, TFields extends FieldSet>
   decodeResponse: (record: SimpleRecord<TFields>) => Result;
 }
 
+export interface CreateRequest<Result, TFields extends FieldSet>
+  extends BaseRequest<Result> {
+  method: "CREATE";
+  recordsData: Partial<TFields>[];
+  decodeResponse: (records: SimpleRecords<TFields>) => Result;
+}
+
 export type Request<Result, TFields extends FieldSet = {}> =
   | FindRequest<Result, TFields>
   | SelectRequest<Result, TFields>
-  | UpdateRequest<Result, TFields>;
+  | UpdateRequest<Result, TFields>
+  | CreateRequest<Result, TFields>;
 
 export async function send<Result, TFields extends FieldSet>(
   table: Table<TFields>,
@@ -59,6 +67,11 @@ export async function send<Result, TFields extends FieldSet>(
         request.recordFields
       );
       return request.decodeResponse(updatedRecord);
+    case "CREATE":
+      const createdRecords = await table.create(
+        request.recordsData.map((item) => ({ fields: item }))
+      );
+      return request.decodeResponse(createdRecords);
   }
 }
 
