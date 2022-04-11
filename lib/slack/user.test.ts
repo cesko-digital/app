@@ -14,6 +14,7 @@ test("Decode user", () => {
     is_bot: false,
     is_email_confirmed: true,
     profile: expect.anything(),
+    deleted: false,
   });
 });
 
