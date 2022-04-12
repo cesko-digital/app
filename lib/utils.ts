@@ -42,6 +42,18 @@ export function shuffleInPlace<T>(array: T[]): T[] {
   return array;
 }
 
+export function splitToChunks<T>(array: T[], size: number) {
+  let chunks = [];
+  let i = 0;
+  let n = array.length;
+
+  while (i < n) {
+    chunks.push(array.slice(i, (i += size)));
+  }
+
+  return chunks;
+}
+
 export const unique = <T>(a: T[]) => [...new Set(a)];
 
 export const getRandomElem = <T>(a: T[]) =>
