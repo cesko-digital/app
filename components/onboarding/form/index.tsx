@@ -6,7 +6,7 @@ import { Field } from "lib/airtable/skills";
 import Strings from "../strings.json";
 import * as Components from "components/onboarding/styles";
 import * as S from "./styles";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import {
   areSkillsValid,
   canSubmitForm,

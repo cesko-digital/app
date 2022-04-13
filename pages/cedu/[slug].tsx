@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as Typography from "components/typography";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { siteData } from "lib/site-data";
 import {

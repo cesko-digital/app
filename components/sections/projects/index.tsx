@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { CardRow } from "components/layout";
 import { PortalProject } from "lib/portal-types";
 import strings from "content/strings.json";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 
 const msg = strings.components.sections.projects;
 
