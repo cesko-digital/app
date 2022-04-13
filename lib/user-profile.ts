@@ -1,6 +1,7 @@
 import { FieldSet } from "airtable";
 import { mergeFields, SelectRequest, UpdateRequest } from "./airtable-request";
 import { AirtableBase } from "airtable/lib/airtable_base";
+import { withDefault } from "./decoding";
 import {
   array,
   decodeType,
@@ -9,7 +10,6 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
-import { withDefault } from "./decoding";
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
