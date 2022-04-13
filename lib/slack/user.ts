@@ -1,3 +1,5 @@
+import { getAllPages } from "./utils";
+import slack from "slack";
 import {
   boolean,
   decodeType,
@@ -12,6 +14,7 @@ export const decodeSlackProfile = record({
   real_name: optional(string),
   display_name: string,
   email: optional(string),
+  image_512: optional(string),
 });
 
 /** Slack user with information such as user ID, team ID or profile */
@@ -22,9 +25,36 @@ export const decodeSlackUser = record({
   name: string,
   real_name: optional(string),
   is_bot: boolean,
+  deleted: boolean,
   is_email_confirmed: optional(boolean),
   profile: decodeSlackProfile,
 });
+
+//
+// Utils
+//
+
+export const isRegularUser = (user: SlackUser) =>
+  !user.is_bot && !user.deleted && user.id !== "USLACKBOT";
+
+//
+// API Calls
+//
+
+/** Return all users from a given Slack workspace */
+export async function getAllWorkspaceUsers(
+  token: string
+): Promise<SlackUser[]> {
+  return getAllPages(
+    (cursor) => slack.users.list({ token, cursor }),
+    (response) => response.members.map(decodeSlackUser),
+    (response) => response?.response_metadata?.next_cursor
+  );
+}
+
+//
+// Samples
+//
 
 /** Sample Slack profile to use in tests */
 export const sampleProfilePayload = {
