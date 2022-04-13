@@ -2,7 +2,7 @@ name: Slack Sync
 
 on:
   schedule:
-    - cron: "5 2 * * *" # Run at 3.05 UTC each day
+    - cron: "5 3 * * *" # Run at 3.05 UTC each day
   workflow_dispatch:
 
 jobs:
