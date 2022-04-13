@@ -10,6 +10,7 @@ import {
   splitFields,
 } from "./airtable-request";
 
+/** The Airtable schema of the Slack user table */
 export interface Schema extends FieldSet {
   name: string;
   email: string;
@@ -17,11 +18,14 @@ export interface Schema extends FieldSet {
   slackAvatarUrl: string;
 }
 
+/** Get Slack user table from given Airtable base */
 export const slackUserTable = (base: AirtableBase) =>
   base<Schema>("Slack Users 2.0");
 
+/** Slack user as stored in Airtable */
 export type SlackUser = decodeType<typeof decodeSlackUser>;
 
+/** Decode `SlackUser` from an incoming object (usually an Airtable record) */
 export const decodeSlackUser = record({
   id: string,
   slackId: string,
@@ -30,6 +34,11 @@ export const decodeSlackUser = record({
   slackAvatarUrl: optional(string),
 });
 
+//
+// API Calls
+//
+
+/** Get all Slack users stored in Airtable */
 export function getAllSlackUsers(): SelectRequest<SlackUser[], Schema> {
   return {
     method: "SELECT",
@@ -38,6 +47,7 @@ export function getAllSlackUsers(): SelectRequest<SlackUser[], Schema> {
   };
 }
 
+/** Create new Slack users in Airtable */
 export function createSlackUsers(
   users: Omit<SlackUser, "id">[]
 ): CreateRequest<SlackUser[], Schema> {
@@ -48,6 +58,7 @@ export function createSlackUsers(
   };
 }
 
+/** Update Slack users in Airtable */
 export function updateSlackUsers(
   users: SlackUser[]
 ): BatchUpdateRequest<SlackUser[], Schema> {
