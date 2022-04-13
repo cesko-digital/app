@@ -1,5 +1,5 @@
 import Airtable from "airtable";
-import { send } from "lib/airtable-request";
+import { send } from "lib/airtable/request";
 import { decodeIncomingMessage, EventCallback } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
 import { decodeSlackUser } from "lib/slack/user";
@@ -8,7 +8,7 @@ import {
   getUserProfileByMail,
   updateUserProfile,
   userProfileTable,
-} from "lib/user-profile";
+} from "lib/airtable/user-profile";
 import {
   signatureHeader,
   timestampHeader,

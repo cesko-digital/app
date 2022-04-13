@@ -1,6 +1,6 @@
 import { FieldSet, Record, RecordData, Table } from "airtable";
 import { QueryParams } from "airtable/lib/query_params";
-import { splitToChunks } from "./utils";
+import { splitToChunks } from "../utils";
 
 const maxChangeBatchSize = 10;
 

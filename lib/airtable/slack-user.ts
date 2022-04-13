@@ -8,7 +8,7 @@ import {
   SimpleRecords,
   BatchUpdateRequest,
   splitFields,
-} from "./airtable-request";
+} from "./request";
 
 /** The Airtable schema of the Slack user table */
 export interface Schema extends FieldSet {

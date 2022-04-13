@@ -1,7 +1,7 @@
 import { FieldSet } from "airtable";
-import { mergeFields, SelectRequest, UpdateRequest } from "./airtable-request";
+import { mergeFields, SelectRequest, UpdateRequest } from "./request";
 import { AirtableBase } from "airtable/lib/airtable_base";
-import { withDefault } from "./decoding";
+import { withDefault } from "../decoding";
 import {
   array,
   decodeType,

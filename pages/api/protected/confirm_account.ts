@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { send } from "lib/airtable-request";
+import { send } from "lib/airtable/request";
 import Airtable from "airtable";
 import {
   getUserProfileByMail,
   updateUserProfile,
   userProfileTable,
-} from "lib/user-profile";
+} from "lib/airtable/user-profile";
 
 /**
  * “Manually” confirm a new account

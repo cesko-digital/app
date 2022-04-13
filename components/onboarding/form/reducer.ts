@@ -1,4 +1,4 @@
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 
 export type Msg =
   | { action: "updateEmail"; value: string }

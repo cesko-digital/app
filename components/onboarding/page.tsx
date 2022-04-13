@@ -1,4 +1,4 @@
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 import OnboardingForm, { RegistrationData } from "./form";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";

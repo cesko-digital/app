@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
 import { RegistrationData } from "components/onboarding/form";
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 import OnboardingPage from "components/onboarding/page";
 import { siteData } from "lib/site-data";
 
