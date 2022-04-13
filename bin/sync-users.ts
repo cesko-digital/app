@@ -16,6 +16,7 @@ require("dotenv").config({ path: ".env.local" });
 const {
   SLACK_SYNC_TOKEN: slackToken = "",
   AIRTABLE_API_KEY: airtableToken = "",
+  DEBUG: debug = "",
 } = process.env;
 
 async function main() {
@@ -75,6 +76,13 @@ async function upsertSlackUsers(
     .map(convertUser);
 
   console.log(`Creating ${usersToInsert.length} new users.`);
+  if (debug && usersToInsert.length) {
+    console.log(
+      `Slack IDs of users being created: ${usersToInsert.map(
+        (user) => user.slackId
+      )}`
+    );
+  }
   await send(userTable, createSlackUsers(usersToInsert));
 
   /** Given a user in the DB format, is it different from the one already stored in the DB? */
@@ -98,6 +106,13 @@ async function upsertSlackUsers(
     .filter(hasUserChanged);
 
   console.log(`Updating ${usersToUpdate.length} users.`);
+  if (debug && usersToUpdate.length) {
+    console.log(
+      `Slack IDs of users being updated: ${usersToUpdate.map(
+        (user) => user.slackId
+      )}`
+    );
+  }
   await send(userTable, updateSlackUsers(usersToUpdate));
 }
 
