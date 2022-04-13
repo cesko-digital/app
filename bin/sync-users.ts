@@ -20,25 +20,21 @@ const {
 } = process.env;
 
 async function main() {
-  try {
-    console.log(
-      "Downloading all Slack users of the Česko.Digital workspace. This can take a while."
-    );
-    const users = await getAllWorkspaceUsers(slackToken);
-    const regularUsers = users.filter(isRegularUser);
-    console.log(
-      `Loaded ${regularUsers.length} regular users, ${users.length} users total.`
-    );
+  console.log(
+    "Downloading all Slack users of the Česko.Digital workspace. This can take a while."
+  );
+  const users = await getAllWorkspaceUsers(slackToken);
+  const regularUsers = users.filter(isRegularUser);
+  console.log(
+    `Loaded ${regularUsers.length} regular users, ${users.length} users total.`
+  );
 
-    console.log("Saving users to Airtable.");
-    const base = new Airtable({ apiKey: airtableToken }).base(
-      "apppZX1QC3fl1RTBM"
-    );
-    await upsertSlackUsers(slackUserTable(base), regularUsers);
-    console.log("Success! 🎉");
-  } catch (error) {
-    console.log(error);
-  }
+  console.log("Saving users to Airtable.");
+  const base = new Airtable({ apiKey: airtableToken }).base(
+    "apppZX1QC3fl1RTBM"
+  );
+  await upsertSlackUsers(slackUserTable(base), regularUsers);
+  console.log("Success! 🎉");
 }
 
 function convertUser(user: SlackUser): Omit<AirtableSlackUser, "id"> {
