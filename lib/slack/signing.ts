@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHmac } from "crypto";
 import { SlackUser } from "./user";
 
 /** Header that stores Slack request timestamp */
