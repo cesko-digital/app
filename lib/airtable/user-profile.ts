@@ -1,10 +1,11 @@
 import { FieldSet } from "airtable";
 import { mergeFields, SelectRequest, UpdateRequest } from "./request";
 import { AirtableBase } from "airtable/lib/airtable_base";
-import { withDefault } from "../decoding";
+import { relationToOne, withDefault } from "../decoding";
 import {
   array,
   decodeType,
+  field,
   optional,
   record,
   string,
@@ -16,6 +17,7 @@ export interface Schema extends FieldSet {
   name: string;
   email: string;
   skills: ReadonlyArray<string>;
+  slackUser: ReadonlyArray<string>;
   slackId: string;
   state: string;
   createdAt: string;
@@ -35,6 +37,7 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   skills: withDefault(array(string), []),
+  slackUserRelationId: field("slackUser", relationToOne),
   slackId: optional(string),
   state: union("unconfirmed", "confirmed"),
   createdAt: string,
@@ -74,7 +77,10 @@ export function getFirstMatchingUserProfile(
 export function updateUserProfile(
   recordId: string,
   fields: Partial<
-    Pick<UserProfile, "name" | "email" | "skills" | "slackId" | "state">
+    Pick<
+      UserProfile,
+      "name" | "email" | "skills" | "slackUserRelationId" | "state"
+    >
   >
 ): UpdateRequest<UserProfile, Schema> {
   return {

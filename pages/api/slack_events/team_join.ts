@@ -1,9 +1,9 @@
 import Airtable from "airtable";
 import { send } from "lib/airtable/request";
-import { decodeIncomingMessage, EventCallback } from "lib/slack/events";
+import { decodeIncomingMessage } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
-import { decodeSlackUser } from "lib/slack/user";
-import * as slack from "slack";
+import { getSlackUser } from "lib/slack/user";
+import { createSlackUsers, slackUserTable } from "lib/airtable/slack-user";
 import {
   getUserProfileByMail,
   updateUserProfile,
@@ -23,6 +23,13 @@ export const config = {
     bodyParser: false,
   },
 };
+
+const {
+  SLACK_SIGNING_SECRET = "",
+  SLACK_EVENTS_TOKEN = "",
+  SLACK_SYNC_TOKEN = "",
+  AIRTABLE_API_KEY = "",
+} = process.env;
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
 export default async function handler(
@@ -46,11 +53,10 @@ export default async function handler(
         // Validate message signature
         const timestamp = request.headers[timestampHeader] as string;
         const expectedSignature = request.headers[signatureHeader] as string;
-        const signingSecret = process.env.SLACK_SIGNING_SECRET as string;
         const status = validateTeamJoinEvent({
           timestamp,
           expectedSignature,
-          signingSecret,
+          signingSecret: SLACK_SIGNING_SECRET,
           messageBody: rawBody,
           profile: msg.event.user,
         });
@@ -66,53 +72,73 @@ export default async function handler(
             response.status(401).send("Wrong Slack team");
             return;
           case "ok":
-            // The `user` object from Slack does not include the email,
-            // so we have to make an extra API request to get that.
-            const userId = msg.event.user.id;
-            const token = process.env.SLACK_EVENTS_TOKEN;
-            const slackResponse = await slack.users.info({
-              token,
-              user: userId,
-            });
-            if (slackResponse.ok) {
-              try {
-                const user = decodeSlackUser(slackResponse.user);
-                if (user.profile.email) {
-                  await confirmUserAccount(userId, user.profile.email);
-                } else {
-                  console.error(`Missing email addres for user ${userId}`);
-                }
-              } catch (e) {
-                console.error(
-                  `Failed to decode user profile for user ${userId}`
-                );
-              }
-            } else {
-              console.error(
-                `Error querying Slack API to confirm user ${userId}`
-              );
-            }
+            await confirmUserAccount(msg.event.user.id);
             response.status(204).end();
             return;
         }
     }
   } catch (e) {
     console.log(e);
-    response.status(400).send("Don’t understand");
+    response.status(500).send("Sorry :(");
   }
 }
 
-async function confirmUserAccount(slackId: string, email: string) {
-  const apiKey = process.env.AIRTABLE_API_KEY;
-  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
-  const table = userProfileTable(base);
+/**
+ * Confirm the new user in the DB
+ *
+ * To confirm the account, we have to create a new record in the Slack Users
+ * table, link it to the record in the User Profiles table and mark the user
+ * profile as confirmed.
+ */
+async function confirmUserAccount(slackId: string) {
+  // The `user` object from Slack does not include the email,
+  // so we have to make an extra API request to get it.
+  const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
+  if (!slackUser) {
+    console.error(
+      `Account confirmation failed, error querying Slack API for user ${slackId}`
+    );
+    return;
+  }
 
-  const initialProfile = await send(table, getUserProfileByMail(email));
+  const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(
+    "apppZX1QC3fl1RTBM"
+  );
+
+  // Save the new Slack user to the Slack Users DB table.
+  // This makes sense even if the following steps fail.
+  await send(
+    slackUserTable(base),
+    createSlackUsers([
+      {
+        slackId: slackUser.id,
+        name: slackUser.real_name || slackUser.name,
+        email: slackUser.profile.email,
+        slackAvatarUrl: slackUser.profile.image_512,
+        userProfileRelationId: undefined,
+      },
+    ])
+  );
+
+  // Without an e-mail address we can’t confirm the account
+  const { email } = slackUser.profile;
+  if (!email) {
+    console.error(
+      `Account confirmation failed, missing email addres for user ${slackId}`
+    );
+    return;
+  }
+
+  // Get the initial user profile we are trying to confirm
+  const initialProfile = await send(
+    userProfileTable(base),
+    getUserProfileByMail(email)
+  );
 
   // This can routinely happen if the user skipped onboarding somehow
   if (!initialProfile) {
     console.error(
-      `Unconfirmed account not found when trying to confirm user “${slackId}” (${email})`
+      `Account confirmation failed, user profile not found for user “${slackId}”`
     );
     return;
   }
@@ -123,10 +149,11 @@ async function confirmUserAccount(slackId: string, email: string) {
     return;
   }
 
+  // Flip account to confirmed and link the associated Slack user
   await send(
-    table,
+    userProfileTable(base),
     updateUserProfile(initialProfile.id, {
-      slackId,
+      slackUserRelationId: slackUser.id,
       state: "confirmed",
     })
   );

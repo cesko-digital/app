@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 import { send } from "lib/airtable/request";
+import { getSlackUserBySlackId, slackUserTable } from "lib/airtable/slack-user";
 import Airtable from "airtable";
 import {
   getUserProfileByMail,
@@ -39,21 +40,34 @@ export default async function handler(
 
   const apiKey = process.env.AIRTABLE_API_KEY;
   const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
-  const table = userProfileTable(base);
 
   try {
-    const profile = await send(table, getUserProfileByMail(token.email!));
+    const profile = await send(
+      userProfileTable(base),
+      getUserProfileByMail(token.email!)
+    );
     if (!profile) {
-      response.status(404).send("User not found");
+      response.status(404).send("User profile not found");
       return;
     }
+
+    const slackUser = await send(
+      slackUserTable(base),
+      getSlackUserBySlackId(token.sub!)
+    );
+    if (!slackUser) {
+      response.status(404).send("Slack user not found");
+      return;
+    }
+
     const updatedProfile = await send(
-      table,
+      userProfileTable(base),
       updateUserProfile(profile.id, {
-        slackId: token.sub!,
+        slackUserRelationId: slackUser.id,
         state: "confirmed",
       })
     );
+
     response.setHeader("Content-Type", "application/json");
     response.status(200).send(JSON.stringify(updatedProfile, null, 2));
   } catch (e) {

@@ -43,6 +43,7 @@ function convertUser(user: SlackUser): Omit<AirtableSlackUser, "id"> {
     name: user.real_name || user.name,
     email: user.profile.email,
     slackAvatarUrl: user.profile.image_512,
+    userProfileRelationId: undefined,
   };
 }
 
