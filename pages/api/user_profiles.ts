@@ -44,7 +44,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
           skills,
         })
       );
-      response.status(201).send("Registration created.");
+      response.status(201).send("User profile created.");
     }
   } catch (e) {
     console.error(e);
