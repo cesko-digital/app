@@ -56,19 +56,15 @@ export async function getAllWorkspaceUsers(
 export async function getSlackUser(
   token: string,
   slackId: string
-): Promise<SlackUser | undefined> {
-  try {
-    const slackResponse = await slack.users.info({
-      token,
-      user: slackId,
-    });
-    if (!slackResponse.ok) {
-      return undefined;
-    }
-    return decodeSlackUser(slackResponse.user);
-  } catch (_) {
-    return undefined;
+): Promise<SlackUser> {
+  const slackResponse = await slack.users.info({
+    token,
+    user: slackId,
+  });
+  if (!slackResponse.ok) {
+    throw "Slack API reports failure";
   }
+  return decodeSlackUser(slackResponse.user);
 }
 
 //

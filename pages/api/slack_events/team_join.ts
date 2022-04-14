@@ -77,7 +77,7 @@ export default async function handler(
         }
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     response.status(500).send("Sorry :(");
   }
 }
@@ -93,13 +93,6 @@ async function confirmUserAccount(slackId: string) {
   // The `user` object from Slack does not include the email,
   // so we have to make an extra API request to get it.
   const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
-  if (!slackUser) {
-    console.error(
-      `Account confirmation failed, error querying Slack API for user ${slackId}`
-    );
-    return;
-  }
-
   const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(
     "apppZX1QC3fl1RTBM"
   );
