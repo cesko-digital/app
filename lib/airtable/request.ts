@@ -122,3 +122,6 @@ export function splitFields<TFields extends FieldSet>(
     fields: fields as any,
   };
 }
+
+/** A helper to make it obvious the request returns no parsed response */
+export const noResponse = () => {};

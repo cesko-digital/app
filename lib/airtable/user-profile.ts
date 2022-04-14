@@ -1,5 +1,11 @@
 import { FieldSet } from "airtable";
-import { mergeFields, SelectRequest, UpdateRequest } from "./request";
+import {
+  CreateRequest,
+  mergeFields,
+  noResponse,
+  SelectRequest,
+  UpdateRequest,
+} from "./request";
 import { AirtableBase } from "airtable/lib/airtable_base";
 import { relationToOne, withDefault } from "../decoding";
 import {
@@ -88,5 +94,23 @@ export function updateUserProfile(
     recordId,
     recordFields: fields,
     decodeResponse: (record) => decodeUserProfile(mergeFields(record) as any),
+  };
+}
+
+/** Create new user profile */
+export function createUserProfile(
+  profile: Pick<UserProfile, "name" | "email" | "skills">
+): CreateRequest<void, Schema> {
+  return {
+    method: "CREATE",
+    recordsData: [
+      {
+        name: profile.name,
+        email: profile.email,
+        skills: profile.skills,
+        state: "unconfirmed",
+      },
+    ],
+    decodeResponse: noResponse,
   };
 }
