@@ -24,7 +24,7 @@ export interface Schema extends FieldSet {
   email: string;
   skills: ReadonlyArray<string>;
   slackUser: ReadonlyArray<string>;
-  slackId: string;
+  slackId: ReadonlyArray<string>;
   state: string;
   createdAt: string;
   lastModifiedAt: string;
@@ -44,7 +44,7 @@ export const decodeUserProfile = record({
   email: string,
   skills: withDefault(array(string), []),
   slackUserRelationId: field("slackUser", relationToOne),
-  slackId: optional(string),
+  slackId: relationToOne,
   state: union("unconfirmed", "confirmed"),
   createdAt: string,
   lastModifiedAt: string,
