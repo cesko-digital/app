@@ -1,5 +1,5 @@
 import Airtable, { Table } from "airtable";
-import { send } from "lib/airtable-request";
+import { send } from "lib/airtable/request";
 import { isDeepStrictEqual } from "util";
 import { getAllWorkspaceUsers, isRegularUser, SlackUser } from "lib/slack/user";
 import {
@@ -9,7 +9,7 @@ import {
   SlackUser as AirtableSlackUser,
   slackUserTable,
   updateSlackUsers,
-} from "lib/slack-user";
+} from "lib/airtable/slack-user";
 
 require("dotenv").config({ path: ".env.local" });
 
@@ -43,6 +43,7 @@ function convertUser(user: SlackUser): Omit<AirtableSlackUser, "id"> {
     name: user.real_name || user.name,
     email: user.profile.email,
     slackAvatarUrl: user.profile.image_512,
+    userProfileRelationId: undefined,
   };
 }
 

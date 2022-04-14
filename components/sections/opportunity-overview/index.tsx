@@ -1,6 +1,6 @@
-import { BodySmall, Body } from "components/typography";
+import { BodySmall } from "components/typography";
 import { PortalOpportunity, PortalProject } from "lib/portal-types";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import Link from "next/link";
 import * as S from "./styles";
 

@@ -52,6 +52,25 @@ export async function getAllWorkspaceUsers(
   );
 }
 
+/** Return user with given Slack ID */
+export async function getSlackUser(
+  token: string,
+  slackId: string
+): Promise<SlackUser | undefined> {
+  try {
+    const slackResponse = await slack.users.info({
+      token,
+      user: slackId,
+    });
+    if (!slackResponse.ok) {
+      return undefined;
+    }
+    return decodeSlackUser(slackResponse.user);
+  } catch (_) {
+    return undefined;
+  }
+}
+
 //
 // Samples
 //

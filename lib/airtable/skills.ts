@@ -1,5 +1,5 @@
 import Airtable from "airtable";
-import { unique } from "./utils";
+import { unique } from "lib/utils";
 import {
   array,
   decodeType,

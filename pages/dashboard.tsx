@@ -6,7 +6,7 @@ import EventCard from "components/dashboard/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import CeduCard from "components/dashboard/cedu-card";
 import { PortalVideo } from "lib/cedu";
 import {

@@ -1,6 +1,13 @@
 import { FieldSet } from "airtable";
 import { AirtableBase } from "airtable/lib/airtable_base";
-import { decodeType, optional, record, string } from "typescript-json-decoder";
+import { relationToOne } from "lib/decoding";
+import {
+  decodeType,
+  field,
+  optional,
+  record,
+  string,
+} from "typescript-json-decoder";
 import {
   CreateRequest,
   mergeFields,
@@ -8,7 +15,7 @@ import {
   SimpleRecords,
   BatchUpdateRequest,
   splitFields,
-} from "./airtable-request";
+} from "./request";
 
 /** The Airtable schema of the Slack user table */
 export interface Schema extends FieldSet {
@@ -16,6 +23,7 @@ export interface Schema extends FieldSet {
   email: string;
   slackId: string;
   slackAvatarUrl: string;
+  userProfile: ReadonlyArray<string>;
 }
 
 /** Get Slack user table from given Airtable base */
@@ -32,11 +40,33 @@ export const decodeSlackUser = record({
   name: string,
   email: optional(string),
   slackAvatarUrl: optional(string),
+  userProfileRelationId: field("userProfile", relationToOne),
 });
 
 //
 // API Calls
 //
+
+/** Get Slack user by Slack ID */
+export function getSlackUserBySlackId(
+  slackId: string
+): SelectRequest<SlackUser | undefined, Schema> {
+  return {
+    method: "SELECT",
+    params: {
+      filterByFormula: `{slackId} = "${slackId}"`,
+      maxRecords: 1,
+    },
+    decodeResponse: (records) => {
+      if (records.length > 0) {
+        const fields = mergeFields(records[0]) as any;
+        return decodeSlackUser(fields);
+      } else {
+        return undefined;
+      }
+    },
+  };
+}
 
 /** Get all Slack users stored in Airtable */
 export function getAllSlackUsers(): SelectRequest<SlackUser[], Schema> {

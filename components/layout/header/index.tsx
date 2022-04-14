@@ -4,7 +4,7 @@ import SectionContent from "../section-content";
 import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import { useSession, signIn } from "next-auth/react";
 import { DefaultSession } from "next-auth";
 import * as S from "./styles";
