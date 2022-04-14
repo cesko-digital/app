@@ -1,6 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { addPerformanceLogging } from "lib/apm";
+import { send } from "lib/airtable/request";
 import Airtable from "airtable";
+import {
+  createUserProfile,
+  getUserProfileByMail,
+  userProfileTable,
+} from "lib/airtable/user-profile";
 
 /** Create a new, unconfirmed user profile */
 async function handler(request: NextApiRequest, response: NextApiResponse) {
@@ -20,34 +26,26 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   }
   try {
     const apiKey = process.env.AIRTABLE_API_KEY;
-    const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM")(
-      "User Profiles 2.0"
+    const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
+    const previousProfile = await send(
+      userProfileTable(base),
+      getUserProfileByMail(email)
     );
-
-    // Make sure the email doesn’t exist already
-    const previousRecords = await base
-      .select({
-        filterByFormula: `{email} = "${email}"`,
-      })
-      .all();
-    if (previousRecords.length != 0) {
+    if (previousProfile) {
       const msg = "Email already exists";
       console.error(msg);
       response.status(401).send(msg);
-      return;
+    } else {
+      await send(
+        userProfileTable(base),
+        createUserProfile({
+          name,
+          email,
+          skills,
+        })
+      );
+      response.status(201).send("Registration created.");
     }
-
-    const state = "unconfirmed";
-    const registration = {
-      fields: {
-        name,
-        email,
-        skills,
-        state,
-      },
-    };
-    await base.create([registration]);
-    response.status(201).send("Registration created.");
   } catch (e) {
     console.error(e);
     response.status(500).send("Sorry :(");
