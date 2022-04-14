@@ -21,7 +21,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   try {
     const apiKey = process.env.AIRTABLE_API_KEY;
     const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM")(
-      "Profiles 2.0"
+      "User Profiles 2.0"
     );
 
     // Make sure the email doesn’t exist already

@@ -26,7 +26,7 @@ export interface Schema extends FieldSet {
 
 /** Get user profile table from given Airtable base */
 export const userProfileTable = (base: AirtableBase) =>
-  base<Schema>("Profiles 2.0");
+  base<Schema>("User Profiles 2.0");
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
