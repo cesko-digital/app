@@ -26,7 +26,6 @@ export const config = {
 
 const {
   SLACK_SIGNING_SECRET = "",
-  SLACK_EVENTS_TOKEN = "",
   SLACK_SYNC_TOKEN = "",
   AIRTABLE_API_KEY = "",
 } = process.env;
