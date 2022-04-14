@@ -6,7 +6,7 @@ import {
   PortalProject,
   PortalUser,
 } from "./portal-types";
-import { Field } from "./skills";
+import { Field } from "./airtable/skills";
 
 // The weird signature is here to make the data source type-compatible with the Airtable data source
 function loader<T>(file: string): () => Promise<T[]> {

@@ -1,5 +1,5 @@
 import { MarkdownString } from "./utils";
-import { DecoderFunction, Pojo, string } from "typescript-json-decoder";
+import { array, DecoderFunction, Pojo, string } from "typescript-json-decoder";
 
 /** Decode a string, returning it as a `MarkdownString` */
 export const markdown = (value: Pojo): MarkdownString => ({
@@ -11,7 +11,7 @@ export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
   return (value: Pojo) => {
     const array = decoder(value);
     if (array.length == 0) {
-      throw "TBD";
+      throw "Can’t take first item from an empty array";
     }
     return array[0];
   };
@@ -30,3 +30,12 @@ export const withDefault = <T>(
     }
   };
 };
+
+/**
+ * Parse an Airtable relation from the current table to one record in another table
+ *
+ * The relation is always optional (the value doesn’t have to be there), but even
+ * if the value _is_ there, the Airtable API always returns an array, so we simplify
+ * the whole thing to either the singleton value or undefined.
+ */
+export const relationToOne = withDefault(takeFirst(array(string)), undefined);

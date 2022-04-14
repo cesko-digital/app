@@ -1,11 +1,11 @@
 import { FieldSet, Record, RecordData, Table } from "airtable";
 import { QueryParams } from "airtable/lib/query_params";
-import { splitToChunks } from "./utils";
+import { splitToChunks } from "../utils";
 
 const maxChangeBatchSize = 10;
 
 export type SimpleRecord<TFields extends FieldSet> = Pick<
-  Record<TFields>,
+  Record<Partial<TFields>>,
   "id" | "fields"
 >;
 
@@ -122,3 +122,6 @@ export function splitFields<TFields extends FieldSet>(
     fields: fields as any,
   };
 }
+
+/** A helper to make it obvious the request returns no parsed response */
+export const noResponse = () => {};

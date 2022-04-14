@@ -35,3 +35,13 @@ Pokud potřebujete nějakou hodnotu nastavit během vývoje, můžete ji uložit
 * `SLACK_CLIENT_ID` a `SLACK_CLIENT_SECRET` slouží pro přihlašování uživatelů přes funkci _Sign in With Slack_
 * `NEXTAUTH_URL` je URL, na které se má přesměrovat OAuth flow při přihlašování k webu
 * `NEXTAUTH_SECRET` je tajemství používané pro podepisování sessions
+
+# Uživatelské účty
+
+Základní data o uživatelích máme rozdělená do dvou propojených tabulek: Tabulka _User Profiles_ obsahuje data přímo spravovaná uživatelem (například seznam jeho kompetencí), tabulka _Slack Users_ obsahuje data získaná ze Slacku (například profilový obrázek).
+
+## Založení účtu
+
+1. Uživatel vyplní onboardovací formulář na adrese join.cesko.digital, kde zadá základní údaje, zejména e-mail. Po odeslání uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. (TBD: Co když už daný e-mail v databázi je?)
+2. Po odeslání formuláře je uživatel přesměrován na onboarding Slacku, kde mimo jiné opět zadává mailovou adresu a Slack ji ověřuje.
+3. Po úspěšném přihlášení do Slacku zavolá server Slacku automaticky náš API endpoint `/api/slack_events/team_join` a předá ID nově přihlášeného uživatele. My uložíme do tabulky _Slack Users_ informaci o novém uživateli, podle jeho e-mailu najdeme odpovídající doposud nepotvrzený uživatelský profil v tabulce _User Profiles_, označíme jej za `confirmed` a provážeme ho s odpovídajícím řádkem tabulky _Slack Users_.

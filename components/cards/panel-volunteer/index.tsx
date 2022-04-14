@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import { getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
 

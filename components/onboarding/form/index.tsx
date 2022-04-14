@@ -2,11 +2,11 @@ import React, { useReducer } from "react";
 import Input from "components/onboarding/form/input";
 import { Button } from "components/buttons";
 import Callout from "components/onboarding/callout";
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 import Strings from "../strings.json";
 import * as Components from "components/onboarding/styles";
 import * as S from "./styles";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import {
   areSkillsValid,
   canSubmitForm,

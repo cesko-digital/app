@@ -3,7 +3,7 @@ import { Link } from "components/links";
 import { getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/portal-types";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 
 interface Props {
   project: PortalProject;

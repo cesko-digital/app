@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { Link } from "components/links";
 import { PortalVideo } from "lib/cedu";
 import strings from "content/strings.json";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 
 interface Props {
   video: PortalVideo;
@@ -30,7 +30,9 @@ const CeduCard: React.FC<Props> = ({ video, ...rest }) => {
           ))}
         </S.TagList>
         <S.Description>{video.description}</S.Description>
-        <Link to={Route.toVideo(video)}>{strings.components.cards.ceduCard.interested}</Link>
+        <Link to={Route.toVideo(video)}>
+          {strings.components.cards.ceduCard.interested}
+        </Link>
       </S.Content>
     </S.Card>
   );

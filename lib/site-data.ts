@@ -1,6 +1,6 @@
 import { getAllVideos, PortalVideo } from "./cedu";
 import { Article, getArticleIndex } from "./related-blog-posts";
-import { Field, getAllSkills } from "./skills";
+import { Field, getAllSkills } from "./airtable/skills";
 import * as Airtable from "./airtable-import";
 import * as Local from "./local-data";
 import apm from "elastic-apm-node";

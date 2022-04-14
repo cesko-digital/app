@@ -10,7 +10,7 @@ import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import strings from "content/strings.json";
 
 interface PageProps {
