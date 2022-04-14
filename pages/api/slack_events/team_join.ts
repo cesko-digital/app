@@ -99,7 +99,7 @@ async function confirmUserAccount(slackId: string) {
 
   // Save the new Slack user to the Slack Users DB table.
   // This makes sense even if the following steps fail.
-  await send(
+  const createdSlackUsers = await send(
     slackUserTable(base),
     createSlackUsers([
       {
@@ -145,7 +145,7 @@ async function confirmUserAccount(slackId: string) {
   await send(
     userProfileTable(base),
     updateUserProfile(initialProfile.id, {
-      slackUserRelationId: slackUser.id,
+      slackUserRelationId: createdSlackUsers[0].id,
       state: "confirmed",
     })
   );
