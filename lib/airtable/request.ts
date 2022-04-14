@@ -5,7 +5,7 @@ import { splitToChunks } from "../utils";
 const maxChangeBatchSize = 10;
 
 export type SimpleRecord<TFields extends FieldSet> = Pick<
-  Record<TFields>,
+  Record<Partial<TFields>>,
   "id" | "fields"
 >;
 
