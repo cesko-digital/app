@@ -1,10 +1,17 @@
 import { FieldSet } from "airtable";
-import { mergeFields, SelectRequest, UpdateRequest } from "./airtable-request";
+import {
+  CreateRequest,
+  mergeFields,
+  noResponse,
+  SelectRequest,
+  UpdateRequest,
+} from "./request";
 import { AirtableBase } from "airtable/lib/airtable_base";
-import { withDefault } from "./decoding";
+import { relationToOne, withDefault } from "../decoding";
 import {
   array,
   decodeType,
+  field,
   optional,
   record,
   string,
@@ -16,6 +23,7 @@ export interface Schema extends FieldSet {
   name: string;
   email: string;
   skills: ReadonlyArray<string>;
+  slackUser: ReadonlyArray<string>;
   slackId: string;
   state: string;
   createdAt: string;
@@ -24,7 +32,7 @@ export interface Schema extends FieldSet {
 
 /** Get user profile table from given Airtable base */
 export const userProfileTable = (base: AirtableBase) =>
-  base<Schema>("Profiles 2.0");
+  base<Schema>("User Profiles 2.0");
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
@@ -35,6 +43,7 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   skills: withDefault(array(string), []),
+  slackUserRelationId: field("slackUser", relationToOne),
   slackId: optional(string),
   state: union("unconfirmed", "confirmed"),
   createdAt: string,
@@ -74,7 +83,10 @@ export function getFirstMatchingUserProfile(
 export function updateUserProfile(
   recordId: string,
   fields: Partial<
-    Pick<UserProfile, "name" | "email" | "skills" | "slackId" | "state">
+    Pick<
+      UserProfile,
+      "name" | "email" | "skills" | "slackUserRelationId" | "state"
+    >
   >
 ): UpdateRequest<UserProfile, Schema> {
   return {
@@ -82,5 +94,23 @@ export function updateUserProfile(
     recordId,
     recordFields: fields,
     decodeResponse: (record) => decodeUserProfile(mergeFields(record) as any),
+  };
+}
+
+/** Create new user profile */
+export function createUserProfile(
+  profile: Pick<UserProfile, "name" | "email" | "skills">
+): CreateRequest<void, Schema> {
+  return {
+    method: "CREATE",
+    recordsData: [
+      {
+        name: profile.name,
+        email: profile.email,
+        skills: profile.skills,
+        state: "unconfirmed",
+      },
+    ],
+    decodeResponse: noResponse,
   };
 }

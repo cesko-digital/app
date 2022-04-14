@@ -8,7 +8,7 @@ import {
   CompetencyFilterLabel,
   CompetencyFilterRadio,
 } from "components/dashboard/styles";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";

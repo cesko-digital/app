@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Strings from "../strings.json";
 import * as S from "./styles";
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 
 export interface Props {
   skillField: Field;

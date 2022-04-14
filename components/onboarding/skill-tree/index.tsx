@@ -1,6 +1,6 @@
 import SkillFieldToggle from "./skill-field-toggle";
 import * as S from "./styles";
-import { Field } from "lib/skills";
+import { Field } from "lib/airtable/skills";
 
 export interface Props extends React.HTMLAttributes<HTMLUListElement> {
   selected: string[];
