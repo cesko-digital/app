@@ -92,7 +92,13 @@ export function updateUserProfile(
   return {
     method: "UPDATE",
     recordId,
-    recordFields: fields,
+    recordFields: {
+      name: fields.name,
+      email: fields.email,
+      skills: fields.skills,
+      slackUser: fields.slackUserRelationId ? [fields.slackUserRelationId] : [],
+      state: fields.state,
+    },
     decodeResponse: (record) => decodeUserProfile(mergeFields(record) as any),
   };
 }
