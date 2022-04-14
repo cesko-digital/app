@@ -1,8 +1,8 @@
-import { UserProfile } from "lib/user-profile";
+import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, Heading1, Heading2 } from "./typography";
 import { Button } from "./buttons";
-import { Skill } from "lib/skills";
+import { Skill } from "lib/airtable/skills";
 import { unique } from "lib/utils";
 import { useState } from "react";
 import styled from "styled-components";

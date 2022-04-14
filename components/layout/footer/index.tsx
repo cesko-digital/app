@@ -1,7 +1,7 @@
 import { ButtonSize } from "components/buttons";
 import NewsletterBox from "./newsletter-form";
 import * as S from "./styles";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import { Link } from "components/links";
 import strings from "content/strings.json";
 

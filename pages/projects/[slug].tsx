@@ -11,7 +11,7 @@ import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import OpportunityItem from "components/sections/opportunity-overview";
-import { Route } from "lib/routing";
+import { Route } from "lib/utils";
 import { Article } from "lib/related-blog-posts";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
