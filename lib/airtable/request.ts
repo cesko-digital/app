@@ -109,12 +109,45 @@ export async function send<Result, TFields extends FieldSet>(
   }
 }
 
+/** Create a batch of records */
+export async function createBatch<Schema extends FieldSet>(
+  table: Table<Schema>,
+  items: Partial<Schema>[]
+): Promise<Records<Schema>> {
+  let results = [];
+  const batches = splitToChunks(items, maxChangeBatchSize);
+  for (const chunk of batches) {
+    const fields = chunk.map((item) => ({ fields: item }));
+    const records = await table.create(fields);
+    results.push(...records);
+  }
+  return results;
+}
+
+/** Update a batch of records */
+export async function updateBatch<Schema extends FieldSet>(
+  table: Table<Schema>,
+  items: (Partial<Schema> & { id: string })[]
+): Promise<Records<Schema>> {
+  let results = [];
+  const batches = splitToChunks(items, maxChangeBatchSize);
+  for (const chunk of batches) {
+    const fields = chunk.map(splitFields);
+    const records = await table.update(fields);
+    results.push(...records);
+  }
+  return results;
+}
+
 //
 // Databases
 //
 
-export const volunteerManagementBase = (apiKey: string) =>
-  new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
+export const apiKey = process.env.AIRTABLE_API_KEY || "<not set>";
+
+export const volunteerManagementBase = new Airtable({ apiKey }).base(
+  "apppZX1QC3fl1RTBM"
+);
 
 //
 // Helpers

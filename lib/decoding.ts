@@ -6,7 +6,7 @@ export const markdown = (value: Pojo): MarkdownString => ({
   source: string(value),
 });
 
-/** Decode an array of items, returing the first item found */
+/** Decode an array of items, returing the first item found, throw if array is empty */
 export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
   return (value: Pojo) => {
     const array = decoder(value);
