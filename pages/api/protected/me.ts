@@ -1,13 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { send } from "lib/airtable/request";
 import { assert } from "console";
-import Airtable from "airtable";
-import {
-  getUserProfile,
-  updateUserProfile,
-  userProfileTable,
-} from "lib/airtable/user-profile";
+import { getUserProfile, updateUserProfile } from "lib/airtable/user-profile";
 
 /**
  * Retrieve or update user profile
@@ -27,12 +21,8 @@ export default async function handler(
 
   assert(token.sub, "Slack ID missing in JWT token.");
 
-  const apiKey = process.env.AIRTABLE_API_KEY;
-  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
-  const table = userProfileTable(base);
-
   try {
-    const profile = await send(table, getUserProfile(token.sub!));
+    const profile = await getUserProfile(token.sub!).catch(() => null);
     if (!profile) {
       response.status(404).send("User not found");
       return;
@@ -48,10 +38,7 @@ export default async function handler(
       case "PATCH":
         // Make sure we do NOT include the `slackId` field nor `state` here
         const { name, email, skills } = request.body;
-        await send(
-          table,
-          updateUserProfile(profile.id, { name, email, skills })
-        );
+        await updateUserProfile(profile.id, { name, email, skills });
         response.status(200).send("Updated");
         break;
       default:
