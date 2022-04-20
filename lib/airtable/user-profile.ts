@@ -1,18 +1,14 @@
 import { FieldSet } from "airtable";
+import { relationToOne, takeFirst, withDefault } from "../decoding";
 import {
-  CreateRequest,
-  mergeFields,
-  noResponse,
-  SelectRequest,
-  UpdateRequest,
+  unwrapRecord,
+  unwrapRecords,
+  volunteerManagementBase,
 } from "./request";
-import { AirtableBase } from "airtable/lib/airtable_base";
-import { relationToOne, withDefault } from "../decoding";
 import {
   array,
   decodeType,
   field,
-  optional,
   record,
   string,
   union,
@@ -30,9 +26,9 @@ export interface Schema extends FieldSet {
   lastModifiedAt: string;
 }
 
-/** Get user profile table from given Airtable base */
-export const userProfileTable = (base: AirtableBase) =>
-  base<Schema>("User Profiles 2.0");
+/** The user profile table in Airtable */
+export const userProfileTable =
+  volunteerManagementBase<Schema>("User Profiles 2.0");
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
@@ -50,6 +46,10 @@ export const decodeUserProfile = record({
   lastModifiedAt: string,
 });
 
+//
+// API Calls
+//
+
 /** Get user profile with given Slack ID */
 export const getUserProfile = (slackId: string) =>
   getFirstMatchingUserProfile(`{slackId} = "${slackId}"`);
@@ -59,28 +59,21 @@ export const getUserProfileByMail = (email: string) =>
   getFirstMatchingUserProfile(`{email} = "${email}"`);
 
 /** Return first user profile that matches given formula query */
-export function getFirstMatchingUserProfile(
+export async function getFirstMatchingUserProfile(
   filterByFormula: string
-): SelectRequest<UserProfile | undefined, Schema> {
-  return {
-    method: "SELECT",
-    params: {
+): Promise<UserProfile> {
+  return await userProfileTable
+    .select({
       filterByFormula,
       maxRecords: 1,
-    },
-    decodeResponse: (records) => {
-      if (records.length > 0) {
-        const fields = mergeFields(records[0]) as any;
-        return decodeUserProfile(fields);
-      } else {
-        return undefined;
-      }
-    },
-  };
+    })
+    .all()
+    .then(unwrapRecords)
+    .then(takeFirst(array(decodeUserProfile)));
 }
 
 /** Update user profile with given Airtable record ID */
-export function updateUserProfile(
+export async function updateUserProfile(
   recordId: string,
   fields: Partial<
     Pick<
@@ -88,35 +81,26 @@ export function updateUserProfile(
       "name" | "email" | "skills" | "slackUserRelationId" | "state"
     >
   >
-): UpdateRequest<UserProfile, Schema> {
-  return {
-    method: "UPDATE",
-    recordId,
-    recordFields: {
-      name: fields.name,
-      email: fields.email,
-      skills: fields.skills,
-      slackUser: fields.slackUserRelationId ? [fields.slackUserRelationId] : [],
-      state: fields.state,
-    },
-    decodeResponse: (record) => decodeUserProfile(mergeFields(record) as any),
-  };
+): Promise<UserProfile> {
+  return await userProfileTable
+    .update(recordId, fields) // TODO: Properly encode fields
+    .then(unwrapRecord)
+    .then(decodeUserProfile);
 }
 
 /** Create new user profile */
-export function createUserProfile(
+export async function createUserProfile(
   profile: Pick<UserProfile, "name" | "email" | "skills">
-): CreateRequest<void, Schema> {
-  return {
-    method: "CREATE",
-    recordsData: [
-      {
-        name: profile.name,
-        email: profile.email,
-        skills: profile.skills,
-        state: "unconfirmed",
-      },
-    ],
-    decodeResponse: noResponse,
+): Promise<UserProfile> {
+  const { name, email, skills } = profile;
+  const encoded = {
+    name,
+    email,
+    skills,
+    state: "unconfirmed",
   };
+  return await userProfileTable
+    .create([encoded])
+    .then(unwrapRecords)
+    .then(takeFirst(array(decodeUserProfile)));
 }

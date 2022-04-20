@@ -1,5 +1,3 @@
-import Airtable from "airtable";
-import { send } from "lib/airtable/request";
 import { decodeIncomingMessage } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSlackUser } from "lib/slack/user";
@@ -7,7 +5,6 @@ import { createSlackUsers } from "lib/airtable/slack-user";
 import {
   getUserProfileByMail,
   updateUserProfile,
-  userProfileTable,
 } from "lib/airtable/user-profile";
 import {
   signatureHeader,
@@ -24,11 +21,7 @@ export const config = {
   },
 };
 
-const {
-  SLACK_SIGNING_SECRET = "",
-  SLACK_SYNC_TOKEN = "",
-  AIRTABLE_API_KEY = "",
-} = process.env;
+const { SLACK_SIGNING_SECRET = "", SLACK_SYNC_TOKEN = "" } = process.env;
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
 export default async function handler(
@@ -93,9 +86,6 @@ async function confirmUserAccount(slackId: string) {
   // The `user` object from Slack does not include the email,
   // so we have to make an extra API request to get it.
   const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
-  const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(
-    "apppZX1QC3fl1RTBM"
-  );
 
   // Save the new Slack user to the Slack Users DB table.
   // This makes sense even if the following steps fail.
@@ -119,10 +109,7 @@ async function confirmUserAccount(slackId: string) {
   }
 
   // Get the initial user profile we are trying to confirm
-  const initialProfile = await send(
-    userProfileTable(base),
-    getUserProfileByMail(email)
-  );
+  const initialProfile = await getUserProfileByMail(email);
 
   // This can routinely happen if the user skipped onboarding somehow
   if (!initialProfile) {
@@ -139,13 +126,10 @@ async function confirmUserAccount(slackId: string) {
   }
 
   // Flip account to confirmed and link the associated Slack user
-  await send(
-    userProfileTable(base),
-    updateUserProfile(initialProfile.id, {
-      slackUserRelationId: createdSlackUsers[0].id,
-      state: "confirmed",
-    })
-  );
+  await updateUserProfile(initialProfile.id, {
+    slackUserRelationId: createdSlackUsers[0].id,
+    state: "confirmed",
+  });
 }
 
 function getRawBody(request: NextApiRequest): Promise<string> {
