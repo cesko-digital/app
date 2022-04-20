@@ -1,3 +1,5 @@
+require("dotenv").config({ path: ".env.local" });
+
 import { isDeepStrictEqual } from "util";
 import { getAllWorkspaceUsers, isRegularUser, SlackUser } from "lib/slack/user";
 import {
@@ -6,8 +8,6 @@ import {
   SlackUser as AirtableSlackUser,
   updateSlackUsers,
 } from "lib/airtable/slack-user";
-
-require("dotenv").config({ path: ".env.local" });
 
 const { SLACK_SYNC_TOKEN: slackToken = "", DEBUG: debug = "" } = process.env;
 
