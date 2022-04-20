@@ -10,7 +10,7 @@ import Airtable, {
 
 /** The Volunteer Management database */
 export const volunteerManagementBase = new Airtable({
-  apiKey: process.env.AIRTABLE_API_KEY,
+  apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
 }).base("apppZX1QC3fl1RTBM");
 
 //
@@ -38,7 +38,7 @@ export async function createBatch<Schema extends FieldSet>(
 /** Update a batch of records */
 export async function updateBatch<Schema extends FieldSet>(
   table: Table<Schema>,
-  items: (Partial<Schema> & { id: string })[]
+  items: Partial<Schema>[]
 ): Promise<Records<Schema>> {
   let results = [];
   const batches = splitToChunks(items, maxChangeBatchSize);
@@ -55,12 +55,12 @@ export async function updateBatch<Schema extends FieldSet>(
 //
 
 /** Split record into an ID/fields pair */
-export function splitFields<TFields extends FieldSet>(
-  object: Partial<TFields> & { id: string }
+function splitFields<TFields extends FieldSet>(
+  object: Partial<TFields>
 ): RecordData<Partial<TFields>> {
   const { id, ...fields } = object;
   return {
-    id,
+    id: id as any,
     fields: fields as any,
   };
 }

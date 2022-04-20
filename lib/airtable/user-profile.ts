@@ -16,6 +16,7 @@ import {
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
+  id: string;
   name: string;
   email: string;
   skills: ReadonlyArray<string>;
@@ -33,7 +34,7 @@ export const userProfileTable =
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
 
-/** Decode `UserProfile` from an incoming object (usually an Airtable record) */
+/** Decode `UserProfile` from DB schema */
 export const decodeUserProfile = record({
   id: string,
   name: string,
@@ -45,6 +46,22 @@ export const decodeUserProfile = record({
   createdAt: string,
   lastModifiedAt: string,
 });
+
+/** Encode `UserProfile` to DB schema */
+export function encodeUserProfile(
+  profile: Partial<UserProfile>
+): Partial<Schema> {
+  return {
+    id: profile.id,
+    name: profile.name,
+    email: profile.email,
+    skills: profile.skills,
+    state: profile.state,
+    slackUser: profile.slackUserRelationId
+      ? [profile.slackUserRelationId]
+      : undefined,
+  };
+}
 
 //
 // API Calls
@@ -75,7 +92,7 @@ export async function getFirstMatchingUserProfile(
 /** Update user profile with given Airtable record ID */
 export async function updateUserProfile(
   recordId: string,
-  fields: Partial<
+  profile: Partial<
     Pick<
       UserProfile,
       "name" | "email" | "skills" | "slackUserRelationId" | "state"
@@ -83,7 +100,7 @@ export async function updateUserProfile(
   >
 ): Promise<UserProfile> {
   return await userProfileTable
-    .update(recordId, fields) // TODO: Properly encode fields
+    .update(recordId, encodeUserProfile(profile))
     .then(unwrapRecord)
     .then(decodeUserProfile);
 }
@@ -92,15 +109,8 @@ export async function updateUserProfile(
 export async function createUserProfile(
   profile: Pick<UserProfile, "name" | "email" | "skills">
 ): Promise<UserProfile> {
-  const { name, email, skills } = profile;
-  const encoded = {
-    name,
-    email,
-    skills,
-    state: "unconfirmed",
-  };
   return await userProfileTable
-    .create([encoded])
+    .create([encodeUserProfile(profile)])
     .then(unwrapRecords)
     .then(takeFirst(array(decodeUserProfile)));
 }
