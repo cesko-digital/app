@@ -32,7 +32,7 @@ export const slackUsersTable =
 /** Slack user as stored in Airtable */
 export type SlackUser = decodeType<typeof decodeSlackUser>;
 
-/** Decode `SlackUser` from an incoming object (usually an Airtable record) */
+/** Decode `SlackUser` from DB schema */
 export const decodeSlackUser = record({
   id: string,
   slackId: string,
@@ -41,6 +41,20 @@ export const decodeSlackUser = record({
   slackAvatarUrl: optional(string),
   userProfileRelationId: field("userProfile", relationToOne),
 });
+
+/** Encode `SlackUser` to DB schema */
+export function encodeSlackUser(user: Partial<SlackUser>): Partial<Schema> {
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    slackId: user.slackId,
+    slackAvatarUrl: user.slackAvatarUrl,
+    userProfile: user.userProfileRelationId
+      ? [user.userProfileRelationId]
+      : undefined,
+  };
+}
 
 //
 // API Calls
@@ -73,7 +87,8 @@ export async function getAllSlackUsers(): Promise<SlackUser[]> {
 export async function createSlackUsers(
   users: Omit<SlackUser, "id">[]
 ): Promise<SlackUser[]> {
-  return await createBatch(slackUsersTable, users) // TODO: Properly encode users
+  const records = users.map(encodeSlackUser);
+  return await createBatch(slackUsersTable, records)
     .then(unwrapRecords)
     .then(decodeUsers);
 }
@@ -82,7 +97,8 @@ export async function createSlackUsers(
 export async function updateSlackUsers(
   users: SlackUser[]
 ): Promise<SlackUser[]> {
-  return await updateBatch(slackUsersTable, users) // TODO: Properly encode users
+  const records = users.map(encodeSlackUser);
+  return await updateBatch(slackUsersTable, records)
     .then(unwrapRecords)
     .then(decodeUsers);
 }
