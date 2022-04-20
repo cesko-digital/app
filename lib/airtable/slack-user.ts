@@ -1,7 +1,7 @@
 import { FieldSet } from "airtable";
-import { AirtableBase } from "airtable/lib/airtable_base";
-import { relationToOne } from "lib/decoding";
+import { relationToOne, takeFirst } from "lib/decoding";
 import {
+  array,
   decodeType,
   field,
   optional,
@@ -9,16 +9,15 @@ import {
   string,
 } from "typescript-json-decoder";
 import {
-  CreateRequest,
-  mergeFields,
-  SelectRequest,
-  SimpleRecords,
-  BatchUpdateRequest,
-  splitFields,
+  volunteerManagementBase,
+  unwrapRecords,
+  createBatch,
+  updateBatch,
 } from "./request";
 
 /** The Airtable schema of the Slack user table */
 export interface Schema extends FieldSet {
+  id: string;
   name: string;
   email: string;
   slackId: string;
@@ -26,9 +25,9 @@ export interface Schema extends FieldSet {
   userProfile: ReadonlyArray<string>;
 }
 
-/** Get Slack user table from given Airtable base */
-export const slackUserTable = (base: AirtableBase) =>
-  base<Schema>("Slack Users 2.0");
+/** Slack Users table */
+export const slackUsersTable =
+  volunteerManagementBase<Schema>("Slack Users 2.0");
 
 /** Slack user as stored in Airtable */
 export type SlackUser = decodeType<typeof decodeSlackUser>;
@@ -48,56 +47,49 @@ export const decodeSlackUser = record({
 //
 
 /** Get Slack user by Slack ID */
-export function getSlackUserBySlackId(
+export async function getSlackUserBySlackId(
   slackId: string
-): SelectRequest<SlackUser | undefined, Schema> {
-  return {
-    method: "SELECT",
-    params: {
+): Promise<SlackUser> {
+  return await slackUsersTable
+    .select({
       filterByFormula: `{slackId} = "${slackId}"`,
       maxRecords: 1,
-    },
-    decodeResponse: (records) => {
-      if (records.length > 0) {
-        const fields = mergeFields(records[0]) as any;
-        return decodeSlackUser(fields);
-      } else {
-        return undefined;
-      }
-    },
-  };
+    })
+    .all()
+    .then(unwrapRecords)
+    .then(takeFirst(decodeUsers));
 }
 
 /** Get all Slack users stored in Airtable */
-export function getAllSlackUsers(): SelectRequest<SlackUser[], Schema> {
-  return {
-    method: "SELECT",
-    params: {},
-    decodeResponse: decodeUserRecords,
-  };
+export async function getAllSlackUsers(): Promise<SlackUser[]> {
+  return await slackUsersTable
+    .select()
+    .all()
+    .then(unwrapRecords)
+    .then(decodeUsers);
 }
 
 /** Create new Slack users in Airtable */
-export function createSlackUsers(
+export async function createSlackUsers(
   users: Omit<SlackUser, "id">[]
-): CreateRequest<SlackUser[], Schema> {
-  return {
-    method: "CREATE",
-    recordsData: users,
-    decodeResponse: decodeUserRecords,
-  };
+): Promise<SlackUser[]> {
+  return await createBatch(slackUsersTable, users) // TODO: Properly encode users
+    .then(unwrapRecords)
+    .then(decodeUsers);
 }
 
 /** Update Slack users in Airtable */
-export function updateSlackUsers(
+export async function updateSlackUsers(
   users: SlackUser[]
-): BatchUpdateRequest<SlackUser[], Schema> {
-  return {
-    method: "BATCH_UPDATE",
-    recordsData: users.map(splitFields),
-    decodeResponse: decodeUserRecords,
-  };
+): Promise<SlackUser[]> {
+  return await updateBatch(slackUsersTable, users) // TODO: Properly encode users
+    .then(unwrapRecords)
+    .then(decodeUsers);
 }
 
-const decodeUserRecords = (records: SimpleRecords<Schema>) =>
-  records.map((r) => decodeSlackUser(mergeFields(r) as any));
+//
+// Helpers
+//
+
+/** Decode an array of `SlackUser` objects */
+const decodeUsers = array(decodeSlackUser);

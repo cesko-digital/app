@@ -77,7 +77,7 @@ export function shuffleInPlace<T>(array: T[]): T[] {
 }
 
 /** Split array to chunks of size `size` */
-export function splitToChunks<T>(array: T[], size: number) {
+export function splitToChunks<T>(array: readonly T[], size: number) {
   let chunks = [];
   let i = 0;
   let n = array.length;

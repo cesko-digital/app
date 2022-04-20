@@ -1,23 +1,15 @@
-import Airtable, { Table } from "airtable";
-import { send } from "lib/airtable/request";
 import { isDeepStrictEqual } from "util";
 import { getAllWorkspaceUsers, isRegularUser, SlackUser } from "lib/slack/user";
 import {
   createSlackUsers,
   getAllSlackUsers,
-  Schema,
   SlackUser as AirtableSlackUser,
-  slackUserTable,
   updateSlackUsers,
 } from "lib/airtable/slack-user";
 
 require("dotenv").config({ path: ".env.local" });
 
-const {
-  SLACK_SYNC_TOKEN: slackToken = "",
-  AIRTABLE_API_KEY: airtableToken = "",
-  DEBUG: debug = "",
-} = process.env;
+const { SLACK_SYNC_TOKEN: slackToken = "", DEBUG: debug = "" } = process.env;
 
 async function main() {
   console.log(
@@ -30,10 +22,7 @@ async function main() {
   );
 
   console.log("Saving users to Airtable.");
-  const base = new Airtable({ apiKey: airtableToken }).base(
-    "apppZX1QC3fl1RTBM"
-  );
-  await upsertSlackUsers(slackUserTable(base), regularUsers);
+  await upsertSlackUsers(regularUsers);
   console.log("Success! 🎉");
 }
 
@@ -47,12 +36,9 @@ function convertUser(user: SlackUser): Omit<AirtableSlackUser, "id"> {
   };
 }
 
-async function upsertSlackUsers(
-  userTable: Table<Schema>,
-  slackUsers: SlackUser[]
-): Promise<void> {
+async function upsertSlackUsers(slackUsers: SlackUser[]): Promise<void> {
   /** All users in the DB */
-  const allExistingUsers = await send(userTable, getAllSlackUsers());
+  const allExistingUsers = await getAllSlackUsers();
   console.log(`Downloaded ${allExistingUsers.length} existing users.`);
 
   /** A dictionary mapping Slack IDs to primary DB IDs */
@@ -80,7 +66,7 @@ async function upsertSlackUsers(
       )}`
     );
   }
-  await send(userTable, createSlackUsers(usersToInsert));
+  await createSlackUsers(usersToInsert);
 
   /** Given a user in the DB format, is it different from the one already stored in the DB? */
   const hasUserChanged = (user: AirtableSlackUser) => {
@@ -110,7 +96,7 @@ async function upsertSlackUsers(
       )}`
     );
   }
-  await send(userTable, updateSlackUsers(usersToUpdate));
+  await updateSlackUsers(usersToUpdate);
 }
 
 main().catch((error) => console.log(error));
