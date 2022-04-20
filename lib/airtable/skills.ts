@@ -1,5 +1,6 @@
-import Airtable from "airtable";
+import { FieldSet } from "airtable";
 import { unique } from "lib/utils";
+import { unwrapRecords, volunteerManagementBase } from "./request";
 import {
   array,
   decodeType,
@@ -9,7 +10,23 @@ import {
   string,
 } from "typescript-json-decoder";
 
+const skillsTable = (apiKey: string) =>
+  volunteerManagementBase(apiKey)<Schema>("Skills");
+
+/** The schema of the Skills table in Airtable */
+export interface Schema extends FieldSet {
+  id: string;
+  Field: string;
+  Subfield: string;
+}
+
 export type Skill = decodeType<typeof decodeSkill>;
+
+export const decodeSkill = record({
+  id: string,
+  field: field("Field", string),
+  name: field("Subfield", string),
+});
 
 export interface Field {
   name: string;
@@ -18,13 +35,9 @@ export interface Field {
   skills: Skill[];
 }
 
-export const decodeSkill = record({
-  id: string,
-  field: field("Field", string),
-  name: field("Subfield", string),
-});
-
+/** Decode a hierarchical tree of skills from the DB format */
 export function decodeFields(value: Pojo): Field[] {
+  const decodeSkills = array(decodeSkill);
   const skills = decodeSkills(value);
   const fields = unique(skills.map((s) => s.field));
   return fields.map((field) => ({
@@ -41,6 +54,26 @@ export function decodeFields(value: Pojo): Field[] {
   }));
 }
 
+//
+// API Calls
+//
+
+/** Get a hierarchical tree of skills from the DB */
+export async function getAllSkills(
+  apiKey: string = process.env.AIRTABLE_API_KEY as string
+): Promise<Field[]> {
+  return await skillsTable(apiKey)
+    .select({ maxRecords: 200 })
+    .all()
+    .then(unwrapRecords)
+    .then(decodeFields);
+}
+
+//
+// Helpers
+//
+
+/** Flatten the hierarchical tree of skills into a flat list */
 export function flattenSkills(allSkills: readonly Field[]): Skill[] {
   let skills: Skill[] = [];
   for (const field of allSkills) {
@@ -62,16 +95,3 @@ export function flattenSkills(allSkills: readonly Field[]): Skill[] {
   }
   return skills;
 }
-
-export async function getAllSkills(): Promise<Field[]> {
-  const apiKey = process.env.AIRTABLE_API_KEY as string;
-  const base = new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
-  const results = await base("Skills").select({ maxRecords: 200 }).all();
-  const recordsWithIDs = results.map((record) => ({
-    id: record.id,
-    ...record.fields,
-  }));
-  return decodeFields(recordsWithIDs);
-}
-
-const decodeSkills = array(decodeSkill);
