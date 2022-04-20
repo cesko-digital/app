@@ -1,5 +1,12 @@
-import { FieldSet, Record, RecordData, Table } from "airtable";
+import Airtable, {
+  FieldSet,
+  Record,
+  RecordData,
+  Records,
+  Table,
+} from "airtable";
 import { QueryParams } from "airtable/lib/query_params";
+import { Pojo } from "typescript-json-decoder";
 import { splitToChunks } from "../utils";
 
 const maxChangeBatchSize = 10;
@@ -102,6 +109,17 @@ export async function send<Result, TFields extends FieldSet>(
   }
 }
 
+//
+// Databases
+//
+
+export const volunteerManagementBase = (apiKey: string) =>
+  new Airtable({ apiKey }).base("apppZX1QC3fl1RTBM");
+
+//
+// Helpers
+//
+
 /** This is a simple hack that makes the database ID available in record fields */
 export function mergeFields<TFields extends FieldSet>(
   record: SimpleRecord<TFields>
@@ -125,3 +143,12 @@ export function splitFields<TFields extends FieldSet>(
 
 /** A helper to make it obvious the request returns no parsed response */
 export const noResponse = () => {};
+
+/** Unwrap the raw fields object from an Airtable `Record` type */
+export const unwrapRecord = <Schema extends FieldSet>(record: Record<Schema>) =>
+  record.fields as Pojo;
+
+/** Unwrap the raw fields objects from an Airtable `Records` type */
+export const unwrapRecords = <Schema extends FieldSet>(
+  records: Records<Schema>
+) => records.map(unwrapRecord);
