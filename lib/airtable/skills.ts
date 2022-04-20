@@ -10,8 +10,7 @@ import {
   string,
 } from "typescript-json-decoder";
 
-const skillsTable = (apiKey: string) =>
-  volunteerManagementBase(apiKey)<Schema>("Skills");
+const skillsTable = volunteerManagementBase<Schema>("Skills");
 
 /** The schema of the Skills table in Airtable */
 export interface Schema extends FieldSet {
@@ -59,10 +58,8 @@ export function decodeFields(value: Pojo): Field[] {
 //
 
 /** Get a hierarchical tree of skills from the DB */
-export async function getAllSkills(
-  apiKey: string = process.env.AIRTABLE_API_KEY as string
-): Promise<Field[]> {
-  return await skillsTable(apiKey)
+export async function getAllSkills(): Promise<Field[]> {
+  return await skillsTable
     .select({ maxRecords: 200 })
     .all()
     .then(unwrapRecords)
