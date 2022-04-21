@@ -13,6 +13,7 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+import { unique } from "lib/utils";
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -55,7 +56,11 @@ export function encodeUserProfile(
     id: profile.id,
     name: profile.name,
     email: profile.email,
-    skills: profile.skills,
+    // This is weird but apparently there might be duplicate skill
+    // IDs in records we get from the API, and then we get an error
+    // trying to write the values back in. So we make sure the values
+    // are unique.
+    skills: profile.skills ? unique(profile.skills) : undefined,
     state: profile.state,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
