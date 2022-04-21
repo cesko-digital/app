@@ -32,6 +32,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         name,
         email,
         skills,
+        state: "unconfirmed",
       });
       response.status(201).send("User profile created.");
     }

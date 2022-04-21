@@ -112,10 +112,10 @@ export async function updateUserProfile(
 
 /** Create new user profile */
 export async function createUserProfile(
-  profile: Pick<UserProfile, "name" | "email" | "skills">
+  profile: Pick<UserProfile, "name" | "email" | "skills" | "state">
 ): Promise<UserProfile> {
   return await userProfileTable
-    .create([encodeUserProfile(profile)])
-    .then(unwrapRecords)
-    .then(takeFirst(array(decodeUserProfile)));
+    .create(encodeUserProfile(profile))
+    .then(unwrapRecord)
+    .then(decodeUserProfile);
 }
