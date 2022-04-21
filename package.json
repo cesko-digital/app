@@ -11,7 +11,7 @@
     "e2e": "npx playwright test"
   },
   "dependencies": {
-    "airtable": "^0.11.2",
+    "airtable": "^0.11.3",
     "elastic-apm-node": "^3.31.0",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
