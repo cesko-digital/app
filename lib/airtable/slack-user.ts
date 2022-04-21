@@ -103,6 +103,26 @@ export async function updateSlackUsers(
     .then(decodeUsers);
 }
 
+/** Insert or update Slack user identified by his/her Slack ID */
+export async function upsertSlackUser(
+  user: Omit<SlackUser, "id">
+): Promise<SlackUser> {
+  const existingRecord = await getSlackUserBySlackId(user.slackId).catch(
+    () => null
+  );
+  if (existingRecord) {
+    // User already exists, so let’s just update the info
+    const updatedUsers = await updateSlackUsers([
+      { id: existingRecord.id, ...user },
+    ]);
+    return updatedUsers[0];
+  } else {
+    // User doesn’t exist, insert new record
+    const createdUsers = await createSlackUsers([user]);
+    return createdUsers[0];
+  }
+}
+
 //
 // Helpers
 //
