@@ -1,7 +1,7 @@
 import { decodeIncomingMessage } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSlackUser } from "lib/slack/user";
-import { createSlackUsers } from "lib/airtable/slack-user";
+import { upsertSlackUser } from "lib/airtable/slack-user";
 import {
   getUserProfileByMail,
   updateUserProfile,
@@ -89,15 +89,13 @@ async function confirmUserAccount(slackId: string) {
 
   // Save the new Slack user to the Slack Users DB table.
   // This makes sense even if the following steps fail.
-  const createdSlackUsers = await createSlackUsers([
-    {
-      slackId: slackUser.id,
-      name: slackUser.real_name || slackUser.name,
-      email: slackUser.profile.email,
-      slackAvatarUrl: slackUser.profile.image_512,
-      userProfileRelationId: undefined,
-    },
-  ]);
+  const slackUserInDB = await upsertSlackUser({
+    slackId: slackUser.id,
+    name: slackUser.real_name || slackUser.name,
+    email: slackUser.profile.email,
+    slackAvatarUrl: slackUser.profile.image_512,
+    userProfileRelationId: undefined,
+  });
 
   // Without an e-mail address we can’t confirm the account
   const { email } = slackUser.profile;
@@ -127,7 +125,7 @@ async function confirmUserAccount(slackId: string) {
 
   // Flip account to confirmed and link the associated Slack user
   await updateUserProfile(initialProfile.id, {
-    slackUserRelationId: createdSlackUsers[0].id,
+    slackUserRelationId: slackUserInDB.id,
     state: "confirmed",
   });
 }
