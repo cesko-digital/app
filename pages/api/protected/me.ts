@@ -45,6 +45,7 @@ export default async function handler(
             email: slackUser.email!,
             skills: [],
             state: "confirmed",
+            slackUserRelationId: slackUser.id,
           });
         }
         response.setHeader("Content-Type", "application/json");
