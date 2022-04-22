@@ -72,6 +72,14 @@ export function encodeUserProfile(
 // API Calls
 //
 
+/** Get all user profiles */
+export const getAllUserProfiles = async () =>
+  await userProfileTable
+    .select()
+    .all()
+    .then(unwrapRecords)
+    .then(array(decodeUserProfile));
+
 /** Get user profile with given Slack ID */
 export const getUserProfile = (slackId: string) =>
   getFirstMatchingUserProfile(`{slackId} = "${slackId}"`);
