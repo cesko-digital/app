@@ -8,7 +8,8 @@
     "test": "jest",
     "e2e": "npx playwright test",
     "update-data": "ts-node -r tsconfig-paths/register bin/update-local-data.ts",
-    "sync-users": "ts-node -r tsconfig-paths/register bin/sync-users.ts"
+    "sync-users": "ts-node -r tsconfig-paths/register bin/sync-users.ts",
+    "migrate-users": "ts-node -r tsconfig-paths/register bin/migrate-users.ts"
   },
   "dependencies": {
     "airtable": "^0.11.2",
