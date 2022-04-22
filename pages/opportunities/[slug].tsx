@@ -96,9 +96,9 @@ const Page: NextPage<PageProps> = (props) => {
                 </S.OwnerWrapper>
               </S.OpportunityOwnerWrapper>
               <a href={opportunity.contactUrl} target="blank">
-                <S.OpportunitySlackButton>
+                <S.OpportunityContactButton>
                   {getContactButtonLabel(opportunity.contactUrl)}
-                </S.OpportunitySlackButton>
+                </S.OpportunityContactButton>
               </a>
             </S.OpportunityContactCard>
           </S.OpportunityHeader>
