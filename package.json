@@ -8,8 +8,9 @@
     "test": "jest",
     "e2e": "npx playwright test",
     "update-data": "ts-node -r tsconfig-paths/register bin/update-local-data.ts",
-    "sync-users": "ts-node -r tsconfig-paths/register bin/sync-users.ts",
-    "migrate-users": "ts-node -r tsconfig-paths/register bin/migrate-users.ts"
+    "migrate-users": "ts-node -r tsconfig-paths/register bin/migrate-users.ts",
+    "sync-slack-users": "ts-node -r tsconfig-paths/register bin/sync-slack-users.ts",
+    "sync-ecomail-subscribers": "ts-node -r tsconfig-paths/register bin/sync-ecomail-subscribers.ts"
   },
   "dependencies": {
     "airtable": "^0.11.3",
