@@ -14,6 +14,7 @@ import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";
+import { getContactButtonLabel } from "components/dashboard/opportunity/utils";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -96,7 +97,7 @@ const Page: NextPage<PageProps> = (props) => {
               </S.OpportunityOwnerWrapper>
               <a href={opportunity.contactUrl} target="blank">
                 <S.OpportunitySlackButton>
-                  Kontaktovat přes Slack
+                  {getContactButtonLabel(opportunity.contactUrl)}
                 </S.OpportunitySlackButton>
               </a>
             </S.OpportunityContactCard>
