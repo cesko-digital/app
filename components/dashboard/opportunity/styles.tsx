@@ -76,7 +76,7 @@ export const OwnerMailto = styled(Link)`
   font-weight: ${({ theme }) => theme.fontWeights.body};
   border-color: ${({ theme }) => theme.colors.darkGrey};
   border-width: 1px;
-  
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.darkGrey};
     background-color: ${({ theme }) => theme.colors.lightViolet};
@@ -104,7 +104,7 @@ export const OpportunityProjectImg = styled.img`
   border-radius: 50%;
 `;
 
-export const OpportunitySlackButton = styled(Button)`
+export const OpportunityContactButton = styled(Button)`
   font-size: 16px;
   width: 100%;
 `;
