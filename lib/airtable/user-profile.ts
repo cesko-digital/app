@@ -112,7 +112,10 @@ export async function updateUserProfile(
 
 /** Create new user profile */
 export async function createUserProfile(
-  profile: Pick<UserProfile, "name" | "email" | "skills" | "state">
+  profile: Pick<
+    UserProfile,
+    "name" | "email" | "skills" | "state" | "slackUserRelationId"
+  >
 ): Promise<UserProfile> {
   return await userProfileTable
     .create(encodeUserProfile(profile))
