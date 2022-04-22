@@ -1,4 +1,4 @@
-import { markdown, takeFirst, withDefault } from "./decoding";
+import { decodeUrl, markdown, takeFirst, withDefault } from "./decoding";
 import {
   array,
   boolean,
@@ -109,7 +109,7 @@ export const decodeOpportunity = record({
   summary: field("Summary", markdown),
   timeRequirements: field("Time Requirements", string),
   ownerId: field("Owner", takeFirst(array(string))),
-  contactUrl: field("RSVP URL", string),
+  contactUrl: field("RSVP URL", decodeUrl),
   coverImageUrl: field("Cover URL", optional(string)),
   skills: field("Skills", decodeSkills),
   juniorFriendly: field("Junior Friendly", withDefault(boolean, false)),
