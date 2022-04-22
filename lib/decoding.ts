@@ -30,3 +30,10 @@ export const withDefault = <T>(
     }
   };
 };
+
+/**
+ * Decode a URL string
+ *
+ * Throws if the string is not a valid URL.
+ */
+export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
