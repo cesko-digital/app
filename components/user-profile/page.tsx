@@ -4,6 +4,8 @@ import { Body, Heading1 } from "components/typography";
 import { Button } from "components/buttons";
 import { Skill } from "lib/airtable/skills";
 import { SkillBox } from "./user-skills";
+import Tabs from "components/tabs";
+import { useState } from "react";
 
 export type UserProfilePageState =
   | "loading"
@@ -90,21 +92,34 @@ const ErrorPage = () => (
 const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   const profile = props.profile!;
   const { signOut, allSkills, onUserSkillsChange } = props;
+
+  const sections = [
+    { key: "skills", label: "Dovednosti" },
+    { key: "settings", label: "Nastavení" },
+  ];
+
+  const [activeSectionKey, setActiveSectionKey] = useState("skills");
+
   return (
     <MainContainer>
       <Heading>{profile.name}</Heading>
-      <SkillBox
-        userSkillIds={profile.skills}
-        allSkills={allSkills}
-        onChange={onUserSkillsChange}
-      />
-      <Button
-        onClick={signOut}
-        style={{ marginTop: "40px", marginBottom: "40px" }}
-        inverted
-      >
-        Odhlásit
-      </Button>
+      <div style={{ marginBottom: "40px" }}>
+        <Tabs items={sections} onChange={setActiveSectionKey} />
+      </div>
+      {activeSectionKey === "skills" && (
+        <SkillBox
+          userSkillIds={profile.skills}
+          allSkills={allSkills}
+          onChange={onUserSkillsChange}
+        />
+      )}
+      {activeSectionKey === "settings" && (
+        <>
+          <Button onClick={signOut} style={{ marginBottom: "40px" }} inverted>
+            Odhlásit
+          </Button>
+        </>
+      )}
     </MainContainer>
   );
 };
