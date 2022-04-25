@@ -1,10 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { UserProfilePageState, UserProfilePage } from "components/user-profile";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
 import { flattenSkills, Skill } from "lib/airtable/skills";
 import { siteData } from "lib/site-data";
+import {
+  UserProfilePageState,
+  UserProfilePage,
+} from "components/user-profile/page";
 
 type PageProps = {
   allSkills: Skill[];
