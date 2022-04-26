@@ -1,4 +1,6 @@
-import { default as fetch } from "node-fetch";
+#!/usr/bin/env ts-node -r tsconfig-paths/register -r dotenv-flow/config
+
+import fetch from "node-fetch";
 import fs from "fs";
 
 /**
