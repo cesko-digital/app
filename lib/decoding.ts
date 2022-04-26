@@ -1,5 +1,11 @@
 import { MarkdownString } from "./utils";
-import { array, DecoderFunction, Pojo, string } from "typescript-json-decoder";
+import {
+  array,
+  DecoderFunction,
+  dict,
+  Pojo,
+  string,
+} from "typescript-json-decoder";
 
 /** Decode a string, returning it as a `MarkdownString` */
 export const markdown = (value: Pojo): MarkdownString => ({
@@ -46,3 +52,9 @@ export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
  * the whole thing to either the singleton value or undefined.
  */
 export const relationToOne = withDefault(takeFirst(array(string)), undefined);
+
+/** Extract a dict, returning only its values */
+export const decodeDictValues =
+  <T>(decodeItem: DecoderFunction<T>) =>
+  (value: Pojo) =>
+    [...dict(decodeItem)(value).values()];

@@ -1,10 +1,15 @@
 import { NextPage, GetStaticProps } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { UserProfilePageState, UserProfilePage } from "components/user-profile";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
 import { flattenSkills, Skill } from "lib/airtable/skills";
 import { siteData } from "lib/site-data";
+import { SubscriptionState, subscriptionStates } from "lib/ecomail";
+import { record, union } from "typescript-json-decoder";
+import {
+  UserProfilePageState,
+  UserProfilePage,
+} from "components/user-profile/page";
 
 type PageProps = {
   allSkills: Skill[];
@@ -57,9 +62,25 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
       signIn={() => signIn("slack")}
       signOut={() => signOut({ redirect: false })}
       onUserSkillsChange={saveSkills}
+      newsletterProps={{
+        getSubscription: getNewsletterSubscription,
+        subscribe: subscribeNewsletter,
+        unsubscribe: unsubscribeNewsletter,
+      }}
     />
   );
 };
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const allSkills = flattenSkills(siteData.skills);
+  return {
+    props: { allSkills },
+  };
+};
+
+//
+// User Profile
+//
 
 async function getUserProfile(): Promise<UserProfile> {
   const response = await fetch("/api/protected/me");
@@ -85,11 +106,33 @@ async function updateUserProfile(skills: Skill[]): Promise<void> {
   });
 }
 
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const allSkills = flattenSkills(siteData.skills);
-  return {
-    props: { allSkills },
-  };
-};
+//
+// Newsletter
+//
+
+async function getNewsletterSubscription(): Promise<SubscriptionState> {
+  const decodeSubscriptionState = union(...subscriptionStates);
+  const decodeSubscriptionResponse = record({ state: decodeSubscriptionState });
+  return await fetch("/api/protected/newsletter_subscription")
+    .then((res) => res.json())
+    .then(decodeSubscriptionResponse)
+    .then((res) => res.state);
+}
+
+async function updateNewsletterSubscription(
+  state: SubscriptionState
+): Promise<void> {
+  await fetch("/api/protected/newsletter_subscription", {
+    method: "POST",
+    body: JSON.stringify({ state }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
+const subscribeNewsletter = () => updateNewsletterSubscription("subscribed");
+const unsubscribeNewsletter = () =>
+  updateNewsletterSubscription("unsubscribed");
 
 export default Page;
