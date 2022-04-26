@@ -85,10 +85,11 @@ export async function getSubscriber(
 export async function subscribeToList(
   apiKey: string,
   email: string,
-  listId = newsletterListId
+  listId = newsletterListId,
+  tags: string[] = []
 ): Promise<boolean> {
   const payload = {
-    subscriber_data: { email },
+    subscriber_data: { email, tags },
     resubscribe: true,
   };
   const response = await fetch(
