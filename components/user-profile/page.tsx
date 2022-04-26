@@ -1,12 +1,11 @@
 import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, Heading1 } from "components/typography";
-import { Button } from "components/buttons";
 import { Skill } from "lib/airtable/skills";
 import { SkillBox } from "./user-skills";
 import Tabs from "components/tabs";
 import { useState } from "react";
-import { NewsletterPrefs } from "./newsletter";
+import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
 
 export type UserProfilePageState =
   | "loading"
@@ -27,6 +26,8 @@ export type UserProfilePageProps = {
   signOut: () => void;
   /** Called when selected skills change */
   onUserSkillsChange: (skills: Skill[]) => void;
+  /** Newsletter management props */
+  newsletterProps: NewsletterProps;
 };
 
 export const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
@@ -116,7 +117,7 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
       )}
       {activeSectionKey === "settings" && (
         <>
-          <NewsletterPrefs />
+          <NewsletterPrefs {...props.newsletterProps} />
         </>
       )}
     </MainContainer>
