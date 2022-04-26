@@ -28,7 +28,7 @@ export const subscriptionStates = [
 export type SubscriptionState = typeof subscriptionStates[number];
 
 /** Decode subscription state from the numeric code used in API responses */
-export function decodeSubscriptionState(value: Pojo): SubscriptionState {
+export function decodeSubscriptionStateCode(value: Pojo): SubscriptionState {
   const num = number(value);
   const state = subscriptionStates[num - 1];
   if (!state) {
@@ -43,7 +43,7 @@ export type Subscription = decodeType<typeof decodeSubscription>;
 /** Decode subscription from API response */
 export const decodeSubscription = record({
   listId: field("list_id", number),
-  state: field("status", decodeSubscriptionState),
+  state: field("status", decodeSubscriptionStateCode),
 });
 
 /** A subscriber or a “Contact” as called in the Ecomail UI */

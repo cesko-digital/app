@@ -1,23 +1,16 @@
 import { addPerformanceLogging } from "lib/apm";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
-import { decodeType, record } from "typescript-json-decoder";
+import { decodeType, record, union } from "typescript-json-decoder";
 import {
-  decodeSubscriptionState,
   getSubscriber,
   newsletterListId,
   subscribeToList,
+  subscriptionStates,
   unsubscribeFromList,
 } from "lib/ecomail";
 
-/** Simplified subscription type to change Ecomail subscription state */
-type Subscription = decodeType<typeof decodeNewsletterSubscription>;
-
-/** Decode `Subscription` from JSON */
-const decodeNewsletterSubscription = record({
-  state: decodeSubscriptionState,
-});
-
+/** Get/set newsletter subscription status for signed-in user */
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   const token = await getToken({ req: request });
   if (!token) {
@@ -37,14 +30,14 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         const previousSub = subscriber.lists.find(
           (list) => list.listId === newsletterListId
         );
-        const subscription: Subscription = {
+        const subscription: SubscriptionResponse = {
           state: previousSub?.state || "unsubscribed",
         };
         response.setHeader("Content-Type", "application/json");
         response.status(200).send(JSON.stringify(subscription, null, 2));
         break;
       case "POST":
-        const newSub = decodeNewsletterSubscription(request.body);
+        const newSub = decodeRequest(request.body);
         switch (newSub.state) {
           case "subscribed":
             await subscribeToList(apiKey, email, newsletterListId);
@@ -69,5 +62,11 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     response.status(500).send("Internal error, sorry!");
   }
 }
+
+// Helpers
+
+type SubscriptionResponse = decodeType<typeof decodeRequest>;
+const decodeSubscriptionState = union(...subscriptionStates);
+const decodeRequest = record({ state: decodeSubscriptionState });
 
 export default addPerformanceLogging(handler);

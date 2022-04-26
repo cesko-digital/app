@@ -6,6 +6,7 @@ import { Skill } from "lib/airtable/skills";
 import { SkillBox } from "./user-skills";
 import Tabs from "components/tabs";
 import { useState } from "react";
+import { NewsletterPrefs } from "./newsletter";
 
 export type UserProfilePageState =
   | "loading"
@@ -103,7 +104,7 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   return (
     <MainContainer>
       <Heading>{profile.name}</Heading>
-      <div style={{ marginBottom: "40px" }}>
+      <div style={{ paddingTop: "20px", marginBottom: "40px" }}>
         <Tabs items={sections} onChange={setActiveSectionKey} />
       </div>
       {activeSectionKey === "skills" && (
@@ -115,9 +116,7 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
       )}
       {activeSectionKey === "settings" && (
         <>
-          <Button onClick={signOut} style={{ marginBottom: "40px" }} inverted>
-            Odhlásit
-          </Button>
+          <NewsletterPrefs />
         </>
       )}
     </MainContainer>
