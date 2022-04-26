@@ -13,8 +13,11 @@ const Footer: React.FC = () => {
     [o.facebook, "https://www.facebook.com/cesko.digital"],
     [o.twitter, "https://twitter.com/CeskoDigital"],
     [o.linkedin, "https://www.linkedin.com/company/cesko-digital"],
-    [o.github, "https://github.com/cesko-digital"],
+    [o.instagram, "https://www.instagram.com/cesko.digital/"],
     [o.youtube, "https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg"],
+    [o.podcast, "https://anchor.fm/poslouchatdigital"],
+    [o.github, "https://github.com/cesko-digital"],
+    [o.cocuma, "https://www.cocuma.cz/company/cesko-digital/jobs/"],
   ];
 
   const p = footer.pageLinks;

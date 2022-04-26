@@ -61,8 +61,11 @@
                     "linkedin": "LinkedIn",
                     "slack": "Slack",
                     "youtube": "YouTube",
-                    "title": "Online",
-                    "twitter": "Twitter"
+                    "title": "Sledujte nás",
+                    "twitter": "Twitter",
+                    "podcast": "Podcast",
+                    "cocuma": "Cocuma",
+                    "instagram": "Instagram"
                 },
                 "pageLinks": {
                     "blog": "Blog",
