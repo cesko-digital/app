@@ -9,17 +9,23 @@ export interface StyledLinkProps {
 export interface LinkProps extends Partial<StyledLinkProps> {
   to: string;
   children: React.ReactNode;
+  openInNewTab?: boolean;
   language?: string;
 }
 
 const Link: React.FC<LinkProps> = ({
   children,
   size = ButtonSize.Normal,
+  openInNewTab = false,
   to: url,
   ...rest
 }: LinkProps) => {
   const props = { size, ...rest };
-  return (
+  return openInNewTab ? (
+    <S.StyledLink target="_blank" href={url} {...props}>
+      {children}
+    </S.StyledLink>
+  ) : (
     <NextLink href={url} passHref>
       <S.StyledLink {...props}>{children}</S.StyledLink>
     </NextLink>

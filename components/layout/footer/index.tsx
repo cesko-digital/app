@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                 <S.Links>
                   {socialLinks.map(([name, url], index) => (
                     <S.LinkItem key={index}>
-                      <Link size={ButtonSize.Small} to={url}>
+                      <Link size={ButtonSize.Small} to={url} openInNewTab>
                         {name}
                       </Link>
                     </S.LinkItem>
