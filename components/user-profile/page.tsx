@@ -1,6 +1,6 @@
 import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Body, Heading1 } from "components/typography";
+import { Body, BodySmall, Heading1 } from "components/typography";
 import { Skill } from "lib/airtable/skills";
 import { SkillBox } from "./user-skills";
 import Tabs from "components/tabs";
@@ -105,7 +105,23 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
   return (
     <MainContainer>
       <Heading>{profile.name}</Heading>
-      <div style={{ paddingTop: "20px", marginBottom: "40px" }}>
+      <BodySmall>
+        Možnost přihlášení a správy uživatelského profilu je čerstvá novinka,
+        kterou vám chceme zjednodušit zapojování do různých aktivit
+        Česko.Digital. A jako každá novinka to{" "}
+        <span style={{ textDecoration: "line-through" }}>může mít</span> určitě
+        má mouchy. Pokud narazíte na chyby nebo věci, které by mohly fungovat
+        lépe,{" "}
+        <a href="https://github.com/cesko-digital/web/issues">
+          otevřte nový ticket
+        </a>
+        , dejte nám vědět v kanálu{" "}
+        <a href="https://cesko-digital.slack.com/archives/CHG9NA23D">
+          #run-ceskodigital_web
+        </a>{" "}
+        nebo prostě <a href="mailto:zoul@cesko.digital">napište mail</a>. Díky!
+      </BodySmall>
+      <div style={{ paddingTop: "30px", marginBottom: "40px" }}>
         <Tabs items={sections} onChange={setActiveSectionKey} />
       </div>
       {activeSectionKey === "skills" && (
