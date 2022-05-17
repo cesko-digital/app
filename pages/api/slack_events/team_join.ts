@@ -107,7 +107,7 @@ async function confirmUserAccount(slackId: string) {
   }
 
   // Get the initial user profile we are trying to confirm
-  const initialProfile = await getUserProfileByMail(email);
+  const initialProfile = await getUserProfileByMail(email).catch(() => null);
 
   // This can routinely happen if the user skipped onboarding somehow
   if (!initialProfile) {
