@@ -43,8 +43,8 @@ export const SkillBox: React.FC<SkillBoxProps> = ({
   return (
     <div style={{ marginBottom: "20px" }}>
       <Body style={{ marginBottom: "20px" }}>
-        Co byste chtěli v Česko.Digital dělat? Dejte nám to vědět, ať vám můžeme
-        různými kanály nabízet relevantnější příležitosti. <i>(Copy TBD)</i>
+        Co chcete v Česko.Digital dělat? Dejte nám to vědět, ať vám můžeme
+        různými kanály nabízet relevantnější příležitosti.
       </Body>
 
       {fields.map((field) => (
