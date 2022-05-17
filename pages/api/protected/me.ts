@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 import { assert } from "console";
+import { getSlackUserBySlackId } from "lib/airtable/slack-user";
 import {
   createUserProfile,
   getUserProfile,
   updateUserProfile,
 } from "lib/airtable/user-profile";
-import { getSlackUserBySlackId } from "lib/airtable/slack-user";
 
 /**
  * Retrieve or update user profile
@@ -57,8 +57,8 @@ export default async function handler(
           return;
         }
         // Make sure we do NOT include the `slackId` field nor `state` here
-        const { name, email, skills } = request.body;
-        await updateUserProfile(profile.id, { name, email, skills });
+        const { name, skills } = request.body;
+        await updateUserProfile(profile.id, { name, skills });
         response.status(200).send("Updated");
         break;
       default:

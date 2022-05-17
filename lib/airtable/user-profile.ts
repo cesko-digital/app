@@ -106,10 +106,7 @@ export async function getFirstMatchingUserProfile(
 export async function updateUserProfile(
   recordId: string,
   profile: Partial<
-    Pick<
-      UserProfile,
-      "name" | "email" | "skills" | "slackUserRelationId" | "state"
-    >
+    Pick<UserProfile, "name" | "skills" | "slackUserRelationId" | "state">
   >
 ): Promise<UserProfile> {
   return await userProfileTable
