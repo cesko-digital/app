@@ -1,4 +1,4 @@
-name: Slack Sync
+name: Sync Slack Users
 
 on:
   schedule:
@@ -16,4 +16,4 @@ jobs:
       - name: Sync
         run: |
           yarn install
-          yarn sync-users
+          ./bin/sync-slack-users
