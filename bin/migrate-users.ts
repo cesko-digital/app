@@ -8,6 +8,11 @@ import {
   UserProfile,
 } from "lib/airtable/user-profile";
 
+/**
+ * Migrate data from legacy user tables to the new ones
+ *
+ * https://github.com/cesko-digital/web/issues/565
+ */
 async function main() {
   // Download all Volunteers from the legacy table
   console.log(`Downloading all records from the Volunteers table.`);
