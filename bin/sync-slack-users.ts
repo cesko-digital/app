@@ -11,6 +11,14 @@ import {
 
 const { SLACK_SYNC_TOKEN: slackToken = "", DEBUG: debug = "" } = process.env;
 
+/**
+ * Sync all Slack users to Airtable
+ *
+ * The script downloads a list of all users of the Česko.Digital Slack workspace
+ * and inserts them into the Slack Users table in the Volunteer Management DB. Already
+ * existing records (based on Slack User ID) are updated with new values, non-existing
+ * users are inserted. No linking with other tables is done.
+ */
 async function main() {
   console.log(
     "Downloading all Slack users of the Česko.Digital workspace. This can take a while."
