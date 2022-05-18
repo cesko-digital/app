@@ -2189,10 +2189,10 @@ elastic-apm-http-client@11.0.1:
     semver "^6.3.0"
     stream-chopper "^3.0.1"
 
-elastic-apm-node@^3.31.0:
-  version "3.31.0"
-  resolved "https://registry.yarnpkg.com/elastic-apm-node/-/elastic-apm-node-3.31.0.tgz#6e0bf622d922c95ff0127a263babcdeaeea71457"
-  integrity sha512-0OulazfhkXYbOaGkHncqjwOfxtcvzsDyzUKr6Y1k95HwKrjf1Vi+xPutZv4p/WfDdO+JadphI0U2Uu5ncGB2iA==
+elastic-apm-node@^3.32.0:
+  version "3.33.0"
+  resolved "https://registry.yarnpkg.com/elastic-apm-node/-/elastic-apm-node-3.33.0.tgz#ad2850b005355299c3a9fdc631875162480ceb15"
+  integrity sha512-ZJKcRbYdEU87MWyB9CczGTLEERA595OWd0nqpxrDBkogogpxwpzCOialKZA+bekpNA0Oa4Sv18zRCdyqpV25Pw==
   dependencies:
     "@elastic/ecs-pino-format" "^1.2.0"
     after-all-results "^2.0.0"
@@ -2224,7 +2224,6 @@ elastic-apm-node@^3.31.0:
     shallow-clone-shim "^2.0.0"
     source-map "^0.8.0-beta.0"
     sql-summary "^1.0.1"
-    traceparent "^1.0.0"
     traverse "^0.6.6"
     unicode-byte-truncate "^1.0.0"
 
@@ -4790,11 +4789,6 @@ quick-format-unescaped@^4.0.3:
   resolved "https://registry.yarnpkg.com/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz#93ef6dd8d3453cbc7970dd614fad4c5954d6b5a7"
   integrity sha512-tYC1Q1hgyRuHgloV/YXs2w15unPVh8qfu/qCTfhTYamaw7fyhumKa2yGpdSo87vY32rIclj+4fWYQXUMs9EHvg==
 
-random-poly-fill@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/random-poly-fill/-/random-poly-fill-1.0.1.tgz#13634dc0255a31ecf85d4a182d92c40f9bbcf5ed"
-  integrity sha512-bMOL0hLfrNs52+EHtIPIXxn2PxYwXb0qjnKruTjXiM/sKfYqj506aB2plFwWW1HN+ri724bAVVGparh4AtlJKw==
-
 rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -5609,13 +5603,6 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
-
-traceparent@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/traceparent/-/traceparent-1.0.0.tgz#9b14445cdfe5c19f023f1c04d249c3d8e003a5ce"
-  integrity sha512-b/hAbgx57pANQ6cg2eBguY3oxD6FGVLI1CC2qoi01RmHR7AYpQHPXTig9FkzbWohEsVuHENZHP09aXuw3/LM+w==
-  dependencies:
-    random-poly-fill "^1.0.1"
 
 traverse@^0.6.6:
   version "0.6.6"
