@@ -26,8 +26,7 @@ export interface Schema extends FieldSet {
 }
 
 /** Slack Users table */
-export const slackUsersTable =
-  volunteerManagementBase<Schema>("Slack Users 2.0");
+export const slackUsersTable = volunteerManagementBase<Schema>("Slack Users");
 
 /** Slack user as stored in Airtable */
 export type SlackUser = decodeType<typeof decodeSlackUser>;

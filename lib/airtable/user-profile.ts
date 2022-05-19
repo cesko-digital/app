@@ -30,7 +30,7 @@ export interface Schema extends FieldSet {
 
 /** The user profile table in Airtable */
 export const userProfileTable =
-  volunteerManagementBase<Schema>("User Profiles 2.0");
+  volunteerManagementBase<Schema>("User Profiles");
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
