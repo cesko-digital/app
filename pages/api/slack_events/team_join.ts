@@ -1,6 +1,6 @@
 import { decodeIncomingMessage } from "lib/slack/events";
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSlackUser } from "lib/slack/user";
+import { getSlackUser, isRegularUser } from "lib/slack/user";
 import { upsertSlackUser } from "lib/airtable/slack-user";
 import {
   getUserProfileByMail,
@@ -86,6 +86,14 @@ async function confirmUserAccount(slackId: string) {
   // The `user` object from Slack does not include the email,
   // so we have to make an extra API request to get it.
   const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
+
+  // Ignore non-regular “users” such as apps
+  if (!isRegularUser(slackUser)) {
+    console.info(
+      `Received Slack team_join event for non-regular user ${slackId}, ignoring`
+    );
+    return;
+  }
 
   // Save the new Slack user to the Slack Users DB table.
   // This makes sense even if the following steps fail.
