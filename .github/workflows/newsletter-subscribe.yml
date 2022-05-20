@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ECOMAIL_API_KEY: ${{ secrets.ECOMAIL_API_KEY }}
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
     steps:
       - uses: actions/checkout@v2
       - name: Sync
