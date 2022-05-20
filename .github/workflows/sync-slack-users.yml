@@ -16,4 +16,4 @@ jobs:
       - name: Sync
         run: |
           yarn install
-          ./bin/sync-slack-users
+          ./bin/sync-slack-users.ts
