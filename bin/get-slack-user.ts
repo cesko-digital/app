@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node -r tsconfig-paths/register -r dotenv-flow/config
+#!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { getSlackUser } from "lib/slack/user";
 

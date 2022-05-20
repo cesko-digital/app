@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node -r tsconfig-paths/register -r dotenv-flow/config
+#!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { isDeepStrictEqual } from "util";
 import { getAllWorkspaceUsers, isRegularUser, SlackUser } from "lib/slack/user";
