@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node -r tsconfig-paths/register -r dotenv-flow/config
+#!/usr/bin/env -S ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { addSubscribers } from "lib/ecomail";
