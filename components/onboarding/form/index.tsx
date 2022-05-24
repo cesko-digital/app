@@ -6,6 +6,7 @@ import { Field } from "lib/airtable/skills";
 import Strings from "../strings.json";
 import * as Components from "components/onboarding/styles";
 import * as S from "./styles";
+import Plausible from "plausible-tracker";
 import { Route } from "lib/utils";
 import {
   areSkillsValid,
@@ -46,6 +47,8 @@ const OnboardingForm: React.FC<OnboardingFormProps> = (props) => {
 
     // It would be better to have this side effect somewhere else
     if (success) {
+      const { trackEvent } = Plausible({ domain: "cesko.digital" });
+      trackEvent("SignUp");
       setTimeout(() => {
         document.location.href = Route.slackOnboarding;
       }, 8000);
