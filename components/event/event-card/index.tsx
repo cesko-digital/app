@@ -29,7 +29,12 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
           minute: "2-digit",
         })}
       />
-      {duration && <Info title={strings.components.cards.eventCard.duration} content={duration} />}
+      {duration && (
+        <Info
+          title={strings.components.cards.eventCard.duration}
+          content={duration}
+        />
+      )}
       {event.locationTitle && (
         <Info
           title={strings.components.cards.eventCard.place}
@@ -37,6 +42,7 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
           url={event.locationUrl}
         />
       )}
+      {event.type && <Info title="Typ akce" content={event.type} />}
       {event.registrationUrl && (
         <ButtonAsLink to={event.registrationUrl}>
           {event.registrationTitle}

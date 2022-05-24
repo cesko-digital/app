@@ -83,6 +83,17 @@ export const decodeEvent = record({
   coverImageUrl: field("Cover URL", optional(string)),
   locationTitle: field("Location Title", optional(string)),
   locationUrl: field("Location URL", optional(string)),
+  type: field(
+    "Typ události",
+    optional(
+      union(
+        "Online",
+        "Offline",
+        "Česko.Digital spolupořádá",
+        "Česko.Digital je hostem"
+      )
+    )
+  ),
 });
 
 /**
