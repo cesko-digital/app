@@ -9,6 +9,7 @@ import { useSession, signIn } from "next-auth/react";
 import { DefaultSession } from "next-auth";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import Plausible from "plausible-tracker";
 import { default as NextLink } from "next/link";
 
 const HeaderCS: React.FC = () => {
@@ -79,12 +80,13 @@ const ManageSession = () => {
 };
 
 const SignInButton = () => {
+  const { trackEvent } = Plausible({ domain: "cesko.digital" });
+  const handleClick = () => {
+    trackEvent("SignIn");
+    signIn("slack");
+  };
   return (
-    <S.HeaderButton
-      size={ButtonSize.Small}
-      onClick={() => signIn("slack")}
-      inverted
-    >
+    <S.HeaderButton size={ButtonSize.Small} onClick={handleClick} inverted>
       Přihlásit se
     </S.HeaderButton>
   );
