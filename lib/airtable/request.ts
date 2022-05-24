@@ -8,10 +8,23 @@ import Airtable, {
   Table,
 } from "airtable";
 
-/** The Volunteer Management database */
+/**
+ * The Volunteer Management database
+ *
+ * https://airtable.com/apppZX1QC3fl1RTBM/tblUmjkniqR4PUu5R
+ */
 export const volunteerManagementBase = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
 }).base("apppZX1QC3fl1RTBM");
+
+/**
+ * The Web database
+ *
+ * https://airtable.com/appkn1DkvgVI5jpME/tblszIbIBAluUHvH0
+ */
+export const webBase = new Airtable({
+  apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
+}).base("appkn1DkvgVI5jpME");
 
 //
 // API Helpers
