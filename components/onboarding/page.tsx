@@ -47,9 +47,11 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
               kanálech a předá ti další důležité informace.
             </S.Body>
             <S.Body color={"darkGrey"}>
-              Odesláním formuláře souhlasíš s tím, že ti jednou měsíčně pošleme
-              newsletter s tím, co je nového. (V každém vydání je samozřejmě
-              odkaz na odhlášení.)
+              Odesláním formuláře souhlasíš s našimi{" "}
+              <a href="https://docs.google.com/document/d/1fFgQVbIzjRmPDbeBJ7K4KvObANvvdO44YYnsSaAB-qg/edit">
+                podmínkami zpracování osobních údajů
+              </a>{" "}
+              a zasíláním měsíčního newsletteru.
             </S.Body>
           </S.IntroductionHeader>
         </S.SectionIntroductionContent>
