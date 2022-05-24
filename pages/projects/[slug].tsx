@@ -137,7 +137,12 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             <S.CardRowWrapper>
               <CardRow>
                 {relatedBlogPosts.map((post) => (
-                  <BlogCard key={post.url} link={post.url} {...post} />
+                  <BlogCard
+                    key={post.url}
+                    link={post.url}
+                    title={post.title}
+                    cover={post.cover}
+                  />
                 ))}
               </CardRow>
             </S.CardRowWrapper>
@@ -193,7 +198,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   );
   const relatedBlogPosts = siteData.blogPosts
     .filter((post) => post.tags.some((tag) => tag === project.slug))
-    .slice(0, 3);
+    .slice(0, 6);
   const otherProjects = projects
     .filter((p) => p != project && p.state === "running")
     .slice(0, 3);

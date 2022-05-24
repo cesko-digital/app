@@ -4,7 +4,7 @@ import strings from "content/strings.json";
 
 export interface BlogCardProps {
   title: string;
-  description: string;
+  description?: string;
   cover: string;
   link: string;
 }
@@ -23,7 +23,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </S.Header>
       <S.Content>
         <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+        {description && <S.Description>{description}</S.Description>}
+        {!description && <br />}
         <Link to={link}>{strings.cards.blog.readMore}</Link>
       </S.Content>
     </S.Card>
