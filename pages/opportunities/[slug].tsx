@@ -71,10 +71,10 @@ const Page: NextPage<PageProps> = (props) => {
             <S.OpportunityContactCard>
               <S.OpportunityMetaRow>
                 <S.OpportunityProjectImg src={parentProject.logoUrl} />
-                {parentProject.state === "draft" ||
-                  (parentProject.state === "internal" && (
-                    <Body>{parentProject.name}</Body>
-                  ))}
+                {(parentProject.state === "draft" ||
+                  parentProject.state === "internal") && (
+                  <Body>{parentProject.name}</Body>
+                )}
                 {parentProject.state !== "draft" &&
                   parentProject.state !== "internal" && (
                     <Link href={Route.toProject(parentProject)}>
