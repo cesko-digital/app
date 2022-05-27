@@ -75,7 +75,7 @@
                     "projects": "Projekty",
                     "dashboard": "Portál dobrovolníka",
                     "submitProject": "Zadat projekt",
-                    "supportUs": "Přispět",
+                    "supportUs": "Darovat",
                     "title": "Česko.Digital"
                 }
             },
@@ -94,7 +94,7 @@
         "dashboard": "Portál dobrovolníka",
         "projects": "Projekty",
         "signUp": "Chci se zapojit",
-        "supportUs": "Přispět",
+        "supportUs": "Darovat",
         "dashboardDescription": "Tržiště příležitostí, jak se zapojit v Česko.Digital"
     },
     "metadata": {
