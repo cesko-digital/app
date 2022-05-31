@@ -71,6 +71,13 @@ export async function confirmUserAccount(slackId: string) {
   });
 }
 
+/**
+ * Send welcome message to Slack user
+ *
+ * The message is read from `content/welcome.txt`, see formatting spec here:
+ * <https://api.slack.com/reference/surfaces/formatting>. Unfortunately it’s not
+ * regular Markdown, not even close.
+ */
 export async function sendWelcomeMessage(slackId: string) {
   const contentFolder = join(process.cwd(), "content");
   const welcomeMessagePath = join(contentFolder, "welcome.txt");
