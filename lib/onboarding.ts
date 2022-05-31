@@ -1,11 +1,13 @@
-import { getSlackUser, isRegularUser } from "lib/slack/user";
+import { getSlackUser, isRegularUser, sendDirectMessage } from "lib/slack/user";
 import { upsertSlackUser } from "lib/airtable/slack-user";
+import { join } from "path";
+import fs from "fs";
 import {
   getUserProfileByMail,
   updateUserProfile,
 } from "lib/airtable/user-profile";
 
-const { SLACK_SYNC_TOKEN = "" } = process.env;
+const { SLACK_SYNC_TOKEN = "", SLACK_GREET_BOT_TOKEN = "" } = process.env;
 
 /**
  * Confirm user account when user joins Slack
@@ -67,4 +69,11 @@ export async function confirmUserAccount(slackId: string) {
     slackUserRelationId: slackUserInDB.id,
     state: "confirmed",
   });
+}
+
+export async function sendWelcomeMessage(slackId: string) {
+  const contentFolder = join(process.cwd(), "content");
+  const welcomeMessagePath = join(contentFolder, "welcome.txt");
+  const welcomeMessage = fs.readFileSync(welcomeMessagePath, "utf-8");
+  await sendDirectMessage(SLACK_GREET_BOT_TOKEN, slackId, welcomeMessage);
 }

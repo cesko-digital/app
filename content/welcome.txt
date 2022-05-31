@@ -1,0 +1,52 @@
+Ahoj! Moc tě zdravím a vítám v naší komunitě! :wave::skin-tone-2:
+
+Mé jméno je *GreetBot* a jsem rád, že do toho jdeš s námi! Této komunitě pomáhám jako virtuální rádce :robot_face:
+Náš tým se s tvým příchodem rozrostl o další skvělou posilu. Je chvályhodné, že chceš nadále rozšiřovat své zkušenosti a předávat světu super nápady a vize :blue_heart:
+Představ se nám všem v kanálu #introductions Můžeš zmínit své zkušenosti a dovednosti, ale nezapomeň nám také sdělit, co tě baví a zajímá.
+
+Vím, že se tady dá lehce zabloudit, a proto ti posílám ty nejdůležitější informace, které by se ti teď mohly hodit:
+
+Pokud se chceš zapojit do *aktuálně rozběhnutých projektů na podporu Ukrajině*, mrkni na:
+
+Hlavní kanály
+*#ua-tech_for_ukrajina*: hlavní informační kanál napříč projekty pro Ukrajinu
+#ua-stojimezaukrajinou: hlavní kanál k projektu <http://www.stojimezaukrajinou.cz|Stojíme za Ukrajinou>
+#ua-pomahejukrajine_cz: hlavní kanál k projektu <http://www.pomahejukrajine.cz|Pomáhej Ukrajině>
+#ua-vzdelavani-ukrajinskych-deti: portál pro sledování nabídek a poptávek volných míst ve školách či školkách
+#ua-movapp: aplikace pro základy češtiny a ukrajinštiny
+#ua-mapy-pro-ukrajinu: Kanál pro nápady s mapami, konzultace ohledně již vzniklých map
+#ua-umapa: Kanál pro nápady k mapě pro dlouhodobou podporu Ukrajinců v ČR
+#ua-mapa-hranicnich-prechodu: Kanál pro tvorbu mapy pro poskytování obecných informací a přehledu o aktuální situaci na ukrajinských hranicích
+
+Marketing
+#ua-marketing-stojimezaukrajinou: kanál, kde diskutujeme všechny marketingové aktivity k iniciativě –⁠ kontakt a činnosti, na které se cítíte, vyplňte ve <https://docs.google.com/spreadsheets/d/1LuBN2ieaA1dPnXrBTIJAzFn5cn2DYeQSBpWTRn5ibZo/edit?usp=sharing|formuláři pro marketing>
+
+Překlady a korektury
+#ua-copy-stojimezaukrajinou: Kanál pro copywritery a obsahové mágy
+#ua-projekty-preklady-do-vsech-jazyku: Kanál pro překlady všech UA projektů do všech jazuků
+
+Kompletní přehled všech kanálů najdeš <https://airtable.com/shrcabjLk7GRHe0eN|tady>.
+
+A jinak připojuji ještě nějaké obecné informace:
+• projekty, na kterých aktuálně pracujeme, najdeš <https://cesko.digital/projects|tady>, mrkni, co z toho by tě zajímalo tématicky
+• každý z projektů má pak tady na Slacku svůj kanál #run... nebo #idea...
+• na *<https://cesko.digital/portal-dobrovolnika|Portálu dobrovolníka>* najdeš kromě poptávky výpomoci na projektech, na kterých pracujeme, také pozvánky na různé akce, které v komunitě a pro komunitu organizujeme (včetně č.edu)
+• pokud tě na Portálu cokoliv zaujalo, neváhej se ozvat přímo kontaktní osobě
+• mrkni taky do oborových kanálů, kde se objevují aktuální poptávky i na jednorázovou výpomoc v této oblasti
+• poptávky od spřátelených neziskových organizací se objevují v kanálu #market-place, takže doporučuji taky sledovat
+• posílám i odkaz na čtení <https://cesko-digital.atlassian.net/l/c/NJMJEPqR|o roli dobrovolníka> a o <https://cesko-digital.atlassian.net/l/c/W0UHmc2F|hodnotách Česko.Digital>
+
+Doufám, že se ti u nás bude líbit Pokud máš jakoukoliv otázku, neváhej se ptát, obrátit se taky můžeš bez ostychu na kohokoliv, kdo má za jménem ikonku :ceskodigital:
+
+Tak zatím! :rocket:
+
+:heavy_minus_sign:
+
+:uk: (Czech up there)
+
+Hi! :wave::skin-tone-2:
+
+Welcome and thanks for joining us.
+Most of the stuff here is in Czech, but people usually have no trouble switching to English if needed. If you would like to join some project, just hop in its channel and ask if it’s OK to participate in English.
+
+Have fun! :rocket:
