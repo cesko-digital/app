@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { decodeIncomingMessage } from "lib/slack/events";
-import { confirmUserAccount } from "lib/onboarding";
+import { confirmUserAccount, sendWelcomeMessage } from "lib/onboarding";
 import {
   signatureHeader,
   timestampHeader,
@@ -60,6 +60,7 @@ export default async function handler(
             return;
           case "ok":
             await confirmUserAccount(msg.event.user.id);
+            await sendWelcomeMessage(msg.event.user.id);
             response.status(204).end();
             return;
         }
