@@ -9,7 +9,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { user_id, text } = request.body;
   if (user_id) {
-    await sendWelcomeMessage(user_id, text);
+    if (text) {
+      await sendWelcomeMessage(user_id, decodeURIComponent(text));
+    } else {
+      await sendWelcomeMessage(user_id);
+    }
   }
   response.status(204).end();
 }
