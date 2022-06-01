@@ -35,10 +35,26 @@ export const SkillBox: React.FC<SkillBoxProps> = ({
   const skillsForField = (field: string) =>
     allSkills
       .filter((skill) => skill.field === field)
+      .filter((skill) => skill.name !== "senior" && skill.name !== "mentor")
       .sort((a, b) => a.name.localeCompare(b.name));
 
   const hasSelectedSkills = (field: string) =>
     skillsForField(field).some((skill) => selectedSkills.includes(skill));
+
+  const handleCheckboxClick = (
+    type: "mentor" | "senior",
+    field: string,
+    checked: boolean
+  ) => {
+    const skill = allSkills.find((s) => s.name === type && s.field === field);
+    if (skill) {
+      const newSkills = checked
+        ? unique([skill, ...selectedSkills])
+        : selectedSkills.filter((other) => other.id !== skill.id);
+      setSelectedSkills(newSkills);
+      onChange(newSkills);
+    }
+  };
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -48,7 +64,7 @@ export const SkillBox: React.FC<SkillBoxProps> = ({
       </Body>
 
       {fields.map((field) => (
-        <div key={field}>
+        <div key={field} style={{ marginBottom: "20px" }}>
           <Heading2
             style={{
               marginBottom: "20px",
@@ -58,7 +74,7 @@ export const SkillBox: React.FC<SkillBoxProps> = ({
           >
             {field}
           </Heading2>
-          <div style={{ lineHeight: "3ex", marginBottom: "20px" }}>
+          <div style={{ lineHeight: "3ex", marginBottom: "10px" }}>
             {skillsForField(field).map((skill) => (
               <SkillPill
                 key={skill.id}
@@ -67,6 +83,28 @@ export const SkillBox: React.FC<SkillBoxProps> = ({
                 checked={selectedSkills.some((s) => s.id === skill.id)}
               />
             ))}
+          </div>
+          <div style={{ marginBottom: "25px" }}>
+            <Checkbox
+              id={`${field}-senior`}
+              label="Jsem seniorní"
+              onChange={(checked) =>
+                handleCheckboxClick("senior", field, checked)
+              }
+              checked={selectedSkills.some(
+                (s) => s.name === "senior" && s.field === field
+              )}
+            />
+            <Checkbox
+              id={`${field}-mentor`}
+              label="Můžu vést a mentorovat ostatní"
+              onChange={(checked) =>
+                handleCheckboxClick("mentor", field, checked)
+              }
+              checked={selectedSkills.some(
+                (s) => s.name === "mentor" && s.field === field
+              )}
+            />
           </div>
         </div>
       ))}
@@ -108,6 +146,32 @@ const SkillPill: React.FC<SkillPillProps> = ({
     </AnimatedSpan>
   );
 };
+
+type CheckboxProps = {
+  id: string;
+  checked: boolean;
+  label: string;
+  onChange: (value: boolean) => void;
+};
+
+const Checkbox: React.FC<CheckboxProps> = ({
+  id,
+  label,
+  checked,
+  onChange,
+}) => (
+  <div>
+    <input
+      type="checkbox"
+      id={id}
+      defaultChecked={checked}
+      onChange={(event) => onChange(event.target.checked)}
+    />
+    <label htmlFor={id} style={{ paddingLeft: "1ex" }}>
+      {label}
+    </label>
+  </div>
+);
 
 const AnimatedSpan = styled.span`
   transition: transform 0.1s;
