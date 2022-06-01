@@ -7,9 +7,9 @@ import { NextApiRequest, NextApiResponse } from "next";
  * https://api.slack.com/interactivity/slash-commands
  */
 async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const { user_id } = request.body;
+  const { user_id, text } = request.body;
   if (user_id) {
-    await sendWelcomeMessage(user_id);
+    await sendWelcomeMessage(user_id, text);
   }
   response.status(204).end();
 }

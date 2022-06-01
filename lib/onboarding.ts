@@ -78,9 +78,16 @@ export async function confirmUserAccount(slackId: string) {
  * <https://api.slack.com/reference/surfaces/formatting>. Unfortunately it’s not
  * regular Markdown, not even close.
  */
-export async function sendWelcomeMessage(slackId: string) {
+export async function sendWelcomeMessage(
+  slackId: string,
+  message: string | undefined = undefined
+) {
   const contentFolder = join(process.cwd(), "content");
   const welcomeMessagePath = join(contentFolder, "welcome.txt");
-  const welcomeMessage = fs.readFileSync(welcomeMessagePath, "utf-8");
-  await sendDirectMessage(SLACK_GREET_BOT_TOKEN, slackId, welcomeMessage);
+  const defaultMessage = fs.readFileSync(welcomeMessagePath, "utf-8");
+  await sendDirectMessage(
+    SLACK_GREET_BOT_TOKEN,
+    slackId,
+    message || defaultMessage
+  );
 }
