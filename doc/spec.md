@@ -58,14 +58,14 @@ sequenceDiagram
     Note over Airtable: User Profiles
     Airtable-->>Uživatel: Uvítací e-mail (Airtable Automation)
     Backend->>-Uživatel: Přesměrování na onboarding Slacku
-    Uživatel->>+Slack: Vyplněná registrace
-    Slack->>-Uživatel: Tady máš chat
-    Slack-->>Uživatel: Uvítací zpráva (Greetbot)
+    Uživatel->>Slack: Vyplněná registrace
+    Slack->>Uživatel: Tady máš chat
     Slack->>+Backend: Máte nového uživatele Slacku
     Note over Backend: /api/slack_events/team_join
     Backend->>Airtable: Vytvoř nového uživatele Slacku
     Note over Airtable: Slack Users
     Backend->>Airtable: Potvrď uživatelský profil z bodu ➊
     Note over Airtable: User Profiles
-    Backend->>-Slack: OK
+    Backend->>-Slack: Pozdrav uživatele
+    Slack->>Uživatel: Greet Bot: 👋
 ```
