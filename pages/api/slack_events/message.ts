@@ -35,6 +35,7 @@ export default async function handler(
           await insertNewMarketPlaceOffer({
             state: "new",
             text: msg.event.text || "<no text in message>",
+            owner: msg.event.user,
           });
         }
         response.status(204).end();
