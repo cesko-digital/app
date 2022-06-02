@@ -26,8 +26,8 @@ export type MarketPlaceOffer = decodeType<typeof decodeMarketPlaceOffer>;
 export const decodeMarketPlaceOffer = record({
   id: string,
   owner: relationToOne,
-  ownerName: string,
-  ownerEmail: string,
+  ownerName: relationToOne,
+  ownerEmail: relationToOne,
   text: string,
   createdAt: string,
   lastModifiedAt: string,
