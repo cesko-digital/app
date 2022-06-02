@@ -1,7 +1,7 @@
 import { FieldSet } from "airtable";
 import { unwrapRecord, unwrapRecords, webBase } from "./request";
-import { decodeUserProfile, Schema as UserProfileSchema } from "./user-profile";
-import { relationToOne, takeFirst } from "lib/decoding";
+import { Schema as UserProfileSchema } from "./user-profile";
+import { relationToOne } from "lib/decoding";
 import {
   array,
   decodeType,
