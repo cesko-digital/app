@@ -21,8 +21,8 @@ export const decodeMessageEvent = record({
   type: literal("message"),
   subtype: optional(string),
   channel: string,
-  user: string,
-  text: string,
+  user: optional(string),
+  text: optional(string),
   channel_type: string,
   thread_ts: optional(string),
 });
@@ -53,9 +53,9 @@ export const decodeEndpointHandshake = record({
 //
 
 /**
- * Does a message event represent a regular, new topic message to the channel?
+ * Does a message event represent a regular, new thread message to the channel?
  *
  * Returns `false` for channel join messages, thread replies, …
  */
-export const isRegularNewTopicMessage = (event: MessageEvent) =>
+export const isRegularNewThreadMessage = (event: MessageEvent) =>
   event.channel_type === "channel" && !event.subtype && !event.thread_ts;

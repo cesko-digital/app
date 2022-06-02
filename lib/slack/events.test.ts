@@ -110,3 +110,31 @@ test("Decode thread reply", () => {
     thread_ts: "1654170796.530449",
   });
 });
+
+test("Decode message change message", () => {
+  const payload = {
+    type: "message",
+    subtype: "message_changed",
+    message: {
+      type: "message",
+      subtype: "tombstone",
+      text: "This message was deleted.",
+      user: "USLACKBOT",
+      hidden: true,
+      ts: "1654170796.530449",
+    },
+    channel: "C03JP5VSC00",
+    hidden: true,
+    ts: "1654172531.001700",
+    event_ts: "1654172531.001700",
+    channel_type: "channel",
+  };
+  expect(decodeMessageEvent(payload)).toEqual({
+    type: "message",
+    subtype: "message_changed",
+    channel: "C03JP5VSC00",
+    channel_type: "channel",
+    user: undefined,
+    text: undefined,
+  });
+});
