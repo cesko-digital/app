@@ -4,6 +4,7 @@ import {
   decodeEndpointHandshake,
   decodeEventCallback,
   decodeMessageEvent,
+  isRegularNewTopicMessage,
 } from "lib/slack/events";
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
@@ -26,8 +27,14 @@ export default async function handler(
         return;
       // This is a new message notification
       case "event_callback":
-        console.log(request.body);
-        console.log(msg.event);
+        if (
+          isRegularNewTopicMessage(msg.event) &&
+          msg.event.channel === "C03JP5VSC00"
+        ) {
+          console.log(
+            `New thread in #market-place-automation: ${msg.event.text}`
+          );
+        }
         response.status(204).end();
     }
   } catch (e) {
