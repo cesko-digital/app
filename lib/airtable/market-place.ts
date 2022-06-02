@@ -1,6 +1,12 @@
 import { FieldSet } from "airtable";
-import { unwrapRecord, webBase } from "./request";
-import { decodeType, record, string, union } from "typescript-json-decoder";
+import { unwrapRecord, unwrapRecords, webBase } from "./request";
+import {
+  array,
+  decodeType,
+  record,
+  string,
+  union,
+} from "typescript-json-decoder";
 
 const marketPlaceTable = webBase<Schema>("Market Place");
 
@@ -11,6 +17,7 @@ export interface Schema extends FieldSet {
   text: string;
 }
 
+/** A market-place offer */
 export type MarketPlaceOffer = decodeType<typeof decodeMarketPlaceOffer>;
 export const decodeMarketPlaceOffer = record({
   id: string,
@@ -32,6 +39,16 @@ export const decodeMarketPlaceOffer = record({
 // API Calls
 //
 
+/** Return all market-place offers */
+export async function getAllMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
+  return await marketPlaceTable
+    .select({ maxRecords: 1000 })
+    .all()
+    .then(unwrapRecords)
+    .then(array(decodeMarketPlaceOffer));
+}
+
+/** Insert new market-place offer */
 export async function insertNewMarketPlaceOffer(
   offer: Pick<MarketPlaceOffer, "state" | "text">
 ): Promise<MarketPlaceOffer> {
