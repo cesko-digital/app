@@ -6,6 +6,7 @@ import { SkillBox } from "./user-skills";
 import Tabs from "components/tabs";
 import { useState } from "react";
 import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
+import { Button, ButtonSize } from "components/buttons";
 
 export type UserProfilePageState =
   | "loading"
@@ -104,7 +105,22 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
 
   return (
     <MainContainer>
-      <Heading>{profile.name}</Heading>
+      <Heading>
+        {profile.name}{" "}
+        <Button
+          size={ButtonSize.Small}
+          onClick={signOut}
+          inverted
+          style={{
+            marginLeft: "20px",
+            position: "relative",
+            top: "50%",
+            transform: "translateY(-30%)",
+          }}
+        >
+          Odhlásit
+        </Button>
+      </Heading>
       <BodySmall>
         Možnost přihlášení a správy uživatelského profilu je čerstvá novinka,
         kterou vám chceme zjednodušit zapojování do různých aktivit

@@ -60,7 +60,7 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
       state={state}
       profile={profile}
       signIn={() => signIn("slack")}
-      signOut={() => signOut({ redirect: false })}
+      signOut={() => signOut({ callbackUrl: "/" })}
       onUserSkillsChange={saveSkills}
       newsletterProps={{
         getSubscription: getNewsletterSubscription,
