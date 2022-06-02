@@ -1,18 +1,27 @@
+import { decodeSlackUser } from "./user";
 import {
   DecoderFunction,
   decodeType,
   literal,
   record,
   string,
-  union,
 } from "typescript-json-decoder";
-import { decodeSlackUser } from "./user";
 
 /** A team join event */
 export type TeamJoinEvent = decodeType<typeof decodeTeamJoinEvent>;
 export const decodeTeamJoinEvent = record({
   type: literal("team_join"),
   user: decodeSlackUser,
+});
+
+/** A message was sent to a channel */
+export type MessageEvent = decodeType<typeof decodeMessageEvent>;
+export const decodeMessageEvent = record({
+  type: literal("message"),
+  channel: string,
+  user: string,
+  text: string,
+  channel_type: string,
 });
 
 /** A generic event callback with a customizable event decoder */
@@ -35,10 +44,3 @@ export const decodeEndpointHandshake = record({
   challenge: string,
   type: literal("url_verification"),
 });
-
-/** Incoming message is either the initial handshake or an event callback */
-export type IncomingMessage = decodeType<typeof decodeIncomingMessage>;
-export const decodeIncomingMessage = union(
-  decodeEndpointHandshake,
-  decodeEventCallback(decodeTeamJoinEvent)
-);

@@ -1,6 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { decodeIncomingMessage } from "lib/slack/events";
 import { confirmUserAccount, sendWelcomeMessage } from "lib/onboarding";
+import { union } from "typescript-json-decoder";
+import {
+  decodeEndpointHandshake,
+  decodeEventCallback,
+  decodeTeamJoinEvent,
+} from "lib/slack/events";
 import {
   signatureHeader,
   timestampHeader,
@@ -23,6 +28,11 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
 ) {
+  /** Incoming message is either the initial handshake or an event callback */
+  const decodeIncomingMessage = union(
+    decodeEndpointHandshake,
+    decodeEventCallback(decodeTeamJoinEvent)
+  );
   try {
     const rawBody = await getRawBody(request);
     const body = JSON.parse(rawBody);
