@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { union } from "typescript-json-decoder";
+import { insertNewMarketPlaceOffer } from "lib/airtable/market-place";
 import {
   decodeEndpointHandshake,
   decodeEventCallback,
@@ -31,9 +32,10 @@ export default async function handler(
           isRegularNewThreadMessage(msg.event) &&
           msg.event.channel === "C03JP5VSC00"
         ) {
-          console.log(
-            `New thread in #market-place-automation: ${msg.event.text}`
-          );
+          await insertNewMarketPlaceOffer({
+            state: "new",
+            text: msg.event.text || "<no text in message>",
+          });
         }
         response.status(204).end();
     }

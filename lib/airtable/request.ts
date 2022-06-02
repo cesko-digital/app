@@ -13,6 +13,11 @@ export const volunteerManagementBase = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
 }).base("apppZX1QC3fl1RTBM");
 
+/** The Web database */
+export const webBase = new Airtable({
+  apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
+}).base("appkn1DkvgVI5jpME");
+
 //
 // API Helpers
 //
