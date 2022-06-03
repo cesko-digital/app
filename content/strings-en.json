@@ -83,16 +83,16 @@
       "sections": {
         "numbers": {
           "first": {
-            "subtitle": "Volunteers",
+            "subtitle": "Community members",
             "value": "5000+"
           },
           "fourth": {
             "subtitle": "Ongoing projects",
-            "value": "16+"
+            "value": "13+"
           },
           "second": {
             "subtitle": "Finished projects",
-            "value": "12"
+            "value": "13"
           },
           "third": {
             "subtitle": "People using our projects",
