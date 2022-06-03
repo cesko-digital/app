@@ -1,0 +1,83 @@
+import { NextPage, GetStaticProps } from "next";
+import { Layout, Section, SectionContent } from "components/layout";
+import { Body, BodySmall, Heading1, Heading2 } from "components/typography";
+import { ButtonAsLink } from "components/links";
+import { ButtonSize } from "components/buttons";
+import DateTime from "components/datetime";
+import {
+  getAllMarketPlaceOffers,
+  MarketPlaceOffer,
+} from "lib/airtable/market-place";
+
+type PageProps = {
+  offers: MarketPlaceOffer[];
+};
+
+const MarketPlace: NextPage<PageProps> = ({ offers }) => {
+  return (
+    <Layout
+      crumbs={[{ label: "Market-place" }]}
+      head={{
+        title: "Market-place",
+        description:
+          "Drobné úpravy a vylepšení, která hledají 1–2 dobrovolníky a díky vaší pomoci se můžou rychle posunout",
+      }}
+    >
+      <Section>
+        <SectionContent>
+          <Heading1>Market-place</Heading1>
+          <Body>
+            Drobné úpravy a vylepšení, která hledají 1–2 dobrovolníky a díky
+            vaší pomoci se můžou rychle posunout
+          </Body>
+        </SectionContent>
+      </Section>
+      <Section>
+        <SectionContent>
+          {offers.map((offer) => (
+            <Offer key={offer.id} {...offer} />
+          ))}
+        </SectionContent>
+      </Section>
+    </Layout>
+  );
+};
+
+const Offer = (offer: MarketPlaceOffer) => {
+  const date = new Date(offer.createdAt);
+  return (
+    <div style={{ marginBottom: "40px" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <Heading2>{offer.name}</Heading2>
+        <Body style={{ marginBottom: "10px" }}>{offer.text}</Body>
+        <BodySmall>
+          Poptává {offer.ownerName} od{" "}
+          <DateTime date={date} style="date-only" />
+        </BodySmall>
+      </div>
+      <ButtonAsLink
+        to={`mailto:${offer.ownerEmail}`}
+        size={ButtonSize.Small}
+        inverted
+      >
+        Ozvat se mailem
+      </ButtonAsLink>
+      <ButtonAsLink
+        to={`https://cesko-digital.slack.com/team/${offer.ownerSlackId}`}
+        size={ButtonSize.Small}
+        inverted
+      >
+        Ozvat se na Slacku
+      </ButtonAsLink>
+    </div>
+  );
+};
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const offers = await getAllMarketPlaceOffers();
+  return {
+    props: { offers },
+  };
+};
+
+export default MarketPlace;
