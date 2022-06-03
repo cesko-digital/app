@@ -48,7 +48,7 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
             </S.Body>
             <S.Body color={"darkGrey"}>
               Odesláním formuláře souhlasíš s našimi{" "}
-              <a href="https://docs.google.com/document/d/1fFgQVbIzjRmPDbeBJ7K4KvObANvvdO44YYnsSaAB-qg/edit">
+              <a href="https://docs.google.com/document/d/e/2PACX-1vQ3cVnhGyzIsyDx0gyx3uPJharkhhfQOXHcgCI3swVZaDd0sXhmX74E1IVEtItWvA2H_dQqGTkxeR2q/pub">
                 podmínkami zpracování osobních údajů
               </a>{" "}
               a zasíláním měsíčního newsletteru.
