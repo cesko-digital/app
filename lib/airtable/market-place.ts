@@ -79,3 +79,11 @@ export async function insertNewMarketPlaceOffer(
     .then(unwrapRecord)
     .then(decodeMarketPlaceOffer);
 }
+
+//
+// Helpers
+//
+
+/** Compare offers by time of creation, first created gets first */
+export const compareOffersByTime = (a: MarketPlaceOffer, b: MarketPlaceOffer) =>
+  Date.parse(a.createdAt) - Date.parse(b.createdAt);

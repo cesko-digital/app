@@ -5,6 +5,7 @@ import { ButtonAsLink } from "components/links";
 import { ButtonSize } from "components/buttons";
 import DateTime from "components/datetime";
 import {
+  compareOffersByTime,
   getAllMarketPlaceOffers,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
@@ -74,7 +75,13 @@ const Offer = (offer: MarketPlaceOffer) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const offers = await getAllMarketPlaceOffers();
+  const offers = (await getAllMarketPlaceOffers())
+    // Only display published offers
+    .filter((offer) => offer.state === "published")
+    // Sort by creation time
+    .sort(compareOffersByTime)
+    // Last created, first displayed
+    .reverse();
   return {
     props: { offers },
   };
