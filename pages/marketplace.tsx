@@ -3,10 +3,10 @@ import { Layout, Section, SectionContent } from "components/layout";
 import { Body, BodySmall, Heading1, Heading2 } from "components/typography";
 import { ButtonAsLink } from "components/links";
 import { ButtonSize } from "components/buttons";
+import { siteData } from "lib/site-data";
 import DateTime from "components/datetime";
 import {
   compareOffersByTime,
-  getAllMarketPlaceOffers,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
 
@@ -75,7 +75,7 @@ const Offer = (offer: MarketPlaceOffer) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const offers = (await getAllMarketPlaceOffers())
+  const offers = siteData.marketPlaceOffers
     // Only display published offers
     .filter((offer) => offer.state === "published")
     // Sort by creation time
