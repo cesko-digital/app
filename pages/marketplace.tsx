@@ -5,11 +5,12 @@ import { ButtonAsLink } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { siteData } from "lib/site-data";
 import DateTime from "components/datetime";
+import { toHTML } from "slack-markdown";
+import { useSession } from "next-auth/react";
 import {
   compareOffersByTime,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
-import { useSession } from "next-auth/react";
 
 type PageProps = {
   offers: MarketPlaceOffer[];
@@ -47,11 +48,15 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
 
 const Offer = (offer: MarketPlaceOffer) => {
   const date = new Date(offer.createdAt);
+  const html = toHTML(offer.text);
   const session = useSession();
   return (
     <div style={{ marginBottom: "40px" }}>
       <div style={{ marginBottom: "20px" }}>
-        <Body style={{ marginBottom: "10px" }}>{offer.text}</Body>
+        <Body
+          style={{ marginBottom: "10px" }}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
         <BodySmall>
           Poptává {offer.ownerName} od{" "}
           <DateTime date={date} style="date-only" />
