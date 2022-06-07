@@ -84,6 +84,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .reverse();
   return {
     props: { offers },
+    revalidate: 60, // update every minute
   };
 };
 
