@@ -9,6 +9,7 @@ import {
   compareOffersByTime,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
+import { useSession } from "next-auth/react";
 
 type PageProps = {
   offers: MarketPlaceOffer[];
@@ -46,6 +47,7 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
 
 const Offer = (offer: MarketPlaceOffer) => {
   const date = new Date(offer.createdAt);
+  const session = useSession();
   return (
     <div style={{ marginBottom: "40px" }}>
       <div style={{ marginBottom: "20px" }}>
@@ -56,20 +58,24 @@ const Offer = (offer: MarketPlaceOffer) => {
           <DateTime date={date} style="date-only" />
         </BodySmall>
       </div>
-      <ButtonAsLink
-        to={`mailto:${offer.ownerEmail}`}
-        size={ButtonSize.Small}
-        inverted
-      >
-        Ozvat se mailem
-      </ButtonAsLink>
-      <ButtonAsLink
-        to={`https://cesko-digital.slack.com/team/${offer.ownerSlackId}`}
-        size={ButtonSize.Small}
-        inverted
-      >
-        Ozvat se na Slacku
-      </ButtonAsLink>
+      {session.status !== "authenticated" && (
+        <ButtonAsLink
+          to={`mailto:${offer.ownerEmail}`}
+          size={ButtonSize.Small}
+          inverted
+        >
+          Ozvat se mailem
+        </ButtonAsLink>
+      )}
+      {session.status === "authenticated" && (
+        <ButtonAsLink
+          to={`https://cesko-digital.slack.com/team/${offer.ownerSlackId}`}
+          size={ButtonSize.Small}
+          inverted
+        >
+          Ozvat se na Slacku
+        </ButtonAsLink>
+      )}
     </div>
   );
 };
