@@ -14,7 +14,7 @@ import {
   TeamEngagement,
 } from "./airtable/team-engagement";
 import {
-  getAllMarketPlaceOffers,
+  getPublishedMarketPlaceOffers,
   MarketPlaceOffer,
 } from "./airtable/market-place";
 
@@ -58,7 +58,7 @@ const ProductionDataSource: DataSource = {
   blogPosts: getArticleIndex,
   skills: getAllSkills,
   teamEngagements: getAllTeamEngagements,
-  marketPlaceOffers: getAllMarketPlaceOffers,
+  marketPlaceOffers: getPublishedMarketPlaceOffers,
 };
 
 const SampleDataSource: DataSource = {

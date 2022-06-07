@@ -51,9 +51,11 @@ export const decodeMarketPlaceOffer = record({
 //
 
 /** Return all market-place offers */
-export async function getAllMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
+export async function getPublishedMarketPlaceOffers(): Promise<
+  MarketPlaceOffer[]
+> {
   return await marketPlaceTable
-    .select({ maxRecords: 1000 })
+    .select({ view: "Published Offers", maxRecords: 1000 })
     .all()
     .then(unwrapRecords)
     .then(array(decodeMarketPlaceOffer));
