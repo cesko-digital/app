@@ -63,21 +63,13 @@ const Offer = (offer: MarketPlaceOffer) => {
         </BodySmall>
       </div>
       {session.status !== "authenticated" && (
-        <ButtonAsLink
-          to={`mailto:${offer.ownerEmail}`}
-          size={ButtonSize.Small}
-          inverted
-        >
+        <ButtonAsLink to={`mailto:${offer.ownerEmail}`} inverted>
           Ozvat se mailem
         </ButtonAsLink>
       )}
       {session.status === "authenticated" && (
-        <ButtonAsLink
-          to={offer.slackThreadUrl}
-          size={ButtonSize.Small}
-          inverted
-        >
-          Ozvat se na Slacku
+        <ButtonAsLink to={offer.slackThreadUrl} inverted>
+          Reagovat na Slacku
         </ButtonAsLink>
       )}
     </div>
