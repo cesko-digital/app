@@ -68,7 +68,7 @@ const Offer = (offer: MarketPlaceOffer) => {
       )}
       {session.status === "authenticated" && (
         <ButtonAsLink
-          to={`https://cesko-digital.slack.com/team/${offer.ownerSlackId}`}
+          to={offer.slackThreadUrl}
           size={ButtonSize.Small}
           inverted
         >
