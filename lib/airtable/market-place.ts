@@ -30,7 +30,6 @@ export const decodeMarketPlaceOffer = record({
   ownerEmail: relationToZeroOrOne,
   ownerAvatarUrl: relationToZeroOrOne,
   ownerSlackId: relationToZeroOrOne,
-  name: string,
   text: string,
   createdAt: string,
   lastModifiedAt: string,

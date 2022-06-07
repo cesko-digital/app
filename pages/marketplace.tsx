@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Body, BodySmall, Heading1, Heading2 } from "components/typography";
+import { Body, BodySmall, Heading1 } from "components/typography";
 import { ButtonAsLink } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { siteData } from "lib/site-data";
@@ -51,7 +51,6 @@ const Offer = (offer: MarketPlaceOffer) => {
   return (
     <div style={{ marginBottom: "40px" }}>
       <div style={{ marginBottom: "20px" }}>
-        <Heading2>{offer.name}</Heading2>
         <Body style={{ marginBottom: "10px" }}>{offer.text}</Body>
         <BodySmall>
           Poptává {offer.ownerName} od{" "}
