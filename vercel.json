@@ -11,6 +11,11 @@
       "statusCode": 302
     },
     {
+      "source": "/impact22",
+      "destination": "https://drive.google.com/file/d/11aJZX2lKEpvOUlBu84OjQylIxluWbxb_/view",
+      "statusCode": 302
+    },
+    {
       "source": "/portal-dobrovolnika",
       "destination": "/dashboard",
       "statusCode": 301
