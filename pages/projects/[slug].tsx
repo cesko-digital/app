@@ -192,7 +192,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const project = projects.find((p) => p.slug === slug)!;
   const coordinators = project.coordinatorIds.map(
     (id) => users.find((user) => user.id === id)!
-  );
+  ).filter((c) => c !== undefined);
   const opportunities = siteData.opportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );
