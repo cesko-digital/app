@@ -88,6 +88,7 @@ const Page: NextPage<PageProps> = (props) => {
                 <TimeIcon />
                 <Body>{opportunity.timeRequirements}</Body>
               </S.OpportunityMetaRow>
+              { owner && (
               <S.OpportunityOwnerWrapper>
                 <Body>Kontaktní osoba</Body>
                 <S.OwnerWrapper>
@@ -95,6 +96,7 @@ const Page: NextPage<PageProps> = (props) => {
                   <OwnerContact email={owner.email} name={owner.name} />
                 </S.OwnerWrapper>
               </S.OpportunityOwnerWrapper>
+              )}
               <a href={opportunity.contactUrl} target="blank">
                 <S.OpportunityContactButton>
                   {getContactButtonLabel(opportunity.contactUrl)}
