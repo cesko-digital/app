@@ -117,6 +117,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
     props: { event, events, project, projects, owner },
+    notFound: ( !event || !project || !owner ),
   };
 };
 
