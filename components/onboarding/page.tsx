@@ -32,10 +32,16 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
               budou bavit a kde můžeš získat nové zkušenosti nebo se podělit o
               své nápady.
             </S.BodyBig>
+
+            <div style={{background: "#F9F9F9", padding: "0.5em 1.5em", borderRadius: "8px", lineHeight: "150%"}}>
+            <p><strong>👉🏻 Pozor, pozor, testujeme nápady a potřebujeme tvoji pomoc!</strong></p>
+            <p>Zrovna <S.Highlighted>pracujeme na vylepšení procesu zapojení nováčků do komunity</S.Highlighted>. Místo toho, aby ses teď registroval/a, můžeš nám pomoct zjistit, jestli jsme s novým řešením na správné cestě.</p> 
+            <p>Stačí nám <b style={{fontWeight: 600}}>hodina tvého času ve čtvrtek 21. července</b>. Testování bude probíhat online. Tak si jen vyber preferovaný čas, přidej kontakt na sebe a my se ti ozveme zpět s detaily.</p>
+            <p>Přihlásit k testování se můžeš <a href="https://airtable.com/shrZtQxPYwgqQIdpX">přímo tady</a>.</p>
+            </div>
+
             <S.Body color={"darkGrey"}>
-              <S.Highlighted>
-                Začni prosím tím, že vyplníš následující registrační formulář.
-              </S.Highlighted>{" "}
+              Pokud se chceš registrovat nyní, začni prosím tím, že vyplníš následující formulář.
               Vyplněná data neprezentujeme veřejně, ale lépe tě díky nim poznáme
               a uděláme si představu o tom, jaké projekty by tě mohly zajímat a
               kde bychom tě potřebovali.
