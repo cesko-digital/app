@@ -16,7 +16,7 @@
     "marked": "^4.0.14",
     "next": "12.1.5",
     "next-auth": "^4.3.4",
-    "node-fetch": "2",
+    "node-fetch": "3.2.10",
     "plausible-tracker": "^0.3.5",
     "polished": "^4.2.2",
     "react": "17.0.2",
