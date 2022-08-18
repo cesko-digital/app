@@ -46,7 +46,7 @@ async function getAllRecords<T>(args: {
   const verbose = process.env.VERBOSE_LOG;
   const table = base(args.tableName);
   const response = await table
-    .select({ view: args.viewName, maxRecords: 100 /* TBD */ })
+    .select({ view: args.viewName, maxRecords: 200 /* TBD */ })
     .all();
   var parsedRecords: T[] = [];
   console.debug(
