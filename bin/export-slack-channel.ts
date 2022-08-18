@@ -11,7 +11,6 @@ import {
 
 const { SLACK_SYNC_TOKEN = "" } = process.env;
 const [_, __, CHANNEL_ID = "C0104T360QP"] = process.argv;
-const OLDEST_TIMESTAMP = "1640991600"; // first day of 2022
 
 async function main() {
   const response = await getAllChannelMessages(SLACK_SYNC_TOKEN, CHANNEL_ID);
