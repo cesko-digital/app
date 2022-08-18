@@ -17,7 +17,7 @@ async function main() {
   const result = await Promise.all(
     response
       .reverse()
-      .filter((msg) => msg.subtype !== "channel_join")
+      .filter((msg) => !msg.subtype)
       .map(processTopLevelMessage)
   );
   console.log(JSON.stringify(result, null, 2));
