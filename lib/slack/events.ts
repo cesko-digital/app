@@ -3,7 +3,6 @@ import {
   DecoderFunction,
   decodeType,
   literal,
-  optional,
   record,
   string,
 } from "typescript-json-decoder";
@@ -13,18 +12,6 @@ export type TeamJoinEvent = decodeType<typeof decodeTeamJoinEvent>;
 export const decodeTeamJoinEvent = record({
   type: literal("team_join"),
   user: decodeSlackUser,
-});
-
-/** A message was sent to a channel */
-export type MessageEvent = decodeType<typeof decodeMessageEvent>;
-export const decodeMessageEvent = record({
-  type: literal("message"),
-  subtype: optional(string),
-  channel: string,
-  user: optional(string),
-  text: optional(string),
-  channel_type: string,
-  thread_ts: optional(string),
 });
 
 /** A generic event callback with a customizable event decoder */
@@ -47,15 +34,3 @@ export const decodeEndpointHandshake = record({
   challenge: string,
   type: literal("url_verification"),
 });
-
-//
-// Helpers
-//
-
-/**
- * Does a message event represent a regular, new thread message to the channel?
- *
- * Returns `false` for channel join messages, thread replies, …
- */
-export const isRegularNewThreadMessage = (event: MessageEvent) =>
-  event.channel_type === "channel" && !event.subtype && !event.thread_ts;

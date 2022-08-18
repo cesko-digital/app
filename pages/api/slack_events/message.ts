@@ -1,12 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { union } from "typescript-json-decoder";
 import { insertNewMarketPlaceOffer } from "lib/airtable/market-place";
-import {
-  decodeEndpointHandshake,
-  decodeEventCallback,
-  decodeMessageEvent,
-  isRegularNewThreadMessage,
-} from "lib/slack/events";
+import { decodeMessageEvent, MessageEvent } from "lib/slack/message";
+import { decodeEndpointHandshake, decodeEventCallback } from "lib/slack/events";
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
 export default async function handler(
@@ -45,3 +41,12 @@ export default async function handler(
     response.status(500).send("Sorry :(");
   }
 }
+
+/**
+ * Does a message event represent a regular, new thread message to the channel?
+ *
+ * Returns `false` for channel join messages, thread replies, …
+ * Note that this is just a heuristic for this particular use case.
+ */
+const isRegularNewThreadMessage = (event: MessageEvent) =>
+  event.channel_type === "channel" && !event.subtype && !event.thread_ts;
