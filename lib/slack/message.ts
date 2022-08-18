@@ -31,7 +31,7 @@ export async function getAllChannelMessages(
   channel: string
 ): Promise<MessageEvent[]> {
   return getAllPages(
-    (cursor) => slack.conversations.history({ token, channel }),
+    (cursor) => slack.conversations.history({ token, channel, cursor }),
     (response) => response.messages.map(decodeMessageEvent),
     (response) => response?.response_metadata?.next_cursor
   );
