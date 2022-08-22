@@ -27,6 +27,7 @@ export const decodeVolunteer = record({
   email: field("Slack: E-mail", string),
   slackId: field("Slack: ID", string),
   skillIds: field("Self-reported skills", withDefault(array(string), [])),
+  createdAt: field("Datum vzniku", string),
 });
 
 //

@@ -34,6 +34,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         skills,
         state: "unconfirmed",
         slackUserRelationId: undefined,
+        createdAt: new Date().toISOString(),
       });
       response.status(201).send("User profile created.");
     }

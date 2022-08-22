@@ -1,70 +1,44 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
-import { getAllSlackUsers } from "lib/airtable/slack-user";
 import { getAllVolunteers } from "lib/airtable/volunteers";
 import {
-  createUserProfile,
-  getUserProfileByMail,
-  UserProfile,
+  getAllUserProfiles,
+  updateUserProfile,
 } from "lib/airtable/user-profile";
 
-/**
- * Migrate data from legacy user tables to the new ones
- *
- * https://github.com/cesko-digital/web/issues/565
- */
 async function main() {
-  // Download all Volunteers from the legacy table
-  console.log(`Downloading all records from the Volunteers table.`);
+  console.log(`Downloading original volunteer records.`);
   const volunteers = await getAllVolunteers();
+  console.log(`Success, downloaded ${volunteers.length} records.`);
+  console.log(`Downloading current user profiles.`);
+  const userProfiles = await getAllUserProfiles();
   console.log(
-    `Successfully downloaded and parsed ${volunteers.length} records.`
+    `Success, downloaded ${userProfiles.length} records. Pairing data:`
   );
-
-  // Download all Slack Users from the new table
-  console.log(`Downloading all records from the Slack Users table.`);
-  const slackUsers = await getAllSlackUsers();
-  console.log(
-    `Successfully downloaded and parsed ${slackUsers.length} records.`
-  );
-
-  // Now create or update user info in the new User Profiles table
-  // and pair the user profiles to appropriate Slack Users.
-  type User = Pick<
-    UserProfile,
-    "name" | "email" | "skills" | "slackUserRelationId" | "state"
-  >;
-  let userProfiles: User[] = [];
-  console.log("Pairing user data.");
-  for (const slackUser of slackUsers) {
-    const volunteer = volunteers.find(
-      (candidate) => candidate.slackId === slackUser.slackId
+  for (const userProfile of userProfiles) {
+    const originalRecord = volunteers.find(
+      (v) => v.slackId === userProfile.slackId
     );
-    if (!volunteer) {
-      console.log(`Volunteer not found for Slack user ${slackUser.slackId}`);
+    if (!originalRecord) {
+      console.log(
+        `Original record for Slack ID ${userProfile.slackId} not found, skipping.`
+      );
       continue;
     }
-    userProfiles.push({
-      email: volunteer.email,
-      name: slackUser.name,
-      skills: volunteer.skillIds,
-      slackUserRelationId: slackUser.id,
-      state: "confirmed",
-    });
-  }
-
-  console.log("Updating the User Profiles table.");
-  for (const profile of userProfiles) {
-    const existingProfile = await getUserProfileByMail(profile.email).catch(
-      () => null
-    );
-    if (!existingProfile) {
-      console.log(`User profile for ${profile.email} not found, creating.`);
-      await createUserProfile(profile);
-    } else {
+    if (originalRecord.createdAt === userProfile.createdAt) {
       console.log(
-        `User profile for ${profile.email} already exists, skipping.`
+        `Creation timestamp for Slack ID ${userProfile.slackId} matches, no change needed.`
       );
+      continue;
+    }
+    try {
+      const { createdAt } = originalRecord;
+      await updateUserProfile(userProfile.id, { createdAt });
+      console.log(
+        `Successfully update ${userProfile.slackId} to timestamp ${createdAt}`
+      );
+    } catch (error) {
+      console.error(`Error updating ${userProfile.slackId}: ${error}`);
     }
   }
 }

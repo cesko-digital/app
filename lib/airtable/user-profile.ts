@@ -1,5 +1,6 @@
 import { FieldSet } from "airtable";
 import { relationToOne, takeFirst, withDefault } from "../decoding";
+import { unique } from "lib/utils";
 import {
   unwrapRecord,
   unwrapRecords,
@@ -9,11 +10,11 @@ import {
   array,
   decodeType,
   field,
+  optional,
   record,
   string,
   union,
 } from "typescript-json-decoder";
-import { unique } from "lib/utils";
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -44,7 +45,7 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToOne),
   slackId: relationToOne,
   state: union("unconfirmed", "confirmed"),
-  createdAt: string,
+  createdAt: optional(string),
   lastModifiedAt: string,
 });
 
@@ -65,6 +66,7 @@ export function encodeUserProfile(
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
       : undefined,
+    createdAt: profile.createdAt,
   };
 }
 
@@ -106,7 +108,10 @@ export async function getFirstMatchingUserProfile(
 export async function updateUserProfile(
   recordId: string,
   profile: Partial<
-    Pick<UserProfile, "name" | "skills" | "slackUserRelationId" | "state">
+    Pick<
+      UserProfile,
+      "name" | "skills" | "slackUserRelationId" | "state" | "createdAt"
+    >
   >
 ): Promise<UserProfile> {
   return await userProfileTable
@@ -119,7 +124,7 @@ export async function updateUserProfile(
 export async function createUserProfile(
   profile: Pick<
     UserProfile,
-    "name" | "email" | "skills" | "state" | "slackUserRelationId"
+    "name" | "email" | "skills" | "state" | "slackUserRelationId" | "createdAt"
   >
 ): Promise<UserProfile> {
   return await userProfileTable
