@@ -32,6 +32,7 @@ export const decodeMarketPlaceOffer = record({
   ownerAvatarUrl: relationToZeroOrOne,
   ownerSlackId: relationToZeroOrOne,
   slackThreadUrl: string,
+  originalMessageTimestamp: string,
   text: string,
   createdAt: string,
   lastModifiedAt: string,
@@ -72,9 +73,13 @@ export async function getPublishedMarketPlaceOffers(): Promise<
 
 /** Insert new market-place offer */
 export async function insertNewMarketPlaceOffer(
-  offer: Pick<MarketPlaceOffer, "state" | "text" | "owner" | "slackThreadUrl">
+  offer: Pick<
+    MarketPlaceOffer,
+    "state" | "text" | "owner" | "slackThreadUrl" | "originalMessageTimestamp"
+  >
 ): Promise<MarketPlaceOffer> {
-  const { state, text, owner, slackThreadUrl } = offer;
+  const { state, text, owner, slackThreadUrl, originalMessageTimestamp } =
+    offer;
 
   // First find the matching owner profile in (synced) User Profiles
   const ownerProfileId = await userProfileTable
@@ -87,7 +92,13 @@ export async function insertNewMarketPlaceOffer(
 
   // Then insert the new offer
   return await marketPlaceTable
-    .create({ state, text, slackThreadUrl, owner: [ownerProfileId] })
+    .create({
+      state,
+      text,
+      slackThreadUrl,
+      originalMessageTimestamp,
+      owner: [ownerProfileId],
+    })
     .then(unwrapRecord)
     .then(decodeMarketPlaceOffer);
 }

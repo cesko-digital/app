@@ -40,6 +40,7 @@ export async function receiveSlackMessage(
       text: msg.text || "<no text in message>",
       owner: msg.user,
       slackThreadUrl: messageUrl,
+      originalMessageTimestamp: msg.ts,
     });
   }
 }
