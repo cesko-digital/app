@@ -51,6 +51,15 @@ export const decodeMarketPlaceOffer = record({
 //
 
 /** Return all market-place offers */
+export async function getAllMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
+  return await marketPlaceTable
+    .select()
+    .all()
+    .then(unwrapRecords)
+    .then(array(decodeMarketPlaceOffer));
+}
+
+/** Return all published market-place offers */
 export async function getPublishedMarketPlaceOffers(): Promise<
   MarketPlaceOffer[]
 > {
@@ -79,6 +88,17 @@ export async function insertNewMarketPlaceOffer(
   // Then insert the new offer
   return await marketPlaceTable
     .create({ state, text, slackThreadUrl, owner: [ownerProfileId] })
+    .then(unwrapRecord)
+    .then(decodeMarketPlaceOffer);
+}
+
+/** Update existing market-place offer */
+export async function updateMarketPlaceOffer(
+  recordId: string,
+  data: Partial<Pick<MarketPlaceOffer, "state">>
+): Promise<MarketPlaceOffer> {
+  return await marketPlaceTable
+    .update(recordId, data)
     .then(unwrapRecord)
     .then(decodeMarketPlaceOffer);
 }
