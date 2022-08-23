@@ -25,7 +25,7 @@ export default async function handler(
         return;
       // This is a new message notification.
       case "event_callback":
-        receiveSlackMessage(SLACK_SYNC_TOKEN, msg.event);
+        await receiveSlackMessage(SLACK_SYNC_TOKEN, msg.event);
         response.status(204).end();
     }
   } catch (e) {
