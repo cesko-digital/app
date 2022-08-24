@@ -54,14 +54,12 @@ export async function markExpiredOffers(slackToken: string) {
     offer.state === "published";
   const offers = await getAllMarketPlaceOffers();
   for (const offer of offers.filter(canExpire)) {
-    const createdAt = new Date(offer.createdAt);
-    const offerAgeInSeconds =
-      (new Date().getTime() - createdAt.getTime()) / 1000; // getTime() is in ms
-    if (offerAgeInSeconds >= expirationTimeInSeconds) {
+    const offerAge = offerAgeInSeconds(offer);
+    if (offerAge >= expirationTimeInSeconds) {
       console.log(
-        `Offer ${offer.id} age ${offerAgeInSeconds} is over expiration limit (${expirationTimeInSeconds}), marking expired.`
+        `Offer ${offer.id} age ${offerAge} is over expiration limit (${expirationTimeInSeconds}), marking expired.`
       );
-      const days = Math.floor(offerAgeInSeconds / secondsPerDay);
+      const days = Math.floor(offerAge / secondsPerDay);
       // Mark as expired in the database
       await updateMarketPlaceOffer(offer.id, { state: "expired" });
       // Notify interested parties in the original thread
@@ -80,10 +78,19 @@ export async function markExpiredOffers(slackToken: string) {
       });
     } else {
       console.log(
-        `Offer ${offer.id} age ${offerAgeInSeconds} is under expiration limit (${expirationTimeInSeconds}), skipping.`
+        `Offer ${offer.id} age ${offerAge} is under expiration limit (${expirationTimeInSeconds}), skipping.`
       );
     }
   }
+}
+
+/** Return offer age in seconds, from a reference date or from now */
+export function offerAgeInSeconds(
+  offer: Pick<MarketPlaceOffer, "createdAt">,
+  now = new Date()
+) {
+  const createdAt = new Date(offer.createdAt);
+  return (now.getTime() - createdAt.getTime()) / 1000; // getTime() is in ms
 }
 
 /**
