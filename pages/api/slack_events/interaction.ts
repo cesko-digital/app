@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { record } from "typescript-json-decoder";
+import { decodeJSONString } from "lib/decoding";
 import {
   decodeBlockActionCallback,
   InteractionResponse,
@@ -13,7 +14,7 @@ export default async function handler(
   response: NextApiResponse
 ) {
   const decodeCallbackEnvelope = record({
-    payload: decodeBlockActionCallback,
+    payload: decodeJSONString(decodeBlockActionCallback),
   });
 
   try {
