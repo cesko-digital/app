@@ -3,7 +3,8 @@
 import { markExpiredOffers } from "lib/market-place";
 
 async function main() {
-  await markExpiredOffers();
+  const { SLACK_BAZAAR_BOT_TOKEN = "" } = process.env;
+  await markExpiredOffers(SLACK_BAZAAR_BOT_TOKEN);
 }
 
 main().catch((e) => console.error(e));

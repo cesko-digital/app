@@ -1,4 +1,5 @@
 import { getMessagePermalink, MessageEvent } from "./slack/message";
+import slack from "slack";
 import {
   getAllMarketPlaceOffers,
   insertNewMarketPlaceOffer,
@@ -28,7 +29,7 @@ export async function receiveSlackMessage(
   if (
     msg.channel === marketPlaceSlackChannelId &&
     isRegularNewThreadMessage(msg) &&
-    msg.ts
+    msg.ts // we need the message timestamp to be able to reply to it later
   ) {
     const messageUrl = await getMessagePermalink(
       slackToken,
@@ -46,7 +47,7 @@ export async function receiveSlackMessage(
 }
 
 /** Mark all old offers as expired */
-export async function markExpiredOffers() {
+export async function markExpiredOffers(slackToken: string) {
   const canExpire = (offer: MarketPlaceOffer) =>
     offer.state === "new" ||
     offer.state === "needs-detail" ||
@@ -54,15 +55,32 @@ export async function markExpiredOffers() {
   const offers = await getAllMarketPlaceOffers();
   for (const offer of offers.filter(canExpire)) {
     const createdAt = new Date(offer.createdAt);
-    const offerAge = new Date().getTime() - createdAt.getTime();
-    if (offerAge >= expirationTimeInSeconds) {
+    const offerAgeInSeconds =
+      (new Date().getTime() - createdAt.getTime()) / 1000; // getTime() is in ms
+    if (offerAgeInSeconds >= expirationTimeInSeconds) {
       console.log(
-        `Offer ${offer.id} age ${offerAge} is over expiration limit (${expirationTimeInSeconds}), marking expired.`
+        `Offer ${offer.id} age ${offerAgeInSeconds} is over expiration limit (${expirationTimeInSeconds}), marking expired.`
       );
+      const days = Math.floor(offerAgeInSeconds / secondsPerDay);
+      // Mark as expired in the database
       await updateMarketPlaceOffer(offer.id, { state: "expired" });
+      // Notify interested parties in the original thread
+      await slack.chat.postMessage({
+        channel: marketPlaceSlackChannelId,
+        token: slackToken,
+        thread_ts: offer.originalMessageTimestamp,
+        text: `Ahoj! Už uplynulo ${days} dní od vzniku poptávky, tak ji automaticky zavřu. Kdyby to byla chyba (jsem jenom robot 🙃), reklamujte; díky!`,
+      });
+      // Mark thread as expired with an emoji reaction
+      await slack.reactions.add({
+        channel: marketPlaceSlackChannelId,
+        token: slackToken,
+        timestamp: offer.originalMessageTimestamp,
+        name: "package",
+      });
     } else {
       console.log(
-        `Offer ${offer.id} age ${offerAge} is under expiration limit (${expirationTimeInSeconds}), skipping.`
+        `Offer ${offer.id} age ${offerAgeInSeconds} is under expiration limit (${expirationTimeInSeconds}), skipping.`
       );
     }
   }
