@@ -5,6 +5,7 @@ import { relationToZeroOrOne } from "lib/decoding";
 import {
   array,
   decodeType,
+  optional,
   record,
   string,
   union,
@@ -35,6 +36,7 @@ export const decodeMarketPlaceOffer = record({
   originalMessageTimestamp: string,
   text: string,
   createdAt: string,
+  publishedAt: optional(string),
   lastModifiedAt: string,
   state: union(
     "new",
