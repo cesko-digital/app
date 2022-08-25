@@ -90,12 +90,16 @@ export async function markExpiredOffers(slackToken: string) {
         text: `Ahoj! Už uplynulo ${days} dní od vzniku poptávky, tak ji automaticky zavřu. Kdyby to byla chyba (jsem jenom robot 🙃), reklamujte; díky!`,
       });
       // Mark thread as expired with an emoji reaction
-      await slack.reactions.add({
-        channel: marketPlaceSlackChannelId,
-        token: slackToken,
-        timestamp: offer.originalMessageTimestamp,
-        name: "package",
-      });
+      await slack.reactions
+        .add({
+          channel: marketPlaceSlackChannelId,
+          token: slackToken,
+          timestamp: offer.originalMessageTimestamp,
+          name: "package",
+        })
+        .catch((error) => {
+          /* ignore */
+        });
     } else {
       console.log(
         `Offer ${offer.id} age ${offerAge} is under expiration limit (${expirationTimeInSeconds}), skipping.`
@@ -206,12 +210,16 @@ export async function handleFollowupResponse(
       // Update offer in database
       await updateMarketPlaceOffer(offer.id, { state: "completed" });
       // Add emoji reaction
-      await slack.reactions.add({
-        channel: marketPlaceSlackChannelId,
-        token: slackToken,
-        timestamp: offer.originalMessageTimestamp,
-        name: "white_check_mark",
-      });
+      await slack.reactions
+        .add({
+          channel: marketPlaceSlackChannelId,
+          token: slackToken,
+          timestamp: offer.originalMessageTimestamp,
+          name: "white_check_mark",
+        })
+        .catch((error) => {
+          /* ignore */
+        });
       // Respond to the thread
       await reply({
         text: "(Ptal jsem se, jestli je poptávka ještě relevantní, a autor povídá, že byla úspěšně obsazena.)",
@@ -229,12 +237,16 @@ export async function handleFollowupResponse(
       // Update offer in database
       await updateMarketPlaceOffer(offer.id, { state: "cancelled" });
       // Add emoji reaction
-      await slack.reactions.add({
-        channel: marketPlaceSlackChannelId,
-        token: slackToken,
-        timestamp: offer.originalMessageTimestamp,
-        name: "x",
-      });
+      await slack.reactions
+        .add({
+          channel: marketPlaceSlackChannelId,
+          token: slackToken,
+          timestamp: offer.originalMessageTimestamp,
+          name: "x",
+        })
+        .catch((error) => {
+          /* ignore */
+        });
       // Respond to the thread
       await reply({
         text: "(Ptal jsem se, jestli je poptávka ještě relevantní, a autor povídá, že už ne.)",
