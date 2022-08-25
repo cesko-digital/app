@@ -44,6 +44,11 @@ test("Decode interation callback", () => {
   };
   expect(decodeBlockActionCallback(payload)).toEqual({
     type: "block_actions",
+    user: {
+      id: "UJJ3MNA91",
+      name: "tomas.znamenacek",
+      username: "tomas.znamenacek",
+    },
     api_app_id: "A02",
     token: "Shh_its_a_seekrit",
     response_url: "https://www.postresponsestome.com/T123567/1509734234",
