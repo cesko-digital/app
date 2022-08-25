@@ -4,6 +4,7 @@ import { Block } from "./slack/blocks";
 import { BlockActionCallback, InteractionResponse } from "./slack/interactions";
 import {
   getAllMarketPlaceOffers,
+  getMarketPlaceOffer,
   insertNewMarketPlaceOffer,
   MarketPlaceOffer,
   updateMarketPlaceOffer,
@@ -152,23 +153,89 @@ export async function triggerFollowupQuestions(slackToken: string) {
   }
 }
 
-export async function handleFollowupResponse(response: BlockActionCallback) {
+export async function handleFollowupResponse(
+  slackToken: string,
+  response: BlockActionCallback
+) {
   // We are only expecting responses with one single action
   if (response.actions.length !== 1) {
     return;
   }
+
   const action = response.actions[0];
+
   // Ignore responses from other blocks
   if (action.block_id !== followupBlockId) {
     return;
   }
-  const reply: InteractionResponse = {
-    text: `Received action ${action.action_id} with offer id ${action.value}.`,
-  };
-  await fetch(response.response_url, {
-    method: "POST",
-    body: JSON.stringify(reply),
-  });
+
+  /** Send reply to block interaction */
+  const reply = async (text: InteractionResponse) =>
+    await fetch(response.response_url, {
+      body: JSON.stringify(text),
+      method: "POST",
+    });
+
+  /** The offer this reply is about */
+  const offer = await getMarketPlaceOffer(action.value);
+
+  // Only the original thread author may respond to the follow-up question
+  if (response.user.id !== offer.ownerSlackId) {
+    await reply({
+      text: `Pardon, na otázku může odpovědět pouze autor vlákna (${offer.ownerName}).`,
+      response_type: "ephemeral",
+      replace_original: false,
+    });
+    return;
+  }
+
+  switch (action.action_id) {
+    // The offer was successfully filled, can be closed
+    case "success":
+      // Update offer in database
+      await updateMarketPlaceOffer(offer.id, { state: "completed" });
+      // Add emoji reaction
+      await slack.reactions.add({
+        channel: marketPlaceSlackChannelId,
+        token: slackToken,
+        timestamp: offer.originalMessageTimestamp,
+        name: "white_check_mark",
+      });
+      // Respond to the thread
+      await reply({
+        text: "(Ptal jsem se, jestli je poptávka ještě relevantní, a autor povídá, že byla úspěšně obsazena.)",
+      });
+      break;
+    // We want to keep the offer open for a bit longer
+    case "keep":
+      // Respond to the thread
+      await reply({
+        text: "(Ptal jsem se, jestli je poptávka ještě relevantní, a autor povídá, že ano, že ji máme ještě nechat viset.)",
+      });
+      break;
+    // The offer is no longer relevant
+    case "delete":
+      // Update offer in database
+      await updateMarketPlaceOffer(offer.id, { state: "cancelled" });
+      // Add emoji reaction
+      await slack.reactions.add({
+        channel: marketPlaceSlackChannelId,
+        token: slackToken,
+        timestamp: offer.originalMessageTimestamp,
+        name: "x",
+      });
+      // Respond to the thread
+      await reply({
+        text: "(Ptal jsem se, jestli je poptávka ještě relevantní, a autor povídá, že už ne.)",
+      });
+      break;
+    // WTF?
+    default:
+      console.warn(
+        `Unhandled action “${action.action_id}” for offer “${offer.id}”.`
+      );
+      break;
+  }
 }
 
 export function secondsSinceOfferWasPublished(

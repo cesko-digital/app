@@ -28,10 +28,18 @@ export const decodeBlockAction = record({
   value: string,
 });
 
+/** User that triggered block action response */
+export const decodeBlockActionUser = record({
+  id: string,
+  username: string,
+  name: string,
+});
+
 /** The structure used by Slack to deliver action responses */
 export type BlockActionCallback = decodeType<typeof decodeBlockActionCallback>;
 export const decodeBlockActionCallback = record({
   type: literal("block_actions"),
+  user: decodeBlockActionUser,
   api_app_id: string,
   token: string,
   response_url: string,
