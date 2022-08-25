@@ -187,7 +187,6 @@ function buildFollowupQuestionBlocks(offerId: string): Block[] {
   return [
     {
       type: "section",
-      block_id: followupBlockId,
       text: {
         type: "plain_text",
         text: "Ahoj, jak jsme na tom? Podařilo se poptávku obsadit, je ještě relevantní?",
@@ -195,6 +194,7 @@ function buildFollowupQuestionBlocks(offerId: string): Block[] {
     },
     {
       type: "actions",
+      block_id: followupBlockId,
       elements: [
         {
           type: "button",
