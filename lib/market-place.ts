@@ -169,25 +169,27 @@ export async function handleFollowupResponse(
     return;
   }
 
-  /** Send reply to block interaction */
-  const reply = async (text: InteractionResponse) =>
-    await fetch(response.response_url, {
-      body: JSON.stringify(text),
-      method: "POST",
-    });
-
   /** The offer this reply is about */
   const offer = await getMarketPlaceOffer(action.value);
 
   // Only the original thread author may respond to the follow-up question
   if (response.user.id !== offer.ownerSlackId) {
-    await reply({
+    await slack.chat.postEphemeral({
+      token: slackToken,
+      channel: marketPlaceSlackChannelId,
       text: `Pardon, na otázku může odpovědět pouze autor vlákna (${offer.ownerName}).`,
-      response_type: "ephemeral",
-      replace_original: false,
+      user: response.user.id,
+      thread_ts: offer.originalMessageTimestamp,
     });
     return;
   }
+
+  /** Send reply to block interaction */
+  const reply = async (body: InteractionResponse) =>
+    await fetch(response.response_url, {
+      body: JSON.stringify(body),
+      method: "POST",
+    });
 
   switch (action.action_id) {
     // The offer was successfully filled, can be closed
