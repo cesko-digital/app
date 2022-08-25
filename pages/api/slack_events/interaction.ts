@@ -4,9 +4,14 @@ import { decodeJSONString } from "lib/decoding";
 import { decodeBlockActionCallback } from "lib/slack/interactions";
 import { handleFollowupResponse } from "lib/market-place";
 
-const { SLACK_BAZAAR_BOT_TOKEN = "" } = process.env;
+const { SLACK_BAZAAR_BOT_TOKEN = "", SLACK_BAZAAR_CALLBACK_SECRET = "" } =
+  process.env;
 
-// TBD: Verify authenticity
+/**
+ * Handle Slack notifications about block responses
+ *
+ * At the moment there’s just one consumer, the market-place code.
+ */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
@@ -17,6 +22,10 @@ export default async function handler(
   });
   try {
     const wrappedResponse = decodeCallbackEnvelope(request.body);
+    if (wrappedResponse.payload.token !== SLACK_BAZAAR_CALLBACK_SECRET) {
+      response.status(400).send("Request token does not match.");
+      return;
+    }
     await handleFollowupResponse(
       SLACK_BAZAAR_BOT_TOKEN,
       wrappedResponse.payload

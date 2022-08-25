@@ -153,6 +153,11 @@ export async function triggerFollowupQuestions(slackToken: string) {
   }
 }
 
+/**
+ * Handle response to the follow-up dialogue
+ *
+ * User responses are delivered through the `/api/slack_events/interaction` endpoint.
+ */
 export async function handleFollowupResponse(
   slackToken: string,
   response: BlockActionCallback
@@ -169,7 +174,11 @@ export async function handleFollowupResponse(
     return;
   }
 
-  /** The offer this reply is about */
+  /**
+   * The offer this reply is about
+   *
+   * The offer ID is sent in the action `value` field.
+   */
   const offer = await getMarketPlaceOffer(action.value);
 
   // Only the original thread author may respond to the follow-up question
