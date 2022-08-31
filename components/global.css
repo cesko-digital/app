@@ -6,6 +6,10 @@
   overflow-x: hidden;
 }
 
+html {
+  line-height: 1.3;
+}
+
 body {
   font-family: "Cesko Digital", system-ui, sans-serif;
   margin: 0;
