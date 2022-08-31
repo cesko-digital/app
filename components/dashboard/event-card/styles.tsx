@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Heading3, heading4Styles } from "components/typography";
 
 export const Card = styled.div`
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -83,6 +84,7 @@ Logo.defaultProps = {
 };
 
 export const Content = styled.div`
+  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -91,7 +93,7 @@ export const Content = styled.div`
 
 export const Title = styled(Heading3)`
   ${heading4Styles}
-  margin-bottom: 9px;
+  margin-bottom: 29px;
 `;
 
 export const TagList = styled.ul`
@@ -117,6 +119,8 @@ export const Tag = styled.li`
 
 export const Description = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.base}px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   flex-grow: 1;
 `;
 
