@@ -1,26 +1,22 @@
-import Script from 'next/script'
-
+import Script from "next/script";
 import strings from "content/strings.json";
-
 import RenderMarkdown from "components/markdown";
 import { MarkdownString } from "lib/utils";
-
-import * as S from "./styles";
 
 interface Props {
   message?: string;
 }
 
-const Banner: React.FC<Props> = ({ message, ...rest }) => {
+/** A full-width fundraising banner with the Darujme.cz widget */
+const Banner: React.FC<Props> = ({ message }) => {
   const msg = message ?? strings.banner.message;
-  const src = {source: msg} as MarkdownString;
+  const src = { source: msg } as MarkdownString;
 
   return (
-    <S.Section>
-      <S.Container>
-        <S.Content>
+    <Section>
+      <Container>
+        <Content>
           <RenderMarkdown source={src} />
-          
           <div data-darujme-widget-token="r8khm5srq8edhpon">&nbsp;</div>
           <Script id="darujme-widget">
             {`+function(w, d, s, u, a, b) {
@@ -33,10 +29,28 @@ const Banner: React.FC<Props> = ({ message, ...rest }) => {
             Darujme(1, "r8khm5srq8edhpon", 'render', "https:\/\/www.darujme.cz\/widget?token=r8khm5srq8edhpon", "100%");
             `}
           </Script>
-        </S.Content>
-      </S.Container>
-    </S.Section>
+        </Content>
+      </Container>
+    </Section>
   );
 };
+
+const Section: React.FC = ({ children }) => (
+  <section className="text-white bg-[#080831] mb-0 lg:mb-5 min-h-[200px]">
+    {children}
+  </section>
+);
+
+const Container: React.FC = ({ children }) => (
+  <div className="max-w-content px-5 py-5 lg:py-10 m-auto relative">
+    {children}
+  </div>
+);
+
+const Content: React.FC = ({ children }) => (
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 relative w-full">
+    {children}
+  </div>
+);
 
 export default Banner;
