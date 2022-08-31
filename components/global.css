@@ -16,6 +16,16 @@ body {
   padding: 0;
 }
 
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
 @font-face {
   font-family: "Cesko Digital";
   src: url("/fonts/cesko.digital-regular.woff2") format("woff2"),
