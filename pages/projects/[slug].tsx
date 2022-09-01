@@ -17,11 +17,8 @@ import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 import { PortalUser } from "lib/airtable/user";
-import {
-  PortalEvent,
-  PortalOpportunity,
-  PortalProject,
-} from "lib/portal-types";
+import { PortalEvent, PortalOpportunity } from "lib/portal-types";
+import { PortalProject } from "lib/airtable/project";
 
 interface PageProps {
   project: PortalProject;

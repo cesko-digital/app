@@ -1,11 +1,12 @@
 import * as S from "./styles";
 import { Link } from "components/links";
 import { getResizedImgUrl } from "lib/utils";
-import { PortalEvent, PortalProject } from "lib/portal-types";
+import { PortalEvent } from "lib/portal-types";
 import strings from "content/strings.json";
 import { Route } from "lib/utils";
 import DateTime from "components/datetime";
 import { isEventPast } from "lib/portal-type-utils";
+import { PortalProject } from "lib/airtable/project";
 
 interface Props {
   event: PortalEvent;

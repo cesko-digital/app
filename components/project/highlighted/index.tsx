@@ -1,9 +1,9 @@
 import * as S from "./styles";
 import { ButtonAsLink } from "components/links";
 import strings from "content/strings.json";
-import { PortalProject } from "lib/portal-types";
 import { Route } from "lib/utils";
 import { getResizedImgUrl } from "lib/utils";
+import { PortalProject } from "lib/airtable/project";
 
 interface Props {
   project: PortalProject;

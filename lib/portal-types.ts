@@ -20,35 +20,9 @@ import {
  * is not too smart for our own good :)
  */
 
-export type PortalProject = decodeType<typeof decodeProject>;
 export type PortalEvent = decodeType<typeof decodeEvent>;
 export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
 export type PortalPartner = decodeType<typeof decodePartner>;
-
-export const decodeProject = record({
-  id: string,
-  name: string,
-  slug: string,
-  tagline: string,
-  description: markdown,
-  url: string,
-  coverImageUrl: string,
-  logoUrl: withDefault(
-    string,
-    "https://data.cesko.digital/web/projects/generic-logo.png"
-  ),
-  highlighted: withDefault(boolean, false),
-  state: withDefault(
-    union("draft", "running", "finished", "incubating", "internal"),
-    "draft"
-  ),
-  tagIds: field("tags", withDefault(array(string), [])),
-  coordinatorIds: field("coordinators", array(string)),
-  trelloUrl: optional(string),
-  jiraUrl: optional(string),
-  githubUrl: optional(string),
-  slackChannelUrl: optional(string),
-});
 
 export const decodeEvent = record({
   id: string,

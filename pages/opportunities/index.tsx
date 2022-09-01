@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
-import { PortalOpportunity, PortalProject } from "lib/portal-types";
+import { PortalOpportunity } from "lib/portal-types";
 import { Layout, SectionContent, Section } from "components/layout";
 import * as Typography from "components/typography";
 import OpportunityItem from "components/sections/opportunity-overview";
@@ -13,6 +13,7 @@ import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Select from "components/select";
+import { PortalProject } from "lib/airtable/project";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];

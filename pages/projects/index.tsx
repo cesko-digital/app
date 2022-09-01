@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticProps } from "next";
-import { PortalProject } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { JoinUs } from "components/sections";
 import * as S from "components/project/index-styles";
@@ -7,6 +6,7 @@ import strings from "content/strings.json";
 import { siteData } from "lib/site-data";
 import HighlightedProject from "components/project/highlighted";
 import ProjectList from "components/project/card-list";
+import { PortalProject } from "lib/airtable/project";
 
 type PageProps = {
   projects: PortalProject[];

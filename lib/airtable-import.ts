@@ -1,10 +1,5 @@
 import Airtable from "airtable";
-import {
-  decodeEvent,
-  decodeOpportunity,
-  decodePartner,
-  decodeProject,
-} from "./portal-types";
+import { decodeEvent, decodeOpportunity, decodePartner } from "./portal-types";
 
 type AirtableRecord = Record<string, any>;
 
@@ -65,14 +60,6 @@ async function getAllRecords<T>(args: {
 
   return parsedRecords;
 }
-
-export const getAllProjects = async () =>
-  await getAllRecords({
-    baseId: airtableBaseId,
-    tableName: "Projects",
-    viewName: "Grid view",
-    decoder: decodeProject,
-  });
 
 export const getAllEvents = async () =>
   await getAllRecords({
