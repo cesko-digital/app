@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { array, decodeType, record, string } from "typescript-json-decoder";
-import { withDefault } from "./decoding";
+import { decodeValidItemsFromArray, withDefault } from "./decoding";
 
 /**
  * A blog posts from our blog
@@ -8,7 +8,6 @@ import { withDefault } from "./decoding";
  * We use this data to link to related blog posts for projects.
  */
 export type Article = decodeType<typeof decodeArticle>;
-
 export const decodeArticle = record({
   url: string,
   title: string,
@@ -18,27 +17,7 @@ export const decodeArticle = record({
 });
 
 export async function getArticleIndex(): Promise<Article[]> {
-  const verbose = process.env.VERBOSE_LOG;
-  const response = await fetch("https://blog.cesko.digital/api/articles");
-  const articles: Article[] = [];
-
-  const json = await response.json();
-  if (!Array.isArray(json)) {
-    throw "Invalid article index format";
-  }
-
-  json.forEach((item, index) => {
-    try {
-      articles.push(decodeArticle(item));
-    } catch (e) {
-      console.warn(
-        verbose
-          ? `Parse error for record #${index} in article index: ${e}`
-          : `Parse error for record #${index} in article index, skipping (set VERBOSE_LOG to see more).`
-      );
-    }
-  });
-
-  console.log(`Successfully parsed ${articles.length} blog posts.`);
-  return articles;
+  return await fetch("https://blog.cesko.digital/api/articles")
+    .then((response) => response.json())
+    .then(decodeValidItemsFromArray(decodeArticle, "Blog Posts"));
 }
