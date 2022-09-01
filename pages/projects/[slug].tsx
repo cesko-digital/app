@@ -16,11 +16,11 @@ import { Article } from "lib/related-blog-posts";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
 import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
+import { PortalUser } from "lib/airtable/user";
 import {
   PortalEvent,
   PortalOpportunity,
   PortalProject,
-  PortalUser,
 } from "lib/portal-types";
 
 interface PageProps {
@@ -190,9 +190,9 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const { slug } = context.params!;
   const { projects, users, events } = siteData;
   const project = projects.find((p) => p.slug === slug)!;
-  const coordinators = project.coordinatorIds.map(
-    (id) => users.find((user) => user.id === id)!
-  ).filter((c) => c !== undefined);
+  const coordinators = project.coordinatorIds
+    .map((id) => users.find((user) => user.id === id)!)
+    .filter((c) => c !== undefined);
   const opportunities = siteData.opportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );

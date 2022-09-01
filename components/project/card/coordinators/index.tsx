@@ -1,5 +1,5 @@
-import { PortalUser } from "lib/portal-types";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
 import * as S from "./styles";
 
 interface Props {

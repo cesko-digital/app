@@ -58,3 +58,40 @@ export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
   (value: Pojo) =>
     [...dict(decodeItem)(value).values()];
+
+/**
+ * Decode an array of items, skipping items that fail to decode
+ *
+ * Logs errors and total number of decoded items to console.
+ */
+export function decodeValidItemsFromArray<T>(
+  decodeItem: DecoderFunction<T>,
+  tag = "<unknown>",
+  log = console.info,
+  verbose = process.env.VERBOSE_LOG
+): DecoderFunction<T[]> {
+  const arrayToString = (arr: any) => `${JSON.stringify(arr)}`;
+  return (value: Pojo) => {
+    if (!Array.isArray(value)) {
+      throw `The value \`${arrayToString(
+        value
+      )}\` is not of type \`array\`, but is of type \`${typeof value}\``;
+    }
+    let index = 0;
+    let values: T[] = [];
+    for (const item of value) {
+      try {
+        values.push(decodeItem(item));
+      } catch (e) {
+        log(
+          verbose
+            ? `Error decoding item #${index} in ${tag}: ${e}`
+            : `Error decoding item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`
+        );
+      }
+      index++;
+    }
+    log(`Successfully decoded ${values.length} items in ${tag}.`);
+    return values;
+  };
+}

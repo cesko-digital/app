@@ -1,6 +1,6 @@
-import { PortalUser } from "lib/portal-types";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
 
 interface GarantProps {
   user: PortalUser;

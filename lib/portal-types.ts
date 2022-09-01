@@ -21,7 +21,6 @@ import {
  */
 
 export type PortalProject = decodeType<typeof decodeProject>;
-export type PortalUser = decodeType<typeof decodeUser>;
 export type PortalEvent = decodeType<typeof decodeEvent>;
 export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
 export type PortalPartner = decodeType<typeof decodePartner>;
@@ -49,16 +48,6 @@ export const decodeProject = record({
   jiraUrl: optional(string),
   githubUrl: optional(string),
   slackChannelUrl: optional(string),
-});
-
-export const decodeUser = record({
-  id: string,
-  name: string,
-  profilePictureUrl: withDefault(
-    string,
-    "https://data.cesko.digital/people/generic-profile.jpg"
-  ),
-  email: string,
 });
 
 export const decodeEvent = record({

@@ -1,10 +1,6 @@
-import { decodeUrl } from "./decoding";
-import {
-  decodeEvent,
-  decodeOpportunity,
-  decodeProject,
-  decodeUser,
-} from "./portal-types";
+import { number } from "typescript-json-decoder";
+import { decodeUrl, decodeValidItemsFromArray } from "./decoding";
+import { decodeEvent, decodeOpportunity, decodeProject } from "./portal-types";
 
 test("Decode portal project", () => {
   expect(
@@ -47,41 +43,6 @@ test("Decode portal project", () => {
       "rec0ABdJtGIK9AeCB",
     ],
     slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
-  });
-});
-
-describe("Decode portal user", () => {
-  test("Decode valid payload", () => {
-    expect(
-      decodeUser({
-        id: "recA5nftMpxJmwpr4",
-        email: "zoul@cesko.digital",
-        profilePictureUrl:
-          "https://data.cesko.digital/people/tomas-znamenacek.jpg",
-        name: "Tomáš Znamenáček",
-      })
-    ).toEqual({
-      id: "recA5nftMpxJmwpr4",
-      name: "Tomáš Znamenáček",
-      profilePictureUrl:
-        "https://data.cesko.digital/people/tomas-znamenacek.jpg",
-      email: "zoul@cesko.digital",
-    });
-  });
-  test("Supply default profile picture", () => {
-    expect(
-      decodeUser({
-        id: "recA5nftMpxJmwpr4",
-        email: "zoul@cesko.digital",
-        name: "Tomáš Znamenáček",
-      })
-    ).toEqual({
-      id: "recA5nftMpxJmwpr4",
-      name: "Tomáš Znamenáček",
-      profilePictureUrl:
-        "https://data.cesko.digital/people/generic-profile.jpg",
-      email: "zoul@cesko.digital",
-    });
   });
 });
 
@@ -166,4 +127,9 @@ test("Decode URL", () => {
     decodeUrl("https://cesko-digital.slack.com/archives/C01AENB1LPP")
   ).toEqual("https://cesko-digital.slack.com/archives/C01AENB1LPP");
   expect(decodeUrl("mailto:bagr@lopata.cz")).toEqual("mailto:bagr@lopata.cz");
+});
+
+test("Decode valid items from array", () => {
+  const decoder = decodeValidItemsFromArray(number, "Test", () => {});
+  expect(decoder(["foo", "bar", 42])).toEqual([42]);
 });

@@ -3,9 +3,10 @@ import { ButtonAsLink } from "components/links";
 import Project from "./project";
 import Garant from "./garant";
 import Info from "./info";
-import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
+import { PortalEvent, PortalProject } from "lib/portal-types";
 import { getEventDuration } from "lib/portal-type-utils";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
 
 interface EventCardProps {
   event: PortalEvent;
@@ -29,7 +30,12 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
           minute: "2-digit",
         })}
       />
-      {duration && <Info title={strings.components.cards.eventCard.duration} content={duration} />}
+      {duration && (
+        <Info
+          title={strings.components.cards.eventCard.duration}
+          content={duration}
+        />
+      )}
       {event.locationTitle && (
         <Info
           title={strings.components.cards.eventCard.place}

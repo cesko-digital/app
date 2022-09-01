@@ -4,7 +4,6 @@ import {
   decodeOpportunity,
   decodePartner,
   decodeProject,
-  decodeUser,
 } from "./portal-types";
 
 type AirtableRecord = Record<string, any>;
@@ -73,14 +72,6 @@ export const getAllProjects = async () =>
     tableName: "Projects",
     viewName: "Grid view",
     decoder: decodeProject,
-  });
-
-export const getAllUsers = async () =>
-  await getAllRecords({
-    baseId: airtableBaseId,
-    tableName: "Volunteers",
-    viewName: "Grid view",
-    decoder: decodeUser,
   });
 
 export const getAllEvents = async () =>
