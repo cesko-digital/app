@@ -7,11 +7,7 @@ import { handleFollowupResponse } from "lib/market-place";
 const { SLACK_BAZAAR_BOT_TOKEN = "", SLACK_BAZAAR_CALLBACK_SECRET = "" } =
   process.env;
 
-/**
- * Handle Slack notifications about block responses
- *
- * At the moment there’s just one consumer, the market-place code.
- */
+/** Handle Slack notifications about market-place responses */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse

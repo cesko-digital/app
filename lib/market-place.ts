@@ -98,10 +98,10 @@ export async function markExpiredOffers(slackToken: string) {
           name: "package",
         })
         .catch((error) => {
-          /* ignore */
+          /* We don’t care about emoji reaction errors */
         });
     } else {
-      console.log(
+      console.debug(
         `Offer ${offer.id} age ${offerAge} is under expiration limit (${expirationTimeInSeconds}), skipping.`
       );
     }
@@ -144,6 +144,9 @@ export async function triggerFollowupQuestions(slackToken: string) {
     const publishTimeInDays = Math.floor(publishTimeInSeconds / secondsPerDay);
     // Is this the n-th day since publishing? If yes, post the followup question.
     if (publishTimeInDays > 0 && publishTimeInDays % followupTimeInDays === 0) {
+      console.log(
+        `Offer ${offer.id} ripe for follow-up question, posting to thread.`
+      );
       // The replies are handled asynchronously through the `/api/slack_events/interaction` handler
       await slack.chat.postMessage({
         token: slackToken,
@@ -218,7 +221,7 @@ export async function handleFollowupResponse(
           name: "white_check_mark",
         })
         .catch((error) => {
-          /* ignore */
+          /* We don’t care about emoji reaction errors */
         });
       // Respond to the thread
       await reply({
@@ -245,7 +248,7 @@ export async function handleFollowupResponse(
           name: "x",
         })
         .catch((error) => {
-          /* ignore */
+          /* We don’t care about emoji reaction errors */
         });
       // Respond to the thread
       await reply({
