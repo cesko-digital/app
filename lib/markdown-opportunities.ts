@@ -1,4 +1,6 @@
-import { PortalOpportunity, PortalProject, PortalUser } from "./portal-types";
+import { PortalOpportunity } from "./airtable/opportunity";
+import { PortalProject } from "./airtable/project";
+import { PortalUser } from "./airtable/user";
 import { MarkdownString } from "./utils";
 
 export function renderOpportunity(

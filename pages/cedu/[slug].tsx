@@ -1,5 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalVideo } from "lib/cedu";
+import { PortalVideo } from "lib/data-sources/cedu";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { Layout, Section, SectionContent } from "components/layout";
@@ -7,6 +7,7 @@ import * as Typography from "components/typography";
 import { Route } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { siteData } from "lib/site-data";
+import strings from "content/strings.json";
 import {
   BoxesColumn,
   MainColumn,
@@ -19,7 +20,6 @@ import {
   ResourceBox,
   TableOfContentBox,
 } from "components/cedu/content-box";
-import strings from "content/strings.json";
 
 interface PageProps {
   video: PortalVideo;

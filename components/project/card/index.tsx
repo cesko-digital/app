@@ -2,9 +2,10 @@ import { ArrowIcon, GithubIcon, JiraIcon, SlackIcon } from "components/icons";
 import Coordinators from "./coordinators";
 import SocialMedia from "./social-media";
 import { ButtonAsLink } from "components/links";
-import { PortalProject, PortalUser } from "lib/portal-types";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
+import { PortalProject } from "lib/airtable/project";
 
 interface Props {
   project: PortalProject;

@@ -1,4 +1,3 @@
-import { PortalPartner } from "lib/portal-types";
 import type { NextPage, GetStaticProps } from "next";
 import { useMemo, useState } from "react";
 import strings from "content/strings.json";
@@ -9,7 +8,8 @@ import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
 import { siteData } from "lib/site-data";
-import { Article } from "lib/related-blog-posts";
+import { Article } from "lib/data-sources/blog";
+import { PortalPartner } from "lib/airtable/partner";
 
 type PageProps = {
   partners: readonly PortalPartner[];

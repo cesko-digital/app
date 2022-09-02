@@ -1,5 +1,6 @@
 import { BodySmall } from "components/typography";
-import { PortalOpportunity, PortalProject } from "lib/portal-types";
+import { PortalOpportunity } from "lib/airtable/opportunity";
+import { PortalProject } from "lib/airtable/project";
 import { Route } from "lib/utils";
 import Link from "next/link";
 import * as S from "./styles";

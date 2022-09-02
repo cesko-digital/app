@@ -1,7 +1,7 @@
-import { PortalProject } from "lib/portal-types";
 import { Route } from "lib/utils";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { PortalProject } from "lib/airtable/project";
 
 interface ProjectProps {
   project: PortalProject;

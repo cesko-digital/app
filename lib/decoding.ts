@@ -58,3 +58,56 @@ export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
   (value: Pojo) =>
     [...dict(decodeItem)(value).values()];
+
+/**
+ * Decode skills such as Marketing, Design, …
+ *
+ * The “Other” skill is special – it doesn’t make much sense in combination with
+ * other skills, so we only allow it when it’s the only skill specified. More here:
+ * https://cesko-digital.slack.com/archives/CHG9NA23D/p1649168585006699
+ */
+export const decodeSkills = (value: Pojo) => {
+  const skills = array(string)(value);
+  if (skills.length > 1) {
+    return skills.filter((skill) => skill !== "Other");
+  } else {
+    return skills;
+  }
+};
+
+/**
+ * Decode an array of items, skipping items that fail to decode
+ *
+ * Logs errors and total number of decoded items to console.
+ */
+export function decodeValidItemsFromArray<T>(
+  decodeItem: DecoderFunction<T>,
+  tag = "<unknown>",
+  log = console.info,
+  verbose = process.env.VERBOSE_LOG
+): DecoderFunction<T[]> {
+  const arrayToString = (arr: any) => `${JSON.stringify(arr)}`;
+  return (value: Pojo) => {
+    if (!Array.isArray(value)) {
+      throw `The value \`${arrayToString(
+        value
+      )}\` is not of type \`array\`, but is of type \`${typeof value}\``;
+    }
+    let index = 0;
+    let values: T[] = [];
+    for (const item of value) {
+      try {
+        values.push(decodeItem(item));
+      } catch (e) {
+        log(
+          verbose
+            ? `Error decoding item #${index} in ${tag}: ${e}`
+            : `Error decoding item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`
+        );
+      }
+      index++;
+    }
+    log(`Successfully decoded ${values.length} items in ${tag}.`);
+    return values;
+  };
+}

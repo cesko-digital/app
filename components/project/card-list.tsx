@@ -1,5 +1,5 @@
 import { ProjectCard } from "components/cards";
-import { PortalProject } from "lib/portal-types";
+import { PortalProject } from "lib/airtable/project";
 import styled from "styled-components";
 
 interface Props {

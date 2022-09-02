@@ -1,8 +1,9 @@
 import { NextPage, GetStaticProps } from "next";
-import { PortalPartner } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 import { useContext } from "react";
+import { siteData } from "lib/site-data";
+import { PortalPartner } from "lib/airtable/partner";
 import {
   Hero,
   OurValues,
@@ -10,7 +11,6 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
-import { siteData } from "lib/site-data";
 
 type PageProps = {
   partners: PortalPartner[];

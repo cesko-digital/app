@@ -8,9 +8,8 @@ import { ButtonSize } from "components/buttons";
 import BlogCard from "components/cards/blog-card";
 import strings from "content/strings.json";
 import { BlogHeader } from "./styles";
-import { PortalPartner } from "lib/portal-types";
-import { filterPartnersByCategory } from "lib/portal-type-utils";
-import { Article } from "lib/related-blog-posts";
+import { Article } from "lib/data-sources/blog";
+import { filterPartnersByCategory, PortalPartner } from "lib/airtable/partner";
 
 interface Props {
   partners: readonly PortalPartner[];

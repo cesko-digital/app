@@ -8,17 +8,18 @@ import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
 import { Route } from "lib/utils";
 import CeduCard from "components/dashboard/cedu-card";
-import { PortalVideo } from "lib/cedu";
-import {
-  PortalEvent,
-  PortalOpportunity,
-  PortalProject,
-} from "lib/portal-types";
+import { PortalVideo } from "lib/data-sources/cedu";
 import { siteData } from "lib/site-data";
-import { compareEventsByTime, isEventPast } from "lib/portal-type-utils";
 import strings from "content/strings.json";
 import Link from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
+import { PortalProject } from "lib/airtable/project";
+import { PortalOpportunity } from "lib/airtable/opportunity";
+import {
+  compareEventsByTime,
+  isEventPast,
+  PortalEvent,
+} from "lib/airtable/event";
 
 interface PageProps {
   opportunities: readonly PortalOpportunity[];

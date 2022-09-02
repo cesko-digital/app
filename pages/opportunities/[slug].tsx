@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalOpportunity, PortalProject, PortalUser } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1, BodySmall, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
@@ -15,6 +14,9 @@ import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";
 import { getContactButtonLabel } from "components/dashboard/opportunity/utils";
+import { PortalUser } from "lib/airtable/user";
+import { PortalProject } from "lib/airtable/project";
+import { PortalOpportunity } from "lib/airtable/opportunity";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -88,14 +90,14 @@ const Page: NextPage<PageProps> = (props) => {
                 <TimeIcon />
                 <Body>{opportunity.timeRequirements}</Body>
               </S.OpportunityMetaRow>
-              { owner && (
-              <S.OpportunityOwnerWrapper>
-                <Body>Kontaktní osoba</Body>
-                <S.OwnerWrapper>
-                  <S.OwnerImage src={owner.profilePictureUrl} />
-                  <OwnerContact email={owner.email} name={owner.name} />
-                </S.OwnerWrapper>
-              </S.OpportunityOwnerWrapper>
+              {owner && (
+                <S.OpportunityOwnerWrapper>
+                  <Body>Kontaktní osoba</Body>
+                  <S.OwnerWrapper>
+                    <S.OwnerImage src={owner.profilePictureUrl} />
+                    <OwnerContact email={owner.email} name={owner.name} />
+                  </S.OwnerWrapper>
+                </S.OpportunityOwnerWrapper>
               )}
               <a href={opportunity.contactUrl} target="blank">
                 <S.OpportunityContactButton>

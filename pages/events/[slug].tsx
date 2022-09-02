@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalEvent, PortalProject, PortalUser } from "lib/portal-types";
 import * as Typography from "components/typography";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/event/styles";
@@ -12,6 +11,9 @@ import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import { Route } from "lib/utils";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
+import { PortalProject } from "lib/airtable/project";
+import { PortalEvent } from "lib/airtable/event";
 
 interface PageProps {
   event: PortalEvent;
@@ -117,7 +119,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const owner = users.find((u) => u.id === event.ownerId)!;
   return {
     props: { event, events, project, projects, owner },
-    notFound: ( !event || !project || !owner ),
+    notFound: !event || !project || !owner,
   };
 };
 

@@ -1,17 +1,14 @@
-import { getAllVideos, PortalVideo } from "./cedu";
-import { Article, getArticleIndex } from "./related-blog-posts";
+import { getAllVideos, PortalVideo } from "./data-sources/cedu";
+import { Article, getArticleIndex } from "./data-sources/blog";
 import { Field, getAllSkills } from "./airtable/skills";
-import * as Airtable from "./airtable-import";
-import * as Local from "./local-data";
+import * as Local from "./data-sources/dummy";
 import apm from "elastic-apm-node";
 import { enableAPMLogging } from "./apm";
-import {
-  PortalEvent,
-  PortalOpportunity,
-  PortalPartner,
-  PortalProject,
-  PortalUser,
-} from "./portal-types";
+import { getAllUsers, PortalUser } from "./airtable/user";
+import { getAllProjects, PortalProject } from "./airtable/project";
+import { getAllEvents, PortalEvent } from "./airtable/event";
+import { getAllOpportunities, PortalOpportunity } from "./airtable/opportunity";
+import { getAllPartners, PortalPartner } from "./airtable/partner";
 
 enableAPMLogging();
 
@@ -40,11 +37,11 @@ interface DataSource {
 }
 
 const ProductionDataSource: DataSource = {
-  projects: Airtable.getAllProjects,
-  opportunities: Airtable.getAllOpportunities,
-  users: Airtable.getAllUsers,
-  events: Airtable.getAllEvents,
-  partners: Airtable.getAllPartners,
+  projects: getAllProjects,
+  opportunities: getAllOpportunities,
+  users: getAllUsers,
+  events: getAllEvents,
+  partners: getAllPartners,
   videos: getAllVideos,
   blogPosts: getArticleIndex,
   skills: getAllSkills,
@@ -63,7 +60,8 @@ const SampleDataSource: DataSource = {
 
 async function loadSiteData(): Promise<SiteData> {
   const forceLocal = !!process.env.DATA_SOURCE_LOCAL;
-  const useLocalData = forceLocal || !Airtable.isAvailable;
+  const haveAirtable = !!process.env.AIRTABLE_API_KEY;
+  const useLocalData = forceLocal || !haveAirtable;
   const isProductionBuild = process.env.VERCEL_ENV === "production";
 
   if (useLocalData && isProductionBuild) {
@@ -77,7 +75,7 @@ async function loadSiteData(): Promise<SiteData> {
     );
   } else {
     console.log(
-      "Loading app data from Airtable, set DATA_SOURCE_LOCAL to use local data samples instead."
+      "Loading app data from live sources, set DATA_SOURCE_LOCAL to use local data samples instead."
     );
   }
 
