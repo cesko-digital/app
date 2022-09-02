@@ -1,4 +1,3 @@
-import { FieldSet } from "airtable";
 import { decodeValidItemsFromArray, markdown, withDefault } from "lib/decoding";
 import { unwrapRecords, webBase } from "./request";
 import {
@@ -12,25 +11,9 @@ import {
   union,
 } from "typescript-json-decoder";
 
-/** The Airtable schema of the Projects table */
-export interface Schema extends FieldSet {
-  ID: string;
-  name: string;
-  slug: string;
-  tagline: string;
-  description: string;
-  url: string;
-  coverImageUrl: string;
-  logoUrl: string;
-  highlighted: boolean;
-  state: string;
-  tagIds: ReadonlyArray<string>;
-  coordinatorIds: ReadonlyArray<string>;
-  trelloUrl: string;
-  jiraUrl: string;
-  githubUrl: string;
-  slackChannelUrl: string;
-}
+//
+// Decoding
+//
 
 export type PortalProject = decodeType<typeof decodeProject>;
 export const decodeProject = record({
@@ -63,7 +46,7 @@ export const decodeProject = record({
 //
 
 /** Projects table */
-export const projectsTable = webBase<Schema>("Projects");
+export const projectsTable = webBase("Projects");
 
 /** Get all projects */
 export async function getAllProjects(): Promise<PortalProject[]> {

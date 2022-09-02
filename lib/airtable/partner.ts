@@ -10,6 +10,10 @@ import {
   union,
 } from "typescript-json-decoder";
 
+//
+// Decoding
+//
+
 export type PortalPartner = decodeType<typeof decodePartner>;
 export const decodePartner = record({
   id: field("ID", string),
@@ -35,7 +39,7 @@ export const decodePartner = record({
 // API Calls
 //
 
-/** Projects table */
+/** Partners table */
 export const partnersTable = webBase("Partners");
 
 /** Get all projects */

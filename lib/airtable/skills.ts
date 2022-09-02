@@ -1,4 +1,3 @@
-import { FieldSet } from "airtable";
 import { unique } from "lib/utils";
 import { unwrapRecords, volunteerManagementBase } from "./request";
 import {
@@ -10,22 +9,9 @@ import {
   string,
 } from "typescript-json-decoder";
 
-const skillsTable = volunteerManagementBase<Schema>("Skills");
-
-/** The schema of the Skills table in Airtable */
-export interface Schema extends FieldSet {
-  id: string;
-  Field: string;
-  Subfield: string;
-}
-
-export type Skill = decodeType<typeof decodeSkill>;
-
-export const decodeSkill = record({
-  id: string,
-  field: field("Field", string),
-  name: field("Subfield", string),
-});
+//
+// Types
+//
 
 export interface Field {
   name: string;
@@ -33,6 +19,17 @@ export interface Field {
   seniorSkillId?: string;
   skills: Skill[];
 }
+
+//
+// Decoding
+//
+
+export type Skill = decodeType<typeof decodeSkill>;
+export const decodeSkill = record({
+  id: string,
+  field: field("Field", string),
+  name: field("Subfield", string),
+});
 
 /** Decode a hierarchical tree of skills from the DB format */
 export function decodeFields(value: Pojo): Field[] {
@@ -56,6 +53,8 @@ export function decodeFields(value: Pojo): Field[] {
 //
 // API Calls
 //
+
+const skillsTable = volunteerManagementBase("Skills");
 
 /** Get a hierarchical tree of skills from the DB */
 export async function getAllSkills(): Promise<Field[]> {

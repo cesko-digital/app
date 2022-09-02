@@ -16,8 +16,9 @@ import {
   union,
 } from "typescript-json-decoder";
 
-/** Events table */
-export const eventsTable = webBase("Projects");
+//
+// Decoding
+//
 
 export type PortalEvent = decodeType<typeof decodeEvent>;
 export const decodeEvent = record({
@@ -47,6 +48,9 @@ export const decodeEvent = record({
 //
 // API Calls
 //
+
+/** Events table */
+export const eventsTable = webBase("Events");
 
 /** Get all projects */
 export async function getAllEvents(): Promise<PortalEvent[]> {

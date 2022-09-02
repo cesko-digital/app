@@ -1,18 +1,10 @@
-import { FieldSet } from "airtable";
 import { decodeValidItemsFromArray, withDefault } from "lib/decoding";
 import { unwrapRecords, webBase } from "./request";
 import { decodeType, field, record, string } from "typescript-json-decoder";
 
-/** The Airtable schema of the Users table */
-export interface Schema extends FieldSet {
-  ID: string;
-  email: string;
-  name: string;
-  profilePictureUrl: string;
-}
-
-/** Volunteers table */
-export const usersTable = webBase<Schema>("Volunteers");
+//
+// Decoding
+//
 
 /**
  * Portal User
@@ -36,6 +28,8 @@ export const decodePortalUser = record({
 //
 // API Calls
 //
+
+export const usersTable = webBase("Volunteers");
 
 export async function getAllUsers(): Promise<PortalUser[]> {
   return await usersTable

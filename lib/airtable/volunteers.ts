@@ -1,4 +1,3 @@
-import { FieldSet } from "airtable";
 import { withDefault } from "lib/decoding";
 import { unwrapRecords, volunteerManagementBase } from "./request";
 import {
@@ -9,15 +8,9 @@ import {
   string,
 } from "typescript-json-decoder";
 
-/** The Airtable schema of the Volunteers table */
-export interface Schema extends FieldSet {
-  "Slack: E-mail": string;
-  "Slack: ID": string;
-  "Self-reported skills": ReadonlyArray<string>;
-}
-
-/** Volunteers table */
-export const volunteersTable = volunteerManagementBase<Schema>("Volunteers");
+//
+// Decoding
+//
 
 /** Volunteer */
 export type Volunteer = decodeType<typeof decodeVolunteer>;
@@ -33,6 +26,9 @@ export const decodeVolunteer = record({
 //
 // API Calls
 //
+
+/** Volunteers table */
+export const volunteersTable = volunteerManagementBase("Volunteers");
 
 export async function getAllVolunteers(): Promise<Volunteer[]> {
   return await volunteersTable
