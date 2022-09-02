@@ -1,13 +1,13 @@
 import type { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { PortalPartner } from "lib/portal-types";
 import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
 import { shuffleInPlace } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
+import { PortalPartner } from "lib/airtable/partner";
 import {
   Hero,
   OurValues,

@@ -1,10 +1,9 @@
 import { Section, SectionContent } from "components/layout";
 import { Heading2, Heading3 } from "components/typography";
 import LogoList from "components/logo-list";
-import { PortalPartner } from "lib/portal-types";
 import * as S from "../../styles";
 import strings from "content/strings.json";
-import { filterPartnersByCategory } from "lib/portal-type-utils";
+import { filterPartnersByCategory, PortalPartner } from "lib/airtable/partner";
 
 interface ExpertsPartnersProps {
   partners: readonly PortalPartner[];

@@ -32,9 +32,6 @@ export interface Schema extends FieldSet {
   slackChannelUrl: string;
 }
 
-/** Projects table */
-export const projectsTable = webBase<Schema>("Projects");
-
 export type PortalProject = decodeType<typeof decodeProject>;
 export const decodeProject = record({
   id: field("ID", string),
@@ -64,6 +61,9 @@ export const decodeProject = record({
 //
 // API Calls
 //
+
+/** Projects table */
+export const projectsTable = webBase<Schema>("Projects");
 
 /** Get all projects */
 export async function getAllProjects(): Promise<PortalProject[]> {
