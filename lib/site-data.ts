@@ -6,8 +6,9 @@ import * as Local from "./local-data";
 import apm from "elastic-apm-node";
 import { enableAPMLogging } from "./apm";
 import { getAllUsers, PortalUser } from "./airtable/user";
-import { PortalEvent, PortalOpportunity, PortalPartner } from "./portal-types";
+import { PortalOpportunity, PortalPartner } from "./portal-types";
 import { getAllProjects, PortalProject } from "./airtable/project";
+import { getAllEvents, PortalEvent } from "./airtable/event";
 
 enableAPMLogging();
 
@@ -39,7 +40,7 @@ const ProductionDataSource: DataSource = {
   projects: getAllProjects,
   opportunities: Airtable.getAllOpportunities,
   users: getAllUsers,
-  events: Airtable.getAllEvents,
+  events: getAllEvents,
   partners: Airtable.getAllPartners,
   videos: getAllVideos,
   blogPosts: getArticleIndex,

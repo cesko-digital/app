@@ -3,11 +3,10 @@ import { ButtonAsLink } from "components/links";
 import Project from "./project";
 import Garant from "./garant";
 import Info from "./info";
-import { PortalEvent } from "lib/portal-types";
-import { getEventDuration } from "lib/portal-type-utils";
 import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
+import { getEventDuration, PortalEvent } from "lib/airtable/event";
 
 interface EventCardProps {
   event: PortalEvent;

@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalEvent } from "lib/portal-types";
 import * as Typography from "components/typography";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/event/styles";
@@ -14,6 +13,7 @@ import { Route } from "lib/utils";
 import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
+import { PortalEvent } from "lib/airtable/event";
 
 interface PageProps {
   event: PortalEvent;

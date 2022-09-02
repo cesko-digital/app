@@ -4,7 +4,6 @@ import {
   boolean,
   decodeType,
   field,
-  fields,
   optional,
   Pojo,
   record,
@@ -20,33 +19,8 @@ import {
  * is not too smart for our own good :)
  */
 
-export type PortalEvent = decodeType<typeof decodeEvent>;
 export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
 export type PortalPartner = decodeType<typeof decodePartner>;
-
-export const decodeEvent = record({
-  id: string,
-  name: field("Name", string),
-  slug: fields(
-    // Read slug from the `Slug` field and fall
-    // back to `id` if the `Slug` field is empty.
-    { Slug: optional(string), id: string },
-    ({ Slug, id }) => Slug ?? id
-  ),
-  summary: field("Summary", string),
-  description: field("Description", markdown),
-  startTime: field("Start Time", string),
-  ownerId: field("Owner", takeFirst(array(string))),
-  projectId: field("Project", takeFirst(array(string))),
-  status: field("Status", union("draft", "live", "unlisted")),
-  registrationUrl: field("RSVP URL", optional(string)),
-  registrationTitle: field("RSVP Title", optional(string)),
-  endTime: field("End Time", optional(string)),
-  tagIds: field("Tags", withDefault(array(string), [])),
-  coverImageUrl: field("Cover URL", optional(string)),
-  locationTitle: field("Location Title", optional(string)),
-  locationUrl: field("Location URL", optional(string)),
-});
 
 /**
  * Decode skills such as Marketing, Design, …

@@ -1,45 +1,6 @@
 import { number } from "typescript-json-decoder";
 import { decodeUrl, decodeValidItemsFromArray } from "./decoding";
-import { decodeEvent, decodeOpportunity } from "./portal-types";
-
-test("Decode portal event", () => {
-  expect(
-    decodeEvent({
-      "id": "rec9ujcN8HSkE0hgh",
-      "Live URL": "https://cesko.digital/show-and-tell",
-      "End Time": "2021-06-24T18:00:00.000Z",
-      "RSVP URL": "https://cesko.digital/rsvp",
-      "RSVP Title": "Sleduj!",
-      "Summary": "Živé vysílání bla bla bla…",
-      "Description": "Bude to **pecka**!\n",
-      "Attendees": ["recm4CtcAkbzsEbZq"],
-      "Name": "Show & Tell #2",
-      "Owner": ["rec9ujcN8HSkEdwehgh"],
-      "Project": ["rec9ujcN8HSkdedwedd"],
-      "Tags": ["foo", "bar"],
-      "Slug": "show-and-tell-2",
-      "Status": "draft",
-      "Follow-Up URL": "https://cesko.digital/show-and-tell",
-      "Competence Map": ["dev:100", "marketing:100"],
-      "RSVP Deadline": "2021-06-24T17:00:00.000Z",
-      "Start Time": "2021-06-24T17:00:00.000Z",
-    })
-  ).toEqual({
-    id: "rec9ujcN8HSkE0hgh",
-    name: "Show & Tell #2",
-    summary: "Živé vysílání bla bla bla…",
-    description: { source: "Bude to **pecka**!\n" },
-    startTime: "2021-06-24T17:00:00.000Z",
-    ownerId: "rec9ujcN8HSkEdwehgh",
-    projectId: "rec9ujcN8HSkdedwedd",
-    status: "draft",
-    registrationUrl: "https://cesko.digital/rsvp",
-    registrationTitle: "Sleduj!",
-    slug: "show-and-tell-2",
-    endTime: "2021-06-24T18:00:00.000Z",
-    tagIds: ["foo", "bar"],
-  });
-});
+import { decodeOpportunity } from "./portal-types";
 
 test("Decode portal opportunity", () => {
   expect(

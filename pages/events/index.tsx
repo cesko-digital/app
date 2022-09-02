@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
-import { PortalEvent } from "lib/portal-types";
 import { siteData } from "lib/site-data";
+import { PortalEvent } from "lib/airtable/event";
 
 type PageProps = {
   events: readonly PortalEvent[];
