@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { Link } from "components/links";
-import { PortalVideo } from "lib/cedu";
+import { PortalVideo } from "lib/data-sources/cedu";
 import strings from "content/strings.json";
 import { Route } from "lib/utils";
 

@@ -1,7 +1,7 @@
-import { getAllVideos, PortalVideo } from "./cedu";
-import { Article, getArticleIndex } from "./related-blog-posts";
+import { getAllVideos, PortalVideo } from "./data-sources/cedu";
+import { Article, getArticleIndex } from "./data-sources/blog";
 import { Field, getAllSkills } from "./airtable/skills";
-import * as Local from "./local-data";
+import * as Local from "./data-sources/dummy";
 import apm from "elastic-apm-node";
 import { enableAPMLogging } from "./apm";
 import { getAllUsers, PortalUser } from "./airtable/user";

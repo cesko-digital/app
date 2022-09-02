@@ -1,16 +1,16 @@
 import * as Typography from "components/typography";
+import strings from "content/strings.json";
 import {
   PortalVideoCredit,
   PortalVideoResource,
   PortalVideoSegment,
-} from "lib/cedu";
+} from "lib/data-sources/cedu";
 import {
   BoxWrapper,
   CreditsCell,
   ResourceCell,
   TableOfContentCell,
 } from "./styles";
-import strings from "content/strings.json";
 
 interface TableOfContentBoxProps {
   segments: PortalVideoSegment[];

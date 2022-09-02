@@ -8,7 +8,7 @@ import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
 import { Route } from "lib/utils";
 import CeduCard from "components/dashboard/cedu-card";
-import { PortalVideo } from "lib/cedu";
+import { PortalVideo } from "lib/data-sources/cedu";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";

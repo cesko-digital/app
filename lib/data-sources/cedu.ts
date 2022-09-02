@@ -1,4 +1,4 @@
-import { MarkdownString } from "./utils";
+import { MarkdownString } from "lib/utils";
 import { join } from "path";
 import matter from "gray-matter";
 import fs from "fs";
