@@ -16,8 +16,8 @@ import { Article } from "lib/related-blog-posts";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
 import { PortalUser } from "lib/airtable/user";
-import { PortalOpportunity } from "lib/portal-types";
 import { PortalProject } from "lib/airtable/project";
+import { PortalOpportunity } from "lib/airtable/opportunity";
 import {
   compareEventsByTime,
   isEventPast,

@@ -60,6 +60,22 @@ export const decodeDictValues =
     [...dict(decodeItem)(value).values()];
 
 /**
+ * Decode skills such as Marketing, Design, …
+ *
+ * The “Other” skill is special – it doesn’t make much sense in combination with
+ * other skills, so we only allow it when it’s the only skill specified. More here:
+ * https://cesko-digital.slack.com/archives/CHG9NA23D/p1649168585006699
+ */
+export const decodeSkills = (value: Pojo) => {
+  const skills = array(string)(value);
+  if (skills.length > 1) {
+    return skills.filter((skill) => skill !== "Other");
+  } else {
+    return skills;
+  }
+};
+
+/**
  * Decode an array of items, skipping items that fail to decode
  *
  * Logs errors and total number of decoded items to console.

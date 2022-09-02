@@ -1,8 +1,8 @@
 import { marked } from "marked";
 import { PortalVideo } from "./cedu";
-import { PortalOpportunity } from "lib/portal-types";
 import { PortalProject } from "./airtable/project";
 import { PortalEvent } from "./airtable/event";
+import { PortalOpportunity } from "./airtable/opportunity";
 
 /** Create URLs for frequently used routes */
 export const Route = {

@@ -1,5 +1,4 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { PortalOpportunity } from "lib/portal-types";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Heading1, BodySmall, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
@@ -17,6 +16,7 @@ import Link from "next/link";
 import { getContactButtonLabel } from "components/dashboard/opportunity/utils";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
+import { PortalOpportunity } from "lib/airtable/opportunity";
 
 interface PageProps {
   opportunity: PortalOpportunity;

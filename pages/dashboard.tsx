@@ -9,12 +9,12 @@ import { CardRow } from "components/layout";
 import { Route } from "lib/utils";
 import CeduCard from "components/dashboard/cedu-card";
 import { PortalVideo } from "lib/cedu";
-import { PortalOpportunity } from "lib/portal-types";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
+import { PortalOpportunity } from "lib/airtable/opportunity";
 import {
   compareEventsByTime,
   isEventPast,
