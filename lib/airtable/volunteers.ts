@@ -15,7 +15,7 @@ import {
 /** Volunteer */
 export type Volunteer = decodeType<typeof decodeVolunteer>;
 
-/** Decode `SlackUser` from DB schema */
+/** Decode `Volunteer` from DB schema */
 export const decodeVolunteer = record({
   email: field("Slack: E-mail", string),
   slackId: field("Slack: ID", string),

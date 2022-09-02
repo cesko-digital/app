@@ -75,7 +75,7 @@ async function loadSiteData(): Promise<SiteData> {
     );
   } else {
     console.log(
-      "Loading app data from Airtable, set DATA_SOURCE_LOCAL to use local data samples instead."
+      "Loading app data from live sources, set DATA_SOURCE_LOCAL to use local data samples instead."
     );
   }
 

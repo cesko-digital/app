@@ -16,7 +16,7 @@ import {
 
 export type PortalPartner = decodeType<typeof decodePartner>;
 export const decodePartner = record({
-  id: field("ID", string),
+  id: string,
   name: string,
   logoUrl: string,
   linkUrl: field("url", optional(string)),
