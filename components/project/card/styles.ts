@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  box-sizing: content-box;
   width: calc(100% - 64px);
   margin: auto;
   padding: 32px;
@@ -33,7 +34,6 @@ export const ButtonWrapper = styled.div`
   max-width: 300px;
   a {
     width: 100%;
-    max-width: calc(100% - 80px);
     justify-content: center;
   }
   svg {

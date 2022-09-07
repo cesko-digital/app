@@ -31,8 +31,12 @@ ul li {
   margin-left: 1em;
 }
 
+h2,
 h3 {
   font-weight: bold;
+}
+
+h3 {
   font-size: 1.17em;
   margin-block-start: 1em;
   margin-block-end: 1em;
