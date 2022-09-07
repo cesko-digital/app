@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Body, BodySmall, Heading1 } from "components/typography";
+import { Body, Heading1 } from "components/typography";
 import { ButtonAsLink } from "components/links";
 import { siteData } from "lib/site-data";
 import DateTime from "components/datetime";
@@ -50,16 +50,13 @@ export const Offer = (offer: MarketPlaceOffer) => {
   const html = toHTML(offer.text);
   const session = useSession();
   return (
-    <div style={{ marginBottom: "40px" }}>
-      <div style={{ marginBottom: "20px" }}>
-        <Body
-          style={{ marginBottom: "10px" }}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <BodySmall>
+    <div className="mb-10">
+      <div className="mb-10">
+        <p className="mb-3" dangerouslySetInnerHTML={{ __html: html }} />
+        <p className="text-sm">
           Poptává {offer.ownerName} od{" "}
           <DateTime date={date} style="date-only" />
-        </BodySmall>
+        </p>
       </div>
       {session.status !== "authenticated" && (
         <ButtonAsLink to={`mailto:${offer.ownerEmail}`} inverted>
