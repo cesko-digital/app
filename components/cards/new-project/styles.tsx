@@ -3,6 +3,7 @@ import { Body } from "components/typography";
 import { ButtonAsLink } from "components/links";
 
 export const Wrapper = styled.div`
+  box-sizing: content-box;
   font-family: ${({ theme }) => theme.fonts.body};
   max-width: 308px;
   border: ${({ theme }) => `2px solid ${theme.colors.lightGray}`};

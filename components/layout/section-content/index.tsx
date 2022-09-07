@@ -8,6 +8,7 @@ export interface SectionContentProps {
 }
 
 const Container = styled.div<SectionContentProps>`
+  box-sizing: content-box;
   max-width: ${({ theme }) => theme.contentSize}px;
   padding: ${({ theme, verticalPadding = theme.space.outer }) =>
       verticalPadding}px
