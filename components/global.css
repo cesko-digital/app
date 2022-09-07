@@ -6,6 +6,8 @@
   overflow-x: hidden;
 }
 
+/* Initial styles after Tailwind reset */
+
 html {
   line-height: 1.3;
 }
@@ -23,6 +25,13 @@ p {
   margin-block-start: 1em;
   margin-block-end: 1em;
 }
+
+ul li {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
+/* Fonts */
 
 @font-face {
   font-family: "Cesko Digital";
