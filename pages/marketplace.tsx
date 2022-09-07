@@ -2,7 +2,6 @@ import { NextPage, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, BodySmall, Heading1 } from "components/typography";
 import { ButtonAsLink } from "components/links";
-import { ButtonSize } from "components/buttons";
 import { siteData } from "lib/site-data";
 import DateTime from "components/datetime";
 import { toHTML } from "slack-markdown";
@@ -46,7 +45,7 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
   );
 };
 
-const Offer = (offer: MarketPlaceOffer) => {
+export const Offer = (offer: MarketPlaceOffer) => {
   const date = new Date(offer.createdAt);
   const html = toHTML(offer.text);
   const session = useSession();

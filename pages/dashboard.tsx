@@ -16,6 +16,8 @@ import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { YTPlaylistItem } from "lib/data-sources/youtube";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { MarketPlaceOffer } from "lib/airtable/market-place";
+import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import {
   compareEventsByTime,
   isEventPast,
@@ -23,6 +25,7 @@ import {
 } from "lib/airtable/event";
 
 interface PageProps {
+  marketPlaceOffers: readonly MarketPlaceOffer[];
   opportunities: readonly PortalOpportunity[];
   upcomingEvents: readonly PortalEvent[];
   projects: readonly PortalProject[];
@@ -48,9 +51,47 @@ const Dashboard: NextPage<PageProps> = (props) => {
         </SectionContent>
       </Section>
       <OpportunitiesSection {...props} />
+      {props.marketPlaceOffers.length > 0 && <MarketPlaceSection {...props} />}
       {props.upcomingEvents.length > 0 && <EventsSection {...props} />}
       {props.videos.length > 0 && <EduSection {...props} />}
     </Layout>
+  );
+};
+
+const MarketPlaceSection: React.FC<PageProps> = ({
+  marketPlaceOffers: offers,
+}) => {
+  return (
+    <Section>
+      <SectionContent>
+        <Typography.Heading2>Market-Place</Typography.Heading2>
+        <Typography.Body>
+          Krátkodobé příležitosti k zapojení v neziskovkách mimo Česko.Digital
+        </Typography.Body>
+        <div style={{ paddingTop: "40px" }}>
+          {offers.map((offer) => (
+            <Offer key={offer.id} {...offer} />
+          ))}
+        </div>
+      </SectionContent>
+      <S.ButtonWrapper>
+        <NextLink href={Route.marketplace}>
+          <a>
+            <Button>Víc podobných nabídek</Button>
+          </a>
+        </NextLink>
+      </S.ButtonWrapper>
+    </Section>
+  );
+};
+
+// TBD: Styling
+const Offer = (offer: MarketPlaceOffer) => {
+  const html = slackMarkupToHTML(offer.text);
+  return (
+    <Typography.Body>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </Typography.Body>
   );
 };
 
@@ -67,6 +108,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
         <Typography.Heading2>
           {strings.pages.dashboard.currentOpportunities}
         </Typography.Heading2>
+        <Typography.Body>Zapojte se v projektech Česko.Digital</Typography.Body>
         <S.OpportunitiesMainWrapper>
           {opportunities.map((op) => (
             <OpportunityItem
@@ -154,6 +196,9 @@ const Video = (video: YTPlaylistItem) => {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events } = siteData;
   const videos = shuffled(siteData.videos).slice(0, 6);
+  const marketPlaceOffers = siteData.marketPlaceOffers.filter(
+    (o) => o.state === "published"
+  );
   const opportunities = getFeaturedOpportunities(
     siteData.opportunities.filter((o) => o.status === "live")
   );
@@ -164,6 +209,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .slice(0, 6);
   return {
     props: {
+      marketPlaceOffers,
       upcomingEvents,
       opportunities,
       videos,
