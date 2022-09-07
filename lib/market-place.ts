@@ -60,6 +60,41 @@ const isRegularNewThreadMessage = (msg: MessageEvent) =>
   msg.channel_type === "channel" && !msg.subtype && !msg.thread_ts;
 
 //
+// Offer Publication
+//
+
+export async function notifyOwnersAboutPublishedOffers(slackToken: string) {
+  const offers = await getAllMarketPlaceOffers();
+  const justPublished = (o: MarketPlaceOffer) => {
+    const age = secondsSinceOfferWasPublished(o);
+    return !!age && age < secondsPerDay;
+  };
+  const justPublishedOffers = offers
+    .filter((o) => o.state === "published")
+    .filter(justPublished);
+  for (const offer of justPublishedOffers) {
+    // Notify interested parties in the original thread
+    await slack.chat.postMessage({
+      channel: marketPlaceSlackChannelId,
+      token: slackToken,
+      thread_ts: offer.originalMessageTimestamp,
+      text: `Ahoj! Poptávka byla úspěšně zveřejněna na https://cesko.digital/marketplace 🎉`,
+    });
+    // Mark thread as published with an emoji reaction
+    await slack.reactions
+      .add({
+        channel: marketPlaceSlackChannelId,
+        token: slackToken,
+        timestamp: offer.originalMessageTimestamp,
+        name: "mega",
+      })
+      .catch((error) => {
+        /* We don’t care about emoji reaction errors */
+      });
+  }
+}
+
+//
 // Offer Expirations
 //
 
