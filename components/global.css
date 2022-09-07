@@ -26,6 +26,11 @@ p {
   margin-block-end: 1em;
 }
 
+ul {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
 h2,
 h3 {
   font-weight: bold;
