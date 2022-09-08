@@ -54,7 +54,7 @@ const EmptyPlaceholder = () => (
       <a href="https://cesko-digital.slack.com/archives/CLVAH28P3">
         #market-place
       </a>
-      . Tam si jí všimne editor, který ji následně pověsí sem na web.
+      . Tam si poptávky všimne editor, který ji následně pověsí sem na web.
     </Body>
   </div>
 );
