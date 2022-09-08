@@ -73,7 +73,10 @@ const Offer = (offer: MarketPlaceOffer) => {
         </p>
       </div>
       {session.status !== "authenticated" && (
-        <ButtonAsLink to={`mailto:${offer.ownerEmail}`} inverted>
+        <ButtonAsLink
+          to={`mailto:${offer.ownerContactEmail ?? offer.ownerEmail}`}
+          inverted
+        >
           Ozvat se mailem
         </ButtonAsLink>
       )}
