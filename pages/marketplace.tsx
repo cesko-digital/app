@@ -36,6 +36,7 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
       </Section>
       <Section>
         <SectionContent>
+          {offers.length === 0 && <EmptyPlaceholder />}
           {offers.map((offer) => (
             <Offer key={offer.id} {...offer} />
           ))}
@@ -45,7 +46,20 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
   );
 };
 
-export const Offer = (offer: MarketPlaceOffer) => {
+const EmptyPlaceholder = () => (
+  <div className="min-h-[200px] italic max-w-prose">
+    <Body>
+      Aktuálně nejsou zveřejněny žádné poptávky. Pokud nějakou chcete přidat,
+      napište v našem Slacku do kanálu{" "}
+      <a href="https://cesko-digital.slack.com/archives/CLVAH28P3">
+        #market-place
+      </a>
+      . Tam si jí všimne editor, který ji následně pověsí sem na web.
+    </Body>
+  </div>
+);
+
+const Offer = (offer: MarketPlaceOffer) => {
   const date = new Date(offer.createdAt);
   const html = toHTML(offer.text);
   const session = useSession();
