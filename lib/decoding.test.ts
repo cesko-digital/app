@@ -1,5 +1,5 @@
-import { number } from "typescript-json-decoder";
-import { decodeUrl, decodeValidItemsFromArray } from "./decoding";
+import { number, record, string } from "typescript-json-decoder";
+import { decodeObject, decodeUrl, decodeValidItemsFromArray } from "./decoding";
 
 test("Decode URL", () => {
   expect(() => decodeUrl("bagr")).toThrow();
@@ -14,4 +14,14 @@ test("Decode URL", () => {
 test("Decode valid items from array", () => {
   const decoder = decodeValidItemsFromArray(number, "Test", () => {});
   expect(decoder(["foo", "bar", 42])).toEqual([42]);
+});
+
+test("Decode object", () => {
+  const decoder = decodeObject(record({ name: string, age: number }));
+  expect(decoder({ userA: { name: "Miles", age: 42 } })).toEqual({
+    userA: {
+      name: "Miles",
+      age: 42,
+    },
+  });
 });
