@@ -1,5 +1,6 @@
-import { getSlackUser, isRegularUser, sendDirectMessage } from "lib/slack/user";
+import { getSlackUser, isRegularUser } from "lib/slack/user";
 import { upsertSlackUser } from "lib/airtable/slack-user";
+import { sendDirectMessage } from "./slack/message";
 import { join } from "path";
 import fs from "fs";
 import {

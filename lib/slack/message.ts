@@ -1,6 +1,7 @@
 import { getAllPages } from "./utils";
 import slack from "slack";
 import {
+  boolean,
   decodeType,
   literal,
   optional,
@@ -57,4 +58,27 @@ export async function getMessageReplies(
   return slack.conversations
     .replies({ token, channel, ts: timestamp })
     .then((response) => response.messages.map(decodeMessageEvent));
+}
+
+/** Send direct message to user with given Slack ID */
+export async function sendDirectMessage(
+  token: string,
+  user: string,
+  text: string
+) {
+  const decodeResponse = record({
+    ok: boolean,
+    channel: record({
+      id: string,
+    }),
+  });
+  const channel = await slack.conversations
+    .open({ token, users: user })
+    .then(decodeResponse)
+    .then((response) => response.channel.id);
+  await slack.chat.postMessage({
+    channel,
+    token,
+    text,
+  });
 }
