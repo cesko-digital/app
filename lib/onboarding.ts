@@ -35,6 +35,7 @@ export async function confirmUserAccount(slackId: string) {
     slackId: slackUser.id,
     name: slackUser.real_name || slackUser.name,
     email: slackUser.profile.email,
+    contactEmail: undefined,
     slackAvatarUrl: slackUser.profile.image_512,
     userProfileRelationId: undefined,
   });
