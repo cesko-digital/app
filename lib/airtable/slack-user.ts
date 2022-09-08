@@ -37,6 +37,7 @@ export const decodeSlackUser = record({
   slackId: string,
   name: string,
   email: optional(string),
+  contactEmail: optional(string),
   slackAvatarUrl: optional(string),
   userProfileRelationId: field("userProfile", relationToOne),
 });
@@ -47,6 +48,7 @@ export function encodeSlackUser(user: Partial<SlackUser>): Partial<Schema> {
     id: user.id,
     name: user.name,
     email: user.email,
+    contactEmail: user.contactEmail,
     slackId: user.slackId,
     slackAvatarUrl: user.slackAvatarUrl,
     userProfile: user.userProfileRelationId

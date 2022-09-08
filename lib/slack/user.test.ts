@@ -24,5 +24,19 @@ test("Decode profile", () => {
     display_name: "Tomáš Znamenáček",
     image_512: "https://…512.png",
     email: undefined,
+    fields: {
+      Xf01F0M3N546: {
+        alt: "",
+        value: "zoul@cesko.digital",
+      },
+      XfNQG9GG77: {
+        alt: "",
+        value: "velmi aktivně (10+h/týdně)",
+      },
+      XfRZG8T8TU: {
+        alt: "",
+        value: "https://github.com/zoul",
+      },
+    },
   });
 });

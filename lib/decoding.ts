@@ -1,7 +1,9 @@
 import { MarkdownString } from "./utils";
 import {
   array,
+  Decoder,
   DecoderFunction,
+  decodeType,
   dict,
   Pojo,
   string,
@@ -58,6 +60,13 @@ export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
   (value: Pojo) =>
     [...dict(decodeItem)(value).values()];
+
+/** Decode an object with given entries */
+export function decodeObject<D extends Decoder<unknown>>(
+  decoder: D
+): DecoderFunction<Record<string, decodeType<D>>> {
+  return (value: Pojo) => Object.fromEntries(dict(decoder)(value));
+}
 
 /**
  * Decode skills such as Marketing, Design, …

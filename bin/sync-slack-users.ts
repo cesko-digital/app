@@ -1,7 +1,12 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { isDeepStrictEqual } from "util";
-import { getAllWorkspaceUsers, isRegularUser, SlackUser } from "lib/slack/user";
+import {
+  getAllWorkspaceUsers,
+  getUserProfile,
+  isRegularUser,
+  SlackUser,
+} from "lib/slack/user";
 import {
   createSlackUsers,
   getAllSlackUsers,
@@ -10,6 +15,9 @@ import {
 } from "lib/airtable/slack-user";
 
 const { SLACK_SYNC_TOKEN: slackToken = "", DEBUG: debug = "" } = process.env;
+
+/** ID of the custom Slack profile field that holds a public contact e-mail address */
+const emailFieldId = "Xf01F0M3N546";
 
 /**
  * Sync all Slack users to Airtable
@@ -29,6 +37,17 @@ async function main() {
     `Loaded ${regularUsers.length} regular users, ${users.length} users total.`
   );
 
+  // The user profiles supplied by the API call above do not contain
+  // custom user profile fields that we need, so we have to query those
+  // individually by another API call.
+  console.log(`Downloading user profiles. This _will_ take a while.`);
+  for (const user of users) {
+    // Only extract custom profile fields, keeping the rest of the profile
+    user.profile.fields = await getUserProfile(slackToken, user.id).then(
+      (profile) => profile.fields
+    );
+  }
+
   console.log("Saving users to Airtable.");
   await upsertSlackUsers(regularUsers);
   console.log("Success! 🎉");
@@ -39,6 +58,7 @@ function convertUser(user: SlackUser): Omit<AirtableSlackUser, "id"> {
     slackId: user.id,
     name: user.real_name || user.name,
     email: user.profile.email,
+    contactEmail: user.profile.fields[emailFieldId]?.value,
     slackAvatarUrl: user.profile.image_512,
     userProfileRelationId: undefined,
   };

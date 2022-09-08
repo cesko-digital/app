@@ -1,5 +1,6 @@
 import { getAllPages } from "./utils";
 import slack from "slack";
+import { decodeObject, withDefault } from "lib/decoding";
 import {
   boolean,
   decodeType,
@@ -8,13 +9,29 @@ import {
   string,
 } from "typescript-json-decoder";
 
-/** Slack user profile with information such as read name or e-mail */
+/** Decode custom Slack profile fields */
+const decodeCustomFields = withDefault(
+  decodeObject(
+    record({
+      value: string,
+      alt: string,
+    })
+  ),
+  {} // use empty object when value is invalid or missing
+);
+
+/**
+ * Slack user profile with information such as read name or e-mail
+ *
+ * Not all API calls return all fields.
+ */
 export type SlackProfile = decodeType<typeof decodeSlackProfile>;
 export const decodeSlackProfile = record({
   real_name: optional(string),
   display_name: string,
   email: optional(string),
   image_512: optional(string),
+  fields: decodeCustomFields,
 });
 
 /** Slack user with information such as user ID, team ID or profile */
@@ -67,6 +84,22 @@ export async function getSlackUser(
   return decodeSlackUser(slackResponse.user);
 }
 
+/**
+ * Get detailed user profile
+ *
+ * Unlike the profile returned in the `getSlackUser` response, this profile
+ * should also include custom profile fields.
+ */
+export async function getUserProfile(
+  token: string,
+  slackId: string
+): Promise<SlackProfile> {
+  return await slack.users.profile
+    .get({ token, user: slackId })
+    .then((response) => response.profile)
+    .then(decodeSlackProfile);
+}
+
 //
 // Samples
 //
@@ -80,7 +113,20 @@ export const sampleProfilePayload = {
   real_name_normalized: "Tomas Znamenacek",
   display_name: "Tomáš Znamenáček",
   display_name_normalized: "Tomas Znamenacek",
-  fields: null,
+  fields: {
+    XfNQG9GG77: {
+      value: "velmi aktivně (10+h/týdně)",
+      alt: "",
+    },
+    Xf01F0M3N546: {
+      value: "zoul@cesko.digital",
+      alt: "",
+    },
+    XfRZG8T8TU: {
+      value: "https://github.com/zoul",
+      alt: "",
+    },
+  },
   status_text: "",
   status_emoji: "",
   status_emoji_display_info: [],
