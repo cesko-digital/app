@@ -6,15 +6,16 @@ import EventCard from "components/dashboard/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
-import { Route } from "lib/utils";
-import CeduCard from "components/dashboard/cedu-card";
-import { PortalVideo } from "lib/data-sources/cedu";
+import { Route, shuffled } from "lib/utils";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
+import { YTPlaylistItem } from "lib/data-sources/youtube";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import {
   compareEventsByTime,
   isEventPast,
@@ -25,7 +26,7 @@ interface PageProps {
   opportunities: readonly PortalOpportunity[];
   upcomingEvents: readonly PortalEvent[];
   projects: readonly PortalProject[];
-  videos: readonly PortalVideo[];
+  videos: readonly YTPlaylistItem[];
 }
 
 const Dashboard: NextPage<PageProps> = (props) => {
@@ -48,7 +49,7 @@ const Dashboard: NextPage<PageProps> = (props) => {
       </Section>
       <OpportunitiesSection {...props} />
       {props.upcomingEvents.length > 0 && <EventsSection {...props} />}
-      <CeduSection {...props} />
+      {props.videos.length > 0 && <EduSection {...props} />}
     </Layout>
   );
 };
@@ -114,7 +115,7 @@ const EventsSection: React.FC<PageProps> = ({ upcomingEvents, projects }) => {
   );
 };
 
-const CeduSection: React.FC<PageProps> = ({ videos }) => {
+const EduSection: React.FC<PageProps> = ({ videos }) => {
   return (
     <Section id="section-cedu">
       <SectionContent>
@@ -122,21 +123,36 @@ const CeduSection: React.FC<PageProps> = ({ videos }) => {
           <S.Title>{strings.pages.dashboard.cedu}</S.Title>
         </S.CategoryHeader>
         <S.Container>
-          <S.CardWrapper>
-            <CardRow>
-              {videos.map((video, index) => (
-                <CeduCard key={index} video={video} />
-              ))}
-            </CardRow>
-          </S.CardWrapper>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {videos.map((video) => (
+              <Video key={video.id} {...video} />
+            ))}
+          </div>
         </S.Container>
       </SectionContent>
     </Section>
   );
 };
 
+const Video = (video: YTPlaylistItem) => {
+  return (
+    <div className="pb-6 last:pb-0 mb-3 last:mb-0 border-b border-lightGray border-dotted md:border-none last:border-none">
+      <div className="">
+        <LiteYouTubeEmbed
+          id={video.snippet.resourceId.videoId}
+          title={video.snippet.title}
+          poster="hqdefault"
+          noCookie={true}
+        />
+      </div>
+      <p className="text-[18px]">{video.snippet.title}</p>
+    </div>
+  );
+};
+
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { projects, events, videos } = siteData;
+  const { projects, events } = siteData;
+  const videos = shuffled(siteData.videos).slice(0, 6);
   const opportunities = getFeaturedOpportunities(
     siteData.opportunities.filter((o) => o.status === "live")
   );

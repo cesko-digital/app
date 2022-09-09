@@ -1,14 +1,14 @@
-import { getAllVideos, PortalVideo } from "./data-sources/cedu";
 import { Article, getArticleIndex } from "./data-sources/blog";
 import { Field, getAllSkills } from "./airtable/skills";
-import * as Local from "./data-sources/dummy";
-import apm from "elastic-apm-node";
 import { enableAPMLogging } from "./apm";
 import { getAllUsers, PortalUser } from "./airtable/user";
 import { getAllProjects, PortalProject } from "./airtable/project";
 import { getAllEvents, PortalEvent } from "./airtable/event";
 import { getAllOpportunities, PortalOpportunity } from "./airtable/opportunity";
 import { getAllPartners, PortalPartner } from "./airtable/partner";
+import { getAllVideos, YTPlaylistItem } from "./data-sources/youtube";
+import * as Local from "./data-sources/dummy";
+import apm from "elastic-apm-node";
 
 enableAPMLogging();
 
@@ -18,7 +18,7 @@ export interface SiteData {
   users: readonly PortalUser[];
   events: readonly PortalEvent[];
   partners: readonly PortalPartner[];
-  videos: readonly PortalVideo[];
+  videos: readonly YTPlaylistItem[];
   blogPosts: readonly Article[];
   skills: readonly Field[];
 }
@@ -31,7 +31,7 @@ interface DataSource {
   users: Async<PortalUser[]>;
   events: Async<PortalEvent[]>;
   partners: Async<PortalPartner[]>;
-  videos: Async<PortalVideo[]>;
+  videos: Async<YTPlaylistItem[]>;
   blogPosts: Async<Article[]>;
   skills: Async<Field[]>;
 }
