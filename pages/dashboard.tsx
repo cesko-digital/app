@@ -169,6 +169,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       videos,
       projects,
     },
+    revalidate: 120, // Refresh every two minutes
   };
 };
 
