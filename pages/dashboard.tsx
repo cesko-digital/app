@@ -123,7 +123,7 @@ const EduSection: React.FC<PageProps> = ({ videos }) => {
           <S.Title>{strings.pages.dashboard.cedu}</S.Title>
         </S.CategoryHeader>
         <S.Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-[20px] md:mx-0">
             {videos.map((video) => (
               <Video key={video.id} {...video} />
             ))}
@@ -136,15 +136,13 @@ const EduSection: React.FC<PageProps> = ({ videos }) => {
 
 const Video = (video: YTPlaylistItem) => {
   return (
-    <div className="pb-6 last:pb-0 mb-3 last:mb-0 border-b border-lightGray border-dotted md:border-none last:border-none">
-      <div className="">
-        <LiteYouTubeEmbed
-          id={video.snippet.resourceId.videoId}
-          title={video.snippet.title}
-          poster="hqdefault"
-          noCookie={true}
-        />
-      </div>
+    <div className="pb-6">
+      <LiteYouTubeEmbed
+        id={video.snippet.resourceId.videoId}
+        title={video.snippet.title}
+        poster="hqdefault"
+        noCookie={true}
+      />
       <p className="text-[18px]">{video.snippet.title}</p>
     </div>
   );
