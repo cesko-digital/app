@@ -15,7 +15,6 @@ import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { YTPlaylistItem } from "lib/data-sources/youtube";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import {
   compareEventsByTime,
   isEventPast,
