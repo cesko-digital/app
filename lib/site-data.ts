@@ -53,7 +53,7 @@ const SampleDataSource: DataSource = {
   users: Local.getAllUsers,
   events: Local.getAllEvents,
   partners: Local.getAllPartners,
-  videos: getAllVideos, // TODO
+  videos: Local.getAllVideos,
   blogPosts: getArticleIndex, // TODO
   skills: Local.getAllSkills,
 };
