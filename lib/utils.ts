@@ -11,6 +11,7 @@ export const Route = {
   brandManual: "https://znacka.cesko.digital/",
   blog: "https://blog.cesko.digital",
   slackOnboarding: "https://slack.cesko.digital/",
+  youtube: "https://www.youtube.com/c/ČeskoDigital",
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",

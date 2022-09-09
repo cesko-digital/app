@@ -9,7 +9,8 @@ import { CardRow } from "components/layout";
 import { Route, shuffled } from "lib/utils";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
-import Link from "next/link";
+import { Link } from "components/links";
+import { default as NextLink } from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
@@ -76,11 +77,11 @@ const OpportunitiesSection: React.FC<PageProps> = ({
           ))}
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
-          <Link href={Route.opportunities}>
+          <NextLink href={Route.opportunities}>
             <a>
               <Button>{strings.pages.dashboard.moreOpportunities}</Button>
             </a>
-          </Link>
+          </NextLink>
         </S.ButtonWrapper>
       </SectionContent>
     </Section>
@@ -118,9 +119,12 @@ const EduSection: React.FC<PageProps> = ({ videos }) => {
   return (
     <Section id="section-cedu">
       <SectionContent>
-        <S.CategoryHeader>
-          <S.Title>{strings.pages.dashboard.cedu}</S.Title>
-        </S.CategoryHeader>
+        <div className="flex flex-row flex-wrap justify-between items-end">
+          <div className="mb-3 md:mb-0">
+            <S.Title>{strings.pages.dashboard.cedu}</S.Title>
+          </div>
+          <Link to={Route.youtube}>Všechna videa</Link>
+        </div>
         <S.Container>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-[20px] md:mx-0">
             {videos.map((video) => (
