@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     [o.twitter, "https://twitter.com/CeskoDigital"],
     [o.linkedin, "https://www.linkedin.com/company/cesko-digital"],
     [o.instagram, "https://www.instagram.com/cesko.digital/"],
-    [o.youtube, "https://www.youtube.com/channel/UCYMZxCNq_IWI8URpcx2sBwg"],
+    [o.youtube, "https://www.youtube.com/c/ČeskoDigital"],
     [o.podcast, "https://anchor.fm/poslouchatdigital"],
     [o.github, "https://github.com/cesko-digital"],
     [o.cocuma, "https://www.cocuma.cz/company/cesko-digital/jobs/"],

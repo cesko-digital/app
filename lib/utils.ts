@@ -1,5 +1,4 @@
 import { marked } from "marked";
-import { PortalVideo } from "lib/data-sources/cedu";
 import { PortalProject } from "lib/airtable/project";
 import { PortalEvent } from "lib/airtable/event";
 import { PortalOpportunity } from "lib/airtable/opportunity";
@@ -12,6 +11,7 @@ export const Route = {
   brandManual: "https://znacka.cesko.digital/",
   blog: "https://blog.cesko.digital",
   slackOnboarding: "https://slack.cesko.digital/",
+  youtube: "https://www.youtube.com/c/ČeskoDigital",
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",
@@ -26,7 +26,6 @@ export const Route = {
   toProject: (p: PortalProject) => `/projects/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
   toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
-  toVideo: (v: PortalVideo) => `/cedu/${v.slug}`,
 };
 
 /** Our Google Analytics tracking ID */
@@ -73,6 +72,9 @@ export function shuffleInPlace<T>(array: T[]): T[] {
   }
   return array;
 }
+
+/** Return a shuffled copy of the input array */
+export const shuffled = <T>(array: readonly T[]) => shuffleInPlace([...array]);
 
 /** Split array to chunks of size `size` */
 export function splitToChunks<T>(array: readonly T[], size: number) {

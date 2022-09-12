@@ -29,6 +29,11 @@
       "source": "/projekty/(.*)",
       "destination": "/projects/$1",
       "statusCode": 301
+    },
+    {
+      "source": "/cedu/devtalk-1-infrastruktura",
+      "destination": "https://www.youtube.com/watch?v=5IlYHMlIZCc",
+      "statusCode": 301
     }
   ],
   "github": {
