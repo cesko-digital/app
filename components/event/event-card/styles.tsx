@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  box-sizing: content-box;
   width: calc(100% - 64px);
   min-width: 250px;
   margin: auto;
