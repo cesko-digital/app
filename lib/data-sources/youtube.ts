@@ -72,5 +72,9 @@ export function getAllVideos(
   apiKey = process.env.YOUTUBE_API_KEY || "",
   playlistId = "PLOX5xelTsEv-MA-nwkY4Sm9gIER3bWm_p"
 ): Promise<YTPlaylistItem[]> {
-  return getPlaylistItems(apiKey, playlistId);
+  const isNotPrivateVideo = (v: YTPlaylistItem) =>
+    v.snippet.title !== "Private video";
+  return getPlaylistItems(apiKey, playlistId).then((videos) =>
+    videos.filter(isNotPrivateVideo)
+  );
 }
