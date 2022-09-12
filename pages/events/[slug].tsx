@@ -13,7 +13,11 @@ import { Route } from "lib/utils";
 import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
-import { PortalEvent } from "lib/airtable/event";
+import {
+  compareEventsByTime,
+  isEventPast,
+  PortalEvent,
+} from "lib/airtable/event";
 
 interface PageProps {
   event: PortalEvent;
@@ -30,11 +34,26 @@ interface QueryParams extends ParsedUrlQuery {
 const Page: NextPage<PageProps> = (props) => {
   const { event, project, projects, owner, events } = props;
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
+
   const getEventProject = (e: PortalEvent) =>
     projects.find((p) => p.id === e.projectId)!;
-  const otherEvents = events.filter(
-    (e) => e.status === "live" && e.id !== event.id
-  );
+
+  /** Sort future events first, sorted ascending date */
+  const compareByRelevance = (a: PortalEvent, b: PortalEvent) => {
+    const pastA = isEventPast(a);
+    const pastB = isEventPast(b);
+    if (pastA && !pastB) {
+      return 1; // a after b
+    } else if (pastB && !pastA) {
+      return -1; // a before b
+    } else {
+      return compareEventsByTime(a, b);
+    }
+  };
+  const otherEvents = [...events]
+    .filter((e) => e.status === "live" && e.id !== event.id)
+    .sort(compareByRelevance);
+
   return (
     <Layout
       crumbs={[
