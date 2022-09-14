@@ -70,6 +70,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   );
   return {
     props: { projects },
+    // Regenerate every five minutes to refresh project info
+    revalidate: 60 * 5,
   };
 };
 

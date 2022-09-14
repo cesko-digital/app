@@ -139,6 +139,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   return {
     props: { event, events, project, projects, owner },
     notFound: !event || !project || !owner,
+    // Regenerate every five minutes to refresh event info
+    revalidate: 60 * 5,
   };
 };
 

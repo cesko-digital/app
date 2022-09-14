@@ -217,6 +217,8 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
       opportunities,
       relatedEvents,
     },
+    // Regenerate every five minutes to refresh project info
+    revalidate: 60 * 5,
   };
 };
 

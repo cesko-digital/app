@@ -194,6 +194,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       opportunities: opportunities.filter((o) => o.status === "live"),
       projects,
     },
+    // Regenerate every five minutes to refresh opportunities info
+    revalidate: 60 * 5,
   };
 };
 

@@ -82,6 +82,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       featuredProjects,
       partners,
     },
+    // regenerate once an hour, mostly to just pick a new set of featured projects
+    revalidate: 60 * 60,
   };
 };
 
