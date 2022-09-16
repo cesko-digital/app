@@ -9,6 +9,10 @@ import { getAllPartners, PortalPartner } from "./airtable/partner";
 import { getAllVideos, YTPlaylistItem } from "./data-sources/youtube";
 import * as Local from "./data-sources/dummy";
 import apm from "elastic-apm-node";
+import {
+  getAllTeamEngagements,
+  TeamEngagement,
+} from "./airtable/team-engagement";
 
 enableAPMLogging();
 
@@ -21,6 +25,7 @@ export interface SiteData {
   videos: readonly YTPlaylistItem[];
   blogPosts: readonly Article[];
   skills: readonly Field[];
+  teamEngagements: TeamEngagement[];
 }
 
 type Async<T> = () => Promise<T>;
@@ -34,6 +39,7 @@ interface DataSource {
   videos: Async<YTPlaylistItem[]>;
   blogPosts: Async<Article[]>;
   skills: Async<Field[]>;
+  teamEngagements: Async<TeamEngagement[]>;
 }
 
 const ProductionDataSource: DataSource = {
@@ -45,6 +51,7 @@ const ProductionDataSource: DataSource = {
   videos: getAllVideos,
   blogPosts: getArticleIndex,
   skills: getAllSkills,
+  teamEngagements: getAllTeamEngagements,
 };
 
 const SampleDataSource: DataSource = {
@@ -56,6 +63,7 @@ const SampleDataSource: DataSource = {
   videos: Local.getAllVideos,
   blogPosts: getArticleIndex, // TODO
   skills: Local.getAllSkills,
+  teamEngagements: getAllTeamEngagements, // TODO
 };
 
 async function loadSiteData(): Promise<SiteData> {
@@ -95,6 +103,7 @@ async function loadSiteData(): Promise<SiteData> {
     videos,
     blogPosts,
     skills,
+    teamEngagements,
   ] = await Promise.all([
     dataSource.projects(),
     dataSource.opportunities(),
@@ -104,6 +113,7 @@ async function loadSiteData(): Promise<SiteData> {
     dataSource.videos(),
     dataSource.blogPosts(),
     dataSource.skills(),
+    dataSource.teamEngagements(),
   ]);
 
   apm.endTransaction();
@@ -125,6 +135,7 @@ async function loadSiteData(): Promise<SiteData> {
     opportunities,
     users,
     events,
+    teamEngagements,
   });
 }
 
