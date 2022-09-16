@@ -53,7 +53,10 @@ export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
  * if the value _is_ there, the Airtable API always returns an array, so we simplify
  * the whole thing to either the singleton value or undefined.
  */
-export const relationToOne = withDefault(takeFirst(array(string)), undefined);
+export const relationToZeroOrOne = withDefault(
+  takeFirst(array(string)),
+  undefined
+);
 
 /** Extract a dict, returning only its values */
 export const decodeDictValues =
