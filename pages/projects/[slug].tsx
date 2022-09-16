@@ -15,9 +15,9 @@ import { Route } from "lib/utils";
 import { Article } from "lib/data-sources/blog";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
-import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
+import { TeamEngagement } from "lib/airtable/team-engagement";
 import {
   compareEventsByTime,
   isEventPast,
@@ -27,7 +27,7 @@ import {
 interface PageProps {
   project: PortalProject;
   otherProjects: readonly PortalProject[];
-  coordinators: readonly PortalUser[];
+  coordinators: readonly TeamEngagement[];
   opportunities: readonly PortalOpportunity[];
   relatedBlogPosts: readonly Article[];
   relatedEvents: readonly PortalEvent[];
@@ -189,11 +189,11 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, users, events } = siteData;
+  const { projects, teamEngagements, events } = siteData;
   const project = projects.find((p) => p.slug === slug)!;
-  const coordinators = project.coordinatorIds
-    .map((id) => users.find((user) => user.id === id)!)
-    .filter((c) => c !== undefined);
+  const coordinators = project.teamEngagementIds
+    .map((id) => teamEngagements.find((e) => e.id === id)!)
+    .filter((e) => e !== undefined);
   const opportunities = siteData.opportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );
