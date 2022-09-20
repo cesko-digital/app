@@ -63,7 +63,7 @@ const SampleDataSource: DataSource = {
   videos: Local.getAllVideos,
   blogPosts: getArticleIndex, // TODO
   skills: Local.getAllSkills,
-  teamEngagements: getAllTeamEngagements, // TODO
+  teamEngagements: Local.getAllTeamEngagements,
 };
 
 async function loadSiteData(): Promise<SiteData> {
