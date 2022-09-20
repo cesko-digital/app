@@ -32,6 +32,10 @@ interface PageProps {
   videos: readonly YTPlaylistItem[];
 }
 
+interface Props {
+  offer: MarketPlaceOffer;
+}
+
 const Dashboard: NextPage<PageProps> = (props) => {
   return (
     <Layout
@@ -62,22 +66,24 @@ const MarketPlaceSection: React.FC<PageProps> = ({
   marketPlaceOffers: offers,
 }) => {
   return (
-    <Section>
+    <Section id="marketplace">
       <SectionContent>
-        <Typography.Heading2>Market-Place</Typography.Heading2>
+        <Typography.Heading2>
+          {strings.pages.dashboard.marketplaceOffers}
+        </Typography.Heading2>
         <Typography.Body>
-          Krátkodobé příležitosti k zapojení v neziskovkách mimo Česko.Digital
+          Příležitosti k zapojení v projektech mimo Česko.Digital
         </Typography.Body>
-        <div style={{ paddingTop: "40px" }}>
+        <div className="max-w-content py-2 lg:py-5 m-auto relative">
           {offers.map((offer) => (
-            <Offer key={offer.id} {...offer} />
+            <Offer key={offer.id} offer={offer} />
           ))}
         </div>
       </SectionContent>
       <S.ButtonWrapper>
         <NextLink href={Route.marketplace}>
           <a>
-            <Button>Víc podobných nabídek</Button>
+            <Button>Více podobných nabídek</Button>
           </a>
         </NextLink>
       </S.ButtonWrapper>
@@ -85,15 +91,34 @@ const MarketPlaceSection: React.FC<PageProps> = ({
   );
 };
 
-// TBD: Styling
-const Offer = (offer: MarketPlaceOffer) => {
-  const html = slackMarkupToHTML(offer.text);
+const Offer: React.FC<Props> = ({ offer }) => {
+  // TODO: Truncate text to first sentence
+  let htmlContent = slackMarkupToHTML(offer.text);
+  htmlContent = htmlToText(htmlContent);
+  let firstSentence = htmlContent.split(".")[0];
+  let trailContent = htmlContent.replaceAll(firstSentence + ".", "");
   return (
-    <Typography.Body>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </Typography.Body>
+    <div className="flex py-4 border-solid border-f0f0f2 border-b last:border-none">
+      <div className="mr-10 md:truncate text-slate-400">
+        <span className="text-black font-medium mr-1">
+          {firstSentence + ". "}
+        </span>
+        <span className="text-slate-400 md:inline hidden">{trailContent}</span>
+      </div>
+      <div>
+        <NextLink href={Route.marketplace + "#" + offer.id}>
+          <a>Detail</a>
+        </NextLink>
+      </div>
+    </div>
   );
 };
+
+// TODO: Refactor :)
+function htmlToText(input: string) {
+  const regex = /(<([^>]+)>)/gi;
+  return input.replace(regex, "");
+}
 
 const OpportunitiesSection: React.FC<PageProps> = ({
   opportunities,
@@ -103,7 +128,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
     projects.find((p) => p.id === o.projectId)!;
   // How should we sort this? How about a random sort?
   return (
-    <Section>
+    <Section id="opportunities">
       <SectionContent>
         <Typography.Heading2>
           {strings.pages.dashboard.currentOpportunities}
