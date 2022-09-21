@@ -36,7 +36,7 @@ export const OpportunityMetaWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-top: 14px;
+  margin-top: 2px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
@@ -51,10 +51,15 @@ export const OpportunityRightWrapper = styled.div`
 export const OpportunityRightContent = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 24px;
 
   a {
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  a:hover {
+    border-bottom: 1px solid #080831;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
