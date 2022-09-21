@@ -8,12 +8,11 @@ import strings from "content/strings.json";
 import DateTime from "components/datetime";
 import { toHTML } from "slack-markdown";
 import { useSession } from "next-auth/react";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import {
   compareOffersByTime,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
-import styles from "./marketplace.module.css";
 
 type PageProps = {
   offers: MarketPlaceOffer[];
@@ -25,16 +24,13 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
       crumbs={[{ label: "Marketplace" }]}
       head={{
         title: "Marketplace",
-        description:
-          "Příležitosti k zapojení v projektech mimo Česko.Digital",
+        description: "Příležitosti k zapojení v projektech mimo Česko.Digital",
       }}
     >
       <Section>
         <SectionContent>
           <Heading1>{strings.pages.dashboard.marketplaceOffers}</Heading1>
-          <Body>
-            Příležitosti k zapojení v projektech mimo Česko.Digital
-          </Body>
+          <Body>Příležitosti k zapojení v projektech mimo Česko.Digital</Body>
         </SectionContent>
       </Section>
       <Section>
@@ -69,17 +65,24 @@ const Offer = (offer: MarketPlaceOffer) => {
   const session = useSession();
   const router = useRouter();
 
-  const hash = router.asPath.split('#')[1];
+  const hash = router.asPath.split("#")[1];
   const isHighlighted = hash && hash == offer.id;
-  // console.log(offer.id, isHighlighted)
 
   let htmlContent = toHTML(offer.text);
-  htmlContent = '<p>' + htmlContent.replaceAll('<br>', '</p><p>') + '</p>';
+  htmlContent = "<p>" + htmlContent.replaceAll("<br>", "</p><p>") + "</p>";
 
   return (
-    <div id={offer.id} className={`mb-10 pb-10 border-solid border-f0f0f2 border-b last:border-none marketplace-offer ${isHighlighted ? 'highlighted' : ''}`}>
+    <div
+      id={offer.id}
+      className={`mb-10 pb-10 border-solid border-f0f0f2 border-b last:border-none marketplace-offer ${
+        isHighlighted ? "highlighted" : ""
+      }`}
+    >
       <div>
-        <div className="mb-3 text" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <div
+          className="mb-3 text"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
         <p className="text-sm">
           Poptává {offer.ownerName} od{" "}
           <DateTime date={date} style="date-only" />
