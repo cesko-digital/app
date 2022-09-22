@@ -87,6 +87,7 @@ const Offer = (offer: MarketPlaceOffer) => {
       }`}
     >
       <div>
+        <h3 className="mt-0">{offer.title!}</h3>
         <div
           className="mb-3 text"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
@@ -122,6 +123,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const offers = siteData.marketPlaceOffers
     // Only display published offers
     .filter((offer) => offer.state === "published")
+    // Let’s filter out offers with no title just to be sure
+    .filter((offer) => !!offer.title)
     // Sort by creation time
     .sort(compareOffersByTime)
     // Last created, first displayed

@@ -92,18 +92,12 @@ const MarketPlaceSection: React.FC<PageProps> = ({
 };
 
 const Offer: React.FC<Props> = ({ offer }) => {
-  // TODO: Truncate text to first sentence
-  let htmlContent = slackMarkupToHTML(offer.text);
-  htmlContent = htmlToText(htmlContent);
-  let firstSentence = htmlContent.split(".")[0];
-  let trailContent = htmlContent.replaceAll(firstSentence + ".", "");
+  let plainText = htmlToText(slackMarkupToHTML(offer.text));
   return (
-    <div className="flex py-4 border-solid border-f0f0f2 border-b last:border-none">
+    <div className="flex py-4 border-solid border-[#f0f0f2] border-b last:border-none">
       <div className="mr-10 md:truncate text-slate-400">
-        <span className="text-black font-medium mr-1">
-          {firstSentence + ". "}
-        </span>
-        <span className="text-slate-400 md:inline hidden">{trailContent}</span>
+        <span className="text-black font-medium mr-2">{offer.title!}</span>
+        <span className="text-slate-400 md:inline hidden">{plainText}</span>
       </div>
       <div>
         <NextLink href={Route.marketplace + "#" + offer.id}>
@@ -222,7 +216,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events } = siteData;
   const videos = shuffled(siteData.videos).slice(0, 6);
   const marketPlaceOffers = siteData.marketPlaceOffers.filter(
-    (o) => o.state === "published"
+    (o) => o.state === "published" && !!o.title
   );
   const opportunities = getFeaturedOpportunities(
     siteData.opportunities.filter((o) => o.status === "live")
