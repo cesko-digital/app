@@ -30,7 +30,6 @@ const Layout: React.FC<Props> = ({
         data-domain="cesko.digital"
         src="https://plausible.io/js/plausible.js"
       />
-      <Script src="https://www.googletagmanager.com/gtag/js?id=UA-140227366-1" />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
