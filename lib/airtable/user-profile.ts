@@ -1,5 +1,5 @@
 import { FieldSet } from "airtable";
-import { relationToOne, takeFirst, withDefault } from "../decoding";
+import { relationToZeroOrOne, takeFirst, withDefault } from "../decoding";
 import { unique } from "lib/utils";
 import {
   unwrapRecord,
@@ -42,8 +42,8 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   skills: withDefault(array(string), []),
-  slackUserRelationId: field("slackUser", relationToOne),
-  slackId: relationToOne,
+  slackUserRelationId: field("slackUser", relationToZeroOrOne),
+  slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
   createdAt: optional(string),
   lastModifiedAt: string,

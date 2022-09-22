@@ -1,9 +1,9 @@
 import strings from "content/strings.json";
-import { PortalUser } from "lib/airtable/user";
+import { TeamEngagement } from "lib/airtable/team-engagement";
 import * as S from "./styles";
 
 interface Props {
-  coordinators: readonly PortalUser[];
+  coordinators: readonly TeamEngagement[];
 }
 
 const Coordinators: React.FC<Props> = ({ coordinators }) => {
@@ -11,11 +11,11 @@ const Coordinators: React.FC<Props> = ({ coordinators }) => {
   return (
     <S.Wrapper>
       <S.Title>{msg.coordinators}</S.Title>
-      {coordinators.map(({ profilePictureUrl, name }, index) => (
+      {coordinators.map((engagement, index) => (
         <S.Container key={index}>
-          {profilePictureUrl && <S.Image url={profilePictureUrl} />}
+          <S.Image url={engagement.userAvatarUrl} />
           <S.Text>
-            <S.Name>{name}</S.Name>
+            <S.Name>{engagement.userName}</S.Name>
           </S.Text>
         </S.Container>
       ))}
