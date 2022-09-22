@@ -1,5 +1,5 @@
 import { FieldSet } from "airtable";
-import { relationToZeroOrOne, takeFirst } from "lib/decoding";
+import { relationToOne, takeFirst } from "lib/decoding";
 import {
   array,
   decodeType,
@@ -39,7 +39,7 @@ export const decodeSlackUser = record({
   email: optional(string),
   contactEmail: optional(string),
   slackAvatarUrl: optional(string),
-  userProfileRelationId: field("userProfile", relationToZeroOrOne),
+  userProfileRelationId: field("userProfile", relationToOne),
 });
 
 /** Encode `SlackUser` to DB schema */

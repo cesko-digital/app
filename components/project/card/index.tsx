@@ -4,12 +4,12 @@ import SocialMedia from "./social-media";
 import { ButtonAsLink } from "components/links";
 import * as S from "./styles";
 import strings from "content/strings.json";
+import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
-import { TeamEngagement } from "lib/airtable/team-engagement";
 
 interface Props {
   project: PortalProject;
-  coordinators: readonly TeamEngagement[];
+  coordinators: readonly PortalUser[];
 }
 
 const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {

@@ -1,11 +1,7 @@
+import { decodeValidItemsFromArray, markdown, withDefault } from "lib/decoding";
 import { unwrapRecords, webBase } from "./request";
 import {
-  decodeValidItemsFromArray,
-  markdown,
-  optionalArray,
-  withDefault,
-} from "lib/decoding";
-import {
+  array,
   boolean,
   decodeType,
   field,
@@ -37,9 +33,8 @@ export const decodeProject = record({
     union("draft", "running", "finished", "incubating", "internal"),
     "draft"
   ),
-  tagIds: field("tags", optionalArray(string)),
-  coordinatorIds: field("coordinators", optionalArray(string)),
-  teamEngagementIds: field("team", optionalArray(string)),
+  tagIds: field("tags", withDefault(array(string), [])),
+  coordinatorIds: field("coordinators", array(string)),
   trelloUrl: optional(string),
   jiraUrl: optional(string),
   githubUrl: optional(string),

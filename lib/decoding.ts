@@ -7,8 +7,6 @@ import {
   dict,
   Pojo,
   string,
-  undef,
-  union,
 } from "typescript-json-decoder";
 
 /** Decode a string, returning it as a `MarkdownString` */
@@ -24,15 +22,6 @@ export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
       throw "Can’t take first item from an empty array";
     }
     return array[0];
-  };
-};
-
-/** Decode `undefined` as an empty array */
-export const optionalArray = <T>(itemDecoder: DecoderFunction<T>) => {
-  return (value: Pojo) => {
-    const decoder = union(undef, array(itemDecoder));
-    const decoded = decoder(value);
-    return decoded ?? [];
   };
 };
 
@@ -64,10 +53,7 @@ export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
  * if the value _is_ there, the Airtable API always returns an array, so we simplify
  * the whole thing to either the singleton value or undefined.
  */
-export const relationToZeroOrOne = withDefault(
-  takeFirst(array(string)),
-  undefined
-);
+export const relationToOne = withDefault(takeFirst(array(string)), undefined);
 
 /** Extract a dict, returning only its values */
 export const decodeDictValues =

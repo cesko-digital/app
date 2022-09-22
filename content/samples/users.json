@@ -1,393 +1,21 @@
 [
   {
-    "id": "rec013Sizh8aRBejZ",
-    "name": "Šárka Karlová",
-    "profilePictureUrl": "https://data.cesko.digital/people/sarka-karlova.jpg",
-    "email": "sarka.karlova7@gmail.com"
-  },
-  {
-    "id": "rec0ABdJtGIK9AeCB",
-    "name": "Romana Pokorná",
-    "profilePictureUrl": "https://data.cesko.digital/people/romana-pokorna.jpg",
-    "email": "romana@cesko.digital"
-  },
-  {
-    "id": "rec0bLleRhxS25sJL",
-    "name": "Tomáš Bederka",
-    "profilePictureUrl": "https://data.cesko.digital/people/tomas-bederka.jpg",
-    "email": "bederkatomas@gmail.com"
-  },
-  {
-    "id": "rec0w0pWOKwmsecJm",
-    "name": "Libuše Homolová",
-    "profilePictureUrl": "https://data.cesko.digital/people/libuse-homolova.jpg",
-    "email": "libuse.homolova@cesko.digital"
-  },
-  {
-    "id": "rec2rVBOmB4pgQAEL",
-    "name": "Eva Zehnálková",
-    "profilePictureUrl": "https://data.cesko.digital/people/eva-zehnalkova.jpg",
-    "email": "eva.zehnalkova@cesko.digital"
-  },
-  {
-    "id": "rec2tXP7Cxat1JJMR",
-    "name": "Vojtěch Petrus",
-    "profilePictureUrl": "https://data.cesko.digital/people/vojtech-petrus.jpg",
-    "email": "vojtech.petrus@askattest.com"
-  },
-  {
-    "id": "rec4DEWeYlx6AHV0d",
-    "name": "Petra Krištof",
-    "profilePictureUrl": "https://data.cesko.digital/people/petra-kristof.jpg ",
-    "email": "p.fuksova@gmail.com"
-  },
-  {
-    "id": "rec4N4PrvAHEddN4u",
-    "name": "Kateřina Beranová",
-    "profilePictureUrl": "https://data.cesko.digital/people/katerina-beranova.jpg",
-    "email": "katerina.beranova@cesko.digital"
-  },
-  {
-    "id": "rec4RP1qETXJHFlcB",
-    "name": "Lukáš Návesník",
-    "profilePictureUrl": "https://data.cesko.digital/people/lukas-navesnik.jpg",
-    "email": "lukas.navesnik@cesko.digital"
-  },
-  {
-    "id": "rec4aPaaf2GDZ3VoH",
-    "name": "Tomáš Walek",
-    "profilePictureUrl": "https://data.cesko.digital/people/tomas-walek.jpg",
-    "email": "tomas.walek@cesko.digital"
-  },
-  {
-    "id": "rec5ZFu9U1MxOKjrd",
-    "name": "Iva Škvorová",
-    "profilePictureUrl": "https://data.cesko.digital/people/iva-skvorova.jpg",
-    "email": "iva@skvor.team"
-  },
-  {
-    "id": "rec5eZBphXfx88xCD",
-    "name": "Martin Hassman",
-    "profilePictureUrl": "https://data.cesko.digital/people/martin-hassman.jpg",
-    "email": "martin.hassman@gmail.com"
-  },
-  {
-    "id": "rec5g2kjJCODPpUOI",
-    "name": "Jindřich Oukropec",
-    "profilePictureUrl": "https://data.cesko.digital/people/jindrich-oukropec.jpg",
-    "email": "jindrich@cesko.digital"
-  },
-  {
-    "id": "rec5i9y2EIaX1ZKD2",
-    "name": "Martin Wenisch",
-    "profilePictureUrl": "https://data.cesko.digital/people/martin-wenisch.jpg",
-    "email": "martin.wenisch@cesko.digital"
-  },
-  {
-    "id": "rec6MoceaMSaa4BOh",
-    "name": "Honza Slavík",
-    "profilePictureUrl": "https://data.cesko.digital/people/honza-slavik.jpg",
-    "email": "honza@ovax.cz"
-  },
-  {
-    "id": "rec6hQPrLsA7vVjGD",
-    "name": "Eva Pavlíková",
-    "profilePictureUrl": "https://data.cesko.digital/people/eva-pavlikova.jpg",
-    "email": "eva@cesko.digital"
-  },
-  {
-    "id": "rec7GkIKStJ4iXgJ6",
-    "name": "Radek Sojka",
-    "profilePictureUrl": "https://data.cesko.digital/people/radek-sojka.jpg",
-    "email": "sojkaradekk@gmail.com"
-  },
-  {
-    "id": "rec7HrZCmSnRP6KdD",
-    "name": "Pavel Šnábl",
-    "profilePictureUrl": "https://data.cesko.digital/people/pavel-snabl.jpg",
-    "email": "pavel.snabl@cesko.digital"
-  },
-  {
-    "id": "rec8zukUxcKUM0Apk",
-    "name": "Radka Horáková",
-    "profilePictureUrl": "https://data.cesko.digital/people/radka-horakova.jpg",
-    "email": "radka@cesko.digital"
-  },
-  {
-    "id": "rec9WSvwL9ObmPbXn",
-    "name": "Tomáš Oupický",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "tomas@oupicky.com"
-  },
-  {
-    "id": "rec9cgf8d1RK9CJHS",
-    "name": "Pavla Kadlecová",
-    "profilePictureUrl": "https://data.cesko.digital/people/pavla-kadlecova.jpg",
-    "email": "pavla.kadlecova@otevrenamesta.cz"
-  },
-  {
-    "id": "rec9oQhcGODxlZx7Z",
-    "name": "Kristýna Tvrdá",
-    "profilePictureUrl": "https://data.cesko.digital/people/kristyna-tvrda.jpg",
-    "email": "kristyna@cesko.digital"
-  },
-  {
-    "id": "recA5nftMpxJmwpr4",
-    "name": "Tomáš Znamenáček",
-    "profilePictureUrl": "https://data.cesko.digital/people/tomas-znamenacek.jpg",
-    "email": "zoul@cesko.digital"
-  },
-  {
-    "id": "recAV6IZWuquxQCuZ",
-    "name": "Lucia Poláková",
-    "profilePictureUrl": "https://data.cesko.digital/people/lucia-polakova.jpg",
-    "email": "loopolakova@gmail.com"
-  },
-  {
-    "id": "recAyvOCxByJoiCLm",
-    "name": "Kristofer Filip",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-02-28/3169965076116_245e609564f275027d9f_512.png",
-    "email": "kristofer.filip@gmail.com"
-  },
-  {
-    "id": "recCFjzEqx70oQFNF",
-    "name": "Iveta Svatosova\n",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-03-27/3300797068723_0bbe4a16196ff02c4dc2_original.jpg",
-    "email": "ivca.svatosova@gmail.com"
-  },
-  {
-    "id": "recDmNZFm4iahKvkO",
-    "name": "Klára Szkatulová",
-    "profilePictureUrl": "https://data.cesko.digital/people/klara-szkatulova.png",
-    "email": "klara.szkatulova@cesko.digital"
-  },
-  {
-    "id": "recHnc5hx8wh29zqU",
-    "name": "Lucie Zajíčková",
-    "profilePictureUrl": "https://data.cesko.digital/people/lucie-zajickova.jpg",
-    "email": "lucie@cesko.digital"
-  },
-  {
-    "id": "recIYcbmvoAHqUubM",
-    "name": "Jakub Nešetřil",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2019-07-16/696183843621_6bdf97690e290220f2de_512.jpg",
-    "email": "jakub@cesko.digital"
-  },
-  {
-    "id": "recJDzQOYncfAvMoZ",
-    "name": "Alena Snelling",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-03-07/3213054300849_dd4fc1dd40515a7ab02f_original.jpg",
-    "email": "alena.snelling@gmail.com"
-  },
-  {
-    "id": "recKf2gXTdcc5y3yt",
-    "name": "Lucie Zatorska",
-    "profilePictureUrl": "https://data.cesko.digital/web/projects/volebni-kalkulacka/logo.png",
-    "email": "lucie.zatorska@cesko.digital"
-  },
-  {
-    "id": "recL8KsRVopRJPiyh",
-    "name": "Klára Podpierová",
-    "profilePictureUrl": "https://data.cesko.digital/people/klara-podpierova.jpg",
-    "email": "klara@cesko.digital"
-  },
-  {
-    "id": "recMPRFBSEciNFmuu",
-    "name": "Daria Batalova",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-06-09/3646406765156_de7ef4c888b628e50f7e_512.jpg",
-    "email": "batalovadara@gmail.com"
-  },
-  {
-    "id": "recNQEnhpJQ7MXAyG",
-    "name": "Michal Škop",
-    "profilePictureUrl": "https://data.cesko.digital/people/michal-skop.png",
-    "email": "michal.skop@kohovolit.eu"
-  },
-  {
-    "id": "recO2g2nSleY5tUbt",
-    "name": "suchoss",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "suchoss@gmail.com"
-  },
-  {
-    "id": "recOLDM8bee0EMlKz",
-    "name": "Milan Eibl",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "eibl@transparency.cz"
-  },
-  {
-    "id": "recOMBl3X1NJfntaq",
-    "name": "Adam Martinik",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-02-27/3177633367457_3611ed40e9f61ebef413_original.jpg",
-    "email": "martin.lasek@sap.com"
-  },
-  {
-    "id": "recORtmcTpBOIfLJ2",
-    "name": "Josef Šlerka",
-    "profilePictureUrl": "https://data.cesko.digital/people/josef-slerka.jpg",
-    "email": "josef.slerka@gmail.com"
-  },
-  {
-    "id": "recPZm8iNkIJThKhh",
-    "name": "Veronika Kamenská",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-02-13/3121332161728_714da5c72d354d1dac85_original.png",
-    "email": "kamenska@nepanikar.eu"
-  },
-  {
-    "id": "recQDR2RPTUnZkcJJ",
-    "name": "Kristofer Filip",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-02-28/3169965076116_245e609564f275027d9f_512.png",
-    "email": "kristofer.filip@gmail.com"
+    "id": "recwOLHFJUPCoPnLX",
+    "name": "Adéla Kalusová",
+    "profilePictureUrl": "https://data.cesko.digital/people/adela-kalusova.jpg",
+    "email": "kalusovaadela@gmail.com"
   },
   {
     "id": "recSNmZ8ledv89ajf",
     "name": "Adéla Sedláčková",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2021-10-26/2644484456165_50aebda9d6f4126d1134_original.png",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
     "email": "adela.sedlackova@loono.cz"
   },
   {
-    "id": "recStfHLM7hRGMFFl",
-    "name": "Jakub Bareš",
-    "profilePictureUrl": "https://data.cesko.digital/people/jakub-bares.jpg",
-    "email": "bares.jakub@gmail.com"
-  },
-  {
-    "id": "recTGpmslRgXD65Gv",
-    "name": "Petr Kuncl",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "petr.kuncl@gmail.com"
-  },
-  {
-    "id": "recTvIL0NA3fPTUNl",
-    "name": "Michaela Jelínková",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-05-30/3587292454246_991985d4e07db68ca607_512.png",
-    "email": "michaela.jelinkova@cesko.digital"
-  },
-  {
-    "id": "recUAa0VnckxGxdbM",
-    "name": "Daniel Urban",
-    "profilePictureUrl": "https://data.cesko.digital/people/daniel-urban.jpg",
-    "email": "daniel.urban@cesko.digital "
-  },
-  {
-    "id": "recUWV4QTBxE3dYRO",
-    "name": "Anna Strejcová",
-    "profilePictureUrl": "https://data.cesko.digital/people/anna-strejcova.jpg",
-    "email": "anna.strejcova@zachranjidlo.cz"
-  },
-  {
-    "id": "recUbZtPqsevOsqQm",
-    "name": "Kateřina Jiřinová",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2020-03-14/1002157335191_2374d5a9455f12de3021_original.jpg",
-    "email": "katerina.jirinova@gmail.com"
-  },
-  {
-    "id": "recVDHdgVpCTrRzi1",
-    "name": "Tomáš Volek",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-04-15/3382260754487_bb3f3ac621d45ba4f839_512.jpg",
-    "email": "t_volek@email.cz"
-  },
-  {
-    "id": "recWvHeMubTTyYudH",
-    "name": "Šárka Ševčíková",
-    "profilePictureUrl": "https://data.cesko.digital/people/sarka-sevcikova.jpg",
-    "email": "sarka.sevci@gmail.com"
-  },
-  {
-    "id": "recWxfaI1djJOk8kh",
-    "name": "Senta Martynenko",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-03-14/3236342530836_cb8b6993862b821f6139_512.jpg",
-    "email": "senta.martynenko@gmail.com"
-  },
-  {
-    "id": "recXMNcYprZnGiHwM",
-    "name": "Michal Bláha",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2019-02-12/550032035271_64f678ee81484c9b89db_512.png",
-    "email": "michal@michalblaha.cz"
-  },
-  {
-    "id": "recYIWlSDlcXgQ377",
-    "name": "Terézia Palaščáková",
-    "profilePictureUrl": "https://data.cesko.digital/people/terezia-palascakova.jpg",
-    "email": "terezia@cesko.digital"
-  },
-  {
-    "id": "recZ2g1UocOrK0kml",
-    "name": "Markéta Ševčíková",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2020-07-27/1277606987569_95be71907bb6c4e242ab_512.jpg",
-    "email": "sevcikova.m@post.cz"
-  },
-  {
-    "id": "recaakebNpMz1pj1h",
-    "name": "Jiří Kučera",
-    "profilePictureUrl": "https://data.cesko.digital/people/jiri-kucera.jpg",
-    "email": "jiri.kucera@nfnz.cz"
-  },
-  {
-    "id": "recavNaCJqiGPPB9d",
-    "name": "Aneta Dürr",
-    "profilePictureUrl": "https://data.cesko.digital/people/aneta-durr.jpg",
-    "email": "aneta.durr@outlook.cz"
-  },
-  {
-    "id": "recbKgbPikNgaN3NR",
-    "name": "Tomáš Bajer",
-    "profilePictureUrl": "https://data.cesko.digital/people/tomas-bajer.jpg",
-    "email": "tomas@sinfin.cz"
-  },
-  {
-    "id": "recbx1s08x7TcPzTW",
-    "name": "Anika Chalupská",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "prostromynevidiles@gmail.com"
-  },
-  {
-    "id": "recc8xqKsRItzOF7O",
-    "name": "Alana Maria Carazon",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "alana.carazon@gmail.com"
-  },
-  {
-    "id": "recd6cyps6emvcrl8",
-    "name": "Jana Kneschke",
-    "profilePictureUrl": "https://data.cesko.digital/people/jana-kneschke.jpg",
-    "email": "jana@cesko.digital"
-  },
-  {
-    "id": "recd8xvbWp7K1nZn8",
-    "name": "Blanka Sigmundová",
-    "profilePictureUrl": "https://data.cesko.digital/people/blanka-sigmundova.jpg",
-    "email": "blanka.sigmundova@loono.cz"
-  },
-  {
-    "id": "recdDRvkc8NUk18Lt",
-    "name": "Vladimíra Osadníková",
-    "profilePictureUrl": "https://data.cesko.digital/people/vladimira-osadnikova.png",
-    "email": "vladimira.osadnikova@cesko.digital"
-  },
-  {
-    "id": "recdPMOKc0urpcUiP",
-    "name": "Radko Jiroušek",
-    "profilePictureUrl": "https://data.cesko.digital/people/radko-jirousek.jpg",
-    "email": "radko@cesko.digital"
-  },
-  {
-    "id": "recdlNKlXS3G5tdl1",
-    "name": "Vladimír Smitka",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2020-03-11/993794388868_b581b292dec0b01b7845_512.jpg",
-    "email": "vladimir.smitka@lynt.cz"
-  },
-  {
-    "id": "receJeHvUSgZFvbCt",
-    "name": "Radka Steklá",
-    "profilePictureUrl": "https://data.cesko.digital/people/radka-stekla.jpg",
-    "email": "radka.stekla@cesko.digital"
-  },
-  {
-    "id": "recf6EM1qZxTTFkA0",
-    "name": "Gabriela Chladilová",
-    "profilePictureUrl": "https://data.cesko.digital/people/gabriela-chladilova.jpg",
-    "email": "gabriela@cesko.digital"
+    "id": "recgNrffl2cij0w5p",
+    "name": "Andrea Janáčková",
+    "profilePictureUrl": "http://data.cesko.digital/people/andrea-janackova.png",
+    "email": "janackova.andrea@gmail.com"
   },
   {
     "id": "recfTQpPu9LYMIAps",
@@ -396,82 +24,22 @@
     "email": "anezka@cesko.digital"
   },
   {
-    "id": "recfv4fZJP4dBtB85",
-    "name": "Šárka Rauchová",
-    "profilePictureUrl": "https://data.cesko.digital/people/sarka-rauchova.jpg",
-    "email": "sarka.rauchova@gmail.com"
+    "id": "reclpG6KAPSSQotzk",
+    "name": "Anika Chalupská",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
+    "email": "prostromynevidiles@gmail.com"
   },
   {
-    "id": "recgNrffl2cij0w5p",
-    "name": "Andrea Janáčková",
-    "profilePictureUrl": "https://data.cesko.digital/people/andrea-janackova.png",
-    "email": "janackova.andrea@gmail.com"
+    "id": "recbx1s08x7TcPzTW",
+    "name": "Anika Chalupská",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
+    "email": "prostromynevidiles@gmail.com"
   },
   {
-    "id": "recgiyzYadkWIMdlR",
-    "name": "Lenka Kováčová",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2019-02-07/544472818737_bbf7ff6e87b4a61b35d2_512.jpg",
-    "email": "lenka@cesko.digital"
-  },
-  {
-    "id": "rechNvB3PVEhHEu6v",
-    "name": "Marek Malík ",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2021-12-03/2796671270482_4145a715006b94920e61_512.png",
-    "email": "xmarekmalik@gmail.com"
-  },
-  {
-    "id": "rechVf2Ci2lvDQefe",
-    "name": "Karolína Vyskočilová",
-    "profilePictureUrl": "https://secure.gravatar.com/avatar/469b64229a3914c0f9317ffaf19f6191.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0016-512.png",
-    "email": "karolina@kybernaut.cz"
-  },
-  {
-    "id": "recheJ92XChLaVlsr",
-    "name": "Kristýna Tvrdá",
-    "profilePictureUrl": "https://data.cesko.digital/people/kristyna-tvrda.jpg",
-    "email": "kristyna@cesko.digital"
-  },
-  {
-    "id": "reci0hUhyK04lyvXf",
-    "name": "Daniel Střelec",
-    "profilePictureUrl": "https://secure.gravatar.com/avatar/267355ce20307eb7bec4579573afcaed.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-512.png",
-    "email": "jsem@danielstrelec.cz"
-  },
-  {
-    "id": "recjT3JYlbBOJaUfn",
-    "name": "Michal Voráč",
-    "profilePictureUrl": "https://data.cesko.digital/people/michal-vorac.jpg",
-    "email": "michal.vorac@gmail.com"
-  },
-  {
-    "id": "recjYA9kRocHPEJ3e",
-    "name": "Raúl Pérez",
-    "profilePictureUrl": "https://data.cesko.digital/people/raul-perez.png",
-    "email": "r.perez@centrum.cz"
-  },
-  {
-    "id": "recjnYNK3rcvn5roQ",
-    "name": "Martina Habová",
-    "profilePictureUrl": "https://data.cesko.digital/people/martina-habova.jpg",
-    "email": "martina@cesko.digital"
-  },
-  {
-    "id": "recjz4dPPH7bqa1l1",
-    "name": "Sandra Ort Feyglová",
-    "profilePictureUrl": "https://data.cesko.digital/people/sandra-feyglova.jpg",
-    "email": "sandra@vyluka.org"
-  },
-  {
-    "id": "reckQejH82KeB8ThO",
-    "name": "Michaela Vránová",
-    "profilePictureUrl": "https://data.cesko.digital/people/michaela-vranova.jpg",
-    "email": "michaela.vranova@cesko.digital"
-  },
-  {
-    "id": "reckfbVe9nPxI03C7",
-    "name": "Antonín Pospíšil",
-    "profilePictureUrl": "https://secure.gravatar.com/avatar/a543d21e872751cd74668a947b4622f2.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0008-512.png",
-    "email": "me@atonda.com"
+    "id": "recUWV4QTBxE3dYRO",
+    "name": "Anna Strejcová",
+    "profilePictureUrl": "https://data.cesko.digital/people/anna-strejcova.jpg",
+    "email": "anna.strejcova@zachranjidlo.cz"
   },
   {
     "id": "recl1mVQmM6euzmua",
@@ -480,16 +48,52 @@
     "email": "barbora.petrikova@cesko.digital"
   },
   {
-    "id": "reclpG6KAPSSQotzk",
-    "name": "Anika Chalupská",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "prostromynevidiles@gmail.com"
+    "id": "recd8xvbWp7K1nZn8",
+    "name": "Blanka Sigmundová",
+    "profilePictureUrl": "https://data.cesko.digital/people/blanka-sigmundova.jpg",
+    "email": "blanka.sigmundova@loono.cz"
   },
   {
-    "id": "recmZKZSMcCZ6PKYk",
-    "name": "Jan Štefanides",
-    "profilePictureUrl": "https://data.cesko.digital/people/jan-stefanides.jpg",
-    "email": "digital@stefanides.cz"
+    "id": "recUAa0VnckxGxdbM",
+    "name": "Daniel Urban",
+    "profilePictureUrl": "https://data.cesko.digital/people/daniel-urban.jpg",
+    "email": "daniel.urban@cesko.digital "
+  },
+  {
+    "id": "rec6hQPrLsA7vVjGD",
+    "name": "Eva Pavlíková",
+    "profilePictureUrl": "https://data.cesko.digital/people/eva-pavlikova.jpg",
+    "email": "eva@cesko.digital"
+  },
+  {
+    "id": "rec2rVBOmB4pgQAEL",
+    "name": "Eva Zehnálková",
+    "profilePictureUrl": "https://data.cesko.digital/people/eva-zehnalkova.jpg",
+    "email": "eva.zehnalkova@cesko.digital"
+  },
+  {
+    "id": "recf6EM1qZxTTFkA0",
+    "name": "Gabriela Chladilová",
+    "profilePictureUrl": "https://data.cesko.digital/people/gabriela-chladilova.jpg",
+    "email": "gabriela@cesko.digital"
+  },
+  {
+    "id": "rec6MoceaMSaa4BOh",
+    "name": "Honza Slavík",
+    "profilePictureUrl": "https://data.cesko.digital/people/honza-slavik.jpg",
+    "email": "honza@ovax.cz"
+  },
+  {
+    "id": "rec5ZFu9U1MxOKjrd",
+    "name": "Iva Škvorová",
+    "profilePictureUrl": "https://data.cesko.digital/people/iva-skvorova.jpg",
+    "email": "iva@skvor.team"
+  },
+  {
+    "id": "recStfHLM7hRGMFFl",
+    "name": "Jakub Bareš",
+    "profilePictureUrl": "https://data.cesko.digital/people/jakub-bares.jpg",
+    "email": "bares.jakub@gmail.com"
   },
   {
     "id": "recmtJGXYYovYzA5O",
@@ -498,40 +102,10 @@
     "email": "jakub@cesko.digital"
   },
   {
-    "id": "recnNmSPCsTONOOl0",
-    "name": "Anežka Laská",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2022-03-17/3281552920464_416e5e34b46c0a22bd2e_original.jpg",
-    "email": "anezkalaska@gmail.com"
-  },
-  {
-    "id": "recni1NCgzKZvdnhN",
-    "name": "Petra Fritsch",
-    "profilePictureUrl": "https://data.cesko.digital/people/petra-fritsch.jpg",
-    "email": "petra.fritsch@cesko.digital"
-  },
-  {
-    "id": "recnluAvd10A1MPVB",
-    "name": "Tatiana Chytilová",
-    "profilePictureUrl": "https://data.cesko.digital/people/tatiana-chytilova.png",
-    "email": "tatiana.chytilova@cesko.digital"
-  },
-  {
-    "id": "recoK3s2M2KzJ2JoC",
-    "name": "Jiří Zikeš",
-    "profilePictureUrl": "https://data.cesko.digital/people/jiri-zikes.jpg",
-    "email": "jiri@xomlo.io "
-  },
-  {
-    "id": "recolchNGujo2mnPH",
-    "name": "Klára Scholleová",
-    "profilePictureUrl": "https://cesko-digital.slack.com/team/U0389S6LX33",
-    "email": "klara.scholleova@gmail.com"
-  },
-  {
-    "id": "recpXG75wPPGtUx1h",
-    "name": "Lenka Ježkováá",
-    "profilePictureUrl": "https://secure.gravatar.com/avatar/3a2751ab5b9b2b5f7d41dbd86d244188.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0001-512.png",
-    "email": "lenka.jezkova@oziveni.cz"
+    "id": "recmZKZSMcCZ6PKYk",
+    "name": "Jan Štefanides",
+    "profilePictureUrl": "https://data.cesko.digital/people/jan-stefanides.jpg",
+    "email": "digital@stefanides.cz"
   },
   {
     "id": "recq96qTt3FqC7Mt6",
@@ -540,52 +114,100 @@
     "email": "jana@vyluka.org"
   },
   {
+    "id": "recd6cyps6emvcrl8",
+    "name": "Jana Kneschke",
+    "profilePictureUrl": "https://data.cesko.digital/people/jana-kneschke.jpg",
+    "email": "jana@cesko.digital"
+  },
+  {
+    "id": "rec5g2kjJCODPpUOI",
+    "name": "Jindřich Oukropec",
+    "profilePictureUrl": "https://data.cesko.digital/people/jindrich-oukropec.jpg",
+    "email": "jindrich@cesko.digital"
+  },
+  {
+    "id": "recaakebNpMz1pj1h",
+    "name": "Jiří Kučera",
+    "profilePictureUrl": "https://data.cesko.digital/people/jiri-kucera.jpg",
+    "email": "jiri.kucera@nfnz.cz"
+  },
+  {
+    "id": "recoK3s2M2KzJ2JoC",
+    "name": "Jiří Zikeš",
+    "profilePictureUrl": "https://data.cesko.digital/people/jiri-zikes.jpg",
+    "email": "jiri@xomlo.io "
+  },
+  {
+    "id": "recORtmcTpBOIfLJ2",
+    "name": "Josef Šlerka",
+    "profilePictureUrl": "https://data.cesko.digital/people/josef-slerka.jpg",
+    "email": "josef.slerka@gmail.com"
+  },
+  {
+    "id": "recxcXvq41ulDzNEz",
+    "name": "Karolina Míková",
+    "profilePictureUrl": "https://data.cesko.digital/people/karolina-mikova.jpg",
+    "email": "karolina.mikova@getmanta.com"
+  },
+  {
     "id": "recqScHnCjZpuSLAm",
     "name": "Kateřina Alturbanová",
     "profilePictureUrl": "https://data.cesko.digital/people/katka_alturbanova.jpg",
     "email": "katerina.alturbanova@cesko.digital"
   },
   {
-    "id": "recshDKxv31hsdyX4",
-    "name": "Zuzana Fialová",
-    "profilePictureUrl": "https://data.cesko.digital/people/zuzana-fialova.jpg",
-    "email": "zuzana.fialova@cesko.digital"
+    "id": "rec4N4PrvAHEddN4u",
+    "name": "Kateřina Beranová",
+    "profilePictureUrl": "https://data.cesko.digital/people/katerina-beranova.jpg",
+    "email": "katerina.beranova@cesko.digital"
   },
   {
-    "id": "rectYnvrzj4bVyTZA",
-    "name": "Karel Minařík",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2020-01-27/923626009045_7f6d907b8f8410cf6d00_512.jpg",
-    "email": "karel@cesko.digital"
+    "id": "recheJ92XChLaVlsr",
+    "name": "Kateřina Kocianová",
+    "profilePictureUrl": "https://data.cesko.digital/people/katerina-kocianova.jpg",
+    "email": "katerina@cesko.digital"
   },
   {
-    "id": "recuJsidR6ztcjiiC",
-    "name": "Radka Horáková",
-    "profilePictureUrl": "https://data.cesko.digital/people/radka-horakova.jpg",
-    "email": "radka@cesko.digital"
+    "id": "recL8KsRVopRJPiyh",
+    "name": "Klára Podpierová",
+    "profilePictureUrl": "https://data.cesko.digital/people/klara-podpierova.jpg",
+    "email": "klara@cesko.digital"
   },
   {
-    "id": "recuWrbaErYTUmGfE",
-    "name": "Lukáš Raim ",
-    "profilePictureUrl": "https://cesko-digital.slack.com/team/UNYL5D048",
-    "email": "raim.lukas1@gmail.com"
+    "id": "recDmNZFm4iahKvkO",
+    "name": "Klára Szkatulová",
+    "profilePictureUrl": "https://data.cesko.digital/people/klara-szkatulova.png",
+    "email": "klara.szkatulova@cesko.digital"
   },
   {
-    "id": "recukxWJDZaoJclDh",
-    "name": "Petra Wiesnerová",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "petra.wiesnerova@cesko.digital"
+    "id": "rec9oQhcGODxlZx7Z",
+    "name": "Kristýna Tvrdá",
+    "profilePictureUrl": "https://data.cesko.digital/people/kristyna-tvrda.jpg",
+    "email": "kristyna@cesko.digital"
   },
   {
-    "id": "recvPeyJyoLgHJy3H",
-    "name": "Tomáš Helmich",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "tomas.helmich@gmail.com"
+    "id": "rec0w0pWOKwmsecJm",
+    "name": "Libuše Homolová",
+    "profilePictureUrl": "https://data.cesko.digital/people/libuse-homolova.jpg",
+    "email": "libuse.homolova@cesko.digital"
   },
   {
-    "id": "recvb57tyz9JzAwVc",
-    "name": "Jiří Sekera",
-    "profilePictureUrl": "https://avatars.slack-edge.com/2019-10-16/797198948773_7d191a474e68e044e82d_512.jpg",
-    "email": "sigy@sigy.cz"
+    "id": "recAV6IZWuquxQCuZ",
+    "name": "Lucia Poláková",
+    "profilePictureUrl": "https://data.cesko.digital/people/lucia-polakova.jpg",
+    "email": "loopolakova@gmail.com"
+  },
+  {
+    "id": "recHnc5hx8wh29zqU",
+    "name": "Lucie Zajíčková",
+    "profilePictureUrl": "https://data.cesko.digital/people/lucie-zajickova.jpg",
+    "email": "lucie@cesko.digital"
+  },
+  {
+    "id": "recKf2gXTdcc5y3yt",
+    "name": "Lucie Zatorska",
+    "profilePictureUrl": "https://data.cesko.digital/web/projects/volebni-kalkulacka/logo.png",
+    "email": "lucie.zatorska@cesko.digital"
   },
   {
     "id": "recvuuD8Q7t5RHY93",
@@ -594,28 +216,160 @@
     "email": "lukas.kristof@icloud.com"
   },
   {
-    "id": "recwGgaCwxjocXEex",
-    "name": "Vaclav Jirovsky",
-    "profilePictureUrl": "https://secure.gravatar.com/avatar/dba12ef250da904c53bda5264c5f77bf.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0005-512.png",
-    "email": "vjirovsky@vjirovsky.cz"
+    "id": "rec4RP1qETXJHFlcB",
+    "name": "Lukáš Návesník",
+    "profilePictureUrl": "https://data.cesko.digital/people/lukas-navesnik.jpg",
+    "email": "lukas.navesnik@cesko.digital"
+  },
+  {
+    "id": "rec5eZBphXfx88xCD",
+    "name": "Martin Hassman",
+    "profilePictureUrl": "https://data.cesko.digital/people/martin-hassman.jpg",
+    "email": "martin.hassman@gmail.com"
+  },
+  {
+    "id": "rec5i9y2EIaX1ZKD2",
+    "name": "Martin Wenisch",
+    "profilePictureUrl": "https://data.cesko.digital/people/martin-wenisch.jpg",
+    "email": "martin.wenisch@cesko.digital"
+  },
+  {
+    "id": "recjnYNK3rcvn5roQ",
+    "name": "Martina Habová",
+    "profilePictureUrl": "https://data.cesko.digital/people/martina-habova.jpg",
+    "email": "martina@cesko.digital"
+  },
+  {
+    "id": "reckQejH82KeB8ThO",
+    "name": "Michaela Vránová",
+    "profilePictureUrl": "https://data.cesko.digital/people/michaela-vranova.jpg",
+    "email": "michaela.vranova@cesko.digital"
+  },
+  {
+    "id": "recNQEnhpJQ7MXAyG",
+    "name": "Michal Škop",
+    "profilePictureUrl": "https://data.cesko.digital/people/michal-skop.png",
+    "email": "michal.skop@kohovolit.eu"
+  },
+  {
+    "id": "recjT3JYlbBOJaUfn",
+    "name": "Michal Voráč",
+    "profilePictureUrl": "https://data.cesko.digital/people/michal-vorac.jpg",
+    "email": "michal.vorac@gmail.com"
+  },
+  {
+    "id": "recOLDM8bee0EMlKz",
+    "name": "Milan Eibl",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
+    "email": "eibl@transparency.cz"
+  },
+  {
+    "id": "rec7HrZCmSnRP6KdD",
+    "name": "Pavel Šnábl",
+    "profilePictureUrl": "https://data.cesko.digital/people/pavel-snabl.jpg",
+    "email": "pavel.snabl@cesko.digital"
+  },
+  {
+    "id": "rec9cgf8d1RK9CJHS",
+    "name": "Pavla Kadlecová",
+    "profilePictureUrl": "https://data.cesko.digital/people/pavla-kadlecova.jpg",
+    "email": "pavla.kadlecova@otevrenamesta.cz"
+  },
+  {
+    "id": "recTGpmslRgXD65Gv",
+    "name": "Petr Kuncl",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
+    "email": "petr.kuncl@gmail.com"
+  },
+  {
+    "id": "recni1NCgzKZvdnhN",
+    "name": "Petra Fritsch",
+    "profilePictureUrl": "https://data.cesko.digital/people/petra-fritsch.jpg",
+    "email": "petra.fritsch@cesko.digital "
+  },
+  {
+    "id": "recukxWJDZaoJclDh",
+    "name": "Petra Wiesnerová",
+    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
+    "email": "wiesnerovapetra@gmail.com"
+  },
+  {
+    "id": "rec7GkIKStJ4iXgJ6",
+    "name": "Radek Sojka",
+    "profilePictureUrl": "https://data.cesko.digital/people/radek-sojka.jpg",
+    "email": "sojkaradekk@gmail.com"
+  },
+  {
+    "id": "recuJsidR6ztcjiiC",
+    "name": "Radka Horáková",
+    "profilePictureUrl": "https://data.cesko.digital/people/radka-horakova.jpg",
+    "email": "radka@cesko.digital"
+  },
+  {
+    "id": "rec8zukUxcKUM0Apk",
+    "name": "Radka Horáková",
+    "profilePictureUrl": "https://data.cesko.digital/people/radka-horakova.jpg",
+    "email": "radka@cesko.digital"
+  },
+  {
+    "id": "receJeHvUSgZFvbCt",
+    "name": "Radka Steklá",
+    "profilePictureUrl": "https://data.cesko.digital/people/radka-stekla.jpg",
+    "email": "radka.stekla@cesko.digital"
+  },
+  {
+    "id": "recdPMOKc0urpcUiP",
+    "name": "Radko Jiroušek",
+    "profilePictureUrl": "https://data.cesko.digital/people/radko-jirousek.jpg",
+    "email": "radko@cesko.digital"
+  },
+  {
+    "id": "recjYA9kRocHPEJ3e",
+    "name": "Raúl Pérez",
+    "profilePictureUrl": "http://data.cesko.digital/people/raul-perez.png",
+    "email": "r.perez@centrum.cz"
+  },
+  {
+    "id": "rec0ABdJtGIK9AeCB",
+    "name": "Romana Pokorná",
+    "profilePictureUrl": "https://data.cesko.digital/people/romana-pokorna.jpg",
+    "email": "romana@cesko.digital"
+  },
+  {
+    "id": "recjz4dPPH7bqa1l1",
+    "name": "Sandra Ort Feyglová",
+    "profilePictureUrl": "https://data.cesko.digital/people/sandra-feyglova.jpg",
+    "email": "sandra@vyluka.org"
+  },
+  {
+    "id": "rec013Sizh8aRBejZ",
+    "name": "Šárka Karlová",
+    "profilePictureUrl": "https://data.cesko.digital/people/sarka-karlova.jpg",
+    "email": "sarka.karlova7@gmail.com"
+  },
+  {
+    "id": "recfv4fZJP4dBtB85",
+    "name": "Šárka Rauchová",
+    "profilePictureUrl": "https://data.cesko.digital/people/sarka-rauchova.jpg",
+    "email": "sarka.rauchova@gmail.com"
+  },
+  {
+    "id": "recWvHeMubTTyYudH",
+    "name": "Šárka Ševčíková",
+    "profilePictureUrl": "https://data.cesko.digital/people/sarka-sevcikova.jpg",
+    "email": "sarka.sevci@gmail.com"
+  },
+  {
+    "id": "recnluAvd10A1MPVB",
+    "name": "Tatiana Chytilová",
+    "profilePictureUrl": "https://data.cesko.digital/people/tatiana-chytilova.png",
+    "email": "tatiana.chytilova@cesko.digital"
   },
   {
     "id": "recwHYEjFtK8eKLWD",
     "name": "Tereza Gagnon",
     "profilePictureUrl": "https://data.cesko.digital/people/tereza-gagnon.jpeg",
     "email": "tereza.gagnon@cesko.digital"
-  },
-  {
-    "id": "recwOLHFJUPCoPnLX",
-    "name": "Adéla Kalusová",
-    "profilePictureUrl": "https://data.cesko.digital/people/adela-kalusova.jpg",
-    "email": "kalusovaadela@gmail.com"
-  },
-  {
-    "id": "recxcXvq41ulDzNEz",
-    "name": "Karolina Míková",
-    "profilePictureUrl": "https://data.cesko.digital/people/karolina-mikova.jpg",
-    "email": "karolina.mikova@getmanta.com"
   },
   {
     "id": "recxnKoDo13IRSbGV",
@@ -630,21 +384,45 @@
     "email": "tereza.reznickova2@gmail.com"
   },
   {
-    "id": "recyTANYySGPm6nqF",
-    "name": "Veronika Pizurová",
-    "profilePictureUrl": "https://data.cesko.digital/people/veronika-pizurova.png",
-    "email": "pizurovav@gmail.com"
+    "id": "recYIWlSDlcXgQ377",
+    "name": "Terézia Palaščáková",
+    "profilePictureUrl": "https://data.cesko.digital/people/terezia-palascakova.jpg",
+    "email": "terezia@cesko.digital"
   },
   {
-    "id": "recydtdEPhWdcXTPR",
-    "name": "Eva Bochová",
-    "profilePictureUrl": "https://data.cesko.digital/people/generic-profile.jpg",
-    "email": "e.bochova@gmail.com"
+    "id": "recbKgbPikNgaN3NR",
+    "name": "Tomáš Bajer",
+    "profilePictureUrl": "https://data.cesko.digital/people/tomas-bajer.jpg",
+    "email": "tomas@sinfin.cz"
   },
   {
-    "id": "reczcDVhZc3i08ayu",
-    "name": "Milli Bošková",
-    "profilePictureUrl": "https://data.cesko.digital/people/milli-boskova.jpg",
-    "email": "milli.boskova@gmail.com"
+    "id": "rec0bLleRhxS25sJL",
+    "name": "Tomáš Bederka",
+    "profilePictureUrl": "https://data.cesko.digital/people/tomas-bederka.jpg",
+    "email": "bederkatomas@gmail.com"
+  },
+  {
+    "id": "rec4aPaaf2GDZ3VoH",
+    "name": "Tomáš Walek",
+    "profilePictureUrl": "https://data.cesko.digital/people/tomas-walek.jpg",
+    "email": "tomas.walek@cesko.digital"
+  },
+  {
+    "id": "recA5nftMpxJmwpr4",
+    "name": "Tomáš Znamenáček",
+    "profilePictureUrl": "https://data.cesko.digital/people/tomas-znamenacek.jpg",
+    "email": "zoul@cesko.digital"
+  },
+  {
+    "id": "rec2tXP7Cxat1JJMR",
+    "name": "Vojtěch Petrus",
+    "profilePictureUrl": "https://data.cesko.digital/people/vojtech-petrus.jpg",
+    "email": "vojtech.petrus@askattest.com"
+  },
+  {
+    "id": "recshDKxv31hsdyX4",
+    "name": "Zuzana Fialová",
+    "profilePictureUrl": "https://data.cesko.digital/people/zuzana-fialova.jpg",
+    "email": "zuzana.fialova@cesko.digital"
   }
 ]

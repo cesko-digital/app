@@ -35,7 +35,6 @@ test("Decode portal project", () => {
     highlighted: false,
     state: "draft",
     tagIds: ["recVa4LnmzmtfoYTg"],
-    teamEngagementIds: [],
     coordinatorIds: [
       "recd8xvbWp7K1nZn8",
       "recwOLHFJUPCoPnLX",
