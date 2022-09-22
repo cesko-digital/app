@@ -9,6 +9,7 @@ import DateTime from "components/datetime";
 import { toHTML } from "slack-markdown";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   compareOffersByTime,
   MarketPlaceOffer,
@@ -63,10 +64,17 @@ const EmptyPlaceholder = () => (
 const Offer = (offer: MarketPlaceOffer) => {
   const date = new Date(offer.createdAt);
   const session = useSession();
-  const router = useRouter();
 
-  const hash = router.asPath.split("#")[1];
-  const isHighlighted = hash && hash == offer.id;
+  const router = useRouter();
+  const [isHighlighted, setHighlighted] = useState(false);
+
+  // We have to differentiate server-side render and client-side render here.
+  // The hash part of the URL is only accessible during the client-side render,
+  // so we have to wait for it.
+  useEffect(() => {
+    const hash = router.asPath.split("#")[1];
+    setHighlighted(hash === offer.id);
+  }, [router, offer]);
 
   let htmlContent = toHTML(offer.text);
   htmlContent = "<p>" + htmlContent.replaceAll("<br>", "</p><p>") + "</p>";
