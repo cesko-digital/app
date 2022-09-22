@@ -1,21 +1,34 @@
 import strings from "content/strings.json";
-import { PortalUser } from "lib/airtable/user";
+import { TeamEngagement } from "lib/airtable/team-engagement";
 import * as S from "./styles";
 
 interface Props {
-  coordinators: readonly PortalUser[];
+  coordinators: readonly TeamEngagement[];
 }
 
 const Coordinators: React.FC<Props> = ({ coordinators }) => {
   const msg = strings.pages.project.projectCard;
+  const engagements = [...coordinators].sort((a, b) => {
+    // Sort inactive engagements last
+    if (a.inactive && !b.inactive) {
+      return +1;
+    } else if (b.inactive && !a.inactive) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
   return (
     <S.Wrapper>
       <S.Title>{msg.coordinators}</S.Title>
-      {coordinators.map(({ profilePictureUrl, name }, index) => (
-        <S.Container key={index}>
-          {profilePictureUrl && <S.Image url={profilePictureUrl} />}
+      {engagements.map((engagement) => (
+        <S.Container
+          key={engagement.userName}
+          className={engagement.inactive ? "opacity-40" : ""}
+        >
+          <S.Image url={engagement.userAvatarUrl} />
           <S.Text>
-            <S.Name>{name}</S.Name>
+            <S.Name>{engagement.userName}</S.Name>
           </S.Text>
         </S.Container>
       ))}

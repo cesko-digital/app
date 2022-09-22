@@ -1,7 +1,7 @@
 import { FieldSet } from "airtable";
 import { unwrapRecord, unwrapRecords, webBase } from "./request";
 import { Schema as UserProfileSchema } from "./user-profile";
-import { relationToOne } from "lib/decoding";
+import { relationToZeroOrOne } from "lib/decoding";
 import {
   array,
   decodeType,
@@ -25,9 +25,9 @@ export interface Schema extends FieldSet {
 export type MarketPlaceOffer = decodeType<typeof decodeMarketPlaceOffer>;
 export const decodeMarketPlaceOffer = record({
   id: string,
-  owner: relationToOne,
-  ownerName: relationToOne,
-  ownerEmail: relationToOne,
+  owner: relationToZeroOrOne,
+  ownerName: relationToZeroOrOne,
+  ownerEmail: relationToZeroOrOne,
   text: string,
   createdAt: string,
   lastModifiedAt: string,
