@@ -1,13 +1,18 @@
-import type { AppProps } from "next/app";
+import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "components/theme/default";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { analyticsId } from "lib/utils";
+import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import "components/global.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+type GlobalProps = {
+  session: Session;
+};
+
+function MyApp({ Component, pageProps }: AppProps<GlobalProps>) {
   // Since Google Analytics doesn’t support client-side navigation out
   // of the box, we have to mark pageviews there manually when route changes.
   const router = useRouter();
