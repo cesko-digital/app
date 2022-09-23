@@ -11,7 +11,7 @@ import {
 } from "lib/airtable/market-place";
 
 /** ID of the market-place channel to work in */
-const marketPlaceSlackChannelId = "C03JP5VSC00";
+const marketPlaceSlackChannelId = "CLVAH28P3";
 
 /** Number of seconds in a day */
 const secondsPerDay = 60 * 60 * 24;
