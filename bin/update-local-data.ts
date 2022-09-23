@@ -16,6 +16,7 @@ async function updateLocalData() {
     "users",
     "partners",
     "skills",
+    "marketplaceoffers",
   ];
   for (const file of files) {
     const response = await fetch(`https://cesko.digital/api/${file}`);

@@ -16,6 +16,8 @@ import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { YTPlaylistItem } from "lib/data-sources/youtube";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { MarketPlaceOffer } from "lib/airtable/market-place";
+import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import {
   compareEventsByTime,
   isEventPast,
@@ -23,10 +25,15 @@ import {
 } from "lib/airtable/event";
 
 interface PageProps {
+  marketPlaceOffers: readonly MarketPlaceOffer[];
   opportunities: readonly PortalOpportunity[];
   upcomingEvents: readonly PortalEvent[];
   projects: readonly PortalProject[];
   videos: readonly YTPlaylistItem[];
+}
+
+interface Props {
+  offer: MarketPlaceOffer;
 }
 
 const Dashboard: NextPage<PageProps> = (props) => {
@@ -48,11 +55,64 @@ const Dashboard: NextPage<PageProps> = (props) => {
         </SectionContent>
       </Section>
       <OpportunitiesSection {...props} />
+      {props.marketPlaceOffers.length > 0 && <MarketPlaceSection {...props} />}
       {props.upcomingEvents.length > 0 && <EventsSection {...props} />}
       {props.videos.length > 0 && <EduSection {...props} />}
     </Layout>
   );
 };
+
+const MarketPlaceSection: React.FC<PageProps> = ({
+  marketPlaceOffers: offers,
+}) => {
+  return (
+    <Section id="marketplace">
+      <SectionContent>
+        <Typography.Heading2>
+          {strings.pages.dashboard.marketplaceOffers}
+        </Typography.Heading2>
+        <Typography.Body>
+          Příležitosti k zapojení v projektech mimo Česko.Digital
+        </Typography.Body>
+        <div className="max-w-content py-2 lg:py-5 m-auto relative">
+          {offers.map((offer) => (
+            <Offer key={offer.id} offer={offer} />
+          ))}
+        </div>
+      </SectionContent>
+      <S.ButtonWrapper>
+        <NextLink href={Route.marketplace}>
+          <a>
+            <Button>Více podobných nabídek</Button>
+          </a>
+        </NextLink>
+      </S.ButtonWrapper>
+    </Section>
+  );
+};
+
+const Offer: React.FC<Props> = ({ offer }) => {
+  let plainText = htmlToText(slackMarkupToHTML(offer.text));
+  return (
+    <div className="flex py-4 border-solid border-[#f0f0f2] border-b last:border-none">
+      <div className="mr-10 md:truncate text-slate-400">
+        <span className="text-black font-medium mr-2">{offer.title!}.</span>
+        <span className="text-slate-400 md:inline hidden">{plainText}</span>
+      </div>
+      <div>
+        <NextLink href={Route.marketplace + "#" + offer.id}>
+          <a>Detail</a>
+        </NextLink>
+      </div>
+    </div>
+  );
+};
+
+// TODO: Refactor :)
+function htmlToText(input: string) {
+  const regex = /(<([^>]+)>)/gi;
+  return input.replace(regex, "");
+}
 
 const OpportunitiesSection: React.FC<PageProps> = ({
   opportunities,
@@ -62,11 +122,12 @@ const OpportunitiesSection: React.FC<PageProps> = ({
     projects.find((p) => p.id === o.projectId)!;
   // How should we sort this? How about a random sort?
   return (
-    <Section>
+    <Section id="opportunities">
       <SectionContent>
         <Typography.Heading2>
           {strings.pages.dashboard.currentOpportunities}
         </Typography.Heading2>
+        <Typography.Body>Zapojte se v projektech Česko.Digital</Typography.Body>
         <S.OpportunitiesMainWrapper>
           {opportunities.map((op) => (
             <OpportunityItem
@@ -154,6 +215,9 @@ const Video = (video: YTPlaylistItem) => {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events } = siteData;
   const videos = shuffled(siteData.videos).slice(0, 6);
+  const marketPlaceOffers = siteData.marketPlaceOffers.filter(
+    (o) => o.state === "published" && !!o.title
+  );
   const opportunities = getFeaturedOpportunities(
     siteData.opportunities.filter((o) => o.status === "live")
   );
@@ -164,6 +228,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .slice(0, 6);
   return {
     props: {
+      marketPlaceOffers,
       upcomingEvents,
       opportunities,
       videos,

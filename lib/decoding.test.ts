@@ -1,9 +1,10 @@
-import { number, record, string, undef } from "typescript-json-decoder";
+import { number, record, string } from "typescript-json-decoder";
 import {
   decodeObject,
   decodeUrl,
   decodeValidItemsFromArray,
   optionalArray,
+  decodeJSONString,
 } from "./decoding";
 
 test("Decode URL", () => {
@@ -37,4 +38,13 @@ test("Decode optional array", () => {
   expect(decoder([])).toEqual([]);
   expect(decoder(["foo", "bar"])).toEqual(["foo", "bar"]);
   expect(() => decoder([1, 2])).toThrow();
+});
+
+test("Decode JSON string", () => {
+  const input = '{"foo":"bar"}';
+  const decodePayload = record({
+    foo: string,
+  });
+  const decode = decodeJSONString(decodePayload);
+  expect(decode(input)).toEqual({ foo: "bar" });
 });

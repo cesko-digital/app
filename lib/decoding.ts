@@ -50,6 +50,11 @@ export const withDefault = <T>(
   };
 };
 
+export const decodeJSONString =
+  <T>(decoder: DecoderFunction<T>) =>
+  (value: Pojo) =>
+    decoder(JSON.parse(string(value)));
+
 /**
  * Decode a URL string
  *

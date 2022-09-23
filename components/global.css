@@ -201,3 +201,30 @@ h3 {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Marketplace listing overrides */
+/* TODO: Move into a separate file? */
+
+.marketplace-list .text {
+  line-height: 150%;
+}
+
+.marketplace-list .text p {
+  margin: 0 0 0.75em 0;
+}
+
+.marketplace-list .text strong {
+  font-weight: normal;
+}
+
+.marketplace-list .text a {
+  color: black;
+}
+
+/* Marketplace extra styles */
+
+.marketplace-list .highlighted {
+  background-color: #e5e5ff;
+  padding: 1em;
+  border-radius: 10px;
+}

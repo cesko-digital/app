@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { union } from "typescript-json-decoder";
-import { insertNewMarketPlaceOffer } from "lib/airtable/market-place";
-import { decodeMessageEvent, MessageEvent } from "lib/slack/message";
 import { decodeEndpointHandshake, decodeEventCallback } from "lib/slack/events";
+import { decodeMessageEvent } from "lib/slack/message";
+import { receiveSlackMessage } from "lib/market-place";
 
-/** Mark user account as confirmed when user successfully signs in to Slack */
+const { SLACK_SYNC_TOKEN = "" } = process.env;
+
+/** Receive Slack notification about new messages and pass them to other processes such as market-place */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse
@@ -14,7 +16,6 @@ export default async function handler(
     decodeEndpointHandshake,
     decodeEventCallback(decodeMessageEvent)
   );
-
   try {
     const msg = decodeIncomingMessage(request.body);
     switch (msg.type) {
@@ -22,18 +23,9 @@ export default async function handler(
       case "url_verification":
         response.status(200).send(msg.challenge);
         return;
-      // This is a new message notification
+      // This is a new message notification.
       case "event_callback":
-        if (
-          isRegularNewThreadMessage(msg.event) &&
-          msg.event.channel === "C03JP5VSC00"
-        ) {
-          await insertNewMarketPlaceOffer({
-            state: "new",
-            text: msg.event.text || "<no text in message>",
-            owner: msg.event.user,
-          });
-        }
+        await receiveSlackMessage(SLACK_SYNC_TOKEN, msg.event);
         response.status(204).end();
     }
   } catch (e) {
@@ -41,12 +33,3 @@ export default async function handler(
     response.status(500).send("Sorry :(");
   }
 }
-
-/**
- * Does a message event represent a regular, new thread message to the channel?
- *
- * Returns `false` for channel join messages, thread replies, …
- * Note that this is just a heuristic for this particular use case.
- */
-const isRegularNewThreadMessage = (event: MessageEvent) =>
-  event.channel_type === "channel" && !event.subtype && !event.thread_ts;

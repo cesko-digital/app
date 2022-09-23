@@ -7,6 +7,7 @@ import { Field } from "lib/airtable/skills";
 import { TeamEngagement } from "lib/airtable/team-engagement";
 import { PortalUser } from "lib/airtable/user";
 import { YTPlaylistItem } from "./youtube";
+import { MarketPlaceOffer } from "lib/airtable/market-place";
 
 // The weird signature is here to make the data source type-compatible with the Airtable data source
 function loader<T>(file: string): () => Promise<T[]> {
@@ -27,3 +28,6 @@ export const getAllOpportunities =
   loader<PortalOpportunity>("opportunities.json");
 export const getAllVideos = loader<YTPlaylistItem>("videos.json");
 export const getAllTeamEngagements = loader<TeamEngagement>("engagements.json");
+export const getAllMarketPlaceOffers = loader<MarketPlaceOffer>(
+  "marketplaceoffers.json"
+);

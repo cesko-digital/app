@@ -1,0 +1,19 @@
+name: Update Market-Place Offers
+
+on:
+  schedule:
+    - cron: "25 7 * * *" # Run at 7.25 UTC each day
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_BAZAAR_BOT_TOKEN: ${{ secrets.SLACK_BAZAAR_BOT_TOKEN }}
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update
+        run: |
+          yarn install
+          ./bin/update-market-place-offers.ts
