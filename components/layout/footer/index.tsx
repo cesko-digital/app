@@ -1,26 +1,32 @@
 import { ButtonSize } from "components/buttons";
 import NewsletterBox from "./newsletter-form";
-import * as S from "./styles";
 import { Route } from "lib/utils";
 import { Link } from "components/links";
-import strings from "content/strings.json";
+import { default as allStrings } from "content/strings.json";
+import * as S from "./styles";
+
+const strings = allStrings.components.sections.footer;
 
 const Footer: React.FC = () => {
-  const footer = strings.components.sections.footer;
+  return (
+    <S.Wrapper>
+      <S.Outer>
+        <S.Container>
+          <S.Info>
+            <InternalLinks />
+            <SocialLinks />
+          </S.Info>
+          <NewsletterBox />
+          <S.Note>{strings.footNote}</S.Note>
+        </S.Container>
+      </S.Outer>
+    </S.Wrapper>
+  );
+};
 
-  const o = footer.online;
-  const socialLinks = [
-    [o.facebook, "https://www.facebook.com/cesko.digital"],
-    [o.twitter, "https://twitter.com/CeskoDigital"],
-    [o.linkedin, "https://www.linkedin.com/company/cesko-digital"],
-    [o.instagram, "https://www.instagram.com/cesko.digital/"],
-    [o.youtube, "https://www.youtube.com/c/ČeskoDigital"],
-    [o.podcast, "https://anchor.fm/poslouchatdigital"],
-    [o.github, "https://github.com/cesko-digital"],
-    [o.cocuma, "https://www.cocuma.cz/company/cesko-digital/jobs/"],
-  ];
-
-  const p = footer.pageLinks;
+/** Important “internal” links such as project list, dashboard, etc. */
+const InternalLinks = () => {
+  const p = strings.pageLinks;
   const pageLinks = [
     [p.projects, Route.projects],
     [p.dashboard, Route.dashboard],
@@ -33,44 +39,52 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <S.Wrapper>
-      <S.Outer>
-        <S.Container>
-          <S.Info>
-            <S.InfoBlock>
-              <S.Heading>{footer.pageLinks.title}</S.Heading>
-              <S.Navigation>
-                <S.Links>
-                  {pageLinks.map(([name, url], i) => (
-                    <S.LinkItem key={i}>
-                      <Link size={ButtonSize.Small} to={url}>
-                        {name}
-                      </Link>
-                    </S.LinkItem>
-                  ))}
-                </S.Links>
-              </S.Navigation>
-            </S.InfoBlock>
-            <S.InfoBlock>
-              <S.Heading>{footer.online.title}</S.Heading>
-              <S.Navigation>
-                <S.Links>
-                  {socialLinks.map(([name, url], index) => (
-                    <S.LinkItem key={index}>
-                      <Link size={ButtonSize.Small} to={url} openInNewTab>
-                        {name}
-                      </Link>
-                    </S.LinkItem>
-                  ))}
-                </S.Links>
-              </S.Navigation>
-            </S.InfoBlock>
-          </S.Info>
-          <NewsletterBox />
-          <S.Note>{footer.footNote}</S.Note>
-        </S.Container>
-      </S.Outer>
-    </S.Wrapper>
+    <S.InfoBlock>
+      <S.Heading>{strings.pageLinks.title}</S.Heading>
+      <S.Navigation>
+        <S.Links>
+          {pageLinks.map(([name, url], i) => (
+            <S.LinkItem key={i}>
+              <Link size={ButtonSize.Small} to={url}>
+                {name}
+              </Link>
+            </S.LinkItem>
+          ))}
+        </S.Links>
+      </S.Navigation>
+    </S.InfoBlock>
+  );
+};
+
+/** Links to our profiles on social networks */
+const SocialLinks = () => {
+  const o = strings.online;
+  const socialLinks = [
+    [o.facebook, "https://www.facebook.com/cesko.digital"],
+    [o.twitter, "https://twitter.com/CeskoDigital"],
+    [o.linkedin, "https://www.linkedin.com/company/cesko-digital"],
+    [o.instagram, "https://www.instagram.com/cesko.digital/"],
+    [o.youtube, "https://www.youtube.com/c/ČeskoDigital"],
+    [o.podcast, "https://anchor.fm/poslouchatdigital"],
+    [o.github, "https://github.com/cesko-digital"],
+    [o.cocuma, "https://www.cocuma.cz/company/cesko-digital/jobs/"],
+  ];
+
+  return (
+    <S.InfoBlock>
+      <S.Heading>{strings.online.title}</S.Heading>
+      <S.Navigation>
+        <S.Links>
+          {socialLinks.map(([name, url], index) => (
+            <S.LinkItem key={index}>
+              <Link size={ButtonSize.Small} to={url} openInNewTab>
+                {name}
+              </Link>
+            </S.LinkItem>
+          ))}
+        </S.Links>
+      </S.Navigation>
+    </S.InfoBlock>
   );
 };
 
