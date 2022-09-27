@@ -52,7 +52,6 @@ const Intro = () => (
         width="100%"
         height="100%"
         title="Vítejte v Česko.Digital"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
     </div>
