@@ -95,7 +95,7 @@ const JoinUs = () => (
 const HowWeWork = () => (
   <section className="bg-pebble">
     <div className="max-w-content m-auto py-10 text-lg">
-      <h2 className="mb-12 mt-0">Zjisti, jak pracujeme</h2>
+      <h2 className="mb-12 mt-0 font-normal">Zjisti, jak pracujeme</h2>
       <div className="grid grid-cols-3 gap-6">
         <HowToBox
           title="Kde?"
@@ -142,7 +142,7 @@ const HowToBox: React.FC<HowToBoxProps> = ({ title, text, icon: Icon }) => (
 
 const WhyJoin = () => (
   <section className="max-w-content m-auto py-10 text-lg">
-    <h2 className="mt-0 mb-12">Proč se přidat do komunity?</h2>
+    <h2 className="mt-0 mb-12 font-normal">Proč se přidat do komunity?</h2>
     <div className="grid grid-cols-3 gap-6">
       <Testimonial
         name="Petra Fritsch"
@@ -199,8 +199,8 @@ const Testimonial: React.FC<TestimonialProps> = ({
 
 const ContactUs = () => (
   <section className="bg-pebble text-lg">
-    <div className="max-w-content m-auto py-10">
-      <h2>Chceš se ještě na něco doptat?</h2>
+    <div className="max-w-content m-auto py-20">
+      <h2 className="mt-0">Chceš se ještě na něco doptat?</h2>
       <p>
         Napiš nám na{" "}
         <a href="mailto:pomoc@cesko.digital">pomoc@cesko.digital</a>, rádi
