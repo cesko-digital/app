@@ -39,21 +39,23 @@ const Page: NextPage = () => {
 
 const Intro = () => (
   <section className="max-w-content m-auto mt-20 pb-10 text-lg">
-    <h1 className="text-[44px] font-bold">Měň s námi Česko k lepšímu!</h1>
-    <p>
-      Je nás už více než 5 300. Expertní dobrovolníci a zaměstnanci, členové
-      neziskovek a státní správy, partneři a nadšenci. My všichni tvoříme
+    <h1 className="text-[44px] font-bold mb-10">Měň s námi Česko k lepšímu!</h1>
+    <p className="max-w-prose">
+      Je nás už více než 5 300. Expertní dobrovolníci a zaměstnanci, členové
+      neziskovek a státní správy, partneři a nadšenci. My všichni tvoříme
       komunitu, která pomáhá veřejné sféře s efektivním využíváním digitálních
       technologií.
     </p>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube-nocookie.com/embed/gwxVBjlG8iQ"
-      title="Vítejte v Česko.Digital"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
+    <div className="max-w-prose aspect-video">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/gwxVBjlG8iQ"
+        width="100%"
+        height="100%"
+        title="Vítejte v Česko.Digital"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </div>
   </section>
 );
 
@@ -63,7 +65,7 @@ const Intro = () => (
 
 const JoinUs = () => (
   <section className="max-w-content m-auto py-10 text-lg">
-    <h2 className="text-it">Staň se součástí komunity Česko.Digital</h2>
+    <h2 className="text-it mt-0">Staň se součástí komunity Česko.Digital</h2>
     <div className="border-[1px] border-gray rounded-md p-10 grid grid-cols-3 gap-6">
       <div>
         <p className="mt-0">
