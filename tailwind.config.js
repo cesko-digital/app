@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         pebble: "#F9F9F9",
         it: "#0000FF",
+        violet: "CCCCFF",
       },
     },
   },

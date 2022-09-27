@@ -78,7 +78,7 @@ const JoinUs = () => (
           <b>každý z nás má ostatním co nabídnout</b>!
         </p>
         <Link href="/join/form" passHref={true}>
-          <a className="mt-10 inline-block bg-it text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg mb-4">
+          <a className="btn-primary mt-10 inline-block mb-4">
             Registruj se do komunity →
           </a>
         </Link>
