@@ -25,17 +25,6 @@
     "sections": {
       "footer": {
         "footNote": "© Česko.Digital",
-        "newsletter": {
-          "emailRequiredError": "Please enter a valid email address.",
-          "inputError": "Please enter a valid email address.",
-          "inputPlaceholder": "Enter e-mail",
-          "invalidEmailError": "Please enter a valid email address.",
-          "note": "Want to know what we’re working on? Once a month, we’ll recap what’s been happening in the community and what’s coming up.",
-          "serverError": "Something went wrong, please try again.",
-          "subscribe": "Subscribe",
-          "subscribed": "You’re already with us! We have successfully registered your email to our newsletter.",
-          "title": "Newsletter"
-        },
         "online": {
           "facebook": "Facebook",
           "github": "GitHub",
@@ -47,16 +36,6 @@
           "podcast": "Podcast",
           "cocuma": "Cocuma",
           "instagram": "Instagram"
-        },
-        "pageLinks": {
-          "blog": "Blog",
-          "loginToSlack": "Login to Slack",
-          "logo": "Logo",
-          "mediaContact": "Contact for media",
-          "projects": "Projects",
-          "submitProject": "Submit a project",
-          "supportUs": "Contribute",
-          "title": "Česko.Digital"
         }
       },
       "projects": {
