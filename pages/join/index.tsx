@@ -64,16 +64,25 @@ const Intro = () => (
 const JoinUs = () => (
   <section className="max-w-content m-auto py-10 text-lg">
     <h2 className="text-it">Staň se součástí komunity Česko.Digital</h2>
-    <p>
-      Projdi s námi krátkou registrací a řekni nám o sobě více. Ať už totiž
-      pomocnou ruku hledáš nebo sám nabízíš, vždy budeš{" "}
-      <b>nepostradatelným členem naší komunity</b>.
-    </p>
-    <p>
-      Věříme, že ve sdílení je síla a že{" "}
-      <b>každý z nás má ostatním co nabídnout</b>!
-    </p>
-    <Link href="/join/form">Registruj se do komunity</Link>
+    <div className="border-[1px] border-gray rounded-md p-10 grid grid-cols-3 gap-6">
+      <div>
+        <p className="mt-0">
+          Projdi s námi krátkou registrací a řekni nám o sobě více. Ať už totiž
+          pomocnou ruku hledáš nebo sám nabízíš, vždy budeš{" "}
+          <b>nepostradatelným členem naší komunity</b>.
+        </p>
+        <p>
+          Věříme, že ve sdílení je síla a že{" "}
+          <b>každý z nás má ostatním co nabídnout</b>!
+        </p>
+        <Link href="/join/form" passHref={true}>
+          <a className="mt-10 inline-block bg-it text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg mb-4">
+            Registruj se do komunity →
+          </a>
+        </Link>
+      </div>
+      <div className="col-span-2 w-full h-full bg-pebble"></div>
+    </div>
   </section>
 );
 
