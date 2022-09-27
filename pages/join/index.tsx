@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { Layout, Section } from "components/layout";
+import Link from "next/link";
 
 const Page: NextPage = () => {
   return (
@@ -63,7 +64,7 @@ const JoinUs = () => (
       Věříme, že ve sdílení je síla a že{" "}
       <b>každý z nás má ostatním co nabídnout</b>!
     </p>
-    <a href="/join/form">Registruj se do komunity</a>
+    <Link href="/join/form">Registruj se do komunity</Link>
   </section>
 );
 
