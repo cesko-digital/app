@@ -1,6 +1,11 @@
 import { NextPage } from "next";
 import { Layout, Section } from "components/layout";
 import Link from "next/link";
+import {
+  OpennessIcon,
+  EfficiencyIcon,
+  ProfessionalismIcon,
+} from "components/icons";
 
 const Page: NextPage = () => {
   return (
@@ -75,32 +80,45 @@ const JoinUs = () => (
 const HowWeWork = () => (
   <section className="bg-pebble">
     <div className="max-w-content m-auto py-10 text-lg">
-      <h2>Zjisti, jak pracujeme</h2>
-      <div className="grid grid-cols-3 gap-4">
-        <div>
-          <h3>Kde?</h3>
-          <p>
-            Online a z pohodlí svého domova, aby se mohl zapojit každý
-            odkudkoliv.
-          </p>
-        </div>
-        <div>
-          <h3>Kdy?</h3>
-          <p>
-            Ve volném čase – ráno, večer, přes víkend… Zkrátka dle našich
-            časových možností.
-          </p>
-        </div>
-        <div>
-          <h3>Jak?</h3>
-          <p>
-            Společně – v kolaborativních nástrojích, jako je Slack, Confluence,
-            Jira, Miro, GitHub nebo Figma.
-          </p>
-        </div>
+      <h2 className="mb-12 mt-0">Zjisti, jak pracujeme</h2>
+      <div className="grid grid-cols-3 gap-6">
+        <HowToBox
+          title="Kde?"
+          text="Online a z pohodlí svého domova, aby se mohl zapojit každý
+            odkudkoliv."
+          icon={OpennessIcon}
+        />
+        <HowToBox
+          title="Kdy?"
+          text="Ve volném čase – ráno, večer, přes víkend… Zkrátka dle našich
+            časových možností."
+          icon={EfficiencyIcon}
+        />
+        <HowToBox
+          title="Jak?"
+          text="Společně – v kolaborativních nástrojích, jako je Slack, Confluence,
+          Jira, Miro, GitHub nebo Figma."
+          icon={ProfessionalismIcon}
+        />
       </div>
     </div>
   </section>
+);
+
+type HowToBoxProps = {
+  title: string;
+  text: string;
+  icon: typeof OpennessIcon;
+};
+
+const HowToBox: React.FC<HowToBoxProps> = ({ title, text, icon: Icon }) => (
+  <div>
+    <div className="w-[80px] h-[80px]">
+      <Icon width="100%" height="100%" />
+    </div>
+    <h3>{title}</h3>
+    <p>{text}</p>
+  </div>
 );
 
 //
@@ -110,7 +128,7 @@ const HowWeWork = () => (
 const WhyJoin = () => (
   <section className="max-w-content m-auto py-10 text-lg">
     <h2>Proč se přidat do komunity?</h2>
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-6">
       <Testimonial
         name="Petra Fritsch"
         title="Dobrovolnice Česko.Digital"
@@ -143,7 +161,7 @@ const Testimonial = ({ name, title, blurb }: any) => (
 //
 
 const ContactUs = () => (
-  <section className="bg-pebble">
+  <section className="bg-pebble text-lg">
     <div className="max-w-content m-auto py-10">
       <h2>Chceš se ještě na něco doptat?</h2>
       <p>
