@@ -182,10 +182,10 @@ const Testimonial: React.FC<TestimonialProps> = ({
 }) => (
   <div>
     <div className="flex flex-row gap-4">
-      <div className="rounded-full overflow-clip w-[80px] h-[80px] bg-red-500 shrink-0">
+      <div className="rounded-full overflow-clip w-[80px] h-[80px] shrink-0">
         <Image src={image} alt={name} />
       </div>
-      <div className="border-1 border-red-500 text-sm">
+      <div className="border-1 text-sm">
         <h3 className="mt-1 mb-0">{name}</h3>
         <p className="mt-0">{title}</p>
       </div>
