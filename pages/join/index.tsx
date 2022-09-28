@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { Layout, Section } from "components/layout";
+import { Layout } from "components/layout";
 import Link from "next/link";
 import fritsch from "components/onboarding/images/fritsch.jpg";
 import habl from "components/onboarding/images/habl.jpg";
@@ -22,13 +22,11 @@ const Page: NextPage = () => {
         nové zkušenosti nebo se podělit o své nápady.`,
       }}
     >
-      <Section>
-        <Intro />
-        <JoinUs />
-        <HowWeWork />
-        <WhyJoin />
-        <ContactUs />
-      </Section>
+      <Intro />
+      <JoinUs />
+      <HowWeWork />
+      <WhyJoin />
+      <ContactUs />
     </Layout>
   );
 };
@@ -38,8 +36,10 @@ const Page: NextPage = () => {
 //
 
 const Intro = () => (
-  <section className="max-w-content m-auto mt-20 pb-10 text-lg">
-    <h1 className="text-[44px] font-bold mb-10">Měň s námi Česko k lepšímu!</h1>
+  <section className="max-w-content m-auto mt-20 pb-10 px-5 text-lg">
+    <h1 className="text-[44px] font-bold leading-snug mb-10">
+      Měň s námi Česko k lepšímu!
+    </h1>
     <p className="max-w-prose">
       Je nás už více než 5 300. Expertní dobrovolníci a zaměstnanci, členové
       neziskovek a státní správy, partneři a nadšenci. My všichni tvoříme
@@ -63,9 +63,11 @@ const Intro = () => (
 //
 
 const JoinUs = () => (
-  <section className="max-w-content m-auto py-10 text-lg">
-    <h2 className="text-it mt-0">Staň se součástí komunity Česko.Digital</h2>
-    <div className="border-[1px] border-gray rounded-md p-10 grid grid-cols-3 gap-6">
+  <section className="max-w-content m-auto py-10 px-5 text-lg">
+    <h2 className="text-it mt-0 leading-snug">
+      Staň se součástí komunity Česko.Digital
+    </h2>
+    <div className="border-[1px] border-gray rounded-md p-6 lg:p-10 grid lg:grid-cols-3 gap-6 max-w-prose lg:max-w-none">
       <div>
         <p className="mt-0">
           Projdi s námi krátkou registrací a řekni nám o sobě více. Ať už totiž
@@ -78,11 +80,11 @@ const JoinUs = () => (
         </p>
         <Link href="/join/form" passHref={true}>
           <a className="btn-primary mt-10 inline-block mb-4">
-            Registruj se do komunity →
+            Registruj se do komunity →
           </a>
         </Link>
       </div>
-      <div className="col-span-2 w-full h-full bg-pebble"></div>
+      <div className="hidden lg:block col-span-2 w-full min-h-[300px] h-full bg-pebble"></div>
     </div>
   </section>
 );
@@ -93,9 +95,9 @@ const JoinUs = () => (
 
 const HowWeWork = () => (
   <section className="bg-pebble">
-    <div className="max-w-content m-auto py-10 text-lg">
+    <div className="max-w-content m-auto py-10 px-5 text-lg">
       <h2 className="mb-12 mt-0 font-normal">Zjisti, jak pracujeme</h2>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <HowToBox
           title="Kde?"
           text="Online a z pohodlí svého domova, aby se mohl zapojit každý
@@ -140,9 +142,9 @@ const HowToBox: React.FC<HowToBoxProps> = ({ title, text, icon: Icon }) => (
 //
 
 const WhyJoin = () => (
-  <section className="max-w-content m-auto py-10 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-lg">
     <h2 className="mt-0 mb-12 font-normal">Proč se přidat do komunity?</h2>
-    <div className="grid grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <Testimonial
         name="Petra Fritsch"
         image={fritsch}
@@ -198,8 +200,8 @@ const Testimonial: React.FC<TestimonialProps> = ({
 
 const ContactUs = () => (
   <section className="bg-pebble text-lg">
-    <div className="max-w-content m-auto py-20">
-      <h2 className="mt-0">Chceš se ještě na něco doptat?</h2>
+    <div className="max-w-content m-auto py-20 px-5">
+      <h2 className="mt-0 leading-snug">Chceš se ještě na něco doptat?</h2>
       <p>
         Napiš nám na{" "}
         <a href="mailto:pomoc@cesko.digital">pomoc@cesko.digital</a>, rádi

@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        content: "1160px",
+        content: "1200px",
       },
       colors: {
         pebble: "#F9F9F9",
