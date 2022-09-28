@@ -39,7 +39,7 @@ const Page: NextPage = () => {
 
 /** Intro section with main heading and intro video */
 const Intro = () => (
-  <section className="relative max-w-content m-auto mt-20 pb-10 px-5 text-lg">
+  <section className="relative max-w-content m-auto mt-10 pb-10 px-5 text-lg">
     <div className="hidden lg:block absolute right-[100px]">
       <Image
         src="/images/onboarding/rightward-arrows.svg"
