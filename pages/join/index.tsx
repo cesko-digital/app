@@ -1,9 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
-import fritsch from "components/onboarding/images/fritsch.jpg";
-import habl from "components/onboarding/images/habl.jpg";
-import szymanska from "components/onboarding/images/szymanska.jpg";
+import { Petra, Radek, Julia } from "components/onboarding/images";
 import Image, { StaticImageData } from "next/image";
 import {
   OpennessIcon,
@@ -147,19 +145,19 @@ const WhyJoin = () => (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <Testimonial
         name="Petra Fritsch"
-        image={fritsch}
+        image={Petra}
         title="Dobrovolnice Česko.Digital"
         blurb="V Česko.Digital cítím, že jsem skutečně součástí týmu, a neustále se učím novým věcem. Nikdy bych nevěřila, že se budu podílet na projektu, kde mohu spojit psychologii s digitalizací."
       />
       <Testimonial
         name="Radek Hábl"
-        image={habl}
+        image={Radek}
         title="Zakladatel Institutu prevence a řešení předlužení"
         blurb="Česko.Digital přináší know-how v oblasti digitálních technologií a pomáhá vytvářet smysluplné projekty. Setkávám se s lidmi, kteří mají zájem předat své zkušenosti, a sám se při spolupráci odborně posouvám v mnoha mně dosud neznámých oblastech."
       />
       <Testimonial
         name="Julia Szymanska"
-        image={szymanska}
+        image={Julia}
         title="Employee Engagement manager, Avast Foundation"
         blurb="Díky spolupráci s Česko.Digital můžeme pomáhat neziskovým organizacím vytvářet programy pro rozvoj, na které samy kapacitně nestačí. Expertní dobrovolnictví je také jednou ze základních hodnot společnosti Avast. Naši zaměstnanci mají tak možnost se hojně zapojovat do smysluplných projektů, které rozvíjí nejen širokou společnost, ale i je samotné."
       />
