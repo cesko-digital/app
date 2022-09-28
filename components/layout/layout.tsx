@@ -5,7 +5,6 @@ import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
-import HeaderEN from "./header/english";
 import Banner from "components/banner";
 import Script from "next/script";
 import { analyticsId } from "lib/utils";
@@ -41,13 +40,13 @@ const Layout: React.FC<Props> = ({
       <Script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js" strategy="beforeInteractive"/>
       <Script id="weglot">
         {`Weglot.initialize({
-          api_key: 'wg_8c738016abb2edccc1cbfbd049942f3d5'
+          api_key: 'wg_8c738016abb2edccc1cbfbd049942f3d5',
+          hide_switcher: true   
         });`}
       </Script>
       <CustomHead {...seo} />
       {showBanner && <Banner />}
-      {lang === "cs" && <HeaderCS />}
-      {lang === "en" && <HeaderEN />}
+      <HeaderCS/>
       {crumbs && (
         <Section>
           <SectionContent>

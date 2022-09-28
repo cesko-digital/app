@@ -1,19 +1,28 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Section from "../section";
 import SectionContent from "../section-content";
-import { Link } from "components/links";
-import { ButtonSize } from "components/buttons";
-import { CloseIcon, MenuIcon } from "components/icons";
-import { Route } from "lib/utils";
-import { useSession, signIn } from "next-auth/react";
-import { DefaultSession } from "next-auth";
+import {Link} from "components/links";
+import {ButtonSize} from "components/buttons";
+import {CloseIcon, MenuIcon} from "components/icons";
+import {Route} from "lib/utils";
+import {useSession, signIn} from "next-auth/react";
+import {DefaultSession} from "next-auth";
 import * as S from "./styles";
 import strings from "content/strings.json";
 import Plausible from "plausible-tracker";
-import { default as NextLink } from "next/link";
+import {default as NextLink} from "next/link";
 
 const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState("cs")
+
+  useEffect(() => {
+    const subdomain = window.location.host.split(".")[0]
+    if (subdomain === "en") {
+      setLang("en")
+    }
+
+  }, [])
 
   const menu = [
     [Route.projects, strings.header.projects],
@@ -28,7 +37,7 @@ const HeaderCS: React.FC = () => {
       <SectionContent verticalPadding={0}>
         <S.Container>
           <Link to="/" size={ButtonSize.Small}>
-            <S.Logo />
+            <S.Logo/>
           </Link>
 
           <S.DesktopLinksContainer>
@@ -38,20 +47,23 @@ const HeaderCS: React.FC = () => {
               </Link>
             ))}
 
-            <ManageSession />
-
-            <Link key="english" to={"/en/"} size={ButtonSize.Small}>
+            <ManageSession/>
+            {lang === "cs" ? <Link key="english" to="https://en.cesko.digital" size={ButtonSize.Small}>
               {strings.header.english}
-            </Link>
+            </Link> : <Link key="czech" to="https://cesko.digital" size={ButtonSize.Small}>
+              {strings.header.czech}
+            </Link>}
           </S.DesktopLinksContainer>
 
           <S.MobileLinksContainer>
-            <Link key="english" to={"/en/"} size={ButtonSize.Small}>
+            {lang === "cs" ? <Link key="english" to="https://en.cesko.digital" size={ButtonSize.Small}>
               {strings.header.english}
-            </Link>
-            <ManageSession />
+            </Link> : <Link key="czech" to="https://cesko.digital" size={ButtonSize.Small}>
+              {strings.header.czech}
+            </Link>}
+            <ManageSession/>
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              {mobileMenuOpen ? <CloseIcon/> : <MenuIcon/>}
             </S.IconButton>
           </S.MobileLinksContainer>
         </S.Container>
@@ -71,30 +83,30 @@ const HeaderCS: React.FC = () => {
 };
 
 const ManageSession = () => {
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   if (session && session.user) {
-    return <UserProfileButton user={session.user} />;
+    return <UserProfileButton user={session.user}/>;
   } else {
-    return <SignInButton />;
+    return <SignInButton/>;
   }
 };
 
 const SignInButton = () => {
-  const { trackEvent } = Plausible({ domain: "cesko.digital" });
+  const {trackEvent} = Plausible({domain: "cesko.digital"});
   const handleClick = () => {
     trackEvent("SignIn");
     signIn("slack");
   };
   return (
     <S.HeaderButton size={ButtonSize.Small} onClick={handleClick} inverted>
-      Přihlásit se
+      Přihlásit se
     </S.HeaderButton>
   );
 };
 
 const UserProfileButton: React.FC<{
   user: NonNullable<DefaultSession["user"]>;
-}> = ({ user }) => {
+}> = ({user}) => {
   const imageUrl =
     user.image || "https://data.cesko.digital/people/generic-profile.jpg";
   const email = user.email || "<neznámý e-mail>";
