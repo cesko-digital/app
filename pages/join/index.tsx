@@ -37,10 +37,7 @@ const Page: NextPage = () => {
   );
 };
 
-//
-// Intro
-//
-
+/** Intro section with main heading and intro video */
 const Intro = () => (
   <section className="max-w-content m-auto mt-20 pb-10 px-5 text-lg">
     <h1 className="text-[44px] font-bold leading-snug mb-10">
@@ -64,10 +61,12 @@ const Intro = () => (
   </section>
 );
 
-//
-// Join Us
-//
-
+/**
+ * “Join Us” section with the Czechia map and profile picture pins
+ *
+ * The `div` on the right side that contains the map is constrained to the
+ * map aspect ratio to make positioning of the pins easier.
+ */
 const JoinUs = () => (
   <section className="max-w-content m-auto py-10 px-5 text-lg">
     <h2 className="text-it mt-0 leading-snug">
@@ -110,18 +109,14 @@ type ProfilePinProps = {
 };
 
 const ProfilePin: React.FC<ProfilePinProps> = ({ image, name, top, left }) => (
-  <div
-    className="absolute rounded-full w-[80px] h-[80px] -ml-[40px] -mt-[40px] overflow-clip"
-    style={{ left: `${left}%`, top: `${top}%` }}
-  >
-    <Image src={image} alt={name} />
+  <div style={{ position: "absolute", left: `${left}%`, top: `${top}%` }}>
+    <div className="rounded-full w-[80px] h-[80px] -ml-[40px] -mt-[40px] overflow-clip">
+      <Image src={image} alt={name} />
+    </div>
   </div>
 );
 
-//
-// How We Work
-//
-
+/** “How we work” section with basic collaboration info */
 const HowWeWork = () => (
   <section className="bg-pebble">
     <div className="max-w-content m-auto py-10 px-5 text-lg">
@@ -166,10 +161,7 @@ const HowToBox: React.FC<HowToBoxProps> = ({ title, text, icon: Icon }) => (
   </div>
 );
 
-//
-// Why Join?
-//
-
+/** “Why join?” section with user testimonials */
 const WhyJoin = () => (
   <section className="max-w-content m-auto py-10 px-5 text-lg">
     <h2 className="mt-0 mb-12 font-normal">Proč se přidat do komunity?</h2>
@@ -223,10 +215,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
   </div>
 );
 
-//
-// Contact Us
-//
-
+/** “Contact us” section with contact info */
 const ContactUs = () => (
   <section className="bg-pebble text-lg">
     <div className="max-w-content m-auto py-20 px-5">
@@ -239,9 +228,5 @@ const ContactUs = () => (
     </div>
   </section>
 );
-
-//
-// Shared
-//
 
 export default Page;
