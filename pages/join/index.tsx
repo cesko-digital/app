@@ -57,7 +57,7 @@ const Intro = () => (
       komunitu, která pomáhá veřejné sféře s efektivním využíváním digitálních
       technologií.
     </p>
-    <div className="max-w-prose aspect-video">
+    <div className="max-w-prose aspect-video -mx-5 sm:mx-0">
       <iframe
         src="https://www.youtube-nocookie.com/embed/gwxVBjlG8iQ"
         width="100%"
