@@ -14,9 +14,12 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
   const theme = useContext(ThemeContext);
   return (
     <Layout
-      crumbs={[{ label: "Přidej se k nám!" }]}
+      crumbs={[
+        { label: "Zapojit se", path: "/join" },
+        { label: "Registrační formulář" },
+      ]}
       head={{
-        title: "Přidej se k nám!",
+        title: "Staň se členem komunity",
         description: `Staň se součástí Česko.Digital, největší komunity expertních dobrovolníků
             a dobrovolnic. Rádi tě zapojíme do projektů, které tě budou bavit a kde můžeš získat
             nové zkušenosti nebo se podělit o své nápady.`,
@@ -25,21 +28,13 @@ const OnboardingPage: React.FC<Props> = ({ skills, onSubmit }) => {
       <Section>
         <S.SectionIntroductionContent>
           <S.IntroductionHeader>
-            <S.H1>Přidej se k nám!</S.H1>
+            <S.H1>Staň se členem komunity</S.H1>
             <S.BodyBig>
-              Staň se součástí Česko.Digital, největší komunity expertních
-              dobrovolníků a dobrovolnic. Rádi tě zapojíme do projektů, které tě
-              budou bavit a kde můžeš získat nové zkušenosti nebo se podělit o
-              své nápady.
+              Abychom věděli, co by tě z našich aktivit mohlo zajímat a kdo se
+              na tebe může z komunity obrátit, řekni nám prosím něco o sobě.
+              Osobní údaje a dovednostní preference si pak budeš moci kdykoliv
+              upravit ve svém profilu na portálu dobrovolníka.
             </S.BodyBig>
-            <S.Body color={"darkGrey"}>
-              <S.Highlighted>
-                Začni prosím tím, že vyplníš následující registrační formulář.
-              </S.Highlighted>{" "}
-              Vyplněná data neprezentujeme veřejně, ale lépe tě díky nim poznáme
-              a uděláme si představu o tom, jaké projekty by tě mohly zajímat a
-              kde bychom tě potřebovali.
-            </S.Body>
             <S.Body color={"darkGrey"}>
               Po odeslání formuláře se dostaneš na náš Slack, ve kterém probíhá
               veškerá komunikace o projektech a mezi členy komunity. Tam tě také

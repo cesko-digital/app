@@ -20,9 +20,9 @@ import {
 const Page: NextPage = () => {
   return (
     <Layout
-      crumbs={[{ label: "Přidej se k nám!" }]}
+      crumbs={[{ label: "Zapojit se" }]}
       head={{
-        title: "Přidej se k nám!",
+        title: "Zapojit se",
         description: `Staň se součástí Česko.Digital, největší komunity expertních dobrovolníků
         a dobrovolnic. Rádi tě zapojíme do projektů, které tě budou bavit a kde můžeš získat
         nové zkušenosti nebo se podělit o své nápady.`,
