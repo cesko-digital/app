@@ -5,6 +5,7 @@ import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
+import HeaderEN from "./header/english";
 import Banner from "components/banner";
 import Script from "next/script";
 import { analyticsId } from "lib/utils";
@@ -46,7 +47,8 @@ const Layout: React.FC<Props> = ({
       </Script>
       <CustomHead {...seo} />
       {showBanner && <Banner />}
-      <HeaderCS/>
+      {lang === "cs" && <HeaderCS />}
+      {lang === "en" && <HeaderEN />}
       {crumbs && (
         <Section>
           <SectionContent>
