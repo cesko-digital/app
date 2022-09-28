@@ -39,7 +39,15 @@ const Page: NextPage = () => {
 
 /** Intro section with main heading and intro video */
 const Intro = () => (
-  <section className="max-w-content m-auto mt-20 pb-10 px-5 text-lg">
+  <section className="relative max-w-content m-auto mt-20 pb-10 px-5 text-lg">
+    <div className="hidden lg:block absolute right-[100px]">
+      <Image
+        src="/images/onboarding/rightward-arrows.svg"
+        alt=""
+        width={181}
+        height={373}
+      />
+    </div>
     <h1 className="text-[44px] font-bold leading-snug mb-10">
       Měň s námi Česko k lepšímu!
     </h1>
@@ -218,7 +226,15 @@ const Testimonial: React.FC<TestimonialProps> = ({
 /** “Contact us” section with contact info */
 const ContactUs = () => (
   <section className="bg-pebble text-lg">
-    <div className="max-w-content m-auto py-20 px-5">
+    <div className="relative max-w-content m-auto py-20 px-5">
+      <div className="hidden lg:block absolute right-[100px] top-[10px] opacity-50">
+        <Image
+          src="/images/onboarding/round-blobs.svg"
+          alt=""
+          width={245}
+          height={233}
+        />
+      </div>
       <h2 className="mt-0 leading-snug">Chceš se ještě na něco doptat?</h2>
       <p>
         Napiš nám na{" "}
