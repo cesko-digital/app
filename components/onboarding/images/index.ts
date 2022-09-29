@@ -9,3 +9,4 @@ export { default as RadekH } from "./radekh.jpg";
 export { default as RadekP } from "./radekp.jpg";
 export { default as Martin } from "./martin.jpg";
 export { default as Eva } from "./eva.jpg";
+export { default as Tereza } from "./tereza.jpg";
