@@ -17,6 +17,7 @@ import {
   Petr,
   RadekP,
   Martin,
+  Eva,
 } from "components/onboarding/images";
 
 const Page: NextPage = () => {
@@ -108,6 +109,7 @@ const JoinUs = () => (
         <ProfilePin image={Jakub} name="Jakub" top={80} left={35} />
         <ProfilePin image={RadekP} name="Radek" top={40} left={55} />
         <ProfilePin image={Martin} name="Martin" top={10} left={45} />
+        <ProfilePin image={Eva} name="Eva" top={35} left={35} />
       </div>
     </div>
   </section>
