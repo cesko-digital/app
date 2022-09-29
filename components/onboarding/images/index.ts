@@ -5,4 +5,5 @@ export { default as Julia } from "./julia.jpg";
 export { default as Ondrej } from "./ondrej.jpg";
 export { default as Petr } from "./petr.jpg";
 export { default as Petra } from "./petra.jpg";
-export { default as Radek } from "./radek.jpg";
+export { default as RadekH } from "./radekh.jpg";
+export { default as RadekP } from "./radekp.jpg";

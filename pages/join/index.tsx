@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
-import { Petra, Radek, Julia } from "components/onboarding/images";
+import { Petra, RadekH, Julia } from "components/onboarding/images";
 import { CzechiaMapArrows } from "components/illustrations";
 import Image, { StaticImageData } from "next/image";
 import {
@@ -15,6 +15,7 @@ import {
   Jakub,
   Ondrej,
   Petr,
+  RadekP,
 } from "components/onboarding/images";
 
 const Page: NextPage = () => {
@@ -104,6 +105,7 @@ const JoinUs = () => (
         <ProfilePin image={Petr} name="Petr" top={35} left={5} />
         <ProfilePin image={Ondrej} name="Ondřej" top={75} left={85} />
         <ProfilePin image={Jakub} name="Jakub" top={80} left={35} />
+        <ProfilePin image={RadekP} name="Radek" top={40} left={55} />
       </div>
     </div>
   </section>
@@ -182,7 +184,7 @@ const WhyJoin = () => (
       />
       <Testimonial
         name="Radek Hábl"
-        image={Radek}
+        image={RadekH}
         title="Zakladatel Institutu prevence a řešení předlužení"
         blurb="Česko.Digital přináší know-how v oblasti digitálních technologií a pomáhá vytvářet smysluplné projekty. Setkávám se s lidmi, kteří mají zájem předat své zkušenosti, a sám se při spolupráci odborně posouvám v mnoha mně dosud neznámých oblastech."
       />
