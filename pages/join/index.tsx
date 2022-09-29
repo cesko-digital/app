@@ -225,7 +225,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
         <p className="mt-0">{title}</p>
       </div>
     </div>
-    <p>{blurb}</p>
+    <p>„{blurb}“</p>
   </div>
 );
 
