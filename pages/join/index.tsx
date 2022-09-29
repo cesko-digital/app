@@ -125,7 +125,7 @@ type ProfilePinProps = {
 const ProfilePin: React.FC<ProfilePinProps> = ({ image, name, top, left }) => (
   <div style={{ position: "absolute", left: `${left}%`, top: `${top}%` }}>
     <div className="rounded-full w-[80px] h-[80px] -ml-[40px] -mt-[40px] overflow-clip">
-      <Image src={image} alt={name} />
+      <Image src={image} alt={name} width={80} height={80} />
     </div>
   </div>
 );
@@ -218,7 +218,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
   <div>
     <div className="flex flex-row gap-4">
       <div className="rounded-full overflow-clip w-[80px] h-[80px] shrink-0">
-        <Image src={image} alt={name} />
+        <Image src={image} alt={name} width={80} height={80} />
       </div>
       <div className="border-1 text-sm">
         <h3 className="mt-1 mb-0">{name}</h3>
