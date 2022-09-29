@@ -1,7 +1,13 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
-import { Petra, RadekH, Julia, Tereza } from "components/onboarding/images";
+import {
+  Petra,
+  RadekH,
+  Julia,
+  Tereza,
+  PetrB,
+} from "components/onboarding/images";
 import { CzechiaMapArrows } from "components/illustrations";
 import Image, { StaticImageData } from "next/image";
 import {
@@ -110,7 +116,8 @@ const JoinUs = () => (
         <ProfilePin image={RadekP} name="Radek" top={40} left={55} />
         <ProfilePin image={Martin} name="Martin" top={10} left={45} />
         <ProfilePin image={Eva} name="Eva" top={35} left={35} />
-        <ProfilePin image={Tereza} name="Tereza" top={45} left={15} />
+        <ProfilePin image={Tereza} name="Tereza" top={42} left={13} />
+        <ProfilePin image={PetrB} name="Petr" top={55} left={25} />
       </div>
     </div>
   </section>
