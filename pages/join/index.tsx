@@ -116,7 +116,6 @@ const JoinUs = () => (
         <ProfilePin image={RadekP} name="Radek" top={40} left={55} />
         <ProfilePin image={Martin} name="Martin" top={10} left={45} />
         <ProfilePin image={Eva} name="Eva" top={35} left={35} />
-        <ProfilePin image={Tereza} name="Tereza" top={42} left={13} />
         <ProfilePin image={PetrB} name="Petr" top={55} left={25} />
       </div>
     </div>
