@@ -78,7 +78,7 @@ export async function notifyOwnersAboutPublishedOffers(slackToken: string) {
       channel: marketPlaceSlackChannelId,
       token: slackToken,
       thread_ts: offer.originalMessageTimestamp,
-      text: `Ahoj! Poptávka byla úspěšně zveřejněna na https://cesko.digital/marketplace 🎉`,
+      text: `Ahoj! Poptávka byla úspěšně zveřejněna na https://cesko.digital/marketplace#${offer.id} 🎉`,
     });
     // Mark thread as published with an emoji reaction
     await slack.reactions
