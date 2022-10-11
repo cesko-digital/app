@@ -31,7 +31,18 @@ const MarketPlace: NextPage<PageProps> = ({ offers }) => {
       <Section>
         <SectionContent>
           <Heading1>{strings.pages.dashboard.marketplaceOffers}</Heading1>
-          <Body>Příležitosti k zapojení v projektech mimo Česko.Digital</Body>
+          <Body>
+            Pomáhat můžeš i mimo komunitu. Díky službě Marketplace můžeš pomoci
+            jakékoliv neziskové nebo veřejno-správní organizaci, která v tuto
+            chvíli nemá projekt v Česko.Digital. Těmto organizacím Marketplace
+            umožňuje snadno poptat kohokoliv v komunitě na pomoc s jednorázovými
+            úkoly a v rámci krátkodobé spolupráci. Jak konkrétně službu využít a
+            jak celý proces probíhá je{" "}
+            <a href="https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/87462947/Market-place+v+esko.Digital">
+              vysvětleno na naší wiki
+            </a>
+            .
+          </Body>
         </SectionContent>
       </Section>
       <Section>
