@@ -102,8 +102,13 @@ export async function insertNewMarketPlaceOffer(
       maxRecords: 1,
     })
     .all()
-    .then((records) => unwrapRecord(records[0]))
-    .then(decodeUserProfile);
+    // This is a sorry hack. We need the owner record’s database ID to
+    // create a relation from Market Place table to the User Profiles table,
+    // _but_ the ID returned by the RECORD_ID() formula in User Profiles
+    // reports a “wrong” ID from the original, synced User Profiles table.
+    // So we need to extract the correct ID here.
+    .then((records) => ({ ...records[0].fields, id: records[0].id }))
+    .then((x) => decodeUserProfile(x as any));
 
   // Then insert the new offer
   return await marketPlaceTable
