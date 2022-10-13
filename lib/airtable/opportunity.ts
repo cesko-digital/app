@@ -32,6 +32,7 @@ export const decodeOpportunity = record({
   skills: field("Skills", decodeSkills),
   juniorFriendly: field("Junior Friendly", withDefault(boolean, false)),
   status: field("Status", union("draft", "live", "unlisted")),
+  creationTime: field("Created Time", string),
 });
 
 //
@@ -49,3 +50,12 @@ export async function getAllOpportunities(): Promise<PortalOpportunity[]> {
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeOpportunity, "Opportunities"));
 }
+
+//
+// Helpers
+//
+
+export const compareOpportunitiesByTime = (
+  a: PortalOpportunity,
+  b: PortalOpportunity
+) => Date.parse(b.creationTime) - Date.parse(a.creationTime);
