@@ -5,6 +5,7 @@ import {
   decodeValidItemsFromArray,
   optionalArray,
   decodeJSONString,
+  relationToZeroOrOne,
 } from "./decoding";
 
 test("Decode URL", () => {
@@ -30,6 +31,14 @@ test("Decode object", () => {
       age: 42,
     },
   });
+});
+
+test("Decode Airtable relation", () => {
+  expect(relationToZeroOrOne(undefined)).toBeUndefined();
+  expect(relationToZeroOrOne([])).toBeUndefined();
+  expect(relationToZeroOrOne(["foo"])).toBe("foo");
+  expect(relationToZeroOrOne("foo")).toBe("foo");
+  expect(() => relationToZeroOrOne(["foo", "bar"])).toThrow();
 });
 
 test("Decode optional array", () => {
