@@ -1,6 +1,6 @@
 import { FieldSet } from "airtable";
 import { unwrapRecord, unwrapRecords, webBase } from "./request";
-import { Schema as UserProfileSchema } from "./user-profile";
+import { decodeUserProfile, Schema as UserProfileSchema } from "./user-profile";
 import { relationToZeroOrOne } from "lib/decoding";
 import {
   array,
@@ -33,6 +33,7 @@ export const decodeMarketPlaceOffer = record({
   ownerAvatarUrl: relationToZeroOrOne,
   ownerSlackId: relationToZeroOrOne,
   ownerContactEmail: relationToZeroOrOne,
+  contactEmail: optional(string),
   slackThreadUrl: string,
   originalMessageTimestamp: string,
   title: optional(string),
@@ -95,13 +96,14 @@ export async function insertNewMarketPlaceOffer(
     offer;
 
   // First find the matching owner profile in (synced) User Profiles
-  const ownerProfileId = await userProfileTable
+  const ownerProfile = await userProfileTable
     .select({
       filterByFormula: `{slackId} = "${owner}"`,
       maxRecords: 1,
     })
     .all()
-    .then((records) => records[0].id);
+    .then((records) => unwrapRecord(records[0]))
+    .then(decodeUserProfile);
 
   // Then insert the new offer
   return await marketPlaceTable
@@ -110,7 +112,8 @@ export async function insertNewMarketPlaceOffer(
       text,
       slackThreadUrl,
       originalMessageTimestamp,
-      owner: [ownerProfileId],
+      owner: [ownerProfile.id],
+      contactEmail: ownerProfile.contactEmail ?? ownerProfile.email,
     })
     .then(unwrapRecord)
     .then(decodeMarketPlaceOffer);
