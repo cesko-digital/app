@@ -43,7 +43,6 @@ export const decodeMarketPlaceOffer = record({
   state: union(
     "new",
     "published",
-    "needs-detail",
     "invalid",
     "expired",
     "cancelled",
