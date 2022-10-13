@@ -104,9 +104,7 @@ const expirationTimeInSeconds = 30 * secondsPerDay; // 30 days
 /** Mark all old offers as expired */
 export async function markExpiredOffers(slackToken: string) {
   const canExpire = (offer: MarketPlaceOffer) =>
-    offer.state === "new" ||
-    offer.state === "needs-detail" ||
-    offer.state === "published";
+    offer.state === "new" || offer.state === "published";
   const offers = await getAllMarketPlaceOffers();
   for (const offer of offers.filter(canExpire)) {
     const offerAge = offerAgeInSeconds(offer);

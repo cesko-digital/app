@@ -110,7 +110,7 @@ const Offer = (offer: MarketPlaceOffer) => {
       </div>
       {session.status !== "authenticated" && (
         <ButtonAsLink
-          to={`mailto:${offer.ownerContactEmail ?? offer.ownerEmail}`}
+          to={`mailto:${offer.contactEmail}`}
           size={ButtonSize.Small}
           inverted
         >
