@@ -41,6 +41,7 @@ export const decodeUserProfile = record({
   id: string,
   name: string,
   email: string,
+  contactEmail: relationToZeroOrOne,
   skills: withDefault(array(string), []),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
