@@ -3,17 +3,20 @@ import { Layout, SectionContent, Section } from "components/layout";
 import * as Typography from "components/typography";
 import OpportunityItem from "components/sections/opportunity-overview";
 import styled from "styled-components";
-import {
-  CompetencyFilterLabel,
-  CompetencyFilterRadio,
-} from "components/dashboard/styles";
 import { Route } from "lib/utils";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Select from "components/select";
 import { PortalProject } from "lib/airtable/project";
-import { PortalOpportunity } from "lib/airtable/opportunity";
+import {
+  CompetencyFilterLabel,
+  CompetencyFilterRadio,
+} from "components/dashboard/styles";
+import {
+  compareOpportunitiesByTime,
+  PortalOpportunity,
+} from "lib/airtable/opportunity";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];
@@ -52,6 +55,7 @@ const Page: NextPage<PageProps> = (props) => {
         });
       });
     }
+    filteredOpportunities.sort(compareOpportunitiesByTime);
   }
 
   function getSkills() {
