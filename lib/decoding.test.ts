@@ -38,7 +38,14 @@ test("Decode Airtable relation", () => {
   expect(relationToZeroOrOne([])).toBeUndefined();
   expect(relationToZeroOrOne(["foo"])).toBe("foo");
   expect(relationToZeroOrOne("foo")).toBe("foo");
-  expect(() => relationToZeroOrOne(["foo", "bar"])).toThrow();
+});
+
+test("Decode relation with unexpected number of records", () => {
+  const consoleWarn = console.warn;
+  console.warn = jest.fn();
+  expect(relationToZeroOrOne(["foo", "bar"])).toBe("foo");
+  expect(console.warn).toHaveBeenCalled();
+  console.warn = consoleWarn;
 });
 
 test("Decode optional array", () => {

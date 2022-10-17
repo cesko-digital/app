@@ -81,7 +81,9 @@ export const relationToZeroOrOne = (value: Pojo) => {
     const decodeArray = array(string);
     const decoded = decodeArray(value);
     if (decoded.length !== 1) {
-      throw `Failed to decode relation, expected 0 or 1 values, got ${decoded.length}`;
+      console.warn(
+        `Unexpected number of records when decoding relation, expected 0 or 1 values, got ${decoded.length}`
+      );
     }
     return decoded[0];
   } else {
