@@ -68,7 +68,7 @@ const Intro = () => (
     </p>
     <div className="max-w-prose aspect-video -mx-5 sm:mx-0">
       <iframe
-        src="https://www.youtube-nocookie.com/embed/gwxVBjlG8iQ"
+        src="https://www.youtube.com/embed/M00UCdYR6xE"
         width="100%"
         height="100%"
         title="Vítejte v Česko.Digital"
