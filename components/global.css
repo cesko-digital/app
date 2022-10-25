@@ -6,6 +6,22 @@
   overflow-x: hidden;
 }
 
+/*
+ * Commonly used Tailwind shorthands.
+ *
+ * NOTE: Avoid premature abstraction here:
+ * https://tailwindcss.com/docs/reusing-styles
+ */
+
+@layer components {
+  .btn-primary {
+    @apply bg-it text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg;
+  }
+  .btn-inverted {
+    @apply bg-white text-it px-5 py-2 rounded-md no-underline hover:drop-shadow-lg border-2 border-violet;
+  }
+}
+
 /* Initial styles after Tailwind reset */
 
 html {

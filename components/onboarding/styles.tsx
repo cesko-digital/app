@@ -62,7 +62,7 @@ export const SectionIntroductionContent = styled(SectionContent)`
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding-top: ${({ theme }) => theme.space.lg}px;
     padding-bottom: ${({ theme }) => theme.space.lg}px;
-    margin-top: 50px;
+    margin-top: 0px;
     background: url(/images/onboarding/bg-arrows.svg) calc(80% + 100px) 0%
         no-repeat,
       url(/images/onboarding/bg-arrows.svg) 80% calc(0% + 144px) no-repeat;

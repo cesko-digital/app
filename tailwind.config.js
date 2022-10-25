@@ -9,6 +9,11 @@ module.exports = {
       maxWidth: {
         content: "1200px",
       },
+      colors: {
+        pebble: "#F9F9F9",
+        it: "#0000FF",
+        violet: "CCCCFF",
+      },
     },
   },
   plugins: [],
