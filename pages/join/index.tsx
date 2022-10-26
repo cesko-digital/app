@@ -1,14 +1,9 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
-import {
-  Petra,
-  RadekH,
-  Julia,
-  Tereza,
-  PetrB,
-} from "components/onboarding/images";
+import { Petra, RadekH, Julia, PetrB } from "components/onboarding/images";
 import { CzechiaMapArrows } from "components/illustrations";
+import { getCachedMemberCount } from "lib/utils";
 import Image, { StaticImageData } from "next/image";
 import {
   OpennessIcon,
@@ -26,7 +21,11 @@ import {
   Eva,
 } from "components/onboarding/images";
 
-const Page: NextPage = () => {
+type PageProps = {
+  memberCount: number;
+};
+
+const Page: NextPage<PageProps> = ({ memberCount }) => {
   return (
     <Layout
       crumbs={[{ label: "Zapojit se" }]}
@@ -37,7 +36,7 @@ const Page: NextPage = () => {
         nové zkušenosti nebo se podělit o své nápady.`,
       }}
     >
-      <Intro />
+      <Intro memberCount={memberCount} />
       <JoinUs />
       <HowWeWork />
       <WhyJoin />
@@ -46,8 +45,17 @@ const Page: NextPage = () => {
   );
 };
 
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const memberCount = await getCachedMemberCount();
+  return {
+    props: {
+      memberCount,
+    },
+  };
+};
+
 /** Intro section with main heading and intro video */
-const Intro = () => (
+const Intro = ({ memberCount }: PageProps) => (
   <section className="relative max-w-content m-auto mt-10 pb-10 px-5 text-lg">
     <div className="hidden lg:block absolute right-[100px]">
       <Image
@@ -61,10 +69,10 @@ const Intro = () => (
       Měň s námi Česko k lepšímu!
     </h1>
     <p className="max-w-prose">
-      Je nás už více než 5 300. Expertní dobrovolníci a zaměstnanci, členové
-      neziskovek a státní správy, partneři a nadšenci. My všichni tvoříme
-      komunitu, která pomáhá veřejné sféře s efektivním využíváním digitálních
-      technologií.
+      Je nás už více než {Math.floor(memberCount / 100) * 100}. Expertní
+      dobrovolníci a zaměstnanci, členové neziskovek a státní správy, partneři a
+      nadšenci. My všichni tvoříme komunitu, která pomáhá veřejné sféře s
+      efektivním využíváním digitálních technologií.
     </p>
     <div className="max-w-prose aspect-video -mx-5 sm:mx-0">
       <iframe

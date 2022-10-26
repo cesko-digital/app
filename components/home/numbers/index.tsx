@@ -7,9 +7,10 @@ import { ThemeContext } from "styled-components";
 
 interface Props {
   lang?: "cs" | "en";
+  memberCount: number;
 }
 
-const Numbers: React.FC<Props> = ({ lang = "cs" }) => {
+const Numbers: React.FC<Props> = ({ memberCount, lang = "cs" }) => {
   const strings = lang === "cs" ? csstrings : enstrings;
   const theme = useContext(ThemeContext);
   const numbers = strings.pages.homepage.sections.numbers;
@@ -18,7 +19,7 @@ const Numbers: React.FC<Props> = ({ lang = "cs" }) => {
       <SectionContent verticalPadding={70}>
         <S.Wrapper>
           <S.Item key="first">
-            <S.Value>{numbers.first.value}</S.Value>
+            <S.Value>{Math.floor(memberCount / 100) * 100}+</S.Value>
             <S.Subtitle>{numbers.first.subtitle}</S.Subtitle>
           </S.Item>
           <S.Item key="second">

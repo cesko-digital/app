@@ -47,6 +47,12 @@ export function markdownToHTML(source: string): string {
   });
 }
 
+export async function getCachedMemberCount(): Promise<number> {
+  return await fetch("https://cesko.digital/api/member_count")
+    .then((response) => response.json())
+    .then((value) => value.count);
+}
+
 export function getResizedImgUrl(
   originalUrl: string,
   targetWidth: number

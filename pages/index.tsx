@@ -1,11 +1,11 @@
-import type { NextPage, GetStaticProps } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
-import { shuffleInPlace } from "lib/utils";
+import { getCachedMemberCount, shuffleInPlace } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 import { PortalPartner } from "lib/airtable/partner";
 import {
@@ -17,11 +17,16 @@ import {
 } from "components/home";
 
 type PageProps = {
+  memberCount: number;
   featuredProjects: readonly PortalProject[];
   partners: readonly PortalPartner[];
 };
 
-const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
+const Page: NextPage<PageProps> = ({
+  featuredProjects,
+  partners,
+  memberCount,
+}) => {
   const theme = useContext(ThemeContext);
   const router = useRouter();
   const displayBanner = !!router.query.banner;
@@ -32,7 +37,7 @@ const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
         <Hero />
       </Section>
 
-      <Numbers />
+      <Numbers memberCount={memberCount} />
 
       <Section>
         <SectionContent>
@@ -68,6 +73,7 @@ const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const memberCount = await getCachedMemberCount();
   const allPartners = siteData.partners;
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
@@ -79,6 +85,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   ).slice(0, 3);
   return {
     props: {
+      memberCount,
       featuredProjects,
       partners,
     },
