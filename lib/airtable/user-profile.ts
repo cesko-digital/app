@@ -75,6 +75,16 @@ export function encodeUserProfile(
 // API Calls
 //
 
+/**
+ * Get number of people in the community
+ *
+ * Surprisingly, Airtable’s API doesn’t seem to offer any way to just return the row
+ * count, so we have to get all rows and count those 🤦‍♂️ Which means the call takes a
+ * long time, please cache accordingly.
+ */
+export const getMemberCount = async () =>
+  (await userProfileTable.select({ fields: [] }).all()).length;
+
 /** Get all user profiles */
 export const getAllUserProfiles = async () =>
   await userProfileTable
