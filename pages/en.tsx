@@ -4,6 +4,7 @@ import { ThemeContext } from "styled-components";
 import { useContext } from "react";
 import { siteData } from "lib/site-data";
 import { PortalPartner } from "lib/airtable/partner";
+import { getCachedMemberCount } from "lib/utils";
 import {
   Hero,
   OurValues,
@@ -13,10 +14,11 @@ import {
 } from "components/home";
 
 type PageProps = {
+  memberCount: number;
   partners: PortalPartner[];
 };
 
-const Page: NextPage<PageProps> = ({ partners }) => {
+const Page: NextPage<PageProps> = ({ partners, memberCount }) => {
   const theme = useContext(ThemeContext);
   return (
     <Layout lang="en">
@@ -24,7 +26,7 @@ const Page: NextPage<PageProps> = ({ partners }) => {
         <Hero lang="en" />
       </Section>
 
-      <Numbers lang="en" />
+      <Numbers lang="en" memberCount={memberCount} />
 
       <Section backgroundColor={theme.colors.pebble}>
         <SectionContent>
@@ -46,12 +48,14 @@ const Page: NextPage<PageProps> = ({ partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
+  const memberCount = await getCachedMemberCount();
   const homepagePartners = siteData.partners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   return {
     props: {
       partners: homepagePartners,
+      memberCount,
     },
   };
 };
