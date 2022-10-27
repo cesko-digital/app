@@ -177,7 +177,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
       ></input>
       <label htmlFor="privacy" className="ml-2">
         Souhlas se{" "}
-        <a href="https://docs.google.com/document/d/e/2PACX-1vQ3cVnhGyzIsyDx0gyx3uPJharkhhfQOXHcgCI3swVZaDd0sXhmX74E1IVEtItWvA2H_dQqGTkxeR2q/pub">
+        <a href="https://cesko.digital/go/privacy">
           zpracováním osobních údajů
         </a>
         <RequiredFieldMarker />
