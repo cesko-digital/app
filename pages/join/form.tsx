@@ -1,18 +1,13 @@
 import { NextPage, GetStaticProps } from "next";
-import { RegistrationData } from "components/onboarding/form";
-import { Field } from "lib/airtable/skills";
 import OnboardingPage from "components/onboarding/page";
-import { siteData } from "lib/site-data";
 
-type PageProps = {
-  skills: readonly Field[];
+type PageProps = {};
+
+const Page: NextPage<PageProps> = () => {
+  return <OnboardingPage />;
 };
 
-const Page: NextPage<PageProps> = ({ skills }) => {
-  return <OnboardingPage skills={skills} onSubmit={createUserProfile} />;
-};
-
-async function createUserProfile(data: RegistrationData): Promise<boolean> {
+async function createUserProfile(data: any): Promise<boolean> {
   try {
     const response = await fetch("/api/user_profiles", {
       method: "post",
@@ -27,9 +22,8 @@ async function createUserProfile(data: RegistrationData): Promise<boolean> {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { skills } = siteData;
   return {
-    props: { skills },
+    props: {},
   };
 };
 
