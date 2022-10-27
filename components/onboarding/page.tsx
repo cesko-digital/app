@@ -1,8 +1,26 @@
 import { Layout } from "components/layout";
+import { ChangeEvent, useEffect, useState } from "react";
+
+type FormContent = {
+  name?: string;
+  email?: string;
+  occupation?: string;
+  organizationName?: string;
+  profileUrl?: string;
+  skills: string[];
+  legalConsent: boolean;
+};
 
 type PageProps = {};
 
 const OnboardingPage: React.FC<PageProps> = ({}) => {
+  const [state, setState] = useState<FormContent>({
+    skills: [],
+    legalConsent: false,
+  });
+  useEffect(() => {
+    console.log(JSON.stringify(state, null, 2));
+  }, [state]);
   return (
     <Layout
       crumbs={[
@@ -17,15 +35,29 @@ const OnboardingPage: React.FC<PageProps> = ({}) => {
       }}
     >
       <Intro />
-      <PersonalDetailsSection />
-      <SkillSection />
-      <LegalSection />
-      <SubmitSection />
+      <PersonalDetailsSection state={state} onChange={setState} />
+      <SkillSection state={state} onChange={setState} />
+      <LegalSection state={state} onChange={setState} />
+      <SubmitSection state={state} onChange={setState} />
     </Layout>
   );
 };
 
-/** Intro section */
+//
+// Form support
+//
+
+type FormSectionProps = {
+  state: FormContent;
+  onChange: (state: FormContent) => void;
+};
+
+type FormSection = React.FC<FormSectionProps>;
+
+//
+// Intro section
+//
+
 const Intro = () => (
   <Section>
     <SectionContent>
@@ -42,41 +74,77 @@ const Intro = () => (
   </Section>
 );
 
-/** Personal details section */
-const PersonalDetailsSection = () => (
+//
+// Personal details
+//
+
+const PersonalDetailsSection: FormSection = ({ state, onChange }) => (
   <Section>
     <SectionContent>
       <h2>To nejdůležitější o tobě</h2>
-      <TextInput id="name" label="Jméno a příjmení" required />
-      <TextInput id="email" label="Email" required />
+      <TextInput
+        id="name"
+        label="Jméno a příjmení"
+        autoComplete="name"
+        onChange={(name) => onChange({ ...state, name })}
+        required
+      />
+      <TextInput
+        id="email"
+        label="Email"
+        autoComplete="email"
+        onChange={(email) => onChange({ ...state, email })}
+        required
+      />
+      <OccupationSelect state={state} onChange={onChange} />
+      <TextInput
+        id="organization"
+        label="Název organizace, kde působíš"
+        autoComplete="organization"
+        onChange={(organizationName) =>
+          onChange({ ...state, organizationName })
+        }
+      />
+      <TextInput
+        id="profile"
+        label="Odkaz na tvůj web nebo profesní profil"
+        type="url"
+        onChange={(profileUrl) => onChange({ ...state, profileUrl })}
+      />
+    </SectionContent>
+  </Section>
+);
+
+const OccupationSelect: FormSection = ({ state, onChange }) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    const occupation = value === "na" ? undefined : value;
+    onChange({ ...state, occupation });
+  };
+  return (
+    <>
       <label htmlFor="occupation">Čemu se aktuálně věnuješ</label>
       <p className="text-base mt-1 text-gray-500">
         Vyber prosím svoji hlavní činnost. U některých možností tě můžeme v
         uvítacím e-mailu kontaktovat s dalšími podrobnostmi ohledně případné
         spolupráce (například u neziskovek či soukromého sektoru).
       </p>
-      <select id="occupation" className="w-full mb-8">
-        <option></option>
-        <option>Pracuji v soukromém sektoru</option>
-        <option>Pracuji v neziskové organizaci</option>
-        <option>Pracuji ve státním sektoru</option>
-        <option>Jsem na volné noze/freelancer</option>
-        <option>Studuji</option>
-        <option>Jsem na rodičovské</option>
-        <option>Hledám práci</option>
+      <select id="occupation" className="w-full mb-8" onChange={handleChange}>
+        <option value="na"></option>
+        <option value="private-sector">Pracuji v soukromém sektoru</option>
+        <option value="non-profit">Pracuji v neziskové organizaci</option>
+        <option value="state">Pracuji ve státním sektoru</option>
+        <option value="freelancing">Jsem na volné noze/freelancer</option>
+        <option value="studying">Studuji</option>
+        <option value="parental-leave">Jsem na rodičovské</option>
+        <option value="looking-for-job">Hledám práci</option>
       </select>
-      <TextInput id="organization" label="Název organizace, kde působíš" />
-      <TextInput
-        id="profile"
-        label="Odkaz na tvůj web nebo profesní profil"
-        type="url"
-      />
-    </SectionContent>
-  </Section>
-);
+    </>
+  );
+};
 
 /** Skills section */
-const SkillSection = () => (
+const SkillSection: FormSection = () => (
   <Section>
     <SectionContent>
       <h2>Dovednosti, které můžeš komunitě nabídnout</h2>
@@ -95,43 +163,59 @@ const SkillSection = () => (
   </Section>
 );
 
-const LegalSection = () => (
+const LegalSection: FormSection = ({ state, onChange }) => (
   <Section>
     <SectionContent>
       <h2>
         Abychom s informacemi od tebe mohli dále praccovat, tak tě prosíme o:
       </h2>
-      <input type="checkbox" id="privacy"></input>
+      <input
+        type="checkbox"
+        id="privacy"
+        defaultChecked={state.legalConsent}
+        onChange={(e) => onChange({ ...state, legalConsent: e.target.checked })}
+      ></input>
       <label htmlFor="privacy" className="ml-2">
         Souhlas se{" "}
         <a href="https://docs.google.com/document/d/e/2PACX-1vQ3cVnhGyzIsyDx0gyx3uPJharkhhfQOXHcgCI3swVZaDd0sXhmX74E1IVEtItWvA2H_dQqGTkxeR2q/pub">
           zpracováním osobních údajů
         </a>
+        <RequiredFieldMarker />
       </label>
     </SectionContent>
   </Section>
 );
 
-const SubmitSection = () => (
-  <Section>
-    <SectionContent>
-      <h2>Co tě čeká po odeslání formuláře</h2>
-      <ol>
-        <li>
-          Pro začátek dostaneš všechny potřebné informace v souhrnném uvítacím
-          e-mailu.
-        </li>
-        <li>
-          Přesměrujeme tě také rovnou na registrační stránku komunikačního
-          nástroje Slack. U nás se bez něho neobejdeš. Veškerá komunikace
-          probíhá právě tam. Stačí se zaregistrovat a můžeš začít hledat nové
-          příležitosti a kontakty nebo sledovat dění v komunitě.
-        </li>
-      </ol>
-      <button className="btn-primary mt-8">Odeslat a přejít na Slack</button>
-    </SectionContent>
-  </Section>
-);
+const SubmitSection: FormSection = ({ state }) => {
+  const enabled = state.legalConsent;
+  return (
+    <Section>
+      <SectionContent>
+        <h2>Co tě čeká po odeslání formuláře</h2>
+        <ol>
+          <li>
+            Pro začátek dostaneš všechny potřebné informace v souhrnném uvítacím
+            e-mailu.
+          </li>
+          <li>
+            Přesměrujeme tě také rovnou na registrační stránku komunikačního
+            nástroje Slack. U nás se bez něho neobejdeš. Veškerá komunikace
+            probíhá právě tam. Stačí se zaregistrovat a můžeš začít hledat nové
+            příležitosti a kontakty nebo sledovat dění v komunitě.
+          </li>
+        </ol>
+        <button
+          disabled={!enabled}
+          className={`${
+            enabled ? "btn-primary" : "btn-disabled cursor-not-allowed"
+          } mt-8`}
+        >
+          Odeslat a přejít na Slack
+        </button>
+      </SectionContent>
+    </Section>
+  );
+};
 
 //
 // Shared Components
@@ -153,7 +237,9 @@ type TextInputProps = {
   id: string;
   label: string;
   type?: "text" | "email" | "url";
+  autoComplete?: string;
   required?: boolean;
+  onChange?: (newValue: string) => void;
 };
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -161,6 +247,8 @@ const TextInput: React.FC<TextInputProps> = ({
   label,
   type = "text",
   required = false,
+  autoComplete,
+  onChange = (_) => {},
 }) => {
   return (
     <div className="mb-6">
@@ -170,8 +258,10 @@ const TextInput: React.FC<TextInputProps> = ({
       </label>
       <input
         id={id}
+        autoComplete={autoComplete}
         type={type}
         className="rounded-md border-2 border-gray p-2 w-full"
+        onChange={(e) => onChange(e.target.value)}
       ></input>
     </div>
   );
