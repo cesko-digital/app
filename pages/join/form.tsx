@@ -1,10 +1,10 @@
 import { NextPage, GetStaticProps } from "next";
-import OnboardingPage from "components/onboarding/page";
+import OnboardingFormPage from "components/onboarding/form";
 
 type PageProps = {};
 
 const Page: NextPage<PageProps> = () => {
-  return <OnboardingPage />;
+  return <OnboardingFormPage />;
 };
 
 async function createUserProfile(data: any): Promise<boolean> {

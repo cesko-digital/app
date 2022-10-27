@@ -13,7 +13,7 @@ type FormContent = {
 
 type PageProps = {};
 
-const OnboardingPage: React.FC<PageProps> = ({}) => {
+const OnboardingFormPage: React.FC<PageProps> = ({}) => {
   const [state, setState] = useState<FormContent>({
     skills: [],
     legalConsent: false,
@@ -267,4 +267,4 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 };
 
-export default OnboardingPage;
+export default OnboardingFormPage;
