@@ -34,6 +34,11 @@
       "source": "/cedu/devtalk-1-infrastruktura",
       "destination": "https://www.youtube.com/watch?v=5IlYHMlIZCc",
       "statusCode": 301
+    },
+    {
+      "source": "/go/privacy",
+      "destination": "https://docs.google.com/document/d/e/2PACX-1vQ3cVnhGyzIsyDx0gyx3uPJharkhhfQOXHcgCI3swVZaDd0sXhmX74E1IVEtItWvA2H_dQqGTkxeR2q/pub",
+      "statusCode": 301
     }
   ],
   "github": {
