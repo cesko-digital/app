@@ -20,11 +20,17 @@ export type RegistrationData = {
   profileUrl?: string;
 };
 
+export type CompetencyList = Record<string, string[]>;
+
 export type PageProps = {
+  defaultCompetencyList: CompetencyList;
   onSubmit?: (data: RegistrationData) => void;
 };
 
-const OnboardingFormPage: React.FC<PageProps> = ({ onSubmit }) => {
+const OnboardingFormPage: React.FC<PageProps> = ({
+  defaultCompetencyList,
+  onSubmit,
+}) => {
   const [state, setState] = useState<FormContent>({
     skills: [],
     legalConsent: false,
@@ -60,7 +66,11 @@ const OnboardingFormPage: React.FC<PageProps> = ({ onSubmit }) => {
     >
       <Intro />
       <PersonalDetailsSection state={state} onChange={setState} />
-      <SkillSection state={state} onChange={setState} />
+      <SkillSection
+        competencyList={defaultCompetencyList}
+        state={state}
+        onChange={setState}
+      />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection
         state={state}
@@ -206,24 +216,117 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 // Skills section
 //
 
-const SkillSection: FormSection = () => (
-  <Section>
-    <SectionContent>
-      <h2>Dovednosti, které můžeš komunitě nabídnout</h2>
-      <p>
-        Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
-        může (ale nemusí) někdo z komunity poprosit o radu nebo tě zapojit do
-        správného typu aktivity nebo projektu.
-      </p>
-      <p>
-        Nechceš čekat, až ti někdo napíše? Stačí se podívat na vhodné
-        příležitosti na{" "}
-        <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
-      </p>
-      <p className="bg-yellow-200">Here be dragons.</p>
-    </SectionContent>
-  </Section>
-);
+type SkillSectionProps = FormSectionProps & {
+  competencyList: CompetencyList;
+};
+
+const SkillSection: React.FC<SkillSectionProps> = ({ competencyList }) => {
+  return (
+    <Section>
+      <SectionContent>
+        <h2>Dovednosti, které můžeš komunitě nabídnout</h2>
+        <p>
+          Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
+          může (ale nemusí) někdo z komunity poprosit o radu nebo tě zapojit do
+          správného typu aktivity nebo projektu.
+        </p>
+        <p>
+          Nechceš čekat, až ti někdo napíše? Stačí se podívat na vhodné
+          příležitosti na{" "}
+          <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
+        </p>
+        <CompetencyPicker competencies={competencyList} />
+      </SectionContent>
+    </Section>
+  );
+};
+
+type CompetencyPickerProps = {
+  competencies: CompetencyList;
+};
+
+const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
+  competencies,
+}) => {
+  const [selection, setSelection] = useState<Record<string, boolean>>({});
+  const updateSelection = (category: string, check: boolean) => {
+    setSelection({ ...selection, [category]: check });
+  };
+  return (
+    <ul className="list-none ml-0 leading-loose">
+      {Object.entries(competencies).map(([category, skills]) => (
+        <li key={category}>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              onChange={(e) => updateSelection(category, e.target.checked)}
+              className="mr-2"
+            ></input>
+            {category}
+          </label>
+          {selection[category] && <SkillPicker skills={skills} />}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+type SkillPickerProps = {
+  skills: string[];
+};
+
+const SkillPicker: React.FC<SkillPickerProps> = ({ skills }) => {
+  const [selection, setSelection] = useState<string[]>([]);
+  const updateSelection = (skill: string, checked: boolean) => {
+    if (checked) {
+      setSelection([...selection, skill]);
+    } else {
+      setSelection(selection.filter((s) => s !== skill));
+    }
+  };
+  return (
+    <ul className="list-none">
+      {skills.map((skill) => (
+        <li key={skill}>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              onChange={(e) => updateSelection(skill, e.target.checked)}
+              className="mr-2"
+            ></input>
+            {skill}
+          </label>
+          {selection.includes(skill) && <LevelPicker namespace={skill} />}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+type LevelPickerProps = {
+  namespace: string;
+};
+
+const LevelPicker: React.FC<LevelPickerProps> = ({ namespace }) => {
+  const levels = ["junior", "medior", "senior", "mentor"];
+  return (
+    <div className="-mt-1">
+      {levels.map((level) => (
+        <div key={level} className="inline-block pl-4">
+          <label>
+            <input
+              type="radio"
+              value={level}
+              name={`${namespace}-level`}
+              className="mr-2"
+            />
+            {level}
+          </label>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 //
 // Legal section

@@ -1,15 +1,26 @@
 import { NextPage, GetStaticProps } from "next";
+import { array, dict, string } from "typescript-json-decoder";
+import { readFile } from "fs/promises";
+import yaml from "js-yaml";
 import OnboardingFormPage, {
+  CompetencyList,
   RegistrationData,
 } from "components/onboarding/form";
 
-type PageProps = {};
+type PageProps = {
+  defaultCompetencyList: CompetencyList;
+};
 
-const Page: NextPage<PageProps> = () => {
+const Page: NextPage<PageProps> = ({ defaultCompetencyList }) => {
   const handleSubmit = (data: RegistrationData) => {
     console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
   };
-  return <OnboardingFormPage onSubmit={handleSubmit} />;
+  return (
+    <OnboardingFormPage
+      defaultCompetencyList={defaultCompetencyList}
+      onSubmit={handleSubmit}
+    />
+  );
 };
 
 async function createUserProfile(data: any): Promise<boolean> {
@@ -26,9 +37,19 @@ async function createUserProfile(data: any): Promise<boolean> {
   }
 }
 
+async function getDefaultCompetencyList(): Promise<Record<string, string[]>> {
+  const decode = dict(array(string));
+  return await readFile("content/competencies.yaml", "utf-8")
+    .then((str) => yaml.load(str) as any)
+    .then(decode)
+    .then((result) => result.entries())
+    .then(Object.fromEntries);
+}
+
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const defaultCompetencyList = await getDefaultCompetencyList();
   return {
-    props: {},
+    props: { defaultCompetencyList },
   };
 };
 
