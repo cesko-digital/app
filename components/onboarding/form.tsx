@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type FormContent = {
   name?: string;
@@ -11,16 +11,40 @@ type FormContent = {
   legalConsent: boolean;
 };
 
-type PageProps = {};
+export type RegistrationData = {
+  name: string;
+  email: string;
+  skills: string[];
+  occupation?: string;
+  organizationName?: string;
+  profileUrl?: string;
+};
 
-const OnboardingFormPage: React.FC<PageProps> = ({}) => {
+export type PageProps = {
+  onSubmit?: (data: RegistrationData) => void;
+};
+
+const OnboardingFormPage: React.FC<PageProps> = ({ onSubmit }) => {
   const [state, setState] = useState<FormContent>({
     skills: [],
     legalConsent: false,
   });
-  useEffect(() => {
-    console.log(JSON.stringify(state, null, 2));
-  }, [state]);
+
+  const handleSubmit = () => {
+    const validationResult = validateForm(state);
+    if (validationResult.result === "success") {
+      if (onSubmit) {
+        onSubmit(validationResult.data);
+      } else {
+        console.log(
+          `Form data: ${JSON.stringify(validationResult.data, null, 2)}`
+        );
+      }
+    } else {
+      console.error("Trying to submit form with validation errors.");
+    }
+  };
+
   return (
     <Layout
       crumbs={[
@@ -38,7 +62,11 @@ const OnboardingFormPage: React.FC<PageProps> = ({}) => {
       <PersonalDetailsSection state={state} onChange={setState} />
       <SkillSection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
-      <SubmitSection state={state} onChange={setState} />
+      <SubmitSection
+        state={state}
+        onChange={setState}
+        onSubmit={handleSubmit}
+      />
     </Layout>
   );
 };
@@ -53,6 +81,37 @@ type FormSectionProps = {
 };
 
 type FormSection = React.FC<FormSectionProps>;
+
+type ValidationResult =
+  | { result: "success"; data: RegistrationData }
+  | { result: "error"; msg: string };
+
+function validateForm(data: FormContent): ValidationResult {
+  const { name, email, skills, legalConsent } = data;
+  const error = (msg: string) => ({ result: "error" as const, msg });
+  if (!name) {
+    return error("Je třeba vyplnit jméno.");
+  } else if (!email) {
+    return error("Je třeba vyplnit email.");
+  } else if (false /* TBD: check skills */) {
+    return error("Je třeba vyplnit aspoň jednu dovednost.");
+  } else if (!legalConsent) {
+    return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
+  } else {
+    const { occupation, organizationName, profileUrl } = data;
+    return {
+      result: "success",
+      data: {
+        name,
+        email,
+        skills,
+        organizationName,
+        occupation,
+        profileUrl,
+      },
+    };
+  }
+}
 
 //
 // Intro section
@@ -143,7 +202,10 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
   );
 };
 
-/** Skills section */
+//
+// Skills section
+//
+
 const SkillSection: FormSection = () => (
   <Section>
     <SectionContent>
@@ -162,6 +224,10 @@ const SkillSection: FormSection = () => (
     </SectionContent>
   </Section>
 );
+
+//
+// Legal section
+//
 
 const LegalSection: FormSection = ({ state, onChange }) => (
   <Section>
@@ -186,29 +252,45 @@ const LegalSection: FormSection = ({ state, onChange }) => (
   </Section>
 );
 
-const SubmitSection: FormSection = ({ state }) => {
-  const enabled = state.legalConsent;
+//
+// Submit section
+//
+
+type SubmitSectionProps = FormSectionProps & {
+  onSubmit?: () => void;
+};
+
+const SubmitSection: React.FC<SubmitSectionProps> = ({
+  state,
+  onSubmit = () => {},
+}) => {
+  const validationResult = validateForm(state);
+  const canSubmit = validationResult.result === "success";
   return (
     <Section>
       <SectionContent>
         <h2>Co tě čeká po odeslání formuláře</h2>
-        <ol>
+        <ol className="mb-8 list-decimal space-y-4">
           <li>
             Pro začátek dostaneš všechny potřebné informace v souhrnném uvítacím
             e-mailu.
           </li>
           <li>
             Přesměrujeme tě také rovnou na registrační stránku komunikačního
-            nástroje Slack. U nás se bez něho neobejdeš. Veškerá komunikace
+            nástroje Slack. U nás se bez něho neobejdeš. Veškerá komunikace
             probíhá právě tam. Stačí se zaregistrovat a můžeš začít hledat nové
             příležitosti a kontakty nebo sledovat dění v komunitě.
           </li>
         </ol>
+        {validationResult.result === "error" && (
+          <p className="text-red-500">{validationResult.msg}</p>
+        )}
         <button
-          disabled={!enabled}
-          className={`${
-            enabled ? "btn-primary" : "btn-disabled cursor-not-allowed"
-          } mt-8`}
+          onClick={onSubmit}
+          disabled={!canSubmit}
+          className={
+            canSubmit ? "btn-primary" : "btn-disabled cursor-not-allowed"
+          }
         >
           Odeslat a přejít na Slack
         </button>

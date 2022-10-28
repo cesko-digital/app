@@ -1,10 +1,15 @@
 import { NextPage, GetStaticProps } from "next";
-import OnboardingFormPage from "components/onboarding/form";
+import OnboardingFormPage, {
+  RegistrationData,
+} from "components/onboarding/form";
 
 type PageProps = {};
 
 const Page: NextPage<PageProps> = () => {
-  return <OnboardingFormPage />;
+  const handleSubmit = (data: RegistrationData) => {
+    console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
+  };
+  return <OnboardingFormPage onSubmit={handleSubmit} />;
 };
 
 async function createUserProfile(data: any): Promise<boolean> {
