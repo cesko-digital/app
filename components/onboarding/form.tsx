@@ -244,6 +244,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         </p>
         <CompetencyPicker
           competencies={competencyList}
+          initialSelection={state.skills}
           onChange={(competencies) =>
             onChange({ ...state, skills: competencies })
           }
@@ -257,14 +258,16 @@ type CompetencyMap = Record<string, SkillLevelMap>;
 
 type CompetencyPickerProps = {
   competencies: CompetencyList;
+  initialSelection?: CompetencyMap;
   onChange?: (competencies: CompetencyMap) => void;
 };
 
 const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
   competencies,
+  initialSelection = {},
   onChange = (_) => {},
 }) => {
-  const [selection, setSelection] = useState<CompetencyMap>({});
+  const [selection, setSelection] = useState<CompetencyMap>(initialSelection);
   const updateSelection = (category: string, checked: boolean) => {
     const newState = checked
       ? objectByAdding(selection, category, {})
@@ -286,6 +289,7 @@ const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
             <input
               type="checkbox"
               onChange={(e) => updateSelection(category, e.target.checked)}
+              defaultChecked={!!selection[category]}
               className="mr-2"
             ></input>
             {category}
@@ -293,6 +297,7 @@ const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
           {selection[category] && (
             <SkillPicker
               skills={skills}
+              initialSelection={selection[category]}
               onChange={(skills) => updateSkills(category, skills)}
             />
           )}
@@ -306,14 +311,16 @@ type SkillLevelMap = Record<string, SkillLevel | null>;
 
 type SkillPickerProps = {
   skills: string[];
+  initialSelection?: SkillLevelMap;
   onChange?: (skills: SkillLevelMap) => void;
 };
 
 const SkillPicker: React.FC<SkillPickerProps> = ({
   skills,
+  initialSelection = {},
   onChange = (_) => {},
 }) => {
-  const [selection, setSelection] = useState<SkillLevelMap>({});
+  const [selection, setSelection] = useState<SkillLevelMap>(initialSelection);
   const updateSelection = (skill: string, checked: boolean) => {
     const newState = checked
       ? objectByAdding(selection, skill, null)
@@ -334,6 +341,7 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
           <label className="flex items-center">
             <input
               type="checkbox"
+              defaultChecked={!!selection[skill]}
               onChange={(e) => updateSelection(skill, e.target.checked)}
               className="mr-2"
             ></input>
@@ -342,6 +350,7 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
           {selection[skill] !== undefined && (
             <LevelPicker
               namespace={skill}
+              initialValue={selection[skill]}
               onChange={(level) => updateLevel(skill, level)}
             />
           )}
@@ -353,11 +362,13 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
 
 type LevelPickerProps = {
   namespace: string;
+  initialValue: SkillLevel | null;
   onChange?: (level: SkillLevel) => void;
 };
 
 const LevelPicker: React.FC<LevelPickerProps> = ({
   namespace,
+  initialValue = null,
   onChange = (_) => {},
 }) => {
   return (
@@ -368,6 +379,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
             <input
               type="radio"
               value={level}
+              defaultChecked={level === initialValue}
               name={`${namespace}-level`}
               className="mr-2"
               onChange={(_) => onChange(level)}
