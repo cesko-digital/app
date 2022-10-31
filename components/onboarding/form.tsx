@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
 
@@ -27,21 +27,18 @@ export type RegistrationData = {
 export type CompetencyList = Record<string, string[]>;
 
 export type PageProps = {
-  defaultCompetencyList: CompetencyList;
+  competencyList: CompetencyList;
   onSubmit?: (data: RegistrationData) => void;
 };
 
 const OnboardingFormPage: React.FC<PageProps> = ({
-  defaultCompetencyList,
+  competencyList,
   onSubmit,
 }) => {
   const [state, setState] = useState<FormState>({
     skills: {},
     legalConsent: false,
   });
-  useEffect(() => {
-    console.log(`Form state: ${JSON.stringify(state, null, 2)}`);
-  }, [state]);
 
   return (
     <Layout
@@ -59,7 +56,7 @@ const OnboardingFormPage: React.FC<PageProps> = ({
       <Intro />
       <PersonalDetailsSection state={state} onChange={setState} />
       <SkillSection
-        competencyList={defaultCompetencyList}
+        competencyList={competencyList}
         state={state}
         onChange={setState}
       />
@@ -75,13 +72,13 @@ const OnboardingFormPage: React.FC<PageProps> = ({
 
 type FormSectionProps = {
   state: FormState;
-  onChange: (state: FormState) => void;
+  onChange: (updatedState: FormState) => void;
 };
 
 type FormSection = React.FC<FormSectionProps>;
 
 type ValidationResult =
-  | { result: "success"; data: RegistrationData }
+  | { result: "success"; validatedData: RegistrationData }
   | { result: "error"; msg: string };
 
 function validateForm(data: FormState): ValidationResult {
@@ -99,7 +96,7 @@ function validateForm(data: FormState): ValidationResult {
     const { occupation, organizationName, profileUrl } = data;
     return {
       result: "success",
-      data: {
+      validatedData: {
         name,
         email,
         skills,
@@ -190,7 +187,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => (
 const OccupationSelect: FormSection = ({ state, onChange }) => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    const occupation = value === "na" ? undefined : value;
+    const occupation = value === "nothing" ? undefined : value;
     onChange({ ...state, occupation });
   };
   return (
@@ -202,7 +199,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
         spolupráce (například u neziskovek či soukromého sektoru).
       </p>
       <select id="occupation" className="w-full mb-8" onChange={handleChange}>
-        <option value="na"></option>
+        <option value="nothing"></option>
         <option value="private-sector">Pracuji v soukromém sektoru</option>
         <option value="non-profit">Pracuji v neziskové organizaci</option>
         <option value="state">Pracuji ve státním sektoru</option>
@@ -242,7 +239,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
           příležitosti na{" "}
           <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
         </p>
-        <CompetencyPicker
+        <SkillCategoryPicker
           competencies={competencyList}
           initialSelection={state.skills}
           onChange={(competencies) =>
@@ -256,13 +253,13 @@ const SkillSection: React.FC<SkillSectionProps> = ({
 
 type CompetencyMap = Record<string, SkillLevelMap>;
 
-type CompetencyPickerProps = {
+type SkillCategoryPickerProps = {
   competencies: CompetencyList;
   initialSelection?: CompetencyMap;
   onChange?: (competencies: CompetencyMap) => void;
 };
 
-const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
+const SkillCategoryPicker: React.FC<SkillCategoryPickerProps> = ({
   competencies,
   initialSelection = {},
   onChange = (_) => {},
@@ -428,7 +425,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
 //
 
 type SubmitSectionProps = FormSectionProps & {
-  onSubmit?: (data: RegistrationData) => void;
+  onSubmit?: (validatedData: RegistrationData) => void;
 };
 
 const SubmitSection: React.FC<SubmitSectionProps> = ({
@@ -440,11 +437,11 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
   const handleSubmit = () => {
     if (validationResult.result === "success") {
       if (onSubmit) {
-        onSubmit(validationResult.data);
+        onSubmit(validationResult.validatedData);
       } else {
         console.log(
           `Submitted form data: ${JSON.stringify(
-            validationResult.data,
+            validationResult.validatedData,
             null,
             2
           )}`

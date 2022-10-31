@@ -17,7 +17,7 @@ const Page: NextPage<PageProps> = ({ defaultCompetencyList }) => {
   };
   return (
     <OnboardingFormPage
-      defaultCompetencyList={defaultCompetencyList}
+      competencyList={defaultCompetencyList}
       onSubmit={handleSubmit}
     />
   );
