@@ -1,20 +1,24 @@
 import { Layout } from "components/layout";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-type FormContent = {
+const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
+
+export type SkillLevel = typeof skillLevels[number];
+
+type FormState = {
   name?: string;
   email?: string;
   occupation?: string;
   organizationName?: string;
   profileUrl?: string;
-  skills: string[];
+  skills: CompetencyMap;
   legalConsent: boolean;
 };
 
 export type RegistrationData = {
   name: string;
   email: string;
-  skills: string[];
+  skills: CompetencyMap;
   occupation?: string;
   organizationName?: string;
   profileUrl?: string;
@@ -31,25 +35,13 @@ const OnboardingFormPage: React.FC<PageProps> = ({
   defaultCompetencyList,
   onSubmit,
 }) => {
-  const [state, setState] = useState<FormContent>({
-    skills: [],
+  const [state, setState] = useState<FormState>({
+    skills: {},
     legalConsent: false,
   });
-
-  const handleSubmit = () => {
-    const validationResult = validateForm(state);
-    if (validationResult.result === "success") {
-      if (onSubmit) {
-        onSubmit(validationResult.data);
-      } else {
-        console.log(
-          `Form data: ${JSON.stringify(validationResult.data, null, 2)}`
-        );
-      }
-    } else {
-      console.error("Trying to submit form with validation errors.");
-    }
-  };
+  useEffect(() => {
+    console.log(`Form state: ${JSON.stringify(state, null, 2)}`);
+  }, [state]);
 
   return (
     <Layout
@@ -72,11 +64,7 @@ const OnboardingFormPage: React.FC<PageProps> = ({
         onChange={setState}
       />
       <LegalSection state={state} onChange={setState} />
-      <SubmitSection
-        state={state}
-        onChange={setState}
-        onSubmit={handleSubmit}
-      />
+      <SubmitSection state={state} onChange={setState} onSubmit={onSubmit} />
     </Layout>
   );
 };
@@ -86,8 +74,8 @@ const OnboardingFormPage: React.FC<PageProps> = ({
 //
 
 type FormSectionProps = {
-  state: FormContent;
-  onChange: (state: FormContent) => void;
+  state: FormState;
+  onChange: (state: FormState) => void;
 };
 
 type FormSection = React.FC<FormSectionProps>;
@@ -96,14 +84,14 @@ type ValidationResult =
   | { result: "success"; data: RegistrationData }
   | { result: "error"; msg: string };
 
-function validateForm(data: FormContent): ValidationResult {
+function validateForm(data: FormState): ValidationResult {
   const { name, email, skills, legalConsent } = data;
   const error = (msg: string) => ({ result: "error" as const, msg });
   if (!name) {
     return error("Je třeba vyplnit jméno.");
   } else if (!email) {
     return error("Je třeba vyplnit email.");
-  } else if (false /* TBD: check skills */) {
+  } else if (Object.entries(skills).length === 0) {
     return error("Je třeba vyplnit aspoň jednu dovednost.");
   } else if (!legalConsent) {
     return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
@@ -122,6 +110,21 @@ function validateForm(data: FormContent): ValidationResult {
     };
   }
 }
+
+function objectByDeleting<K extends string, V>(
+  object: Record<K, V>,
+  key: K
+): Record<K, V> {
+  const value = object;
+  delete value[key];
+  return value;
+}
+
+const objectByAdding = <K extends string, V>(
+  object: Record<K, V>,
+  key: K,
+  value: V
+) => ({ ...object, [key]: value });
 
 //
 // Intro section
@@ -220,7 +223,11 @@ type SkillSectionProps = FormSectionProps & {
   competencyList: CompetencyList;
 };
 
-const SkillSection: React.FC<SkillSectionProps> = ({ competencyList }) => {
+const SkillSection: React.FC<SkillSectionProps> = ({
+  state,
+  competencyList,
+  onChange,
+}) => {
   return (
     <Section>
       <SectionContent>
@@ -235,23 +242,42 @@ const SkillSection: React.FC<SkillSectionProps> = ({ competencyList }) => {
           příležitosti na{" "}
           <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
         </p>
-        <CompetencyPicker competencies={competencyList} />
+        <CompetencyPicker
+          competencies={competencyList}
+          onChange={(competencies) =>
+            onChange({ ...state, skills: competencies })
+          }
+        />
       </SectionContent>
     </Section>
   );
 };
 
+type CompetencyMap = Record<string, SkillLevelMap>;
+
 type CompetencyPickerProps = {
   competencies: CompetencyList;
+  onChange?: (competencies: CompetencyMap) => void;
 };
 
 const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
   competencies,
+  onChange = (_) => {},
 }) => {
-  const [selection, setSelection] = useState<Record<string, boolean>>({});
-  const updateSelection = (category: string, check: boolean) => {
-    setSelection({ ...selection, [category]: check });
+  const [selection, setSelection] = useState<CompetencyMap>({});
+  const updateSelection = (category: string, checked: boolean) => {
+    const newState = checked
+      ? objectByAdding(selection, category, {})
+      : objectByDeleting(selection, category);
+    setSelection(newState);
+    onChange(newState);
   };
+  const updateSkills = (category: string, skills: SkillLevelMap) => {
+    const newState = { ...selection, [category]: skills };
+    setSelection(newState);
+    onChange(newState);
+  };
+
   return (
     <ul className="list-none ml-0 leading-loose">
       {Object.entries(competencies).map(([category, skills]) => (
@@ -264,26 +290,43 @@ const CompetencyPicker: React.FC<CompetencyPickerProps> = ({
             ></input>
             {category}
           </label>
-          {selection[category] && <SkillPicker skills={skills} />}
+          {selection[category] && (
+            <SkillPicker
+              skills={skills}
+              onChange={(skills) => updateSkills(category, skills)}
+            />
+          )}
         </li>
       ))}
     </ul>
   );
 };
 
+type SkillLevelMap = Record<string, SkillLevel | null>;
+
 type SkillPickerProps = {
   skills: string[];
+  onChange?: (skills: SkillLevelMap) => void;
 };
 
-const SkillPicker: React.FC<SkillPickerProps> = ({ skills }) => {
-  const [selection, setSelection] = useState<string[]>([]);
+const SkillPicker: React.FC<SkillPickerProps> = ({
+  skills,
+  onChange = (_) => {},
+}) => {
+  const [selection, setSelection] = useState<SkillLevelMap>({});
   const updateSelection = (skill: string, checked: boolean) => {
-    if (checked) {
-      setSelection([...selection, skill]);
-    } else {
-      setSelection(selection.filter((s) => s !== skill));
-    }
+    const newState = checked
+      ? objectByAdding(selection, skill, null)
+      : objectByDeleting(selection, skill);
+    setSelection(newState);
+    onChange(newState);
   };
+  const updateLevel = (skill: string, level: SkillLevel) => {
+    const newState = { ...selection, [skill]: level };
+    setSelection(newState);
+    onChange(newState);
+  };
+
   return (
     <ul className="list-none">
       {skills.map((skill) => (
@@ -296,7 +339,12 @@ const SkillPicker: React.FC<SkillPickerProps> = ({ skills }) => {
             ></input>
             {skill}
           </label>
-          {selection.includes(skill) && <LevelPicker namespace={skill} />}
+          {selection[skill] !== undefined && (
+            <LevelPicker
+              namespace={skill}
+              onChange={(level) => updateLevel(skill, level)}
+            />
+          )}
         </li>
       ))}
     </ul>
@@ -305,13 +353,16 @@ const SkillPicker: React.FC<SkillPickerProps> = ({ skills }) => {
 
 type LevelPickerProps = {
   namespace: string;
+  onChange?: (level: SkillLevel) => void;
 };
 
-const LevelPicker: React.FC<LevelPickerProps> = ({ namespace }) => {
-  const levels = ["junior", "medior", "senior", "mentor"];
+const LevelPicker: React.FC<LevelPickerProps> = ({
+  namespace,
+  onChange = (_) => {},
+}) => {
   return (
-    <div className="-mt-1">
-      {levels.map((level) => (
+    <div className="text-base py-2">
+      {skillLevels.map((level) => (
         <div key={level} className="inline-block pl-4">
           <label>
             <input
@@ -319,6 +370,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({ namespace }) => {
               value={level}
               name={`${namespace}-level`}
               className="mr-2"
+              onChange={(_) => onChange(level)}
             />
             {level}
           </label>
@@ -360,15 +412,34 @@ const LegalSection: FormSection = ({ state, onChange }) => (
 //
 
 type SubmitSectionProps = FormSectionProps & {
-  onSubmit?: () => void;
+  onSubmit?: (data: RegistrationData) => void;
 };
 
 const SubmitSection: React.FC<SubmitSectionProps> = ({
   state,
-  onSubmit = () => {},
+  onSubmit = (_) => {},
 }) => {
   const validationResult = validateForm(state);
   const canSubmit = validationResult.result === "success";
+  const handleSubmit = () => {
+    if (validationResult.result === "success") {
+      if (onSubmit) {
+        onSubmit(validationResult.data);
+      } else {
+        console.log(
+          `Submitted form data: ${JSON.stringify(
+            validationResult.data,
+            null,
+            2
+          )}`
+        );
+      }
+    } else {
+      console.error(
+        "Trying to submit form with validation errors, this should not happen."
+      );
+    }
+  };
   return (
     <Section>
       <SectionContent>
@@ -389,7 +460,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
           <p className="text-red-500">{validationResult.msg}</p>
         )}
         <button
-          onClick={onSubmit}
+          onClick={handleSubmit}
           disabled={!canSubmit}
           className={
             canSubmit ? "btn-primary" : "btn-disabled cursor-not-allowed"
