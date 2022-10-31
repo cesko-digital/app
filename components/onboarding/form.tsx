@@ -5,6 +5,12 @@ const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
 
 export type SkillLevel = typeof skillLevels[number];
 
+export type SubmissionState =
+  | { tag: "not_submitted_yet" }
+  | { tag: "submitting" }
+  | { tag: "submitted_successfully" }
+  | { tag: "submission_error"; msg: string };
+
 type FormState = {
   name?: string;
   email?: string;
@@ -13,6 +19,7 @@ type FormState = {
   profileUrl?: string;
   skills: CompetencyMap;
   legalConsent: boolean;
+  submissionState: SubmissionState;
 };
 
 export type RegistrationData = {
@@ -28,17 +35,34 @@ export type CompetencyList = Record<string, string[]>;
 
 export type PageProps = {
   competencyList: CompetencyList;
-  onSubmit?: (data: RegistrationData) => void;
+  onSubmit?: (data: RegistrationData) => Promise<void>;
 };
 
 const OnboardingFormPage: React.FC<PageProps> = ({
   competencyList,
-  onSubmit,
+  onSubmit = () => {},
 }) => {
   const [state, setState] = useState<FormState>({
     skills: {},
     legalConsent: false,
+    submissionState: { tag: "not_submitted_yet" },
   });
+
+  const handleSubmit = async (validatedData: RegistrationData) => {
+    try {
+      setState({ ...state, submissionState: { tag: "submitting" } });
+      await onSubmit(validatedData);
+      setState({
+        ...state,
+        submissionState: { tag: "submitted_successfully" },
+      });
+    } catch (error) {
+      setState({
+        ...state,
+        submissionState: { tag: "submission_error", msg: `${error}` },
+      });
+    }
+  };
 
   return (
     <Layout
@@ -61,7 +85,11 @@ const OnboardingFormPage: React.FC<PageProps> = ({
         onChange={setState}
       />
       <LegalSection state={state} onChange={setState} />
-      <SubmitSection state={state} onChange={setState} onSubmit={onSubmit} />
+      <SubmitSection
+        state={state}
+        onChange={setState}
+        onSubmit={handleSubmit}
+      />
     </Layout>
   );
 };
@@ -433,7 +461,20 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
   onSubmit = (_) => {},
 }) => {
   const validationResult = validateForm(state);
-  const canSubmit = validationResult.result === "success";
+  const { submissionState } = state;
+
+  const enableSubmitButton =
+    validationResult.result === "success" &&
+    submissionState.tag !== "submitting" &&
+    submissionState.tag !== "submitted_successfully";
+
+  const submitButtonLabel =
+    submissionState.tag === "submitting"
+      ? "Malý moment…"
+      : submissionState.tag === "submitted_successfully"
+      ? "Úspěšně odesláno 🎉"
+      : "Odeslat a přejít na Slack";
+
   const handleSubmit = () => {
     if (validationResult.result === "success") {
       if (onSubmit) {
@@ -453,6 +494,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
       );
     }
   };
+
   return (
     <Section>
       <SectionContent>
@@ -472,14 +514,19 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
         {validationResult.result === "error" && (
           <p className="text-red-500">{validationResult.msg}</p>
         )}
+        {submissionState.tag === "submission_error" && (
+          <p className="text-red-500">{submissionState.msg}</p>
+        )}
         <button
           onClick={handleSubmit}
-          disabled={!canSubmit}
+          disabled={!enableSubmitButton}
           className={
-            canSubmit ? "btn-primary" : "btn-disabled cursor-not-allowed"
+            enableSubmitButton
+              ? "btn-primary"
+              : "btn-disabled cursor-not-allowed"
           }
         >
-          Odeslat a přejít na Slack
+          {submitButtonLabel}
         </button>
       </SectionContent>
     </Section>

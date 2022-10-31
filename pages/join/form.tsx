@@ -12,8 +12,9 @@ type PageProps = {
 };
 
 const Page: NextPage<PageProps> = ({ defaultCompetencyList }) => {
-  const handleSubmit = (data: RegistrationData) => {
+  const handleSubmit = async (data: RegistrationData) => {
     console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
+    await new Promise((r) => setTimeout(r, 4000));
   };
   return (
     <OnboardingFormPage
