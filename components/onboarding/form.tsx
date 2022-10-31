@@ -151,6 +151,11 @@ const objectByAdding = <K extends string, V>(
   value: V
 ) => ({ ...object, [key]: value });
 
+const isEditable = (state: FormState) => {
+  const tag = state.submissionState.tag;
+  return tag === "not_submitted_yet" || tag === "submission_error";
+};
+
 //
 // Intro section
 //
@@ -175,42 +180,49 @@ const Intro = () => (
 // Personal details
 //
 
-const PersonalDetailsSection: FormSection = ({ state, onChange }) => (
-  <Section>
-    <SectionContent>
-      <h2>To nejdůležitější o tobě</h2>
-      <TextInput
-        id="name"
-        label="Jméno a příjmení"
-        autoComplete="name"
-        onChange={(name) => onChange({ ...state, name })}
-        required
-      />
-      <TextInput
-        id="email"
-        label="Email"
-        autoComplete="email"
-        onChange={(email) => onChange({ ...state, email })}
-        required
-      />
-      <OccupationSelect state={state} onChange={onChange} />
-      <TextInput
-        id="organization"
-        label="Název organizace, kde působíš"
-        autoComplete="organization"
-        onChange={(organizationName) =>
-          onChange({ ...state, organizationName })
-        }
-      />
-      <TextInput
-        id="profile"
-        label="Odkaz na tvůj web nebo profesní profil"
-        type="url"
-        onChange={(profileUrl) => onChange({ ...state, profileUrl })}
-      />
-    </SectionContent>
-  </Section>
-);
+const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
+  const disabled = !isEditable(state);
+  return (
+    <Section>
+      <SectionContent>
+        <h2>To nejdůležitější o tobě</h2>
+        <TextInput
+          id="name"
+          label="Jméno a příjmení"
+          autoComplete="name"
+          onChange={(name) => onChange({ ...state, name })}
+          disabled={disabled}
+          required
+        />
+        <TextInput
+          id="email"
+          label="Email"
+          autoComplete="email"
+          onChange={(email) => onChange({ ...state, email })}
+          disabled={disabled}
+          required
+        />
+        <OccupationSelect state={state} onChange={onChange} />
+        <TextInput
+          id="organization"
+          label="Název organizace, kde působíš"
+          autoComplete="organization"
+          disabled={disabled}
+          onChange={(organizationName) =>
+            onChange({ ...state, organizationName })
+          }
+        />
+        <TextInput
+          id="profile"
+          label="Odkaz na tvůj web nebo profesní profil"
+          type="url"
+          disabled={disabled}
+          onChange={(profileUrl) => onChange({ ...state, profileUrl })}
+        />
+      </SectionContent>
+    </Section>
+  );
+};
 
 const OccupationSelect: FormSection = ({ state, onChange }) => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -226,7 +238,12 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
         uvítacím e-mailu kontaktovat s dalšími podrobnostmi ohledně případné
         spolupráce (například u neziskovek či soukromého sektoru).
       </p>
-      <select id="occupation" className="w-full mb-8" onChange={handleChange}>
+      <select
+        id="occupation"
+        className="w-full mb-8"
+        onChange={handleChange}
+        disabled={!isEditable(state)}
+      >
         <option value="nothing"></option>
         <option value="private-sector">Pracuji v soukromém sektoru</option>
         <option value="non-profit">Pracuji v neziskové organizaci</option>
@@ -270,6 +287,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         <SkillCategoryPicker
           competencies={competencyList}
           initialSelection={state.skills}
+          disabled={!isEditable(state)}
           onChange={(competencies) =>
             onChange({ ...state, skills: competencies })
           }
@@ -283,12 +301,14 @@ type CompetencyMap = Record<string, SkillLevelMap>;
 
 type SkillCategoryPickerProps = {
   competencies: CompetencyList;
+  disabled?: boolean;
   initialSelection?: CompetencyMap;
   onChange?: (competencies: CompetencyMap) => void;
 };
 
 const SkillCategoryPicker: React.FC<SkillCategoryPickerProps> = ({
   competencies,
+  disabled = false,
   initialSelection = {},
   onChange = (_) => {},
 }) => {
@@ -313,6 +333,7 @@ const SkillCategoryPicker: React.FC<SkillCategoryPickerProps> = ({
           <label className="flex items-center">
             <input
               type="checkbox"
+              disabled={disabled}
               onChange={(e) => updateSelection(category, e.target.checked)}
               defaultChecked={!!selection[category]}
               className="mr-2"
@@ -322,6 +343,7 @@ const SkillCategoryPicker: React.FC<SkillCategoryPickerProps> = ({
           {selection[category] && (
             <SkillPicker
               skills={skills}
+              disabled={disabled}
               initialSelection={selection[category]}
               onChange={(skills) => updateSkills(category, skills)}
             />
@@ -336,12 +358,14 @@ type SkillLevelMap = Record<string, SkillLevel | null>;
 
 type SkillPickerProps = {
   skills: string[];
+  disabled?: boolean;
   initialSelection?: SkillLevelMap;
   onChange?: (skills: SkillLevelMap) => void;
 };
 
 const SkillPicker: React.FC<SkillPickerProps> = ({
   skills,
+  disabled = false,
   initialSelection = {},
   onChange = (_) => {},
 }) => {
@@ -366,6 +390,7 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
           <label className="flex items-center">
             <input
               type="checkbox"
+              disabled={disabled}
               defaultChecked={!!selection[skill]}
               onChange={(e) => updateSelection(skill, e.target.checked)}
               className="mr-2"
@@ -375,6 +400,7 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
           {selection[skill] !== undefined && (
             <LevelPicker
               namespace={skill}
+              disabled={disabled}
               initialValue={selection[skill]}
               onChange={(level) => updateLevel(skill, level)}
             />
@@ -387,12 +413,14 @@ const SkillPicker: React.FC<SkillPickerProps> = ({
 
 type LevelPickerProps = {
   namespace: string;
+  disabled?: boolean;
   initialValue: SkillLevel | null;
   onChange?: (level: SkillLevel) => void;
 };
 
 const LevelPicker: React.FC<LevelPickerProps> = ({
   namespace,
+  disabled = false,
   initialValue = null,
   onChange = (_) => {},
 }) => {
@@ -404,6 +432,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
             <input
               type="radio"
               value={level}
+              disabled={disabled}
               defaultChecked={level === initialValue}
               name={`${namespace}-level`}
               className="mr-2"
@@ -431,6 +460,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         <input
           type="checkbox"
           defaultChecked={state.legalConsent}
+          disabled={!isEditable(state)}
           className="mr-2"
           onChange={(e) =>
             onChange({ ...state, legalConsent: e.target.checked })
@@ -555,6 +585,7 @@ type TextInputProps = {
   type?: "text" | "email" | "url";
   autoComplete?: string;
   required?: boolean;
+  disabled?: boolean;
   onChange?: (newValue: string) => void;
 };
 
@@ -563,6 +594,7 @@ const TextInput: React.FC<TextInputProps> = ({
   label,
   type = "text",
   required = false,
+  disabled = false,
   autoComplete,
   onChange = (_) => {},
 }) => {
@@ -574,7 +606,9 @@ const TextInput: React.FC<TextInputProps> = ({
       </label>
       <input
         id={id}
+        required={required}
         autoComplete={autoComplete}
+        disabled={disabled}
         type={type}
         className="rounded-md border-2 border-gray p-2 w-full"
         onChange={(e) => onChange(e.target.value)}
