@@ -402,17 +402,21 @@ const LegalSection: FormSection = ({ state, onChange }) => (
       <h2>
         Abychom s informacemi od tebe mohli dále praccovat, tak tě prosíme o:
       </h2>
-      <input
-        type="checkbox"
-        id="privacy"
-        defaultChecked={state.legalConsent}
-        onChange={(e) => onChange({ ...state, legalConsent: e.target.checked })}
-      ></input>
-      <label htmlFor="privacy" className="ml-2">
-        Souhlas se{" "}
-        <a href="https://cesko.digital/go/privacy">
-          zpracováním osobních údajů
-        </a>
+      <label className="flex items-center">
+        <input
+          type="checkbox"
+          defaultChecked={state.legalConsent}
+          className="mr-2"
+          onChange={(e) =>
+            onChange({ ...state, legalConsent: e.target.checked })
+          }
+        ></input>
+        <span>
+          Souhlas se{" "}
+          <a href="https://cesko.digital/go/privacy">
+            zpracováním osobních údajů
+          </a>
+        </span>
         <RequiredFieldMarker />
       </label>
     </SectionContent>
