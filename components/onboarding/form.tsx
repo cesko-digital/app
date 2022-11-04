@@ -327,7 +327,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
   <Section>
     <SectionContent>
       <h2>
-        Abychom s informacemi od tebe mohli dále praccovat, tak tě prosíme o:
+        Abychom s informacemi od tebe mohli dále pracovat, tak tě prosíme o:
       </h2>
       <label className="flex items-center">
         <input
@@ -404,14 +404,15 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
         <h2>Co tě čeká po odeslání formuláře</h2>
         <ol className="mb-8 list-decimal space-y-4">
           <li>
-            Pro začátek dostaneš všechny potřebné informace v souhrnném uvítacím
-            e-mailu.
+            Pro začátek dostaneš{" "}
+            <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
           </li>
           <li>
-            Přesměrujeme tě také rovnou na registrační stránku komunikačního
-            nástroje Slack. U nás se bez něho neobejdeš. Veškerá komunikace
-            probíhá právě tam. Stačí se zaregistrovat a můžeš začít hledat nové
-            příležitosti a kontakty nebo sledovat dění v komunitě.
+            Přesměrujeme tě také rovnou na{" "}
+            <b>registrační stránku komunikačního nástroje Slack</b>. U nás se
+            bez něho neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
+            zaregistrovat a můžeš začít hledat nové příležitosti a kontakty nebo
+            sledovat dění v komunitě.
           </li>
         </ol>
         {validationResult.result === "error" && (
