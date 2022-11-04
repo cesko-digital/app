@@ -32,7 +32,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         name,
         email,
         skills,
-        competencies: undefined,
+        competencies: "TBD",
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),

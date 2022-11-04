@@ -44,7 +44,7 @@ export default async function handler(
             name: slackUser.name,
             email: slackUser.email!,
             skills: [],
-            competencies: undefined,
+            competencies: "",
             state: "confirmed",
             slackUserRelationId: slackUser.id,
             createdAt: new Date().toISOString(),
