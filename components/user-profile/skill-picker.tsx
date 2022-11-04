@@ -116,7 +116,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
             <input
               type="checkbox"
               disabled={disabled}
-              defaultChecked={!!selection[skill]}
+              checked={selection[skill] !== undefined}
               onChange={(e) => updateSelection(skill, e.target.checked)}
               className="mr-2"
             ></input>

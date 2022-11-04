@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
   SkillMenu,
   SkillSelection,
@@ -13,11 +13,11 @@ export type SubmissionState =
   | { tag: "submission_error"; msg: string };
 
 type FormState = {
-  name?: string;
-  email?: string;
+  name: string;
+  email: string;
   occupation?: string;
-  organizationName?: string;
-  profileUrl?: string;
+  organizationName: string;
+  profileUrl: string;
   skills: SkillSelection;
   legalConsent: boolean;
   submissionState: SubmissionState;
@@ -41,12 +41,9 @@ const OnboardingFormPage: React.FC<PageProps> = ({
   skillMenu,
   onSubmit = () => {},
 }) => {
-  const [state, setState] = useState<FormState>({
-    skills: {},
-    legalConsent: false,
-    submissionState: { tag: "not_submitted_yet" },
-  });
+  const [state, setState] = useState<FormState>(emptyFormState);
 
+  // Handle form submission
   const handleSubmit = async (validatedData: RegistrationData) => {
     try {
       setState({ ...state, submissionState: { tag: "submitting" } });
@@ -62,6 +59,26 @@ const OnboardingFormPage: React.FC<PageProps> = ({
       });
     }
   };
+
+  // Fill default values on repeated Shift press
+  useEffect(() => {
+    let shiftCount = 0;
+    const handlePress = (event: KeyboardEvent) => {
+      if (event.key === "Shift") {
+        shiftCount = (shiftCount + 1) % 5;
+        if (shiftCount === 4) {
+          console.log("Filling-in debugging values.");
+          setState((state) => fillDebugValues(state));
+        }
+      } else {
+        shiftCount = 0;
+      }
+    };
+    document.addEventListener("keydown", handlePress);
+    return (/* cleanup */) => {
+      document.removeEventListener("keydown", handlePress);
+    };
+  }, []);
 
   return (
     <Layout
@@ -136,6 +153,29 @@ const isEditable = (state: FormState) => {
   return tag === "not_submitted_yet" || tag === "submission_error";
 };
 
+const emptyFormState: FormState = {
+  name: "",
+  email: "",
+  organizationName: "",
+  profileUrl: "",
+  skills: {},
+  legalConsent: false,
+  submissionState: { tag: "not_submitted_yet" },
+};
+
+const fillDebugValues = (state: FormState): FormState => ({
+  ...state,
+  name: "Tomáš Znamenáček",
+  email: "zoul@cesko.digital",
+  occupation: "non-profit",
+  organizationName: "Česko.Digital",
+  profileUrl: "https://github.com/zoul",
+  legalConsent: true,
+  skills: {
+    Vývoj: { Frontend: "senior", Backend: "medior", React: "junior" },
+  },
+});
+
 //
 // Intro section
 //
@@ -169,6 +209,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         <TextInput
           id="name"
           label="Jméno a příjmení"
+          value={state.name}
           autoComplete="name"
           onChange={(name) => onChange({ ...state, name })}
           disabled={disabled}
@@ -177,6 +218,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         <TextInput
           id="email"
           label="Email"
+          value={state.email}
           autoComplete="email"
           onChange={(email) => onChange({ ...state, email })}
           disabled={disabled}
@@ -186,6 +228,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         <TextInput
           id="organization"
           label="Název organizace, kde působíš"
+          value={state.organizationName}
           autoComplete="organization"
           disabled={disabled}
           onChange={(organizationName) =>
@@ -195,6 +238,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         <TextInput
           id="profile"
           label="Odkaz na tvůj web nebo profesní profil"
+          value={state.profileUrl}
           type="url"
           disabled={disabled}
           onChange={(profileUrl) => onChange({ ...state, profileUrl })}
@@ -221,6 +265,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
       <select
         id="occupation"
         className="w-full mb-8"
+        value={state.occupation ?? "nothing"}
         onChange={handleChange}
         disabled={!isEditable(state)}
       >
@@ -412,6 +457,7 @@ type TextInputProps = {
   id: string;
   label: string;
   type?: "text" | "email" | "url";
+  value?: string;
   autoComplete?: string;
   required?: boolean;
   disabled?: boolean;
@@ -422,6 +468,7 @@ const TextInput: React.FC<TextInputProps> = ({
   id,
   label,
   type = "text",
+  value = undefined,
   required = false,
   disabled = false,
   autoComplete,
@@ -436,6 +483,7 @@ const TextInput: React.FC<TextInputProps> = ({
       <input
         id={id}
         required={required}
+        value={value}
         autoComplete={autoComplete}
         disabled={disabled}
         type={type}
