@@ -1,12 +1,11 @@
 import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, BodySmall, Heading1 } from "components/typography";
-import { Skill } from "lib/airtable/skills";
-import { SkillBox } from "./user-skills";
-import Tabs from "components/tabs";
 import { useState } from "react";
 import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
 import { Button, ButtonSize } from "components/buttons";
+import { SkillMenu, SkillPicker, SkillSelection } from "./skill-picker";
+import Tabs from "components/tabs";
 
 export type UserProfilePageState =
   | "loading"
@@ -14,11 +13,11 @@ export type UserProfilePageState =
   | "loading_error"
   | "signed_in";
 
-export type UserProfilePageProps = {
+export type PageProps = {
   /** Page state (loading, signed out, …) */
   state: UserProfilePageState;
-  /** All available skills */
-  allSkills: Skill[];
+  /** Skill menu user can select from */
+  skillMenu: SkillMenu;
   /** User profile for the signed-in user */
   profile?: UserProfile;
   /** What should be done when user clicks “Sign In” */
@@ -26,12 +25,12 @@ export type UserProfilePageProps = {
   /** What should be done when user clicks “Sign Out” */
   signOut: () => void;
   /** Called when selected skills change */
-  onUserSkillsChange: (skills: Skill[]) => void;
+  onSkillSelectionChange: (selection: SkillSelection) => void;
   /** Newsletter management props */
   newsletterProps: NewsletterProps;
 };
 
-export const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
+export const UserProfilePage: React.FC<PageProps> = (props) => {
   return (
     <Layout crumbs={[{ label: "Profil uživatele" }]}>
       <Section>
@@ -43,7 +42,7 @@ export const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
   );
 };
 
-const PageContent: React.FC<UserProfilePageProps> = (props) => {
+const PageContent: React.FC<PageProps> = (props) => {
   const { state, signIn } = props;
   switch (state) {
     case "signed_out":
@@ -92,9 +91,9 @@ const ErrorPage = () => (
 // User Profile
 //
 
-const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
+const SignedInPage: React.FC<PageProps> = (props) => {
   const profile = props.profile!;
-  const { signOut, allSkills, onUserSkillsChange } = props;
+  const { signOut, skillMenu, onSkillSelectionChange } = props;
 
   const sections = [
     { key: "skills", label: "Dovednosti" },
@@ -141,20 +140,32 @@ const SignedInPage: React.FC<UserProfilePageProps> = (props) => {
         <Tabs items={sections} onChange={setActiveSectionKey} />
       </div>
       {activeSectionKey === "skills" && (
-        <SkillBox
-          userSkillIds={profile.skills}
-          allSkills={allSkills}
-          onChange={onUserSkillsChange}
+        <SkillPane
+          skillMenu={skillMenu}
+          onSkillSelectionChange={onSkillSelectionChange}
         />
       )}
       {activeSectionKey === "settings" && (
-        <>
-          <NewsletterPrefs {...props.newsletterProps} />
-        </>
+        <NewsletterPrefs {...props.newsletterProps} />
       )}
     </MainContainer>
   );
 };
+
+type SkillPaneProps = Pick<PageProps, "skillMenu" | "onSkillSelectionChange">;
+
+const SkillPane: React.FC<SkillPaneProps> = ({
+  skillMenu,
+  onSkillSelectionChange,
+}) => (
+  <section className="mb-10">
+    <p className="text-lg">
+      Co chceš v Česko.Digital dělat? Dej nám to vědět, ať ti můžeme různými
+      kanály nabízet relevantnější příležitosti.
+    </p>
+    <SkillPicker skillMenu={skillMenu} onChange={onSkillSelectionChange} />
+  </section>
+);
 
 //
 // Shared components

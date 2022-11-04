@@ -1,8 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
-import { array, dict, string } from "typescript-json-decoder";
-import { readFile } from "fs/promises";
 import { SkillMenu } from "components/user-profile/skill-picker";
-import yaml from "js-yaml";
+import { getDefaultSkillMenu } from "lib/skills";
 import OnboardingFormPage, {
   RegistrationData,
 } from "components/onboarding/form";
@@ -19,6 +17,7 @@ const Page: NextPage<PageProps> = ({ skillMenu }) => {
   return <OnboardingFormPage skillMenu={skillMenu} onSubmit={handleSubmit} />;
 };
 
+// TBD: Update for new DB schema
 async function createUserProfile(data: any): Promise<boolean> {
   try {
     const response = await fetch("/api/user_profiles", {
@@ -31,15 +30,6 @@ async function createUserProfile(data: any): Promise<boolean> {
     console.error(e);
     return false;
   }
-}
-
-async function getDefaultSkillMenu(): Promise<SkillMenu> {
-  const decode = dict(array(string));
-  return await readFile("content/competencies.yaml", "utf-8")
-    .then((str) => yaml.load(str) as any)
-    .then(decode)
-    .then((result) => result.entries())
-    .then(Object.fromEntries);
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {

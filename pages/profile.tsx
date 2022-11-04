@@ -2,20 +2,23 @@ import { NextPage, GetStaticProps } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
-import { flattenSkills, Skill } from "lib/airtable/skills";
-import { siteData } from "lib/site-data";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
+import { getDefaultSkillMenu } from "lib/skills";
+import {
+  SkillMenu,
+  SkillSelection,
+} from "components/user-profile/skill-picker";
 import {
   UserProfilePageState,
   UserProfilePage,
 } from "components/user-profile/page";
 
 type PageProps = {
-  allSkills: Skill[];
+  skillMenu: SkillMenu;
 };
 
-const Page: NextPage<PageProps> = ({ allSkills }) => {
+const Page: NextPage<PageProps> = ({ skillMenu }) => {
   const { data: session, status } = useSession();
   const [profile, setProfile] = useState<UserProfile | undefined>();
   const [state, setState] = useState<UserProfilePageState>("loading");
@@ -47,21 +50,23 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
         setState("loading");
         break;
     }
-  }, [session, status, state, allSkills]);
+  }, [session, status, state, skillMenu]);
 
-  const saveSkills = async (skills: Skill[]) => {
-    console.debug(`Saving user skills.`);
-    await updateUserProfile(skills);
+  const saveSkillSelection = async (selection: SkillSelection) => {
+    // TBD: Update DB
+    console.debug(
+      `Updated skill selection: ${JSON.stringify(selection, null, 2)}`
+    );
   };
 
   return (
     <UserProfilePage
-      allSkills={allSkills}
+      skillMenu={skillMenu}
       state={state}
       profile={profile}
       signIn={() => signIn("slack")}
       signOut={() => signOut({ callbackUrl: "/" })}
-      onUserSkillsChange={saveSkills}
+      onSkillSelectionChange={saveSkillSelection}
       newsletterProps={{
         getSubscription: getNewsletterSubscription,
         subscribe: subscribeNewsletter,
@@ -72,9 +77,9 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const allSkills = flattenSkills(siteData.skills);
+  const skillMenu = await getDefaultSkillMenu();
   return {
-    props: { allSkills },
+    props: { skillMenu },
   };
 };
 
@@ -92,14 +97,11 @@ async function getUserProfile(): Promise<UserProfile> {
   }
 }
 
-async function updateUserProfile(skills: Skill[]): Promise<void> {
-  const payload = {
-    // We’re only sending the skill IDs to the API
-    skills: skills.map((skill) => skill.id),
-  };
+// TBD: Update for new DB schema
+async function updateUserProfile(skills: SkillSelection): Promise<void> {
   await fetch("/api/protected/me", {
     method: "PATCH",
-    body: JSON.stringify(payload, null, 2),
+    body: JSON.stringify(skills, null, 2),
     headers: {
       "Content-Type": "application/json",
     },
