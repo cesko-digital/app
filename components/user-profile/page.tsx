@@ -100,6 +100,8 @@ const SignedInPage: React.FC<PageProps> = (props) => {
     { key: "settings", label: "Nastavení" },
   ];
 
+  // TBD: Initialize from user profile
+  const [skillSelection, setSkillSelection] = useState<SkillSelection>({});
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
 
   return (
@@ -142,7 +144,11 @@ const SignedInPage: React.FC<PageProps> = (props) => {
       {activeSectionKey === "skills" && (
         <SkillPane
           skillMenu={skillMenu}
-          onSkillSelectionChange={onSkillSelectionChange}
+          selection={skillSelection}
+          onChange={(selection) => {
+            setSkillSelection(selection);
+            onSkillSelectionChange(selection);
+          }}
         />
       )}
       {activeSectionKey === "settings" && (
@@ -152,20 +158,31 @@ const SignedInPage: React.FC<PageProps> = (props) => {
   );
 };
 
-type SkillPaneProps = Pick<PageProps, "skillMenu" | "onSkillSelectionChange">;
+type SkillPaneProps = {
+  skillMenu: SkillMenu;
+  selection: SkillSelection;
+  onChange?: (selection: SkillSelection) => void;
+};
 
 const SkillPane: React.FC<SkillPaneProps> = ({
   skillMenu,
-  onSkillSelectionChange,
-}) => (
-  <section className="mb-10 text-lg">
-    <p>
-      Co chceš v Česko.Digital dělat? Dej nám to vědět, ať ti můžeme různými
-      kanály nabízet relevantnější příležitosti.
-    </p>
-    <SkillPicker skillMenu={skillMenu} onChange={onSkillSelectionChange} />
-  </section>
-);
+  selection,
+  onChange = () => {},
+}) => {
+  return (
+    <section className="mb-10 text-lg">
+      <p>
+        Co chceš v Česko.Digital dělat? Dej nám to vědět, ať ti můžeme různými
+        kanály nabízet relevantnější příležitosti.
+      </p>
+      <SkillPicker
+        skillMenu={skillMenu}
+        selection={selection}
+        onChange={onChange}
+      />
+    </section>
+  );
+};
 
 //
 // Shared components

@@ -311,7 +311,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         </p>
         <SkillPicker
           skillMenu={skillMenu}
-          initialSelection={state.skills}
+          selection={state.skills}
           disabled={!isEditable(state)}
           onChange={(skills) => onChange({ ...state, skills })}
         />

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 /** All available skill levels we work with */
 const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
 
@@ -15,33 +13,30 @@ export type SkillSelection = Record<string, SubSkillSelection>;
 export type SkillPickerProps = {
   /** All skills the user can select from */
   skillMenu: SkillMenu;
-  disabled?: boolean;
-  initialSelection?: SkillSelection;
+  /** Current skill selection */
+  selection?: SkillSelection;
   onChange?: (selection: SkillSelection) => void;
+  disabled?: boolean;
 };
 
 /** Display a three-level skill selection menu */
 export const SkillPicker: React.FC<SkillPickerProps> = ({
   skillMenu,
   disabled = false,
-  initialSelection = {},
+  selection = {},
   onChange = (_) => {},
 }) => {
-  const [selection, setSelection] = useState<SkillSelection>(initialSelection);
-
   // Update main selection, called when user (un)checks main category
   const updateSelection = (category: string, checked: boolean) => {
     const newSelection = checked
       ? objectByAdding(selection, category, {})
       : objectByDeleting(selection, category);
-    setSelection(newSelection);
     onChange(newSelection);
   };
 
   // Update subselection, called when user changes selection inside category
   const updateSubSelection = (category: string, skills: SubSkillSelection) => {
     const newSelection = { ...selection, [category]: skills };
-    setSelection(newSelection);
     onChange(newSelection);
   };
 
@@ -54,7 +49,7 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
               type="checkbox"
               disabled={disabled}
               onChange={(e) => updateSelection(category, e.target.checked)}
-              defaultChecked={!!selection[category]}
+              checked={!!selection[category]}
               className="mr-2"
             ></input>
             {category}
@@ -63,7 +58,7 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
             <SubSkillPicker
               skills={skills}
               disabled={disabled}
-              initialSelection={selection[category]}
+              selection={selection[category]}
               onChange={(skills) => updateSubSelection(category, skills)}
             />
           )}
@@ -78,7 +73,7 @@ type SubSkillSelection = Record<string, SkillLevel | null>;
 type SubSkillPickerProps = {
   skills: string[];
   disabled?: boolean;
-  initialSelection?: SubSkillSelection;
+  selection?: SubSkillSelection;
   onChange?: (skills: SubSkillSelection) => void;
 };
 
@@ -86,26 +81,21 @@ type SubSkillPickerProps = {
 const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
   skills,
   disabled = false,
-  initialSelection = {},
+  selection = {},
   onChange = (_) => {},
 }) => {
-  const [selection, setSelection] =
-    useState<SubSkillSelection>(initialSelection);
-
-  // Update main selection, called when user (un)check a particular subskill
+  // Update main selection, called when user (un)checks a particular subskill
   const updateSelection = (skill: string, checked: boolean) => {
-    const newState = checked
+    const newSelection = checked
       ? objectByAdding(selection, skill, null)
       : objectByDeleting(selection, skill);
-    setSelection(newState);
-    onChange(newState);
+    onChange(newSelection);
   };
 
   // Update skill level, called when user changes level selection for a subskill
   const updateLevel = (skill: string, level: SkillLevel) => {
-    const newState = { ...selection, [skill]: level };
-    setSelection(newState);
-    onChange(newState);
+    const newSelection = { ...selection, [skill]: level };
+    onChange(newSelection);
   };
 
   return (
@@ -159,7 +149,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
               type="radio"
               value={level}
               disabled={disabled}
-              defaultChecked={level === initialValue}
+              checked={level === initialValue}
               name={`${namespace}-level`}
               className="mr-2"
               onChange={(_) => onChange(level)}
