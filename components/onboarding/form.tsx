@@ -68,7 +68,7 @@ const OnboardingFormPage: React.FC<PageProps> = ({
         shiftCount = (shiftCount + 1) % 5;
         if (shiftCount === 4) {
           console.log("Filling-in debugging values.");
-          setState((state) => fillDebugValues(state));
+          setState((state) => ({ ...state, ...debugFormDefaults }));
         }
       } else {
         shiftCount = 0;
@@ -163,8 +163,7 @@ const emptyFormState: FormState = {
   submissionState: { tag: "not_submitted_yet" },
 };
 
-const fillDebugValues = (state: FormState): FormState => ({
-  ...state,
+const debugFormDefaults: Partial<FormState> = {
   name: "Tomáš Znamenáček",
   email: "zoul@cesko.digital",
   occupation: "non-profit",
@@ -174,7 +173,7 @@ const fillDebugValues = (state: FormState): FormState => ({
   skills: {
     Vývoj: { Frontend: "senior", Backend: "medior", React: "junior" },
   },
-});
+};
 
 //
 // Intro section

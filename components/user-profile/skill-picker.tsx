@@ -116,7 +116,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
             <LevelPicker
               namespace={skill}
               disabled={disabled}
-              initialValue={selection[skill]}
+              value={selection[skill]}
               onChange={(level) => updateLevel(skill, level)}
             />
           )}
@@ -129,7 +129,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
 type LevelPickerProps = {
   namespace: string;
   disabled?: boolean;
-  initialValue: SkillLevel | null;
+  value: SkillLevel | null;
   onChange?: (level: SkillLevel) => void;
 };
 
@@ -137,7 +137,7 @@ type LevelPickerProps = {
 const LevelPicker: React.FC<LevelPickerProps> = ({
   namespace,
   disabled = false,
-  initialValue = null,
+  value = null,
   onChange = (_) => {},
 }) => {
   return (
@@ -149,7 +149,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
               type="radio"
               value={level}
               disabled={disabled}
-              checked={level === initialValue}
+              checked={level === value}
               name={`${namespace}-level`}
               className="mr-2"
               onChange={(_) => onChange(level)}
