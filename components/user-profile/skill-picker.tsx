@@ -180,7 +180,7 @@ function objectByDeleting<K extends string, V>(
   object: Record<K, V>,
   key: K
 ): Record<K, V> {
-  const value = object;
+  const value = { ...object };
   delete value[key];
   return value;
 }
