@@ -31,18 +31,18 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
 
   // Update main selection, called when user (un)checks main category
   const updateSelection = (category: string, checked: boolean) => {
-    const newState = checked
+    const newSelection = checked
       ? objectByAdding(selection, category, {})
       : objectByDeleting(selection, category);
-    setSelection(newState);
-    onChange(newState);
+    setSelection(newSelection);
+    onChange(newSelection);
   };
 
   // Update subselection, called when user changes selection inside category
   const updateSubSelection = (category: string, skills: SubSkillSelection) => {
-    const newState = { ...selection, [category]: skills };
-    setSelection(newState);
-    onChange(newState);
+    const newSelection = { ...selection, [category]: skills };
+    setSelection(newSelection);
+    onChange(newSelection);
   };
 
   return (

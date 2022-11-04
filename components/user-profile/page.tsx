@@ -158,8 +158,8 @@ const SkillPane: React.FC<SkillPaneProps> = ({
   skillMenu,
   onSkillSelectionChange,
 }) => (
-  <section className="mb-10">
-    <p className="text-lg">
+  <section className="mb-10 text-lg">
+    <p>
       Co chceš v Česko.Digital dělat? Dej nám to vědět, ať ti můžeme různými
       kanály nabízet relevantnější příležitosti.
     </p>
