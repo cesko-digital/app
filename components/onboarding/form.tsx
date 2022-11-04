@@ -1,9 +1,10 @@
 import { Layout } from "components/layout";
 import { ChangeEvent, useState } from "react";
-
-const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
-
-export type SkillLevel = typeof skillLevels[number];
+import {
+  SkillMenu,
+  SkillSelection,
+  SkillPicker,
+} from "components/user-profile/skill-picker";
 
 export type SubmissionState =
   | { tag: "not_submitted_yet" }
@@ -17,7 +18,7 @@ type FormState = {
   occupation?: string;
   organizationName?: string;
   profileUrl?: string;
-  skills: CompetencyMap;
+  skills: SkillSelection;
   legalConsent: boolean;
   submissionState: SubmissionState;
 };
@@ -25,21 +26,19 @@ type FormState = {
 export type RegistrationData = {
   name: string;
   email: string;
-  skills: CompetencyMap;
+  skills: SkillSelection;
   occupation?: string;
   organizationName?: string;
   profileUrl?: string;
 };
 
-export type CompetencyList = Record<string, string[]>;
-
 export type PageProps = {
-  competencyList: CompetencyList;
+  skillMenu: SkillMenu;
   onSubmit?: (data: RegistrationData) => Promise<void>;
 };
 
 const OnboardingFormPage: React.FC<PageProps> = ({
-  competencyList,
+  skillMenu,
   onSubmit = () => {},
 }) => {
   const [state, setState] = useState<FormState>({
@@ -79,11 +78,7 @@ const OnboardingFormPage: React.FC<PageProps> = ({
     >
       <Intro />
       <PersonalDetailsSection state={state} onChange={setState} />
-      <SkillSection
-        competencyList={competencyList}
-        state={state}
-        onChange={setState}
-      />
+      <SkillSection skillMenu={skillMenu} state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection
         state={state}
@@ -135,21 +130,6 @@ function validateForm(data: FormState): ValidationResult {
     };
   }
 }
-
-function objectByDeleting<K extends string, V>(
-  object: Record<K, V>,
-  key: K
-): Record<K, V> {
-  const value = object;
-  delete value[key];
-  return value;
-}
-
-const objectByAdding = <K extends string, V>(
-  object: Record<K, V>,
-  key: K,
-  value: V
-) => ({ ...object, [key]: value });
 
 const isEditable = (state: FormState) => {
   const tag = state.submissionState.tag;
@@ -262,12 +242,12 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 //
 
 type SkillSectionProps = FormSectionProps & {
-  competencyList: CompetencyList;
+  skillMenu: SkillMenu;
 };
 
 const SkillSection: React.FC<SkillSectionProps> = ({
   state,
-  competencyList,
+  skillMenu,
   onChange,
 }) => {
   return (
@@ -284,165 +264,14 @@ const SkillSection: React.FC<SkillSectionProps> = ({
           příležitosti na{" "}
           <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
         </p>
-        <SkillCategoryPicker
-          competencies={competencyList}
+        <SkillPicker
+          skillMenu={skillMenu}
           initialSelection={state.skills}
           disabled={!isEditable(state)}
-          onChange={(competencies) =>
-            onChange({ ...state, skills: competencies })
-          }
+          onChange={(skills) => onChange({ ...state, skills })}
         />
       </SectionContent>
     </Section>
-  );
-};
-
-type CompetencyMap = Record<string, SkillLevelMap>;
-
-type SkillCategoryPickerProps = {
-  competencies: CompetencyList;
-  disabled?: boolean;
-  initialSelection?: CompetencyMap;
-  onChange?: (competencies: CompetencyMap) => void;
-};
-
-const SkillCategoryPicker: React.FC<SkillCategoryPickerProps> = ({
-  competencies,
-  disabled = false,
-  initialSelection = {},
-  onChange = (_) => {},
-}) => {
-  const [selection, setSelection] = useState<CompetencyMap>(initialSelection);
-  const updateSelection = (category: string, checked: boolean) => {
-    const newState = checked
-      ? objectByAdding(selection, category, {})
-      : objectByDeleting(selection, category);
-    setSelection(newState);
-    onChange(newState);
-  };
-  const updateSkills = (category: string, skills: SkillLevelMap) => {
-    const newState = { ...selection, [category]: skills };
-    setSelection(newState);
-    onChange(newState);
-  };
-
-  return (
-    <ul className="list-none ml-0 leading-loose">
-      {Object.entries(competencies).map(([category, skills]) => (
-        <li key={category}>
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              disabled={disabled}
-              onChange={(e) => updateSelection(category, e.target.checked)}
-              defaultChecked={!!selection[category]}
-              className="mr-2"
-            ></input>
-            {category}
-          </label>
-          {selection[category] && (
-            <SkillPicker
-              skills={skills}
-              disabled={disabled}
-              initialSelection={selection[category]}
-              onChange={(skills) => updateSkills(category, skills)}
-            />
-          )}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-type SkillLevelMap = Record<string, SkillLevel | null>;
-
-type SkillPickerProps = {
-  skills: string[];
-  disabled?: boolean;
-  initialSelection?: SkillLevelMap;
-  onChange?: (skills: SkillLevelMap) => void;
-};
-
-const SkillPicker: React.FC<SkillPickerProps> = ({
-  skills,
-  disabled = false,
-  initialSelection = {},
-  onChange = (_) => {},
-}) => {
-  const [selection, setSelection] = useState<SkillLevelMap>(initialSelection);
-  const updateSelection = (skill: string, checked: boolean) => {
-    const newState = checked
-      ? objectByAdding(selection, skill, null)
-      : objectByDeleting(selection, skill);
-    setSelection(newState);
-    onChange(newState);
-  };
-  const updateLevel = (skill: string, level: SkillLevel) => {
-    const newState = { ...selection, [skill]: level };
-    setSelection(newState);
-    onChange(newState);
-  };
-
-  return (
-    <ul className="list-none">
-      {skills.map((skill) => (
-        <li key={skill}>
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              disabled={disabled}
-              defaultChecked={!!selection[skill]}
-              onChange={(e) => updateSelection(skill, e.target.checked)}
-              className="mr-2"
-            ></input>
-            {skill}
-          </label>
-          {selection[skill] !== undefined && (
-            <LevelPicker
-              namespace={skill}
-              disabled={disabled}
-              initialValue={selection[skill]}
-              onChange={(level) => updateLevel(skill, level)}
-            />
-          )}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-type LevelPickerProps = {
-  namespace: string;
-  disabled?: boolean;
-  initialValue: SkillLevel | null;
-  onChange?: (level: SkillLevel) => void;
-};
-
-const LevelPicker: React.FC<LevelPickerProps> = ({
-  namespace,
-  disabled = false,
-  initialValue = null,
-  onChange = (_) => {},
-}) => {
-  return (
-    <div className="text-base py-2">
-      {skillLevels.map((level) => (
-        <div key={level} className="inline-block pl-4">
-          <label>
-            <input
-              type="radio"
-              value={level}
-              disabled={disabled}
-              defaultChecked={level === initialValue}
-              name={`${namespace}-level`}
-              className="mr-2"
-              onChange={(_) => onChange(level)}
-            />
-            {level}
-          </label>
-        </div>
-      ))}
-    </div>
   );
 };
 
