@@ -228,6 +228,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           id="organization"
           label="Název organizace, kde působíš"
           value={state.organizationName}
+          placeholder="název firmy, neziskové organizace, státní instituce, …"
           autoComplete="organization"
           disabled={disabled}
           onChange={(organizationName) =>
@@ -237,6 +238,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         <TextInput
           id="profile"
           label="Odkaz na tvůj web nebo profesní profil"
+          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
           value={state.profileUrl}
           type="url"
           disabled={disabled}
@@ -458,6 +460,7 @@ type TextInputProps = {
   label: string;
   type?: "text" | "email" | "url";
   value?: string;
+  placeholder?: string;
   autoComplete?: string;
   required?: boolean;
   disabled?: boolean;
@@ -469,6 +472,7 @@ const TextInput: React.FC<TextInputProps> = ({
   label,
   type = "text",
   value = undefined,
+  placeholder = undefined,
   required = false,
   disabled = false,
   autoComplete,
@@ -484,6 +488,7 @@ const TextInput: React.FC<TextInputProps> = ({
         id={id}
         required={required}
         value={value}
+        placeholder={placeholder}
         autoComplete={autoComplete}
         disabled={disabled}
         type={type}
