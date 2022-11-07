@@ -9,7 +9,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   response.setHeader("Content-Type", "application/json");
   response.setHeader(
     "Cache-Control",
-    `s-maxage=${oneHour}, stale-while-revalidate=${oneWeek}`
+    `s-maxage=${oneWeek}, stale-while-revalidate`
   );
   response.status(200).send({
     timestamp: new Date(),
