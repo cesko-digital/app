@@ -412,7 +412,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
     <Section>
       <SectionContent>
         <h2>Co tě čeká po odeslání formuláře</h2>
-        <ol className="mb-8 list-decimal space-y-4">
+        <ol className="mb-8 list-decimal space-y-4 list-inside xl:list-outside">
           <li>
             Pro začátek dostaneš{" "}
             <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
