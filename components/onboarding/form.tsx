@@ -1,5 +1,6 @@
 import { Layout } from "components/layout";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   SkillMenu,
   SkillSelection,
@@ -182,6 +183,14 @@ const debugFormDefaults: Partial<FormState> = {
 const Intro = () => (
   <Section>
     <SectionContent>
+      <div className="hidden lg:block absolute right-[100px]">
+        <Image
+          src="/images/onboarding/rightward-arrows.svg"
+          alt=""
+          width={181}
+          height={373}
+        />
+      </div>
       <h1 className="text-[44px] font-bold leading-snug mb-10">
         Staň se členem komunity
       </h1>
