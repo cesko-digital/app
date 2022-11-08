@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SkillMenu,
   SkillSelection,
@@ -250,35 +250,39 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
 };
 
 const OccupationSelect: FormSection = ({ state, onChange }) => {
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    const occupation = value === "nothing" ? undefined : value;
-    onChange({ ...state, occupation });
+  const options = {
+    "private-sector": "Pracuji v soukromém sektoru",
+    "non-profit": "Pracuji v neziskové organizaci",
+    "state": "Pracuji ve státním sektoru",
+    "freelancing": "Jsem na volné noze/freelancer",
+    "studying": "Studuji",
+    "parental-leave": "Jsem na rodičovské",
+    "looking-for-job": "Hledám práci",
   };
+
   return (
     <>
-      <label htmlFor="occupation">Čemu se aktuálně věnuješ</label>
+      <label>Čemu se aktuálně věnuješ</label>
       <p className="text-base mt-1 text-gray-500">
         Vyber prosím svoji hlavní činnost. U některých možností tě můžeme v
         uvítacím e-mailu kontaktovat s dalšími podrobnostmi ohledně případné
         spolupráce (například u neziskovek či soukromého sektoru).
       </p>
-      <select
-        id="occupation"
-        className="w-full mb-8"
-        value={state.occupation ?? "nothing"}
-        onChange={handleChange}
-        disabled={!isEditable(state)}
-      >
-        <option value="nothing"></option>
-        <option value="private-sector">Pracuji v soukromém sektoru</option>
-        <option value="non-profit">Pracuji v neziskové organizaci</option>
-        <option value="state">Pracuji ve státním sektoru</option>
-        <option value="freelancing">Jsem na volné noze/freelancer</option>
-        <option value="studying">Studuji</option>
-        <option value="parental-leave">Jsem na rodičovské</option>
-        <option value="looking-for-job">Hledám práci</option>
-      </select>
+
+      <div className="mb-8">
+        {Object.entries(options).map(([id, label]) => (
+          <label key={id} className="block">
+            <input
+              type="radio"
+              className="mr-2"
+              name="occupation"
+              checked={state.occupation === id}
+              onChange={() => onChange({ ...state, occupation: id })}
+            />
+            {label}
+          </label>
+        ))}
+      </div>
     </>
   );
 };
