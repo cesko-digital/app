@@ -50,7 +50,7 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
               disabled={disabled}
               onChange={(e) => updateSelection(category, e.target.checked)}
               checked={!!selection[category]}
-              className="mr-2"
+              className="mr-2 shrink-0 self-start mt-[1.5ex]"
             ></input>
             {category}
           </label>
@@ -108,7 +108,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
               disabled={disabled}
               checked={selection[skill] !== undefined}
               onChange={(e) => updateSelection(skill, e.target.checked)}
-              className="mr-2"
+              className="mr-2 mt-[1.5ex] self-start shrink-0"
             ></input>
             {skill}
           </label>

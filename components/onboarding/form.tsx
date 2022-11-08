@@ -275,7 +275,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 
       <div className="mb-8">
         {Object.entries(options).map(([id, label]) => (
-          <label key={id} className="block">
+          <label key={id} className="flex items-center">
             <input
               type="radio"
               className="mr-2"
@@ -344,7 +344,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           defaultChecked={state.legalConsent}
           disabled={!isEditable(state)}
-          className="mr-2"
+          className="mr-2 self-start mt-2 shrink-0"
           onChange={(e) =>
             onChange({ ...state, legalConsent: e.target.checked })
           }
@@ -354,8 +354,8 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           <a href="https://cesko.digital/go/privacy">
             zpracováním osobních údajů
           </a>
+          <RequiredFieldMarker />
         </span>
-        <RequiredFieldMarker />
       </label>
     </SectionContent>
   </Section>
