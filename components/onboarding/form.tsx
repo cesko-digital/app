@@ -307,7 +307,10 @@ const SkillSection: React.FC<SkillSectionProps> = ({
   return (
     <Section>
       <SectionContent>
-        <h2>Dovednosti, které můžeš komunitě nabídnout</h2>
+        <h2>
+          Dovednosti, které můžeš komunitě nabídnout
+          <RequiredFieldMarker />
+        </h2>
         <p>
           Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
           může (ale nemusí) někdo z komunity poprosit o radu nebo tě zapojit do
