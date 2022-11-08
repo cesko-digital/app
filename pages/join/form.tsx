@@ -1,6 +1,8 @@
 import { NextPage, GetStaticProps } from "next";
 import { SkillMenu } from "components/user-profile/skill-picker";
 import { getDefaultSkillMenu } from "lib/skills";
+import Plausible from "plausible-tracker";
+import { Route } from "lib/utils";
 import OnboardingFormPage, {
   RegistrationData,
 } from "components/onboarding/form";
@@ -12,7 +14,11 @@ type PageProps = {
 const Page: NextPage<PageProps> = ({ skillMenu }) => {
   const handleSubmit = async (data: RegistrationData) => {
     console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
-    await new Promise((r) => setTimeout(r, 4000));
+    const { trackEvent } = Plausible({ domain: "cesko.digital" });
+    trackEvent("SignUp");
+    setTimeout(() => {
+      document.location.href = Route.slackOnboarding;
+    }, 1000);
   };
   return <OnboardingFormPage skillMenu={skillMenu} onSubmit={handleSubmit} />;
 };
