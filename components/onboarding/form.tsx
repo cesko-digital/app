@@ -191,6 +191,10 @@ const Intro = () => (
         dovednostní preference si pak budeš moci kdykoliv upravit ve svém
         profilu na Portálu dobrovolníka.
       </p>
+      <p>
+        Položky označené hvězdičkou
+        <RequiredFieldMarker /> jsou povinné.
+      </p>
     </SectionContent>
   </Section>
 );
