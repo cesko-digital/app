@@ -22,6 +22,7 @@ export interface Schema extends FieldSet {
   name: string;
   email: string;
   skills: ReadonlyArray<string>;
+  competencies: string;
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
   state: string;
@@ -43,6 +44,7 @@ export const decodeUserProfile = record({
   email: string,
   contactEmail: relationToZeroOrOne,
   skills: withDefault(array(string), []),
+  competencies: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
@@ -63,6 +65,7 @@ export function encodeUserProfile(
     // trying to write the values back in. So we make sure the values
     // are unique.
     skills: profile.skills ? unique(profile.skills) : undefined,
+    competencies: profile.competencies,
     state: profile.state,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
@@ -121,7 +124,12 @@ export async function updateUserProfile(
   profile: Partial<
     Pick<
       UserProfile,
-      "name" | "skills" | "slackUserRelationId" | "state" | "createdAt"
+      | "name"
+      | "skills"
+      | "competencies"
+      | "slackUserRelationId"
+      | "state"
+      | "createdAt"
     >
   >
 ): Promise<UserProfile> {
@@ -135,7 +143,13 @@ export async function updateUserProfile(
 export async function createUserProfile(
   profile: Pick<
     UserProfile,
-    "name" | "email" | "skills" | "state" | "slackUserRelationId" | "createdAt"
+    | "name"
+    | "email"
+    | "skills"
+    | "competencies"
+    | "state"
+    | "slackUserRelationId"
+    | "createdAt"
   >
 ): Promise<UserProfile> {
   return await userProfileTable
