@@ -215,9 +215,9 @@ const Video = (video: YTPlaylistItem) => {
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const { projects, events } = siteData;
   const videos = shuffled(siteData.videos).slice(0, 6);
-  const marketPlaceOffers = siteData.marketPlaceOffers.filter(
-    (o) => o.state === "published" && !!o.title
-  );
+  const marketPlaceOffers = siteData.marketPlaceOffers
+    .filter((o) => o.state === "published" && !!o.title)
+    .slice(0, 5);
   const opportunities = getFeaturedOpportunities(
     siteData.opportunities.filter((o) => o.status === "live")
   );
