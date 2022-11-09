@@ -446,11 +446,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
         <button
           onClick={handleSubmit}
           disabled={!enableSubmitButton}
-          className={
-            enableSubmitButton
-              ? "btn-primary"
-              : "btn-disabled cursor-not-allowed"
-          }
+          className={enableSubmitButton ? "btn-primary" : "btn-disabled"}
         >
           {submitButtonLabel}
         </button>

@@ -1,6 +1,6 @@
 import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Body, BodySmall, Heading1 } from "components/typography";
+import { Body } from "components/typography";
 import { useState } from "react";
 import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
 import { Button, ButtonSize } from "components/buttons";
@@ -97,7 +97,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
 
   const sections = [
     { key: "skills", label: "Dovednosti" },
-    { key: "settings", label: "Nastavení" },
+    { key: "newsletter", label: "Newsletter" },
   ];
 
   // TBD: Initialize from user profile
@@ -110,35 +110,14 @@ const SignedInPage: React.FC<PageProps> = (props) => {
         {profile.name}{" "}
         <Button
           size={ButtonSize.Small}
+          className="relative ml-5 top-[50%] -translate-y-[30%]"
           onClick={signOut}
           inverted
-          style={{
-            marginLeft: "20px",
-            position: "relative",
-            top: "50%",
-            transform: "translateY(-30%)",
-          }}
         >
           Odhlásit
         </Button>
       </Heading>
-      <BodySmall>
-        Možnost přihlášení a správy uživatelského profilu je čerstvá novinka,
-        kterou vám chceme zjednodušit zapojování do různých aktivit
-        Česko.Digital. A jako každá novinka to{" "}
-        <span style={{ textDecoration: "line-through" }}>může mít</span> určitě
-        má mouchy. Pokud narazíte na chyby nebo věci, které by mohly fungovat
-        lépe,{" "}
-        <a href="https://github.com/cesko-digital/web/issues">
-          otevřte nový ticket
-        </a>
-        , dejte nám vědět v kanálu{" "}
-        <a href="https://cesko-digital.slack.com/archives/CHG9NA23D">
-          #run-ceskodigital_web
-        </a>{" "}
-        nebo prostě <a href="mailto:zoul@cesko.digital">napište mail</a>. Díky!
-      </BodySmall>
-      <div style={{ paddingTop: "30px", marginBottom: "40px" }}>
+      <div className="mb-10">
         <Tabs items={sections} onChange={setActiveSectionKey} />
       </div>
       {activeSectionKey === "skills" && (
@@ -151,7 +130,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
           }}
         />
       )}
-      {activeSectionKey === "settings" && (
+      {activeSectionKey === "newsletter" && (
         <NewsletterPrefs {...props.newsletterProps} />
       )}
     </MainContainer>
@@ -189,9 +168,9 @@ const SkillPane: React.FC<SkillPaneProps> = ({
 //
 
 const MainContainer: React.FC = (props) => (
-  <div style={{ minHeight: "400px" }}>{props.children}</div>
+  <div className="min-h-[400px]">{props.children}</div>
 );
 
 const Heading: React.FC = (props) => (
-  <Heading1 style={{ marginBottom: "20px" }}>{props.children}</Heading1>
+  <h1 className="text-[44px] font-bold leading-snug mb-10">{props.children}</h1>
 );
