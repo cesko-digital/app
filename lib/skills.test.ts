@@ -158,4 +158,7 @@ test("Upgrade", () => {
   expect(upgrade("Management / projektový; Marketing / management")).toBe(
     "Projektové řízení"
   );
+
+  // Weird edge cases
+  expect(upgrade("Management / marketingový")).toBe("Marketing");
 });

@@ -183,9 +183,9 @@ Odborná veřejnost ->
 
 const skillReplacementTable = `
 Analýza / big data -> Vývoj / Analýza
-Analýza / business -> Vývoj / Analýza
+Analýza / business -> Projektové řízení / Business model a development
 Analýza / IT -> Vývoj / Analýza
-Architektura / business -> Vývoj / Architektura
+Architektura / business -> Projektové řízení / Business model a development
 Architektura / enterprise -> Vývoj / Architektura
 Architektura / solution -> Vývoj / Architektura
 Architektura / systémová -> Vývoj / Architektura
@@ -193,13 +193,13 @@ Business / development -> Projektové řízení / Business model a development
 Business / model -> Projektové řízení / Business model a development
 Business / plan -> Projektové řízení / Business model a development
 Business / startups -> Projektové řízení / Business model a development
-Business / strategic partnership -> Projektové řízení / Business model a development
-Design /  mobilní -> Design / Mobile design
-Design /  service ->
-Design / informační architektura ->
-Design / interakční ->
+Business / strategic partnership -> Projektové řízení / Fundraising
+Design / mobilní -> Design / Mobile design
+Design / service -> Design / Product design
+Design / informační architektura -> Design / Product design
+Design / interakční -> Design / UX design
 Design / motion ->
-Design / přístupnost ->
+Design / přístupnost -> Design / UX design
 Design / produktový -> Design / Product design
 Design / UI -> Design / UI design
 Design / vizuální ->
@@ -209,12 +209,12 @@ Design / writing ->
 Finance / analýza -> Projektové řízení / Finance
 Finance / plánování -> Projektové řízení / Finance
 Finance / reportování -> Projektové řízení / Finance
-Lidské zdroje /  administrativa -> Personalistika / Administrace a nástroje
+Lidské zdroje / administrativa -> Personalistika / Administrace a nástroje
 Lidské zdroje / nábor -> Personalistika / Recruitment
 Lidské zdroje / vzdělávání -> Personalistika / Vzdělávání
-Management /  development -> Projektové řízení / Business model a development
+Management / development -> Projektové řízení / Business model a development
 Management / leadership ->
-Management / marketingový ->
+Management / marketingový -> Marketing
 Management / product owner -> Projektové řízení / Product Owner
 Management / produktový -> Projektové řízení / Product Owner
 Management / projektový ->
@@ -240,7 +240,7 @@ Odborná veřejnost / právník -> Ostatní / Odborná veřejnost
 Odborná veřejnost / psycholog -> Ostatní / Odborná veřejnost
 Odborná veřejnost / sociolog -> Ostatní / Odborná veřejnost
 Strategie / marketingová -> Marketing / Marketingová strategie
-Strategie / produktová -> Projektové řízení
+Strategie / produktová -> Projektové řízení / Product Owner
 Strategie / projektová -> Projektové řízení
 Vývoj / Android -> Vývoj / Mobilní aplikace (Android, iOS, Flutter, …)
 Vývoj / Angular -> Vývoj / Frontend
@@ -248,7 +248,7 @@ Vývoj / automatizace ->
 Vývoj / Azure, AWS, Google Cloud Platform -> Vývoj / Cloud (Azure, AWS, GCP)
 Vývoj / C# ->
 Vývoj / C++ ->
-Vývoj / Clojure ->
+Vývoj / Clojure -> Vývoj / Java a Kotlin
 Vývoj / databáze -> Vývoj / Databáze
 Vývoj / DevOps -> Vývoj / DevOps
 Vývoj / Docker -> Vývoj / Docker a Kubernetes
