@@ -351,7 +351,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
       <label className="flex items-center">
         <input
           type="checkbox"
-          defaultChecked={state.legalConsent}
+          checked={state.legalConsent}
           disabled={!isEditable(state)}
           className="mr-2 self-start mt-2 shrink-0"
           onChange={(e) =>
