@@ -165,11 +165,16 @@ const Intro = () => (
         Abychom věděli, co by tě z našich aktivit mohlo zajímat a kdo se na tebe
         může z komunity obrátit, řekni nám prosím něco o sobě. Osobní údaje a
         dovednostní preference si pak budeš moci kdykoliv upravit ve svém
-        profilu na Portálu dobrovolníka.
+        profilu na Portálu dobrovolníka. Položky označené hvězdičkou
+        <RequiredFieldMarker /> jsou povinné.
       </p>
       <p>
-        Položky označené hvězdičkou
-        <RequiredFieldMarker /> jsou povinné.
+        PS. Pokud už v našem Slacku jsi a jen jsi od něj zapomněl(a) heslo,
+        můžeš si ho resetovat{" "}
+        <a href="https://slack.com/help/articles/201909068-Reset-your-password">
+          podle tohoto návodu
+        </a>
+        .
       </p>
     </SectionContent>
   </Section>
