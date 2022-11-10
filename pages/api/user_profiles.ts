@@ -8,7 +8,9 @@ import {
 /** Create a new, unconfirmed user profile */
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   // Validate input
+  // TBD: Update to a regular decoder
   const { name, email, skills } = request.body;
+  const { occupation, organizationName, profileUrl } = request.body;
   if (!name) {
     response.status(400).send("Missing “name” param.");
     return;
@@ -17,8 +19,8 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     response.status(400).send("Missing “email” param.");
     return;
   }
-  if (!skills || !Array.isArray(skills)) {
-    response.status(400).send("The “skills” param is missing or invalid.");
+  if (!skills) {
+    response.status(400).send("Missing “skills” param.");
     return;
   }
   try {
@@ -31,8 +33,11 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
       await createUserProfile({
         name,
         email,
-        skills,
-        competencies: "TBD",
+        skills: [],
+        occupation,
+        organizationName,
+        profileUrl,
+        competencies: skills,
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),

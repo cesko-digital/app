@@ -23,6 +23,9 @@ export interface Schema extends FieldSet {
   email: string;
   skills: ReadonlyArray<string>;
   competencies: string;
+  occupation: string;
+  organizationName: string;
+  profileUrl: string;
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
   state: string;
@@ -43,8 +46,13 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   contactEmail: relationToZeroOrOne,
+  // TBD: Once the skill migration is over, consolidate these two props to a single
+  // one (skills?: string) and stop making a difference between undefined and "".
   skills: withDefault(array(string), []),
   competencies: optional(string),
+  occupation: optional(string),
+  organizationName: optional(string),
+  profileUrl: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
@@ -66,6 +74,9 @@ export function encodeUserProfile(
     // are unique.
     skills: profile.skills ? unique(profile.skills) : undefined,
     competencies: profile.competencies,
+    occupation: profile.occupation,
+    organizationName: profile.organizationName,
+    profileUrl: profile.profileUrl,
     state: profile.state,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
@@ -147,6 +158,9 @@ export async function createUserProfile(
     | "email"
     | "skills"
     | "competencies"
+    | "occupation"
+    | "organizationName"
+    | "profileUrl"
     | "state"
     | "slackUserRelationId"
     | "createdAt"

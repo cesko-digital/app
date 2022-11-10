@@ -1,28 +1,33 @@
 import Plausible from "plausible-tracker";
 import { Route } from "lib/utils";
 import skillMenu from "content/skills.json";
+import { encodeSkillSelection } from "lib/skills";
 import OnboardingFormPage, {
   RegistrationData,
 } from "components/onboarding/form";
 
+const { trackEvent } = Plausible({ domain: "cesko.digital" });
+
+/** Onboarding form page */
 const Page = () => {
+  // When submitted, create new user account, log page conversion and redirect to Slack onboarding
   const handleSubmit = async (data: RegistrationData) => {
-    console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
-    const { trackEvent } = Plausible({ domain: "cesko.digital" });
+    await createUserProfile(data);
     trackEvent("SignUp");
     setTimeout(() => {
       document.location.href = Route.slackOnboarding;
     }, 1000);
   };
+  // Most of the work is done by the following component
   return <OnboardingFormPage skillMenu={skillMenu} onSubmit={handleSubmit} />;
 };
 
-// TBD: Update for new DB schema
-async function createUserProfile(data: any): Promise<boolean> {
+async function createUserProfile(data: RegistrationData): Promise<boolean> {
+  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
     const response = await fetch("/api/user_profiles", {
       method: "post",
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload, null, 2),
       headers: { "Content-Type": "application/json" },
     });
     return response.ok;
