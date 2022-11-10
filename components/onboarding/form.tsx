@@ -25,7 +25,7 @@ export type RegistrationData = {
   name: string;
   email: string;
   skills: SkillSelection;
-  occupation?: string;
+  occupation: string;
   organizationName?: string;
   profileUrl?: string;
 };
@@ -100,7 +100,7 @@ type ValidationResult =
   | { result: "error"; msg: string };
 
 function validateForm(data: FormState): ValidationResult {
-  const { name, email, skills, legalConsent } = data;
+  const { name, email, skills, legalConsent, occupation } = data;
   const error = (msg: string) => ({ result: "error" as const, msg });
   if (!name) {
     return error("Je třeba vyplnit jméno.");
@@ -110,8 +110,10 @@ function validateForm(data: FormState): ValidationResult {
     return error("Je třeba vyplnit aspoň jednu dovednost.");
   } else if (!legalConsent) {
     return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
+  } else if (!occupation) {
+    return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
-    const { occupation, organizationName, profileUrl } = data;
+    const { organizationName, profileUrl } = data;
     return {
       result: "success",
       validatedData: {
@@ -236,11 +238,15 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
     "studying": "Studuji",
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci",
+    "other": "Jiné",
   };
 
   return (
     <>
-      <label>Čemu se aktuálně věnuješ</label>
+      <label>
+        Čemu se aktuálně věnuješ
+        <RequiredFieldMarker />
+      </label>
       <p className="text-base mt-1 text-gray-500">
         Vyber prosím svoji hlavní činnost. U některých možností tě můžeme v
         uvítacím e-mailu kontaktovat s dalšími podrobnostmi ohledně případné
