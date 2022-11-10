@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
-import { SkillSelection } from "lib/skills";
+import { encodeSkillSelection, SkillSelection } from "lib/skills";
 import skillMenu from "content/skills.json";
 import {
   UserProfilePageState,
@@ -44,13 +44,6 @@ const Page = () => {
     }
   }, [session, status, state]);
 
-  const saveSkillSelection = async (selection: SkillSelection) => {
-    // TBD: Update DB
-    console.debug(
-      `Updated skill selection: ${JSON.stringify(selection, null, 2)}`
-    );
-  };
-
   return (
     <UserProfilePage
       skillMenu={skillMenu}
@@ -58,7 +51,7 @@ const Page = () => {
       profile={profile}
       signIn={() => signIn("slack")}
       signOut={() => signOut({ callbackUrl: "/" })}
-      onSkillSelectionChange={saveSkillSelection}
+      onSkillSelectionChange={updateUserSkills}
       newsletterProps={{
         getSubscription: getNewsletterSubscription,
         subscribe: subscribeNewsletter,
@@ -82,11 +75,11 @@ async function getUserProfile(): Promise<UserProfile> {
   }
 }
 
-// TBD: Update for new DB schema
-async function updateUserProfile(skills: SkillSelection): Promise<void> {
+async function updateUserSkills(skillSelection: SkillSelection): Promise<void> {
+  const competencies = encodeSkillSelection(skillSelection);
   await fetch("/api/protected/me", {
     method: "PATCH",
-    body: JSON.stringify(skills, null, 2),
+    body: JSON.stringify({ competencies }, null, 2),
     headers: {
       "Content-Type": "application/json",
     },

@@ -59,8 +59,8 @@ export default async function handler(
           return;
         }
         // Make sure we do NOT include the `slackId` field nor `state` here
-        const { name, skills } = request.body;
-        await updateUserProfile(profile.id, { name, skills });
+        const { name, competencies } = request.body;
+        await updateUserProfile(profile.id, { name, competencies });
         response.status(200).send("Updated");
         break;
       default:
