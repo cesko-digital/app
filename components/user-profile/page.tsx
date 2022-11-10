@@ -4,7 +4,7 @@ import { Body } from "components/typography";
 import { useState } from "react";
 import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
 import { Button, ButtonSize } from "components/buttons";
-import { SkillMenu, SkillSelection } from "lib/skills";
+import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
 
@@ -101,9 +101,10 @@ const SignedInPage: React.FC<PageProps> = (props) => {
     { key: "newsletter", label: "Newsletter" },
   ];
 
-  // TBD: Initialize from user profile
-  const [skillSelection, setSkillSelection] = useState<SkillSelection>({});
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
+  const [skillSelection, setSkillSelection] = useState(
+    decodeSkillSelection(profile.competencies ?? "")
+  );
 
   return (
     <MainContainer>

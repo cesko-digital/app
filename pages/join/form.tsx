@@ -1,16 +1,11 @@
-import { NextPage, GetStaticProps } from "next";
-import { getDefaultSkillMenu, SkillMenu } from "lib/skills";
 import Plausible from "plausible-tracker";
 import { Route } from "lib/utils";
+import skillMenu from "content/skills.json";
 import OnboardingFormPage, {
   RegistrationData,
 } from "components/onboarding/form";
 
-type PageProps = {
-  skillMenu: SkillMenu;
-};
-
-const Page: NextPage<PageProps> = ({ skillMenu }) => {
+const Page = () => {
   const handleSubmit = async (data: RegistrationData) => {
     console.log(`Submitted data: ${JSON.stringify(data, null, 2)}`);
     const { trackEvent } = Plausible({ domain: "cesko.digital" });
@@ -36,12 +31,5 @@ async function createUserProfile(data: any): Promise<boolean> {
     return false;
   }
 }
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const skillMenu = await getDefaultSkillMenu();
-  return {
-    props: { skillMenu },
-  };
-};
 
 export default Page;

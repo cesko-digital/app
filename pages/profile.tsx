@@ -1,20 +1,16 @@
-import { NextPage, GetStaticProps } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
-import { getDefaultSkillMenu, SkillMenu, SkillSelection } from "lib/skills";
+import { SkillSelection } from "lib/skills";
+import skillMenu from "content/skills.json";
 import {
   UserProfilePageState,
   UserProfilePage,
 } from "components/user-profile/page";
 
-type PageProps = {
-  skillMenu: SkillMenu;
-};
-
-const Page: NextPage<PageProps> = ({ skillMenu }) => {
+const Page = () => {
   const { data: session, status } = useSession();
   const [profile, setProfile] = useState<UserProfile | undefined>();
   const [state, setState] = useState<UserProfilePageState>("loading");
@@ -46,7 +42,7 @@ const Page: NextPage<PageProps> = ({ skillMenu }) => {
         setState("loading");
         break;
     }
-  }, [session, status, state, skillMenu]);
+  }, [session, status, state]);
 
   const saveSkillSelection = async (selection: SkillSelection) => {
     // TBD: Update DB
@@ -70,13 +66,6 @@ const Page: NextPage<PageProps> = ({ skillMenu }) => {
       }}
     />
   );
-};
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const skillMenu = await getDefaultSkillMenu();
-  return {
-    props: { skillMenu },
-  };
 };
 
 //

@@ -1,8 +1,5 @@
 import { undef, union } from "typescript-json-decoder";
 import { Skill as LegacySkill } from "./airtable/skills";
-import { array, dict, string } from "typescript-json-decoder";
-import { readFile } from "fs/promises";
-import yaml from "js-yaml";
 
 /** All available skill levels we work with */
 export const SKILL_LEVELS = ["junior", "medior", "senior", "mentor"] as const;
@@ -140,19 +137,6 @@ export function decodeSkillSelection(input: string): SkillSelection {
       // And add them all into a tree
       .reduce(addSkill, {})
   );
-}
-
-//
-// Default skills
-//
-
-export async function getDefaultSkillMenu(): Promise<SkillMenu> {
-  const decode = dict(array(string));
-  return await readFile("content/competencies.yaml", "utf-8")
-    .then((str) => yaml.load(str) as any)
-    .then(decode)
-    .then((result) => result.entries())
-    .then(Object.fromEntries);
 }
 
 //
