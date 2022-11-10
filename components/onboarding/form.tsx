@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { SkillPicker } from "components/user-profile/skill-picker";
 import { SkillMenu, SkillSelection } from "lib/skills";
@@ -57,26 +57,6 @@ const OnboardingFormPage: React.FC<PageProps> = ({
       });
     }
   };
-
-  // Fill default values on repeated Shift press
-  useEffect(() => {
-    let shiftCount = 0;
-    const handlePress = (event: KeyboardEvent) => {
-      if (event.key === "Shift") {
-        shiftCount = (shiftCount + 1) % 5;
-        if (shiftCount === 4) {
-          console.log("Filling-in debugging values.");
-          setState((state) => ({ ...state, ...debugFormDefaults }));
-        }
-      } else {
-        shiftCount = 0;
-      }
-    };
-    document.addEventListener("keydown", handlePress);
-    return (/* cleanup */) => {
-      document.removeEventListener("keydown", handlePress);
-    };
-  }, []);
 
   return (
     <Layout
@@ -159,18 +139,6 @@ const emptyFormState: FormState = {
   skills: {},
   legalConsent: false,
   submissionState: { tag: "not_submitted_yet" },
-};
-
-const debugFormDefaults: Partial<FormState> = {
-  name: "Tomáš Znamenáček",
-  email: "zoul@cesko.digital",
-  occupation: "non-profit",
-  organizationName: "Česko.Digital",
-  profileUrl: "https://github.com/zoul",
-  legalConsent: true,
-  skills: {
-    Vývoj: { Frontend: "senior", Backend: "medior", React: "junior" },
-  },
 };
 
 //
