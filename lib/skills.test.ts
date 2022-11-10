@@ -6,7 +6,6 @@ import {
   encodeSkillSelection,
   Skill,
   SkillSelection,
-  upgradeLegacySkills,
 } from "./skills";
 
 test("Encode single skill", () => {
@@ -88,79 +87,4 @@ test("Adding skills", () => {
   expect(addTo("Dev / Go / mentor", "Dev / Go / senior")).toBe(
     "Dev / Go / mentor"
   );
-});
-
-test("Upgrade", () => {
-  const parseSkills = (input: string) =>
-    input
-      .split(/\s*;\s*/)
-      .map((skill) => skill.split(/\s*\/\s*/))
-      .map(([field, name]) => ({ field, name }));
-  const upgrade = (skills: string) =>
-    encodeSkillSelection(upgradeLegacySkills(parseSkills(skills)));
-
-  // Basic rename
-  expect(upgrade("Vývoj / Java")).toBe("Vývoj / Java a Kotlin");
-
-  // Leave out non-relevant skills
-  expect(upgrade("Vývoj / Node.js; Vývoj / Scala")).toBe("Vývoj / Node.js");
-
-  // Replace singleton non-relevant skills with general category
-  expect(upgrade("Vývoj / Scala")).toBe("Vývoj");
-  // …also when there’s another skill in that category, but it’s just a seniority flag
-  expect(upgrade("Management / leadership; Management / senior")).toBe(
-    "Projektové řízení"
-  );
-  // …also when all skills in category are obsolete
-  expect(upgrade("Vývoj / automatizace; Vývoj / C++")).toBe("Vývoj");
-
-  // Rename legacy category names
-  expect(upgrade("Management / projektový")).toBe("Projektové řízení");
-  // …also with seniority skills
-  expect(upgrade("Management / senior")).toBe("Projektové řízení");
-
-  // Seniority on category is just lost :(
-  expect(upgrade("Vývoj / senior")).toBe("Vývoj");
-
-  // Handle multiple seniority levels correctly
-  expect(upgrade("Marketing / senior; Marketing / mentor")).toBe("Marketing");
-
-  // Seniority on category with other skills moves to those skills
-  expect(upgrade("Vývoj / senior; Vývoj / Python")).toBe(
-    "Vývoj / Python / senior"
-  );
-  // …also with multiple skills
-  expect(upgrade("Vývoj / senior; Vývoj / Python; Vývoj / Node.js")).toBe(
-    "Vývoj / Python / senior; Vývoj / Node.js / senior"
-  );
-  // …also with renamed skills
-  expect(upgrade("Vývoj / senior; Vývoj / Java")).toBe(
-    "Vývoj / Java a Kotlin / senior"
-  );
-  expect(upgrade("Odborná veřejnost / senior")).toBe("");
-
-  // Mentoring on category is just lost :(
-  expect(upgrade("Vývoj / mentor")).toBe("Vývoj");
-
-  // Mentoring on category with other skills moves to those skills
-  expect(upgrade("Vývoj / mentor; Vývoj / Python")).toBe(
-    "Vývoj / Python / mentor"
-  );
-  // …also with multiple skills
-  expect(upgrade("Vývoj / mentor; Vývoj / Python; Vývoj / Node.js")).toBe(
-    "Vývoj / Python / mentor; Vývoj / Node.js / mentor"
-  );
-  // …also with renamed skills
-  expect(upgrade("Vývoj / mentor; Vývoj / Java")).toBe(
-    "Vývoj / Java a Kotlin / mentor"
-  );
-  expect(upgrade("Odborná veřejnost / mentor")).toBe("");
-
-  // Do not repeat categories
-  expect(upgrade("Management / projektový; Marketing / management")).toBe(
-    "Projektové řízení"
-  );
-
-  // Weird edge cases
-  expect(upgrade("Management / marketingový")).toBe("Marketing");
 });

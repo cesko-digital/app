@@ -3,7 +3,6 @@ import { PortalEvent } from "lib/airtable/event";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { PortalPartner } from "lib/airtable/partner";
 import { PortalProject } from "lib/airtable/project";
-import { Field } from "lib/airtable/skills";
 import { TeamEngagement } from "lib/airtable/team-engagement";
 import { PortalUser } from "lib/airtable/user";
 import { YTPlaylistItem } from "./youtube";
@@ -23,7 +22,6 @@ export const getAllProjects = loader<PortalProject>("projects.json");
 export const getAllUsers = loader<PortalUser>("users.json");
 export const getAllEvents = loader<PortalEvent>("events.json");
 export const getAllPartners = loader<PortalPartner>("partners.json");
-export const getAllSkills = loader<Field>("skills.json");
 export const getAllOpportunities =
   loader<PortalOpportunity>("opportunities.json");
 export const getAllVideos = loader<YTPlaylistItem>("videos.json");

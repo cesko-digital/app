@@ -20,7 +20,6 @@ export interface Schema extends FieldSet {
   id: string;
   name: string;
   email: string;
-  skills: ReadonlyArray<string>;
   competencies: string;
   occupation: string;
   organizationName: string;
@@ -45,8 +44,7 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   contactEmail: relationToZeroOrOne,
-  // TBD: Once the skill migration is over, rename these
-  legacySkills: field("skills", withDefault(array(string), [])),
+  // TBD: Once the skill migration is over, rename
   skills: field("competencies", withDefault(string, "")),
   occupation: optional(string),
   organizationName: optional(string),

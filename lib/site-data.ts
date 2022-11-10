@@ -1,5 +1,4 @@
 import { Article, getArticleIndex } from "./data-sources/blog";
-import { Field, getAllSkills } from "./airtable/skills";
 import { enableAPMLogging } from "./apm";
 import { getAllUsers, PortalUser } from "./airtable/user";
 import { getAllProjects, PortalProject } from "./airtable/project";
@@ -28,7 +27,6 @@ export interface SiteData {
   partners: readonly PortalPartner[];
   videos: readonly YTPlaylistItem[];
   blogPosts: readonly Article[];
-  skills: readonly Field[];
   teamEngagements: TeamEngagement[];
   marketPlaceOffers: readonly MarketPlaceOffer[];
 }
@@ -43,7 +41,6 @@ interface DataSource {
   partners: Async<PortalPartner[]>;
   videos: Async<YTPlaylistItem[]>;
   blogPosts: Async<Article[]>;
-  skills: Async<Field[]>;
   teamEngagements: Async<TeamEngagement[]>;
   marketPlaceOffers: Async<MarketPlaceOffer[]>;
 }
@@ -56,7 +53,6 @@ const ProductionDataSource: DataSource = {
   partners: getAllPartners,
   videos: getAllVideos,
   blogPosts: getArticleIndex,
-  skills: getAllSkills,
   teamEngagements: getAllTeamEngagements,
   marketPlaceOffers: getPublishedMarketPlaceOffers,
 };
@@ -69,7 +65,6 @@ const SampleDataSource: DataSource = {
   partners: Local.getAllPartners,
   videos: Local.getAllVideos,
   blogPosts: getArticleIndex, // TODO
-  skills: Local.getAllSkills,
   teamEngagements: Local.getAllTeamEngagements,
   marketPlaceOffers: Local.getAllMarketPlaceOffers,
 };
@@ -110,7 +105,6 @@ async function loadSiteData(): Promise<SiteData> {
     partners,
     videos,
     blogPosts,
-    skills,
     teamEngagements,
     marketPlaceOffers,
   ] = await Promise.all([
@@ -121,7 +115,6 @@ async function loadSiteData(): Promise<SiteData> {
     dataSource.partners(),
     dataSource.videos(),
     dataSource.blogPosts(),
-    dataSource.skills(),
     dataSource.teamEngagements(),
     dataSource.marketPlaceOffers(),
   ]);
@@ -140,7 +133,6 @@ async function loadSiteData(): Promise<SiteData> {
     partners,
     videos,
     blogPosts,
-    skills,
     projects,
     opportunities,
     users,
