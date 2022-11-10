@@ -4,7 +4,8 @@ import { Body } from "components/typography";
 import { useState } from "react";
 import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
 import { Button, ButtonSize } from "components/buttons";
-import { SkillMenu, SkillPicker, SkillSelection } from "./skill-picker";
+import { SkillMenu, SkillSelection } from "lib/skills";
+import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
 
 export type UserProfilePageState =

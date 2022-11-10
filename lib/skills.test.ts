@@ -1,11 +1,11 @@
 import {
   addSkill,
   decodeSkill,
-  decodeSkillTree,
+  decodeSkillSelection,
   encodeSkill,
-  encodeSkillTree,
+  encodeSkillSelection,
   Skill,
-  SkillTree,
+  SkillSelection,
   upgradeLegacySkills,
 } from "./skills";
 
@@ -19,11 +19,11 @@ test("Encode single skill", () => {
   ).toBe("Marketing / Copywriting / senior");
 });
 
-test("Encode skill tree", () => {
+test("Encode skill selection", () => {
   expect(
-    encodeSkillTree({
-      Design: [],
-      Dev: [{ name: "Java" }, { name: "Python", level: "junior" }],
+    encodeSkillSelection({
+      Design: {},
+      Dev: { Java: null, Python: "junior" },
     })
   ).toBe("Design; Dev / Java; Dev / Python / junior");
 });
@@ -51,24 +51,26 @@ test("Decode single skill", () => {
   ).toThrow();
 });
 
-test("Basic skill tree decode", () => {
+test("Basic skill selection decode", () => {
   // Decode empty
-  expect(decodeSkillTree("")).toEqual({});
+  expect(decodeSkillSelection("")).toEqual({});
   // Multiples
-  expect(decodeSkillTree("Design; Dev / Java")).toEqual<SkillTree>({
-    Design: [],
-    Dev: [{ name: "Java" }],
+  expect(decodeSkillSelection("Design; Dev / Java")).toEqual<SkillSelection>({
+    Design: {},
+    Dev: { Java: null },
   });
   // Roundtrip
-  expect(encodeSkillTree(decodeSkillTree("Design; Dev / Java"))).toBe(
+  expect(encodeSkillSelection(decodeSkillSelection("Design; Dev / Java"))).toBe(
     "Design; Dev / Java"
   );
 });
 
 test("Adding skills", () => {
-  const addTo = (tree: string, skill: string) =>
-    encodeSkillTree(addSkill(decodeSkillTree(tree), decodeSkill(skill)));
-  // Adding to empty tree
+  const addTo = (selection: string, skill: string) =>
+    encodeSkillSelection(
+      addSkill(decodeSkillSelection(selection), decodeSkill(skill))
+    );
+  // Adding to empty selection
   expect(addTo("", "Dev")).toBe("Dev");
   expect(addTo("", "Dev / Go")).toBe("Dev / Go");
   expect(addTo("", "Dev / Go / senior")).toBe("Dev / Go / senior");
@@ -95,7 +97,7 @@ test("Upgrade", () => {
       .map((skill) => skill.split(/\s*\/\s*/))
       .map(([field, name]) => ({ field, name }));
   const upgrade = (skills: string) =>
-    encodeSkillTree(upgradeLegacySkills(parseSkills(skills)));
+    encodeSkillSelection(upgradeLegacySkills(parseSkills(skills)));
 
   // Basic rename
   expect(upgrade("Vývoj / Java")).toBe("Vývoj / Java a Kotlin");

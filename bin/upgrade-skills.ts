@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { flattenSkills, getAllSkills } from "lib/airtable/skills";
-import { encodeSkillTree, upgradeLegacySkills } from "lib/skills";
+import { encodeSkillSelection, upgradeLegacySkills } from "lib/skills";
 import {
   getAllUserProfiles,
   updateUserProfile,
@@ -17,7 +17,7 @@ async function main() {
     `Downloaded ${users.length} users total, ${usersWithSkills.length} with skills; updating competencies…`
   );
   for (const user of usersWithSkills) {
-    const competencies = encodeSkillTree(
+    const competencies = encodeSkillSelection(
       upgradeLegacySkills(user.skills.map(resolveSkill))
     );
     console.log(

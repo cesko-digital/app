@@ -1,11 +1,8 @@
 import { Layout } from "components/layout";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  SkillMenu,
-  SkillSelection,
-  SkillPicker,
-} from "components/user-profile/skill-picker";
+import { SkillPicker } from "components/user-profile/skill-picker";
+import { SkillMenu, SkillSelection } from "lib/skills";
 
 export type SubmissionState =
   | { tag: "not_submitted_yet" }

@@ -1,14 +1,10 @@
-/** All available skill levels we work with */
-const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
-
-/** Skill level such as junior, medior, … */
-export type SkillLevel = typeof skillLevels[number];
-
-/** The complete menu of skills that the user can select from */
-export type SkillMenu = Record<string, string[]>;
-
-/** A list of skills selected by user */
-export type SkillSelection = Record<string, SubSkillSelection>;
+import {
+  SKILL_LEVELS,
+  SkillLevel,
+  SkillMenu,
+  SkillSelection,
+  SubSkillSelection,
+} from "lib/skills";
 
 export type SkillPickerProps = {
   /** All skills the user can select from */
@@ -67,8 +63,6 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
     </ul>
   );
 };
-
-type SubSkillSelection = Record<string, SkillLevel | null>;
 
 type SubSkillPickerProps = {
   skills: string[];
@@ -142,7 +136,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
 }) => {
   return (
     <div className="text-base py-2">
-      {skillLevels.map((level) => (
+      {SKILL_LEVELS.map((level) => (
         <div key={level} className="inline-block pl-4">
           <label>
             <input

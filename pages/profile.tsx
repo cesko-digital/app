@@ -4,11 +4,7 @@ import { useEffect, useState } from "react";
 import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
-import { getDefaultSkillMenu } from "lib/skills";
-import {
-  SkillMenu,
-  SkillSelection,
-} from "components/user-profile/skill-picker";
+import { getDefaultSkillMenu, SkillMenu, SkillSelection } from "lib/skills";
 import {
   UserProfilePageState,
   UserProfilePage,

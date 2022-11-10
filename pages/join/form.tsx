@@ -1,6 +1,5 @@
 import { NextPage, GetStaticProps } from "next";
-import { SkillMenu } from "components/user-profile/skill-picker";
-import { getDefaultSkillMenu } from "lib/skills";
+import { getDefaultSkillMenu, SkillMenu } from "lib/skills";
 import Plausible from "plausible-tracker";
 import { Route } from "lib/utils";
 import OnboardingFormPage, {
