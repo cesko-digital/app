@@ -103,7 +103,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
   const [skillSelection, setSkillSelection] = useState(
-    decodeSkillSelection(profile.competencies ?? "")
+    decodeSkillSelection(profile.skills)
   );
 
   return (

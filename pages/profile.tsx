@@ -75,11 +75,11 @@ async function getUserProfile(): Promise<UserProfile> {
   }
 }
 
-async function updateUserSkills(skillSelection: SkillSelection): Promise<void> {
-  const competencies = encodeSkillSelection(skillSelection);
+async function updateUserSkills(selection: SkillSelection): Promise<void> {
+  const skills = encodeSkillSelection(selection);
   await fetch("/api/protected/me", {
     method: "PATCH",
-    body: JSON.stringify({ competencies }, null, 2),
+    body: JSON.stringify({ skills }, null, 2),
     headers: {
       "Content-Type": "application/json",
     },

@@ -1,6 +1,5 @@
 import { FieldSet } from "airtable";
 import { relationToZeroOrOne, takeFirst, withDefault } from "../decoding";
-import { unique } from "lib/utils";
 import {
   unwrapRecord,
   unwrapRecords,
@@ -46,10 +45,9 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   contactEmail: relationToZeroOrOne,
-  // TBD: Once the skill migration is over, consolidate these two props to a single
-  // one (skills?: string) and stop making a difference between undefined and "".
-  skills: withDefault(array(string), []),
-  competencies: optional(string),
+  // TBD: Once the skill migration is over, rename these
+  legacySkills: field("skills", withDefault(array(string), [])),
+  skills: field("competencies", withDefault(string, "")),
   occupation: optional(string),
   organizationName: optional(string),
   profileUrl: optional(string),
@@ -68,12 +66,7 @@ export function encodeUserProfile(
     id: profile.id,
     name: profile.name,
     email: profile.email,
-    // This is weird but apparently there might be duplicate skill
-    // IDs in records we get from the API, and then we get an error
-    // trying to write the values back in. So we make sure the values
-    // are unique.
-    skills: profile.skills ? unique(profile.skills) : undefined,
-    competencies: profile.competencies,
+    competencies: profile.skills,
     occupation: profile.occupation,
     organizationName: profile.organizationName,
     profileUrl: profile.profileUrl,
@@ -135,12 +128,7 @@ export async function updateUserProfile(
   profile: Partial<
     Pick<
       UserProfile,
-      | "name"
-      | "skills"
-      | "competencies"
-      | "slackUserRelationId"
-      | "state"
-      | "createdAt"
+      "name" | "skills" | "slackUserRelationId" | "state" | "createdAt"
     >
   >
 ): Promise<UserProfile> {
@@ -157,7 +145,6 @@ export async function createUserProfile(
     | "name"
     | "email"
     | "skills"
-    | "competencies"
     | "occupation"
     | "organizationName"
     | "profileUrl"

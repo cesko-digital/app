@@ -28,8 +28,6 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     } else {
       await createUserProfile({
         ...payload,
-        skills: [],
-        competencies: payload.skills,
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
