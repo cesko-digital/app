@@ -1,22 +1,33 @@
-import { NextPage, GetStaticProps } from "next";
-import { RegistrationData } from "components/onboarding/form";
-import { Field } from "lib/airtable/skills";
-import OnboardingPage from "components/onboarding/page";
-import { siteData } from "lib/site-data";
+import Plausible from "plausible-tracker";
+import { Route } from "lib/utils";
+import skillMenu from "content/skills.json";
+import { encodeSkillSelection } from "lib/skills";
+import OnboardingFormPage, {
+  RegistrationData,
+} from "components/onboarding/form";
 
-type PageProps = {
-  skills: readonly Field[];
-};
+const { trackEvent } = Plausible({ domain: "cesko.digital" });
 
-const Page: NextPage<PageProps> = ({ skills }) => {
-  return <OnboardingPage skills={skills} onSubmit={createUserProfile} />;
+/** Onboarding form page */
+const Page = () => {
+  // When submitted, create new user account, log page conversion and redirect to Slack onboarding
+  const handleSubmit = async (data: RegistrationData) => {
+    await createUserProfile(data);
+    trackEvent("SignUp");
+    setTimeout(() => {
+      document.location.href = Route.slackOnboarding;
+    }, 1000);
+  };
+  // Most of the work is done by the following component
+  return <OnboardingFormPage skillMenu={skillMenu} onSubmit={handleSubmit} />;
 };
 
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
+  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
     const response = await fetch("/api/user_profiles", {
       method: "post",
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload, null, 2),
       headers: { "Content-Type": "application/json" },
     });
     return response.ok;
@@ -25,12 +36,5 @@ async function createUserProfile(data: RegistrationData): Promise<boolean> {
     return false;
   }
 }
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { skills } = siteData;
-  return {
-    props: { skills },
-  };
-};
 
 export default Page;

@@ -1,6 +1,5 @@
 import { FieldSet } from "airtable";
 import { relationToZeroOrOne, takeFirst, withDefault } from "../decoding";
-import { unique } from "lib/utils";
 import {
   unwrapRecord,
   unwrapRecords,
@@ -23,6 +22,9 @@ export interface Schema extends FieldSet {
   email: string;
   skills: ReadonlyArray<string>;
   competencies: string;
+  occupation: string;
+  organizationName: string;
+  profileUrl: string;
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
   state: string;
@@ -43,8 +45,12 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   contactEmail: relationToZeroOrOne,
-  skills: withDefault(array(string), []),
-  competencies: optional(string),
+  // TBD: Once the skill migration is over, rename these
+  legacySkills: field("skills", withDefault(array(string), [])),
+  skills: field("competencies", withDefault(string, "")),
+  occupation: optional(string),
+  organizationName: optional(string),
+  profileUrl: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
@@ -60,12 +66,10 @@ export function encodeUserProfile(
     id: profile.id,
     name: profile.name,
     email: profile.email,
-    // This is weird but apparently there might be duplicate skill
-    // IDs in records we get from the API, and then we get an error
-    // trying to write the values back in. So we make sure the values
-    // are unique.
-    skills: profile.skills ? unique(profile.skills) : undefined,
-    competencies: profile.competencies,
+    competencies: profile.skills,
+    occupation: profile.occupation,
+    organizationName: profile.organizationName,
+    profileUrl: profile.profileUrl,
     state: profile.state,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
@@ -124,12 +128,7 @@ export async function updateUserProfile(
   profile: Partial<
     Pick<
       UserProfile,
-      | "name"
-      | "skills"
-      | "competencies"
-      | "slackUserRelationId"
-      | "state"
-      | "createdAt"
+      "name" | "skills" | "slackUserRelationId" | "state" | "createdAt"
     >
   >
 ): Promise<UserProfile> {
@@ -146,7 +145,9 @@ export async function createUserProfile(
     | "name"
     | "email"
     | "skills"
-    | "competencies"
+    | "occupation"
+    | "organizationName"
+    | "profileUrl"
     | "state"
     | "slackUserRelationId"
     | "createdAt"

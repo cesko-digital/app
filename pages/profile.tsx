@@ -1,21 +1,16 @@
-import { NextPage, GetStaticProps } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
-import { flattenSkills, Skill } from "lib/airtable/skills";
-import { siteData } from "lib/site-data";
+import { UserProfile } from "lib/airtable/user-profile";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
+import { encodeSkillSelection, SkillSelection } from "lib/skills";
+import skillMenu from "content/skills.json";
 import {
   UserProfilePageState,
   UserProfilePage,
 } from "components/user-profile/page";
 
-type PageProps = {
-  allSkills: Skill[];
-};
-
-const Page: NextPage<PageProps> = ({ allSkills }) => {
+const Page = () => {
   const { data: session, status } = useSession();
   const [profile, setProfile] = useState<UserProfile | undefined>();
   const [state, setState] = useState<UserProfilePageState>("loading");
@@ -47,21 +42,16 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
         setState("loading");
         break;
     }
-  }, [session, status, state, allSkills]);
-
-  const saveSkills = async (skills: Skill[]) => {
-    console.debug(`Saving user skills.`);
-    await updateUserProfile(skills);
-  };
+  }, [session, status, state]);
 
   return (
     <UserProfilePage
-      allSkills={allSkills}
+      skillMenu={skillMenu}
       state={state}
       profile={profile}
       signIn={() => signIn("slack")}
       signOut={() => signOut({ callbackUrl: "/" })}
-      onUserSkillsChange={saveSkills}
+      onSkillSelectionChange={updateUserSkills}
       newsletterProps={{
         getSubscription: getNewsletterSubscription,
         subscribe: subscribeNewsletter,
@@ -71,35 +61,18 @@ const Page: NextPage<PageProps> = ({ allSkills }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const allSkills = flattenSkills(siteData.skills);
-  return {
-    props: { allSkills },
-  };
-};
-
 //
 // User Profile
 //
 
-async function getUserProfile(): Promise<UserProfile> {
-  const response = await fetch("/api/protected/me");
-  if (response.ok) {
-    const payload = await response.json();
-    return decodeUserProfile(payload);
-  } else {
-    throw response.statusText;
-  }
-}
+const getUserProfile = async (): Promise<UserProfile> =>
+  await fetch("/api/protected/me").then((response) => response.json());
 
-async function updateUserProfile(skills: Skill[]): Promise<void> {
-  const payload = {
-    // We’re only sending the skill IDs to the API
-    skills: skills.map((skill) => skill.id),
-  };
+async function updateUserSkills(selection: SkillSelection): Promise<void> {
+  const skills = encodeSkillSelection(selection);
   await fetch("/api/protected/me", {
     method: "PATCH",
-    body: JSON.stringify(payload, null, 2),
+    body: JSON.stringify({ skills }, null, 2),
     headers: {
       "Content-Type": "application/json",
     },

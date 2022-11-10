@@ -1,9 +1,32 @@
 import { undef, union } from "typescript-json-decoder";
 import { Skill as LegacySkill } from "./airtable/skills";
 
-const skillLevels = ["junior", "medior", "senior", "mentor"] as const;
+/** All available skill levels we work with */
+export const SKILL_LEVELS = ["junior", "medior", "senior", "mentor"] as const;
 
-export type SkillLevel = typeof skillLevels[number];
+/** Skill level such as junior, medior, … */
+export type SkillLevel = typeof SKILL_LEVELS[number];
+
+/**
+ * A list of skills selected by user
+ *
+ * Object key contains skill category, object value is skill selection inside that category.
+ */
+export type SkillSelection = Record<string, SubSkillSelection>;
+
+/**
+ * A skill selection inside a single category
+ *
+ * Object key contains skill name, object value is skill level or `null` (no level selected).
+ */
+export type SubSkillSelection = Record<string, SkillLevel | null>;
+
+/**
+ * The complete menu of skills that the user can select from
+ *
+ * Object key contains skill category, the value is a list of skills in that category.
+ */
+export type SkillMenu = Record<string, string[]>;
 
 export type Skill = {
   category: string;
@@ -11,19 +34,22 @@ export type Skill = {
   level?: SkillLevel;
 };
 
-export type SkillTree = Record<string, Omit<Skill, "category">[]>;
-
 //
-// Tree Utils
+// Utils
 //
 
-export function getAllSkills(tree: SkillTree): Skill[] {
+export function getAllSkills(selection: SkillSelection): Skill[] {
   const skills: Skill[] = [];
-  for (const [category, items] of Object.entries(tree)) {
-    if (items.length > 0) {
-      skills.push(
-        ...items.map(({ name, level }) => ({ category, name, level }))
-      );
+  for (const [category, items] of Object.entries(selection)) {
+    const subSelection = Object.entries(items);
+    if (subSelection.length > 0) {
+      subSelection.forEach(([name, level]) => {
+        skills.push({
+          category,
+          name,
+          level: level === null ? undefined : level,
+        });
+      });
     } else {
       skills.push({ category });
     }
@@ -31,39 +57,39 @@ export function getAllSkills(tree: SkillTree): Skill[] {
   return skills;
 }
 
-export function addSkill(tree: SkillTree, skill: Skill): SkillTree {
-  let updatedTree = { ...tree };
-  const { category, name, level } = skill;
-  const entry = { name, level };
-  if (tree[category]) {
+export function addSkill(
+  selection: SkillSelection,
+  skill: Skill
+): SkillSelection {
+  let newSelection = { ...selection };
+  const { category, name, level = null } = skill;
+  if (selection[category]) {
     // Category already exists
-    const prevIndex = tree[category].findIndex((s) => s.name === name);
-    if (prevIndex !== -1) {
+    if (name && selection[category][name]) {
       // Previous skill entry already exists
-      const prevLevel = tree[category][prevIndex].level;
-      const newLevel = getHigherSkillLevel(prevLevel, level);
-      tree[category][prevIndex].level = newLevel;
+      const prevLevel = selection[category][name];
+      newSelection[category][name] = getHigherSkillLevel(prevLevel, level);
     } else if (name) {
       // This is a new skill entry
-      updatedTree[category].push(entry);
+      newSelection[category][name] = level;
     }
   } else if (name) {
     // Category does not exist, add new skill
-    updatedTree[category] = [entry];
+    newSelection[category] = { [name]: level };
   } else {
     // New skill is just generic category
-    updatedTree[category] = [];
+    newSelection[category] = {};
   }
-  return updatedTree;
+  return newSelection;
 }
 
 export function getHigherSkillLevel(
-  a: SkillLevel | undefined,
-  b: SkillLevel | undefined
-): SkillLevel | undefined {
+  a: SkillLevel | null,
+  b: SkillLevel | null
+): SkillLevel | null {
   if (a && b) {
-    const indexA = skillLevels.indexOf(a);
-    const indexB = skillLevels.indexOf(b);
+    const indexA = SKILL_LEVELS.indexOf(a);
+    const indexB = SKILL_LEVELS.indexOf(b);
     return indexA > indexB ? a : b;
   } else if (a) {
     return a;
@@ -82,12 +108,12 @@ export function encodeSkill(skill: Skill): string {
     .join(" / ");
 }
 
-export function encodeSkillTree(tree: SkillTree): string {
-  return getAllSkills(tree).map(encodeSkill).join("; ");
+export function encodeSkillSelection(selection: SkillSelection): string {
+  return getAllSkills(selection).map(encodeSkill).join("; ");
 }
 
 export function decodeSkill(input: string): Skill {
-  const decodeLevel = union(...skillLevels, undef);
+  const decodeLevel = union(...SKILL_LEVELS, undef);
   const parts = input.split(/\s*\/\s*/);
   if (parts.length > 3) {
     throw "Invalid number of skill components";
@@ -99,7 +125,7 @@ export function decodeSkill(input: string): Skill {
   return { category, name, level: decodeLevel(level) };
 }
 
-export function decodeSkillTree(input: string): SkillTree {
+export function decodeSkillSelection(input: string): SkillSelection {
   return (
     input
       // Split skills by semicolon
@@ -119,7 +145,7 @@ export function decodeSkillTree(input: string): SkillTree {
 
 export function upgradeLegacySkills(
   legacySkills: Omit<LegacySkill, "id">[]
-): SkillTree {
+): SkillSelection {
   const categoryRenames = parseTable(categoryReplacementTable);
   const skillRenames = parseTable(skillReplacementTable);
 

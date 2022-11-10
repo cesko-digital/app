@@ -1,0 +1,52 @@
+{
+  "Marketing": [
+    "Analýza marketingových dat",
+    "Audiovizuální produkce",
+    "Event management",
+    "Marketingová strategie",
+    "Copywriting",
+    "Public Relations"
+  ],
+  "Vývoj": [
+    "Analýza",
+    "Architektura",
+    "Backend",
+    "Cloud (Azure, AWS, GCP)",
+    "Databáze",
+    "DevOps",
+    "Docker/Kubernetes",
+    "Frontend",
+    "HTML & CSS",
+    "Java/Kotlin",
+    "JavaScript + TypeScript",
+    "Mobilní aplikace (Android, iOS, Flutter, …)",
+    "Node.js",
+    "PHP",
+    "Python",
+    "React",
+    "Testování",
+    "WordPress"
+  ],
+  "Projektové řízení": [
+    "Business model a development",
+    "Finance",
+    "Fundraising",
+    "Product Owner",
+    "Scrum Master"
+  ],
+  "Personalistika": [
+    "Community management",
+    "Administrace a nástroje",
+    "Recruitment",
+    "Vzdělávání"
+  ],
+  "Design": [
+    "Mobile design",
+    "Product design",
+    "Research",
+    "UI design",
+    "UX design",
+    "Web design"
+  ],
+  "Ostatní": ["Odborná veřejnost"]
+}

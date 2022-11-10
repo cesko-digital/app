@@ -1,5 +1,3 @@
-import { Button } from "components/buttons";
-import { Body } from "components/typography";
 import { SubscriptionState } from "lib/ecomail";
 import { useEffect, useState } from "react";
 
@@ -55,60 +53,64 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
     }
   };
 
-  const subscribedMsg = (
-    <Body>Jste přihlášeni k odběru měsíčního newsletteru.</Body>
-  );
+  const subscribedMsg = <p>Jsi přihlášen(a) k odběru měsíčního newsletteru.</p>;
   const unsubscribedMsg = (
-    <Body>Nejste přihlášeni k odběru měsíčního newsletteru.</Body>
+    <p>Nejsi přihlášen(a) k odběru měsíčního newsletteru.</p>
   );
 
   switch (state.tag) {
     case "loading":
-      return <Body>Odběr newsletteru: zjišťuji stav…</Body>;
+      return (
+        <Section>
+          <p>Odběr newsletteru: zjišťuji stav…</p>
+        </Section>
+      );
     case "load_failed":
       return (
-        <Body>
-          Stav newsletteru se nepovedlo načíst. Zkuste obnovit stránku?
-        </Body>
+        <Section>
+          <p>Stav newsletteru se nepovedlo načíst. Zkus obnovit stránku?</p>
+        </Section>
       );
     case "loaded":
       switch (state.subscriptionState) {
         case "subscribed":
           return (
-            <>
+            <Section>
               {subscribedMsg}
               <ActionButton onClick={triggerUnsubscribe} type="unsubscribe" />
-            </>
+            </Section>
           );
         case "unsubscribed":
           return (
-            <>
+            <Section>
               {unsubscribedMsg}
               <ActionButton onClick={triggerSubscribe} type="subscribe" />
-            </>
+            </Section>
           );
         default:
           return (
-            <Body>
-              Newsletter máte v nějakém zvláštním stavu (
-              <code>{state.subscriptionState}</code>). Můžete se ozvat v kanálu
-              #support?
-            </Body>
+            <Section>
+              <p>
+                Newsletter máš v nějakém zvláštním stavu (
+                <code>{state.subscriptionState}</code>). Můžeš se ozvat v kanálu
+                #support? Díky!
+              </p>
+            </Section>
           );
       }
     case "subscribing":
       return (
-        <>
+        <Section>
           {unsubscribedMsg}
           <ActionButton type="subscribe" loading />
-        </>
+        </Section>
       );
     case "unsubscribing":
       return (
-        <>
+        <Section>
           {subscribedMsg}
           <ActionButton type="unsubscribe" loading />
-        </>
+        </Section>
       );
   }
 };
@@ -127,14 +129,16 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   const regularLabel =
     type === "subscribe" ? "Přihlásit k odběru" : "Odhlásit newsletter";
   const loadingLabel = type === "subscribe" ? "Přihlašuji…" : "Odhlašuji…";
+  const kind = loading ? "btn-disabled" : "btn-primary";
   return (
-    <Button
-      onClick={onClick}
-      style={{ marginTop: "40px", marginBottom: "40px" }}
-      disabled={loading}
-      inverted
-    >
-      {loading ? loadingLabel : regularLabel}
-    </Button>
+    <div className="mt-10 mb-10">
+      <button className={kind} onClick={onClick}>
+        {loading ? loadingLabel : regularLabel}
+      </button>
+    </div>
   );
 };
+
+const Section: React.FC = ({ children }) => (
+  <section className="text-lg">{children}</section>
+);
