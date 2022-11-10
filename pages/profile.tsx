@@ -1,6 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { decodeUserProfile, UserProfile } from "lib/airtable/user-profile";
+import { UserProfile } from "lib/airtable/user-profile";
 import { SubscriptionState, subscriptionStates } from "lib/ecomail";
 import { record, union } from "typescript-json-decoder";
 import { encodeSkillSelection, SkillSelection } from "lib/skills";
@@ -65,15 +65,8 @@ const Page = () => {
 // User Profile
 //
 
-async function getUserProfile(): Promise<UserProfile> {
-  const response = await fetch("/api/protected/me");
-  if (response.ok) {
-    const payload = await response.json();
-    return decodeUserProfile(payload);
-  } else {
-    throw response.statusText;
-  }
-}
+const getUserProfile = async (): Promise<UserProfile> =>
+  await fetch("/api/protected/me").then((response) => response.json());
 
 async function updateUserSkills(selection: SkillSelection): Promise<void> {
   const skills = encodeSkillSelection(selection);
