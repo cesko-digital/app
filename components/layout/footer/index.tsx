@@ -2,32 +2,22 @@ import { ButtonSize } from "components/buttons";
 import NewsletterBox from "./newsletter-form";
 import { Route } from "lib/utils";
 import { Link } from "components/links";
-import { default as stringsCS } from "content/strings.json";
-import { default as stringsEN } from "content/strings-en.json";
+import strings from "content/strings.json";
 import * as S from "./styles";
 
-type Lang = "cs" | "en";
+const footerStrings = strings.components.sections.footer;
 
-type Props = {
-  lang?: Lang;
-};
-
-const strings = {
-  cs: stringsCS.components.sections.footer,
-  en: stringsEN.components.sections.footer,
-};
-
-const Footer: React.FC<Props> = ({ lang = "cs" }) => {
+const Footer = () => {
   return (
     <S.Wrapper>
       <S.Outer>
         <S.Container>
           <S.Info>
-            {lang === "cs" && <InternalLinks />}
-            <SocialLinks lang={lang} />
+            <InternalLinks />
+            <SocialLinks />
           </S.Info>
-          {lang === "cs" && <NewsletterBox />}
-          <S.Note>{strings[lang].footNote}</S.Note>
+          <NewsletterBox />
+          <S.Note>{footerStrings.footNote}</S.Note>
         </S.Container>
       </S.Outer>
     </S.Wrapper>
@@ -36,7 +26,7 @@ const Footer: React.FC<Props> = ({ lang = "cs" }) => {
 
 /** Important “internal” links such as project list, dashboard, etc.; Czech only */
 const InternalLinks = () => {
-  const p = strings.cs.pageLinks;
+  const p = footerStrings.pageLinks;
   const pageLinks = [
     [p.projects, Route.projects],
     [p.dashboard, Route.dashboard],
@@ -50,7 +40,7 @@ const InternalLinks = () => {
 
   return (
     <S.InfoBlock>
-      <S.Heading>{strings.cs.pageLinks.title}</S.Heading>
+      <S.Heading>{footerStrings.pageLinks.title}</S.Heading>
       <S.Navigation>
         <S.Links>
           {pageLinks.map(([name, url], i) => (
@@ -67,8 +57,8 @@ const InternalLinks = () => {
 };
 
 /** Links to our profiles on social networks */
-const SocialLinks: React.FC<Props> = ({ lang = "cs" }) => {
-  const o = strings[lang].online;
+const SocialLinks = () => {
+  const o = footerStrings.online;
   const socialLinks = [
     [o.facebook, "https://www.facebook.com/cesko.digital"],
     [o.twitter, "https://twitter.com/CeskoDigital"],
@@ -82,7 +72,7 @@ const SocialLinks: React.FC<Props> = ({ lang = "cs" }) => {
 
   return (
     <S.InfoBlock>
-      <S.Heading>{strings[lang].online.title}</S.Heading>
+      <S.Heading>{footerStrings.online.title}</S.Heading>
       <S.Navigation>
         <S.Links>
           {socialLinks.map(([name, url], index) => (

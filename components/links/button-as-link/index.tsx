@@ -12,7 +12,6 @@ export interface ButtonAsLinkProps extends Partial<StyledButtonProps> {
   to?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   children: React.ReactNode;
-  language?: string;
 }
 
 const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
