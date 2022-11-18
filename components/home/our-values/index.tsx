@@ -1,3 +1,5 @@
+import strings from "content/strings.json";
+import * as S from "./styles";
 import {
   OpennessIcon,
   ProfessionalismIcon,
@@ -6,16 +8,8 @@ import {
   UsersIcon,
   WadgeIcon,
 } from "components/icons";
-import csstrings from "content/strings.json";
-import enstrings from "content/strings-en.json";
-import * as S from "./styles";
 
-interface Props {
-  lang?: "cs" | "en";
-}
-
-const OurValues: React.FC<Props> = ({ lang = "cs" }) => {
-  const strings = lang === "cs" ? csstrings : enstrings;
+const OurValues = () => {
   const ourValues = strings.pages.homepage.sections.ourValues;
   return (
     <S.Container>
