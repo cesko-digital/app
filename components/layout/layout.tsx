@@ -42,8 +42,7 @@ const Layout: React.FC<Props> = ({
       />
       <Script id="weglot">
         {`Weglot.initialize({
-          api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}',
-          hide_switcher: true   
+          api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}'
         });`}
       </Script>
       <CustomHead {...seo} />
