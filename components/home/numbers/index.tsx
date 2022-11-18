@@ -1,14 +1,17 @@
 import * as S from "./styles";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 import { useContext } from "react";
 import { SectionContent } from "components/layout";
 import { ThemeContext } from "styled-components";
 
 interface Props {
+  lang?: "cs" | "en";
   memberCount: number;
 }
 
-const Numbers = ({ memberCount }: Props) => {
+const Numbers: React.FC<Props> = ({ memberCount, lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
   const theme = useContext(ThemeContext);
   const numbers = strings.pages.homepage.sections.numbers;
   return (

@@ -1,0 +1,181 @@
+{
+  "cards": {
+    "blog": {
+      "readMore": "Read article"
+    },
+    "project": {
+      "coverAriaLabel": "Cover photo of the project",
+      "logoAriaLabel": "Project logo",
+      "projectDetail": "Project detail"
+    }
+  },
+  "components": {
+    "cards": {
+      "newProject": {
+        "description": "We develop ideas that help improve life in the Czech Republic through IT, have no commercial alternative and are sustainable. Do you have such a project, or are you working on it but lack expert volunteers?",
+        "linkText": "Submit project",
+        "title": "I have project idea"
+      },
+      "panelVolunteer": {
+        "description": "Developer? Project Manager? Marketer? Projects work best because of the diversity of teams and the sharing of experiences. If you have the desire and the time, whether an hour or ten a week, join in.",
+        "linkText": "Sign Up for Slack",
+        "title": "I want to be a volunteer"
+      }
+    },
+    "sections": {
+      "footer": {
+        "footNote": "© Česko.Digital",
+        "online": {
+          "facebook": "Facebook",
+          "github": "GitHub",
+          "linkedin": "LinkedIn",
+          "slack": "Slack",
+          "youtube": "YouTube",
+          "title": "Follow Us",
+          "twitter": "Twitter",
+          "podcast": "Podcast",
+          "cocuma": "Cocuma",
+          "instagram": "Instagram"
+        }
+      },
+      "projects": {
+        "otherProjects": "Other projects",
+        "ourProjects": "Our projects",
+        "showAll": "See all projects"
+      }
+    }
+  },
+  "header": {
+    "czech": "Czech",
+    "english": "English",
+    "partners": "Partners",
+    "projects": "Projects",
+    "signUp": "Sign Up",
+    "supportUs": "Contribute"
+  },
+  "metadata": {
+    "description": "We are a community of professionals from many fields, ranging from IT to project management and marketing, who want to use their free time to help state institutions and non-governmental organizations to make Czechia a better place to live.",
+    "title": "Česko.Digital - Changing Czechia for the better through ones and zeroes"
+  },
+  "pages": {
+    "homepage": {
+      "sections": {
+        "numbers": {
+          "first": {
+            "subtitle": "Community members"
+          },
+          "fourth": {
+            "subtitle": "Ongoing projects",
+            "value": "13+"
+          },
+          "second": {
+            "subtitle": "Accelerated projects",
+            "value": "18"
+          },
+          "third": {
+            "subtitle": "People using our projects",
+            "value": "4 000 000+"
+          }
+        },
+        "ourValues": {
+          "efficiency": {
+            "perex": "We do not waste people’s time or financial resources. We focus on quick solutions to real problems using technology.",
+            "title": "Efficiency"
+          },
+          "main": {
+            "perex": "In our free time, we are helping non-governmental organizations and state institutions with digital transformation, to make Czechia a better place to live. We want to become a leader in expert volunteering in the areas of innovation and digital technologies in Europe.",
+            "title": "Our Values"
+          },
+          "openness": {
+            "perex": "We are an open organization - we take pride in open communication and access to information and data. We speak up, with honesty and respect to others. We are not afraid to ask when we don’t know.",
+            "title": "Openness"
+          },
+          "participatory": {
+            "perex": "We work in teams and tandems, learning from each other. We seek a way for everybody to get involved, regardless of location or time.",
+            "title": "Collaboration"
+          },
+          "professionalism": {
+            "perex": "We have clearly set and communicated expectations for each other. We act profesionally both within and outside the organization. We are learning from professionals in the community and beyond.",
+            "title": "Professionalism"
+          },
+          "technologies": {},
+          "users": {
+            "perex": "Our solutions are driven by the real needs of end users. Using technology is a means to an end, not the goal itself.",
+            "title": "Usefulness"
+          }
+        },
+        "partners": {
+          "title": "Partners"
+        }
+      },
+      "subtitle": "We are a community of professionals from many fields, ranging from IT to project management and marketing, who want to use their free time to help state institutions and non-governmental organizations to make Czechia a better place to live.",
+      "title": "Changing Czechia for the better through ones and zeroes",
+      "whatWeDo": "What we do"
+    },
+    "partners": {
+      "becomePartner": {},
+      "blog": {},
+      "cooperations": {
+        "heading": {}
+      },
+      "experts": {
+        "heading": {},
+        "regularPartners": {},
+        "submitters": {},
+        "supporters": {}
+      },
+      "financial": {
+        "donators": {},
+        "grants": {},
+        "heading": {},
+        "mainPartners": {},
+        "regularPartners": {}
+      },
+      "form": {
+        "button": {},
+        "email": {},
+        "message": {},
+        "name": {}
+      },
+      "metadata": {
+        "title": "Partners"
+      },
+      "navigation": {
+        "partners": "Partners"
+      },
+      "tabs": {
+        "cooperations": {},
+        "experts": {},
+        "financial": {}
+      }
+    },
+    "project": {
+      "about": {
+        "contribute": {
+          "buttonText": "Join Slack",
+          "note": "Do you have any questions? Read",
+          "noteLink": "how we operate",
+          "title": "Contribute"
+        },
+        "title": "About Project"
+      },
+      "projectCard": {
+        "coordinators": "Project Coordinators",
+        "links": "Links"
+      }
+    },
+    "projects": {
+      "description": "Thanks to expert volunteering, we can achieve great things and change life in the Czech Republic for the better. See how we do it.",
+      "metadata": {
+        "description": "Thanks to expert volunteering, we can achieve great things and change life in the Czech Republic for the better. See how we do it.",
+        "title": "Projects"
+      },
+      "navigation": {
+        "projects": "Projects"
+      },
+      "ongoing": "Ongoing Projects",
+      "title": "Česko.Digital Projects",
+      "title copy": "Česko.Digital Projects"
+    }
+  }
+}

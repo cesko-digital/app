@@ -1,13 +1,16 @@
 import * as S from "./styles";
 import LogoList from "components/logo-list";
-import strings from "content/strings.json";
+import csstrings from "content/strings.json";
+import enstrings from "content/strings-en.json";
 import { PortalPartner } from "lib/airtable/partner";
 
 interface Props {
   partners: readonly PortalPartner[];
+  lang?: "cs" | "en";
 }
 
-const Partners = ({ partners }: Props) => {
+const Partners: React.FC<Props> = ({ partners, lang = "cs" }) => {
+  const strings = lang === "cs" ? csstrings : enstrings;
   return (
     <S.Wrapper>
       <S.MainTitle>

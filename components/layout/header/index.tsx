@@ -12,7 +12,7 @@ import strings from "content/strings.json";
 import Plausible from "plausible-tracker";
 import { default as NextLink } from "next/link";
 
-const Header: React.FC = () => {
+const HeaderCS: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menu = [
@@ -37,14 +37,16 @@ const Header: React.FC = () => {
                 {label}
               </Link>
             ))}
+
             <ManageSession />
-            <Link key="english" to={Route.english} size={ButtonSize.Small}>
+
+            <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
             </Link>
           </S.DesktopLinksContainer>
 
           <S.MobileLinksContainer>
-            <Link key="english" to={Route.english} size={ButtonSize.Small}>
+            <Link key="english" to={"/en/"} size={ButtonSize.Small}>
               {strings.header.english}
             </Link>
             <ManageSession />
@@ -118,4 +120,4 @@ const UserProfileButton: React.FC<{
   );
 };
 
-export default Header;
+export default HeaderCS;
