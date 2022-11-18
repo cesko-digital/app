@@ -148,7 +148,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
               className="mr-2"
               onChange={(_) => onChange(level)}
             />
-            {level}
+            {level === "mentor" ? "senior + mentor" : level}
           </label>
         </div>
       ))}
