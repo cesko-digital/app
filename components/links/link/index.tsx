@@ -10,6 +10,7 @@ export interface LinkProps extends Partial<StyledLinkProps> {
   to: string;
   children: React.ReactNode;
   openInNewTab?: boolean;
+  className?: string;
 }
 
 const Link: React.FC<LinkProps> = ({

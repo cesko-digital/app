@@ -70,12 +70,22 @@ const LanguageSwitcher = () => {
   return (
     <>
       {currentLang === "cs" && (
-        <Link key="english" to={Route.english} size={ButtonSize.Small}>
+        <Link
+          key="english"
+          to={Route.english}
+          size={ButtonSize.Small}
+          className="no_translate"
+        >
           English
         </Link>
       )}
       {currentLang === "en" && (
-        <Link key="czech" to={Route.czech} size={ButtonSize.Small}>
+        <Link
+          key="czech"
+          to={Route.czech}
+          size={ButtonSize.Small}
+          className="no_translate"
+        >
           Czech
         </Link>
       )}

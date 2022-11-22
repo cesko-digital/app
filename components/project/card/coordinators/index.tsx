@@ -28,7 +28,7 @@ const Coordinators: React.FC<Props> = ({ coordinators }) => {
         >
           <S.Image url={engagement.userAvatarUrl} />
           <S.Text>
-            <S.Name className={"no_translate"}>{engagement.userName}</S.Name>
+            <S.Name className="no_translate">{engagement.userName}</S.Name>
           </S.Text>
         </S.Container>
       ))}
