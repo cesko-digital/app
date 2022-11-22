@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Section from "../section";
 import SectionContent from "../section-content";
 import { Link } from "components/links";
@@ -11,6 +11,7 @@ import * as S from "./styles";
 import strings from "content/strings.json";
 import Plausible from "plausible-tracker";
 import { default as NextLink } from "next/link";
+import { LangContext } from "components/language";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,15 +39,11 @@ const Header: React.FC = () => {
               </Link>
             ))}
             <ManageSession />
-            <Link key="english" to={Route.english} size={ButtonSize.Small}>
-              {strings.header.english}
-            </Link>
+            <LanguageSwitcher />
           </S.DesktopLinksContainer>
 
           <S.MobileLinksContainer>
-            <Link key="english" to={Route.english} size={ButtonSize.Small}>
-              {strings.header.english}
-            </Link>
+            <LanguageSwitcher />
             <ManageSession />
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -65,6 +62,24 @@ const Header: React.FC = () => {
         )}
       </SectionContent>
     </Section>
+  );
+};
+
+const LanguageSwitcher = () => {
+  const currentLang = useContext(LangContext);
+  return (
+    <>
+      {currentLang === "cs" && (
+        <Link key="english" to={Route.english} size={ButtonSize.Small}>
+          English
+        </Link>
+      )}
+      {currentLang === "en" && (
+        <Link key="czech" to={Route.czech} size={ButtonSize.Small}>
+          Czech
+        </Link>
+      )}
+    </>
   );
 };
 

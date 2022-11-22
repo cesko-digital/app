@@ -2,10 +2,11 @@ import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "components/theme/default";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { analyticsId } from "lib/utils";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+import { detectLanguageFromUrl, Lang, LangContext } from "components/language";
 import "components/global.css";
 
 type GlobalProps = {
@@ -28,10 +29,22 @@ function MyApp({ Component, pageProps }: AppProps<GlobalProps>) {
     };
   }, [router.events]);
 
+  // Provide language context for interested components.
+  // The language us detected using the full document URL –
+  // the English version is detected by the document being
+  // served from the “en.cesko.digital” domain provided by
+  // Weglot.
+  const [lang, setLang] = useState<Lang>("cs");
+  useEffect(() => {
+    setLang(detectLanguageFromUrl(window.location.href));
+  }, [setLang]);
+
   return (
     <SessionProvider session={pageProps.session}>
       <ThemeProvider theme={defaultTheme}>
-        <Component {...pageProps} />
+        <LangContext.Provider value={lang}>
+          <Component {...pageProps} />
+        </LangContext.Provider>
       </ThemeProvider>
     </SessionProvider>
   );

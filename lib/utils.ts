@@ -13,6 +13,7 @@ export const Route = {
   slackOnboarding: "https://slack.cesko.digital/",
   youtube: "https://www.youtube.com/c/ČeskoDigital",
   english: "https://en.cesko.digital",
+  czech: "https://cesko.digital",
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",
