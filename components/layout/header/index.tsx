@@ -86,7 +86,7 @@ const LanguageSwitcher = () => {
           size={ButtonSize.Small}
           className="no_translate"
         >
-          Czech
+          Česky
         </Link>
       )}
     </>
