@@ -4,7 +4,7 @@ import SectionContent from "../section-content";
 import { Link } from "components/links";
 import { ButtonSize } from "components/buttons";
 import { CloseIcon, MenuIcon } from "components/icons";
-import { Route } from "lib/utils";
+import { doNotTranslate, Route } from "lib/utils";
 import { useSession, signIn } from "next-auth/react";
 import { DefaultSession } from "next-auth";
 import * as S from "./styles";
@@ -74,7 +74,7 @@ const LanguageSwitcher = () => {
           key="english"
           to={Route.english}
           size={ButtonSize.Small}
-          className="no_translate"
+          className={doNotTranslate}
         >
           English
         </Link>
@@ -84,7 +84,7 @@ const LanguageSwitcher = () => {
           key="czech"
           to={Route.czech}
           size={ButtonSize.Small}
-          className="no_translate"
+          className={doNotTranslate}
         >
           Česky
         </Link>

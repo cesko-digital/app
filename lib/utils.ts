@@ -49,6 +49,9 @@ export function markdownToHTML(source: string): string {
   });
 }
 
+/** Elements with this class will be skipped when translating website content with Weglot */
+export const doNotTranslate = "no_translate";
+
 export async function getCachedMemberCount(): Promise<number> {
   return await fetch("https://cesko.digital/api/member_count")
     .then((response) => response.json())

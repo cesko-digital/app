@@ -1,5 +1,6 @@
 import strings from "content/strings.json";
 import { TeamEngagement } from "lib/airtable/team-engagement";
+import { doNotTranslate } from "lib/utils";
 import * as S from "./styles";
 
 interface Props {
@@ -28,7 +29,7 @@ const Coordinators: React.FC<Props> = ({ coordinators }) => {
         >
           <S.Image url={engagement.userAvatarUrl} />
           <S.Text>
-            <S.Name className="no_translate">{engagement.userName}</S.Name>
+            <S.Name className={doNotTranslate}>{engagement.userName}</S.Name>
           </S.Text>
         </S.Container>
       ))}
