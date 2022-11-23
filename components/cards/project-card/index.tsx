@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { Link } from "components/links";
-import { getResizedImgUrl } from "lib/utils";
+import { doNotTranslate, getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
 import { Route } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
@@ -18,7 +18,7 @@ const ProjectCard: React.FC<Props> = ({ project, ...rest }) => {
         <S.Logo url={project.logoUrl} />
       </S.Header>
       <S.Content>
-        <S.Title>{project.name}</S.Title>
+        <S.Title className={doNotTranslate}>{project.name}</S.Title>
         <S.Description>{project.tagline}</S.Description>
         <Link to={Route.toProject(project)}>{msg.projectDetail}</Link>
       </S.Content>
