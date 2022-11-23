@@ -12,8 +12,9 @@ export const Route = {
   blog: "https://blog.cesko.digital",
   slackOnboarding: "https://slack.cesko.digital/",
   youtube: "https://www.youtube.com/c/ČeskoDigital",
-  english: "https://en.cesko.digital",
-  czech: "https://cesko.digital",
+  // Localization
+  english: (path = "/") => "https://en.cesko.digital" + addLeadingSlash(path),
+  czech: (path = "/") => "https://cesko.digital" + addLeadingSlash(path),
   // Static routes
   opportunities: "/opportunities",
   joinUs: "/join",
@@ -30,6 +31,9 @@ export const Route = {
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
   toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
 };
+
+const addLeadingSlash = (path: string) =>
+  path.startsWith("/") ? path : "/" + path;
 
 /** Our Google Analytics tracking ID */
 export const analyticsId = "UA-140227366-1";

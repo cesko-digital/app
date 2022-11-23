@@ -12,6 +12,7 @@ import strings from "content/strings.json";
 import Plausible from "plausible-tracker";
 import { default as NextLink } from "next/link";
 import { LangContext } from "components/language";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,12 +68,13 @@ const Header: React.FC = () => {
 
 const LanguageSwitcher = () => {
   const currentLang = useContext(LangContext);
+  const { asPath: path } = useRouter();
   return (
     <>
       {currentLang === "cs" && (
         <Link
           key="english"
-          to={Route.english}
+          to={Route.english(path)}
           size={ButtonSize.Small}
           className={doNotTranslate}
         >
@@ -82,7 +84,7 @@ const LanguageSwitcher = () => {
       {currentLang === "en" && (
         <Link
           key="czech"
-          to={Route.czech}
+          to={Route.czech(path)}
           size={ButtonSize.Small}
           className={doNotTranslate}
         >
