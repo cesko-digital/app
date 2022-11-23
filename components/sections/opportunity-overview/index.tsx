@@ -1,7 +1,7 @@
 import { BodySmall } from "components/typography";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { PortalProject } from "lib/airtable/project";
-import { Route } from "lib/utils";
+import { doNotTranslate, Route } from "lib/utils";
 import Link from "next/link";
 import * as S from "./styles";
 
@@ -32,7 +32,9 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
                 relatedProject.state !== "internal" && (
                   <Link href={Route.toProject(relatedProject)}>
                     <a>
-                      <BodySmall>{relatedProject.name}</BodySmall>
+                      <BodySmall className={doNotTranslate}>
+                        {relatedProject.name}
+                      </BodySmall>
                     </a>
                   </Link>
                 )}
