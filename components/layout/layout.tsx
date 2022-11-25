@@ -38,18 +38,20 @@ const Layout: React.FC<Props> = ({
           gtag('config', '${analyticsId}', { client_storage: 'none', anonymize_ip: true });
       `}
       </Script>
-      <Script
-        type="text/javascript"
-        src="https://cdn.weglot.com/weglot.min.js"
-        strategy="beforeInteractive"
-      />
       {lang === "en" && (
-        <Script id="weglot">
-          {`Weglot.initialize({
+        <>
+          <Script
+            type="text/javascript"
+            src="https://cdn.weglot.com/weglot.min.js"
+            strategy="beforeInteractive"
+          />
+          <Script id="weglot">
+            {`Weglot.initialize({
           api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}',
           hide_switcher: true   
         });`}
-        </Script>
+          </Script>
+        </>
       )}
       <CustomHead {...seo} />
       {showBanner && <Banner />}
