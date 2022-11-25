@@ -55,6 +55,7 @@ const Layout: React.FC<Props> = ({
       )}
       <CustomHead {...seo} />
       {showBanner && <Banner />}
+      {lang === "en" && <TranslationNotice />}
       <Header />
       {crumbs && (
         <Section>
@@ -68,5 +69,19 @@ const Layout: React.FC<Props> = ({
     </S.Container>
   );
 };
+
+const TranslationNotice = () => (
+  <div className="bg-pebble py-2 px-4 text-center text-gray-500 leading-relaxed text-sm">
+    🇬🇧 The English version was translated from Czech by a robot. If the robot
+    didn’t do a good job somewhere,{" "}
+    <a
+      href="mailto:hello@cesko.digital?subject=Website localization"
+      className="text-inherit"
+    >
+      please let us know
+    </a>
+    .
+  </div>
+);
 
 export default Layout;
