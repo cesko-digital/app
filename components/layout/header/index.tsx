@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const lang = useContext(LangContext);
 
   const menu = [
     [Route.projects, strings.header.projects],
@@ -39,13 +40,13 @@ const Header: React.FC = () => {
                 {label}
               </Link>
             ))}
-            <ManageSession />
+            {lang === "cs" && <ManageSession />}
             <LanguageSwitcher />
           </S.DesktopLinksContainer>
 
           <S.MobileLinksContainer>
             <LanguageSwitcher />
-            <ManageSession />
+            {lang === "cs" && <ManageSession />}
             <S.IconButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </S.IconButton>
