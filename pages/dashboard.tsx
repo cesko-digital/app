@@ -96,7 +96,7 @@ const Offer: React.FC<Props> = ({ offer }) => {
   return (
     <div className="flex py-4 border-solid border-[#f0f0f2] border-b last:border-none">
       <div className="mr-10 md:truncate text-slate-400">
-        <span className="text-black font-medium mr-2">{offer.title!}.</span>
+        <span className="text-black font-medium mr-2">{offer.title!}</span>
         <span className="text-slate-400 md:inline hidden">{plainText}</span>
       </div>
       <div>
