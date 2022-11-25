@@ -262,7 +262,7 @@
       },
       "opportunities": {
         "title": "Právě hledáme",
-        "seeAll": "Všechny volné pozice"
+        "seeAll": "Všechny příležitosti"
       },
       "events": {
         "title": "Vybrané akce",
@@ -284,13 +284,13 @@
     },
     "opportunities": {
       "all": "Vše",
-      "opportunities": "Volné pozice"
+      "opportunities": "Příležitosti"
     },
     "dashboard": {
       "cedu": "Vzdělávání – edu.digital",
       "comingEvents": "Nejbližší akce",
       "currentOpportunities": "Právě hledáme",
-      "moreOpportunities": "Více volných pozic",
+      "moreOpportunities": "Více podobných nabídek",
       "marketplaceOffers": "Marketplace"
     }
   },

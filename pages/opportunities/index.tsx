@@ -119,7 +119,7 @@ const Page: NextPage<PageProps> = (props) => {
       <Section>
         <SectionContent>
           <Typography.Heading1>
-            Volné pozice{" "}
+            Příležitosti k zapojení{" "}
             <OpportunitiesCountSpan>
               {opportunities.length}
             </OpportunitiesCountSpan>
