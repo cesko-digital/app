@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { ButtonAsLink } from "components/links";
 import strings from "content/strings.json";
-import { Route } from "lib/utils";
+import { doNotTranslate, Route } from "lib/utils";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 
@@ -16,7 +16,7 @@ const HighlightedProject: React.FC<Props> = ({ project }) => {
       <S.Content>
         <S.ProjectInfo>
           <S.Avatar src={project.logoUrl} />
-          <S.Name>{project.name}</S.Name>
+          <S.Name className={doNotTranslate}>{project.name}</S.Name>
           <S.Tagline>{project.tagline}</S.Tagline>
           <ButtonAsLink inverted to={Route.toProject(project)}>
             {strings.cards.project.projectDetail}

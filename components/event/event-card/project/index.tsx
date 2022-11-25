@@ -1,4 +1,4 @@
-import { Route } from "lib/utils";
+import { doNotTranslate, Route } from "lib/utils";
 import * as S from "./styles";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";
@@ -13,14 +13,14 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     wrapper = (
       <S.Wrapper>
         <S.Avatar src={project.logoUrl} />
-        <S.AvatarTitle>{project.name}</S.AvatarTitle>
+        <S.AvatarTitle className={doNotTranslate}>{project.name}</S.AvatarTitle>
       </S.Wrapper>
     );
   } else {
     wrapper = (
       <S.LinkWrapper href={Route.toProject(project)}>
         <S.Avatar src={project.logoUrl} />
-        <S.AvatarTitle>{project.name}</S.AvatarTitle>
+        <S.AvatarTitle className={doNotTranslate}>{project.name}</S.AvatarTitle>
       </S.LinkWrapper>
     );
   }

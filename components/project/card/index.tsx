@@ -6,6 +6,7 @@ import * as S from "./styles";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";
 import { TeamEngagement } from "lib/airtable/team-engagement";
+import { doNotTranslate } from "lib/utils";
 
 interface Props {
   project: PortalProject;
@@ -50,7 +51,7 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
       )}
       <S.ButtonWrapper>
         <ButtonAsLink to={project.url}>
-          <S.InnerText>{project.name}</S.InnerText>
+          <S.InnerText className={doNotTranslate}>{project.name}</S.InnerText>
           <ArrowIcon />
         </ButtonAsLink>
       </S.ButtonWrapper>

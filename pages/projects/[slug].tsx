@@ -11,7 +11,7 @@ import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import OpportunityItem from "components/sections/opportunity-overview";
-import { Route } from "lib/utils";
+import { doNotTranslate, Route } from "lib/utils";
 import { Article } from "lib/data-sources/blog";
 import { BlogCard } from "components/cards";
 import EventCard from "components/dashboard/event-card";
@@ -64,7 +64,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
     >
       <Section>
         <SectionContent>
-          <Heading1>{project.name}</Heading1>
+          <Heading1 className={doNotTranslate}>{project.name}</Heading1>
           <S.Tagline>{project.tagline}</S.Tagline>
           <S.CoverImageWrapper>
             <S.CoverImage
