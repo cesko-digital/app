@@ -8,6 +8,8 @@ import CustomHead, { CustomHeadProps } from "./head";
 import Banner from "components/banner";
 import Script from "next/script";
 import { analyticsId } from "lib/utils";
+import { useContext } from "react";
+import { LangContext } from "components/language";
 
 export interface Props {
   crumbs?: Crumb[];
@@ -21,6 +23,7 @@ const Layout: React.FC<Props> = ({
   head: seo = {},
   showBanner,
 }) => {
+  const lang = useContext(LangContext);
   return (
     <S.Container>
       <Script
@@ -40,12 +43,14 @@ const Layout: React.FC<Props> = ({
         src="https://cdn.weglot.com/weglot.min.js"
         strategy="beforeInteractive"
       />
-      <Script id="weglot">
-        {`Weglot.initialize({
+      {lang === "en" && (
+        <Script id="weglot">
+          {`Weglot.initialize({
           api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}',
           hide_switcher: true   
         });`}
-      </Script>
+        </Script>
+      )}
       <CustomHead {...seo} />
       {showBanner && <Banner />}
       <Header />
