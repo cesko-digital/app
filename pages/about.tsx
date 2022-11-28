@@ -48,7 +48,7 @@ const CoreTeamSection = () => (
       správy. Věnujeme se také UX a designu služeb, včetně komunikační podpory,
       strategie značky a PR a finančně administrativních úkonů.
     </p>
-    <div className="grid grid-cols-3 gap-7">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <MemberCard name="Eva Pavlíková" title="CEO" image={Eva}>
         Vedu komunitu Česko.Digital, zajišťuju její rozvoj a směřování. Mimo
         komunitu mě nejčastěji potkáte v roli CEO (Chief Executive Officer) nebo
@@ -144,7 +144,7 @@ type Member = {
 
 const MemberCard = ({ name, title, image, children }: Member) => (
   <div className="border-2 border-pebble rounded-lg overflow-clip">
-    <Image src={image} alt="" placeholder="blur" width="384" height="216" />
+    <Image src={image} alt="" placeholder="blur" width="768" height="432" />
     <div className="px-4 pb-4">
       <h3>
         {name}, {title}
