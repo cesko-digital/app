@@ -58,7 +58,12 @@ const MerchSection = () => (
       kolekcí Merch.Digital, kterou pořídíš pouze na Czechdesign.
     </p>
     <p className="mt-6 mb-14">
-      <a className="btn-primary">Koupit merch</a>
+      <a
+        className="btn-primary"
+        href="https://shop.czechdesign.cz/ceskodigital/"
+      >
+        Koupit merch
+      </a>
     </p>
 
     <h2>Batoh.Digital</h2>
@@ -77,7 +82,12 @@ const MerchSection = () => (
       pošle až domů.
     </p>
     <p className="mt-6 mb-14">
-      <a className="btn-primary">Koupit batoh</a>
+      <a
+        className="btn-primary"
+        href="http://www.becalel.cz/e-shop/batoh-digital/"
+      >
+        Koupit batoh
+      </a>
     </p>
 
     <h2>I díky tobě můžeme nadále měnit Česko k lepšímu!</h2>
