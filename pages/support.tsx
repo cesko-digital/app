@@ -1,5 +1,6 @@
 import { Layout } from "components/layout";
 import { default as Hero } from "components/merch/hero.jpg";
+import { default as Backpack } from "components/merch/batoh.jpg";
 import { Route } from "lib/utils";
 import Image from "next/image";
 
@@ -49,7 +50,7 @@ const MerchSection = () => (
       Česko.Digital nebo cestovat klidně na druhý konec světa s batohem od
       českých designérů.
     </p>
-    <Image src={Hero} alt="" />
+    <Image src={Hero} alt="" placeholder="blur" />
 
     <h2>Czechdesign & Česko.Digital</h2>
     <p className="max-w-prose">
@@ -66,29 +67,42 @@ const MerchSection = () => (
       </a>
     </p>
 
-    <h2>Batoh.Digital</h2>
-    <p className="max-w-prose">
-      Pomáhat s Česko.Digital můžeš z druhého konce světa, z pláže i z lesa. Na
-      všechny tvoje výlety ti poslouží kvalitní batoh vyrobený v pražských
-      Holešovicích. Návrh vznikl přímo v komunitě a konzultovali jsme ho s
-      výrobcem BRAASI.
-    </p>
-    <h2>2 dobré skutky najednou</h2>
-    <p className="max-w-prose">
-      Koupí batohu <b>získáš nejen praktického společníka na cesty</b>, ale
-      podpoříš fungování a rozvoj dobrovolnické komunity Česko.Digital slušnou
-      částkou <b>1000 Kč</b>. To však není všechno, 400 Kč půjde ještě na
-      sociální podnik Becalel, který zaměstnává lidi se znevýhodněním a batoh ti
-      pošle až domů.
-    </p>
-    <p className="mt-6 mb-14">
-      <a
-        className="btn-primary"
-        href="http://www.becalel.cz/e-shop/batoh-digital/"
-      >
-        Koupit batoh
-      </a>
-    </p>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-7 mb-14">
+      <div className="lg:col-span-2">
+        <h2>Batoh.Digital</h2>
+        <p className="max-w-prose">
+          Pomáhat s Česko.Digital můžeš z druhého konce světa, z pláže i z lesa.
+          Na všechny tvoje výlety ti poslouží kvalitní batoh vyrobený v
+          pražských Holešovicích. Návrh vznikl přímo v komunitě a konzultovali
+          jsme ho s výrobcem BRAASI.
+        </p>
+        <h2>2 dobré skutky najednou</h2>
+        <p className="max-w-prose">
+          Koupí batohu <b>získáš nejen praktického společníka na cesty</b>, ale
+          podpoříš fungování a rozvoj dobrovolnické komunity Česko.Digital
+          slušnou částkou <b>1000 Kč</b>. To však není všechno, 400 Kč půjde
+          ještě na sociální podnik Becalel, který zaměstnává lidi se
+          znevýhodněním a batoh ti pošle až domů.
+        </p>
+      </div>
+      <div className="bg-pebble p-7 rounded-lg">
+        <Image
+          src={Backpack}
+          alt=""
+          width={670}
+          height={670}
+          placeholder="blur"
+        />
+        <p className="mt-7 text-center">
+          <a
+            className="btn-primary"
+            href="http://www.becalel.cz/e-shop/batoh-digital/"
+          >
+            Koupit batoh
+          </a>
+        </p>
+      </div>
+    </div>
 
     <h2>I díky tobě můžeme nadále měnit Česko k lepšímu!</h2>
     <p className="max-w-prose">
