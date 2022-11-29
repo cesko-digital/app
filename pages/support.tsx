@@ -52,7 +52,7 @@ const MerchSection = () => (
     </p>
     <Image src={Hero} alt="" placeholder="blur" />
 
-    <h2>Czechdesign & Česko.Digital</h2>
+    <h2>Czechdesign & Česko.Digital</h2>
     <p className="max-w-prose">
       Ekologické materiály, český design, papírový blok vyrobený lidmi se
       znevýhodněním nebo mikina s veganským certifikátem. To vše stojí za
