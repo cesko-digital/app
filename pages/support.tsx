@@ -58,7 +58,7 @@ const MerchSection = () => (
     </p>
     <Image src={hero} alt="" placeholder="blur" />
 
-    <h2>Czechdesign & Česko.Digital</h2>
+    <h2 className="leading-snug">Czechdesign & Česko.Digital</h2>
     <p className="max-w-prose">
       Ekologické materiály, český design, papírový blok vyrobený lidmi se
       znevýhodněním nebo mikina s veganským certifikátem. To vše stojí za
@@ -87,14 +87,14 @@ const MerchSection = () => (
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-7 mb-14">
       <div className="lg:col-span-2">
-        <h2>Batoh.Digital</h2>
+        <h2 className="leading-snug">Batoh.Digital</h2>
         <p className="max-w-prose">
           Pomáhat s Česko.Digital můžeš z druhého konce světa, z pláže i z lesa.
           Na všechny tvoje výlety ti poslouží kvalitní batoh vyrobený v
           pražských Holešovicích. Návrh vznikl přímo v komunitě a konzultovali
           jsme ho s výrobcem BRAASI.
         </p>
-        <h2>2 dobré skutky najednou</h2>
+        <h2 className="leading-snug">2 dobré skutky najednou</h2>
         <p className="max-w-prose">
           Koupí batohu <b>získáš nejen praktického společníka na cesty</b>, ale
           podpoříš fungování a rozvoj dobrovolnické komunity Česko.Digital
@@ -122,9 +122,11 @@ const MerchSection = () => (
       </div>
     </div>
 
-    <h2>I díky tobě můžeme nadále měnit Česko k lepšímu!</h2>
+    <h2 className="leading-snug">
+      I díky tobě můžeme nadále měnit Česko k lepšímu!
+    </h2>
     <p className="max-w-prose">
-      Koupí merche Česko.Digital podporuješ naší komunitu v tom, aby dále dělala
+      Koupí merche Česko.Digital podporuješ naši komunitu v tom, aby dále dělala
       to, co jí jde nejlépe – měnila Česko a svět kolem nás k lepšímu pomocí
       digitálních technologií. Za první 3 roky oslovily projekty komunity 4 000
       000 lidí. Také díky tvé podpoře můžeme pokračovat dál. Děkujeme!
