@@ -1,8 +1,14 @@
 import { Layout } from "components/layout";
-import { default as Hero } from "components/merch/hero.jpg";
-import { default as Backpack } from "components/merch/batoh.jpg";
 import { Route } from "lib/utils";
 import Image from "next/image";
+import {
+  hero,
+  backpack,
+  hoodie,
+  notebook,
+  shirt,
+  sticker,
+} from "components/merch";
 
 const MerchPage = () => (
   <Layout crumbs={[{ label: "Podpořit" }]} head={{ title: "Podpořit" }}>
@@ -50,7 +56,7 @@ const MerchSection = () => (
       Česko.Digital nebo cestovat klidně na druhý konec světa s batohem od
       českých designérů.
     </p>
-    <Image src={Hero} alt="" placeholder="blur" />
+    <Image src={hero} alt="" placeholder="blur" />
 
     <h2>Czechdesign & Česko.Digital</h2>
     <p className="max-w-prose">
@@ -58,7 +64,19 @@ const MerchSection = () => (
       znevýhodněním nebo mikina s veganským certifikátem. To vše stojí za
       kolekcí Merch.Digital, kterou pořídíš pouze na Czechdesign.
     </p>
-    <p className="mt-6 mb-14">
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-7 sm:bg-pebble sm:p-7 sm:rounded-lg">
+      <Image src={sticker} alt="" width={600} height={600} placeholder="blur" />
+      <Image src={shirt} alt="" width={600} height={600} placeholder="blur" />
+      <Image
+        src={notebook}
+        alt=""
+        width={600}
+        height={600}
+        placeholder="blur"
+      />
+      <Image src={hoodie} alt="" width={600} height={600} placeholder="blur" />
+    </div>
+    <p className="mt-7 mb-14 text-center">
       <a
         className="btn-primary"
         href="https://shop.czechdesign.cz/ceskodigital/"
@@ -87,7 +105,7 @@ const MerchSection = () => (
       </div>
       <div className="bg-pebble p-7 rounded-lg">
         <Image
-          src={Backpack}
+          src={backpack}
           alt=""
           width={670}
           height={670}
