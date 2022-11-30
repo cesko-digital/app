@@ -103,7 +103,7 @@ const MerchSection = () => (
           znevýhodněním a batoh ti pošle až domů.
         </p>
       </div>
-      <div className="bg-pebble p-7 rounded-lg">
+      <div className="sm:bg-pebble sm:p-7 rounded-lg">
         <Image
           src={backpack}
           alt=""
