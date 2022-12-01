@@ -60,6 +60,7 @@ export function markdownToHTML(source: string): string {
 /** Elements with this class will be skipped when translating website content with Weglot */
 export const doNotTranslate = "no_translate";
 
+/** Get URL to image resized to requested width */
 export function getResizedImgUrl(
   originalUrl: string,
   targetWidth: number
@@ -76,6 +77,16 @@ export function getResizedImgUrl(
   } else {
     return originalUrl;
   }
+}
+
+/** Generate a list of image sources with various widths appropriate for the `srcset` attribute */
+export function getSrcSet(imageUrl: string, widths: number[]): string {
+  return widths
+    .map((w) => {
+      const resizedUrl = getResizedImgUrl(imageUrl, w);
+      return `${resizedUrl} ${w}w`;
+    })
+    .join(", ");
 }
 
 export function isOwnerEmailDisplayed(input: string): boolean {
