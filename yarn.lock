@@ -1170,10 +1170,10 @@ agentkeepalive@^4.2.1:
     depd "^1.1.2"
     humanize-ms "^1.2.1"
 
-airtable@^0.11.3:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.11.3.tgz#bed8f81454ec46ce4ce39cb53dc2ef61030b546b"
-  integrity sha512-fPT0SdipmJU1eQNe+sJshvnb87HcZ2rPS7gJuryDAF9xDbfbxB8AmYQSuC1f0PIbLyPPpSWBuEewf4UJ9i3rJw==
+airtable@^0.11.6:
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.11.6.tgz#3b90f9c671ee93c4ad647eb131d630dea9f1f84a"
+  integrity sha512-Na67L2TO1DflIJ1yOGhQG5ilMfL2beHpsR+NW/jhaYOa4QcoxZOtDFs08cpSd1tBMsLpz5/rrz/VMX/pGL/now==
   dependencies:
     "@types/node" ">=8.0.0 <15"
     abort-controller "^3.0.0"
