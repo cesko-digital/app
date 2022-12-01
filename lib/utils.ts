@@ -38,6 +38,9 @@ const addLeadingSlash = (path: string) =>
 /** Our Google Analytics tracking ID */
 export const analyticsId = "UA-140227366-1";
 
+/** Approximate size of the Česko.Digital community (number of people in Slack) */
+export const communitySize = 5600;
+
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;
@@ -55,12 +58,6 @@ export function markdownToHTML(source: string): string {
 
 /** Elements with this class will be skipped when translating website content with Weglot */
 export const doNotTranslate = "no_translate";
-
-export async function getCachedMemberCount(): Promise<number> {
-  return await fetch("https://cesko.digital/api/member_count")
-    .then((response) => response.json())
-    .then((value) => value.count);
-}
 
 export function getResizedImgUrl(
   originalUrl: string,

@@ -5,7 +5,7 @@ import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
-import { getCachedMemberCount, shuffleInPlace } from "lib/utils";
+import { communitySize, shuffleInPlace } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 import { PortalPartner } from "lib/airtable/partner";
 import {
@@ -17,16 +17,11 @@ import {
 } from "components/home";
 
 type PageProps = {
-  memberCount: number;
   featuredProjects: readonly PortalProject[];
   partners: readonly PortalPartner[];
 };
 
-const Page: NextPage<PageProps> = ({
-  featuredProjects,
-  partners,
-  memberCount,
-}) => {
+const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
   const theme = useContext(ThemeContext);
   const router = useRouter();
   const displayBanner = !!router.query.banner;
@@ -37,7 +32,7 @@ const Page: NextPage<PageProps> = ({
         <Hero />
       </Section>
 
-      <Numbers memberCount={memberCount} />
+      <Numbers memberCount={communitySize} />
 
       <Section>
         <SectionContent>
@@ -73,7 +68,6 @@ const Page: NextPage<PageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const memberCount = await getCachedMemberCount();
   const allPartners = siteData.partners;
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
@@ -85,7 +79,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   ).slice(0, 3);
   return {
     props: {
-      memberCount,
       featuredProjects,
       partners,
     },
