@@ -1,8 +1,9 @@
 import * as React from "react";
 
-const Arrow: React.FC<React.SVGProps<SVGSVGElement>> = () => {
+const Arrow: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
+      className={props.className}
       width="14"
       height="14"
       viewBox="0 0 14 14"
@@ -20,4 +21,5 @@ const Arrow: React.FC<React.SVGProps<SVGSVGElement>> = () => {
     </svg>
   );
 };
+
 export default Arrow;

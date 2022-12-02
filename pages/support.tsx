@@ -1,6 +1,7 @@
 import { Layout } from "components/layout";
 import { Route } from "lib/utils";
 import Image from "next/image";
+import { ArrowIcon } from "components/icons";
 import {
   hero,
   backpack,
@@ -32,9 +33,7 @@ const DarujmeSection = () => (
       </b>
     </p>
     <p className="mt-6">
-      <a className="btn-primary" href={Route.darujme}>
-        Přispět na Darujme.cz
-      </a>
+      <Button title="Přispět na Darujme.cz" href={Route.darujme} />
     </p>
   </section>
 );
@@ -77,12 +76,10 @@ const MerchSection = () => (
       <Image src={hoodie} alt="" width={600} height={600} placeholder="blur" />
     </div>
     <p className="mt-7 mb-14 text-center">
-      <a
-        className="btn-primary"
+      <Button
+        title="Koupit merch"
         href="https://shop.czechdesign.cz/ceskodigital/"
-      >
-        Koupit merch
-      </a>
+      />
     </p>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-7 mb-14">
@@ -112,12 +109,10 @@ const MerchSection = () => (
           placeholder="blur"
         />
         <p className="mt-7 text-center">
-          <a
-            className="btn-primary"
+          <Button
+            title="Koupit batoh"
             href="http://www.becalel.cz/e-shop/batoh-digital/"
-          >
-            Koupit batoh
-          </a>
+          />
         </p>
       </div>
     </div>
@@ -137,6 +132,17 @@ const MerchSection = () => (
       <a href="https://airtable.com/shrTLixl0XVbyDm8G">Dej nám vědět!</a>
     </p>
   </section>
+);
+
+type ButtonProps = {
+  title: string;
+  href: string;
+};
+
+const Button = ({ title, href: url }: ButtonProps) => (
+  <a className="btn-primary" href={url}>
+    {title} <ArrowIcon className="ml-2 mb-1 inline align-middle" />
+  </a>
 );
 
 export default MerchPage;
