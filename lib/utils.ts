@@ -7,11 +7,11 @@ import { PortalOpportunity } from "lib/airtable/opportunity";
 export const Route = {
   // External links
   submitProject: "https://airtable.com/shrP207QR9RrHTZEi",
-  supportUs: "https://www.darujme.cz/projekt/1203553",
   brandManual: "https://znacka.cesko.digital/",
   blog: "https://blog.cesko.digital",
   slackOnboarding: "https://slack.cesko.digital/",
   youtube: "https://www.youtube.com/c/ČeskoDigital",
+  darujme: "https://www.darujme.cz/projekt/1203553",
   // Localization
   english: (path = "/") => "https://en.cesko.digital" + addLeadingSlash(path),
   czech: (path = "/") => "https://cesko.digital" + addLeadingSlash(path),
@@ -20,6 +20,7 @@ export const Route = {
   joinUs: "/join",
   profile: "/profile",
   marketplace: "/marketplace",
+  supportUs: "/support",
   // We don’t have a dedicated all-events page yet, see
   // https://github.com/cesko-digital/web/issues/356
   events: "/dashboard#section-events",
