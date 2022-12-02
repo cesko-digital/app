@@ -47,7 +47,7 @@ const MerchSection = () => (
     <p className="max-w-prose">
       Nezáleží na tom, zda už v Česko.Digital pomáháš nebo mu fandíš. S kolekcí
       Merch.Digital můžeš hrdě šířit myšlenky komunity a nákupem jejích předmětů
-      pošleš slušnou částkou přímo na podporu a rozvoj organizace.
+      pošleš slušnou částku přímo na podporu a rozvoj organizace.
     </p>
     <p className="max-w-prose">
       V komunitě většinou pracujeme na home office nebo v kanceláři. S produkty
