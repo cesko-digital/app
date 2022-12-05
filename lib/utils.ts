@@ -64,14 +64,18 @@ export function getResizedImgUrl(
   originalUrl: string,
   targetWidth: number
 ): string {
-  return originalUrl
-    ? originalUrl.replace(
+  if (originalUrl.startsWith("https://data.cesko.digital/")) {
+    return (
+      originalUrl.replace(
         /data\.cesko\.digital/g,
         "cesko.digital/api/resize?src="
       ) +
-        "&width=" +
-        targetWidth
-    : "";
+      "&width=" +
+      targetWidth
+    );
+  } else {
+    return originalUrl;
+  }
 }
 
 export function isOwnerEmailDisplayed(input: string): boolean {
