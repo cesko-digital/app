@@ -60,6 +60,7 @@ export function markdownToHTML(source: string): string {
 /** Elements with this class will be skipped when translating website content with Weglot */
 export const doNotTranslate = "no_translate";
 
+/** Get URL to image resized to requested width */
 export function getResizedImgUrl(
   originalUrl: string,
   targetWidth: number
