@@ -1,4 +1,4 @@
-import { getSrcSet } from "lib/utils";
+import { getResizedImgUrl } from "lib/utils";
 import * as S from "./styles";
 
 export interface Logo {
@@ -18,9 +18,8 @@ const LogoList: React.FC<LogoListProps> = ({ items }) => {
         <S.Item key={index}>
           <S.Link href={logo.linkUrl} target="_blank">
             <S.Logo
-              alt={`${logo.name} logo`}
-              srcSet={getSrcSet(logo.logoUrl, [100, 200, 500])}
-              src={logo.logoUrl}
+              alt=""
+              src={getResizedImgUrl(logo.logoUrl, 320)}
               loading="lazy"
             />
           </S.Link>

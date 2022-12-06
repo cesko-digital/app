@@ -79,16 +79,6 @@ export function getResizedImgUrl(
   }
 }
 
-/** Generate a list of image sources with various widths appropriate for the `srcset` attribute */
-export function getSrcSet(imageUrl: string, widths: number[]): string {
-  return widths
-    .map((w) => {
-      const resizedUrl = getResizedImgUrl(imageUrl, w);
-      return `${resizedUrl} ${w}w`;
-    })
-    .join(", ");
-}
-
 export function isOwnerEmailDisplayed(input: string): boolean {
   return /^anezka@cesko.digital|^gabriela@cesko.digital/.test(input);
 }
