@@ -44,7 +44,7 @@ const AboutPage = () => (
 //
 
 const IntroSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-xl">
     <h1 className="text-[44px] font-bold leading-snug mb-10">
       Komunita Česko.Digital
     </h1>
@@ -61,7 +61,7 @@ const IntroSection = () => (
 //
 
 const VolunteerSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-xl">
     <h2 className="mb-12 mt-0">Expertní dobrovolníci</h2>
     <p className="max-w-prose mb-7">
       Ti nejdůležitější, bez kterých by to nešlo. Samotná komunita více než{" "}
@@ -127,7 +127,7 @@ const VolunteerCard = ({ image, text }: Volunteer) => (
 //
 
 const CoreTeamSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-xl">
     <h2 className="mb-12 mt-0">Kmenový tým</h2>
     <p className="max-w-prose mb-7">
       Počet členů kmenového týmu se nepravidelně mění, ale aspirace a hodnoty
@@ -245,7 +245,7 @@ const CoreTeamSection = () => (
 //
 
 const BoardSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg mb-20">
+  <section className="max-w-content m-auto py-10 px-5 text-xl mb-20">
     <h2 className="mb-12 mt-0">Správní rada</h2>
     <p className="max-w-prose mb-7">
       Správní rada se skládá ze zkušených expertů s různými kompetencemi. Pomáhá
