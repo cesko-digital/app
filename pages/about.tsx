@@ -12,14 +12,24 @@ import {
   Lukas,
   Zoul,
   Gabi,
+  Jakub,
+  Dita,
+  Robert,
+  Ondrej,
+  Michal,
 } from "components/about/images";
 
 const AboutPage = () => (
   <Layout crumbs={[{ label: "O nás" }]} head={{ title: "O nás" }}>
     <IntroSection />
     <CoreTeamSection />
+    <BoardSection />
   </Layout>
 );
+
+//
+// Intro
+//
 
 const IntroSection = () => (
   <section className="max-w-content m-auto py-10 px-5 text-lg">
@@ -34,9 +44,13 @@ const IntroSection = () => (
   </section>
 );
 
+//
+// Core Team
+//
+
 const CoreTeamSection = () => (
   <section className="max-w-content m-auto py-10 px-5 text-lg">
-    <h2 className="mb-12 mt-0">Kmenový tým Česko.Digital</h2>
+    <h2 className="mb-12 mt-0">Kmenový tým</h2>
     <p className="max-w-prose mb-7">
       Počet členů kmenového týmu se nepravidelně mění, ale aspirace a hodnoty
       zůstávají stejné. Díky placeným úvazkům a potřebnému kontextu se kmenový
@@ -47,7 +61,7 @@ const CoreTeamSection = () => (
       organizacemi.
     </p>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-      <MemberCard
+      <PersonCard
         name="Eva Pavlíková"
         title="Chief Executive Officer"
         image={Eva}
@@ -58,8 +72,8 @@ const CoreTeamSection = () => (
           Moje AHA momenty
         </a>
         .
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Jan Kotara"
         title="Chief Operations Officer"
         image={Yen}
@@ -67,8 +81,8 @@ const CoreTeamSection = () => (
         Ve své roli umožňuji ostatním se maximálně soustředit na jejich úkoly a
         maximalizovat produktivitu, a to podílením se na usnadnění chodu a
         procesů organizace.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Tereza Gagnon"
         title="Head of Partnership & Fundraising"
         image={Terka}
@@ -76,8 +90,8 @@ const CoreTeamSection = () => (
         Zodpovídám za fundraising a péči o dárce a partnery Česko.Digital, aby
         se báze našich podporovatelů rozšiřovala a pomohla tak dosahovat našich
         cílů.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Romana Pokorná"
         title="Program & Project Lead"
         image={Romana}
@@ -85,8 +99,8 @@ const CoreTeamSection = () => (
         Zodpovídám za rozvoj akcelerátoru pro neziskové organizace. Pracuji na
         vylepšování projektové metodiky. Organizuji na daná témata setkání a
         školení pro dobrovolníky i zástupce veřejné sféry.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Anežka Müller"
         title="Event & Community Lead"
         image={Anezka}
@@ -94,8 +108,8 @@ const CoreTeamSection = () => (
         Starám se o vše, co v organizaci souvisí s oblastí akcí (eventů) – tedy
         o eventovou strategii i operativu s tím spojenou. Kromě toho se také
         věnuji péči o komunitu.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Jindřich Oukropec"
         title="Brand Product Owner"
         image={Jindra}
@@ -103,8 +117,8 @@ const CoreTeamSection = () => (
         Mám na starosti nadchnout Čechy do expertního dobrovolnictví a také
         směřování značky Česko.Digital. Rovněž zastávám roli Scrum Support
         Mastera na projektech.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Terézia Palaščáková"
         title="Content Lead"
         image={Terezia}
@@ -112,16 +126,16 @@ const CoreTeamSection = () => (
         Mám na starosti obsah, který propaguje Česko.Digital i jeho jednotlivé
         projekty. Zároveň vedu a motivuju dobro.obsahový tým a působím jako
         obsahový mentor. Když je potřeba, stanu se na chvíli copywriTerkou.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Martina Habová"
         title="Marketing & Communication Lead"
         image={Martina}
       >
         Zodpovídám za zviditelnění a propagaci komunity expertních dobrovolníků,
         jejich aktivit a dopadů. Spolupracuji s marketingovými specialisty.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Lukáš Návesník"
         title="Digital & Production Lead"
         image={Lukas}
@@ -130,12 +144,12 @@ const CoreTeamSection = () => (
         vzdělávací platformu edu.digital. Tvořím grafiku pro sociální sítě,
         blogové články a vzdělávací materiály. Působím jako spojka mezi
         marketingem & IT.
-      </MemberCard>
-      <MemberCard name="Tomáš Znamenáček" title="Programmer" image={Zoul}>
+      </PersonCard>
+      <PersonCard name="Tomáš Znamenáček" title="Programmer" image={Zoul}>
         Funguji především jako maintainer webu Česko.Digital a dalších interních
         nástrojů.
-      </MemberCard>
-      <MemberCard
+      </PersonCard>
+      <PersonCard
         name="Gabriela Chladilová"
         title="NGO Program Lead & Jira Specialist"
         image={Gabi}
@@ -143,19 +157,67 @@ const CoreTeamSection = () => (
         Starám se jak o příchozí dobrovolníky, tak o jednotlivce neziskových a
         veřejnosprávních organizací v naší komunitě. Koordinuji také příchozí
         projekty. Mám na starosti data o komunitě.
-      </MemberCard>
+      </PersonCard>
     </div>
   </section>
 );
 
-type Member = {
+//
+// Board
+//
+
+const BoardSection = () => (
+  <section className="max-w-content m-auto py-10 px-5 text-lg">
+    <h2 className="mb-12 mt-0">Správní rada</h2>
+    <p className="max-w-prose mb-7">
+      Správní rada se skládá ze zkušených expertů s různými kompetencemi. Pomáhá
+      se směřováním organizace a šíří její dobré jméno. Zároveň je podporou pro
+      CEO, konzultuje a přináší návrhy řešení pro důležité milníky organizace a
+      zajišťuje dodržování legislativy a pravidel. Průběžně konzultuje a setkává
+      se každé 3–4 měsíce.
+    </p>
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <PersonCard
+        name="Jakub Nešetřil"
+        title="Startup Founder, Non-Profit Founder, Tech Geek"
+        image={Jakub}
+      />
+      <PersonCard
+        name="Dita Formánková"
+        title="Director & Founder Czechitas, Director Diversity & Inclusion and Communities / Gen"
+        image={Dita}
+      />
+      <PersonCard
+        name="Robert Basch"
+        title="Corporate Social Responsibility, Manager / Livesport"
+        image={Robert}
+      />
+      <PersonCard
+        name="Michal Bláha"
+        title="Director & Founder / Hlídač státu"
+        image={Michal}
+      />
+      <PersonCard
+        name="Ondřej Zapletal"
+        title="Collaborative Philanthropy and Nonprofit Strategist"
+        image={Ondrej}
+      />
+    </div>
+  </section>
+);
+
+//
+// Shared
+//
+
+type Person = {
   name: string;
   title: string;
   image: StaticImageData;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-const MemberCard = ({ name, title, image, children }: Member) => (
+const PersonCard = ({ name, title, image, children }: Person) => (
   <div className="border-2 border-pebble rounded-lg overflow-clip">
     <Image src={image} alt="" placeholder="blur" width="768" height="432" />
     <div className="px-4 pb-4">
