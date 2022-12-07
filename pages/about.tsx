@@ -1,5 +1,6 @@
 import { Layout } from "components/layout";
 import Image, { StaticImageData } from "next/image";
+import { communitySize } from "lib/utils";
 import {
   Eva,
   Yen,
@@ -17,11 +18,22 @@ import {
   Robert,
   Ondrej,
   Michal,
-} from "components/about/images";
+} from "components/about/team";
+import {
+  Tereza,
+  Tomas,
+  Radka,
+  Jan,
+  Katerina,
+  Lucia,
+  Ondrej as OndrejK,
+  RadkaH,
+} from "components/about/volunteers";
 
 const AboutPage = () => (
   <Layout crumbs={[{ label: "O nás" }]} head={{ title: "O nás" }}>
     <IntroSection />
+    <VolunteerSection />
     <CoreTeamSection />
     <BoardSection />
   </Layout>
@@ -42,6 +54,72 @@ const IntroSection = () => (
       a mění tak Česko k lepšímu.
     </p>
   </section>
+);
+
+//
+// Volunteers
+//
+
+const VolunteerSection = () => (
+  <section className="max-w-content m-auto py-10 px-5 text-lg">
+    <h2 className="mb-12 mt-0">Expertní dobrovolníci</h2>
+    <p className="max-w-prose mb-7">
+      Ti nejdůležitější, bez kterých by to nešlo. Samotná komunita více než{" "}
+      {communitySize} expertních dobrovolníků z mnoha oborů od IT přes
+      projektové řízení až po marketing. Jejich role je nenahraditelná – pro
+      bono pomáhali nebo pomáhají státu i neziskovým organizacím s digitalizací
+      a mění tak Česko k lepšímu.
+    </p>
+    <div className="flex flex-wrap gap-7">
+      <VolunteerCard
+        image={Tereza}
+        text="Prošla jsem spoustou různých kurzů, webinářů a přednášek, tady se ale člověk naučí mnohem víc, daleko rychleji a ještě k tomu zadarmo."
+      />
+      <VolunteerCard
+        image={Tomas}
+        text="Potkal jsem nové lidi, mám pocit, že pomáhám smysluplné věci. Mám dobrý pocit, že spolupracuji na projektu, který má celospolečenský dopad."
+      />
+      <VolunteerCard
+        image={Radka}
+        text="Česko.Digital se mi líbí celkově – od myšlenky, přes způsob uchopení a realizované projekty, až po lidi, kteří se zapojili. Celé mi to dává smysl a moc tomu fandím."
+      />
+      <VolunteerCard
+        image={Katerina}
+        text="Cítím se tu strašně dobře – fungujeme jako tým, všichni jsou ochotní pomoci, konzultovat, diskutovat, dostává se vám konstruktivní kritika. Pokaždé se tak něco nového naučím a opravdu cítím, že se tu posouvám."
+      />
+      <VolunteerCard
+        image={RadkaH}
+        text="Spolupráce s Česko.Digital se mi moc líbila. Byl to první krůček k oboru IT."
+      />
+      <VolunteerCard
+        image={Tomas}
+        text="Česko.Digital mi umožňuje pomáhat svými znalostmi a zkušenostmi a efektivně tak využít / předat to, co jsem se naučil."
+      />
+      <VolunteerCard
+        image={OndrejK}
+        text="Proč Česko.Digital? Nové výzvy a radost z toho, že mohu pomáhat."
+      />
+      <VolunteerCard
+        image={Lucia}
+        text="Som hrdá na to, že sme to v jeden slabý moment celé nevzdali a poskladali nakoniec skvelý a vytrvalý tím profíkov, ktorý teraz web Jehlomat.cz doťahuje do zdarného konca."
+      />
+      <VolunteerCard
+        image={Jan}
+        text="Baví mě se potkávat s inspirativními lidmi, od kterých mohu čerpat nové zkušenosti a informace a zároveň jsem rád, když jim s něčím mohu pomoci i já."
+      />
+    </div>
+  </section>
+);
+
+type Volunteer = {
+  image: StaticImageData;
+  text: string;
+};
+
+const VolunteerCard = ({ image, text }: Volunteer) => (
+  <div className="flex-1 basis-full sm:basis-1/3 md:basis-1/4">
+    <Image src={image} alt={text} placeholder="blur" width={600} height={600} />
+  </div>
 );
 
 //
@@ -167,7 +245,7 @@ const CoreTeamSection = () => (
 //
 
 const BoardSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-lg mb-20">
     <h2 className="mb-12 mt-0">Správní rada</h2>
     <p className="max-w-prose mb-7">
       Správní rada se skládá ze zkušených expertů s různými kompetencemi. Pomáhá
