@@ -239,12 +239,12 @@ const CoreTeamSection = () => (
       </PersonCard>
       <PersonCard
         name="Gabriela Chladilová"
-        title="NGO Program Lead & Jira Specialist"
+        title="Data Specialist"
         image={Gabi}
       >
         Starám se jak o příchozí dobrovolníky, tak o jednotlivce neziskových a
-        veřejnosprávních organizací v naší komunitě. Koordinuji také příchozí
-        projekty. Mám na starosti data o komunitě.
+        veřejnosprávních organizací v naší komunitě. Mám na starosti data o
+        komunitě.
       </PersonCard>
     </div>
   </section>
