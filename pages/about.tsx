@@ -307,7 +307,7 @@ type Person = {
 };
 
 const PersonCard = ({ name, title, image, children }: Person) => (
-  <div className="border-2 border-pebble rounded-lg overflow-clip">
+  <div className="sm:border-2 border-pebble sm:rounded-lg overflow-clip -mx-5 sm:mx-0">
     <Image src={image} alt="" placeholder="blur" width="768" height="432" />
     <div className="px-4 pb-4">
       <h3 className="mb-0">{name}</h3>
