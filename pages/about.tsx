@@ -49,9 +49,13 @@ const IntroSection = () => (
       Komunita Česko.Digital
     </h1>
     <p className="max-w-prose">
-      Jsme největší evropská civic-tech komunita expertních dobrovolníků, kteří
-      ve svém volném čase pomáhají státu i nestátním organizacím s digitalizací
-      a mění tak Česko k lepšímu.
+      Česko.Digital je komunita expertních dobrovolníků z mnoha oborů od IT přes
+      projektové řízení až po marketing, kteří ve svém volném čase pomáhají
+      státu a neziskovým organizacím, a mění tak Česko k lepšímu. V roce 2019 ji
+      založili Jakub Nešetřil, Radka Horáková a Eva Pavlíková. Aktuálně je v
+      komunitě přes {communitySize} dobrovolníků a je tak největší civic-tech
+      organizací v Evropě. Cílem Česko.Digital je budoucnost, ve které
+      technologie slouží lidem, bez ohledu na čas, místo nebo sociální podmínky.
     </p>
   </section>
 );
