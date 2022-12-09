@@ -75,7 +75,7 @@ const VolunteerSection = () => (
       a mění tak Česko k lepšímu. A co na svou zkušenost s Česko.Digital říkají
       někteří z nich?
     </p>
-    <div className="flex flex-wrap gap-7">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <VolunteerCard
         image={Tereza}
         text="Prošla jsem spoustou různých kurzů, webinářů a přednášek, tady se ale člověk naučí mnohem víc, daleko rychleji a ještě k tomu zadarmo."
@@ -122,7 +122,7 @@ type Volunteer = {
 };
 
 const VolunteerCard = ({ image, text }: Volunteer) => (
-  <div className="flex-1 basis-full sm:basis-1/3 md:basis-1/4 -mx-5 sm:mx-0 sm:rounded-md overflow-clip">
+  <div className="-mx-5 sm:mx-0 sm:rounded-md overflow-clip">
     <Image
       src={image}
       alt={text}
