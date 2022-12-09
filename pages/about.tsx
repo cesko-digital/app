@@ -22,6 +22,7 @@ import {
 import {
   Tereza,
   Tomas,
+  TomasN,
   Radka,
   Jan,
   Katerina,
@@ -97,8 +98,8 @@ const VolunteerSection = () => (
         text="Spolupráce s Česko.Digital se mi moc líbila. Byl to první krůček k oboru IT."
       />
       <VolunteerCard
-        image={Tomas}
-        text="Česko.Digital mi umožňuje pomáhat svými znalostmi a zkušenostmi a efektivně tak využít / předat to, co jsem se naučil."
+        image={TomasN}
+        text="Česko.Digital mi umožňuje pomáhat mými znalostmi a zkušenostmi a efektivně tak využít / předat to, co jsem se naučil."
       />
       <VolunteerCard
         image={OndrejK}
@@ -110,7 +111,7 @@ const VolunteerSection = () => (
       />
       <VolunteerCard
         image={Jan}
-        text="Baví mě se potkávat s inspirativními lidmi, od kterých mohu čerpat nové zkušenosti a informace a zároveň jsem rád, když jim s něčím mohu pomoci i já."
+        text="Baví mě se potkávat s inspirativními lidmi, od kterých mohu čerpat nové zkušenosti a informace, a zároveň jsem rád, když jim s něčím mohu pomoci i já."
       />
     </div>
   </section>
