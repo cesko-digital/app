@@ -68,7 +68,8 @@ const VolunteerSection = () => (
       {communitySize} expertních dobrovolníků z mnoha oborů od IT přes
       projektové řízení až po marketing. Jejich role je nenahraditelná – pro
       bono pomáhali nebo pomáhají státu i neziskovým organizacím s digitalizací
-      a mění tak Česko k lepšímu.
+      a mění tak Česko k lepšímu. A co na svou zkušenost s Česko.Digital říkají
+      někteří z nich?
     </p>
     <div className="flex flex-wrap gap-7">
       <VolunteerCard
