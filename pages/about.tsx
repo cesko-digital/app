@@ -126,9 +126,8 @@ const VolunteerCard = ({ image, text }: Volunteer) => (
     <Image
       src={image}
       alt={text}
-      width={600}
-      height={600}
       layout="responsive"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
   </div>
 );
