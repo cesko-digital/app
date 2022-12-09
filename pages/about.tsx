@@ -215,7 +215,7 @@ const CoreTeamSection = () => (
         image={Terezia}
       >
         Mám na starosti obsah, který propaguje Česko.Digital i jeho jednotlivé
-        projekty. Zároveň vedu a motivuju dobro.obsahový tým a působím jako
+        projekty. Zároveň vedu a motivuji dobro.obsahový tým a působím jako
         obsahový mentor. Když je potřeba, stanu se na chvíli copywriTerkou.
       </PersonCard>
       <PersonCard
