@@ -24,10 +24,11 @@ const Footer = () => {
   );
 };
 
-/** Important “internal” links such as project list, dashboard, etc.; Czech only */
+/** Important “internal” links such as project list, dashboard, etc. */
 const InternalLinks = () => {
   const p = footerStrings.pageLinks;
   const pageLinks = [
+    ["O nás", Route.aboutUs],
     [p.projects, Route.projects],
     [p.dashboard, Route.dashboard],
     [p.blog, Route.blog],
