@@ -235,8 +235,8 @@ const CoreTeamSection = () => (
         marketingem & IT.
       </PersonCard>
       <PersonCard name="Tomáš Znamenáček" title="Programmer" image={Zoul}>
-        Funguji především jako maintainer webu Česko.Digital a dalších interních
-        nástrojů.
+        Starám se o programování webu Česko.Digital a obecně údržbu a rozvoj
+        interních nástrojů.
       </PersonCard>
       <PersonCard
         name="Gabriela Chladilová"
