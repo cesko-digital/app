@@ -307,7 +307,13 @@ type Person = {
 
 const PersonCard = ({ name, title, image, children }: Person) => (
   <div className="sm:border-2 border-pebble sm:rounded-lg overflow-clip -mx-5 sm:mx-0">
-    <Image src={image} alt="" placeholder="blur" width="768" height="432" />
+    <Image
+      src={image}
+      alt=""
+      placeholder="blur"
+      layout="responsive"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    />
     <div className="px-4 pb-4">
       <h3 className="mb-0">{name}</h3>
       <h3 className="mt-0 font-normal">{title}</h3>
