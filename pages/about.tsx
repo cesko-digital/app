@@ -118,8 +118,14 @@ type Volunteer = {
 };
 
 const VolunteerCard = ({ image, text }: Volunteer) => (
-  <div className="flex-1 basis-full sm:basis-1/3 md:basis-1/4">
-    <Image src={image} alt={text} placeholder="blur" width={600} height={600} />
+  <div className="flex-1 basis-full sm:basis-1/3 md:basis-1/4 -mx-5 sm:mx-0 sm:rounded-md overflow-clip">
+    <Image
+      src={image}
+      alt={text}
+      width={600}
+      height={600}
+      layout="responsive"
+    />
   </div>
 );
 
