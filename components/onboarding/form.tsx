@@ -272,7 +272,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
           <label key={id} className="flex items-center">
             <input
               type="radio"
-              className="mr-2"
+              className="mr-3"
               name="occupation"
               checked={state.occupation === id}
               onChange={() => onChange({ ...state, occupation: id })}
@@ -334,7 +334,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           checked={state.privacyConsent}
           disabled={!isEditable(state)}
-          className="mr-2 self-start mt-2 shrink-0"
+          className="mr-3 self-start mt-2 shrink-0"
           onChange={(e) =>
             onChange({ ...state, privacyConsent: e.target.checked })
           }
@@ -352,7 +352,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           checked={state.gdprConsent}
           disabled={!isEditable(state)}
-          className="mr-2 self-start mt-2 shrink-0"
+          className="mr-3 self-start mt-2 shrink-0"
           onChange={(e) =>
             onChange({ ...state, gdprConsent: e.target.checked })
           }
