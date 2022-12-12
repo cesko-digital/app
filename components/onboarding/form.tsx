@@ -362,8 +362,8 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         ></input>
         <span>
           Potvrzuji přečtení{" "}
-          <a href="https://cesko.digital/go/privacy">směrnice GDPR</a> a
-          zavazuji se k jejímu dodržování
+          <a href="https://cesko.digital/go/gdpr">směrnice GDPR</a> a zavazuji
+          se k jejímu dodržování
           <RequiredFieldMarker />
         </span>
       </label>
