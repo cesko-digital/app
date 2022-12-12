@@ -52,6 +52,7 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
+  gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
 });
@@ -73,6 +74,7 @@ export function encodeUserProfile(
       ? [profile.slackUserRelationId]
       : undefined,
     createdAt: profile.createdAt,
+    gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
   };
 }
 
@@ -116,7 +118,12 @@ export async function updateUserProfile(
   profile: Partial<
     Pick<
       UserProfile,
-      "name" | "skills" | "slackUserRelationId" | "state" | "createdAt"
+      | "name"
+      | "skills"
+      | "slackUserRelationId"
+      | "state"
+      | "createdAt"
+      | "gdprPolicyAcceptedAt"
     >
   >
 ): Promise<UserProfile> {
@@ -139,6 +146,7 @@ export async function createUserProfile(
     | "state"
     | "slackUserRelationId"
     | "createdAt"
+    | "gdprPolicyAcceptedAt"
   >
 ): Promise<UserProfile> {
   return await userProfileTable

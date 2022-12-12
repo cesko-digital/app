@@ -50,6 +50,7 @@ export default async function handler(
             state: "confirmed",
             slackUserRelationId: slackUser.id,
             createdAt: new Date().toISOString(),
+            gdprPolicyAcceptedAt: undefined,
           });
         }
         response.setHeader("Content-Type", "application/json");

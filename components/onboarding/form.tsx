@@ -17,7 +17,8 @@ type FormState = {
   organizationName: string;
   profileUrl: string;
   skills: SkillSelection;
-  legalConsent: boolean;
+  privacyConsent: boolean;
+  gdprConsent: boolean;
   submissionState: SubmissionState;
 };
 
@@ -27,6 +28,7 @@ export type RegistrationData = {
   skills: SkillSelection;
   occupation: string;
   organizationName?: string;
+  gdprPolicyAcceptedAt: string;
   profileUrl?: string;
 };
 
@@ -100,7 +102,7 @@ type ValidationResult =
   | { result: "error"; msg: string };
 
 function validateForm(data: FormState): ValidationResult {
-  const { name, email, skills, legalConsent, occupation } = data;
+  const { name, email, skills, privacyConsent, gdprConsent, occupation } = data;
   const error = (msg: string) => ({ result: "error" as const, msg });
   if (!name) {
     return error("Je třeba vyplnit jméno.");
@@ -108,12 +110,15 @@ function validateForm(data: FormState): ValidationResult {
     return error("Je třeba vyplnit email.");
   } else if (Object.entries(skills).length === 0) {
     return error("Je třeba vyplnit aspoň jednu dovednost.");
-  } else if (!legalConsent) {
+  } else if (!privacyConsent) {
     return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
+  } else if (!gdprConsent) {
+    return error("Je třeba odsouhlasit směrnici GDPR.");
   } else if (!occupation) {
     return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
     const { organizationName, profileUrl } = data;
+    const gdprPolicyAcceptedAt = new Date().toISOString();
     return {
       result: "success",
       validatedData: {
@@ -123,6 +128,7 @@ function validateForm(data: FormState): ValidationResult {
         organizationName,
         occupation,
         profileUrl,
+        gdprPolicyAcceptedAt,
       },
     };
   }
@@ -139,7 +145,8 @@ const emptyFormState: FormState = {
   organizationName: "",
   profileUrl: "",
   skills: {},
-  legalConsent: false,
+  privacyConsent: false,
+  gdprConsent: false,
   submissionState: { tag: "not_submitted_yet" },
 };
 
@@ -324,24 +331,39 @@ const SkillSection: React.FC<SkillSectionProps> = ({
 const LegalSection: FormSection = ({ state, onChange }) => (
   <Section>
     <SectionContent>
-      <h2>
-        Abychom s informacemi od tebe mohli dále pracovat, tak tě prosíme o:
-      </h2>
-      <label className="flex items-center">
+      <h2>Právní náležitosti</h2>
+      <label className="flex items-center mb-1">
         <input
           type="checkbox"
-          checked={state.legalConsent}
+          checked={state.privacyConsent}
           disabled={!isEditable(state)}
           className="mr-2 self-start mt-2 shrink-0"
           onChange={(e) =>
-            onChange({ ...state, legalConsent: e.target.checked })
+            onChange({ ...state, privacyConsent: e.target.checked })
           }
         ></input>
         <span>
-          Souhlas se{" "}
+          Souhlasím s{" "}
           <a href="https://cesko.digital/go/privacy">
-            zpracováním osobních údajů
+            podmínkami zpracování osobních údajů
           </a>
+          <RequiredFieldMarker />
+        </span>
+      </label>
+      <label className="flex items-center">
+        <input
+          type="checkbox"
+          checked={state.gdprConsent}
+          disabled={!isEditable(state)}
+          className="mr-2 self-start mt-2 shrink-0"
+          onChange={(e) =>
+            onChange({ ...state, gdprConsent: e.target.checked })
+          }
+        ></input>
+        <span>
+          Potvrzuji přečtení{" "}
+          <a href="https://cesko.digital/go/privacy">směrnice GDPR</a> a
+          zavazuji se k jejímu dodržování
           <RequiredFieldMarker />
         </span>
       </label>

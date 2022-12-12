@@ -10,6 +10,7 @@ const decodeRequest = record({
   name: string,
   email: string,
   skills: string,
+  gdprPolicyAcceptedAt: string,
   occupation: optional(string),
   organizationName: optional(string),
   profileUrl: optional(string),
