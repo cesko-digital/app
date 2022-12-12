@@ -13,15 +13,15 @@ import {
 
 const MerchPage = () => (
   <Layout crumbs={[{ label: "Podpořit" }]} head={{ title: "Podpořit" }}>
-    <DarujmeSection />
     <MerchSection />
+    <DarujmeSection />
   </Layout>
 );
 
 const DarujmeSection = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-lg mb-20">
     <h1 className="text-[44px] font-bold leading-snug mb-10">
-      Přispěj komunitě na Darujme.cz
+      Přispěj nám na Darujme.cz
     </h1>
     <p className="max-w-prose">
       S digitálními technologiemi dnes dokážeme téměř zázraky. Taky věříš, že
