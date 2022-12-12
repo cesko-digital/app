@@ -28,7 +28,7 @@ const Layout: React.FC<Props> = ({
     <S.Container>
       <Script
         data-domain="cesko.digital"
-        src="https://plausible.io/js/plausible.js"
+        src="https://plausible.io/js/script.outbound-links.js"
       />
       <Script id="google-analytics">
         {`
