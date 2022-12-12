@@ -197,7 +197,7 @@ const WhyJoin = () => (
       <Testimonial
         name="Julia Szymanska"
         image={Julia}
-        title="Employee Engagement manager, Avast Foundation"
+        title="Employee Engagement manager, Gen"
         blurb="Díky spolupráci s Česko.Digital můžeme pomáhat neziskovým organizacím vytvářet programy pro rozvoj, na které samy kapacitně nestačí. Expertní dobrovolnictví je také jednou ze základních hodnot společnosti Avast. Naši zaměstnanci mají tak možnost se hojně zapojovat do smysluplných projektů, které rozvíjí nejen širokou společnost, ale i je samotné."
       />
     </div>

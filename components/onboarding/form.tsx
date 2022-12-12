@@ -169,10 +169,13 @@ const Intro = () => (
         Staň se členem komunity
       </h1>
       <p>
-        Abychom věděli, co by tě z našich aktivit mohlo zajímat a kdo se na tebe
-        může z komunity obrátit, řekni nám prosím něco o sobě. Osobní údaje a
-        dovednostní preference si pak budeš moci kdykoliv upravit ve svém
-        profilu na Portálu dobrovolníka. Položky označené hvězdičkou
+        Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
+        mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
+        sobě si pak budeš moci kdykoliv upravit na svém profilu na Portálu
+        dobrovolníka.
+      </p>
+      <p>
+        Položky označené hvězdičkou
         <RequiredFieldMarker /> jsou povinné.
       </p>
       <p>
@@ -260,9 +263,8 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
         <RequiredFieldMarker />
       </label>
       <p className="text-base mt-1 text-gray-500">
-        Vyber prosím svoji hlavní činnost. U některých možností tě můžeme v
-        uvítacím e-mailu kontaktovat s dalšími podrobnostmi ohledně případné
-        spolupráce (například u neziskovek či soukromého sektoru).
+        Vyber prosím svoji hlavní činnost. V uvítacím e-mailu tě pak můžeme
+        seznámit s dalšími podrobnostmi ohledně případné spolupráce.
       </p>
 
       <div className="mb-8">
@@ -305,13 +307,8 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         </h2>
         <p>
           Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
-          může (ale nemusí) někdo z komunity poprosit o radu nebo tě zapojit do
-          správného typu aktivity nebo projektu.
-        </p>
-        <p>
-          Nechceš čekat, až ti někdo napíše? Stačí se podívat na vhodné
-          příležitosti na{" "}
-          <a href="https://cesko.digital/dashboard">Portálu dobrovolníka</a>.
+          může někdo z komunity poprosit o radu nebo tě zapojit do správného
+          typu aktivity nebo projektu.
         </p>
         <SkillPicker
           skillMenu={skillMenu}
