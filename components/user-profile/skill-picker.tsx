@@ -48,7 +48,9 @@ export const SkillPicker: React.FC<SkillPickerProps> = ({
               checked={!!selection[category]}
               className="mr-3 shrink-0 self-start mt-[1.5ex]"
             ></input>
-            {category}
+            <span className={selection[category] ? "font-bold" : ""}>
+              {category}
+            </span>
           </label>
           {selection[category] && (
             <SubSkillPicker
@@ -104,7 +106,9 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
               onChange={(e) => updateSelection(skill, e.target.checked)}
               className="mr-3 mt-[1.5ex] self-start shrink-0"
             ></input>
-            {skill}
+            <span className={selection[skill] !== undefined ? "font-bold" : ""}>
+              {skill}
+            </span>
           </label>
           {selection[skill] !== undefined && (
             <LevelPicker

@@ -277,7 +277,9 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
               checked={state.occupation === id}
               onChange={() => onChange({ ...state, occupation: id })}
             />
-            {label}
+            <span className={state.occupation === id ? "font-bold" : ""}>
+              {label}
+            </span>
           </label>
         ))}
       </div>
