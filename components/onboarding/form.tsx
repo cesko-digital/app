@@ -435,7 +435,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
             sledovat dění v komunitě.
           </li>
         </ol>
-        {validationResult.result === "error" && (
+        {validationResult.result === "error" && state !== emptyFormState && (
           <p className="text-red-500">{validationResult.msg}</p>
         )}
         {submissionState.tag === "submission_error" && (
