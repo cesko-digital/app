@@ -274,6 +274,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
               type="radio"
               className="mr-3"
               name="occupation"
+              disabled={!isEditable(state)}
               checked={state.occupation === id}
               onChange={() => onChange({ ...state, occupation: id })}
             />
