@@ -49,6 +49,11 @@
       "source": "/go/gdpr",
       "destination": "https://docs.google.com/document/d/1Fnh-Te5IAjloSg5YkQxFhVNPz6eGuPLY/edit?usp=sharing&ouid=108890724728869976226&rtpof=true&sd=true",
       "statusCode": 301
+    },
+    {
+      "source": "/go/newsletter-privacy",
+      "destination": "https://docs.google.com/document/u/1/d/e/2PACX-1vRJ2psHJKCYvSbWhwT5eKneqaG2jGpxNYgG1ouXAVNQrHuVaLGbyDMkOd3VqIYqUGR4UoLojwlCjJil/pub",
+      "statusCode": 301
     }
   ],
   "github": {

@@ -63,6 +63,16 @@ const Newsletter: React.FC = () => {
               {hasServerError ? msg.serverError : form.errors.email}
             </S.ErrorMessage>
           )}
+          <p className="text-sm">
+            Odesláním formuláře vyjadřujete svůj souhlas s{" "}
+            <a
+              href="https://cesko.digital/go/newsletter-privacy"
+              className=" text-white"
+            >
+              těmito podmínkami zpracování osobních údajů
+            </a>
+            .
+          </p>
         </S.Form>
       )}
     </S.Container>
