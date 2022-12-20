@@ -181,7 +181,7 @@ export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
     }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
