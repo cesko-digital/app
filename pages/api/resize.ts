@@ -18,7 +18,6 @@
  *
  * + Output progressive PNGs and JPEGs
  */
-import { addPerformanceLogging } from "lib/apm";
 import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 import sharp from "sharp";
@@ -157,4 +156,4 @@ const handler = async (
   }
 };
 
-export default addPerformanceLogging(handler);
+export default handler;

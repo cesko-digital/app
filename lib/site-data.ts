@@ -1,5 +1,4 @@
 import { Article, getArticleIndex } from "./data-sources/blog";
-import { enableAPMLogging } from "./apm";
 import { getAllUsers, PortalUser } from "./airtable/user";
 import { getAllProjects, PortalProject } from "./airtable/project";
 import { getAllEvents, PortalEvent } from "./airtable/event";
@@ -7,7 +6,6 @@ import { getAllOpportunities, PortalOpportunity } from "./airtable/opportunity";
 import { getAllPartners, PortalPartner } from "./airtable/partner";
 import { getAllVideos, YTPlaylistItem } from "./data-sources/youtube";
 import * as Local from "./data-sources/dummy";
-import apm from "elastic-apm-node";
 import {
   getAllTeamEngagements,
   TeamEngagement,
@@ -16,8 +14,6 @@ import {
   getPublishedMarketPlaceOffers,
   MarketPlaceOffer,
 } from "./airtable/market-place";
-
-enableAPMLogging();
 
 export interface SiteData {
   projects: readonly PortalProject[];
@@ -95,8 +91,6 @@ async function loadSiteData(): Promise<SiteData> {
     ? "load_sample_data"
     : "load_production_data";
 
-  apm.startTransaction(transactionTag);
-
   let [
     projects,
     opportunities,
@@ -118,8 +112,6 @@ async function loadSiteData(): Promise<SiteData> {
     dataSource.teamEngagements(),
     dataSource.marketPlaceOffers(),
   ]);
-
-  apm.endTransaction();
 
   // Filter out opportunities that point to nonexisting projects
   // (ie. projects that have been ignored because of parse errors).

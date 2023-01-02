@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "airtable": "^0.11.6",
-    "elastic-apm-node": "^3.32.0",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",

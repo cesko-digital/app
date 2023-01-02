@@ -1,4 +1,3 @@
-import { addPerformanceLogging } from "lib/apm";
 import { newsletterListId, subscribeToList } from "lib/ecomail";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -35,4 +34,4 @@ const handler = async (
   }
 };
 
-export default addPerformanceLogging(handler);
+export default handler;

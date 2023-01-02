@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { siteData } from "lib/site-data";
 import { renderOpportunitiesBySkill } from "lib/markdown-opportunities";
-import { addPerformanceLogging } from "lib/apm";
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { projects, users } = siteData;
@@ -18,4 +17,4 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   response.status(200).send(mdown.source);
 }
 
-export default addPerformanceLogging(handler);
+export default handler;

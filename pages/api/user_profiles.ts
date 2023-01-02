@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { optional, record, string } from "typescript-json-decoder";
-import { addPerformanceLogging } from "lib/apm";
 import {
   createUserProfile,
   getUserProfileByMail,
@@ -41,4 +40,4 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   }
 }
 
-export default addPerformanceLogging(handler);
+export default handler;

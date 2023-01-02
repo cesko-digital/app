@@ -1,4 +1,3 @@
-import { addPerformanceLogging } from "lib/apm";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 import { decodeType, record, union } from "typescript-json-decoder";
@@ -69,4 +68,4 @@ type SubscriptionResponse = decodeType<typeof decodeRequest>;
 const decodeSubscriptionState = union(...subscriptionStates);
 const decodeRequest = record({ state: decodeSubscriptionState });
 
-export default addPerformanceLogging(handler);
+export default handler;
