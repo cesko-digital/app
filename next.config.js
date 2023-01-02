@@ -22,6 +22,13 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    // Only warn about data size if payload is over 256 KB.
+    // TBD: Decrease this limit back to 128 KB and try to shave off
+    // the extra data or move to React Server Components to make
+    // the offending pages lighter.
+    largePageDataBytes: 256 * 100000,
+  },
   webpack: (config) => {
     config.experiments = {
       topLevelAwait: true,
