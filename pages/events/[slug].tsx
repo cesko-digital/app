@@ -23,7 +23,7 @@ interface PageProps {
   event: PortalEvent;
   project: PortalProject;
   projects: readonly PortalProject[];
-  events: readonly PortalEvent[];
+  otherEvents: PortalEvent[];
   owner: PortalUser;
 }
 
@@ -32,27 +32,11 @@ interface QueryParams extends ParsedUrlQuery {
 }
 
 const Page: NextPage<PageProps> = (props) => {
-  const { event, project, projects, owner, events } = props;
+  const { event, project, projects, owner, otherEvents } = props;
   const coverImageUrl = event.coverImageUrl || project.coverImageUrl;
 
   const getEventProject = (e: PortalEvent) =>
     projects.find((p) => p.id === e.projectId)!;
-
-  /** Sort future events first, sorted ascending date */
-  const compareByRelevance = (a: PortalEvent, b: PortalEvent) => {
-    const pastA = isEventPast(a);
-    const pastB = isEventPast(b);
-    if (pastA && !pastB) {
-      return 1; // a after b
-    } else if (pastB && !pastA) {
-      return -1; // a before b
-    } else {
-      return compareEventsByTime(a, b);
-    }
-  };
-  const otherEvents = [...events]
-    .filter((e) => e.status === "live" && e.id !== event.id)
-    .sort(compareByRelevance);
 
   return (
     <Layout
@@ -102,7 +86,7 @@ const Page: NextPage<PageProps> = (props) => {
             </S.CategoryHeader>
             <S.CardWrapper>
               <CardRow>
-                {otherEvents.slice(0, 3).map((event, index) => (
+                {otherEvents.map((event, index) => (
                   <S.ProjectCard
                     key={index}
                     event={event}
@@ -136,12 +120,29 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const event = siteData.events.find((e) => e.slug === slug)!;
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
+  const otherEvents = events
+    .filter((e) => e.status === "live" && e.id !== event.id)
+    .sort(compareByRelevance)
+    .slice(0, 3);
   return {
-    props: { event, events, project, projects, owner },
+    props: { event, otherEvents, project, projects, owner },
     notFound: !event || !project || !owner,
     // Regenerate every five minutes to refresh event info
     revalidate: 60 * 5,
   };
+};
+
+/** Sort future events first, sorted ascending date */
+const compareByRelevance = (a: PortalEvent, b: PortalEvent) => {
+  const pastA = isEventPast(a);
+  const pastB = isEventPast(b);
+  if (pastA && !pastB) {
+    return 1; // a after b
+  } else if (pastB && !pastA) {
+    return -1; // a before b
+  } else {
+    return compareEventsByTime(a, b);
+  }
 };
 
 export default Page;
