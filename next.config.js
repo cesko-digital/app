@@ -16,6 +16,12 @@ module.exports = {
           "https://www.google.com/search?q=how+can+i+benefit+to+the+society",
         permanent: false,
       },
+      // This is an old og:image that some clients keep requesting for some strange reason
+      {
+        source: "/assets/fb-sharing-banner.png",
+        destination: "https://data.cesko.digital/web/metadata-cover.png",
+        permanent: true,
+      },
     ];
   },
   reactStrictMode: true,
