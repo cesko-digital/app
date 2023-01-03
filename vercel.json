@@ -16,7 +16,7 @@
       "statusCode": 302
     },
     {
-      "source": "links",
+      "source": "/links",
       "destination": "https://linktr.ee/ceskodigital",
       "statusCode": 302
     },
