@@ -16,6 +16,11 @@
       "statusCode": 302
     },
     {
+      "source": "links",
+      "destination": "https://linktr.ee/ceskodigital",
+      "statusCode": 302
+    },
+    {
       "source": "/impact22",
       "destination": "https://drive.google.com/file/d/1uwqL3xsfaSbje-dPK8wyfAAKFrWL_dc2/view",
       "statusCode": 302
