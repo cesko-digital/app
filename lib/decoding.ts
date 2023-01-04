@@ -147,7 +147,7 @@ export function decodeValidItemsFromArray<T>(
         log(
           verbose
             ? `Error decoding item #${index} in ${tag}: ${e}`
-            : `Error decoding item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`
+            : `Could not decode item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`
         );
       }
       index++;
