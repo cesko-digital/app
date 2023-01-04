@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "command": "yarn",
+  "type": "shell",
+  "args": ["typecheck"],
+  "presentation": {
+    "reveal": "silent"
+  },
+  "problemMatcher": "$tsc"
+}
