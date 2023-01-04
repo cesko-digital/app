@@ -16,6 +16,6 @@ jobs:
         with:
           node-version: 18
           cache: "yarn"
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: yarn test
       - run: DATA_SOURCE_LOCAL=y yarn build
