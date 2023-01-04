@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+// This extends our Next config with stuff needed to integrate with Axiom:
+// https://www.axiom.co/docs/integrations/vercel#web-vitals
+const { withAxiom } = require("next-axiom");
+
+module.exports = withAxiom({
   reactStrictMode: true,
 
   compiler: {
@@ -112,4 +117,4 @@ module.exports = {
       },
     ];
   },
-};
+});

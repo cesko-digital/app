@@ -9,6 +9,10 @@ import { SessionProvider } from "next-auth/react";
 import { detectLanguageFromUrl, Lang, LangContext } from "components/language";
 import "components/global.css";
 
+// This will report web vitals to Axiom:
+// https://www.axiom.co/docs/integrations/vercel#web-vitals
+export { reportWebVitals } from "next-axiom";
+
 type GlobalProps = {
   session: Session;
 };
