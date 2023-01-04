@@ -49,9 +49,6 @@ export default class MyDocument extends Document {
             src="https://cdn.weglot.com/weglot.min.js"
             strategy="beforeInteractive"
           />
-          <Script id="weglot">
-            {`Weglot.initialize({ api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}', hide_switcher: true });`}
-          </Script>
         </body>
       </Html>
     );
