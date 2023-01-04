@@ -38,11 +38,6 @@ const Layout: Component<Props> = ({
           gtag('config', '${analyticsId}', { client_storage: 'none', anonymize_ip: true });
       `}
       </Script>
-      {lang === "en" && (
-        <Script id="weglot">
-          {`Weglot.initialize({ api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}', hide_switcher: true });`}
-        </Script>
-      )}
       <CustomHead {...seo} />
       {showBanner && <Banner />}
       {lang === "en" && <TranslationNotice />}
