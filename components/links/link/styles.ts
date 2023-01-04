@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { StyledLinkProps } from ".";
 import { ButtonSize } from "../../buttons";
+import Link from "next/link";
 
 function getDefaultBorderStyle() {
   return css`
@@ -55,7 +56,7 @@ function getBorderStyle({ size }: StyledLinkProps) {
   return getDefaultBorderStyle();
 }
 
-export const StyledLink = styled.a<StyledLinkProps>`
+export const StyledLink = styled(Link)<StyledLinkProps>`
   ${({ size }) => applyLinkStyles({ size })}
 `;
 
