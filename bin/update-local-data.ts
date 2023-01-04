@@ -1,6 +1,5 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
-import fetch from "node-fetch";
 import fs from "fs";
 
 /**

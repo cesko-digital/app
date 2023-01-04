@@ -19,7 +19,6 @@
  * + Output progressive PNGs and JPEGs
  */
 import { NextApiRequest, NextApiResponse } from "next";
-import fetch from "node-fetch";
 import sharp from "sharp";
 
 const maxInputFileSize = 30_000_000;

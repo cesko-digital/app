@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { splitToChunks } from "./utils";
 import { decodeDictValues } from "./decoding";
 import {

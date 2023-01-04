@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { array, decodeType, record, string } from "typescript-json-decoder";
 import { decodeValidItemsFromArray, withDefault } from "lib/decoding";
 
