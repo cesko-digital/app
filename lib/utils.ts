@@ -2,14 +2,6 @@ import { marked } from "marked";
 import { PortalProject } from "lib/airtable/project";
 import { PortalEvent } from "lib/airtable/event";
 import { PortalOpportunity } from "lib/airtable/opportunity";
-import React from "react";
-
-/**
- * A shortcut for `React.FC<React.PropsWithChildren<Props>>`
- *
- * See https://stackoverflow.com/questions/71788254 for details.
- */
-export type Component<Props = {}> = React.FC<React.PropsWithChildren<Props>>;
 
 /** Create URLs for frequently used routes */
 export const Route = {

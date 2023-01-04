@@ -1,5 +1,6 @@
 import { StyledButtonProps } from "components/buttons/button";
 import { ButtonSize } from "components/buttons";
+import { default as NextLink } from "next/link";
 import * as S from "./styles";
 import { MouseEventHandler } from "react";
 
@@ -28,15 +29,15 @@ const ButtonAsLink: React.FC<ButtonAsLinkProps> = ({
   };
 
   if (url) {
-    const href = rest.disabled ? "" : url ?? "";
+    const href = rest.disabled ? "" : url;
     return (
-      <S.StyledLink href={href} {...props}>
-        {children}
-      </S.StyledLink>
+      <NextLink href={href} passHref>
+        <S.StyledLink {...props}>{children}</S.StyledLink>
+      </NextLink>
     );
   } else {
     return (
-      <S.StyledLink href="" {...props} onClick={onClick}>
+      <S.StyledLink {...props} onClick={onClick}>
         {children}
       </S.StyledLink>
     );

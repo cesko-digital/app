@@ -26,7 +26,7 @@ export const Logo = styled.div`
 `;
 
 export const HeaderButton = styled(ButtonAsLink)`
-  height: 44px !important;
+  height: 44px;
   padding: 0 24px;
   font-size: ${({ theme }) => theme.fontSizes.small}px;
 `;

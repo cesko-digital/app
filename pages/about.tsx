@@ -127,7 +127,9 @@ const VolunteerCard = ({ image, text }: Volunteer) => (
     <Image
       src={image}
       alt={text}
+      layout="responsive"
       placeholder="blur"
+      objectFit="cover"
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
   </div>
@@ -312,6 +314,7 @@ const PersonCard = ({ name, title, image, children }: Person) => (
       src={image}
       alt=""
       placeholder="blur"
+      layout="responsive"
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
     <div className="px-4 pb-4">
