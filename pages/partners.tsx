@@ -53,15 +53,17 @@ const Page: NextPage<PageProps> = ({ partners, blogPosts }) => {
         description: msg.metadata.description,
       }}
     >
-      <Section>
-        <SectionContent>
-          <S.Heading>{msg.title}</S.Heading>
-          <S.Tagline>{msg.description}</S.Tagline>
-          <Tabs items={sections} onChange={setActiveSectionKey} />
-        </SectionContent>
-      </Section>
-      {ActiveSection}
-      <BecomePartner />
+      <>
+        <Section>
+          <SectionContent>
+            <S.Heading>{msg.title}</S.Heading>
+            <S.Tagline>{msg.description}</S.Tagline>
+            <Tabs items={sections} onChange={setActiveSectionKey} />
+          </SectionContent>
+        </Section>
+        {ActiveSection}
+        <BecomePartner />
+      </>
     </Layout>
   );
 };

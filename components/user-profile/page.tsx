@@ -7,6 +7,7 @@ import { Button, ButtonSize } from "components/buttons";
 import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
+import { Component } from "lib/utils";
 
 export type UserProfilePageState =
   | "loading"
@@ -169,10 +170,10 @@ const SkillPane: React.FC<SkillPaneProps> = ({
 // Shared components
 //
 
-const MainContainer: React.FC = (props) => (
-  <div className="min-h-[400px]">{props.children}</div>
+const MainContainer: Component = ({ children }) => (
+  <div className="min-h-[400px]">{children}</div>
 );
 
-const Heading: React.FC = (props) => (
-  <h1 className="text-[44px] font-bold leading-snug mb-10">{props.children}</h1>
+const Heading: Component = ({ children }) => (
+  <h1 className="text-[44px] font-bold leading-snug mb-10">{children}</h1>
 );

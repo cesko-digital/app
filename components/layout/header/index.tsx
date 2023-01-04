@@ -126,22 +126,19 @@ const UserProfileButton: React.FC<{
   const email = user.email || "<neznámý e-mail>";
   return (
     <NextLink href={Route.profile}>
-      <a>
-        {/* eslint-disable @next/next/no-img-element */}
-        <img
-          src={imageUrl}
-          title={`Přihlášen jako ${email}`}
-          alt=""
-          style={{
-            height: "44px",
-            width: "44px",
-            borderRadius: "44px",
-            border: "2px solid #ddd",
-            boxShadow:
-              "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
-          }}
-        />
-      </a>
+      {/* eslint-disable @next/next/no-img-element */}
+      <img
+        src={imageUrl}
+        title={`Přihlášen jako ${email}`}
+        alt=""
+        style={{
+          height: "44px",
+          width: "44px",
+          borderRadius: "44px",
+          border: "2px solid #ddd",
+          boxShadow: "0 6px 16px rgba(0,0,0,0.08),0 1px 2px rgba(8,8,49,0.12)",
+        }}
+      />
     </NextLink>
   );
 };

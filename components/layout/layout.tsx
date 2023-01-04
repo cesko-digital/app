@@ -7,7 +7,7 @@ import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
 import Banner from "components/banner";
 import Script from "next/script";
-import { analyticsId } from "lib/utils";
+import { analyticsId, Component } from "lib/utils";
 import { useContext } from "react";
 import { LangContext } from "components/language";
 
@@ -17,7 +17,7 @@ export interface Props {
   showBanner?: boolean;
 }
 
-const Layout: React.FC<Props> = ({
+const Layout: Component<Props> = ({
   crumbs,
   children,
   head: seo = {},
@@ -38,21 +38,6 @@ const Layout: React.FC<Props> = ({
           gtag('config', '${analyticsId}', { client_storage: 'none', anonymize_ip: true });
       `}
       </Script>
-      {lang === "en" && (
-        <>
-          <Script
-            type="text/javascript"
-            src="https://cdn.weglot.com/weglot.min.js"
-            strategy="beforeInteractive"
-          />
-          <Script id="weglot">
-            {`Weglot.initialize({
-          api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}',
-          hide_switcher: true   
-        });`}
-          </Script>
-        </>
-      )}
       <CustomHead {...seo} />
       {showBanner && <Banner />}
       {lang === "en" && <TranslationNotice />}
