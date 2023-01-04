@@ -7,7 +7,7 @@ import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
 import Banner from "components/banner";
 import Script from "next/script";
-import { analyticsId } from "lib/utils";
+import { analyticsId, Component } from "lib/utils";
 import { useContext } from "react";
 import { LangContext } from "components/language";
 
@@ -17,7 +17,7 @@ export interface Props {
   showBanner?: boolean;
 }
 
-const Layout: React.FC<Props> = ({
+const Layout: Component<Props> = ({
   crumbs,
   children,
   head: seo = {},

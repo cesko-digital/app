@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { SkillPicker } from "components/user-profile/skill-picker";
 import { SkillMenu, SkillSelection } from "lib/skills";
+import { Component } from "lib/utils";
 
 export type SubmissionState =
   | { tag: "not_submitted_yet" }
@@ -459,13 +460,13 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
 
 const RequiredFieldMarker = () => <span className="text-red-500 pl-1">*</span>;
 
-const Section: React.FC = ({ children }) => (
+const Section: Component = ({ children }) => (
   <section className="relative max-w-content m-auto mt-10 pb-10 px-5 text-lg last:mb-10">
     {children}
   </section>
 );
 
-const SectionContent: React.FC = ({ children }) => (
+const SectionContent: Component = ({ children }) => (
   <div className="max-w-prose">{children}</div>
 );
 

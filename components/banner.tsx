@@ -1,7 +1,7 @@
 import Script from "next/script";
 import strings from "content/strings.json";
 import RenderMarkdown from "components/markdown";
-import { MarkdownString } from "lib/utils";
+import { Component, MarkdownString } from "lib/utils";
 
 interface Props {
   message?: string;
@@ -35,19 +35,19 @@ const Banner: React.FC<Props> = ({ message }) => {
   );
 };
 
-const Section: React.FC = ({ children }) => (
+const Section: Component = ({ children }) => (
   <section className="text-white bg-[#080831] mb-0 lg:mb-5 min-h-[200px]">
     {children}
   </section>
 );
 
-const Container: React.FC = ({ children }) => (
+const Container: Component = ({ children }) => (
   <div className="max-w-content px-5 py-5 lg:py-10 m-auto relative">
     {children}
   </div>
 );
 
-const Content: React.FC = ({ children }) => (
+const Content: Component = ({ children }) => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 relative w-full">
     {children}
   </div>

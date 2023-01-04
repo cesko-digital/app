@@ -1,4 +1,5 @@
 import { SubscriptionState } from "lib/ecomail";
+import { Component } from "lib/utils";
 import { useEffect, useState } from "react";
 
 export type Props = {
@@ -139,6 +140,6 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   );
 };
 
-const Section: React.FC = ({ children }) => (
+const Section: Component = ({ children }) => (
   <section className="text-lg">{children}</section>
 );
