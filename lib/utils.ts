@@ -37,9 +37,6 @@ export const Route = {
 const addLeadingSlash = (path: string) =>
   path.startsWith("/") ? path : "/" + path;
 
-/** Our Google Analytics tracking ID */
-export const analyticsId = "UA-140227366-1";
-
 /** Approximate size of the Česko.Digital community (number of people in Slack) */
 export const communitySize = 5600;
 

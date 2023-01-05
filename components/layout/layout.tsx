@@ -7,7 +7,6 @@ import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
 import Banner from "components/banner";
 import Script from "next/script";
-import { analyticsId } from "lib/utils";
 import { useContext } from "react";
 import { LangContext } from "components/language";
 
@@ -30,14 +29,6 @@ const Layout: React.FC<Props> = ({
         data-domain="cesko.digital"
         src="https://plausible.io/js/script.outbound-links.js"
       />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${analyticsId}', { client_storage: 'none', anonymize_ip: true });
-      `}
-      </Script>
       {lang === "en" && (
         <>
           <Script
