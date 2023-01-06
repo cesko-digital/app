@@ -171,6 +171,13 @@ const EventsSection: React.FC<PageProps> = ({ upcomingEvents, projects }) => {
             </CardRow>
           </S.CardWrapper>
         </S.Container>
+        <S.ButtonWrapper>
+          <NextLink href={Route.events}>
+            <a>
+              <Button>Všechny akce</Button>
+            </a>
+          </NextLink>
+        </S.ButtonWrapper>
       </SectionContent>
     </Section>
   );
@@ -225,7 +232,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .filter((e) => e.status === "live")
     .filter((e) => !isEventPast(e))
     .sort(compareEventsByTime)
-    .slice(0, 6);
+    .slice(0, 3);
   return {
     props: {
       marketPlaceOffers,
