@@ -73,6 +73,12 @@ module.exports = withAxiom({
           "https://docs.google.com/document/u/1/d/e/2PACX-1vRJ2psHJKCYvSbWhwT5eKneqaG2jGpxNYgG1ouXAVNQrHuVaLGbyDMkOd3VqIYqUGR4UoLojwlCjJil/pub",
         permanent: false,
       },
+      {
+        source: "/go/newsletters",
+        destination:
+          "https://ceskodigital.ecomailapp.cz/public/form/5-ed07fd6b07ff0199fabc8509f995f058",
+        permanent: false,
+      },
       //
       // “Naked” URL shortcuts
       //
