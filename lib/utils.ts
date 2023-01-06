@@ -22,9 +22,7 @@ export const Route = {
   marketplace: "/marketplace",
   supportUs: "/support",
   aboutUs: "/about",
-  // We don’t have a dedicated all-events page yet, see
-  // https://github.com/cesko-digital/web/issues/356
-  events: "/dashboard#section-events",
+  events: "/events",
   dashboard: "/dashboard",
   partners: "/partners",
   projects: "/projects",
