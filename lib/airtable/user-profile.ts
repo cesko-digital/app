@@ -9,6 +9,7 @@ import {
   array,
   decodeType,
   field,
+  number,
   optional,
   record,
   string,
@@ -55,6 +56,7 @@ export const decodeUserProfile = record({
   gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
+  daysSinceRegistered: optional(number),
 });
 
 /** Encode `UserProfile` to DB schema */
