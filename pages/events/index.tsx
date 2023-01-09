@@ -38,7 +38,7 @@ const Page = ({ futureEvents, pastEvents, projects }: PageProps) => {
             </div>
           </>
         )}
-        <h2 className="mb-12 mt-0">Starší akce</h2>
+        <h2 className="mb-12 mt-0">Proběhlé akce</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {pastEvents.map((e) => (
             <EventCard key={e.id} event={e} project={projectForEvent(e)} />
