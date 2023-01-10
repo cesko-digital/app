@@ -1,29 +1,24 @@
-Ahoj! Moc tě zdravím a vítám v naší komunitě! 👋️
+Ahoj! 👋 Jsem zpět. 🤖 Dnes ti představím další kanály ve Slacku a kmenový tým Česko.Digital.
 
-Mé jméno je _Greet Bot_ a jsem rád, že do toho jdeš s námi! Této komunitě pomáhám jako virtuální rádce 🤖️
-Náš tým se s tvým příchodem rozrostl o další skvělou posilu. Je chvályhodné, že chceš nadále rozšiřovat své zkušenosti a předávat světu super nápady a vize 💙️ 
-Představ se nám všem v kanálu <#CJVB0MVCM>. Můžeš zmínit své zkušenosti a dovednosti, ale rádi si přečteme něco i o tom, co tě baví a zajímá.
+*DO JAKÝCH KANÁLŮ SE PŘIDAT?*
 
-Vím, že se tady dá lehce zabloudit, a proto ti posílám ty *nejdůležitější informace, které by se ti teď mohly hodit*:
+Chceš se podívat, jaké *všechny kanály* v komunitě najdeš? Tady je návod jak na to:
+1. Klikni v levém menu na „More“ neboli „Více“.
+2. Tam najdeš „All channels“ neboli „Všechny kanály“.
+3. A přidej se do kanálů, které tě zajímají.
 
-• *projekty*, na kterých aktuálně pracujeme, najdeš *<https://cesko.digital/projects|tady>*, mrkni, co z toho by tě zajímalo tématicky
-• každý z projektů má pak tady na Slacku svůj kanál #run... nebo #idea...
-• kanály pro *projekty na pomoc Ukrajině* začínají všechny na #ua- a kompletní přehled všech kanálů najdeš <https://airtable.com/shrcabjLk7GRHe0eN|tady>.
-• na *<https://cesko.digital/portal-dobrovolnika|Portálu dobrovolníka>* najdeš kromě poptávky výpomoci na projektech, na kterých pracujeme, také pozvánky na různé akce, které v komunitě a pro komunitu organizujeme
-• pokud tě na Portálu cokoliv zaujalo, neváhej se ozvat přímo kontaktní osobě
-• mrkni taky do oborových kanálů (jako je například <#CK3A3G7N2> nebo <#C01SGAG51NJ>), kde se objevují aktuální poptávky i na jednorázovou výpomoc v dané oblasti
-• poptávky od spřátelených neziskových organizací najdeš v kanálu <#CLVAH28P3>, takže doporučuji taky sledovat
-• posílám i odkaz na čtení <https://cesko-digital.atlassian.net/l/c/NJMJEPqR|o roli dobrovolníka> a o <https://cesko-digital.atlassian.net/l/c/W0UHmc2F|hodnotách Česko.Digital>
+💙 Chceš někomu vyjádřit díky? Využij kanál *<https://cesko-digital.slack.com/archives/CTMJPK71V|#thank-you>*.
 
-Doufám, že se ti u nás bude líbit!
-Pokud máš jakoukoliv otázku, neváhej se ptát, obrátit se taky můžeš bez ostychu na kohokoliv, kdo má za jménem ikonku :ceskodigital:
+💩 Nedaří se ti? Nejsi v tom a na to sám! Napiš nám do kanálu *<https://cesko-digital.slack.com/archives/C013V2TLMSB|#feeling-shit>*.
 
-Tak zatím! 🚀️
+🌱 Zajímá tě téma seberozvoje a duševní hygieny? Pak se zapoj do kanálu *<https://cesko-digital.slack.com/archives/C01KQDS64DA|#wellbeing-club>*.
 
-----------------
+*KDO SE O KOMUNITU STARÁ?*
 
-Hi! 👋️
+*Obrátit se můžeš bez ostychu na kohokoliv, kdo má za jménem ikonku „česko.digital“.* :ceskodigital: To jsou *<https://bit.ly/3X1HTuO|lidé, kteří náleží do kmenového týmu>* rozděleného do vícero oblastí.
 
-Welcome and thanks for joining us. Most of the stuff here is in Czech, but people usually have no trouble switching to English if needed. If you would like to join some project, just hop in its channel and ask if it’s OK to participate in English.
+*Jak je ve Slacku najít?* 🧐 Do vyhledávání zadej _support česko.digital_ a překlikni v hledání na _people_. Budeš tak mít vyfiltrované ty, kteří mají ve statusu nebo v popisu uvedeno *Support Česko.Digital*.
 
-Have fun! 🚀️
+Kdykoli si nebudeš vědět s něčím rady, napiš jim. Nikdy tě nenechají na holičkách. 🤝
+
+A co bude dál? Opět za 3 dny se vrhneme na představení jednotlivých projektů a kanálů jim určených. Tak zatím! 👋

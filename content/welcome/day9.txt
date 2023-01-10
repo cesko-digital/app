@@ -1,29 +1,38 @@
-Ahoj! Moc tě zdravím a vítám v naší komunitě! 👋️
+Ahoj! 👋 Tak jsem zase tady! 🤖 Dnes ti odhalím, na jakých skvělých věcech právě makáme a také ti ukážu, jaké tu najdeš projektové a oborové kanály.
 
-Mé jméno je _Greet Bot_ a jsem rád, že do toho jdeš s námi! Této komunitě pomáhám jako virtuální rádce 🤖️
-Náš tým se s tvým příchodem rozrostl o další skvělou posilu. Je chvályhodné, že chceš nadále rozšiřovat své zkušenosti a předávat světu super nápady a vize 💙️ 
-Představ se nám všem v kanálu <#CJVB0MVCM>. Můžeš zmínit své zkušenosti a dovednosti, ale rádi si přečteme něco i o tom, co tě baví a zajímá.
+*JAKÉ PROJEKTY TEĎ REALIZUJEME?*
 
-Vím, že se tady dá lehce zabloudit, a proto ti posílám ty *nejdůležitější informace, které by se ti teď mohly hodit*:
+👉 Aktuální přehled projektů, na kterých pracujeme, najdeš <https://bit.ly/3IBG7My|tady>.
 
-• *projekty*, na kterých aktuálně pracujeme, najdeš *<https://cesko.digital/projects|tady>*, mrkni, co z toho by tě zajímalo tématicky
-• každý z projektů má pak tady na Slacku svůj kanál #run... nebo #idea...
-• kanály pro *projekty na pomoc Ukrajině* začínají všechny na #ua- a kompletní přehled všech kanálů najdeš <https://airtable.com/shrcabjLk7GRHe0eN|tady>.
-• na *<https://cesko.digital/portal-dobrovolnika|Portálu dobrovolníka>* najdeš kromě poptávky výpomoci na projektech, na kterých pracujeme, také pozvánky na různé akce, které v komunitě a pro komunitu organizujeme
-• pokud tě na Portálu cokoliv zaujalo, neváhej se ozvat přímo kontaktní osobě
-• mrkni taky do oborových kanálů (jako je například <#CK3A3G7N2> nebo <#C01SGAG51NJ>), kde se objevují aktuální poptávky i na jednorázovou výpomoc v dané oblasti
-• poptávky od spřátelených neziskových organizací najdeš v kanálu <#CLVAH28P3>, takže doporučuji taky sledovat
-• posílám i odkaz na čtení <https://cesko-digital.atlassian.net/l/c/NJMJEPqR|o roli dobrovolníka> a o <https://cesko-digital.atlassian.net/l/c/W0UHmc2F|hodnotách Česko.Digital>
+Mrkni, co z toho by tě tematicky zajímalo.
 
-Doufám, že se ti u nás bude líbit!
-Pokud máš jakoukoliv otázku, neváhej se ptát, obrátit se taky můžeš bez ostychu na kohokoliv, kdo má za jménem ikonku :ceskodigital:
+*CHCEŠ SE DO NĚJAKÉHO ZAPOJIT?*
 
-Tak zatím! 🚀️
+Na konci stránky jednotlivých projektů jsou vypsané hledané pozice. Po rozkliknutí pozice v ní najdeš kontaktní osobu, které se neváhej ozvat.
 
-----------------
+Zaujal tě nějaký projekt, který nemá vypsanou pozici? Ozvi se týmu přímo do projektového kanálu ve Slacku.
 
-Hi! 👋️
+*JAK NAJÍT PROJEKTY ČESKO.DIGITAL VE SLACKU?*
 
-Welcome and thanks for joining us. Most of the stuff here is in Czech, but people usually have no trouble switching to English if needed. If you would like to join some project, just hop in its channel and ask if it’s OK to participate in English.
+Každý projekt má ve Slacku svůj kanál, který začíná 💡 *#idea-*, 👶 *#inkubace-* nebo 🏃‍♀️ *#run-*, například #run-jehlomat.
 
-Have fun! 🚀️
+💭 Taky se podívej do následujících kanálů, které prezentují naše interní projekty, a kde se také můžeš zapojit, ať už do copywritingu, střihu videí, tvorby brandu, připravování akcí, nebo jenom sledovat dění:
+
+*<https://cesko-digital.slack.com/archives/CSXGU7F0F|#core-team>* (bližší dění v kmenovém týmu a Česko.Digital)
+*<https://cesko-digital.slack.com/archives/C01FQBDMDGQ|#ceskodigital-obsah>* (obsahový tým, wiki) 
+*<https://cesko-digital.slack.com/archives/C02KTMXCXB6|#ceskodigital-produkce>* (produkční tým, wiki)
+*<https://cesko-digital.slack.com/archives/C010NH55J02|#ceskodigital-eventy>* (eventový tým, wiki)
+*<https://cesko-digital.slack.com/archives/CMAS7H63D|#ceskodigital-mktg>* (marketingový tým)
+*<https://cesko-digital.slack.com/archives/C02MGFHQD3L|#ceskodigital-brand>* (brandový tým, wiki)
+*<https://cesko-digital.slack.com/archives/CS7RPPVUL|#ceskodigital-tech>* (IT tým a technická stránka projektů)
+*<https://cesko-digital.slack.com/archives/C01S44WHHST|#run-ceskodigital_edu>* (komunitní vzdělávací projekt edu.digital, wiki)
+
+💡 *Tip!*
+
+Pokud chceš sledovat kanály projektů jen ve chvíli, kdy na to máš čas a chuť, *můžeš je ztišit* (klikneš pravým tlačítkem myši na název kanálu a dáš „Mute channel“) – odteď se ti novinky zobrazí jen v případě, že kanál otevřeš.
+
+📰 _Nech se inspirovat <https://bit.ly/3W4WCUp|příběhy 4 dobrovolnic, které Česko.Digital posunulo v kariéře>._
+
+Tak se neváhej zapojit! 💪
+
+A neboj, za 3 dny za tebou přijdu s tipy co dělat, když nenacházíš uplatnění!

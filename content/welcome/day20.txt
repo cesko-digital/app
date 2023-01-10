@@ -1,29 +1,43 @@
-Ahoj! Moc tě zdravím a vítám v naší komunitě! 👋️
+Ahoj! 🤖 Dnes ti ukážu, kde všude se o nás můžeš dozvědět více nebo kde nás je možností nás podpořit!
 
-Mé jméno je _Greet Bot_ a jsem rád, že do toho jdeš s námi! Této komunitě pomáhám jako virtuální rádce 🤖️
-Náš tým se s tvým příchodem rozrostl o další skvělou posilu. Je chvályhodné, že chceš nadále rozšiřovat své zkušenosti a předávat světu super nápady a vize 💙️ 
-Představ se nám všem v kanálu <#CJVB0MVCM>. Můžeš zmínit své zkušenosti a dovednosti, ale rádi si přečteme něco i o tom, co tě baví a zajímá.
+*WIKI ČESKO.DIGITAL ANEB NAŠE KNIHOVNIČKA*
 
-Vím, že se tady dá lehce zabloudit, a proto ti posílám ty *nejdůležitější informace, které by se ti teď mohly hodit*:
+Komunita č.d je obrovská a zorientovat se v tom všem může být náročné. Proto máme jedno místo a.k.a. naši *<https://bit.ly/3GwtO1n|Wiki>*, kde najdeš většinu potřebných informací, tipy, návody, naše hodnoty či popsané role na projektech. 🗒️
 
-• *projekty*, na kterých aktuálně pracujeme, najdeš *<https://cesko.digital/projects|tady>*, mrkni, co z toho by tě zajímalo tématicky
-• každý z projektů má pak tady na Slacku svůj kanál #run... nebo #idea...
-• kanály pro *projekty na pomoc Ukrajině* začínají všechny na #ua- a kompletní přehled všech kanálů najdeš <https://airtable.com/shrcabjLk7GRHe0eN|tady>.
-• na *<https://cesko.digital/portal-dobrovolnika|Portálu dobrovolníka>* najdeš kromě poptávky výpomoci na projektech, na kterých pracujeme, také pozvánky na různé akce, které v komunitě a pro komunitu organizujeme
-• pokud tě na Portálu cokoliv zaujalo, neváhej se ozvat přímo kontaktní osobě
-• mrkni taky do oborových kanálů (jako je například <#CK3A3G7N2> nebo <#C01SGAG51NJ>), kde se objevují aktuální poptávky i na jednorázovou výpomoc v dané oblasti
-• poptávky od spřátelených neziskových organizací najdeš v kanálu <#CLVAH28P3>, takže doporučuji taky sledovat
-• posílám i odkaz na čtení <https://cesko-digital.atlassian.net/l/c/NJMJEPqR|o roli dobrovolníka> a o <https://cesko-digital.atlassian.net/l/c/W0UHmc2F|hodnotách Česko.Digital>
+*SLEDUJ NÁS NA SOCIÁLNÍCH SÍTÍCH*
 
-Doufám, že se ti u nás bude líbit!
-Pokud máš jakoukoliv otázku, neváhej se ptát, obrátit se taky můžeš bez ostychu na kohokoliv, kdo má za jménem ikonku :ceskodigital:
+Nesmí ti nic uniknout? Tak sleduj náš *<https://www.facebook.com/cesko.digital|facebookový> a <https://www.instagram.com/cesko.digital/|instagramový> profil*, mrkni na *<https://www.linkedin.com/company/cesko-digital/|LinkedIn>*, chytej naše *<https://twitter.com/CeskoDigital|tweety>* a buď neustále v obraze! 😎
 
-Tak zatím! 🚀️
+*NEWSLETTERY ČESKO.DIGITAL*
 
-----------------
+📰 Měj neustále přehled o tom, co se u nás děje: *<https://cesko.digital/go/newsletters|odebírej naše newslettery>*, jako například měsíční newsletter číst.digital plný komunitních novinek a různorodého know-how či tipů nebo neziskový a náborový newsletter. 🔥
 
-Hi! 👋️
+*BLOG ČESKO.DIGITAL*
 
-Welcome and thanks for joining us. Most of the stuff here is in Czech, but people usually have no trouble switching to English if needed. If you would like to join some project, just hop in its channel and ask if it’s OK to participate in English.
+Chceš si přečíst články o nejrůznějších tématech kolem expertního dobrovolnictví, Česko.Digital, projektového řízení, well-beingu, a ještě ke všemu s užitečnými tipy a triky? Zajímají tě rozhovory s inspirativními osobnostmi? 👉 Pak *<https://bit.ly/3IxAC1A|náš blog>* je tím správným místem pro tebe!
 
-Have fun! 🚀️
+*PODCAST POSLOUCHAT.DIGITAL*
+
+Raději si novinky, které hýbou komunitou, poslechneš? Pak tu máme pro tebe podcast *<https://anchor.fm/poslouchatdigital|poslouchat.digital>* 🎧, kde se dozvíš zajímavosti z komunity a projektů, na kterých Česko.Digital pracuje.
+
+*EDU.DIGITAL NA YOUTUBE*
+
+Chceš se dále vzdělávat? 📚 Pak odebírej *<https://www.youtube.com/c/%C4%8CeskoDigital|náš YouTube kanál>* a podívej se na videa ze sekce *<https://www.youtube.com/c/%C4%8CeskoDigital/playlists|edu.digital>*.
+
+*EVENTY V KOMUNITĚ*
+
+Máš chuť se potkat? Rádi tě uvidíme! 👀 Mrkni na *<https://bit.ly/3vPXIsu|akce, které chystáme>*.
+
+*MERCH.DIGITAL*
+
+Chceš si udělat radost, potěšit někoho jiného a reprezentovat hrdě naši komunitu? Podívej se na *<https://bit.ly/3CBVKQq|náš merch>*! 💙
+
+*A CO BUDE DÁL?*
+
+Pokud se budeš chtít k jednotlivým krokům onboardingu vrátit a projít si je znovu, využij *<https://cesko-digital.atlassian.net/l/cp/iCcTnDwQ|checklist dobrovolníka>*.
+
+A nemusíš se bát – nikam nezmizím! 🤖 I nadále budeme v kontaktu.
+
+Pravidelně ti budu představovat další možnosti obecného fungování v komunitě a tipy jak zkrotit Slack a umět se v něm orientovat!
+
+Měj hezký den! 👋 A možná zase někdy na viděnou!
