@@ -1,0 +1,69 @@
+#!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
+
+import { getAllUserProfiles } from "lib/airtable/user-profile";
+import { join, resolve } from "path";
+import { readdirSync, readFileSync } from "fs";
+import { sendWelcomeMessage } from "lib/onboarding";
+
+/**
+ * Maximum number of recipients
+ *
+ * This is a simple sanity check to make sure we don’t message everyone in
+ * our Slack workspace by mistake.
+ */
+const maxUserCount = 50;
+
+async function sendWelcomeMessages() {
+  console.log("Downloading all user profiles, this may take a while.");
+  const allUsers = (await getAllUserProfiles())
+    // Only message users that have already joined Slack
+    .filter((user) => user.state === "confirmed")
+    // And make double sure we have those Slack IDs to message
+    .filter((user) => !!user.slackId);
+  for (const [day, message] of parseWelcomeMessages()) {
+    if (day === 0) {
+      // Zero-day welcome is sent directly after the user joins Slack
+      continue;
+    }
+    // Filter out users that have just joined `day` days ago
+    const recipients = allUsers.filter((u) => u.daysSinceRegistered === day);
+    console.log(
+      `Found ${recipients.length} users that have joined ${day} days ago.`
+    );
+    // Sanity check
+    if (recipients.length > maxUserCount) {
+      console.error(
+        "The number of recipients seems too high, refusing to message that many people."
+      );
+      continue;
+    }
+    // Send messages
+    for (const recipient of recipients) {
+      console.debug(
+        `Sending message for day #${day} to user ${recipient.slackId}.`
+      );
+      //sendWelcomeMessage(recipient.slackId!, message);
+    }
+  }
+}
+
+/** Find all files named `dayXY.txt` under `content/welcome` and return a list of [day, message] pairs */
+function parseWelcomeMessages() {
+  const dir = join(process.cwd(), "content", "welcome");
+  const messages: [number, string][] = [];
+  for (const entry of readdirSync(dir)) {
+    if (!entry.startsWith("day")) {
+      continue;
+    }
+    const matches = entry.match(/day(\d+)/);
+    if (matches && matches.length > 1) {
+      const [_, dayString] = matches;
+      const path = resolve(dir, entry);
+      const message = readFileSync(path, "utf-8");
+      messages.push([parseInt(dayString), message]);
+    }
+  }
+  return messages.sort(([a], [b]) => a - b);
+}
+
+sendWelcomeMessages().catch((error) => console.log(error));
