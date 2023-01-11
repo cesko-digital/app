@@ -1,4 +1,4 @@
-import { newsletterListId, subscribeToList } from "lib/ecomail";
+import { mainContactListId, subscribeToList } from "lib/ecomail";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (
@@ -21,7 +21,7 @@ const handler = async (
     const success = await subscribeToList(
       process.env.ECOMAIL_API_KEY || "",
       body.email,
-      newsletterListId,
+      mainContactListId,
       ["web-subscribe-form"]
     );
     if (!success) {

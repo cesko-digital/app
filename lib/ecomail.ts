@@ -11,7 +11,7 @@ import {
 } from "typescript-json-decoder";
 
 /** The Ecomail ID of our main newsletter list */
-export const newsletterListId = 2;
+export const mainContactListId = 2;
 
 /** All possible subscription states */
 export const subscriptionStates = [
@@ -84,7 +84,7 @@ export async function getSubscriber(
 export async function subscribeToList(
   apiKey: string,
   email: string,
-  listId = newsletterListId,
+  listId = mainContactListId,
   tags: string[] = []
 ): Promise<boolean> {
   const payload = {
@@ -106,7 +106,7 @@ export async function subscribeToList(
 export async function unsubscribeFromList(
   apiKey: string,
   email: string,
-  listId = newsletterListId
+  listId = mainContactListId
 ): Promise<boolean> {
   const response = await fetch(
     `https://api2.ecomailapp.cz/lists/${listId}/unsubscribe`,
@@ -130,7 +130,7 @@ export async function unsubscribeFromList(
 export async function addSubscribers(
   apiKey: string,
   emails: string[],
-  listId = newsletterListId
+  listId = mainContactListId
 ): Promise<void> {
   const maxBatchSize = 500;
   for (const batch of splitToChunks(emails, maxBatchSize)) {
