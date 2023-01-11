@@ -14,6 +14,21 @@ import {
 /** The Ecomail ID of our main newsletter list */
 export const mainContactListId = 2;
 
+/** The Ecomail ID of our primary preference group */
+export const mainPreferenceGroupId = "grp_6299c0823feb1";
+
+/** Our main preference group options */
+export const mainPreferenceGroupOptions = [
+  "číst.digital",
+  "náborový newsletter",
+  "neziskový newsletter",
+  "jen to nejdůležitější",
+] as const;
+
+/** Our main preference group options */
+export type MainPreferenceGroupOption =
+  typeof mainPreferenceGroupOptions[number];
+
 /** All possible subscription states */
 export const subscriptionStates = [
   "subscribed",
@@ -125,16 +140,36 @@ export async function getSubscriber(
     .then((w) => w.subscriber);
 }
 
-/** Subscribe contact to given list, will resubscribe if unsubcribed */
+/** Subscribe contact to given list */
 export async function subscribeToList(
   apiKey: string,
-  email: string,
-  listId = mainContactListId,
-  tags: string[] = []
+  subscription: {
+    /** Subscriber email */
+    email: string;
+    /** ID of the contact list to subscribe to, defaults to our main contact list */
+    listId?: number;
+    /** Tags to set */
+    tags?: string[];
+    /** Preference groups to set */
+    groups?: MainPreferenceGroupOption[];
+    /** Should the subscriber be resubscribed if needed? Defaults to `true`. */
+    resubscribe?: boolean;
+  }
 ): Promise<boolean> {
+  const {
+    email,
+    listId = mainContactListId,
+    tags = [],
+    groups = [],
+    resubscribe = true,
+  } = subscription;
   const payload = {
-    subscriber_data: { email, tags },
-    resubscribe: true,
+    subscriber_data: {
+      email,
+      tags,
+      groups: { [mainPreferenceGroupId]: groups },
+    },
+    resubscribe,
   };
   const response = await fetch(
     `https://api2.ecomailapp.cz/lists/${listId}/subscribe`,

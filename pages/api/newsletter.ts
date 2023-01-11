@@ -1,4 +1,4 @@
-import { mainContactListId, subscribeToList } from "lib/ecomail";
+import { subscribeToList } from "lib/ecomail";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (
@@ -18,12 +18,10 @@ const handler = async (
   }
 
   try {
-    const success = await subscribeToList(
-      process.env.ECOMAIL_API_KEY || "",
-      body.email,
-      mainContactListId,
-      ["web-subscribe-form"]
-    );
+    const success = await subscribeToList(process.env.ECOMAIL_API_KEY || "", {
+      email: body.email,
+      tags: ["web-subscribe-form"],
+    });
     if (!success) {
       response.status(500).send("Unexpected error");
       return;

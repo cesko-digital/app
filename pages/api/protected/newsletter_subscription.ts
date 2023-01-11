@@ -39,7 +39,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         const newSub = decodeRequest(request.body);
         switch (newSub.state) {
           case "subscribed":
-            await subscribeToList(apiKey, email, mainContactListId);
+            await subscribeToList(apiKey, { email });
             response.status(204).end();
             break;
           case "unsubscribed":
