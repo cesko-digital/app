@@ -1,6 +1,7 @@
 import { splitToChunks } from "./utils";
-import { decodeDictValues } from "./decoding";
+import { decodeDictValues, decodeObject } from "./decoding";
 import {
+  array,
   decodeType,
   field,
   nullable,
@@ -56,9 +57,53 @@ export const decodeSubscriber = record({
   lists: decodeDictValues(decodeSubscription),
 });
 
+/**
+ * A preference group used for segmenting a contact list
+ *
+ * https://support.ecomail.cz/cs/articles/2413441-preference-a-preferencni-skupiny
+ */
+export type Group = decodeType<typeof decodeGroup>;
+
+/** Decode preference group from API response */
+export const decodeGroup = record({
+  name: string,
+  category: array(
+    record({
+      name: string,
+      id: string,
+    })
+  ),
+});
+
+/** Contact list info */
+export type ListInfo = decodeType<typeof decodeListInfo>;
+
+/** Decode contact list info from API response */
+export const decodeListInfo = record({
+  id: number,
+  name: string,
+  groups: decodeObject(decodeGroup),
+});
+
 //
 // API Calls
 //
+
+/** Get contact list info */
+export async function getListInfo(
+  apiKey: string,
+  listId: string
+): Promise<ListInfo> {
+  const decodeWrapper = record({
+    list: decodeListInfo,
+  });
+  return await fetch(`https://api2.ecomailapp.cz/lists/${listId}`, {
+    headers: { key: apiKey },
+  })
+    .then((response) => response.json())
+    .then(decodeWrapper)
+    .then((response) => response.list);
+}
 
 /** Get subscriber info for given e-mail address */
 export async function getSubscriber(
