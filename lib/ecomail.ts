@@ -1,5 +1,10 @@
 import { splitToChunks } from "./utils";
-import { decodeDictValues, decodeObject, optionalArray } from "./decoding";
+import {
+  decodeDictValues,
+  decodeObject,
+  optionalArray,
+  withDefault,
+} from "./decoding";
 import {
   array,
   decodeType,
@@ -110,7 +115,8 @@ export const decodeContactListMember = record({
   listId: field("list_id", number),
   email: string,
   state: field("status", decodeSubscriptionStateCode),
-  subscribedAt: optional(field("subscribed_at", string)),
+  subscribedAt: field("subscribed_at", string),
+  groups: withDefault(decodeObject(array(string)), {}),
   subscriber: record({
     tags: optionalArray(string),
   }),
