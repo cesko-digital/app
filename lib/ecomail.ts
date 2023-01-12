@@ -1,17 +1,34 @@
 import { splitToChunks } from "./utils";
-import { decodeDictValues } from "./decoding";
+import { decodeDictValues, decodeObject, optionalArray } from "./decoding";
 import {
+  array,
   decodeType,
   field,
   nullable,
   number,
+  optional,
   Pojo,
   record,
   string,
 } from "typescript-json-decoder";
 
 /** The Ecomail ID of our main newsletter list */
-export const newsletterListId = 2;
+export const mainContactListId = 2;
+
+/** The Ecomail ID of our primary preference group */
+export const mainPreferenceGroupId = "grp_6299c0823feb1";
+
+/** Our main preference group options */
+export const mainPreferenceGroupOptions = [
+  "číst.digital",
+  "náborový newsletter",
+  "neziskový newsletter",
+  "jen to nejdůležitější",
+] as const;
+
+/** Our main preference group options */
+export type MainPreferenceGroupOption =
+  typeof mainPreferenceGroupOptions[number];
 
 /** All possible subscription states */
 export const subscriptionStates = [
@@ -56,9 +73,68 @@ export const decodeSubscriber = record({
   lists: decodeDictValues(decodeSubscription),
 });
 
+/**
+ * A preference group used for segmenting a contact list
+ *
+ * https://support.ecomail.cz/cs/articles/2413441-preference-a-preferencni-skupiny
+ */
+export type Group = decodeType<typeof decodeGroup>;
+
+/** Decode preference group from API response */
+export const decodeGroup = record({
+  name: string,
+  category: array(
+    record({
+      name: string,
+      id: string,
+    })
+  ),
+});
+
+/** Contact list info */
+export type ListInfo = decodeType<typeof decodeListInfo>;
+
+/** Decode contact list info from API response */
+export const decodeListInfo = record({
+  id: number,
+  name: string,
+  groups: decodeObject(decodeGroup),
+});
+
+/** Contact list member as returned by `lists/:id/subscribers`, for example */
+export type ContactListMember = decodeType<typeof decodeContactListMember>;
+
+/** Decode contact list member from API response */
+export const decodeContactListMember = record({
+  id: number,
+  listId: field("list_id", number),
+  email: string,
+  state: field("status", decodeSubscriptionStateCode),
+  subscribedAt: optional(field("subscribed_at", string)),
+  subscriber: record({
+    tags: optionalArray(string),
+  }),
+});
+
 //
 // API Calls
 //
+
+/** Get contact list info */
+export async function getListInfo(
+  apiKey: string,
+  listId: string
+): Promise<ListInfo> {
+  const decodeWrapper = record({
+    list: decodeListInfo,
+  });
+  return await fetch(`https://api2.ecomailapp.cz/lists/${listId}`, {
+    headers: { key: apiKey },
+  })
+    .then((response) => response.json())
+    .then(decodeWrapper)
+    .then((response) => response.list);
+}
 
 /** Get subscriber info for given e-mail address */
 export async function getSubscriber(
@@ -80,16 +156,44 @@ export async function getSubscriber(
     .then((w) => w.subscriber);
 }
 
-/** Subscribe contact to given list, will resubscribe if unsubcribed */
+/** Subscribe contact to given list */
 export async function subscribeToList(
   apiKey: string,
-  email: string,
-  listId = newsletterListId,
-  tags: string[] = []
+  subscription: {
+    /** Subscriber email */
+    email: string;
+    /** ID of the contact list to subscribe to, defaults to our main contact list */
+    listId?: number;
+    /**
+     * Tags to set
+     *
+     * NOTE: The value will overwrite any existing tags.
+     */
+    tags?: string[];
+    /**
+     * Preference groups to set
+     *
+     * NOTE: The value will overwrite any existing groups.
+     */
+    groups?: MainPreferenceGroupOption[];
+    /** Should the subscriber be resubscribed if needed? Defaults to `true`. */
+    resubscribe?: boolean;
+  }
 ): Promise<boolean> {
+  const {
+    email,
+    listId = mainContactListId,
+    tags,
+    groups,
+    resubscribe = true,
+  } = subscription;
   const payload = {
-    subscriber_data: { email, tags },
-    resubscribe: true,
+    subscriber_data: {
+      email,
+      tags,
+      groups: groups ? { [mainPreferenceGroupId]: groups } : undefined,
+    },
+    resubscribe,
   };
   const response = await fetch(
     `https://api2.ecomailapp.cz/lists/${listId}/subscribe`,
@@ -106,7 +210,7 @@ export async function subscribeToList(
 export async function unsubscribeFromList(
   apiKey: string,
   email: string,
-  listId = newsletterListId
+  listId = mainContactListId
 ): Promise<boolean> {
   const response = await fetch(
     `https://api2.ecomailapp.cz/lists/${listId}/unsubscribe`,
@@ -130,7 +234,7 @@ export async function unsubscribeFromList(
 export async function addSubscribers(
   apiKey: string,
   emails: string[],
-  listId = newsletterListId
+  listId = mainContactListId
 ): Promise<void> {
   const maxBatchSize = 500;
   for (const batch of splitToChunks(emails, maxBatchSize)) {
@@ -152,6 +256,48 @@ async function addSingleBatchOfSubscribers(
     body: JSON.stringify(payload),
     headers: jsonHeaders(apiKey),
   });
+}
+
+/** Get contact list members */
+export async function getContactListMembers(
+  apiKey: string,
+  listId: number
+): Promise<ContactListMember[]> {
+  const decodeEnvelope = record({
+    last_page: number,
+    per_page: number,
+    current_page: number,
+    next_page_url: nullable(string),
+    data: array(decodeContactListMember),
+  });
+
+  // Download all pages
+  let members: ContactListMember[] = [];
+  let page = 0;
+  while (1) {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      per_page: "1000",
+    });
+    const envelope = await fetch(
+      `http://api2.ecomailapp.cz/lists/${listId}/subscribers?${params}`,
+      {
+        headers: { key: apiKey },
+      }
+    )
+      .then((response) => response.json())
+      .then(decodeEnvelope);
+    members.push(...envelope.data);
+    if (page++ == envelope.last_page) {
+      break;
+    }
+  }
+
+  // The API somehow returns duplicate values, let’s filter them out using the ID
+  let membersByID: Record<number, ContactListMember> = {};
+  members.forEach((m) => (membersByID[m.id] = m));
+
+  return Object.values(membersByID);
 }
 
 //

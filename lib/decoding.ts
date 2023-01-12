@@ -5,6 +5,7 @@ import {
   DecoderFunction,
   decodeType,
   dict,
+  nil,
   Pojo,
   string,
   undef,
@@ -27,10 +28,10 @@ export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
   };
 };
 
-/** Decode `undefined` as an empty array */
+/** Decode `undefined` and `null` as an empty array */
 export const optionalArray = <T>(itemDecoder: DecoderFunction<T>) => {
   return (value: Pojo) => {
-    const decoder = union(undef, array(itemDecoder));
+    const decoder = union(undef, nil, array(itemDecoder));
     const decoded = decoder(value);
     return decoded ?? [];
   };

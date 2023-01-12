@@ -3,7 +3,7 @@ import { getToken } from "next-auth/jwt";
 import { decodeType, record, union } from "typescript-json-decoder";
 import {
   getSubscriber,
-  newsletterListId,
+  mainContactListId,
   subscribeToList,
   subscriptionStates,
   unsubscribeFromList,
@@ -27,7 +27,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
       case "GET":
         const subscriber = await getSubscriber(apiKey, email);
         const previousSub = subscriber.lists.find(
-          (list) => list.listId === newsletterListId
+          (list) => list.listId === mainContactListId
         );
         const subscription: SubscriptionResponse = {
           state: previousSub?.state || "unsubscribed",
@@ -39,11 +39,11 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         const newSub = decodeRequest(request.body);
         switch (newSub.state) {
           case "subscribed":
-            await subscribeToList(apiKey, email, newsletterListId);
+            await subscribeToList(apiKey, { email });
             response.status(204).end();
             break;
           case "unsubscribed":
-            await unsubscribeFromList(apiKey, email, newsletterListId);
+            await unsubscribeFromList(apiKey, email, mainContactListId);
             response.status(204).end();
             break;
           default:
