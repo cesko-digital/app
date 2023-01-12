@@ -1,11 +1,12 @@
 import { splitToChunks } from "./utils";
-import { decodeDictValues, decodeObject } from "./decoding";
+import { decodeDictValues, decodeObject, optionalArray } from "./decoding";
 import {
   array,
   decodeType,
   field,
   nullable,
   number,
+  optional,
   Pojo,
   record,
   string,
@@ -98,6 +99,21 @@ export const decodeListInfo = record({
   id: number,
   name: string,
   groups: decodeObject(decodeGroup),
+});
+
+/** Contact list member as returned by `lists/:id/subscribers`, for example */
+export type ContactListMember = decodeType<typeof decodeContactListMember>;
+
+/** Decode contact list member from API response */
+export const decodeContactListMember = record({
+  id: number,
+  listId: field("list_id", number),
+  email: string,
+  state: field("status", decodeSubscriptionStateCode),
+  subscribedAt: optional(field("subscribed_at", string)),
+  subscriber: record({
+    tags: optionalArray(string),
+  }),
 });
 
 //
@@ -232,6 +248,48 @@ async function addSingleBatchOfSubscribers(
     body: JSON.stringify(payload),
     headers: jsonHeaders(apiKey),
   });
+}
+
+/** Get contact list members */
+export async function getContactListMembers(
+  apiKey: string,
+  listId: number
+): Promise<ContactListMember[]> {
+  const decodeEnvelope = record({
+    last_page: number,
+    per_page: number,
+    current_page: number,
+    next_page_url: nullable(string),
+    data: array(decodeContactListMember),
+  });
+
+  // Download all pages
+  let members: ContactListMember[] = [];
+  let page = 0;
+  while (1) {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      per_page: "1000",
+    });
+    const envelope = await fetch(
+      `http://api2.ecomailapp.cz/lists/${listId}/subscribers?${params}`,
+      {
+        headers: { key: apiKey },
+      }
+    )
+      .then((response) => response.json())
+      .then(decodeEnvelope);
+    members.push(...envelope.data);
+    if (page++ == envelope.last_page) {
+      break;
+    }
+  }
+
+  // The API somehow returns duplicate values, let’s filter them out using the ID
+  let membersByID: Record<number, ContactListMember> = {};
+  members.forEach((m) => (membersByID[m.id] = m));
+
+  return Object.values(membersByID);
 }
 
 //
