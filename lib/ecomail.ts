@@ -164,9 +164,17 @@ export async function subscribeToList(
     email: string;
     /** ID of the contact list to subscribe to, defaults to our main contact list */
     listId?: number;
-    /** Tags to set */
+    /**
+     * Tags to set
+     *
+     * NOTE: The value will overwrite any existing tags.
+     */
     tags?: string[];
-    /** Preference groups to set */
+    /**
+     * Preference groups to set
+     *
+     * NOTE: The value will overwrite any existing groups.
+     */
     groups?: MainPreferenceGroupOption[];
     /** Should the subscriber be resubscribed if needed? Defaults to `true`. */
     resubscribe?: boolean;
@@ -175,15 +183,15 @@ export async function subscribeToList(
   const {
     email,
     listId = mainContactListId,
-    tags = [],
-    groups = [],
+    tags,
+    groups,
     resubscribe = true,
   } = subscription;
   const payload = {
     subscriber_data: {
       email,
       tags,
-      groups: { [mainPreferenceGroupId]: groups },
+      groups: groups ? { [mainPreferenceGroupId]: groups } : undefined,
     },
     resubscribe,
   };
