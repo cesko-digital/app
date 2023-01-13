@@ -19,13 +19,13 @@ Každý projekt má ve Slacku svůj kanál, který začíná 💡 *#idea-*, 👶
 💭 Taky se podívej do následujících kanálů, které prezentují naše interní projekty, a kde se také můžeš zapojit, ať už do copywritingu, střihu videí, tvorby brandu, připravování akcí, nebo jenom sledovat dění:
 
 *<https://cesko-digital.slack.com/archives/CSXGU7F0F|#core-team>* (bližší dění v kmenovém týmu a Česko.Digital)
-*<https://cesko-digital.slack.com/archives/C01FQBDMDGQ|#ceskodigital-obsah>* (obsahový tým, wiki) 
-*<https://cesko-digital.slack.com/archives/C02KTMXCXB6|#ceskodigital-produkce>* (produkční tým, wiki)
-*<https://cesko-digital.slack.com/archives/C010NH55J02|#ceskodigital-eventy>* (eventový tým, wiki)
+*<https://cesko-digital.slack.com/archives/C01FQBDMDGQ|#ceskodigital-obsah>* (obsahový tým, <https://cesko-digital.atlassian.net/wiki/spaces/RED/overview|wiki>) 
+*<https://cesko-digital.slack.com/archives/C02KTMXCXB6|#ceskodigital-produkce>* (produkční tým, <https://cesko-digital.atlassian.net/wiki/spaces/produkceCD/overview|wiki>)
+*<https://cesko-digital.slack.com/archives/C010NH55J02|#ceskodigital-eventy>* (eventový tým, <https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/815235201/Eventy+v+esko.Digital|wiki>)
 *<https://cesko-digital.slack.com/archives/CMAS7H63D|#ceskodigital-mktg>* (marketingový tým)
-*<https://cesko-digital.slack.com/archives/C02MGFHQD3L|#ceskodigital-brand>* (brandový tým, wiki)
+*<https://cesko-digital.slack.com/archives/C02MGFHQD3L|#ceskodigital-brand>* (brandový tým, <https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/816840819|wiki>)
 *<https://cesko-digital.slack.com/archives/CS7RPPVUL|#ceskodigital-tech>* (IT tým a technická stránka projektů)
-*<https://cesko-digital.slack.com/archives/C01S44WHHST|#run-ceskodigital_edu>* (komunitní vzdělávací projekt edu.digital, wiki)
+*<https://cesko-digital.slack.com/archives/C01S44WHHST|#run-ceskodigital_edu>* (komunitní vzdělávací projekt edu.digital, <https://cesko-digital.atlassian.net/wiki/spaces/VWE/overview|wiki>)
 
 💡 *Tip!*
 

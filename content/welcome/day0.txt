@@ -36,6 +36,7 @@ Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží
 • Komunikujeme spolu slušně, věcně a konstruktivně.
 • Pro přehlednost a transparentnost komunikace využíváme „thread“ 💬 (vlákno komentářů u dané zprávy).
 • Pomocí zavináče *@* označujeme konkrétní osoby a pomocí hashtagu *#* konkrétní kanál.
-• A podrobný návod jak na Slack najdeš tady.
+
+A podrobný návod jak na Slack najdeš <https://cesko-digital.atlassian.net/l/cp/3s271A04|tady>.
 
 Máme za sebou první informační nálož! 💣 Zatím se u nás v klidu porozhlédni. Brzy jsem zpět s novými tipy a triky. 🤩 Tak ahoj a brzy na viděnou! 👋
