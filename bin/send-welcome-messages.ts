@@ -43,7 +43,7 @@ async function sendWelcomeMessages() {
         console.debug(
           `Sending message for day #${day} to user ${recipient.slackId}.`
         );
-        //sendWelcomeMessage(recipient.slackId!, message);
+        sendWelcomeMessage(recipient.slackId!, message);
       } else {
         console.debug(
           `Skipping ${recipient.slackId}, user too old to qualify (joined at ${recipient.createdAt}).`
@@ -62,7 +62,7 @@ async function sendWelcomeMessages() {
 function qualifiesForWelcomeMessages(user: UserProfile): boolean {
   if (user.createdAt) {
     const creationDate = new Date(user.createdAt);
-    const featureLaunchDate = new Date(2023, 0, 10);
+    const featureLaunchDate = new Date(2023, 0, 16);
     return creationDate > featureLaunchDate;
   } else {
     return false;
