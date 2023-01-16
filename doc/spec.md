@@ -69,3 +69,31 @@ sequenceDiagram
     Backend->>-Slack: Pozdrav uživatele
     Slack->>Uživatel: Greet Bot: 👋
 ```
+
+## E-maily
+
+U každého uživatele vedeme v principu až tři e-mailové adresy:
+
+- _Registrační e-mail_ vyplní uživatel v onboardovacím formuláři (join.cesko.digital).
+  V databázi jde o pole `email` v tabulce `User Profiles`.
+- Následně uživatel během onboardingu do Slacku vyplní druhý e-mail, říkejme mu třeba
+  _slackový_. V ideálním případě je stejný jako ten předchozí, ale v reálu uživatelé běžně
+  zadávají jiný (například ten, na který už mají zřízený jiný slackový účet).
+  V databázi jde o pole `email` v tabulce `Slack Users`.
+- Třetí email jde vyplnit v profilu Slacku, říkejme mu třeba _kontaktní_. V databázi ukládáme
+  do pole `contactEmail` v tabulce `Slack Users` (které pro pohodlí zobrazujeme i v tabulce `User Profiles`).
+
+Poznámky k využití jednotlivých adres:
+
+- Obecně pracujeme s prvními dvěma adresami jako neveřejnými a teprve ta třetí je určená
+  pro běžné zobrazení.
+- Historicky jsme měli nejdřív pouze registrační e-maily ze Slacku, a právě ty jsme proto
+  synchronizovali do Ecomailu, abychom členům komunity mohli rozesílat newsletter. Zhruba od
+  začátku roku 2023 se už ale uživatelé přihlašují do Ecomailu sami prostřednictvím formuláře
+  (viz https://cesko.digital/go/newsletters), kde můžou vyplnit libovolný e-mail.
+- Pokud se uživatel přihlašuje přes Slack k našemu webu, součástí JWT tokenu, který přihlášením
+  vznikne, je jeho slackový mail.
+- Přímo měnit může uživatel svůj slackový mail ([viz tady](https://slack.com/help/articles/207262907-Change-your-email-address))
+  a kontaktní mail (v profilu na Slacku).
+- Ověřený je pouze slackový mail, náš registrační mail ani kontaktní mail ze slackového profilu
+  zatím neověřujeme.
