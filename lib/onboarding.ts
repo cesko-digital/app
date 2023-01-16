@@ -84,8 +84,8 @@ export async function sendWelcomeMessage(
   slackId: string,
   message: string | undefined = undefined
 ) {
-  const contentFolder = join(process.cwd(), "content");
-  const welcomeMessagePath = join(contentFolder, "welcome.txt");
+  const contentFolder = join(process.cwd(), "content", "welcome");
+  const welcomeMessagePath = join(contentFolder, "day0.txt");
   const defaultMessage = fs.readFileSync(welcomeMessagePath, "utf-8");
   await sendDirectMessage(
     SLACK_GREET_BOT_TOKEN,
