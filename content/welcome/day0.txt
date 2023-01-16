@@ -2,6 +2,8 @@ Ahoj! 👋 Moc tě zdravím a vítám v naší komunitě! 💙 Mám velikou rado
 
 Mé jméno je GreetBot. 🤖 Této komunitě pomáhám jako virtuální rádce. Provedu tě naším hlavním komunikačním nástrojem Slack a ukážu ti, jak v komunitě fungujeme.
 
+—
+
 *JAK SE KOMUNITĚ PŘEDSTAVIT?*
 
 Předtím než se vrhneš do projektových vod jednotlivých kanálů, *vyplň prosím svůj profil ve Slacku*. 🦸‍♂️ V pravém horním rohu klikni na svou fotku. Rozbalí se ti menu, skrze které se dostaneš na svůj profil.
@@ -13,6 +15,8 @@ Pochlub se nám:
 • *časovými možnostmi* 🕔, které můžeš projektům Česko.Digital věnovat. 
 
 Můžeš případně přidat i *e-mail* 📧, *telefon* 📞 nebo odkazy na různé sítě či tvůj web.
+
+—
 
 *JAKÉ SLACK KANÁLY U NÁS NAJDEŠ?*
 
@@ -30,6 +34,8 @@ Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží
 
 *V kanále <https://cesko-digital.slack.com/archives/CJVB0MVCM|#introductions> se nám prosím krátce představ.* 👋 Můžeš zmínit své zkušenosti a dovednosti a to, do čeho se například chceš zapojit. Rádi si také přečteme o tom, co tě baví a zajímá. Na základě těchto informací se ti může ozvat někdo z komunity, kdo pro tebe najde vhodné uplatnění (kanál totiž sledují lidé z různých projektů).
 
+—
+
 *JAK TADY FUNGUJEME?*
 
 💎 Tady jsou *pravidla komunikace* ve Slacku:
@@ -38,5 +44,7 @@ Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží
 • Pomocí zavináče *@* označujeme konkrétní osoby a pomocí hashtagu *#* konkrétní kanál.
 
 A podrobný návod jak na Slack najdeš <https://cesko-digital.atlassian.net/l/cp/3s271A04|tady>.
+
+—
 
 Máme za sebou první informační nálož! 💣 Zatím se u nás v klidu porozhlédni. Brzy jsem zpět s novými tipy a triky. 🤩 Tak ahoj a brzy na viděnou! 👋
