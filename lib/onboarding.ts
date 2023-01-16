@@ -1,7 +1,8 @@
 import { getSlackUser, isRegularUser } from "lib/slack/user";
 import { upsertSlackUser } from "lib/airtable/slack-user";
 import { sendDirectMessage } from "./slack/message";
-import { join } from "path";
+import { join, resolve } from "path";
+import { readdirSync, readFileSync } from "fs";
 import fs from "fs";
 import {
   getUserProfileByMail,
@@ -92,4 +93,23 @@ export async function sendWelcomeMessage(
     slackId,
     message || defaultMessage
   );
+}
+
+/** Find all files named `dayXY.txt` under `content/welcome` and return a list of [day, message] pairs */
+export function parseWelcomeMessages() {
+  const dir = join(process.cwd(), "content", "welcome");
+  const messages: [number, string][] = [];
+  for (const entry of readdirSync(dir)) {
+    if (!entry.startsWith("day")) {
+      continue;
+    }
+    const matches = entry.match(/day(\d+)/);
+    if (matches && matches.length > 1) {
+      const [_, dayString] = matches;
+      const path = resolve(dir, entry);
+      const message = readFileSync(path, "utf-8");
+      messages.push([parseInt(dayString), message]);
+    }
+  }
+  return messages.sort(([a], [b]) => a - b);
 }

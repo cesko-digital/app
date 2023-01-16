@@ -1,9 +1,7 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { getAllUserProfiles, UserProfile } from "lib/airtable/user-profile";
-import { join, resolve } from "path";
-import { readdirSync, readFileSync } from "fs";
-import { sendWelcomeMessage } from "lib/onboarding";
+import { parseWelcomeMessages, sendWelcomeMessage } from "lib/onboarding";
 
 /**
  * Maximum number of recipients
@@ -67,25 +65,6 @@ function qualifiesForWelcomeMessages(user: UserProfile): boolean {
   } else {
     return false;
   }
-}
-
-/** Find all files named `dayXY.txt` under `content/welcome` and return a list of [day, message] pairs */
-function parseWelcomeMessages() {
-  const dir = join(process.cwd(), "content", "welcome");
-  const messages: [number, string][] = [];
-  for (const entry of readdirSync(dir)) {
-    if (!entry.startsWith("day")) {
-      continue;
-    }
-    const matches = entry.match(/day(\d+)/);
-    if (matches && matches.length > 1) {
-      const [_, dayString] = matches;
-      const path = resolve(dir, entry);
-      const message = readFileSync(path, "utf-8");
-      messages.push([parseInt(dayString), message]);
-    }
-  }
-  return messages.sort(([a], [b]) => a - b);
 }
 
 sendWelcomeMessages().catch((error) => console.log(error));

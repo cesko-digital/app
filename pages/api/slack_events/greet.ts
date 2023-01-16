@@ -1,4 +1,4 @@
-import { sendWelcomeMessage } from "lib/onboarding";
+import { parseWelcomeMessages, sendWelcomeMessage } from "lib/onboarding";
 import { NextApiRequest, NextApiResponse } from "next";
 
 /**
@@ -9,7 +9,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { user_id, text } = request.body;
   if (user_id) {
-    if (text) {
+    if (text.startsWith("day")) {
+      const messages = parseWelcomeMessages();
+      for (const [day, msg] of messages) {
+        if (text === `day${day}.txt`) {
+          await sendWelcomeMessage(user_id, msg);
+        }
+      }
+    } else if (text) {
       await sendWelcomeMessage(user_id, decodeURIComponent(text));
     } else {
       await sendWelcomeMessage(user_id);
