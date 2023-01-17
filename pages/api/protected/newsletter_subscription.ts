@@ -20,13 +20,20 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   const { method } = request;
 
   const apiKey = process.env.ECOMAIL_API_KEY || "";
+
+  // The e-mail address here is a bit tricky. This is the e-mail used to sign in
+  // to Slack, which may or may not be the same as the one we use for newsletter
+  // subscription. We’re not sure what to do with this, see the following ticket
+  // for details: https://github.com/cesko-digital/web/issues/706
   const email = token.email!;
 
   try {
     switch (method) {
       case "GET":
-        const subscriber = await getSubscriber(apiKey, email);
-        const previousSub = subscriber.lists.find(
+        // This may be a 404 in case there is no previous subscriber with this
+        // e-mail. In that case we catch the error and report the case as unsubscribed.
+        const subscriber = await getSubscriber(apiKey, email).catch(() => null);
+        const previousSub = subscriber?.lists.find(
           (list) => list.listId === mainContactListId
         );
         const subscription: SubscriptionResponse = {
@@ -39,7 +46,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         const newSub = decodeRequest(request.body);
         switch (newSub.state) {
           case "subscribed":
-            await subscribeToList(apiKey, { email });
+            await subscribeToList(apiKey, { email, groups: ["číst.digital"] });
             response.status(204).end();
             break;
           case "unsubscribed":
