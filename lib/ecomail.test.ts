@@ -70,6 +70,7 @@ test("Decode subscriber", () => {
       {
         listId: 2,
         state: "subscribed",
+        groups: {},
       },
     ],
   });
@@ -100,5 +101,6 @@ test("Decode subscription", () => {
   expect(decodeSubscription(payload)).toEqual<Subscription>({
     listId: 2,
     state: "subscribed",
+    groups: {},
   });
 });
