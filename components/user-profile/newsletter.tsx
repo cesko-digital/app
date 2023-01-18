@@ -1,144 +1,128 @@
-import { SubscriptionState } from "lib/ecomail";
+import { mainPreferenceGroupOptions, NewsletterPreferences } from "lib/ecomail";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export type Props = {
-  getSubscription: () => Promise<SubscriptionState>;
-  subscribe: () => Promise<void>;
-  unsubscribe: () => Promise<void>;
+  getPreferences: () => Promise<NewsletterPreferences>;
+  setPreferences: (preferences: NewsletterPreferences) => Promise<void>;
 };
 
-export type State =
-  | { tag: "loading" }
-  | { tag: "loaded"; subscriptionState: SubscriptionState }
-  | { tag: "load_failed" }
-  | { tag: "subscribing" }
-  | { tag: "unsubscribing" };
+export type Model = {
+  state: "updating" | "ready" | "error";
+  preferences: NewsletterPreferences;
+};
 
 export const NewsletterPrefs: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>({ tag: "loading" });
-  const { subscribe, unsubscribe, getSubscription } = props;
+  const emptyPreferences: NewsletterPreferences = {
+    subscribe: false,
+    subscribedGroups: [],
+  };
 
+  const { data: session } = useSession();
+  const { getPreferences, setPreferences } = props;
+  const [model, setModel] = useState<Model>({
+    preferences: emptyPreferences,
+    state: "updating",
+  });
+
+  // Initial load
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const subscriptionState = await getSubscription();
-        setState({ tag: "loaded", subscriptionState });
+        const preferences = await getPreferences();
+        setModel({ state: "ready", preferences });
       } catch (e) {
         console.error(e);
-        setState({ tag: "load_failed" });
+        setModel((model) => ({ ...model, state: "error" }));
       }
     };
     fetchStatus();
-  }, [getSubscription]);
+  }, [getPreferences]);
 
-  const triggerSubscribe = async () => {
-    setState({ tag: "subscribing" });
-    try {
-      await subscribe();
-      setState({ tag: "loaded", subscriptionState: "subscribed" });
-    } catch (e) {
-      console.error(e);
-      setState({ tag: "loaded", subscriptionState: "unsubscribed" });
-    }
-  };
-
-  const triggerUnsubscribe = async () => {
-    setState({ tag: "unsubscribing" });
-    try {
-      await unsubscribe();
-      setState({ tag: "loaded", subscriptionState: "unsubscribed" });
-    } catch (e) {
-      console.error(e);
-      setState({ tag: "loaded", subscriptionState: "subscribed" });
-    }
-  };
-
-  const subscribedMsg = <p>Jsi přihlášen(a) k odběru měsíčního newsletteru.</p>;
-  const unsubscribedMsg = (
-    <p>Nejsi přihlášen(a) k odběru měsíčního newsletteru.</p>
-  );
-
-  switch (state.tag) {
-    case "loading":
-      return (
-        <Section>
-          <p>Odběr newsletteru: zjišťuji stav…</p>
-        </Section>
-      );
-    case "load_failed":
-      return (
-        <Section>
-          <p>Stav newsletteru se nepovedlo načíst. Zkus obnovit stránku?</p>
-        </Section>
-      );
-    case "loaded":
-      switch (state.subscriptionState) {
-        case "subscribed":
-          return (
-            <Section>
-              {subscribedMsg}
-              <ActionButton onClick={triggerUnsubscribe} type="unsubscribe" />
-              <HelpInfo />
-            </Section>
-          );
-        case "unsubscribed":
-          return (
-            <Section>
-              {unsubscribedMsg}
-              <ActionButton onClick={triggerSubscribe} type="subscribe" />
-              <HelpInfo />
-            </Section>
-          );
-        default:
-          return (
-            <Section>
-              <p>
-                Newsletter máš v nějakém zvláštním stavu (
-                <code>{state.subscriptionState}</code>). Můžeš se ozvat v kanálu
-                #support? Díky!
-              </p>
-            </Section>
-          );
+  // Update
+  const updatePreferences = (newPrefs: NewsletterPreferences) => {
+    const writeChanges = async () => {
+      const originalPrefs = { ...model.preferences };
+      try {
+        setModel({ state: "updating", preferences: newPrefs });
+        await setPreferences(newPrefs);
+        setModel((m) => ({ ...m, state: "ready" }));
+      } catch (e) {
+        console.error(e);
+        setModel({ state: "ready", preferences: originalPrefs });
       }
-    case "subscribing":
-      return (
-        <Section>
-          {unsubscribedMsg}
-          <ActionButton type="subscribe" loading />
-        </Section>
-      );
-    case "unsubscribing":
-      return (
-        <Section>
-          {subscribedMsg}
-          <ActionButton type="unsubscribe" loading />
-        </Section>
-      );
-  }
-};
+    };
+    writeChanges();
+  };
 
-type ActionButtonProps = {
-  type: "subscribe" | "unsubscribe";
-  onClick?: () => {};
-  loading?: boolean;
-};
+  const disablePolicyControls = model.state !== "ready";
+  const disableGroupControls =
+    model.state !== "ready" || !model.preferences.subscribe;
 
-const ActionButton: React.FC<ActionButtonProps> = ({
-  type,
-  onClick = undefined,
-  loading = false,
-}) => {
-  const regularLabel =
-    type === "subscribe" ? "Přihlásit k odběru" : "Odhlásit newsletter";
-  const loadingLabel = type === "subscribe" ? "Přihlašuji…" : "Odhlašuji…";
-  const kind = loading ? "btn-disabled" : "btn-primary";
   return (
-    <div className="mt-10 mb-5">
-      <button className={kind} onClick={onClick}>
-        {loading ? loadingLabel : regularLabel}
-      </button>
-    </div>
+    <>
+      <Section>
+        <p>
+          K odběru našich newsletterů je třeba odsouhlasit{" "}
+          <a
+            href="https://cesko.digital/go/newsletter-privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            podmínky zpracování osobních údajů
+          </a>
+          . Souhlas můžeš kdykoliv zrušit, odhlásíš tím odběr všech našich
+          newsletterů.
+        </p>
+        <div>
+          <label key="policy" className="flex items-center">
+            <input
+              checked={model.preferences.subscribe}
+              type="checkbox"
+              className="mr-3"
+              disabled={disablePolicyControls}
+              onChange={(e) =>
+                updatePreferences({
+                  ...model.preferences,
+                  subscribe: e.target.checked,
+                })
+              }
+            ></input>
+            Souhlasím, posílejte!
+          </label>
+        </div>
+      </Section>
+
+      <Section>
+        <p>Které naše newslettery chceš na {session?.user?.email} dostávat?</p>
+        <div className="mb-10">
+          {mainPreferenceGroupOptions.map((name) => (
+            <label key={name} className="flex items-center">
+              <input
+                checked={model.preferences.subscribedGroups.includes(name)}
+                type="checkbox"
+                className="mr-3"
+                disabled={disableGroupControls}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  const updatedGroups = checked
+                    ? [...model.preferences.subscribedGroups, name]
+                    : model.preferences.subscribedGroups.filter(
+                        (g) => g !== name
+                      );
+                  updatePreferences({
+                    ...model.preferences,
+                    subscribedGroups: updatedGroups,
+                  });
+                }}
+              ></input>
+              {name}
+            </label>
+          ))}
+        </div>
+        <HelpInfo />
+      </Section>
+    </>
   );
 };
 
@@ -159,5 +143,5 @@ const HelpInfo = () => {
 };
 
 const Section: React.FC = ({ children }) => (
-  <section className="text-lg">{children}</section>
+  <section className="text-lg max-w-prose">{children}</section>
 );

@@ -1,8 +1,10 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { UserProfile } from "lib/airtable/user-profile";
-import { SubscriptionState, subscriptionStates } from "lib/ecomail";
-import { record, union } from "typescript-json-decoder";
+import {
+  decodeNewsletterPreferences,
+  NewsletterPreferences,
+} from "lib/ecomail";
 import { encodeSkillSelection, SkillSelection } from "lib/skills";
 import skillMenu from "content/skills.json";
 import {
@@ -53,9 +55,8 @@ const Page = () => {
       signOut={() => signOut({ callbackUrl: "/" })}
       onSkillSelectionChange={updateUserSkills}
       newsletterProps={{
-        getSubscription: getNewsletterSubscription,
-        subscribe: subscribeNewsletter,
-        unsubscribe: unsubscribeNewsletter,
+        getPreferences,
+        setPreferences,
       }}
     />
   );
@@ -83,29 +84,22 @@ async function updateUserSkills(selection: SkillSelection): Promise<void> {
 // Newsletter
 //
 
-async function getNewsletterSubscription(): Promise<SubscriptionState> {
-  const decodeSubscriptionState = union(...subscriptionStates);
-  const decodeSubscriptionResponse = record({ state: decodeSubscriptionState });
-  return await fetch("/api/protected/newsletter_subscription")
-    .then((res) => res.json())
-    .then(decodeSubscriptionResponse)
-    .then((res) => res.state);
-}
+const getPreferences = async () =>
+  await fetch("/api/protected/newsletter_subscription")
+    .then((response) => response.json())
+    .then(decodeNewsletterPreferences);
 
-async function updateNewsletterSubscription(
-  state: SubscriptionState
-): Promise<void> {
+const setPreferences = async (preferences: NewsletterPreferences) =>
   await fetch("/api/protected/newsletter_subscription", {
     method: "POST",
-    body: JSON.stringify({ state }),
+    body: JSON.stringify(preferences),
     headers: {
       "Content-Type": "application/json",
     },
+  }).then((response) => {
+    if (!response.ok) {
+      throw response;
+    }
   });
-}
-
-const subscribeNewsletter = () => updateNewsletterSubscription("subscribed");
-const unsubscribeNewsletter = () =>
-  updateNewsletterSubscription("unsubscribed");
 
 export default Page;
