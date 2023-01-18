@@ -7,14 +7,15 @@ import {
 } from "./decoding";
 import {
   array,
+  boolean,
   decodeType,
   field,
   nullable,
   number,
-  optional,
   Pojo,
   record,
   string,
+  union,
 } from "typescript-json-decoder";
 
 /** The Ecomail ID of our main newsletter list */
@@ -65,6 +66,7 @@ export type Subscription = decodeType<typeof decodeSubscription>;
 export const decodeSubscription = record({
   listId: field("list_id", number),
   state: field("status", decodeSubscriptionStateCode),
+  groups: withDefault(decodeObject(array(string)), {}),
 });
 
 /** A subscriber or a “Contact” as called in the Ecomail UI */
@@ -304,6 +306,67 @@ export async function getContactListMembers(
   members.forEach((m) => (membersByID[m.id] = m));
 
   return Object.values(membersByID);
+}
+
+//
+// Simplified Preferences
+//
+
+export type NewsletterPreferences = decodeType<
+  typeof decodeNewsletterPreferences
+>;
+
+export const decodeNewsletterPreferences = record({
+  subscribe: boolean,
+  subscribedGroups: array(union(...mainPreferenceGroupOptions)),
+});
+
+export async function getNewsletterPreferences(
+  apiKey: string,
+  email: string
+): Promise<NewsletterPreferences> {
+  const notSubscribed: NewsletterPreferences = {
+    subscribe: false,
+    subscribedGroups: [],
+  };
+
+  // Find subscriber with given email. This may be a 404 in case there is no previous
+  // subscriber with this e-mail. In that case we catch the error and report the case
+  // as unsubscribed.
+  const subscriber = await getSubscriber(apiKey, email).catch(() => null);
+  if (!subscriber) {
+    return notSubscribed;
+  }
+
+  // Find subscription state for our main contact list. If there is no state for this
+  // contact list, we report the case as unsubscribed.
+  const mainContactListState = subscriber.lists.find(
+    (list) => list.listId === mainContactListId
+  );
+
+  if (!mainContactListState) {
+    return notSubscribed;
+  }
+
+  return {
+    subscribe: mainContactListState?.state === "subscribed",
+    subscribedGroups: mainContactListState.groups[mainPreferenceGroupId] as any,
+  };
+}
+
+export async function setNewsletterPreferences(
+  apiKey: string,
+  email: string,
+  preferences: NewsletterPreferences
+): Promise<void> {
+  if (preferences.subscribe) {
+    await subscribeToList(apiKey, {
+      email,
+      groups: preferences.subscribedGroups,
+    });
+  } else {
+    await unsubscribeFromList(apiKey, email, mainContactListId);
+  }
 }
 
 //

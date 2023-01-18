@@ -98,7 +98,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
 
   const sections = [
     { key: "skills", label: "Dovednosti" },
-    { key: "newsletter", label: "Newsletter" },
+    { key: "newsletters", label: "Newslettery" },
   ];
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
@@ -132,7 +132,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
           }}
         />
       )}
-      {activeSectionKey === "newsletter" && (
+      {activeSectionKey === "newsletters" && (
         <NewsletterPrefs {...props.newsletterProps} />
       )}
     </MainContainer>
