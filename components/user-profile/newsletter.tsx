@@ -1,4 +1,5 @@
 import { SubscriptionState } from "lib/ecomail";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export type Props = {
@@ -78,6 +79,7 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
             <Section>
               {subscribedMsg}
               <ActionButton onClick={triggerUnsubscribe} type="unsubscribe" />
+              <HelpInfo />
             </Section>
           );
         case "unsubscribed":
@@ -85,6 +87,7 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
             <Section>
               {unsubscribedMsg}
               <ActionButton onClick={triggerSubscribe} type="subscribe" />
+              <HelpInfo />
             </Section>
           );
         default:
@@ -131,11 +134,27 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   const loadingLabel = type === "subscribe" ? "Přihlašuji…" : "Odhlašuji…";
   const kind = loading ? "btn-disabled" : "btn-primary";
   return (
-    <div className="mt-10 mb-10">
+    <div className="mt-10 mb-5">
       <button className={kind} onClick={onClick}>
         {loading ? loadingLabel : regularLabel}
       </button>
     </div>
+  );
+};
+
+const HelpInfo = () => {
+  const { data: session } = useSession();
+  return (
+    <p className="text-sm max-w-prose text-gray-500 mb-10">
+      Nastavení se týká adresy, kterou se přihlašuješ do Slacku (
+      {session?.user?.email}). Pokud si chceš newslettery přihlásit na jinou
+      adresu, můžeš využít{" "}
+      <a href="https://cesko.digital/go/newsletters" className="text-gray-500">
+        tenhle formulář
+      </a>
+      . A pokud chceš upravit odběr našich newsletterů na jiné adrese, můžeš to
+      udělat prostřednictvím odkazu v patičce každého z našich newsletterů.
+    </p>
   );
 };
 
