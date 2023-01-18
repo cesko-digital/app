@@ -133,7 +133,12 @@ const HelpInfo = () => {
       Nastavení se týká adresy, kterou se přihlašuješ do Slacku (
       {session?.user?.email}). Pokud si chceš newslettery přihlásit na jinou
       adresu, můžeš využít{" "}
-      <a href="https://cesko.digital/go/newsletters" className="text-gray-500">
+      <a
+        href="https://cesko.digital/go/newsletters"
+        className="text-gray-500"
+        target="_blank"
+        rel="noreferrer"
+      >
         tenhle formulář
       </a>
       . A pokud chceš upravit odběr našich newsletterů na jiné adrese, můžeš to
