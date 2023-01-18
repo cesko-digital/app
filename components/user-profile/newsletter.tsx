@@ -1,4 +1,8 @@
-import { mainPreferenceGroupOptions, NewsletterPreferences } from "lib/ecomail";
+import {
+  MainPreferenceGroupOption,
+  mainPreferenceGroupOptions,
+  NewsletterPreferences,
+} from "lib/ecomail";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
@@ -59,6 +63,17 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
   const disableGroupControls =
     model.state !== "ready" || !model.preferences.subscribe;
 
+  const groupDescriptions: Record<MainPreferenceGroupOption, string> = {
+    "číst.digital":
+      "Jednou měsíčně shrnutí všech nejdůležitějších věcí, které se staly.",
+    "náborový newsletter":
+      "Jednou za dva měsíce přehled možností, kde a jak se v komunitě můžeš zapojit.",
+    "neziskový newsletter":
+      "Jednou za 2–3 měsíce informace pro neziskovky o tom, jak s námi spolupracovat, přehled akcí a webinářů, …",
+    "jen to nejdůležitější":
+      "Jednou za čas největší milníky, například narozeniny nebo jiné velké akce.",
+  };
+
   return (
     <>
       <Section>
@@ -97,27 +112,32 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
         <p>Které naše newslettery chceš na {session?.user?.email} dostávat?</p>
         <div className="mb-10">
           {mainPreferenceGroupOptions.map((name) => (
-            <label key={name} className="flex items-center">
-              <input
-                checked={model.preferences.subscribedGroups.includes(name)}
-                type="checkbox"
-                className="mr-3"
-                disabled={disableGroupControls}
-                onChange={(e) => {
-                  const checked = e.target.checked;
-                  const updatedGroups = checked
-                    ? [...model.preferences.subscribedGroups, name]
-                    : model.preferences.subscribedGroups.filter(
-                        (g) => g !== name
-                      );
-                  updatePreferences({
-                    ...model.preferences,
-                    subscribedGroups: updatedGroups,
-                  });
-                }}
-              ></input>
-              {name}
-            </label>
+            <>
+              <label key={name} className="flex items-center">
+                <input
+                  checked={model.preferences.subscribedGroups.includes(name)}
+                  type="checkbox"
+                  className="mr-3"
+                  disabled={disableGroupControls}
+                  onChange={(e) => {
+                    const checked = e.target.checked;
+                    const updatedGroups = checked
+                      ? [...model.preferences.subscribedGroups, name]
+                      : model.preferences.subscribedGroups.filter(
+                          (g) => g !== name
+                        );
+                    updatePreferences({
+                      ...model.preferences,
+                      subscribedGroups: updatedGroups,
+                    });
+                  }}
+                ></input>
+                {name}
+              </label>
+              <div className="ml-6 mb-2 text-base text-gray-500">
+                {groupDescriptions[name]}
+              </div>
+            </>
           ))}
         </div>
         <HelpInfo />
