@@ -41,7 +41,7 @@ async function sendWelcomeMessages() {
         console.debug(
           `Sending message for day #${day} to user ${recipient.slackId}.`
         );
-        sendWelcomeMessage(recipient.slackId!, message);
+        await sendWelcomeMessage(recipient.slackId!, message);
       } else {
         console.debug(
           `Skipping ${recipient.slackId}, user too old to qualify (joined at ${recipient.createdAt}).`
