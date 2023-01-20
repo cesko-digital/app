@@ -12,7 +12,7 @@ jobs:
       SLACK_GREET_BOT_TOKEN: ${{ secrets.SLACK_GREET_BOT_TOKEN }}
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run
         run: |
           yarn install
