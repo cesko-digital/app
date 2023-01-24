@@ -190,7 +190,10 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
 ) => {
   const { slug } = context.params!;
   const { projects, teamEngagements, events } = siteData;
-  const project = projects.find((p) => p.slug === slug)!;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) {
+    return { notFound: true };
+  }
   const coordinators = project.teamEngagementIds
     .map((id) => teamEngagements.find((e) => e.id === id)!)
     .filter((e) => e !== undefined)
