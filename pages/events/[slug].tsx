@@ -117,7 +117,10 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
 ) => {
   const { slug } = context.params!;
   const { projects, users, events } = siteData;
-  const event = siteData.events.find((e) => e.slug === slug)!;
+  const event = siteData.events.find((e) => e.slug === slug);
+  if (!event) {
+    return { notFound: true };
+  }
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
   const otherEvents = events

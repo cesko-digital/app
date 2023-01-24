@@ -140,7 +140,10 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
 ) => {
   const { slug } = context.params!;
   const { opportunities, projects, users } = siteData;
-  const opportunity = opportunities.find((o) => o.slug === slug)!;
+  const opportunity = opportunities.find((o) => o.slug === slug);
+  if (!opportunity) {
+    return { notFound: true };
+  }
   return {
     props: {
       opportunity,
