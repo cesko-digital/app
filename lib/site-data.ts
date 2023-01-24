@@ -87,9 +87,6 @@ async function loadSiteData(): Promise<SiteData> {
   }
 
   const dataSource = useLocalData ? SampleDataSource : ProductionDataSource;
-  const transactionTag = useLocalData
-    ? "load_sample_data"
-    : "load_production_data";
 
   let [
     projects,
