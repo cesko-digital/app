@@ -27,6 +27,7 @@ type Query = Partial<{
   properties: Property[];
   period: string;
   limit: number;
+  filters: [Property, string][];
 }>;
 
 function buildUrl(query: Query): string {
@@ -38,10 +39,12 @@ function buildUrl(query: Query): string {
     period = "30d",
     properties = ["event:page"],
     limit = 1000,
+    filters = [],
   } = query;
   const params = new URLSearchParams({
     metrics: metrics.join(","),
     property: properties.join(","),
+    filters: filters.map(([key, val]) => `${key}==${val}`).join(";"),
     site_id: site,
     limit: limit.toString(),
     period,
@@ -71,5 +74,18 @@ export async function getPageBreakdown(period = "30d") {
       period,
     },
     array(record({ page: string, pageviews: number, visitors: number }))
+  );
+}
+
+export async function getPageTrafficSources(page: string, period = "30d") {
+  return fetchQuery(
+    {
+      endpoint: "breakdown",
+      properties: ["visit:source"],
+      metrics: ["pageviews", "visitors"],
+      filters: [["event:page", page]],
+      period,
+    },
+    array(record({ source: string, pageviews: number, visitors: number }))
   );
 }
