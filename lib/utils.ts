@@ -110,3 +110,10 @@ export const unique = <T>(a: T[]) => [...new Set(a)];
 /** Return a random element from an array */
 export const getRandomElem = <T>(a: T[]) =>
   a[Math.floor(Math.random() * a.length)];
+
+export function map<T, U>(
+  val: T | undefined | null,
+  f: (_: T) => U
+): U | undefined {
+  return val ? f(val) : undefined;
+}
