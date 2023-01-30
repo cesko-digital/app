@@ -7,7 +7,6 @@ import OpportunityItem from "components/sections/opportunity-overview";
 import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
 import { Route, shuffled } from "lib/utils";
-import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import { Link } from "components/links";
 import { default as NextLink } from "next/link";
@@ -23,6 +22,7 @@ import {
   isEventPast,
   PortalEvent,
 } from "lib/airtable/event";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 interface PageProps {
   marketPlaceOffers: readonly MarketPlaceOffer[];
@@ -220,13 +220,17 @@ const Video = (video: YTPlaylistItem) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { projects, events } = siteData;
-  const videos = shuffled(siteData.videos).slice(0, 6);
-  const marketPlaceOffers = siteData.marketPlaceOffers
+  const dataSource = getDataSource();
+  const [projects, events] = await Promise.all([
+    dataSource.projects(),
+    dataSource.events(),
+  ]);
+  const videos = shuffled(await dataSource.videos()).slice(0, 6);
+  const marketPlaceOffers = (await dataSource.marketPlaceOffers())
     .filter((o) => o.state === "published" && !!o.title)
     .slice(0, 5);
   const opportunities = getFeaturedOpportunities(
-    siteData.opportunities.filter((o) => o.status === "live")
+    (await dataSource.opportunities()).filter((o) => o.status === "live")
   );
   const upcomingEvents = [...events]
     .filter((e) => e.status === "live")
@@ -234,13 +238,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .sort(compareEventsByTime)
     .slice(0, 3);
   return {
-    props: {
+    props: filterUndefines({
       marketPlaceOffers,
       upcomingEvents,
       opportunities,
       videos,
       projects,
-    },
+    }),
     revalidate: 120, // Refresh every two minutes
   };
 };

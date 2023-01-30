@@ -8,7 +8,6 @@ import { CardRow } from "components/layout";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
-import { siteData } from "lib/site-data";
 import { Route } from "lib/utils";
 import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
@@ -18,6 +17,7 @@ import {
   isEventPast,
   PortalEvent,
 } from "lib/airtable/event";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 interface PageProps {
   event: PortalEvent;
@@ -103,7 +103,8 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = siteData.events.map((event) => ({
+  const events = await getDataSource().events();
+  const paths = events.map((event) => ({
     params: { slug: event.slug },
   }));
   return {
@@ -116,8 +117,13 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, users, events } = siteData;
-  const event = siteData.events.find((e) => e.slug === slug);
+  const dataSource = getDataSource();
+  const [projects, users, events] = await Promise.all([
+    dataSource.projects(),
+    dataSource.users(),
+    dataSource.events(),
+  ]);
+  const event = events.find((e) => e.slug === slug);
   if (!event) {
     return { notFound: true };
   }
@@ -128,7 +134,13 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .sort(compareByRelevance)
     .slice(0, 3);
   return {
-    props: { event, otherEvents, project, projects, owner },
+    props: filterUndefines({
+      event,
+      otherEvents,
+      project,
+      projects,
+      owner,
+    }),
     notFound: !event || !project || !owner,
     // Regenerate every five minutes to refresh event info
     revalidate: 60 * 5,

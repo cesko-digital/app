@@ -6,7 +6,7 @@ import {
   PortalEvent,
 } from "lib/airtable/event";
 import { PortalProject } from "lib/airtable/project";
-import { siteData } from "lib/site-data";
+import { filterUndefines, getDataSource } from "lib/site-data";
 import { Route } from "lib/utils";
 import { GetStaticProps } from "next";
 
@@ -50,7 +50,8 @@ const Page = ({ futureEvents, pastEvents, projects }: PageProps) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const events = siteData.events.filter(
+  const dataSource = getDataSource();
+  const events = (await dataSource.events()).filter(
     (e) => e.status === "live" || e.status === "unlisted"
   );
   const futureEvents = events
@@ -60,16 +61,16 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     .filter((e) => isEventPast(e))
     .sort(compareEventsByTime)
     .reverse();
-  const projects = siteData.projects.filter((p) =>
+  const projects = (await dataSource.projects()).filter((p) =>
     // Only pick projects that we have some events for
     events.some((e) => e.projectId === p.id)
   );
   return {
-    props: {
+    props: filterUndefines({
       futureEvents,
       pastEvents,
       projects,
-    },
+    }),
     // Regenerate every five minutes to refresh event info
     revalidate: 60 * 5,
   };

@@ -1,12 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { siteData } from "lib/site-data";
 import { renderOpportunitiesBySkill } from "lib/markdown-opportunities";
+import { getDataSource } from "lib/site-data";
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const { projects, users } = siteData;
-  const opportunities = siteData.opportunities.filter(
-    (o) => o.status === "live"
-  );
+  const dataSource = getDataSource();
+  const projects = await dataSource.projects();
+  const users = await dataSource.users();
+  const opportunities = (await dataSource.opportunities())
+    // Only show live
+    .filter((o) => o.status === "live");
   const oneHour = 60 * 60;
   const mdown = renderOpportunitiesBySkill(opportunities, projects, users);
   response.setHeader(

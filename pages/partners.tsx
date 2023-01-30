@@ -7,9 +7,9 @@ import BecomePartner from "components/partners/sections/become-partner";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
-import { siteData } from "lib/site-data";
 import { Article } from "lib/data-sources/blog";
 import { PortalPartner } from "lib/airtable/partner";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 type PageProps = {
   partners: readonly PortalPartner[];
@@ -67,16 +67,20 @@ const Page: NextPage<PageProps> = ({ partners, blogPosts }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const partners = siteData.partners;
-  const blogPosts = siteData.blogPosts
+  const dataSouce = getDataSource();
+  const [partners, allBlogPosts] = await Promise.all([
+    dataSouce.partners(),
+    dataSouce.blogPosts(),
+  ]);
+  const blogPosts = allBlogPosts
     .filter((post) => post.tags.some((t) => t === "partners"))
     .reverse()
     .slice(0, 3);
   return {
-    props: {
+    props: filterUndefines({
       partners,
       blogPosts,
-    },
+    }),
   };
 };
 

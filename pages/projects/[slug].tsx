@@ -9,7 +9,6 @@ import { getResizedImgUrl } from "lib/utils";
 import * as S from "components/project/styles";
 import strings from "content/strings.json";
 import { ParsedUrlQuery } from "querystring";
-import { siteData } from "lib/site-data";
 import OpportunityItem from "components/sections/opportunity-overview";
 import { doNotTranslate, Route } from "lib/utils";
 import { Article } from "lib/data-sources/blog";
@@ -23,6 +22,7 @@ import {
   isEventPast,
   PortalEvent,
 } from "lib/airtable/event";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 interface PageProps {
   project: PortalProject;
@@ -174,7 +174,8 @@ const ProjectPage: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = siteData.projects
+  const projects = await getDataSource().projects();
+  const paths = projects
     .filter((p) => p.state !== "draft")
     .map((project) => ({
       params: { slug: project.slug },
@@ -189,7 +190,15 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { projects, teamEngagements, events } = siteData;
+  const dataSource = getDataSource();
+  const [projects, teamEngagements, events, allOpportunities, blogPosts] =
+    await Promise.all([
+      dataSource.projects(),
+      dataSource.teamEngagements(),
+      dataSource.events(),
+      dataSource.opportunities(),
+      dataSource.blogPosts(),
+    ]);
   const project = projects.find((p) => p.slug === slug);
   if (!project) {
     return { notFound: true };
@@ -198,10 +207,10 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .map((id) => teamEngagements.find((e) => e.id === id)!)
     .filter((e) => e !== undefined)
     .filter((e) => e.coordinatingRole);
-  const opportunities = siteData.opportunities.filter(
+  const opportunities = allOpportunities.filter(
     (o) => o.projectId === project.id && o.status === "live"
   );
-  const relatedBlogPosts = siteData.blogPosts
+  const relatedBlogPosts = blogPosts
     .filter((post) => post.tags.some((tag) => tag === project.slug))
     .slice(0, 6);
   const otherProjects = projects
@@ -213,14 +222,14 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .reverse()
     .slice(0, 3);
   return {
-    props: {
+    props: filterUndefines({
       project,
       otherProjects,
       coordinators,
       relatedBlogPosts,
       opportunities,
       relatedEvents,
-    },
+    }),
     // Regenerate every five minutes to refresh project info
     revalidate: 60 * 5,
   };

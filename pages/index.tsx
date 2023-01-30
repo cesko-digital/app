@@ -1,7 +1,6 @@
 import { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
 import { ThemeContext } from "styled-components";
@@ -15,6 +14,7 @@ import {
   ImageGallery,
   Partners,
 } from "components/home";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 type PageProps = {
   featuredProjects: readonly PortalProject[];
@@ -68,20 +68,22 @@ const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const allPartners = siteData.partners;
+  const dataSource = getDataSource();
+  const allPartners = await dataSource.partners();
+  const allProjects = await dataSource.projects();
   const partners = allPartners.filter((p) =>
     p.categories.some((c) => c === "homepage")
   );
   const canBeFeatured = (p: PortalProject) =>
     p.state === "finished" || p.state === "incubating" || p.state === "running";
   const featuredProjects = shuffleInPlace(
-    siteData.projects.filter(canBeFeatured)
+    allProjects.filter(canBeFeatured)
   ).slice(0, 3);
   return {
-    props: {
+    props: filterUndefines({
       featuredProjects,
       partners,
-    },
+    }),
     // regenerate once an hour, mostly to just pick a new set of featured projects
     revalidate: 60 * 60,
   };

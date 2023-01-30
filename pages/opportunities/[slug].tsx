@@ -10,13 +10,13 @@ import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
 import { Route } from "lib/utils";
 import { ParsedUrlQuery } from "querystring";
-import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Link from "next/link";
 import { getContactButtonLabel } from "components/dashboard/opportunity/utils";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
 import { PortalOpportunity } from "lib/airtable/opportunity";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 interface PageProps {
   opportunity: PortalOpportunity;
@@ -126,7 +126,8 @@ const Page: NextPage<PageProps> = (props) => {
 };
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
-  const paths = siteData.opportunities.map((opportunity) => ({
+  const opportunities = await getDataSource().opportunities();
+  const paths = opportunities.map((opportunity) => ({
     params: { slug: opportunity.slug },
   }));
   return {
@@ -139,18 +140,23 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   const { slug } = context.params!;
-  const { opportunities, projects, users } = siteData;
+  const dataSource = getDataSource();
+  const [opportunities, projects, users] = await Promise.all([
+    dataSource.opportunities(),
+    dataSource.projects(),
+    dataSource.users(),
+  ]);
   const opportunity = opportunities.find((o) => o.slug === slug);
   if (!opportunity) {
     return { notFound: true };
   }
   return {
-    props: {
+    props: filterUndefines({
       opportunity,
       opportunities: opportunities.filter((o) => o.status === "live"),
       projects,
       users,
-    },
+    }),
     // Regenerate every five minutes to refresh opportunity info
     revalidate: 60 * 5,
   };

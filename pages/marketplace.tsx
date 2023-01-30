@@ -3,7 +3,6 @@ import { Layout, Section, SectionContent } from "components/layout";
 import { Body, Heading1 } from "components/typography";
 import { ButtonAsLink } from "components/links";
 import { ButtonSize } from "components/buttons/button/enums";
-import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import DateTime from "components/datetime";
 import { toHTML } from "slack-markdown";
@@ -14,6 +13,7 @@ import {
   compareOffersByTime,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 type PageProps = {
   offers: MarketPlaceOffer[];
@@ -131,7 +131,8 @@ const Offer = (offer: MarketPlaceOffer) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const offers = siteData.marketPlaceOffers
+  const allOffers = await getDataSource().marketPlaceOffers();
+  const offers = allOffers
     // Only display published offers
     .filter((offer) => offer.state === "published")
     // Let’s filter out offers with no title just to be sure
@@ -141,7 +142,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     // Last created, first displayed
     .reverse();
   return {
-    props: { offers },
+    props: filterUndefines({ offers }),
     revalidate: 60, // update every minute
   };
 };

@@ -1,9 +1,10 @@
+import { getDataSource } from "lib/site-data";
 import { NextApiRequest, NextApiResponse } from "next";
-import { siteData } from "lib/site-data";
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
+  const opportunities = await getDataSource().opportunities();
   response.setHeader("Content-Type", "application/json");
-  response.status(200).send(JSON.stringify(siteData.opportunities, null, 2));
+  response.status(200).send(JSON.stringify(opportunities, null, 2));
 }
 
 export default handler;

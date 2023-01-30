@@ -5,7 +5,6 @@ import OpportunityItem from "components/sections/opportunity-overview";
 import styled from "styled-components";
 import { Route } from "lib/utils";
 import { useState } from "react";
-import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
 import Select from "components/select";
 import { PortalProject } from "lib/airtable/project";
@@ -17,6 +16,7 @@ import {
   compareOpportunitiesByTime,
   PortalOpportunity,
 } from "lib/airtable/opportunity";
+import { filterUndefines, getDataSource } from "lib/site-data";
 
 type PageProps = {
   opportunities: readonly PortalOpportunity[];
@@ -192,12 +192,16 @@ const FiltersMobile = styled.div`
 `;
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const { opportunities, projects } = siteData;
+  const dataSource = getDataSource();
+  const [opportunities, projects] = await Promise.all([
+    dataSource.opportunities(),
+    dataSource.projects(),
+  ]);
   return {
-    props: {
+    props: filterUndefines({
       opportunities: opportunities.filter((o) => o.status === "live"),
       projects,
-    },
+    }),
     // Regenerate every five minutes to refresh opportunities info
     revalidate: 60 * 5,
   };

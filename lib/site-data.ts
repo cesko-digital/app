@@ -15,18 +15,6 @@ import {
   MarketPlaceOffer,
 } from "./airtable/market-place";
 
-export interface SiteData {
-  projects: readonly PortalProject[];
-  opportunities: readonly PortalOpportunity[];
-  users: readonly PortalUser[];
-  events: readonly PortalEvent[];
-  partners: readonly PortalPartner[];
-  videos: readonly YTPlaylistItem[];
-  blogPosts: readonly Article[];
-  teamEngagements: TeamEngagement[];
-  marketPlaceOffers: readonly MarketPlaceOffer[];
-}
-
 type Async<T> = () => Promise<T>;
 
 interface DataSource {
@@ -65,7 +53,7 @@ const SampleDataSource: DataSource = {
   marketPlaceOffers: Local.getAllMarketPlaceOffers,
 };
 
-async function loadSiteData(): Promise<SiteData> {
+export function getDataSource(): DataSource {
   const forceLocal = !!process.env.DATA_SOURCE_LOCAL;
   const haveAirtable = !!process.env.AIRTABLE_API_KEY;
   const useLocalData = forceLocal || !haveAirtable;
@@ -86,53 +74,9 @@ async function loadSiteData(): Promise<SiteData> {
     );
   }
 
-  const dataSource = useLocalData ? SampleDataSource : ProductionDataSource;
-
-  let [
-    projects,
-    opportunities,
-    users,
-    events,
-    partners,
-    videos,
-    blogPosts,
-    teamEngagements,
-    marketPlaceOffers,
-  ] = await Promise.all([
-    dataSource.projects(),
-    dataSource.opportunities(),
-    dataSource.users(),
-    dataSource.events(),
-    dataSource.partners(),
-    dataSource.videos(),
-    dataSource.blogPosts(),
-    dataSource.teamEngagements(),
-    dataSource.marketPlaceOffers(),
-  ]);
-
-  // Filter out opportunities that point to nonexisting projects
-  // (ie. projects that have been ignored because of parse errors).
-  opportunities = opportunities.filter((o) =>
-    projects.some((p) => p.id === o.projectId)
-  );
-  // Filter out events that are owned by nonexisting users
-  events = events.filter((e) => users.some((u) => u.id === e.ownerId));
-
-  return filterUndefines({
-    partners,
-    videos,
-    blogPosts,
-    projects,
-    opportunities,
-    users,
-    events,
-    teamEngagements,
-    marketPlaceOffers,
-  });
+  return useLocalData ? SampleDataSource : ProductionDataSource;
 }
 
 // This is a hack, see https://github.com/vercel/next.js/issues/11993
-const filterUndefines = <T>(data: T): T => JSON.parse(JSON.stringify(data));
-
-// TODO: Prune data to only keep relevant objects?
-export const siteData = await loadSiteData();
+export const filterUndefines = <T>(data: T): T =>
+  JSON.parse(JSON.stringify(data));

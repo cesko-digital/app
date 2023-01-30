@@ -3,7 +3,7 @@ import { Layout, Section, SectionContent } from "components/layout";
 import { JoinUs } from "components/sections";
 import * as S from "components/project/index-styles";
 import strings from "content/strings.json";
-import { siteData } from "lib/site-data";
+import { filterUndefines, getDataSource } from "lib/site-data";
 import HighlightedProject from "components/project/highlighted";
 import ProjectList from "components/project/card-list";
 import { PortalProject } from "lib/airtable/project";
@@ -65,11 +65,12 @@ const Page: NextPage<PageProps> = ({ projects }) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const projects = siteData.projects.filter(
+  const allProjects = await getDataSource().projects();
+  const projects = allProjects.filter(
     (p) => p.state !== "draft" && p.state !== "internal"
   );
   return {
-    props: { projects },
+    props: filterUndefines({ projects }),
     // Regenerate every five minutes to refresh project info
     revalidate: 60 * 5,
   };
