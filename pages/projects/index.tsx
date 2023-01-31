@@ -7,6 +7,8 @@ import { siteData } from "lib/site-data";
 import HighlightedProject from "components/project/highlighted";
 import ProjectList from "components/project/card-list";
 import { PortalProject } from "lib/airtable/project";
+import { Route } from "lib/utils";
+import Link from "next/link";
 
 type PageProps = {
   projects: PortalProject[];
@@ -33,7 +35,15 @@ const Page: NextPage<PageProps> = ({ projects }) => {
         <SectionContent>
           <S.Wrapper>
             <S.Heading>{msg.title}</S.Heading>
-            <S.Tagline>{msg.description}</S.Tagline>
+            <S.Tagline>
+              Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a
+              měnit život v Česku k lepšímu. Prohlédněte si naše projekty a
+              pokud vás zaujmou, podívejte se na{" "}
+              <Link href={Route.opportunities}>
+                <a>aktuální příležitosti k zapojení</a>
+              </Link>
+              .
+            </S.Tagline>
           </S.Wrapper>
         </SectionContent>
       </Section>
