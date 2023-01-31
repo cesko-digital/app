@@ -37,8 +37,8 @@ const Page: NextPage<PageProps> = ({ projects }) => {
             <S.Heading>{msg.title}</S.Heading>
             <S.Tagline>
               Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a
-              měnit život v Česku k lepšímu. Podívejte se, jak to děláme. Chcete
-              pomáhat s námi? Podívejte se na{" "}
+              měnit život v Česku k lepšímu. Prohlédněte si naše projekty a
+              pokud vás zaujmou, podívejte se na{" "}
               <Link href={Route.opportunities}>
                 <a>aktuální příležitosti k zapojení</a>
               </Link>
