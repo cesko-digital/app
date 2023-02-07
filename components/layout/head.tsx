@@ -12,11 +12,12 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
   title,
   coverUrl = "https://data.cesko.digital/web/metadata-cover.png",
 }: CustomHeadProps) => {
+  const effectiveTitle = title
+    ? `${title} | Česko.Digital`
+    : strings.metadata.title;
   return (
     <Head>
-      <title>
-        {title ? `${title} | Česko.Digital` : strings.metadata.title}
-      </title>
+      <title>{effectiveTitle}</title>
       <meta
         name="viewport"
         content="width=device-width, minimum-scale=1, initial-scale=1, viewport-fit=cover"
@@ -26,6 +27,7 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
         content={description || strings.metadata.description}
       />
       <meta property="og:image" content={coverUrl} />
+      <meta property="og:title" content={effectiveTitle} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
       <link rel="shortcut icon" type="image/png" href="/favicon.png" />
