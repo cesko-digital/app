@@ -58,6 +58,14 @@ test("Basic skill selection decode", () => {
     Design: {},
     Dev: { Java: null },
   });
+  // Slashes
+  expect(
+    decodeSkillSelection("Vývoj / Docker/Kubernetes / junior")
+  ).toEqual<SkillSelection>({
+    Vývoj: {
+      "Docker/Kubernetes": "junior",
+    },
+  });
   // Roundtrip
   expect(encodeSkillSelection(decodeSkillSelection("Design; Dev / Java"))).toBe(
     "Design; Dev / Java"
