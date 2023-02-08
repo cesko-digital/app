@@ -1,4 +1,4 @@
-import { getAllUserProfiles, UserProfile } from "lib/airtable/user-profile";
+import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { decodeSkillSelection } from "lib/skills";
 import { unique } from "lib/utils";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -30,7 +30,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         selection[category] !== undefined &&
         Object.keys(selection[category]).length === 0
     ).length;
-    response.write(`"${category}",bez uvedení detailu,${genericCount}\n`);
+    response.write(`"${category}",(bez uvedení detailu),${genericCount}\n`);
     for (const subcategory of subcategories) {
       const count = skills.filter(
         (selection) =>
