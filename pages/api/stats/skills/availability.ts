@@ -14,9 +14,9 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     "max-age=0, s-maxage=3600, stale-while-revalidate"
   );
   response.status(200);
-  response.write(`Has skills, ${nonEmptySkills.length}\n`);
+  response.write(`Má zadány dovednosti, ${nonEmptySkills.length}\n`);
   response.write(
-    `Has no skills, ${userProfiles.length - nonEmptySkills.length}\n`
+    `Nemá zadané dovednosti, ${userProfiles.length - nonEmptySkills.length}\n`
   );
   response.end();
 }
