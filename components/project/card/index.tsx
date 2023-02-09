@@ -22,7 +22,7 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
     project.slackChannelUrl;
   return (
     <S.Container>
-      {project.coordinatorIds.length > 0 && (
+      {coordinators.length > 0 && (
         <S.Wrapper>
           <Coordinators coordinators={coordinators} />
         </S.Wrapper>
