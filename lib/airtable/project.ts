@@ -38,7 +38,6 @@ export const decodeProject = record({
     "draft"
   ),
   tagIds: field("tags", optionalArray(string)),
-  coordinatorIds: field("coordinators", optionalArray(string)),
   teamEngagementIds: field("team", optionalArray(string)),
   trelloUrl: optional(string),
   jiraUrl: optional(string),

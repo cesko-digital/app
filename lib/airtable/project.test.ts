@@ -36,11 +36,6 @@ test("Decode portal project", () => {
     state: "draft",
     tagIds: ["recVa4LnmzmtfoYTg"],
     teamEngagementIds: [],
-    coordinatorIds: [
-      "recd8xvbWp7K1nZn8",
-      "recwOLHFJUPCoPnLX",
-      "rec0ABdJtGIK9AeCB",
-    ],
     slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
   });
 });
