@@ -43,7 +43,7 @@ test("Decode Slack Users relation", () => {
       slackUser: [],
       slackId: ["slack-id"],
       state: "confirmed",
-      featureFlags: ["notifications-beta"],
+      featureFlags: ["notifications-beta", "bagr"],
       createdAt: "2022-03-23T08:31:54.500Z",
       lastModifiedAt: "2022-03-23T08:31:54.500Z",
     })
@@ -75,6 +75,7 @@ test("Decode Slack Users relation", () => {
       slackUser: ["someDatabaseId"],
       slackId: ["slack-id"],
       state: "confirmed",
+      featureFlags: undefined,
       createdAt: "2022-03-23T08:31:54.500Z",
       lastModifiedAt: "2022-03-23T08:31:54.500Z",
     })

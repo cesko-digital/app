@@ -1,5 +1,6 @@
 import { FieldSet } from "airtable";
 import {
+  decodeValidItemsFromArray,
   optionalArray,
   relationToZeroOrOne,
   takeFirst,
@@ -14,10 +15,13 @@ import {
   array,
   decodeType,
   field,
+  nil,
   number,
   optional,
+  Pojo,
   record,
   string,
+  undef,
   union,
 } from "typescript-json-decoder";
 
@@ -60,7 +64,7 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
-  featureFlags: optionalArray(union(...supportedFeatureFlags)),
+  featureFlags: decodeFeatureFlags,
   gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
@@ -163,4 +167,21 @@ export async function createUserProfile(
     .create(encodeUserProfile(profile))
     .then(unwrapRecord)
     .then(decodeUserProfile);
+}
+
+/** Decode known feature flags, returning empty array for `null` or `undefined` */
+function decodeFeatureFlags(value: Pojo) {
+  const decoder = union(
+    undef,
+    nil,
+    decodeValidItemsFromArray(
+      union(...supportedFeatureFlags),
+      "Feature Flags",
+      () => {
+        /* silence logs */
+      }
+    )
+  );
+  const decoded = decoder(value);
+  return decoded ?? [];
 }
