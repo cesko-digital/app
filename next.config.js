@@ -107,6 +107,11 @@ module.exports = withAxiom({
       // Older URLs we would like to support as a courtesy
       //
       {
+        source: "/events/hack-day-1",
+        destination: "/events/hack-day-2",
+        permanent: true,
+      },
+      {
         source: "/portal-dobrovolnika",
         destination: "/dashboard",
         permanent: true,
