@@ -1,5 +1,10 @@
 import { FieldSet } from "airtable";
-import { relationToZeroOrOne, takeFirst, withDefault } from "../decoding";
+import {
+  optionalArray,
+  relationToZeroOrOne,
+  takeFirst,
+  withDefault,
+} from "../decoding";
 import {
   unwrapRecord,
   unwrapRecords,
@@ -15,6 +20,8 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+
+const supportedFeatureFlags = ["notifications-beta"] as const;
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -53,6 +60,7 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
+  featureFlags: optionalArray(union(...supportedFeatureFlags)),
   gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
