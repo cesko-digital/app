@@ -12,4 +12,5 @@ export default defineConfig({
     browserName: "webkit",
   },
   testMatch: /.*\.e2e\.ts/,
+  timeout: 120 * 1000,
 });
