@@ -11,6 +11,6 @@ export default defineConfig({
     baseURL: "http://localhost:3000/",
     browserName: "webkit",
   },
-  testMatch: /.*\.e2e\.ts/,
+  testMatch: /end-to-end\/.*\.ts/,
   timeout: 120 * 1000,
 });

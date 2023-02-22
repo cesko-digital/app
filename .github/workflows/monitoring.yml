@@ -14,10 +14,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "yarn"
-      - name: Install dependencies
-        run: yarn install
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run monitoring tests
-        run: npx playwright test tests/monitoring.e2e.ts
+        run: yarn test:monitor

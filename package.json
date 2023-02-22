@@ -5,7 +5,9 @@
     "build": "next build",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "playwright test --config tests/end-to-end/playwright.config.js",
+    "test:monitor": "playwright test --config tests/monitor/playwright.config.js"
   },
   "dependencies": {
     "airtable": "^0.11.6",
