@@ -8,6 +8,7 @@ import {
   getUserProfileByMail,
   updateUserProfile,
 } from "lib/airtable/user-profile";
+import { map, normalizeEmailAddress } from "./utils";
 
 const { SLACK_SYNC_TOKEN = "", SLACK_GREET_BOT_TOKEN = "" } = process.env;
 
@@ -21,6 +22,7 @@ const { SLACK_SYNC_TOKEN = "", SLACK_GREET_BOT_TOKEN = "" } = process.env;
 export async function confirmUserAccount(slackId: string) {
   // We need the full user object to get to the e-mail
   const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
+  const normalizedEmail = map(slackUser.profile.email, normalizeEmailAddress);
 
   // Ignore non-regular “users” such as apps
   if (!isRegularUser(slackUser)) {
@@ -35,15 +37,14 @@ export async function confirmUserAccount(slackId: string) {
   const slackUserInDB = await upsertSlackUser({
     slackId: slackUser.id,
     name: slackUser.real_name || slackUser.name,
-    email: slackUser.profile.email,
+    email: normalizedEmail,
     contactEmail: undefined,
     slackAvatarUrl: slackUser.profile.image_512,
     userProfileRelationId: undefined,
   });
 
   // Without an e-mail address we can’t confirm the account
-  const { email } = slackUser.profile;
-  if (!email) {
+  if (!normalizedEmail) {
     console.error(
       `Account confirmation failed, missing email addres for user ${slackId}`
     );
@@ -51,7 +52,9 @@ export async function confirmUserAccount(slackId: string) {
   }
 
   // Get the initial user profile we are trying to confirm
-  const initialProfile = await getUserProfileByMail(email).catch(() => null);
+  const initialProfile = await getUserProfileByMail(normalizedEmail)
+    // Return null on errors
+    .catch(() => null);
 
   // The profile may not exist if the user skipped onboarding somehow
   if (!initialProfile) {

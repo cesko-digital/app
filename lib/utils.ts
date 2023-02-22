@@ -111,9 +111,22 @@ export const unique = <T>(a: T[]) => [...new Set(a)];
 export const getRandomElem = <T>(a: T[]) =>
   a[Math.floor(Math.random() * a.length)];
 
+/** Map function over a possibly null value */
 export function map<T, U>(
   val: T | undefined | null,
   f: (_: T) => U
 ): U | undefined {
   return val ? f(val) : undefined;
+}
+
+export function normalizeEmailAddress(email: string): string {
+  return (
+    email
+      // Convert to lower case
+      .toLocaleLowerCase()
+      // Strip leading whitespace
+      .replaceAll(/^\s+/g, "")
+      // Strip trailing whitespace
+      .replaceAll(/\s+$/g, "")
+  );
 }

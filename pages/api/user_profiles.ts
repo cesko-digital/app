@@ -4,6 +4,7 @@ import {
   createUserProfile,
   getUserProfileByMail,
 } from "lib/airtable/user-profile";
+import { normalizeEmailAddress } from "lib/utils";
 
 const decodeRequest = record({
   name: string,
@@ -19,7 +20,7 @@ const decodeRequest = record({
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   try {
     const payload = decodeRequest(request.body);
-    const { email } = payload;
+    const email = normalizeEmailAddress(payload.email);
     const previousProfile = await getUserProfileByMail(email).catch(() => null);
     if (previousProfile) {
       const msg = "Email already exists";
@@ -28,6 +29,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     } else {
       await createUserProfile({
         ...payload,
+        email,
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
