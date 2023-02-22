@@ -1,4 +1,4 @@
-name: Run monitoring tests
+name: Monitoring tests
 
 on:
   workflow_dispatch:
