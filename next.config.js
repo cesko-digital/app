@@ -107,10 +107,15 @@ module.exports = withAxiom({
       // Older URLs we would like to support as a courtesy
       //
       {
+        source: "/en",
+        destination: "https://en.cesko.digital/",
+        permanent: true,
+      },
+      {
         source: "/events/meetup-ceskodigital-1",
         destination: "/events/meetup-ceskodigital-3",
         permanent: true,
-      },  
+      },
       {
         source: "/events/hack-day-1",
         destination: "/events/hack-day-2",
