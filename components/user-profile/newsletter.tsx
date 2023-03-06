@@ -4,7 +4,7 @@ import {
   NewsletterPreferences,
 } from "lib/ecomail";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 export type Props = {
   getPreferences: () => Promise<NewsletterPreferences>;
@@ -112,8 +112,8 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
         <p>Které naše newslettery chceš na {session?.user?.email} dostávat?</p>
         <div className="mb-10">
           {mainPreferenceGroupOptions.map((name) => (
-            <>
-              <label key={name} className="flex items-center">
+            <Fragment key={name}>
+              <label className="flex items-center bagr">
                 <input
                   checked={model.preferences.subscribedGroups.includes(name)}
                   type="checkbox"
@@ -137,7 +137,7 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
               <div className="ml-6 mb-2 text-base text-gray-500">
                 {groupDescriptions[name]}
               </div>
-            </>
+            </Fragment>
           ))}
         </div>
         <HelpInfo />
