@@ -22,6 +22,11 @@ Máme k dispozici následující hierarchii testů:
 
 Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat unit test namísto E2E testu, je to lepší. A pokud jde danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
 
+# Přihlašování
+
+Pokud potřebujete pracovat na autentizované části webu, narazíte na problém s OAuth flow, které není dělané na lokální vývoj. Dá se to
+obejít tím, že se přihlásíte na produkčním webu a zkopírujete si na lokální web autentizační cookie (`__Secure-next-auth.session-token`).
+
 # Poznámky k architektuře
 
 - Nebojte se psát delší soubory. Mít každou drobnost v samostatném souboru je čistě režie navíc. Lze i zobecnit – míra „procesů“ (abstrakce, dělení do souborů, dělení do funkcí, …) musí odpovídat velikosti řešeného problému. Pokud zakládáte nový soubor kvůli čtyřem řádkům kódu, je slušná šance, že děláte něco špatně.
