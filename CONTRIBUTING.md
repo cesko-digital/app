@@ -16,15 +16,11 @@
 
 Máme k dispozici následující hierarchii testů:
 
-1. Typový systém
-2. Jednotkové (unit) testy
-3. Testy renderingu komponent
-4. End-to-end (E2E) testy
+1. Typový systém (`yarn typecheck`)
+2. Jednotkové (unit) testy (`yarn test`)
+3. End-to-end (E2E) testy (`yarn test:e2e`)
 
-Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat test renderingu namísto E2E testu, je to lepší. A pokud jde napsat jednotkový test nebo danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
-
-Ukázkové testy renderingu komponent najdete v adresáři `tests/rendering`.
-
+Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat unit test namísto E2E testu, je to lepší. A pokud jde danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
 
 # Poznámky k architektuře
 
