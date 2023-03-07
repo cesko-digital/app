@@ -1,0 +1,20 @@
+{
+  "updateContentCommand": "yarn install",
+  "postAttachCommand": "yarn run dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  }
+}
