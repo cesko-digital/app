@@ -113,7 +113,7 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
         <div className="mb-10">
           {mainPreferenceGroupOptions.map((name) => (
             <Fragment key={name}>
-              <label className="flex items-center bagr">
+              <label className="flex items-center">
                 <input
                   checked={model.preferences.subscribedGroups.includes(name)}
                   type="checkbox"

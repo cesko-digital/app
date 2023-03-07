@@ -1,4 +1,4 @@
-import { UserProfile } from "lib/airtable/user-profile";
+import { NotificationFlag, UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body } from "components/typography";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { Button, ButtonSize } from "components/buttons";
 import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
+import { NotificationPrefs } from "./notifications";
 
 export type UserProfilePageState =
   | "loading"
@@ -29,6 +30,8 @@ export type PageProps = {
   onSkillSelectionChange: (selection: SkillSelection) => void;
   /** Newsletter management props */
   newsletterProps: NewsletterProps;
+  /** Update notification flags */
+  updateNotificationFlags: (flags: NotificationFlag[]) => Promise<void>;
 };
 
 export const UserProfilePage: React.FC<PageProps> = (props) => {
@@ -96,10 +99,16 @@ const SignedInPage: React.FC<PageProps> = (props) => {
   const profile = props.profile!;
   const { signOut, skillMenu, onSkillSelectionChange } = props;
 
-  const sections = [
+  // Basic profile tabs present for all users
+  const baseTabs = [
     { key: "skills", label: "Dovednosti" },
     { key: "newsletters", label: "Newslettery" },
   ];
+
+  // Add feature-flagged tabs
+  const sections = profile.featureFlags.includes("notificationsBeta")
+    ? [...baseTabs, { key: "notifications", label: "Upozornění" }]
+    : baseTabs;
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
   const [skillSelection, setSkillSelection] = useState(
@@ -134,6 +143,12 @@ const SignedInPage: React.FC<PageProps> = (props) => {
       )}
       {activeSectionKey === "newsletters" && (
         <NewsletterPrefs {...props.newsletterProps} />
+      )}
+      {activeSectionKey === "notifications" && (
+        <NotificationPrefs
+          userProfile={profile}
+          updateNotificationFlags={props.updateNotificationFlags}
+        />
       )}
     </MainContainer>
   );

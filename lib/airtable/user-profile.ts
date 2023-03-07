@@ -1,7 +1,6 @@
 import { FieldSet } from "airtable";
 import {
   decodeValidItemsFromArray,
-  optionalArray,
   relationToZeroOrOne,
   takeFirst,
   withDefault,
@@ -13,6 +12,7 @@ import {
 } from "./request";
 import {
   array,
+  DecoderFunction,
   decodeType,
   field,
   nil,
@@ -25,7 +25,26 @@ import {
   union,
 } from "typescript-json-decoder";
 
-const supportedFeatureFlags = ["notifications-beta"] as const;
+/** All supported notification flags */
+export const notificationFlags = [
+  "allowNotifications",
+  "receiveNewRoleNotifications",
+] as const;
+
+/** Notification flags to turn on user e-mail notifications about various events */
+export type NotificationFlag = typeof notificationFlags[number];
+
+/** All supported feature flags */
+export const featureFlags = ["notificationsBeta"] as const;
+
+/** Feature flags to hide or show beta features */
+export type FeatureFlag = typeof featureFlags[number];
+
+/** Decode known feature flags, returning empty array for `null` or `undefined` */
+const decodeFeatureFlags = decodeFlags(union(...featureFlags));
+
+/** Decode known notification flags, returning empty array for `null` or `undefined` */
+const decodeNotificationFlags = decodeFlags(union(...notificationFlags));
 
 /** The Airtable schema of the user profile table */
 export interface Schema extends FieldSet {
@@ -38,6 +57,7 @@ export interface Schema extends FieldSet {
   profileUrl: string;
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
+  notificationFlags: ReadonlyArray<string>;
   state: string;
   createdAt: string;
   lastModifiedAt: string;
@@ -65,6 +85,7 @@ export const decodeUserProfile = record({
   slackId: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFeatureFlags,
+  notificationFlags: decodeNotificationFlags,
   gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
@@ -84,6 +105,7 @@ export function encodeUserProfile(
     organizationName: profile.organizationName,
     profileUrl: profile.profileUrl,
     state: profile.state,
+    notificationFlags: profile.notificationFlags,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
       : undefined,
@@ -138,6 +160,7 @@ export async function updateUserProfile(
       | "state"
       | "createdAt"
       | "gdprPolicyAcceptedAt"
+      | "notificationFlags"
     >
   >
 ): Promise<UserProfile> {
@@ -169,19 +192,21 @@ export async function createUserProfile(
     .then(decodeUserProfile);
 }
 
-/** Decode known feature flags, returning empty array for `null` or `undefined` */
-function decodeFeatureFlags(value: Pojo) {
+//
+// Decoding Support
+//
+
+/** Decode an array of flags, skipping unknown values and returning empty array for `undefined` and `null` */
+function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
   const decoder = union(
     undef,
     nil,
-    decodeValidItemsFromArray(
-      union(...supportedFeatureFlags),
-      "Feature Flags",
-      () => {
-        /* silence logs */
-      }
-    )
+    decodeValidItemsFromArray(decodeSingleFlag, "Flags", () => {
+      /* silence logs */
+    })
   );
-  const decoded = decoder(value);
-  return decoded ?? [];
+  return (value: Pojo) => {
+    const decoded = decoder(value);
+    return decoded ?? [];
+  };
 }
