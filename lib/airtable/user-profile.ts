@@ -67,6 +67,9 @@ export interface Schema extends FieldSet {
 export const userProfileTable =
   volunteerManagementBase<Schema>("User Profiles");
 
+/** Table views you can use when querying the user profile table */
+export type TableView = "Grid View" | "New Role Notification Recipients";
+
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
 
@@ -120,9 +123,9 @@ export function encodeUserProfile(
 //
 
 /** Get all user profiles */
-export const getAllUserProfiles = async () =>
+export const getAllUserProfiles = async (view: TableView = "Grid View") =>
   await userProfileTable
-    .select()
+    .select({ view })
     .all()
     .then(unwrapRecords)
     .then(array(decodeUserProfile));
