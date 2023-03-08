@@ -29,7 +29,8 @@ export const Route = {
   // Dynamic routes
   toProject: (p: PortalProject) => `/projects/${p.slug}`,
   toEvent: (e: PortalEvent) => `/events/${e.slug}`,
-  toOpportunity: (o: PortalOpportunity) => `/opportunities/${o.slug}`,
+  toOpportunity: (o: Pick<PortalOpportunity, "slug">) =>
+    `/opportunities/${o.slug}`,
 };
 
 const addLeadingSlash = (path: string) =>
