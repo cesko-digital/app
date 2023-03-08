@@ -131,3 +131,10 @@ export function normalizeEmailAddress(email: string): string {
       .replaceAll(/\s+$/g, "")
   );
 }
+
+/** Filtering convenience, see https://stackoverflow.com/questions/43118692 */
+export function notEmpty<TValue>(
+  value: TValue | null | undefined
+): value is TValue {
+  return value !== null && value !== undefined;
+}
