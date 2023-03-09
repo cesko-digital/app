@@ -157,7 +157,7 @@ const CoreTeamSection = () => (
         title="Chief Executive Officer"
         image={Eva}
       >
-        Vedu komunitu Česko.Digital, zajišťuji její rozvoj a směřování. Mimo
+        Vedu komunitu Česko.Digital, zajišťuji masírování koťátek. Mimo
         komunitu mě nejčastěji potkáte v roli CEO nebo ředitelka.{" "}
         <a href="https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/834568254/Moje+AHA+momenty">
           Moje AHA momenty
