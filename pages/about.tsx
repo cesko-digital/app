@@ -205,9 +205,7 @@ const CoreTeamSection = () => (
         title="Brand Product Owner"
         image={Jindra}
       >
-        Mám na starosti nadchnout Čechy do expertního dobrovolnictví a také
-        směřování značky Česko.Digital. Rovněž zastávám roli Scrum Support
-        Mastera na projektech.
+        Mám na starosti značku, reputaci a komunikační strategii organizace. Zabývám se tím, jak ke komu komunikujeme, jaká očekávání vzbuzujeme s ohledem na organizační strategii. Rovněž zastávám roli Scrum Support Mastera na projektech.
       </PersonCard>
       <PersonCard
         name="Terézia Palaščáková"
