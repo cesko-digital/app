@@ -68,7 +68,7 @@ export const userProfileTable =
   volunteerManagementBase<Schema>("User Profiles");
 
 /** Table views you can use when querying the user profile table */
-export type TableView = "Grid View" | "New Role Notification Recipients";
+export type TableView = "All Profiles" | "New Role Notification Recipients";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
@@ -123,7 +123,7 @@ export function encodeUserProfile(
 //
 
 /** Get all user profiles */
-export const getAllUserProfiles = async (view: TableView = "Grid View") =>
+export const getAllUserProfiles = async (view: TableView = "All Profiles") =>
   await userProfileTable
     .select({ view })
     .all()
