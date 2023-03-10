@@ -54,7 +54,7 @@ async function main() {
 
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY ?? "");
   await sendgrid.send({
-    to: recipients,
+    bcc: recipients,
     from: "ahoj@cesko.digital",
     subject: renderNotificationMailSubject(opportunities),
     text: renderNotificationMailBody(opportunities),
