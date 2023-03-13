@@ -53,17 +53,25 @@ async function main() {
   );
 
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY ?? "");
-  await sendgrid.send({
-    bcc: recipients,
-    from: "ahoj@cesko.digital",
-    subject: renderNotificationMailSubject(opportunities),
-    text: renderNotificationMailBody(opportunities),
-    trackingSettings: {
-      clickTracking: {
-        enable: false,
+
+  // It’s slightly stupid to send these mails one-by-one, but we will need
+  // to personify the mails with unsubscribe links anyway in near future.
+  for (const recipient of recipients) {
+    await sendgrid.send({
+      to: recipient,
+      from: "ahoj@cesko.digital",
+      subject: renderNotificationMailSubject(opportunities),
+      text: renderNotificationMailBody(opportunities),
+      trackingSettings: {
+        clickTracking: {
+          enable: false,
+        },
       },
-    },
-  });
+    });
+  }
 }
 
-main().catch((error) => console.log(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
