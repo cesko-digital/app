@@ -2,6 +2,7 @@ import { marked } from "marked";
 import { PortalProject } from "lib/airtable/project";
 import { PortalEvent } from "lib/airtable/event";
 import { PortalOpportunity } from "lib/airtable/opportunity";
+import crypto from "crypto";
 
 /** Create URLs for frequently used routes */
 export const Route = {
@@ -137,4 +138,19 @@ export function notEmpty<TValue>(
   value: TValue | null | undefined
 ): value is TValue {
   return value !== null && value !== undefined;
+}
+
+/**
+ * Compute a simple message digest
+ *
+ * The algorithm hashes the params together with `process.env.SHASUM_SECRET`
+ * and returns first 10 hex digits of that.
+ */
+export function hashDigest(
+  params: string[],
+  secret = process.env.SHASUM_SECRET || ""
+): string {
+  const shasum = crypto.createHash("sha1");
+  shasum.update([...params, secret].join(":"));
+  return shasum.digest("hex").slice(0, 10);
 }
