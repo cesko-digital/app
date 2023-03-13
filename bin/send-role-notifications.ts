@@ -3,11 +3,9 @@
 import sendgrid from "@sendgrid/mail";
 import { getAllOpportunities } from "lib/airtable/opportunity";
 import { getAllUserProfiles } from "lib/airtable/user-profile";
-import { notEmpty } from "lib/utils";
 import {
   renderNotificationMailBody,
   renderNotificationMailSubject,
-  getUnsubscribeUrl,
 } from "lib/notifications";
 
 /**
