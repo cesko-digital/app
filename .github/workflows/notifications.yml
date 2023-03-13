@@ -11,6 +11,7 @@ jobs:
     env:
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+      SHASUM_SECRET: ${{ secrets.SHASUM_SECRET }}
     steps:
       - uses: actions/checkout@v3
       - name: Install deps and run
