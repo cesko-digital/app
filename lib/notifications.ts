@@ -1,23 +1,29 @@
 import { PortalOpportunity } from "./airtable/opportunity";
-import { Route } from "./utils";
+import { hashDigest, Route } from "./utils";
 
 type Role = Pick<PortalOpportunity, "name" | "slug">;
 
 const trimLeadingWhitespace = (s: string) => s.replaceAll(/^\s+/g, "");
 
-export function renderNotificationMailBody(roles: Role[]): string {
+export function renderNotificationMailBody(
+  roles: Role[],
+  recipientSlackId: string
+): string {
   return `Ahoj!
 
   Posíláme přehled nových dobrovolnických rolí, které by tě mohly zajímat:
 
   ${roles.map(renderRole).join("\n")}
 
-  Všechny hledané role najdeš na https://cesko.digital/opportunities. Pokud chceš
-  tahle upozornění vypnout, mrkni do uživatelského profilu na https://cesko.digital/profile.
+  Všechny hledané role najdeš na https://cesko.digital/opportunities.
 
   Ať se daří!
   tým Česko.Digital
   ahoj@cesko.digital
+
+  PS. Pokud chceš tahle upozornění vypnout, stačí kliknout tady:
+
+  ${getUnsubscribeUrl(recipientSlackId)}
   `
     .split("\n")
     .map(trimLeadingWhitespace)
@@ -44,3 +50,12 @@ export function renderNotificationMailSubject(
     return `Česko.Digital hledá ${roles.length} nových rolí`;
   }
 }
+
+export const getUnsubscribeUrl = (slackId: string, confirm = false) => {
+  const token = hashDigest(["unsubscribe", slackId]);
+  const params = new URLSearchParams({ slackId, token });
+  if (confirm) {
+    params.append("confirm", "y");
+  }
+  return `https://cesko.digital/api/notifications/unsubscribe?${params}`;
+};

@@ -7,6 +7,7 @@ import { notEmpty } from "lib/utils";
 import {
   renderNotificationMailBody,
   renderNotificationMailSubject,
+  getUnsubscribeUrl,
 } from "lib/notifications";
 
 /**
@@ -31,15 +32,16 @@ async function main() {
   if (opportunities.length === 0) {
     console.log("No new roles to send notifications about, nothing to do.");
     process.exit();
+  } else if (opportunities.length > 20) {
+    console.error(
+      `Got ${opportunities.length} opportunities, that doesn’t seem right, aborting.`
+    );
+    process.exit(1);
   }
 
   const recipients = (
     await getAllUserProfiles("New Role Notification Recipients")
-  )
-    // The notifications are tied to their Slack registration address
-    .map((user) => user.slackRegistrationMail)
-    // Filter out empties
-    .filter(notEmpty);
+  ).filter((user) => user.slackId && user.slackRegistrationMail);
 
   if (recipients.length > 1000) {
     console.error(
@@ -54,14 +56,12 @@ async function main() {
 
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY ?? "");
 
-  // It’s slightly stupid to send these mails one-by-one, but we will need
-  // to personify the mails with unsubscribe links anyway in near future.
   for (const recipient of recipients) {
     await sendgrid.send({
-      to: recipient,
+      to: recipient.slackRegistrationMail!,
       from: "ahoj@cesko.digital",
       subject: renderNotificationMailSubject(opportunities),
-      text: renderNotificationMailBody(opportunities),
+      text: renderNotificationMailBody(opportunities, recipient.slackId!),
       trackingSettings: {
         clickTracking: {
           enable: false,
