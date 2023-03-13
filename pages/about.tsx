@@ -193,12 +193,12 @@ const CoreTeamSection = () => (
       </PersonCard>
       <PersonCard
         name="Anežka Müller"
-        title="Event & Community Lead"
+        title="Community Experience Lead"
         image={Anezka}
       >
-        Starám se o vše, co v organizaci souvisí s oblastí akcí (eventů) – tedy
-        o eventovou strategii i operativu s tím spojenou. Kromě toho se také
-        věnuji péči o komunitu.
+        Starám se o o fungování komunity Česko.Digital především z pohledu dobrovolníků.
+        Mým cílem je, aby naši dobrovolníci byli spokojení a motivovaní a aby si odnášeli
+        pozitivní zkušenost. Na základě podnětů z komunity pomáhám nastavovat procesy na pozadí. 
       </PersonCard>
       <PersonCard
         name="Jindřich Oukropec"
