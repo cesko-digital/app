@@ -335,23 +335,6 @@ const LegalSection: FormSection = ({ state, onChange }) => (
       <label className="flex items-center mb-1">
         <input
           type="checkbox"
-          checked={state.privacyConsent}
-          disabled={!isEditable(state)}
-          className="mr-3 self-start mt-2 shrink-0"
-          onChange={(e) =>
-            onChange({ ...state, privacyConsent: e.target.checked })
-          }
-        ></input>
-        <span>
-          Byl jsem informován, jak bude Česko.Digital při vzájemné spolupráci a
-          pro zajištění transparentnosti zpracovávat mé{" "}
-          <a href="https://cesko.digital/go/privacy">osobní údaje</a>.
-          <RequiredFieldMarker />
-        </span>
-      </label>
-      <label className="flex items-center">
-        <input
-          type="checkbox"
           checked={state.gdprConsent}
           disabled={!isEditable(state)}
           className="mr-3 self-start mt-2 shrink-0"
@@ -363,6 +346,23 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           Mám přečtené{" "}
           <a href="https://cesko.digital/go/gdpr">zásady přístupu k datům</a> a
           zavazuji se k jejich dodržování.
+          <RequiredFieldMarker />
+        </span>
+      </label>
+      <label className="flex items-center">
+        <input
+          type="checkbox"
+          checked={state.privacyConsent}
+          disabled={!isEditable(state)}
+          className="mr-3 self-start mt-2 shrink-0"
+          onChange={(e) =>
+            onChange({ ...state, privacyConsent: e.target.checked })
+          }
+        ></input>
+        <span>
+          Byl jsem informován, jak bude Česko.Digital při vzájemné spolupráci a
+          pro zajištění transparentnosti zpracovávat mé{" "}
+          <a href="https://cesko.digital/go/privacy">osobní údaje</a>.
           <RequiredFieldMarker />
         </span>
       </label>
