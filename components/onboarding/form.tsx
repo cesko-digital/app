@@ -343,10 +343,9 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           }
         ></input>
         <span>
-          Souhlasím s{" "}
-          <a href="https://cesko.digital/go/privacy">
-            podmínkami zpracování osobních údajů
-          </a>
+          Byl jsem informován, jak bude Česko.Digital při vzájemné spolupráci a
+          pro zajištění transparentnosti zpracovávat mé{" "}
+          <a href="https://cesko.digital/go/privacy">osobní údaje</a>.
           <RequiredFieldMarker />
         </span>
       </label>
@@ -361,9 +360,9 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           }
         ></input>
         <span>
-          Potvrzuji přečtení{" "}
-          <a href="https://cesko.digital/go/gdpr">směrnice GDPR</a> a zavazuji
-          se k jejímu dodržování
+          Mám přečtené{" "}
+          <a href="https://cesko.digital/go/gdpr">zásady přístupu k datům</a> a
+          zavazuji se k jejich dodržování.
           <RequiredFieldMarker />
         </span>
       </label>
