@@ -9,4 +9,8 @@ import { test, expect } from "@playwright/test";
 test("Localization looks right", async ({ page }) => {
   await page.goto("https://en.cesko.digital");
   await expect(page.locator("h1")).toHaveText(/Changing Czechia/);
+  await expect(page.getByRole("link", { name: "Česky" })).toHaveAttribute(
+    "href",
+    "https://cesko.digital/"
+  );
 });
