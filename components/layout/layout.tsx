@@ -5,7 +5,6 @@ import SectionContent from "./section-content";
 import Breadcrumb, { Crumb } from "./breadcrumb";
 import * as S from "./styles";
 import CustomHead, { CustomHeadProps } from "./head";
-import Banner from "components/banner";
 import Script from "next/script";
 import { useContext } from "react";
 import { LangContext } from "components/language";
@@ -16,12 +15,7 @@ export interface Props {
   showBanner?: boolean;
 }
 
-const Layout: React.FC<Props> = ({
-  crumbs,
-  children,
-  head: seo = {},
-  showBanner,
-}) => {
+const Layout: React.FC<Props> = ({ crumbs, children, head: seo = {} }) => {
   const lang = useContext(LangContext);
   return (
     <S.Container>
@@ -45,7 +39,6 @@ const Layout: React.FC<Props> = ({
         </>
       )}
       <CustomHead {...seo} />
-      {showBanner && <Banner />}
       {lang === "en" && <TranslationNotice />}
       <Header />
       {crumbs && (
