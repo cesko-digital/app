@@ -458,13 +458,13 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
 
 const RequiredFieldMarker = () => <span className="text-red-500 pl-1">*</span>;
 
-const Section: React.FC = ({ children }) => (
+const Section = ({ children }: { children: React.ReactNode }) => (
   <section className="relative max-w-content m-auto mt-10 pb-10 px-5 text-lg last:mb-10">
     {children}
   </section>
 );
 
-const SectionContent: React.FC = ({ children }) => (
+const SectionContent = ({ children }: { children: React.ReactNode }) => (
   <div className="max-w-prose">{children}</div>
 );
 

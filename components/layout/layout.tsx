@@ -13,9 +13,10 @@ export interface Props {
   crumbs?: Crumb[];
   head?: CustomHeadProps;
   showBanner?: boolean;
+  children: React.ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ crumbs, children, head: seo = {} }) => {
+const Layout = ({ crumbs, children, head: seo = {} }: Props) => {
   const lang = useContext(LangContext);
   return (
     <S.Container>
