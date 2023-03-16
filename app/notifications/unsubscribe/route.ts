@@ -21,6 +21,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slackId = searchParams.get("slackId");
   const token = searchParams.get("token");
+  const confirm = searchParams.get("confirm");
 
   if (typeof slackId !== "string" || typeof token !== "string") {
     return new Response("Nesedí kontrolní součet.", { status: 401 });
@@ -37,7 +38,7 @@ export async function GET(request: Request) {
     return new Response("Uživatel nebyl nalezen.", { status: 400 });
   } else if (!confirm) {
     const confirmedUrl = getUnsubscribeUrl(slackId, true);
-    const html = `Odhlášní potvrdíte <a href="${confirmedUrl}">kliknutím sem</a>.`;
+    const html = `Odhlášení potvrdíš <a href="${confirmedUrl}">kliknutím sem</a>.`;
     return new Response(html, {
       status: 200,
       headers: {
