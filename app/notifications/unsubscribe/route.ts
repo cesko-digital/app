@@ -1,8 +1,6 @@
 import { getUserProfile, updateUserProfile } from "lib/airtable/user-profile";
 import { getUnsubscribeUrl } from "lib/notifications";
 import { hashDigest } from "lib/utils";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getToken } from "next-auth/jwt";
 
 /**
  * Instantly unsubscribe user from e-mail notifications
@@ -16,44 +14,42 @@ import { getToken } from "next-auth/jwt";
  *
  * So we don’t turn the notifications off instantly and display a simple
  * confirmation dialogue.
+ *
+ * TBD: Confirm automatically for logged-in users
  */
-async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const { slackId, token } = request.query;
-
-  // If the user is logged in we know the visit is legit and we don’t need the confirmation.
-  const sessionToken = await getToken({ req: request });
-  const confirm = sessionToken ? "y" : request.query.confirm;
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const slackId = searchParams.get("slackId");
+  const token = searchParams.get("token");
 
   if (typeof slackId !== "string" || typeof token !== "string") {
-    response.status(401).send("Nesedí kontrolní součet.");
-    return;
+    return new Response("Nesedí kontrolní součet.", { status: 401 });
   }
 
   const expectedTokenValue = hashDigest(["unsubscribe", slackId]);
   if (expectedTokenValue !== token) {
-    response.status(401).send("Nesedí kontrolní součet.");
-    return;
+    return new Response("Nesedí kontrolní součet.", { status: 401 });
   }
 
   const profile = await getUserProfile(slackId as any).catch((e) => null);
 
   if (!profile) {
-    response.status(400).send("Uživatel nebyl nalezen.");
+    return new Response("Uživatel nebyl nalezen.", { status: 400 });
   } else if (!confirm) {
-    response.status(200);
-    response.setHeader("Content-Type", "text/html");
     const confirmedUrl = getUnsubscribeUrl(slackId, true);
-    response.send(
-      `Odhlášní potvrdíte <a href="${confirmedUrl}">kliknutím sem</a>.`
-    );
+    const html = `Odhlášní potvrdíte <a href="${confirmedUrl}">kliknutím sem</a>.`;
+    return new Response(html, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html",
+      },
+    });
   } else {
     await updateUserProfile(profile.id, {
       notificationFlags: profile.notificationFlags.filter(
         (f) => f !== "allowNotifications"
       ),
     });
-    response.status(200).send(`Nastavení upraveno.`);
+    return new Response("Nastavení upraveno.", { status: 200 });
   }
 }
-
-export default handler;
