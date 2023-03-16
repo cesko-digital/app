@@ -1,5 +1,4 @@
 import { NextPage, GetStaticProps } from "next";
-import { useRouter } from "next/router";
 import { useContext } from "react";
 import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
@@ -23,11 +22,9 @@ type PageProps = {
 
 const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
   const theme = useContext(ThemeContext);
-  const router = useRouter();
-  const displayBanner = !!router.query.banner;
 
   return (
-    <Layout showBanner={displayBanner}>
+    <Layout>
       <Section>
         <Hero />
       </Section>

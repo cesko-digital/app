@@ -4,12 +4,11 @@ import * as Typography from "components/typography";
 import * as S from "components/dashboard/styles";
 import EventCard from "components/dashboard/event-card";
 import OpportunityItem from "components/sections/opportunity-overview";
-import { Button } from "components/buttons";
 import { CardRow } from "components/layout";
 import { Route, shuffled } from "lib/utils";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
-import { Link } from "components/links";
+import { ButtonLink, Link } from "components/links";
 import { default as NextLink } from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
@@ -81,11 +80,7 @@ const MarketPlaceSection: React.FC<PageProps> = ({
         </div>
       </SectionContent>
       <S.ButtonWrapper>
-        <NextLink href={Route.marketplace}>
-          <a>
-            <Button>Více podobných nabídek</Button>
-          </a>
-        </NextLink>
+        <ButtonLink to={Route.marketplace}>Více podobných nabídek</ButtonLink>
       </S.ButtonWrapper>
     </Section>
   );
@@ -100,9 +95,7 @@ const Offer: React.FC<Props> = ({ offer }) => {
         <span className="text-slate-400 md:inline hidden">{plainText}</span>
       </div>
       <div>
-        <NextLink href={Route.marketplace + "#" + offer.id}>
-          <a>Detail</a>
-        </NextLink>
+        <NextLink href={Route.marketplace + "#" + offer.id}>Detail</NextLink>
       </div>
     </div>
   );
@@ -138,11 +131,9 @@ const OpportunitiesSection: React.FC<PageProps> = ({
           ))}
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
-          <NextLink href={Route.opportunities}>
-            <a>
-              <Button>{strings.pages.dashboard.moreOpportunities}</Button>
-            </a>
-          </NextLink>
+          <ButtonLink to={Route.opportunities}>
+            {strings.pages.dashboard.moreOpportunities}
+          </ButtonLink>
         </S.ButtonWrapper>
       </SectionContent>
     </Section>
@@ -172,11 +163,7 @@ const EventsSection: React.FC<PageProps> = ({ upcomingEvents, projects }) => {
           </S.CardWrapper>
         </S.Container>
         <S.ButtonWrapper>
-          <NextLink href={Route.events}>
-            <a>
-              <Button>Všechny akce</Button>
-            </a>
-          </NextLink>
+          <ButtonLink to={Route.events}>Všechny akce</ButtonLink>
         </S.ButtonWrapper>
       </SectionContent>
     </Section>

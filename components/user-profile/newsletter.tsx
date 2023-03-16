@@ -167,6 +167,6 @@ const HelpInfo = () => {
   );
 };
 
-const Section: React.FC = ({ children }) => (
+const Section = ({ children }: { children: React.ReactNode }) => (
   <section className="text-lg max-w-prose">{children}</section>
 );

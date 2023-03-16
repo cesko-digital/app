@@ -80,9 +80,7 @@ const Page: NextPage<PageProps> = (props) => {
                 {parentProject.state !== "draft" &&
                   parentProject.state !== "internal" && (
                     <Link href={Route.toProject(parentProject)}>
-                      <a>
-                        <Body>{parentProject.name}</Body>
-                      </a>
+                      <Body>{parentProject.name}</Body>
                     </Link>
                   )}
               </S.OpportunityMetaRow>

@@ -184,10 +184,10 @@ const SkillPane: React.FC<SkillPaneProps> = ({
 // Shared components
 //
 
-const MainContainer: React.FC = (props) => (
-  <div className="min-h-[400px]">{props.children}</div>
+const MainContainer = ({ children }: { children: React.ReactNode }) => (
+  <div className="min-h-[400px]">{children}</div>
 );
 
-const Heading: React.FC = (props) => (
-  <h1 className="text-[44px] font-bold leading-snug mb-10">{props.children}</h1>
+const Heading = ({ children }: { children: React.ReactNode }) => (
+  <h1 className="text-[44px] font-bold leading-snug mb-10">{children}</h1>
 );

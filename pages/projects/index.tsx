@@ -40,7 +40,7 @@ const Page: NextPage<PageProps> = ({ projects }) => {
               měnit život v Česku k lepšímu. Prohlédněte si naše projekty a
               pokud vás zaujmou, podívejte se na{" "}
               <Link href={Route.opportunities}>
-                <a>aktuální příležitosti k zapojení</a>
+                aktuální příležitosti k zapojení
               </Link>
               .
             </S.Tagline>

@@ -27,13 +27,13 @@ const ButtonLink = ({
   };
   const href = rest.disabled ? "" : url;
   return (
-    <NextLink href={href} passHref>
-      <StyledLink {...props}>{children}</StyledLink>
-    </NextLink>
+    <StyledLink href={href} {...props}>
+      {children}
+    </StyledLink>
   );
 };
 
-const StyledLink = styled.a<StyledProps>`
+const StyledLink = styled(NextLink)<StyledProps>`
   ${(p) =>
     applyButtonStyles({
       size: p.size,
