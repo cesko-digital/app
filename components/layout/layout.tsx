@@ -23,21 +23,6 @@ const Layout = ({ crumbs, children, head: seo = {} }: Props) => {
         data-domain="cesko.digital"
         src="https://plausible.io/js/script.outbound-links.js"
       />
-      {lang === "en" && (
-        <>
-          <Script
-            type="text/javascript"
-            src="https://cdn.weglot.com/weglot.min.js"
-            strategy="beforeInteractive"
-          />
-          <Script id="weglot">
-            {`Weglot.initialize({
-          api_key: '${process.env.NEXT_PUBLIC_WEGLOT_API_KEY}',
-          hide_switcher: true   
-        });`}
-          </Script>
-        </>
-      )}
       <CustomHead {...seo} />
       {lang === "en" && <TranslationNotice />}
       <Header />
