@@ -1,5 +1,8 @@
 import { defineConfig } from "@playwright/test";
 
+// Read env variables from .env.local if present
+require("dotenv-flow").config({ silent: true });
+
 export default defineConfig({
   webServer: {
     command: "yarn dev",
