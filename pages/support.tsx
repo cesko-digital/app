@@ -1,5 +1,5 @@
 import { Layout } from "components/layout";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import Image from "next/image";
 import { ArrowIcon } from "components/icons";
 import {

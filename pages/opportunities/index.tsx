@@ -3,7 +3,7 @@ import { Layout, SectionContent, Section } from "components/layout";
 import * as Typography from "components/typography";
 import OpportunityItem from "components/sections/opportunity-overview";
 import styled from "styled-components";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { useState } from "react";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";

@@ -7,7 +7,7 @@ import { siteData } from "lib/site-data";
 import HighlightedProject from "components/project/highlighted";
 import ProjectList from "components/project/card-list";
 import { PortalProject } from "lib/airtable/project";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import Link from "next/link";
 
 type PageProps = {

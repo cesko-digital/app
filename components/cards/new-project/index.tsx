@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { BulbIcon } from "components/icons";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import strings from "content/strings.json";
 
 const NewProject: React.FC = () => {

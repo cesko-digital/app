@@ -1,4 +1,4 @@
-import { renderNotificationMailSubject } from "./notifications";
+import { renderNotificationMailSubject, renderRole } from "./notifications";
 
 test("Render notification e-mail subject", () => {
   expect(renderNotificationMailSubject([{ name: "Krotitel tygrů" }])).toBe(
@@ -20,4 +20,11 @@ test("Render notification e-mail subject", () => {
       { name: "Masér varanů" },
     ])
   ).toBe("Česko.Digital hledá 6 nových rolí");
+});
+
+test("Role rendering", () => {
+  expect(renderRole({ name: "Krotitel tygrů", slug: "krotitel" }))
+    .toEqual(`🔹 Krotitel tygrů
+  https://cesko.digital/opportunities/krotitel
+  `);
 });

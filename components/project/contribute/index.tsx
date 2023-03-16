@@ -1,6 +1,6 @@
 import { Body, Heading2 } from "components/typography";
-import { ButtonSize, SlackButton } from "components/buttons";
-import { Route } from "lib/utils";
+import { SlackButton } from "components/buttons";
+import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
 

@@ -1,7 +1,8 @@
 import * as S from "./styles";
 import { ButtonLink } from "components/links";
 import strings from "content/strings.json";
-import { doNotTranslate, Route } from "lib/utils";
+import { doNotTranslate } from "lib/utils";
+import { Route } from "lib/routing";
 import { getResizedImgUrl } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 

@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { Link } from "components/links";
 import { getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import DateTime from "components/datetime";
 import { PortalProject } from "lib/airtable/project";
 import { isEventPast, PortalEvent } from "lib/airtable/event";

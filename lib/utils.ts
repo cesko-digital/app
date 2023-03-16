@@ -1,41 +1,5 @@
 import { marked } from "marked";
-import { PortalProject } from "lib/airtable/project";
-import { PortalEvent } from "lib/airtable/event";
-import { PortalOpportunity } from "lib/airtable/opportunity";
 import crypto from "crypto";
-
-/** Create URLs for frequently used routes */
-export const Route = {
-  // External links
-  submitProject: "https://airtable.com/shrP207QR9RrHTZEi",
-  brandManual: "https://znacka.cesko.digital/",
-  blog: "https://blog.cesko.digital",
-  slackOnboarding: "https://slack.cesko.digital/",
-  youtube: "https://www.youtube.com/c/ČeskoDigital",
-  darujme: "https://www.darujme.cz/projekt/1203553",
-  // Localization
-  english: (path = "/") => "https://en.cesko.digital" + addLeadingSlash(path),
-  czech: (path = "/") => "https://cesko.digital" + addLeadingSlash(path),
-  // Static routes
-  opportunities: "/opportunities",
-  joinUs: "/join",
-  profile: "/profile",
-  marketplace: "/marketplace",
-  supportUs: "/support",
-  aboutUs: "/about",
-  events: "/events",
-  dashboard: "/dashboard",
-  partners: "/partners",
-  projects: "/projects",
-  // Dynamic routes
-  toProject: (p: PortalProject) => `/projects/${p.slug}`,
-  toEvent: (e: PortalEvent) => `/events/${e.slug}`,
-  toOpportunity: (o: Pick<PortalOpportunity, "slug">) =>
-    `/opportunities/${o.slug}`,
-};
-
-const addLeadingSlash = (path: string) =>
-  path.startsWith("/") ? path : "/" + path;
 
 /** Approximate size of the Česko.Digital community (number of people in Slack) */
 export const communitySize = 5800;

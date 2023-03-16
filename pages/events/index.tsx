@@ -7,7 +7,7 @@ import {
 } from "lib/airtable/event";
 import { PortalProject } from "lib/airtable/project";
 import { siteData } from "lib/site-data";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { GetStaticProps } from "next";
 
 type PageProps = {

@@ -1,4 +1,5 @@
-import { doNotTranslate, Route } from "lib/utils";
+import { doNotTranslate } from "lib/utils";
+import { Route } from "lib/routing";
 import * as S from "./styles";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";

@@ -1,7 +1,8 @@
 import { BodySmall } from "components/typography";
 import { PortalOpportunity } from "lib/airtable/opportunity";
 import { PortalProject } from "lib/airtable/project";
-import { doNotTranslate, Route } from "lib/utils";
+import { doNotTranslate } from "lib/utils";
+import { Route } from "lib/routing";
 import Link from "next/link";
 import * as S from "./styles";
 

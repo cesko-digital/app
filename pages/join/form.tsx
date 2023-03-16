@@ -1,5 +1,5 @@
 import Plausible from "plausible-tracker";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import skillMenu from "content/skills.json";
 import { encodeSkillSelection } from "lib/skills";
 import OnboardingFormPage, {

@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { Link } from "components/links";
 import { doNotTranslate, getResizedImgUrl } from "lib/utils";
 import strings from "content/strings.json";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { PortalProject } from "lib/airtable/project";
 
 interface Props {

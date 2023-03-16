@@ -1,5 +1,5 @@
 import NewsletterBox from "./newsletter-form";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { Link } from "components/links";
 import strings from "content/strings.json";
 import * as S from "./styles";

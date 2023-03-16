@@ -8,7 +8,7 @@ import OwnerContact from "components/dashboard/opportunity";
 import { OpportunitiesMainWrapper } from "components/dashboard/styles";
 import { getResizedImgUrl } from "lib/utils";
 import RenderMarkdown from "components/markdown";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";

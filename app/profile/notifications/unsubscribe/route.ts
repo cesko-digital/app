@@ -1,5 +1,5 @@
 import { getUserProfile, updateUserProfile } from "lib/airtable/user-profile";
-import { getUnsubscribeUrl } from "app/profile/notifications/notifications";
+import { unsubscribeRoute } from "app/profile/notifications/notifications";
 import { hashDigest } from "lib/utils";
 
 /**
@@ -37,7 +37,7 @@ export async function GET(request: Request) {
   if (!profile) {
     return new Response("Uživatel nebyl nalezen.", { status: 400 });
   } else if (!confirm) {
-    const confirmedUrl = getUnsubscribeUrl(slackId, true);
+    const confirmedUrl = unsubscribeRoute(slackId, true);
     const html = `Odhlášení potvrdíš <a href="${confirmedUrl}">kliknutím sem</a>.`;
     return new Response(html, {
       status: 200,

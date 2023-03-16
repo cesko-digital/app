@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { CardRow } from "components/layout";
 import strings from "content/strings.json";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import { PortalProject } from "lib/airtable/project";
 
 const msg = strings.components.sections.projects;

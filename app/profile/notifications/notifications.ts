@@ -1,5 +1,6 @@
 import { PortalOpportunity } from "lib/airtable/opportunity";
-import { hashDigest, Route } from "lib/utils";
+import { hashDigest } from "lib/utils";
+import { absolute, Route } from "lib/routing";
 
 type Role = Pick<PortalOpportunity, "name" | "slug">;
 
@@ -23,7 +24,7 @@ export function renderNotificationMailBody(
 
   PS. Pokud chceš tahle upozornění vypnout, stačí kliknout tady:
 
-  ${getUnsubscribeUrl(recipientSlackId)}
+  ${absolute(unsubscribeRoute(recipientSlackId))}
   `
     .split("\n")
     .map(trimLeadingWhitespace)
@@ -32,7 +33,7 @@ export function renderNotificationMailBody(
 
 export function renderRole(role: Role): string {
   return `🔹 ${role.name}
-  https://cesko.digital${Route.toOpportunity(role)}
+  ${absolute(Route.toOpportunity(role))}
   `;
 }
 
@@ -51,11 +52,12 @@ export function renderNotificationMailSubject(
   }
 }
 
-export const getUnsubscribeUrl = (slackId: string, confirm = false) => {
+// TBD: Can we meld this into Route and use it in end-to-end unsubscribe tests?
+export const unsubscribeRoute = (slackId: string, confirm = false) => {
   const token = hashDigest(["unsubscribe", slackId]);
   const params = new URLSearchParams({ slackId, token });
   if (confirm) {
     params.append("confirm", "y");
   }
-  return `https://cesko.digital/profile/notifications/unsubscribe?${params}`;
+  return `/profile/notifications/unsubscribe?${params}`;
 };

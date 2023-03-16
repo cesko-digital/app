@@ -1,5 +1,5 @@
 import { Heading1 } from "components/typography";
-import { Route } from "lib/utils";
+import { Route } from "lib/routing";
 import strings from "content/strings.json";
 import * as S from "./styles";
 
