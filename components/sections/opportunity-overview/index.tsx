@@ -16,9 +16,7 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
       <S.OpportunityWrapper>
         <div>
           <Link href={Route.toOpportunity(opportunity)}>
-            <a>
-              <S.OpportunityHeading>{opportunity.name}</S.OpportunityHeading>
-            </a>
+            <S.OpportunityHeading>{opportunity.name}</S.OpportunityHeading>
           </Link>
           <S.OpportunityMetaWrapper>
             <BodySmall>{opportunity.timeRequirements}</BodySmall>
@@ -31,11 +29,9 @@ const OpportunityItem: React.FC<Props> = ({ opportunity, relatedProject }) => {
               {relatedProject.state !== "draft" &&
                 relatedProject.state !== "internal" && (
                   <Link href={Route.toProject(relatedProject)}>
-                    <a>
-                      <BodySmall className={doNotTranslate}>
-                        {relatedProject.name}
-                      </BodySmall>
-                    </a>
+                    <BodySmall className={doNotTranslate}>
+                      {relatedProject.name}
+                    </BodySmall>
                   </Link>
                 )}
               {(relatedProject.state === "draft" ||

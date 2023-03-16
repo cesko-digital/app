@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
 import { Petra, RadekH, Julia, PetrB } from "components/onboarding/images";
@@ -95,10 +95,8 @@ const JoinUs = () => (
           Věříme, že ve sdílení je síla a že{" "}
           <b>každý z nás má ostatním co nabídnout</b>!
         </p>
-        <Link href="/join/form" passHref={true}>
-          <a className="btn-primary mt-10 inline-block mb-4">
-            Registruj se do komunity →
-          </a>
+        <Link href="/join/form" className="btn-primary mt-10 inline-block mb-4">
+          Registruj se do komunity →
         </Link>
       </div>
       <div className="relative hidden lg:block col-span-2 w-full aspect-[711/393]">

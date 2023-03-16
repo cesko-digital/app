@@ -26,9 +26,9 @@ const Link = ({
       {children}
     </StyledLink>
   ) : (
-    <NextLink href={url} passHref>
-      <StyledLink {...props}>{children}</StyledLink>
-    </NextLink>
+    <StyledLink href={url} {...props}>
+      {children}
+    </StyledLink>
   );
 };
 
@@ -36,7 +36,7 @@ const Link = ({
 // Styles
 //
 
-const StyledLink = styled.a<LinkStyle>(({ variant = "normal" }) => {
+const StyledLink = styled(NextLink)<LinkStyle>(({ variant = "normal" }) => {
   switch (variant) {
     case "normal":
       return normalLinkStyles;
