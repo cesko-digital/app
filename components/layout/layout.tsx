@@ -12,7 +12,6 @@ import { LangContext } from "components/language";
 export interface Props {
   crumbs?: Crumb[];
   head?: CustomHeadProps;
-  showBanner?: boolean;
   children: React.ReactNode;
 }
 
