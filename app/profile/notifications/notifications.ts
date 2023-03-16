@@ -1,5 +1,5 @@
-import { PortalOpportunity } from "./airtable/opportunity";
-import { hashDigest, Route } from "./utils";
+import { PortalOpportunity } from "lib/airtable/opportunity";
+import { hashDigest, Route } from "lib/utils";
 
 type Role = Pick<PortalOpportunity, "name" | "slug">;
 
@@ -57,5 +57,5 @@ export const getUnsubscribeUrl = (slackId: string, confirm = false) => {
   if (confirm) {
     params.append("confirm", "y");
   }
-  return `https://cesko.digital/api/notifications/unsubscribe?${params}`;
+  return `https://cesko.digital/profile/notifications/unsubscribe?${params}`;
 };

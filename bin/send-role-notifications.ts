@@ -6,7 +6,7 @@ import { getAllUserProfiles } from "lib/airtable/user-profile";
 import {
   renderNotificationMailBody,
   renderNotificationMailSubject,
-} from "lib/notifications";
+} from "app/profile/notifications/notifications";
 
 /**
  * Send notifications about new roles to interested users

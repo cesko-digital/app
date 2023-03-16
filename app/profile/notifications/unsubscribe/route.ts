@@ -1,5 +1,5 @@
 import { getUserProfile, updateUserProfile } from "lib/airtable/user-profile";
-import { getUnsubscribeUrl } from "lib/notifications";
+import { getUnsubscribeUrl } from "app/profile/notifications/notifications";
 import { hashDigest } from "lib/utils";
 
 /**
