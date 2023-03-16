@@ -11,6 +11,7 @@ export default defineConfig({
     baseURL: "http://localhost:3000/",
     browserName: "webkit",
   },
-  testMatch: /end-to-end\/.*\.ts/,
+  testDir: "../..",
+  testMatch: ["app/**/*.e2e.ts", "tests/end-to-end/*.ts"],
   timeout: 180 * 1000,
 });
