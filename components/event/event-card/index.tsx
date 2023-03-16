@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { ButtonAsLink } from "components/links";
+import { ButtonLink } from "components/links";
 import Project from "./project";
 import Garant from "./garant";
 import Info from "./info";
@@ -44,9 +44,9 @@ const EventCard: React.FC<EventCardProps> = ({ event, owner, project }) => {
         />
       )}
       {event.registrationUrl && (
-        <ButtonAsLink to={event.registrationUrl}>
+        <ButtonLink to={event.registrationUrl}>
           {event.registrationTitle}
-        </ButtonAsLink>
+        </ButtonLink>
       )}
     </S.Container>
   );

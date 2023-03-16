@@ -1,4 +1,3 @@
-import { ButtonSize } from "components/buttons";
 import NewsletterBox from "./newsletter-form";
 import { Route } from "lib/utils";
 import { Link } from "components/links";
@@ -46,7 +45,7 @@ const InternalLinks = () => {
         <S.Links>
           {pageLinks.map(([name, url], i) => (
             <S.LinkItem key={i}>
-              <Link size={ButtonSize.Small} to={url}>
+              <Link variant="smallLight" to={url}>
                 {name}
               </Link>
             </S.LinkItem>
@@ -78,7 +77,7 @@ const SocialLinks = () => {
         <S.Links>
           {socialLinks.map(([name, url], index) => (
             <S.LinkItem key={index}>
-              <Link size={ButtonSize.Small} to={url} openInNewTab>
+              <Link variant="smallLight" to={url} openInNewTab>
                 {name}
               </Link>
             </S.LinkItem>

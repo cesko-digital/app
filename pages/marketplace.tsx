@@ -1,7 +1,7 @@
 import { NextPage, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body, Heading1 } from "components/typography";
-import { ButtonAsLink } from "components/links";
+import { ButtonLink } from "components/links";
 import { ButtonSize } from "components/buttons/button/enums";
 import { siteData } from "lib/site-data";
 import strings from "content/strings.json";
@@ -109,22 +109,18 @@ const Offer = (offer: MarketPlaceOffer) => {
         </p>
       </div>
       {session.status !== "authenticated" && (
-        <ButtonAsLink
+        <ButtonLink
           to={`mailto:${offer.contactEmail}`}
           size={ButtonSize.Small}
           inverted
         >
           Ozvat se mailem
-        </ButtonAsLink>
+        </ButtonLink>
       )}
       {session.status === "authenticated" && (
-        <ButtonAsLink
-          to={offer.slackThreadUrl}
-          size={ButtonSize.Small}
-          inverted
-        >
+        <ButtonLink to={offer.slackThreadUrl} size={ButtonSize.Small} inverted>
           Reagovat na Slacku
-        </ButtonAsLink>
+        </ButtonLink>
       )}
     </div>
   );

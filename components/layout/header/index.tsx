@@ -30,13 +30,13 @@ const Header: React.FC = () => {
     <Section as={"header"}>
       <SectionContent verticalPadding={0}>
         <S.Container>
-          <Link to="/" size={ButtonSize.Small}>
+          <Link to="/" variant="smallDark">
             <S.Logo />
           </Link>
 
           <S.DesktopLinksContainer>
             {menu.map(([link, label]) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
+              <Link key={label} to={link} variant="smallDark">
                 {label}
               </Link>
             ))}
@@ -56,9 +56,11 @@ const Header: React.FC = () => {
         {mobileMenuOpen && (
           <S.MobileMenu>
             {menu.map(([link, label]) => (
-              <Link key={label} to={link} size={ButtonSize.Small}>
-                {label}
-              </Link>
+              <S.MobileMenuItem key={label}>
+                <Link to={link} variant="smallDark">
+                  {label}
+                </Link>
+              </S.MobileMenuItem>
             ))}
           </S.MobileMenu>
         )}
@@ -76,7 +78,7 @@ const LanguageSwitcher = () => {
         <Link
           key="english"
           to={Route.english(path)}
-          size={ButtonSize.Small}
+          variant="smallDark"
           className={doNotTranslate}
         >
           English
@@ -86,7 +88,7 @@ const LanguageSwitcher = () => {
         <Link
           key="czech"
           to={Route.czech(path)}
-          size={ButtonSize.Small}
+          variant="smallDark"
           className={doNotTranslate}
         >
           Česky

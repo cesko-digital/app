@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { ButtonAsLink } from "components/links";
+import { ButtonLink } from "components/links";
 import strings from "content/strings.json";
 import { doNotTranslate, Route } from "lib/utils";
 import { getResizedImgUrl } from "lib/utils";
@@ -18,9 +18,9 @@ const HighlightedProject: React.FC<Props> = ({ project }) => {
           <S.Avatar src={project.logoUrl} />
           <S.Name className={doNotTranslate}>{project.name}</S.Name>
           <S.Tagline>{project.tagline}</S.Tagline>
-          <ButtonAsLink inverted to={Route.toProject(project)}>
+          <ButtonLink inverted to={Route.toProject(project)}>
             {strings.cards.project.projectDetail}
-          </ButtonAsLink>
+          </ButtonLink>
         </S.ProjectInfo>
       </S.Content>
     </S.Container>

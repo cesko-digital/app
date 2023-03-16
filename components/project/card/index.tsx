@@ -1,7 +1,7 @@
 import { ArrowIcon, GithubIcon, JiraIcon, SlackIcon } from "components/icons";
 import Coordinators from "./coordinators";
 import SocialMedia from "./social-media";
-import { ButtonAsLink } from "components/links";
+import { ButtonLink } from "components/links";
 import * as S from "./styles";
 import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";
@@ -50,10 +50,10 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
         </S.Social>
       )}
       <S.ButtonWrapper>
-        <ButtonAsLink to={project.url}>
+        <ButtonLink to={project.url}>
           <S.InnerText className={doNotTranslate}>{project.name}</S.InnerText>
           <ArrowIcon />
-        </ButtonAsLink>
+        </ButtonLink>
       </S.ButtonWrapper>
     </S.Container>
   );

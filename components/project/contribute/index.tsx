@@ -20,7 +20,7 @@ const ContributeBox: React.FC = () => {
         <Body>
           <S.Note>
             {msg.note}
-            <S.LinkHome size={ButtonSize.Small} to="/">
+            <S.LinkHome variant="smallDark" to="/">
               {msg.noteLink}
             </S.LinkHome>
           </S.Note>

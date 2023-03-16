@@ -1,4 +1,3 @@
-import { StyledLink } from "components/links/link/styles";
 import { Heading2, heading4Styles } from "components/typography";
 import styled from "styled-components";
 
@@ -130,9 +129,5 @@ export const LinkItem = styled.li`
 
   & + & {
     margin-top: ${({ theme }) => theme.space.md}px;
-  }
-
-  > ${StyledLink} {
-    color: ${({ theme }) => theme.colors.white};
   }
 `;

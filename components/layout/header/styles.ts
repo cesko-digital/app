@@ -1,6 +1,5 @@
-import { StyledLink } from "components/links/link/styles";
 import styled from "styled-components";
-import { ButtonAsLink } from "components/links";
+import { Button } from "components/buttons";
 
 export const Container = styled.div`
   display: flex;
@@ -25,7 +24,7 @@ export const Logo = styled.div`
   }
 `;
 
-export const HeaderButton = styled(ButtonAsLink)`
+export const HeaderButton = styled(Button)`
   height: 44px;
   padding: 0 24px;
   font-size: ${({ theme }) => theme.fontSizes.small}px;
@@ -66,15 +65,15 @@ export const MobileMenu = styled.div`
     bottom: 0;
     left: 0;
     z-index: 90;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.98);
   }
+`;
 
-  > ${StyledLink} {
-    display: grid;
-    justify-self: stretch;
-    height: 48px;
-    text-align: right;
-  }
+export const MobileMenuItem = styled.div`
+  display: grid;
+  justify-self: stretch;
+  height: 48px;
+  text-align: right;
 `;
 
 export const IconButton = styled.button`

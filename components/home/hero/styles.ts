@@ -1,5 +1,5 @@
 import { Body } from "components/typography";
-import ButtonAsLink from "components/links/button-as-link";
+import { ButtonLink } from "components/links";
 import styled, { css, CssWithTheme } from "styled-components";
 import { SectionContent } from "components/layout";
 import { CzechiaMapArrows } from "components/illustrations";
@@ -16,7 +16,7 @@ export const ShiftedBody = styled(Body)`
   }
 `;
 
-export const ButtonAsLinkElement = styled(ButtonAsLink)`
+export const ButtonAsLinkElement = styled(ButtonLink)`
   z-index: 2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
@@ -24,7 +24,7 @@ export const ButtonAsLinkElement = styled(ButtonAsLink)`
   }
 `;
 
-export const ShiftedButton = styled(ButtonAsLink)`
+export const ShiftedButton = styled(ButtonLink)`
   margin-left: 24px;
   z-index: 2;
 

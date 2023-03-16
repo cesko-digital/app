@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Body } from "components/typography";
-import { ButtonAsLink } from "components/links";
+import { ButtonLink } from "components/links";
 
 export const Wrapper = styled.div`
   box-sizing: content-box;
@@ -43,7 +43,7 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-export const ButtonAsLinkElement = styled(ButtonAsLink)`
+export const ButtonAsLinkElement = styled(ButtonLink)`
   display: flex;
   justify-content: flex-start;
 
