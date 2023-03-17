@@ -65,7 +65,7 @@ module.exports = withAxiom({
       {
         source: "/go/gdpr",
         destination:
-          "https://docs.google.com/document/d/1Fnh-Te5IAjloSg5YkQxFhVNPz6eGuPLY/edit?usp=sharing&ouid=108890724728869976226&rtpof=true&sd=true",
+          "https://docs.google.com/document/d/17rMYagWWIP_OIy4c9XfklkyamegLHkXR/edit",
         permanent: false,
       },
       {
