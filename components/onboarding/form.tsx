@@ -360,7 +360,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           }
         ></input>
         <span>
-          Byl jsem informován, jak bude Česko.Digital při vzájemné spolupráci a
+          Vím, jak bude Česko.Digital při vzájemné spolupráci a
           pro zajištění transparentnosti zpracovávat mé{" "}
           <a href="https://cesko.digital/go/privacy">osobní údaje</a>.
           <RequiredFieldMarker />
