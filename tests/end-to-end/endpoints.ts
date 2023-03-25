@@ -26,6 +26,7 @@ const endpoints = {
   "/api/stats/skills/categories": ct.csv,
   "/api/stats/skills/subcategories": ct.csv,
   "/api/stats/occupations": ct.csv,
+  "/stats/trends/new-comers?year=2022&fill=true": ct.csv
 };
 
 // Test that some basic endpoints look right
