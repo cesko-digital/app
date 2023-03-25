@@ -39,7 +39,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     "max-age=0, s-maxage=3600, stale-while-revalidate"
   );
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv");
+  response.setHeader("Content-Type", "text/csv; charset=utf-8");
   response.status(200);
   response.write("Page, Pageviews, Visitors, State, Project\n");
   response.write(csv);

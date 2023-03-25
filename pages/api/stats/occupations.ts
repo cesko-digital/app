@@ -10,7 +10,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     .filter((occupation) => !!occupation && occupation !== "");
   const uniqueOccupations = unique(allOccupations);
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv");
+  response.setHeader("Content-Type", "text/csv; charset=utf-8");
   response.setHeader(
     "Cache-Control",
     "max-age=0, s-maxage=3600, stale-while-revalidate"

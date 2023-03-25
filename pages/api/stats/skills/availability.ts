@@ -8,7 +8,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     .map((userProfile) => userProfile.skills)
     .filter((skill) => skill !== "");
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv");
+  response.setHeader("Content-Type", "text/csv; charset=utf-8");
   response.setHeader(
     "Cache-Control",
     "max-age=0, s-maxage=3600, stale-while-revalidate"

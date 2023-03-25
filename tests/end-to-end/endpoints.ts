@@ -6,7 +6,7 @@ const ct = {
   rss: "application/rss+xml",
   html: "text/html",
   txt: "text/plain",
-  csv: "text/csv",
+  csv: "text/csv; charset=utf-8",
 };
 
 /** Endpoints to test */
