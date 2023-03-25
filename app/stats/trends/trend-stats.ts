@@ -34,11 +34,6 @@ const RomanNumbers = [
 ];
 
 /**
- * Key contains date in string (toDateString) and value contains number sum value for the given date..
- */
-export type TrendData = { [key: string]: number };
-
-/**
  * Returns a month (in roman numerals) and year (in two digits) for the given date.
  */
 export function romanize(num: number): string {
@@ -72,6 +67,10 @@ export function getMonthColumn(date: Date): string {
 }
 
 /**
+ * Key contains date (trend index) in string (toDateString) and value contains number sum value for the given date..
+ */
+export type TrendData = { [key: string]: number[] };
+/**
  * Contains date of the trand value, and optional value that is summed to the given trend date SUM.
  */
 export interface TrendValue {
@@ -80,7 +79,14 @@ export interface TrendValue {
 }
 
 export type WriteTrendValue = (trendValue: TrendValue) => void;
-export type GenerateTrend = (writeTrendValue: WriteTrendValue) => void;
+export type GenerateTrendMethod = (writeTrendValue: WriteTrendValue) => Promise<void>;
+
+export interface GenerateChildTrend {
+  title: string,
+  generate: GenerateTrendMethod
+}
+
+export type GenerateTrend = GenerateTrendMethod | GenerateChildTrend[];
 
 export interface TrendOptions {
   fromYear: number | null;
@@ -94,10 +100,10 @@ export interface TrendOptions {
  * - Trend can be filtered by year (?year=X) or by year range (?from=X,?to=X).
  * - By default the trend is generated from first to last month of the given year range, can be turned off by ?fill=false.
  */
-export function buildTrendStats(
+export async function buildTrendStats(
   options: TrendOptions,
   generateTrend: GenerateTrend
-): string | null {
+): Promise<string | null> {
   // We want to build a trend by each month / year. First we will sum all trend values in each month.
   // Then we will construct whole trend by filling the missing months with 0.
   // For this we need to know the earliest and latest date.
@@ -105,7 +111,7 @@ export function buildTrendStats(
   let earliestDate: Date | null = null;
   let latestDate: Date | null = null;
 
-  function writeTrendData(trendValue: TrendValue) {
+  function writeTrendData(trendValue: TrendValue, trendIndex: number) {
     const trendDate = new Date(
       trendValue.date.getFullYear(),
       trendValue.date.getMonth(),
@@ -133,16 +139,33 @@ export function buildTrendStats(
     }
 
     const trendKey = trendDate.toDateString();
-    trend[trendKey] = (trend[trendKey] || 0) + (trendValue.value ?? 1);
+    if (typeof trend[trendKey] === 'undefined') {
+      trend[trendKey] = []
+    }
+
+    trend[trendKey][trendIndex] = (trend[trendKey][trendIndex] || 0) + (trendValue.value ?? 1);
   }
 
-  generateTrend(writeTrendData);
+  const headers: CsvLine = ['Měsíc a rok'];
+  if (typeof generateTrend === 'function') {
+    headers.push('Počet');
+    await generateTrend((trendValue: TrendValue) => {
+      writeTrendData(trendValue, 0);
+    });
+  } else {
+    for (const childIndex in generateTrend) {
+      const childTrend = generateTrend[childIndex];
+      headers.push(childTrend.title);
+
+      await childTrend.generate((trendValue: TrendValue) => {
+        writeTrendData(trendValue, parseInt(childIndex));
+      })
+    }
+  }
 
   if (earliestDate === null || latestDate === null) {
     return null;
   }
-
-  const headers: CsvLine = ["Měsíc a rok", "Počet"];
 
   return buildCsvContent(headers, function (write: CsvWriteLine) {
     const fromYearSetting = options.fromYear
@@ -168,8 +191,22 @@ export function buildTrendStats(
       date <= endDate;
       date.setMonth(date.getMonth() + 1)
     ) {
-      const value = trend[date.toDateString()] || 0;
-      write([getMonthColumn(date), value.toString()]);
+      const trendKey = date.toDateString();
+
+      const columns = [getMonthColumn(date)];
+
+      for (const index in headers) {
+        const id = parseInt(index);
+        if (id == 0) {
+          continue;
+        }
+
+        const value = trend[trendKey] && trend[trendKey][id - 1];
+
+        columns.push((value ?? 0).toString());
+      }
+
+      write(columns);
     }
   });
 }
