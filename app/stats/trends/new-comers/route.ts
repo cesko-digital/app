@@ -1,6 +1,6 @@
 import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { getCsvResponse } from "../trend-response";
-import { buildTrendStats, WriteTrendValue } from "../../../../lib/trend-stats";
+import { buildTrendStats, WriteTrendValue } from "../trend-stats";
 import { buildTrendOptions } from "../trend-request";
 
 export async function GET(request: Request) {
