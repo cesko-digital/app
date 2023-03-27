@@ -6,9 +6,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 async function handler(request: NextApiRequest, response: NextApiResponse) {
   const getCategoriesForUser = (user: UserProfile) =>
     Object.keys(decodeSkillSelection(user.skills));
-  const userProfiles = await getAllUserProfiles();
+  const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   const userSkills = userProfiles
-    .filter((userProfile) => userProfile.state === "confirmed")
     .map(getCategoriesForUser)
     .filter((categories) => categories.length > 0);
   const categories = unique(userSkills.flat());

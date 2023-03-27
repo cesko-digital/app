@@ -68,7 +68,10 @@ export const userProfileTable =
   volunteerManagementBase<Schema>("User Profiles");
 
 /** Table views you can use when querying the user profile table */
-export type TableView = "All Profiles" | "New Role Notification Recipients";
+export type TableView =
+  | "All Profiles"
+  | "Confirmed Profiles"
+  | "New Role Notification Recipients";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;

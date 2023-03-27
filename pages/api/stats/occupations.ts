@@ -3,9 +3,8 @@ import { unique } from "lib/utils";
 import { NextApiRequest, NextApiResponse } from "next";
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const userProfiles = await getAllUserProfiles();
+  const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   const allOccupations = userProfiles
-    .filter((userProfile) => userProfile.state === "confirmed")
     .map((userProfile) => userProfile.occupation)
     .filter((occupation) => !!occupation && occupation !== "");
   const uniqueOccupations = unique(allOccupations);

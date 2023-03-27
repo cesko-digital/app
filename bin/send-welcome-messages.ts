@@ -13,9 +13,7 @@ const maxUserCount = 50;
 
 async function sendWelcomeMessages() {
   console.log("Downloading all user profiles, this may take a while.");
-  const allUsers = (await getAllUserProfiles())
-    // Only message users that have already joined Slack
-    .filter((user) => user.state === "confirmed")
+  const allUsers = (await getAllUserProfiles("Confirmed Profiles"))
     // Make double sure we have those Slack IDs to message
     .filter((user) => !!user.slackId);
   for (const [day, message] of parseWelcomeMessages()) {

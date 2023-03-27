@@ -2,9 +2,8 @@ import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { NextApiRequest, NextApiResponse } from "next";
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const userProfiles = await getAllUserProfiles();
+  const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   const nonEmptySkills = userProfiles
-    .filter((userProfile) => userProfile.state === "confirmed")
     .map((userProfile) => userProfile.skills)
     .filter((skill) => skill !== "");
   response.setHeader("Access-Control-Allow-Origin", "*");
