@@ -25,4 +25,4 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         if: ${{ env.SECRETS_SET != '' }}
-        run: yarn test:e2e
+        run: yarn test:e2e -j 4
