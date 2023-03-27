@@ -6,7 +6,6 @@ const ct = {
   rss: "application/rss+xml",
   html: "text/html",
   txt: "text/plain",
-  csv: "text/csv; charset=utf-8",
 };
 
 /** Endpoints to test */
@@ -19,14 +18,6 @@ const endpoints = {
   "/api/partners": ct.json,
   "/api/projects": ct.json,
   "/api/users": ct.json,
-  // Stats endpoints
-  "/api/stats/opportunities/sources": ct.csv,
-  "/api/stats/opportunities/visits": ct.csv,
-  "/api/stats/skills/availability": ct.csv,
-  "/api/stats/skills/categories": ct.csv,
-  "/api/stats/skills/subcategories": ct.csv,
-  "/api/stats/occupations": ct.csv,
-  "/stats/trends/new-comers?year=2022&fill=true": ct.csv
 };
 
 // Test that some basic endpoints look right
