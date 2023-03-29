@@ -7,6 +7,7 @@ import {
 } from "lib/decoding";
 import {
   array,
+  boolean,
   decodeType,
   field,
   fields,
@@ -41,6 +42,10 @@ export const decodeEvent = record({
   status: field("Status", union("draft", "live", "unlisted")),
   registrationUrl: field("RSVP URL", optional(string)),
   registrationTitle: field("RSVP Title", optional(string)),
+  quickRegistrationMode: field(
+    "Enable Quick Registration",
+    withDefault(boolean, false)
+  ),
   endTime: field("End Time", optional(string)),
   tagIds: field("Tags", withDefault(array(string), [])),
   coverImageUrl: field("Cover URL", optional(string)),
