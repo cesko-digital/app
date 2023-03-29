@@ -16,6 +16,9 @@ import {
   union,
 } from "typescript-json-decoder";
 
+/** Table views you can use when querying the event table */
+export type TableView = "All Events" | "Live Events";
+
 //
 // Decoding
 //
@@ -53,9 +56,11 @@ export const decodeEvent = record({
 export const eventsTable = webBase("Events");
 
 /** Get all projects */
-export async function getAllEvents(): Promise<PortalEvent[]> {
+export async function getAllEvents(
+  view: TableView = "All Events"
+): Promise<PortalEvent[]> {
   return await eventsTable
-    .select()
+    .select({ view })
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeEvent, "Events"));
