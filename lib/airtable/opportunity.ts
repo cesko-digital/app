@@ -19,7 +19,7 @@ import {
 } from "typescript-json-decoder";
 
 /** Table views you can use when querying the opportunities table */
-export type TableView = "Grid view" | "Notifications for Today";
+export type TableView = "All Opportunities" | "Notifications for Today";
 
 export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
 export const decodeOpportunity = record({
@@ -47,7 +47,7 @@ export const opportunitiesTable = webBase("Opportunities");
 
 /** Get all projects */
 export async function getAllOpportunities(
-  view: TableView = "Grid view"
+  view: TableView = "All Opportunities"
 ): Promise<PortalOpportunity[]> {
   return await opportunitiesTable
     .select({ view })
