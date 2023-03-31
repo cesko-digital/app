@@ -2,6 +2,7 @@ import { unwrapRecords, webBase } from "./request";
 import {
   decodeValidItemsFromArray,
   markdown,
+  relationToZeroOrMany,
   takeFirst,
   withDefault,
 } from "lib/decoding";
@@ -46,6 +47,11 @@ export const decodeEvent = record({
     "Enable Quick Registration",
     withDefault(boolean, false)
   ),
+  registeredUsers: field("Registered Users", relationToZeroOrMany),
+  registeredUserSlackIds: field(
+    "Registered User Slack IDs",
+    relationToZeroOrMany
+  ),
   endTime: field("End Time", optional(string)),
   tagIds: field("Tags", withDefault(array(string), [])),
   coverImageUrl: field("Cover URL", optional(string)),
@@ -60,7 +66,7 @@ export const decodeEvent = record({
 /** Events table */
 export const eventsTable = webBase("Events");
 
-/** Get all projects */
+/** Get all events */
 export async function getAllEvents(
   view: TableView = "All Events"
 ): Promise<PortalEvent[]> {
@@ -70,6 +76,14 @@ export async function getAllEvents(
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeEvent, "Events"));
 }
+
+/** Get all events with matching slug */
+export const findEventsWithSlug = async (slug: string) =>
+  await eventsTable
+    .select({ filterByFormula: `{Slug} = "${slug}"` })
+    .all()
+    .then(unwrapRecords)
+    .then(array(decodeEvent));
 
 //
 // Utils
