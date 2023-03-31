@@ -6,6 +6,9 @@ async function main() {
   // Your code here
 }
 
-main().catch((error) => console.log(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
 
 export {};

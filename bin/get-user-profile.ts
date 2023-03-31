@@ -8,4 +8,7 @@ async function main() {
   console.log(JSON.stringify(user, null, 2));
 }
 
-main().catch((error) => console.log(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

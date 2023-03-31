@@ -127,4 +127,7 @@ async function upsertSlackUsers(slackUsers: SlackUser[]): Promise<void> {
   await updateSlackUsers(usersToUpdate);
 }
 
-main().catch((error) => console.log(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

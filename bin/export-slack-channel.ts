@@ -50,4 +50,7 @@ function map<T, U>(value: T | undefined, f: (_: T) => U): U | undefined {
   return value ? f(value) : undefined;
 }
 
-main().catch((error) => console.log(error));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

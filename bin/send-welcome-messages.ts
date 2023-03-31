@@ -65,4 +65,7 @@ function qualifiesForWelcomeMessages(user: UserProfile): boolean {
   }
 }
 
-sendWelcomeMessages().catch((error) => console.log(error));
+sendWelcomeMessages().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

@@ -13,4 +13,7 @@ async function main() {
   await notifyOwnersAboutPublishedOffers(SLACK_BAZAAR_BOT_TOKEN);
 }
 
-main().catch((e) => console.error(e));
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
