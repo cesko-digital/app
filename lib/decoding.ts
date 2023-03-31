@@ -92,6 +92,15 @@ export const relationToZeroOrOne = (value: Pojo) => {
   }
 };
 
+/**
+ * Parse Airtable relation from the current table to zero or more records in another table
+ *
+ * The relation is always optional (the value doesn’t have to be there), but even
+ * if the value _is_ there, the Airtable API returns an array, so we simplify
+ * the whole thing to either the values or an empty array.
+ */
+export const relationToZeroOrMany = optionalArray(string);
+
 /** Extract a dict, returning only its values */
 export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
