@@ -9,6 +9,8 @@ const endpoints = [
   "/api/stats/skills/subcategories",
   "/api/stats/occupations",
   "/stats/trends/new-comers?year=2022&fill=true",
+  "/stats/trends/new-comers-engagements?year=2022&fill=true",
+  "/stats/trends/new-engagements?year=2022&fill=true",
 ];
 
 for (const endpoint of endpoints) {

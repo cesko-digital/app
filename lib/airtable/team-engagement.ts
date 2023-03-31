@@ -38,6 +38,7 @@ export const decodeTeamEngagement = record({
   projectName: relationToOne,
   coordinatingRole: withDefault(boolean, false),
   inactive: withDefault(boolean, false),
+  startDate: optional(string)
 });
 
 //

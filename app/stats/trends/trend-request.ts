@@ -29,10 +29,10 @@ function getYear(query: URLSearchParams, key: string = "year"): number | null {
 }
 
 /**
- * Gets fill query parameter. If not set, false is returned.
+ * Gets bool query parameter. If not set, false is returned.
  */
-function shouldAutoFill(query: URLSearchParams): boolean {
-  const fillYear = query.get("fill");
+function getBool(query: URLSearchParams, key: string): boolean {
+  const fillYear = query.get(key);
 
   if (fillYear === null) {
     return false;
@@ -47,6 +47,6 @@ export function buildTrendOptions(query: URLSearchParams): TrendOptions {
   return {
     fromYear: getYear(query, "from") ?? year,
     toYear: getYear(query, "to") ?? year,
-    autoFill: shouldAutoFill(query),
+    autoFill: getBool(query, "fill"),
   };
 }
