@@ -34,6 +34,8 @@ test("Decode event", () => {
     registrationUrl: "https://cesko.digital/rsvp",
     registrationTitle: "Sleduj!",
     quickRegistrationMode: false,
+    registeredUserSlackIds: [],
+    registeredUsers: [],
     slug: "show-and-tell-2",
     endTime: "2021-06-24T18:00:00.000Z",
     tagIds: ["foo", "bar"],
