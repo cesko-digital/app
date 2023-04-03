@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { boolean, record } from "typescript-json-decoder";
 
 export type EventRegistrationModel =
+  | { state: "loading" }
   | { state: "notSignedIn" }
   | { state: "error" }
   | { state: "updating"; desiredState: boolean }
@@ -15,7 +16,7 @@ export type EventRegistrationModel =
  * Note that the value also depends on login session state.
  */
 export function useEventRegistrationStatus(event: PortalEvent) {
-  const { data: session } = useSession();
+  const { status: sessionState } = useSession();
   const [model, setModel] = useState<EventRegistrationModel>({
     state: "notSignedIn",
   });
@@ -30,12 +31,14 @@ export function useEventRegistrationStatus(event: PortalEvent) {
         setModel({ state: "error" });
       }
     }
-    if (session && session.user) {
+    if (sessionState === "authenticated") {
       loadStatus();
+    } else if (sessionState === "loading") {
+      setModel({ state: "loading" });
     } else {
       setModel({ state: "notSignedIn" });
     }
-  }, [event, session]);
+  }, [event, sessionState]);
 
   // Update state
   const updateStatus = async (registered: boolean) => {

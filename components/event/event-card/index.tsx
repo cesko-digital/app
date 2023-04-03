@@ -66,6 +66,7 @@ const QuickRegistrationButton = ({ event }: QuickRegistrationButtonProps) => {
     useEventRegistrationStatus(event);
   switch (registrationStatus.state) {
     case "updating":
+    case "loading":
       return <Button disabled>Moment…</Button>;
     case "error":
       return <Button disabled>Chyba 😞</Button>;
