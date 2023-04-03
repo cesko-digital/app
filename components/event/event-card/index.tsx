@@ -7,7 +7,6 @@ import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
 import { getEventDuration, PortalEvent } from "lib/airtable/event";
-import { Button } from "components/buttons";
 import { signIn } from "next-auth/react";
 import { Route } from "lib/routing";
 import Plausible from "plausible-tracker";
@@ -72,7 +71,10 @@ const QuickRegistrationButton = ({ event }: QuickRegistrationButtonProps) => {
       return <Button disabled>Chyba 😞</Button>;
     case "ready":
       return registrationStatus.registered ? (
-        <Button onClick={() => setRegistrationStatus(false)}>
+        <Button
+          onClick={() => setRegistrationStatus(false)}
+          style="destructive"
+        >
           Zrušit registraci
         </Button>
       ) : (
@@ -101,6 +103,35 @@ const SignInButton = () => {
     signIn("slack");
   };
   return <Button onClick={handleClick}>Přihlásit se</Button>;
+};
+
+type ButtonProps = {
+  onClick?: () => void;
+  style?: "primary" | "destructive";
+  disabled?: boolean;
+  children: React.ReactNode;
+};
+
+const Button = ({
+  onClick,
+  style = "primary",
+  disabled = false,
+  children,
+}: ButtonProps) => {
+  const styleClass = disabled
+    ? "btn-disabled"
+    : style === "destructive"
+    ? "btn-destructive"
+    : "btn-primary";
+  return (
+    <button
+      className={`text-lg ${styleClass}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default EventCard;
