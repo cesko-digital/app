@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
     timeout-minutes: 60 # Limit running time to one hour max
     env:
       SLACK_SYNC_TOKEN: ${{ secrets.SLACK_SYNC_TOKEN }}
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Sync
         run: |
           yarn install
