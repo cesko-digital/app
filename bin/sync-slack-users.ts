@@ -127,7 +127,6 @@ async function upsertSlackUsers(slackUsers: SlackUser[]): Promise<void> {
   await updateSlackUsers(usersToUpdate);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+// TODO: We just swallow errors here, not aborting the script,
+// as a crude retry mechanism on being rate limited.
+main().catch((error) => console.error(error));
