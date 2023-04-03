@@ -23,6 +23,9 @@
   .btn-disabled {
     @apply bg-gray-400 text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg cursor-not-allowed;
   }
+  .btn-destructive {
+    @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg cursor-pointer;
+  }
 }
 
 /* Initial styles after Tailwind reset */
