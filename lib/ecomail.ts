@@ -27,7 +27,7 @@ export const mainPreferenceGroupId = "grp_6299c0823feb1";
 /** Our main preference group options */
 export const mainPreferenceGroupOptions = [
   "číst.digital",
-  "náborový newsletter",
+  "náborový newsletter (č.d+)",
   "neziskový newsletter",
   "jen to nejdůležitější",
 ] as const;

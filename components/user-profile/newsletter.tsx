@@ -66,7 +66,7 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
   const groupDescriptions: Record<MainPreferenceGroupOption, string> = {
     "číst.digital":
       "Jednou měsíčně shrnutí všech nejdůležitějších věcí, které se staly.",
-    "náborový newsletter":
+    "náborový newsletter (č.d+)":
       "Jednou za dva měsíce přehled možností, kde a jak se v komunitě můžeš zapojit.",
     "neziskový newsletter":
       "Jednou za 2–3 měsíce informace pro neziskovky o tom, jak s námi spolupracovat, přehled akcí a webinářů, …",
