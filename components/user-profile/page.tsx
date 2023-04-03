@@ -99,16 +99,11 @@ const SignedInPage: React.FC<PageProps> = (props) => {
   const profile = props.profile!;
   const { signOut, skillMenu, onSkillSelectionChange } = props;
 
-  // Basic profile tabs present for all users
-  const baseTabs = [
+  const sections = [
     { key: "skills", label: "Dovednosti" },
     { key: "newsletters", label: "Newslettery" },
+    { key: "notifications", label: "Upozornění" },
   ];
-
-  // Add feature-flagged tabs
-  const sections = profile.featureFlags.includes("notificationsBeta")
-    ? [...baseTabs, { key: "notifications", label: "Upozornění" }]
-    : baseTabs;
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
   const [skillSelection, setSkillSelection] = useState(

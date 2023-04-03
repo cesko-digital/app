@@ -35,7 +35,7 @@ export const notificationFlags = [
 export type NotificationFlag = typeof notificationFlags[number];
 
 /** All supported feature flags */
-export const featureFlags = ["notificationsBeta"] as const;
+export const featureFlags = [] as const;
 
 /** Feature flags to hide or show beta features */
 export type FeatureFlag = typeof featureFlags[number];
