@@ -41,12 +41,25 @@ async function main() {
   // custom user profile fields that we need, so we have to query those
   // individually by another API call.
   console.log(`Downloading user profiles. This _will_ take a while.`);
-  for (const user of users) {
-    // Only extract custom profile fields, keeping the rest of the profile
-    user.profile.fields = await getUserProfile(slackToken, user.id).then(
-      (profile) => profile.fields
-    );
-  }
+  let i = 0;
+  do {
+    try {
+      // Only extract custom profile fields, keeping the rest of the profile
+      const profile = await getUserProfile(slackToken, users[i].id);
+      users[i].profile.fields = profile.fields;
+      i++;
+      if (i % 100 === 0) {
+        console.log(`Downloaded ${i} user profiles.`);
+      }
+    } catch (e) {
+      // This is usually rate limiting, so let’s wait for a while before retrying
+      console.error(e);
+      console.info(
+        `Will wait for a while and retry (current user index ${i}).`
+      );
+      await sleep(120);
+    }
+  } while (i < users.length);
 
   console.log("Saving users to Airtable.");
   await upsertSlackUsers(regularUsers);
@@ -127,6 +140,10 @@ async function upsertSlackUsers(slackUsers: SlackUser[]): Promise<void> {
   await updateSlackUsers(usersToUpdate);
 }
 
-// TODO: We just swallow errors here, not aborting the script,
-// as a crude retry mechanism on being rate limited.
-main().catch((error) => console.error(error));
+const sleep = (seconds: number) =>
+  new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
