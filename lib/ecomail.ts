@@ -201,6 +201,7 @@ export async function subscribeToList(
       tags,
       groups: groups ? { [mainPreferenceGroupId]: groups } : undefined,
     },
+    update_existing: true,
     resubscribe,
   };
   const response = await fetch(
