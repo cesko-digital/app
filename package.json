@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@babel/core": "7",
-    "@playwright/test": "^1.30.0",
+    "@playwright/test": "^1.32.3",
     "@types/jest": "^27.0.3",
     "@types/js-yaml": "^4.0.5",
     "@types/marked": "^4.0.1",
