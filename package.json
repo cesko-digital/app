@@ -42,7 +42,7 @@
     "@types/react": "^18.0.28",
     "@types/sharp": "^0.29.4",
     "@types/styled-components": "^5.1.17",
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.14",
     "dotenv-flow": "^3.2.0",
     "eslint": "8.4.0",
     "eslint-config-next": "^13.2.4",
