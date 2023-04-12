@@ -1,6 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { NotificationFlag, UserProfile } from "lib/airtable/user-profile";
+import { UserProfile } from "lib/airtable/user-profile";
 import {
   decodeNewsletterPreferences,
   NewsletterPreferences,
@@ -54,7 +54,6 @@ const Page = () => {
       signIn={() => signIn("slack")}
       signOut={() => signOut({ callbackUrl: "/" })}
       onSkillSelectionChange={updateUserSkills}
-      updateNotificationFlags={updateNotificationFlags}
       newsletterProps={{
         getPreferences,
         setPreferences,
@@ -75,18 +74,6 @@ async function updateUserSkills(selection: SkillSelection): Promise<void> {
   await fetch("/api/protected/me", {
     method: "PATCH",
     body: JSON.stringify({ skills }, null, 2),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-}
-
-async function updateNotificationFlags(
-  notificationFlags: NotificationFlag[]
-): Promise<void> {
-  await fetch("/api/protected/me", {
-    method: "PATCH",
-    body: JSON.stringify({ notificationFlags }, null, 2),
     headers: {
       "Content-Type": "application/json",
     },

@@ -1,4 +1,4 @@
-import { NotificationFlag, UserProfile } from "lib/airtable/user-profile";
+import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body } from "components/typography";
 import { useState } from "react";
@@ -30,8 +30,6 @@ export type PageProps = {
   onSkillSelectionChange: (selection: SkillSelection) => void;
   /** Newsletter management props */
   newsletterProps: NewsletterProps;
-  /** Update notification flags */
-  updateNotificationFlags: (flags: NotificationFlag[]) => Promise<void>;
 };
 
 export const UserProfilePage: React.FC<PageProps> = (props) => {
@@ -140,10 +138,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
         <NewsletterPrefs {...props.newsletterProps} />
       )}
       {activeSectionKey === "notifications" && (
-        <NotificationPrefs
-          userProfile={profile}
-          updateNotificationFlags={props.updateNotificationFlags}
-        />
+        <NotificationPrefs userProfile={profile} />
       )}
     </MainContainer>
   );
