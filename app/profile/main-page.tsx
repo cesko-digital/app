@@ -7,7 +7,7 @@ import { Button, ButtonSize } from "components/buttons";
 import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
-import { NotificationPrefs } from "./notifications/preferences";
+import { NotificationPrefs } from "./notifications";
 
 export type UserProfilePageState =
   | "loading"

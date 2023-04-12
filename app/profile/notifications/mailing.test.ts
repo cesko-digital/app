@@ -1,4 +1,4 @@
-import { renderNotificationMailSubject, renderRole } from "./notifications";
+import { renderNotificationMailSubject, renderRole } from "./mailing";
 
 test("Render notification e-mail subject", () => {
   expect(renderNotificationMailSubject([{ name: "Krotitel tygrů" }])).toBe(
