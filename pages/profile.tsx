@@ -64,11 +64,11 @@ const Page = () => {
 //
 
 const getUserProfile = async (): Promise<UserProfile> =>
-  await fetch("/api/protected/me").then((response) => response.json());
+  await fetch("/profile/me").then((response) => response.json());
 
 async function updateUserSkills(selection: SkillSelection): Promise<void> {
   const skills = encodeSkillSelection(selection);
-  await fetch("/api/protected/me", {
+  await fetch("/profile/me", {
     method: "PATCH",
     body: JSON.stringify({ skills }, null, 2),
     headers: {

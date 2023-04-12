@@ -60,7 +60,7 @@ export function useNotificationFlags() {
 }
 
 const setNotificationFlags = async (notificationFlags: NotificationFlag[]) =>
-  await fetch("/api/protected/me", {
+  await fetch("/profile/me", {
     method: "PATCH",
     body: JSON.stringify({ notificationFlags }, null, 2),
     headers: {
@@ -69,7 +69,7 @@ const setNotificationFlags = async (notificationFlags: NotificationFlag[]) =>
   }).then((response) => response.ok);
 
 const getNotificationFlags = async (): Promise<NotificationFlag[] | null> =>
-  await fetch("/api/protected/me")
+  await fetch("/profile/me")
     .then((response) => response.json())
     .then((profile) => profile.notificationFlags)
     .catch((e) => null);
