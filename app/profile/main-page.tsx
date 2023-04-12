@@ -8,6 +8,7 @@ import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
 import Tabs from "components/tabs";
 import { NotificationPrefs } from "./notifications";
+import { VolunteerMapPrefs } from "./map";
 
 export type UserProfilePageState =
   | "loading"
@@ -95,11 +96,15 @@ const SignedInPage: React.FC<PageProps> = (props) => {
   const profile = props.profile!;
   const { signOut, skillMenu, onSkillSelectionChange } = props;
 
-  const sections = [
+  const baseSections = [
     { key: "skills", label: "Dovednosti" },
     { key: "newsletters", label: "Newslettery" },
     { key: "notifications", label: "Upozornění" },
   ];
+
+  const sections = profile.featureFlags.includes("volunteer_map")
+    ? [...baseSections, { key: "map", label: "Mapa dobrovolníků" }]
+    : baseSections;
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
   const [skillSelection, setSkillSelection] = useState(
@@ -134,6 +139,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
       )}
       {activeSectionKey === "newsletters" && <NewsletterPrefs />}
       {activeSectionKey === "notifications" && <NotificationPrefs />}
+      {activeSectionKey === "map" && <VolunteerMapPrefs />}
     </MainContainer>
   );
 };
