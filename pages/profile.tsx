@@ -51,10 +51,6 @@ const Page = () => {
       signIn={() => signIn("slack")}
       signOut={() => signOut({ callbackUrl: "/" })}
       onSkillSelectionChange={updateUserSkills}
-      newsletterProps={{
-        getPreferences,
-        setPreferences,
-      }}
     />
   );
 };
@@ -76,27 +72,5 @@ async function updateUserSkills(selection: SkillSelection): Promise<void> {
     },
   });
 }
-
-//
-// Newsletter
-//
-
-const getPreferences = async () =>
-  await fetch("/profile/newsletters")
-    .then((response) => response.json())
-    .then(decodeNewsletterPreferences);
-
-const setPreferences = async (preferences: NewsletterPreferences) =>
-  await fetch("/profile/newsletters", {
-    method: "POST",
-    body: JSON.stringify(preferences),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((response) => {
-    if (!response.ok) {
-      throw response;
-    }
-  });
 
 export default Page;

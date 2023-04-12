@@ -2,7 +2,7 @@ import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body } from "components/typography";
 import { useState } from "react";
-import { NewsletterPrefs, Props as NewsletterProps } from "./newsletters";
+import { NewsletterPrefs } from "./newsletters";
 import { Button, ButtonSize } from "components/buttons";
 import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";
@@ -28,8 +28,6 @@ export type PageProps = {
   signOut: () => void;
   /** Called when selected skills change */
   onSkillSelectionChange: (selection: SkillSelection) => void;
-  /** Newsletter management props */
-  newsletterProps: NewsletterProps;
 };
 
 export const UserProfilePage: React.FC<PageProps> = (props) => {
@@ -134,9 +132,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
           }}
         />
       )}
-      {activeSectionKey === "newsletters" && (
-        <NewsletterPrefs {...props.newsletterProps} />
-      )}
+      {activeSectionKey === "newsletters" && <NewsletterPrefs />}
       {activeSectionKey === "notifications" && (
         <NotificationPrefs userProfile={profile} />
       )}

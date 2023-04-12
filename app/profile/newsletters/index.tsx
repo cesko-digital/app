@@ -1,67 +1,15 @@
+import { useSession } from "next-auth/react";
+import { Fragment } from "react";
+import { useNewsletterPrefs } from "./hooks";
 import {
   MainPreferenceGroupOption,
   mainPreferenceGroupOptions,
   NewsletterPreferences,
 } from "lib/ecomail";
-import { useSession } from "next-auth/react";
-import { Fragment, useEffect, useState } from "react";
 
-export type Props = {
-  getPreferences: () => Promise<NewsletterPreferences>;
-  setPreferences: (preferences: NewsletterPreferences) => Promise<void>;
-};
-
-export type Model = {
-  state: "updating" | "ready" | "error";
-  preferences: NewsletterPreferences;
-};
-
-export const NewsletterPrefs: React.FC<Props> = (props) => {
-  const emptyPreferences: NewsletterPreferences = {
-    subscribe: false,
-    subscribedGroups: [],
-  };
-
+export const NewsletterPrefs = () => {
   const { data: session } = useSession();
-  const { getPreferences, setPreferences } = props;
-  const [model, setModel] = useState<Model>({
-    preferences: emptyPreferences,
-    state: "updating",
-  });
-
-  // Initial load
-  useEffect(() => {
-    const fetchStatus = async () => {
-      try {
-        const preferences = await getPreferences();
-        setModel({ state: "ready", preferences });
-      } catch (e) {
-        console.error(e);
-        setModel((model) => ({ ...model, state: "error" }));
-      }
-    };
-    fetchStatus();
-  }, [getPreferences]);
-
-  // Update
-  const updatePreferences = (newPrefs: NewsletterPreferences) => {
-    const writeChanges = async () => {
-      const originalPrefs = { ...model.preferences };
-      try {
-        setModel({ state: "updating", preferences: newPrefs });
-        await setPreferences(newPrefs);
-        setModel((m) => ({ ...m, state: "ready" }));
-      } catch (e) {
-        console.error(e);
-        setModel({ state: "ready", preferences: originalPrefs });
-      }
-    };
-    writeChanges();
-  };
-
-  const disablePolicyControls = model.state !== "ready";
-  const disableGroupControls =
-    model.state !== "ready" || !model.preferences.subscribe;
+  const [model, updateModel] = useNewsletterPrefs();
 
   const groupDescriptions: Record<MainPreferenceGroupOption, string> = {
     "číst.digital":
@@ -73,6 +21,20 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
     "jen to nejdůležitější":
       "Jednou za čas největší milníky, například narozeniny nebo jiné velké akce.",
   };
+
+  const disablePolicyControls = model.state !== "ready";
+  const disableGroupControls =
+    model.state !== "ready" || !model.value.subscribe;
+
+  const emptyPrefs = {
+    subscribe: false,
+    subscribedGroups: [],
+  };
+
+  const prefs: NewsletterPreferences =
+    model.state === "ready" || model.state === "updating"
+      ? model.value
+      : emptyPrefs;
 
   return (
     <>
@@ -92,15 +54,12 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
         <div>
           <label key="policy" className="flex items-center">
             <input
-              checked={model.preferences.subscribe}
+              checked={prefs.subscribe}
               type="checkbox"
               className="mr-3"
               disabled={disablePolicyControls}
               onChange={(e) =>
-                updatePreferences({
-                  ...model.preferences,
-                  subscribe: e.target.checked,
-                })
+                updateModel({ ...prefs, subscribe: e.target.checked })
               }
             ></input>
             Souhlasím, posílejte!
@@ -115,19 +74,17 @@ export const NewsletterPrefs: React.FC<Props> = (props) => {
             <Fragment key={name}>
               <label className="flex items-center">
                 <input
-                  checked={model.preferences.subscribedGroups.includes(name)}
+                  checked={prefs.subscribedGroups.includes(name)}
                   type="checkbox"
                   className="mr-3"
                   disabled={disableGroupControls}
                   onChange={(e) => {
                     const checked = e.target.checked;
                     const updatedGroups = checked
-                      ? [...model.preferences.subscribedGroups, name]
-                      : model.preferences.subscribedGroups.filter(
-                          (g) => g !== name
-                        );
-                    updatePreferences({
-                      ...model.preferences,
+                      ? [...prefs.subscribedGroups, name]
+                      : prefs.subscribedGroups.filter((g) => g !== name);
+                    updateModel({
+                      ...prefs,
                       subscribedGroups: updatedGroups,
                     });
                   }}
