@@ -62,7 +62,7 @@ export const NotificationPrefs = () => {
                   checked={flags.includes(id as any)}
                   type="checkbox"
                   className="mr-3"
-                  disabled={!ready}
+                  disabled={!ready || !flags.includes("allowNotifications")}
                   onChange={(e) => toggleFlag(id as any, e.target.checked)}
                 ></input>
                 {description}
