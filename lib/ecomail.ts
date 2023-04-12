@@ -211,6 +211,7 @@ export async function subscribeToList(
       method: "POST",
       body: JSON.stringify(payload),
       headers: jsonHeaders(apiKey),
+      cache: "no-store",
     }
   );
   return response.ok;
@@ -228,6 +229,7 @@ export async function unsubscribeFromList(
       method: "DELETE",
       body: JSON.stringify({ email }),
       headers: jsonHeaders(apiKey),
+      cache: "no-store",
     }
   );
   return response.ok;
@@ -265,6 +267,7 @@ async function addSingleBatchOfSubscribers(
     method: "POST",
     body: JSON.stringify(payload),
     headers: jsonHeaders(apiKey),
+    cache: "no-store",
   });
 }
 
