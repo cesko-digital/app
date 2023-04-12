@@ -1,7 +1,7 @@
 import { Layout } from "components/layout";
 import { useState } from "react";
 import Image from "next/image";
-import { SkillPicker } from "components/user-profile/skill-picker";
+import { SkillPicker } from "app/profile/skill-picker";
 import { SkillMenu, SkillSelection } from "lib/skills";
 
 export type SubmissionState =
@@ -360,8 +360,8 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           }
         ></input>
         <span>
-          Vím, jak bude Česko.Digital při vzájemné spolupráci a
-          pro zajištění transparentnosti zpracovávat mé{" "}
+          Vím, jak bude Česko.Digital při vzájemné spolupráci a pro zajištění
+          transparentnosti zpracovávat mé{" "}
           <a href="https://cesko.digital/go/privacy">osobní údaje</a>.
           <RequiredFieldMarker />
         </span>

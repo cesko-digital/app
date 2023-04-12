@@ -7,10 +7,7 @@ import {
 } from "lib/ecomail";
 import { encodeSkillSelection, SkillSelection } from "lib/skills";
 import skillMenu from "content/skills.json";
-import {
-  UserProfilePageState,
-  UserProfilePage,
-} from "components/user-profile/page";
+import { UserProfilePageState, UserProfilePage } from "app/profile/main-page";
 
 const Page = () => {
   const { data: session, status } = useSession();
