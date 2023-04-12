@@ -20,8 +20,12 @@ export async function POST(request: NextRequest) {
   return withAuthenticatedUser(request, async (token) => {
     const email = token.email!;
     const newPrefs = decodeNewsletterPreferences(await request.json());
-    await setNewsletterPreferences(apiKey, email, newPrefs);
-    return new Response(null, { status: 204 });
+    const success = await setNewsletterPreferences(apiKey, email, newPrefs);
+    return success
+      ? new Response(null, { status: 204 })
+      : new Response("Failed to update subscriber prefs at Ecomail", {
+          status: 500,
+        });
   });
 }
 

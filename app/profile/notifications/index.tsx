@@ -1,12 +1,10 @@
 import { useNotificationFlags } from "app/profile/notifications/hooks";
-import { NotificationFlag, UserProfile } from "lib/airtable/user-profile";
+import { NotificationFlag } from "lib/airtable/user-profile";
+import { useSession } from "next-auth/react";
 import { Fragment } from "react";
 
-type Props = {
-  userProfile: UserProfile;
-};
-
-export const NotificationPrefs = ({ userProfile }: Props) => {
+export const NotificationPrefs = () => {
+  const { data: session } = useSession();
   const [model, updateModel] = useNotificationFlags();
 
   const groups: Partial<Record<NotificationFlag, string>> = {
@@ -55,7 +53,7 @@ export const NotificationPrefs = ({ userProfile }: Props) => {
         </div>
       </Section>
       <Section>
-        <p>Kdy chceš dostat nový mail na adresu {userProfile.email}?</p>
+        <p>Kdy chceš dostat nový mail na adresu {session?.user?.email}?</p>
         <div className="mb-20">
           {Object.entries(groups).map(([id, description]) => (
             <Fragment key={id}>

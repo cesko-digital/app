@@ -156,6 +156,7 @@ export async function getSubscriber(
     `https://api2.ecomailapp.cz/subscribers/${email}`,
     {
       headers: { key: apiKey },
+      cache: "no-store",
     }
   );
   return await response
@@ -359,14 +360,14 @@ export async function setNewsletterPreferences(
   apiKey: string,
   email: string,
   preferences: NewsletterPreferences
-): Promise<void> {
+): Promise<boolean> {
   if (preferences.subscribe) {
-    await subscribeToList(apiKey, {
+    return await subscribeToList(apiKey, {
       email,
       groups: preferences.subscribedGroups,
     });
   } else {
-    await unsubscribeFromList(apiKey, email, mainContactListId);
+    return await unsubscribeFromList(apiKey, email, mainContactListId);
   }
 }
 

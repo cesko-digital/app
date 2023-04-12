@@ -133,9 +133,7 @@ const SignedInPage: React.FC<PageProps> = (props) => {
         />
       )}
       {activeSectionKey === "newsletters" && <NewsletterPrefs />}
-      {activeSectionKey === "notifications" && (
-        <NotificationPrefs userProfile={profile} />
-      )}
+      {activeSectionKey === "notifications" && <NotificationPrefs />}
     </MainContainer>
   );
 };
