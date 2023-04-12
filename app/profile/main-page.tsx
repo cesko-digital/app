@@ -2,7 +2,7 @@ import { UserProfile } from "lib/airtable/user-profile";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Body } from "components/typography";
 import { useState } from "react";
-import { NewsletterPrefs, Props as NewsletterProps } from "./newsletter";
+import { NewsletterPrefs, Props as NewsletterProps } from "./newsletters";
 import { Button, ButtonSize } from "components/buttons";
 import { decodeSkillSelection, SkillMenu, SkillSelection } from "lib/skills";
 import { SkillPicker } from "./skill-picker";

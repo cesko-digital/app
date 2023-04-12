@@ -82,12 +82,12 @@ async function updateUserSkills(selection: SkillSelection): Promise<void> {
 //
 
 const getPreferences = async () =>
-  await fetch("/api/protected/newsletter_subscription")
+  await fetch("/profile/newsletters")
     .then((response) => response.json())
     .then(decodeNewsletterPreferences);
 
 const setPreferences = async (preferences: NewsletterPreferences) =>
-  await fetch("/api/protected/newsletter_subscription", {
+  await fetch("/profile/newsletters", {
     method: "POST",
     body: JSON.stringify(preferences),
     headers: {
