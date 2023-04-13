@@ -72,7 +72,8 @@ export type TableView =
   | "All Profiles"
   | "Confirmed Profiles"
   | "New Role Notification Recipients"
-  | "Profiles with Occupation Data";
+  | "Profiles with Occupation Data"
+  | "Profiles with Skills";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;

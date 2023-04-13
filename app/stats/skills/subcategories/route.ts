@@ -1,22 +1,17 @@
 import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { decodeSkillSelection } from "lib/skills";
-import { unique } from "lib/utils";
-import { NextApiRequest, NextApiResponse } from "next";
+import { notEmpty, unique } from "lib/utils";
 
-async function handler(request: NextApiRequest, response: NextApiResponse) {
-  const userProfiles = await getAllUserProfiles("Confirmed Profiles");
+export async function GET() {
+  const userProfiles = await getAllUserProfiles("Profiles with Skills");
   const skills = userProfiles
     .map((userProfile) => userProfile.skills)
-    .filter((skill) => skill !== "")
+    .filter(notEmpty)
     .map(decodeSkillSelection);
+
   const categories = unique(skills.flatMap(Object.keys));
-  response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv; charset=utf-8");
-  response.setHeader(
-    "Cache-Control",
-    "max-age=0, s-maxage=3600, stale-while-revalidate"
-  );
-  response.write("Kategorie,Dovednost,Počet záznamů\n");
+
+  let response = "Kategorie,Dovednost,Počet záznamů\n";
   for (const category of categories) {
     const subcategories = unique(
       skills
@@ -29,17 +24,21 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
         selection[category] !== undefined &&
         Object.keys(selection[category]).length === 0
     ).length;
-    response.write(`"${category}",(bez uvedení detailu),${genericCount}\n`);
+    response += `"${category}",(bez uvedení detailu),${genericCount}\n`;
     for (const subcategory of subcategories) {
       const count = skills.filter(
         (selection) =>
           selection[category] && selection[category][subcategory] !== undefined
       ).length;
-      response.write(`"${category}","${subcategory}",${count}\n`);
+      response += `"${category}","${subcategory}",${count}\n`;
     }
   }
-  response.status(200);
-  response.end();
-}
 
-export default handler;
+  return new Response(response, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}

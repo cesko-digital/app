@@ -2,12 +2,12 @@ import { test, expect } from "@playwright/test";
 
 /** Endpoints to test */
 const endpoints = [
+  "/stats/occupations",
   "/stats/opportunities/sources",
   "/stats/opportunities/visits",
-  "/api/stats/skills/availability",
-  "/api/stats/skills/categories",
-  "/api/stats/skills/subcategories",
-  "/stats/occupations",
+  "/stats/skills/availability",
+  "/stats/skills/categories",
+  "/stats/skills/subcategories",
   "/stats/trends/new-comers?year=2022&fill=true",
   "/stats/trends/new-comers-engagements?year=2022&fill=true",
   "/stats/trends/new-engagements?year=2022&fill=true",
