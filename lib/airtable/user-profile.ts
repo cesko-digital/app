@@ -71,7 +71,8 @@ export const userProfileTable =
 export type TableView =
   | "All Profiles"
   | "Confirmed Profiles"
-  | "New Role Notification Recipients";
+  | "New Role Notification Recipients"
+  | "Profiles with Occupation Data";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;

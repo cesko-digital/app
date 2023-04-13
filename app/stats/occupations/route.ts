@@ -1,11 +1,16 @@
 import { getAllUserProfiles } from "lib/airtable/user-profile";
-import { unique } from "lib/utils";
+import { notEmpty, unique } from "lib/utils";
 
 export async function GET() {
-  const userProfiles = await getAllUserProfiles("Confirmed Profiles");
+  const userProfiles = await getAllUserProfiles(
+    "Profiles with Occupation Data"
+  );
   const allOccupations = userProfiles
+    // Extract user’s occupation
     .map((userProfile) => userProfile.occupation)
-    .filter((occupation) => !!occupation && occupation !== "");
+    // Make sure the occupation is not null
+    .filter(notEmpty);
+
   const uniqueOccupations = unique(allOccupations);
 
   const labels = {
