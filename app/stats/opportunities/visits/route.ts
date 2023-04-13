@@ -1,13 +1,18 @@
+import { getAllProjects } from "lib/airtable/project";
+import { getPageBreakdown } from "lib/data-sources/plausible";
+import { map } from "lib/utils";
 import {
   getAllOpportunities,
   PortalOpportunity,
 } from "lib/airtable/opportunity";
-import { getAllProjects } from "lib/airtable/project";
-import { getPageBreakdown } from "lib/data-sources/plausible";
-import { map } from "lib/utils";
-import { NextApiRequest, NextApiResponse } from "next";
 
-async function handler(request: NextApiRequest, response: NextApiResponse) {
+/**
+ * Data endpoint for the [opportunity visits chart](https://www.datawrapper.de/_/YTQQr/)
+ *
+ * TBD: This is now completely static, ie. the data is computed at build time
+ * and never refreshed. Do we want to revalidate the data after some time?
+ */
+export async function GET() {
   const pageStats = await getPageBreakdown();
   const opportunities = await getAllOpportunities();
   const projects = await getAllProjects();
@@ -34,16 +39,12 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
       [`"${trim(page)}"`, pageviews, visitors, state, `"${project}"`].join(",")
     )
     .join("\n");
-  response.setHeader(
-    "Cache-Control",
-    "max-age=0, s-maxage=3600, stale-while-revalidate"
-  );
-  response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv; charset=utf-8");
-  response.status(200);
-  response.write("Page, Pageviews, Visitors, State, Project\n");
-  response.write(csv);
-  response.end();
+  const output = ["Page, Pageviews, Visitors, State, Project", csv].join("\n");
+  return new Response(output, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 }
-
-export default handler;

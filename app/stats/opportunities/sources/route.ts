@@ -1,12 +1,17 @@
 import { getAllOpportunities } from "lib/airtable/opportunity";
+import { unique } from "lib/utils";
 import {
   getPageBreakdown,
   getPageTrafficSources,
 } from "lib/data-sources/plausible";
-import { unique } from "lib/utils";
-import { NextApiRequest, NextApiResponse } from "next";
 
-async function handler(request: NextApiRequest, response: NextApiResponse) {
+/**
+ * Data endpoint for the [opportunity sources chart](https://www.datawrapper.de/_/5SpWg/)
+ *
+ * TBD: This is now completely static, ie. the data is computed at build time
+ * and never refreshed. Do we want to revalidate the data after some time?
+ */
+export async function GET() {
   const pageStats = await getPageBreakdown();
   const opportunityStats = pageStats
     .filter((row) => row.visitors >= 5)
@@ -27,31 +32,27 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     opportunities.find((o) => path === `/opportunities/${o.slug}`)?.name ||
     path;
 
-  response.setHeader(
-    "Cache-Control",
-    "max-age=0, s-maxage=3600, stale-while-revalidate"
-  );
-  response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv; charset=utf-8");
-  response.status(200);
-  response.write(`Page, Title, ${sourceNames.join(", ")}\n`);
+  let output = `Page, Title, ${sourceNames.join(", ")}\n`;
   for (const row of sourceStats) {
     if (row.sources.length === 0) {
       // No traffic source data for this position, can happen
       continue;
     }
-    response.write(
-      [
-        row.page,
-        `"${trim(name(row.page))} / ${row.visitors} visitors"`,
-        sourceNames.map(
-          (source) => row.sources.find((s) => s.source === source)?.visitors
-        ),
-      ].join(",")
-    );
-    response.write("\n");
+    output += [
+      row.page,
+      `"${trim(name(row.page))} / ${row.visitors} visitors"`,
+      sourceNames.map(
+        (source) => row.sources.find((s) => s.source === source)?.visitors
+      ),
+    ].join(",");
+    output += "\n";
   }
-  response.end();
-}
 
-export default handler;
+  return new Response(output, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}

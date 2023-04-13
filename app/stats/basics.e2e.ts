@@ -2,8 +2,8 @@ import { test, expect } from "@playwright/test";
 
 /** Endpoints to test */
 const endpoints = [
-  "/api/stats/opportunities/sources",
-  "/api/stats/opportunities/visits",
+  "/stats/opportunities/sources",
+  "/stats/opportunities/visits",
   "/api/stats/skills/availability",
   "/api/stats/skills/categories",
   "/api/stats/skills/subcategories",
