@@ -1,19 +1,13 @@
 import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { unique } from "lib/utils";
-import { NextApiRequest, NextApiResponse } from "next";
 
-async function handler(request: NextApiRequest, response: NextApiResponse) {
+export async function GET() {
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   const allOccupations = userProfiles
     .map((userProfile) => userProfile.occupation)
     .filter((occupation) => !!occupation && occupation !== "");
   const uniqueOccupations = unique(allOccupations);
-  response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Content-Type", "text/csv; charset=utf-8");
-  response.setHeader(
-    "Cache-Control",
-    "max-age=0, s-maxage=3600, stale-while-revalidate"
-  );
+
   const labels = {
     "freelancing": "na volné noze",
     "state": "státní sektor",
@@ -24,15 +18,19 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     "other": "jiné",
     "looking-for-job": "hledám práci",
   } as Record<string, string>;
-  for (const occupation of uniqueOccupations) {
-    response.write(
-      `${labels[occupation!]}, ${
-        allOccupations.filter((o) => o === occupation).length
-      }\n`
-    );
-  }
-  response.status(200);
-  response.end();
-}
 
-export default handler;
+  let response = "";
+  for (const occupation of uniqueOccupations) {
+    response += `${labels[occupation!]}, ${
+      allOccupations.filter((o) => o === occupation).length
+    }\n`;
+  }
+
+  return new Response(response, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}
