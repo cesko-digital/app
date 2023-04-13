@@ -73,7 +73,8 @@ export type TableView =
   | "Confirmed Profiles"
   | "New Role Notification Recipients"
   | "Profiles with Occupation Data"
-  | "Profiles with Skills";
+  | "Profiles with Skills"
+  | "Profiles with Districts";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
@@ -95,6 +96,7 @@ export const decodeUserProfile = record({
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFeatureFlags,
   notificationFlags: decodeNotificationFlags,
+  availableInDistricts: optional(string),
   gdprPolicyAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
