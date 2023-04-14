@@ -15,16 +15,16 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-it text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg cursor-pointer;
+    @apply bg-it text-white px-5 py-2 rounded-md no-underline cursor-pointer;
   }
   .btn-inverted {
-    @apply bg-white text-it px-5 py-2 rounded-md no-underline hover:drop-shadow-lg border-2 border-violet cursor-pointer;
+    @apply bg-white text-it px-5 py-2 rounded-md no-underline border-2 border-violet cursor-pointer;
   }
   .btn-disabled {
-    @apply bg-gray-400 text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg cursor-not-allowed;
+    @apply bg-gray-400 text-white px-5 py-2 rounded-md no-underline cursor-not-allowed;
   }
   .btn-destructive {
-    @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline hover:drop-shadow-lg cursor-pointer;
+    @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline cursor-pointer;
   }
 }
 
