@@ -1,33 +1,27 @@
-import { useNotificationFlags } from "app/profile/notifications/hooks";
 import { NotificationFlag } from "lib/airtable/user-profile";
 import { useSession } from "next-auth/react";
 import { Fragment } from "react";
+import { useUserProfile } from "app/profile/hooks";
 
 export const NotificationPrefs = () => {
   const { data: session } = useSession();
-  const [model, updateModel] = useNotificationFlags();
+  const { profile, updateProfile, isUpdating } = useUserProfile();
 
   const groups: Partial<Record<NotificationFlag, string>> = {
     receiveNewRoleNotifications: "Když se objeví nová hledaná role",
   };
 
   const toggleFlag = async (flag: NotificationFlag, checked: boolean) => {
-    if (model.state === "ready") {
-      const oldFlags = model.flags;
+    if (profile) {
+      const oldFlags = profile.notificationFlags;
       const newFlags = checked
         ? [...oldFlags, flag]
         : oldFlags.filter((f) => f !== flag);
-      updateModel(newFlags);
+      updateProfile({ notificationFlags: newFlags });
     }
   };
 
-  const ready = model.state === "ready";
-  const flags =
-    model.state === "ready"
-      ? model.flags
-      : model.state === "updating"
-      ? model.desiredState
-      : [];
+  const flags = profile?.notificationFlags || [];
 
   return (
     <>
@@ -43,7 +37,7 @@ export const NotificationPrefs = () => {
               checked={flags.includes("allowNotifications")}
               type="checkbox"
               className="mr-3"
-              disabled={!ready}
+              disabled={isUpdating}
               onChange={(e) =>
                 toggleFlag("allowNotifications", e.target.checked)
               }
@@ -62,7 +56,7 @@ export const NotificationPrefs = () => {
                   checked={flags.includes(id as any)}
                   type="checkbox"
                   className="mr-3"
-                  disabled={!ready || !flags.includes("allowNotifications")}
+                  disabled={isUpdating || !flags.includes("allowNotifications")}
                   onChange={(e) => toggleFlag(id as any, e.target.checked)}
                 ></input>
                 {description}
