@@ -117,6 +117,7 @@ export function encodeUserProfile(
     profileUrl: profile.profileUrl,
     state: profile.state,
     notificationFlags: profile.notificationFlags,
+    availableInDistricts: profile.availableInDistricts,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
       : undefined,
@@ -172,6 +173,7 @@ export async function updateUserProfile(
       | "createdAt"
       | "gdprPolicyAcceptedAt"
       | "notificationFlags"
+      | "availableInDistricts"
     >
   >
 ): Promise<UserProfile> {

@@ -37,11 +37,13 @@ export async function PATCH(request: NextRequest) {
       return new Response("User profile not found.", { status: 404 });
     }
     // Make sure we do NOT include the `slackId` field nor `state` here
-    const { name, skills, notificationFlags } = await request.json();
+    const { name, skills, notificationFlags, availableInDistricts } =
+      await request.json();
     await updateUserProfile(profile.id, {
       name,
       skills,
       notificationFlags,
+      availableInDistricts,
     });
     return new Response("Updated", { status: 200 });
   });
