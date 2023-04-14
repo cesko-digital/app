@@ -1,10 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { UserProfile } from "lib/airtable/user-profile";
-import {
-  decodeNewsletterPreferences,
-  NewsletterPreferences,
-} from "lib/ecomail";
 import { encodeSkillSelection, SkillSelection } from "lib/skills";
 import skillMenu from "content/skills.json";
 import { UserProfilePageState, UserProfilePage } from "app/profile/main-page";
