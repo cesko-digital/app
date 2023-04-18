@@ -50,9 +50,7 @@ const Page = ({ futureEvents, pastEvents, projects }: PageProps) => {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const events = siteData.events.filter(
-    (e) => e.status === "live" || e.status === "unlisted"
-  );
+  const events = siteData.events.filter((e) => e.published);
   const futureEvents = events
     .filter((e) => !isEventPast(e))
     .sort(compareEventsByTime);

@@ -31,6 +31,7 @@ test("Decode event", () => {
     ownerId: "rec9ujcN8HSkEdwehgh",
     projectId: "rec9ujcN8HSkdedwedd",
     status: "draft",
+    published: false,
     registrationUrl: "https://cesko.digital/rsvp",
     registrationTitle: "Sleduj!",
     quickRegistrationMode: false,

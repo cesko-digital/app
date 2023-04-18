@@ -217,7 +217,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
     siteData.opportunities.filter((o) => o.status === "live")
   );
   const upcomingEvents = [...events]
-    .filter((e) => e.status === "live")
+    .filter((e) => e.published)
     .filter((e) => !isEventPast(e))
     .sort(compareEventsByTime)
     .slice(0, 3);

@@ -124,7 +124,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   const project = projects.find((p) => p.id === event.projectId)!;
   const owner = users.find((u) => u.id === event.ownerId)!;
   const otherEvents = events
-    .filter((e) => e.status === "live" && e.id !== event.id)
+    .filter((e) => e.published && e.id !== event.id)
     .sort(compareByRelevance)
     .slice(0, 3);
   return {

@@ -40,7 +40,7 @@ export const decodeEvent = record({
   startTime: field("Start Time", string),
   ownerId: field("Owner", takeFirst(array(string))),
   projectId: field("Project", takeFirst(array(string))),
-  status: field("Status", union("draft", "live", "unlisted")),
+  published: field("Published", withDefault(boolean, false)),
   registrationUrl: field("RSVP URL", optional(string)),
   registrationTitle: field("RSVP Title", optional(string)),
   quickRegistrationMode: field(
