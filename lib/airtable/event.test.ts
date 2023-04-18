@@ -30,7 +30,6 @@ test("Decode event", () => {
     startTime: "2021-06-24T17:00:00.000Z",
     ownerId: "rec9ujcN8HSkEdwehgh",
     projectId: "rec9ujcN8HSkdedwedd",
-    status: "draft",
     published: false,
     registrationUrl: "https://cesko.digital/rsvp",
     registrationTitle: "Sleduj!",
