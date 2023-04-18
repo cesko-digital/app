@@ -19,7 +19,7 @@
     "marked": "^4.3.0",
     "next": "^13.2.4",
     "next-auth": "^4.22.0",
-    "next-axiom": "^0.16.0",
+    "next-axiom": "^0.17.0",
     "plausible-tracker": "^0.3.5",
     "polished": "^4.2.2",
     "react": "^18.2.0",
