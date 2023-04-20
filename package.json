@@ -6,8 +6,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:e2e": "playwright test --config tests/end-to-end/playwright.config.js",
-    "test:monitor": "playwright test --config tests/monitor/playwright.config.js"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
