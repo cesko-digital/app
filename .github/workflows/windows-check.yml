@@ -5,12 +5,11 @@ on:
   schedule:
     - cron: 0 0 * * *
 
-env:
-  DATA_SOURCE_LOCAL: yes
-
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 18
