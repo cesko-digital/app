@@ -1,0 +1,290 @@
+[
+  {
+    "name": "Benešov",
+    "coords": "49.7828158N, 14.6895353E"
+  },
+  {
+    "name": "Beroun",
+    "coords": "49.9637858N, 14.0724686E"
+  },
+  {
+    "name": "Blansko",
+    "coords": "49.4850886N, 16.6560628E"
+  },
+  {
+    "name": "Břeclav",
+    "coords": "48.7585831N, 16.8818322E"
+  },
+  {
+    "name": "Brno",
+    "coords": "49.2087733N, 16.6092475E"
+  },
+  {
+    "name": "Bruntál",
+    "coords": "49.9886817N, 17.4652369E"
+  },
+  {
+    "name": "Česká Lípa",
+    "coords": "50.6860403N, 14.5365622E"
+  },
+  {
+    "name": "České Budějovice",
+    "coords": "48.9747233N, 14.4747139E"
+  },
+  {
+    "name": "Český Krumlov",
+    "coords": "48.8105872N, 14.3148086E"
+  },
+  {
+    "name": "Cheb",
+    "coords": "48.8105872N, 14.3148086E"
+  },
+  {
+    "name": "Chomutov",
+    "coords": "50.4606703N, 13.4176883E"
+  },
+  {
+    "name": "Chrudim",
+    "coords": "49.9512361N, 15.7945856E"
+  },
+  {
+    "name": "Děčín",
+    "coords": "50.7789250N, 14.2094417E"
+  },
+  {
+    "name": "Domažlice",
+    "coords": "49.4402214N, 12.9281683E"
+  },
+  {
+    "name": "Frýdek-Místek",
+    "coords": "49.6777686N, 18.3539008E"
+  },
+  {
+    "name": "Havlíčkův Brod",
+    "coords": "49.6828814N, 15.5518133E"
+  },
+  {
+    "name": "Hodonín",
+    "coords": "48.8483672N, 17.1282972E"
+  },
+  {
+    "name": "Hradec Králové",
+    "coords": "50.2092922N, 15.8331750E"
+  },
+  {
+    "name": "Jablonec nad Nisou",
+    "coords": "50.7242117N, 15.1714169E"
+  },
+  {
+    "name": "Jeseník",
+    "coords": "50.2293703N, 17.2045931E"
+  },
+  {
+    "name": "Jičín",
+    "coords": "50.2293703N, 17.2045931E"
+  },
+  {
+    "name": "Jihlava",
+    "coords": "49.3962011N, 15.5901703E"
+  },
+  {
+    "name": "Jindřichův Hradec",
+    "coords": "49.1440942N, 15.0016272E"
+  },
+  {
+    "name": "Karlovy Vary",
+    "coords": "50.2288094N, 12.8764981E"
+  },
+  {
+    "name": "Karviná",
+    "coords": "49.8543467N, 18.5416086E"
+  },
+  {
+    "name": "Kladno",
+    "coords": "50.1468419N, 14.1028017E"
+  },
+  {
+    "name": "Klatovy",
+    "coords": ""
+  },
+  {
+    "name": "Kolín",
+    "coords": ""
+  },
+  {
+    "name": "Kroměříž",
+    "coords": ""
+  },
+  {
+    "name": "Kutná Hora",
+    "coords": ""
+  },
+  {
+    "name": "Liberec",
+    "coords": ""
+  },
+  {
+    "name": "Litoměřice",
+    "coords": ""
+  },
+  {
+    "name": "Louny",
+    "coords": ""
+  },
+  {
+    "name": "Mělník",
+    "coords": ""
+  },
+  {
+    "name": "Mladá Boleslav",
+    "coords": ""
+  },
+  {
+    "name": "Most",
+    "coords": ""
+  },
+  {
+    "name": "Náchod",
+    "coords": ""
+  },
+  {
+    "name": "Nový Jičín",
+    "coords": ""
+  },
+  {
+    "name": "Nymburk",
+    "coords": ""
+  },
+  {
+    "name": "Olomouc",
+    "coords": ""
+  },
+  {
+    "name": "Opava",
+    "coords": ""
+  },
+  {
+    "name": "Ostrava",
+    "coords": ""
+  },
+  {
+    "name": "Pardubice",
+    "coords": ""
+  },
+  {
+    "name": "Pelhřimov",
+    "coords": "49.4307208N, 15.2235914E"
+  },
+  {
+    "name": "Písek",
+    "coords": ""
+  },
+  {
+    "name": "Plzeň",
+    "coords": ""
+  },
+  {
+    "name": "Prachatice",
+    "coords": ""
+  },
+  {
+    "name": "Praha",
+    "coords": "50.0888381N, 14.4207567E"
+  },
+  {
+    "name": "Přerov",
+    "coords": ""
+  },
+  {
+    "name": "Příbram",
+    "coords": ""
+  },
+  {
+    "name": "Prostějov",
+    "coords": ""
+  },
+  {
+    "name": "Rakovník",
+    "coords": "50.1041889N, 13.7305358E"
+  },
+  {
+    "name": "Rokycany",
+    "coords": "49.7423075N, 13.5963858E"
+  },
+  {
+    "name": "Rychnov nad Kněžnou",
+    "coords": ""
+  },
+  {
+    "name": "Semily",
+    "coords": ""
+  },
+  {
+    "name": "Sokolov",
+    "coords": ""
+  },
+  {
+    "name": "Strakonice",
+    "coords": ""
+  },
+  {
+    "name": "Šumperk",
+    "coords": "49.9652958N, 16.9706169E"
+  },
+  {
+    "name": "Svitavy",
+    "coords": "49.7561175N, 16.4675483E"
+  },
+  {
+    "name": "Tábor",
+    "coords": "49.4142039N, 14.6589750E"
+  },
+  {
+    "name": "Tachov",
+    "coords": "49.7954789N, 12.6327297E"
+  },
+  {
+    "name": "Teplice",
+    "coords": "50.6375378N, 13.8252706E"
+  },
+  {
+    "name": "Třebíč",
+    "coords": "49.2158525N, 15.8790283E"
+  },
+  {
+    "name": "Trutnov",
+    "coords": "50.5605567N, 15.9133342E"
+  },
+  {
+    "name": "Uherské Hradiště",
+    "coords": "49.0682239N, 17.4603933E"
+  },
+  {
+    "name": "Ústí nad Labem",
+    "coords": "50.6603564N, 14.0404703E"
+  },
+  {
+    "name": "Ústí nad Orlicí",
+    "coords": "49.9735942N, 16.3943522E"
+  },
+  {
+    "name": "Vsetín",
+    "coords": "49.3392869N, 17.9938994E"
+  },
+  {
+    "name": "Vyškov",
+    "coords": "49.2777892N, 16.9995919E"
+  },
+  {
+    "name": "Žďár nad Sázavou",
+    "coords": "49.5628197N, 15.9392769E"
+  },
+  {
+    "name": "Zlín",
+    "coords": "49.2229950N, 17.6583892E"
+  },
+  {
+    "name": "Znojmo",
+    "coords": "48.8562028N, 16.0470153E"
+  }
+]

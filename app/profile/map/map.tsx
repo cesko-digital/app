@@ -1,3 +1,4 @@
+import { districts } from "./districts";
 import {
   MapContainer,
   MapContainerProps,
@@ -19,9 +20,11 @@ const Map = (props: MapContainerProps) => (
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[49.4850886, 16.6560628]}>
-        <Popup>okres Blansko</Popup>
-      </Marker>
+      {Object.entries(districts).map(([name, coords]) => (
+        <Marker key={name} position={coords as any}>
+          <Popup>okres {name}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   </div>
 );
