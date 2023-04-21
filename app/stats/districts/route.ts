@@ -2,12 +2,20 @@ import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { notEmpty, unique } from "lib/utils";
 import { NextResponse } from "next/server";
 
+const normalize = (s: string) =>
+  s
+    // Remove leading whitespace
+    .replaceAll(/^\s*/g, "")
+    // Remove trailing whitespace
+    .replaceAll(/\s*$/g, "");
+
 export async function GET(request: Request) {
   const profiles = await getAllUserProfiles("Profiles with Districts");
   const districtNames = profiles
     .map((profile) => profile.availableInDistricts)
     .flatMap((str) => str?.split(/,\s*/))
-    .filter(notEmpty);
+    .filter(notEmpty)
+    .map(normalize);
   const count = (district: string) =>
     districtNames.filter((d) => d === district).length;
   const stats = Object.fromEntries(
