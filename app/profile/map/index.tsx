@@ -69,6 +69,7 @@ export const VolunteerMapPrefs = () => {
         </div>
       </section>
       <section>
+        <p className="mb-2">Ve kterých okresech někdo z Česko.Digital bývá:</p>
         <Map style={{ height: "400px" }} stats={stats} />
       </section>
     </div>
