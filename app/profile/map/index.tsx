@@ -13,7 +13,7 @@ export const VolunteerMapPrefs = () => {
   const [stats, setStats] = useState<DistrictStats>({});
   const { profile, updateProfile, isUpdating } = useUserProfile();
 
-  // Update profile when the Save button is clicked
+  // Update profile when input is committed
   const save = () => {
     updateProfile({ availableInDistricts: districts });
   };
@@ -50,6 +50,11 @@ export const VolunteerMapPrefs = () => {
             className="rounded-md border-2 border-gray p-2 w-full"
             placeholder={profile ? "Brno, Praha, …" : ""}
             onChange={(e) => setDistricts(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                save();
+              }
+            }}
           ></input>
           {isUpdating && (
             <button className="btn-disabled flex-none" disabled={true}>
