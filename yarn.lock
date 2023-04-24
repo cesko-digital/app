@@ -4409,10 +4409,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-slack-markdown@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/slack-markdown/-/slack-markdown-0.2.0.tgz"
-  integrity sha512-a5E63DzRBGNnEv8aflS2ReoHq/x41JQf08pgaUVQQlfqO3ZmSd3+LnZRRUNt8k+yNquwFfZJyJUoMpWqQexPvA==
+slack-markdown@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/slack-markdown/-/slack-markdown-0.3.0.tgz#4b430d1e483f21fa3f83781a79a577377aa0865f"
+  integrity sha512-LNOwBXZ1xzOYNo9ZU0gPXZN0rqlAPOiVQMTjz+rMq1ZTGg655UNHDRos+NqSU20BC+SV7VeA/3lLOs5DG+UEvA==
   dependencies:
     escape-html "^1.0.3"
     node-emoji "^1.10.0"
