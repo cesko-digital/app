@@ -34,7 +34,7 @@ export const mainPreferenceGroupOptions = [
 
 /** Our main preference group options */
 export type MainPreferenceGroupOption =
-  typeof mainPreferenceGroupOptions[number];
+  (typeof mainPreferenceGroupOptions)[number];
 
 /** All possible subscription states */
 export const subscriptionStates = [
@@ -47,7 +47,7 @@ export const subscriptionStates = [
 ] as const;
 
 /** Subscription state – is the user subscribed, unsubscribed, bounces, etc. */
-export type SubscriptionState = typeof subscriptionStates[number];
+export type SubscriptionState = (typeof subscriptionStates)[number];
 
 /** Decode subscription state from the numeric code used in API responses */
 export function decodeSubscriptionStateCode(value: Pojo): SubscriptionState {
