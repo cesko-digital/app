@@ -361,10 +361,14 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
           </li>
         </ol>
         {validationResult.result === "error" && state !== emptyFormState && (
-          <p className="text-red-500">{validationResult.msg}</p>
+          <p className="text-red-500" data-testid="form-error">
+            {validationResult.msg}
+          </p>
         )}
         {submissionState.tag === "submission_error" && (
-          <p className="text-red-500">{submissionState.msg}</p>
+          <p className="text-red-500" data-testid="form-error">
+            {submissionState.msg}
+          </p>
         )}
         <button
           onClick={handleSubmit}
