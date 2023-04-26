@@ -2,6 +2,7 @@ import { splitToChunks } from "./utils";
 import {
   decodeDictValues,
   decodeObject,
+  decodeValidItemsFromArray,
   optionalArray,
   withDefault,
 } from "./decoding";
@@ -323,7 +324,9 @@ export type NewsletterPreferences = decodeType<
 
 export const decodeNewsletterPreferences = record({
   subscribe: boolean,
-  subscribedGroups: array(union(...mainPreferenceGroupOptions)),
+  subscribedGroups: decodeValidItemsFromArray(
+    union(...mainPreferenceGroupOptions)
+  ),
 });
 
 export async function getNewsletterPreferences(
