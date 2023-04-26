@@ -1,6 +1,6 @@
 import { getSlackUser, isRegularUser } from "lib/slack/user";
 import { upsertSlackUser } from "lib/airtable/slack-user";
-import { sendDirectMessage } from "./slack/message";
+import { sendDirectMessage } from "lib/slack/message";
 import { join, resolve } from "path";
 import { readdirSync, readFileSync } from "fs";
 import fs from "fs";
@@ -8,7 +8,7 @@ import {
   getUserProfileByMail,
   updateUserProfile,
 } from "lib/airtable/user-profile";
-import { map, normalizeEmailAddress } from "./utils";
+import { map, normalizeEmailAddress } from "lib/utils";
 
 const { SLACK_SYNC_TOKEN = "", SLACK_GREET_BOT_TOKEN = "" } = process.env;
 

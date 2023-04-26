@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Link from "next/link";
-import { Petra, RadekH, Julia, PetrB } from "components/onboarding/images";
+import { Petra, RadekH, Julia, PetrB } from "app/join/(images)";
 import { CzechiaMapArrows } from "components/illustrations";
 import { communitySize } from "lib/utils";
 import Image, { StaticImageData } from "next/image";
@@ -19,7 +19,7 @@ import {
   RadekP,
   Martin,
   Eva,
-} from "components/onboarding/images";
+} from "app/join/(images)";
 
 const Page: NextPage = () => {
   return (

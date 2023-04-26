@@ -2,9 +2,7 @@ import Plausible from "plausible-tracker";
 import { Route } from "lib/routing";
 import skillMenu from "content/skills.json";
 import { encodeSkillSelection } from "lib/skills";
-import OnboardingFormPage, {
-  RegistrationData,
-} from "components/onboarding/form";
+import OnboardingFormPage, { RegistrationData } from "app/join/form";
 
 const { trackEvent } = Plausible({ domain: "cesko.digital" });
 

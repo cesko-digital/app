@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { confirmUserAccount, sendWelcomeMessage } from "lib/onboarding";
+import { confirmUserAccount, sendWelcomeMessage } from "app/join/onboarding";
 import { union } from "typescript-json-decoder";
 import {
   decodeEndpointHandshake,

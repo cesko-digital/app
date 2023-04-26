@@ -1,7 +1,7 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 
 import { getAllUserProfiles, UserProfile } from "lib/airtable/user-profile";
-import { parseWelcomeMessages, sendWelcomeMessage } from "lib/onboarding";
+import { parseWelcomeMessages, sendWelcomeMessage } from "app/join/onboarding";
 
 /**
  * Maximum number of recipients

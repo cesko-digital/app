@@ -1,4 +1,4 @@
-import { parseWelcomeMessages, sendWelcomeMessage } from "lib/onboarding";
+import { parseWelcomeMessages, sendWelcomeMessage } from "app/join/onboarding";
 import { NextApiRequest, NextApiResponse } from "next";
 
 /**
