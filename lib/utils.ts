@@ -85,6 +85,7 @@ export function map<T, U>(
   return val ? f(val) : undefined;
 }
 
+/** Simple e-mail normalization – convert to lowercase, remove whitespace */
 export function normalizeEmailAddress(email: string): string {
   return (
     email
@@ -96,6 +97,16 @@ export function normalizeEmailAddress(email: string): string {
       .replaceAll(/\s+$/g, "")
   );
 }
+
+/**
+ * Simple e-mail validation
+ *
+ * Proper e-mail address validation is _hard_, the only really reasonable
+ * option is to send a validation link to the e-mail address, but let’s have
+ * at least something basic here to guard users from plain typos.
+ */
+export const looksLikeEmailAdress = (s: string) =>
+  !!s.match(/^[^@ ]+@[^@ ]+\.[^@ ]+$/);
 
 /** Filtering convenience, see https://stackoverflow.com/questions/43118692 */
 export function notEmpty<TValue>(

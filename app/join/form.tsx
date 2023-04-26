@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { SkillPicker } from "app/profile/skill-picker";
 import { SkillMenu, SkillSelection } from "lib/skills";
+import { looksLikeEmailAdress } from "lib/utils";
 
 export type SubmissionState =
   | { tag: "not_submitted_yet" }
@@ -108,6 +109,8 @@ function validateForm(data: FormState): ValidationResult {
     return error("Je třeba vyplnit jméno.");
   } else if (!email) {
     return error("Je třeba vyplnit email.");
+  } else if (!looksLikeEmailAdress(email)) {
+    return error("V e-mailové adrese je nějaká chyba.");
   } else if (Object.entries(skills).length === 0) {
     return error("Je třeba vyplnit aspoň jednu dovednost.");
   } else if (!privacyConsent) {
