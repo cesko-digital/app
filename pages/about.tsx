@@ -324,7 +324,7 @@ const YearlyReportSection = () => {
     },
   ];
   return (
-    <section className="max-w-content m-auto py-10 px-5 text-xl mb-20">
+    <section className="max-w-content m-auto py-10 px-5 text-xl">
       <h2 className="mb-12 mt-0">Výroční zprávy</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {items.map(({ label, image, link }) => (
