@@ -9,6 +9,7 @@ export { default as Terezia } from "./terezia.jpg";
 export { default as Terka } from "./terka.jpg";
 export { default as Yen } from "./yen.jpg";
 export { default as Zoul } from "./zoul.jpg";
+
 export { default as Michal } from "./michal.jpg";
 export { default as Jakub } from "./jakub.jpg";
 export { default as Robert } from "./robert.jpg";

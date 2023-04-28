@@ -18,7 +18,7 @@ import {
   Robert,
   Ondrej,
   Michal,
-} from "components/about/team";
+} from "app/about/(team)";
 import {
   Tereza,
   Tomas,
@@ -29,11 +29,13 @@ import {
   Lucia,
   Ondrej as OndrejK,
   RadkaH,
-} from "components/about/volunteers";
+} from "app/about/(volunteers)";
+import { ImpactReport, Year2020, Year2021 } from "app/about/(misc)";
 
 const AboutPage = () => (
   <Layout crumbs={[{ label: "O nás" }]} head={{ title: "O nás" }}>
     <IntroSection />
+    <YearlyReportSection />
     <VolunteerSection />
     <CoreTeamSection />
     <BoardSection />
@@ -196,16 +198,20 @@ const CoreTeamSection = () => (
         title="Community Experience Lead"
         image={Anezka}
       >
-        Starám se o o fungování komunity Česko.Digital především z pohledu dobrovolníků.
-        Mým cílem je, aby naši dobrovolníci byli spokojení a motivovaní a aby si odnášeli
-        pozitivní zkušenost. Na základě podnětů z komunity pomáhám nastavovat procesy na pozadí. 
+        Starám se o o fungování komunity Česko.Digital především z pohledu
+        dobrovolníků. Mým cílem je, aby naši dobrovolníci byli spokojení a
+        motivovaní a aby si odnášeli pozitivní zkušenost. Na základě podnětů z
+        komunity pomáhám nastavovat procesy na pozadí.
       </PersonCard>
       <PersonCard
         name="Jindřich Oukropec"
         title="Brand Product Owner"
         image={Jindra}
       >
-        Mám na starosti značku, reputaci a komunikační strategii organizace. Zabývám se tím, co komu a jak říkáme. Usměrňuji očekávání, která vzbuzujeme s ohledem na organizační cíle. Rovněž zastávám roli Scrum Support Mastera na projektech.
+        Mám na starosti značku, reputaci a komunikační strategii organizace.
+        Zabývám se tím, co komu a jak říkáme. Usměrňuji očekávání, která
+        vzbuzujeme s ohledem na organizační cíle. Rovněž zastávám roli Scrum
+        Support Mastera na projektech.
       </PersonCard>
       <PersonCard
         name="Terézia Palaščáková"
@@ -294,6 +300,55 @@ const BoardSection = () => (
     </div>
   </section>
 );
+
+//
+// Yearly Reports
+//
+
+const YearlyReportSection = () => {
+  const items = [
+    {
+      label: "Výroční zpráva za rok 2021",
+      image: Year2021,
+      link: "https://data.cesko.digital/vyrocni-zpravy/2021.pdf",
+    },
+    {
+      label: "Výroční zpráva za rok 2020",
+      image: Year2020,
+      link: "https://data.cesko.digital/vyrocni-zpravy/2020.pdf",
+    },
+    {
+      label: "Impact Report 2019–2022",
+      image: ImpactReport,
+      link: "https://data.cesko.digital/vyrocni-zpravy/impact-report-2022.pdf",
+    },
+  ];
+  return (
+    <section className="max-w-content m-auto py-10 px-5 text-xl mb-20">
+      <h2 className="mb-12 mt-0">Výroční zprávy</h2>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        {items.map(({ label, image, link }) => (
+          <a
+            key="label"
+            href={link}
+            className="block rounded-lg overflow-clip grayscale hover:grayscale-0 bg-pebble aspect-square no-underline text-black"
+          >
+            <Image
+              src={image}
+              alt=""
+              placeholder="blur"
+              layout="responsive"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+            <div className="px-4">
+              <h3 className="mb-0">{label}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 //
 // Shared
