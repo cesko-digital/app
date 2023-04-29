@@ -28,6 +28,33 @@ module.exports = withAxiom({
     return config;
   },
 
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          }
+        ],
+      },
+    ]
+  },
+
   // We prefer to set up redirects here and not in `vercel.json`
   // so that the framework knows about them and they also work in environments
   // like `yarn dev`.
