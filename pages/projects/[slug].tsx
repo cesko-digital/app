@@ -210,6 +210,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .slice(0, 3);
   const relatedEvents = events
     .filter((e) => e.projectId === project.id)
+    .filter((e) => e.published)
     .sort(compareEventsByTime)
     .reverse()
     .slice(0, 3);
