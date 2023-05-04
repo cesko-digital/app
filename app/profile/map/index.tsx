@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUserProfile } from "app/profile/hooks";
+import { DistrictSelect } from "./select";
 import dynamic from "next/dynamic";
 
 type DistrictStats = Record<string, number>;
@@ -12,11 +13,6 @@ export const VolunteerMapPrefs = () => {
   const [districts, setDistricts] = useState("");
   const [stats, setStats] = useState<DistrictStats>({});
   const { profile, updateProfile, isUpdating } = useUserProfile();
-
-  // Update profile when input is committed
-  const save = () => {
-    updateProfile({ availableInDistricts: districts });
-  };
 
   // Update districts when profile changes
   useEffect(() => {
@@ -41,34 +37,17 @@ export const VolunteerMapPrefs = () => {
         <label htmlFor="districts" className="block mb-2">
           Ve kterých okresech ČR se vyskytuješ?
         </label>
-        <div className="flex flex-row gap-2">
-          <input
-            id="districts"
-            type="text"
-            value={districts}
-            disabled={isUpdating}
-            className="rounded-md border-2 border-gray p-2 w-full"
-            placeholder={profile ? "Brno, Praha, …" : ""}
-            onChange={(e) => setDistricts(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                save();
-              }
-            }}
-          ></input>
-          {isUpdating && (
-            <button className="btn-disabled flex-none" disabled={true}>
-              Moment…
-            </button>
-          )}
-          {!isUpdating && (
-            <button className="btn-primary flex-none" onClick={save}>
-              Uložit
-            </button>
-          )}
-        </div>
+        <DistrictSelect
+          value={districts}
+          onChange={(selection) => {
+            setDistricts(selection);
+            updateProfile({
+              availableInDistricts: selection,
+            });
+          }}
+        />
       </section>
-      <section>
+      <section className="z-0">
         <p className="mb-2">Ve kterých okresech někdo z Česko.Digital bývá:</p>
         <Map style={{ height: "400px" }} stats={stats} />
       </section>
