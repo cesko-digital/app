@@ -32,6 +32,11 @@ export const VolunteerMapPrefs = () => {
     }
   }, [isUpdating]);
 
+  // Highlight current user’s districts
+  const highlightedDistricts = Object.keys(mapModel).filter((district) =>
+    mapModel[district].some((member) => member.slackId === profile?.slackId)
+  );
+
   return (
     <div className="text-lg max-w-prose grid grid-cols gap-7 mb-10">
       <section>
@@ -52,8 +57,12 @@ export const VolunteerMapPrefs = () => {
         <p className="mb-2">Ve kterých okresech někdo z Česko.Digital bývá:</p>
         <Map
           style={{ height: "400px" }}
-          model={Object.keys(mapModel)}
-          onClick={setSelectedDistrict}
+          districts={Object.keys(mapModel)}
+          selectedDistrict={selectedDistrict}
+          highlightedDistricts={highlightedDistricts}
+          onClick={(name) => {
+            setSelectedDistrict(selectedDistrict === name ? undefined : name);
+          }}
         />
       </section>
       {selectedDistrict && (
