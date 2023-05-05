@@ -17,7 +17,6 @@ module.exports = withAxiom({
     // the extra data or move to React Server Components to make
     // the offending pages lighter.
     largePageDataBytes: 256 * 100000,
-    appDir: true,
   },
 
   webpack: (config) => {
