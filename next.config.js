@@ -19,6 +19,14 @@ module.exports = withAxiom({
     largePageDataBytes: 256 * 100000,
   },
 
+  images: {
+    remotePatterns: [
+      { hostname: "data.cesko.digital" },
+      { hostname: "avatars.slack-edge.com" },
+      { hostname: "secure.gravatar.com" },
+    ],
+  },
+
   webpack: (config) => {
     config.experiments = {
       topLevelAwait: true,
