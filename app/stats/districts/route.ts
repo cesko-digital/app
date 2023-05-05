@@ -1,6 +1,5 @@
 import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { notEmpty, unique } from "lib/utils";
-import { NextResponse } from "next/server";
 
 const normalize = (s: string) =>
   s
@@ -9,7 +8,7 @@ const normalize = (s: string) =>
     // Remove trailing whitespace
     .replaceAll(/\s*$/g, "");
 
-export async function GET(request: Request) {
+export async function GET() {
   const profiles = await getAllUserProfiles("Profiles with Districts");
   const districtNames = profiles
     .map((profile) => profile.availableInDistricts)
@@ -24,18 +23,12 @@ export async function GET(request: Request) {
     )
   );
 
-  const format = new URL(request.url).searchParams.get("format");
-
-  if (format === "json") {
-    return NextResponse.json(stats);
-  } else {
-    let response = "Okres,Počet lidí\n";
-    response += Object.entries(stats)
-      .map(([district, count]) => [district, count].join(","))
-      .join("\n");
-    return new Response(response, {
-      status: 200,
-      headers: { "Content-Type": "text/csv; charset=utf-8" },
-    });
-  }
+  let response = "Okres,Počet lidí\n";
+  response += Object.entries(stats)
+    .map(([district, count]) => [district, count].join(","))
+    .join("\n");
+  return new Response(response, {
+    status: 200,
+    headers: { "Content-Type": "text/csv; charset=utf-8" },
+  });
 }
