@@ -32,13 +32,13 @@ export const notificationFlags = [
 ] as const;
 
 /** Notification flags to turn on user e-mail notifications about various events */
-export type NotificationFlag = typeof notificationFlags[number];
+export type NotificationFlag = (typeof notificationFlags)[number];
 
 /** All supported feature flags */
 export const featureFlags = ["volunteer_map"] as const;
 
 /** Feature flags to hide or show beta features */
-export type FeatureFlag = typeof featureFlags[number];
+export type FeatureFlag = (typeof featureFlags)[number];
 
 /** Decode known feature flags, returning empty array for `null` or `undefined` */
 const decodeFeatureFlags = decodeFlags(union(...featureFlags));
@@ -57,6 +57,8 @@ export interface Schema extends FieldSet {
   profileUrl: string;
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
+  slackProfileUrl: string;
+  slackAvatarUrl: string;
   notificationFlags: ReadonlyArray<string>;
   state: string;
   createdAt: string;
@@ -93,6 +95,8 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   slackRegistrationMail: relationToZeroOrOne,
+  slackProfileUrl: relationToZeroOrOne,
+  slackAvatarUrl: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFeatureFlags,
   notificationFlags: decodeNotificationFlags,
