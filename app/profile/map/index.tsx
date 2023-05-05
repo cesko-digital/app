@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUserProfile } from "app/profile/hooks";
 import { DistrictSelect } from "./select";
-import { MapMember, MapModel } from "./model";
+import { MapMember, MapModel } from "./districts";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 

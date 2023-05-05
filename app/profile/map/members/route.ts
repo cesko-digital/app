@@ -2,7 +2,7 @@ import { getAllUserProfiles } from "lib/airtable/user-profile";
 import { notEmpty } from "lib/utils";
 import { getToken } from "next-auth/jwt";
 import { NextRequest } from "next/server";
-import { MapModel } from "../model";
+import { MapModel } from "../districts";
 
 export async function GET(request: NextRequest) {
   const token = await getToken({ req: request });
