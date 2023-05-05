@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useUserProfile } from "app/profile/hooks";
 import { DistrictSelect } from "./select";
+import { MapMember, MapModel } from "./model";
 import dynamic from "next/dynamic";
-
-type DistrictStats = Record<string, number>;
+import Image from "next/image";
 
 // The component has to be imported dynamically since Leaflet doesn’t
 // play nice with server-side rendering.
@@ -11,7 +11,8 @@ const Map = dynamic(() => import("./map"), { ssr: false });
 
 export const VolunteerMapPrefs = () => {
   const [districts, setDistricts] = useState("");
-  const [stats, setStats] = useState<DistrictStats>({});
+  const [mapModel, setMapModel] = useState<MapModel>({});
+  const [selectedDistrict, setSelectedDistrict] = useState<string>();
   const { profile, updateProfile, isUpdating } = useUserProfile();
 
   // Update districts when profile changes
@@ -22,9 +23,9 @@ export const VolunteerMapPrefs = () => {
   // Reload map data when profile finishes updating
   useEffect(() => {
     const loadData = async () => {
-      await fetch("/stats/districts?format=json")
+      await fetch("/profile/map/members")
         .then((response) => response.json())
-        .then(setStats);
+        .then(setMapModel);
     };
     if (!isUpdating) {
       loadData();
@@ -49,8 +50,44 @@ export const VolunteerMapPrefs = () => {
       </section>
       <section className="z-0">
         <p className="mb-2">Ve kterých okresech někdo z Česko.Digital bývá:</p>
-        <Map style={{ height: "400px" }} stats={stats} />
+        <Map
+          style={{ height: "400px" }}
+          model={Object.keys(mapModel)}
+          onClick={setSelectedDistrict}
+        />
       </section>
+      {selectedDistrict && (
+        <section>
+          <h3 className="mb-2">
+            Koho můžeš potkat v okrese {selectedDistrict}
+          </h3>
+          <div className="grid md:grid-cols-3 gap-7">
+            {mapModel[selectedDistrict]?.map((member) => (
+              <MemberCard key={member.slackId} member={member} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 };
+
+const MemberCard = ({ member }: { member: MapMember }) => (
+  <a
+    className="flex flex-col items-center pt-4 bg-pebble hover:bg-yellow cursor-pointer rounded-sm no-underline text-black"
+    href={member.slackProfileUrl}
+    target="_blank"
+  >
+    <Image
+      src={
+        member.slackAvatarUrl ||
+        "https://data.cesko.digital/people/generic-profile.jpg"
+      }
+      className="border-it border-2 rounded-full"
+      width={70}
+      height={70}
+      alt=""
+    />
+    <p>{member.name}</p>
+  </a>
+);
