@@ -1,9 +1,12 @@
 import { getAllEvents } from "lib/airtable/event";
 import { getPageBreakdown } from "lib/data-sources/plausible";
 
-export async function GET() {
+const DEFAULT_THRESHOLD = 5;
+export async function GET(request: Request) {
   const pageStats = await getPageBreakdown();
   const events = await getAllEvents();
+  const { searchParams } = new URL(request.url);
+  const threshold = searchParams.get("threshold") || DEFAULT_THRESHOLD;
 
   const csv = pageStats
     // Filter out other pages
@@ -16,6 +19,8 @@ export async function GET() {
         page: event?.name || "unknown",
       };
     })
+    // Filter rows below the threshold
+    .filter((row) => row.pageviews >= threshold)
     // Convert to CSV
     .map(({ page, pageviews, visitors }) =>
       [`"${page.trim()}"`, pageviews, visitors].join(",")
