@@ -26,7 +26,7 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-lite-youtube-embed": "^2.3.52",
-    "react-select": "^5.7.2",
+    "react-select": "^5.7.3",
     "sharp": "^0.32.1",
     "slack": "^11.0.2",
     "slack-markdown": "^0.3.0",
