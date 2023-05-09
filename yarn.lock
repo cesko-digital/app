@@ -4880,10 +4880,10 @@ typescript-json-decoder@^1.0.4:
   resolved "https://registry.npmjs.org/typescript-json-decoder/-/typescript-json-decoder-1.0.6.tgz"
   integrity sha512-acSpXrCf7LTEolJbqQDo6eP7h/mpO2u9VGJB4N6WvTcvKQdBIvHOXImXibn7N93kVwIoJbdikAOFdD8VDoeJaQ==
 
-typescript@4.5.2:
-  version "4.5.2"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.5.2.tgz"
-  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
+typescript@5.x:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
+  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
