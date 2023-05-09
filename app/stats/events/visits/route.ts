@@ -2,7 +2,7 @@ import { getAllEvents } from "lib/airtable/event";
 import { getPageBreakdown } from "lib/data-sources/plausible";
 
 const DEFAULT_THRESHOLD = 5;
-const ALLOWED_PERIODS = ["7d", "30d", "6mo", "12mo", "all"];
+const ALLOWED_PERIODS = ["7d", "30d", "6mo", "12mo"];
 
 async function validateRequest(request: Request): Promise<[number, string]> {
   const { searchParams } = new URL(request.url);
@@ -32,25 +32,24 @@ async function processData(threshold: number, period: string) {
   const pageStats = await getPageBreakdown(period);
   const events = await getAllEvents();
 
-  const csv = pageStats
+  const csvRows: string[] = [];
+
+  for (const row of pageStats) {
     // Filter out other pages
-    .filter((row) => row.page.startsWith("/events/"))
-    // Add opportunity names
-    .map((row) => {
-      const event = events.find((e) => row.page === `/events/${e.slug}`);
-      return {
-        ...row,
-        page: event?.name || "unknown",
-      };
-    })
-    // Filter rows below the threshold
-    .filter((row) => row.pageviews >= threshold)
-    // Convert to CSV
-    .map(({ page, pageviews, visitors }) =>
-      [`"${page.trim()}"`, pageviews, visitors].join(",")
-    )
-    .join("\n");
-  return ["Page, Pageviews, Visitors", csv].join("\n");
+    if (!row.page.startsWith("/events/")) continue;
+
+    const event = events.find((e) => row.page === `/events/${e.slug}`);
+
+    // Skip rows where event is undefined or pageviews below the threshold
+    if (!event || row.pageviews < threshold) continue;
+
+    // Add to csvRows
+    csvRows.push(
+      [`"${event.name.trim()}"`, row.pageviews, row.visitors].join(",")
+    );
+  }
+
+  return ["Page, Pageviews, Visitors", ...csvRows].join("\n");
 }
 
 export async function GET(request: Request) {
@@ -69,6 +68,7 @@ export async function GET(request: Request) {
   } catch (error) {
     const message: string =
       error instanceof Error ? error.message : "Unknown error";
+    console.log(error);
 
     return new Response(message, {
       status: 400,
