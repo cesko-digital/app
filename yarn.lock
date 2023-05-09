@@ -4875,10 +4875,10 @@ type-fest@^0.21.3:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
-typescript-json-decoder@^1.0.4:
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/typescript-json-decoder/-/typescript-json-decoder-1.0.6.tgz"
-  integrity sha512-acSpXrCf7LTEolJbqQDo6eP7h/mpO2u9VGJB4N6WvTcvKQdBIvHOXImXibn7N93kVwIoJbdikAOFdD8VDoeJaQ==
+typescript-json-decoder@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/typescript-json-decoder/-/typescript-json-decoder-1.0.11.tgz#d110b974f737273127cca727aa4ecc7ebfa08dd0"
+  integrity sha512-YPv/6FTbcGQG2vj4LOT5pGJ9qYL3aex8zqybiQGkyU/BTRx/TRMt4t8gHLXMCt7tg9WLMJN3r7hixQDCt5+Suw==
 
 typescript@5.x:
   version "5.0.4"

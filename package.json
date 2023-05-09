@@ -31,7 +31,7 @@
     "slack": "^11.0.2",
     "slack-markdown": "^0.3.0",
     "styled-components": "^5.3.9",
-    "typescript-json-decoder": "^1.0.4"
+    "typescript-json-decoder": "^1.0.11"
   },
   "devDependencies": {
     "@babel/core": "7",
