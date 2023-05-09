@@ -22,6 +22,8 @@ export async function GET() {
   const csv = pageStats
     // Filter out other pages
     .filter((row) => row.page.startsWith("/opportunities/"))
+    // Filter out opportunities with trivial pageview counts
+    .filter((row) => row.pageviews >= 5)
     // Add opportunity names
     .map((row) => {
       const op = opportunities.find(
