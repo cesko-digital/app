@@ -53,7 +53,7 @@ sequenceDiagram
     participant Airtable
     participant Slack
     Uživatel->>+Backend: Vyplněná registrace
-    Note over Backend: /api/user_profiles
+    Note over Backend: /profile/me
     Backend->>Airtable: Vytvoř nový uživatelský profil ➊
     Note over Airtable: User Profiles
     Airtable-->>Uživatel: Uvítací e-mail (Airtable Automation)

@@ -4,9 +4,48 @@ import { getSlackUserBySlackId } from "lib/airtable/slack-user";
 import {
   createUserProfile,
   getUserProfile,
+  getUserProfileByMail,
   updateUserProfile,
 } from "lib/airtable/user-profile";
+import { optional, record, string } from "typescript-json-decoder";
+import { normalizeEmailAddress } from "lib/utils";
 
+/** Create new user profile (called by the onboarding form) */
+export async function POST(request: NextRequest): Promise<Response> {
+  const decodeRequest = record({
+    name: string,
+    email: string,
+    skills: string,
+    gdprPolicyAcceptedAt: string,
+    occupation: optional(string),
+    organizationName: optional(string),
+    profileUrl: optional(string),
+  });
+  try {
+    const payload = decodeRequest(await request.json());
+    const email = normalizeEmailAddress(payload.email);
+    const previousProfile = await getUserProfileByMail(email).catch(() => null);
+    if (previousProfile) {
+      const msg = "Email already exists";
+      console.error(msg);
+      return new Response(msg, { status: 401 });
+    } else {
+      await createUserProfile({
+        ...payload,
+        email,
+        state: "unconfirmed",
+        slackUserRelationId: undefined,
+        createdAt: new Date().toISOString(),
+      });
+      return new Response("User profile created.", { status: 201 });
+    }
+  } catch (e) {
+    console.error(e);
+    return new Response("Sorry :(", { status: 500 });
+  }
+}
+
+/** Get user profile, used for stuff like displaying user preferences */
 export async function GET(request: NextRequest) {
   return withAuthenticatedUser(request, async (slackId) => {
     let profile = await getUserProfile(slackId).catch(() => null);
@@ -30,6 +69,7 @@ export async function GET(request: NextRequest) {
   });
 }
 
+/** Change user profile, used for stuff like updating user preferences */
 export async function PATCH(request: NextRequest) {
   return withAuthenticatedUser(request, async (slackId) => {
     let profile = await getUserProfile(slackId).catch(() => null);

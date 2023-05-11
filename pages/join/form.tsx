@@ -24,8 +24,8 @@ const Page = () => {
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
   const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
-    const response = await fetch("/api/user_profiles", {
-      method: "post",
+    const response = await fetch("/profile/me", {
+      method: "POST",
       body: JSON.stringify(payload, null, 2),
       headers: { "Content-Type": "application/json" },
     });
