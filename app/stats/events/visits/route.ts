@@ -4,7 +4,7 @@ import { getPageBreakdown } from "lib/data-sources/plausible";
 const DEFAULT_THRESHOLD = 5;
 const ALLOWED_PERIODS = ["7d", "30d", "6mo", "12mo"];
 
-async function validateRequest(request: Request): Promise<[number, string]> {
+async function parseRequest(request: Request): Promise<[number, string]> {
   const { searchParams } = new URL(request.url);
 
   // Validate the threshold parameter
@@ -54,7 +54,7 @@ async function processData(threshold: number, period: string) {
 
 export async function GET(request: Request) {
   try {
-    const [threshold, period] = await validateRequest(request);
+    const [threshold, period] = await parseRequest(request);
     const output = await processData(threshold, period);
 
     return new Response(output, {
@@ -68,13 +68,11 @@ export async function GET(request: Request) {
   } catch (error) {
     const message: string =
       error instanceof Error ? error.message : "Unknown error";
-    console.log(error);
 
     return new Response(message, {
       status: 400,
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
-        "Access-Control-Allow-Origin": "*",
       },
     });
   }
