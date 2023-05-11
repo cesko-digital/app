@@ -1,13 +1,4 @@
-export { default as AnezkaL } from "./anezkal.jpg";
-export { default as AnezkaM } from "./anezkam.jpg";
-export { default as Jakub } from "./jakub.jpg";
 export { default as Julia } from "./julia.jpg";
-export { default as Ondrej } from "./ondrej.jpg";
-export { default as Petr } from "./petr.jpg";
 export { default as Petra } from "./petra.jpg";
 export { default as RadekH } from "./radekh.jpg";
-export { default as RadekP } from "./radekp.jpg";
-export { default as Martin } from "./martin.jpg";
-export { default as Eva } from "./eva.jpg";
 export { default as Tereza } from "./tereza.jpg";
-export { default as PetrB } from "./petrb.jpg";

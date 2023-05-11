@@ -3,7 +3,6 @@ import { CardRow, Layout, Section, SectionContent } from "components/layout";
 import { Heading1 } from "components/typography";
 import AboutProject from "components/project/about";
 import ProjectCard from "components/project/card";
-import ContributeBox from "components/project/contribute";
 import { Projects } from "components/sections";
 import { getResizedImgUrl } from "lib/utils";
 import * as S from "components/project/styles";
@@ -24,6 +23,8 @@ import {
   isEventPast,
   PortalEvent,
 } from "lib/airtable/event";
+import { JoinUsBox } from "app/(shared)/join-us";
+import { useSession } from "next-auth/react";
 
 interface PageProps {
   project: PortalProject;
@@ -48,6 +49,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
     relatedEvents,
   } = props;
   const msg = strings.pages.project;
+  const { status: sessionStatus } = useSession();
   return (
     <Layout
       crumbs={[
@@ -152,15 +154,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         </Section>
       )}
 
-      {project.state !== "finished" && (
-        <Section>
-          <SectionContent>
-            <S.ContributeWrapper>
-              <ContributeBox />
-            </S.ContributeWrapper>
-          </SectionContent>
-        </Section>
-      )}
+      {sessionStatus === "unauthenticated" && <JoinUsBox />}
 
       <Section>
         <SectionContent>
