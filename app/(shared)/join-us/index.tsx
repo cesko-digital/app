@@ -20,7 +20,7 @@ import {
  * map aspect ratio to make positioning of the pins easier.
  */
 export const JoinUsBox = () => (
-  <section className="max-w-content m-auto py-10 px-5 text-lg">
+  <section className="max-w-content m-auto py-10 px-5 text-lg bg-white">
     <h2 className="text-it mt-0 leading-snug">
       Staň se součástí komunity Česko.Digital
     </h2>
