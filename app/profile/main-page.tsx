@@ -96,15 +96,12 @@ const SignedInPage: React.FC<PageProps> = (props) => {
   const profile = props.profile!;
   const { signOut, skillMenu, onSkillSelectionChange } = props;
 
-  const baseSections = [
+  const sections = [
     { key: "skills", label: "Dovednosti" },
     { key: "newsletters", label: "Newslettery" },
     { key: "notifications", label: "Upozornění" },
+    { key: "map", label: "Mapa dobrovolníků" },
   ];
-
-  const sections = profile.featureFlags.includes("volunteer_map")
-    ? [...baseSections, { key: "map", label: "Mapa dobrovolníků" }]
-    : baseSections;
 
   const [activeSectionKey, setActiveSectionKey] = useState("skills");
   const [skillSelection, setSkillSelection] = useState(

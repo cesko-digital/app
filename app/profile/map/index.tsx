@@ -40,8 +40,13 @@ export const VolunteerMapPrefs = () => {
   return (
     <div className="text-lg max-w-prose grid grid-cols gap-7 mb-10">
       <section>
+        <p className="mt-0">
+          Jsme Česko.Digital, ne Praha.Digital :) Jestli chceš, dej nám vědět,
+          kde se v rámci ČR vyskytuješ, ať můžeme lépe propojit členy komunity z
+          různých koutů Česka.
+        </p>
         <label htmlFor="districts" className="block mb-2">
-          Ve kterých okresech ČR se vyskytuješ?
+          Ve kterých okresech ČR býváš k zastižení?
         </label>
         <DistrictSelect
           value={districts}
@@ -76,6 +81,13 @@ export const VolunteerMapPrefs = () => {
             ))}
           </div>
         </section>
+      )}
+      {!selectedDistrict && (
+        <p>
+          Klepnutím na špendlík v mapě zobrazíš seznam uživatelů z daného
+          okresu. A klepnutím na profil uživatele se ti pak otevře jeho profil
+          na Slacku, kdybyste si například chtěli napsat a něco spolu upéct 🥮
+        </p>
       )}
     </div>
   );
