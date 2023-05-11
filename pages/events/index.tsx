@@ -31,6 +31,10 @@ const Page = ({ futureEvents, pastEvents, projects }: PageProps) => {
         {futureEvents.length > 0 && (
           <>
             <h2 className="mb-12 mt-0">Nadcházející akce</h2>
+            <p className="mb-7">
+              Seznam našich akcí také můžete{" "}
+              <a href="/events/feed.ical">odebírat ve formátu iCal</a>.
+            </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
               {futureEvents.map((e) => (
                 <EventCard key={e.id} event={e} project={projectForEvent(e)} />
