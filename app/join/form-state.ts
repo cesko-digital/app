@@ -14,6 +14,7 @@ export type RegistrationData = {
   occupation: string;
   organizationName?: string;
   gdprPolicyAcceptedAt: string;
+  availableInDistricts: string;
   profileUrl?: string;
 };
 
@@ -25,6 +26,7 @@ export type FormState = {
   profileUrl: string;
   skills: SkillSelection;
   privacyConsent: boolean;
+  availableInDistricts: string;
   gdprConsent: boolean;
   submissionState: SubmissionState;
 };
@@ -36,6 +38,7 @@ export const emptyFormState: FormState = {
   occupation: "",
   profileUrl: "",
   skills: {},
+  availableInDistricts: "",
   privacyConsent: false,
   gdprConsent: false,
   submissionState: { tag: "not_submitted_yet" },
@@ -66,7 +69,7 @@ export function validateForm(
   } else if (!occupation) {
     return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
-    const { organizationName, profileUrl } = data;
+    const { organizationName, profileUrl, availableInDistricts } = data;
     const gdprPolicyAcceptedAt = now.toISOString();
     return {
       result: "success",
@@ -75,6 +78,7 @@ export function validateForm(
         email,
         skills,
         organizationName,
+        availableInDistricts,
         occupation,
         profileUrl,
         gdprPolicyAcceptedAt,

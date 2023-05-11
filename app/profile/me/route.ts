@@ -18,6 +18,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     skills: string,
     gdprPolicyAcceptedAt: string,
     occupation: optional(string),
+    availableInDistricts: optional(string),
     organizationName: optional(string),
     profileUrl: optional(string),
   });
@@ -59,6 +60,7 @@ export async function GET(request: NextRequest) {
         occupation: undefined,
         organizationName: undefined,
         profileUrl: undefined,
+        availableInDistricts: "",
         state: "confirmed",
         slackUserRelationId: slackUser.id,
         createdAt: new Date().toISOString(),

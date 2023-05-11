@@ -9,6 +9,7 @@ import {
   RegistrationData,
   validateForm,
 } from "./form-state";
+import { DistrictSelect } from "app/profile/map/select";
 
 export type PageProps = {
   skillMenu: SkillMenu;
@@ -165,6 +166,17 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           disabled={disabled}
           onChange={(profileUrl) => onChange({ ...state, profileUrl })}
         />
+        <p className="mb-1">Ve kterých okresech ČR býváš k zastižení?</p>
+        <DistrictSelect
+          value={state.availableInDistricts}
+          onChange={(availableInDistricts) =>
+            onChange({ ...state, availableInDistricts })
+          }
+        />
+        <p className="text-base text-gray-500 mt-1">
+          Tahle data sbíráme, abychom mohli propojovat členy komunity z různých
+          koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
+        </p>
       </SectionContent>
     </Section>
   );
