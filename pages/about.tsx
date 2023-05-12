@@ -18,6 +18,7 @@ import {
   Robert,
   Ondrej,
   Michal,
+  Lujza,
 } from "app/about/(team)";
 import {
   Tereza,
@@ -252,6 +253,11 @@ const CoreTeamSection = () => (
         Starám se jak o příchozí dobrovolníky, tak o jednotlivce neziskových a
         veřejnosprávních organizací v naší komunitě. Mám na starosti data o
         komunitě.
+      </PersonCard>
+      <PersonCard name="Lujza Kotryová" title="Service Designer" image={Lujza}>
+        Zodpovídám za designové vedení projektu Digitální inkluze, který má
+        pomoct překonat digitální propast digitálně vyloučeným lidem. Starám se
+        o to, abychom na ně při digitalizaci Česka nezapomněli.
       </PersonCard>
     </div>
   </section>
