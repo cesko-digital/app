@@ -1,7 +1,22 @@
-import { NextResponse } from "next/server";
+import ical from "ical-generator";
+import { getAllEvents } from "lib/airtable/event";
+import { Route, absolute } from "lib/routing";
 
-export const GET = () =>
-  NextResponse.redirect(
-    "https://airtable.com/shrR9KTyhRIccB3Lp/iCal?timeZone=Europe%2FPrague&userLocale=en-gb",
-    { status: 302 }
-  );
+export async function GET(): Promise<Response> {
+  const events = await getAllEvents("iCal Feed");
+  const calendar = ical({ name: "Akce Česko.Digital" });
+  for (const event of events) {
+    calendar.createEvent({
+      summary: event.name,
+      description: event.description.source,
+      location: event.locationTitle,
+      url: absolute(Route.toEvent(event)),
+      start: new Date(event.startTime),
+      end: event.endTime ? new Date(event.endTime) : undefined,
+    });
+  }
+  return new Response(calendar.toString(), {
+    status: 200,
+    headers: { "Content-Type": "text/plain" },
+  });
+}
