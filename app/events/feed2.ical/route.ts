@@ -4,7 +4,7 @@ import { Route, absolute } from "lib/routing";
 import { markdownToHTML } from "lib/utils";
 
 export async function GET(): Promise<Response> {
-  const events = await getAllEvents("Live Events");
+  const events = await getAllEvents("iCal Feed");
   const calendar = ical({ name: "Akce Česko.Digital" });
   for (const event of events) {
     calendar.createEvent({

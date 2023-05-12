@@ -15,11 +15,10 @@ import {
   optional,
   record,
   string,
-  union,
 } from "typescript-json-decoder";
 
 /** Table views you can use when querying the event table */
-export type TableView = "All Events" | "Live Events";
+export type TableView = "All Events" | "Live Events" | "iCal Feed";
 
 //
 // Decoding
