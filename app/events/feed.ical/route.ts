@@ -20,6 +20,6 @@ export async function GET(): Promise<Response> {
   }
   return new Response(calendar.toString(), {
     status: 200,
-    headers: { "Content-Type": "text/plain" },
+    headers: { "Content-Type": "text/calendar" },
   });
 }

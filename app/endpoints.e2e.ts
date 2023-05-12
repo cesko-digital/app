@@ -6,6 +6,7 @@ const ct = {
   rss: "application/rss+xml",
   html: "text/html",
   txt: "text/plain",
+  ical: "text/calendar",
 };
 
 /** Endpoints to test */
@@ -18,6 +19,8 @@ const endpoints = {
   "/api/partners": ct.json,
   "/api/projects": ct.json,
   "/api/users": ct.json,
+  // Calendar feed
+  "/events/feed.ical": ct.ical,
 };
 
 // Test that some basic endpoints look right
