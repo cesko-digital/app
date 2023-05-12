@@ -4,7 +4,10 @@ import { Route, absolute } from "lib/routing";
 
 export async function GET(): Promise<Response> {
   const events = await getAllEvents("iCal Feed");
-  const calendar = ical({ name: "Akce Česko.Digital" });
+  const calendar = ical({
+    name: "Akce Česko.Digital",
+    url: absolute(Route.events),
+  });
   for (const event of events) {
     calendar.createEvent({
       summary: event.name,
