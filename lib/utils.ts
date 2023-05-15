@@ -2,7 +2,7 @@ import { marked } from "marked";
 import crypto from "crypto";
 
 /** Approximate size of the Česko.Digital community (number of people in Slack) */
-export const communitySize = 5800;
+export const communitySize = 6000;
 
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
