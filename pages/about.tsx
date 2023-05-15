@@ -19,6 +19,8 @@ import {
   Ondrej,
   Michal,
   Lujza,
+  Veronika,
+  Tereza as TerezaQ,
 } from "app/about/(team)";
 import {
   Tereza,
@@ -255,9 +257,31 @@ const CoreTeamSection = () => (
         komunitě.
       </PersonCard>
       <PersonCard name="Lujza Kotryová" title="Service Designer" image={Lujza}>
-        Zodpovídám za designové vedení projektu Digitální inkluze, který má
-        pomoct překonat digitální propast digitálně vyloučeným lidem. Starám se
-        o to, abychom na ně při digitalizaci Česka nezapomněli.
+        Zodpovídám za designové vedení projektu{" "}
+        <a href="https://cesko.digital/projects/digitalni-inkluze">
+          Digitální inkluze
+        </a>
+        , který má pomoct překonat digitální propast digitálně vyloučeným lidem.
+        Starám se o to, abychom na ně při digitalizaci Česka nezapomněli.
+      </PersonCard>
+      <PersonCard
+        name="Veronika Quek"
+        title="Product Designer"
+        image={Veronika}
+      >
+        Mám na starosti projekt{" "}
+        <a href="https://cesko.digital/projects/nezisk-digital">
+          Nezisk.Digital
+        </a>
+        , ve kterém chceme spolu s dobrovolníky a partnerskými organizacemi
+        nabídnout praktické nástroje pro zvyšování digitálních kompetencí
+        neziskových organizací.
+      </PersonCard>
+      <PersonCard name="Tereza Rybová" title="Event Lead" image={TerezaQ}>
+        Starám se o všechno, co v Česko.Digital souvisí s pořádáním akcí – hack
+        days, meetupy, přednášky, konference. Zodpovídám za eventovou strategii,
+        udržuji aktuální eventový plán a mám na starosti dobro-tým, který pomáhá
+        s realizací akcí.
       </PersonCard>
     </div>
   </section>
