@@ -43,7 +43,7 @@
     "@types/marked": "^4.0.8",
     "@types/node": "20.1.1",
     "@types/react": "^18.0.28",
-    "@types/sharp": "^0.29.4",
+    "@types/sharp": "^0.32.0",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.14",
     "dotenv-flow": "^3.2.0",
