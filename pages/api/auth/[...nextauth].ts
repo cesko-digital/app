@@ -6,6 +6,11 @@ export default NextAuth({
     SlackProvider({
       clientId: process.env.SLACK_CLIENT_ID as string,
       clientSecret: process.env.SLACK_CLIENT_SECRET as string,
+      authorization: {
+        params: {
+          team: "TG21XF887",
+        },
+      },
     }),
   ],
 });
