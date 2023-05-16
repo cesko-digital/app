@@ -31,7 +31,7 @@ export async function GET(_: Request, { params }: Props): Promise<Response> {
     status: 200,
     headers: {
       "Content-Type": "text/calendar",
-      "Content-Disposition": "attachment; filename=event.ics",
+      "Content-Disposition": `attachment; filename=${sourceEvent.slug}.ics`,
     },
   });
 }
