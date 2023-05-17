@@ -25,6 +25,9 @@ import {
 } from "lib/airtable/event";
 import { JoinUsBox } from "app/(shared)/join-us";
 import { useSession } from "next-auth/react";
+import { YTPlaylistItem, getAllVideos } from "lib/data-sources/youtube";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { Link } from "components/links";
 
 interface PageProps {
   project: PortalProject;
@@ -33,6 +36,7 @@ interface PageProps {
   opportunities: readonly PortalOpportunity[];
   relatedBlogPosts: readonly Article[];
   relatedEvents: readonly PortalEvent[];
+  relatedVideos: readonly YTPlaylistItem[];
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -47,6 +51,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
     opportunities,
     relatedBlogPosts,
     relatedEvents,
+    relatedVideos,
   } = props;
   const msg = strings.pages.project;
   const { status: sessionStatus } = useSession();
@@ -124,6 +129,32 @@ const ProjectPage: NextPage<PageProps> = (props) => {
                   <EventCard key={event.id} event={event} project={project} />
                 ))}
               </CardRow>
+            </S.CardRowWrapper>
+          </SectionContent>
+        </Section>
+      )}
+
+      {relatedVideos.length > 0 && (
+        <Section>
+          <SectionContent>
+            <S.TitleRow>
+              <S.Title>Vybíráme z našeho YouTube</S.Title>
+              <S.AccessoryLink to={Route.youtube}>
+                YouTube Česko.Digital
+              </S.AccessoryLink>
+            </S.TitleRow>
+            <S.CardRowWrapper>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
+                {relatedVideos.map((video) => (
+                  <LiteYouTubeEmbed
+                    key={video.id}
+                    id={video.snippet.resourceId.videoId}
+                    title={video.snippet.title}
+                    poster="hqdefault"
+                    noCookie={true}
+                  />
+                ))}
+              </div>
             </S.CardRowWrapper>
           </SectionContent>
         </Section>
@@ -208,6 +239,11 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
     .sort(compareEventsByTime)
     .reverse()
     .slice(0, 3);
+  const youtubeApiKey = process.env.YOUTUBE_API_KEY;
+  const relatedVideos =
+    youtubeApiKey && project.youTubePlaylistId
+      ? await getAllVideos(youtubeApiKey, project.youTubePlaylistId)
+      : [];
   return {
     props: {
       project,
@@ -216,6 +252,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
       relatedBlogPosts,
       opportunities,
       relatedEvents,
+      relatedVideos,
     },
     // Regenerate every five minutes to refresh project info
     revalidate: 60 * 5,

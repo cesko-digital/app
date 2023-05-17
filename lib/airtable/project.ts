@@ -39,6 +39,7 @@ export const decodeProject = record({
   ),
   tagIds: field("tags", optionalArray(string)),
   teamEngagementIds: field("team", optionalArray(string)),
+  youTubePlaylistId: optional(string),
   trelloUrl: optional(string),
   jiraUrl: optional(string),
   githubUrl: optional(string),

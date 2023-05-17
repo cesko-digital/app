@@ -68,7 +68,7 @@ export async function getPlaylistItems(
 export const getVideoPermalink = (item: YTPlaylistItem) =>
   `https://youtu.be/${item.snippet.resourceId.videoId}`;
 
-export function getAllVideos(
+export async function getAllVideos(
   apiKey = process.env.YOUTUBE_API_KEY || "",
   playlistId = "PLOX5xelTsEv-MA-nwkY4Sm9gIER3bWm_p"
 ): Promise<YTPlaylistItem[]> {
