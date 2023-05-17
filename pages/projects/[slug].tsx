@@ -1,34 +1,32 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import { CardRow, Layout, Section, SectionContent } from "components/layout";
-import { Heading1, Heading2 } from "components/typography";
-import ProjectCard from "components/project/card";
-import { Projects } from "components/sections";
-import { getResizedImgUrl } from "lib/utils";
-import * as S from "components/project/styles";
-import strings from "content/strings.json";
-import { ParsedUrlQuery } from "querystring";
-import { siteData } from "lib/site-data";
-import OpportunityItem from "components/sections/opportunity-overview";
-import { doNotTranslate } from "lib/utils";
-import { Route } from "lib/routing";
-import { Article } from "lib/data-sources/blog";
+import Markdoc from "@markdoc/markdoc";
+import { JoinUsBox } from "app/(shared)/join-us";
 import { BlogCard } from "components/cards";
+import { ClientRender } from "components/client-render";
 import EventCard from "components/dashboard/event-card";
-import { PortalProject } from "lib/airtable/project";
-import { PortalOpportunity } from "lib/airtable/opportunity";
-import { TeamEngagement } from "lib/airtable/team-engagement";
+import { CardRow, Layout, Section, SectionContent } from "components/layout";
+import ProjectCard from "components/project/card";
+import * as S from "components/project/styles";
+import { Projects } from "components/sections";
+import OpportunityItem from "components/sections/opportunity-overview";
+import { Heading1, Heading2 } from "components/typography";
 import {
+  PortalEvent,
   compareEventsByTime,
   isEventPast,
-  PortalEvent,
 } from "lib/airtable/event";
-import { JoinUsBox } from "app/(shared)/join-us";
-import { useSession } from "next-auth/react";
+import { PortalOpportunity } from "lib/airtable/opportunity";
+import { PortalProject } from "lib/airtable/project";
+import { TeamEngagement } from "lib/airtable/team-engagement";
+import { Article } from "lib/data-sources/blog";
 import { YTPlaylistItem, getAllVideos } from "lib/data-sources/youtube";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import { ClientRender } from "components/client-render";
-import Markdoc from "@markdoc/markdoc";
+import { Route } from "lib/routing";
+import { siteData } from "lib/site-data";
+import { doNotTranslate, getResizedImgUrl } from "lib/utils";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useSession } from "next-auth/react";
+import { ParsedUrlQuery } from "querystring";
 import React from "react";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 interface PageProps {
   project: PortalProject;
@@ -52,7 +50,7 @@ const ProjectPage = (props: PageProps) => {
       crumbs={[
         {
           path: Route.projects,
-          label: strings.pages.projects.navigation.projects,
+          label: "Projekty",
         },
         { label: project.name },
       ]}
