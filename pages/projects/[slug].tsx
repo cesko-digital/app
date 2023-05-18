@@ -1,5 +1,6 @@
 import Markdoc from "@markdoc/markdoc";
 import { JoinUsBox } from "app/(shared)/join-us";
+import { projectDescriptionConfig } from "app/projects/schema";
 import { BlogCard } from "components/cards";
 import { ClientRender } from "components/client-render";
 import EventCard from "components/dashboard/event-card";
@@ -81,31 +82,21 @@ const ProjectPage = (props: PageProps) => {
 };
 
 //
-// Sections
+// About Section
 //
-
-const IntroSection = ({ project }: Pick<PageProps, "project">) => (
-  <Section>
-    <SectionContent>
-      <Heading1 className={doNotTranslate}>{project.name}</Heading1>
-      <S.Tagline>{project.tagline}</S.Tagline>
-      <S.CoverImageWrapper>
-        <S.CoverImage
-          src={getResizedImgUrl(project.coverImageUrl, 1160)}
-          loading="lazy"
-        />
-      </S.CoverImageWrapper>
-    </SectionContent>
-  </Section>
-);
 
 const AboutSection = ({
   project,
   coordinators,
 }: Pick<PageProps, "project" | "coordinators">) => {
   const syntaxTree = Markdoc.parse(project.description.source);
-  const renderableNode = Markdoc.transform(syntaxTree);
-  const renderedContent = Markdoc.renderers.react(renderableNode, React);
+  const renderableNode = Markdoc.transform(
+    syntaxTree,
+    projectDescriptionConfig
+  );
+  const renderedContent = Markdoc.renderers.react(renderableNode, React, {
+    components: { Callout },
+  });
   return (
     <Section>
       <SectionContent>
@@ -122,6 +113,29 @@ const AboutSection = ({
     </Section>
   );
 };
+
+const Callout = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-yellow">{children}</div>
+);
+
+//
+// Other Sections
+//
+
+const IntroSection = ({ project }: Pick<PageProps, "project">) => (
+  <Section>
+    <SectionContent>
+      <Heading1 className={doNotTranslate}>{project.name}</Heading1>
+      <S.Tagline>{project.tagline}</S.Tagline>
+      <S.CoverImageWrapper>
+        <S.CoverImage
+          src={getResizedImgUrl(project.coverImageUrl, 1160)}
+          loading="lazy"
+        />
+      </S.CoverImageWrapper>
+    </SectionContent>
+  </Section>
+);
 
 const OpportunitiesSection = ({
   opportunities,
