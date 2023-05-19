@@ -16,3 +16,4 @@ export { default as JiraIcon } from "./jira";
 export { default as GithubIcon } from "./github";
 export { default as ArrowIcon } from "./arrow";
 export { default as CheckIcon } from "./check";
+export { default as WebsiteIcon } from "./website";
