@@ -28,7 +28,6 @@ export const decodeProject = record({
   slug: string,
   tagline: string,
   description: markdown,
-  url: string,
   coverImageUrl: string,
   logoUrl: withDefault(
     string,
@@ -42,10 +41,6 @@ export const decodeProject = record({
   tagIds: field("tags", optionalArray(string)),
   teamEngagementIds: field("team", optionalArray(string)),
   youTubePlaylistId: optional(string),
-  trelloUrl: optional(string),
-  jiraUrl: optional(string),
-  githubUrl: optional(string),
-  slackChannelUrl: optional(string),
   links: field(
     "serializedLinks",
     decodeJSONString(
