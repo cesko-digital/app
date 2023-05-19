@@ -1,12 +1,10 @@
-import { ArrowIcon, GithubIcon, JiraIcon, SlackIcon } from "components/icons";
-import Coordinators from "./coordinators";
-import SocialMedia from "./social-media";
+import { GithubIcon, JiraIcon, SlackIcon, WebsiteIcon } from "components/icons";
 import { ButtonLink } from "components/links";
-import * as S from "./styles";
-import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";
 import { TeamEngagement } from "lib/airtable/team-engagement";
-import { doNotTranslate } from "lib/utils";
+import Coordinators from "./coordinators";
+import SocialMedia from "./social-media";
+import * as S from "./styles";
 
 interface Props {
   project: PortalProject;
@@ -14,12 +12,8 @@ interface Props {
 }
 
 const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
-  const msg = strings.pages.project.projectCard;
-  const haveLinks =
-    project.githubUrl ||
-    project.trelloUrl ||
-    project.jiraUrl ||
-    project.slackChannelUrl;
+  const featuredLink = project.links.find((link) => link.featured);
+  const ordinaryLinks = project.links.filter((link) => link !== featuredLink);
   return (
     <S.Container>
       {coordinators.length > 0 && (
@@ -27,36 +21,43 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
           <Coordinators coordinators={coordinators} />
         </S.Wrapper>
       )}
-      {haveLinks && (
+      {ordinaryLinks.length > 0 && (
         <S.Social>
-          <S.Title>{msg.links}</S.Title>
-          {project.githubUrl && (
+          <S.Title>Odkazy</S.Title>
+          {ordinaryLinks.map((link) => (
             <SocialMedia
-              logo={GithubIcon}
-              url={project.githubUrl}
-              name={"GitHub"}
+              key={link.url}
+              logo={iconForUrl(link.url)}
+              url={link.url}
+              name={link.name}
             />
-          )}
-          {project.jiraUrl && (
-            <SocialMedia logo={JiraIcon} url={project.jiraUrl} name={"Jira"} />
-          )}
-          {project.slackChannelUrl && (
-            <SocialMedia
-              logo={SlackIcon}
-              url={project.slackChannelUrl}
-              name="Slack"
-            />
-          )}
+          ))}
         </S.Social>
       )}
-      <S.ButtonWrapper>
-        <ButtonLink to={project.url}>
-          <S.InnerText className={doNotTranslate}>{project.name}</S.InnerText>
-          <ArrowIcon />
-        </ButtonLink>
-      </S.ButtonWrapper>
+      {featuredLink && (
+        <S.ButtonWrapper>
+          <ButtonLink to={featuredLink.url}>
+            <S.InnerText>{featuredLink.name}</S.InnerText>
+          </ButtonLink>
+        </S.ButtonWrapper>
+      )}
     </S.Container>
   );
+};
+
+const iconForUrl = (url: string) => {
+  if (
+    url.startsWith("https://cesko-digital.slack.com") ||
+    url.startsWith("https://app.slack.com/")
+  ) {
+    return SlackIcon;
+  } else if (url.startsWith("https://github.com")) {
+    return GithubIcon;
+  } else if (url.startsWith("https://cesko-digital.atlassian.net/jira/")) {
+    return JiraIcon;
+  } else {
+    return WebsiteIcon;
+  }
 };
 
 export default ProjectCard;
