@@ -20,6 +20,7 @@ test("Decode portal project", () => {
         "recwOLHFJUPCoPnLX",
         "rec0ABdJtGIK9AeCB",
       ],
+      serializedLinks: "[]",
     })
   ).toEqual({
     id: "rec4KOruzwIFU8ieR",
@@ -37,5 +38,6 @@ test("Decode portal project", () => {
     tagIds: ["recVa4LnmzmtfoYTg"],
     teamEngagementIds: [],
     slackChannelUrl: "https://cesko-digital.slack.com/archives/C01P6CK0DDY",
+    links: [],
   });
 });
