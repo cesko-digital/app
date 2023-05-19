@@ -1,11 +1,13 @@
 import { unwrapRecords, webBase } from "./request";
 import {
+  decodeJSONString,
   decodeValidItemsFromArray,
   markdown,
   optionalArray,
   withDefault,
 } from "lib/decoding";
 import {
+  array,
   boolean,
   decodeType,
   field,
@@ -44,6 +46,18 @@ export const decodeProject = record({
   jiraUrl: optional(string),
   githubUrl: optional(string),
   slackChannelUrl: optional(string),
+  links: field(
+    "serializedLinks",
+    decodeJSONString(
+      array(
+        record({
+          name: string,
+          url: string,
+          featured: boolean,
+        })
+      )
+    )
+  ),
 });
 
 //
