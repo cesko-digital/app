@@ -22,6 +22,29 @@ Text pokračuje…
 
 Tady je použitý vlastní tag `callout`, který je pak možné například v Reactu zobrazit samostatnou komponentou. Tím získáváme možnost používat v popisu projektů pokročilejší prvky, aniž bychom museli používat HTML, které by bylo nepraktické na údržbu, nehledě na problematickou bezpečnost.
 
+## Odkazy
+
+Každý projekt může mít hromádku relevantních odkazů například na web, do hlavního Slackového kanálu, na zdroják na GitHubu a podobně. Odkazy jsou uložené v tabulce [Project Links](https://airtable.com/appkn1DkvgVI5jpME/tblL8S0FHemH4XyeN/viwwojyHfjZfKW7Po?blocks=hide), mezi tabulkou Projects a tabulkou Project Links je vazba 1:M (projekt může mít libovolný počet odkazů).
+
+Každý odkaz má povinný název a povinné URL, na které vede. Kromě nich vedeme ještě příznak `featured`; pokud je zaškrtnutý, stane se z odkazu hlavní modré CTA tlačítko na projektové stránce.
+
+Aby bylo jednodušší načítat odkazy přes API i bez joinů nebo vícenásobných dotazů, jsou všechny odkazy projektu ještě uložené (automaticky) ve sloupci `serializedLinks` ve formátu JSON:
+
+```json
+[{
+  "name": "Slackový kanál",
+  "url": "https://app.slack.com/…",
+  "featured": false
+},
+{
+  "name": "Web projektu",
+  "url": "https://www.csgov.cz",
+  "featured": true
+}]
+```
+
+Je to prasečí hack, ale je to pohodlné pro klienta :)
+
 ## Stavy projektů
 
 ### Draft
