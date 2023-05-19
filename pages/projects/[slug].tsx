@@ -145,7 +145,7 @@ const ProjectPage: NextPage<PageProps> = (props) => {
             </S.TitleRow>
             <S.CardRowWrapper>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
-                {relatedVideos.map((video) => (
+                {relatedVideos.slice(0, 6).map((video) => (
                   <LiteYouTubeEmbed
                     key={video.id}
                     id={video.snippet.resourceId.videoId}
