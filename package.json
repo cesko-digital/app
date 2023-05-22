@@ -16,7 +16,7 @@
     "gray-matter": "^4.0.3",
     "ical-generator": "^4.1.0",
     "js-yaml": "^4.1.0",
-    "leaflet": "^1.9.3",
+    "leaflet": "^1.9.4",
     "marked": "^4.3.0",
     "next": "^13.4.2",
     "next-auth": "^4.22.0",
