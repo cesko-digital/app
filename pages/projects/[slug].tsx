@@ -1,33 +1,33 @@
-import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { CardRow, Layout, Section, SectionContent } from "components/layout";
-import { Heading1 } from "components/typography";
-import AboutProject from "components/project/about";
-import ProjectCard from "components/project/card";
-import { Projects } from "components/sections";
-import { getResizedImgUrl } from "lib/utils";
-import * as S from "components/project/styles";
-import strings from "content/strings.json";
-import { ParsedUrlQuery } from "querystring";
-import { siteData } from "lib/site-data";
-import OpportunityItem from "components/sections/opportunity-overview";
-import { doNotTranslate } from "lib/utils";
-import { Route } from "lib/routing";
-import { Article } from "lib/data-sources/blog";
+import Markdoc from "@markdoc/markdoc";
+import { JoinUsBox } from "app/(shared)/join-us";
+import { projectDescriptionConfig } from "app/projects/schema";
 import { BlogCard } from "components/cards";
+import { ClientRender } from "components/client-render";
 import EventCard from "components/dashboard/event-card";
-import { PortalProject } from "lib/airtable/project";
-import { PortalOpportunity } from "lib/airtable/opportunity";
-import { TeamEngagement } from "lib/airtable/team-engagement";
+import { CardRow, Layout, Section, SectionContent } from "components/layout";
+import ProjectCard from "components/project/card";
+import * as S from "components/project/styles";
+import { Projects } from "components/sections";
+import OpportunityItem from "components/sections/opportunity-overview";
+import { Heading1, Heading2 } from "components/typography";
 import {
+  PortalEvent,
   compareEventsByTime,
   isEventPast,
-  PortalEvent,
 } from "lib/airtable/event";
-import { JoinUsBox } from "app/(shared)/join-us";
-import { useSession } from "next-auth/react";
+import { PortalOpportunity } from "lib/airtable/opportunity";
+import { PortalProject } from "lib/airtable/project";
+import { TeamEngagement } from "lib/airtable/team-engagement";
+import { Article } from "lib/data-sources/blog";
 import { YTPlaylistItem, getAllVideos } from "lib/data-sources/youtube";
+import { Route } from "lib/routing";
+import { siteData } from "lib/site-data";
+import { doNotTranslate, getResizedImgUrl } from "lib/utils";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useSession } from "next-auth/react";
+import { ParsedUrlQuery } from "querystring";
+import React from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import { Link } from "components/links";
 
 interface PageProps {
   project: PortalProject;
@@ -43,24 +43,15 @@ interface QueryParams extends ParsedUrlQuery {
   slug: string;
 }
 
-const ProjectPage: NextPage<PageProps> = (props) => {
-  const {
-    project,
-    coordinators,
-    otherProjects,
-    opportunities,
-    relatedBlogPosts,
-    relatedEvents,
-    relatedVideos,
-  } = props;
-  const msg = strings.pages.project;
+const ProjectPage = (props: PageProps) => {
+  const { project } = props;
   const { status: sessionStatus } = useSession();
   return (
     <Layout
       crumbs={[
         {
           path: Route.projects,
-          label: strings.pages.projects.navigation.projects,
+          label: "Projekty",
         },
         { label: project.name },
       ]}
@@ -70,134 +61,186 @@ const ProjectPage: NextPage<PageProps> = (props) => {
         coverUrl: project.coverImageUrl,
       }}
     >
-      <Section>
-        <SectionContent>
-          <Heading1 className={doNotTranslate}>{project.name}</Heading1>
-          <S.Tagline>{project.tagline}</S.Tagline>
-          <S.CoverImageWrapper>
-            <S.CoverImage
-              src={getResizedImgUrl(project.coverImageUrl, 1160)}
-              loading="lazy"
-            />
-          </S.CoverImageWrapper>
-        </SectionContent>
-      </Section>
-
-      <Section>
-        <SectionContent>
-          <S.AboutSectionWrapper>
-            <S.DescriptionWrapper>
-              <AboutProject text={project.description} />
-            </S.DescriptionWrapper>
-            <S.ProjectCardWrapper>
-              <ProjectCard project={project} coordinators={coordinators} />
-            </S.ProjectCardWrapper>
-          </S.AboutSectionWrapper>
-        </SectionContent>
-      </Section>
-
-      {opportunities.length > 0 && (
-        <Section id="opportunities">
-          <SectionContent>
-            <S.TitleRow>
-              <S.Title>{msg.opportunities.title}</S.Title>
-              <S.AccessoryLink to={Route.opportunities}>
-                {msg.opportunities.seeAll}
-              </S.AccessoryLink>
-            </S.TitleRow>
-            <S.RelatedContentWrapper>
-              {opportunities.map((op) => (
-                <OpportunityItem key={op.id} opportunity={op} />
-              ))}
-            </S.RelatedContentWrapper>
-          </SectionContent>
-        </Section>
+      <IntroSection project={project} />
+      <AboutSection project={project} coordinators={props.coordinators} />
+      {props.opportunities.length > 0 && (
+        <OpportunitiesSection opportunities={props.opportunities} />
       )}
-
-      {relatedEvents.some((e) => !isEventPast(e)) && (
-        <Section>
-          <SectionContent>
-            <S.TitleRow>
-              <S.Title>{msg.events.title}</S.Title>
-              <S.AccessoryLink to={Route.events}>
-                {msg.events.seeAll}
-              </S.AccessoryLink>
-            </S.TitleRow>
-            <S.CardRowWrapper>
-              <CardRow>
-                {relatedEvents.map((event) => (
-                  <EventCard key={event.id} event={event} project={project} />
-                ))}
-              </CardRow>
-            </S.CardRowWrapper>
-          </SectionContent>
-        </Section>
+      {props.relatedEvents.some((e) => !isEventPast(e)) && (
+        <EventsSection project={project} relatedEvents={props.relatedEvents} />
       )}
-
-      {relatedVideos.length > 0 && (
-        <Section>
-          <SectionContent>
-            <S.TitleRow>
-              <S.Title>Vybíráme z našeho YouTube</S.Title>
-              <S.AccessoryLink to={Route.youtube}>
-                YouTube Česko.Digital
-              </S.AccessoryLink>
-            </S.TitleRow>
-            <S.CardRowWrapper>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
-                {relatedVideos.slice(0, 6).map((video) => (
-                  <LiteYouTubeEmbed
-                    key={video.id}
-                    id={video.snippet.resourceId.videoId}
-                    title={video.snippet.title}
-                    poster="hqdefault"
-                    noCookie={true}
-                  />
-                ))}
-              </div>
-            </S.CardRowWrapper>
-          </SectionContent>
-        </Section>
+      {props.relatedVideos.length > 0 && (
+        <VideosSection relatedVideos={props.relatedVideos} />
       )}
-
-      {relatedBlogPosts.length > 0 && (
-        <Section>
-          <SectionContent>
-            <S.TitleRow>
-              <S.Title>Vybíráme z našeho blogu</S.Title>
-              <S.AccessoryLink to={Route.blog}>
-                Blog Česko.Digital
-              </S.AccessoryLink>
-            </S.TitleRow>
-            <S.CardRowWrapper>
-              <CardRow>
-                {relatedBlogPosts.map((post) => (
-                  <BlogCard
-                    key={post.url}
-                    link={post.url}
-                    title={post.title}
-                    cover={post.cover}
-                  />
-                ))}
-              </CardRow>
-            </S.CardRowWrapper>
-          </SectionContent>
-        </Section>
+      {props.relatedBlogPosts.length > 0 && (
+        <BlogSection relatedBlogPosts={props.relatedBlogPosts} />
       )}
-
       {sessionStatus === "unauthenticated" && <JoinUsBox />}
-
-      <Section>
-        <SectionContent>
-          <Projects
-            title={strings.components.sections.projects.otherProjects}
-            projects={otherProjects}
-          />
-        </SectionContent>
-      </Section>
+      <FooterSection otherProjects={props.otherProjects} />
     </Layout>
   );
 };
+
+//
+// About Section
+//
+
+const AboutSection = ({
+  project,
+  coordinators,
+}: Pick<PageProps, "project" | "coordinators">) => {
+  const syntaxTree = Markdoc.parse(project.description.source);
+  const renderableNode = Markdoc.transform(
+    syntaxTree,
+    projectDescriptionConfig
+  );
+  const renderedContent = Markdoc.renderers.react(renderableNode, React, {
+    components: { Callout },
+  });
+  return (
+    <Section>
+      <SectionContent>
+        <S.AboutSectionWrapper>
+          <S.DescriptionWrapper>
+            <Heading2>O projektu</Heading2>
+            <div className="text-xl leading-relaxed">{renderedContent}</div>
+          </S.DescriptionWrapper>
+          <S.ProjectCardWrapper>
+            <ProjectCard project={project} coordinators={coordinators} />
+          </S.ProjectCardWrapper>
+        </S.AboutSectionWrapper>
+      </SectionContent>
+    </Section>
+  );
+};
+
+const Callout = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-yellow">{children}</div>
+);
+
+//
+// Other Sections
+//
+
+const IntroSection = ({ project }: Pick<PageProps, "project">) => (
+  <Section>
+    <SectionContent>
+      <Heading1 className={doNotTranslate}>{project.name}</Heading1>
+      <S.Tagline>{project.tagline}</S.Tagline>
+      <S.CoverImageWrapper>
+        <S.CoverImage
+          src={getResizedImgUrl(project.coverImageUrl, 1160)}
+          loading="lazy"
+        />
+      </S.CoverImageWrapper>
+    </SectionContent>
+  </Section>
+);
+
+const OpportunitiesSection = ({
+  opportunities,
+}: Pick<PageProps, "opportunities">) => (
+  <Section id="opportunities">
+    <SectionContent>
+      <S.TitleRow>
+        <S.Title>Právě hledáme</S.Title>
+        <S.AccessoryLink to={Route.opportunities}>
+          Všechny příležitosti
+        </S.AccessoryLink>
+      </S.TitleRow>
+      <S.RelatedContentWrapper>
+        {opportunities.map((op) => (
+          <OpportunityItem key={op.id} opportunity={op} />
+        ))}
+      </S.RelatedContentWrapper>
+    </SectionContent>
+  </Section>
+);
+
+const EventsSection = ({
+  relatedEvents,
+  project,
+}: Pick<PageProps, "relatedEvents" | "project">) => (
+  <Section>
+    <SectionContent>
+      <S.TitleRow>
+        <S.Title>Vybrané akce</S.Title>
+        <S.AccessoryLink to={Route.events}>Všechny akce</S.AccessoryLink>
+      </S.TitleRow>
+      <S.CardRowWrapper>
+        <CardRow>
+          {relatedEvents.map((event) => (
+            <EventCard key={event.id} event={event} project={project} />
+          ))}
+        </CardRow>
+      </S.CardRowWrapper>
+    </SectionContent>
+  </Section>
+);
+
+const VideosSection = ({ relatedVideos }: Pick<PageProps, "relatedVideos">) => (
+  // TBD: This is only rendered on the client as the YouTube embed breaks hydration
+  <ClientRender>
+    <Section>
+      <SectionContent>
+        <S.TitleRow>
+          <S.Title>Vybraná videa</S.Title>
+          <S.AccessoryLink to={Route.youtube}>Všechna videa</S.AccessoryLink>
+        </S.TitleRow>
+        <S.CardRowWrapper>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
+            {relatedVideos.slice(0, 6).map((video) => (
+              <LiteYouTubeEmbed
+                key={video.id}
+                id={video.snippet.resourceId.videoId}
+                title={video.snippet.title}
+                poster="hqdefault"
+                noCookie={true}
+              />
+            ))}
+          </div>
+        </S.CardRowWrapper>
+      </SectionContent>
+    </Section>
+  </ClientRender>
+);
+
+const BlogSection = ({
+  relatedBlogPosts,
+}: Pick<PageProps, "relatedBlogPosts">) => (
+  <Section>
+    <SectionContent>
+      <S.TitleRow>
+        <S.Title>Vybíráme z našeho blogu</S.Title>
+        <S.AccessoryLink to={Route.blog}>Blog Česko.Digital</S.AccessoryLink>
+      </S.TitleRow>
+      <S.CardRowWrapper>
+        <CardRow>
+          {relatedBlogPosts.map((post) => (
+            <BlogCard
+              key={post.url}
+              link={post.url}
+              title={post.title}
+              cover={post.cover}
+            />
+          ))}
+        </CardRow>
+      </S.CardRowWrapper>
+    </SectionContent>
+  </Section>
+);
+
+const FooterSection = ({ otherProjects }: Pick<PageProps, "otherProjects">) => (
+  <Section>
+    <SectionContent>
+      <Projects title="Další projekty" projects={otherProjects} />
+    </SectionContent>
+  </Section>
+);
+
+//
+// Data Loading
+//
 
 export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   const paths = siteData.projects
