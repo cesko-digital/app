@@ -1,4 +1,10 @@
-import { GithubIcon, JiraIcon, SlackIcon, WebsiteIcon } from "components/icons";
+import {
+  GithubIcon,
+  JiraIcon,
+  SlackIcon,
+  TrelloIcon,
+  WebsiteIcon,
+} from "components/icons";
 import { ButtonLink } from "components/links";
 import { PortalProject } from "lib/airtable/project";
 import { TeamEngagement } from "lib/airtable/team-engagement";
@@ -55,6 +61,8 @@ const iconForUrl = (url: string) => {
     return GithubIcon;
   } else if (url.startsWith("https://cesko-digital.atlassian.net/jira/")) {
     return JiraIcon;
+  } else if (url.startsWith("https://trello.com")) {
+    return TrelloIcon;
   } else {
     return WebsiteIcon;
   }
