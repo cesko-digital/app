@@ -34,13 +34,29 @@ Něco jako „zvýrazněný boxík“, když potřebujete přitáhnout pozornost
 Běžný odstavec.
 
 {% callout %}
-Zvýrazněný *odstavec*.
+Zvýrazněný _odstavec_.
 {% /callout %}
 
 Text pokračuje…
 ```
 
 Všimněte si, že v těle „boxíku“ můžete normálně použít další Markdown, nemusí to být jen prostý text.
+
+### Generované kotvy
+
+Každý nadpis v rámci popisu projektu dostane automaticky generovanou kotvu, na kterou se můžete `#odkazovat`. Například tento nadpis:
+
+```markdown
+## Ukázkový nadpis
+```
+
+…se v HTML zobrazí takhle:
+
+```html
+<h2 id="ukazkovy-nadpis">Ukázkový nadpis</h2>
+```
+
+…takže na něj pak můžete odkazovat pomocí `#ukazkovy-nadpis`.
 
 ## Odkazy
 
