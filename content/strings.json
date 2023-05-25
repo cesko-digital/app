@@ -104,23 +104,6 @@
   "pages": {
     "homepage": {
       "sections": {
-        "numbers": {
-          "first": {
-            "subtitle": "členů komunity"
-          },
-          "fourth": {
-            "subtitle": "rozjetých projektů",
-            "value": "12+"
-          },
-          "second": {
-            "subtitle": "akcelerovaných projektů",
-            "value": "22"
-          },
-          "third": {
-            "subtitle": "lidí využilo naše projekty",
-            "value": "4 000 000+"
-          }
-        },
         "ourValues": {
           "efficiency": {
             "perex": "Nemrháme časem lidí ani finančními prostředky. Soustředíme se na rychlá řešení reálných problémů pomocí technologií.",
