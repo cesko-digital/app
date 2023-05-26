@@ -69,7 +69,8 @@ function generateID(
 
 export const slugify = (s: string) =>
   s
-    .toLocaleLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-");
+    .toLocaleLowerCase() // Lowercase
+    .normalize("NFD") // Split accents into standalone characters, ě -> eˇ
+    .replace(/[\u0300-\u036f]/g, "") // Remove accent characters
+    .replace(/[^a-z0-9]+/g, "-") // Replace all except basic characters by hyphens
+    .replace(/-*$/, ""); // Remove trailing hyphens
