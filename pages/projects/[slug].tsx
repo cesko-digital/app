@@ -95,7 +95,7 @@ const AboutSection = ({
     projectDescriptionConfig
   );
   const renderedContent = Markdoc.renderers.react(renderableNode, React, {
-    components: { Callout },
+    components: { Callout, Heading },
   });
   return (
     <Section>
@@ -117,6 +117,31 @@ const AboutSection = ({
 const Callout = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-yellow">{children}</div>
 );
+
+const Heading = ({
+  id,
+  children,
+  level,
+}: {
+  children: React.ReactNode;
+  id: string | undefined;
+  level: number;
+}) => {
+  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  return (
+    <Tag id={id}>
+      {children}
+      {id && (
+        <a
+          href={`#${id}`}
+          className="ml-1 opacity-0 hover:opacity-20 cursor-pointer text-black no-underline"
+        >
+          #
+        </a>
+      )}
+    </Tag>
+  );
+};
 
 //
 // Other Sections

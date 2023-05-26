@@ -26,11 +26,7 @@ export const heading: Schema = {
     const attributes = node.transformAttributes(config);
     const children = node.transformChildren(config);
     const id = generateID(children, attributes);
-    return new Tag(
-      `h${node.attributes["level"]}`,
-      { ...attributes, id },
-      children
-    );
+    return new Tag("Heading", { ...attributes, id }, children);
   },
 };
 
