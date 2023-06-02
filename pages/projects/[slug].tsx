@@ -115,7 +115,7 @@ const AboutSection = ({
 };
 
 const Callout = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-yellow">{children}</div>
+  <div className="bg-yellow px-[1rem] -mx-[1rem] py-1">{children}</div>
 );
 
 const Heading = ({
