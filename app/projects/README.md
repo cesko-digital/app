@@ -42,6 +42,16 @@ Text pokračuje…
 
 Všimněte si, že v těle „boxíku“ můžete normálně použít další Markdown, nemusí to být jen prostý text.
 
+### Image
+
+Obrázek. Oproti standardnímu tagu v Markdownu podporujeme optimalizaci obrázků (zdroj může být libovolně velký, web si ho sám zmenší podle potřeby klienta) a dalších pár drobností. Příklad:
+
+```markdown
+{% image src="https://data.cesko.digital/web/projects/digitalni-inkluze/cilovky.png" alt="Cílové skupiny digitální inkluze" width=1588 height=888 /%}
+```
+
+Všechny atributy (`src`, `alt`, `width` i `height`) jsou povinné; `src` je URL zdrojového obrázku (musí být uložený na `data.cesko.digital`), `alt` je textový popis obrázku a `width` + `height` jsou rozměry originálního obrázku v pixelech. Rozměry jsou povinné kvůli tomu, aby prohlížeč dopředu věděl, jak bude obrázek velký, a obsah během načítání neposkakoval (což je blbé UX).
+
 ### Generované kotvy
 
 Každý nadpis v rámci popisu projektu dostane automaticky generovanou kotvu, na kterou se můžete `#odkazovat`. Například tento nadpis:
