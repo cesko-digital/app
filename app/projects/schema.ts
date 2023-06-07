@@ -15,6 +15,33 @@ export const callout: Schema = {
   render: "Callout",
 };
 
+export const image: Schema = {
+  render: "CustomImage",
+  selfClosing: true,
+  attributes: {
+    src: {
+      type: String,
+      required: true,
+      errorLevel: "error",
+    },
+    alt: {
+      type: String,
+      required: true,
+      errorLevel: "error",
+    },
+    width: {
+      type: Number,
+      required: true,
+      errorLevel: "error",
+    },
+    height: {
+      type: Number,
+      required: true,
+      errorLevel: "error",
+    },
+  },
+};
+
 /** Custom heading node that auto-generates heading IDs */
 export const heading: Schema = {
   children: ["inline"],
@@ -39,6 +66,7 @@ export const heading: Schema = {
 export const projectDescriptionConfig: Config = {
   tags: {
     callout,
+    image,
   },
   nodes: {
     heading,

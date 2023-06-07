@@ -25,6 +25,7 @@ import { siteData } from "lib/site-data";
 import { doNotTranslate, getResizedImgUrl } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
@@ -89,13 +90,14 @@ const AboutSection = ({
   project,
   coordinators,
 }: Pick<PageProps, "project" | "coordinators">) => {
+  // TODO: Log validation errors somewhere
   const syntaxTree = Markdoc.parse(project.description.source);
   const renderableNode = Markdoc.transform(
     syntaxTree,
     projectDescriptionConfig
   );
   const renderedContent = Markdoc.renderers.react(renderableNode, React, {
-    components: { Callout, Heading },
+    components: { Callout, Heading, CustomImage },
   });
   return (
     <Section>
@@ -140,6 +142,32 @@ const Heading = ({
         </a>
       )}
     </Tag>
+  );
+};
+
+type CustomImageProps = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+const CustomImage = ({ src, alt, width, height }: CustomImageProps) => {
+  return (
+    <Image
+      key={src}
+      src={src}
+      sizes="100vw" // TBD
+      alt={alt}
+      width={width}
+      height={height}
+      style={{
+        maxWidth: "100%",
+        height: "auto",
+        marginTop: "25px",
+        marginBottom: "25px",
+      }}
+    />
   );
 };
 
