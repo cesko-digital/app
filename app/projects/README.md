@@ -50,7 +50,7 @@ Obrázek. Oproti standardnímu tagu v Markdownu podporujeme optimalizaci obrázk
 {% image src="https://data.cesko.digital/web/projects/digitalni-inkluze/cilovky.png" alt="Cílové skupiny digitální inkluze" width=1588 height=888 /%}
 ```
 
-Všechny atributy (`src`, `alt`, `width` i `height`) jsou povinné; `src` je URL zdrojového obrázku (musí být uložený na `data.cesko.digital`), `alt` je textový popis obrázku a `width` + `height` jsou rozměry originálního obrázku v pixelech. Rozměry jsou povinné kvůli tomu, aby prohlížeč dopředu věděl, jak bude obrázek velký, a obsah během načítání neposkakoval (což je blbé UX).
+Všechny atributy (`src`, `alt`, `width` i `height`) jsou povinné; `src` je URL zdrojového obrázku (musí být uložený na `data.cesko.digital`), `alt` je textový popis obrázku a `width` + `height` jsou rozměry originálního obrázku v pixelech. Rozměry jsou povinné kvůli tomu, aby prohlížeč dopředu věděl, jak bude obrázek velký, a obsah během načítání neposkakoval (což je blbé UX). Všimněte si prosím, že rozměry jsou čísla, nikoliv řetězce – nejsou v uvozovkách.
 
 ### Generované kotvy
 
