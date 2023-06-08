@@ -66,7 +66,13 @@ const SignedOutPage: React.FC<{ signIn: () => void }> = ({ signIn }) => (
     <Heading>Profil uživatele</Heading>
     <Body>
       Pro zobrazení této stránky se musíte{" "}
-      <a href="" onClick={signIn}>
+      <a
+        href=""
+        onClick={(event) => {
+          event.preventDefault();
+          signIn();
+        }}
+      >
         přihlásit
       </a>
       .
