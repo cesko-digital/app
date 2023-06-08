@@ -1,4 +1,5 @@
 import { default as NextImage } from "next/image";
+import Link from "next/link";
 
 /**
  * These are components for custom tags defined in our Markdoc schema,
@@ -41,11 +42,18 @@ type CustomImageProps = {
   alt: string;
   width: number;
   height: number;
+  link?: string;
 };
 
 /** Custom image component that supports image optimization */
-export const CustomImage = ({ src, alt, width, height }: CustomImageProps) => {
-  return (
+export const CustomImage = ({
+  src,
+  alt,
+  width,
+  height,
+  link,
+}: CustomImageProps) => {
+  const img = (
     <NextImage
       key={src}
       src={src}
@@ -62,6 +70,7 @@ export const CustomImage = ({ src, alt, width, height }: CustomImageProps) => {
       }}
     />
   );
+  return link ? <Link href={link}>{img}</Link> : img;
 };
 
 export const allCustomTags = { Callout, Heading, CustomImage };

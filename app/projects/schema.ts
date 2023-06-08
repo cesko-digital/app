@@ -15,6 +15,12 @@ export const callout: Schema = {
   render: "Callout",
 };
 
+/**
+ * A custom image tag
+ *
+ * One big reason we need a custom image instead of the basic Markdown one is image
+ * optimization – we need to have image dimensions to prevent layout shifts.
+ */
 export const image: Schema = {
   render: "CustomImage",
   selfClosing: true,
@@ -38,6 +44,9 @@ export const image: Schema = {
       type: Number,
       required: true,
       errorLevel: "error",
+    },
+    link: {
+      type: String,
     },
   },
 };
