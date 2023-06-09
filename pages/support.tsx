@@ -51,9 +51,8 @@ const MerchSection = () => (
     <p className="max-w-prose">
       V komunitě většinou pracujeme na home office nebo v kanceláři. S produkty
       Česko.Digital si i ty můžeš polepit počítač, zapisovat a skicovat ty
-      nejlepší nápady, jak měnit Česko k lepšímu, obléct se ve stylu
-      Česko.Digital nebo cestovat klidně na druhý konec světa s batohem od
-      českých designérů.
+      nejlepší nápady, jak měnit Česko k lepšímu, nebo se obléct ve stylu
+      Česko.Digital.
     </p>
     <Image src={hero} alt="" placeholder="blur" />
 
@@ -81,41 +80,6 @@ const MerchSection = () => (
         href="https://shop.czechdesign.cz/ceskodigital/"
       />
     </p>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-7 mb-14">
-      <div className="lg:col-span-2">
-        <h2 className="leading-snug">Batoh.Digital</h2>
-        <p className="max-w-prose">
-          Pomáhat s Česko.Digital můžeš z druhého konce světa, z pláže i z lesa.
-          Na všechny tvoje výlety ti poslouží kvalitní batoh vyrobený v
-          pražských Holešovicích. Návrh vznikl přímo v komunitě a konzultovali
-          jsme ho s výrobcem BRAASI.
-        </p>
-        <h2 className="leading-snug">2 dobré skutky najednou</h2>
-        <p className="max-w-prose">
-          Koupí batohu <b>získáš nejen praktického společníka na cesty</b>, ale
-          podpoříš fungování a rozvoj dobrovolnické komunity Česko.Digital
-          slušnou částkou <b>1000 Kč</b>. To však není všechno, 400 Kč půjde
-          ještě na sociální podnik Becalel, který zaměstnává lidi se
-          znevýhodněním a batoh ti pošle až domů.
-        </p>
-      </div>
-      <div className="sm:bg-pebble sm:p-7 rounded-lg">
-        <Image
-          src={backpack}
-          alt=""
-          width={670}
-          height={670}
-          placeholder="blur"
-        />
-        <p className="mt-7 text-center">
-          <Button
-            title="Koupit batoh"
-            href="http://www.becalel.cz/e-shop/batoh-digital/"
-          />
-        </p>
-      </div>
-    </div>
 
     <h2 className="leading-snug">
       I díky tobě můžeme nadále měnit Česko k lepšímu!
