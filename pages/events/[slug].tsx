@@ -82,7 +82,7 @@ const Page: NextPage<PageProps> = (props) => {
           <S.Container>
             <S.CategoryHeader>
               <S.Title>Další akce</S.Title>
-              <Link to={Route.dashboard}>Všechny příležitosti</Link>
+              <Link to={Route.events}>Všechny akce</Link>
             </S.CategoryHeader>
             <S.CardWrapper>
               <CardRow>
