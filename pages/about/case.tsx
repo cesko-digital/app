@@ -335,221 +335,240 @@ const AboutCeskoDigital = () => {
   );
 };
 
-const SystemicChangeExplainer = () => (
-  <Fragment>
-    <ImageHeaderSlide image={pracak2}>
-      <Head2>
-        Dílčí projekty nestačí. Pokud chceme problém skutečně vyřešit, musíme na
-        to jít systémově
-      </Head2>
-      <p>
-        Díky 4 letům práce na individuálních projektech jsme si uvědomili, že za
-        veřejnou sféru touto cestou většinou jen „hasíme požáry“: nechceme, aby
-        takto hodnotné iniciativy vznikaly pouze z dobré vůle lidí, kteří na
-        nich pracují po večerech a víkendech. Chceme, aby s nimi veřejná sféra
-        dokázala přicházet sama, strategicky a práce dobrovolníků nebyla tolik
-        potřebná. 
-      </p>
-      <p>
-        Povedlo se nám vytvořit unikátní propojení expertů z firem, státní
-        správy a neziskových organizací, díky čemuž máme komplexní pohled na to,
-        jak systém veřejné správy funguje. Máme za sebou stovky hodin rozhovorů
-        s různými organizacemi o tom, jaké jsou hlavní bariéry při využití
-        digitálních technologií. To vše nás přivedlo k definici problému:
-      </p>
-    </ImageHeaderSlide>
-    <Slide>
-      <div className="bg-it text-white p-20 leading-relaxed text-center">
-        <p className="bg-black m-0 px-10 py-2 inline-block uppercase">
-          Problém
-        </p>
+const SystemicChangeExplainer = () => {
+  return (
+    <Fragment>
+      <ImageHeaderSlide image={pracak2}>
         <Head2>
-          Veřejná sféra* neumí využívat potenciál technologií k řešení
-          celospolečenských problémů a zhoršuje tak podmínky pro život lidí v
-          České republice.
+          Dílčí projekty nestačí. Pokud chceme problém skutečně vyřešit, musíme
+          na to jít systémově
         </Head2>
         <p>
-          <Balancer>
-            *Veřejnou sférou máme na mysli všechny aktéry české společnosti,
-            kteří tímto problémem trpí: státní správa a samospráva, neziskové
-            organizace, univerzity a média.
-          </Balancer>
+          Díky 4 letům práce na individuálních projektech jsme si uvědomili, že
+          za veřejnou sféru touto cestou většinou jen „hasíme požáry“: nechceme,
+          aby takto hodnotné iniciativy vznikaly pouze z dobré vůle lidí, kteří
+          na nich pracují po večerech a víkendech. Chceme, aby s nimi veřejná
+          sféra dokázala přicházet sama, strategicky a práce dobrovolníků nebyla
+          tolik potřebná. 
         </p>
+        <p>
+          Povedlo se nám vytvořit unikátní propojení expertů z firem, státní
+          správy a neziskových organizací, díky čemuž máme komplexní pohled na
+          to, jak systém veřejné správy funguje. Máme za sebou stovky hodin
+          rozhovorů s různými organizacemi o tom, jaké jsou hlavní bariéry při
+          využití digitálních technologií. To vše nás přivedlo k definici
+          problému:
+        </p>
+      </ImageHeaderSlide>
+
+      <div className="bg-it">
+        <Slide>
+          <div className="text-white leading-relaxed text-center relative">
+            <div className="w-full absolute top text-center">
+              <p className="bg-black m-0 px-10 py-2 inline-block text-base uppercase tracking-widest">
+                Problém
+              </p>
+            </div>
+            <div className="p-20 pb-10">
+              <Head2>
+                Veřejná sféra* neumí využívat potenciál technologií k řešení
+                celospolečenských problémů a zhoršuje tak podmínky pro život
+                lidí v České republice.
+              </Head2>
+            </div>
+            <p className="p-20 pt-0">
+              <Balancer>
+                *Veřejnou sférou máme na mysli všechny aktéry české společnosti,
+                kteří tímto problémem trpí: státní správa a samospráva,
+                neziskové organizace, univerzity a média.
+              </Balancer>
+            </p>
+          </div>
+        </Slide>
       </div>
-    </Slide>
-    <Slide>
-      <Head2>Neděje se to jen tak. Známe všechny bariéry.</Head2>
-      <p>
-        Z dlouhodobé zkušenosti, z dat a průzkumů z Česka i zahraničí jsme
-        identifikovali 4 hlavní bariéry veřejné sféry: chybí sdílená vize,
-        informace, kompetence a finance.
-      </p>
-    </Slide>
-    <TwoColumnSlide>
-      <div>
-        <p>01</p>
-        <Head2>Chybí sdílená vize</Head2>
+
+      <Slide>
+        <Head2>Neděje se to jen tak. Známe všechny bariéry.</Head2>
         <p>
-          Sdílená vize znamená, že lidé v veřejné správě i mimo ni mají
-          společnou představu o tom, kam společně směřují a co chtějí dosáhnout.
-          Je to jako mapa, která ukazuje, kudy se chceme dostat a jaké jsou cíle
-          naší cesty. Pokud máme jasnou sdílenou vizi, víme, co máme dělat a
-          proč to děláme, což nás motivuje a inspiruje.
+          Z dlouhodobé zkušenosti, z dat a průzkumů z Česka i zahraničí jsme
+          identifikovali 4 hlavní bariéry veřejné sféry: chybí sdílená vize,
+          informace, kompetence a finance.
         </p>
-        <p>
-          Chybějící sdílená vize potom vede k nedorozuměním, neshodám a
-          rozdílným zájmům, což zpomaluje nebo dokonce zastavuje pokrok řešení.
-          Také často vede k neefektivnímu využití peněz a času, protože
-          organizace nemusí být jasně informována o tom, co se od ní očekává.
-          Nakonec, nedostatek sdílené vize ovlivňuje motivaci lidí a organizací,
-          kteří nemají jasnou představu o tom, jaký je smysl a cíl jejich práce.
-        </p>
-        <p>
-          Náš průzkum potvrdil hypotézu, že v Česku chybí sdílená vize, jak
-          využívat digitální technologie ve veřejné správě. Bez jasně
-          definovaného a sdíleného směřování, například ve formě vize, se jen
-          těžko něco změní.
-        </p>
-      </div>
-      <div>
-        <Image src={oliver} alt="" className="mb-7" />
-        <TextQuote
-          quote="To achieve our ambitions, we need a shared vision for government, grounded in the needs of our users. This means breaking down silos and thinking about services from the perspective of the people who use them."
-          author="Oliver Dowden, Minister for Implementation, UK"
-        />
-      </div>
-    </TwoColumnSlide>
-    <TwoColumnSlide>
-      <div>
-        <p>02</p>
-        <Head2>Chybí informace</Head2>
-        <p>
-          Mít všechny potřebné informace znamená mít jednoduše dostupná a
-          relevantní data, znalosti k interpretaci dat a jejich praktickému
-          použití. Dostupnými daty myslíme výstupy z výzkumů, srozumitelné
-          analýzy dat a příklady dobré praxe z Česka i zahraničí, které pomohou
-          v informovaném rozhodování. Všechny potřebné informace musí být
-          jednoduše dostupné a otevřené všem bez omezení.
-        </p>
-        <p>
-          Bez přístupu k aktuálním informacím o nových technologiích a jejich
-          potenciálních přínosech si lidé – ať už úředníci, politici nebo občané
-          - často ani neuvědomují možnosti, které existují. To je potom
-          promarněnou příležitost snahy ke zlepšení efektivity, snížení nákladů
-          a poskytování lepších služeb všem.
-        </p>
-        <p>
-          Když potom organizace veřejné sféry postrádají informace o potenciálu
-          technologie, neumí adekvátně plánovat jejich praktické nasazení a
-          používání. To vede k problémům, jako je nedostatečné školení,
-          nedostatečné zdroje a špatná integrace se stávajícími systémy – ve
-          výsledku jde o další špatnou zkušenost s technologií a další odpor ke
-          změně.
-        </p>
-      </div>
-      <div>
-        <Image src={mariana} alt="" className="mb-7" />
-        <TextQuote
-          quote="In a world where knowledge is power, lack of information can be a barrier to progress, growth and development"
-          author="Mariana Mazzucato, Professor of Economics at University College London"
-        />
-      </div>
-    </TwoColumnSlide>
-    <TwoColumnSlide>
-      <div>
-        <p>03</p>
-        <Head2>Chybí kompetence</Head2>
-        <p>
-          V kontextu technologií ve veřejném sektoru se kompetencemi rozumí
-          znalosti, dovednosti a schopnosti, které jsou nezbytné pro lidi k
-          efektivnímu využívání a řízení technologií při jejich práci. To
-          zahrnuje řadu kompetencí, jako jsou technické dovednosti související s
-          hardwarem a softwarem, stejně jako širší dovednosti související se
-          strategickým uvažováním, analýzou dat, řízením projektů, komunikací.
-        </p>
-        <p>
-          Pokud lidem ve veřejného sektoru chybí potřebné kompetence k
-          efektivnímu využívání nových technologií, ovlivňuje to potom negativně
-          úspěšnou implementaci a praktické využití. To v důsledku vede k
-          rezistenci a neschopnosti adaptovat se na změnu nebo zavádění nových
-          nástrojů, což brání pokroku a inovaci celého veřejného sektoru.
-        </p>
-        <p>
-          Chybějící kompetence, resp. jejich nedostatky, ukazuje každoroční
-          evropský index DESI (Digital Economy and Society Index), kde se Česko
-          v roce 2022 mezi 27 členskými státy Evropské Unie řadí pod průměr na
-          19. místo v oblasti integrace digitálních technologií, ve srovnání s
-          rokem jsme si navíc pohoršili o čtyři příčky hůř než v roce 2021 (15.
-          místo).
-        </p>
-        <p>
-          Digitálním kompetencím se věnuje také průzkum ČSÚ (Český statistický
-          úřad), který u úředníků vyhodnocuje jen základní dovednosti jako práce
-          s tabulkovým nebo textovým editorem, námi zmíněné kompetence nesleduje
-          vůbec.
-        </p>
-      </div>
-      <div>
-        <Image src={martha} alt="" className="mb-7" />
-        <TextQuote
-          quote="Digital skills are not just about machines, they are about people. Digital technologies, when combined with the right mix of skills and capabilities, have the power to transform the way public services are delivered."
-          author="Martha Lane Fox, House of Lords crossbench peer, Chancellor at the Open University and a board member at Twitter"
-        />
-      </div>
-    </TwoColumnSlide>
-    <TwoColumnSlide>
-      <div>
-        <p>04</p>
-        <Head2>Chybí finance</Head2>
-        <p>
-          Tato příčina úzce souvisí s předcházející – veřejná sféra typicky není
-          schopna přilákat top talent, mj. kvůli neschopnosti konkurovat odměnám
-          v komerčním sektoru. Z průzkumu “Stav IT v českém nezisku” z roku 2021
-          provedeného Techsoup ČR a Nadací OSF vyplývá, že 62 % středně velkých
-          neziskových organizací uvádí jako hlavní překážku svého rozvoje právě
-          nedostatek finančních prostředků.
-        </p>
-        <p>
-          Zrychlená digitalizace by mohla České republice přinést růst
-          produktivity vyšší až o 70 %, konstatuje poradenská společnost
-          McKinsey ve své analýze Vzestup digitálních vyzyvatelů, Perspektiva
-          ČR. Podle této zprávy může zrychlení digitalizace do roku 2025 přinést
-          až 26 miliard EUR dodatečného hrubého domácího produktu (HDP), což
-          znamená navýšení roční míry růstu HDP o téměř jeden procentní bod.
-        </p>
-      </div>
-      <div>
-        <Image src={steve} alt="" className="mb-7" />
-        <TextQuote
-          quote="The cost of not investing in technology is often greater than the cost of investing in it."
-          author="Steve VanRoekel, former Chief Information Officer of the United States"
-        />
-      </div>
-    </TwoColumnSlide>
-    <TwoColumnSlide>
-      <div>
-        <Head2>
-          Zaostáváme každým dnem, a to na několika frontách. Pokud nezměníme
-          směr, kterým se technologie ubírají, bude se situace dále zhoršovat.
-        </Head2>
-        <p>
-          Bariéry, kvůli kterým Česko zaostává v efektivním používání
-          technologií jako chybějící vize, kompetence, informace a finance, jsou
-          ze své podstaty velmi komplexní. Můžeme se pokoušet o jejich dílčí
-          řešení a oblasti kompetencí toho už mnoho děláme – ať jsou to
-          digitální řešení s nevládními organizacemi nebo systematické
-          vzdělávání skrz hackdays nebo webináře. Pokud však chceme být v řešení
-          opravdu úspěšní, potřebujeme jednotlivé bariéry řešit propojeně a
-          systematicky tak, aby proměna veřejné sféry byla trvalá a přežila více
-          volebních období. Po důkladné rešerši a 4 letům přímé práce i
-          spolupráce s klíčovými aktéry na poli českých digitálních technologií
-          věříme tomu, že je správný čas na systémovou změnu.
-        </p>
-      </div>
-      <div>TBD rekapitulace problémů</div>
-    </TwoColumnSlide>
-  </Fragment>
-);
+      </Slide>
+
+      <TwoColumnSlide>
+        <div>
+          <p>01</p>
+          <Head2>Chybí sdílená vize</Head2>
+          <p>
+            Sdílená vize znamená, že lidé v veřejné správě i mimo ni mají
+            společnou představu o tom, kam společně směřují a co chtějí
+            dosáhnout. Je to jako mapa, která ukazuje, kudy se chceme dostat a
+            jaké jsou cíle naší cesty. Pokud máme jasnou sdílenou vizi, víme, co
+            máme dělat a proč to děláme, což nás motivuje a inspiruje.
+          </p>
+          <p>
+            Chybějící sdílená vize potom vede k nedorozuměním, neshodám a
+            rozdílným zájmům, což zpomaluje nebo dokonce zastavuje pokrok
+            řešení. Také často vede k neefektivnímu využití peněz a času,
+            protože organizace nemusí být jasně informována o tom, co se od ní
+            očekává. Nakonec, nedostatek sdílené vize ovlivňuje motivaci lidí a
+            organizací, kteří nemají jasnou představu o tom, jaký je smysl a cíl
+            jejich práce.
+          </p>
+          <p>
+            Náš průzkum potvrdil hypotézu, že v Česku chybí sdílená vize, jak
+            využívat digitální technologie ve veřejné správě. Bez jasně
+            definovaného a sdíleného směřování, například ve formě vize, se jen
+            těžko něco změní.
+          </p>
+        </div>
+        <div>
+          <Image src={oliver} alt="" className="mb-7" />
+          <TextQuote
+            quote="To achieve our ambitions, we need a shared vision for government, grounded in the needs of our users. This means breaking down silos and thinking about services from the perspective of the people who use them."
+            author="Oliver Dowden, Minister for Implementation, UK"
+          />
+        </div>
+      </TwoColumnSlide>
+
+      <TwoColumnSlide>
+        <div>
+          <p>02</p>
+          <Head2>Chybí informace</Head2>
+          <p>
+            Mít všechny potřebné informace znamená mít jednoduše dostupná a
+            relevantní data, znalosti k interpretaci dat a jejich praktickému
+            použití. Dostupnými daty myslíme výstupy z výzkumů, srozumitelné
+            analýzy dat a příklady dobré praxe z Česka i zahraničí, které
+            pomohou v informovaném rozhodování. Všechny potřebné informace musí
+            být jednoduše dostupné a otevřené všem bez omezení.
+          </p>
+          <p>
+            Bez přístupu k aktuálním informacím o nových technologiích a jejich
+            potenciálních přínosech si lidé – ať už úředníci, politici nebo
+            občané - často ani neuvědomují možnosti, které existují. To je potom
+            promarněnou příležitost snahy ke zlepšení efektivity, snížení
+            nákladů a poskytování lepších služeb všem.
+          </p>
+          <p>
+            Když potom organizace veřejné sféry postrádají informace o
+            potenciálu technologie, neumí adekvátně plánovat jejich praktické
+            nasazení a používání. To vede k problémům, jako je nedostatečné
+            školení, nedostatečné zdroje a špatná integrace se stávajícími
+            systémy – ve výsledku jde o další špatnou zkušenost s technologií a
+            další odpor ke změně.
+          </p>
+        </div>
+        <div>
+          <Image src={mariana} alt="" className="mb-7" />
+          <TextQuote
+            quote="In a world where knowledge is power, lack of information can be a barrier to progress, growth and development"
+            author="Mariana Mazzucato, Professor of Economics at University College London"
+          />
+        </div>
+      </TwoColumnSlide>
+
+      <TwoColumnSlide>
+        <div>
+          <p>03</p>
+          <Head2>Chybí kompetence</Head2>
+          <p>
+            V kontextu technologií ve veřejném sektoru se kompetencemi rozumí
+            znalosti, dovednosti a schopnosti, které jsou nezbytné pro lidi k
+            efektivnímu využívání a řízení technologií při jejich práci. To
+            zahrnuje řadu kompetencí, jako jsou technické dovednosti související
+            s hardwarem a softwarem, stejně jako širší dovednosti související se
+            strategickým uvažováním, analýzou dat, řízením projektů, komunikací.
+          </p>
+          <p>
+            Pokud lidem ve veřejného sektoru chybí potřebné kompetence k
+            efektivnímu využívání nových technologií, ovlivňuje to potom
+            negativně úspěšnou implementaci a praktické využití. To v důsledku
+            vede k rezistenci a neschopnosti adaptovat se na změnu nebo zavádění
+            nových nástrojů, což brání pokroku a inovaci celého veřejného
+            sektoru.
+          </p>
+          <p>
+            Chybějící kompetence, resp. jejich nedostatky, ukazuje každoroční
+            evropský index DESI (Digital Economy and Society Index), kde se
+            Česko v roce 2022 mezi 27 členskými státy Evropské Unie řadí pod
+            průměr na 19. místo v oblasti integrace digitálních technologií, ve
+            srovnání s rokem jsme si navíc pohoršili o čtyři příčky hůř než v
+            roce 2021 (15. místo).
+          </p>
+          <p>
+            Digitálním kompetencím se věnuje také průzkum ČSÚ (Český statistický
+            úřad), který u úředníků vyhodnocuje jen základní dovednosti jako
+            práce s tabulkovým nebo textovým editorem, námi zmíněné kompetence
+            nesleduje vůbec.
+          </p>
+        </div>
+        <div>
+          <Image src={martha} alt="" className="mb-7" />
+          <TextQuote
+            quote="Digital skills are not just about machines, they are about people. Digital technologies, when combined with the right mix of skills and capabilities, have the power to transform the way public services are delivered."
+            author="Martha Lane Fox, House of Lords crossbench peer, Chancellor at the Open University and a board member at Twitter"
+          />
+        </div>
+      </TwoColumnSlide>
+
+      <TwoColumnSlide>
+        <div>
+          <p>04</p>
+          <Head2>Chybí finance</Head2>
+          <p>
+            Tato příčina úzce souvisí s předcházející – veřejná sféra typicky
+            není schopna přilákat top talent, mj. kvůli neschopnosti konkurovat
+            odměnám v komerčním sektoru. Z průzkumu “Stav IT v českém nezisku” z
+            roku 2021 provedeného Techsoup ČR a Nadací OSF vyplývá, že 62 %
+            středně velkých neziskových organizací uvádí jako hlavní překážku
+            svého rozvoje právě nedostatek finančních prostředků.
+          </p>
+          <p>
+            Zrychlená digitalizace by mohla České republice přinést růst
+            produktivity vyšší až o 70 %, konstatuje poradenská společnost
+            McKinsey ve své analýze Vzestup digitálních vyzyvatelů, Perspektiva
+            ČR. Podle této zprávy může zrychlení digitalizace do roku 2025
+            přinést až 26 miliard EUR dodatečného hrubého domácího produktu
+            (HDP), což znamená navýšení roční míry růstu HDP o téměř jeden
+            procentní bod.
+          </p>
+        </div>
+        <div>
+          <Image src={steve} alt="" className="mb-7" />
+          <TextQuote
+            quote="The cost of not investing in technology is often greater than the cost of investing in it."
+            author="Steve VanRoekel, former Chief Information Officer of the United States"
+          />
+        </div>
+      </TwoColumnSlide>
+
+      <TwoColumnSlide>
+        <div>
+          <Head2>
+            Zaostáváme každým dnem, a to na několika frontách. Pokud nezměníme
+            směr, kterým se technologie ubírají, bude se situace dále zhoršovat.
+          </Head2>
+          <p>
+            Bariéry, kvůli kterým Česko zaostává v efektivním používání
+            technologií jako chybějící vize, kompetence, informace a finance,
+            jsou ze své podstaty velmi komplexní. Můžeme se pokoušet o jejich
+            dílčí řešení a oblasti kompetencí toho už mnoho děláme – ať jsou to
+            digitální řešení s nevládními organizacemi nebo systematické
+            vzdělávání skrz hackdays nebo webináře. Pokud však chceme být v
+            řešení opravdu úspěšní, potřebujeme jednotlivé bariéry řešit
+            propojeně a systematicky tak, aby proměna veřejné sféry byla trvalá
+            a přežila více volebních období. Po důkladné rešerši a 4 letům přímé
+            práce i spolupráce s klíčovými aktéry na poli českých digitálních
+            technologií věříme tomu, že je správný čas na systémovou změnu.
+          </p>
+        </div>
+        <div>TBD rekapitulace problémů</div>
+      </TwoColumnSlide>
+    </Fragment>
+  );
+};
 
 const SystemicChangePlan = () => (
   <Fragment>
