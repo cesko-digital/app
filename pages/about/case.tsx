@@ -873,10 +873,12 @@ const ImageHeaderSlide = ({
   children: ReactNode;
   image: StaticImageData;
 }) => (
-  <Slide>
-    <Image src={image} alt="" />
-    {children}
-  </Slide>
+  <section>
+    <Image src={image} alt="" className="z-0 relative" />
+    <div className="max-w-content m-auto text-xl px-20 pb-20 pt-10 bg-white -mt-[200px] relative z-20">
+      {children}
+    </div>
+  </section>
 );
 
 const TwoColumnSlide = ({ children }: { children: ReactNode }) => (
