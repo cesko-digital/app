@@ -278,17 +278,19 @@ const AboutCeskoDigital = () => {
       </Slide>
 
       <Slide>
-        <Head2>
-          Na začátku nadšenci do technologií. Po 4 letech respektovaným
-          partnerem pro úředníky i politiky.
-        </Head2>
-        <Image src={panel} alt="" />
+        <div className="text-center mb-20">
+          <Head2>
+            Na začátku nadšenci do technologií. Po 4 letech respektovaným
+            partnerem pro úředníky i politiky.
+          </Head2>
+        </div>
+        <Image src={panel} alt="" className="mb-20" />
         <div className="grid grid-cols-3 gap-7">
           <div>
-            <Head3>
+            <Head4>
               Jsme zástupci občanské společnosti v Radě vlády pro informační
               společnost (RVIS)
-            </Head3>
+            </Head4>
             <p>
               Rada je stálý řídicí, poradní, iniciační a koordinační orgán vlády
               Česka pro rozvoj digitálních služeb ve veřejné správě, jsme
@@ -297,13 +299,15 @@ const AboutCeskoDigital = () => {
             </p>
           </div>
           <div>
-            <Head3>
+            <Head4>
               Spojili jsme neziskovky se zájmem na digitalizaci státu v jeden
               hlas – platforma Společně a digitálně
-            </Head3>
+            </Head4>
             <p>
               Platforma{" "}
-              <a href="https://spolecneadigitalne.cz">Společně a digitálně</a>{" "}
+              <a href="https://spolecneadigitalne.cz" className="text-black">
+                Společně a digitálně
+              </a>{" "}
               je společnou iniciativou deseti nevládních neziskových organizací,
               které se dlouhodobě věnují digitální transformací státu.
               Propojujeme klíčové aktéry, formulujeme doporučení, diskutujeme s
@@ -311,13 +315,13 @@ const AboutCeskoDigital = () => {
             </p>
           </div>
           <div>
-            <Head3>
+            <Head4>
               Pomáhali jsme se vznikem Digitální informační agentury (DIA)
-            </Head3>
+            </Head4>
             <p>
               V Česku jsme po vzoru Velké Británie a Dánska pomohli prosadit
               vznik{" "}
-              <a href="https://www.dia.gov.cz">
+              <a href="https://www.dia.gov.cz" className="text-black">
                 Digitální a informační agentury
               </a>
               , která systematicky naplňuje potřeby pro digitalizaci a využívání
