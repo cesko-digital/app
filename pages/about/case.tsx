@@ -6,6 +6,7 @@ import gradient from "app/about/case/gradient.png";
 import meetup from "app/about/case/photos/meetup.jpg";
 import graf from "app/about/case/photos/graf.png";
 import nezisk from "app/about/case/photos/nezisk.jpg";
+import nezisk2 from "app/about/case/photos/nezisk2.jpg";
 import hackday from "app/about/case/photos/hackday.jpg";
 import panel from "app/about/case/photos/panel.jpg";
 import kolac from "app/about/case/kolac.png";
@@ -38,6 +39,7 @@ import {
 import Image, { StaticImageData } from "next/image";
 import { Fragment, ReactNode } from "react";
 import { communitySize } from "lib/utils";
+import { ButtonLink } from "components/links";
 
 const CasePage = () => (
   <Layout crumbs={[{ label: "O nás" }]} head={{ title: "Case for Support" }}>
@@ -47,6 +49,7 @@ const CasePage = () => (
     <SystemicChangeExplainer />
     <SystemicChangePlan />
     <PledgeSection />
+    <FooterSection />
   </Layout>
 );
 
@@ -730,7 +733,81 @@ const PledgeSection = () => (
         <Image src={SolidPixels} alt="" />
       </div>
     </Slide>
+
+    <ImageHeaderSlide image={nezisk2}>
+      <h2>Pojďme měnit Česko k lepšímu. Potřebuje to.</h2>
+      <p>
+        Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
+        toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
+        technologie pomoci, vytvořili jsme automatizovaný ekosystém expertní
+        podpory veřejné sféry a s vaší podporou toto budeme moci akcelerovat.
+        Máme detailní plán systémové změny, jak problém dlouhodobě vyřešit. Moc
+        rádi se s vámi sejdeme a prodiskutujeme možnosti spolupráce.
+      </p>
+    </ImageHeaderSlide>
+
+    <Slide>
+      <div className="grid grid-cols-3 gap-7">
+        <div>
+          <h3>Vyžádejte si nezávazně více informací</h3>
+          <p>
+            Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
+            organizaci, její fungování a plány.
+          </p>
+        </div>
+        <div>
+          <h3>Sejděte se s naším COO</h3>
+          <p>
+            <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a> vede
+            kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše otázky.
+            Domluvte si schůzku.
+          </p>
+        </div>
+        <div>
+          <h3>Máte zájem? Jak přispět a co dál</h3>
+          <p>
+            Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
+            kapacity, abychom společně změnili Česko k lepšímu.
+          </p>
+        </div>
+      </div>
+      <div className="mt-10 text-center">
+        <ButtonLink to="mailto:ahoj@cesko.digital">Ozvěte se nám</ButtonLink>
+      </div>
+    </Slide>
   </Fragment>
+);
+
+const FooterSection = () => (
+  <Slide>
+    <h2 className="text-center mb-20">Chci si to víc prostudovat</h2>
+    <ul className="grid grid-cols-2 gap-7 list-none px-20">
+      <li>
+        <a href="https://data.cesko.digital/vyrocni-zpravy/impact-report-2022.pdf">
+          Impact Report 2019–22
+        </a>
+      </li>
+      <li>
+        <a href="https://blog.cesko.digital">Tiskové zprávy</a>
+      </li>
+      <li>
+        <a href="">Průzkum klíčových aktérů 2023</a>
+      </li>
+      <li>
+        <a href="https://www.e15.cz/nazory-a-analyzy/cesko-v-digitalizaci-zaostava-musime-zmenit-mysleni-pise-pro-e15-cz-sefka-cesko-digital-eva-pavlikova-1382466">
+          E15: CEO Česko.Digital o digitalizaci
+        </a>
+      </li>
+      <li>
+        <a href="">Mapa systémové změny</a>
+      </li>
+      <li>
+        <a href="https://forbes.cz/neziskovky-objevuji-svet-jednicek-a-nul-pomoci-jim-ma-inkubator-cesko-digital/">
+          Forbes: Česko.Digital pomůže nezisku
+        </a>
+      </li>
+    </ul>
+  </Slide>
 );
 
 //
