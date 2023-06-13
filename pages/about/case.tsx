@@ -257,22 +257,22 @@ const AboutCeskoDigital = () => {
       </section>
 
       <Slide>
-        <div className="grid grid-cols-4 gap-7">
+        <div className="grid grid-cols-4 gap-7 text-center">
           <div>
             <Head3>20+ digitálních řešení</Head3>
-            <p>vytvořených v komunitě</p>
+            <p className="text-base">vytvořených v komunitě</p>
           </div>
           <div>
             <Head3>{communitySize}+ dobrovolníků</Head3>
-            <p>registrovaných v komunitě</p>
+            <p className="text-base">registrovaných v komunitě</p>
           </div>
           <div>
             <Head3>252 000+ hodin</Head3>
-            <p>pro-bono dobrovolnické práce</p>
+            <p className="text-base">pro-bono dobrovolnické práce</p>
           </div>
           <div>
             <Head3>4 000 000+ lidí</Head3>
-            <p>oslovila naše digitální řešení</p>
+            <p className="text-base">oslovila naše digitální řešení</p>
           </div>
         </div>
       </Slide>
