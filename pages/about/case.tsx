@@ -14,6 +14,10 @@ import mariana from "app/about/case/quotes/mariana.jpg";
 import martha from "app/about/case/quotes/martha.jpg";
 import oliver from "app/about/case/quotes/oliver.jpg";
 import steve from "app/about/case/quotes/steve.jpg";
+import CovidPortal from "app/about/case/projects/covid-portal.png";
+import DameRousky from "app/about/case/projects/dame-rousky.png";
+import Movapp from "app/about/case/projects/movapp.png";
+import StojimeZaUkrajinou from "app/about/case/projects/stojime-za-ukrajinou.png";
 import {
   Aswa,
   Avast,
@@ -163,136 +167,169 @@ const Challenges = () => (
   </Fragment>
 );
 
-const AboutCeskoDigital = () => (
-  <Fragment>
-    <ImageHeaderSlide image={meetup}>
-      <Head2>Skrz 1 a 0 měníme Česko k lepšímu</Head2>
-      <p>
-        Říkali nám, že jsme naivní. My ale už roky dokazujeme, že změna je
-        možná. Trpělivě krok po kroku učíme neziskové organizace a státní
-        správu, jak využívat digitální technologie.
-      </p>
-      <p>
-        Jádrem komunity je {communitySize}+ expertních dobrovolníků a
-        dobrovolnic. Ti do komunity přináší to nejcennější – svůj čas a také
-        svou expertízu (typicky v oblastech softwarového vývoje, produktového
-        designu nebo projektového řízení). Díky jejich propojení v komunitě
-        vznikají veřejně prospěšná řešení v podobě open source digitálních
-        produktů.
-      </p>
-    </ImageHeaderSlide>
-    <Slide>
-      <h3>
-        V pandemii i na začátku války Česko.Digital pomohlo v těch největších
-        krizích
-      </h3>
-      <div className="grid grid-cols-4 gap-7">
-        <div>
-          <Head4>Covid portál</Head4>
-          <p>
-            Informace o vládních opatřeních v pandemii přehledně na jednom místě
-            pro občany Česka.
-          </p>
-          <p>
-            Dopad: 250 000+ lidí navštívilo portál prvních 48 hodin jeho provozu
-          </p>
-        </div>
-        <div>
-          <Head4>Stojíme za Ukrajinou</Head4>
-          <p>
-            Informační rozcestník, který vznikl takřka přes víkend, nabídl
-            desítky návodů, jak pomoc nabídnout či získat.
-          </p>
-          <p>
-            Dopad: téměř 800 000 lidí navštívilo rozcestník do 3 dnů od
-            vypuknutí války
-          </p>
-        </div>
-        <div>
-          <Head4>Dáme roušky</Head4>
-          <p>
-            Komunitní mapa roušek, která v kritický moment pandemie COVID-19
-            umožnila získat klíčovou ochrannou pomůcku.
-          </p>
-          <p>Dopad: 600 000+ roušek se předalo díky online komunitní mapě</p>
-        </div>
-        <div>
-          <Head4>Movapp</Head4>
-          <p>
-            Do 3 dnů od vypuknutí války nabídla aplikace řešení, jak usnadnit
-            komunikaci mezi Čechy a Ukrajinci.
-          </p>
-          <p>Dopad: 12 000+ uživatelů si už stáhlo aplikaci do mobilu</p>
-        </div>
+const AboutCeskoDigital = () => {
+  const ProjectCard = ({
+    name,
+    image,
+    children,
+  }: {
+    name: string;
+    image: StaticImageData;
+    children: ReactNode;
+  }) => (
+    <div>
+      <div className="mb-7">
+        <Image src={image} alt="" width={100} height={100} />
       </div>
-    </Slide>
-    <Slide>
-      <div className="grid grid-cols-4 gap-7">
-        <div>
-          <h3>20+ digitálních řešení</h3>
-          <p>vytvořených v komunitě</p>
+      <Head4>{name}</Head4>
+      {children}
+    </div>
+  );
+
+  return (
+    <Fragment>
+      <ImageHeaderSlide image={meetup}>
+        <Head2>Skrz 1 a 0 měníme Česko k lepšímu</Head2>
+        <p>
+          Říkali nám, že jsme naivní. My ale už roky dokazujeme, že změna je
+          možná. Trpělivě krok po kroku učíme neziskové organizace a státní
+          správu, jak využívat digitální technologie.
+        </p>
+        <p>
+          Jádrem komunity je {communitySize}+ expertních dobrovolníků a
+          dobrovolnic. Ti do komunity přináší to nejcennější – svůj čas a také
+          svou expertízu (typicky v oblastech softwarového vývoje, produktového
+          designu nebo projektového řízení). Díky jejich propojení v komunitě
+          vznikají veřejně prospěšná řešení v podobě open source digitálních
+          produktů.
+        </p>
+      </ImageHeaderSlide>
+
+      <section className="bg-pebble py-20 mb-20">
+        <div className="max-w-content m-auto px-5 text-xl">
+          <div className="text-center mb-20">
+            <Head3>
+              V pandemii i na začátku války Česko.Digital pomohlo v těch
+              největších krizích
+            </Head3>
+          </div>
+          <div className="grid grid-cols-4 gap-7">
+            <ProjectCard name="Covid portál" image={CovidPortal}>
+              <p>
+                Informace o vládních opatřeních v pandemii přehledně na jednom
+                místě pro občany Česka.
+              </p>
+              <p className="font-bold">
+                Dopad: 250 000+ lidí navštívilo portál prvních 48 hodin jeho
+                provozu
+              </p>
+            </ProjectCard>
+            <ProjectCard name="Stojíme za Ukrajinou" image={StojimeZaUkrajinou}>
+              <p>
+                Informační rozcestník, který vznikl takřka přes víkend, nabídl
+                desítky návodů, jak pomoc nabídnout či získat.
+              </p>
+              <p className="font-bold">
+                Dopad: téměř 800 000 lidí navštívilo rozcestník do 3 dnů od
+                vypuknutí války
+              </p>
+            </ProjectCard>
+            <ProjectCard name="Dáme roušky" image={DameRousky}>
+              <p>
+                Komunitní mapa roušek, která v kritický moment pandemie COVID-19
+                umožnila získat klíčovou ochrannou pomůcku.
+              </p>
+              <p className="font-bold">
+                Dopad: 600 000+ roušek se předalo díky online komunitní mapě
+              </p>
+            </ProjectCard>
+            <ProjectCard name="Movapp" image={Movapp}>
+              <p>
+                Do 3 dnů od vypuknutí války nabídla aplikace řešení, jak
+                usnadnit komunikaci mezi Čechy a Ukrajinci.
+              </p>
+              <p className="font-bold">
+                Dopad: 12 000+ uživatelů si už stáhlo aplikaci do mobilu
+              </p>
+            </ProjectCard>
+          </div>
         </div>
-        <div>
-          <h3>{communitySize}+ dobrovolníků</h3>
-          <p>registrovaných v komunitě</p>
+      </section>
+
+      <Slide>
+        <div className="grid grid-cols-4 gap-7">
+          <div>
+            <Head3>20+ digitálních řešení</Head3>
+            <p>vytvořených v komunitě</p>
+          </div>
+          <div>
+            <Head3>{communitySize}+ dobrovolníků</Head3>
+            <p>registrovaných v komunitě</p>
+          </div>
+          <div>
+            <Head3>252 000+ hodin</Head3>
+            <p>pro-bono dobrovolnické práce</p>
+          </div>
+          <div>
+            <Head3>4 000 000+ lidí</Head3>
+            <p>oslovila naše digitální řešení</p>
+          </div>
         </div>
-        <div>
-          <h3>252 000+ hodin</h3>
-          <p>pro-bono dobrovolnické práce</p>
+      </Slide>
+
+      <Slide>
+        <Head2>
+          Na začátku nadšenci do technologií. Po 4 letech respektovaným
+          partnerem pro úředníky i politiky.
+        </Head2>
+        <Image src={panel} alt="" />
+        <div className="grid grid-cols-3 gap-7">
+          <div>
+            <Head3>
+              Jsme zástupci občanské společnosti v Radě vlády pro informační
+              společnost (RVIS)
+            </Head3>
+            <p>
+              Rada je stálý řídicí, poradní, iniciační a koordinační orgán vlády
+              Česka pro rozvoj digitálních služeb ve veřejné správě, jsme
+              součástí předsednictva jako jediní zástupci akademické́ sféry a
+              občanské́ společnosti.
+            </p>
+          </div>
+          <div>
+            <Head3>
+              Spojili jsme neziskovky se zájmem na digitalizaci státu v jeden
+              hlas – platforma Společně a digitálně
+            </Head3>
+            <p>
+              Platforma{" "}
+              <a href="https://spolecneadigitalne.cz">Společně a digitálně</a>{" "}
+              je společnou iniciativou deseti nevládních neziskových organizací,
+              které se dlouhodobě věnují digitální transformací státu.
+              Propojujeme klíčové aktéry, formulujeme doporučení, diskutujeme s
+              politiky i veřejností.
+            </p>
+          </div>
+          <div>
+            <Head3>
+              Pomáhali jsme se vznikem Digitální informační agentury (DIA)
+            </Head3>
+            <p>
+              V Česku jsme po vzoru Velké Británie a Dánska pomohli prosadit
+              vznik{" "}
+              <a href="https://www.dia.gov.cz">
+                Digitální a informační agentury
+              </a>
+              , která systematicky naplňuje potřeby pro digitalizaci a využívání
+              technologií ve veřejné správě a bude ji dále svědomitě rozvíjet ve
+              prospěch občanů Česka.
+            </p>
+          </div>
         </div>
-        <div>
-          <h3>4 000 000+ lidí</h3>
-          <p>oslovila naše digitální řešení</p>
-        </div>
-      </div>
-    </Slide>
-    <Slide>
-      <Head2>
-        Na začátku nadšenci do technologií. Po 4 letech respektovaným partnerem
-        pro úředníky i politiky.
-      </Head2>
-      <Image src={panel} alt="" />
-      <div className="grid grid-cols-3 gap-7">
-        <div>
-          <h3>
-            Jsme zástupci občanské společnosti v Radě vlády pro informační
-            společnost (RVIS)
-          </h3>
-          <p>
-            Rada je stálý řídicí, poradní, iniciační a koordinační orgán vlády
-            Česka pro rozvoj digitálních služeb ve veřejné správě, jsme součástí
-            předsednictva jako jediní zástupci akademické́ sféry a občanské́
-            společnosti.
-          </p>
-        </div>
-        <div>
-          <h3>
-            Spojili jsme neziskovky se zájmem na digitalizaci státu v jeden hlas
-            – platforma Společně a digitálně
-          </h3>
-          <p>
-            Platforma{" "}
-            <a href="https://spolecneadigitalne.cz">Společně a digitálně</a> je
-            společnou iniciativou deseti nevládních neziskových organizací,
-            které se dlouhodobě věnují digitální transformací státu. Propojujeme
-            klíčové aktéry, formulujeme doporučení, diskutujeme s politiky i
-            veřejností.
-          </p>
-        </div>
-        <div>
-          <h3>Pomáhali jsme se vznikem Digitální informační agentury (DIA)</h3>
-          <p>
-            V Česku jsme po vzoru Velké Británie a Dánska pomohli prosadit vznik{" "}
-            <a href="https://www.dia.gov.cz">Digitální a informační agentury</a>
-            , která systematicky naplňuje potřeby pro digitalizaci a využívání
-            technologií ve veřejné správě a bude ji dále svědomitě rozvíjet ve
-            prospěch občanů Česka.
-          </p>
-        </div>
-      </div>
-    </Slide>
-  </Fragment>
-);
+      </Slide>
+    </Fragment>
+  );
+};
 
 const SystemicChangeExplainer = () => (
   <Fragment>
@@ -540,7 +577,7 @@ const SystemicChangePlan = () => (
       <div>TBD odkaz na mapu</div>
     </TwoColumnSlide>
     <Slide>
-      <h3>Nadchneme je do společné vize</h3>
+      <Head3>Nadchneme je do společné vize</Head3>
       <p>
         Zaměříme se na klíčové aktéry české společnosti, kteří mají zásadní vliv
         na rozvoj digitálních technologií v Česku. Vysvětlíme jim přínos sdílené
@@ -555,7 +592,7 @@ const SystemicChangePlan = () => (
       </p>
     </Slide>
     <Slide>
-      <h3>Inspirujeme je a dodáme potřebné informace</h3>
+      <Head3>Inspirujeme je a dodáme potřebné informace</Head3>
       <p>
         Poukážeme na dobré příklady praxe digitálních technologií ve veřejné
         sféře, které měly úctyhodný přínos. Zajistíme, že politické strany (s
@@ -570,7 +607,7 @@ const SystemicChangePlan = () => (
       </p>
     </Slide>
     <Slide>
-      <h3>Naučíme je to</h3>
+      <Head3>Naučíme je to</Head3>
       <p>
         Díky kombinaci podpůrných aktivit, jako jsou školicí programy pro
         nevládní organizace, poskytování pomoci digitálním projektům nebo
@@ -616,7 +653,7 @@ const PledgeSection = () => (
       <Head2>Vaše podpora nám konkrétně pomůže</Head2>
       <div className="grid grid-cols-2 gap-7">
         <div>
-          <h3>Poskytnout školení a podporu</h3>
+          <Head3>Poskytnout školení a podporu</Head3>
           <p>
             Díky vám budeme moci poskytnout expertizu a know-how tam, kde je
             nejvíc potřeba – projektům a organizacím řešící palčivé společenské
@@ -626,7 +663,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Rozvíjet expertní infrastrukturu</h3>
+          <Head3>Rozvíjet expertní infrastrukturu</Head3>
           <p>
             Úspěch Česko.Digital by nebyl možný bez komunity expertů, kteří se
             snadno propojují s veřejným sektorem. Právě rozvoj komunity, která
@@ -637,7 +674,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Vyvinout technické nástroje a zdroje</h3>
+          <Head3>Vyvinout technické nástroje a zdroje</Head3>
           <p>
             Vaše podpora nám pomůže vyvinout technické nástroje a zdroje, které
             mohou organizace veřejné sféry efektivně využít v rámci svého
@@ -646,7 +683,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Prosadit systémovou změnu</h3>
+          <Head3>Prosadit systémovou změnu</Head3>
           <p>
             Vaší podporu využijeme pro dlouhodobou a udržitelnou změnu, která
             povede k efektivnímu využívání digitálních technologií na úrovni
@@ -678,7 +715,7 @@ const PledgeSection = () => (
     <Slide>
       <div className="grid grid-cols-3 gap-7">
         <div>
-          <h3>Finanční zodpovědnost</h3>
+          <Head3>Finanční zodpovědnost</Head3>
           <p>
             Partnerstvím s Česko.Digital podpoříte desítky projektů s dalšími
             nevládními organizacemi, které ročně realizujeme. Ve všem, co
@@ -689,7 +726,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Finanční udržitelnost</h3>
+          <Head3>Finanční udržitelnost</Head3>
           <p>
             Investice do Česko.Digital je investicí do rozvoje, nikoliv do
             nákladů. Komunita stojí na expertním dobrovolnictví,v rámci jehož si
@@ -700,7 +737,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Spolupráce ušitá na míru</h3>
+          <Head3>Spolupráce ušitá na míru</Head3>
           <p>
             Partneři a filantropové mohou mít různé preference, pokud jde o
             financování, jako je poskytnutí jednorázového daru nebo poskytování
@@ -754,14 +791,14 @@ const PledgeSection = () => (
     <Slide>
       <div className="grid grid-cols-3 gap-7">
         <div>
-          <h3>Vyžádejte si nezávazně více informací</h3>
+          <Head3>Vyžádejte si nezávazně více informací</Head3>
           <p>
             Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
             organizaci, její fungování a plány.
           </p>
         </div>
         <div>
-          <h3>Sejděte se s naším COO</h3>
+          <Head3>Sejděte se s naším COO</Head3>
           <p>
             <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a> vede
             kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše otázky.
@@ -769,7 +806,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <h3>Máte zájem? Jak přispět a co dál</h3>
+          <Head3>Máte zájem? Jak přispět a co dál</Head3>
           <p>
             Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
             kapacity, abychom společně změnili Česko k lepšímu.
@@ -894,6 +931,12 @@ const Head2 = ({ children }: { children: ReactNode }) => (
   <h2 className="leading-normal">
     <Balancer>{children}</Balancer>
   </h2>
+);
+
+const Head3 = ({ children }: { children: ReactNode }) => (
+  <h3 className="leading-normal font-bold">
+    <Balancer>{children}</Balancer>
+  </h3>
 );
 
 const Head4 = ({ children }: { children: ReactNode }) => (
