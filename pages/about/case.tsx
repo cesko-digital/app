@@ -293,6 +293,8 @@ const AboutCeskoDigital = () => {
         </div>
       </Slide>
 
+      <hr className="mb-20" />
+
       <Slide>
         <div className="text-center mb-20">
           <H2>
@@ -408,12 +410,17 @@ const SystemicChangeExplainer = () => {
       </div>
 
       <Slide>
-        <H2>Neděje se to jen tak. Známe všechny bariéry.</H2>
-        <p>
-          Z dlouhodobé zkušenosti, z dat a průzkumů z Česka i zahraničí jsme
-          identifikovali 4 hlavní bariéry veřejné sféry: chybí sdílená vize,
-          informace, kompetence a finance.
-        </p>
+        <div className="text-center">
+          <H2>Neděje se to jen tak. Známe všechny bariéry.</H2>
+          <p>
+            <Balancer>
+              Z dlouhodobé zkušenosti, z dat a průzkumů z Česka i zahraničí jsme
+              identifikovali 4 hlavní bariéry veřejné sféry: chybí sdílená vize,
+              informace, kompetence a finance.
+            </Balancer>
+          </p>
+        </div>
+        <hr className="my-20" />
       </Slide>
 
       <TwoColumnSlide>
