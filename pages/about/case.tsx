@@ -336,6 +336,10 @@ const AboutCeskoDigital = () => {
 };
 
 const SystemicChangeExplainer = () => {
+  const BlueHeading = ({ children }: { children: ReactNode }) => (
+    <p className="text-it text-5xl font-bold mt-0 -mb-4">{children}</p>
+  );
+
   return (
     <Fragment>
       <ImageHeaderSlide image={pracak2}>
@@ -398,7 +402,7 @@ const SystemicChangeExplainer = () => {
 
       <TwoColumnSlide>
         <div>
-          <p>01</p>
+          <BlueHeading>01</BlueHeading>
           <Head2>Chybí sdílená vize</Head2>
           <p>
             Sdílená vize znamená, že lidé v veřejné správě i mimo ni mají
@@ -434,7 +438,7 @@ const SystemicChangeExplainer = () => {
 
       <TwoColumnSlide>
         <div>
-          <p>02</p>
+          <BlueHeading>02</BlueHeading>
           <Head2>Chybí informace</Head2>
           <p>
             Mít všechny potřebné informace znamená mít jednoduše dostupná a
@@ -471,7 +475,7 @@ const SystemicChangeExplainer = () => {
 
       <TwoColumnSlide>
         <div>
-          <p>03</p>
+          <BlueHeading>03</BlueHeading>
           <Head2>Chybí kompetence</Head2>
           <p>
             V kontextu technologií ve veřejném sektoru se kompetencemi rozumí
@@ -515,7 +519,7 @@ const SystemicChangeExplainer = () => {
 
       <TwoColumnSlide>
         <div>
-          <p>04</p>
+          <BlueHeading>04</BlueHeading>
           <Head2>Chybí finance</Head2>
           <p>
             Tato příčina úzce souvisí s předcházející – veřejná sféra typicky
