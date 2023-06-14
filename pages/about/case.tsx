@@ -1,47 +1,9 @@
 import { Layout } from "components/layout";
-import pracak from "app/about/case/photos/pracak.jpg";
-import pracak2 from "app/about/case/photos/pracak2.jpg";
-import psychiatrie from "app/about/case/photos/psychiatrie.jpg";
-import gradient from "app/about/case/gradient.png";
-import meetup from "app/about/case/photos/meetup.jpg";
-import graf from "app/about/case/photos/graf.png";
-import nezisk from "app/about/case/photos/nezisk.jpg";
-import nezisk2 from "app/about/case/photos/nezisk2.jpg";
-import hackday from "app/about/case/photos/hackday.jpg";
-import panel from "app/about/case/photos/panel.jpg";
-import kolac from "app/about/case/kolac.png";
-import mapa from "app/about/case/mapa.png";
-import kruh from "app/about/case/kruh.png";
-import mariana from "app/about/case/quotes/mariana.jpg";
-import martha from "app/about/case/quotes/martha.jpg";
-import oliver from "app/about/case/quotes/oliver.jpg";
-import steve from "app/about/case/quotes/steve.jpg";
-import CovidPortal from "app/about/case/projects/covid-portal.png";
-import DameRousky from "app/about/case/projects/dame-rousky.png";
-import Movapp from "app/about/case/projects/movapp.png";
-import StojimeZaUkrajinou from "app/about/case/projects/stojime-za-ukrajinou.png";
-import {
-  Aswa,
-  Avast,
-  BankID,
-  Deloitte,
-  Fakturoid,
-  FIT,
-  Google,
-  H1,
-  Livesport,
-  Mapotic,
-  NPI,
-  OpenContent,
-  Opero,
-  OSF,
-  PaleFire,
-  PPF,
-  Praha,
-  Principal,
-  Rekonstrukce,
-  SolidPixels,
-} from "app/about/case/logos";
+import Illustrations from "app/about/case/misc";
+import ProjectLogos from "app/about/case/projects";
+import PartnerLogos from "app/about/case/logos";
+import Photos from "app/about/case/photos";
+import People from "app/about/case/people";
 import Image, { StaticImageData } from "next/image";
 import { Fragment, ReactNode } from "react";
 import { communitySize } from "lib/utils";
@@ -78,7 +40,7 @@ const Intro = () => (
 
 const Challenges = () => (
   <Fragment>
-    <ImageQuoteSlide image={pracak}>
+    <ImageQuoteSlide image={Photos.pracak}>
       Lidé v nouzi sice mohou získat podporu, ale neví jak. Čekají měsíce, úřady
       s nimi vůbec nekomunikuji. Nemají často ani na jídlo.
     </ImageQuoteSlide>
@@ -106,7 +68,7 @@ const Challenges = () => (
       />
     </TwoColumnSlide>
 
-    <ImageQuoteSlide image={psychiatrie}>
+    <ImageQuoteSlide image={Photos.psychiatrie}>
       Katastrofální stav dětské psychiatrie má zlepšit telemedicína. Psychiatrům
       je ale v průmětu 64 let.
     </ImageQuoteSlide>
@@ -126,7 +88,7 @@ const Challenges = () => (
       />
     </TwoColumnSlide>
 
-    <ImageQuoteSlide image={graf}>
+    <ImageQuoteSlide image={Photos.graf}>
       495 milionů korun šlo během pandemie na informační podporu, která podle
       analýzy nebyla využita. Vytvořené řešení se už nepoužije.
     </ImageQuoteSlide>
@@ -177,7 +139,7 @@ const Challenges = () => (
       </div>
       <div className="relative">
         <div className="absolute w-[768px] h-[416px]">
-          <Image src={mapa} width={1506} height={832} alt="" />
+          <Image src={Illustrations.mapa} alt="" />
         </div>
       </div>
     </TwoColumnSlide>
@@ -205,7 +167,7 @@ const AboutCeskoDigital = () => {
 
   return (
     <Fragment>
-      <ImageHeaderSlide image={meetup}>
+      <ImageHeaderSlide image={Photos.meetup}>
         <H2>Skrz 1 a 0 měníme Česko k lepšímu</H2>
         <p>
           Říkali nám, že jsme naivní. My ale už roky dokazujeme, že změna je
@@ -231,7 +193,7 @@ const AboutCeskoDigital = () => {
             </H3>
           </div>
           <div className="grid grid-cols-4 gap-7">
-            <ProjectCard name="Covid portál" image={CovidPortal}>
+            <ProjectCard name="Covid portál" image={ProjectLogos.CovidPortal}>
               <p>
                 Informace o vládních opatřeních v pandemii přehledně na jednom
                 místě pro občany Česka.
@@ -241,7 +203,10 @@ const AboutCeskoDigital = () => {
                 provozu
               </p>
             </ProjectCard>
-            <ProjectCard name="Stojíme za Ukrajinou" image={StojimeZaUkrajinou}>
+            <ProjectCard
+              name="Stojíme za Ukrajinou"
+              image={ProjectLogos.StojimeZaUkrajinou}
+            >
               <p>
                 Informační rozcestník, který vznikl takřka přes víkend, nabídl
                 desítky návodů, jak pomoc nabídnout či získat.
@@ -251,7 +216,7 @@ const AboutCeskoDigital = () => {
                 vypuknutí války
               </p>
             </ProjectCard>
-            <ProjectCard name="Dáme roušky" image={DameRousky}>
+            <ProjectCard name="Dáme roušky" image={ProjectLogos.DameRousky}>
               <p>
                 Komunitní mapa roušek, která v kritický moment pandemie COVID-19
                 umožnila získat klíčovou ochrannou pomůcku.
@@ -260,7 +225,7 @@ const AboutCeskoDigital = () => {
                 Dopad: 600 000+ roušek se předalo díky online komunitní mapě
               </p>
             </ProjectCard>
-            <ProjectCard name="Movapp" image={Movapp}>
+            <ProjectCard name="Movapp" image={ProjectLogos.Movapp}>
               <p>
                 Do 3 dnů od vypuknutí války nabídla aplikace řešení, jak
                 usnadnit komunikaci mezi Čechy a Ukrajinci.
@@ -303,7 +268,7 @@ const AboutCeskoDigital = () => {
             partnerem pro úředníky i politiky.
           </H2>
         </div>
-        <Image src={panel} alt="" className="mb-20" />
+        <Image src={Photos.panel} alt="" className="mb-20" />
         <div className="grid grid-cols-3 gap-7">
           <div>
             <H4>
@@ -373,7 +338,7 @@ const SystemicChangeExplainer = () => {
 
   return (
     <Fragment>
-      <ImageHeaderSlide image={pracak2}>
+      <ImageHeaderSlide image={Photos.pracak2}>
         <H2>
           Dílčí projekty nestačí. Pokud chceme problém skutečně vyřešit, musíme
           na to jít systémově
@@ -464,7 +429,7 @@ const SystemicChangeExplainer = () => {
           </p>
         </div>
         <div>
-          <Image src={oliver} alt="" className="mb-7" />
+          <Image src={People.Oliver} alt="" className="mb-7" />
           <TextQuote
             quote="To achieve our ambitions, we need a shared vision for government, grounded in the needs of our users. This means breaking down silos and thinking about services from the perspective of the people who use them."
             author="Oliver Dowden, Minister for Implementation, UK"
@@ -501,7 +466,7 @@ const SystemicChangeExplainer = () => {
           </p>
         </div>
         <div>
-          <Image src={mariana} alt="" className="mb-7" />
+          <Image src={People.Mariana} alt="" className="mb-7" />
           <TextQuote
             quote="In a world where knowledge is power, lack of information can be a barrier to progress, growth and development"
             author="Mariana Mazzucato, Professor of Economics at University College London"
@@ -545,7 +510,7 @@ const SystemicChangeExplainer = () => {
           </p>
         </div>
         <div>
-          <Image src={martha} alt="" className="mb-7" />
+          <Image src={People.Martha} alt="" className="mb-7" />
           <TextQuote
             quote="Digital skills are not just about machines, they are about people. Digital technologies, when combined with the right mix of skills and capabilities, have the power to transform the way public services are delivered."
             author="Martha Lane Fox, House of Lords crossbench peer, Chancellor at the Open University and a board member at Twitter"
@@ -576,7 +541,7 @@ const SystemicChangeExplainer = () => {
           </p>
         </div>
         <div>
-          <Image src={steve} alt="" className="mb-7" />
+          <Image src={People.Steve} alt="" className="mb-7" />
           <TextQuote
             quote="The cost of not investing in technology is often greater than the cost of investing in it."
             author="Steve VanRoekel, former Chief Information Officer of the United States"
@@ -610,7 +575,7 @@ const SystemicChangeExplainer = () => {
           <ProblemStatement number="03" text="Chybí kompetence" />
           <ProblemStatement number="04" text="Chybí finance" />
           <Image
-            src={kruh}
+            src={Illustrations.kruh}
             width={189}
             height={189}
             className="absolute -top-[60px] -right-[95px]"
@@ -624,7 +589,7 @@ const SystemicChangeExplainer = () => {
 
 const SystemicChangePlan = () => (
   <Fragment>
-    <ImageHeaderSlide image={hackday}>
+    <ImageHeaderSlide image={Photos.hackday}>
       <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
       <p>
         Víme, že žádný systém není možné změnit jednostranně – jde o to
@@ -699,7 +664,7 @@ const SystemicChangePlan = () => (
 
 const PledgeSection = () => (
   <Fragment>
-    <ImageHeaderSlide image={nezisk}>
+    <ImageHeaderSlide image={Photos.nezisk}>
       <H2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</H2>
       <p>Žádaná podpora: 25 mio. Kč / rok na období 2024–2027</p>
       <p>
@@ -720,7 +685,7 @@ const PledgeSection = () => (
 
     <Slide>
       <div className="grid grid-cols-3">
-        <Image src={kolac} alt="" className="col-start-2" />
+        <Image src={Illustrations.kolac} alt="" className="col-start-2" />
       </div>
     </Slide>
 
@@ -774,7 +739,7 @@ const PledgeSection = () => (
       <H2>
         Díky efektivnímu používání technologií lepší život v Česku pro každého.
       </H2>
-      <Image src={pracak2} alt="" />
+      <Image src={Photos.pracak2} alt="" />
       <p>
         Efektivní používání technologie nám umožní jednoduché a opakované úkoly
         automatizovat tak, že úředníci budou mít více času na péči o lidi v
@@ -828,30 +793,30 @@ const PledgeSection = () => (
     <Slide>
       <H2>Každý svým dílem přispívá již několik let</H2>
       <div className="grid grid-cols-5 gap-1 bg-pebble">
-        <Image src={Aswa} alt="" />
-        <Image src={Avast} alt="" />
-        <Image src={BankID} alt="" />
-        <Image src={Deloitte} alt="" />
-        <Image src={Fakturoid} alt="" />
-        <Image src={FIT} alt="" />
-        <Image src={Google} alt="" />
-        <Image src={H1} alt="" />
-        <Image src={Livesport} alt="" />
-        <Image src={Mapotic} alt="" />
-        <Image src={NPI} alt="" />
-        <Image src={OpenContent} alt="" />
-        <Image src={Opero} alt="" />
-        <Image src={OSF} alt="" />
-        <Image src={PaleFire} alt="" />
-        <Image src={PPF} alt="" />
-        <Image src={Praha} alt="" />
-        <Image src={Principal} alt="" />
-        <Image src={Rekonstrukce} alt="" />
-        <Image src={SolidPixels} alt="" />
+        <Image src={PartnerLogos.Aswa} alt="" />
+        <Image src={PartnerLogos.Avast} alt="" />
+        <Image src={PartnerLogos.BankID} alt="" />
+        <Image src={PartnerLogos.Deloitte} alt="" />
+        <Image src={PartnerLogos.Fakturoid} alt="" />
+        <Image src={PartnerLogos.FIT} alt="" />
+        <Image src={PartnerLogos.Google} alt="" />
+        <Image src={PartnerLogos.H1} alt="" />
+        <Image src={PartnerLogos.Livesport} alt="" />
+        <Image src={PartnerLogos.Mapotic} alt="" />
+        <Image src={PartnerLogos.NPI} alt="" />
+        <Image src={PartnerLogos.OpenContent} alt="" />
+        <Image src={PartnerLogos.Opero} alt="" />
+        <Image src={PartnerLogos.OSF} alt="" />
+        <Image src={PartnerLogos.PaleFire} alt="" />
+        <Image src={PartnerLogos.PPF} alt="" />
+        <Image src={PartnerLogos.Praha} alt="" />
+        <Image src={PartnerLogos.Principal} alt="" />
+        <Image src={PartnerLogos.Rekonstrukce} alt="" />
+        <Image src={PartnerLogos.SolidPixels} alt="" />
       </div>
     </Slide>
 
-    <ImageHeaderSlide image={nezisk2}>
+    <ImageHeaderSlide image={Photos.nezisk2}>
       <H2>Pojďme měnit Česko k lepšímu. Potřebuje to.</H2>
       <p>
         Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
@@ -977,7 +942,7 @@ const ImageQuoteSlide = ({
         />
       </div>
       <div className="absolute left-0 z-1 w-3/4 h-full">
-        <Image src={gradient} placeholder="blur" alt="" fill />
+        <Image src={Illustrations.gradient} placeholder="blur" alt="" fill />
       </div>
       <div className="max-w-content m-auto z-2 relative px-5 pt-[100px] pb-[150px]">
         <blockquote className="text-white leading-normal text-3xl font-bold w-[400px]">

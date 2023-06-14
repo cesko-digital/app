@@ -1,20 +1,45 @@
-export { default as Aswa } from "./aswa.png";
-export { default as Avast } from "./avast.png";
-export { default as BankID } from "./bankid.png";
-export { default as Deloitte } from "./deloitte.png";
-export { default as Fakturoid } from "./fakturoid.png";
-export { default as FIT } from "./fit.png";
-export { default as Google } from "./google.png";
-export { default as H1 } from "./h1.png";
-export { default as Livesport } from "./livesport.png";
-export { default as Mapotic } from "./mapotic.png";
-export { default as NPI } from "./npi.png";
-export { default as OpenContent } from "./opencontent.png";
-export { default as Opero } from "./opero.png";
-export { default as OSF } from "./osf.png";
-export { default as PaleFire } from "./palefire.png";
-export { default as PPF } from "./ppf.png";
-export { default as Praha } from "./praha.png";
-export { default as Principal } from "./principal.png";
-export { default as Rekonstrukce } from "./rekonstrukce.png";
-export { default as SolidPixels } from "./solidpixels.png";
+import Aswa from "./aswa.png";
+import Avast from "./avast.png";
+import BankID from "./bankid.png";
+import Deloitte from "./deloitte.png";
+import Fakturoid from "./fakturoid.png";
+import FIT from "./fit.png";
+import Google from "./google.png";
+import H1 from "./h1.png";
+import Livesport from "./livesport.png";
+import Mapotic from "./mapotic.png";
+import NPI from "./npi.png";
+import OpenContent from "./opencontent.png";
+import Opero from "./opero.png";
+import OSF from "./osf.png";
+import PaleFire from "./palefire.png";
+import PPF from "./ppf.png";
+import Praha from "./praha.png";
+import Principal from "./principal.png";
+import Rekonstrukce from "./rekonstrukce.png";
+import SolidPixels from "./solidpixels.png";
+
+const PartnerLogos = {
+  Aswa,
+  Avast,
+  BankID,
+  Deloitte,
+  Fakturoid,
+  FIT,
+  Google,
+  H1,
+  Livesport,
+  Mapotic,
+  NPI,
+  OpenContent,
+  Opero,
+  OSF,
+  PaleFire,
+  PPF,
+  Praha,
+  Principal,
+  Rekonstrukce,
+  SolidPixels,
+};
+
+export default PartnerLogos;
