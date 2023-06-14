@@ -917,15 +917,27 @@ const ImageQuoteSlide = ({
   image: StaticImageData;
   children: React.ReactNode;
 }) => (
-  <Slide>
-    <div className="w-full aspect-video relative">
-      <Image src={image} alt="" className="absolute" />
-      <Image src={gradient} alt="" className="absolute" fill />
-      <h2 className="absolute w-[50%] text-white px-20 py-20 leading-normal">
-        {children}
-      </h2>
+  <section className="mb-20 overflow-hidden">
+    <div className="w-full relative">
+      <div className="absolute right-0 z-0 w-3/4 h-full">
+        <Image
+          src={image}
+          placeholder="blur"
+          className="object-cover"
+          alt=""
+          fill
+        />
+      </div>
+      <div className="absolute left-0 z-1 w-3/4 h-full">
+        <Image src={gradient} placeholder="blur" alt="" fill />
+      </div>
+      <div className="max-w-content m-auto z-2 relative px-5 pt-[100px] pb-[150px]">
+        <blockquote className="text-white leading-normal text-3xl font-bold w-[400px]">
+          <Balancer>{children}</Balancer>
+        </blockquote>
+      </div>
     </div>
-  </Slide>
+  </section>
 );
 
 const TextQuote = ({
