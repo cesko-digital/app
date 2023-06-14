@@ -139,7 +139,7 @@ const Challenges = () => (
       </div>
       <div className="relative">
         <div className="absolute w-[768px] h-[416px]">
-          <Image src={Illustrations.mapa} alt="" />
+          <Image src={Illustrations.map} alt="" />
         </div>
       </div>
     </TwoColumnSlide>
@@ -575,7 +575,7 @@ const SystemicChangeExplainer = () => {
           <ProblemStatement number="03" text="Chybí kompetence" />
           <ProblemStatement number="04" text="Chybí finance" />
           <Image
-            src={Illustrations.kruh}
+            src={Illustrations.circle}
             width={189}
             height={189}
             className="absolute -top-[60px] -right-[95px]"
@@ -587,105 +587,136 @@ const SystemicChangeExplainer = () => {
   );
 };
 
-const SystemicChangePlan = () => (
-  <Fragment>
-    <ImageHeaderSlide image={Photos.hackday}>
-      <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
-      <p>
-        Víme, že žádný systém není možné změnit jednostranně – jde o to
-        koordinovaně sjednotit dosavadní, často individuální snažení a aktivity
-        jednotlivých hráčů v systému tak, aby kýžená změna byla dlouhodobě
-        udržitelná.
-      </p>
-    </ImageHeaderSlide>
+const SystemicChangePlan = () => {
+  const IllustratedPoint = ({
+    image,
+    children,
+  }: {
+    image: StaticImageData;
+    children: ReactNode;
+  }) => (
+    <div className="flex gap-10">
+      <div className="w-[112px] flex-none">
+        <Image src={image} className="object-fit" alt="" />
+      </div>
+      <div className="max-w-prose -mt-5">{children}</div>
+    </div>
+  );
 
-    <section className="bg-pebble mb-20 pt-20 pb-1">
-      <TwoColumnSlide>
-        <div>
-          <H2>Náš plán na období 2024–2027</H2>
+  return (
+    <Fragment>
+      <ImageHeaderSlide image={Photos.hackday}>
+        <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
+        <p>
+          Víme, že žádný systém není možné změnit jednostranně – jde o to
+          koordinovaně sjednotit dosavadní, často individuální snažení a
+          aktivity jednotlivých hráčů v systému tak, aby kýžená změna byla
+          dlouhodobě udržitelná.
+        </p>
+      </ImageHeaderSlide>
+
+      <section className="bg-pebble mb-20 pt-20 pb-1">
+        <TwoColumnSlide>
+          <div>
+            <H2>Náš plán na období 2024–2027</H2>
+            <p>
+              Strategicky se zaměříme na 3 největší příčiny problému. Propojíme
+              klíčové aktéry a podpoříme vznik společné vize, která odolá
+              politickým změnám. Zpopularizujeme konkrétní příklady úspěšných
+              digitálních řešení z Česka i ze zahraničí a vysvětlíme jejich
+              přínos. Dodáme potřebné kompetence k efektivnímu využití
+              digitálních technologií.
+            </p>
+            <p>
+              Jednotlivé aktivity na sebe navazují a propojují jak komunitu, tak
+              i organizace a jednotlivce, kteří mají zásadní vliv na budoucí
+              vývoj digitálních technologií v Česku.
+            </p>
+          </div>
+          <a
+            className="aspect-square bg-white hover:bg-yellow relative flex flex-col overflow-clip p-10 no-underline text-black"
+            href=""
+          >
+            <Image
+              src={Illustrations.map}
+              className="absolute top-20 -right-[200px] opacity-60"
+              alt=""
+            />
+            <h2 className="text-it leading-normal mt-0">
+              Mapa
+              <br />
+              systémové
+              <br />
+              změny
+            </h2>
+            <p className="mt-auto mb-0">
+              Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji
+              v PDF.
+            </p>
+          </a>
+        </TwoColumnSlide>
+      </section>
+
+      <Slide>
+        <IllustratedPoint image={Illustrations.sparks}>
+          <H3>Nadchneme je do společné vize</H3>
           <p>
-            Strategicky se zaměříme na 3 největší příčiny problému. Propojíme
-            klíčové aktéry a podpoříme vznik společné vize, která odolá
-            politickým změnám. Zpopularizujeme konkrétní příklady úspěšných
-            digitálních řešení z Česka i ze zahraničí a vysvětlíme jejich
-            přínos. Dodáme potřebné kompetence k efektivnímu využití digitálních
+            Zaměříme se na klíčové aktéry české společnosti, kteří mají zásadní
+            vliv na rozvoj digitálních technologií v Česku. Vysvětlíme jim
+            přínos sdílené vize, která nastaví jasné směřování a umožní dělat
+            strategicky správná rozhodnutí. Nastolíme společnou debatu klíčových
+            aktérů, která vyústí ve sdílenou vizi, ke které se aktéři formálně
+            zaváží, například formou memoranda.
+          </p>
+          <p>
+            <Em>
+              Náš nejbližší milník: 1/2 2024. Klíčoví aktéři v systému se
+              shodnou na sdílené vizi využívání technologií ve veřejné sféře
+              formou manifestu.
+            </Em>
+          </p>
+        </IllustratedPoint>
+      </Slide>
+      <Slide>
+        <IllustratedPoint image={Illustrations.bubbles}>
+          <H3>Inspirujeme je a dodáme potřebné informace</H3>
+          <p>
+            Poukážeme na dobré příklady praxe digitálních technologií ve veřejné
+            sféře, které měly úctyhodný přínos. Zajistíme, že politické strany
+            (s potenciálem 5+ % v parlamentních volbách) mají ve svých
+            programech digitální technologie. Spustíme osvětovou kampaň
+            zaměřenou na zlepšení postojů lidí k technologiím.
+          </p>
+          <p>
+            <Em>
+              Náš nejbližší milník: 1/5 2025. Digitální technologie jsou
+              nedílnou součástí navrhovaných řešení problémů všech politických
+              stran s potenciálem 5% v parlamentních volbách v roce 2025.
+            </Em>
+          </p>
+        </IllustratedPoint>
+      </Slide>
+      <Slide>
+        <IllustratedPoint image={Illustrations.notepad}>
+          <H3>Naučíme je to</H3>
+          <p>
+            Díky kombinaci podpůrných aktivit, jako jsou školicí programy pro
+            nevládní organizace, poskytování pomoci digitálním projektům nebo
+            školení vlastníků produktů ve veřejném sektoru, dosáhneme větší
+            připravenosti veřejné sféry maximálně využívat digitálních
             technologií.
           </p>
           <p>
-            Jednotlivé aktivity na sebe navazují a propojují jak komunitu, tak i
-            organizace a jednotlivce, kteří mají zásadní vliv na budoucí vývoj
-            digitálních technologií v Česku.
+            <Em>
+              Náš nejbližší milník: 1/9 2023. Otevíráme tréninkové programy na
+              navyšování kompetencí pro veřejnou sféru.
+            </Em>
           </p>
-        </div>
-        <a
-          className="aspect-square bg-white hover:bg-yellow relative flex flex-col overflow-clip p-10 no-underline text-black"
-          href=""
-        >
-          <Image
-            src={Illustrations.mapa}
-            className="absolute top-20 -right-[200px] opacity-60"
-            alt=""
-          />
-          <h2 className="text-it leading-normal mt-0">
-            Mapa
-            <br />
-            systémové
-            <br />
-            změny
-          </h2>
-          <p className="mt-auto mb-0">
-            Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji v
-            PDF.
-          </p>
-        </a>
-      </TwoColumnSlide>
-    </section>
-
-    <Slide>
-      <H3>Nadchneme je do společné vize</H3>
-      <p>
-        Zaměříme se na klíčové aktéry české společnosti, kteří mají zásadní vliv
-        na rozvoj digitálních technologií v Česku. Vysvětlíme jim přínos sdílené
-        vize, která nastaví jasné směřování a umožní dělat strategicky správná
-        rozhodnutí. Nastolíme společnou debatu klíčových aktérů, která vyústí ve
-        sdílenou vizi, ke které se aktéři formálně zaváží, například formou
-        memoranda.
-      </p>
-      <p>
-        Náš nejbližší milník: 1/2 2024. Klíčoví aktéři v systému se shodnou na
-        sdílené vizi využívání technologií ve veřejné sféře formou manifestu.
-      </p>
-    </Slide>
-    <Slide>
-      <H3>Inspirujeme je a dodáme potřebné informace</H3>
-      <p>
-        Poukážeme na dobré příklady praxe digitálních technologií ve veřejné
-        sféře, které měly úctyhodný přínos. Zajistíme, že politické strany (s
-        potenciálem 5+ % v parlamentních volbách) mají ve svých programech
-        digitální technologie. Spustíme osvětovou kampaň zaměřenou na zlepšení
-        postojů lidí k technologiím.
-      </p>
-      <p>
-        Náš nejbližší milník: 1/5 2025. Digitální technologie jsou nedílnou
-        součástí navrhovaných řešení problémů všech politických stran s
-        potenciálem 5% v parlamentních volbách v roce 2025.
-      </p>
-    </Slide>
-    <Slide>
-      <H3>Naučíme je to</H3>
-      <p>
-        Díky kombinaci podpůrných aktivit, jako jsou školicí programy pro
-        nevládní organizace, poskytování pomoci digitálním projektům nebo
-        školení vlastníků produktů ve veřejném sektoru, dosáhneme větší
-        připravenosti veřejné sféry maximálně využívat digitálních technologií.
-      </p>
-      <p>
-        Náš nejbližší milník: 1/9 2023. Otevíráme tréninkové programy na
-        navyšování kompetencí pro veřejnou sféru.
-      </p>
-    </Slide>
-  </Fragment>
-);
+        </IllustratedPoint>
+      </Slide>
+    </Fragment>
+  );
+};
 
 const PledgeSection = () => (
   <Fragment>
@@ -710,7 +741,7 @@ const PledgeSection = () => (
 
     <Slide>
       <div className="grid grid-cols-3">
-        <Image src={Illustrations.kolac} alt="" className="col-start-2" />
+        <Image src={Illustrations.pie} alt="" className="col-start-2" />
       </div>
     </Slide>
 
