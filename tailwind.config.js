@@ -15,6 +15,7 @@ module.exports = {
         it: "#0000FF",
         violet: "CCCCFF",
         yellow: "#FFF6A3",
+        plum: "#080831",
       },
     },
   },
