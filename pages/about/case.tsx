@@ -598,24 +598,49 @@ const SystemicChangePlan = () => (
         udržitelná.
       </p>
     </ImageHeaderSlide>
-    <TwoColumnSlide>
-      <div>
-        <H2>Náš plán na období 2024–2027</H2>
-        <p>
-          Strategicky se zaměříme na 3 největší příčiny problému. Propojíme
-          klíčové aktéry a podpoříme vznik společné vize, která odolá politickým
-          změnám. Zpopularizujeme konkrétní příklady úspěšných digitálních
-          řešení z Česka i ze zahraničí a vysvětlíme jejich přínos. Dodáme
-          potřebné kompetence k efektivnímu využití digitálních technologií.
-        </p>
-        <p>
-          Jednotlivé aktivity na sebe navazují a propojují jak komunitu, tak i
-          organizace a jednotlivce, kteří mají zásadní vliv na budoucí vývoj
-          digitálních technologií v Česku.
-        </p>
-      </div>
-      <div>TBD odkaz na mapu</div>
-    </TwoColumnSlide>
+
+    <section className="bg-pebble mb-20 pt-20 pb-1">
+      <TwoColumnSlide>
+        <div>
+          <H2>Náš plán na období 2024–2027</H2>
+          <p>
+            Strategicky se zaměříme na 3 největší příčiny problému. Propojíme
+            klíčové aktéry a podpoříme vznik společné vize, která odolá
+            politickým změnám. Zpopularizujeme konkrétní příklady úspěšných
+            digitálních řešení z Česka i ze zahraničí a vysvětlíme jejich
+            přínos. Dodáme potřebné kompetence k efektivnímu využití digitálních
+            technologií.
+          </p>
+          <p>
+            Jednotlivé aktivity na sebe navazují a propojují jak komunitu, tak i
+            organizace a jednotlivce, kteří mají zásadní vliv na budoucí vývoj
+            digitálních technologií v Česku.
+          </p>
+        </div>
+        <a
+          className="aspect-square bg-white hover:bg-yellow relative flex flex-col overflow-clip p-10 no-underline text-black"
+          href=""
+        >
+          <Image
+            src={Illustrations.mapa}
+            className="absolute top-20 -right-[200px] opacity-60"
+            alt=""
+          />
+          <h2 className="text-it leading-normal mt-0">
+            Mapa
+            <br />
+            systémové
+            <br />
+            změny
+          </h2>
+          <p className="mt-auto mb-0">
+            Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji v
+            PDF.
+          </p>
+        </a>
+      </TwoColumnSlide>
+    </section>
+
     <Slide>
       <H3>Nadchneme je do společné vize</H3>
       <p>
