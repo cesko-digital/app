@@ -10,6 +10,7 @@ import nezisk2 from "app/about/case/photos/nezisk2.jpg";
 import hackday from "app/about/case/photos/hackday.jpg";
 import panel from "app/about/case/photos/panel.jpg";
 import kolac from "app/about/case/kolac.png";
+import mapa from "app/about/case/mapa.png";
 import mariana from "app/about/case/quotes/mariana.jpg";
 import martha from "app/about/case/quotes/martha.jpg";
 import oliver from "app/about/case/quotes/oliver.jpg";
@@ -103,6 +104,7 @@ const Challenges = () => (
         source="https://www.seznamzpravy.cz/clanek/domaci-zivot-v-cesku-ve-fronte-pred-uradem-prace-na-prispevek-cekaji-mesice-a-urednici-nekomunikuji-222350"
       />
     </TwoColumnSlide>
+
     <ImageQuoteSlide image={psychiatrie}>
       Katastrofální stav dětské psychiatrie má zlepšit telemedicína. Psychiatrům
       je ale v průmětu 64 let.
@@ -122,6 +124,7 @@ const Challenges = () => (
         source="https://www.zdravotnickydenik.cz/2023/01/novela-zakona-o-zdravotnich-sluzbach-pod-palbou-kritiky-mzd-obdrzelo-zasadni-pripominky-k-uprave-telemediciny-i-vedeni-elektronicke-dokumentace/"
       />
     </TwoColumnSlide>
+
     <ImageQuoteSlide image={graf}>
       495 milionů korun šlo během pandemie na informační podporu, která podle
       analýzy nebyla využita. Vytvořené řešení se už nepoužije.
@@ -149,21 +152,34 @@ const Challenges = () => (
         source="https://www.nku.cz/assets/publikace-a-dokumenty/vyrocni-zprava/vyrocni-zprava-nku-2022.pdf"
       />
     </TwoColumnSlide>
-    <Slide>
-      <Head2>
-        Brzdí nás to všechny. Od jednotlivce, přes firmy až po celý stát.
-      </Head2>
-      <p>
-        Zastarávání v oblasti digitálních technologií má negativní vliv na celou
-        společnost. Zvyšující se digitální propast způsobuje sociální problémy,
-        snižuje konkurenceschopnost firem, brzdí pokrok státního aparátu.
-      </p>
-      <p>
-        Nesrozumitelnost procesů ve veřejné sféře a nevyužití digitálních
-        technologií <em>zpomaluje celou společnost</em>.
-      </p>
-      <p>Pokud s tím něco neuděláme, budeme dál zaostávat.</p>
-    </Slide>
+
+    <hr className="mb-20" />
+
+    <TwoColumnSlide>
+      <div className="mb-20">
+        <H2>
+          Brzdí nás to všechny. Od jednotlivce přes firmy až po celý stát.
+        </H2>
+        <p>
+          Zastarávání v oblasti digitálních technologií má negativní vliv na
+          celou společnost. Zvyšující se digitální propast způsobuje sociální
+          problémy, snižuje konkurenceschopnost firem, brzdí pokrok státního
+          aparátu.
+        </p>
+        <p>
+          Nesrozumitelnost procesů ve veřejné sféře a nevyužití digitálních
+          technologií <Em>zpomaluje celou společnost</Em>.
+        </p>
+        <p>
+          <Em>Pokud s tím něco neuděláme, budeme dál zaostávat.</Em>
+        </p>
+      </div>
+      <div className="relative">
+        <div className="absolute w-[768px] h-[416px]">
+          <Image src={mapa} width={1506} height={832} alt="" />
+        </div>
+      </div>
+    </TwoColumnSlide>
   </Fragment>
 );
 
@@ -181,7 +197,7 @@ const AboutCeskoDigital = () => {
       <div className="mb-7">
         <Image src={image} alt="" width={100} height={100} />
       </div>
-      <Head4>{name}</Head4>
+      <H4>{name}</H4>
       {children}
     </div>
   );
@@ -189,7 +205,7 @@ const AboutCeskoDigital = () => {
   return (
     <Fragment>
       <ImageHeaderSlide image={meetup}>
-        <Head2>Skrz 1 a 0 měníme Česko k lepšímu</Head2>
+        <H2>Skrz 1 a 0 měníme Česko k lepšímu</H2>
         <p>
           Říkali nám, že jsme naivní. My ale už roky dokazujeme, že změna je
           možná. Trpělivě krok po kroku učíme neziskové organizace a státní
@@ -208,10 +224,10 @@ const AboutCeskoDigital = () => {
       <section className="bg-pebble py-20 mb-20">
         <div className="max-w-content m-auto px-5 text-xl">
           <div className="text-center mb-20">
-            <Head3>
+            <H3>
               V pandemii i na začátku války Česko.Digital pomohlo v těch
               největších krizích
-            </Head3>
+            </H3>
           </div>
           <div className="grid grid-cols-4 gap-7">
             <ProjectCard name="Covid portál" image={CovidPortal}>
@@ -259,19 +275,19 @@ const AboutCeskoDigital = () => {
       <Slide>
         <div className="grid grid-cols-4 gap-7 text-center">
           <div>
-            <Head3>20+ digitálních řešení</Head3>
+            <H3>20+ digitálních řešení</H3>
             <p className="text-base">vytvořených v komunitě</p>
           </div>
           <div>
-            <Head3>{communitySize}+ dobrovolníků</Head3>
+            <H3>{communitySize}+ dobrovolníků</H3>
             <p className="text-base">registrovaných v komunitě</p>
           </div>
           <div>
-            <Head3>252 000+ hodin</Head3>
+            <H3>252 000+ hodin</H3>
             <p className="text-base">pro-bono dobrovolnické práce</p>
           </div>
           <div>
-            <Head3>4 000 000+ lidí</Head3>
+            <H3>4 000 000+ lidí</H3>
             <p className="text-base">oslovila naše digitální řešení</p>
           </div>
         </div>
@@ -279,18 +295,18 @@ const AboutCeskoDigital = () => {
 
       <Slide>
         <div className="text-center mb-20">
-          <Head2>
+          <H2>
             Na začátku nadšenci do technologií. Po 4 letech respektovaným
             partnerem pro úředníky i politiky.
-          </Head2>
+          </H2>
         </div>
         <Image src={panel} alt="" className="mb-20" />
         <div className="grid grid-cols-3 gap-7">
           <div>
-            <Head4>
+            <H4>
               Jsme zástupci občanské společnosti v Radě vlády pro informační
               společnost (RVIS)
-            </Head4>
+            </H4>
             <p>
               Rada je stálý řídicí, poradní, iniciační a koordinační orgán vlády
               Česka pro rozvoj digitálních služeb ve veřejné správě, jsme
@@ -299,10 +315,10 @@ const AboutCeskoDigital = () => {
             </p>
           </div>
           <div>
-            <Head4>
+            <H4>
               Spojili jsme neziskovky se zájmem na digitalizaci státu v jeden
               hlas – platforma Společně a digitálně
-            </Head4>
+            </H4>
             <p>
               Platforma{" "}
               <a href="https://spolecneadigitalne.cz" className="text-black">
@@ -315,9 +331,9 @@ const AboutCeskoDigital = () => {
             </p>
           </div>
           <div>
-            <Head4>
+            <H4>
               Pomáhali jsme se vznikem Digitální informační agentury (DIA)
-            </Head4>
+            </H4>
             <p>
               V Česku jsme po vzoru Velké Británie a Dánska pomohli prosadit
               vznik{" "}
@@ -343,10 +359,10 @@ const SystemicChangeExplainer = () => {
   return (
     <Fragment>
       <ImageHeaderSlide image={pracak2}>
-        <Head2>
+        <H2>
           Dílčí projekty nestačí. Pokud chceme problém skutečně vyřešit, musíme
           na to jít systémově
-        </Head2>
+        </H2>
         <p>
           Díky 4 letům práce na individuálních projektech jsme si uvědomili, že
           za veřejnou sféru touto cestou většinou jen „hasíme požáry“: nechceme,
@@ -374,11 +390,11 @@ const SystemicChangeExplainer = () => {
               </p>
             </div>
             <div className="p-20 pb-10">
-              <Head2>
+              <H2>
                 Veřejná sféra* neumí využívat potenciál technologií k řešení
                 celospolečenských problémů a zhoršuje tak podmínky pro život
                 lidí v České republice.
-              </Head2>
+              </H2>
             </div>
             <p className="p-20 pt-0">
               <Balancer>
@@ -392,7 +408,7 @@ const SystemicChangeExplainer = () => {
       </div>
 
       <Slide>
-        <Head2>Neděje se to jen tak. Známe všechny bariéry.</Head2>
+        <H2>Neděje se to jen tak. Známe všechny bariéry.</H2>
         <p>
           Z dlouhodobé zkušenosti, z dat a průzkumů z Česka i zahraničí jsme
           identifikovali 4 hlavní bariéry veřejné sféry: chybí sdílená vize,
@@ -403,7 +419,7 @@ const SystemicChangeExplainer = () => {
       <TwoColumnSlide>
         <div>
           <BlueHeading>01</BlueHeading>
-          <Head2>Chybí sdílená vize</Head2>
+          <H2>Chybí sdílená vize</H2>
           <p>
             Sdílená vize znamená, že lidé v veřejné správě i mimo ni mají
             společnou představu o tom, kam společně směřují a co chtějí
@@ -439,7 +455,7 @@ const SystemicChangeExplainer = () => {
       <TwoColumnSlide>
         <div>
           <BlueHeading>02</BlueHeading>
-          <Head2>Chybí informace</Head2>
+          <H2>Chybí informace</H2>
           <p>
             Mít všechny potřebné informace znamená mít jednoduše dostupná a
             relevantní data, znalosti k interpretaci dat a jejich praktickému
@@ -476,7 +492,7 @@ const SystemicChangeExplainer = () => {
       <TwoColumnSlide>
         <div>
           <BlueHeading>03</BlueHeading>
-          <Head2>Chybí kompetence</Head2>
+          <H2>Chybí kompetence</H2>
           <p>
             V kontextu technologií ve veřejném sektoru se kompetencemi rozumí
             znalosti, dovednosti a schopnosti, které jsou nezbytné pro lidi k
@@ -520,7 +536,7 @@ const SystemicChangeExplainer = () => {
       <TwoColumnSlide>
         <div>
           <BlueHeading>04</BlueHeading>
-          <Head2>Chybí finance</Head2>
+          <H2>Chybí finance</H2>
           <p>
             Tato příčina úzce souvisí s předcházející – veřejná sféra typicky
             není schopna přilákat top talent, mj. kvůli neschopnosti konkurovat
@@ -550,10 +566,10 @@ const SystemicChangeExplainer = () => {
 
       <TwoColumnSlide>
         <div>
-          <Head2>
+          <H2>
             Zaostáváme každým dnem, a to na několika frontách. Pokud nezměníme
             směr, kterým se technologie ubírají, bude se situace dále zhoršovat.
-          </Head2>
+          </H2>
           <p>
             Bariéry, kvůli kterým Česko zaostává v efektivním používání
             technologií jako chybějící vize, kompetence, informace a finance,
@@ -577,7 +593,7 @@ const SystemicChangeExplainer = () => {
 const SystemicChangePlan = () => (
   <Fragment>
     <ImageHeaderSlide image={hackday}>
-      <Head2>Řešíme to systémově. Máme konkrétní plán, jak na to.</Head2>
+      <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
       <p>
         Víme, že žádný systém není možné změnit jednostranně – jde o to
         koordinovaně sjednotit dosavadní, často individuální snažení a aktivity
@@ -587,7 +603,7 @@ const SystemicChangePlan = () => (
     </ImageHeaderSlide>
     <TwoColumnSlide>
       <div>
-        <Head2>Náš plán na období 2024–2027</Head2>
+        <H2>Náš plán na období 2024–2027</H2>
         <p>
           Strategicky se zaměříme na 3 největší příčiny problému. Propojíme
           klíčové aktéry a podpoříme vznik společné vize, která odolá politickým
@@ -604,7 +620,7 @@ const SystemicChangePlan = () => (
       <div>TBD odkaz na mapu</div>
     </TwoColumnSlide>
     <Slide>
-      <Head3>Nadchneme je do společné vize</Head3>
+      <H3>Nadchneme je do společné vize</H3>
       <p>
         Zaměříme se na klíčové aktéry české společnosti, kteří mají zásadní vliv
         na rozvoj digitálních technologií v Česku. Vysvětlíme jim přínos sdílené
@@ -619,7 +635,7 @@ const SystemicChangePlan = () => (
       </p>
     </Slide>
     <Slide>
-      <Head3>Inspirujeme je a dodáme potřebné informace</Head3>
+      <H3>Inspirujeme je a dodáme potřebné informace</H3>
       <p>
         Poukážeme na dobré příklady praxe digitálních technologií ve veřejné
         sféře, které měly úctyhodný přínos. Zajistíme, že politické strany (s
@@ -634,7 +650,7 @@ const SystemicChangePlan = () => (
       </p>
     </Slide>
     <Slide>
-      <Head3>Naučíme je to</Head3>
+      <H3>Naučíme je to</H3>
       <p>
         Díky kombinaci podpůrných aktivit, jako jsou školicí programy pro
         nevládní organizace, poskytování pomoci digitálním projektům nebo
@@ -652,7 +668,7 @@ const SystemicChangePlan = () => (
 const PledgeSection = () => (
   <Fragment>
     <ImageHeaderSlide image={nezisk}>
-      <Head2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</Head2>
+      <H2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</H2>
       <p>Žádaná podpora: 25 mio. Kč / rok na období 2024–2027</p>
       <p>
         Nežádáme peníze na provoz, ale na vyřešení problému. Jakmile ho
@@ -677,10 +693,10 @@ const PledgeSection = () => (
     </Slide>
 
     <Slide>
-      <Head2>Vaše podpora nám konkrétně pomůže</Head2>
+      <H2>Vaše podpora nám konkrétně pomůže</H2>
       <div className="grid grid-cols-2 gap-7">
         <div>
-          <Head3>Poskytnout školení a podporu</Head3>
+          <H3>Poskytnout školení a podporu</H3>
           <p>
             Díky vám budeme moci poskytnout expertizu a know-how tam, kde je
             nejvíc potřeba – projektům a organizacím řešící palčivé společenské
@@ -690,7 +706,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Rozvíjet expertní infrastrukturu</Head3>
+          <H3>Rozvíjet expertní infrastrukturu</H3>
           <p>
             Úspěch Česko.Digital by nebyl možný bez komunity expertů, kteří se
             snadno propojují s veřejným sektorem. Právě rozvoj komunity, která
@@ -701,7 +717,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Vyvinout technické nástroje a zdroje</Head3>
+          <H3>Vyvinout technické nástroje a zdroje</H3>
           <p>
             Vaše podpora nám pomůže vyvinout technické nástroje a zdroje, které
             mohou organizace veřejné sféry efektivně využít v rámci svého
@@ -710,7 +726,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Prosadit systémovou změnu</Head3>
+          <H3>Prosadit systémovou změnu</H3>
           <p>
             Vaší podporu využijeme pro dlouhodobou a udržitelnou změnu, která
             povede k efektivnímu využívání digitálních technologií na úrovni
@@ -723,9 +739,9 @@ const PledgeSection = () => (
     </Slide>
 
     <Slide>
-      <Head2>
+      <H2>
         Díky efektivnímu používání technologií lepší život v Česku pro každého.
-      </Head2>
+      </H2>
       <Image src={pracak2} alt="" />
       <p>
         Efektivní používání technologie nám umožní jednoduché a opakované úkoly
@@ -742,7 +758,7 @@ const PledgeSection = () => (
     <Slide>
       <div className="grid grid-cols-3 gap-7">
         <div>
-          <Head3>Finanční zodpovědnost</Head3>
+          <H3>Finanční zodpovědnost</H3>
           <p>
             Partnerstvím s Česko.Digital podpoříte desítky projektů s dalšími
             nevládními organizacemi, které ročně realizujeme. Ve všem, co
@@ -753,7 +769,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Finanční udržitelnost</Head3>
+          <H3>Finanční udržitelnost</H3>
           <p>
             Investice do Česko.Digital je investicí do rozvoje, nikoliv do
             nákladů. Komunita stojí na expertním dobrovolnictví,v rámci jehož si
@@ -764,7 +780,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Spolupráce ušitá na míru</Head3>
+          <H3>Spolupráce ušitá na míru</H3>
           <p>
             Partneři a filantropové mohou mít různé preference, pokud jde o
             financování, jako je poskytnutí jednorázového daru nebo poskytování
@@ -778,7 +794,7 @@ const PledgeSection = () => (
     </Slide>
 
     <Slide>
-      <Head2>Každý svým dílem přispívá již několik let</Head2>
+      <H2>Každý svým dílem přispívá již několik let</H2>
       <div className="grid grid-cols-5 gap-1 bg-pebble">
         <Image src={Aswa} alt="" />
         <Image src={Avast} alt="" />
@@ -804,7 +820,7 @@ const PledgeSection = () => (
     </Slide>
 
     <ImageHeaderSlide image={nezisk2}>
-      <Head2>Pojďme měnit Česko k lepšímu. Potřebuje to.</Head2>
+      <H2>Pojďme měnit Česko k lepšímu. Potřebuje to.</H2>
       <p>
         Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
         toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
@@ -818,14 +834,14 @@ const PledgeSection = () => (
     <Slide>
       <div className="grid grid-cols-3 gap-7">
         <div>
-          <Head3>Vyžádejte si nezávazně více informací</Head3>
+          <H3>Vyžádejte si nezávazně více informací</H3>
           <p>
             Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
             organizaci, její fungování a plány.
           </p>
         </div>
         <div>
-          <Head3>Sejděte se s naším COO</Head3>
+          <H3>Sejděte se s naším COO</H3>
           <p>
             <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a> vede
             kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše otázky.
@@ -833,7 +849,7 @@ const PledgeSection = () => (
           </p>
         </div>
         <div>
-          <Head3>Máte zájem? Jak přispět a co dál</Head3>
+          <H3>Máte zájem? Jak přispět a co dál</H3>
           <p>
             Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
             kapacity, abychom společně změnili Česko k lepšímu.
@@ -850,7 +866,7 @@ const PledgeSection = () => (
 const FooterSection = () => (
   <Slide>
     <div className="text-center mb-20">
-      <Head2>Chci si to víc prostudovat</Head2>
+      <H2>Chci si to víc prostudovat</H2>
     </div>
     <ul className="grid grid-cols-2 gap-7 list-none px-20">
       <li>
@@ -968,22 +984,28 @@ const TextQuote = ({
 // Typo
 //
 
-const Head2 = ({ children }: { children: ReactNode }) => (
+type Tag = ({ children }: { children: ReactNode }) => JSX.Element;
+
+const H2: Tag = ({ children }) => (
   <h2 className="leading-normal">
     <Balancer>{children}</Balancer>
   </h2>
 );
 
-const Head3 = ({ children }: { children: ReactNode }) => (
+const H3: Tag = ({ children }) => (
   <h3 className="leading-normal font-bold">
     <Balancer>{children}</Balancer>
   </h3>
 );
 
-const Head4 = ({ children }: { children: ReactNode }) => (
+const H4: Tag = ({ children }) => (
   <h4 className="leading-normal font-bold">
     <Balancer>{children}</Balancer>
   </h4>
+);
+
+const Em: Tag = ({ children }) => (
+  <em className="not-italic font-bold">{children}</em>
 );
 
 export default CasePage;
