@@ -11,6 +11,7 @@ import hackday from "app/about/case/photos/hackday.jpg";
 import panel from "app/about/case/photos/panel.jpg";
 import kolac from "app/about/case/kolac.png";
 import mapa from "app/about/case/mapa.png";
+import kruh from "app/about/case/kruh.png";
 import mariana from "app/about/case/quotes/mariana.jpg";
 import martha from "app/about/case/quotes/martha.jpg";
 import oliver from "app/about/case/quotes/oliver.jpg";
@@ -358,6 +359,18 @@ const SystemicChangeExplainer = () => {
     <p className="text-it text-5xl font-bold mt-0 -mb-4">{children}</p>
   );
 
+  const ProblemStatement = ({
+    number,
+    text,
+  }: {
+    number: string;
+    text: string;
+  }) => (
+    <p className="text-2xl font-bold">
+      <span className="text-it mr-4">{number}</span> {text}
+    </p>
+  );
+
   return (
     <Fragment>
       <ImageHeaderSlide image={pracak2}>
@@ -591,7 +604,19 @@ const SystemicChangeExplainer = () => {
             technologií věříme tomu, že je správný čas na systémovou změnu.
           </p>
         </div>
-        <div>TBD rekapitulace problémů</div>
+        <div className="bg-pebble p-10 flex flex-col gap-5 relative">
+          <ProblemStatement number="01" text="Chybí sdílená vize" />
+          <ProblemStatement number="02" text="Chybí informace" />
+          <ProblemStatement number="03" text="Chybí kompetence" />
+          <ProblemStatement number="04" text="Chybí finance" />
+          <Image
+            src={kruh}
+            width={189}
+            height={189}
+            className="absolute -top-[60px] -right-[95px]"
+            alt=""
+          />
+        </div>
       </TwoColumnSlide>
     </Fragment>
   );
