@@ -31,7 +31,7 @@ const Intro = () => (
       alt=""
     />
     <h1 className="text-[44px] font-bold leading-snug mb-[140px]">
-      Změňme spolu Česko k lepšímu
+      Změňme spolu Česko k lepšímu
     </h1>
     <div className="max-w-prose font-semibold leading-relaxed pb-10">
       <Perex>
@@ -125,7 +125,7 @@ const Challenges = () => (
     <hr className="mb-20" />
 
     <TwoColumnSlide>
-      <div className="mb-20">
+      <div className="mb-20 max-md:order-2">
         <H2>
           Brzdí nás to všechny. Od jednotlivce přes firmy až po celý stát.
         </H2>
@@ -144,7 +144,7 @@ const Challenges = () => (
         </p>
       </div>
       <div className="relative">
-        <div className="absolute w-[768px] h-[416px]">
+        <div className="md:absolute md:w-[768px] md:h-[416px]">
           <Image src={Illustrations.map} alt="" />
         </div>
       </div>
@@ -162,9 +162,15 @@ const AboutCeskoDigital = () => {
     image: StaticImageData;
     children: ReactNode;
   }) => (
-    <div>
+    <div className="max-md:max-w-[40ex] max-md:m-auto max-md:text-center">
       <div className="mb-7">
-        <Image src={image} alt="" width={100} height={100} />
+        <Image
+          src={image}
+          className="max-md:m-auto"
+          width={100}
+          height={100}
+          alt=""
+        />
       </div>
       <H4>{name}</H4>
       {children}
@@ -198,7 +204,7 @@ const AboutCeskoDigital = () => {
               největších krizích
             </H3>
           </div>
-          <div className="grid grid-cols-4 gap-7">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-7">
             <ProjectCard name="Covid portál" image={ProjectLogos.CovidPortal}>
               <p>
                 Informace o vládních opatřeních v pandemii přehledně na jednom
@@ -245,7 +251,7 @@ const AboutCeskoDigital = () => {
       </section>
 
       <Slide>
-        <div className="grid grid-cols-4 gap-7 text-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-7 text-center">
           <div>
             <H3>20+ digitálních řešení</H3>
             <p className="text-base">vytvořených v komunitě</p>
@@ -275,7 +281,7 @@ const AboutCeskoDigital = () => {
           </H2>
         </div>
         <Image src={Photos.panel} alt="" className="mb-20" />
-        <div className="grid grid-cols-3 gap-7">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
           <div>
             <H4>
               Jsme zástupci občanské společnosti v Radě vlády pro informační
@@ -617,7 +623,7 @@ const SystemicChangePlan = () => {
     image: StaticImageData;
     children: ReactNode;
   }) => (
-    <div className="flex gap-10">
+    <div className="flex max-md:flex-col gap-10">
       <div className="w-[112px] flex-none">
         <Image src={image} className="object-fit" alt="" />
       </div>
@@ -770,8 +776,8 @@ const PledgeSection = () => {
       </ImageHeaderSlide>
 
       <Slide>
-        <div className="grid grid-cols-3">
-          <Image src={Illustrations.pie} alt="" className="col-start-2" />
+        <div className="grid md:grid-cols-3">
+          <Image src={Illustrations.pie} className="md:col-start-2" alt="" />
         </div>
       </Slide>
 
@@ -780,7 +786,7 @@ const PledgeSection = () => {
           <div className="text-center mb-20">
             <H2>Vaše podpora nám konkrétně pomůže</H2>
           </div>
-          <div className="grid grid-cols-2 gap-7">
+          <div className="grid md:grid-cols-2 gap-7">
             <BulletSection>
               <H3>Poskytnout školení a podporu</H3>
               <p>
@@ -828,7 +834,7 @@ const PledgeSection = () => {
       </section>
 
       <Slide>
-        <div className="my-20 pt-10 max-w-prose m-auto">
+        <div className="my-20 max-w-prose m-auto">
           <H2>
             Díky efektivnímu používání technologií lepší život v Česku pro
             každého.
@@ -836,7 +842,7 @@ const PledgeSection = () => {
         </div>
         <Image
           src={Illustrations.circle}
-          className="absolute -right-[100px] top-0"
+          className="absolute w-[200px] -right-[70px] top-[100px]"
           alt=""
         />
         <Image src={Photos.pracak2} className="mb-20" alt="" />
@@ -854,7 +860,7 @@ const PledgeSection = () => {
 
       <Slide>
         <hr className="mb-20" />
-        <div className="grid grid-cols-3 gap-7 pb-20">
+        <div className="grid md:grid-cols-3 gap-7 pb-20">
           <div>
             <H3>Finanční zodpovědnost</H3>
             <p>
@@ -898,7 +904,7 @@ const PledgeSection = () => {
           <H2>Každý svým dílem přispívá již několik let</H2>
         </div>
         <div className="pb-20">
-          <div className="grid grid-cols-5 gap-1 bg-pebble">
+          <div className="grid max-md:grid-cols-3 md:grid-cols-5 gap-1 bg-pebble">
             <Image src={PartnerLogos.Aswa} alt="" />
             <Image src={PartnerLogos.Avast} alt="" />
             <Image src={PartnerLogos.BankID} alt="" />
@@ -936,20 +942,16 @@ const PledgeSection = () => {
       </ImageHeaderSlide>
 
       <Slide>
-        <div className="grid grid-cols-3 gap-7">
+        <div className="grid md:grid-cols-3 gap-7">
           <div>
-            <div className="h-[3em]">
-              <H3>Vyžádejte si nezávazně více informací</H3>
-            </div>
+            <H3>Vyžádejte si nezávazně více informací</H3>
             <p>
               Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
               organizaci, její fungování a plány.
             </p>
           </div>
           <div>
-            <div className="h-[3em]">
-              <H3>Sejděte se s naším COO</H3>
-            </div>
+            <H3>Sejděte se s naším COO</H3>
             <p>
               <a
                 href="https://www.linkedin.com/in/jankotara/"
@@ -962,9 +964,7 @@ const PledgeSection = () => {
             </p>
           </div>
           <div>
-            <div className="h-[3em]">
-              <H3>Máte zájem? Jak přispět a co dál</H3>
-            </div>
+            <H3>Máte zájem? Jak přispět a co dál</H3>
             <p>
               Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
               kapacity, abychom společně změnili Česko k lepšímu.
@@ -995,10 +995,10 @@ const FooterSection = () => {
   return (
     <section className="bg-pebble pt-20 pb-20">
       <Slide>
-        <div className="text-center mb-20">
+        <div className="max-md:pl-20 md:text-center mb-20">
           <H2>Chci si to víc prostudovat</H2>
         </div>
-        <ul className="grid grid-cols-2 gap-7 list-none px-20">
+        <ul className="grid md:grid-cols-2 gap-7 list-none px-20">
           {Object.entries(links).map(([label, url]) => (
             <li key={label}>
               → 
@@ -1033,14 +1033,14 @@ const ImageHeaderSlide = ({
   <section>
     <Image src={image} alt="" className="w-full z-0 relative" />
     <div className="max-w-content m-auto text-xl px-20 pb-20 pt-10 bg-white -mt-[200px] relative z-20">
-      {children}
+      <div className="max-w-prose m-auto">{children}</div>
     </div>
   </section>
 );
 
 const TwoColumnSlide = ({ children }: { children: ReactNode }) => (
   <Slide>
-    <div className="grid grid-cols-2 gap-20">{children}</div>
+    <div className="grid md:grid-cols-2 gap-20">{children}</div>
   </Slide>
 );
 
@@ -1050,29 +1050,47 @@ const ImageQuoteSlide = ({
 }: {
   image: StaticImageData;
   children: React.ReactNode;
-}) => (
-  <section className="mb-20 overflow-hidden">
-    <div className="w-full relative">
-      <div className="absolute right-0 z-0 w-3/4 h-full">
-        <Image
-          src={image}
-          placeholder="blur"
-          className="object-cover"
-          alt=""
-          fill
-        />
+}) => {
+  const wideVersion = (
+    <section className="mb-20 overflow-hidden">
+      <div className="w-full relative">
+        <div className="absolute right-0 z-0 w-3/4 h-full">
+          <Image
+            src={image}
+            placeholder="blur"
+            className="object-cover"
+            alt=""
+            fill
+          />
+        </div>
+        <div className="absolute left-0 z-1 w-3/4 h-full">
+          <Image src={Illustrations.gradient} placeholder="blur" alt="" fill />
+        </div>
+        <div className="max-w-content m-auto z-2 relative px-5 pt-[100px] pb-[150px]">
+          <blockquote className="text-white leading-normal text-3xl font-bold w-[400px]">
+            <Balancer>{children}</Balancer>
+          </blockquote>
+        </div>
       </div>
-      <div className="absolute left-0 z-1 w-3/4 h-full">
-        <Image src={Illustrations.gradient} placeholder="blur" alt="" fill />
-      </div>
-      <div className="max-w-content m-auto z-2 relative px-5 pt-[100px] pb-[150px]">
-        <blockquote className="text-white leading-normal text-3xl font-bold w-[400px]">
-          <Balancer>{children}</Balancer>
-        </blockquote>
-      </div>
+    </section>
+  );
+
+  const narrowVersion = (
+    <section className="mb-20">
+      <Image src={image} placeholder="blur" alt="" />
+      <blockquote className="leading-normal text-3xl font-bold p-5 mt-10">
+        {children}
+      </blockquote>
+    </section>
+  );
+
+  return (
+    <div>
+      <div className="hidden md:block">{wideVersion}</div>
+      <div className="block md:hidden">{narrowVersion}</div>
     </div>
-  </section>
-);
+  );
+};
 
 const TextQuote = ({
   quote,
