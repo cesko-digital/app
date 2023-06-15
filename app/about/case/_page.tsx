@@ -284,8 +284,8 @@ const AboutCeskoDigital = () => {
             <p>
               Rada je stálý řídicí, poradní, iniciační a koordinační orgán vlády
               Česka pro rozvoj digitálních služeb ve veřejné správě, jsme
-              součástí předsednictva jako jediní zástupci akademické́ sféry a
-              občanské́ společnosti.
+              součástí předsednictva jako jediní zástupci akademické sféry a
+              občanské společnosti.
             </p>
           </div>
           <div>
