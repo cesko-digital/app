@@ -830,7 +830,8 @@ const PledgeSection = () => {
       </Slide>
 
       <Slide>
-        <div className="grid grid-cols-3 gap-7">
+        <hr className="mb-20" />
+        <div className="grid grid-cols-3 gap-7 pb-20">
           <div>
             <H3>Finanční zodpovědnost</H3>
             <p>
@@ -870,28 +871,32 @@ const PledgeSection = () => {
       </Slide>
 
       <Slide>
-        <H2>Každý svým dílem přispívá již několik let</H2>
-        <div className="grid grid-cols-5 gap-1 bg-pebble">
-          <Image src={PartnerLogos.Aswa} alt="" />
-          <Image src={PartnerLogos.Avast} alt="" />
-          <Image src={PartnerLogos.BankID} alt="" />
-          <Image src={PartnerLogos.Deloitte} alt="" />
-          <Image src={PartnerLogos.Fakturoid} alt="" />
-          <Image src={PartnerLogos.FIT} alt="" />
-          <Image src={PartnerLogos.Google} alt="" />
-          <Image src={PartnerLogos.H1} alt="" />
-          <Image src={PartnerLogos.Livesport} alt="" />
-          <Image src={PartnerLogos.Mapotic} alt="" />
-          <Image src={PartnerLogos.NPI} alt="" />
-          <Image src={PartnerLogos.OpenContent} alt="" />
-          <Image src={PartnerLogos.Opero} alt="" />
-          <Image src={PartnerLogos.OSF} alt="" />
-          <Image src={PartnerLogos.PaleFire} alt="" />
-          <Image src={PartnerLogos.PPF} alt="" />
-          <Image src={PartnerLogos.Praha} alt="" />
-          <Image src={PartnerLogos.Principal} alt="" />
-          <Image src={PartnerLogos.Rekonstrukce} alt="" />
-          <Image src={PartnerLogos.SolidPixels} alt="" />
+        <div className="text-center mb-20">
+          <H2>Každý svým dílem přispívá již několik let</H2>
+        </div>
+        <div className="pb-20">
+          <div className="grid grid-cols-5 gap-1 bg-pebble">
+            <Image src={PartnerLogos.Aswa} alt="" />
+            <Image src={PartnerLogos.Avast} alt="" />
+            <Image src={PartnerLogos.BankID} alt="" />
+            <Image src={PartnerLogos.Deloitte} alt="" />
+            <Image src={PartnerLogos.Fakturoid} alt="" />
+            <Image src={PartnerLogos.FIT} alt="" />
+            <Image src={PartnerLogos.Google} alt="" />
+            <Image src={PartnerLogos.H1} alt="" />
+            <Image src={PartnerLogos.Livesport} alt="" />
+            <Image src={PartnerLogos.Mapotic} alt="" />
+            <Image src={PartnerLogos.NPI} alt="" />
+            <Image src={PartnerLogos.OpenContent} alt="" />
+            <Image src={PartnerLogos.Opero} alt="" />
+            <Image src={PartnerLogos.OSF} alt="" />
+            <Image src={PartnerLogos.PaleFire} alt="" />
+            <Image src={PartnerLogos.PPF} alt="" />
+            <Image src={PartnerLogos.Praha} alt="" />
+            <Image src={PartnerLogos.Principal} alt="" />
+            <Image src={PartnerLogos.Rekonstrukce} alt="" />
+            <Image src={PartnerLogos.SolidPixels} alt="" />
+          </div>
         </div>
       </Slide>
 
