@@ -915,22 +915,33 @@ const PledgeSection = () => {
       <Slide>
         <div className="grid grid-cols-3 gap-7">
           <div>
-            <H3>Vyžádejte si nezávazně více informací</H3>
+            <div className="h-[3em]">
+              <H3>Vyžádejte si nezávazně více informací</H3>
+            </div>
             <p>
               Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
               organizaci, její fungování a plány.
             </p>
           </div>
           <div>
-            <H3>Sejděte se s naším COO</H3>
+            <div className="h-[3em]">
+              <H3>Sejděte se s naším COO</H3>
+            </div>
             <p>
-              <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a>{" "}
-              vede kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše
+              <a
+                href="https://www.linkedin.com/in/jankotara/"
+                className="text-black"
+              >
+                Jan Kotara
+              </a>{" "}
+              vede kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše
               otázky. Domluvte si schůzku.
             </p>
           </div>
           <div>
-            <H3>Máte zájem? Jak přispět a co dál</H3>
+            <div className="h-[3em]">
+              <H3>Máte zájem? Jak přispět a co dál</H3>
+            </div>
             <p>
               Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
               kapacity, abychom společně změnili Česko k lepšímu.
@@ -945,39 +956,38 @@ const PledgeSection = () => {
   );
 };
 
-const FooterSection = () => (
-  <Slide>
-    <div className="text-center mb-20">
-      <H2>Chci si to víc prostudovat</H2>
-    </div>
-    <ul className="grid grid-cols-2 gap-7 list-none px-20">
-      <li>
-        <a href="https://data.cesko.digital/vyrocni-zpravy/impact-report-2022.pdf">
-          Impact Report 2019–22
-        </a>
-      </li>
-      <li>
-        <a href="https://blog.cesko.digital">Tiskové zprávy</a>
-      </li>
-      <li>
-        <a href="">Průzkum klíčových aktérů 2023</a>
-      </li>
-      <li>
-        <a href="https://www.e15.cz/nazory-a-analyzy/cesko-v-digitalizaci-zaostava-musime-zmenit-mysleni-pise-pro-e15-cz-sefka-cesko-digital-eva-pavlikova-1382466">
-          E15: CEO Česko.Digital o digitalizaci
-        </a>
-      </li>
-      <li>
-        <a href="">Mapa systémové změny</a>
-      </li>
-      <li>
-        <a href="https://forbes.cz/neziskovky-objevuji-svet-jednicek-a-nul-pomoci-jim-ma-inkubator-cesko-digital/">
-          Forbes: Česko.Digital pomůže nezisku
-        </a>
-      </li>
-    </ul>
-  </Slide>
-);
+const FooterSection = () => {
+  const links = {
+    "Impact Report 2019–22":
+      "https://data.cesko.digital/vyrocni-zpravy/impact-report-2022.pdf",
+    "Tiskové zprávy": "https://blog.cesko.digital",
+    "Průzkum klíčových aktérů 2023": "TBD",
+    "E15: CEO Česko.Digital o digitalizaci":
+      "https://www.e15.cz/nazory-a-analyzy/cesko-v-digitalizaci-zaostava-musime-zmenit-mysleni-pise-pro-e15-cz-sefka-cesko-digital-eva-pavlikova-1382466",
+    "Mapa systémové změny": "TBD",
+    "Forbes: Česko.Digital pomůže nezisku":
+      "https://forbes.cz/neziskovky-objevuji-svet-jednicek-a-nul-pomoci-jim-ma-inkubator-cesko-digital/",
+  };
+  return (
+    <section className="bg-pebble pt-20 pb-20">
+      <Slide>
+        <div className="text-center mb-20">
+          <H2>Chci si to víc prostudovat</H2>
+        </div>
+        <ul className="grid grid-cols-2 gap-7 list-none px-20">
+          {Object.entries(links).map(([label, url]) => (
+            <li key={label}>
+              → 
+              <a href={url} className="text-black">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Slide>
+    </section>
+  );
+};
 
 //
 // Components
