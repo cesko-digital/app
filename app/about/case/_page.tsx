@@ -805,12 +805,19 @@ const PledgeSection = () => {
       </section>
 
       <Slide>
-        <H2>
-          Díky efektivnímu používání technologií lepší život v Česku pro
-          každého.
-        </H2>
-        <Image src={Photos.pracak2} alt="" />
-        <p>
+        <div className="my-20 pt-10 max-w-prose m-auto">
+          <H2>
+            Díky efektivnímu používání technologií lepší život v Česku pro
+            každého.
+          </H2>
+        </div>
+        <Image
+          src={Illustrations.circle}
+          className="absolute -right-[100px] top-0"
+          alt=""
+        />
+        <Image src={Photos.pracak2} className="mb-20" alt="" />
+        <p className="max-w-prose m-auto mb-20">
           Efektivní používání technologie nám umožní jednoduché a opakované
           úkoly automatizovat tak, že úředníci budou mít více času na péči o
           lidi v nouzi a jejich individuální potřeby. Technologie usnadňuje
@@ -972,7 +979,9 @@ const FooterSection = () => (
 //
 
 const Slide = ({ children }: { children: ReactNode }) => (
-  <div className="max-w-content m-auto px-5 text-xl mb-20">{children}</div>
+  <div className="max-w-content m-auto px-5 text-xl mb-20 relative">
+    {children}
+  </div>
 );
 
 const ImageHeaderSlide = ({
