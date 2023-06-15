@@ -717,203 +717,221 @@ const SystemicChangePlan = () => {
   );
 };
 
-const PledgeSection = () => (
-  <Fragment>
-    <ImageHeaderSlide image={Photos.nezisk}>
-      <H2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</H2>
-      <p>Žádaná podpora: 25 mio. Kč / rok na období 2024–2027</p>
-      <p>
-        Nežádáme peníze na provoz, ale na vyřešení problému. Jakmile ho
-        vyřešíme, činnost zaměříme jinam nebo ji ukončíme.
-      </p>
-      <p>
-        80 % financí jde na kmenový tým, ve kterém potřebujeme kvalitní
-        odborníky s kompetitivní odměnou ke komerčnímu prostředí.
-      </p>
-      <p>
-        Už víme, že pomalejší změnu lze realizovat také dobrovolnicky. Ale s
-        financemi, například investicemi do vývoje, v kombinaci s komunitou,
-        výrazně akcelerujeme současné aktivity a podstatnou část problému
-        vyřešíme do 4 let.
-      </p>
-    </ImageHeaderSlide>
+const PledgeSection = () => {
+  const BulletSection = ({ children }: { children: ReactNode }) => (
+    <div className="flex flex-row gap-5">
+      <div>→</div>
+      <div className="-mt-7">{children}</div>
+    </div>
+  );
 
-    <Slide>
-      <div className="grid grid-cols-3">
-        <Image src={Illustrations.pie} alt="" className="col-start-2" />
-      </div>
-    </Slide>
+  return (
+    <Fragment>
+      <ImageHeaderSlide image={Photos.nezisk}>
+        <H2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</H2>
+        <p>Žádaná podpora: 25 mio. Kč / rok na období 2024–2027</p>
+        <p>
+          Nežádáme peníze na provoz, ale na vyřešení problému. Jakmile ho
+          vyřešíme, činnost zaměříme jinam nebo ji ukončíme.
+        </p>
+        <p>
+          80 % financí jde na kmenový tým, ve kterém potřebujeme kvalitní
+          odborníky s kompetitivní odměnou ke komerčnímu prostředí.
+        </p>
+        <p>
+          Už víme, že pomalejší změnu lze realizovat také dobrovolnicky. Ale s
+          financemi, například investicemi do vývoje, v kombinaci s komunitou,
+          výrazně akcelerujeme současné aktivity a podstatnou část problému
+          vyřešíme do 4 let.
+        </p>
+      </ImageHeaderSlide>
 
-    <Slide>
-      <H2>Vaše podpora nám konkrétně pomůže</H2>
-      <div className="grid grid-cols-2 gap-7">
-        <div>
-          <H3>Poskytnout školení a podporu</H3>
-          <p>
-            Díky vám budeme moci poskytnout expertizu a know-how tam, kde je
-            nejvíc potřeba – projektům a organizacím řešící palčivé společenské
-            problémy. Pomocí školících programů a strategické podpory pomůžeme
-            rozvinout dovednosti a odborné znalosti potřebné k efektivnímu
-            využití technologie ke zlepšení jejich služeb.
-          </p>
+      <Slide>
+        <div className="grid grid-cols-3">
+          <Image src={Illustrations.pie} alt="" className="col-start-2" />
         </div>
-        <div>
-          <H3>Rozvíjet expertní infrastrukturu</H3>
-          <p>
-            Úspěch Česko.Digital by nebyl možný bez komunity expertů, kteří se
-            snadno propojují s veřejným sektorem. Právě rozvoj komunity, která
-            propojuje světy, které se potřebují, ale často si nerozumí, bude
-            jeden z klíčových pilířů vynaložené investice. Jedná se o náklady na
-            automatizaci procesů v komunitě, analýzu dat, správu software,
-            pořádání akcí a komunikaci.
-          </p>
-        </div>
-        <div>
-          <H3>Vyvinout technické nástroje a zdroje</H3>
-          <p>
-            Vaše podpora nám pomůže vyvinout technické nástroje a zdroje, které
-            mohou organizace veřejné sféry efektivně využít v rámci svého
-            fungování. Bavíme se například o software nebo nástrojích pro
-            analýzu dat, které budou pro řadu organizací úplnou novinkou.
-          </p>
-        </div>
-        <div>
-          <H3>Prosadit systémovou změnu</H3>
-          <p>
-            Vaší podporu využijeme pro dlouhodobou a udržitelnou změnu, která
-            povede k efektivnímu využívání digitálních technologií na úrovni
-            celé společnosti. Díky advokačním aktivitám a ve spolupráci s
-            úředníky a politiky budeme prosazovat pozitivní změny pro budoucí
-            vývoj.
-          </p>
-        </div>
-      </div>
-    </Slide>
+      </Slide>
 
-    <Slide>
-      <H2>
-        Díky efektivnímu používání technologií lepší život v Česku pro každého.
-      </H2>
-      <Image src={Photos.pracak2} alt="" />
-      <p>
-        Efektivní používání technologie nám umožní jednoduché a opakované úkoly
-        automatizovat tak, že úředníci budou mít více času na péči o lidi v
-        nouzi a jejich individuální potřeby. Technologie usnadňuje lidem život a
-        díky této zkušenosti veřejná správa bude umět vhodné technologie ve
-        větším měřítku poptávat i do jejich rozvoje dlouhodobě hlavně
-        investovat. Na konci dne taková veřejná správa přináší zjednodušení
-        práce a zkvalitnění služeb pro organizace, firmy i občany Česka - o kus
-        lepší život v Česku pro nás všechny.
-      </p>
-    </Slide>
+      <section className="bg-pebble mb-20 pt-20 pb-1">
+        <Slide>
+          <div className="text-center mb-20">
+            <H2>Vaše podpora nám konkrétně pomůže</H2>
+          </div>
+          <div className="grid grid-cols-2 gap-7">
+            <BulletSection>
+              <H3>Poskytnout školení a podporu</H3>
+              <p>
+                Díky vám budeme moci poskytnout expertizu a know-how tam, kde je
+                nejvíc potřeba – projektům a organizacím řešící palčivé
+                společenské problémy. Pomocí školících programů a strategické
+                podpory pomůžeme rozvinout dovednosti a odborné znalosti
+                potřebné k efektivnímu využití technologie ke zlepšení jejich
+                služeb.
+              </p>
+            </BulletSection>
+            <BulletSection>
+              <H3>Rozvíjet expertní infrastrukturu</H3>
+              <p>
+                Úspěch Česko.Digital by nebyl možný bez komunity expertů, kteří
+                se snadno propojují s veřejným sektorem. Právě rozvoj komunity,
+                která propojuje světy, které se potřebují, ale často si
+                nerozumí, bude jeden z klíčových pilířů vynaložené investice.
+                Jedná se o náklady na automatizaci procesů v komunitě, analýzu
+                dat, správu software, pořádání akcí a komunikaci.
+              </p>
+            </BulletSection>
+            <BulletSection>
+              <H3>Vyvinout technické nástroje a zdroje</H3>
+              <p>
+                Vaše podpora nám pomůže vyvinout technické nástroje a zdroje,
+                které mohou organizace veřejné sféry efektivně využít v rámci
+                svého fungování. Bavíme se například o software nebo nástrojích
+                pro analýzu dat, které budou pro řadu organizací úplnou
+                novinkou.
+              </p>
+            </BulletSection>
+            <BulletSection>
+              <H3>Prosadit systémovou změnu</H3>
+              <p>
+                Vaší podporu využijeme pro dlouhodobou a udržitelnou změnu,
+                která povede k efektivnímu využívání digitálních technologií na
+                úrovni celé společnosti. Díky advokačním aktivitám a ve
+                spolupráci s úředníky a politiky budeme prosazovat pozitivní
+                změny pro budoucí vývoj.
+              </p>
+            </BulletSection>
+          </div>
+        </Slide>
+      </section>
 
-    <Slide>
-      <div className="grid grid-cols-3 gap-7">
-        <div>
-          <H3>Finanční zodpovědnost</H3>
-          <p>
-            Partnerstvím s Česko.Digital podpoříte desítky projektů s dalšími
-            nevládními organizacemi, které ročně realizujeme. Ve všem, co
-            děláme, jsme maximálně transparentní - od bankovního účtu po postupy
-            a kódy u všech aplikací a řešení. Vyvíjíme pouze open-source
-            technologie s důrazem na řešení reálného problému a uživatele, toto
-            know-how dále šíříme se stovkami jednotlivců i organizací.
-          </p>
-        </div>
-        <div>
-          <H3>Finanční udržitelnost</H3>
-          <p>
-            Investice do Česko.Digital je investicí do rozvoje, nikoliv do
-            nákladů. Komunita stojí na expertním dobrovolnictví,v rámci jehož si
-            týmy a projekty vyměňují mnohdy finančně zatěžující know-how nebo
-            technologické nástroje. Právě neformální, přátelské prostředí vedené
-            silnou vizí v lepší budoucnost umožňuje Česko.Digital excelovat v
-            rychlosti, flexibilitě a škálování v dlouhém časovém horizontu.
-          </p>
-        </div>
-        <div>
-          <H3>Spolupráce ušitá na míru</H3>
-          <p>
-            Partneři a filantropové mohou mít různé preference, pokud jde o
-            financování, jako je poskytnutí jednorázového daru nebo poskytování
-            trvalé podpory. Nabízíme řadu možností financování a jsme flexibilní
-            ve svém přístupu, pro všechny partnery máme připravený marketingový
-            balíček, protože na naše partnery s podporovatele jsme náležitě
-            hrdí.
-          </p>
-        </div>
-      </div>
-    </Slide>
+      <Slide>
+        <H2>
+          Díky efektivnímu používání technologií lepší život v Česku pro
+          každého.
+        </H2>
+        <Image src={Photos.pracak2} alt="" />
+        <p>
+          Efektivní používání technologie nám umožní jednoduché a opakované
+          úkoly automatizovat tak, že úředníci budou mít více času na péči o
+          lidi v nouzi a jejich individuální potřeby. Technologie usnadňuje
+          lidem život a díky této zkušenosti veřejná správa bude umět vhodné
+          technologie ve větším měřítku poptávat i do jejich rozvoje dlouhodobě
+          hlavně investovat. Na konci dne taková veřejná správa přináší
+          zjednodušení práce a zkvalitnění služeb pro organizace, firmy i občany
+          Česka - o kus lepší život v Česku pro nás všechny.
+        </p>
+      </Slide>
 
-    <Slide>
-      <H2>Každý svým dílem přispívá již několik let</H2>
-      <div className="grid grid-cols-5 gap-1 bg-pebble">
-        <Image src={PartnerLogos.Aswa} alt="" />
-        <Image src={PartnerLogos.Avast} alt="" />
-        <Image src={PartnerLogos.BankID} alt="" />
-        <Image src={PartnerLogos.Deloitte} alt="" />
-        <Image src={PartnerLogos.Fakturoid} alt="" />
-        <Image src={PartnerLogos.FIT} alt="" />
-        <Image src={PartnerLogos.Google} alt="" />
-        <Image src={PartnerLogos.H1} alt="" />
-        <Image src={PartnerLogos.Livesport} alt="" />
-        <Image src={PartnerLogos.Mapotic} alt="" />
-        <Image src={PartnerLogos.NPI} alt="" />
-        <Image src={PartnerLogos.OpenContent} alt="" />
-        <Image src={PartnerLogos.Opero} alt="" />
-        <Image src={PartnerLogos.OSF} alt="" />
-        <Image src={PartnerLogos.PaleFire} alt="" />
-        <Image src={PartnerLogos.PPF} alt="" />
-        <Image src={PartnerLogos.Praha} alt="" />
-        <Image src={PartnerLogos.Principal} alt="" />
-        <Image src={PartnerLogos.Rekonstrukce} alt="" />
-        <Image src={PartnerLogos.SolidPixels} alt="" />
-      </div>
-    </Slide>
+      <Slide>
+        <div className="grid grid-cols-3 gap-7">
+          <div>
+            <H3>Finanční zodpovědnost</H3>
+            <p>
+              Partnerstvím s Česko.Digital podpoříte desítky projektů s dalšími
+              nevládními organizacemi, které ročně realizujeme. Ve všem, co
+              děláme, jsme maximálně transparentní - od bankovního účtu po
+              postupy a kódy u všech aplikací a řešení. Vyvíjíme pouze
+              open-source technologie s důrazem na řešení reálného problému a
+              uživatele, toto know-how dále šíříme se stovkami jednotlivců i
+              organizací.
+            </p>
+          </div>
+          <div>
+            <H3>Finanční udržitelnost</H3>
+            <p>
+              Investice do Česko.Digital je investicí do rozvoje, nikoliv do
+              nákladů. Komunita stojí na expertním dobrovolnictví,v rámci jehož
+              si týmy a projekty vyměňují mnohdy finančně zatěžující know-how
+              nebo technologické nástroje. Právě neformální, přátelské prostředí
+              vedené silnou vizí v lepší budoucnost umožňuje Česko.Digital
+              excelovat v rychlosti, flexibilitě a škálování v dlouhém časovém
+              horizontu.
+            </p>
+          </div>
+          <div>
+            <H3>Spolupráce ušitá na míru</H3>
+            <p>
+              Partneři a filantropové mohou mít různé preference, pokud jde o
+              financování, jako je poskytnutí jednorázového daru nebo
+              poskytování trvalé podpory. Nabízíme řadu možností financování a
+              jsme flexibilní ve svém přístupu, pro všechny partnery máme
+              připravený marketingový balíček, protože na naše partnery s
+              podporovatele jsme náležitě hrdí.
+            </p>
+          </div>
+        </div>
+      </Slide>
 
-    <ImageHeaderSlide image={Photos.nezisk2}>
-      <H2>Pojďme měnit Česko k lepšímu. Potřebuje to.</H2>
-      <p>
-        Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
-        toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
-        technologie pomoci, vytvořili jsme automatizovaný ekosystém expertní
-        podpory veřejné sféry a s vaší podporou toto budeme moci akcelerovat.
-        Máme detailní plán systémové změny, jak problém dlouhodobě vyřešit. Moc
-        rádi se s vámi sejdeme a prodiskutujeme možnosti spolupráce.
-      </p>
-    </ImageHeaderSlide>
+      <Slide>
+        <H2>Každý svým dílem přispívá již několik let</H2>
+        <div className="grid grid-cols-5 gap-1 bg-pebble">
+          <Image src={PartnerLogos.Aswa} alt="" />
+          <Image src={PartnerLogos.Avast} alt="" />
+          <Image src={PartnerLogos.BankID} alt="" />
+          <Image src={PartnerLogos.Deloitte} alt="" />
+          <Image src={PartnerLogos.Fakturoid} alt="" />
+          <Image src={PartnerLogos.FIT} alt="" />
+          <Image src={PartnerLogos.Google} alt="" />
+          <Image src={PartnerLogos.H1} alt="" />
+          <Image src={PartnerLogos.Livesport} alt="" />
+          <Image src={PartnerLogos.Mapotic} alt="" />
+          <Image src={PartnerLogos.NPI} alt="" />
+          <Image src={PartnerLogos.OpenContent} alt="" />
+          <Image src={PartnerLogos.Opero} alt="" />
+          <Image src={PartnerLogos.OSF} alt="" />
+          <Image src={PartnerLogos.PaleFire} alt="" />
+          <Image src={PartnerLogos.PPF} alt="" />
+          <Image src={PartnerLogos.Praha} alt="" />
+          <Image src={PartnerLogos.Principal} alt="" />
+          <Image src={PartnerLogos.Rekonstrukce} alt="" />
+          <Image src={PartnerLogos.SolidPixels} alt="" />
+        </div>
+      </Slide>
 
-    <Slide>
-      <div className="grid grid-cols-3 gap-7">
-        <div>
-          <H3>Vyžádejte si nezávazně více informací</H3>
-          <p>
-            Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
-            organizaci, její fungování a plány.
-          </p>
+      <ImageHeaderSlide image={Photos.nezisk2}>
+        <H2>Pojďme měnit Česko k lepšímu. Potřebuje to.</H2>
+        <p>
+          Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
+          toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
+          technologie pomoci, vytvořili jsme automatizovaný ekosystém expertní
+          podpory veřejné sféry a s vaší podporou toto budeme moci akcelerovat.
+          Máme detailní plán systémové změny, jak problém dlouhodobě vyřešit.
+          Moc rádi se s vámi sejdeme a prodiskutujeme možnosti spolupráce.
+        </p>
+      </ImageHeaderSlide>
+
+      <Slide>
+        <div className="grid grid-cols-3 gap-7">
+          <div>
+            <H3>Vyžádejte si nezávazně více informací</H3>
+            <p>
+              Hledáte něco, co jste tu nenašli? Rádi vám přiblížíme naší
+              organizaci, její fungování a plány.
+            </p>
+          </div>
+          <div>
+            <H3>Sejděte se s naším COO</H3>
+            <p>
+              <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a>{" "}
+              vede kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše
+              otázky. Domluvte si schůzku.
+            </p>
+          </div>
+          <div>
+            <H3>Máte zájem? Jak přispět a co dál</H3>
+            <p>
+              Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
+              kapacity, abychom společně změnili Česko k lepšímu.
+            </p>
+          </div>
         </div>
-        <div>
-          <H3>Sejděte se s naším COO</H3>
-          <p>
-            <a href="https://www.linkedin.com/in/jankotara/">Jan Kotara</a> vede
-            kmenový tým komunity a bude tím nejlepším, kdo zodpoví vaše otázky.
-            Domluvte si schůzku.
-          </p>
+        <div className="mt-10 text-center">
+          <ButtonLink to="mailto:ahoj@cesko.digital">Ozvěte se nám</ButtonLink>
         </div>
-        <div>
-          <H3>Máte zájem? Jak přispět a co dál</H3>
-          <p>
-            Napište nám a domluvíme se, jak nejlépe využít vaše zdroje a
-            kapacity, abychom společně změnili Česko k lepšímu.
-          </p>
-        </div>
-      </div>
-      <div className="mt-10 text-center">
-        <ButtonLink to="mailto:ahoj@cesko.digital">Ozvěte se nám</ButtonLink>
-      </div>
-    </Slide>
-  </Fragment>
-);
+      </Slide>
+    </Fragment>
+  );
+};
 
 const FooterSection = () => (
   <Slide>
