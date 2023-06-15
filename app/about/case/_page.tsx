@@ -1030,7 +1030,7 @@ const ImageHeaderSlide = ({
   image: StaticImageData;
 }) => (
   <section>
-    <Image src={image} alt="" className="z-0 relative" />
+    <Image src={image} alt="" className="w-full z-0 relative" />
     <div className="max-w-content m-auto text-xl px-20 pb-20 pt-10 bg-white -mt-[200px] relative z-20">
       {children}
     </div>
