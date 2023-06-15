@@ -23,16 +23,23 @@ const CasePage = () => (
 
 const Intro = () => (
   <Slide>
-    <h1 className="text-[44px] font-bold leading-snug mb-10">
+    <Image
+      src={Illustrations.map}
+      width={753}
+      height={416}
+      className="opacity-10 grayscale absolute -right-[200px] -top-[20px]"
+      alt=""
+    />
+    <h1 className="text-[44px] font-bold leading-snug mb-[140px]">
       Změňme spolu Česko k lepšímu
     </h1>
-    <div className="max-w-prose font-bold leading-relaxed">
-      <p>
+    <div className="max-w-prose font-semibold leading-relaxed pb-10">
+      <Perex>
         Technologiím se v Česku daří. Máme kvalitní technické univerzity,
         vznikly u nás velmi úspěšné technologické firmy, které jsou známé po
         celém světě – Avast, Seznam nebo Satoshi Labs.
-      </p>
-      <p>A i přes to jsme svědky těchto případů…</p>
+      </Perex>
+      <Perex>A i přes to jsme svědky těchto případů…</Perex>
     </div>
   </Slide>
 );
@@ -168,11 +175,11 @@ const AboutCeskoDigital = () => {
     <Fragment>
       <ImageHeaderSlide image={Photos.meetup}>
         <H2>Skrz 1 a 0 měníme Česko k lepšímu</H2>
-        <p>
+        <Perex>
           Říkali nám, že jsme naivní. My ale už roky dokazujeme, že změna je
           možná. Trpělivě krok po kroku učíme neziskové organizace a státní
           správu, jak využívat digitální technologie.
-        </p>
+        </Perex>
         <p>
           Jádrem komunity je {communitySize}+ expertních dobrovolníků a
           dobrovolnic. Ti do komunity přináší to nejcennější – svůj čas a také
@@ -342,14 +349,14 @@ const SystemicChangeExplainer = () => {
           Dílčí projekty nestačí. Pokud chceme problém skutečně vyřešit, musíme
           na to jít systémově
         </H2>
-        <p>
+        <Perex>
           Díky 4 letům práce na individuálních projektech jsme si uvědomili, že
           za veřejnou sféru touto cestou většinou jen „hasíme požáry“: nechceme,
           aby takto hodnotné iniciativy vznikaly pouze z dobré vůle lidí, kteří
           na nich pracují po večerech a víkendech. Chceme, aby s nimi veřejná
           sféra dokázala přicházet sama, strategicky a práce dobrovolníků nebyla
           tolik potřebná. 
-        </p>
+        </Perex>
         <p>
           Povedlo se nám vytvořit unikátní propojení expertů z firem, státní
           správy a neziskových organizací, díky čemuž máme komplexní pohled na
@@ -436,6 +443,10 @@ const SystemicChangeExplainer = () => {
         </div>
       </TwoColumnSlide>
 
+      <Slide>
+        <hr />
+      </Slide>
+
       <TwoColumnSlide>
         <div>
           <BlueHeading>02</BlueHeading>
@@ -472,6 +483,10 @@ const SystemicChangeExplainer = () => {
           />
         </div>
       </TwoColumnSlide>
+
+      <Slide>
+        <hr />
+      </Slide>
 
       <TwoColumnSlide>
         <div>
@@ -517,6 +532,10 @@ const SystemicChangeExplainer = () => {
         </div>
       </TwoColumnSlide>
 
+      <Slide>
+        <hr />
+      </Slide>
+
       <TwoColumnSlide>
         <div>
           <BlueHeading>04</BlueHeading>
@@ -547,6 +566,10 @@ const SystemicChangeExplainer = () => {
           />
         </div>
       </TwoColumnSlide>
+
+      <Slide>
+        <hr className="pb-20" />
+      </Slide>
 
       <TwoColumnSlide>
         <div>
@@ -606,12 +629,12 @@ const SystemicChangePlan = () => {
     <Fragment>
       <ImageHeaderSlide image={Photos.hackday}>
         <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
-        <p>
+        <Perex>
           Víme, že žádný systém není možné změnit jednostranně – jde o to
           koordinovaně sjednotit dosavadní, často individuální snažení a
           aktivity jednotlivých hráčů v systému tak, aby kýžená změna byla
           dlouhodobě udržitelná.
-        </p>
+        </Perex>
       </ImageHeaderSlide>
 
       <section className="bg-pebble mb-20 pt-20 pb-1">
@@ -902,14 +925,14 @@ const PledgeSection = () => {
 
       <ImageHeaderSlide image={Photos.nezisk2}>
         <H2>Pojďme měnit Česko k lepšímu. Potřebuje to.</H2>
-        <p>
+        <Perex>
           Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
           toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
           technologie pomoci, vytvořili jsme automatizovaný ekosystém expertní
           podpory veřejné sféry a s vaší podporou toto budeme moci akcelerovat.
           Máme detailní plán systémové změny, jak problém dlouhodobě vyřešit.
           Moc rádi se s vámi sejdeme a prodiskutujeme možnosti spolupráce.
-        </p>
+        </Perex>
       </ImageHeaderSlide>
 
       <Slide>
@@ -1100,6 +1123,10 @@ const H4: Tag = ({ children }) => (
 
 const Em: Tag = ({ children }) => (
   <em className="not-italic font-bold">{children}</em>
+);
+
+const Perex: Tag = ({ children }) => (
+  <p className="font-semibold">{children}</p>
 );
 
 export default CasePage;
