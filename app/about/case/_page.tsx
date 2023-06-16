@@ -381,20 +381,20 @@ const SystemicChangeExplainer = () => {
                 Problém
               </p>
             </div>
-            <div className="p-20 pb-10">
+            <div className="p-5 py-20 md:p-20 flex flex-col gap-10">
               <H2>
                 Veřejná sféra* neumí využívat potenciál technologií k řešení
                 celospolečenských problémů a zhoršuje tak podmínky pro život
                 lidí v České republice.
               </H2>
+              <p>
+                <Balancer>
+                  *Veřejnou sférou máme na mysli všechny aktéry české
+                  společnosti, kteří tímto problémem trpí: státní správa a
+                  samospráva, neziskové organizace, univerzity a média.
+                </Balancer>
+              </p>
             </div>
-            <p className="p-20 pt-0">
-              <Balancer>
-                *Veřejnou sférou máme na mysli všechny aktéry české společnosti,
-                kteří tímto problémem trpí: státní správa a samospráva,
-                neziskové organizace, univerzity a média.
-              </Balancer>
-            </p>
           </div>
         </Slide>
       </div>
