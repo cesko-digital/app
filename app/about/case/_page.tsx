@@ -36,10 +36,9 @@ const Intro = () => (
     <div className="max-w-prose font-semibold leading-relaxed pb-10">
       <Perex>
         Technologiím se v Česku daří. Máme kvalitní technické univerzity,
-        vznikly u nás velmi úspěšné technologické firmy, které jsou známé po
-        celém světě – Avast, Seznam nebo Satoshi Labs.
+        vznikly u nás velmi úspěšné technologické firmy známé po celém světě –
+        Avast, Seznam nebo Satoshi Labs. A přesto jsme svědky těchto případů…
       </Perex>
-      <Perex>A i přes to jsme svědky těchto případů…</Perex>
     </div>
   </Slide>
 );
@@ -54,7 +53,7 @@ const Challenges = () => (
       <div>
         <p className="mt-0">
           Čtyřicátník v kapuci vysvětluje, že na úřad práce přišel v září, kdy
-          mu doporučili, aby si o příspěvek na bydlení zažádal on-line. A od té
+          mu doporučili, aby si o příspěvek na bydlení zažádal online. A od té
           doby čeká. „Plyn a energie mi od ledna stouply o dva a půl tisíce
           korun. Nově mám platit šest a půl tisíce,“ říká muž, a raději se proto
           rozhodl hned po Novém roce vydat na úřad, aby se zeptal, co se s jeho
@@ -68,7 +67,7 @@ const Challenges = () => (
         </p>
       </div>
       <TextQuote
-        quote="On-line žádost jsem zkoušela a nikdo se mi neozval."
+        quote="Online žádost jsem zkoušela a nikdo se mi neozval."
         author="Zuzana P. pro Seznam Zprávy (leden 2023)"
         source="https://www.seznamzpravy.cz/clanek/domaci-zivot-v-cesku-ve-fronte-pred-uradem-prace-na-prispevek-cekaji-mesice-a-urednici-nekomunikuji-222350"
       />
@@ -105,7 +104,7 @@ const Challenges = () => (
           nově vytvořenou informační podporu do Pandemického plánu ČR ani do
           informační koncepce MZd. Existuje tak reálná možnost, že navzdory
           vynaloženým penězům nebude systém služeb Chytrá karanténa využíván při
-          případných budoucích epidemiích.
+          budoucích epidemiích.
         </p>
         <p>
           „Teď se musíme zaměřit na to, aby vynaložené peníze nepřišly vniveč a
@@ -117,7 +116,7 @@ const Challenges = () => (
       </div>
       <TextQuote
         quote="387 milionů korun stál systém chytré karantény, která nefungovala."
-        author="Výroční zpráva Nejvyššího kontrolního ústavu, 2022"
+        author="Výroční zpráva Nejvyššího kontrolního úřadu, 2022"
         source="https://www.nku.cz/assets/publikace-a-dokumenty/vyrocni-zprava/vyrocni-zprava-nku-2022.pdf"
       />
     </TwoColumnSlide>
@@ -189,8 +188,8 @@ const AboutCeskoDigital = () => {
         <p>
           Jádrem komunity je {communitySize}+ expertních dobrovolníků a
           dobrovolnic. Ti do komunity přináší to nejcennější – svůj čas a také
-          svou expertízu (typicky v oblastech softwarového vývoje, produktového
-          designu nebo projektového řízení). Díky jejich propojení v komunitě
+          svou expertízu, typicky v oblastech softwarového vývoje, produktového
+          designu nebo projektového řízení. Díky jejich propojení v komunitě
           vznikají veřejně prospěšná řešení v podobě open source digitálních
           produktů.
         </p>
@@ -230,7 +229,7 @@ const AboutCeskoDigital = () => {
             </ProjectCard>
             <ProjectCard name="Dáme roušky" image={ProjectLogos.DameRousky}>
               <p>
-                Komunitní mapa roušek, která v kritický moment pandemie COVID-19
+                Komunitní mapa roušek, která v kritický moment pandemie covid-19
                 umožnila získat klíčovou ochrannou pomůcku.
               </p>
               <p className="font-bold">
@@ -262,7 +261,7 @@ const AboutCeskoDigital = () => {
           </div>
           <div>
             <H3>252 000+ hodin</H3>
-            <p className="text-base">pro-bono dobrovolnické práce</p>
+            <p className="text-base">dobrovolnické práce</p>
           </div>
           <div>
             <H3>4 000 000+ lidí</H3>
@@ -305,7 +304,7 @@ const AboutCeskoDigital = () => {
                 Společně a digitálně
               </a>{" "}
               je společnou iniciativou deseti nevládních neziskových organizací,
-              které se dlouhodobě věnují digitální transformací státu.
+              které se dlouhodobě věnují digitální transformaci státu.
               Propojujeme klíčové aktéry, formulujeme doporučení, diskutujeme s
               politiky i veřejností.
             </p>
@@ -357,11 +356,11 @@ const SystemicChangeExplainer = () => {
         </H2>
         <Perex>
           Díky 4 letům práce na individuálních projektech jsme si uvědomili, že
-          za veřejnou sféru touto cestou většinou jen „hasíme požáry“: nechceme,
+          za veřejnou sféru touto cestou většinou jen „hasíme požáry“. Nechceme,
           aby takto hodnotné iniciativy vznikaly pouze z dobré vůle lidí, kteří
           na nich pracují po večerech a víkendech. Chceme, aby s nimi veřejná
-          sféra dokázala přicházet sama, strategicky a práce dobrovolníků nebyla
-          tolik potřebná. 
+          sféra dokázala přicházet sama, strategicky, a práce dobrovolníků
+          nebyla tolik potřebná.
         </Perex>
         <p>
           Povedlo se nám vytvořit unikátní propojení expertů z firem, státní
@@ -418,20 +417,20 @@ const SystemicChangeExplainer = () => {
           <BlueHeading>01</BlueHeading>
           <H2>Chybí sdílená vize</H2>
           <p>
-            Sdílená vize znamená, že lidé v veřejné správě i mimo ni mají
-            společnou představu o tom, kam společně směřují a co chtějí
-            dosáhnout. Je to jako mapa, která ukazuje, kudy se chceme dostat a
-            jaké jsou cíle naší cesty. Pokud máme jasnou sdílenou vizi, víme, co
-            máme dělat a proč to děláme, což nás motivuje a inspiruje.
+            Sdílená vize znamená, že lidé ve veřejné správě i mimo ni mají
+            společnou představu o tom, kam společně směřují a čeho chtějí
+            dosáhnout. Je to jako mapa, která ukazuje, kudy chceme jít a jaké
+            jsou cíle naší cesty. Pokud máme jasnou sdílenou vizi, víme, co máme
+            dělat a proč to děláme, což nás motivuje a inspiruje.
           </p>
           <p>
             Chybějící sdílená vize potom vede k nedorozuměním, neshodám a
-            rozdílným zájmům, což zpomaluje nebo dokonce zastavuje pokrok
-            řešení. Také často vede k neefektivnímu využití peněz a času,
-            protože organizace nemusí být jasně informována o tom, co se od ní
-            očekává. Nakonec, nedostatek sdílené vize ovlivňuje motivaci lidí a
-            organizací, kteří nemají jasnou představu o tom, jaký je smysl a cíl
-            jejich práce.
+            rozdílným zájmům, což zpomaluje nebo dokonce zastavuje řešení. Také
+            často vede k neefektivnímu využití peněz a času, protože organizace
+            nemusí být jasně informována o tom, co se od ní očekává. A konečně
+            nedostatek sdílené vize ovlivňuje také motivaci lidí a organizací,
+            kteří nemají jasnou představu o tom, jaký je smysl a cíl jejich
+            práce.
           </p>
           <p>
             Náš průzkum potvrdil hypotézu, že v Česku chybí sdílená vize, jak
@@ -468,17 +467,17 @@ const SystemicChangeExplainer = () => {
           <p>
             Bez přístupu k aktuálním informacím o nových technologiích a jejich
             potenciálních přínosech si lidé – ať už úředníci, politici nebo
-            občané - často ani neuvědomují možnosti, které existují. To je potom
-            promarněnou příležitost snahy ke zlepšení efektivity, snížení
-            nákladů a poskytování lepších služeb všem.
+            občané – často ani neuvědomují možnosti, které existují. To je potom
+            promarněná příležitost ke zlepšení efektivity, snížení nákladů a
+            poskytování lepších služeb všem.
           </p>
           <p>
-            Když potom organizace veřejné sféry postrádají informace o
-            potenciálu technologie, neumí adekvátně plánovat jejich praktické
-            nasazení a používání. To vede k problémům, jako je nedostatečné
-            školení, nedostatečné zdroje a špatná integrace se stávajícími
-            systémy – ve výsledku jde o další špatnou zkušenost s technologií a
-            další odpor ke změně.
+            Když organizace veřejné sféry postrádají informace o potenciálu
+            technologií, neumí adekvátně plánovat jejich praktické nasazení a
+            používání. To vede k problémům, jako jsou nedostatečné školení,
+            nedostatečné zdroje a špatná integrace se stávajícími systémy – ve
+            výsledku jde o další špatnou zkušenost s technologií a další odpor
+            ke změně.
           </p>
         </div>
         <div>
@@ -500,33 +499,32 @@ const SystemicChangeExplainer = () => {
           <H2>Chybí kompetence</H2>
           <p>
             V kontextu technologií ve veřejném sektoru se kompetencemi rozumí
-            znalosti, dovednosti a schopnosti, které jsou nezbytné pro lidi k
+            znalosti, dovednosti a schopnosti, které jsou pro lidi nezbytné k
             efektivnímu využívání a řízení technologií při jejich práci. To
             zahrnuje řadu kompetencí, jako jsou technické dovednosti související
             s hardwarem a softwarem, stejně jako širší dovednosti související se
             strategickým uvažováním, analýzou dat, řízením projektů, komunikací.
           </p>
           <p>
-            Pokud lidem ve veřejného sektoru chybí potřebné kompetence k
-            efektivnímu využívání nových technologií, ovlivňuje to potom
-            negativně úspěšnou implementaci a praktické využití. To v důsledku
-            vede k rezistenci a neschopnosti adaptovat se na změnu nebo zavádění
+            Pokud lidem ve veřejném sektoru chybí potřebné kompetence k
+            efektivnímu využívání nových technologií, negativně to ovlivňuje
+            jejich úspěšnou implementaci a praktické využití. To v důsledku vede
+            k rezistenci a neschopnosti adaptovat se na změnu nebo zavádění
             nových nástrojů, což brání pokroku a inovaci celého veřejného
             sektoru.
           </p>
           <p>
-            Chybějící kompetence, resp. jejich nedostatky, ukazuje každoroční
-            evropský index DESI (Digital Economy and Society Index), kde se
-            Česko v roce 2022 mezi 27 členskými státy Evropské Unie řadí pod
-            průměr na 19. místo v oblasti integrace digitálních technologií, ve
-            srovnání s rokem jsme si navíc pohoršili o čtyři příčky hůř než v
-            roce 2021 (15. místo).
+            Chybějící kompetence, respektive jejich nedostatky, ukazuje
+            každoroční evropský index DESI (Digital Economy and Society Index),
+            kde se Česko v roce 2022 mezi 27 členskými státy Evropské Unie řadí
+            pod průměr na 19. místo v oblasti integrace digitálních technologií.
+            Ve srovnání s rokem 2021 jsme si navíc pohoršili o čtyři příčky.
           </p>
           <p>
-            Digitálním kompetencím se věnuje také průzkum ČSÚ (Český statistický
-            úřad), který u úředníků vyhodnocuje jen základní dovednosti jako
-            práce s tabulkovým nebo textovým editorem, námi zmíněné kompetence
-            nesleduje vůbec.
+            Digitálním kompetencím se věnuje také průzkum Českého statistického
+            úřadu, který ovšem u úředníků vyhodnocuje jen základní dovednosti
+            jako práce s tabulkovým nebo textovým editorem, a námi zmíněné
+            kompetence nesleduje vůbec.
           </p>
         </div>
         <div>
@@ -548,11 +546,11 @@ const SystemicChangeExplainer = () => {
           <H2>Chybí finance</H2>
           <p>
             Tato příčina úzce souvisí s předcházející – veřejná sféra typicky
-            není schopna přilákat top talent, mj. kvůli neschopnosti konkurovat
-            odměnám v komerčním sektoru. Z průzkumu “Stav IT v českém nezisku” z
-            roku 2021 provedeného Techsoup ČR a Nadací OSF vyplývá, že 62 %
-            středně velkých neziskových organizací uvádí jako hlavní překážku
-            svého rozvoje právě nedostatek finančních prostředků.
+            není schopna přilákat špičkové talenty, mimo jiné kvůli neschopnosti
+            konkurovat odměnám v komerčním sektoru. Z průzkumu „Stav IT v českém
+            nezisku“ z roku 2021 provedeného Techsoup ČR a Nadací OSF vyplývá,
+            že 62 % středně velkých neziskových organizací uvádí jako hlavní
+            překážku svého rozvoje právě nedostatek finančních prostředků.
           </p>
           <p>
             Zrychlená digitalizace by mohla České republice přinést růst
@@ -585,16 +583,17 @@ const SystemicChangeExplainer = () => {
           </H2>
           <p>
             Bariéry, kvůli kterým Česko zaostává v efektivním používání
-            technologií jako chybějící vize, kompetence, informace a finance,
+            technologií, jako chybějící vize, kompetence, informace a finance,
             jsou ze své podstaty velmi komplexní. Můžeme se pokoušet o jejich
-            dílčí řešení a oblasti kompetencí toho už mnoho děláme – ať jsou to
-            digitální řešení s nevládními organizacemi nebo systematické
+            dílčí řešení a v oblasti kompetencí toho už mnoho děláme – ať jsou
+            to digitální řešení s nevládními organizacemi nebo systematické
             vzdělávání skrz hackdays nebo webináře. Pokud však chceme být v
             řešení opravdu úspěšní, potřebujeme jednotlivé bariéry řešit
             propojeně a systematicky tak, aby proměna veřejné sféry byla trvalá
-            a přežila více volebních období. Po důkladné rešerši a 4 letům přímé
-            práce i spolupráce s klíčovými aktéry na poli českých digitálních
-            technologií věříme tomu, že je správný čas na systémovou změnu.
+            a přežila více volebních období. Po důkladné rešerši a čtyřleté
+            přímé práci i spolupráci s klíčovými aktéry na poli českých
+            digitálních technologií věříme tomu, že je správný čas na systémovou
+            změnu.
           </p>
         </div>
         <div className="bg-pebble p-10 flex flex-col gap-5 relative">
@@ -636,9 +635,9 @@ const SystemicChangePlan = () => {
       <ImageHeaderSlide image={Photos.hackday}>
         <H2>Řešíme to systémově. Máme konkrétní plán, jak na to.</H2>
         <Perex>
-          Víme, že žádný systém není možné změnit jednostranně – jde o to
+          Víme, že žádný systém není možné změnit jednostranně – musíme
           koordinovaně sjednotit dosavadní, často individuální snažení a
-          aktivity jednotlivých hráčů v systému tak, aby kýžená změna byla
+          aktivity jednotlivých hráčů v systému tak, aby kýžená změna byla
           dlouhodobě udržitelná.
         </Perex>
       </ImageHeaderSlide>
@@ -679,7 +678,7 @@ const SystemicChangePlan = () => {
             </h2>
             <p className="mt-auto mb-0">
               Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji
-              v PDF.
+              v PDF →
             </p>
           </a>
         </TwoColumnSlide>
@@ -710,8 +709,8 @@ const SystemicChangePlan = () => {
           <H3>Inspirujeme je a dodáme potřebné informace</H3>
           <p>
             Poukážeme na dobré příklady praxe digitálních technologií ve veřejné
-            sféře, které měly úctyhodný přínos. Zajistíme, že politické strany
-            (s potenciálem 5+ % v parlamentních volbách) mají ve svých
+            sféře, které měly úctyhodný přínos. Zajistíme, že politické strany s
+            potenciálem aspoň 5 % v parlamentních volbách budou mít ve svých
             programech digitální technologie. Spustíme osvětovou kampaň
             zaměřenou na zlepšení postojů lidí k technologiím.
           </p>
@@ -719,7 +718,7 @@ const SystemicChangePlan = () => {
             <Em>
               Náš nejbližší milník: 1/5 2025. Digitální technologie jsou
               nedílnou součástí navrhovaných řešení problémů všech politických
-              stran s potenciálem 5% v parlamentních volbách v roce 2025.
+              stran s potenciálem 5 % v parlamentních volbách v roce 2025.
             </Em>
           </p>
         </IllustratedPoint>
@@ -758,7 +757,7 @@ const PledgeSection = () => {
     <Fragment>
       <ImageHeaderSlide image={Photos.nezisk}>
         <H2>Máme dobře našlápnuto. Pomozte nám to dotáhnout.</H2>
-        <p>Žádaná podpora: 25 mio. Kč / rok na období 2024–2027</p>
+        <p>Žádaná podpora: 25 milionů Kč na rok v období 2024–2027.</p>
         <p>
           Nežádáme peníze na provoz, ale na vyřešení problému. Jakmile ho
           vyřešíme, činnost zaměříme jinam nebo ji ukončíme.
@@ -791,10 +790,10 @@ const PledgeSection = () => {
               <H3>Poskytnout školení a podporu</H3>
               <p>
                 Díky vám budeme moci poskytnout expertizu a know-how tam, kde je
-                nejvíc potřeba – projektům a organizacím řešící palčivé
-                společenské problémy. Pomocí školících programů a strategické
+                nejvíc potřeba – projektům a organizacím řešícím palčivé
+                společenské problémy. Pomocí školicích programů a strategické
                 podpory pomůžeme rozvinout dovednosti a odborné znalosti
-                potřebné k efektivnímu využití technologie ke zlepšení jejich
+                potřebné k efektivnímu využití technologií ke zlepšení jejich
                 služeb.
               </p>
             </BulletSection>
@@ -806,7 +805,7 @@ const PledgeSection = () => {
                 která propojuje světy, které se potřebují, ale často si
                 nerozumí, bude jeden z klíčových pilířů vynaložené investice.
                 Jedná se o náklady na automatizaci procesů v komunitě, analýzu
-                dat, správu software, pořádání akcí a komunikaci.
+                dat, správu software, pořádání akcí nebo komunikaci.
               </p>
             </BulletSection>
             <BulletSection>
@@ -814,7 +813,7 @@ const PledgeSection = () => {
               <p>
                 Vaše podpora nám pomůže vyvinout technické nástroje a zdroje,
                 které mohou organizace veřejné sféry efektivně využít v rámci
-                svého fungování. Bavíme se například o software nebo nástrojích
+                svého fungování. Bavíme se například o softwaru nebo nástrojích
                 pro analýzu dat, které budou pro řadu organizací úplnou
                 novinkou.
               </p>
@@ -822,7 +821,7 @@ const PledgeSection = () => {
             <BulletSection>
               <H3>Prosadit systémovou změnu</H3>
               <p>
-                Vaší podporu využijeme pro dlouhodobou a udržitelnou změnu,
+                Vaši podporu využijeme pro dlouhodobou a udržitelnou změnu,
                 která povede k efektivnímu využívání digitálních technologií na
                 úrovni celé společnosti. Díky advokačním aktivitám a ve
                 spolupráci s úředníky a politiky budeme prosazovat pozitivní
@@ -850,11 +849,11 @@ const PledgeSection = () => {
           Efektivní používání technologie nám umožní jednoduché a opakované
           úkoly automatizovat tak, že úředníci budou mít více času na péči o
           lidi v nouzi a jejich individuální potřeby. Technologie usnadňuje
-          lidem život a díky této zkušenosti veřejná správa bude umět vhodné
-          technologie ve větším měřítku poptávat i do jejich rozvoje dlouhodobě
-          hlavně investovat. Na konci dne taková veřejná správa přináší
-          zjednodušení práce a zkvalitnění služeb pro organizace, firmy i občany
-          Česka - o kus lepší život v Česku pro nás všechny.
+          lidem život a díky této zkušenosti bude veřejná správa umět vhodné
+          technologie ve větším měřítku poptávat a do jejich rozvoje dlouhodobě
+          investovat. Taková veřejná správa přináší zjednodušení práce a
+          zkvalitnění služeb pro organizace, firmy i občany Česka – o kus lepší
+          život v Česku pro nás všechny.
         </p>
       </Slide>
 
@@ -866,10 +865,10 @@ const PledgeSection = () => {
             <p>
               Partnerstvím s Česko.Digital podpoříte desítky projektů s dalšími
               nevládními organizacemi, které ročně realizujeme. Ve všem, co
-              děláme, jsme maximálně transparentní - od bankovního účtu po
-              postupy a kódy u všech aplikací a řešení. Vyvíjíme pouze
+              děláme, jsme maximálně transparentní – od bankovního účtu po
+              postupy a zdrojové kódy u všech aplikací a řešení. Vyvíjíme pouze
               open-source technologie s důrazem na řešení reálného problému a
-              uživatele, toto know-how dále šíříme se stovkami jednotlivců i
+              uživatele, toto know-how dále šíříme mezi stovky jednotlivců i
               organizací.
             </p>
           </div>
@@ -877,7 +876,7 @@ const PledgeSection = () => {
             <H3>Finanční udržitelnost</H3>
             <p>
               Investice do Česko.Digital je investicí do rozvoje, nikoliv do
-              nákladů. Komunita stojí na expertním dobrovolnictví,v rámci jehož
+              nákladů. Komunita stojí na expertním dobrovolnictví, v rámci něhož
               si týmy a projekty vyměňují mnohdy finančně zatěžující know-how
               nebo technologické nástroje. Právě neformální, přátelské prostředí
               vedené silnou vizí v lepší budoucnost umožňuje Česko.Digital
@@ -888,12 +887,12 @@ const PledgeSection = () => {
           <div>
             <H3>Spolupráce ušitá na míru</H3>
             <p>
-              Partneři a filantropové mohou mít různé preference, pokud jde o
-              financování, jako je poskytnutí jednorázového daru nebo
-              poskytování trvalé podpory. Nabízíme řadu možností financování a
-              jsme flexibilní ve svém přístupu, pro všechny partnery máme
-              připravený marketingový balíček, protože na naše partnery s
-              podporovatele jsme náležitě hrdí.
+              Partneři a filantropové mohou mít ve financování různé preference,
+              jako je poskytnutí jednorázového daru nebo poskytování trvalé
+              podpory. Nabízíme řadu možností financování a jsme flexibilní ve
+              svém přístupu; pro všechny partnery máme připravený marketingový
+              balíček, protože na naše partnery a podporovatele jsme náležitě
+              hrdí.
             </p>
           </div>
         </div>
@@ -935,7 +934,7 @@ const PledgeSection = () => {
           Našli jsme způsob, jak posunout celou naši společnost. Buďte s námi u
           toho a podpořte nás. Už 4 roky prokazujeme, jak mohou digitální
           technologie pomoci, vytvořili jsme automatizovaný ekosystém expertní
-          podpory veřejné sféry a s vaší podporou toto budeme moci akcelerovat.
+          podpory veřejné sféry a s vaší podporou ho budeme moci akcelerovat.
           Máme detailní plán systémové změny, jak problém dlouhodobě vyřešit.
           Moc rádi se s vámi sejdeme a prodiskutujeme možnosti spolupráce.
         </Perex>
