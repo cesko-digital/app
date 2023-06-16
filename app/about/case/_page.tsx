@@ -1035,7 +1035,7 @@ const ImageHeaderSlide = ({
 }) => (
   <section>
     <Image src={image} alt="" className="w-full z-0 relative" />
-    <div className="max-w-content m-auto text-xl px-20 pb-20 pt-10 bg-white -mt-[200px] relative z-20">
+    <div className="max-w-content m-auto text-xl px-5 md:px-20 pb-20 pt-10 bg-white md:-mt-[200px] relative z-20">
       <div className="max-w-prose m-auto">{children}</div>
     </div>
   </section>
