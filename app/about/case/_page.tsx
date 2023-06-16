@@ -697,8 +697,8 @@ const SystemicChangePlan = () => {
           </p>
           <p>
             <Em>
-              Náš nejbližší milník: 1/2 2024. Klíčoví aktéři v systému se
-              shodnou na sdílené vizi využívání technologií ve veřejné sféře
+              Náš nejbližší milník: začátek roku 2024. Klíčoví aktéři v systému
+              se shodnou na sdílené vizi využívání technologií ve veřejné sféře
               formou manifestu.
             </Em>
           </p>
@@ -716,7 +716,7 @@ const SystemicChangePlan = () => {
           </p>
           <p>
             <Em>
-              Náš nejbližší milník: 1/5 2025. Digitální technologie jsou
+              Náš nejbližší milník: květen 2025. Digitální technologie jsou
               nedílnou součástí navrhovaných řešení problémů všech politických
               stran s potenciálem 5 % v parlamentních volbách v roce 2025.
             </Em>
@@ -735,7 +735,7 @@ const SystemicChangePlan = () => {
           </p>
           <p>
             <Em>
-              Náš nejbližší milník: 1/9 2023. Otevíráme tréninkové programy na
+              Náš nejbližší milník: září 2023. Otevíráme tréninkové programy na
               navyšování kompetencí pro veřejnou sféru.
             </Em>
           </p>
