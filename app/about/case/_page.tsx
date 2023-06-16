@@ -443,8 +443,8 @@ const SystemicChangeExplainer = () => {
         <div>
           <Image src={People.Oliver} alt="" className="mb-7" />
           <TextQuote
-            quote="To achieve our ambitions, we need a shared vision for government, grounded in the needs of our users. This means breaking down silos and thinking about services from the perspective of the people who use them."
-            author="Oliver Dowden, Minister for Implementation, UK"
+            quote="Abychom dosáhli našich ambicí, vláda musí mít společnou vizi, která vychází z potřeb našich uživatelů. To znamená, že je potřeba prolomit resortismus a přemýšlet o službách z pohledu lidí, kteří je využívají."
+            author="Oliver Dowden, Ministr pro implementaci, Spojené království"
           />
         </div>
       </TwoColumnSlide>
@@ -484,8 +484,8 @@ const SystemicChangeExplainer = () => {
         <div>
           <Image src={People.Mariana} alt="" className="mb-7" />
           <TextQuote
-            quote="In a world where knowledge is power, lack of information can be a barrier to progress, growth and development"
-            author="Mariana Mazzucato, Professor of Economics at University College London"
+            quote="Ve světě, kde ve znalostech spočívá síla, může být nedostatek informací překážkou pokroku, růstu i rozvoje."
+            author="Mariana Mazzucato, Profesorka ekonomie na University College London"
           />
         </div>
       </TwoColumnSlide>
@@ -532,8 +532,8 @@ const SystemicChangeExplainer = () => {
         <div>
           <Image src={People.Martha} alt="" className="mb-7" />
           <TextQuote
-            quote="Digital skills are not just about machines, they are about people. Digital technologies, when combined with the right mix of skills and capabilities, have the power to transform the way public services are delivered."
-            author="Martha Lane Fox, House of Lords crossbench peer, Chancellor at the Open University and a board member at Twitter"
+            quote="Digitální dovednosti nejsou jen o nástrojích, jsou o lidech. Digitální technologie spolu se správnou kombinací dovedností a schopností mají moc změnit způsob poskytování veřejných služeb."
+            author="Martha Lane Fox, Nezávislá členka Sněmovny lordů, kancléřka Open University a členka představenstva společnosti Twitter"
           />
         </div>
       </TwoColumnSlide>
@@ -567,8 +567,8 @@ const SystemicChangeExplainer = () => {
         <div>
           <Image src={People.Steve} alt="" className="mb-7" />
           <TextQuote
-            quote="The cost of not investing in technology is often greater than the cost of investing in it."
-            author="Steve VanRoekel, former Chief Information Officer of the United States"
+            quote="Neinvestovat do technologií je ve výsledku často nákladnější než do nich investovat."
+            author="Steve VanRoekel, Bývalý hlavní informační ředitel USA"
           />
         </div>
       </TwoColumnSlide>
