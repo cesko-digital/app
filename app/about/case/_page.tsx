@@ -984,7 +984,8 @@ const FooterSection = () => {
     "Impact Report 2019–22":
       "https://data.cesko.digital/vyrocni-zpravy/impact-report-2022.pdf",
     "Tiskové zprávy": "https://blog.cesko.digital",
-    "Průzkum klíčových aktérů 2023": "TBD",
+    "Průzkum klíčových aktérů 2023":
+      "https://drive.google.com/file/d/1BLLChViCvNAS0Q9Kptz6Fi5pdUyJCUOM/edit",
     "E15: CEO Česko.Digital o digitalizaci":
       "https://www.e15.cz/nazory-a-analyzy/cesko-v-digitalizaci-zaostava-musime-zmenit-mysleni-pise-pro-e15-cz-sefka-cesko-digital-eva-pavlikova-1382466",
     "Mapa systémové změny":
