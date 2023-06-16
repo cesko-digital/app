@@ -972,7 +972,9 @@ const PledgeSection = () => {
           </div>
         </div>
         <div className="mt-10 text-center">
-          <ButtonLink to="mailto:ahoj@cesko.digital">Ozvěte se nám</ButtonLink>
+          <ButtonLink to="mailto:jan.kotara@cesko.digital">
+            Ozvěte se nám
+          </ButtonLink>
         </div>
       </Slide>
     </Fragment>
