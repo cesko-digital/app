@@ -1,5 +1,6 @@
 import { Layout } from "components/layout";
-import CasePage from "app/about/case/_page";
+import CasePage from "app/partners/case/_page";
+import { Route } from "lib/routing";
 
 /**
  * The “Case for Support” page
@@ -9,7 +10,13 @@ import CasePage from "app/about/case/_page";
  * stored in the `app` folder.
  */
 const Page = () => (
-  <Layout crumbs={[{ label: "O nás" }]} head={{ title: "Case for Support" }}>
+  <Layout
+    crumbs={[
+      { path: Route.partners, label: "Partneři" },
+      { label: "Staňte se partnerem" },
+    ]}
+    head={{ title: "Staňte se partnerem" }}
+  >
     <CasePage />
   </Layout>
 );
