@@ -29,6 +29,7 @@ const StaticRoutes = {
   events: "/events",
   dashboard: "/dashboard",
   partners: "/partners",
+  caseForSupport: "/partners/case",
   projects: "/projects",
 };
 
