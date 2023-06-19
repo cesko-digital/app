@@ -15,7 +15,7 @@ const Page = () => (
       { path: Route.partners, label: "Partneři" },
       { label: "Staňte se partnerem" },
     ]}
-    head={{ title: "Staňte se partnerem" }}
+    head={{ title: "Změňme spolu Česko k lepšímu" }}
   >
     <CasePage />
   </Layout>
