@@ -3,13 +3,14 @@ import { useMemo, useState } from "react";
 import strings from "content/strings.json";
 import FinancialPartners from "components/partners/sections/financial";
 import ExpertsPartners from "components/partners/sections/experts";
-import BecomePartner from "components/partners/sections/become-partner";
 import { Layout, Section, SectionContent } from "components/layout";
 import * as S from "components/partners/styles";
 import Tabs from "components/tabs";
 import { siteData } from "lib/site-data";
 import { Article } from "lib/data-sources/blog";
 import { PortalPartner } from "lib/airtable/partner";
+import { ButtonLink } from "components/links";
+import { Route } from "lib/routing";
 
 type PageProps = {
   partners: readonly PortalPartner[];
@@ -67,6 +68,14 @@ const Page: NextPage<PageProps> = ({ partners, blogPosts }) => {
     </Layout>
   );
 };
+
+const BecomePartner = () => (
+  <section className="max-w-content m-auto px-5 text-xl mb-20">
+    <h2>Staňte se naším partnerem</h2>
+    <p className="mb-[60px]">Chcete s námi změnit Česko k lepšímu?</p>
+    <ButtonLink to={Route.caseForSupport}>Proč nás podpořit</ButtonLink>
+  </section>
+);
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const partners = siteData.partners;
