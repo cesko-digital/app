@@ -92,6 +92,14 @@ const MerchSection = () => (
           jsme ho s výrobcem BRAASI.
         </p>
         <p className="max-w-prose">
+          Batoh.Digital od české značky BRAASI pochází z první kolekce
+          merchandisingu komunity Česko.Digital. Přestože připomíná legendární
+          model HENRI, je přizpůsobený potřebám komunity. Je vyrobený v Praze z
+          kvalitního nepromokavého materiálu Cordura®, má praktickou horní kapsu
+          na klíče a zadní kapsu na 14palcový notebook. Přední stranu zdobí
+          ikonické šipky z loga komunity připomínající programovací jazyky.
+        </p>
+        <p className="max-w-prose">
           Koupí batohu <b>získáš nejen praktického společníka na cesty</b>, ale
           podpoříš fungování a rozvoj dobrovolnické komunity Česko.Digital
           slušnou částkou <b>1000 Kč</b>. Batoh posíláme Zásilkovnou na výdejní
