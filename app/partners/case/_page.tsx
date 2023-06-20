@@ -433,10 +433,16 @@ const SystemicChangeExplainer = () => {
             práce.
           </p>
           <p>
-            Náš průzkum potvrdil hypotézu, že v Česku chybí sdílená vize, jak
-            využívat digitální technologie ve veřejné správě. Bez jasně
-            definovaného a sdíleného směřování, například ve formě vize, se jen
-            těžko něco změní.
+            <a
+              href="https://drive.google.com/file/d/1BLLChViCvNAS0Q9Kptz6Fi5pdUyJCUOM/edit"
+              className="text-black"
+            >
+              Náš průzkum
+            </a>{" "}
+            potvrdil hypotézu, že v Česku chybí sdílená vize, jak využívat
+            digitální technologie ve veřejné správě. Bez jasně definovaného a
+            sdíleného směřování, například ve formě vize, se jen těžko něco
+            změní.
           </p>
         </div>
         <div>
