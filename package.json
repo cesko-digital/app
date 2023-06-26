@@ -29,7 +29,7 @@
     "react-leaflet": "^4.2.1",
     "react-lite-youtube-embed": "^2.3.52",
     "react-select": "^5.7.3",
-    "react-wrap-balancer": "^0.5.0",
+    "react-wrap-balancer": "^1.0.0",
     "sharp": "^0.32.1",
     "slack": "^11.0.2",
     "slack-markdown": "^0.3.0",
