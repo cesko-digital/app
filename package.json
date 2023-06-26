@@ -15,7 +15,7 @@
     "encoding": "^0.1.13",
     "formik": "^2.2.9",
     "gray-matter": "^4.0.3",
-    "ical-generator": "^4.1.0",
+    "ical-generator": "^5.0.0",
     "js-yaml": "^4.1.0",
     "leaflet": "^1.9.4",
     "marked": "^5.1.0",
