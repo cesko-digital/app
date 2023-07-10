@@ -1,16 +1,14 @@
 import * as S from "./styles";
-import { useContext } from "react";
 import { SectionContent } from "components/layout";
-import { ThemeContext } from "styled-components";
+import { defaultTheme } from "components/theme/default";
 
 interface Props {
   memberCount: number;
 }
 
 const Numbers = ({ memberCount }: Props) => {
-  const theme = useContext(ThemeContext);
   return (
-    <S.CustomSection backgroundColor={theme.colors.pebble}>
+    <S.CustomSection backgroundColor={defaultTheme.colors.pebble}>
       <SectionContent verticalPadding={70}>
         <S.Wrapper>
           <S.Item key="first">
