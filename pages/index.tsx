@@ -1,12 +1,11 @@
 import { NextPage, GetStaticProps } from "next";
-import { useContext } from "react";
 import { siteData } from "lib/site-data";
 import { Layout, Section, SectionContent } from "components/layout";
 import { Projects, JoinUs } from "components/sections";
-import { ThemeContext } from "styled-components";
 import { communitySize, shuffleInPlace } from "lib/utils";
 import { PortalProject } from "lib/airtable/project";
 import { PortalPartner } from "lib/airtable/partner";
+import { defaultTheme } from "components/theme/default";
 import {
   Hero,
   OurValues,
@@ -21,8 +20,6 @@ type PageProps = {
 };
 
 const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
-  const theme = useContext(ThemeContext);
-
   return (
     <Layout>
       <Section>
@@ -43,7 +40,7 @@ const Page: NextPage<PageProps> = ({ featuredProjects, partners }) => {
         </SectionContent>
       </Section>
 
-      <Section backgroundColor={theme.colors.pebble}>
+      <Section backgroundColor={defaultTheme.colors.pebble}>
         <SectionContent>
           <OurValues />
         </SectionContent>
