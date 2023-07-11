@@ -148,17 +148,6 @@ const CoreTeamSection = () => (
         maximalizovat produktivitu, a to podílením se na usnadnění chodu a
         procesů organizace.
       </PersonCard>
-/*      
-      <PersonCard
-        name="Tereza Gagnon"
-        title="Head of Partnership & Fundraising"
-        image={TeamPhotos.Terka}
-      >
-        Zodpovídám za fundraising a péči o dárce a partnery Česko.Digital, aby
-        se báze našich podporovatelů rozšiřovala a pomohla tak dosahovat našich
-        cílů.
-      </PersonCard>
-*/      
       <PersonCard
         name="Romana Pokorná"
         title="Program & Project Lead"
