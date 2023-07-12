@@ -46,16 +46,3 @@ export const ButtonWrapper = styled.div`
 export const OpportunitiesMainWrapper = styled.div`
   margin-top: 18px;
 `;
-
-export const CompetencyFilterLabel = styled.div`
-  display: inline-box;
-  vertical-align: middle;
-  cursor: pointer;
-`;
-
-export const CompetencyFilterRadio = styled.input`
-  display: inline-box;
-  vertical-align: middle;
-  margin: 1px 5px -2px 15px;
-  cursor: pointer;
-`;

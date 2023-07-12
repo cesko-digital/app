@@ -10,10 +10,6 @@ import strings from "content/strings.json";
 import Select from "components/select";
 import { PortalProject } from "lib/airtable/project";
 import {
-  CompetencyFilterLabel,
-  CompetencyFilterRadio,
-} from "components/dashboard/styles";
-import {
   compareOpportunitiesByTime,
   PortalOpportunity,
 } from "lib/airtable/opportunity";
@@ -129,26 +125,20 @@ const Page: NextPage<PageProps> = (props) => {
       <Section>
         <SectionContent>
           <FiltersDesktop>
-            {allSkills.map((s) => [
-              <CompetencyFilterRadio
-                key={"competencyInput" + s.name}
-                type="radio"
-                defaultChecked={s.name === selectedSkill}
-                value={s.name}
-                name="competencyInputRadio"
-                onChange={handleSkillSelectionChange}
-              />,
-              <CompetencyFilterLabel
-                key={"competencyLabel" + s.name}
-                onClick={() => {
-                  const target: HTMLInputElement | null =
-                    document.querySelector('input[value="' + s.name + '"]');
-                  if (target) target.click();
-                }}
-              >
-                {s.name + " (" + s.count + ")"}
-              </CompetencyFilterLabel>,
-            ])}
+            {allSkills.map((s) => (
+              <label key={s.name} className="mr-3">
+                <input
+                  className="mr-2"
+                  type="radio"
+                  defaultChecked={s.name === selectedSkill}
+                  value={s.name}
+                  name="competencyInputRadio"
+                  onChange={handleSkillSelectionChange}
+                />
+                <span className="mr-2">{s.name}</span>
+                <span className="text-gray-500">{s.count}</span>
+              </label>
+            ))}
           </FiltersDesktop>
           <FiltersMobile>
             <Select
