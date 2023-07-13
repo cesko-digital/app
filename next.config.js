@@ -88,6 +88,14 @@ module.exports = withAxiom({
         permanent: false,
       },
       //
+      //  Lets the "/go" slug redirect to homepage.
+      //
+      {
+        source: "/go",
+        destination: "/",
+        permanent: true,
+      },
+      //
       // “Naked” URL shortcuts
       //
       {
