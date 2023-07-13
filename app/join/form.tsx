@@ -101,8 +101,22 @@ const Intro = () => (
         sobě si pak budeš moci kdykoliv upravit na svém profilu na Portálu
         dobrovolníka.
       </p>
+      <h2>Co tě čeká po odeslání formuláře</h2>
+      <ol className="mb-8 list-decimal space-y-4 list-inside xl:list-outside">
+        <li>
+          Pro začátek dostaneš{" "}
+          <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
+        </li>
+        <li>
+          Přesměrujeme tě také rovnou na{" "}
+          <b>registrační stránku komunikačního nástroje Slack</b>. U nás se
+          bez něho neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
+          zaregistrovat a můžeš začít hledat nové příležitosti a kontakty nebo
+          sledovat dění v komunitě.
+        </li>
+      </ol>
       <p>
-        Položky označené hvězdičkou
+        Položky označené ve formuláři hvězdičkou
         <RequiredFieldMarker /> jsou povinné.
       </p>
       <p>
@@ -357,21 +371,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
 
   return (
     <Section>
-      <SectionContent>
-        <h2>Co tě čeká po odeslání formuláře</h2>
-        <ol className="mb-8 list-decimal space-y-4 list-inside xl:list-outside">
-          <li>
-            Pro začátek dostaneš{" "}
-            <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
-          </li>
-          <li>
-            Přesměrujeme tě také rovnou na{" "}
-            <b>registrační stránku komunikačního nástroje Slack</b>. U nás se
-            bez něho neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
-            zaregistrovat a můžeš začít hledat nové příležitosti a kontakty nebo
-            sledovat dění v komunitě.
-          </li>
-        </ol>
+      <SectionContent>        
         {validationResult.result === "error" && state !== emptyFormState && (
           <p className="text-red-500" data-testid="form-error">
             {validationResult.msg}
