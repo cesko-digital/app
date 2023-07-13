@@ -98,8 +98,7 @@ const Intro = () => (
       <p>
         Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
         mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
-        sobě si pak budeš moci kdykoliv upravit na svém profilu na Portálu
-        dobrovolníka.
+        sobě si pak budeš moci kdykoliv upravit na svém profilu.
       </p>
       <h2>Co tě čeká po odeslání formuláře</h2>
       <ol className="mb-8 list-decimal space-y-4 list-inside xl:list-outside">
