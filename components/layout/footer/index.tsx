@@ -36,6 +36,7 @@ const InternalLinks = () => {
     [p.supportUs, Route.supportUs],
     [p.logo, Route.brandManual],
     [p.mediaContact, "mailto:pr@cesko.digital"],
+    ["Pravidla chování", "/go/coc"],
   ];
 
   return (
