@@ -102,6 +102,7 @@ export const decodeUserProfile = record({
   notificationFlags: decodeNotificationFlags,
   availableInDistricts: optional(string),
   gdprPolicyAcceptedAt: optional(string),
+  codeOfConductAcceptedAt: optional(string),
   createdAt: optional(string),
   lastModifiedAt: string,
   daysSinceRegistered: optional(number),
@@ -127,6 +128,7 @@ export function encodeUserProfile(
       : undefined,
     createdAt: profile.createdAt,
     gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
+    codeOfConductAcceptedAt: profile.codeOfConductAcceptedAt,
   };
 }
 
@@ -176,6 +178,7 @@ export async function updateUserProfile(
       | "state"
       | "createdAt"
       | "gdprPolicyAcceptedAt"
+      | "codeOfConductAcceptedAt"
       | "notificationFlags"
       | "availableInDistricts"
     >
@@ -202,6 +205,7 @@ export async function createUserProfile(
     | "availableInDistricts"
     | "createdAt"
     | "gdprPolicyAcceptedAt"
+    | "codeOfConductAcceptedAt"
   >
 ): Promise<UserProfile> {
   return await userProfileTable

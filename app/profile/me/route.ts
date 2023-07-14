@@ -17,6 +17,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     email: string,
     skills: string,
     gdprPolicyAcceptedAt: string,
+    codeOfConductAcceptedAt: string,
     occupation: optional(string),
     availableInDistricts: optional(string),
     organizationName: optional(string),
@@ -65,6 +66,7 @@ export async function GET(request: NextRequest) {
         slackUserRelationId: slackUser.id,
         createdAt: new Date().toISOString(),
         gdprPolicyAcceptedAt: undefined,
+        codeOfConductAcceptedAt: undefined,
       });
     }
     return NextResponse.json(profile);

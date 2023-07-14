@@ -109,8 +109,8 @@ const Intro = () => (
         </li>
         <li>
           Přesměrujeme tě také rovnou na{" "}
-          <b>registrační stránku komunikačního nástroje Slack</b>. U nás se
-          bez něho neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
+          <b>registrační stránku komunikačního nástroje Slack</b>. U nás se bez
+          něho neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
           zaregistrovat a můžeš začít hledat nové příležitosti a kontakty nebo
           sledovat dění v komunitě.
         </li>
@@ -284,7 +284,22 @@ const LegalSection: FormSection = ({ state, onChange }) => (
   <Section>
     <SectionContent>
       <h2>Právní náležitosti</h2>
-      <label className="flex items-center mb-1">
+      <label className="flex items-center mb-2">
+        <input
+          type="checkbox"
+          checked={state.cocConsent}
+          disabled={!isEditable(state)}
+          className="mr-3 self-start mt-2 shrink-0"
+          onChange={(e) => onChange({ ...state, cocConsent: e.target.checked })}
+        ></input>
+        <span>
+          Mám přečtená{" "}
+          <a href="https://cesko.digital/go/coc">pravidla chování v komunitě</a>{" "}
+          a zavazuji se k jejich dodržování.
+          <RequiredFieldMarker />
+        </span>
+      </label>
+      <label className="flex items-center mb-2">
         <input
           type="checkbox"
           checked={state.gdprConsent}
@@ -371,7 +386,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
 
   return (
     <Section>
-      <SectionContent>        
+      <SectionContent>
         {validationResult.result === "error" && state !== emptyFormState && (
           <p className="text-red-500" data-testid="form-error">
             {validationResult.msg}

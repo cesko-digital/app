@@ -33,6 +33,7 @@ test("Decode user with no skills", () => {
     createdAt: "2022-03-23T08:31:54.500Z",
     lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
+    codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
   });
 });
@@ -74,6 +75,7 @@ test("Decode Slack Users relation", () => {
     createdAt: "2022-03-23T08:31:54.500Z",
     lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
+    codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
   });
   expect(
@@ -112,6 +114,7 @@ test("Decode Slack Users relation", () => {
     createdAt: "2022-03-23T08:31:54.500Z",
     lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
+    codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
   });
 });

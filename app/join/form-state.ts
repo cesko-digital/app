@@ -14,6 +14,7 @@ export type RegistrationData = {
   occupation: string;
   organizationName?: string;
   gdprPolicyAcceptedAt: string;
+  codeOfConductAcceptedAt: string;
   availableInDistricts: string;
   profileUrl?: string;
 };
@@ -28,6 +29,7 @@ export type FormState = {
   privacyConsent: boolean;
   availableInDistricts: string;
   gdprConsent: boolean;
+  cocConsent: boolean;
   submissionState: SubmissionState;
 };
 
@@ -41,6 +43,7 @@ export const emptyFormState: FormState = {
   availableInDistricts: "",
   privacyConsent: false,
   gdprConsent: false,
+  cocConsent: false,
   submissionState: { tag: "not_submitted_yet" },
 };
 
@@ -52,7 +55,15 @@ export function validateForm(
   data: FormState,
   now = new Date()
 ): ValidationResult {
-  const { name, email, skills, privacyConsent, gdprConsent, occupation } = data;
+  const {
+    name,
+    email,
+    skills,
+    privacyConsent,
+    gdprConsent,
+    cocConsent,
+    occupation,
+  } = data;
   const error = (msg: string) => ({ result: "error" as const, msg });
   if (!name) {
     return error("Je třeba vyplnit jméno.");
@@ -66,11 +77,14 @@ export function validateForm(
     return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
   } else if (!gdprConsent) {
     return error("Je třeba odsouhlasit směrnici GDPR.");
+  } else if (!cocConsent) {
+    return error("Je třeba odsouhlasit pravidla chování v komunitě.");
   } else if (!occupation) {
     return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
     const { organizationName, profileUrl, availableInDistricts } = data;
     const gdprPolicyAcceptedAt = now.toISOString();
+    const codeOfConductAcceptedAt = now.toISOString();
     return {
       result: "success",
       validatedData: {
@@ -82,6 +96,7 @@ export function validateForm(
         occupation,
         profileUrl,
         gdprPolicyAcceptedAt,
+        codeOfConductAcceptedAt,
       },
     };
   }
