@@ -1,6 +1,5 @@
 import { Heading1 } from "components/typography";
 import { Route } from "lib/routing";
-import strings from "content/strings.json";
 import * as S from "./styles";
 
 const Hero = () => {
@@ -9,13 +8,18 @@ const Hero = () => {
       <S.Container>
         <S.Card>
           <S.Content>
-            <Heading1>{strings.pages.homepage.title}</Heading1>
-            <S.ShiftedBody>{strings.pages.homepage.subtitle}</S.ShiftedBody>
+            <Heading1>Skrz jedničky a nuly měníme Česko k lepšímu</Heading1>
+            <S.ShiftedBody>
+              Jsme komunita špičkových specialistů z mnoha oborů od IT přes
+              projektové řízení až po marketing, kteří chtějí ve svém volném
+              čase pomáhat státu i nestátním organizacím a měnit tak Česko k
+              lepšímu.
+            </S.ShiftedBody>
             <S.ButtonAsLinkElement to={Route.projects}>
-              {strings.pages.homepage.whatWeDo}
+              Co děláme
             </S.ButtonAsLinkElement>
             <S.ShiftedButton inverted to={Route.joinUs}>
-              {strings.header.signUp}
+              Chci se přidat
             </S.ShiftedButton>
             <S.HeroPersonTopCircleImage />
           </S.Content>

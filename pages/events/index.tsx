@@ -22,7 +22,7 @@ const Page = ({ futureEvents, pastEvents, projects }: PageProps) => {
   return (
     <Layout
       crumbs={[
-        { label: "Příležitosti k zapojení", path: Route.dashboard },
+        { label: "Příležitosti", path: Route.dashboard },
         { label: "Akce" },
       ]}
       head={{ title: "Akce" }}

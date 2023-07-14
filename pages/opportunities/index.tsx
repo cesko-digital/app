@@ -98,24 +98,15 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { label: strings.crumbs.dashboard, path: Route.dashboard },
-        { label: strings.pages.opportunities.opportunities },
+        { label: "Příležitosti", path: Route.dashboard },
+        { label: "Hledané role" },
       ]}
-      head={{
-        title:
-          strings.pages.opportunities.opportunities +
-          " - " +
-          strings.crumbs.dashboard,
-        description:
-          strings.pages.opportunities.opportunities +
-          " - " +
-          strings.crumbs.dashboard,
-      }}
+      head={{ title: "Hledané role" }}
     >
       <Section>
         <SectionContent>
           <Typography.Heading1>
-            Příležitosti k zapojení{" "}
+            Hledané role{" "}
             <OpportunitiesCountSpan>
               {opportunities.length}
             </OpportunitiesCountSpan>
