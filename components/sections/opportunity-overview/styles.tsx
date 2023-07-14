@@ -76,7 +76,8 @@ export const OpportunityLogo = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: gray;
+  background: white;
+  border: 1px solid silver;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin-bottom: 16px;
