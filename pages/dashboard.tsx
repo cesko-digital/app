@@ -8,7 +8,6 @@ import { CardRow } from "components/layout";
 import { shuffled } from "lib/utils";
 import { Route } from "lib/routing";
 import { siteData } from "lib/site-data";
-import strings from "content/strings.json";
 import { ButtonLink, Link } from "components/links";
 import { default as NextLink } from "next/link";
 import { getRandomElem, shuffleInPlace, unique } from "lib/utils";
@@ -39,19 +38,16 @@ interface Props {
 const Dashboard: NextPage<PageProps> = (props) => {
   return (
     <Layout
-      crumbs={[{ label: strings.crumbs.dashboard }]}
+      crumbs={[{ label: "Příležitosti k zapojení" }]}
       head={{
-        title: strings.crumbs.dashboard,
-        description: strings.header.dashboardDescription,
+        title: "Příležitosti k zapojení",
+        description: "Tržiště příležitostí, jak se zapojit v Česko.Digital",
         coverUrl: "https://data.cesko.digital/img/bcbb8e4a.png",
       }}
     >
       <Section>
         <SectionContent>
-          <Typography.Heading1>{strings.header.dashboard}</Typography.Heading1>
-          <Typography.Body>
-            {strings.header.dashboardDescription}
-          </Typography.Body>
+          <Typography.Heading1>Příležitosti k zapojení</Typography.Heading1>
         </SectionContent>
       </Section>
       <OpportunitiesSection {...props} />
@@ -68,11 +64,9 @@ const MarketPlaceSection: React.FC<PageProps> = ({
   return (
     <Section id="marketplace">
       <SectionContent>
-        <Typography.Heading2>
-          {strings.pages.dashboard.marketplaceOffers}
-        </Typography.Heading2>
+        <Typography.Heading2>Marketplace</Typography.Heading2>
         <Typography.Body>
-          Příležitosti k zapojení v projektech mimo Česko.Digital
+          Zapojte se v projektech mimo Česko.Digital
         </Typography.Body>
         <div className="max-w-content py-2 lg:py-5 m-auto relative">
           {offers.map((offer) => (
@@ -118,9 +112,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
   return (
     <Section id="opportunities">
       <SectionContent>
-        <Typography.Heading2>
-          {strings.pages.dashboard.currentOpportunities}
-        </Typography.Heading2>
+        <Typography.Heading2>Hledané role</Typography.Heading2>
         <Typography.Body>Zapojte se v projektech Česko.Digital</Typography.Body>
         <S.OpportunitiesMainWrapper>
           {opportunities.map((op) => (
@@ -133,7 +125,7 @@ const OpportunitiesSection: React.FC<PageProps> = ({
         </S.OpportunitiesMainWrapper>
         <S.ButtonWrapper>
           <ButtonLink to={Route.opportunities}>
-            {strings.pages.dashboard.moreOpportunities}
+            Více podobných nabídek
           </ButtonLink>
         </S.ButtonWrapper>
       </SectionContent>
@@ -148,7 +140,7 @@ const EventsSection: React.FC<PageProps> = ({ upcomingEvents, projects }) => {
     <Section id="section-events">
       <SectionContent>
         <S.CategoryHeader>
-          <S.Title>{strings.pages.dashboard.comingEvents}</S.Title>
+          <S.Title>Nejbližší akce</S.Title>
         </S.CategoryHeader>
         <S.Container>
           <S.CardWrapper>
@@ -177,7 +169,7 @@ const EduSection: React.FC<PageProps> = ({ videos }) => {
       <SectionContent>
         <div className="flex flex-row flex-wrap justify-between items-end">
           <div className="mb-3 md:mb-0">
-            <S.Title>{strings.pages.dashboard.cedu}</S.Title>
+            <S.Title>Vzdělávání – edu.digital</S.Title>
           </div>
           <Link to={Route.youtube}>Všechna videa</Link>
         </div>

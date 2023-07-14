@@ -14,6 +14,7 @@ import {
   compareOffersByTime,
   MarketPlaceOffer,
 } from "lib/airtable/market-place";
+import { Route } from "lib/routing";
 
 type PageProps = {
   offers: MarketPlaceOffer[];
@@ -22,10 +23,13 @@ type PageProps = {
 const MarketPlace: NextPage<PageProps> = ({ offers }) => {
   return (
     <Layout
-      crumbs={[{ label: "Marketplace" }]}
+      crumbs={[
+        { label: "Příležitosti", path: Route.dashboard },
+        { label: "Marketplace" },
+      ]}
       head={{
         title: "Marketplace",
-        description: "Příležitosti k zapojení v projektech mimo Česko.Digital",
+        description: "Zapojte se v projektech mimo Česko.Digital",
       }}
     >
       <Section>

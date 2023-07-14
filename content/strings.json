@@ -244,8 +244,8 @@
         "links": "Odkazy"
       },
       "opportunities": {
-        "title": "Právě hledáme",
-        "seeAll": "Všechny příležitosti"
+        "title": "Hledané role",
+        "seeAll": "Všechny role"
       },
       "events": {
         "title": "Vybrané akce",
@@ -272,7 +272,7 @@
     "dashboard": {
       "cedu": "Vzdělávání – edu.digital",
       "comingEvents": "Nejbližší akce",
-      "currentOpportunities": "Právě hledáme",
+      "currentOpportunities": "Hledané role",
       "moreOpportunities": "Více podobných nabídek",
       "marketplaceOffers": "Marketplace"
     }
