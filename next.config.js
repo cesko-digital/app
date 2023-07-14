@@ -59,6 +59,12 @@ module.exports = withAxiom({
       // URL shortcuts
       //
       {
+        source: "/go/coc",
+        destination:
+          "https://drive.google.com/file/d/1VP5wpJFG1tgUJPi9ju0pjtTFHSypx8YM/view?usp=drivesdk",
+        permanent: false,
+      },
+      {
         source: "/go/spolu",
         destination: "http://data.cesko.digital/spolunadalku/prirucka.pdf",
         permanent: false,

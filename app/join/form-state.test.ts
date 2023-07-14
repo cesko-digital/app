@@ -14,6 +14,7 @@ test("Validate correctly filled form", () => {
         availableInDistricts: "Praha, Brno",
         privacyConsent: true,
         gdprConsent: true,
+        cocConsent: true,
         submissionState: { tag: "not_submitted_yet" },
       },
       now
@@ -29,6 +30,7 @@ test("Validate correctly filled form", () => {
       organizationName: "",
       profileUrl: "",
       gdprPolicyAcceptedAt: now.toISOString(),
+      codeOfConductAcceptedAt: now.toISOString(),
     },
   });
 });
