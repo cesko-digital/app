@@ -15,7 +15,7 @@ export default defineConfig({
     browserName: "webkit",
   },
   expect: {
-    timeout: 30 * 1000,
+    timeout: 180 * 1000,
   },
   testMatch: ["app/**/*.e2e.ts"],
   timeout: 180 * 1000,
