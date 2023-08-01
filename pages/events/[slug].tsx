@@ -41,6 +41,7 @@ const Page: NextPage<PageProps> = (props) => {
     <Layout
       crumbs={[
         { path: Route.dashboard, label: "Příležitosti" },
+        { path: Route.events, label: "Akce" },
         { label: event.name },
       ]}
       head={{
