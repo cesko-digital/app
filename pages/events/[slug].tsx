@@ -10,7 +10,6 @@ import RenderMarkdown from "components/markdown";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
 import { Route } from "lib/routing";
-import strings from "content/strings.json";
 import { PortalUser } from "lib/airtable/user";
 import { PortalProject } from "lib/airtable/project";
 import {
@@ -41,7 +40,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.dashboard, label: strings.crumbs.dashboard },
+        { path: Route.dashboard, label: "Příležitosti" },
         { label: event.name },
       ]}
       head={{

@@ -44,7 +44,7 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.dashboard, label: "Příležitosti k zapojení" },
+        { path: Route.dashboard, label: "Příležitosti" },
         { path: Route.opportunities, label: "Hledané role" },
         { label: opportunity.name },
       ]}
