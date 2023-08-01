@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Layout, Section, SectionContent } from "components/layout";
-import { Heading1, BodySmall, Body } from "components/typography";
+import { Heading1, Body } from "components/typography";
 import * as S from "components/dashboard/opportunity/styles";
 import TimeIcon from "components/icons/time";
 import OpportunityItem from "components/sections/opportunity-overview";
@@ -11,7 +11,6 @@ import RenderMarkdown from "components/markdown";
 import { Route } from "lib/routing";
 import { ParsedUrlQuery } from "querystring";
 import { siteData } from "lib/site-data";
-import strings from "content/strings.json";
 import Link from "next/link";
 import { getContactButtonLabel } from "components/dashboard/opportunity/utils";
 import { PortalUser } from "lib/airtable/user";
@@ -45,8 +44,8 @@ const Page: NextPage<PageProps> = (props) => {
   return (
     <Layout
       crumbs={[
-        { path: Route.dashboard, label: strings.crumbs.dashboard },
-        { path: Route.opportunities, label: "Příležitosti" },
+        { path: Route.dashboard, label: "Příležitosti k zapojení" },
+        { path: Route.opportunities, label: "Hledané role" },
         { label: opportunity.name },
       ]}
       head={{
