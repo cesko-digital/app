@@ -311,6 +311,11 @@ const BoardSection = () => (
 const YearlyReportSection = () => {
   const items = [
     {
+      label: "Výroční zpráva za rok 2022",
+      image: IllustrationPhotos.Year2022,
+      link: "https://data.cesko.digital/vyrocni-zpravy/2022.pdf",
+    },
+    {
       label: "Výroční zpráva za rok 2021",
       image: IllustrationPhotos.Year2021,
       link: "https://data.cesko.digital/vyrocni-zpravy/2021.pdf",
