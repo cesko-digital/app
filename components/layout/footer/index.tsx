@@ -68,7 +68,6 @@ const SocialLinks = () => {
     [o.youtube, "https://www.youtube.com/c/ČeskoDigital"],
     [o.podcast, "https://anchor.fm/poslouchatdigital"],
     [o.github, "https://github.com/cesko-digital"],
-    [o.cocuma, "https://www.cocuma.cz/company/cesko-digital/jobs/"],
   ];
 
   return (
