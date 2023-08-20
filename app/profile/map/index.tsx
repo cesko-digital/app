@@ -104,7 +104,7 @@ const MemberCard = ({ member }: { member: MapMember }) => (
         member.slackAvatarUrl ||
         "https://data.cesko.digital/people/generic-profile.jpg"
       }
-      className="border-it border-2 rounded-full"
+      className="border-it border-2 rounded-full aspect-square object-cover object-top"
       width={70}
       height={70}
       alt=""
