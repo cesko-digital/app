@@ -262,7 +262,8 @@ const SkillSection: React.FC<SkillSectionProps> = ({
         <p>
           Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
           může někdo z komunity poprosit o radu nebo tě zapojit do správného
-          typu aktivity nebo projektu.
+          typu aktivity nebo projektu. Vyplň vše, co tě zajímá, včetně oblastí,
+          ve kterých se chceš rozvíjet.
         </p>
         <SkillPicker
           skillMenu={skillMenu}
