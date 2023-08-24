@@ -172,10 +172,10 @@ const CoreTeamSection = () => (
         title="Brand Product Owner"
         image={TeamPhotos.Jindra}
       >
-        Mám na starosti značku, reputaci a komunikační strategii organizace.
-        Zabývám se tím, co komu a jak říkáme. Usměrňuji očekávání, která
-        vzbuzujeme s ohledem na organizační cíle. Rovněž zastávám roli Scrum
-        Support Mastera na projektech.
+        Mám na starosti image, reputaci a komunikační strategii organizace.
+        Propojuji komunikaci s organizačními cíly a zabývám se tím, co, komu
+        a jak říkáme. Hlídám konzistenci našich sdělení a dbám o naše hodnoty,
+      
       </PersonCard>
       <PersonCard
         name="Terézia Palaščáková"
