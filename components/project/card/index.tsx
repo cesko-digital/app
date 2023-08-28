@@ -1,9 +1,17 @@
 import {
+  AsanaIcon,
+  ConfluenceIcon,
+  FigmaIcon,
   GithubIcon,
+  GoogleCalendarIcon,
+  GoogleDocsIcon,
+  GoogleDriveIcon,
   JiraIcon,
+  MiroIcon,
   SlackIcon,
   TrelloIcon,
   WebsiteIcon,
+  YouTubeIcon,
 } from "components/icons";
 import { ButtonLink } from "components/links";
 import { PortalProject } from "lib/airtable/project";
@@ -63,6 +71,22 @@ const iconForUrl = (url: string) => {
     return JiraIcon;
   } else if (url.startsWith("https://trello.com")) {
     return TrelloIcon;
+  } else if (url.startsWith("https://cesko-digital.atlassian.net")) {
+    return ConfluenceIcon;
+  } else if (url.startsWith("https://miro.com")) {
+    return MiroIcon;
+  } else if (url.startsWith("https://youtube.com")) {
+    return YouTubeIcon;
+  } else if (url.startsWith("https://app.asana.com")) {
+    return AsanaIcon;
+  } else if (url.startsWith("https://calendar.google.com")) {
+    return GoogleCalendarIcon;
+  } else if (url.startsWith("https://docs.google.com")) {
+    return GoogleDocsIcon;
+  } else if (url.startsWith("https://drive.google.com")) {
+    return GoogleDriveIcon;
+  } else if (url.startsWith("https://www.figma.com")) {
+    return FigmaIcon;
   } else {
     return WebsiteIcon;
   }
