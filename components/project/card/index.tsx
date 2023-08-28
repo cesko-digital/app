@@ -60,36 +60,29 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
 };
 
 const iconForUrl = (url: string) => {
-  if (
-    url.startsWith("https://cesko-digital.slack.com") ||
-    url.startsWith("https://app.slack.com/")
-  ) {
-    return SlackIcon;
-  } else if (url.startsWith("https://github.com")) {
-    return GithubIcon;
-  } else if (url.startsWith("https://cesko-digital.atlassian.net/jira/")) {
-    return JiraIcon;
-  } else if (url.startsWith("https://trello.com")) {
-    return TrelloIcon;
-  } else if (url.startsWith("https://cesko-digital.atlassian.net")) {
-    return ConfluenceIcon;
-  } else if (url.startsWith("https://miro.com")) {
-    return MiroIcon;
-  } else if (url.startsWith("https://youtube.com")) {
-    return YouTubeIcon;
-  } else if (url.startsWith("https://app.asana.com")) {
-    return AsanaIcon;
-  } else if (url.startsWith("https://calendar.google.com")) {
-    return GoogleCalendarIcon;
-  } else if (url.startsWith("https://docs.google.com")) {
-    return GoogleDocsIcon;
-  } else if (url.startsWith("https://drive.google.com")) {
-    return GoogleDriveIcon;
-  } else if (url.startsWith("https://www.figma.com")) {
-    return FigmaIcon;
-  } else {
-    return WebsiteIcon;
+  const ICONS_BY_PAGES = {
+    "https://cesko-digital.slack.com": SlackIcon,
+    "https://app.slack.com/": SlackIcon,
+    "https://github.com": GithubIcon,
+    "https://cesko-digital.atlassian.net/jira/": JiraIcon,
+    "https://trello.com": TrelloIcon,
+    "https://cesko-digital.atlassian.net": ConfluenceIcon,
+    "https://miro.com": MiroIcon,
+    "https://youtube.com": YouTubeIcon,
+    "https://app.asana.com": AsanaIcon,
+    "https://calendar.google.com": GoogleCalendarIcon,
+    "https://docs.google.com": GoogleDocsIcon,
+    "https://drive.google.com": GoogleDriveIcon,
+    "https://www.figma.com": FigmaIcon,
+  };
+
+  for (const [page, icon] of Object.entries(ICONS_BY_PAGES)) {
+    if (url.startsWith(page)) {
+      return icon;
+    }
   }
+
+  return WebsiteIcon;
 };
 
 export default ProjectCard;
