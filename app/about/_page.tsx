@@ -174,7 +174,7 @@ const CoreTeamSection = () => (
       >
         Mám na starosti image, reputaci a komunikační strategii organizace.
         Propojuji komunikaci s organizačními cíly a zabývám se tím, co, komu
-        a jak říkáme. Hlídám konzistenci našich sdělení a dbám o naše hodnoty,
+        a jak říkáme. Hlídám konzistenci našich sdělení a dbám o naše hodnoty.
       
       </PersonCard>
       <PersonCard
