@@ -15,10 +15,6 @@ export function markdownToHTML(source: string): string {
     breaks: true,
     gfm: true,
     pedantic: false,
-    smartypants: false,
-    // These are obsoleted and have to be set to `false`
-    mangle: false,
-    headerIds: false,
   });
 }
 
