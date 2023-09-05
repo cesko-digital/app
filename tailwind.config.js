@@ -16,6 +16,7 @@ module.exports = {
         violet: "CCCCFF",
         yellow: "#FFF6A3",
         plum: "#080831",
+        lightGray: "#EDEDEF",
       },
     },
   },
