@@ -1,5 +1,5 @@
 import Markdoc from "@markdoc/markdoc";
-import { JoinUsBox } from "app/(shared)/join-us";
+import { JoinUsBox } from "components/join-us";
 import { allCustomTags } from "app/projects/CustomTags";
 import { projectDescriptionConfig } from "app/projects/schema";
 import { BlogCard } from "components/cards";
