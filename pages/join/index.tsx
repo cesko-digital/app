@@ -3,7 +3,7 @@ import { Layout } from "components/layout";
 import { Petra, RadekH, Julia } from "app/join/(images)";
 import { communitySize } from "lib/utils";
 import Image, { StaticImageData } from "next/image";
-import { JoinUsBox } from "app/(shared)/join-us";
+import { JoinUsBox } from "components/join-us";
 import {
   OpennessIcon,
   EfficiencyIcon,
