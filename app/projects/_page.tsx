@@ -3,7 +3,6 @@ import HighlightedProject from "app/projects/highlighted";
 import { Layout, Section, SectionContent } from "components/layout";
 import { JoinUs } from "components/sections";
 import { BodyBig, Heading1, Heading2 } from "components/typography";
-import strings from "content/strings.json";
 import { PortalProject } from "lib/airtable/project";
 import { Route } from "lib/routing";
 import Link from "next/link";
@@ -14,7 +13,6 @@ export type Props = {
 };
 
 export const Page = ({ projects }: Props) => {
-  const msg = strings.pages.projects;
   const highlightedProject = projects.find((p) => p.highlighted);
   const otherRunningProjects = projects.filter(
     (p) =>
@@ -24,16 +22,17 @@ export const Page = ({ projects }: Props) => {
   const finishedProjects = projects.filter((p) => p.state === "finished");
   return (
     <Layout
-      crumbs={[{ label: msg.navigation.projects }]}
+      crumbs={[{ label: "Projekty" }]}
       head={{
-        title: msg.metadata.title,
-        description: msg.metadata.description,
+        title: "Projekty",
+        description:
+          "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
       }}
     >
       <Section>
         <SectionContent>
           <Wrapper>
-            <Heading>{msg.title}</Heading>
+            <Heading>Projekty</Heading>
             <Tagline>
               Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a
               měnit život v Česku k lepšímu. Prohlédněte si naše projekty a
@@ -49,7 +48,7 @@ export const Page = ({ projects }: Props) => {
 
       <Section>
         <SectionContent>
-          <ProjectsHeading>{msg.ongoing}</ProjectsHeading>
+          <ProjectsHeading>Aktuální projekty</ProjectsHeading>
           {highlightedProject && (
             <HighlightedProject project={highlightedProject} />
           )}
@@ -59,7 +58,7 @@ export const Page = ({ projects }: Props) => {
 
       <Section>
         <SectionContent>
-          <ProjectsHeading>{msg.finished}</ProjectsHeading>
+          <ProjectsHeading>Dokončené projekty</ProjectsHeading>
           <ProjectList projects={finishedProjects} />
         </SectionContent>
       </Section>
