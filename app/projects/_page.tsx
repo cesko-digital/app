@@ -112,7 +112,7 @@ export const Page = ({ projects }: Props) => {
 
 const SystemicChangeSquareTile = () => (
   <a
-    className="aspect-square bg-white hover:bg-yellow border-lightGray border-[1px] no-underline text-black"
+    className="aspect-square bg-white hover:bg-yellow border-it border-2 no-underline text-black"
     href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
   >
     <div className="relative flex flex-col overflow-clip p-10 w-full h-full">
