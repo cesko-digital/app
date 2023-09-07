@@ -42,8 +42,8 @@ export const Page = ({ projects }: Props) => {
 
       <Section>
         <SectionContent>
-          <div className="grid grid-cols-3 gap-7">
-            <div className="flex flex-col gap-7 col-span-2">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="flex flex-col gap-7 lg:col-span-2">
               <Heading2>Systémová změna</Heading2>
               <Body className="max-w-prose">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -112,24 +112,27 @@ export const Page = ({ projects }: Props) => {
 
 const SystemicChangeSquareTile = () => (
   <a
-    className="aspect-square bg-white hover:bg-yellow border-lightGray border-[1px] relative flex flex-col overflow-clip p-10 no-underline text-black"
+    className="aspect-square bg-white hover:bg-yellow border-lightGray border-[1px] no-underline text-black"
     href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
   >
-    <Image
-      src={CzechiaMapBitmap}
-      className="absolute top-19 -right-[200px] opacity-60"
-      alt=""
-    />
-    <h2 className="text-it leading-normal mt-0">
-      Mapa
-      <br />
-      systémové
-      <br />
-      změny
-    </h2>
-    <p className="mt-auto mb-0 leading-relaxed">
-      Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji v PDF →
-    </p>
+    <div className="relative flex flex-col overflow-clip p-10 w-full h-full">
+      <Image
+        src={CzechiaMapBitmap}
+        className="absolute top-19 -right-[200px] opacity-60"
+        alt=""
+      />
+      <h2 className="text-it leading-normal mt-0">
+        Mapa
+        <br />
+        systémové
+        <br />
+        změny
+      </h2>
+      <p className="mt-auto mb-0 leading-relaxed">
+        Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji
+        v PDF →
+      </p>
+    </div>
   </a>
 );
 
