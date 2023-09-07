@@ -28,7 +28,7 @@ const InternalLinks = () => {
   const p = footerStrings.pageLinks;
   const pageLinks = [
     ["O nás", Route.aboutUs],
-    [p.projects, Route.projects],
+    ["Co děláme", Route.projects],
     [p.dashboard, Route.dashboard],
     [p.blog, Route.blog],
     [p.loginToSlack, Route.joinUs],
