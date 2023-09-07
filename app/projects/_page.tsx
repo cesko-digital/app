@@ -22,9 +22,9 @@ export const Page = ({ projects }: Props) => {
   const finishedProjects = projects.filter((p) => p.state === "finished");
   return (
     <Layout
-      crumbs={[{ label: "Projekty" }]}
+      crumbs={[{ label: "Co děláme" }]}
       head={{
-        title: "Projekty",
+        title: "Co děláme",
         description:
           "Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a měnit život v Česku k lepšímu. Podívejte se, jak to děláme.",
       }}

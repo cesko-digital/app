@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   const lang = useContext(LangContext);
 
   const menu = [
-    [Route.projects, strings.header.projects],
+    [Route.projects, "Co děláme"],
     [Route.dashboard, strings.header.dashboard],
     [Route.partners, strings.header.partners],
     [Route.blog, "Blog"],
