@@ -4,10 +4,11 @@ import Image, { StaticImageData } from "next/image";
 import { Fragment, ReactNode } from "react";
 import Balancer from "react-wrap-balancer";
 import PartnerLogos from "./logos";
-import Illustrations from "./misc";
 import People from "./people";
 import Photos from "./photos";
 import ProjectLogos from "./projects";
+import { CzechiaMapBitmap } from "components/illustrations";
+import Illustrations from "./misc";
 
 const CasePage = () => (
   <Fragment>
@@ -24,7 +25,7 @@ const CasePage = () => (
 const Intro = () => (
   <Slide>
     <Image
-      src={Illustrations.map}
+      src={CzechiaMapBitmap}
       width={753}
       height={416}
       className="opacity-10 grayscale absolute -right-[200px] -top-[20px]"
@@ -144,7 +145,7 @@ const Challenges = () => (
       </div>
       <div className="relative">
         <div className="md:absolute md:w-[768px] md:h-[416px]">
-          <Image src={Illustrations.map} alt="" />
+          <Image src={CzechiaMapBitmap} alt="" />
         </div>
       </div>
     </TwoColumnSlide>
@@ -671,7 +672,7 @@ const SystemicChangePlan = () => {
             href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
           >
             <Image
-              src={Illustrations.map}
+              src={CzechiaMapBitmap}
               className="absolute top-20 -right-[200px] opacity-60"
               alt=""
             />

@@ -6,7 +6,6 @@ import { PortalPartner } from "lib/airtable/partner";
 import { defaultTheme } from "components/theme/default";
 import { Body, Heading2 } from "components/typography";
 import { ButtonLink } from "components/links";
-import Map from "./images/mapa.png";
 import Hero from "./hero";
 import Numbers from "./numbers";
 import OurValues from "./our-values";
@@ -14,6 +13,7 @@ import ImageGallery from "./image-gallery";
 import Partners from "./partners";
 import Image from "next/image";
 import { Route } from "lib/routing";
+import { CzechiaMapBitmap } from "components/illustrations";
 
 export type Props = {
   featuredProjects: readonly PortalProject[];
@@ -86,7 +86,7 @@ const SupportUsBox = () => (
         {/* The left position is here to improve pattern clipping on large displays.
         The max width is reset to fight some crazy global styling rule about all images. */}
         <Image
-          src={Map}
+          src={CzechiaMapBitmap}
           className="left-[5px] max-w-none w-full md:absolute md:w-[768px] md:h-[416px]"
           alt=""
         />
