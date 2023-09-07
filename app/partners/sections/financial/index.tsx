@@ -1,8 +1,7 @@
 import React from "react";
 import { CardRow, Section, SectionContent } from "components/layout";
-import { Heading2, Heading3 } from "components/typography";
+import { Body, Heading2, Heading3 } from "components/typography";
 import LogoList from "components/logo-list";
-import * as S from "../../styles";
 import { ButtonLink } from "components/buttons/button/styles";
 import { ButtonSize } from "components/buttons";
 import BlogCard from "components/cards/blog-card";
@@ -10,6 +9,7 @@ import strings from "content/strings.json";
 import { BlogHeader } from "./styles";
 import { Article } from "lib/data-sources/blog";
 import { filterPartnersByCategory, PortalPartner } from "lib/airtable/partner";
+import styled from "styled-components";
 
 interface Props {
   partners: readonly PortalPartner[];
@@ -27,14 +27,14 @@ const FinancialPartners: React.FC<Props> = ({ partners, blogPosts }) => {
     <Section>
       <SectionContent verticalPadding={60}>
         <Heading2>{msg.heading.title}</Heading2>
-        <S.PaddedBody>{msg.heading.perex}</S.PaddedBody>
+        <PaddedBody>{msg.heading.perex}</PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={0}>
         <Heading3>{msg.mainPartners.title}</Heading3>
-        <S.PaddedBody>{msg.mainPartners.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <PaddedBody>{msg.mainPartners.perex}</PaddedBody>
+        <PaddedBody>
           <LogoList items={mainPartners} />
-        </S.PaddedBody>
+        </PaddedBody>
       </SectionContent>
       {blogPosts.length > 0 && (
         <SectionContent>
@@ -50,15 +50,15 @@ const FinancialPartners: React.FC<Props> = ({ partners, blogPosts }) => {
       )}
       <SectionContent verticalPadding={60}>
         <Heading3>{msg.regularPartners.title}</Heading3>
-        <S.PaddedBody>{msg.regularPartners.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <PaddedBody>{msg.regularPartners.perex}</PaddedBody>
+        <PaddedBody>
           <LogoList items={regularPartners} />
-        </S.PaddedBody>
+        </PaddedBody>
       </SectionContent>
       <SectionContent>
         <Heading3>{msg.donators.title}</Heading3>
-        <S.PaddedBody>{msg.donators.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <PaddedBody>{msg.donators.perex}</PaddedBody>
+        <PaddedBody>
           <ButtonLink
             size={ButtonSize.Normal}
             href="https://www.darujme.cz/projekt/1203553"
@@ -66,10 +66,18 @@ const FinancialPartners: React.FC<Props> = ({ partners, blogPosts }) => {
           >
             {msg.donators.button}
           </ButtonLink>
-        </S.PaddedBody>
+        </PaddedBody>
       </SectionContent>
     </Section>
   );
 };
+
+const PaddedBody = styled(Body)`
+  padding: 34px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 16px 0;
+  }
+`;
 
 export default FinancialPartners;
