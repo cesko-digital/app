@@ -1,10 +1,13 @@
+import Illustrations from "app/partners/case/misc";
 import ProjectList from "app/projects/card-list";
 import HighlightedProject from "app/projects/highlighted";
 import { Layout, Section, SectionContent } from "components/layout";
+import { ButtonLink } from "components/links";
 import { JoinUs } from "components/sections";
-import { BodyBig, Heading1, Heading2 } from "components/typography";
+import { Body, Heading1, Heading2 } from "components/typography";
 import { PortalProject } from "lib/airtable/project";
 import { Route } from "lib/routing";
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -32,17 +35,48 @@ export const Page = ({ projects }: Props) => {
       <Section>
         <SectionContent>
           <Wrapper>
-            <Heading>Projekty</Heading>
-            <Tagline>
-              Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a
-              měnit život v Česku k lepšímu. Prohlédněte si naše projekty a
-              pokud vás zaujmou, podívejte se na{" "}
-              <Link href={Route.opportunities}>
-                aktuální příležitosti k zapojení
-              </Link>
-              .
-            </Tagline>
+            <Heading>Co děláme</Heading>
           </Wrapper>
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <div className="grid grid-cols-3 gap-7">
+            <div className="flex flex-col gap-7 col-span-2">
+              <Heading2>Systémová změna</Heading2>
+              <Body className="max-w-prose">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Body>
+              <div>
+                <ButtonLink to={Route.caseForSupport}>
+                  Chci vědět víc
+                </ButtonLink>
+              </div>
+            </div>
+            <SystemicChangeSquareTile />
+          </div>
+        </SectionContent>
+      </Section>
+
+      <Section>
+        <SectionContent>
+          <ProjectsHeading>Projekty</ProjectsHeading>
+          <Body className="max-w-prose">
+            Díky expertnímu dobrovolnictví dokážeme dosáhnout velkých věcí a
+            měnit život v Česku k lepšímu. Prohlédněte si naše projekty a pokud
+            vás zaujmou, podívejte se na{" "}
+            <Link href={Route.opportunities}>
+              aktuální příležitosti k zapojení
+            </Link>
+            .
+          </Body>
         </SectionContent>
       </Section>
 
@@ -73,6 +107,33 @@ export const Page = ({ projects }: Props) => {
 };
 
 //
+// Components
+//
+
+const SystemicChangeSquareTile = () => (
+  <a
+    className="aspect-square bg-white hover:bg-yellow border-lightGray border-[1px] relative flex flex-col overflow-clip p-10 no-underline text-black"
+    href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
+  >
+    <Image
+      src={Illustrations.map}
+      className="absolute top-19 -right-[200px] opacity-60"
+      alt=""
+    />
+    <h2 className="text-it leading-normal mt-0">
+      Mapa
+      <br />
+      systémové
+      <br />
+      změny
+    </h2>
+    <p className="mt-auto mb-0 leading-relaxed">
+      Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji v PDF →
+    </p>
+  </a>
+);
+
+//
 // Styles
 //
 
@@ -88,14 +149,6 @@ const Heading = styled(Heading1)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: 38px;
-  }
-`;
-
-const Tagline = styled(BodyBig)`
-  margin-bottom: 100px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 26px;
   }
 `;
 
