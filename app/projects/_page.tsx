@@ -1,6 +1,6 @@
-import Illustrations from "app/partners/case/misc";
-import ProjectList from "app/projects/card-list";
-import HighlightedProject from "app/projects/highlighted";
+import ProjectList from "./card-list";
+import HighlightedProject from "./highlighted";
+import { CzechiaMapBitmap } from "components/illustrations";
 import { Layout, Section, SectionContent } from "components/layout";
 import { ButtonLink } from "components/links";
 import { JoinUs } from "components/sections";
@@ -116,7 +116,7 @@ const SystemicChangeSquareTile = () => (
     href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
   >
     <Image
-      src={Illustrations.map}
+      src={CzechiaMapBitmap}
       className="absolute top-19 -right-[200px] opacity-60"
       alt=""
     />
