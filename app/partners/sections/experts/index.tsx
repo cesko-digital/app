@@ -1,9 +1,9 @@
 import { Section, SectionContent } from "components/layout";
-import { Heading2, Heading3 } from "components/typography";
+import { Body, Heading2, Heading3 } from "components/typography";
 import LogoList from "components/logo-list";
-import * as S from "../../styles";
 import strings from "content/strings.json";
 import { filterPartnersByCategory, PortalPartner } from "lib/airtable/partner";
+import styled from "styled-components";
 
 interface ExpertsPartnersProps {
   partners: readonly PortalPartner[];
@@ -17,24 +17,32 @@ const ExpertsPartners: React.FC<ExpertsPartnersProps> = ({ partners }) => {
     <Section>
       <SectionContent verticalPadding={60}>
         <Heading2>{msg.heading.title}</Heading2>
-        <S.PaddedBody>{msg.heading.perex}</S.PaddedBody>
+        <PaddedBody>{msg.heading.perex}</PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={0}>
         <Heading3>{msg.submitters.title}</Heading3>
-        <S.PaddedBody>{msg.submitters.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <PaddedBody>{msg.submitters.perex}</PaddedBody>
+        <PaddedBody>
           <LogoList items={submitters} />
-        </S.PaddedBody>
+        </PaddedBody>
       </SectionContent>
       <SectionContent verticalPadding={60}>
         <Heading3>{msg.regularPartners.title}</Heading3>
-        <S.PaddedBody>{msg.regularPartners.perex}</S.PaddedBody>
-        <S.PaddedBody>
+        <PaddedBody>{msg.regularPartners.perex}</PaddedBody>
+        <PaddedBody>
           <LogoList items={supporters} />
-        </S.PaddedBody>
+        </PaddedBody>
       </SectionContent>
     </Section>
   );
 };
+
+const PaddedBody = styled(Body)`
+  padding: 34px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 16px 0;
+  }
+`;
 
 export default ExpertsPartners;
