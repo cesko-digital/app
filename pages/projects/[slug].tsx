@@ -1,13 +1,25 @@
 import { compareEventsByTime } from "lib/airtable/event";
 import { getAllVideos } from "lib/data-sources/youtube";
 import { siteData } from "lib/site-data";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { Page, Props } from "app/projects/project";
 
 interface QueryParams extends ParsedUrlQuery {
   slug: string;
 }
+
+export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
+  const paths = siteData.projects
+    .filter((p) => p.state !== "draft")
+    .map((project) => ({
+      params: { slug: project.slug },
+    }));
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
 
 export const getStaticProps: GetStaticProps<Props, QueryParams> = async (
   context
