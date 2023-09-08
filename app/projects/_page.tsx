@@ -7,6 +7,7 @@ import { JoinUs } from "components/sections";
 import { Body, Heading1, Heading2 } from "components/typography";
 import { PortalProject } from "lib/airtable/project";
 import { Route } from "lib/routing";
+import { loremIpsum } from "lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -45,15 +46,7 @@ export const Page = ({ projects }: Props) => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             <div className="flex flex-col gap-7 lg:col-span-2">
               <Heading2>Systémová změna</Heading2>
-              <Body className="max-w-prose">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Body>
+              <Body className="max-w-prose">{loremIpsum}</Body>
               <div>
                 <ButtonLink to={Route.caseForSupport}>
                   Chci vědět víc

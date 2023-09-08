@@ -1,3 +1,4 @@
+import { CzechiaMapBitmap } from "components/illustrations";
 import ExpertsPartners from "./sections/experts";
 import FinancialPartners from "./sections/financial";
 import { Layout, Section, SectionContent } from "components/layout";
@@ -7,6 +8,8 @@ import { BodyBig, Heading1 } from "components/typography";
 import { PortalPartner } from "lib/airtable/partner";
 import { Article } from "lib/data-sources/blog";
 import { Route } from "lib/routing";
+import { loremIpsum } from "lib/utils";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 
@@ -55,14 +58,20 @@ export const Page = ({ partners, blogPosts }: Props) => {
       <>
         <Section>
           <SectionContent>
-            <Heading>Pomáhejte s námi!</Heading>
-            <Tagline>
-              Děkujeme všem našim dárcům, díky kterým tu můžeme být s vámi a
-              měnit Česko k lepšímu. Chytrým nasazením digitálních technologií
-              můžeme zjednodušit a zlepšit fungování společnosti. Česká
-              republika má nejlepší předpoklady k tomu, aby byla digitálním
-              premiantem – a zatím není. Pomozte nám to změnit!
-            </Tagline>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+              <div className="md:col-span-2 flex flex-col gap-7">
+                <Heading1>
+                  Řešíme to systémově. Máme konkrétní plán, jak na to
+                </Heading1>
+                <BodyBig className="">{loremIpsum}</BodyBig>
+                <div>
+                  <ButtonLink to={Route.caseForSupport}>
+                    Chci vědět víc
+                  </ButtonLink>
+                </div>
+              </div>
+              <SystemicChangeSquareTile />
+            </div>
             <Tabs items={sections} onChange={setActiveSectionKey} />
           </SectionContent>
         </Section>
@@ -81,24 +90,30 @@ const BecomePartner = () => (
   </section>
 );
 
-//
-// Styles
-//
-
-const Heading = styled(Heading1)`
-  margin: 50px 0 10px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 38px;
-  }
-`;
-
-const Tagline = styled(BodyBig)`
-  margin-bottom: 60px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 28px;
-  }
-`;
+const SystemicChangeSquareTile = () => (
+  <a
+    className="aspect-square max-w-[400px] bg-white hover:bg-yellow border-it border-2 no-underline text-black"
+    href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
+  >
+    <div className="relative flex flex-col overflow-clip p-10 w-full h-full">
+      <Image
+        src={CzechiaMapBitmap}
+        className="absolute top-19 -right-[200px] opacity-60"
+        alt=""
+      />
+      <h2 className="text-it leading-normal mt-0">
+        Mapa
+        <br />
+        systémové
+        <br />
+        změny
+      </h2>
+      <p className="mt-auto mb-0 leading-relaxed">
+        Klíčové aktivity a milníky jsme zanesli do mapy. Prohlédněte si ji
+        v PDF →
+      </p>
+    </div>
+  </a>
+);
 
 export default Page;
