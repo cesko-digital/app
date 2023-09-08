@@ -1,18 +1,38 @@
+import { getResizedImgUrl } from "lib/utils";
 import styled from "styled-components";
-import { Heading2 } from "components/typography";
 
 const LOGO_WIDTH_PX = 160;
 const LOGO_MOBILE_WIDTH_PX = 144;
 
-export const MainTitle = styled(Heading2)`
-  margin: 0 0 65px;
+export interface Logo {
+  name: string;
+  logoUrl: string;
+  linkUrl?: string;
+}
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 40px;
-  }
-`;
+interface LogoListProps {
+  items: readonly Logo[];
+}
 
-export const List = styled.ul`
+const LogoList: React.FC<LogoListProps> = ({ items }) => {
+  return (
+    <List>
+      {items.map((logo, index) => (
+        <Item key={index}>
+          <Link href={logo.linkUrl} target="_blank">
+            <Logo
+              alt=""
+              src={getResizedImgUrl(logo.logoUrl, 320)}
+              loading="lazy"
+            />
+          </Link>
+        </Item>
+      ))}
+    </List>
+  );
+};
+
+const List = styled.ul`
   display: grid;
   grid-gap: 24px 90px;
   grid-template-columns: repeat(auto-fill, ${LOGO_WIDTH_PX}px);
@@ -25,9 +45,10 @@ export const List = styled.ul`
     margin-bottom: 65px;
   }
 `;
-export const Item = styled.li``;
 
-export const Link = styled.a`
+const Item = styled.li``;
+
+const Link = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +61,10 @@ export const Link = styled.a`
   }
 `;
 
-export const Logo = styled.img`
+const Logo = styled.img`
   max-width: 100%;
   max-height: 100%;
   height: auto;
 `;
+
+export default LogoList;
