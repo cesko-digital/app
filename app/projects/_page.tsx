@@ -36,7 +36,7 @@ export const Page = ({ projects }: Props) => {
       <Section>
         <SectionContent>
           <Wrapper>
-            <Heading>Co děláme</Heading>
+            <Heading1>Co děláme</Heading1>
           </Wrapper>
         </SectionContent>
       </Section>
@@ -138,14 +138,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 700px;
   overflow-wrap: break-word;
-`;
-
-const Heading = styled(Heading1)`
-  margin: 50px 0 10px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 38px;
-  }
 `;
 
 const ProjectsHeading = styled(Heading2)`
