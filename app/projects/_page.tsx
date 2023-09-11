@@ -7,7 +7,6 @@ import { JoinUs } from "components/sections";
 import { Body, Heading1, Heading2 } from "components/typography";
 import { PortalProject } from "lib/airtable/project";
 import { Route } from "lib/routing";
-import { loremIpsum } from "lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -46,7 +45,14 @@ export const Page = ({ projects }: Props) => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             <div className="flex flex-col gap-7 lg:col-span-2">
               <Heading2>Systémová změna</Heading2>
-              <Body className="max-w-prose">{loremIpsum}</Body>
+              <Body className="max-w-prose">
+                Už 4 roky prokazujeme, jak mohou digitální technologie pomoci.
+                Našli jsme způsob, jak posunout celou naši společnost. Víme, že
+                žádný systém není možné změnit jednostranně – musíme
+                koordinovaně sjednotit dosavadní, často individuální snažení a
+                aktivity jednotlivých hráčů v systému tak, aby kýžená změna byla
+                dlouhodobě udržitelná. Buďte s námi u toho a podpořte nás.
+              </Body>
               <div>
                 <ButtonLink to={Route.caseForSupport}>
                   Chci vědět víc
