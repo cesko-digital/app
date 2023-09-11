@@ -8,10 +8,8 @@ import { BodyBig, Heading1 } from "components/typography";
 import { PortalPartner } from "lib/airtable/partner";
 import { Article } from "lib/data-sources/blog";
 import { Route } from "lib/routing";
-import { loremIpsum } from "lib/utils";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import styled from "styled-components";
 
 export type Props = {
   partners: readonly PortalPartner[];
@@ -63,7 +61,12 @@ export const Page = ({ partners, blogPosts }: Props) => {
                 <Heading1>
                   Řešíme to systémově. Máme konkrétní plán, jak na to
                 </Heading1>
-                <BodyBig className="">{loremIpsum}</BodyBig>
+                <BodyBig>
+                  Víme, že žádný systém není možné změnit jednostranně – musíme
+                  koordinovaně sjednotit dosavadní, často individuální snažení
+                  a aktivity jednotlivých hráčů v systému tak, aby kýžená změna
+                  byla dlouhodobě udržitelná.
+                </BodyBig>
                 <div>
                   <ButtonLink to={Route.caseForSupport}>
                     Chci vědět víc
