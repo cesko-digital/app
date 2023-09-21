@@ -9,7 +9,7 @@ import "components/global.css";
 
 // This will report web vitals to Axiom:
 // https://www.axiom.co/docs/integrations/vercel#web-vitals
-export { reportWebVitals } from "next-axiom";
+export { useReportWebVitals } from "next-axiom";
 
 type GlobalProps = {
   session: Session;
