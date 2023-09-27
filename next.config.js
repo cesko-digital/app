@@ -41,6 +41,14 @@ module.exports = withAxiom({
   async redirects() {
     return [
       //
+      // Mastodon, https://masto.host/mastodon-usernames-different-from-the-domain-used-for-installation/
+      //
+      {
+        source: "/.well-known/host-meta",
+        destination: "https://mastodon.cesko.digital",
+        permanent: false,
+      },
+      //
       // Redirect automatic scans to keep them from spamming our logs
       //
       {
