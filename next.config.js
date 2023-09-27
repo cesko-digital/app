@@ -45,7 +45,7 @@ module.exports = withAxiom({
       //
       {
         source: "/.well-known/host-meta",
-        destination: "https://mastodon.cesko.digital",
+        destination: "https://mastodon.cesko.digital/.well-known/host-meta",
         permanent: false,
       },
       //
