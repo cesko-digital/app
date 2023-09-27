@@ -33,7 +33,7 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
       <link rel="shortcut icon" type="image/png" href="/favicon.png" />
       <link rel="alternate" hrefLang="cs" href="https://cesko.digital" />
       <link rel="alternate" hrefLang="en" href="https://en.cesko.digital" />
-      <link rel="me" href="https://mastodon.cesko.digital/@ahoj" />
+      <link rel="me" href="https://mastodon.cesko.digital/@ceskodigital" />
     </Head>
   );
 };
