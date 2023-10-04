@@ -70,8 +70,7 @@ module.exports = withAxiom({
       //
       {
         source: "/go/mapa",
-        destination:
-          "https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link",
+        destination: "https://data.cesko.digital/mapa.pdf",
         permanent: false,
       },
       {
