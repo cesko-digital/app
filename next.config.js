@@ -69,6 +69,12 @@ module.exports = withAxiom({
       // URL shortcuts
       //
       {
+        source: "/go/mapa",
+        destination:
+          "https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link",
+        permanent: false,
+      },
+      {
         source: "/go/redesign",
         destination: "https://data.cesko.digital/redesign-komunity.pdf",
         permanent: false,

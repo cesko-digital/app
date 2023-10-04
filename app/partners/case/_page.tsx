@@ -669,7 +669,7 @@ const SystemicChangePlan = () => {
           </div>
           <a
             className="aspect-square bg-white hover:bg-yellow relative flex flex-col overflow-clip p-10 no-underline text-black"
-            href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
+            href="https://cesko.digital/go/mapa"
           >
             <Image
               src={CzechiaMapBitmap}
@@ -996,8 +996,7 @@ const FooterSection = () => {
       "https://drive.google.com/file/d/1BLLChViCvNAS0Q9Kptz6Fi5pdUyJCUOM/edit",
     "E15: CEO Česko.Digital o digitalizaci":
       "https://www.e15.cz/nazory-a-analyzy/cesko-v-digitalizaci-zaostava-musime-zmenit-mysleni-pise-pro-e15-cz-sefka-cesko-digital-eva-pavlikova-1382466",
-    "Mapa systémové změny":
-      "https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link",
+    "Mapa systémové změny": "https://cesko.digital/go/mapa",
     "Forbes: Česko.Digital pomůže nezisku":
       "https://forbes.cz/neziskovky-objevuji-svet-jednicek-a-nul-pomoci-jim-ma-inkubator-cesko-digital/",
   };
