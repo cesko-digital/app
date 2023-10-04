@@ -96,7 +96,7 @@ const BecomePartner = () => (
 const SystemicChangeSquareTile = () => (
   <a
     className="aspect-square max-w-[400px] bg-white hover:bg-yellow border-it border-2 no-underline text-black"
-    href="https://drive.google.com/file/d/1-RLMuLgPK7UAhPwdZiBgcnCtnZ8Jy7oT/view?usp=share_link"
+    href="https://cesko.digital/go/mapa"
   >
     <div className="relative flex flex-col overflow-clip p-10 w-full h-full">
       <Image
