@@ -60,25 +60,37 @@ const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
   );
 };
 
+/**
+ * Returns a hostname of the provided URL without the "www." prefix.
+ */
+const getHostname = (url: string): string => {
+  try {
+    return new URL(url).hostname.replace("www.", "");
+  } catch {
+    return url;
+  }
+};
+
 const iconForUrl = (url: string) => {
   const ICONS_BY_PAGES = {
-    "https://cesko-digital.slack.com": SlackIcon,
-    "https://app.slack.com/": SlackIcon,
-    "https://github.com": GithubIcon,
-    "https://cesko-digital.atlassian.net/jira/": JiraIcon,
-    "https://trello.com": TrelloIcon,
-    "https://cesko-digital.atlassian.net": ConfluenceIcon,
-    "https://miro.com": MiroIcon,
-    "https://youtube.com": YouTubeIcon,
-    "https://app.asana.com": AsanaIcon,
-    "https://calendar.google.com": GoogleCalendarIcon,
-    "https://docs.google.com": GoogleDocsIcon,
-    "https://drive.google.com": GoogleDriveIcon,
-    "https://www.figma.com": FigmaIcon,
+    "cesko-digital.slack.com": SlackIcon,
+    "app.slack.com": SlackIcon,
+    "github.com": GithubIcon,
+    "cesko-digital.atlassian.net/jira": JiraIcon,
+    "trello.com": TrelloIcon,
+    "cesko-digital.atlassian.net": ConfluenceIcon,
+    "miro.com": MiroIcon,
+    "youtube.com": YouTubeIcon,
+    "app.asana.com": AsanaIcon,
+    "calendar.google.com": GoogleCalendarIcon,
+    "docs.google.com": GoogleDocsIcon,
+    "drive.google.com": GoogleDriveIcon,
+    "figma.com": FigmaIcon,
   };
 
+  const hostname = getHostname(url);
   for (const [page, icon] of Object.entries(ICONS_BY_PAGES)) {
-    if (url.startsWith(page)) {
+    if (hostname.startsWith(page)) {
       return icon;
     }
   }
