@@ -25,3 +25,4 @@ export { default as GoogleDocsIcon } from "./gdocs";
 export { default as GoogleDriveIcon } from "./gdrive";
 export { default as MiroIcon } from "./miro";
 export { default as YouTubeIcon } from "./youtube";
+export { default as AirtableIcon } from "./airtable";

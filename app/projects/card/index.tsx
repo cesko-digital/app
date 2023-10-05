@@ -1,4 +1,5 @@
 import {
+  AirtableIcon,
   AsanaIcon,
   ConfluenceIcon,
   FigmaIcon,
@@ -86,6 +87,7 @@ const iconForUrl = (url: string) => {
     "docs.google.com": GoogleDocsIcon,
     "drive.google.com": GoogleDriveIcon,
     "figma.com": FigmaIcon,
+    "airtable.com": AirtableIcon,
   };
 
   const hostname = getHostname(url);
