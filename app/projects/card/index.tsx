@@ -26,8 +26,9 @@ interface Props {
 }
 
 const ProjectCard: React.FC<Props> = ({ project, coordinators }) => {
-  const featuredLink = project.links.find((link) => link.featured);
-  const ordinaryLinks = project.links.filter((link) => link !== featuredLink);
+  const links = project.links || [];
+  const featuredLink = links.find((link) => link.featured);
+  const ordinaryLinks = links.filter((link) => link !== featuredLink);
   return (
     <S.Container>
       {coordinators.length > 0 && (
