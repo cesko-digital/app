@@ -60,7 +60,7 @@ export const Page = (props: Props) => {
         <EventsSection project={project} relatedEvents={props.relatedEvents} />
       )}
       {props.relatedVideos.length > 0 && (
-        <VideosSection relatedVideos={props.relatedVideos} />
+        <VideosSection project={project} relatedVideos={props.relatedVideos} />
       )}
       {props.relatedBlogPosts.length > 0 && (
         <BlogSection relatedBlogPosts={props.relatedBlogPosts} />
@@ -165,32 +165,43 @@ const EventsSection = ({
   </Section>
 );
 
-const VideosSection = ({ relatedVideos }: Pick<Props, "relatedVideos">) => (
-  // TBD: This is only rendered on the client as the YouTube embed breaks hydration
-  <ClientRender>
-    <Section>
-      <SectionContent>
-        <S.TitleRow>
-          <S.Title>Vybraná videa</S.Title>
-          <S.AccessoryLink to={Route.youtube}>Všechna videa</S.AccessoryLink>
-        </S.TitleRow>
-        <S.CardRowWrapper>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
-            {relatedVideos.slice(0, 6).map((video) => (
-              <LiteYouTubeEmbed
-                key={video.id}
-                id={video.snippet.resourceId.videoId}
-                title={video.snippet.title}
-                poster="hqdefault"
-                noCookie={true}
-              />
-            ))}
-          </div>
-        </S.CardRowWrapper>
-      </SectionContent>
-    </Section>
-  </ClientRender>
-);
+const VideosSection = ({
+  project,
+  relatedVideos,
+}: Pick<Props, "project" | "relatedVideos">) => {
+  const youTubePlaylistUrl = (playlistId: string) =>
+    `https://www.youtube.com/playlist?list=${playlistId}`;
+  return (
+    // TBD: This is only rendered on the client as the YouTube embed breaks hydration
+    <ClientRender>
+      <Section>
+        <SectionContent>
+          <S.TitleRow>
+            <S.Title>Vybraná videa</S.Title>
+            <S.AccessoryLink
+              to={youTubePlaylistUrl(project.youTubePlaylistId!)}
+            >
+              Všechna videa
+            </S.AccessoryLink>
+          </S.TitleRow>
+          <S.CardRowWrapper>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-[20px] md:mx-0">
+              {relatedVideos.slice(0, 6).map((video) => (
+                <LiteYouTubeEmbed
+                  key={video.id}
+                  id={video.snippet.resourceId.videoId}
+                  title={video.snippet.title}
+                  poster="hqdefault"
+                  noCookie={true}
+                />
+              ))}
+            </div>
+          </S.CardRowWrapper>
+        </SectionContent>
+      </Section>
+    </ClientRender>
+  );
+};
 
 const BlogSection = ({ relatedBlogPosts }: Pick<Props, "relatedBlogPosts">) => (
   <Section>
