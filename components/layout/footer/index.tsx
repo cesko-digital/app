@@ -1,10 +1,7 @@
 import NewsletterBox from "./newsletter-form";
 import { Route } from "lib/routing";
 import { Link } from "components/links";
-import strings from "content/strings.json";
 import * as S from "./styles";
-
-const footerStrings = strings.components.sections.footer;
 
 const Footer = () => {
   return (
@@ -16,7 +13,7 @@ const Footer = () => {
             <SocialLinks />
           </S.Info>
           <NewsletterBox />
-          <S.Note>{footerStrings.footNote}</S.Note>
+          <S.Note>© Česko.Digital</S.Note>
         </S.Container>
       </S.Outer>
     </S.Wrapper>
@@ -25,23 +22,22 @@ const Footer = () => {
 
 /** Important “internal” links such as project list, dashboard, etc. */
 const InternalLinks = () => {
-  const p = footerStrings.pageLinks;
   const pageLinks = [
     ["O nás", Route.aboutUs],
     ["Co děláme", Route.projects],
-    [p.dashboard, Route.dashboard],
-    [p.blog, Route.blog],
-    [p.loginToSlack, Route.joinUs],
-    [p.submitProject, Route.submitProject],
-    [p.supportUs, Route.supportUs],
-    [p.logo, Route.brandManual],
-    [p.mediaContact, "mailto:pr@cesko.digital"],
+    ["Příležitosti k zapojení", Route.dashboard],
+    ["Blog", Route.blog],
+    ["Přidej se k nám", Route.joinUs],
+    ["Zadat projekt", Route.submitProject],
+    ["Podpoř nás", Route.supportUs],
+    ["Logo", Route.brandManual],
+    ["Kontakt pro média", "mailto:pr@cesko.digital"],
     ["Pravidla chování", "/go/coc"],
   ];
 
   return (
     <S.InfoBlock>
-      <S.Heading>{footerStrings.pageLinks.title}</S.Heading>
+      <S.Heading>Česko.Digital</S.Heading>
       <S.Navigation>
         <S.Links>
           {pageLinks.map(([name, url], i) => (
@@ -59,20 +55,20 @@ const InternalLinks = () => {
 
 /** Links to our profiles on social networks */
 const SocialLinks = () => {
-  const o = footerStrings.online;
   const socialLinks = [
-    [o.facebook, "https://www.facebook.com/cesko.digital"],
-    [o.twitter, "https://twitter.com/CeskoDigital"],
-    [o.linkedin, "https://www.linkedin.com/company/cesko-digital"],
-    [o.instagram, "https://www.instagram.com/cesko.digital/"],
-    [o.youtube, "https://www.youtube.com/c/ČeskoDigital"],
-    [o.podcast, "https://anchor.fm/poslouchatdigital"],
-    [o.github, "https://github.com/cesko-digital"],
+    ["Facebook", "https://www.facebook.com/cesko.digital"],
+    ["Mastodon", "https://mastodon.cesko.digital/@ceskodigital"],
+    ["X", "https://twitter.com/CeskoDigital"],
+    ["LinkedIn", "https://www.linkedin.com/company/cesko-digital"],
+    ["Instagram", "https://www.instagram.com/cesko.digital/"],
+    ["YouTube", "https://www.youtube.com/c/ČeskoDigital"],
+    ["Podcast", "https://anchor.fm/poslouchatdigital"],
+    ["GitHub", "https://github.com/cesko-digital"],
   ];
 
   return (
     <S.InfoBlock>
-      <S.Heading>{footerStrings.online.title}</S.Heading>
+      <S.Heading>Sledujte nás</S.Heading>
       <S.Navigation>
         <S.Links>
           {socialLinks.map(([name, url], index) => (
