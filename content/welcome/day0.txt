@@ -12,7 +12,7 @@ Pochlub se nám:
 • usměvavou *fotkou* 📸,
 • přezdívkou (doporučujeme ale uvádět celé tvé jméno) 😎,
 • *pozicí nebo specializací*, kterou ovládáš,
-• *časovými možnostmi* 🕔, které můžeš projektům Česko.Digital věnovat. 
+• *časovými možnostmi* 🕔, které chceš projektům Česko.Digital věnovat. 
 
 Můžeš případně přidat i *e-mail* 📧, *telefon* 📞 nebo odkazy na různé sítě či tvůj web.
 
@@ -30,7 +30,6 @@ Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží
 *<https://cesko-digital.slack.com/archives/CLVAH28P3|#market-place>* – kanál pro poptávání dobrovolníků pro jednorázovou spolupráci
 *<https://cesko-digital.slack.com/archives/CG4557BD4|#sdilej-a-inspiruj>* – veškerý zajímavý obsah, inspirace a novinky z č.d i od komunity v jednom kanálu
 *<https://cesko-digital.slack.com/archives/CKJ8F4BT5|#support>* – pro jakékoliv technické dotazy a admin záležitosti
-*<https://cesko-digital.slack.com/archives/CTMJPK71V|#thank-you>* – kanál pro vyjádření díků 💙
 
 *V kanále <https://cesko-digital.slack.com/archives/CJVB0MVCM|#introductions> se nám prosím krátce představ.* 👋 Můžeš zmínit své zkušenosti a dovednosti a to, do čeho se například chceš zapojit. Rádi si také přečteme o tom, co tě baví a zajímá. Na základě těchto informací se ti může ozvat někdo z komunity, kdo pro tebe najde vhodné uplatnění (kanál totiž sledují lidé z různých projektů).
 
