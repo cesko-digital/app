@@ -6,7 +6,7 @@ Ahoj! 👋 Jsem zpět. 🤖 Dnes ti představím další kanály ve Slacku a kme
 
 Chceš se podívat, jaké *všechny kanály* v komunitě najdeš? Tady je návod jak na to:
 1. Klikni v levém menu na „More“ neboli „Více“.
-2. Tam najdeš „All channels“ neboli „Všechny kanály“.
+2. Tam pod Your organization najdeš „Channels“ neboli „Kanály“. Řadí se automaticky podle doporučených. Když zvolíš řazení A -> Z, zobrazí se ti všechny kanály.
 3. A přidej se do kanálů, které tě zajímají.
 
 💙 Chceš někomu vyjádřit díky? Využij kanál *<https://cesko-digital.slack.com/archives/CTMJPK71V|#thank-you>*.
