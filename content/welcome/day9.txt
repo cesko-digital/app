@@ -18,9 +18,9 @@ Zaujal tě nějaký projekt, který nemá vypsanou pozici? Ozvi se týmu přímo
 
 —
 
-*JAK NAJÍT PROJEKTY ČESKO.DIGITAL VE SLACKU?*
+*JAK NAJÍT PROJEKTY VE SLACKU?*
 
-Každý projekt má ve Slacku svůj kanál, který začíná 💡 *#idea-*, 👶 *#inkub-* nebo 🏃‍♀️ *#run-*, například #run-digitalni_inkluze.
+Každý projekt má v našem Slacku svůj kanál, který začíná 💡 *#idea-* nebo 🏃‍♀️ *#run-*, například #run-digitalni_inkluze.
 
 💭 Taky se podívej do následujících kanálů, které prezentují naše interní projekty, a kde se také můžeš zapojit, ať už do copywritingu, střihu videí, tvorby brandu, připravování akcí, nebo jenom sledovat dění:
 
