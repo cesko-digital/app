@@ -162,9 +162,10 @@ const CoreTeamSection = () => (
         title="Head of Partnerships"
         image={TeamPhotos.Julia}
       >
-        Pečuji o hlavní partnery a dárce. Podílím se na přípravě strategie č.d, 
-         vč. finanční podpory a dlouhodobé finanční stability do roku 2025+. 
-         Rozšiřuji sítě partnerů, dárců a expertních organizací podporujících Česko.Digital. 
+        Pečuji o naše partnery a dárce. Podílím se na přípravě strategie č.d, 
+        vč. finanční podpory a dlouhodobé finanční stability. 
+        Rozšiřuji síť podporovatelů a expertních organizací podporujících 
+        Česko.Digital na cestě k naplnění naší vize. 
       </PersonCard>
       <PersonCard
         name="Romana Pokorná"
