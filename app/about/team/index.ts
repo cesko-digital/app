@@ -12,6 +12,7 @@ import Zoul from "./zoul.jpg";
 import Lujza from "./lujza.jpg";
 import Tereza from "./tereza.jpg";
 import Veronika from "./veronika.jpg";
+import Julia from "./julia.jpg";
 import Michal from "./michal.jpg";
 import Jakub from "./jakub.jpg";
 import Robert from "./robert.jpg";
@@ -33,6 +34,7 @@ const Images = {
   Lujza,
   Tereza,
   Veronika,
+  Julia,
   Michal,
   Jakub,
   Robert,
