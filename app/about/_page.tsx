@@ -149,6 +149,24 @@ const CoreTeamSection = () => (
         procesů organizace.
       </PersonCard>
       <PersonCard
+        name="Veronika Quek"
+        title="Chief Strategy Officer - Systemic change"
+        image={TeamPhotos.Veronika}
+      >
+        Starám se o strategii celé organizace tak, abychom co nejvíce pomohli 
+        využívat technologie ve veřejném sektoru. Koordinuji aktivity v naší mapě systémové změny. 
+         Dbám na to, aby byla naše činnost smysluplná, efektivní a vedla k digitální transformaci.
+      </PersonCard>
+       <PersonCard
+        name="Julia Baraniakova"
+        title="Head of Partnerships"
+        image={TeamPhotos.Julia}
+      >
+        Pečuji o hlavní partnery a dárce. Podílím se na přípravě strategie č.d, 
+         vč. finanční podpory a dlouhodobé finanční stability do roku 2025+. 
+         Rozšiřuji sítě partnerů, dárců a expertních organizací podporujících Česko.Digital. 
+      </PersonCard>
+      <PersonCard
         name="Romana Pokorná"
         title="Program & Project Lead"
         image={TeamPhotos.Romana}
@@ -178,15 +196,6 @@ const CoreTeamSection = () => (
       
       </PersonCard>
       <PersonCard
-        name="Terézia Palaščáková"
-        title="Content Lead"
-        image={TeamPhotos.Terezia}
-      >
-        Mám na starosti obsah, který propaguje Česko.Digital i jeho jednotlivé
-        projekty. Zároveň vedu a motivuji dobro.obsahový tým a působím jako
-        obsahový mentor. Když je potřeba, stanu se na chvíli copywriTerkou.
-      </PersonCard>
-      <PersonCard
         name="Martina Habová"
         title="Marketing & Communication Lead"
         image={TeamPhotos.Martina}
@@ -200,7 +209,10 @@ const CoreTeamSection = () => (
         image={TeamPhotos.Lukas}
       >
         Spravuji audiovizuální obsah a vedu dobro.produkční tým a naši
-        vzdělávací platformu edu.digital. Tvořím grafiku pro sociální sítě,
+        vzdělávací platformu {" "}
+        <a href="https://cesko.digital/projects/cesko-digital-edu">
+          edu.digital
+        </a>. Spolutvořím grafiku pro sociální sítě,
         blogové články a vzdělávací materiály. Působím jako spojka mezi
         marketingem & IT.
       </PersonCard>
@@ -232,19 +244,6 @@ const CoreTeamSection = () => (
         </a>
         , který má pomoct překonat digitální propast digitálně vyloučeným lidem.
         Starám se o to, abychom na ně při digitalizaci Česka nezapomněli.
-      </PersonCard>
-      <PersonCard
-        name="Veronika Quek"
-        title="Product Designer"
-        image={TeamPhotos.Veronika}
-      >
-        Mám na starosti projekt{" "}
-        <a href="https://cesko.digital/projects/nezisk-digital">
-          Nezisk.Digital
-        </a>
-        , ve kterém chceme spolu s dobrovolníky a partnerskými organizacemi
-        nabídnout praktické nástroje pro zvyšování digitálních kompetencí
-        neziskových organizací.
       </PersonCard>
       <PersonCard
         name="Tereza Rybová"
