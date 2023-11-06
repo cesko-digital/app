@@ -1,7 +1,0 @@
-node_modules
-.DS_Store
-.next
-.vercel
-.output
-.env.local
-tsconfig.tsbuildinfo
