@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "airtable": "^0.12.2",
+    "ical-generator": "^6.0.0",
     "marked": "^9.1.5",
     "next": "14.0.1",
     "react": "^18",
