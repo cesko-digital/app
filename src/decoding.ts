@@ -53,7 +53,7 @@ export const withDefault = <T>(
 
 export const decodeJSONString =
   <T>(decoder: DecoderFunction<T>) =>
-  (value: Pojo) =>
+  (value: unknown) =>
     decoder(JSON.parse(string(value)));
 
 /**

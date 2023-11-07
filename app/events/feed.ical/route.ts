@@ -1,6 +1,6 @@
 import { ContentType } from "src/utils";
 import ical from "ical-generator";
-import { getAllEvents } from "src/data/events";
+import { getAllEvents } from "src/data/event";
 import { Route, absolute } from "src/routing";
 
 /** Create an iCal feed with our events */

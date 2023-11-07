@@ -1,4 +1,4 @@
-import { Event } from "src/data/events";
+import { Event } from "src/data/event";
 
 /** Create URLs for frequently used routes */
 export const Route = {
