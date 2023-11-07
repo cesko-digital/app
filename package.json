@@ -10,13 +10,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "airtable": "^0.12.2",
+    "marked": "^9.1.5",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
     "typescript-json-decoder": "^1.0.4"
   },
   "devDependencies": {
+    "@types/airtable": "^0.10.1",
     "@types/jest": "^29.5.7",
+    "@types/marked": "^6.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -38,5 +42,8 @@
   },
   "eslintConfig": {
     "extends": "next/core-web-vitals"
+  },
+  "prettier": {
+    "quoteProps": "consistent"
   }
 }
