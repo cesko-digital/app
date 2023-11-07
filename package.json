@@ -22,9 +22,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.39.0",
-    "@types/airtable": "^0.10.1",
     "@types/jest": "^29.5.7",
-    "@types/marked": "^6.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
