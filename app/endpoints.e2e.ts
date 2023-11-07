@@ -13,7 +13,7 @@ for (const [endpoint, contentType] of Object.entries(endpoints)) {
     const response = await page.request.get(endpoint);
     expect(response).toBeOK();
     expect(response.headers()["content-type"]).toEqual(contentType);
-    if (contentType === "application/json") {
+    if (contentType.startsWith("application/json")) {
       expect(await response.json()).toBeTruthy();
     }
   });
