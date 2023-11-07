@@ -18,6 +18,7 @@ import {
   nil,
   number,
   optional,
+  Pojo,
   record,
   string,
   undef,
@@ -226,7 +227,7 @@ function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
       /* silence logs */
     })
   );
-  return (value: unknown) => {
+  return (value: Pojo) => {
     const decoded = decoder(value);
     return decoded ?? [];
   };
