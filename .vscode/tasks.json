@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "command": "npm",
+  "type": "shell",
+  "args": ["run", "test:types"],
+  "presentation": {
+    "reveal": "silent"
+  },
+  "problemMatcher": "$tsc"
+}
