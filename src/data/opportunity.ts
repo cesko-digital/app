@@ -21,7 +21,7 @@ import {
 /** Table views you can use when querying the opportunities table */
 export type TableView = "All Opportunities" | "Notifications for Today";
 
-export type PortalOpportunity = decodeType<typeof decodeOpportunity>;
+export type Opportunity = decodeType<typeof decodeOpportunity>;
 export const decodeOpportunity = record({
   id: field("ID", string),
   name: field("Name", string),
@@ -48,7 +48,7 @@ export const opportunitiesTable = webBase("Opportunities");
 /** Get all projects */
 export async function getAllOpportunities(
   view: TableView = "All Opportunities"
-): Promise<PortalOpportunity[]> {
+): Promise<Opportunity[]> {
   return await opportunitiesTable
     .select({ view })
     .all()
@@ -60,7 +60,5 @@ export async function getAllOpportunities(
 // Helpers
 //
 
-export const compareOpportunitiesByTime = (
-  a: PortalOpportunity,
-  b: PortalOpportunity
-) => Date.parse(b.creationTime) - Date.parse(a.creationTime);
+export const compareOpportunitiesByTime = (a: Opportunity, b: Opportunity) =>
+  Date.parse(b.creationTime) - Date.parse(a.creationTime);

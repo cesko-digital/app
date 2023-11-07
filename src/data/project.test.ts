@@ -1,6 +1,6 @@
 import { decodeProject } from "./project";
 
-test("Decode portal project", () => {
+test("Decode project", () => {
   expect(
     decodeProject({
       ID: "rec4KOruzwIFU8ieR",
