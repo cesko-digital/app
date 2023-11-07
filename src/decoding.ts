@@ -61,7 +61,7 @@ export const decodeJSONString =
  *
  * Throws if the string is not a valid URL.
  */
-export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
+export const decodeUrl = (value: unknown) => new URL(string(value)).toString();
 
 /**
  * Parse an Airtable relation from the current table to one record in another table
@@ -121,7 +121,7 @@ export function decodeObject<D extends Decoder<unknown>>(
  * other skills, so we only allow it when it’s the only skill specified. More here:
  * https://cesko-digital.slack.com/archives/CHG9NA23D/p1649168585006699
  */
-export const decodeSkills = (value: Pojo) => {
+export const decodeSkills = (value: unknown) => {
   const skills = array(string)(value);
   if (skills.length > 1) {
     return skills.filter((skill) => skill !== "Other");
