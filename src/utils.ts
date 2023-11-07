@@ -137,6 +137,15 @@ export const formattedJSONResponse = (payload: any) =>
     },
   });
 
+/** Frequently used content types */
+export const ContentType = {
+  json: "application/json; charset=utf-8",
+  rss: "application/rss+xml; charset=utf-8",
+  html: "text/html; charset=utf-8",
+  txt: "text/plain; charset=utf-8",
+  ical: "text/calendar; charset=utf-8",
+};
+
 /** Filler text to aid with developing */
 export const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
