@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:types": "tsc --noemit"
+    "test:types": "tsc --noemit",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "airtable": "^0.12.2",
@@ -20,6 +21,7 @@
     "typescript-json-decoder": "^1.0.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.39.0",
     "@types/airtable": "^0.10.1",
     "@types/jest": "^29.5.7",
     "@types/marked": "^6.0.0",
@@ -27,6 +29,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "dotenv-flow": "^4.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "postcss": "^8",
