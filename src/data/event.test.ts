@@ -1,4 +1,4 @@
-import { decodeEvent, getEventDuration } from "./events";
+import { decodeEvent, getEventDuration } from "./event";
 
 test("Decode event", () => {
   expect(
