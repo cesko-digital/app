@@ -129,6 +129,14 @@ export function hashDigest(
   return shasum.digest("hex").slice(0, 10);
 }
 
+/** Return a pretty-printed JSON `Response` */
+export const formattedJSONResponse = (payload: any) =>
+  new Response(JSON.stringify(payload, null, 2), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
 /** Filler text to aid with developing */
 export const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
