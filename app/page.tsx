@@ -45,7 +45,7 @@ export default async function Home() {
     <main className="flex flex-col gap-20 py-20 px-7 max-w-content m-auto">
       <section>
         <h2 className="typo-title2 mb-4">Projekty</h2>
-        <div className="grid grid-cols-3 gap-7 mb-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
           {projects.map(ProjectCard)}
         </div>
         <MoreButton text="Zobrazit všechny projekty" url={Route.projects} />
@@ -71,7 +71,7 @@ export default async function Home() {
       </section>
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
-        <div className="grid grid-cols-3 gap-7 mb-7">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-7">
           {events.map((e) => (
             <EventCard
               key={e.id}
@@ -187,7 +187,7 @@ const DiscussionSummaryBox = ({
   };
 
   return (
-    <div className="grid grid-cols-3 gap-7 mb-20">
+    <div className="grid md:grid-cols-3 gap-7 mb-20">
       {featuredTopics.map((topic) => (
         <DiscussionBubble
           key={topic.id}
