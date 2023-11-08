@@ -26,6 +26,9 @@
   .typo-subtitle {
     @apply text-2xl;
   }
+  .typo-caption {
+    @apply text-sm;
+  }
 
   /* Buttons */
   .btn-primary {

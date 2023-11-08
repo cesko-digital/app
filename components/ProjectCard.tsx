@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
 
+// TBD: Image sizing
 export const ProjectCard = (project: Project) => (
   <a
     className="block border-2 border-gray rounded-xl overflow-clip relative hover:border-it hover:shadow-lg"

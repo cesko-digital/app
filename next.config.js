@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "data.cesko.digital",
       },
+      {
+        protocol: "https",
+        hostname: "diskutuj.digital",
+      },
     ],
   },
 };
