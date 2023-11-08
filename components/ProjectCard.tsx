@@ -12,6 +12,7 @@ export const ProjectCard = (project: Project) => (
     <div className="aspect-[2] relative">
       <Image
         src={project.coverImageUrl}
+        sizes="(min-width: 1200px) 400px, 100vw"
         alt=""
         className="bg-gray object-cover"
         fill
