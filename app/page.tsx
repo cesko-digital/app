@@ -55,7 +55,7 @@ export default async function Home() {
 
 const ProjectCard = (project: Project) => (
   <a
-    className="block border-2 border-gray-50 rounded-xl overflow-clip relative"
+    className="block border-2 border-gray rounded-xl overflow-clip relative"
     key={project.id}
     href={Route.toProject(project)}
   >
@@ -69,7 +69,7 @@ const ProjectCard = (project: Project) => (
       height={80}
       className="drop-shadow-xl rounded-full -mt-[40px] ml-10 bg-white"
     />
-    <div className="p-10">
+    <div className="p-7">
       <h3>{project.name}</h3>
       <p>{project.tagline}</p>
     </div>
