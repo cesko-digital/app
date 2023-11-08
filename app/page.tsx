@@ -1,5 +1,6 @@
 import { EventCard } from "components/EventCard";
 import { ProjectCard } from "components/ProjectCard";
+import Image from "next/image";
 import {
   Event,
   compareEventsByTime,
@@ -12,7 +13,13 @@ import {
 } from "src/data/marker-place";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
 import { Project, getAllProjects } from "src/data/project";
-import { Topic, getLatestTopicsSummary, getTopicUrl } from "src/discourse";
+import {
+  LatestTopicsSummary,
+  Topic,
+  getLatestTopicsSummary,
+  getTopicUrl,
+  getUserAvatar,
+} from "src/discourse";
 import { Route } from "src/routing";
 import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
@@ -67,10 +74,8 @@ export default async function Home() {
         <MoreButton text="Zobrazit všechny akce" url={Route.events} />
       </section>
       <section>
-        <h2 className="typo-title2 mb-4">Diskuze</h2>
-        <div className="mb-7">
-          {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
-        </div>
+        <h2 className="typo-title2 mb-7">Diskuze</h2>
+        <DiscussionSummaryBox summary={discussionSummary} />
         <MoreButton text="Navštívit diskuzní fórum" url={Route.forum} />
       </section>
     </main>
@@ -152,8 +157,65 @@ async function getFeaturedEvents(): Promise<Event[]> {
 // Discussions
 //
 
-const DiscussionTopicRow = (topic: Topic) => (
-  <a className="block" key={topic.id} href={getTopicUrl(topic)}>
-    <h3 className="typo-title3">{topic.title}</h3>
-  </a>
-);
+const DiscussionSummaryBox = ({
+  summary,
+}: {
+  summary: LatestTopicsSummary;
+}) => {
+  const { topic_list, users } = summary;
+  const featuredTopics = topic_list.topics
+    .filter((t) => t.id !== 5 /* skip welcome post */)
+    .slice(0, 6);
+
+  const userForId = (id: number) => users.find((u) => u.id === id)!;
+
+  const avatarForTopic = (topic: Topic) => {
+    const authorUserId = topic.posters[0]!.user_id;
+    return getUserAvatar(userForId(authorUserId), 200);
+  };
+
+  return (
+    <div className="grid grid-cols-3 gap-7 mb-20">
+      {featuredTopics.map((topic) => (
+        <DiscussionBubble
+          key={topic.id}
+          topic={topic}
+          authorName={userForId(topic.posters[0]!.user_id).name}
+          avatarUrl={avatarForTopic(topic)}
+        />
+      ))}
+    </div>
+  );
+};
+
+const DiscussionBubble = ({
+  topic,
+  authorName,
+  avatarUrl,
+}: {
+  topic: Topic;
+  authorName: string;
+  avatarUrl: string;
+}) => {
+  const ArrowShape = () => (
+    <div className="ml-[30px] w-0 h-0 border-b-[10px] border-b-gray border-r-[8px] border-r-transparent"></div>
+  );
+  return (
+    <a className="block" href={getTopicUrl(topic)}>
+      <div className="ml-1 mb-1 flex flex-row gap-2 items-center">
+        <Image
+          src={avatarUrl}
+          className="rounded-full"
+          width={25}
+          height={25}
+          alt=""
+        />
+        <span className="typo-caption">{authorName}</span>
+      </div>
+      <ArrowShape />
+      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it">
+        {topic.title}
+      </div>
+    </a>
+  );
+};

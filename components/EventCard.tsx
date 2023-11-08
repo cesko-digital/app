@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Event } from "src/data/event";
 import { Route } from "src/routing";
 
+// TBD: Image sizing
 export const EventCard = (event: Event) => (
   <a
     className="block overflow-clip rounded-xl border-2 border-gray hover:border-it hover:shadow-lg"
