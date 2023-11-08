@@ -24,11 +24,14 @@ import { Route } from "src/routing";
 import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
 export default async function Home() {
+  const allProjects = await getAllProjects();
   const projects = await getFeaturedProjects();
   const opportunities = await getFeaturedOpportunities();
   const marketPlaceOffers = await getFeaturedMarketPlaceOffers();
   const events = await getFeaturedEvents();
   const discussionSummary = await getLatestTopicsSummary();
+
+  const projectWithId = (id: string) => allProjects.find((p) => p.id === id);
 
   const MoreButton = ({ text, url }: { text: string; url: string }) => (
     <div className="text-center">
@@ -69,7 +72,13 @@ export default async function Home() {
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
         <div className="grid grid-cols-3 gap-7 mb-7">
-          {events.map(EventCard)}
+          {events.map((e) => (
+            <EventCard
+              key={e.id}
+              badgeImageUrl={projectWithId(e.projectId)?.logoUrl}
+              event={e}
+            />
+          ))}
         </div>
         <MoreButton text="Zobrazit všechny akce" url={Route.events} />
       </section>
