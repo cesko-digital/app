@@ -42,7 +42,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="flex flex-col gap-20 p-20 max-w-content m-auto">
+    <main className="flex flex-col gap-20 py-20 max-w-content m-auto">
       <section>
         <h2 className="typo-title2 mb-4">Projekty</h2>
         <div className="grid grid-cols-3 gap-7 mb-10">
