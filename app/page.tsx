@@ -1,3 +1,4 @@
+import { EventCard } from "components/EventCard";
 import { ProjectCard } from "components/ProjectCard";
 import {
   Event,
@@ -45,7 +46,7 @@ export default async function Home() {
       </section>
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
-        {events.map(EventCard)}
+        <div className="grid grid-cols-3 gap-7">{events.map(EventCard)}</div>
       </section>
       <section>
         <h2 className="typo-title2 mb-4">Diskuze</h2>
@@ -116,13 +117,6 @@ async function getFeaturedMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
 //
 // Events
 //
-
-const EventCard = (e: Event) => (
-  <a className="block" key={e.id} href={Route.toEvent(e)}>
-    <h3 className="typo-title3">{e.name}</h3>
-    <p>{e.summary}</p>
-  </a>
-);
 
 async function getFeaturedEvents(): Promise<Event[]> {
   const events = await getAllEvents("Live Events");
