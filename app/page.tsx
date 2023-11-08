@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Event,
   compareEventsByTime,
@@ -23,23 +24,25 @@ export default async function Home() {
   return (
     <main className="flex flex-col gap-10 p-20">
       <section>
-        <h2 className="text-2xl">Projekty</h2>
-        {projects.map(ProjectCard)}
+        <h2>Projekty</h2>
+        <div className="grid grid-cols-3 gap-7">
+          {projects.map(ProjectCard)}
+        </div>
       </section>
       <section>
-        <h2 className="text-2xl">Hledané role</h2>
+        <h2>Hledané role</h2>
         {opportunities.map(OpportunityRow)}
       </section>
       <section>
-        <h2 className="text-2xl">Market-place</h2>
+        <h2>Market-place</h2>
         {marketPlaceOffers.map(MarketPlaceOfferRow)}
       </section>
       <section>
-        <h2 className="text-2xl">Akce</h2>
+        <h2>Akce</h2>
         {events.map(EventCard)}
       </section>
       <section>
-        <h2 className="text-2xl">Diskuze</h2>
+        <h2>Diskuze</h2>
         {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
       </section>
     </main>
@@ -51,15 +54,31 @@ export default async function Home() {
 //
 
 const ProjectCard = (project: Project) => (
-  <a className="block" key={project.id} href={Route.toProject(project)}>
-    <h3>{project.name}</h3>
-    <p>{project.tagline}</p>
+  <a
+    className="block border-2 border-gray-50 rounded-xl overflow-clip relative"
+    key={project.id}
+    href={Route.toProject(project)}
+  >
+    <div className="aspect-[2] relative">
+      <Image src={project.coverImageUrl} alt="" objectFit="cover" fill />
+    </div>
+    <Image
+      src={project.logoUrl}
+      alt=""
+      width={80}
+      height={80}
+      className="drop-shadow-xl rounded-full -mt-[40px] ml-10 bg-white"
+    />
+    <div className="p-10">
+      <h3>{project.name}</h3>
+      <p>{project.tagline}</p>
+    </div>
   </a>
 );
 
 async function getFeaturedProjects(): Promise<Project[]> {
   const canBeFeatured = (p: Project) =>
-    p.state === "finished" || p.state === "incubating" || p.state === "running";
+    p.state === "incubating" || p.state === "running";
   const allProjects = await getAllProjects();
   return shuffled(allProjects).filter(canBeFeatured).slice(0, 3);
 }
