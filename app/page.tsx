@@ -210,10 +210,14 @@ const DiscussionBubble = ({
   avatarUrl: string;
 }) => {
   const ArrowShape = () => (
-    <div className="ml-[30px] w-0 h-0 border-b-[10px] border-b-gray border-r-[8px] border-r-transparent"></div>
+    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray border-r-[8px] border-r-transparent"></div>
   );
   return (
-    <a className="block" href={getTopicUrl(topic)}>
+    <a className="flex flex-col" href={getTopicUrl(topic)}>
+      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it grow">
+        {topic.title}
+      </div>
+      <ArrowShape />
       <div className="ml-1 mb-1 flex flex-row gap-2 items-center">
         <Image
           src={avatarUrl}
@@ -223,10 +227,6 @@ const DiscussionBubble = ({
           alt=""
         />
         <span className="typo-caption">{authorName}</span>
-      </div>
-      <ArrowShape />
-      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it">
-        {topic.title}
       </div>
     </a>
   );
