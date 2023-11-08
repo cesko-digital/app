@@ -39,7 +39,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="flex flex-col gap-10 p-20 max-w-content m-auto">
+    <main className="flex flex-col gap-20 p-20 max-w-content m-auto">
       <section>
         <h2 className="typo-title2 mb-4">Projekty</h2>
         <div className="grid grid-cols-3 gap-7 mb-10">
@@ -48,7 +48,7 @@ export default async function Home() {
         <MoreButton text="Zobrazit všechny projekty" url={Route.projects} />
       </section>
       <section>
-        <h2 className="typo-title2">Hledané role</h2>
+        <h2 className="typo-title2 mb-1">Hledané role</h2>
         <h3 className="typo-subtitle mb-4">
           Zapojte se v projektech Česko.Digital
         </h3>
@@ -59,7 +59,7 @@ export default async function Home() {
         />
       </section>
       <section>
-        <h2 className="typo-title2">Market-place</h2>
+        <h2 className="typo-title2 mb-1">Market-place</h2>
         <h3 className="typo-subtitle mb-4">
           Zapojte se v projektech mimo Česko.Digital
         </h3>
@@ -74,7 +74,10 @@ export default async function Home() {
         <MoreButton text="Zobrazit všechny akce" url={Route.events} />
       </section>
       <section>
-        <h2 className="typo-title2 mb-7">Diskuze</h2>
+        <h2 className="typo-title2 mb-1">Diskuze</h2>
+        <h3 className="typo-subtitle mb-7">
+          Potřebujete poradit? Chcete poradit? Diskutujte o digitalizaci Česka
+        </h3>
         <DiscussionSummaryBox summary={discussionSummary} />
         <MoreButton text="Navštívit diskuzní fórum" url={Route.forum} />
       </section>
