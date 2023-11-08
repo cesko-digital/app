@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Commonly used Tailwind shorthands.
+ *
+ * NOTE: Avoid premature abstraction here:
+ * https://tailwindcss.com/docs/reusing-styles
+ */
+
+@layer components {
+  /*
+   * Typography
+   * Inspired by https://developer.apple.com/design/human-interface-guidelines/typography
+   */
+  .typo-title {
+    @apply text-3xl font-bold;
+  }
+  .typo-title2 {
+    @apply text-2xl font-bold;
+  }
+  .typo-title3 {
+    @apply text-xl font-bold;
+  }
+  .typo-subtitle {
+    @apply text-xl;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-it text-white px-5 py-2 rounded-md no-underline cursor-pointer;
+  }
+  .btn-inverted {
+    @apply bg-white text-it px-5 py-2 rounded-md no-underline border-2 border-violet cursor-pointer;
+  }
+  .btn-disabled {
+    @apply bg-gray-400 text-white px-5 py-2 rounded-md no-underline cursor-not-allowed;
+  }
+  .btn-destructive {
+    @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline cursor-pointer;
+  }
+}
