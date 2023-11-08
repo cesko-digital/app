@@ -15,16 +15,16 @@
    * Inspired by https://developer.apple.com/design/human-interface-guidelines/typography
    */
   .typo-title {
-    @apply text-3xl font-bold;
+    @apply text-4xl font-bold;
   }
   .typo-title2 {
-    @apply text-2xl font-bold;
+    @apply text-3xl font-bold;
   }
   .typo-title3 {
-    @apply text-xl font-bold;
+    @apply text-2xl font-bold;
   }
   .typo-subtitle {
-    @apply text-xl;
+    @apply text-2xl;
   }
 
   /* Buttons */
@@ -40,4 +40,84 @@
   .btn-destructive {
     @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline cursor-pointer;
   }
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: "Cesko Digital";
+  src: url("https://data.cesko.digital/font/regular.woff2") format("woff2"),
+    url("https://data.cesko.digital/font/regular.woff") format("woff"),
+    url("https://data.cesko.digital/font/regular.eot") format("eot");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital";
+  src: url("https://data.cesko.digital/font/medium.woff2") format("woff2"),
+    url("https://data.cesko.digital/font/medium.woff") format("woff"),
+    url("https://data.cesko.digital/font/medium.eot") format("eot");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital";
+  src: url("https://data.cesko.digital/font/semibold.woff2") format("woff2"),
+    url("https://data.cesko.digital/font/semibold.woff") format("woff"),
+    url("https://data.cesko.digital/font/semibold.eot") format("eot");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital";
+  src: url("https://data.cesko.digital/font/bold.woff2") format("woff2"),
+    url("https://data.cesko.digital/font/bold.woff") format("woff"),
+    url("https://data.cesko.digital/font/bold.eot") format("eot");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital Mono";
+  src: url("/fonts/cesko.digital.mono-regular.woff2") format("woff2"),
+    url("/fonts/cesko.digital.mono-regular.woff") format("woff"),
+    url("/fonts/cesko.digital.mono-regular.eot") format("eot");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital Mono";
+  src: url("/fonts/cesko.digital.mono-medium.woff2") format("woff2"),
+    url("/fonts/cesko.digital.mono-medium.woff") format("woff"),
+    url("/fonts/cesko.digital.mono-medium.eot") format("eot");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital Mono";
+  src: url("/fonts/cesko.digital.mono-semibold.woff2") format("woff2"),
+    url("/fonts/cesko.digital.mono-semibold.woff") format("woff"),
+    url("/fonts/cesko.digital.mono-semibold.eot") format("eot");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cesko Digital Mono";
+  src: url("/fonts/cesko.digital.mono-bold.woff2") format("woff2"),
+    url("/fonts/cesko.digital.mono-bold.woff") format("woff"),
+    url("/fonts/cesko.digital.mono-bold.eot") format("eot");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Default styles after Tailwind reset */
+
+body {
+  font-family: "Cesko Digital", system-ui, sans-serif;
 }
