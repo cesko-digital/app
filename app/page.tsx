@@ -66,7 +66,13 @@ const ProjectCard = (project: Project) => (
     href={Route.toProject(project)}
   >
     <div className="aspect-[2] relative">
-      <Image src={project.coverImageUrl} alt="" objectFit="cover" fill />
+      <Image
+        src={project.coverImageUrl}
+        alt=""
+        className="bg-gray"
+        objectFit="cover"
+        fill
+      />
     </div>
     <Image
       src={project.logoUrl}
