@@ -31,6 +31,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
         {/* TBD: Make the cover non-optional */}
         <Image
           src={event.coverImageUrl!}
+          sizes="(min-width: 1200px) 400px, 100vw"
           alt=""
           className="bg-gray object-cover"
           fill
