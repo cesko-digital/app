@@ -22,35 +22,56 @@ export default async function Home() {
   const marketPlaceOffers = await getFeaturedMarketPlaceOffers();
   const events = await getFeaturedEvents();
   const discussionSummary = await getLatestTopicsSummary();
+
+  const MoreButton = ({ text, url }: { text: string; url: string }) => (
+    <div className="text-center">
+      <a className="btn-primary inline-block" href={url}>
+        {text}
+      </a>
+    </div>
+  );
+
   return (
     <main className="flex flex-col gap-10 p-20 max-w-content m-auto">
       <section>
         <h2 className="typo-title2 mb-4">Projekty</h2>
-        <div className="grid grid-cols-3 gap-7">
+        <div className="grid grid-cols-3 gap-7 mb-10">
           {projects.map(ProjectCard)}
         </div>
+        <MoreButton text="Zobrazit všechny projekty" url={Route.projects} />
       </section>
       <section>
         <h2 className="typo-title2">Hledané role</h2>
         <h3 className="typo-subtitle mb-4">
           Zapojte se v projektech Česko.Digital
         </h3>
-        {opportunities.map(OpportunityRow)}
+        <div className="mb-7">{opportunities.map(OpportunityRow)}</div>
+        <MoreButton
+          text="Zobrazit všechny hledané role"
+          url={Route.opportunities}
+        />
       </section>
       <section>
         <h2 className="typo-title2">Market-place</h2>
         <h3 className="typo-subtitle mb-4">
           Zapojte se v projektech mimo Česko.Digital
         </h3>
-        {marketPlaceOffers.map(MarketPlaceOfferRow)}
+        <div className="mb-7">{marketPlaceOffers.map(MarketPlaceOfferRow)}</div>
+        <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
       </section>
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
-        <div className="grid grid-cols-3 gap-7">{events.map(EventCard)}</div>
+        <div className="grid grid-cols-3 gap-7 mb-7">
+          {events.map(EventCard)}
+        </div>
+        <MoreButton text="Zobrazit všechny akce" url={Route.events} />
       </section>
       <section>
         <h2 className="typo-title2 mb-4">Diskuze</h2>
-        {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
+        <div className="mb-7">
+          {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
+        </div>
+        <MoreButton text="Navštívit diskuzní fórum" url={Route.forum} />
       </section>
     </main>
   );

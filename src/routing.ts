@@ -4,8 +4,13 @@ import { Opportunity } from "./data/opportunity";
 
 /** Create URLs for frequently used routes */
 export const Route = {
+  // External routes
+  forum: "https://diskutuj.digital/",
   // Static routes
   events: "/events",
+  projects: "/projects",
+  opportunities: "/opportunities",
+  marketplace: "/marketplace",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
