@@ -22,27 +22,33 @@ export default async function Home() {
   const events = await getFeaturedEvents();
   const discussionSummary = await getLatestTopicsSummary();
   return (
-    <main className="flex flex-col gap-10 p-20">
+    <main className="flex flex-col gap-10 p-20 max-w-content m-auto">
       <section>
-        <h2>Projekty</h2>
+        <h2 className="typo-title2 mb-4">Projekty</h2>
         <div className="grid grid-cols-3 gap-7">
           {projects.map(ProjectCard)}
         </div>
       </section>
       <section>
-        <h2>Hledané role</h2>
+        <h2 className="typo-title2">Hledané role</h2>
+        <h3 className="typo-subtitle mb-4">
+          Zapojte se v projektech Česko.Digital
+        </h3>
         {opportunities.map(OpportunityRow)}
       </section>
       <section>
-        <h2>Market-place</h2>
+        <h2 className="typo-title2">Market-place</h2>
+        <h3 className="typo-subtitle mb-4">
+          Zapojte se v projektech mimo Česko.Digital
+        </h3>
         {marketPlaceOffers.map(MarketPlaceOfferRow)}
       </section>
       <section>
-        <h2>Akce</h2>
+        <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
         {events.map(EventCard)}
       </section>
       <section>
-        <h2>Diskuze</h2>
+        <h2 className="typo-title2 mb-4">Diskuze</h2>
         {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
       </section>
     </main>
@@ -69,8 +75,8 @@ const ProjectCard = (project: Project) => (
       height={80}
       className="drop-shadow-xl rounded-full -mt-[40px] ml-10 bg-white"
     />
-    <div className="p-7">
-      <h3>{project.name}</h3>
+    <div className="p-7 flex flex-col gap-4">
+      <h3 className="typo-title3">{project.name}</h3>
       <p>{project.tagline}</p>
     </div>
   </a>
@@ -89,7 +95,7 @@ async function getFeaturedProjects(): Promise<Project[]> {
 
 const OpportunityRow = (o: Opportunity) => (
   <a className="block" key={o.id} href={Route.toOpportunity(o)}>
-    <h2>{o.name}</h2>
+    <h3 className="typo-title3">{o.name}</h3>
     <p>
       {o.timeRequirements} {o.skills}
     </p>
@@ -120,7 +126,7 @@ async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
 
 const MarketPlaceOfferRow = (o: MarketPlaceOffer) => (
   <div key={o.id}>
-    <h3>{o.title}</h3>
+    <h3 className="typo-title3">{o.title}</h3>
     <p className="line-clamp-1">{o.text}</p>
   </div>
 );
@@ -136,7 +142,7 @@ async function getFeaturedMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
 
 const EventCard = (e: Event) => (
   <a className="block" key={e.id} href={Route.toEvent(e)}>
-    <h3>{e.name}</h3>
+    <h3 className="typo-title3">{e.name}</h3>
     <p>{e.summary}</p>
   </a>
 );
@@ -156,6 +162,6 @@ async function getFeaturedEvents(): Promise<Event[]> {
 
 const DiscussionTopicRow = (topic: Topic) => (
   <a className="block" key={topic.id} href={getTopicUrl(topic)}>
-    <h3>{topic.title}</h3>
+    <h3 className="typo-title3">{topic.title}</h3>
   </a>
 );
