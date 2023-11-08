@@ -10,6 +10,7 @@ import {
 } from "src/data/marker-place";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
 import { Project, getAllProjects } from "src/data/project";
+import { Topic, getLatestTopicsSummary, getTopicUrl } from "src/discourse";
 import { Route } from "src/routing";
 import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
@@ -18,6 +19,7 @@ export default async function Home() {
   const opportunities = await getFeaturedOpportunities();
   const marketPlaceOffers = await getFeaturedMarketPlaceOffers();
   const events = await getFeaturedEvents();
+  const discussionSummary = await getLatestTopicsSummary();
   return (
     <main className="flex flex-col gap-10 p-20">
       <section>
@@ -35,6 +37,10 @@ export default async function Home() {
       <section>
         <h2 className="text-2xl">Akce</h2>
         {events.map(EventCard)}
+      </section>
+      <section>
+        <h2 className="text-2xl">Diskuze</h2>
+        {discussionSummary.topic_list.topics.map(DiscussionTopicRow)}
       </section>
     </main>
   );
@@ -124,3 +130,13 @@ async function getFeaturedEvents(): Promise<Event[]> {
     .sort(compareEventsByTime)
     .slice(0, 3);
 }
+
+//
+// Discussions
+//
+
+const DiscussionTopicRow = (topic: Topic) => (
+  <a className="block" key={topic.id} href={getTopicUrl(topic)}>
+    <h3>{topic.title}</h3>
+  </a>
+);
