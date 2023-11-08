@@ -32,8 +32,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
         <Image
           src={event.coverImageUrl!}
           alt=""
-          className="bg-gray"
-          objectFit="cover"
+          className="bg-gray object-cover"
           fill
         />
       </div>

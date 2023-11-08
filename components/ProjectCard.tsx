@@ -13,8 +13,7 @@ export const ProjectCard = (project: Project) => (
       <Image
         src={project.coverImageUrl}
         alt=""
-        className="bg-gray"
-        objectFit="cover"
+        className="bg-gray object-cover"
         fill
       />
     </div>
