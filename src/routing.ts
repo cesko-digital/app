@@ -1,4 +1,6 @@
 import { Event } from "src/data/event";
+import { Project } from "./data/project";
+import { Opportunity } from "./data/opportunity";
 
 /** Create URLs for frequently used routes */
 export const Route = {
@@ -6,6 +8,8 @@ export const Route = {
   events: "/events",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
+  toProject: (p: Project) => `/projects/${p.slug}`,
+  toOpportunity: (o: Opportunity) => `/opportunities/${o.slug}`,
 };
 
 /** Site URL without trailing slash */
