@@ -23,7 +23,7 @@ export const ProjectCard = (project: Project) => (
       alt=""
       width={80}
       height={80}
-      className="drop-shadow-xl rounded-full -mt-[40px] ml-10 bg-white"
+      className="drop-shadow-xl rounded-full -mt-[55px] ml-7 bg-white"
     />
     <div className="p-7 flex flex-col gap-4">
       <h3 className="typo-title3">{project.name}</h3>
