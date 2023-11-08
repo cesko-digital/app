@@ -1,6 +1,12 @@
 import {
+  Event,
+  compareEventsByTime,
+  getAllEvents,
+  isEventPast,
+} from "src/data/event";
+import {
   MarketPlaceOffer,
-  getAllMarketPlaceOffers,
+  getPublishedMarketPlaceOffers,
 } from "src/data/marker-place";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
 import { Project, getAllProjects } from "src/data/project";
@@ -8,22 +14,27 @@ import { Route } from "src/routing";
 import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
 export default async function Home() {
-  const featuredProjects = await getFeaturedProjects();
-  const featuredOpportunities = await getFeaturedOpportunities();
-  const featuredMarketPlaceOffers = await getFeaturedMarketPlaceOffers();
+  const projects = await getFeaturedProjects();
+  const opportunities = await getFeaturedOpportunities();
+  const marketPlaceOffers = await getFeaturedMarketPlaceOffers();
+  const events = await getFeaturedEvents();
   return (
     <main className="flex flex-col gap-10 p-20">
       <section>
-        <h2>Projekty</h2>
-        {featuredProjects.map(ProjectCard)}
+        <h2 className="text-2xl">Projekty</h2>
+        {projects.map(ProjectCard)}
       </section>
       <section>
-        <h2>Hledané role</h2>
-        {featuredOpportunities.map(OpportunityRow)}
+        <h2 className="text-2xl">Hledané role</h2>
+        {opportunities.map(OpportunityRow)}
       </section>
       <section>
-        <h2>Market-place</h2>
-        {featuredMarketPlaceOffers.map(MarketPlaceOfferRow)}
+        <h2 className="text-2xl">Market-place</h2>
+        {marketPlaceOffers.map(MarketPlaceOfferRow)}
+      </section>
+      <section>
+        <h2 className="text-2xl">Akce</h2>
+        {events.map(EventCard)}
       </section>
     </main>
   );
@@ -84,12 +95,32 @@ async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
 
 const MarketPlaceOfferRow = (o: MarketPlaceOffer) => (
   <div key={o.id}>
-    <h2>{o.title}</h2>
+    <h3>{o.title}</h3>
     <p className="line-clamp-1">{o.text}</p>
   </div>
 );
 
 async function getFeaturedMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
-  const offers = await getAllMarketPlaceOffers();
+  const offers = await getPublishedMarketPlaceOffers();
   return offers.filter((o) => o.state === "published" && !!o.title).slice(0, 5);
+}
+
+//
+// Events
+//
+
+const EventCard = (e: Event) => (
+  <a className="block" key={e.id} href={Route.toEvent(e)}>
+    <h3>{e.name}</h3>
+    <p>{e.summary}</p>
+  </a>
+);
+
+async function getFeaturedEvents(): Promise<Event[]> {
+  const events = await getAllEvents("Live Events");
+  return events
+    .filter((e) => e.published)
+    .filter((e) => !isEventPast(e))
+    .sort(compareEventsByTime)
+    .slice(0, 3);
 }
