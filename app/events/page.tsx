@@ -29,7 +29,7 @@ async function Page() {
         currentPage="Akce"
       />
 
-      <h1 className="typo-title mt-4 mb-10">Akce</h1>
+      <h1 className="typo-title mt-7 mb-10">Akce</h1>
       <p className="max-w-prose mb-10">{loremIpsum}</p>
 
       <h2 className="typo-title2 mb-4">Nadcházející akce</h2>

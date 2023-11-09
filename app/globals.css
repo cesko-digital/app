@@ -88,3 +88,37 @@
 body {
   font-family: "Cesko Digital", system-ui, sans-serif;
 }
+
+/* Embedded Markdown styles */
+
+.embedded-markdown a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.embedded-markdown p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.embedded-markdown ul {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
+.embedded-markdown h2,
+.embedded-markdown h3 {
+  font-weight: bold;
+}
+
+.embedded-markdown h2 {
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+
+.embedded-markdown h3 {
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}

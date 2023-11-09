@@ -29,7 +29,7 @@ async function Page() {
         currentPage="Projekty"
       />
 
-      <h1 className="typo-title mt-4 mb-10">Projekty</h1>
+      <h1 className="typo-title mt-7 mb-10">Projekty</h1>
       <p className="max-w-prose mb-10">{loremIpsum}</p>
 
       {featuredProject && <FeaturedProjectBox project={featuredProject} />}
