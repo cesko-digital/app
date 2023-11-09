@@ -55,3 +55,14 @@ export async function getAllTeamEngagements(): Promise<TeamEngagement[]> {
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
 }
+
+/** Get all team engagements for given project */
+export async function getTeamEngagementsForProject(
+  projectSlug: string
+): Promise<TeamEngagement[]> {
+  return await teamEngagementTable
+    .select({ filterByFormula: `{project} = "${projectSlug}"` })
+    .all()
+    .then(unwrapRecords)
+    .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
+}

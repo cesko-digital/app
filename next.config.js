@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "diskutuj.digital",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.slack-edge.com",
+      },
     ],
   },
 };
