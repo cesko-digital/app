@@ -104,7 +104,7 @@ const Sidebar = ({
 
   const CoordinatorList = () => (
     <div>
-      <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
+      <h2 className="typo-title3 mb-4">Koordinace projektu</h2>
       {displayedCoordinators.map((c) => (
         <div
           key={c.id}
