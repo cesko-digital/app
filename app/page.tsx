@@ -27,6 +27,8 @@ import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
 /** Main home page of the whole website */
 export default async function Home() {
+  // TBD: Since we mostly just pick a few featured items here,
+  // it would be better to filter in the DB to save on data transfer.
   const allProjects = await getAllProjects();
   const projects = await getFeaturedProjects();
   const opportunities = await getFeaturedOpportunities();
@@ -183,6 +185,7 @@ async function getFeaturedMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
   return offers.filter((o) => o.state === "published" && !!o.title).slice(0, 6);
 }
 
+// TBD: This is very naive, let’s do something better
 function htmlToText(input: string) {
   const regex = /(<([^>]+)>)/gi;
   return input.replace(regex, "");
