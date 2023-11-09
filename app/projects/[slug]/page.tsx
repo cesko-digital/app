@@ -63,8 +63,8 @@ async function Page({ params }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-7">
-        <section className="col-span-2">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <section className="lg:col-span-2">
           <h2 className="typo-title2">O projektu</h2>
           <ProjectDescription project={project} />
         </section>

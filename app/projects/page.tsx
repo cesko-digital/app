@@ -54,15 +54,15 @@ async function Page() {
 const FeaturedProjectBox = ({ project }: { project: Project }) => (
   <div className="mb-20">
     <h2 className="typo-title2 mb-4">Vybíráme</h2>
-    <div className="aspect-[2.3] relative rounded-xl overflow-clip">
+    <div className="relative rounded-xl overflow-clip">
       <Image
         src={project.coverImageUrl}
-        className="object-cover absolute grayscale"
+        className="absolute object-cover w-full h-full grayscale"
         alt=""
         fill
       />
       <div className="absolute w-full h-full bg-gradient-to-r from-asphalt from-30% to-[rgba(71, 71, 91, 0.5)]"></div>
-      <div className="p-20 absolute text-white flex flex-col gap-7">
+      <div className="relative p-7 md:p-20 text-white flex flex-col gap-7">
         <Image
           src={project.logoUrl}
           width={80}
