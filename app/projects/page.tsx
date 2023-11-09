@@ -36,12 +36,16 @@ async function Page() {
 
       <h2 className="typo-title2 mb-4">Aktuální projekty</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
-        {runningProjects.map(ProjectCard)}
+        {runningProjects.map((p) => (
+          <ProjectCard key={p.id} project={p} />
+        ))}
       </div>
 
       <h2 className="typo-title2 mb-4">Dokončené projekty</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {finishedProjects.map(ProjectCard)}
+        {finishedProjects.map((p) => (
+          <ProjectCard key={p.id} project={p} fade={true} />
+        ))}
       </div>
     </main>
   );
