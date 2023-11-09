@@ -6,9 +6,10 @@ import { Route } from "src/routing";
 export type Props = {
   event: Event;
   badgeImageUrl?: string;
+  fade?: boolean;
 };
 
-export const EventCard = ({ event, badgeImageUrl }: Props) => {
+export const EventCard = ({ event, badgeImageUrl, fade = false }: Props) => {
   const time = new Date(event.startTime).toLocaleString("cs-CZ", {
     weekday: "short",
     day: "numeric",
@@ -28,12 +29,16 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
       href={Route.toEvent(event)}
     >
       <div className="aspect-[2] relative">
-        {/* TBD: Make the cover non-optional */}
+        {/* TBD: Make the cover non-optional? */}
         <Image
           src={event.coverImageUrl!}
           sizes="(min-width: 1200px) 400px, 100vw"
           alt=""
-          className="bg-gray object-cover"
+          className={
+            fade
+              ? "bg-gray object-cover grayscale-[75%] opacity-75"
+              : "bg-gray object-cover"
+          }
           fill
         />
       </div>
