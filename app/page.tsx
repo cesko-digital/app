@@ -83,7 +83,7 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-7">
           Zapojte se v projektech mimo Česko.Digital
         </h3>
-        <div className="grid grid-cols-3 gap-7 mb-7">
+        <div className="grid md:grid-cols-3 gap-7 mb-7">
           {marketPlaceOffers.map(MarketPlaceOfferRow)}
         </div>
         <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
