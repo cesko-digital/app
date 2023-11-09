@@ -1,4 +1,3 @@
-import { marked } from "marked";
 import crypto from "crypto";
 
 /** Approximate size of the Česko.Digital community (number of people in Slack) */
@@ -8,15 +7,6 @@ export const communitySize = 6000;
 export type MarkdownString = {
   source: string;
 };
-
-/** Convert Markdown string to HTML */
-export function markdownToHTML(source: string): string {
-  return marked.parse(source, {
-    breaks: true,
-    gfm: true,
-    pedantic: false,
-  });
-}
 
 /** Elements with this class will be skipped when translating website content with Weglot */
 export const doNotTranslate = "no_translate";
