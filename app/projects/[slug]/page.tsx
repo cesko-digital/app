@@ -103,7 +103,7 @@ const Sidebar = ({
     activeCoordinators.length > 0 ? activeCoordinators : coordinators;
 
   const CoordinatorList = () => (
-    <div className="mb-7">
+    <div>
       <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
       {displayedCoordinators.map((c) => (
         <div
@@ -148,9 +148,19 @@ const Sidebar = ({
   );
 
   return (
-    <div className="bg-pebble rounded-xl p-7">
+    <div className="bg-pebble rounded-xl p-7 flex flex-col gap-7">
       {coordinators.length > 0 && <CoordinatorList />}
       {ordinaryLinks.length > 0 && <LinkList />}
+      {featuredLink && (
+        <div>
+          <Link
+            className="block btn-primary text-center"
+            href={featuredLink.url}
+          >
+            {featuredLink.name}
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
