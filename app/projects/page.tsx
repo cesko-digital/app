@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { ProjectCard } from "components/ProjectCard";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +21,15 @@ async function Page() {
   const highlightedProjects = publishedProjects.filter((p) => p.highlighted);
   const featuredProject =
     highlightedProjects.length > 0 ? getRandomElem(highlightedProjects) : null;
+
   return (
     <main className="py-20 px-7 max-w-content m-auto">
-      <h1 className="typo-title mb-10">Projekty</h1>
+      <Breadcrumbs
+        path={[{ label: "Homepage", path: "/" }]}
+        currentPage="Projekty"
+      />
+
+      <h1 className="typo-title mt-4 mb-10">Projekty</h1>
       <p className="max-w-prose mb-10">{loremIpsum}</p>
 
       {featuredProject && <FeaturedProjectBox project={featuredProject} />}
