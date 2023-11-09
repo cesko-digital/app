@@ -92,6 +92,7 @@ const Sidebar = ({ coordinators }: { coordinators: TeamEngagement[] }) => (
     <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
     {coordinators.map((c) => (
       <div key={c.id} className="flex flex-row gap-4 items-center mb-2">
+        {/* TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze */}
         <Image
           src={c.userAvatarUrl}
           className="rounded-full"
