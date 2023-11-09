@@ -63,7 +63,15 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-4">
           Zapojte se v projektech Česko.Digital
         </h3>
-        <div className="mb-7">{opportunities.map(OpportunityRow)}</div>
+        <div className="mb-7">
+          {opportunities.map((o) => (
+            <OpportunityRow
+              project={projectWithId(o.projectId)!}
+              key={o.id}
+              role={o}
+            />
+          ))}
+        </div>
         <MoreButton
           text="Zobrazit všechny hledané role"
           url={Route.opportunities}
@@ -122,14 +130,46 @@ async function getFeaturedProjects(): Promise<Project[]> {
 // Opportunities
 //
 
-const OpportunityRow = (o: Opportunity) => (
-  <Link className="block" key={o.id} href={Route.toOpportunity(o)}>
-    <h3 className="typo-title3">{o.name}</h3>
-    <p>
-      {o.timeRequirements} {o.skills}
-    </p>
-  </Link>
-);
+const OpportunityRow = ({
+  role,
+  project,
+}: {
+  role: Opportunity;
+  project: Project;
+}) => {
+  const pills = [role.timeRequirements, role.skills.join(" / ")];
+  return (
+    <Link
+      className="flex flex-row gap-7 pb-7 mb-7 last border-b-2 border-pebble"
+      key={role.id}
+      href={Route.toOpportunity(role)}
+    >
+      <div>
+        <h3 className="typo-title3 mb-2">{role.name}</h3>
+        <p>
+          {pills.map((p) => (
+            <span
+              key={p}
+              className="inline-block px-2 mr-2 rounded-lg bg-pebble"
+            >
+              {p}
+            </span>
+          ))}
+        </p>
+      </div>
+      <div className="ml-auto flex flex-row gap-4 items-center">
+        <p>{project.name}</p>
+        <Image
+          src={project.logoUrl}
+          className="rounded-full border-2 border-gray"
+          width={80}
+          height={80}
+          alt=""
+        />
+      </div>
+    </Link>
+  );
+};
 
 async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
   const opportunities = await getAllOpportunities();
