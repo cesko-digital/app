@@ -17,6 +17,7 @@ const config: Config = {
         yellow: "#FFF6A3",
         plum: "#080831",
         gray: "#EDEDEF",
+        asphalt: "#47475B",
       },
     },
   },
