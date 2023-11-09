@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Project, findProjectBySlug } from "src/data/project";
+import { clsx } from "clsx";
 import {
   TeamEngagement,
   getTeamEngagementsForProject,
@@ -91,7 +92,13 @@ const Sidebar = ({ coordinators }: { coordinators: TeamEngagement[] }) => (
   <div className="bg-pebble rounded-xl p-7">
     <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
     {coordinators.map((c) => (
-      <div key={c.id} className="flex flex-row gap-4 items-center mb-2">
+      <div
+        key={c.id}
+        className={clsx(
+          "flex flex-row gap-4 items-center mb-2",
+          c.inactive && "opacity-50"
+        )}
+      >
         {/* TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze */}
         <Image
           src={c.userAvatarUrl}

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "src/data/project";
@@ -19,11 +20,10 @@ export const ProjectCard = ({ project, fade = false }: Props) => (
         src={project.coverImageUrl}
         sizes="(min-width: 1200px) 400px, 100vw"
         alt=""
-        className={
-          fade
-            ? "bg-gray object-cover grayscale-[75%] opacity-75"
-            : "bg-gray object-cover"
-        }
+        className={clsx(
+          "bg-gray object-cover",
+          fade && "grayscale-[75%] opacity-75"
+        )}
         fill
       />
     </div>
