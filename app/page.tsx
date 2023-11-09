@@ -22,8 +22,10 @@ import {
   getUserAvatar,
 } from "src/discourse";
 import { Route } from "src/routing";
+import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 
+/** Main home page of the whole website */
 export default async function Home() {
   const allProjects = await getAllProjects();
   const projects = await getFeaturedProjects();
@@ -53,6 +55,7 @@ export default async function Home() {
         </div>
         <MoreButton text="Zobrazit všechny projekty" url={Route.projects} />
       </section>
+
       <section>
         <h2 className="typo-title2 mb-1">Hledané role</h2>
         <h3 className="typo-subtitle mb-4">
@@ -64,14 +67,18 @@ export default async function Home() {
           url={Route.opportunities}
         />
       </section>
+
       <section>
         <h2 className="typo-title2 mb-1">Market-place</h2>
-        <h3 className="typo-subtitle mb-4">
+        <h3 className="typo-subtitle mb-7">
           Zapojte se v projektech mimo Česko.Digital
         </h3>
-        <div className="mb-7">{marketPlaceOffers.map(MarketPlaceOfferRow)}</div>
+        <div className="grid grid-cols-3 gap-7 mb-7">
+          {marketPlaceOffers.map(MarketPlaceOfferRow)}
+        </div>
         <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
       </section>
+
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-7">
@@ -85,6 +92,7 @@ export default async function Home() {
         </div>
         <MoreButton text="Zobrazit všechny akce" url={Route.events} />
       </section>
+
       <section>
         <h2 className="typo-title2 mb-1">Diskuze</h2>
         <h3 className="typo-subtitle mb-7">
@@ -143,16 +151,41 @@ async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
 // Market-place
 //
 
-const MarketPlaceOfferRow = (o: MarketPlaceOffer) => (
-  <div key={o.id}>
-    <h3 className="typo-title3">{o.title}</h3>
-    <p className="line-clamp-1">{o.text}</p>
-  </div>
-);
+const MarketPlaceOfferRow = (o: MarketPlaceOffer) => {
+  const ArrowShape = () => (
+    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray border-r-[8px] border-r-transparent"></div>
+  );
+  return (
+    <Link className="flex flex-col" href={o.slackThreadUrl}>
+      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it grow">
+        <div className="line-clamp-6">
+          <h3 className="inline font-bold mr-[1ex]">{o.title}</h3>
+          <p className="inline">{htmlToText(slackMarkupToHTML(o.text))}</p>
+        </div>
+      </div>
+      <ArrowShape />
+      <div className="ml-1 mb-1 flex flex-row gap-2 items-center">
+        <Image
+          src={o.ownerAvatarUrl!}
+          className="rounded-full"
+          width={25}
+          height={25}
+          alt=""
+        />
+        <span className="typo-caption">{o.ownerName}</span>
+      </div>
+    </Link>
+  );
+};
 
 async function getFeaturedMarketPlaceOffers(): Promise<MarketPlaceOffer[]> {
   const offers = await getPublishedMarketPlaceOffers();
-  return offers.filter((o) => o.state === "published" && !!o.title).slice(0, 5);
+  return offers.filter((o) => o.state === "published" && !!o.title).slice(0, 6);
+}
+
+function htmlToText(input: string) {
+  const regex = /(<([^>]+)>)/gi;
+  return input.replace(regex, "");
 }
 
 //
