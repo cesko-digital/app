@@ -4,12 +4,7 @@ import { allCustomTags } from "components/MarkdocTags";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
-import {
-  Project,
-  findProjectBySlug,
-  getAllProjects,
-  getAllProjectsBySlug,
-} from "src/data/project";
+import { Project, findProjectBySlug } from "src/data/project";
 import {
   TeamEngagement,
   getTeamEngagementsForProject,
