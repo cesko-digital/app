@@ -55,7 +55,9 @@ async function Page({ params }: Props) {
       />
 
       <h1 className="typo-title mt-7 mb-2">{project.name}</h1>
-      <h2 className="typo-subtitle mb-10">{project.tagline}</h2>
+      <h2 className="typo-subtitle mb-10 max-w-prose">
+        {stripTrailingComma(project.tagline)}
+      </h2>
       <div className="aspect-[2.3] relative mb-10">
         <Image
           src={project.coverImageUrl}
@@ -203,5 +205,7 @@ const getHostname = (url: string): string => {
     return url;
   }
 };
+
+const stripTrailingComma = (s: string) => s.replace(/\.?\s*$/, "");
 
 export default Page;
