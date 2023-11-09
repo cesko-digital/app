@@ -4,7 +4,16 @@ import { allCustomTags } from "components/MarkdocTags";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
-import { Project, getAllProjects } from "src/data/project";
+import {
+  Project,
+  findProjectBySlug,
+  getAllProjects,
+  getAllProjectsBySlug,
+} from "src/data/project";
+import {
+  TeamEngagement,
+  getTeamEngagementsForProject,
+} from "src/data/team-engagement";
 import { projectDescriptionConfig } from "src/markdoc/schema";
 import { Route } from "src/routing";
 
@@ -17,8 +26,26 @@ export type Props = {
 };
 
 async function Page({ params }: Props) {
-  const allProjects = await getAllProjects();
-  const project = allProjects.find((p) => p.slug === params.slug) || notFound();
+  const project = await findProjectBySlug(params.slug);
+  if (!project) {
+    notFound();
+  }
+
+  const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
+  const coordinators = allTeamEngagements
+    // Only take coordinators
+    .filter((e) => e.coordinatingRole)
+    // Sort inactive engagements last
+    .sort((a, b) => {
+      if (a.inactive && !b.inactive) {
+        return +1;
+      } else if (b.inactive && !a.inactive) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
   return (
     <main className="py-20 px-7 max-w-content m-auto">
       <Breadcrumbs
@@ -40,8 +67,15 @@ async function Page({ params }: Props) {
         />
       </div>
 
-      <h2 className="typo-title2">O projektu</h2>
-      <ProjectDescription project={project} />
+      <div className="grid grid-cols-3 gap-7">
+        <section className="col-span-2">
+          <h2 className="typo-title2">O projektu</h2>
+          <ProjectDescription project={project} />
+        </section>
+        <aside>
+          <Sidebar coordinators={coordinators} />
+        </aside>
+      </div>
     </main>
   );
 }
@@ -55,11 +89,25 @@ const ProjectDescription = ({ project }: { project: Project }) => {
   const renderedContent = Markdoc.renderers.react(renderableNode, React, {
     components: allCustomTags,
   });
-  return (
-    <section className="embedded-markdown max-w-prose">
-      {renderedContent}
-    </section>
-  );
+  return <div className="embedded-markdown max-w-prose">{renderedContent}</div>;
 };
+
+const Sidebar = ({ coordinators }: { coordinators: TeamEngagement[] }) => (
+  <div className="bg-pebble rounded-xl p-7">
+    <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
+    {coordinators.map((c) => (
+      <div key={c.id} className="flex flex-row gap-4 items-center mb-2">
+        <Image
+          src={c.userAvatarUrl}
+          className="rounded-full"
+          width={60}
+          height={60}
+          alt=""
+        />
+        <span>{c.userName}</span>
+      </div>
+    ))}
+  </div>
+);
 
 export default Page;

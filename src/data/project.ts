@@ -4,6 +4,7 @@ import {
   decodeValidItemsFromArray,
   markdown,
   optionalArray,
+  takeFirst,
   withDefault,
 } from "src/decoding";
 import {
@@ -69,4 +70,14 @@ export async function getAllProjects(): Promise<Project[]> {
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeProject, "Projects"));
+}
+
+/** Get all projects with given slug */
+export async function findProjectBySlug(slug: string): Promise<Project | null> {
+  return await projectsTable
+    .select({ filterByFormula: `{slug} = "${slug}"` })
+    .all()
+    .then(unwrapRecords)
+    .then(takeFirst(decodeValidItemsFromArray(decodeProject, "Projects")))
+    .catch((_) => null);
 }
