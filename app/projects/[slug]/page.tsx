@@ -4,6 +4,7 @@ import { allCustomTags } from "components/MarkdocTags";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
+import Icons from "components/icons";
 import { Project, findProjectBySlug } from "src/data/project";
 import { clsx } from "clsx";
 import {
@@ -12,6 +13,7 @@ import {
 } from "src/data/team-engagement";
 import { projectDescriptionConfig } from "src/markdoc/schema";
 import { Route } from "src/routing";
+import Link from "next/link";
 
 type Params = {
   slug: string;
@@ -69,7 +71,7 @@ async function Page({ params }: Props) {
           <ProjectDescription project={project} />
         </section>
         <aside>
-          <Sidebar coordinators={coordinators} />
+          <Sidebar project={project} coordinators={coordinators} />
         </aside>
       </div>
     </main>
@@ -88,29 +90,103 @@ const ProjectDescription = ({ project }: { project: Project }) => {
   return <div className="embedded-markdown max-w-prose">{renderedContent}</div>;
 };
 
-const Sidebar = ({ coordinators }: { coordinators: TeamEngagement[] }) => (
-  <div className="bg-pebble rounded-xl p-7">
-    <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
-    {coordinators.map((c) => (
-      <div
-        key={c.id}
-        className={clsx(
-          "flex flex-row gap-4 items-center mb-2",
-          c.inactive && "opacity-50"
-        )}
-      >
-        {/* TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze */}
-        <Image
-          src={c.userAvatarUrl}
-          className="rounded-full"
-          width={60}
-          height={60}
-          alt=""
-        />
-        <span>{c.userName}</span>
-      </div>
-    ))}
-  </div>
-);
+const Sidebar = ({
+  project,
+  coordinators,
+}: {
+  project: Project;
+  coordinators: TeamEngagement[];
+}) => {
+  const links = project.links || [];
+  const featuredLink = links.find((link) => link.featured);
+  const ordinaryLinks = links.filter((link) => link !== featuredLink);
+
+  const CoordinatorList = () => (
+    <div className="mb-7">
+      <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
+      {coordinators.map((c) => (
+        <div
+          key={c.id}
+          className={clsx(
+            "flex flex-row gap-4 items-center mb-2",
+            c.inactive && "opacity-50"
+          )}
+        >
+          {/* TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze */}
+          <Image
+            src={c.userAvatarUrl}
+            className="rounded-full"
+            width={60}
+            height={60}
+            alt=""
+          />
+          <span>{c.userName}</span>
+        </div>
+      ))}
+    </div>
+  );
+
+  const LinkList = () => (
+    <div>
+      <h2 className="typo-title3 mb-4">Odkazy</h2>
+      <ul className="flex flex-col gap-4">
+        {ordinaryLinks.map((link) => (
+          <li key={link.url} className="flex flex-row item-center gap-2">
+            <LinkIcon url={link.url} />
+            <Link href={link.url} className="underline">
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  return (
+    <div className="bg-pebble rounded-xl p-7">
+      {coordinators.length > 0 && <CoordinatorList />}
+      {ordinaryLinks.length > 0 && <LinkList />}
+    </div>
+  );
+};
+
+const LinkIcon = ({ url }: { url: string }) => {
+  const ICONS_BY_PAGES = {
+    "cesko-digital.slack.com": Icons.Slack,
+    "app.slack.com": Icons.Slack,
+    "github.com": Icons.GitHub,
+    "cesko-digital.atlassian.net/jira": Icons.Jira,
+    "trello.com": Icons.Trello,
+    "cesko-digital.atlassian.net": Icons.Confluence,
+    "miro.com": Icons.Miro,
+    "youtube.com": Icons.YouTube,
+    "app.asana.com": Icons.Asana,
+    "calendar.google.com": Icons.GoogleCalendar,
+    "docs.google.com": Icons.GoogleDocs,
+    "drive.google.com": Icons.GoogleDrive,
+    "figma.com": Icons.Figma,
+    "airtable.com": Icons.Airtable,
+  };
+
+  const hostname = getHostname(url);
+  for (const [page, Icon] of Object.entries(ICONS_BY_PAGES)) {
+    if (hostname.startsWith(page)) {
+      return <Icon />;
+    }
+  }
+
+  return <Icons.GenericWebsite />;
+};
+
+/**
+ * Returns a hostname of the provided URL without the "www." prefix.
+ */
+const getHostname = (url: string): string => {
+  try {
+    return new URL(url).hostname.replace("www.", "");
+  } catch {
+    return url;
+  }
+};
 
 export default Page;
