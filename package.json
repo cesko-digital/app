@@ -12,6 +12,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@markdoc/markdoc": "^0.3.5",
     "airtable": "^0.12.2",
     "ical-generator": "^6.0.0",
     "next": "14.0.1",
