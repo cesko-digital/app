@@ -97,14 +97,15 @@ const Sidebar = ({
   project: Project;
   coordinators: TeamEngagement[];
 }) => {
-  const links = project.links || [];
-  const featuredLink = links.find((link) => link.featured);
-  const ordinaryLinks = links.filter((link) => link !== featuredLink);
+  // If we have some active coordinators, display just those; otherwise display all
+  const activeCoordinators = coordinators.filter((c) => !c.inactive);
+  const displayedCoordinators =
+    activeCoordinators.length > 0 ? activeCoordinators : coordinators;
 
   const CoordinatorList = () => (
     <div className="mb-7">
       <h2 className="typo-title3 mb-4">Koordinátoři a koordinátorky</h2>
-      {coordinators.map((c) => (
+      {displayedCoordinators.map((c) => (
         <div
           key={c.id}
           className={clsx(
@@ -125,6 +126,10 @@ const Sidebar = ({
       ))}
     </div>
   );
+
+  const links = project.links || [];
+  const featuredLink = links.find((link) => link.featured);
+  const ordinaryLinks = links.filter((link) => link !== featuredLink);
 
   const LinkList = () => (
     <div>
