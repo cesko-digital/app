@@ -1,10 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
 
-// TBD: Image sizing
 export const ProjectCard = (project: Project) => (
-  <a
+  <Link
     className="block border-2 border-gray rounded-xl overflow-clip relative hover:border-it hover:shadow-lg"
     key={project.id}
     href={Route.toProject(project)}
@@ -29,5 +29,5 @@ export const ProjectCard = (project: Project) => (
       <h3 className="typo-title3">{project.name}</h3>
       <p>{project.tagline}</p>
     </div>
-  </a>
+  </Link>
 );

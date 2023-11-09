@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Event } from "src/data/event";
 import { Route } from "src/routing";
 
@@ -7,7 +8,6 @@ export type Props = {
   badgeImageUrl?: string;
 };
 
-// TBD: Image sizing
 export const EventCard = ({ event, badgeImageUrl }: Props) => {
   const time = new Date(event.startTime).toLocaleString("cs-CZ", {
     weekday: "short",
@@ -22,7 +22,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
     </span>
   );
   return (
-    <a
+    <Link
       className="block overflow-clip rounded-xl border-2 border-gray hover:border-it hover:shadow-lg"
       key={event.id}
       href={Route.toEvent(event)}
@@ -54,6 +54,6 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
         <h3 className="typo-title3">{event.name}</h3>
         <p>{event.summary}</p>
       </div>
-    </a>
+    </Link>
   );
 };
