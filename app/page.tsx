@@ -1,6 +1,7 @@
 import { EventCard } from "components/EventCard";
 import { ProjectCard } from "components/ProjectCard";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Event,
   compareEventsByTime,
@@ -35,9 +36,9 @@ export default async function Home() {
 
   const MoreButton = ({ text, url }: { text: string; url: string }) => (
     <div className="text-center">
-      <a className="btn-primary inline-block" href={url}>
+      <Link className="btn-primary inline-block" href={url}>
         {text}
-      </a>
+      </Link>
     </div>
   );
 
@@ -110,12 +111,12 @@ async function getFeaturedProjects(): Promise<Project[]> {
 //
 
 const OpportunityRow = (o: Opportunity) => (
-  <a className="block" key={o.id} href={Route.toOpportunity(o)}>
+  <Link className="block" key={o.id} href={Route.toOpportunity(o)}>
     <h3 className="typo-title3">{o.name}</h3>
     <p>
       {o.timeRequirements} {o.skills}
     </p>
-  </a>
+  </Link>
 );
 
 async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
@@ -213,7 +214,7 @@ const DiscussionBubble = ({
     <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray border-r-[8px] border-r-transparent"></div>
   );
   return (
-    <a className="flex flex-col" href={getTopicUrl(topic)}>
+    <Link className="flex flex-col" href={getTopicUrl(topic)}>
       <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it grow">
         {topic.title}
       </div>
@@ -228,6 +229,6 @@ const DiscussionBubble = ({
         />
         <span className="typo-caption">{authorName}</span>
       </div>
-    </a>
+    </Link>
   );
 };
