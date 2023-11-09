@@ -3,7 +3,12 @@ import Link from "next/link";
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
 
-export const ProjectCard = (project: Project) => (
+export type Props = {
+  project: Project;
+  fade?: boolean;
+};
+
+export const ProjectCard = ({ project, fade = false }: Props) => (
   <Link
     className="block border-2 border-gray rounded-xl overflow-clip relative hover:border-it hover:shadow-lg"
     key={project.id}
@@ -14,7 +19,11 @@ export const ProjectCard = (project: Project) => (
         src={project.coverImageUrl}
         sizes="(min-width: 1200px) 400px, 100vw"
         alt=""
-        className="bg-gray object-cover"
+        className={
+          fade
+            ? "bg-gray object-cover grayscale-[75%] opacity-75"
+            : "bg-gray object-cover"
+        }
         fill
       />
     </div>

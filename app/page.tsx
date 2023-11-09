@@ -47,7 +47,9 @@ export default async function Home() {
       <section>
         <h2 className="typo-title2 mb-4">Projekty</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
-          {projects.map(ProjectCard)}
+          {projects.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
         </div>
         <MoreButton text="Zobrazit všechny projekty" url={Route.projects} />
       </section>
