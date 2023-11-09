@@ -19,6 +19,7 @@
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "slack-markdown": "^0.3.0",
     "typescript-json-decoder": "^1.0.6"
   },
   "devDependencies": {
