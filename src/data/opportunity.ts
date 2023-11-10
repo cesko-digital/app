@@ -45,12 +45,23 @@ export const decodeOpportunity = record({
 /** Opportunities table */
 export const opportunitiesTable = webBase("Opportunities");
 
-/** Get all projects */
+/** Get all opportunities */
 export async function getAllOpportunities(
   view: TableView = "All Opportunities"
 ): Promise<Opportunity[]> {
   return await opportunitiesTable
     .select({ view })
+    .all()
+    .then(unwrapRecords)
+    .then(decodeValidItemsFromArray(decodeOpportunity, "Opportunities"));
+}
+
+/** Get opportunities for project */
+export async function getOpportunitiesForProject(
+  projectSlug: string
+): Promise<Opportunity[]> {
+  return await opportunitiesTable
+    .select({ filterByFormula: `{project} = "${projectSlug}"` })
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeOpportunity, "Opportunities"));
