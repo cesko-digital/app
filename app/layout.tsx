@@ -19,7 +19,7 @@ export default function RootLayout({
         <link rel="shortcut icon" type="image/png" href="/logo.png" />
       </head>
       <body>
-        <div className="px-7 mt-10 -mb-10 max-w-content m-auto flex flex-row gap-7 items-center">
+        <div className="px-7 mt-7 -mb-10 max-w-content m-auto flex flex-row gap-7 items-center">
           <Link href="/">
             <Image
               className="bg-it"
