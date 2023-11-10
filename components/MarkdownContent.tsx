@@ -1,5 +1,8 @@
+import Markdoc from "@markdoc/markdoc";
 import { default as NextImage } from "next/image";
 import Link from "next/link";
+import React from "react";
+import { customMarkdownConfig } from "src/markdoc/schema";
 
 /**
  * These are components for custom tags defined in our Markdoc schema,
@@ -7,12 +10,12 @@ import Link from "next/link";
  */
 
 /** A generic content box used to highlight part of the content */
-export const Callout = ({ children }: { children: React.ReactNode }) => (
+const Callout = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-yellow px-[1rem] -mx-[1rem] py-1">{children}</div>
 );
 
 /** Custom heading component that generates an anchor to link to */
-export const Heading = ({
+const Heading = ({
   id,
   children,
   level,
@@ -46,13 +49,7 @@ type CustomImageProps = {
 };
 
 /** Custom image component that supports image optimization */
-export const CustomImage = ({
-  src,
-  alt,
-  width,
-  height,
-  link,
-}: CustomImageProps) => {
+const CustomImage = ({ src, alt, width, height, link }: CustomImageProps) => {
   const img = (
     <NextImage
       key={src}
@@ -73,4 +70,23 @@ export const CustomImage = ({
   return link ? <Link href={link}>{img}</Link> : img;
 };
 
-export const allCustomTags = { Callout, Heading, CustomImage };
+const allCustomTags = { Callout, Heading, CustomImage };
+
+/**
+ * Render our custom Markdown content
+ *
+ * The Markdown source may contain extra tags defined in `src/markdoc/schema`,
+ * they will be rendered using our custom components defined above.
+ *
+ * Styling the content is an interesting problem in a Tailwind environment.
+ * So far we mark the embedded Markdown content with a special class
+ * (`embedded-markdown`) and style using CSS rules stored in `global.css`.
+ */
+export const MarkdownContent = ({ source }: { source: string }) => {
+  const syntaxTree = Markdoc.parse(source);
+  const renderableNode = Markdoc.transform(syntaxTree, customMarkdownConfig);
+  const renderedContent = Markdoc.renderers.react(renderableNode, React, {
+    components: allCustomTags,
+  });
+  return <div className="embedded-markdown max-w-prose">{renderedContent}</div>;
+};
