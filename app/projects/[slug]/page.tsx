@@ -143,7 +143,7 @@ const ProjectSidebar = ({
   return (
     <Sidebar
       primaryCTA={featuredLink ? <FeaturedLinkButton /> : undefined}
-      items={[
+      sections={[
         {
           label: "Koordinace projektu",
           content: <CoordinatorList />,

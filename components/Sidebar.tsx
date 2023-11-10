@@ -1,19 +1,30 @@
 import { ReactNode } from "react";
 
-export type Item = {
+export type Section = {
+  /** Section label */
   label: string;
+  /** Section content */
   content: ReactNode;
+  /** If present and `false`, section will be skipped */
   onlyIf?: boolean;
 };
 
 export type Props = {
-  items: Item[];
+  /** Sidebar sections */
+  sections: Section[];
+  /** Primary call-to-action to put at the bottom of the sidebar */
   primaryCTA?: ReactNode;
 };
 
-export const Sidebar = ({ items, primaryCTA }: Props) => (
+/**
+ * Generic sidebar component
+ *
+ * Gray rounded sidebar with multiple headlined sections and possibly
+ * a primary call-to-action component.
+ */
+export const Sidebar = ({ sections, primaryCTA }: Props) => (
   <div className="p-7 bg-pebble rounded-xl flex flex-col gap-7">
-    {items.map(
+    {sections.map(
       ({ label, content, onlyIf: condition = true }) =>
         condition && (
           <div key={label}>
