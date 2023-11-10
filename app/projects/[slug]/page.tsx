@@ -14,6 +14,7 @@ import { Route } from "src/routing";
 import Link from "next/link";
 import { Sidebar } from "components/Sidebar";
 import { ProjectCard } from "components/ProjectCard";
+import { shuffleInPlace } from "src/utils";
 
 type Params = {
   slug: string;
@@ -31,10 +32,11 @@ async function Page({ params }: Props) {
     notFound();
   }
 
-  const otherProjects = allProjects
-    .filter((p) => p.slug !== params.slug)
-    .filter((p) => p.state === "running" || p.state === "incubating")
-    .slice(0, 3);
+  const otherProjects = shuffleInPlace(
+    allProjects
+      .filter((p) => p.slug !== params.slug)
+      .filter((p) => p.state === "running" || p.state === "incubating")
+  ).slice(0, 3);
 
   const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
   const coordinators = allTeamEngagements
