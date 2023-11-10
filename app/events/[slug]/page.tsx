@@ -79,7 +79,7 @@ const EventSidebar = ({
       primaryCTA={
         event.registrationUrl ? <RegistrationButton event={event} /> : undefined
       }
-      items={[
+      sections={[
         {
           label: "Projekt",
           content: <ProjectLogoRow project={project} />,
