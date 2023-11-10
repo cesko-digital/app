@@ -40,7 +40,7 @@ export const OpportunityRow = ({ role, project }: Props) => {
           <p>{project.name}</p>
           <Image
             src={project.logoUrl}
-            className="rounded-full border-2 border-gray"
+            className="rounded-full shadow"
             width={80}
             height={80}
             alt=""
