@@ -6,6 +6,7 @@ import { Project, getAllProjects } from "src/data/project";
 import { Route } from "src/routing";
 import { getRandomElem, loremIpsum } from "src/utils";
 
+/** Page listing all our projects */
 async function Page() {
   const allProjects = await getAllProjects();
   // TBD: Filter these at DB level?

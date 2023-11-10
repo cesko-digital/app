@@ -22,6 +22,7 @@ export type Props = {
   params: Params;
 };
 
+/** Project detail page */
 async function Page({ params }: Props) {
   const project = await findProjectBySlug(params.slug);
   if (!project) {
