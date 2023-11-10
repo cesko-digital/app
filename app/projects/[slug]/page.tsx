@@ -214,7 +214,7 @@ const LinkIcon = ({ url }: { url: string }) => {
 const OtherProjectsBox = ({ projects }: { projects: Project[] }) => (
   <section>
     <h2 className="typo-title2 mb-4">Další projekty</h2>
-    <div className="grid grid-cols-3 gap-7">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
       {projects.map((p) => (
         <ProjectCard key={p.id} project={p} />
       ))}
