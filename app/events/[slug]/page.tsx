@@ -1,8 +1,9 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { MarkdownContent } from "components/MarkdownContent";
+import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Event, findEventsWithSlug } from "src/data/event";
+import { Event, findEventsWithSlug, getEventDuration } from "src/data/event";
 import { Project, findProjectById } from "src/data/project";
 import { Route } from "src/routing";
 
@@ -51,29 +52,84 @@ async function Page({ params }: Props) {
           <MarkdownContent source={event.description.source} />
         </section>
         <aside>
-          <Sidebar event={event} project={project} />
+          <EventSidebar event={event} project={project} />
         </aside>
       </div>
     </main>
   );
 }
 
-const Sidebar = ({ event, project }: { event: Event; project: Project }) => {
+const EventSidebar = ({
+  event,
+  project,
+}: {
+  event: Event;
+  project: Project;
+}) => {
+  const time = new Date(event.startTime).toLocaleString("cs-CZ", {
+    weekday: "short",
+    day: "numeric",
+    month: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
-    <div className="p-7 bg-pebble rounded-xl">
-      <h2 className="typo-title3 mb-4">Projekt</h2>
-      <div className="flex flex-row gap-4 items-center">
-        <Image
-          src={project.logoUrl}
-          className="rounded-full"
-          width={60}
-          height={60}
-          alt=""
-        />
-        <span>{project.name}</span>
-      </div>
-    </div>
+    <Sidebar
+      primaryCTA={
+        event.registrationUrl ? <RegistrationButton event={event} /> : undefined
+      }
+      items={[
+        {
+          label: "Projekt",
+          content: <ProjectLogoRow project={project} />,
+        },
+        {
+          label: "Datum konání",
+          content: time,
+        },
+        {
+          label: "Délka akce",
+          content: getEventDuration(event),
+        },
+        {
+          label: "Místo konání",
+          onlyIf: !!event.locationUrl,
+          content: (
+            <a className="typo-link" href={event.locationUrl}>
+              {event.locationTitle}
+            </a>
+          ),
+        },
+        {
+          label: "Místo konání",
+          onlyIf: !event.locationUrl,
+          content: event.locationTitle,
+        },
+      ]}
+    />
   );
 };
+
+const RegistrationButton = ({ event }: { event: Event }) => (
+  <div>
+    <a href={event.registrationUrl} className="block btn-primary text-center">
+      {event.registrationTitle}
+    </a>
+  </div>
+);
+
+const ProjectLogoRow = ({ project }: { project: Project }) => (
+  <div className="flex flex-row gap-4 items-center">
+    <Image
+      src={project.logoUrl}
+      className="rounded-full"
+      width={60}
+      height={60}
+      alt=""
+    />
+    <span>{project.name}</span>
+  </div>
+);
 
 export default Page;
