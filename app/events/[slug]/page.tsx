@@ -2,8 +2,10 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { MarkdownContent } from "components/MarkdownContent";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Event, findEventsWithSlug, getEventDuration } from "src/data/event";
+import { LegacyUser, getUserById } from "src/data/legacy-user";
 import { Project, findProjectById } from "src/data/project";
 import { Route } from "src/routing";
 
@@ -24,6 +26,11 @@ async function Page({ params }: Props) {
 
   const project = await findProjectById(event.projectId);
   if (!project) {
+    notFound();
+  }
+
+  const owner = await getUserById(event.ownerId);
+  if (!owner) {
     notFound();
   }
 
@@ -53,7 +60,7 @@ async function Page({ params }: Props) {
           <MarkdownContent source={event.description.source} />
         </section>
         <aside>
-          <EventSidebar event={event} project={project} />
+          <EventSidebar event={event} project={project} owner={owner} />
         </aside>
       </div>
     </main>
@@ -63,9 +70,11 @@ async function Page({ params }: Props) {
 const EventSidebar = ({
   event,
   project,
+  owner,
 }: {
   event: Event;
   project: Project;
+  owner: LegacyUser;
 }) => {
   const time = new Date(event.startTime).toLocaleString("cs-CZ", {
     weekday: "short",
@@ -75,6 +84,9 @@ const EventSidebar = ({
     minute: "2-digit",
   });
 
+  const projectLink =
+    project.state !== "draft" ? Route.toProject(project) : undefined;
+
   return (
     <Sidebar
       primaryCTA={
@@ -83,7 +95,23 @@ const EventSidebar = ({
       sections={[
         {
           label: "Projekt",
-          content: <ProjectLogoRow project={project} />,
+          content: (
+            <CircleImageWithLabel
+              imageUrl={project.logoUrl}
+              link={projectLink}
+              label={project.name}
+            />
+          ),
+        },
+        {
+          label: "Kontakt",
+          content: (
+            <CircleImageWithLabel
+              imageUrl={owner.profilePictureUrl}
+              link={`mailto:${owner.email}`}
+              label={owner.name}
+            />
+          ),
         },
         {
           label: "Datum konání",
@@ -120,16 +148,29 @@ const RegistrationButton = ({ event }: { event: Event }) => (
   </div>
 );
 
-const ProjectLogoRow = ({ project }: { project: Project }) => (
+const CircleImageWithLabel = ({
+  imageUrl,
+  label,
+  link,
+}: {
+  imageUrl: string;
+  label: string;
+  link?: string;
+}) => (
   <div className="flex flex-row gap-4 items-center">
     <Image
-      src={project.logoUrl}
-      className="rounded-full"
+      src={imageUrl}
+      className="rounded-full shadow"
       width={60}
       height={60}
       alt=""
     />
-    <span>{project.name}</span>
+    {!link && <span>{label}</span>}
+    {link && (
+      <Link className="typo-link" href={link}>
+        {label}
+      </Link>
+    )}
   </div>
 );
 
