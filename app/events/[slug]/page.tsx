@@ -1,10 +1,17 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
+import { EventCard } from "components/EventCard";
 import { MarkdownContent } from "components/MarkdownContent";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Event, findEventsWithSlug, getEventDuration } from "src/data/event";
+import {
+  Event,
+  compareEventsByTime,
+  getAllEvents,
+  getEventDuration,
+  isEventPast,
+} from "src/data/event";
 import { LegacyUser, getUserById } from "src/data/legacy-user";
 import { Project, findProjectById } from "src/data/project";
 import { Route } from "src/routing";
@@ -19,7 +26,8 @@ export type Props = {
 
 /** Event detail page */
 async function Page({ params }: Props) {
-  const [event] = await findEventsWithSlug(params.slug);
+  const allEvents = await getAllEvents("Live Events");
+  const event = allEvents.find((e) => e.slug === params.slug);
   if (!event) {
     notFound();
   }
@@ -33,6 +41,11 @@ async function Page({ params }: Props) {
   if (!owner) {
     notFound();
   }
+
+  const otherEvents = allEvents
+    .filter((e) => e.id !== event.id)
+    .sort(compareByRelevance)
+    .slice(0, 3);
 
   return (
     <main className="py-20 px-7 max-w-content m-auto">
@@ -55,13 +68,21 @@ async function Page({ params }: Props) {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
         <section className="lg:col-span-2">
+          <h2 className="typo-title2">O akci</h2>
           <MarkdownContent source={event.description.source} />
         </section>
         <aside>
           <EventSidebar event={event} project={project} owner={owner} />
         </aside>
+      </div>
+
+      <h2 className="typo-title2 mb-4">Další akce</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {otherEvents.map((e) => (
+          <EventCard key={e.id} event={e} />
+        ))}
       </div>
     </main>
   );
@@ -173,5 +194,18 @@ const CircleImageWithLabel = ({
     )}
   </div>
 );
+
+/** Sort future events first, sorted ascending date */
+const compareByRelevance = (a: Event, b: Event) => {
+  const pastA = isEventPast(a);
+  const pastB = isEventPast(b);
+  if (pastA && !pastB) {
+    return 1; // a after b
+  } else if (pastB && !pastA) {
+    return -1; // a before b
+  } else {
+    return compareEventsByTime(a, b);
+  }
+};
 
 export default Page;
