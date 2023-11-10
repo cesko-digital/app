@@ -49,7 +49,8 @@ export default async function Home() {
   return (
     <main className="flex flex-col gap-20 py-20 px-7 max-w-content m-auto">
       <section>
-        <h2 className="typo-title2 mb-4">Projekty</h2>
+        <h2 className="typo-title2 mb-1">Projekty</h2>
+        <h3 className="typo-subtitle mb-7">Podtitulek domyslíme, děcka</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
           {projects.map((p) => (
             <ProjectCard key={p.id} project={p} />
