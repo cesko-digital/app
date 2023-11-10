@@ -9,6 +9,7 @@ import {
 import { getAllProjects } from "src/data/project";
 import { loremIpsum } from "src/utils";
 
+/** Page listing all our events */
 async function Page() {
   const events = await getAllEvents("Live Events");
   const projects = await getAllProjects();

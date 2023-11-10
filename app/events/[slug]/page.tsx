@@ -15,6 +15,7 @@ export type Props = {
   params: Params;
 };
 
+/** Event detail page */
 async function Page({ params }: Props) {
   const [event] = await findEventsWithSlug(params.slug);
   if (!event) {
