@@ -21,7 +21,13 @@ export default function RootLayout({
       <body>
         <div className="px-7 mt-10 -mb-10 max-w-content m-auto flex flex-row gap-7 items-center">
           <Link href="/">
-            <Image src="/logo.png" width={60} height={60} alt="Česko.Digital" />
+            <Image
+              className="bg-it"
+              src="/logo.png"
+              width={60}
+              height={60}
+              alt="Česko.Digital"
+            />
           </Link>
           <div className="ml-auto flex flex-row gap-4">
             <span className="typo-link">Přihlásit se</span>
