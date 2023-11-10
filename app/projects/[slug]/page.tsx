@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 import Icons from "components/icons";
-import { Project, findProjectBySlug } from "src/data/project";
+import { Project, getAllProjects } from "src/data/project";
 import { clsx } from "clsx";
 import {
   TeamEngagement,
@@ -13,6 +13,7 @@ import {
 import { Route } from "src/routing";
 import Link from "next/link";
 import { Sidebar } from "components/Sidebar";
+import { ProjectCard } from "components/ProjectCard";
 
 type Params = {
   slug: string;
@@ -24,10 +25,16 @@ export type Props = {
 
 /** Project detail page */
 async function Page({ params }: Props) {
-  const project = await findProjectBySlug(params.slug);
+  const allProjects = await getAllProjects();
+  const project = allProjects.find((p) => p.slug === params.slug);
   if (!project) {
     notFound();
   }
+
+  const otherProjects = allProjects
+    .filter((p) => p.slug !== params.slug)
+    .filter((p) => p.state === "running" || p.state === "incubating")
+    .slice(0, 3);
 
   const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
   const coordinators = allTeamEngagements
@@ -67,18 +74,28 @@ async function Page({ params }: Props) {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        <section className="lg:col-span-2">
-          <h2 className="typo-title2">O projektu</h2>
-          <MarkdownContent source={project.description.source} />
-        </section>
-        <aside>
-          <ProjectSidebar project={project} coordinators={coordinators} />
-        </aside>
+      <div className="flex flex-col gap-20">
+        {/* Main project info */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <section className="lg:col-span-2">
+            <h2 className="typo-title2">O projektu</h2>
+            <MarkdownContent source={project.description.source} />
+          </section>
+          <aside>
+            <ProjectSidebar project={project} coordinators={coordinators} />
+          </aside>
+        </div>
+
+        {/* TBD: Opportunities, events, videos, blog posts */}
+        <OtherProjectsBox projects={otherProjects} />
       </div>
     </main>
   );
 }
+
+//
+// Sidebar
+//
 
 const ProjectSidebar = ({
   project,
@@ -187,6 +204,25 @@ const LinkIcon = ({ url }: { url: string }) => {
 
   return <Icons.GenericWebsite />;
 };
+
+//
+// Related info boxes
+//
+
+const OtherProjectsBox = ({ projects }: { projects: Project[] }) => (
+  <section>
+    <h2 className="typo-title2 mb-4">Další projekty</h2>
+    <div className="grid grid-cols-3 gap-7">
+      {projects.map((p) => (
+        <ProjectCard key={p.id} project={p} />
+      ))}
+    </div>
+  </section>
+);
+
+//
+// Helpers
+//
 
 /**
  * Returns a hostname of the provided URL without the "www." prefix.
