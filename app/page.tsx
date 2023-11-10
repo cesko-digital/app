@@ -40,7 +40,7 @@ export default async function Home() {
 
   const MoreButton = ({ text, url }: { text: string; url: string }) => (
     <div className="text-center">
-      <Link className="btn-primary inline-block" href={url}>
+      <Link className="btn-primary block md:inline-block" href={url}>
         {text}
       </Link>
     </div>
