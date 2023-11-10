@@ -13,7 +13,7 @@ export const Breadcrumbs = ({
   <div className="typo-caption">
     {path.map(({ label, path }) => (
       <Fragment key={label}>
-        <Link href={path} className="underline">
+        <Link href={path} className="typo-link">
           {label}
         </Link>
         <span className="inline-block px-2 text-gravel">/</span>
