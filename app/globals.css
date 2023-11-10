@@ -29,6 +29,9 @@
   .typo-caption {
     @apply text-sm;
   }
+  .typo-link {
+    @apply underline underline-offset-2;
+  }
 
   /* Buttons */
   .btn-primary {

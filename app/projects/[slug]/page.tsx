@@ -12,6 +12,7 @@ import {
 } from "src/data/team-engagement";
 import { Route } from "src/routing";
 import Link from "next/link";
+import { Sidebar } from "components/Sidebar";
 
 type Params = {
   slug: string;
@@ -71,14 +72,14 @@ async function Page({ params }: Props) {
           <MarkdownContent source={project.description.source} />
         </section>
         <aside>
-          <Sidebar project={project} coordinators={coordinators} />
+          <ProjectSidebar project={project} coordinators={coordinators} />
         </aside>
       </div>
     </main>
   );
 }
 
-const Sidebar = ({
+const ProjectSidebar = ({
   project,
   coordinators,
 }: {
@@ -90,9 +91,12 @@ const Sidebar = ({
   const displayedCoordinators =
     activeCoordinators.length > 0 ? activeCoordinators : coordinators;
 
+  const links = project.links || [];
+  const featuredLink = links.find((link) => link.featured);
+  const ordinaryLinks = links.filter((link) => link !== featuredLink);
+
   const CoordinatorList = () => (
     <div>
-      <h2 className="typo-title3 mb-4">Koordinace projektu</h2>
       {displayedCoordinators.map((c) => (
         <div
           key={c.id}
@@ -115,41 +119,43 @@ const Sidebar = ({
     </div>
   );
 
-  const links = project.links || [];
-  const featuredLink = links.find((link) => link.featured);
-  const ordinaryLinks = links.filter((link) => link !== featuredLink);
-
   const LinkList = () => (
+    <ul className="flex flex-col gap-4">
+      {ordinaryLinks.map((link) => (
+        <li key={link.url} className="flex flex-row item-center gap-2">
+          <LinkIcon url={link.url} />
+          <Link href={link.url} className="underline">
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const FeaturedLinkButton = () => (
     <div>
-      <h2 className="typo-title3 mb-4">Odkazy</h2>
-      <ul className="flex flex-col gap-4">
-        {ordinaryLinks.map((link) => (
-          <li key={link.url} className="flex flex-row item-center gap-2">
-            <LinkIcon url={link.url} />
-            <Link href={link.url} className="underline">
-              {link.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <a className="block btn-primary text-center" href={featuredLink?.url}>
+        {featuredLink?.name}
+      </a>
     </div>
   );
 
   return (
-    <div className="bg-pebble rounded-xl p-7 flex flex-col gap-7">
-      {coordinators.length > 0 && <CoordinatorList />}
-      {ordinaryLinks.length > 0 && <LinkList />}
-      {featuredLink && (
-        <div>
-          <Link
-            className="block btn-primary text-center"
-            href={featuredLink.url}
-          >
-            {featuredLink.name}
-          </Link>
-        </div>
-      )}
-    </div>
+    <Sidebar
+      primaryCTA={featuredLink ? <FeaturedLinkButton /> : undefined}
+      items={[
+        {
+          label: "Koordinace projektu",
+          content: <CoordinatorList />,
+          onlyIf: coordinators.length > 0,
+        },
+        {
+          label: "Odkazy",
+          content: <LinkList />,
+          onlyIf: ordinaryLinks.length > 0,
+        },
+      ]}
+    />
   );
 };
 
