@@ -17,6 +17,13 @@ import { ProjectCard } from "components/ProjectCard";
 import { shuffleInPlace } from "src/utils";
 import { Opportunity, getOpportunitiesForProject } from "src/data/opportunity";
 import { OpportunityRow } from "components/OpportunityRow";
+import {
+  Event,
+  compareEventsByTime,
+  findEventsForProject,
+  isEventPast,
+} from "src/data/event";
+import { EventCard } from "components/EventCard";
 
 type Params = {
   slug: string;
@@ -43,6 +50,13 @@ async function Page({ params }: Props) {
   const opportunities = (await getOpportunitiesForProject(project.slug)).filter(
     (o) => o.status === "live"
   );
+
+  const events = (await findEventsForProject(project.slug))
+    .filter((e) => e.published)
+    .sort(compareEventsByTime)
+    .reverse()
+    .slice(0, 3)
+    .reverse();
 
   const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
   const coordinators = allTeamEngagements
@@ -94,7 +108,9 @@ async function Page({ params }: Props) {
           </aside>
         </div>
 
-        {/* TBD: Events, videos, blog posts */}
+        {/* TBD: Videos, blog posts */}
+
+        {events.length > 0 && <EventsBox events={events} />}
 
         {opportunities.length > 0 && (
           <OpportunitiesBox opportunities={opportunities} />
@@ -271,6 +287,19 @@ const OpportunitiesBox = ({
     content=<div>
       {opportunities.map((o) => (
         <OpportunityRow key={o.id} role={o} />
+      ))}
+    </div>
+  />
+);
+
+const EventsBox = ({ events }: { events: Event[] }) => (
+  <RelatedContentBox
+    label="Vybrané akce"
+    seeAllLabel="Všechny akce"
+    seeAllUrl={Route.events}
+    content=<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+      {events.map((e) => (
+        <EventCard key={e.id} event={e} fade={isEventPast(e)} />
       ))}
     </div>
   />
