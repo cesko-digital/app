@@ -67,12 +67,12 @@ export const heading: Schema = {
 };
 
 /**
- * Markdoc config for project descriptions
+ * Markdoc config for our custom Markdown variant
  *
  * The config defines our custom tags that we use in addition to standard
  * Markdown formatting.
  */
-export const projectDescriptionConfig: Config = {
+export const customMarkdownConfig: Config = {
   tags: {
     callout,
     image,

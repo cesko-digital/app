@@ -1,6 +1,5 @@
-import Markdoc from "@markdoc/markdoc";
 import { Breadcrumbs } from "components/Breadcrumbs";
-import { allCustomTags } from "components/MarkdocTags";
+import { MarkdownContent } from "components/MarkdownContent";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -11,7 +10,6 @@ import {
   TeamEngagement,
   getTeamEngagementsForProject,
 } from "src/data/team-engagement";
-import { projectDescriptionConfig } from "src/markdoc/schema";
 import { Route } from "src/routing";
 import Link from "next/link";
 
@@ -70,7 +68,7 @@ async function Page({ params }: Props) {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
         <section className="lg:col-span-2">
           <h2 className="typo-title2">O projektu</h2>
-          <ProjectDescription project={project} />
+          <MarkdownContent source={project.description.source} />
         </section>
         <aside>
           <Sidebar project={project} coordinators={coordinators} />
@@ -79,18 +77,6 @@ async function Page({ params }: Props) {
     </main>
   );
 }
-
-const ProjectDescription = ({ project }: { project: Project }) => {
-  const syntaxTree = Markdoc.parse(project.description.source);
-  const renderableNode = Markdoc.transform(
-    syntaxTree,
-    projectDescriptionConfig
-  );
-  const renderedContent = Markdoc.renderers.react(renderableNode, React, {
-    components: allCustomTags,
-  });
-  return <div className="embedded-markdown max-w-prose">{renderedContent}</div>;
-};
 
 const Sidebar = ({
   project,
