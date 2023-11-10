@@ -17,7 +17,7 @@ export const Sidebar = ({ items, primaryCTA }: Props) => (
       ({ label, content, onlyIf: condition = true }) =>
         condition && (
           <div key={label}>
-            <h2 className="typo-title3 mb-4">{label}</h2>
+            <h2 className="typo-title3 mb-2">{label}</h2>
             {content}
           </div>
         )
