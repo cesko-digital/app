@@ -8,7 +8,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { LegacyUser, getUserById } from "src/data/legacy-user";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
-import { Project, findProjectById, getAllProjects } from "src/data/project";
+import { Project, getAllProjects } from "src/data/project";
 import { getAlternativeOpenRoles } from "src/data/queries";
 import { Route } from "src/routing";
 
