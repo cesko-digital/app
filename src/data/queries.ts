@@ -1,4 +1,4 @@
-import { getRandomElem, shuffleInPlace, unique } from "src/utils";
+import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
 import {
   Event,
   compareEventsByTime,
@@ -52,4 +52,27 @@ export async function getFeaturedOpportunities(
       .map((ops) => getRandomElem(ops))
       .flat();
   }
+}
+
+/**
+ * Get relevant selection of other open roles given current role
+ *
+ * Shows open roles from the same project first, then random selection of others.
+ */
+export async function getAlternativeOpenRoles(
+  role: Opportunity,
+  count = 3
+): Promise<Opportunity[]> {
+  const allOpenRoles = await getAllOpportunities("Show to Users");
+  const otherRolesOnSameProject = allOpenRoles.filter(
+    (r) => r.projectId === role.projectId && r.id !== role.id
+  );
+  const otherRolesOnOtherProjects = allOpenRoles.filter(
+    (r) => r.projectId !== role.projectId
+  );
+  const merged = [
+    ...otherRolesOnSameProject,
+    ...shuffled(otherRolesOnOtherProjects),
+  ];
+  return merged.slice(0, count);
 }

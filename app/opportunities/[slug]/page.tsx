@@ -1,12 +1,14 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
 import { MarkdownContent } from "components/MarkdownContent";
+import { OpportunityRow } from "components/OpportunityRow";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { LegacyUser, getUserById } from "src/data/legacy-user";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
-import { Project, findProjectById } from "src/data/project";
+import { Project, findProjectById, getAllProjects } from "src/data/project";
+import { getAlternativeOpenRoles } from "src/data/queries";
 import { Route } from "src/routing";
 
 type Params = {
@@ -17,12 +19,16 @@ export type Props = {
   params: Params;
 };
 
-/** Detail page of a wanted role */
+/** Detail page of an open role */
 async function Page({ params }: Props) {
   const allRoles = await getAllOpportunities("Show to Users");
+  const allProjects = await getAllProjects();
   const role = allRoles.find((r) => r.slug === params.slug) || notFound();
-  const project = (await findProjectById(role.projectId))!;
+  const projectForRole = (role: Opportunity) =>
+    allProjects.find((p) => p.id === role.projectId)!;
+  const project = projectForRole(role);
   const owner = (await getUserById(role.ownerId))!;
+  const otherRoles = await getAlternativeOpenRoles(role);
   return (
     <main className="py-20 px-7 max-w-content m-auto">
       <Breadcrumbs
@@ -47,7 +53,7 @@ async function Page({ params }: Props) {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
         <section className="lg:col-span-2">
           <h2 className="typo-title2">O roli</h2>
           <MarkdownContent source={role.summary.source} />
@@ -56,6 +62,11 @@ async function Page({ params }: Props) {
           <RoleSidebar project={project} role={role} owner={owner} />
         </aside>
       </div>
+
+      <h2 className="typo-title2 mb-4">Další hledané role</h2>
+      {otherRoles.map((r) => (
+        <OpportunityRow key={r.id} role={r} project={projectForRole(r)} />
+      ))}
     </main>
   );
 }
