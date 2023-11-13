@@ -17,12 +17,7 @@ import { ProjectCard } from "components/ProjectCard";
 import { shuffleInPlace } from "src/utils";
 import { Opportunity, getOpportunitiesForProject } from "src/data/opportunity";
 import { OpportunityRow } from "components/OpportunityRow";
-import {
-  Event,
-  compareEventsByTime,
-  findEventsForProject,
-  isEventPast,
-} from "src/data/event";
+import { Event, isEventPast } from "src/data/event";
 import { EventCard } from "components/EventCard";
 import { getFeaturedEventsForProject } from "src/data/queries";
 
