@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { Event } from "src/data/event";
+import { Event, isEventPast } from "src/data/event";
 import { Route } from "src/routing";
+import { TextPill } from "./TextPill";
 
 export type Props = {
   event: Event;
@@ -11,17 +12,22 @@ export type Props = {
 };
 
 export const EventCard = ({ event, badgeImageUrl, fade = false }: Props) => {
-  const time = new Date(event.startTime).toLocaleString("cs-CZ", {
+  const past = isEventPast(event);
+  const pastDateStyle: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "numeric",
+    year: "2-digit",
+  };
+  const futureDateStyle: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",
     month: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-  });
-  const InfoPill = ({ text }: { text: string }) => (
-    <span className="inline-block bg-pebble rounded-lg px-2 py-1 typo-caption mr-2 mb-2">
-      {text}
-    </span>
+  };
+  const time = new Date(event.startTime).toLocaleString(
+    "cs-CZ",
+    past ? pastDateStyle : futureDateStyle
   );
   return (
     <Link
@@ -52,9 +58,12 @@ export const EventCard = ({ event, badgeImageUrl, fade = false }: Props) => {
         />
       )}
       <div className="-mt-2 p-7 flex flex-col gap-3">
-        <div>
-          <InfoPill text={time} />
-          {event.locationTitle && <InfoPill text={event.locationTitle} />}
+        <div className="typo-caption">
+          {isEventPast(event) && <TextPill text="proběhlo" inverted />}
+          <TextPill text={time} />
+          {!past && event.locationTitle && (
+            <TextPill text={event.locationTitle} />
+          )}
         </div>
         <h3 className="typo-title3">{event.name}</h3>
         <p>{event.summary}</p>
