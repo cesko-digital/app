@@ -19,7 +19,10 @@ import {
 } from "typescript-json-decoder";
 
 /** Table views you can use when querying the opportunities table */
-export type TableView = "All Opportunities" | "Notifications for Today";
+export type TableView =
+  | "All Opportunities"
+  | "Show to Users"
+  | "Notifications for Today";
 
 export type Opportunity = decodeType<typeof decodeOpportunity>;
 export const decodeOpportunity = record({

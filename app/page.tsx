@@ -12,7 +12,6 @@ import {
   MarketPlaceOffer,
   getPublishedMarketPlaceOffers,
 } from "src/data/marker-place";
-import { Opportunity, getAllOpportunities } from "src/data/opportunity";
 import { Project, getAllProjects } from "src/data/project";
 import {
   LatestTopicsSummary,
@@ -23,8 +22,9 @@ import {
 } from "src/discourse";
 import { Route } from "src/routing";
 import { toHTML as slackMarkupToHTML } from "slack-markdown";
-import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
+import { shuffled } from "src/utils";
 import { OpportunityRow } from "components/OpportunityRow";
+import { getFeaturedOpportunities } from "src/data/queries";
 
 /** Main home page of the whole website */
 export default async function Home() {
@@ -126,28 +126,6 @@ async function getFeaturedProjects(): Promise<Project[]> {
     p.state === "incubating" || p.state === "running";
   const allProjects = await getAllProjects();
   return shuffled(allProjects).filter(canBeFeatured).slice(0, 3);
-}
-
-//
-// Opportunities
-//
-
-async function getFeaturedOpportunities(count = 3): Promise<Opportunity[]> {
-  const opportunities = await getAllOpportunities();
-  // Let’s pick `count` projects to feature
-  const featuredProjectIds = shuffleInPlace(
-    unique(opportunities.map((o) => o.projectId))
-  ).slice(0, count);
-  if (featuredProjectIds.length < count) {
-    // If we don’t have that many, just return random `count` opportunities
-    return shuffleInPlace(opportunities.slice(0, count));
-  } else {
-    // Otherwise pick a random opportunity from each featured project
-    return featuredProjectIds
-      .map((id) => opportunities.filter((o) => o.projectId === id))
-      .map((ops) => getRandomElem(ops))
-      .flat();
-  }
 }
 
 //
