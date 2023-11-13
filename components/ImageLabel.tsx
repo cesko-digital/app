@@ -1,0 +1,88 @@
+import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { LegacyUser } from "src/data/legacy-user";
+import { Project } from "src/data/project";
+import { Route } from "src/routing";
+
+export type Props = {
+  /** URL of the image to display */
+  imageUrl: string;
+  /** Text to display along with the image */
+  label: string;
+  /** If set, text will be clickable and lead to this URL */
+  link?: string;
+  size?: "normal" | "large";
+  order?: "imageFirst" | "labelFirst";
+  faded?: boolean;
+};
+
+/**
+ * Generic circle image with a label
+ *
+ * TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze
+ */
+export const ImageLabel = ({
+  imageUrl,
+  label,
+  link,
+  size = "normal",
+  order = "imageFirst",
+  faded = false,
+}: Props) => {
+  const imageSize = size === "normal" ? 60 : 80;
+  return (
+    <div
+      className={clsx(
+        "flex gap-4 items-center",
+        faded && "opacity-50",
+        order === "labelFirst" ? "flex-row-reverse" : "flex-row"
+      )}
+    >
+      <Image
+        src={imageUrl}
+        className="bg-gray rounded-full shadow"
+        width={imageSize}
+        height={imageSize}
+        alt=""
+      />
+      {!link && <span>{label}</span>}
+      {link && (
+        <Link className="typo-link" href={link}>
+          {label}
+        </Link>
+      )}
+    </div>
+  );
+};
+
+export const ProjectImageLabel = ({
+  project,
+  order = "imageFirst",
+  size = "normal",
+}: {
+  project: Project;
+  order?: Props["order"];
+  size?: Props["size"];
+}) => {
+  const link = project.state !== "draft" ? Route.toProject(project) : undefined;
+  return (
+    <ImageLabel
+      imageUrl={project.logoUrl}
+      label={project.name}
+      link={link}
+      order={order}
+      size={size}
+    />
+  );
+};
+
+export const LegacyUserImageLabel = ({
+  user,
+  link,
+}: {
+  user: LegacyUser;
+  link?: string;
+}) => (
+  <ImageLabel imageUrl={user.profilePictureUrl} label={user.name} link={link} />
+);

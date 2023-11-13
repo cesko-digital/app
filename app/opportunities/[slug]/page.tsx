@@ -1,8 +1,8 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
+import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
 import { MarkdownContent } from "components/MarkdownContent";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LegacyUser, getUserById } from "src/data/legacy-user";
 import { Opportunity, getAllOpportunities } from "src/data/opportunity";
@@ -69,21 +69,13 @@ const RoleSidebar = ({
   project: Project;
   owner: LegacyUser;
 }) => {
-  const projectLink =
-    project.state !== "draft" ? Route.toProject(project) : undefined;
   return (
     <Sidebar
       primaryCTA={<ContactButton role={role} />}
       sections={[
         {
           label: "Projekt",
-          content: (
-            <CircleImageWithLabel
-              imageUrl={project.logoUrl}
-              label={project.name}
-              link={projectLink}
-            />
-          ),
+          content: <ProjectImageLabel project={project} />,
         },
         {
           label: "Časová náročnost",
@@ -91,43 +83,12 @@ const RoleSidebar = ({
         },
         {
           label: "Kontaktní osoba",
-          content: (
-            <CircleImageWithLabel
-              imageUrl={owner.profilePictureUrl}
-              label={owner.name}
-            />
-          ),
+          content: <LegacyUserImageLabel user={owner} />,
         },
       ]}
     />
   );
 };
-
-const CircleImageWithLabel = ({
-  imageUrl,
-  label,
-  link,
-}: {
-  imageUrl: string;
-  label: string;
-  link?: string;
-}) => (
-  <div className="flex flex-row gap-4 items-center">
-    <Image
-      src={imageUrl}
-      className="rounded-full shadow"
-      width={60}
-      height={60}
-      alt=""
-    />
-    {!link && <span>{label}</span>}
-    {link && (
-      <Link className="typo-link" href={link}>
-        {label}
-      </Link>
-    )}
-  </div>
-);
 
 const ContactButton = ({ role }: { role: Opportunity }) => {
   return (

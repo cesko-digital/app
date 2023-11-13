@@ -20,6 +20,7 @@ import { OpportunityRow } from "components/OpportunityRow";
 import { Event, isEventPast } from "src/data/event";
 import { EventCard } from "components/EventCard";
 import { getFeaturedEventsForProject } from "src/data/queries";
+import { ImageLabel } from "components/ImageLabel";
 
 type Params = {
   slug: string;
@@ -134,25 +135,14 @@ const ProjectSidebar = ({
   const ordinaryLinks = links.filter((link) => link !== featuredLink);
 
   const CoordinatorList = () => (
-    <div>
+    <div className="flex flex-col gap-3">
       {displayedCoordinators.map((c) => (
-        <div
+        <ImageLabel
           key={c.id}
-          className={clsx(
-            "flex flex-row gap-4 items-center mb-2",
-            c.inactive && "opacity-50"
-          )}
-        >
-          {/* TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze */}
-          <Image
-            src={c.userAvatarUrl}
-            className="rounded-full"
-            width={60}
-            height={60}
-            alt=""
-          />
-          <span>{c.userName}</span>
-        </div>
+          imageUrl={c.userAvatarUrl}
+          label={c.userName}
+          faded={c.inactive}
+        />
       ))}
     </div>
   );
