@@ -4,6 +4,7 @@ import { Project } from "src/data/project";
 import { Route } from "src/routing";
 import { ProjectImageLabel } from "./ImageLabel";
 import { Fragment } from "react";
+import { TextPill } from "./TextPill";
 
 export type Props = {
   /** Role to display data for */
@@ -21,13 +22,8 @@ export const OpportunityRow = ({ role, project }: Props) => {
       <Link href={Route.toOpportunity(role)}>
         <h3 className="typo-title3 mb-2">{role.name}</h3>
         <p>
-          {pills.map((p) => (
-            <span
-              key={p}
-              className="inline-block px-2 mr-2 rounded-lg bg-pebble"
-            >
-              {p}
-            </span>
+          {pills.map((text) => (
+            <TextPill key={text} text={text} />
           ))}
         </p>
       </Link>
