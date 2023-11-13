@@ -12,7 +12,7 @@ export type Props = {
   label: string;
   /** If set, text will be clickable and lead to this URL */
   link?: string;
-  size?: "normal" | "large";
+  size?: "small" | "normal" | "large";
   order?: "imageFirst" | "labelFirst";
   faded?: boolean;
 };
@@ -30,7 +30,7 @@ export const ImageLabel = ({
   order = "imageFirst",
   faded = false,
 }: Props) => {
-  const imageSize = size === "normal" ? 60 : 80;
+  const imageSize = size === "normal" ? 60 : size === "large" ? 80 : 25;
   return (
     <div
       className={clsx(
