@@ -2,6 +2,7 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
 import { MarkdownContent } from "components/MarkdownContent";
 import { OpportunityRow } from "components/OpportunityRow";
+import { RelatedContent } from "components/RelatedContent";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -63,10 +64,14 @@ async function Page({ params }: Props) {
         </aside>
       </div>
 
-      <h2 className="typo-title2 mb-4">Další hledané role</h2>
-      {otherRoles.map((r) => (
-        <OpportunityRow key={r.id} role={r} project={projectForRole(r)} />
-      ))}
+      <RelatedContent
+        label="Další hledané role"
+        seeAllLabel="Všechny hledané role"
+        seeAllUrl={Route.opportunities}
+        content={otherRoles.map((r) => (
+          <OpportunityRow key={r.id} role={r} project={projectForRole(r)} />
+        ))}
+      />
     </main>
   );
 }

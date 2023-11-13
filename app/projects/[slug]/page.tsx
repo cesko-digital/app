@@ -21,6 +21,7 @@ import { Event, isEventPast } from "src/data/event";
 import { EventCard } from "components/EventCard";
 import { getFeaturedEventsForProject } from "src/data/queries";
 import { ImageLabel } from "components/ImageLabel";
+import { RelatedContent } from "components/RelatedContent";
 
 type Params = {
   slug: string;
@@ -219,40 +220,18 @@ const LinkIcon = ({ url }: { url: string }) => {
 // Related info boxes
 //
 
-const RelatedContentBox = ({
-  label,
-  content,
-  seeAllUrl,
-  seeAllLabel,
-}: {
-  label: string;
-  content: ReactNode;
-  seeAllUrl?: string;
-  seeAllLabel?: string;
-}) => (
-  <section>
-    <div className="flex md:flex-row gap-7 items-center">
-      <h2 className="typo-title2 mb-4">{label}</h2>
-      {seeAllUrl && (
-        <Link href={seeAllUrl} className="typo-link ml-auto mr-1">
-          {seeAllLabel}
-        </Link>
-      )}
-    </div>
-    {content}
-  </section>
-);
-
 const OtherProjectsBox = ({ projects }: { projects: Project[] }) => (
-  <RelatedContentBox
+  <RelatedContent
     label="Další projekty"
     seeAllLabel="Všechny projekty"
     seeAllUrl={Route.projects}
-    content=<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-      {projects.map((p) => (
-        <ProjectCard key={p.id} project={p} />
-      ))}
-    </div>
+    content={
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {projects.map((p) => (
+          <ProjectCard key={p.id} project={p} />
+        ))}
+      </div>
+    }
   />
 );
 
@@ -261,28 +240,32 @@ const OpportunitiesBox = ({
 }: {
   opportunities: Opportunity[];
 }) => (
-  <RelatedContentBox
+  <RelatedContent
     label="Právě hledáme"
     seeAllLabel="Všechny hledané role"
     seeAllUrl={Route.opportunities}
-    content=<div>
-      {opportunities.map((o) => (
-        <OpportunityRow key={o.id} role={o} />
-      ))}
-    </div>
+    content={
+      <div>
+        {opportunities.map((o) => (
+          <OpportunityRow key={o.id} role={o} />
+        ))}
+      </div>
+    }
   />
 );
 
 const EventsBox = ({ events }: { events: Event[] }) => (
-  <RelatedContentBox
+  <RelatedContent
     label="Vybrané akce"
     seeAllLabel="Všechny akce"
     seeAllUrl={Route.events}
-    content=<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-      {events.map((e) => (
-        <EventCard key={e.id} event={e} fade={isEventPast(e)} />
-      ))}
-    </div>
+    content={
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {events.map((e) => (
+          <EventCard key={e.id} event={e} fade={isEventPast(e)} />
+        ))}
+      </div>
+    }
   />
 );
 
