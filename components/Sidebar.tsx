@@ -23,7 +23,7 @@ export type Props = {
  * a primary call-to-action component.
  */
 export const Sidebar = ({ sections, primaryCTA }: Props) => (
-  <div className="p-7 bg-pebble rounded-xl flex flex-col gap-7">
+  <SidebarContainer>
     {sections.map(
       ({ label, content, onlyIf: condition = true }) =>
         condition && (
@@ -34,5 +34,12 @@ export const Sidebar = ({ sections, primaryCTA }: Props) => (
         )
     )}
     {primaryCTA && <div className="mt-4">{primaryCTA}</div>}
-  </div>
+  </SidebarContainer>
+);
+
+/**
+ * Bare sidebar
+ */
+export const SidebarContainer = ({ children }: { children: ReactNode }) => (
+  <div className="p-7 bg-pebble rounded-xl flex flex-col gap-7">{children}</div>
 );
