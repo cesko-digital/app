@@ -1,9 +1,9 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { EventCard } from "components/EventCard";
+import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
 import { MarkdownContent } from "components/MarkdownContent";
 import { Sidebar } from "components/Sidebar";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   Event,
@@ -105,9 +105,6 @@ const EventSidebar = ({
     minute: "2-digit",
   });
 
-  const projectLink =
-    project.state !== "draft" ? Route.toProject(project) : undefined;
-
   return (
     <Sidebar
       primaryCTA={
@@ -116,22 +113,12 @@ const EventSidebar = ({
       sections={[
         {
           label: "Projekt",
-          content: (
-            <CircleImageWithLabel
-              imageUrl={project.logoUrl}
-              link={projectLink}
-              label={project.name}
-            />
-          ),
+          content: <ProjectImageLabel project={project} />,
         },
         {
           label: "Kontakt",
           content: (
-            <CircleImageWithLabel
-              imageUrl={owner.profilePictureUrl}
-              link={`mailto:${owner.email}`}
-              label={owner.name}
-            />
+            <LegacyUserImageLabel user={owner} link={`mailto:${owner.email}`} />
           ),
         },
         {
@@ -166,32 +153,6 @@ const RegistrationButton = ({ event }: { event: Event }) => (
     <a href={event.registrationUrl} className="block btn-primary text-center">
       {event.registrationTitle}
     </a>
-  </div>
-);
-
-const CircleImageWithLabel = ({
-  imageUrl,
-  label,
-  link,
-}: {
-  imageUrl: string;
-  label: string;
-  link?: string;
-}) => (
-  <div className="flex flex-row gap-4 items-center">
-    <Image
-      src={imageUrl}
-      className="rounded-full shadow"
-      width={60}
-      height={60}
-      alt=""
-    />
-    {!link && <span>{label}</span>}
-    {link && (
-      <Link className="typo-link" href={link}>
-        {label}
-      </Link>
-    )}
   </div>
 );
 
