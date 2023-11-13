@@ -46,7 +46,29 @@
     ]
   },
   "eslintConfig": {
-    "extends": "next/core-web-vitals"
+    "extends": [
+      "next/core-web-vitals",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-undef": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          "args": "none"
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.ts"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "prettier": {
     "quoteProps": "consistent"

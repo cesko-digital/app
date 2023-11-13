@@ -2,10 +2,9 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { MarkdownContent } from "components/MarkdownContent";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React, { ReactNode } from "react";
+import React from "react";
 import Icons from "components/icons";
 import { Project, getAllProjects } from "src/data/project";
-import { clsx } from "clsx";
 import {
   TeamEngagement,
   getTeamEngagementsForProject,
