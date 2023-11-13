@@ -126,4 +126,10 @@ const getContactButtonLabel = (contactUrl: string) => {
   }
 };
 
+// Generate static pages for all open roles at build time
+export async function generateStaticParams() {
+  const roles = await getAllOpportunities("Show to Users");
+  return roles.map(({ slug }) => ({ slug }));
+}
+
 export default Page;
