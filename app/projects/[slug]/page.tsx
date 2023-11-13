@@ -24,6 +24,7 @@ import {
   isEventPast,
 } from "src/data/event";
 import { EventCard } from "components/EventCard";
+import { getFeaturedEventsForProject } from "src/data/queries";
 
 type Params = {
   slug: string;
@@ -51,12 +52,7 @@ async function Page({ params }: Props) {
     (o) => o.status === "live"
   );
 
-  const events = (await findEventsForProject(project.slug))
-    .filter((e) => e.published)
-    .sort(compareEventsByTime)
-    .reverse()
-    .slice(0, 3)
-    .reverse();
+  const events = await getFeaturedEventsForProject(project);
 
   const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
   const coordinators = allTeamEngagements
