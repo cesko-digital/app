@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, fade = false }: Props) => (
       alt=""
       width={80}
       height={80}
-      className="drop-shadow-xl rounded-full -mt-[55px] ml-7 bg-white"
+      className="drop-shadow-xl rounded-full -mt-[55px] ml-7 bg-white aspect-square object-cover object-top"
     />
     <div className="p-7 flex flex-col gap-4">
       <h3 className="typo-title3">{project.name}</h3>
