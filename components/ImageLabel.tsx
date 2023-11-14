@@ -41,7 +41,11 @@ export const ImageLabel = ({
     >
       <Image
         src={imageUrl}
-        className="bg-gray rounded-full shadow aspect-square object-top object-cover"
+        className={clsx(
+          "bg-gray rounded-full shadow",
+          // This fixes the appearance of non-square images
+          "aspect-square object-top object-cover"
+        )}
         width={imageSize}
         height={imageSize}
         alt=""
