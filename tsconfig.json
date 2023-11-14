@@ -14,6 +14,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"]
+    },
     "plugins": [
       {
         "name": "next"
@@ -21,9 +24,11 @@
     ]
   },
   "include": [
+    ".eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mjs",
     ".next/types/**/*.ts",
     "src/data/events.ts.skip"
   ],
