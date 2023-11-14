@@ -11,7 +11,7 @@ import {
 import {
   MarketPlaceOffer,
   getPublishedMarketPlaceOffers,
-} from "src/data/marker-place";
+} from "src/data/market-place";
 import { Project, getAllProjects } from "src/data/project";
 import {
   LatestTopicsSummary,

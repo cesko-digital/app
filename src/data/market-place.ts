@@ -55,7 +55,7 @@ export const decodeMarketPlaceOffer = record({
 // API Calls
 //
 
-/** Returna a single market-place offer identified by its database ID */
+/** Return a a single market-place offer identified by its database ID */
 export async function getMarketPlaceOffer(
   id: string
 ): Promise<MarketPlaceOffer> {
