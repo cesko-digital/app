@@ -22,6 +22,9 @@ import { ImageLabel } from "components/ImageLabel";
 import { RelatedContent } from "components/RelatedContent";
 import { getBlogIndex } from "src/data/blog";
 import { Card } from "components/Card";
+import { getAllPlaylistVideos } from "src/data/youtube";
+import LiteYouTubeEmbed from "components/YouTubeEmbed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 type Params = {
   slug: string;
@@ -70,6 +73,10 @@ async function Page({ params }: Props) {
   const relatedBlogPosts = blogIndex.filter((post) =>
     post.tags.some((t) => t === project.slug)
   );
+
+  const relatedVideos = project.youTubePlaylistId
+    ? await getAllPlaylistVideos(project.youTubePlaylistId)
+    : [];
 
   return (
     <main className="py-20 px-7 max-w-content m-auto">
@@ -159,6 +166,27 @@ async function Page({ params }: Props) {
               <div>
                 {opportunities.map((o) => (
                   <OpportunityRow key={o.id} role={o} />
+                ))}
+              </div>
+            }
+          />
+        )}
+
+        {relatedVideos.length > 0 && (
+          <RelatedContent
+            label="Vybraná videa"
+            seeAllLabel="Všechna videa"
+            seeAllUrl={Route.toYouTubePlaylist(project.youTubePlaylistId!)}
+            content={
+              <div className="grid grid-cols-3 gap-7">
+                {relatedVideos.slice(0, 6).map((video) => (
+                  <LiteYouTubeEmbed
+                    key={video.id}
+                    id={video.snippet.resourceId.videoId}
+                    title={video.snippet.title}
+                    poster="hqdefault"
+                    noCookie={true}
+                  />
                 ))}
               </div>
             }

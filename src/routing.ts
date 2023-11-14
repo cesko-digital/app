@@ -16,6 +16,8 @@ export const Route = {
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
   toOpportunity: (o: Opportunity) => `/opportunities/${o.slug}`,
+  toYouTubePlaylist: (playlistId: string) =>
+    `https://www.youtube.com/playlist?list=${playlistId}`,
 };
 
 /** Site URL without trailing slash */
