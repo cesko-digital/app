@@ -285,14 +285,4 @@ const getHostname = (url: string): string => {
 
 const stripTrailingComma = (s: string) => s.replace(/\.?\s*$/, "");
 
-//
-// Data Loading
-//
-
-// Generate static pages for all projects at build time
-export async function generateStaticParams() {
-  const projects = await getAllProjects();
-  return projects.map(({ slug }) => ({ slug }));
-}
-
 export default Page;
