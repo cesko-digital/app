@@ -20,7 +20,7 @@ export type Props = {
 /**
  * Generic circle image with a label
  *
- * TBD: Fix non-square avatars, https://app.cesko.digital/projects/digitalni-inkluze
+ * TBD: Right-align label when labelFirst
  */
 export const ImageLabel = ({
   imageUrl,
@@ -41,7 +41,7 @@ export const ImageLabel = ({
     >
       <Image
         src={imageUrl}
-        className="bg-gray rounded-full shadow"
+        className="bg-gray rounded-full shadow aspect-square object-top object-cover"
         width={imageSize}
         height={imageSize}
         alt=""
