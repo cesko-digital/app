@@ -134,11 +134,11 @@ async function getFeaturedProjects(): Promise<Project[]> {
 
 const MarketPlaceOfferRow = (o: MarketPlaceOffer) => {
   const ArrowShape = () => (
-    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray border-r-[8px] border-r-transparent"></div>
+    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray group-hover:border-t-it border-r-[8px] border-r-transparent"></div>
   );
   return (
-    <Link className="flex flex-col" href={o.slackThreadUrl}>
-      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it grow">
+    <Link className="flex flex-col group" href={o.slackThreadUrl}>
+      <div className="rounded-xl border-2 border-gray p-4 bg-gray group-hover:border-it grow">
         <div className="line-clamp-6">
           <h3 className="inline font-bold mr-[1ex]">{o.title}</h3>
           <p className="inline">{htmlToText(slackMarkupToHTML(o.text))}</p>
@@ -228,11 +228,11 @@ const DiscussionBubble = ({
   avatarUrl: string;
 }) => {
   const ArrowShape = () => (
-    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray border-r-[8px] border-r-transparent"></div>
+    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray group-hover:border-t-it border-r-[8px] border-r-transparent"></div>
   );
   return (
-    <Link className="flex flex-col" href={getTopicUrl(topic)}>
-      <div className="rounded-xl border-2 border-gray p-4 bg-gray hover:border-it grow">
+    <Link className="flex flex-col group" href={getTopicUrl(topic)}>
+      <div className="rounded-xl border-2 border-gray p-4 bg-gray group-hover:border-it grow">
         {topic.title}
       </div>
       <ArrowShape />
