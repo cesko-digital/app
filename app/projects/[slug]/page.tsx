@@ -178,7 +178,7 @@ async function Page({ params }: Props) {
             seeAllLabel="Všechna videa"
             seeAllUrl={Route.toYouTubePlaylist(project.youTubePlaylistId!)}
             content={
-              <div className="grid grid-cols-3 gap-7">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
                 {relatedVideos.slice(0, 6).map((video) => (
                   <LiteYouTubeEmbed
                     key={video.id}
