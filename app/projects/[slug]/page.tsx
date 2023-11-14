@@ -113,31 +113,28 @@ async function Page({ params }: Props) {
           </aside>
         </div>
 
-        {/* TBD: Videos */}
-
         {/* Related blog posts */}
         {relatedBlogPosts.length > 0 && (
           <RelatedContent
             label="Vybíráme z našeho blogu"
             seeAllLabel="Blog Česko.Digital"
             seeAllUrl={Route.blog}
-            content={
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-                {relatedBlogPosts.map((post) => (
-                  <Card
-                    key={post.url}
-                    coverImageUrl={post.cover}
-                    linkUrl={post.url}
-                  >
-                    <div className="p-7">
-                      <h3 className="typo-title3 mb-3">{post.title}</h3>
-                      <p>{post.description}</p>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            }
-          />
+          >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+              {relatedBlogPosts.map((post) => (
+                <Card
+                  key={post.url}
+                  coverImageUrl={post.cover}
+                  linkUrl={post.url}
+                >
+                  <div className="p-7">
+                    <h3 className="typo-title3 mb-3">{post.title}</h3>
+                    <p>{post.description}</p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </RelatedContent>
         )}
 
         {/* Related events */}
@@ -146,14 +143,13 @@ async function Page({ params }: Props) {
             label="Vybrané akce"
             seeAllLabel="Všechny akce"
             seeAllUrl={Route.events}
-            content={
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-                {events.map((e) => (
-                  <EventCard key={e.id} event={e} />
-                ))}
-              </div>
-            }
-          />
+          >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+              {events.map((e) => (
+                <EventCard key={e.id} event={e} />
+              ))}
+            </div>
+          </RelatedContent>
         )}
 
         {/* Related open roles */}
@@ -162,35 +158,34 @@ async function Page({ params }: Props) {
             label="Právě hledáme"
             seeAllLabel="Všechny hledané role"
             seeAllUrl={Route.opportunities}
-            content={
-              <div>
-                {opportunities.map((o) => (
-                  <OpportunityRow key={o.id} role={o} />
-                ))}
-              </div>
-            }
-          />
+          >
+            <div>
+              {opportunities.map((o) => (
+                <OpportunityRow key={o.id} role={o} />
+              ))}
+            </div>
+          </RelatedContent>
         )}
 
+        {/* Related videos */}
         {relatedVideos.length > 0 && (
           <RelatedContent
             label="Vybraná videa"
             seeAllLabel="Všechna videa"
             seeAllUrl={Route.toYouTubePlaylist(project.youTubePlaylistId!)}
-            content={
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-                {relatedVideos.slice(0, 6).map((video) => (
-                  <LiteYouTubeEmbed
-                    key={video.id}
-                    id={video.snippet.resourceId.videoId}
-                    title={video.snippet.title}
-                    poster="hqdefault"
-                    noCookie={true}
-                  />
-                ))}
-              </div>
-            }
-          />
+          >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+              {relatedVideos.slice(0, 6).map((video) => (
+                <LiteYouTubeEmbed
+                  key={video.id}
+                  id={video.snippet.resourceId.videoId}
+                  title={video.snippet.title}
+                  poster="hqdefault"
+                  noCookie={true}
+                />
+              ))}
+            </div>
+          </RelatedContent>
         )}
 
         {/* Other projects */}
@@ -198,14 +193,13 @@ async function Page({ params }: Props) {
           label="Další projekty"
           seeAllLabel="Všechny projekty"
           seeAllUrl={Route.projects}
-          content={
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-              {otherProjects.map((p) => (
-                <ProjectCard key={p.id} project={p} />
-              ))}
-            </div>
-          }
-        />
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {otherProjects.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
+          </div>
+        </RelatedContent>
       </div>
     </main>
   );
