@@ -68,10 +68,11 @@ async function Page({ params }: Props) {
         label="Další hledané role"
         seeAllLabel="Všechny hledané role"
         seeAllUrl={Route.opportunities}
-        content={otherRoles.map((r) => (
+      >
+        {otherRoles.map((r) => (
           <OpportunityRow key={r.id} role={r} project={projectForRole(r)} />
         ))}
-      />
+      </RelatedContent>
     </main>
   );
 }

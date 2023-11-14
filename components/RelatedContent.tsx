@@ -5,14 +5,14 @@ export type Props = {
   /** Heading for the whole section */
   label: string;
   /** Content to render in the section */
-  content: ReactNode;
+  children: ReactNode;
   seeAllUrl?: string;
   seeAllLabel?: string;
 };
 
 export const RelatedContent = ({
   label,
-  content,
+  children,
   seeAllUrl,
   seeAllLabel,
 }: Props) => (
@@ -25,6 +25,6 @@ export const RelatedContent = ({
         </Link>
       )}
     </div>
-    {content}
+    {children}
   </section>
 );
