@@ -9,6 +9,9 @@ export function memoize<ReturnType, F extends Producer<ReturnType>>(
   originalFunction: F,
   key: string = originalFunction.name
 ): F {
+  if (!key) {
+    console.error("Cache key is empty, things will probably break.");
+  }
   const memoized = async (...args: Parameters<F>): Promise<ReturnType> => {
     const compoundKey = hashDigest([key, ...args]);
     const cachedValue = await sharedCache.get(compoundKey);
