@@ -51,7 +51,6 @@ async function Page() {
             badgeImageUrl={projectForEvent(e)?.logoUrl}
             key={e.id}
             event={e}
-            fade={true}
           />
         ))}
       </div>

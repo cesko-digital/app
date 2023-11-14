@@ -14,13 +14,14 @@ import Link from "next/link";
 import { Sidebar } from "components/Sidebar";
 import { ProjectCard } from "components/ProjectCard";
 import { shuffleInPlace } from "src/utils";
-import { Opportunity, getOpportunitiesForProject } from "src/data/opportunity";
+import { getOpportunitiesForProject } from "src/data/opportunity";
 import { OpportunityRow } from "components/OpportunityRow";
-import { Event, isEventPast } from "src/data/event";
 import { EventCard } from "components/EventCard";
 import { getFeaturedEventsForProject } from "src/data/queries";
 import { ImageLabel } from "components/ImageLabel";
 import { RelatedContent } from "components/RelatedContent";
+import { getBlogIndex } from "src/data/blog";
+import { Card } from "components/Card";
 
 type Params = {
   slug: string;
@@ -65,6 +66,11 @@ async function Page({ params }: Props) {
       }
     });
 
+  const blogIndex = await getBlogIndex();
+  const relatedBlogPosts = blogIndex.filter((post) =>
+    post.tags.some((t) => t === project.slug)
+  );
+
   return (
     <main className="py-20 px-7 max-w-content m-auto">
       <Breadcrumbs
@@ -100,15 +106,78 @@ async function Page({ params }: Props) {
           </aside>
         </div>
 
-        {/* TBD: Videos, blog posts */}
+        {/* TBD: Videos */}
 
-        {events.length > 0 && <EventsBox events={events} />}
-
-        {opportunities.length > 0 && (
-          <OpportunitiesBox opportunities={opportunities} />
+        {/* Related blog posts */}
+        {relatedBlogPosts.length > 0 && (
+          <RelatedContent
+            label="Vybíráme z našeho blogu"
+            seeAllLabel="Blog Česko.Digital"
+            seeAllUrl={Route.blog}
+            content={
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                {relatedBlogPosts.map((post) => (
+                  <Card
+                    key={post.url}
+                    coverImageUrl={post.cover}
+                    linkUrl={post.url}
+                  >
+                    <div className="p-7">
+                      <h3 className="typo-title3 mb-3">{post.title}</h3>
+                      <p>{post.description}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            }
+          />
         )}
 
-        <OtherProjectsBox projects={otherProjects} />
+        {/* Related events */}
+        {events.length > 0 && (
+          <RelatedContent
+            label="Vybrané akce"
+            seeAllLabel="Všechny akce"
+            seeAllUrl={Route.events}
+            content={
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                {events.map((e) => (
+                  <EventCard key={e.id} event={e} />
+                ))}
+              </div>
+            }
+          />
+        )}
+
+        {/* Related open roles */}
+        {opportunities.length > 0 && (
+          <RelatedContent
+            label="Právě hledáme"
+            seeAllLabel="Všechny hledané role"
+            seeAllUrl={Route.opportunities}
+            content={
+              <div>
+                {opportunities.map((o) => (
+                  <OpportunityRow key={o.id} role={o} />
+                ))}
+              </div>
+            }
+          />
+        )}
+
+        {/* Other projects */}
+        <RelatedContent
+          label="Další projekty"
+          seeAllLabel="Všechny projekty"
+          seeAllUrl={Route.projects}
+          content={
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+              {otherProjects.map((p) => (
+                <ProjectCard key={p.id} project={p} />
+              ))}
+            </div>
+          }
+        />
       </div>
     </main>
   );
@@ -214,59 +283,6 @@ const LinkIcon = ({ url }: { url: string }) => {
 
   return <Icons.GenericWebsite />;
 };
-
-//
-// Related info boxes
-//
-
-const OtherProjectsBox = ({ projects }: { projects: Project[] }) => (
-  <RelatedContent
-    label="Další projekty"
-    seeAllLabel="Všechny projekty"
-    seeAllUrl={Route.projects}
-    content={
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
-    }
-  />
-);
-
-const OpportunitiesBox = ({
-  opportunities,
-}: {
-  opportunities: Opportunity[];
-}) => (
-  <RelatedContent
-    label="Právě hledáme"
-    seeAllLabel="Všechny hledané role"
-    seeAllUrl={Route.opportunities}
-    content={
-      <div>
-        {opportunities.map((o) => (
-          <OpportunityRow key={o.id} role={o} />
-        ))}
-      </div>
-    }
-  />
-);
-
-const EventsBox = ({ events }: { events: Event[] }) => (
-  <RelatedContent
-    label="Vybrané akce"
-    seeAllLabel="Všechny akce"
-    seeAllUrl={Route.events}
-    content={
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {events.map((e) => (
-          <EventCard key={e.id} event={e} fade={isEventPast(e)} />
-        ))}
-      </div>
-    }
-  />
-);
 
 //
 // Helpers

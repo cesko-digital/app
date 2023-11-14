@@ -6,6 +6,7 @@ import { Opportunity } from "./data/opportunity";
 export const Route = {
   // External routes
   forum: "https://diskutuj.digital/",
+  blog: "https://blog.cesko.digital/",
   // Static routes
   events: "/events",
   projects: "/projects",
