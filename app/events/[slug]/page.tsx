@@ -169,10 +169,4 @@ const compareByRelevance = (a: Event, b: Event) => {
   }
 };
 
-// Generate static pages for all live events at build time
-export async function generateStaticParams() {
-  const events = await getAllEvents("Live Events");
-  return events.map(({ slug }) => ({ slug }));
-}
-
 export default Page;
