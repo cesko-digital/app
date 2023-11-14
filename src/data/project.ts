@@ -72,18 +72,8 @@ export async function getAllProjects(): Promise<Project[]> {
     .then(decodeValidItemsFromArray(decodeProject, "Projects"));
 }
 
-/** Get project by slug */
-export async function findProjectBySlug(slug: string): Promise<Project | null> {
-  return await projectsTable
-    .select({ filterByFormula: `{slug} = "${slug}"` })
-    .all()
-    .then(unwrapRecords)
-    .then(takeFirst(decodeValidItemsFromArray(decodeProject, "Projects")))
-    .catch((_) => null);
-}
-
-/** Get project by ID */
-export async function findProjectById(id: string): Promise<Project | null> {
+/** Get single project by ID */
+export async function getProjectById(id: string): Promise<Project | null> {
   return await projectsTable
     .select({ filterByFormula: `{ID} = "${id}"` })
     .all()

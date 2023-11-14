@@ -13,7 +13,7 @@ import {
   isEventPast,
 } from "src/data/event";
 import { LegacyUser, getUserById } from "src/data/legacy-user";
-import { Project, findProjectById } from "src/data/project";
+import { Project, getProjectById } from "src/data/project";
 import { Route } from "src/routing";
 
 type Params = {
@@ -32,7 +32,7 @@ async function Page({ params }: Props) {
     notFound();
   }
 
-  const project = await findProjectById(event.projectId);
+  const project = await getProjectById(event.projectId);
   if (!project) {
     notFound();
   }
