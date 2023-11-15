@@ -3,7 +3,6 @@ import { decodeSkillSelection } from "src/skills";
 import { notEmpty, unique } from "src/utils";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 300; // 300 seconds = 5 minutes
 
 export async function GET() {
   const userProfiles = await getAllUserProfiles("Profiles with Skills");
@@ -41,6 +40,7 @@ export async function GET() {
     status: 200,
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
+      "Cache-Control": "s-maxage=300, stale-while-revalidate",
       "Access-Control-Allow-Origin": "*",
     },
   });

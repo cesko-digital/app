@@ -6,13 +6,19 @@ Obecně řečeno by bylo ideální všechna tato data přesypávat do nějaké s
 
 ## Kešování a rychlost buildu
 
-Endpointy je v každém případě nutno kešovat, jednak kvůli výkonu, jednak kvůli bezpečnosti (abychom nevyrobili snadný DoS vektor). Řada z nich by dokonce mohla být úplně statická, tj. výstup bychom mohli spočítat během buildu webu a následně už klientům jen sypat statický výstup. *To ale nechceme*, hlavně protože nám hodně záleží na rychlosti buildu (developer experience) a generování těch dat během buildu by dlouho trvalo. Takže doporučujeme nechat endpointy dynamické, ale rozumnou dobu je kešovat:
+Řada ze statistických endpointů by mohla být statická, tj. data bychom mohli spočítat během buildu a následně už klientům jen sypat statický výstup. *To ale nechceme*, hlavně protože nám hodně záleží na rychlosti buildu a generování těch dat během buildu by dlouho trvalo. Takže doporučujeme nechat endpointy dynamické, ale rozumnou dobu je kešovat:
 
 ```typescript
 // Endpoint bude dynamický, i kdyby nebylo nutně potřeba
 export const dynamic = "force-dynamic";
-// Data se revalidují jednou za pět minut
-export const revalidate = 300;
 
-export async function GET() {…}
+export async function GET() {
+  return new Response(…, {
+    status: 200,
+    headers: {
+      // Data se kešují pět minut
+      "Cache-Control": "s-maxage=300, stale-while-revalidate",
+    },
+  });
+}
 ```
