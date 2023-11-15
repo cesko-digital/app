@@ -1,5 +1,8 @@
 import { getAllUserProfiles } from "src/data/user-profile";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 300 seconds = 5 minutes
+
 export async function GET() {
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   const nonEmptySkills = userProfiles

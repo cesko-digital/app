@@ -3,6 +3,9 @@ import { getPageBreakdown } from "src/plausible";
 import { map } from "src/utils";
 import { getAllOpportunities, Opportunity } from "src/data/opportunity";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 300 seconds = 5 minutes
+
 /**
  * Data endpoint for the [opportunity visits chart](https://www.datawrapper.de/_/YTQQr/)
  *
