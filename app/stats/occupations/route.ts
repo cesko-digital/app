@@ -1,5 +1,5 @@
 import { getAllUserProfiles } from "src/data/user-profile";
-import { notEmpty, unique } from "src/utils";
+import { ContentType, notEmpty, unique } from "src/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +36,7 @@ export async function GET() {
   return new Response(response, {
     status: 200,
     headers: {
-      "Content-Type": "text/csv; charset=utf-8",
+      "Content-Type": ContentType.csv,
       "Access-Control-Allow-Origin": "*",
     },
   });

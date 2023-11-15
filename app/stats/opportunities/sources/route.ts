@@ -1,5 +1,5 @@
 import { getAllOpportunities } from "src/data/opportunity";
-import { unique } from "src/utils";
+import { ContentType, unique } from "src/utils";
 import { getPageBreakdown, getPageTrafficSources } from "src/plausible";
 
 export const dynamic = "force-dynamic";
@@ -50,7 +50,7 @@ export async function GET() {
   return new Response(output, {
     status: 200,
     headers: {
-      "Content-Type": "text/csv; charset=utf-8",
+      "Content-Type": ContentType.csv,
       "Cache-Control": "s-maxage=300, stale-while-revalidate",
       "Access-Control-Allow-Origin": "*",
     },

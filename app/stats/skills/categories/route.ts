@@ -1,6 +1,6 @@
 import { getAllUserProfiles, UserProfile } from "src/data/user-profile";
 import { decodeSkillSelection } from "src/skills";
-import { unique } from "src/utils";
+import { ContentType, unique } from "src/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +25,7 @@ export async function GET() {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Cache-Control": "s-maxage=300, stale-while-revalidate",
-      "Content-Type": "text/csv; charset=utf-8",
+      "Content-Type": ContentType.csv,
     },
   });
 }
