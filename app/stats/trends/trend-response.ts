@@ -1,3 +1,5 @@
+import { ContentType } from "src/utils";
+
 export type GetCsvContent = () => Promise<string | null>;
 
 /**
@@ -17,8 +19,8 @@ export async function getCsvResponse(
       status: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Content-Type": "text/csv; charset=utf-8",
-        "Cache-Control": "max-age=0, s-maxage=3600, stale-while-revalidate",
+        "Content-Type": ContentType.csv,
+        "Cache-Control": "s-maxage=300, stale-while-revalidate",
       },
     });
   } catch (error) {

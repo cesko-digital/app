@@ -1,6 +1,6 @@
 import { getAllProjects } from "src/data/project";
 import { getPageBreakdown } from "src/plausible";
-import { map } from "src/utils";
+import { ContentType, map } from "src/utils";
 import { getAllOpportunities, Opportunity } from "src/data/opportunity";
 
 export const dynamic = "force-dynamic";
@@ -44,7 +44,7 @@ export async function GET() {
   return new Response(output, {
     status: 200,
     headers: {
-      "Content-Type": "text/csv; charset=utf-8",
+      "Content-Type": ContentType.csv,
       "Cache-Control": "s-maxage=300, stale-while-revalidate",
       "Access-Control-Allow-Origin": "*",
     },

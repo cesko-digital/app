@@ -9,7 +9,7 @@ test("Outputs 200 and CSV headers on string content", async () => {
     "text/csv; charset=utf-8"
   );
   expect(response.headers.get("Cache-Control")).toEqual(
-    "max-age=0, s-maxage=3600, stale-while-revalidate"
+    "s-maxage=300, stale-while-revalidate"
   );
   expect(await response.text()).toEqual("test");
 });
