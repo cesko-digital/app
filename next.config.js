@@ -3,7 +3,6 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
         hostname: "data.cesko.digital",
       },
       {
