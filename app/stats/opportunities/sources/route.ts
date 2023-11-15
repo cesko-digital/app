@@ -3,7 +3,6 @@ import { unique } from "src/utils";
 import { getPageBreakdown, getPageTrafficSources } from "src/plausible";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 300; // 300 seconds = 5 minutes
 
 /**
  * Data endpoint for the [opportunity sources chart](https://www.datawrapper.de/_/5SpWg/)
@@ -52,6 +51,7 @@ export async function GET() {
     status: 200,
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
+      "Cache-Control": "s-maxage=300, stale-while-revalidate",
       "Access-Control-Allow-Origin": "*",
     },
   });

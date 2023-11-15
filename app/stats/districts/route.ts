@@ -2,7 +2,6 @@ import { getAllUserProfiles } from "src/data/user-profile";
 import { notEmpty, unique } from "src/utils";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 300; // 300 seconds = 5 minutes
 
 const normalize = (s: string) =>
   s
@@ -32,6 +31,9 @@ export async function GET() {
     .join("\n");
   return new Response(response, {
     status: 200,
-    headers: { "Content-Type": "text/csv; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/csv; charset=utf-8",
+      "Cache-Control": "s-maxage=300, stale-while-revalidate",
+    },
   });
 }
