@@ -1,6 +1,9 @@
 import { getAllUserProfiles } from "src/data/user-profile";
 import { notEmpty, unique } from "src/utils";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 300 seconds = 5 minutes
+
 export async function GET() {
   const userProfiles = await getAllUserProfiles(
     "Profiles with Occupation Data"

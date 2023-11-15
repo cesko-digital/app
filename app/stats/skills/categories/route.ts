@@ -2,6 +2,9 @@ import { getAllUserProfiles, UserProfile } from "src/data/user-profile";
 import { decodeSkillSelection } from "src/skills";
 import { unique } from "src/utils";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 300; // 300 seconds = 5 minutes
+
 export async function GET() {
   const getCategoriesForUser = (user: UserProfile) =>
     Object.keys(decodeSkillSelection(user.skills));
