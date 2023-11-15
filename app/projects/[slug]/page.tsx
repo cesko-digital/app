@@ -121,7 +121,7 @@ async function Page({ params }: Props) {
             seeAllUrl={Route.blog}
           >
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-              {relatedBlogPosts.map((post) => (
+              {relatedBlogPosts.slice(0, 3).map((post) => (
                 <Card
                   key={post.url}
                   coverImageUrl={post.cover}
