@@ -1,7 +1,6 @@
 import { getAllUserProfiles } from "src/data/user-profile";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 300; // 300 seconds = 5 minutes
 
 export async function GET() {
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
@@ -18,6 +17,7 @@ export async function GET() {
     status: 200,
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
+      "Cache-Control": "s-maxage=300, stale-while-revalidate",
       "Access-Control-Allow-Origin": "*",
     },
   });
