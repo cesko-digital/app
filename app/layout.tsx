@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import { Route } from "src/routing";
 
 export const metadata: Metadata = {
   title: "Česko.Digital TBD",
@@ -39,8 +40,10 @@ export default function RootLayout({
             />
           </Link>
           <div className="ml-auto flex flex-row gap-4">
-            <span className="typo-link">Přihlásit se</span>
-            <span className="typo-link">Registrovat</span>
+            <span className="typo-link cursor-not-allowed">Přihlásit se</span>
+            <a className="typo-link" href={Route.register}>
+              Registrovat
+            </a>
           </div>
         </div>
         {children}
