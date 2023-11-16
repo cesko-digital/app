@@ -14,9 +14,9 @@ const Asana: React.FC<React.SVGProps<SVGSVGElement>> = () => {
         gradientTransform="matrix(944.8934 0 0 -873.3772 -890717.875 1067234.75)"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#ffb900" />
-        <stop offset=".6" stop-color="#f95d8f" />
-        <stop offset=".999" stop-color="#f95353" />
+        <stop offset="0" stopColor="#ffb900" />
+        <stop offset=".6" stopColor="#f95d8f" />
+        <stop offset=".999" stopColor="#f95353" />
       </radialGradient>
       <path
         fill="url(#a)"
