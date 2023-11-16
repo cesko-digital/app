@@ -15,10 +15,10 @@ const Confluence: React.FC<React.SVGProps<SVGSVGElement>> = () => {
         y2="34.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#2684ff" />
-        <stop offset=".28" stop-color="#1f7bf6" />
-        <stop offset=".742" stop-color="#0c62dd" />
-        <stop offset=".994" stop-color="#0052cc" />
+        <stop offset="0" stopColor="#2684ff" />
+        <stop offset=".28" stopColor="#1f7bf6" />
+        <stop offset=".742" stopColor="#0c62dd" />
+        <stop offset=".994" stopColor="#0052cc" />
       </linearGradient>
       <path
         fill="url(#~hhCEjI~ovLo7bTsUTFpDa)"
@@ -36,10 +36,10 @@ const Confluence: React.FC<React.SVGProps<SVGSVGElement>> = () => {
         y2="12.5"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#0052cc" />
-        <stop offset=".044" stop-color="#0255cf" />
-        <stop offset=".665" stop-color="#1c77f2" />
-        <stop offset="1" stop-color="#2684ff" />
+        <stop offset="0" stopColor="#0052cc" />
+        <stop offset=".044" stopColor="#0255cf" />
+        <stop offset=".665" stopColor="#1c77f2" />
+        <stop offset="1" stopColor="#2684ff" />
       </linearGradient>
       <path
         fill="url(#~hhCEjI~ovLo7bTsUTFpDb)"
