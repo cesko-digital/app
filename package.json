@@ -18,6 +18,7 @@
     "file-system-cache": "^2.4.4",
     "ical-generator": "^6.0.0",
     "next": "14.0.1",
+    "next-auth": "^4.24.5",
     "plausible-tracker": "^0.3.8",
     "react": "^18",
     "react-dom": "^18",
