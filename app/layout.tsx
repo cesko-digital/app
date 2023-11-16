@@ -17,6 +17,11 @@ export default function RootLayout({
     <html lang="cs">
       <head>
         <link rel="shortcut icon" type="image/png" href="/logo.png" />
+        <script
+          data-domain="app.cesko.digital"
+          src="https://plausible.io/js/outbound-links.js"
+          defer
+        />
       </head>
       <body>
         <div className="px-7 mt-7 -mb-10 max-w-content m-auto flex flex-row gap-7 items-center">
