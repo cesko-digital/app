@@ -6,6 +6,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Česko.Digital TBD",
   description: "TBD",
+  openGraph: {
+    images: "https://data.cesko.digital/web/metadata-cover.png",
+  },
 };
 
 export default function RootLayout({
