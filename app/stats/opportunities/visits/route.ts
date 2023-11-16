@@ -1,5 +1,5 @@
 import { getAllProjects } from "src/data/project";
-import { getPageBreakdown } from "src/plausible";
+import { getPageBreakdown } from "src/plausible/api";
 import { ContentType, map } from "src/utils";
 import { getAllOpportunities, Opportunity } from "src/data/opportunity";
 

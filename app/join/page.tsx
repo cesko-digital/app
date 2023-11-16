@@ -1,6 +1,5 @@
 "use client";
 
-import Plausible from "plausible-tracker";
 import { Route } from "src/routing";
 import skillMenu from "./skills.json";
 import { SkillMenu, encodeSkillSelection } from "src/skills";
@@ -17,11 +16,10 @@ import { DistrictSelect } from "components/districts/DistrictSelect";
 import { SkillPicker } from "components/SkillPicker";
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { ContentType } from "src/utils";
-
-const { trackEvent } = Plausible({ domain: "app.cesko.digital" });
+import { trackCustomEvent } from "src/plausible/events";
 
 const Page = () => {
-  const [state, setState] = useState<FormState>(emptyFormState);
+  const [state, setState] = useState(emptyFormState);
 
   // When submitted, create new user account, log page conversion and redirect to Slack onboarding
   const submit = async (validatedData: RegistrationData) => {
@@ -31,7 +29,7 @@ const Page = () => {
       if (!success) {
         throw "Nepodařilo se založit uživatelský účet.";
       }
-      trackEvent("SignUp");
+      trackCustomEvent("SignUp");
       setTimeout(() => {
         document.location.href = Route.slackOnboarding;
       }, 1000);
