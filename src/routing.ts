@@ -7,11 +7,13 @@ export const Route = {
   // External routes
   forum: "https://diskutuj.digital/",
   blog: "https://blog.cesko.digital/",
+  slackOnboarding: "https://slack.cesko.digital/",
   // Static routes
   events: "/events",
   projects: "/projects",
   opportunities: "/opportunities",
   marketplace: "/marketplace",
+  register: "/join",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
