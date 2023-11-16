@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="cs">
       <head>
         <link rel="shortcut icon" type="image/png" href="/logo.png" />
+        <link rel="me" href="https://mastodon.cesko.digital/@ceskodigital" />
         <script
           data-domain="app.cesko.digital"
           src="https://plausible.io/js/script.outbound-links.js"
