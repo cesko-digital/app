@@ -18,9 +18,11 @@
     "file-system-cache": "^2.4.4",
     "ical-generator": "^6.0.0",
     "next": "14.0.1",
+    "plausible-tracker": "^0.3.8",
     "react": "^18",
     "react-dom": "^18",
     "react-lite-youtube-embed": "^2.3.52",
+    "react-select": "^5.8.0",
     "slack-markdown": "^0.3.0",
     "typescript-json-decoder": "^1.0.6"
   },
