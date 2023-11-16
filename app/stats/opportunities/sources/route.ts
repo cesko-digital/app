@@ -1,6 +1,6 @@
 import { getAllOpportunities } from "src/data/opportunity";
 import { ContentType, unique } from "src/utils";
-import { getPageBreakdown, getPageTrafficSources } from "src/plausible";
+import { getPageBreakdown, getPageTrafficSources } from "src/plausible/api";
 
 export const dynamic = "force-dynamic";
 
