@@ -19,7 +19,7 @@ export default function RootLayout({
         <link rel="shortcut icon" type="image/png" href="/logo.png" />
         <script
           data-domain="app.cesko.digital"
-          src="https://plausible.io/js/outbound-links.js"
+          src="https://plausible.io/js/script.outbound-links.js"
           defer
         />
       </head>
