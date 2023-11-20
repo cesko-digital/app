@@ -21,7 +21,7 @@
     "marked": "^9.1.5",
     "next": "^14.0.1",
     "next-auth": "^4.24.4",
-    "next-axiom": "^1.1.0",
+    "next-axiom": "^1.1.1",
     "plausible-tracker": "^0.3.8",
     "polished": "^4.2.2",
     "react": "^18.2.0",

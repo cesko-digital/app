@@ -3923,11 +3923,12 @@ next-auth@^4.24.4:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
-next-axiom@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/next-axiom/-/next-axiom-1.1.0.tgz#fdf113f2286691bc0029c746d251eceb7d4ed36f"
-  integrity sha512-/Fh8MOM7gzeR58SA0HfF2ZyNp4WY3cv0hbH3XW3e0u3FG4IGPfFoRuNtpWx3qv4YCqm3jmoR3CVP/dc0VF6xMQ==
+next-axiom@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/next-axiom/-/next-axiom-1.1.1.tgz#2dc16e7a1b3752bfdd6402cad753967e989d21b7"
+  integrity sha512-0r/TJ+/zetD+uDc7B+2E7WpC86hEtQ1U+DuWYrP/JNmUz+ZdPFbrZgzOSqaZ6TwYbXP56VVlPfYwq1YsKHTHYQ==
   dependencies:
+    remeda "^1.29.0"
     whatwg-fetch "^3.6.2"
 
 next@^14.0.1:
@@ -4560,6 +4561,11 @@ regexp.prototype.flags@^1.5.1:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
     set-function-name "^2.0.0"
+
+remeda@^1.29.0:
+  version "1.29.0"
+  resolved "https://registry.yarnpkg.com/remeda/-/remeda-1.29.0.tgz#17550492ba30f128358510817fe1f0573dfb1b29"
+  integrity sha512-M3LQ14KtMdQ1879lj/kKji3zBk158s7Rwg963mEkTfQFMxnKrIEAMxJfo/+0sp/+uGgN/KMVU2MBA4LNjqf8YQ==
 
 require-directory@^2.1.1:
   version "2.1.1"
