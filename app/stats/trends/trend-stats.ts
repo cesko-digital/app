@@ -80,7 +80,7 @@ export interface TrendValue {
 
 export type WriteTrendValue = (trendValue: TrendValue) => void;
 export type GenerateTrendMethod = (
-  writeTrendValue: WriteTrendValue
+  writeTrendValue: WriteTrendValue,
 ) => Promise<void>;
 
 export interface GenerateChildTrend {
@@ -104,7 +104,7 @@ export interface TrendOptions {
  */
 export async function buildTrendStats(
   options: TrendOptions,
-  generateTrend: GenerateTrend
+  generateTrend: GenerateTrend,
 ): Promise<string | null> {
   // We want to build a trend by each month / year. First we will sum all trend values in each month.
   // Then we will construct whole trend by filling the missing months with 0.
@@ -117,7 +117,7 @@ export async function buildTrendStats(
     const trendDate = new Date(
       trendValue.date.getFullYear(),
       trendValue.date.getMonth(),
-      1
+      1,
     );
 
     // Filter out the data by the given year range
@@ -181,12 +181,12 @@ export async function buildTrendStats(
     const startDate = new Date(
       fromYearSetting,
       options.autoFill ? 0 : earliestDate!.getMonth(),
-      1
+      1,
     );
     const endDate = new Date(
       toYearSetting,
       options.autoFill ? 11 : latestDate!.getMonth(),
-      1
+      1,
     );
 
     for (

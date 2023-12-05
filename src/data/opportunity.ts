@@ -1,4 +1,3 @@
-import { unwrapRecords, webBase } from "./airtable";
 import {
   decodeSkills,
   decodeUrl,
@@ -17,6 +16,8 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+
+import { unwrapRecords, webBase } from "./airtable";
 
 /** Table views you can use when querying the opportunities table */
 export type TableView =
@@ -50,7 +51,7 @@ export const opportunitiesTable = webBase("Opportunities");
 
 /** Get all opportunities */
 export async function getAllOpportunities(
-  view: TableView = "All Opportunities"
+  view: TableView = "All Opportunities",
 ): Promise<Opportunity[]> {
   return await opportunitiesTable
     .select({ view })
@@ -61,7 +62,7 @@ export async function getAllOpportunities(
 
 /** Get opportunities for project */
 export async function getOpportunitiesForProject(
-  projectSlug: string
+  projectSlug: string,
 ): Promise<Opportunity[]> {
   return await opportunitiesTable
     .select({ filterByFormula: `{project} = "${projectSlug}"` })

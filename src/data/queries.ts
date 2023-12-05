@@ -1,11 +1,12 @@
-import { getRandomElem, shuffleInPlace, shuffled, unique } from "src/utils";
+import { getRandomElem, shuffled, shuffleInPlace, unique } from "src/utils";
+
 import {
-  Event,
   compareEventsByTime,
+  Event,
   findEventsForProject,
   isEventPast,
 } from "./event";
-import { Opportunity, getAllOpportunities } from "./opportunity";
+import { getAllOpportunities, Opportunity } from "./opportunity";
 import { Project } from "./project";
 
 /**
@@ -17,7 +18,7 @@ import { Project } from "./project";
  */
 export async function getFeaturedEventsForProject(
   project: Project,
-  count = 3
+  count = 3,
 ): Promise<Event[]> {
   const allEvents = await findEventsForProject(project.slug);
   const pastEvents = allEvents.filter((e) => isEventPast(e));
@@ -35,12 +36,12 @@ export async function getFeaturedEventsForProject(
  * - Don’t show opportunities from projects that are not running
  */
 export async function getFeaturedOpportunities(
-  count = 3
+  count = 3,
 ): Promise<Opportunity[]> {
   const opportunities = await getAllOpportunities("Show to Users");
   // Let’s pick `count` projects to feature
   const featuredProjectIds = shuffleInPlace(
-    unique(opportunities.map((o) => o.projectId))
+    unique(opportunities.map((o) => o.projectId)),
   ).slice(0, count);
   if (featuredProjectIds.length < count) {
     // If we don’t have that many, just return random `count` opportunities
@@ -61,14 +62,14 @@ export async function getFeaturedOpportunities(
  */
 export async function getAlternativeOpenRoles(
   role: Opportunity,
-  count = 3
+  count = 3,
 ): Promise<Opportunity[]> {
   const allOpenRoles = await getAllOpportunities("Show to Users");
   const otherRolesOnSameProject = allOpenRoles.filter(
-    (r) => r.projectId === role.projectId && r.id !== role.id
+    (r) => r.projectId === role.projectId && r.id !== role.id,
   );
   const otherRolesOnOtherProjects = allOpenRoles.filter(
-    (r) => r.projectId !== role.projectId
+    (r) => r.projectId !== role.projectId,
   );
   const merged = [
     ...otherRolesOnSameProject,

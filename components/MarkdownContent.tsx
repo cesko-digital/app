@@ -1,7 +1,8 @@
-import Markdoc from "@markdoc/markdoc";
+import React from "react";
 import { default as NextImage } from "next/image";
 import Link from "next/link";
-import React from "react";
+
+import Markdoc from "@markdoc/markdoc";
 import { customMarkdownConfig } from "src/markdoc/schema";
 
 /**
@@ -11,7 +12,7 @@ import { customMarkdownConfig } from "src/markdoc/schema";
 
 /** A generic content box used to highlight part of the content */
 const Callout = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-yellow px-[1rem] -mx-[1rem] py-1">{children}</div>
+  <div className="-mx-[1rem] bg-yellow px-[1rem] py-1">{children}</div>
 );
 
 /** Custom heading component that generates an anchor to link to */
@@ -31,7 +32,7 @@ const Heading = ({
       {id && (
         <a
           href={`#${id}`}
-          className="ml-1 opacity-0 hover:opacity-20 cursor-pointer text-black no-underline"
+          className="ml-1 cursor-pointer text-black no-underline opacity-0 hover:opacity-20"
         >
           #
         </a>

@@ -1,8 +1,8 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { EventCard } from "components/EventCard";
 import {
-  Event,
   compareEventsByTime,
+  Event,
   getAllEvents,
   isEventPast,
 } from "src/data/event";
@@ -24,17 +24,17 @@ async function Page() {
     projects.find((p) => p.id === e.projectId);
 
   return (
-    <main className="py-20 px-7 max-w-content m-auto">
+    <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[{ label: "Homepage", path: "/" }]}
         currentPage="Akce"
       />
 
-      <h1 className="typo-title mt-7 mb-10">Akce</h1>
-      <p className="max-w-prose mb-10">{loremIpsum}</p>
+      <h1 className="typo-title mb-10 mt-7">Akce</h1>
+      <p className="mb-10 max-w-prose">{loremIpsum}</p>
 
       <h2 className="typo-title2 mb-4">Nadcházející akce</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
+      <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {futureEvents.map((e) => (
           <EventCard
             badgeImageUrl={projectForEvent(e)?.logoUrl}
@@ -45,7 +45,7 @@ async function Page() {
       </div>
 
       <h2 className="typo-title2 mb-4">Proběhlé akce</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
+      <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {pastEvents.map((e) => (
           <EventCard
             badgeImageUrl={projectForEvent(e)?.logoUrl}

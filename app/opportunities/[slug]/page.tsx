@@ -1,14 +1,15 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
 import { MarkdownContent } from "components/MarkdownContent";
 import { OpportunityRow } from "components/OpportunityRow";
 import { RelatedContent } from "components/RelatedContent";
 import { Sidebar } from "components/Sidebar";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { LegacyUser, getUserById } from "src/data/legacy-user";
-import { Opportunity, getAllOpportunities } from "src/data/opportunity";
-import { Project, getAllProjects } from "src/data/project";
+import { getUserById, LegacyUser } from "src/data/legacy-user";
+import { getAllOpportunities, Opportunity } from "src/data/opportunity";
+import { getAllProjects, Project } from "src/data/project";
 import { getAlternativeOpenRoles } from "src/data/queries";
 import { Route } from "src/routing";
 
@@ -31,7 +32,7 @@ async function Page({ params }: Props) {
   const owner = (await getUserById(role.ownerId))!;
   const otherRoles = await getAlternativeOpenRoles(role);
   return (
-    <main className="py-20 px-7 max-w-content m-auto">
+    <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[
           { label: "Homepage", path: "/" },
@@ -43,18 +44,18 @@ async function Page({ params }: Props) {
         currentPage={role.name}
       />
 
-      <h1 className="typo-title mt-7 mb-10">{role.name}</h1>
+      <h1 className="typo-title mb-10 mt-7">{role.name}</h1>
 
-      <div className="aspect-[2.3] relative mb-10">
+      <div className="relative mb-10 aspect-[2.3]">
         <Image
           src={project.coverImageUrl}
-          className="object-cover bg-gray grayscale"
+          className="bg-gray object-cover grayscale"
           alt=""
           fill
         />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20">
+      <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         <section className="lg:col-span-2">
           <h2 className="typo-title2">O roli</h2>
           <MarkdownContent source={role.summary.source} />
@@ -110,7 +111,7 @@ const RoleSidebar = ({
 const ContactButton = ({ role }: { role: Opportunity }) => {
   return (
     <div>
-      <a href={role.contactUrl} className="block btn-primary text-center">
+      <a href={role.contactUrl} className="btn-primary block text-center">
         {getContactButtonLabel(role.contactUrl)}
       </a>
     </div>

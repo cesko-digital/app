@@ -7,7 +7,7 @@ export type GetCsvContent = () => Promise<string | null>;
  * construct the lines and calls the writeLine function with the line.
  */
 export async function getCsvResponse(
-  getCsvContent: GetCsvContent
+  getCsvContent: GetCsvContent,
 ): Promise<Response> {
   try {
     const content = await getCsvContent();

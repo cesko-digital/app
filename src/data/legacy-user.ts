@@ -1,6 +1,7 @@
 import { decodeValidItemsFromArray, withDefault } from "src/decoding";
-import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
 import { decodeType, field, record, string } from "typescript-json-decoder";
+
+import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
 
 //
 // Decoding
@@ -20,7 +21,7 @@ export const decodeLegacyUser = record({
   name: string,
   profilePictureUrl: withDefault(
     string,
-    "https://data.cesko.digital/people/generic-profile.jpg"
+    "https://data.cesko.digital/people/generic-profile.jpg",
   ),
   email: string,
 });

@@ -58,7 +58,7 @@ export function getAllSkills(selection: SkillSelection): Skill[] {
 
 export function addSkill(
   selection: SkillSelection,
-  skill: Skill
+  skill: Skill,
 ): SkillSelection {
   let newSelection = { ...selection };
   const { category, name, level = null } = skill;
@@ -84,7 +84,7 @@ export function addSkill(
 
 export function getHigherSkillLevel(
   a: SkillLevel | null,
-  b: SkillLevel | null
+  b: SkillLevel | null,
 ): SkillLevel | null {
   if (a && b) {
     const indexA = SKILL_LEVELS.indexOf(a);

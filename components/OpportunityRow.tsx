@@ -1,9 +1,11 @@
+import { Fragment } from "react";
 import Link from "next/link";
+
 import { Opportunity } from "src/data/opportunity";
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
+
 import { ProjectImageLabel } from "./ImageLabel";
-import { Fragment } from "react";
 import { TextPill } from "./TextPill";
 
 export type Props = {
@@ -17,7 +19,7 @@ export type Props = {
 export const OpportunityRow = ({ role, project }: Props) => {
   const pills = [role.timeRequirements, role.skills.join(" / ")];
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-3 md:gap-7 pb-7 mb-7 last border-b-2 border-pebble">
+    <div className="last mb-7 flex flex-col-reverse gap-3 border-b-2 border-pebble pb-7 md:flex-row md:gap-7">
       {/* Role description */}
       <Link href={Route.toOpportunity(role)}>
         <h3 className="typo-title3 mb-2">{role.name}</h3>
@@ -31,7 +33,7 @@ export const OpportunityRow = ({ role, project }: Props) => {
       {project && (
         <Fragment>
           {/* Regular version from `md` size class up */}
-          <div className="hidden md:block ml-auto">
+          <div className="ml-auto hidden md:block">
             <ProjectImageLabel
               project={project}
               order="labelFirst"

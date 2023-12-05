@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Fragment } from "react";
+import Link from "next/link";
 
 export type Crumb = { label: string; path: string };
 

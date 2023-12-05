@@ -1,7 +1,7 @@
-import { ContentType } from "src/utils";
 import ical from "ical-generator";
 import { getAllEvents } from "src/data/event";
-import { Route, absolute } from "src/routing";
+import { absolute, Route } from "src/routing";
+import { ContentType } from "src/utils";
 
 /** Create an iCal feed with our events */
 export async function GET(): Promise<Response> {

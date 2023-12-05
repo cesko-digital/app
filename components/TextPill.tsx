@@ -9,8 +9,8 @@ export type Props = {
 export const TextPill = ({ text, inverted = false }: Props) => (
   <span
     className={clsx(
-      "inline-block rounded-lg px-2 py-1 mr-2 mb-2",
-      inverted ? "bg-gravel" : "bg-gray"
+      "mb-2 mr-2 inline-block rounded-lg px-2 py-1",
+      inverted ? "bg-gravel" : "bg-gray",
     )}
   >
     {text}

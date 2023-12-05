@@ -1,4 +1,3 @@
-import { unwrapRecords, webBase } from "./airtable";
 import {
   decodeValidItemsFromArray,
   takeFirst,
@@ -13,6 +12,8 @@ import {
   record,
   string,
 } from "typescript-json-decoder";
+
+import { unwrapRecords, webBase } from "./airtable";
 
 //
 // Decoding
@@ -58,7 +59,7 @@ export async function getAllTeamEngagements(): Promise<TeamEngagement[]> {
 
 /** Get all team engagements for given project */
 export async function getTeamEngagementsForProject(
-  projectSlug: string
+  projectSlug: string,
 ): Promise<TeamEngagement[]> {
   return await teamEngagementTable
     .select({ filterByFormula: `{project} = "${projectSlug}"` })

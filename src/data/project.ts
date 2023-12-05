@@ -1,4 +1,3 @@
-import { unwrapRecords, webBase } from "./airtable";
 import {
   decodeJSONString,
   decodeValidItemsFromArray,
@@ -18,6 +17,8 @@ import {
   union,
 } from "typescript-json-decoder";
 
+import { unwrapRecords, webBase } from "./airtable";
+
 //
 // Decoding
 //
@@ -32,12 +33,12 @@ export const decodeProject = record({
   coverImageUrl: string,
   logoUrl: withDefault(
     string,
-    "https://data.cesko.digital/web/projects/generic-logo.png"
+    "https://data.cesko.digital/web/projects/generic-logo.png",
   ),
   highlighted: withDefault(boolean, false),
   state: withDefault(
     union("draft", "running", "finished", "incubating", "internal"),
-    "draft"
+    "draft",
   ),
   tagIds: field("tags", optionalArray(string)),
   teamEngagementIds: field("team", optionalArray(string)),
@@ -50,9 +51,9 @@ export const decodeProject = record({
           name: string,
           url: string,
           featured: boolean,
-        })
-      )
-    )
+        }),
+      ),
+    ),
   ),
 });
 

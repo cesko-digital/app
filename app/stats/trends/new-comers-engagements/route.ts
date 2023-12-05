@@ -1,6 +1,6 @@
+import { buildTrendOptions } from "../trend-request";
 import { getCsvResponse } from "../trend-response";
 import { buildTrendStats } from "../trend-stats";
-import { buildTrendOptions } from "../trend-request";
 import { generateNewComersTrend, generateNewEngagementsTrend } from "../trends";
 
 export async function GET(request: Request) {
