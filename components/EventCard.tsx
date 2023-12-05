@@ -1,5 +1,5 @@
-import { isEventPast, type Event } from "src/data/event";
-import { Route } from "src/routing";
+import { isEventPast, type Event } from "~/src/data/event";
+import { Route } from "~/src/routing";
 
 import { Card } from "./Card";
 import { TextPill } from "./TextPill";

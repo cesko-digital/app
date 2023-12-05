@@ -1,31 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { EventCard } from "components/EventCard";
-import { OpportunityRow } from "components/OpportunityRow";
-import { ProjectCard } from "components/ProjectCard";
 import { toHTML as slackMarkupToHTML } from "slack-markdown";
+
+import { EventCard } from "~/components/EventCard";
+import { OpportunityRow } from "~/components/OpportunityRow";
+import { ProjectCard } from "~/components/ProjectCard";
 import {
   compareEventsByTime,
   getAllEvents,
   isEventPast,
   type Event,
-} from "src/data/event";
+} from "~/src/data/event";
 import {
   getPublishedMarketPlaceOffers,
   type MarketPlaceOffer,
-} from "src/data/market-place";
-import { getAllProjects, type Project } from "src/data/project";
-import { getFeaturedOpportunities } from "src/data/queries";
+} from "~/src/data/market-place";
+import { getAllProjects, type Project } from "~/src/data/project";
+import { getFeaturedOpportunities } from "~/src/data/queries";
 import {
   getLatestTopicsSummary,
   getTopicUrl,
   getUserAvatar,
   type LatestTopicsSummary,
   type Topic,
-} from "src/discourse";
-import { Route } from "src/routing";
-import { shuffled } from "src/utils";
+} from "~/src/discourse";
+import { Route } from "~/src/routing";
+import { shuffled } from "~/src/utils";
 
 /** Main home page of the whole website */
 export default async function Home() {

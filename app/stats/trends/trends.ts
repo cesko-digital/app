@@ -1,5 +1,5 @@
-import { getAllTeamEngagements } from "src/data/team-engagement";
-import { getAllUserProfiles } from "src/data/user-profile";
+import { getAllTeamEngagements } from "~/src/data/team-engagement";
+import { getAllUserProfiles } from "~/src/data/user-profile";
 
 import { type WriteTrendValue } from "./trend-stats";
 

@@ -1,4 +1,3 @@
-import { decodeDictValues } from "src/decoding";
 import {
   array,
   literal,
@@ -7,6 +6,8 @@ import {
   string,
   type decodeType,
 } from "typescript-json-decoder";
+
+import { decodeDictValues } from "~/src/decoding";
 
 //
 // Decoders and Types

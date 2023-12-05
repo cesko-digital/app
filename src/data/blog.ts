@@ -1,10 +1,11 @@
-import { decodeValidItemsFromArray, withDefault } from "src/decoding";
 import {
   array,
   record,
   string,
   type decodeType,
 } from "typescript-json-decoder";
+
+import { decodeValidItemsFromArray, withDefault } from "~/src/decoding";
 
 /**
  * A blog posts from our blog

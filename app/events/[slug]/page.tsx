@@ -1,21 +1,24 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { EventCard } from "components/EventCard";
-import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
-import { MarkdownContent } from "components/MarkdownContent";
-import { Sidebar } from "components/Sidebar";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { EventCard } from "~/components/EventCard";
+import {
+  LegacyUserImageLabel,
+  ProjectImageLabel,
+} from "~/components/ImageLabel";
+import { MarkdownContent } from "~/components/MarkdownContent";
+import { Sidebar } from "~/components/Sidebar";
 import {
   compareEventsByTime,
   getAllEvents,
   getEventDuration,
   isEventPast,
   type Event,
-} from "src/data/event";
-import { getUserById, type LegacyUser } from "src/data/legacy-user";
-import { getProjectById, type Project } from "src/data/project";
-import { Route } from "src/routing";
+} from "~/src/data/event";
+import { getUserById, type LegacyUser } from "~/src/data/legacy-user";
+import { getProjectById, type Project } from "~/src/data/project";
+import { Route } from "~/src/routing";
 
 type Params = {
   slug: string;

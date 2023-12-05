@@ -1,17 +1,20 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { LegacyUserImageLabel, ProjectImageLabel } from "components/ImageLabel";
-import { MarkdownContent } from "components/MarkdownContent";
-import { OpportunityRow } from "components/OpportunityRow";
-import { RelatedContent } from "components/RelatedContent";
-import { Sidebar } from "components/Sidebar";
-import { getUserById, type LegacyUser } from "src/data/legacy-user";
-import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
-import { getAllProjects, type Project } from "src/data/project";
-import { getAlternativeOpenRoles } from "src/data/queries";
-import { Route } from "src/routing";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import {
+  LegacyUserImageLabel,
+  ProjectImageLabel,
+} from "~/components/ImageLabel";
+import { MarkdownContent } from "~/components/MarkdownContent";
+import { OpportunityRow } from "~/components/OpportunityRow";
+import { RelatedContent } from "~/components/RelatedContent";
+import { Sidebar } from "~/components/Sidebar";
+import { getUserById, type LegacyUser } from "~/src/data/legacy-user";
+import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
+import { getAllProjects, type Project } from "~/src/data/project";
+import { getAlternativeOpenRoles } from "~/src/data/queries";
+import { Route } from "~/src/routing";
 
 type Params = {
   slug: string;

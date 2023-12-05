@@ -5,8 +5,9 @@ import Airtable, {
   type Records,
   type Table,
 } from "airtable";
-import { splitToChunks } from "src/utils";
 import { type Pojo } from "typescript-json-decoder";
+
+import { splitToChunks } from "~/src/utils";
 
 /** The Volunteer Management database */
 export const volunteerManagementBase = new Airtable({

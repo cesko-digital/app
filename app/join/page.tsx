@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { DistrictSelect } from "components/districts/DistrictSelect";
-import { SkillPicker } from "components/SkillPicker";
-import { trackCustomEvent } from "src/plausible/events";
-import { Route } from "src/routing";
-import { encodeSkillSelection, type SkillMenu } from "src/skills";
-import { ContentType } from "src/utils";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { DistrictSelect } from "~/components/districts/DistrictSelect";
+import { SkillPicker } from "~/components/SkillPicker";
+import { trackCustomEvent } from "~/src/plausible/events";
+import { Route } from "~/src/routing";
+import { encodeSkillSelection, type SkillMenu } from "~/src/skills";
+import { ContentType } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";
 import {

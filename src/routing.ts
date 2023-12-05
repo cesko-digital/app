@@ -1,4 +1,4 @@
-import { type Event } from "src/data/event";
+import { type Event } from "~/src/data/event";
 
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";

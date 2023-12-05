@@ -5,7 +5,7 @@ import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Route } from "src/routing";
+import { Route } from "~/src/routing";
 
 export const metadata: Metadata = {
   title: "Česko.Digital TBD",

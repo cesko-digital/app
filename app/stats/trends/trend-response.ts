@@ -1,4 +1,4 @@
-import { ContentType } from "src/utils";
+import { ContentType } from "~/src/utils";
 
 export type GetCsvContent = () => Promise<string | null>;
 
