@@ -1,4 +1,4 @@
-import { decodeUserProfile, UserProfile } from "./user-profile";
+import { decodeUserProfile, type UserProfile } from "./user-profile";
 
 test("Decode user with no skills", () => {
   expect(

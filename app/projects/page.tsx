@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { ProjectCard } from "components/ProjectCard";
-import { getAllProjects, Project } from "src/data/project";
+import { getAllProjects, type Project } from "src/data/project";
 import { Route } from "src/routing";
 import { getRandomElem, loremIpsum } from "src/utils";
 

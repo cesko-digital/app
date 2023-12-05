@@ -1,4 +1,4 @@
-import { validateForm, ValidationResult } from "./form-state";
+import { validateForm, type ValidationResult } from "./form-state";
 
 test("Validate correctly filled form", () => {
   const now = new Date();

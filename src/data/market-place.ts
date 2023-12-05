@@ -1,16 +1,19 @@
-import { FieldSet } from "airtable";
+import { type FieldSet } from "airtable";
 import { relationToZeroOrOne } from "src/decoding";
 import {
   array,
-  decodeType,
   optional,
   record,
   string,
   union,
+  type decodeType,
 } from "typescript-json-decoder";
 
 import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
-import { decodeUserProfile, Schema as UserProfileSchema } from "./user-profile";
+import {
+  decodeUserProfile,
+  type Schema as UserProfileSchema,
+} from "./user-profile";
 
 const marketPlaceTable = webBase<Schema>("Market Place");
 const userProfileTable = webBase<UserProfileSchema>("User Profiles");
@@ -109,6 +112,7 @@ export async function insertNewMarketPlaceOffer(
     // reports a “wrong” ID from the original, synced User Profiles table.
     // So we need to extract the correct ID here.
     .then((records) => ({ ...records[0].fields, id: records[0].id }))
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
     .then((x) => decodeUserProfile(x as any));
 
   // Then insert the new offer

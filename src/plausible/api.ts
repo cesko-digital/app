@@ -1,12 +1,12 @@
 import {
   array,
-  DecoderFunction,
   number,
   record,
   string,
+  type DecoderFunction,
 } from "typescript-json-decoder";
 
-const apiKey = process.env.PLAUSIBLE_API_KEY || "";
+const apiKey = process.env.PLAUSIBLE_API_KEY ?? "";
 
 type Metric =
   | "visitors"
@@ -49,7 +49,7 @@ function buildUrl(query: Query): string {
     limit: limit.toString(),
     period,
   });
-  return `${apiRoot}/stats/${endpoint}?${params}`;
+  return `${apiRoot}/stats/${endpoint}?${params.toString()}`;
 }
 
 async function fetchQuery<T>(query: Query, decoder: DecoderFunction<T>) {

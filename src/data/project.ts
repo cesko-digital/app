@@ -9,12 +9,12 @@ import {
 import {
   array,
   boolean,
-  decodeType,
   field,
   optional,
   record,
   string,
   union,
+  type decodeType,
 } from "typescript-json-decoder";
 
 import { unwrapRecords, webBase } from "./airtable";

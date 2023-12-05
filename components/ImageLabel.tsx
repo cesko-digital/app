@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import clsx from "clsx";
-import { LegacyUser } from "src/data/legacy-user";
-import { Project } from "src/data/project";
+import { type LegacyUser } from "src/data/legacy-user";
+import { type Project } from "src/data/project";
 import { Route } from "src/routing";
 
 export type Props = {

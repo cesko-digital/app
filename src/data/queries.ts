@@ -2,12 +2,12 @@ import { getRandomElem, shuffled, shuffleInPlace, unique } from "src/utils";
 
 import {
   compareEventsByTime,
-  Event,
   findEventsForProject,
   isEventPast,
+  type Event,
 } from "./event";
-import { getAllOpportunities, Opportunity } from "./opportunity";
-import { Project } from "./project";
+import { getAllOpportunities, type Opportunity } from "./opportunity";
+import { type Project } from "./project";
 
 /**
  * Get featured events for a project

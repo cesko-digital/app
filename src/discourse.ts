@@ -1,10 +1,10 @@
 import {
   array,
-  decodeType,
   number,
   optional,
   record,
   string,
+  type decodeType,
 } from "typescript-json-decoder";
 
 const baseUrl = "https://diskutuj.digital";

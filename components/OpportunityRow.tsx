@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
-import { Opportunity } from "src/data/opportunity";
-import { Project } from "src/data/project";
+import { type Opportunity } from "src/data/opportunity";
+import { type Project } from "src/data/project";
 import { Route } from "src/routing";
 
 import { ProjectImageLabel } from "./ImageLabel";

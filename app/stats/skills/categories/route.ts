@@ -1,4 +1,4 @@
-import { getAllUserProfiles, UserProfile } from "src/data/user-profile";
+import { getAllUserProfiles, type UserProfile } from "src/data/user-profile";
 import { decodeSkillSelection } from "src/skills";
 import { ContentType, unique } from "src/utils";
 

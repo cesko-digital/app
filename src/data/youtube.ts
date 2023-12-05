@@ -1,11 +1,11 @@
 import { decodeDictValues } from "src/decoding";
 import {
   array,
-  decodeType,
   literal,
   number,
   record,
   string,
+  type decodeType,
 } from "typescript-json-decoder";
 
 //
@@ -70,7 +70,7 @@ export const getVideoPermalink = (item: YTPlaylistItem) =>
 
 export async function getAllPlaylistVideos(
   playlistId: string,
-  apiKey = process.env.YOUTUBE_API_KEY || "",
+  apiKey = process.env.YOUTUBE_API_KEY ?? "",
 ): Promise<YTPlaylistItem[]> {
   const isNotPrivateVideo = (v: YTPlaylistItem) =>
     v.snippet.title !== "Private video";

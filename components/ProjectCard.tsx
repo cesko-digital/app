@@ -1,4 +1,4 @@
-import { Project } from "src/data/project";
+import { type Project } from "src/data/project";
 import { Route } from "src/routing";
 
 import { Card } from "./Card";

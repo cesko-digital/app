@@ -1,9 +1,9 @@
 import {
   SKILL_LEVELS,
-  SkillLevel,
-  SkillMenu,
-  SkillSelection,
-  SubSkillSelection,
+  type SkillLevel,
+  type SkillMenu,
+  type SkillSelection,
+  type SubSkillSelection,
 } from "src/skills";
 
 /** Skill selection tree widget */
