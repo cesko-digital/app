@@ -54,7 +54,7 @@ test("buildTrendOptions from expects 4 year digit", () => {
 test("buildTrendOptions to supports now/previous", () => {
   expect(buildTrendOptions(getParams("from", "now")).fromYear).toEqual(2050);
   expect(buildTrendOptions(getParams("from", "previous")).fromYear).toEqual(
-    2049
+    2049,
   );
   expect(buildTrendOptions(getParams("from", "now")).toYear).toEqual(null);
   expect(buildTrendOptions(getParams("from", "previous")).toYear).toEqual(null);

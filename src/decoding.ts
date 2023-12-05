@@ -40,7 +40,7 @@ export const optionalArray = <T>(itemDecoder: DecoderFunction<T>) => {
 /** Try a decoder and return a default value in case it fails */
 export const withDefault = <T>(
   decoder: DecoderFunction<T>,
-  defaultValue: T
+  defaultValue: T,
 ) => {
   return (value: Pojo) => {
     try {
@@ -83,7 +83,7 @@ export const relationToZeroOrOne = (value: Pojo) => {
     const decoded = decodeArray(value);
     if (decoded.length !== 1) {
       console.warn(
-        `Unexpected number of records when decoding relation, expected 0 or 1 values, got ${decoded.length}`
+        `Unexpected number of records when decoding relation, expected 0 or 1 values, got ${decoded.length}`,
       );
     }
     return decoded[0];
@@ -104,12 +104,11 @@ export const relationToZeroOrMany = optionalArray(string);
 /** Extract a dict, returning only its values */
 export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
-  (value: Pojo) =>
-    [...dict(decodeItem)(value).values()];
+  (value: Pojo) => [...dict(decodeItem)(value).values()];
 
 /** Decode an object with given entries */
 export function decodeObject<D extends Decoder<unknown>>(
-  decoder: D
+  decoder: D,
 ): DecoderFunction<Record<string, decodeType<D>>> {
   return (value: Pojo) => Object.fromEntries(dict(decoder)(value));
 }
@@ -139,13 +138,13 @@ export function decodeValidItemsFromArray<T>(
   decodeItem: DecoderFunction<T>,
   tag = "<unknown>",
   log = console.info,
-  verbose = process.env.VERBOSE_LOG
+  verbose = process.env.VERBOSE_LOG,
 ): DecoderFunction<T[]> {
   const arrayToString = (arr: any) => `${JSON.stringify(arr)}`;
   return (value: unknown) => {
     if (!Array.isArray(value)) {
       throw `The value \`${arrayToString(
-        value
+        value,
       )}\` is not of type \`array\`, but is of type \`${typeof value}\``;
     }
     let index = 0;
@@ -157,7 +156,7 @@ export function decodeValidItemsFromArray<T>(
         log(
           verbose
             ? `Error decoding item #${index} in ${tag}: ${e}`
-            : `Could not decode item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`
+            : `Could not decode item #${index} in ${tag}, skipping (set VERBOSE_LOG to see more).`,
         );
       }
       index++;

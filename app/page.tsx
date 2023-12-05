@@ -1,30 +1,31 @@
-import { EventCard } from "components/EventCard";
-import { ProjectCard } from "components/ProjectCard";
 import Image from "next/image";
 import Link from "next/link";
+
+import { EventCard } from "components/EventCard";
+import { OpportunityRow } from "components/OpportunityRow";
+import { ProjectCard } from "components/ProjectCard";
+import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import {
-  Event,
   compareEventsByTime,
+  Event,
   getAllEvents,
   isEventPast,
 } from "src/data/event";
 import {
-  MarketPlaceOffer,
   getPublishedMarketPlaceOffers,
+  MarketPlaceOffer,
 } from "src/data/market-place";
-import { Project, getAllProjects } from "src/data/project";
+import { getAllProjects, Project } from "src/data/project";
+import { getFeaturedOpportunities } from "src/data/queries";
 import {
-  LatestTopicsSummary,
-  Topic,
   getLatestTopicsSummary,
   getTopicUrl,
   getUserAvatar,
+  LatestTopicsSummary,
+  Topic,
 } from "src/discourse";
 import { Route } from "src/routing";
-import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import { shuffled } from "src/utils";
-import { OpportunityRow } from "components/OpportunityRow";
-import { getFeaturedOpportunities } from "src/data/queries";
 
 /** Main home page of the whole website */
 export default async function Home() {
@@ -48,11 +49,11 @@ export default async function Home() {
   );
 
   return (
-    <main className="flex flex-col gap-20 py-20 px-7 max-w-content m-auto">
+    <main className="m-auto flex max-w-content flex-col gap-20 px-7 py-20">
       <section>
         <h2 className="typo-title2 mb-1">Projekty</h2>
         <h3 className="typo-subtitle mb-7">Podtitulek domyslíme, děcka</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
+        <div className="mb-10 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <ProjectCard key={p.id} project={p} />
           ))}
@@ -85,7 +86,7 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-7">
           Zapojte se v projektech mimo Česko.Digital
         </h3>
-        <div className="grid md:grid-cols-3 gap-7 mb-7">
+        <div className="mb-7 grid gap-7 md:grid-cols-3">
           {marketPlaceOffers.map(MarketPlaceOfferRow)}
         </div>
         <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
@@ -93,7 +94,7 @@ export default async function Home() {
 
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-7">
+        <div className="mb-7 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {events.map((e) => (
             <EventCard
               key={e.id}
@@ -134,18 +135,18 @@ async function getFeaturedProjects(): Promise<Project[]> {
 
 const MarketPlaceOfferRow = (o: MarketPlaceOffer) => {
   const ArrowShape = () => (
-    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray group-hover:border-t-it border-r-[8px] border-r-transparent"></div>
+    <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="flex flex-col group" href={o.slackThreadUrl}>
-      <div className="rounded-xl border-2 border-gray p-4 bg-gray group-hover:border-it grow">
+    <Link className="group flex flex-col" href={o.slackThreadUrl}>
+      <div className="grow rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
         <div className="line-clamp-6">
-          <h3 className="inline font-bold mr-[1ex]">{o.title}</h3>
+          <h3 className="mr-[1ex] inline font-bold">{o.title}</h3>
           <p className="inline">{htmlToText(slackMarkupToHTML(o.text))}</p>
         </div>
       </div>
       <ArrowShape />
-      <div className="ml-1 mb-1 flex flex-row gap-2 items-center">
+      <div className="mb-1 ml-1 flex flex-row items-center gap-2">
         <Image
           src={o.ownerAvatarUrl!}
           className="rounded-full"
@@ -205,7 +206,7 @@ const DiscussionSummaryBox = ({
   };
 
   return (
-    <div className="grid md:grid-cols-3 gap-7 mb-20">
+    <div className="mb-20 grid gap-7 md:grid-cols-3">
       {featuredTopics.map((topic) => (
         <DiscussionBubble
           key={topic.id}
@@ -228,15 +229,15 @@ const DiscussionBubble = ({
   avatarUrl: string;
 }) => {
   const ArrowShape = () => (
-    <div className="ml-[30px] w-0 h-0 border-t-[10px] border-t-gray group-hover:border-t-it border-r-[8px] border-r-transparent"></div>
+    <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="flex flex-col group" href={getTopicUrl(topic)}>
-      <div className="rounded-xl border-2 border-gray p-4 bg-gray group-hover:border-it grow">
+    <Link className="group flex flex-col" href={getTopicUrl(topic)}>
+      <div className="grow rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
         {topic.title}
       </div>
       <ArrowShape />
-      <div className="ml-1 mb-1 flex flex-row gap-2 items-center">
+      <div className="mb-1 ml-1 flex flex-row items-center gap-2">
         <Image
           src={avatarUrl}
           className="rounded-full"

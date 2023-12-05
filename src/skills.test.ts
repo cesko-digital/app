@@ -11,10 +11,14 @@ import {
 test("Encode single skill", () => {
   expect(encodeSkill({ category: "Marketing" })).toBe("Marketing");
   expect(encodeSkill({ category: "Marketing", name: "Copywriting" })).toBe(
-    "Marketing / Copywriting"
+    "Marketing / Copywriting",
   );
   expect(
-    encodeSkill({ category: "Marketing", name: "Copywriting", level: "senior" })
+    encodeSkill({
+      category: "Marketing",
+      name: "Copywriting",
+      level: "senior",
+    }),
   ).toBe("Marketing / Copywriting / senior");
 });
 
@@ -23,7 +27,7 @@ test("Encode skill selection", () => {
     encodeSkillSelection({
       Design: {},
       Dev: { Java: null, Python: "junior" },
-    })
+    }),
   ).toBe("Design; Dev / Java; Dev / Python / junior");
 });
 
@@ -46,7 +50,7 @@ test("Decode single skill", () => {
   expect(() => decodeSkill("")).toThrow();
   expect(() => decodeSkill("Marketing / Copywriting / hero")).toThrow();
   expect(() =>
-    decodeSkill("Marketing / Copywriting / senior / best")
+    decodeSkill("Marketing / Copywriting / senior / best"),
   ).toThrow();
 });
 
@@ -60,7 +64,7 @@ test("Basic skill selection decode", () => {
   });
   // Slashes
   expect(
-    decodeSkillSelection("Vývoj / Docker/Kubernetes / junior")
+    decodeSkillSelection("Vývoj / Docker/Kubernetes / junior"),
   ).toEqual<SkillSelection>({
     Vývoj: {
       "Docker/Kubernetes": "junior",
@@ -68,14 +72,14 @@ test("Basic skill selection decode", () => {
   });
   // Roundtrip
   expect(encodeSkillSelection(decodeSkillSelection("Design; Dev / Java"))).toBe(
-    "Design; Dev / Java"
+    "Design; Dev / Java",
   );
 });
 
 test("Adding skills", () => {
   const addTo = (selection: string, skill: string) =>
     encodeSkillSelection(
-      addSkill(decodeSkillSelection(selection), decodeSkill(skill))
+      addSkill(decodeSkillSelection(selection), decodeSkill(skill)),
     );
   // Adding to empty selection
   expect(addTo("", "Dev")).toBe("Dev");
@@ -93,6 +97,6 @@ test("Adding skills", () => {
   expect(addTo("Dev / Go", "Dev / Go / senior")).toBe("Dev / Go / senior");
   expect(addTo("Dev / Go / senior", "Dev / Go")).toBe("Dev / Go / senior");
   expect(addTo("Dev / Go / mentor", "Dev / Go / senior")).toBe(
-    "Dev / Go / mentor"
+    "Dev / Go / mentor",
   );
 });

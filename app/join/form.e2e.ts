@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test("Submit button is disabled by default", async ({ page }) => {
   await page.goto("/join");

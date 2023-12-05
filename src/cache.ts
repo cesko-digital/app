@@ -1,4 +1,5 @@
 import { Cache } from "file-system-cache";
+
 import { hashDigest } from "./utils";
 
 const sharedCache = new Cache({ ttl: 60 * 5 });
@@ -7,7 +8,7 @@ type Producer<T> = (...args: any[]) => Promise<T>;
 
 export function memoize<ReturnType, F extends Producer<ReturnType>>(
   originalFunction: F,
-  key: string = originalFunction.name
+  key: string = originalFunction.name,
 ): F {
   if (!key) {
     console.error("Cache key is empty, things will probably break.");

@@ -1,4 +1,3 @@
-import { unwrapRecords, webBase } from "./airtable";
 import {
   decodeValidItemsFromArray,
   markdown,
@@ -17,6 +16,8 @@ import {
   string,
 } from "typescript-json-decoder";
 
+import { unwrapRecords, webBase } from "./airtable";
+
 /** Table views you can use when querying the event table */
 export type TableView = "All Events" | "Live Events" | "iCal Feed";
 
@@ -32,7 +33,7 @@ export const decodeEvent = record({
     // Read slug from the `Slug` field and fall
     // back to `id` if the `Slug` field is empty.
     { Slug: optional(string), id: field("ID", string) },
-    ({ Slug, id }) => Slug ?? id
+    ({ Slug, id }) => Slug ?? id,
   ),
   summary: field("Summary", string),
   description: field("Description", markdown),
@@ -44,12 +45,12 @@ export const decodeEvent = record({
   registrationTitle: field("RSVP Title", optional(string)),
   quickRegistrationMode: field(
     "Enable Quick Registration",
-    withDefault(boolean, false)
+    withDefault(boolean, false),
   ),
   registeredUsers: field("Registered Users", relationToZeroOrMany),
   registeredUserSlackIds: field(
     "Registered User Slack IDs",
-    relationToZeroOrMany
+    relationToZeroOrMany,
   ),
   endTime: field("End Time", optional(string)),
   tagIds: field("Tags", withDefault(array(string), [])),
@@ -67,7 +68,7 @@ export const eventsTable = webBase("Events");
 
 /** Get all events */
 export async function getAllEvents(
-  view: TableView = "All Events"
+  view: TableView = "All Events",
 ): Promise<Event[]> {
   return await eventsTable
     .select({ view })
@@ -94,7 +95,7 @@ export const findEventsForProject = async (projectSlug: string) =>
  * If the duration is outside the expected range, you’ll get `null` instead.
  */
 export function getEventDuration(
-  event: Pick<Event, "startTime" | "endTime">
+  event: Pick<Event, "startTime" | "endTime">,
 ): string | null {
   if (!event.endTime) {
     return null;

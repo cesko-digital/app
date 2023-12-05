@@ -6,11 +6,6 @@ import {
   withDefault,
 } from "src/decoding";
 import {
-  unwrapRecord,
-  unwrapRecords,
-  volunteerManagementBase,
-} from "./airtable";
-import {
   array,
   DecoderFunction,
   decodeType,
@@ -24,6 +19,12 @@ import {
   undef,
   union,
 } from "typescript-json-decoder";
+
+import {
+  unwrapRecord,
+  unwrapRecords,
+  volunteerManagementBase,
+} from "./airtable";
 
 /** All supported notification flags */
 export const notificationFlags = [
@@ -110,7 +111,7 @@ export const decodeUserProfile = record({
 
 /** Encode `UserProfile` to DB schema */
 export function encodeUserProfile(
-  profile: Partial<UserProfile>
+  profile: Partial<UserProfile>,
 ): Partial<Schema> {
   return {
     id: profile.id,
@@ -154,7 +155,7 @@ export const getUserProfileByMail = (email: string) =>
 
 /** Return first user profile that matches given formula query */
 export async function getFirstMatchingUserProfile(
-  filterByFormula: string
+  filterByFormula: string,
 ): Promise<UserProfile> {
   return await userProfileTable
     .select({
@@ -182,7 +183,7 @@ export async function updateUserProfile(
       | "notificationFlags"
       | "availableInDistricts"
     >
-  >
+  >,
 ): Promise<UserProfile> {
   return await userProfileTable
     .update(recordId, encodeUserProfile(profile))
@@ -206,7 +207,7 @@ export async function createUserProfile(
     | "createdAt"
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"
-  >
+  >,
 ): Promise<UserProfile> {
   return await userProfileTable
     .create(encodeUserProfile(profile))
@@ -225,7 +226,7 @@ function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
     nil,
     decodeValidItemsFromArray(decodeSingleFlag, "Flags", () => {
       /* silence logs */
-    })
+    }),
   );
   return (value: Pojo) => {
     const decoded = decoder(value);

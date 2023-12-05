@@ -1,4 +1,5 @@
 import { UserProfile } from "src/data/user-profile";
+
 import sourceData from "./districts.json";
 
 /** Map member is a subset of user profile containing just the necessary fields */
@@ -18,5 +19,5 @@ const parseCoords = (input: string) =>
 export const districts: Record<string, number[]> = Object.fromEntries(
   sourceData
     .filter(({ coords }) => coords !== "")
-    .map(({ name, coords }) => [name, parseCoords(coords)])
+    .map(({ name, coords }) => [name, parseCoords(coords)]),
 );

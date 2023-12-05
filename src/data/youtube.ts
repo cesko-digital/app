@@ -52,7 +52,7 @@ const apiBase = "https://www.googleapis.com/youtube/v3";
 
 export async function getPlaylistItems(
   apiKey: string,
-  playlistId: string
+  playlistId: string,
 ): Promise<YTPlaylistItem[]> {
   const url = `${apiBase}/playlistItems?part=snippet&playlistId=${playlistId}&key=${apiKey}&maxResults=10`;
   return await fetch(url)
@@ -70,11 +70,11 @@ export const getVideoPermalink = (item: YTPlaylistItem) =>
 
 export async function getAllPlaylistVideos(
   playlistId: string,
-  apiKey = process.env.YOUTUBE_API_KEY || ""
+  apiKey = process.env.YOUTUBE_API_KEY || "",
 ): Promise<YTPlaylistItem[]> {
   const isNotPrivateVideo = (v: YTPlaylistItem) =>
     v.snippet.title !== "Private video";
   return getPlaylistItems(apiKey, playlistId).then((videos) =>
-    videos.filter(isNotPrivateVideo)
+    videos.filter(isNotPrivateVideo),
   );
 }

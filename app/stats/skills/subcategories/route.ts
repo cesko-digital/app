@@ -19,18 +19,18 @@ export async function GET() {
       skills
         .map((selection) => selection[category])
         .filter((value) => !!value)
-        .flatMap(Object.keys)
+        .flatMap(Object.keys),
     );
     const genericCount = skills.filter(
       (selection) =>
         selection[category] !== undefined &&
-        Object.keys(selection[category]).length === 0
+        Object.keys(selection[category]).length === 0,
     ).length;
     response += `"${category}",(bez uvedení detailu),${genericCount}\n`;
     for (const subcategory of subcategories) {
       const count = skills.filter(
         (selection) =>
-          selection[category] && selection[category][subcategory] !== undefined
+          selection[category] && selection[category][subcategory] !== undefined,
       ).length;
       response += `"${category}","${subcategory}",${count}\n`;
     }

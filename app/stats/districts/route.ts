@@ -21,8 +21,8 @@ export async function GET() {
     districtNames.filter((d) => d === district).length;
   const stats = Object.fromEntries(
     unique(districtNames).map(
-      (district) => [district, count(district)] as const
-    )
+      (district) => [district, count(district)] as const,
+    ),
   );
 
   let response = "Okres,Počet lidí\n";

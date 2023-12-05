@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
+
 import Image from "next/image";
 import Link from "next/link";
+
 import { Route } from "src/routing";
 
 export const metadata: Metadata = {
@@ -29,7 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className="px-7 mt-7 -mb-10 max-w-content m-auto flex flex-row gap-7 items-center">
+        <div className="m-auto -mb-10 mt-7 flex max-w-content flex-row items-center gap-7 px-7">
           <Link href="/">
             <Image
               className="bg-it"

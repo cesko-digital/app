@@ -1,7 +1,8 @@
 import { Event, isEventPast } from "src/data/event";
 import { Route } from "src/routing";
-import { TextPill } from "./TextPill";
+
 import { Card } from "./Card";
+import { TextPill } from "./TextPill";
 
 export type Props = {
   event: Event;
@@ -24,7 +25,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
   };
   const time = new Date(event.startTime).toLocaleString(
     "cs-CZ",
-    past ? pastDateStyle : futureDateStyle
+    past ? pastDateStyle : futureDateStyle,
   );
   /* TBD: Make the cover non-optional? */
   return (
@@ -34,7 +35,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
       linkUrl={Route.toEvent(event)}
       fade={past}
     >
-      <div className="-mt-2 p-7 flex flex-col gap-3">
+      <div className="-mt-2 flex flex-col gap-3 p-7">
         <div className="typo-caption">
           {isEventPast(event) && <TextPill text="proběhlo" inverted />}
           <TextPill text={time} />

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 /** Endpoints to test */
 const endpoints = [
@@ -19,7 +19,7 @@ for (const endpoint of endpoints) {
     const response = await page.request.get(endpoint);
     expect(response).toBeOK();
     expect(response.headers()["content-type"]).toEqual(
-      "text/csv; charset=utf-8"
+      "text/csv; charset=utf-8",
     );
   });
 }

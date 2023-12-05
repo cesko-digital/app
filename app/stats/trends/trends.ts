@@ -1,9 +1,10 @@
-import { WriteTrendValue } from "./trend-stats";
 import { getAllTeamEngagements } from "src/data/team-engagement";
 import { getAllUserProfiles } from "src/data/user-profile";
 
+import { WriteTrendValue } from "./trend-stats";
+
 export async function generateNewComersTrend(
-  writeTrendValue: WriteTrendValue
+  writeTrendValue: WriteTrendValue,
 ): Promise<void> {
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
 
@@ -21,7 +22,7 @@ export async function generateNewComersTrend(
 }
 
 export async function generateNewEngagementsTrend(
-  writeTrendValue: WriteTrendValue
+  writeTrendValue: WriteTrendValue,
 ): Promise<void> {
   const teamEngagements = await getAllTeamEngagements();
 

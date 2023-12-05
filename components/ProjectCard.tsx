@@ -1,5 +1,6 @@
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
+
 import { Card } from "./Card";
 
 export type Props = {
@@ -14,7 +15,7 @@ export const ProjectCard = ({ project, fade = false }: Props) => (
     badgeImageUrl={project.logoUrl}
     fade={fade}
   >
-    <div className="p-7 flex flex-col gap-4">
+    <div className="flex flex-col gap-4 p-7">
       <h3 className="typo-title3">{project.name}</h3>
       <p>{project.tagline}</p>
     </div>

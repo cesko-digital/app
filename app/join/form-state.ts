@@ -53,7 +53,7 @@ export type ValidationResult =
 
 export function validateForm(
   data: FormState,
-  now = new Date()
+  now = new Date(),
 ): ValidationResult {
   const {
     name,

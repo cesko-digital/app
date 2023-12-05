@@ -38,7 +38,7 @@ export const SkillPicker = ({
   };
 
   return (
-    <ul className="list-none ml-0 leading-loose">
+    <ul className="ml-0 list-none leading-loose">
       {Object.entries(skillMenu).map(([category, skills]) => (
         <li key={category}>
           <label className="flex items-center">
@@ -47,7 +47,7 @@ export const SkillPicker = ({
               disabled={disabled}
               onChange={(e) => updateSelection(category, e.target.checked)}
               checked={!!selection[category]}
-              className="mr-3 shrink-0 self-start mt-[1.5ex]"
+              className="mr-3 mt-[1.5ex] shrink-0 self-start"
             ></input>
             <span className={selection[category] ? "font-bold" : ""}>
               {category}
@@ -96,7 +96,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
   };
 
   return (
-    <ul className="list-none ml-6">
+    <ul className="ml-6 list-none">
       {skills.map((skill) => (
         <li key={skill}>
           <label className="flex items-center">
@@ -105,7 +105,7 @@ const SubSkillPicker: React.FC<SubSkillPickerProps> = ({
               disabled={disabled}
               checked={selection[skill] !== undefined}
               onChange={(e) => updateSelection(skill, e.target.checked)}
-              className="mr-3 mt-[1.5ex] self-start shrink-0"
+              className="mr-3 mt-[1.5ex] shrink-0 self-start"
             ></input>
             <span className={selection[skill] !== undefined ? "font-bold" : ""}>
               {skill}
@@ -140,7 +140,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
   onChange = (_) => {},
 }) => {
   return (
-    <div className="text-base py-2">
+    <div className="py-2 text-base">
       {SKILL_LEVELS.map((level) => (
         <div key={level} className="inline-block pl-4">
           <label>
@@ -167,7 +167,7 @@ const LevelPicker: React.FC<LevelPickerProps> = ({
 
 function objectByDeleting<K extends string, V>(
   object: Record<K, V>,
-  key: K
+  key: K,
 ): Record<K, V> {
   const value = { ...object };
   delete value[key];
@@ -177,7 +177,7 @@ function objectByDeleting<K extends string, V>(
 function objectByAdding<K extends string, V>(
   object: Record<K, V>,
   key: K,
-  value: V
+  value: V,
 ): Record<K, V> {
   return { ...object, [key]: value };
 }

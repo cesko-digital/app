@@ -1,10 +1,11 @@
 import { number, record, string } from "typescript-json-decoder";
+
 import {
+  decodeJSONString,
   decodeObject,
   decodeUrl,
   decodeValidItemsFromArray,
   optionalArray,
-  decodeJSONString,
   relationToZeroOrOne,
 } from "./decoding";
 
@@ -13,7 +14,7 @@ test("Decode URL", () => {
   expect(() => decodeUrl("")).toThrow();
   expect(decodeUrl("app://deeplink")).toEqual("app://deeplink");
   expect(
-    decodeUrl("https://cesko-digital.slack.com/archives/C01AENB1LPP")
+    decodeUrl("https://cesko-digital.slack.com/archives/C01AENB1LPP"),
   ).toEqual("https://cesko-digital.slack.com/archives/C01AENB1LPP");
   expect(decodeUrl("mailto:bagr@lopata.cz")).toEqual("mailto:bagr@lopata.cz");
 });

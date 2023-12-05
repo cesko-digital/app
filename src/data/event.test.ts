@@ -3,25 +3,25 @@ import { decodeEvent, getEventDuration } from "./event";
 test("Decode event", () => {
   expect(
     decodeEvent({
-      "ID": "rec9ujcN8HSkE0hgh",
+      ID: "rec9ujcN8HSkE0hgh",
       "Live URL": "https://cesko.digital/show-and-tell",
       "End Time": "2021-06-24T18:00:00.000Z",
       "RSVP URL": "https://cesko.digital/rsvp",
       "RSVP Title": "Sleduj!",
-      "Summary": "Živé vysílání bla bla bla…",
-      "Description": "Bude to **pecka**!\n",
-      "Attendees": ["recm4CtcAkbzsEbZq"],
-      "Name": "Show & Tell #2",
-      "Owner": ["rec9ujcN8HSkEdwehgh"],
-      "Project": ["rec9ujcN8HSkdedwedd"],
-      "Tags": ["foo", "bar"],
-      "Slug": "show-and-tell-2",
-      "Status": "draft",
+      Summary: "Živé vysílání bla bla bla…",
+      Description: "Bude to **pecka**!\n",
+      Attendees: ["recm4CtcAkbzsEbZq"],
+      Name: "Show & Tell #2",
+      Owner: ["rec9ujcN8HSkEdwehgh"],
+      Project: ["rec9ujcN8HSkdedwedd"],
+      Tags: ["foo", "bar"],
+      Slug: "show-and-tell-2",
+      Status: "draft",
       "Follow-Up URL": "https://cesko.digital/show-and-tell",
       "Competence Map": ["dev:100", "marketing:100"],
       "RSVP Deadline": "2021-06-24T17:00:00.000Z",
       "Start Time": "2021-06-24T17:00:00.000Z",
-    })
+    }),
   ).toEqual({
     id: "rec9ujcN8HSkE0hgh",
     name: "Show & Tell #2",
@@ -48,7 +48,7 @@ describe("Get event duration", () => {
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T14:00:00.00Z",
-      })
+      }),
     ).toBe(null);
   });
   test("No result when end time is missing", () => {
@@ -56,7 +56,7 @@ describe("Get event duration", () => {
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: undefined,
-      })
+      }),
     ).toBe(null);
   });
   test("Shorter duration in minutes", () => {
@@ -64,7 +64,7 @@ describe("Get event duration", () => {
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T15:00:00.00Z",
-      })
+      }),
     ).toBe("60 minut");
   });
   test("Longer duration in hours", () => {
@@ -72,7 +72,7 @@ describe("Get event duration", () => {
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T17:00:00.00Z",
-      })
+      }),
     ).toBe("3 hodiny");
   });
   test("Longer duration in hours", () => {
@@ -80,7 +80,7 @@ describe("Get event duration", () => {
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T19:00:00.00Z",
-      })
+      }),
     ).toBe("5 hodin");
   });
 });
