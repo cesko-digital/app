@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { ProjectCard } from "components/ProjectCard";
-import { getAllProjects, type Project } from "src/data/project";
-import { Route } from "src/routing";
-import { getRandomElem, loremIpsum } from "src/utils";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { ProjectCard } from "~/components/ProjectCard";
+import { getAllProjects, type Project } from "~/src/data/project";
+import { Route } from "~/src/routing";
+import { getRandomElem, loremIpsum } from "~/src/utils";
 
 /** Page listing all our projects */
 async function Page() {

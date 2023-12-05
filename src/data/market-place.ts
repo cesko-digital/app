@@ -1,5 +1,4 @@
 import { type FieldSet } from "airtable";
-import { relationToZeroOrOne } from "src/decoding";
 import {
   array,
   optional,
@@ -8,6 +7,8 @@ import {
   union,
   type decodeType,
 } from "typescript-json-decoder";
+
+import { relationToZeroOrOne } from "~/src/decoding";
 
 import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
 import {

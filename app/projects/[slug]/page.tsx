@@ -3,28 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { Card } from "components/Card";
-import { EventCard } from "components/EventCard";
-import Icons from "components/icons";
-import { ImageLabel } from "components/ImageLabel";
-import { MarkdownContent } from "components/MarkdownContent";
-import { OpportunityRow } from "components/OpportunityRow";
-import { ProjectCard } from "components/ProjectCard";
-import { RelatedContent } from "components/RelatedContent";
-import { Sidebar } from "components/Sidebar";
-import LiteYouTubeEmbed from "components/YouTubeEmbed";
-import { getBlogIndex } from "src/data/blog";
-import { getOpportunitiesForProject } from "src/data/opportunity";
-import { getAllProjects, type Project } from "src/data/project";
-import { getFeaturedEventsForProject } from "src/data/queries";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { Card } from "~/components/Card";
+import { EventCard } from "~/components/EventCard";
+import Icons from "~/components/icons";
+import { ImageLabel } from "~/components/ImageLabel";
+import { MarkdownContent } from "~/components/MarkdownContent";
+import { OpportunityRow } from "~/components/OpportunityRow";
+import { ProjectCard } from "~/components/ProjectCard";
+import { RelatedContent } from "~/components/RelatedContent";
+import { Sidebar } from "~/components/Sidebar";
+import LiteYouTubeEmbed from "~/components/YouTubeEmbed";
+import { getBlogIndex } from "~/src/data/blog";
+import { getOpportunitiesForProject } from "~/src/data/opportunity";
+import { getAllProjects, type Project } from "~/src/data/project";
+import { getFeaturedEventsForProject } from "~/src/data/queries";
 import {
   getTeamEngagementsForProject,
   type TeamEngagement,
-} from "src/data/team-engagement";
-import { getAllPlaylistVideos } from "src/data/youtube";
-import { Route } from "src/routing";
-import { shuffleInPlace } from "src/utils";
+} from "~/src/data/team-engagement";
+import { getAllPlaylistVideos } from "~/src/data/youtube";
+import { Route } from "~/src/routing";
+import { shuffleInPlace } from "~/src/utils";
 
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 

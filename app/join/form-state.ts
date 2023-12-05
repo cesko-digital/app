@@ -1,5 +1,5 @@
-import { type SkillSelection } from "src/skills";
-import { looksLikeEmailAdress } from "src/utils";
+import { type SkillSelection } from "~/src/skills";
+import { looksLikeEmailAdress } from "~/src/utils";
 
 export type SubmissionState =
   | { tag: "not_submitted_yet" }

@@ -1,5 +1,4 @@
 import { type FieldSet } from "airtable";
-import { relationToZeroOrOne, takeFirst } from "src/decoding";
 import {
   array,
   field,
@@ -8,6 +7,8 @@ import {
   string,
   type decodeType,
 } from "typescript-json-decoder";
+
+import { relationToZeroOrOne, takeFirst } from "~/src/decoding";
 
 import {
   createBatch,

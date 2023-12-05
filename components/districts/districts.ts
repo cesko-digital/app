@@ -1,4 +1,4 @@
-import { type UserProfile } from "src/data/user-profile";
+import { type UserProfile } from "~/src/data/user-profile";
 
 import sourceData from "./districts.json";
 

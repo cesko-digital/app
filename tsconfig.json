@@ -30,7 +30,6 @@
     "**/*.tsx",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "src/data/events.ts.skip"
   ],
   "exclude": ["node_modules"]
 }

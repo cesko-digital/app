@@ -1,7 +1,7 @@
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { OpportunityRow } from "components/OpportunityRow";
-import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
-import { getAllProjects } from "src/data/project";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { OpportunityRow } from "~/components/OpportunityRow";
+import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
+import { getAllProjects } from "~/src/data/project";
 
 /** Page listing all wanted roles on projects */
 async function Page() {

@@ -1,6 +1,6 @@
-import { getAllUserProfiles } from "src/data/user-profile";
-import { decodeSkillSelection } from "src/skills";
-import { ContentType, notEmpty, unique } from "src/utils";
+import { getAllUserProfiles } from "~/src/data/user-profile";
+import { decodeSkillSelection } from "~/src/skills";
+import { ContentType, notEmpty, unique } from "~/src/utils";
 
 export const dynamic = "force-dynamic";
 

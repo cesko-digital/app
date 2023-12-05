@@ -1,7 +1,7 @@
-import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
-import { getAllProjects } from "src/data/project";
-import { getPageBreakdown } from "src/plausible/api";
-import { ContentType, map } from "src/utils";
+import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
+import { getAllProjects } from "~/src/data/project";
+import { getPageBreakdown } from "~/src/plausible/api";
+import { ContentType, map } from "~/src/utils";
 
 export const dynamic = "force-dynamic";
 

@@ -1,5 +1,5 @@
-import { getAllUserProfiles } from "src/data/user-profile";
-import { ContentType } from "src/utils";
+import { getAllUserProfiles } from "~/src/data/user-profile";
+import { ContentType } from "~/src/utils";
 
 export const dynamic = "force-dynamic";
 
