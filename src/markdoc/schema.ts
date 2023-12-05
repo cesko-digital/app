@@ -1,9 +1,9 @@
 import {
-  Config,
-  Node,
-  RenderableTreeNode,
-  Schema,
   Tag,
+  type Config,
+  type Node,
+  type RenderableTreeNode,
+  type Schema,
 } from "@markdoc/markdoc";
 
 /**
@@ -88,7 +88,7 @@ export const customMarkdownConfig: Config = {
 
 function generateID(
   children: RenderableTreeNode[],
-  attributes: Record<string, any>,
+  attributes: Record<string, unknown>,
 ) {
   const stringify = (node: RenderableTreeNode): string => {
     if (Tag.isTag(node)) {

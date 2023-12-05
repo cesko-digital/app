@@ -8,15 +8,15 @@ import { DistrictSelect } from "components/districts/DistrictSelect";
 import { SkillPicker } from "components/SkillPicker";
 import { trackCustomEvent } from "src/plausible/events";
 import { Route } from "src/routing";
-import { encodeSkillSelection, SkillMenu } from "src/skills";
+import { encodeSkillSelection, type SkillMenu } from "src/skills";
 import { ContentType } from "src/utils";
 
 import ArrowIllustration from "./arrows.svg";
 import {
   emptyFormState,
-  FormState,
-  RegistrationData,
   validateForm,
+  type FormState,
+  type RegistrationData,
 } from "./form-state";
 import skillMenu from "./skills.json";
 
@@ -83,6 +83,7 @@ const isEditable = (state: FormState) => {
 const IntroSection = () => (
   <section className="relative">
     <div className="absolute right-[100px] hidden lg:block">
+      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <Image src={ArrowIllustration} alt="" width={181} height={373} />
     </div>
     <div className="flex max-w-prose flex-col gap-7">
@@ -346,7 +347,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
 //
 
 type SubmitSectionProps = FormSectionProps & {
-  onSubmit?: (validatedData: RegistrationData) => void;
+  onSubmit?: (validatedData: RegistrationData) => Promise<void>;
 };
 
 const SubmitSection: React.FC<SubmitSectionProps> = ({

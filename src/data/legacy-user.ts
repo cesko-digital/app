@@ -1,5 +1,10 @@
 import { decodeValidItemsFromArray, withDefault } from "src/decoding";
-import { decodeType, field, record, string } from "typescript-json-decoder";
+import {
+  field,
+  record,
+  string,
+  type decodeType,
+} from "typescript-json-decoder";
 
 import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
 

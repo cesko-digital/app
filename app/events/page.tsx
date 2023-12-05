@@ -2,9 +2,9 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { EventCard } from "components/EventCard";
 import {
   compareEventsByTime,
-  Event,
   getAllEvents,
   isEventPast,
+  type Event,
 } from "src/data/event";
 import { getAllProjects } from "src/data/project";
 import { loremIpsum } from "src/utils";

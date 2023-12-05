@@ -16,11 +16,11 @@ import { Sidebar } from "components/Sidebar";
 import LiteYouTubeEmbed from "components/YouTubeEmbed";
 import { getBlogIndex } from "src/data/blog";
 import { getOpportunitiesForProject } from "src/data/opportunity";
-import { getAllProjects, Project } from "src/data/project";
+import { getAllProjects, type Project } from "src/data/project";
 import { getFeaturedEventsForProject } from "src/data/queries";
 import {
   getTeamEngagementsForProject,
-  TeamEngagement,
+  type TeamEngagement,
 } from "src/data/team-engagement";
 import { getAllPlaylistVideos } from "src/data/youtube";
 import { Route } from "src/routing";

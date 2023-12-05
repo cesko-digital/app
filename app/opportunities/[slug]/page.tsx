@@ -7,9 +7,9 @@ import { MarkdownContent } from "components/MarkdownContent";
 import { OpportunityRow } from "components/OpportunityRow";
 import { RelatedContent } from "components/RelatedContent";
 import { Sidebar } from "components/Sidebar";
-import { getUserById, LegacyUser } from "src/data/legacy-user";
-import { getAllOpportunities, Opportunity } from "src/data/opportunity";
-import { getAllProjects, Project } from "src/data/project";
+import { getUserById, type LegacyUser } from "src/data/legacy-user";
+import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
+import { getAllProjects, type Project } from "src/data/project";
 import { getAlternativeOpenRoles } from "src/data/queries";
 import { Route } from "src/routing";
 
@@ -25,7 +25,7 @@ export type Props = {
 async function Page({ params }: Props) {
   const allRoles = await getAllOpportunities("Show to Users");
   const allProjects = await getAllProjects();
-  const role = allRoles.find((r) => r.slug === params.slug) || notFound();
+  const role = allRoles.find((r) => r.slug === params.slug) ?? notFound();
   const projectForRole = (role: Opportunity) =>
     allProjects.find((p) => p.id === role.projectId)!;
   const project = projectForRole(role);

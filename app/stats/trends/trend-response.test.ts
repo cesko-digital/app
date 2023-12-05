@@ -1,6 +1,7 @@
 import { getCsvResponse } from "./trend-response";
 
 test("Outputs 200 and CSV headers on string content", async () => {
+  // eslint-disable-next-line @typescript-eslint/require-await
   const response = await getCsvResponse(async () => "test");
 
   expect(response.status).toEqual(200);
@@ -15,6 +16,7 @@ test("Outputs 200 and CSV headers on string content", async () => {
 });
 
 test("Outputs 204 on null content", async () => {
+  // eslint-disable-next-line @typescript-eslint/require-await
   const response = await getCsvResponse(async () => null);
   expect(response.status).toEqual(204);
 });
@@ -24,6 +26,7 @@ test("Outputs 500 on thrown error", async () => {
     .spyOn(global.console, "error")
     .mockImplementation(() => {});
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   const response = await getCsvResponse(async () => {
     throw new Error("test");
   });

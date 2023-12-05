@@ -1,12 +1,12 @@
-import { FieldSet } from "airtable";
+import { type FieldSet } from "airtable";
 import { relationToZeroOrOne, takeFirst } from "src/decoding";
 import {
   array,
-  decodeType,
   field,
   optional,
   record,
   string,
+  type decodeType,
 } from "typescript-json-decoder";
 
 import {

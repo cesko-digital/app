@@ -4,8 +4,8 @@ import {
   decodeSkillSelection,
   encodeSkill,
   encodeSkillSelection,
-  Skill,
-  SkillSelection,
+  type Skill,
+  type SkillSelection,
 } from "./skills";
 
 test("Encode single skill", () => {

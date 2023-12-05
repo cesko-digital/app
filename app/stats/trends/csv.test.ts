@@ -1,8 +1,8 @@
 import {
   buildCsvContent,
-  CsvGenerateLines,
-  CsvLines,
-  CsvWriteLine,
+  type CsvGenerateLines,
+  type CsvLines,
+  type CsvWriteLine,
 } from "./csv";
 
 function assertWriteCsvOutputSuccess(
