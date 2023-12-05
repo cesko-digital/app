@@ -28,7 +28,7 @@ export async function GET() {
   const opportunities = await getAllOpportunities();
   const trim = (s: string) => s.replaceAll(/^\s+/g, "").replaceAll(/\s+$/g, "");
   const name = (path: string) =>
-    opportunities.find((o) => path === `/opportunities/${o.slug}`)?.name ||
+    opportunities.find((o) => path === `/opportunities/${o.slug}`)?.name ??
     path;
 
   let output = `Page, Title, ${sourceNames.join(", ")}\n`;

@@ -1,9 +1,9 @@
-import { TrendOptions } from "./trend-stats";
+import { type TrendOptions } from "./trend-stats";
 
 /**
  * Gets year query parameter (or custom) and returns it as number or null if it is not set or invalid.
  */
-function getYear(query: URLSearchParams, key: string = "year"): number | null {
+function getYear(query: URLSearchParams, key = "year"): number | null {
   const year = query.get(key);
 
   if (year === null) {
@@ -18,7 +18,7 @@ function getYear(query: URLSearchParams, key: string = "year"): number | null {
   }
 
   if (year.length === 4) {
-    let number = parseInt(year);
+    const number = parseInt(year);
 
     if (!isNaN(number)) {
       return number;

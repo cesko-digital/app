@@ -1,15 +1,15 @@
-import { MarkdownString } from "src/utils";
+import { type MarkdownString } from "src/utils";
 import {
   array,
-  Decoder,
-  DecoderFunction,
-  decodeType,
   dict,
   nil,
-  Pojo,
   string,
   undef,
   union,
+  type Decoder,
+  type DecoderFunction,
+  type decodeType,
+  type Pojo,
 } from "typescript-json-decoder";
 
 /** Decode a string, returning it as a `MarkdownString` */
@@ -54,6 +54,7 @@ export const withDefault = <T>(
 export const decodeJSONString =
   <T>(decoder: DecoderFunction<T>) =>
   (value: Pojo) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     decoder(JSON.parse(string(value)));
 
 /**
@@ -140,17 +141,18 @@ export function decodeValidItemsFromArray<T>(
   log = console.info,
   verbose = process.env.VERBOSE_LOG,
 ): DecoderFunction<T[]> {
-  const arrayToString = (arr: any) => `${JSON.stringify(arr)}`;
+  const stringify = (val: unknown) => `${JSON.stringify(val)}`;
   return (value: unknown) => {
     if (!Array.isArray(value)) {
-      throw `The value \`${arrayToString(
+      throw `The value \`${stringify(
         value,
       )}\` is not of type \`array\`, but is of type \`${typeof value}\``;
     }
     let index = 0;
-    let values: T[] = [];
+    const values: T[] = [];
     for (const item of value) {
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         values.push(decodeItem(item));
       } catch (e) {
         log(

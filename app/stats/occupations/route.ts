@@ -28,7 +28,7 @@ export async function GET() {
 
   let response = "";
   for (const occupation of uniqueOccupations) {
-    response += `${labels[occupation!]}, ${
+    response += `${labels[occupation]}, ${
       allOccupations.filter((o) => o === occupation).length
     }\n`;
   }

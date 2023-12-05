@@ -1,7 +1,7 @@
-import { Event } from "src/data/event";
+import { type Event } from "src/data/event";
 
-import { Opportunity } from "./data/opportunity";
-import { Project } from "./data/project";
+import { type Opportunity } from "./data/opportunity";
+import { type Project } from "./data/project";
 
 /** Create URLs for frequently used routes */
 export const Route = {

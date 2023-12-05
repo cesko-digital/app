@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { OpportunityRow } from "components/OpportunityRow";
-import { getAllOpportunities, Opportunity } from "src/data/opportunity";
+import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
 import { getAllProjects } from "src/data/project";
 
 /** Page listing all wanted roles on projects */

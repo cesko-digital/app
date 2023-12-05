@@ -7,22 +7,22 @@ import { ProjectCard } from "components/ProjectCard";
 import { toHTML as slackMarkupToHTML } from "slack-markdown";
 import {
   compareEventsByTime,
-  Event,
   getAllEvents,
   isEventPast,
+  type Event,
 } from "src/data/event";
 import {
   getPublishedMarketPlaceOffers,
-  MarketPlaceOffer,
+  type MarketPlaceOffer,
 } from "src/data/market-place";
-import { getAllProjects, Project } from "src/data/project";
+import { getAllProjects, type Project } from "src/data/project";
 import { getFeaturedOpportunities } from "src/data/queries";
 import {
   getLatestTopicsSummary,
   getTopicUrl,
   getUserAvatar,
-  LatestTopicsSummary,
-  Topic,
+  type LatestTopicsSummary,
+  type Topic,
 } from "src/discourse";
 import { Route } from "src/routing";
 import { shuffled } from "src/utils";
@@ -69,7 +69,7 @@ export default async function Home() {
         <div className="mb-7">
           {opportunities.map((o) => (
             <OpportunityRow
-              project={projectWithId(o.projectId)!}
+              project={projectWithId(o.projectId)}
               key={o.id}
               role={o}
             />

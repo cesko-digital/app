@@ -1,4 +1,4 @@
-import { Event, isEventPast } from "src/data/event";
+import { isEventPast, type Event } from "src/data/event";
 import { Route } from "src/routing";
 
 import { Card } from "./Card";

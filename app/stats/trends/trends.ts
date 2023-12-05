@@ -1,7 +1,7 @@
 import { getAllTeamEngagements } from "src/data/team-engagement";
 import { getAllUserProfiles } from "src/data/user-profile";
 
-import { WriteTrendValue } from "./trend-stats";
+import { type WriteTrendValue } from "./trend-stats";
 
 export async function generateNewComersTrend(
   writeTrendValue: WriteTrendValue,

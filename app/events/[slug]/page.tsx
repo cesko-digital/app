@@ -8,13 +8,13 @@ import { MarkdownContent } from "components/MarkdownContent";
 import { Sidebar } from "components/Sidebar";
 import {
   compareEventsByTime,
-  Event,
   getAllEvents,
   getEventDuration,
   isEventPast,
+  type Event,
 } from "src/data/event";
-import { getUserById, LegacyUser } from "src/data/legacy-user";
-import { getProjectById, Project } from "src/data/project";
+import { getUserById, type LegacyUser } from "src/data/legacy-user";
+import { getProjectById, type Project } from "src/data/project";
 import { Route } from "src/routing";
 
 type Params = {

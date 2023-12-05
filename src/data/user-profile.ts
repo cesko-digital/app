@@ -1,4 +1,4 @@
-import { FieldSet } from "airtable";
+import { type FieldSet } from "airtable";
 import {
   decodeValidItemsFromArray,
   relationToZeroOrOne,
@@ -7,17 +7,17 @@ import {
 } from "src/decoding";
 import {
   array,
-  DecoderFunction,
-  decodeType,
   field,
   nil,
   number,
   optional,
-  Pojo,
   record,
   string,
   undef,
   union,
+  type DecoderFunction,
+  type decodeType,
+  type Pojo,
 } from "typescript-json-decoder";
 
 import {

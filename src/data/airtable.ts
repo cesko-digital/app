@@ -1,21 +1,21 @@
 import Airtable, {
-  FieldSet,
-  Record,
-  RecordData,
-  Records,
-  Table,
+  type FieldSet,
+  type Record,
+  type RecordData,
+  type Records,
+  type Table,
 } from "airtable";
 import { splitToChunks } from "src/utils";
-import { Pojo } from "typescript-json-decoder";
+import { type Pojo } from "typescript-json-decoder";
 
 /** The Volunteer Management database */
 export const volunteerManagementBase = new Airtable({
-  apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
+  apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
 }).base("apppZX1QC3fl1RTBM");
 
 /** The Web database */
 export const webBase = new Airtable({
-  apiKey: process.env.AIRTABLE_API_KEY || "<not set>",
+  apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
 }).base("appkn1DkvgVI5jpME");
 
 //
@@ -30,7 +30,7 @@ export async function createBatch<Schema extends FieldSet>(
   table: Table<Schema>,
   items: Partial<Schema>[],
 ): Promise<Records<Schema>> {
-  let results = [];
+  const results = [];
   const batches = splitToChunks(items, maxChangeBatchSize);
   for (const chunk of batches) {
     const fields = chunk.map((item) => ({ fields: item }));
@@ -45,7 +45,7 @@ export async function updateBatch<Schema extends FieldSet>(
   table: Table<Schema>,
   items: Partial<Schema>[],
 ): Promise<Records<Schema>> {
-  let results = [];
+  const results = [];
   const batches = splitToChunks(items, maxChangeBatchSize);
   for (const chunk of batches) {
     const fields = chunk.map(splitFields);
@@ -64,10 +64,12 @@ function splitFields<TFields extends FieldSet>(
   object: Partial<TFields>,
 ): RecordData<Partial<TFields>> {
   const { id, ...fields } = object;
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any */
   return {
     id: id as any,
     fields: fields as any,
   };
+  /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any */
 }
 
 /** Unwrap the raw fields object from an Airtable `Record` type */

@@ -46,6 +46,7 @@ export function getAllSkills(selection: SkillSelection): Skill[] {
         skills.push({
           category,
           name,
+          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
           level: level === null ? undefined : level,
         });
       });
@@ -60,7 +61,7 @@ export function addSkill(
   selection: SkillSelection,
   skill: Skill,
 ): SkillSelection {
-  let newSelection = { ...selection };
+  const newSelection = { ...selection };
   const { category, name, level = null } = skill;
   if (selection[category]) {
     // Category already exists

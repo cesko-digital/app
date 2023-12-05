@@ -1,4 +1,4 @@
-import { buildCsvContent, CsvLine, CsvWriteLine } from "./csv";
+import { buildCsvContent, type CsvLine, type CsvWriteLine } from "./csv";
 
 const RomanNumbers = [
   "",
@@ -42,7 +42,7 @@ export function romanize(num: number): string {
   let roman = "";
   let i = 3;
   while (i--) {
-    let value = digits.pop();
+    const value = digits.pop();
 
     if (typeof value === "undefined") {
       break;
@@ -69,7 +69,7 @@ export function getMonthColumn(date: Date): string {
 /**
  * Key contains date (trend index) in string (toDateString) and value contains number sum value for the given date..
  */
-export type TrendData = { [key: string]: number[] };
+export type TrendData = Record<string, number[]>;
 /**
  * Contains date of the trand value, and optional value that is summed to the given trend date SUM.
  */
@@ -156,6 +156,7 @@ export async function buildTrendStats(
       writeTrendData(trendValue, 0);
     });
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-for-in-array
     for (const childIndex in generateTrend) {
       const childTrend = generateTrend[childIndex];
       headers.push(childTrend.title);
@@ -198,13 +199,13 @@ export async function buildTrendStats(
 
       const columns = [getMonthColumn(date)];
 
-      for (const index in headers) {
+      for (const index of headers) {
         const id = parseInt(index);
         if (id == 0) {
           continue;
         }
 
-        const value = trend[trendKey] && trend[trendKey][id - 1];
+        const value = trend[trendKey]?.[id - 1];
 
         columns.push((value ?? 0).toString());
       }

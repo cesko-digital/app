@@ -1,4 +1,4 @@
-import { getAllOpportunities, Opportunity } from "src/data/opportunity";
+import { getAllOpportunities, type Opportunity } from "src/data/opportunity";
 import { getAllProjects } from "src/data/project";
 import { getPageBreakdown } from "src/plausible/api";
 import { ContentType, map } from "src/utils";
@@ -31,7 +31,7 @@ export async function GET() {
       return {
         ...row,
         state: op?.status,
-        page: op?.name || row.page,
+        page: op?.name ?? row.page,
         project: map(op, getProjectName),
       };
     })

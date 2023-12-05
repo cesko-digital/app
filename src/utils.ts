@@ -48,9 +48,9 @@ export const shuffled = <T>(array: readonly T[]) => shuffleInPlace([...array]);
 
 /** Split array to chunks of size `size` */
 export function splitToChunks<T>(array: readonly T[], size: number) {
-  let chunks = [];
+  const chunks = [];
   let i = 0;
-  let n = array.length;
+  const n = array.length;
 
   while (i < n) {
     chunks.push(array.slice(i, (i += size)));
@@ -112,7 +112,7 @@ export function notEmpty<TValue>(
  */
 export function hashDigest(
   params: string[],
-  secret = process.env.SHASUM_SECRET || "",
+  secret = process.env.SHASUM_SECRET ?? "",
 ): string {
   const shasum = crypto.createHash("sha1");
   shasum.update([...params, secret].join(":"));
@@ -120,7 +120,7 @@ export function hashDigest(
 }
 
 /** Return a pretty-printed JSON `Response` */
-export const formattedJSONResponse = (payload: any) =>
+export const formattedJSONResponse = (payload: unknown) =>
   new Response(JSON.stringify(payload, null, 2), {
     headers: {
       "Content-Type": "application/json",
