@@ -1,4 +1,4 @@
-import { getRandomElem, shuffled, shuffleInPlace, unique } from "src/utils";
+import { getRandomElem, shuffled, shuffleInPlace, unique } from "~/src/utils";
 
 import {
   compareEventsByTime,

@@ -1,13 +1,13 @@
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { EventCard } from "components/EventCard";
+import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { EventCard } from "~/components/EventCard";
 import {
   compareEventsByTime,
   getAllEvents,
   isEventPast,
   type Event,
-} from "src/data/event";
-import { getAllProjects } from "src/data/project";
-import { loremIpsum } from "src/utils";
+} from "~/src/data/event";
+import { getAllProjects } from "~/src/data/project";
+import { loremIpsum } from "~/src/utils";
 
 /** Page listing all our events */
 async function Page() {

@@ -1,4 +1,3 @@
-import { type MarkdownString } from "src/utils";
 import {
   array,
   dict,
@@ -11,6 +10,8 @@ import {
   type decodeType,
   type Pojo,
 } from "typescript-json-decoder";
+
+import { type MarkdownString } from "~/src/utils";
 
 /** Decode a string, returning it as a `MarkdownString` */
 export const markdown = (value: Pojo): MarkdownString => ({

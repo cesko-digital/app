@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import clsx from "clsx";
-import { type LegacyUser } from "src/data/legacy-user";
-import { type Project } from "src/data/project";
-import { Route } from "src/routing";
+
+import { type LegacyUser } from "~/src/data/legacy-user";
+import { type Project } from "~/src/data/project";
+import { Route } from "~/src/routing";
 
 export type Props = {
   /** URL of the image to display */

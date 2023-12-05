@@ -1,12 +1,4 @@
 import {
-  decodeJSONString,
-  decodeValidItemsFromArray,
-  markdown,
-  optionalArray,
-  takeFirst,
-  withDefault,
-} from "src/decoding";
-import {
   array,
   boolean,
   field,
@@ -16,6 +8,15 @@ import {
   union,
   type decodeType,
 } from "typescript-json-decoder";
+
+import {
+  decodeJSONString,
+  decodeValidItemsFromArray,
+  markdown,
+  optionalArray,
+  takeFirst,
+  withDefault,
+} from "~/src/decoding";
 
 import { unwrapRecords, webBase } from "./airtable";
 

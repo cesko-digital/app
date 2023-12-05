@@ -3,7 +3,8 @@ import { default as NextImage } from "next/image";
 import Link from "next/link";
 
 import Markdoc from "@markdoc/markdoc";
-import { customMarkdownConfig } from "src/markdoc/schema";
+
+import { customMarkdownConfig } from "~/src/markdoc/schema";
 
 /**
  * These are components for custom tags defined in our Markdoc schema,

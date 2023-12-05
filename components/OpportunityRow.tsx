@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
-import { type Opportunity } from "src/data/opportunity";
-import { type Project } from "src/data/project";
-import { Route } from "src/routing";
+import { type Opportunity } from "~/src/data/opportunity";
+import { type Project } from "~/src/data/project";
+import { Route } from "~/src/routing";
 
 import { ProjectImageLabel } from "./ImageLabel";
 import { TextPill } from "./TextPill";
