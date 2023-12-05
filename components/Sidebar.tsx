@@ -31,7 +31,7 @@ export const Sidebar = ({ sections, primaryCTA }: Props) => (
             <h2 className="typo-title3 mb-2">{label}</h2>
             {content}
           </div>
-        )
+        ),
     )}
     {primaryCTA && <div className="mt-4">{primaryCTA}</div>}
   </SidebarContainer>
@@ -41,5 +41,5 @@ export const Sidebar = ({ sections, primaryCTA }: Props) => (
  * Bare sidebar
  */
 export const SidebarContainer = ({ children }: { children: ReactNode }) => (
-  <div className="p-7 bg-pebble rounded-xl flex flex-col gap-7">{children}</div>
+  <div className="flex flex-col gap-7 rounded-xl bg-pebble p-7">{children}</div>
 );

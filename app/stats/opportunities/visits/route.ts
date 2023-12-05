@@ -1,7 +1,7 @@
+import { getAllOpportunities, Opportunity } from "src/data/opportunity";
 import { getAllProjects } from "src/data/project";
 import { getPageBreakdown } from "src/plausible/api";
 import { ContentType, map } from "src/utils";
-import { getAllOpportunities, Opportunity } from "src/data/opportunity";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +26,7 @@ export async function GET() {
     // Add opportunity names
     .map((row) => {
       const op = opportunities.find(
-        (o) => row.page === `/opportunities/${o.slug}`
+        (o) => row.page === `/opportunities/${o.slug}`,
       );
       return {
         ...row,
@@ -37,7 +37,7 @@ export async function GET() {
     })
     // Convert to CSV
     .map(({ page, pageviews, visitors, state, project }) =>
-      [`"${trim(page)}"`, pageviews, visitors, state, `"${project}"`].join(",")
+      [`"${trim(page)}"`, pageviews, visitors, state, `"${project}"`].join(","),
     )
     .join("\n");
   const output = ["Page, Pageviews, Visitors, State, Project", csv].join("\n");

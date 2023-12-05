@@ -1,29 +1,31 @@
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { MarkdownContent } from "components/MarkdownContent";
-import Image from "next/image";
-import { notFound } from "next/navigation";
 import React from "react";
-import Icons from "components/icons";
-import { Project, getAllProjects } from "src/data/project";
-import {
-  TeamEngagement,
-  getTeamEngagementsForProject,
-} from "src/data/team-engagement";
-import { Route } from "src/routing";
+import Image from "next/image";
 import Link from "next/link";
-import { Sidebar } from "components/Sidebar";
-import { ProjectCard } from "components/ProjectCard";
-import { shuffleInPlace } from "src/utils";
-import { getOpportunitiesForProject } from "src/data/opportunity";
-import { OpportunityRow } from "components/OpportunityRow";
-import { EventCard } from "components/EventCard";
-import { getFeaturedEventsForProject } from "src/data/queries";
-import { ImageLabel } from "components/ImageLabel";
-import { RelatedContent } from "components/RelatedContent";
-import { getBlogIndex } from "src/data/blog";
+import { notFound } from "next/navigation";
+
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { Card } from "components/Card";
-import { getAllPlaylistVideos } from "src/data/youtube";
+import { EventCard } from "components/EventCard";
+import Icons from "components/icons";
+import { ImageLabel } from "components/ImageLabel";
+import { MarkdownContent } from "components/MarkdownContent";
+import { OpportunityRow } from "components/OpportunityRow";
+import { ProjectCard } from "components/ProjectCard";
+import { RelatedContent } from "components/RelatedContent";
+import { Sidebar } from "components/Sidebar";
 import LiteYouTubeEmbed from "components/YouTubeEmbed";
+import { getBlogIndex } from "src/data/blog";
+import { getOpportunitiesForProject } from "src/data/opportunity";
+import { getAllProjects, Project } from "src/data/project";
+import { getFeaturedEventsForProject } from "src/data/queries";
+import {
+  getTeamEngagementsForProject,
+  TeamEngagement,
+} from "src/data/team-engagement";
+import { getAllPlaylistVideos } from "src/data/youtube";
+import { Route } from "src/routing";
+import { shuffleInPlace } from "src/utils";
+
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 type Params = {
@@ -45,11 +47,11 @@ async function Page({ params }: Props) {
   const otherProjects = shuffleInPlace(
     allProjects
       .filter((p) => p.slug !== params.slug)
-      .filter((p) => p.state === "running" || p.state === "incubating")
+      .filter((p) => p.state === "running" || p.state === "incubating"),
   ).slice(0, 3);
 
   const opportunities = (await getOpportunitiesForProject(project.slug)).filter(
-    (o) => o.status === "live"
+    (o) => o.status === "live",
   );
 
   const events = await getFeaturedEventsForProject(project);
@@ -71,7 +73,7 @@ async function Page({ params }: Props) {
 
   const blogIndex = await getBlogIndex();
   const relatedBlogPosts = blogIndex.filter((post) =>
-    post.tags.some((t) => t === project.slug)
+    post.tags.some((t) => t === project.slug),
   );
 
   const relatedVideos = project.youTubePlaylistId
@@ -79,7 +81,7 @@ async function Page({ params }: Props) {
     : [];
 
   return (
-    <main className="py-20 px-7 max-w-content m-auto">
+    <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[
           { label: "Homepage", path: "/" },
@@ -88,14 +90,14 @@ async function Page({ params }: Props) {
         currentPage={project.name}
       />
 
-      <h1 className="typo-title mt-7 mb-2">{project.name}</h1>
+      <h1 className="typo-title mb-2 mt-7">{project.name}</h1>
       <h2 className="typo-subtitle mb-10 max-w-prose">
         {stripTrailingComma(project.tagline)}
       </h2>
-      <div className="aspect-[2.3] relative mb-10">
+      <div className="relative mb-10 aspect-[2.3]">
         <Image
           src={project.coverImageUrl}
-          className="object-cover bg-gray"
+          className="bg-gray object-cover"
           alt=""
           fill
         />
@@ -103,7 +105,7 @@ async function Page({ params }: Props) {
 
       <div className="flex flex-col gap-20">
         {/* Main project info */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           <section className="lg:col-span-2">
             <h2 className="typo-title2">O projektu</h2>
             <MarkdownContent source={project.description.source} />
@@ -120,7 +122,7 @@ async function Page({ params }: Props) {
             seeAllLabel="Blog Česko.Digital"
             seeAllUrl={Route.blog}
           >
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {relatedBlogPosts.slice(0, 3).map((post) => (
                 <Card
                   key={post.url}
@@ -144,7 +146,7 @@ async function Page({ params }: Props) {
             seeAllLabel="Všechny akce"
             seeAllUrl={Route.events}
           >
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {events.map((e) => (
                 <EventCard key={e.id} event={e} />
               ))}
@@ -174,7 +176,7 @@ async function Page({ params }: Props) {
             seeAllLabel="Všechna videa"
             seeAllUrl={Route.toYouTubePlaylist(project.youTubePlaylistId!)}
           >
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
               {relatedVideos.slice(0, 6).map((video) => (
                 <LiteYouTubeEmbed
                   key={video.id}
@@ -194,7 +196,7 @@ async function Page({ params }: Props) {
           seeAllLabel="Všechny projekty"
           seeAllUrl={Route.projects}
         >
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {otherProjects.map((p) => (
               <ProjectCard key={p.id} project={p} />
             ))}
@@ -241,7 +243,7 @@ const ProjectSidebar = ({
   const LinkList = () => (
     <ul className="flex flex-col gap-4">
       {ordinaryLinks.map((link) => (
-        <li key={link.url} className="flex flex-row item-center gap-2">
+        <li key={link.url} className="item-center flex flex-row gap-2">
           <LinkIcon url={link.url} />
           <Link href={link.url} className="underline">
             {link.name}
@@ -253,7 +255,7 @@ const ProjectSidebar = ({
 
   const FeaturedLinkButton = () => (
     <div>
-      <a className="block btn-primary text-center" href={featuredLink?.url}>
+      <a className="btn-primary block text-center" href={featuredLink?.url}>
         {featuredLink?.name}
       </a>
     </div>

@@ -17,8 +17,8 @@ test("Validate correctly filled form", () => {
         cocConsent: true,
         submissionState: { tag: "not_submitted_yet" },
       },
-      now
-    )
+      now,
+    ),
   ).toEqual<ValidationResult>({
     result: "success",
     validatedData: {

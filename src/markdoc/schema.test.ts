@@ -7,6 +7,6 @@ test("Slugify", () => {
   expect(slugify("foo!?")).toBe("foo");
   expect(slugify("PŘÍŠERA")).toBe("prisera");
   expect(slugify("První krok k řešení = pilotní kurz Nezisk.Digital")).toBe(
-    "prvni-krok-k-reseni-pilotni-kurz-nezisk-digital"
+    "prvni-krok-k-reseni-pilotni-kurz-nezisk-digital",
   );
 });

@@ -1,22 +1,24 @@
 "use client";
 
-import { Route } from "src/routing";
-import skillMenu from "./skills.json";
-import { SkillMenu, encodeSkillSelection } from "src/skills";
-import ArrowIllustration from "./arrows.svg";
-import {
-  FormState,
-  RegistrationData,
-  emptyFormState,
-  validateForm,
-} from "./form-state";
 import { useState } from "react";
 import Image from "next/image";
+
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { DistrictSelect } from "components/districts/DistrictSelect";
 import { SkillPicker } from "components/SkillPicker";
-import { Breadcrumbs } from "components/Breadcrumbs";
-import { ContentType } from "src/utils";
 import { trackCustomEvent } from "src/plausible/events";
+import { Route } from "src/routing";
+import { encodeSkillSelection, SkillMenu } from "src/skills";
+import { ContentType } from "src/utils";
+
+import ArrowIllustration from "./arrows.svg";
+import {
+  emptyFormState,
+  FormState,
+  RegistrationData,
+  validateForm,
+} from "./form-state";
+import skillMenu from "./skills.json";
 
 const Page = () => {
   const [state, setState] = useState(emptyFormState);
@@ -46,7 +48,7 @@ const Page = () => {
   };
 
   return (
-    <main className="py-20 px-7 max-w-content m-auto">
+    <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[{ label: "Homepage", path: "/" }]}
         currentPage="Registrace"
@@ -80,10 +82,10 @@ const isEditable = (state: FormState) => {
 
 const IntroSection = () => (
   <section className="relative">
-    <div className="hidden lg:block absolute right-[100px]">
+    <div className="absolute right-[100px] hidden lg:block">
       <Image src={ArrowIllustration} alt="" width={181} height={373} />
     </div>
-    <div className="max-w-prose flex flex-col gap-7">
+    <div className="flex max-w-prose flex-col gap-7">
       <h1 className="typo-title">Staň se členem komunity</h1>
       <p>
         Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
@@ -91,7 +93,7 @@ const IntroSection = () => (
         sobě si pak budeš moci kdykoliv upravit na svém profilu.
       </p>
       <h2 className="typo-title2">Co tě čeká po odeslání formuláře</h2>
-      <ol className="list-decimal space-y-4 list-inside xl:list-outside">
+      <ol className="list-inside list-decimal space-y-4 xl:list-outside">
         <li>
           Pro začátek dostaneš{" "}
           <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
@@ -131,7 +133,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
   const disabled = !isEditable(state);
   return (
     <section>
-      <div className="max-w-prose flex flex-col gap-7">
+      <div className="flex max-w-prose flex-col gap-7">
         <h2 className="typo-title2">To nejdůležitější o tobě</h2>
         <TextInput
           id="name"
@@ -194,17 +196,17 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
   const options = {
     "private-sector": "Pracuji v soukromém sektoru",
     "non-profit": "Pracuji v neziskové organizaci",
-    "state": "Pracuji ve státním sektoru",
-    "freelancing": "Jsem na volné noze/freelancer",
-    "studying": "Studuji",
+    state: "Pracuji ve státním sektoru",
+    freelancing: "Jsem na volné noze/freelancer",
+    studying: "Studuji",
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci",
-    "other": "Jiné",
+    other: "Jiné",
   };
 
   return (
     <div>
-      <label className="block mb-1">
+      <label className="mb-1 block">
         Čemu se aktuálně věnuješ?
         <RequiredFieldMarker />
       </label>
@@ -215,7 +217,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 
       <div>
         {Object.entries(options).map(([id, label]) => (
-          <label key={id} className="flex items-center mb-1">
+          <label key={id} className="mb-1 flex items-center">
             <input
               type="radio"
               className="mr-3"
@@ -249,7 +251,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
 }) => {
   return (
     <section>
-      <div className="max-w-prose flex flex-col gap-4">
+      <div className="flex max-w-prose flex-col gap-4">
         <h2 className="typo-title2">
           Dovednosti, které můžeš komunitě nabídnout
           <RequiredFieldMarker />
@@ -277,7 +279,7 @@ const SkillSection: React.FC<SkillSectionProps> = ({
 
 const LegalSection: FormSection = ({ state, onChange }) => (
   <section>
-    <div className="max-w-prose flex flex-col gap-2">
+    <div className="flex max-w-prose flex-col gap-2">
       <h2 className="typo-title2 mb-2">
         Právní náležitosti
         <RequiredFieldMarker />
@@ -287,7 +289,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           checked={state.cocConsent}
           disabled={!isEditable(state)}
-          className="mr-3 self-start mt-2 shrink-0"
+          className="mr-3 mt-2 shrink-0 self-start"
           onChange={(e) => onChange({ ...state, cocConsent: e.target.checked })}
         ></input>
         <span>
@@ -303,7 +305,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           checked={state.gdprConsent}
           disabled={!isEditable(state)}
-          className="mr-3 self-start mt-2 shrink-0"
+          className="mr-3 mt-2 shrink-0 self-start"
           onChange={(e) =>
             onChange({ ...state, gdprConsent: e.target.checked })
           }
@@ -321,7 +323,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           type="checkbox"
           checked={state.privacyConsent}
           disabled={!isEditable(state)}
-          className="mr-3 self-start mt-2 shrink-0"
+          className="mr-3 mt-2 shrink-0 self-start"
           onChange={(e) =>
             onChange({ ...state, privacyConsent: e.target.checked })
           }
@@ -363,8 +365,8 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
     submissionState.tag === "submitting"
       ? "Malý moment…"
       : submissionState.tag === "submitted_successfully"
-      ? "Úspěšně odesláno 🎉"
-      : "Odeslat a přejít na Slack";
+        ? "Úspěšně odesláno 🎉"
+        : "Odeslat a přejít na Slack";
 
   const handleSubmit = () => {
     if (validationResult.result === "success") {
@@ -375,20 +377,20 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
           `Submitted form data: ${JSON.stringify(
             validationResult.validatedData,
             null,
-            2
-          )}`
+            2,
+          )}`,
         );
       }
     } else {
       console.error(
-        "Trying to submit form with validation errors, this should not happen."
+        "Trying to submit form with validation errors, this should not happen.",
       );
     }
   };
 
   return (
     <section>
-      <div className="max-w-prose flex flex-col gap-4">
+      <div className="flex max-w-prose flex-col gap-4">
         {validationResult.result === "error" && state !== emptyFormState && (
           <p className="text-red-500" data-testid="form-error">
             {validationResult.msg}
@@ -432,7 +434,7 @@ async function createUserProfile(data: RegistrationData): Promise<boolean> {
 // Shared Components
 //
 
-const RequiredFieldMarker = () => <span className="text-red-500 pl-1">*</span>;
+const RequiredFieldMarker = () => <span className="pl-1 text-red-500">*</span>;
 
 type TextInputProps = {
   id: string;
@@ -471,7 +473,7 @@ const TextInput: React.FC<TextInputProps> = ({
         autoComplete={autoComplete}
         disabled={disabled}
         type={type}
-        className="rounded-md border-2 border-gray p-2 w-full"
+        className="w-full rounded-md border-2 border-gray p-2"
         onChange={(e) => onChange(e.target.value)}
       ></input>
     </div>

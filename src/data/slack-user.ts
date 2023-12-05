@@ -8,11 +8,12 @@ import {
   record,
   string,
 } from "typescript-json-decoder";
+
 import {
-  volunteerManagementBase,
-  unwrapRecords,
   createBatch,
+  unwrapRecords,
   updateBatch,
+  volunteerManagementBase,
 } from "./airtable";
 
 /** The Airtable schema of the Slack user table */
@@ -63,7 +64,7 @@ export function encodeSlackUser(user: Partial<SlackUser>): Partial<Schema> {
 
 /** Get Slack user by Slack ID */
 export async function getSlackUserBySlackId(
-  slackId: string
+  slackId: string,
 ): Promise<SlackUser> {
   return await slackUsersTable
     .select({
@@ -86,7 +87,7 @@ export async function getAllSlackUsers(): Promise<SlackUser[]> {
 
 /** Create new Slack users in Airtable */
 export async function createSlackUsers(
-  users: Omit<SlackUser, "id">[]
+  users: Omit<SlackUser, "id">[],
 ): Promise<SlackUser[]> {
   const records = users.map(encodeSlackUser);
   return await createBatch(slackUsersTable, records)
@@ -96,7 +97,7 @@ export async function createSlackUsers(
 
 /** Update Slack users in Airtable */
 export async function updateSlackUsers(
-  users: SlackUser[]
+  users: SlackUser[],
 ): Promise<SlackUser[]> {
   const records = users.map(encodeSlackUser);
   return await updateBatch(slackUsersTable, records)
@@ -106,10 +107,10 @@ export async function updateSlackUsers(
 
 /** Insert or update Slack user identified by his/her Slack ID */
 export async function upsertSlackUser(
-  user: Omit<SlackUser, "id">
+  user: Omit<SlackUser, "id">,
 ): Promise<SlackUser> {
   const existingRecord = await getSlackUserBySlackId(user.slackId).catch(
-    () => null
+    () => null,
   );
   if (existingRecord) {
     // User already exists, so let’s just update the info

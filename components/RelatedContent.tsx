@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 export type Props = {
   /** Heading for the whole section */
@@ -17,7 +17,7 @@ export const RelatedContent = ({
   seeAllLabel,
 }: Props) => (
   <section>
-    <div className="flex md:flex-row gap-7 items-center">
+    <div className="flex items-center gap-7 md:flex-row">
       <h2 className="typo-title2 mb-4">{label}</h2>
       {seeAllUrl && (
         <Link href={seeAllUrl} className="typo-link ml-auto mr-1">

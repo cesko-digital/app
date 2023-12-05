@@ -1,6 +1,6 @@
 import { getAllOpportunities } from "src/data/opportunity";
-import { ContentType, unique } from "src/utils";
 import { getPageBreakdown, getPageTrafficSources } from "src/plausible/api";
+import { ContentType, unique } from "src/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -19,10 +19,10 @@ export async function GET() {
     opportunityStats.map(async (row) => ({
       sources: await getPageTrafficSources(row.page),
       ...row,
-    }))
+    })),
   );
   const sourceNames = unique(
-    sourceStats.flatMap((row) => row.sources.map((s) => s.source))
+    sourceStats.flatMap((row) => row.sources.map((s) => s.source)),
   );
 
   const opportunities = await getAllOpportunities();
@@ -41,7 +41,7 @@ export async function GET() {
       row.page,
       `"${trim(name(row.page))} / ${row.visitors} visitors"`,
       sourceNames.map(
-        (source) => row.sources.find((s) => s.source === source)?.visitors
+        (source) => row.sources.find((s) => s.source === source)?.visitors,
       ),
     ].join(",");
     output += "\n";

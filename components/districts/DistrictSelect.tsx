@@ -1,4 +1,5 @@
 import Select from "react-select";
+
 import { districts } from "./districts";
 
 type Option = {

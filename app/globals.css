@@ -35,16 +35,16 @@
 
   /* Buttons */
   .btn-primary {
-    @apply bg-it text-white px-5 py-2 rounded-md no-underline cursor-pointer;
+    @apply cursor-pointer rounded-md bg-it px-5 py-2 text-white no-underline;
   }
   .btn-inverted {
-    @apply bg-white text-it px-5 py-2 rounded-md no-underline cursor-pointer;
+    @apply cursor-pointer rounded-md bg-white px-5 py-2 text-it no-underline;
   }
   .btn-disabled {
-    @apply bg-gravel text-white px-5 py-2 rounded-md no-underline cursor-not-allowed;
+    @apply cursor-not-allowed rounded-md bg-gravel px-5 py-2 text-white no-underline;
   }
   .btn-destructive {
-    @apply bg-red-500 text-white px-5 py-2 rounded-md no-underline cursor-pointer;
+    @apply cursor-pointer rounded-md bg-red-500 px-5 py-2 text-white no-underline;
   }
 }
 
@@ -53,7 +53,8 @@
 @font-face {
   font-family: "Cesko Digital";
   font-display: swap;
-  src: url("https://data.cesko.digital/font/regular.woff2") format("woff2"),
+  src:
+    url("https://data.cesko.digital/font/regular.woff2") format("woff2"),
     url("https://data.cesko.digital/font/regular.woff") format("woff"),
     url("https://data.cesko.digital/font/regular.eot") format("eot");
   font-weight: 400;
@@ -63,7 +64,8 @@
 @font-face {
   font-family: "Cesko Digital";
   font-display: swap;
-  src: url("https://data.cesko.digital/font/medium.woff2") format("woff2"),
+  src:
+    url("https://data.cesko.digital/font/medium.woff2") format("woff2"),
     url("https://data.cesko.digital/font/medium.woff") format("woff"),
     url("https://data.cesko.digital/font/medium.eot") format("eot");
   font-weight: 500;
@@ -73,7 +75,8 @@
 @font-face {
   font-family: "Cesko Digital";
   font-display: swap;
-  src: url("https://data.cesko.digital/font/semibold.woff2") format("woff2"),
+  src:
+    url("https://data.cesko.digital/font/semibold.woff2") format("woff2"),
     url("https://data.cesko.digital/font/semibold.woff") format("woff"),
     url("https://data.cesko.digital/font/semibold.eot") format("eot");
   font-weight: 600;
@@ -83,7 +86,8 @@
 @font-face {
   font-family: "Cesko Digital";
   font-display: swap;
-  src: url("https://data.cesko.digital/font/bold.woff2") format("woff2"),
+  src:
+    url("https://data.cesko.digital/font/bold.woff2") format("woff2"),
     url("https://data.cesko.digital/font/bold.woff") format("woff"),
     url("https://data.cesko.digital/font/bold.eot") format("eot");
   font-weight: 700;

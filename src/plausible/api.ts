@@ -1,9 +1,9 @@
 import {
-  record,
-  DecoderFunction,
   array,
-  string,
+  DecoderFunction,
   number,
+  record,
+  string,
 } from "typescript-json-decoder";
 
 const apiKey = process.env.PLAUSIBLE_API_KEY || "";
@@ -73,7 +73,7 @@ export async function getPageBreakdown(period = "30d") {
       metrics: ["pageviews", "visitors"],
       period,
     },
-    array(record({ page: string, pageviews: number, visitors: number }))
+    array(record({ page: string, pageviews: number, visitors: number })),
   );
 }
 
@@ -86,6 +86,6 @@ export async function getPageTrafficSources(page: string, period = "30d") {
       filters: [["event:page", page]],
       period,
     },
-    array(record({ source: string, pageviews: number, visitors: number }))
+    array(record({ source: string, pageviews: number, visitors: number })),
   );
 }

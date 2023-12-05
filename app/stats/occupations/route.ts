@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const userProfiles = await getAllUserProfiles(
-    "Profiles with Occupation Data"
+    "Profiles with Occupation Data",
   );
   const allOccupations = userProfiles
     // Extract user’s occupation
@@ -16,13 +16,13 @@ export async function GET() {
   const uniqueOccupations = unique(allOccupations);
 
   const labels = {
-    "freelancing": "na volné noze",
-    "state": "státní sektor",
-    "studying": "studující",
+    freelancing: "na volné noze",
+    state: "státní sektor",
+    studying: "studující",
     "parental-leave": "na rodičovské dovolené",
     "private-sector": "soukromý sektor",
     "non-profit": "neziskový sektor",
-    "other": "jiné",
+    other: "jiné",
     "looking-for-job": "hledám práci",
   } as Record<string, string>;
 

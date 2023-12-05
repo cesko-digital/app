@@ -1,6 +1,7 @@
-import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+
+import clsx from "clsx";
 import { LegacyUser } from "src/data/legacy-user";
 import { Project } from "src/data/project";
 import { Route } from "src/routing";
@@ -34,17 +35,17 @@ export const ImageLabel = ({
   return (
     <div
       className={clsx(
-        "flex gap-4 items-center",
+        "flex items-center gap-4",
         faded && "opacity-50",
-        order === "labelFirst" ? "flex-row-reverse" : "flex-row"
+        order === "labelFirst" ? "flex-row-reverse" : "flex-row",
       )}
     >
       <Image
         src={imageUrl}
         className={clsx(
-          "bg-gray rounded-full shadow",
+          "rounded-full bg-gray shadow",
           // This fixes the appearance of non-square images
-          "aspect-square object-top object-cover"
+          "aspect-square object-cover object-top",
         )}
         width={imageSize}
         height={imageSize}

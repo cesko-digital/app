@@ -7,7 +7,7 @@ import {
 
 function assertWriteCsvOutputSuccess(
   lines: CsvLines | CsvGenerateLines,
-  expectedOutput: string
+  expectedOutput: string,
 ): void {
   const headers = ["label", "value-1", "value-3"];
   const output = buildCsvContent(headers, lines);
@@ -21,7 +21,7 @@ test("writeCsvOutput writes headers, headers line and supports static data", () 
       ["test", "2", "3"],
       ["test-2", "1", "0"],
     ],
-    "test,2,3\ntest-2,1,0\n"
+    "test,2,3\ntest-2,1,0\n",
   );
 });
 
@@ -38,7 +38,7 @@ function assertWriteCsvOutputError(lines: CsvLines | CsvGenerateLines): void {
     buildCsvContent(headers, lines);
   };
   expect(t).toThrowError(
-    "Invalid count of a row values. The length must be same as head to be a valid CSV."
+    "Invalid count of a row values. The length must be same as head to be a valid CSV.",
   );
 }
 

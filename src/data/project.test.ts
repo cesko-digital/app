@@ -19,7 +19,7 @@ test("Decode project", () => {
         "rec0ABdJtGIK9AeCB",
       ],
       serializedLinks: "[]",
-    })
+    }),
   ).toEqual({
     id: "rec4KOruzwIFU8ieR",
     name: "Loono – průvodce prevencí",

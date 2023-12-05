@@ -6,10 +6,10 @@ test("Outputs 200 and CSV headers on string content", async () => {
   expect(response.status).toEqual(200);
   expect(response.headers.get("Access-Control-Allow-Origin")).toEqual("*");
   expect(response.headers.get("Content-Type")).toEqual(
-    "text/csv; charset=utf-8"
+    "text/csv; charset=utf-8",
   );
   expect(response.headers.get("Cache-Control")).toEqual(
-    "s-maxage=300, stale-while-revalidate"
+    "s-maxage=300, stale-while-revalidate",
   );
   expect(await response.text()).toEqual("test");
 });

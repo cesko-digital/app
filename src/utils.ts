@@ -14,13 +14,13 @@ export const doNotTranslate = "no_translate";
 /** Get URL to image resized to requested width */
 export function getResizedImgUrl(
   originalUrl: string,
-  targetWidth: number
+  targetWidth: number,
 ): string {
   if (originalUrl.startsWith("https://data.cesko.digital/")) {
     return (
       originalUrl.replace(
         /data\.cesko\.digital/g,
-        "cesko.digital/api/resize?src="
+        "cesko.digital/api/resize?src=",
       ) +
       "&width=" +
       targetWidth
@@ -69,7 +69,7 @@ export const getRandomElem = <T>(a: T[]) =>
 /** Map function over a possibly null value */
 export function map<T, U>(
   val: T | undefined | null,
-  f: (_: T) => U
+  f: (_: T) => U,
 ): U | undefined {
   return val ? f(val) : undefined;
 }
@@ -99,7 +99,7 @@ export const looksLikeEmailAdress = (s: string) =>
 
 /** Filtering convenience, see https://stackoverflow.com/questions/43118692 */
 export function notEmpty<TValue>(
-  value: TValue | null | undefined
+  value: TValue | null | undefined,
 ): value is TValue {
   return value !== null && value !== undefined;
 }
@@ -112,7 +112,7 @@ export function notEmpty<TValue>(
  */
 export function hashDigest(
   params: string[],
-  secret = process.env.SHASUM_SECRET || ""
+  secret = process.env.SHASUM_SECRET || "",
 ): string {
   const shasum = crypto.createHash("sha1");
   shasum.update([...params, secret].join(":"));

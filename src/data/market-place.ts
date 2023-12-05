@@ -1,6 +1,4 @@
 import { FieldSet } from "airtable";
-import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
-import { decodeUserProfile, Schema as UserProfileSchema } from "./user-profile";
 import { relationToZeroOrOne } from "src/decoding";
 import {
   array,
@@ -10,6 +8,9 @@ import {
   string,
   union,
 } from "typescript-json-decoder";
+
+import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
+import { decodeUserProfile, Schema as UserProfileSchema } from "./user-profile";
 
 const marketPlaceTable = webBase<Schema>("Market Place");
 const userProfileTable = webBase<UserProfileSchema>("User Profiles");
@@ -47,7 +48,7 @@ export const decodeMarketPlaceOffer = record({
     "invalid",
     "expired",
     "cancelled",
-    "completed"
+    "completed",
   ),
 });
 
@@ -57,7 +58,7 @@ export const decodeMarketPlaceOffer = record({
 
 /** Return a a single market-place offer identified by its database ID */
 export async function getMarketPlaceOffer(
-  id: string
+  id: string,
 ): Promise<MarketPlaceOffer> {
   return await marketPlaceTable
     .find(id)
@@ -90,7 +91,7 @@ export async function insertNewMarketPlaceOffer(
   offer: Pick<
     MarketPlaceOffer,
     "state" | "text" | "owner" | "slackThreadUrl" | "originalMessageTimestamp"
-  >
+  >,
 ): Promise<MarketPlaceOffer> {
   const { state, text, owner, slackThreadUrl, originalMessageTimestamp } =
     offer;
@@ -127,7 +128,7 @@ export async function insertNewMarketPlaceOffer(
 /** Update existing market-place offer */
 export async function updateMarketPlaceOffer(
   recordId: string,
-  data: Partial<Pick<MarketPlaceOffer, "state">>
+  data: Partial<Pick<MarketPlaceOffer, "state">>,
 ): Promise<MarketPlaceOffer> {
   return await marketPlaceTable
     .update(recordId, data)

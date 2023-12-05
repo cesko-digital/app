@@ -11,7 +11,7 @@ test("Decode user with no skills", () => {
       state: "confirmed",
       createdAt: "2022-03-23T08:31:54.500Z",
       lastModifiedAt: "2022-03-23T08:31:54.500Z",
-    })
+    }),
   ).toEqual<UserProfile>({
     id: "uisoh7Ei",
     name: "John Smith",
@@ -53,7 +53,7 @@ test("Decode Slack Users relation", () => {
       notificationFlags: ["allowNotifications"],
       createdAt: "2022-03-23T08:31:54.500Z",
       lastModifiedAt: "2022-03-23T08:31:54.500Z",
-    })
+    }),
   ).toEqual<UserProfile>({
     id: "uisoh7Ei",
     name: "John Smith",
@@ -92,7 +92,7 @@ test("Decode Slack Users relation", () => {
       notificationFlags: undefined,
       createdAt: "2022-03-23T08:31:54.500Z",
       lastModifiedAt: "2022-03-23T08:31:54.500Z",
-    })
+    }),
   ).toEqual<UserProfile>({
     id: "uisoh7Ei",
     name: "John Smith",

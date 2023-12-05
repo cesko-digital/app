@@ -1,5 +1,3 @@
-import { Pojo } from "typescript-json-decoder";
-import { splitToChunks } from "src/utils";
 import Airtable, {
   FieldSet,
   Record,
@@ -7,6 +5,8 @@ import Airtable, {
   Records,
   Table,
 } from "airtable";
+import { splitToChunks } from "src/utils";
+import { Pojo } from "typescript-json-decoder";
 
 /** The Volunteer Management database */
 export const volunteerManagementBase = new Airtable({
@@ -28,7 +28,7 @@ const maxChangeBatchSize = 10;
 /** Create a batch of records */
 export async function createBatch<Schema extends FieldSet>(
   table: Table<Schema>,
-  items: Partial<Schema>[]
+  items: Partial<Schema>[],
 ): Promise<Records<Schema>> {
   let results = [];
   const batches = splitToChunks(items, maxChangeBatchSize);
@@ -43,7 +43,7 @@ export async function createBatch<Schema extends FieldSet>(
 /** Update a batch of records */
 export async function updateBatch<Schema extends FieldSet>(
   table: Table<Schema>,
-  items: Partial<Schema>[]
+  items: Partial<Schema>[],
 ): Promise<Records<Schema>> {
   let results = [];
   const batches = splitToChunks(items, maxChangeBatchSize);
@@ -61,7 +61,7 @@ export async function updateBatch<Schema extends FieldSet>(
 
 /** Split record into an ID/fields pair */
 function splitFields<TFields extends FieldSet>(
-  object: Partial<TFields>
+  object: Partial<TFields>,
 ): RecordData<Partial<TFields>> {
   const { id, ...fields } = object;
   return {
@@ -76,5 +76,5 @@ export const unwrapRecord = <Schema extends FieldSet>(record: Record<Schema>) =>
 
 /** Unwrap the raw fields objects from an Airtable `Records` type */
 export const unwrapRecords = <Schema extends FieldSet>(
-  records: Records<Schema>
+  records: Records<Schema>,
 ) => records.map(unwrapRecord);
