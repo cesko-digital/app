@@ -52,7 +52,7 @@ async function Page({ params }: Props) {
 
       <div className="relative mb-10 aspect-[2.3]">
         <Image
-          src={project.coverImageUrl}
+          src={role.coverImageUrl ?? project.coverImageUrl}
           className="bg-gray object-cover grayscale"
           alt=""
           fill
