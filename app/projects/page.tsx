@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,6 +7,10 @@ import { ProjectCard } from "~/components/ProjectCard";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { Route } from "~/src/routing";
 import { getRandomElem, loremIpsum } from "~/src/utils";
+
+export const metadata: Metadata = {
+  title: "Projekty | Česko.Digital",
+};
 
 /** Page listing all our projects */
 async function Page() {

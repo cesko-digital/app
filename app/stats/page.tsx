@@ -1,8 +1,13 @@
 import { type ReactNode } from "react";
+import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 
 import { DatawrapperChart } from "./DatawrapperChart";
+
+export const metadata: Metadata = {
+  title: "Statistiky | Česko.Digital",
+};
 
 const Page = async () => {
   return (

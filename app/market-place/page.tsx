@@ -1,3 +1,5 @@
+import { type Metadata } from "next";
+
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   compareOffersByTime,
@@ -5,6 +7,10 @@ import {
 } from "~/src/data/market-place";
 
 import { OfferBox } from "./OfferBox";
+
+export const metadata: Metadata = {
+  title: "Market-place | Česko.Digital",
+};
 
 const Page = async () => {
   const offers = (await getPublishedMarketPlaceOffers())
