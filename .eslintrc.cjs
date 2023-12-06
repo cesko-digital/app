@@ -16,6 +16,7 @@ const config = {
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/require-await": "off",
     "@typescript-eslint/consistent-type-imports": [
       "warn",
       {
