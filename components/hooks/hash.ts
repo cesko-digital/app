@@ -7,7 +7,11 @@ const getHash = () =>
     ? decodeURIComponent(window.location.hash.replace("#", ""))
     : undefined;
 
-// https://github.com/vercel/next.js/discussions/49465#discussioncomment-6966993
+/**
+ * Return the hash part of the current page URL
+ *
+ * https://github.com/vercel/next.js/discussions/49465#discussioncomment-6966993
+ */
 const useHash = () => {
   const [hash, setHash] = useState(getHash());
   const [isClient, setIsClient] = useState(false);
