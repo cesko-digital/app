@@ -8,7 +8,6 @@ import useHash from "~/components/hooks/hash";
 import { type MarketPlaceOffer } from "~/src/data/market-place";
 
 // TBD: The HTML handling here is dumb and unsafe, can we do better?
-// TBD: Highlighting doesn’t work with client-side navigation
 export const OfferBox = ({ offer }: { offer: MarketPlaceOffer }) => {
   const date = new Date(offer.createdAt);
   const splitParagraphs = (s: string) =>
