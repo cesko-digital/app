@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -172,5 +173,22 @@ const compareByRelevance = (a: Event, b: Event) => {
     return compareEventsByTime(a, b);
   }
 };
+
+//
+// Metadata
+//
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const allEvents = await getAllEvents("Live Events");
+  const event = allEvents.find((e) => e.slug === params.slug);
+  if (!event) {
+    return {};
+  }
+  return {
+    title: `${event.name} | Česko.Digital`,
+    description: event.summary,
+    openGraph: { images: event.coverImageUrl },
+  };
+}
 
 export default Page;

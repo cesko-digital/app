@@ -1,7 +1,13 @@
+import { type Metadata } from "next";
+
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects } from "~/src/data/project";
+
+export const metadata: Metadata = {
+  title: "Hledané role | Česko.Digital",
+};
 
 /** Page listing all wanted roles on projects */
 async function Page() {

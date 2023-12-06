@@ -28,6 +28,8 @@ import { shuffleInPlace } from "~/src/utils";
 
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
+import { type Metadata } from "next";
+
 type Params = {
   slug: string;
 };
@@ -307,6 +309,23 @@ const LinkIcon = ({ url }: { url: string }) => {
 
   return <Icons.GenericWebsite />;
 };
+
+//
+// Metadata
+//
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const allProjects = await getAllProjects();
+  const project = allProjects.find((p) => p.slug === params.slug);
+  if (!project) {
+    return {};
+  }
+  return {
+    title: `${project.name} | Česko.Digital`,
+    description: project.tagline,
+    openGraph: { images: project.coverImageUrl },
+  };
+}
 
 //
 // Helpers

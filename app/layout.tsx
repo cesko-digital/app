@@ -8,8 +8,9 @@ import Link from "next/link";
 import { Route } from "~/src/routing";
 
 export const metadata: Metadata = {
-  title: "Česko.Digital TBD",
-  description: "TBD",
+  metadataBase: new URL("https://app.cesko.digital"),
+  title: "Česko.Digital – příležitosti k zapojení",
+  description: "Provázíme veřejnou správu a nezisk digitální transformací",
   openGraph: {
     images: "https://data.cesko.digital/web/metadata-cover.png",
   },

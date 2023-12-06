@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -130,5 +131,22 @@ const getContactButtonLabel = (contactUrl: string) => {
     return "Kontaktovat";
   }
 };
+
+//
+// Metadata
+//
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const allRoles = await getAllOpportunities("Show to Users");
+  const role = allRoles.find((r) => r.slug === params.slug);
+  if (!role) {
+    return {};
+  }
+  return {
+    title: `${role.name} | Česko.Digital`,
+    description: role.summary.source, // TBD: strip Markdown
+    openGraph: { images: role.coverImageUrl },
+  };
+}
 
 export default Page;
