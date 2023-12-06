@@ -1,7 +1,8 @@
 import { type ReactNode } from "react";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
-import { DatawrapperChart } from "~/components/DatawrapperChart";
+
+import { DatawrapperChart } from "./DatawrapperChart";
 
 const Page = async () => {
   return (
