@@ -12,6 +12,7 @@ const endpoints = [
   "/stats/trends/new-comers?year=2022&fill=true",
   "/stats/trends/new-comers-engagements?year=2022&fill=true",
   "/stats/trends/new-engagements?year=2022&fill=true",
+  "/stats/events/visits",
 ];
 
 for (const endpoint of endpoints) {
