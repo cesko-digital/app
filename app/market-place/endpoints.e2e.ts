@@ -8,7 +8,7 @@ test("URL verification", async ({ page }) => {
     challenge: "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P",
     type: "url_verification",
   };
-  const response = await page.request.post("/marketplace/new_message", {
+  const response = await page.request.post("/market-place/new-message", {
     data: JSON.stringify(payload, null, 2),
     headers: {
       "Content-Type": ContentType.json,
