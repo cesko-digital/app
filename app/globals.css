@@ -100,7 +100,11 @@ body {
   font-family: "Cesko Digital", system-ui, sans-serif;
 }
 
-/* Embedded Markdown styles */
+/*
+ * Embedded Markdown styles
+ *
+ * This is used for project descriptions and also for market-place offers.
+ */
 
 .embedded-markdown a {
   color: blue;

@@ -139,7 +139,7 @@ const MarketPlaceOfferRow = (o: MarketPlaceOffer) => {
     <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="group flex flex-col" href={o.slackThreadUrl}>
+    <Link className="group flex flex-col" href={Route.toMarketPlaceOffer(o)}>
       <div className="grow rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
         <div className="line-clamp-6">
           <h3 className="mr-[1ex] inline font-bold">{o.title}</h3>

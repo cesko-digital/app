@@ -1,4 +1,5 @@
 import { type Event } from "~/src/data/event";
+import { type MarketPlaceOffer } from "~/src/data/market-place";
 
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";
@@ -13,12 +14,13 @@ export const Route = {
   events: "/events",
   projects: "/projects",
   opportunities: "/opportunities",
-  marketplace: "/marketplace",
+  marketplace: "/market-place",
   register: "/join",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
   toOpportunity: (o: Opportunity) => `/opportunities/${o.slug}`,
+  toMarketPlaceOffer: (o: MarketPlaceOffer) => `/market-place#${o.id}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
 };
