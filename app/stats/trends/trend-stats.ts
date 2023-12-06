@@ -199,13 +199,15 @@ export async function buildTrendStats(
 
       const columns = [getMonthColumn(date)];
 
-      for (const index of headers) {
+      // eslint-disable-next-line @typescript-eslint/no-for-in-array
+      for (const index in headers) {
         const id = parseInt(index);
         if (id == 0) {
           continue;
         }
 
-        const value = trend[trendKey]?.[id - 1];
+        // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+        const value = trend[trendKey] && trend[trendKey][id - 1];
 
         columns.push((value ?? 0).toString());
       }
