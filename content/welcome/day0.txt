@@ -1,0 +1,49 @@
+Ahoj! 👋 Moc tě zdravím a vítám v naší komunitě! 💙 Mám velikou radost, že do toho jdeš s námi! 🤝
+
+Mé jméno je GreetBot. 🤖 Této komunitě pomáhám jako virtuální rádce. Provedu tě naším hlavním komunikačním nástrojem Slack a ukážu ti, jak v komunitě fungujeme.
+
+—
+
+*JAK SE KOMUNITĚ PŘEDSTAVIT?*
+
+Předtím než se vrhneš do projektových vod jednotlivých kanálů, *vyplň prosím svůj profil ve Slacku*. 🦸‍♂️ V pravém horním rohu klikni na svou fotku. Rozbalí se ti menu, skrze které se dostaneš na svůj profil.
+
+Pochlub se nám: 
+• usměvavou *fotkou* 📸,
+• přezdívkou (doporučujeme ale uvádět celé tvé jméno) 😎,
+• *pozicí nebo specializací*, kterou ovládáš,
+• *časovými možnostmi* 🕔, které chceš projektům Česko.Digital věnovat. 
+
+Můžeš případně přidat i *e-mail* 📧, *telefon* 📞 nebo odkazy na různé sítě či tvůj web.
+
+—
+
+*JAKÉ SLACK KANÁLY U NÁS NAJDEŠ?*
+
+Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží různým účelům. Po přihlášení najdeš v levé liště *seznam kanálů* dle témat a zaměření, které jsou *přiřazeny automaticky každému nově příchozímu*.
+
+*<https://cesko-digital.slack.com/archives/C01UYQZBT8V|#ask-me-anything>* – kanál pro nejrůznější dotazy a feedbacky
+*<https://cesko-digital.slack.com/archives/CMCCD7415|#eventy-pozvanky>* – tady najdeš pozvánky na akce, které by tě mohly zajímat
+*<https://cesko-digital.slack.com/archives/CG07ST9ME|#general>* – zprávami do tohoto kanálu prosím šetři, je určený pro ty nejdůležitější zprávy, které jsou relevantní pro celou komunitu
+*<https://cesko-digital.slack.com/archives/C0104T360QP|#ideas>* – tady diskutujeme o všech našich nápadech (nejen) na projekty
+*<https://cesko-digital.slack.com/archives/CJVB0MVCM|#introductions>* – kanál pro představování
+*<https://cesko-digital.slack.com/archives/CLVAH28P3|#market-place>* – kanál pro poptávání dobrovolníků pro jednorázovou spolupráci
+*<https://cesko-digital.slack.com/archives/CG4557BD4|#sdilej-a-inspiruj>* – veškerý zajímavý obsah, inspirace a novinky z č.d i od komunity v jednom kanálu
+*<https://cesko-digital.slack.com/archives/CKJ8F4BT5|#support>* – pro jakékoliv technické dotazy a admin záležitosti
+
+*V kanále <https://cesko-digital.slack.com/archives/CJVB0MVCM|#introductions> se nám prosím krátce představ.* 👋 Můžeš zmínit své zkušenosti a dovednosti a to, do čeho se například chceš zapojit. Rádi si také přečteme o tom, co tě baví a zajímá. Na základě těchto informací se ti může ozvat někdo z komunity, kdo pro tebe najde vhodné uplatnění (kanál totiž sledují lidé z různých projektů).
+
+—
+
+*JAK TADY FUNGUJEME?*
+
+💎 Tady jsou *pravidla komunikace* ve Slacku:
+• Komunikujeme spolu slušně, věcně a konstruktivně.
+• Pro přehlednost a transparentnost komunikace využíváme „thread“ 💬 (vlákno komentářů u dané zprávy).
+• Pomocí zavináče *@* označujeme konkrétní osoby a pomocí hashtagu *#* konkrétní kanál.
+
+A podrobný návod jak na Slack najdeš <https://cesko-digital.atlassian.net/l/cp/3s271A04|tady>.
+
+—
+
+Máme za sebou první informační nálož! 💣 Zatím se u nás v klidu porozhlédni. Za 3 dny jsem zpět s novými tipy a triky. 🤩 Tak ahoj a brzy na viděnou! 👋
