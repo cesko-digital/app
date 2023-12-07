@@ -17,7 +17,7 @@ export type Props = {
 
 /** A simple styled display for a wanted role */
 export const OpportunityRow = ({ role, project }: Props) => {
-  const pills = [role.timeRequirements, role.skills.join(" / ")];
+  const pills = [role.timeRequirements, ...role.skills];
   return (
     <div className="last mb-7 flex flex-col-reverse gap-3 border-b-2 border-pebble pb-7 md:flex-row md:gap-7">
       {/* Role description */}
