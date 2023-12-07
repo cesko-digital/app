@@ -45,8 +45,8 @@ export const decodeLatestTopicsSummary = record({
 // API calls
 //
 
-export const getLatestTopicsSummary = async () =>
-  await fetch(`${baseUrl}/latest.json`)
+export const getLatestTopicsSummary = async (revalidate = 300) =>
+  await fetch(`${baseUrl}/latest.json`, { next: { revalidate } })
     .then((response) => response.json())
     .then(decodeLatestTopicsSummary);
 
