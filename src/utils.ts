@@ -1,38 +1,9 @@
 import crypto from "crypto";
 
-/** Approximate size of the Česko.Digital community (number of people in Slack) */
-export const communitySize = 6000;
-
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;
 };
-
-/** Elements with this class will be skipped when translating website content with Weglot */
-export const doNotTranslate = "no_translate";
-
-/** Get URL to image resized to requested width */
-export function getResizedImgUrl(
-  originalUrl: string,
-  targetWidth: number,
-): string {
-  if (originalUrl.startsWith("https://data.cesko.digital/")) {
-    return (
-      originalUrl.replace(
-        /data\.cesko\.digital/g,
-        "cesko.digital/api/resize?src=",
-      ) +
-      "&width=" +
-      targetWidth
-    );
-  } else {
-    return originalUrl;
-  }
-}
-
-export function isOwnerEmailDisplayed(input: string): boolean {
-  return /^anezka@cesko.digital|^gabriela@cesko.digital/.test(input);
-}
 
 /** Shuffle array in place, returns a reference to the same array */
 export function shuffleInPlace<T>(array: T[]): T[] {
@@ -118,14 +89,6 @@ export function hashDigest(
   shasum.update([...params, secret].join(":"));
   return shasum.digest("hex").slice(0, 10);
 }
-
-/** Return a pretty-printed JSON `Response` */
-export const formattedJSONResponse = (payload: unknown) =>
-  new Response(JSON.stringify(payload, null, 2), {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
 
 /** Frequently used content types */
 export const ContentType = {
