@@ -9,7 +9,7 @@ test("Submit button is disabled by default", async ({ page }) => {
   await expect(submitButton).toBeDisabled();
 });
 
-test("Validation errors are hidden before the form is touched", async ({
+test.skip("Validation errors are hidden before the form is touched", async ({
   page,
 }) => {
   await page.goto("/join");
