@@ -86,6 +86,14 @@ export const findEventsForProject = async (projectSlug: string) =>
     .then(unwrapRecords)
     .then(array(decodeEvent));
 
+/** Get all events with given slug */
+export const findEventsWithSlug = async (slug: string) =>
+  await eventsTable
+    .select({ filterByFormula: `{slug} = "${slug}"` })
+    .all()
+    .then(unwrapRecords)
+    .then(array(decodeEvent));
+
 //
 // Utils
 //
