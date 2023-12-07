@@ -17,7 +17,7 @@ import {
 const { SLACK_SIGNING_SECRET = "" } = process.env;
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
-export default async function POST(request: NextRequest): Promise<Response> {
+export async function POST(request: NextRequest): Promise<Response> {
   /** Incoming message is either the initial handshake or an event callback */
   const decodeIncomingMessage = union(
     decodeEndpointHandshake,
