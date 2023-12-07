@@ -16,6 +16,8 @@ export const Route = {
   opportunities: "/opportunities",
   marketplace: "/market-place",
   register: "/join",
+  // More static routes
+  eventFeed: "/events/feed.ical",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,

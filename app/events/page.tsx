@@ -9,10 +9,14 @@ import {
   type Event,
 } from "~/src/data/event";
 import { getAllProjects } from "~/src/data/project";
-import { loremIpsum } from "~/src/utils";
+import { Route } from "~/src/routing";
 
 export const metadata: Metadata = {
   title: "Akce | Česko.Digital",
+  description: `Pojďme se potkat! Online, naživo, v Praze, v Brně,
+  na vzdělávacím webináři, praktickém workshopu – zkrátka kdekoliv
+  a jakkoliv. Některé z těchto akcí pořádáme přímo my, na některých
+  spolupracujeme s partnery. Na všech vás ale rádi uvidíme.`,
 };
 
 /** Page listing all our events */
@@ -37,7 +41,15 @@ async function Page() {
       />
 
       <h1 className="typo-title mb-10 mt-7">Akce</h1>
-      <p className="mb-10 max-w-prose">{loremIpsum}</p>
+
+      <div className="mb-20 flex flex-col gap-7">
+        <p className="max-w-prose">{metadata.description}</p>
+        <div>
+          <a href={Route.eventFeed} className="btn-primary">
+            Stáhnout kalendář akcí
+          </a>
+        </div>
+      </div>
 
       <h2 className="typo-title2 mb-4">Nadcházející akce</h2>
       <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">

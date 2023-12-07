@@ -6,10 +6,12 @@ import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ProjectCard } from "~/components/ProjectCard";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { Route } from "~/src/routing";
-import { getRandomElem, loremIpsum } from "~/src/utils";
+import { getRandomElem } from "~/src/utils";
 
 export const metadata: Metadata = {
   title: "Projekty | Česko.Digital",
+  description: `Velká část z toho, co se v Česko.Digital děje, se děje formou projektů.
+  Podívejte se, na čem zrovna pracujeme, a kde se můžete v případě zájmu zapojit.`,
 };
 
 /** Page listing all our projects */
@@ -37,7 +39,7 @@ async function Page() {
       />
 
       <h1 className="typo-title mb-10 mt-7">Projekty</h1>
-      <p className="mb-10 max-w-prose">{loremIpsum}</p>
+      <p className="mb-10 max-w-prose">{metadata.description}</p>
 
       {featuredProject && <FeaturedProjectBox project={featuredProject} />}
 
