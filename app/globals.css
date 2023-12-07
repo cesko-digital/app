@@ -98,6 +98,8 @@
 
 body {
   font-family: "Cesko Digital", system-ui, sans-serif;
+  font-size: large;
+  line-height: 1.6em;
 }
 
 /*
