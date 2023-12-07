@@ -21,7 +21,7 @@ export const Route = {
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
-  toOpportunity: (o: Opportunity) => `/opportunities/${o.slug}`,
+  toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
   toMarketPlaceOffer: (o: MarketPlaceOffer) => `/market-place#${o.id}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
