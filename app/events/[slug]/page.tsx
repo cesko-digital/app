@@ -113,7 +113,15 @@ const EventSidebar = ({
   return (
     <Sidebar
       primaryCTA={
-        event.registrationUrl ? <RegistrationButton event={event} /> : undefined
+        <div className="flex flex-col gap-4">
+          {event.registrationUrl && <RegistrationButton event={event} />}
+          <a
+            className="btn-inverted block text-center"
+            href={`${event.slug}/ical`}
+          >
+            Stáhnout do kalendáře
+          </a>
+        </div>
       }
       sections={[
         {
