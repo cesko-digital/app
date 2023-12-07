@@ -15,7 +15,6 @@
     "@markdoc/markdoc": "^0.3.5",
     "airtable": "^0.12.2",
     "clsx": "^2.0.0",
-    "file-system-cache": "^2.4.4",
     "ical-generator": "^6.0.0",
     "next": "14.0.1",
     "next-auth": "^4.24.5",
@@ -47,6 +46,7 @@
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.0",
     "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
     "typescript": "^5"
   },
   "jest": {

@@ -23,6 +23,11 @@
       }
     ]
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "include": [
     ".eslintrc.cjs",
     "next-env.d.ts",
