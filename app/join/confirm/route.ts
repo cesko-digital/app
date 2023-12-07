@@ -1,4 +1,4 @@
-import { type NextApiRequest } from "next";
+import { type NextRequest } from "next/server";
 
 import { union } from "typescript-json-decoder";
 
@@ -14,19 +14,10 @@ import {
   validateTeamJoinEvent,
 } from "~/src/slack/signing";
 
-// By default Next.js would parse `request.body` to JSON automatically.
-// But we need the raw request body to compute the request signature, so
-// we disable the automatic parser here.
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 const { SLACK_SIGNING_SECRET = "" } = process.env;
 
 /** Mark user account as confirmed when user successfully signs in to Slack */
-export default async function POST(request: NextApiRequest): Promise<Response> {
+export default async function POST(request: NextRequest): Promise<Response> {
   /** Incoming message is either the initial handshake or an event callback */
   const decodeIncomingMessage = union(
     decodeEndpointHandshake,
@@ -34,7 +25,7 @@ export default async function POST(request: NextApiRequest): Promise<Response> {
   );
   try {
     // We need to get the raw body here to calculate the checksum
-    const rawBody = await getRawBody(request);
+    const rawBody = await request.text();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const body = JSON.parse(rawBody);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -49,8 +40,8 @@ export default async function POST(request: NextApiRequest): Promise<Response> {
       // the Slack user ID.
       case "event_callback":
         // Validate message signature
-        const timestamp = request.headers[timestampHeader] as string;
-        const expectedSignature = request.headers[signatureHeader] as string;
+        const timestamp = request.headers.get(timestampHeader)!;
+        const expectedSignature = request.headers.get(signatureHeader)!;
         const status = validateTeamJoinEvent({
           timestamp,
           expectedSignature,
@@ -78,16 +69,4 @@ export default async function POST(request: NextApiRequest): Promise<Response> {
     console.error(e);
     return new Response("Sorry :(", { status: 500 });
   }
-}
-
-function getRawBody(request: NextApiRequest): Promise<string> {
-  return new Promise((resolve) => {
-    let data = "";
-    request.on("data", (chunk) => {
-      data += chunk;
-    });
-    request.on("end", () => {
-      resolve(Buffer.from(data).toString("utf-8"));
-    });
-  });
 }
