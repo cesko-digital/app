@@ -1,0 +1,20 @@
+name: Sync Slack Users
+
+on:
+  schedule:
+    - cron: "5 3 * * *" # Run at 3.05 UTC each day
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60 # Limit running time to one hour max
+    env:
+      SLACK_SYNC_TOKEN: ${{ secrets.SLACK_SYNC_TOKEN }}
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Sync
+        run: |
+          npm ci
+          ./bin/sync-slack-users.ts
