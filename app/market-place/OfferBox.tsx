@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import clsx from "clsx";
 import { toHTML as slackMarkupToHTML } from "slack-markdown";
 
@@ -33,6 +35,17 @@ export const OfferBox = ({ offer }: { offer: MarketPlaceOffer }) => {
         ></div>
       </div>
       <div className="flex flex-col gap-4 border-white max-md:border-t-2 max-md:pt-7 md:border-l-2 md:px-7">
+        <Image
+          src={offer.ownerAvatarUrl!}
+          className={clsx(
+            "rounded-full bg-gray shadow",
+            // This fixes the appearance of non-square images
+            "aspect-square object-cover object-top",
+          )}
+          alt=""
+          width={80}
+          height={80}
+        />
         <p>
           Poptává {offer.ownerName} od{" "}
           <DateTime date={date} style="date-only" />
