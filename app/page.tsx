@@ -53,7 +53,7 @@ export default async function Home() {
     <main className="m-auto flex max-w-content flex-col gap-20 px-7 py-20">
       <section>
         <h2 className="typo-title2 mb-1">Projekty</h2>
-        <h3 className="typo-subtitle mb-7">Podtitulek domyslíme, děcka</h3>
+        <h3 className="typo-subtitle mb-7">Na čem právě pracujeme</h3>
         <div className="mb-10 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <ProjectCard key={p.id} project={p} />
@@ -64,9 +64,7 @@ export default async function Home() {
 
       <section>
         <h2 className="typo-title2 mb-1">Hledané role</h2>
-        <h3 className="typo-subtitle mb-4">
-          Zapojte se v projektech Česko.Digital
-        </h3>
+        <h3 className="typo-subtitle mb-5">Zapojte se v našich projektech</h3>
         <div className="mb-7">
           {opportunities.map((o) => (
             <OpportunityRow
@@ -85,7 +83,7 @@ export default async function Home() {
       <section>
         <h2 className="typo-title2 mb-1">Market-place</h2>
         <h3 className="typo-subtitle mb-7">
-          Zapojte se v projektech mimo Česko.Digital
+          Zapojte se krátce v projektech mimo Česko.Digital
         </h3>
         <div className="mb-7 grid gap-7 md:grid-cols-3">
           {marketPlaceOffers.map(MarketPlaceOfferRow)}
