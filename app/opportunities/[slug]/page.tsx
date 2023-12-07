@@ -91,9 +91,16 @@ const RoleSidebar = ({
   project: Project;
   owner: LegacyUser;
 }) => {
+  const ContactButton = (
+    <div>
+      <a href={role.contactUrl} className="btn-primary block text-center">
+        Mám zájem
+      </a>
+    </div>
+  );
   return (
     <Sidebar
-      primaryCTA={<ContactButton role={role} />}
+      primaryCTA={ContactButton}
       sections={[
         {
           label: "Projekt",
@@ -110,26 +117,6 @@ const RoleSidebar = ({
       ]}
     />
   );
-};
-
-const ContactButton = ({ role }: { role: Opportunity }) => {
-  return (
-    <div>
-      <a href={role.contactUrl} className="btn-primary block text-center">
-        {getContactButtonLabel(role.contactUrl)}
-      </a>
-    </div>
-  );
-};
-
-const getContactButtonLabel = (contactUrl: string) => {
-  if (contactUrl.startsWith("https://cesko-digital.slack.com/")) {
-    return "Kontaktovat přes Slack";
-  } else if (contactUrl.startsWith("mailto:")) {
-    return "Kontaktovat mailem";
-  } else {
-    return "Kontaktovat";
-  }
 };
 
 //
