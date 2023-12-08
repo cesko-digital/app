@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+// This extends our Next config with stuff needed to integrate with Axiom:
+// https://www.axiom.co/docs/integrations/vercel#web-vitals
+const { withAxiom } = require("next-axiom");
+
+module.exports = withAxiom({
   images: {
     remotePatterns: [
       {
@@ -19,6 +24,4 @@ const nextConfig = {
       },
     ],
   },
-};
-
-module.exports = nextConfig;
+});

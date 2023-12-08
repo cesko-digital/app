@@ -19,6 +19,7 @@
     "ical-generator": "^6.0.0",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
+    "next-axiom": "^1.1.1",
     "plausible-tracker": "^0.3.8",
     "react": "^18",
     "react-dom": "^18",
