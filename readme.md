@@ -1,4 +1,4 @@
-Repo obsahuje kód aplikace pro zapojování lidí na různých projektech Česko.Digital. Aplikace je napsaná v [TypeScriptu](https://www.typescriptlang.org) a [Next.js](http://nextjs.org/docs/app/building-your-application/routing) a hostovaná na [Vercelu](http://vercel.com), data se načítají převážně z [Airtable](https://airtable.com). Produkční verze běží na <app.cesko.digital>.
+Repo obsahuje kód aplikace pro zapojování lidí na různých projektech Česko.Digital. Aplikace je napsaná v [TypeScriptu](https://www.typescriptlang.org) a [Next.js](http://nextjs.org/docs/app/building-your-application/routing) a hostovaná na [Vercelu](http://vercel.com), data se načítají převážně z [Airtable](https://airtable.com). Produkční verze běží na [app.cesko.digital](https://app.cesko.digital).
 
 # Vývoj
 
