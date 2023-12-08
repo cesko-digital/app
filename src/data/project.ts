@@ -38,7 +38,14 @@ export const decodeProject = record({
   ),
   highlighted: withDefault(boolean, false),
   state: withDefault(
-    union("draft", "running", "finished", "incubating", "internal"),
+    union(
+      "draft",
+      "running",
+      "finished",
+      "incubating",
+      "internal",
+      "cancelled",
+    ),
     "draft",
   ),
   tagIds: field("tags", optionalArray(string)),
