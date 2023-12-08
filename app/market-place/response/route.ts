@@ -1,8 +1,5 @@
 import { type NextRequest } from "next/server";
 
-import { record } from "typescript-json-decoder";
-
-import { decodeJSONString } from "~/src/decoding";
 import { handleFollowupResponse } from "~/src/market-place";
 import { decodeBlockActionCallback } from "~/src/slack/interactions";
 
@@ -11,21 +8,18 @@ const { SLACK_BAZAAR_BOT_TOKEN = "", SLACK_BAZAAR_CALLBACK_SECRET = "" } =
 
 /** Handle Slack notifications about market-place responses */
 export async function POST(request: NextRequest): Promise<Response> {
-  // The payload is stored as a JSON string under a “payload” key in the body object
-  const decodeCallbackEnvelope = record({
-    payload: decodeJSONString(decodeBlockActionCallback),
-  });
   try {
-    console.log(await request.text());
+    const formData = await request.formData();
+    const payload = formData.get("payload");
+    if (!payload || typeof payload !== "string") {
+      return new Response("Payload missing or invalid", { status: 400 });
+    }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const wrappedResponse = decodeCallbackEnvelope(await request.json());
-    if (wrappedResponse.payload.token !== SLACK_BAZAAR_CALLBACK_SECRET) {
+    const wrappedResponse = decodeBlockActionCallback(JSON.parse(payload));
+    if (wrappedResponse.token !== SLACK_BAZAAR_CALLBACK_SECRET) {
       return new Response("Request token does not match.", { status: 400 });
     }
-    await handleFollowupResponse(
-      SLACK_BAZAAR_BOT_TOKEN,
-      wrappedResponse.payload,
-    );
+    await handleFollowupResponse(SLACK_BAZAAR_BOT_TOKEN, wrappedResponse);
     return new Response("Acknowledged!", { status: 200 });
   } catch (e) {
     console.error(e);
