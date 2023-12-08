@@ -28,6 +28,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     return new Response("Acknowledged!", { status: 200 });
   } catch (e) {
     console.error(e);
+    console.log(await request.text());
     return new Response("Sorry :(", { status: 500 });
   }
 }
