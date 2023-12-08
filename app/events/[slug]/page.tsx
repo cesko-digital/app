@@ -9,7 +9,7 @@ import {
   ProjectImageLabel,
 } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
-import { Sidebar } from "~/components/Sidebar";
+import { Sidebar, SidebarSection } from "~/components/Sidebar";
 import {
   compareEventsByTime,
   getAllEvents,
@@ -109,55 +109,40 @@ const EventSidebar = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-
   return (
-    <Sidebar
-      primaryCTA={
-        <div className="flex flex-col gap-4">
-          {event.registrationUrl && <RegistrationButton event={event} />}
-          <a
-            className="btn-inverted block text-center"
-            href={`${event.slug}/ical`}
-          >
-            Stáhnout do kalendáře
+    <Sidebar>
+      <SidebarSection title="Projekt">
+        <ProjectImageLabel project={project} />
+      </SidebarSection>
+      <SidebarSection title="Kontakt">
+        <LegacyUserImageLabel user={owner} link={`mailto:${owner.email}`} />
+      </SidebarSection>
+      <SidebarSection title="Datum konání">{time}</SidebarSection>
+      <SidebarSection title="Délka akce">
+        {getEventDuration(event)}
+      </SidebarSection>
+      {event.locationUrl && (
+        <SidebarSection title="Místo konání">
+          <a className="typo-link" href={event.locationUrl}>
+            {event.locationTitle}
           </a>
-        </div>
-      }
-      sections={[
-        {
-          label: "Projekt",
-          content: <ProjectImageLabel project={project} />,
-        },
-        {
-          label: "Kontakt",
-          content: (
-            <LegacyUserImageLabel user={owner} link={`mailto:${owner.email}`} />
-          ),
-        },
-        {
-          label: "Datum konání",
-          content: time,
-        },
-        {
-          label: "Délka akce",
-          content: getEventDuration(event),
-        },
-        {
-          label: "Místo konání",
-          onlyIf: !!event.locationUrl,
-          content: (
-            <a className="typo-link" href={event.locationUrl}>
-              {event.locationTitle}
-            </a>
-          ),
-        },
-        {
-          label: "Místo konání",
-          onlyIf: !event.locationUrl,
-          content: event.locationTitle,
-        },
-      ]}
-    />
+        </SidebarSection>
+      )}
+      {!event.locationUrl && (
+        <SidebarSection title="Místo konání">
+          {event.locationTitle}
+        </SidebarSection>
+      )}
+      <div className="flex flex-col gap-4">
+        {event.registrationUrl && <RegistrationButton event={event} />}
+        <a
+          className="btn-inverted block text-center"
+          href={`${event.slug}/ical`}
+        >
+          Stáhnout do kalendáře
+        </a>
+      </div>
+    </Sidebar>
   );
 };
 

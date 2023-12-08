@@ -12,7 +12,7 @@ import { MarkdownContent } from "~/components/MarkdownContent";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { ProjectCard } from "~/components/ProjectCard";
 import { RelatedContent } from "~/components/RelatedContent";
-import { Sidebar } from "~/components/Sidebar";
+import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
 import LiteYouTubeEmbed from "~/components/YouTubeEmbed";
 import { getBlogIndex } from "~/src/data/blog";
 import { getOpportunitiesForProject } from "~/src/data/opportunity";
@@ -255,30 +255,22 @@ const ProjectSidebar = ({
     </ul>
   );
 
-  const FeaturedLinkButton = () => (
-    <div>
-      <a className="btn-primary block text-center" href={featuredLink?.url}>
-        {featuredLink?.name}
-      </a>
-    </div>
-  );
-
   return (
-    <Sidebar
-      primaryCTA={featuredLink ? <FeaturedLinkButton /> : undefined}
-      sections={[
-        {
-          label: "Koordinace projektu",
-          content: <CoordinatorList />,
-          onlyIf: coordinators.length > 0,
-        },
-        {
-          label: "Odkazy",
-          content: <LinkList />,
-          onlyIf: ordinaryLinks.length > 0,
-        },
-      ]}
-    />
+    <Sidebar>
+      {coordinators.length > 0 && (
+        <SidebarSection title="Koordinace projektu">
+          <CoordinatorList />
+        </SidebarSection>
+      )}
+      {ordinaryLinks.length > 0 && (
+        <SidebarSection title="Odkazy">
+          <LinkList />
+        </SidebarSection>
+      )}
+      {featuredLink && (
+        <SidebarCTA href={featuredLink.url} label={featuredLink.name} />
+      )}
+    </Sidebar>
   );
 };
 

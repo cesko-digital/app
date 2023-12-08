@@ -10,7 +10,7 @@ import {
 import { MarkdownContent } from "~/components/MarkdownContent";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { RelatedContent } from "~/components/RelatedContent";
-import { Sidebar } from "~/components/Sidebar";
+import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
 import { getUserById, type LegacyUser } from "~/src/data/legacy-user";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects, type Project } from "~/src/data/project";
@@ -91,31 +91,19 @@ const RoleSidebar = ({
   project: Project;
   owner: LegacyUser;
 }) => {
-  const ContactButton = (
-    <div>
-      <a href={role.contactUrl} className="btn-primary block text-center">
-        Mám zájem
-      </a>
-    </div>
-  );
   return (
-    <Sidebar
-      primaryCTA={ContactButton}
-      sections={[
-        {
-          label: "Projekt",
-          content: <ProjectImageLabel project={project} />,
-        },
-        {
-          label: "Časová náročnost",
-          content: role.timeRequirements,
-        },
-        {
-          label: "Kontaktní osoba",
-          content: <LegacyUserImageLabel user={owner} />,
-        },
-      ]}
-    />
+    <Sidebar>
+      <SidebarSection title="Projekt">
+        <ProjectImageLabel project={project} />
+      </SidebarSection>
+      <SidebarSection title="Časová náročnost">
+        {role.timeRequirements}
+      </SidebarSection>
+      <SidebarSection title="Kontaktní osoba">
+        <LegacyUserImageLabel user={owner} />
+      </SidebarSection>
+      <SidebarCTA href={role.contactUrl} label="Mám zájem" />
+    </Sidebar>
   );
 };
 
