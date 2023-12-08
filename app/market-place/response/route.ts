@@ -6,7 +6,13 @@ import { decodeBlockActionCallback } from "~/src/slack/interactions";
 const { SLACK_BAZAAR_BOT_TOKEN = "", SLACK_BAZAAR_CALLBACK_SECRET = "" } =
   process.env;
 
-/** Handle Slack notifications about market-place responses */
+/**
+ * Handle Slack notifications about market-place responses
+ *
+ * The response format is a bit bizzare – the response body contains
+ * form data with a single key, `payload`, that contains a JSON string
+ * of the actual JSON response.
+ */
 export async function POST(request: NextRequest): Promise<Response> {
   try {
     const formData = await request.formData();
