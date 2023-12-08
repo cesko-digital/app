@@ -16,6 +16,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     payload: decodeJSONString(decodeBlockActionCallback),
   });
   try {
+    console.log(await request.text());
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const wrappedResponse = decodeCallbackEnvelope(await request.json());
     if (wrappedResponse.payload.token !== SLACK_BAZAAR_CALLBACK_SECRET) {
@@ -28,7 +29,6 @@ export async function POST(request: NextRequest): Promise<Response> {
     return new Response("Acknowledged!", { status: 200 });
   } catch (e) {
     console.error(e);
-    console.log(await request.text());
     return new Response("Sorry :(", { status: 500 });
   }
 }
