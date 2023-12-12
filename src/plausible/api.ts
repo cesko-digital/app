@@ -62,7 +62,9 @@ async function fetchQuery<T>(query: Query, decoder: DecoderFunction<T>) {
   })
     .then((response) => response.json())
     .then(decodeWrapper(decoder))
-    .then((wrapper) => wrapper.results);
+    // The strange cast is here due to a bug in the decoding library:
+    // https://github.com/tskj/typescript-json-decoder/issues/22
+    .then((wrapper) => (wrapper as unknown as { results: T }).results);
 }
 
 export async function getPageBreakdown(period = "30d") {

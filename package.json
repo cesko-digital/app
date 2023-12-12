@@ -27,7 +27,7 @@
     "react-select": "^5.8.0",
     "slack": "^11.0.2",
     "slack-markdown": "^0.3.0",
-    "typescript-json-decoder": "^1.0.6"
+    "typescript-json-decoder": "^1.0.11"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",

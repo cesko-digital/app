@@ -7,7 +7,7 @@ import {
   decodeEndpointHandshake,
   decodeEventCallback,
 } from "~/src/slack/events";
-import { decodeMessageEvent } from "~/src/slack/message";
+import { decodeMessageEvent, type MessageEvent } from "~/src/slack/message";
 
 const { SLACK_SYNC_TOKEN = "" } = process.env;
 
@@ -27,7 +27,12 @@ export async function POST(request: NextRequest): Promise<Response> {
         return new Response(msg.challenge, { status: 200 });
       // This is a new message notification.
       case "event_callback":
-        await receiveSlackMessage(SLACK_SYNC_TOKEN, msg.event);
+        await receiveSlackMessage(
+          SLACK_SYNC_TOKEN,
+          // The strange cast is here due to a bug in the decoding library:
+          // https://github.com/tskj/typescript-json-decoder/issues/22
+          msg.event as unknown as MessageEvent,
+        );
         return new Response(null, { status: 204 });
     }
   } catch (e) {

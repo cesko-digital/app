@@ -8,7 +8,6 @@ import {
   string,
   union,
   type decodeType,
-  type Pojo,
 } from "typescript-json-decoder";
 
 import {
@@ -52,7 +51,7 @@ export const subscriptionStates = [
 export type SubscriptionState = (typeof subscriptionStates)[number];
 
 /** Decode subscription state from the numeric code used in API responses */
-export function decodeSubscriptionStateCode(value: Pojo): SubscriptionState {
+export function decodeSubscriptionStateCode(value: unknown): SubscriptionState {
   const num = number(value);
   const state = subscriptionStates[num - 1];
   if (!state) {
