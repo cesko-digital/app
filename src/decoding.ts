@@ -8,19 +8,18 @@ import {
   type Decoder,
   type DecoderFunction,
   type decodeType,
-  type Pojo,
 } from "typescript-json-decoder";
 
 import { type MarkdownString } from "~/src/utils";
 
 /** Decode a string, returning it as a `MarkdownString` */
-export const markdown = (value: Pojo): MarkdownString => ({
+export const markdown = (value: unknown): MarkdownString => ({
   source: string(value),
 });
 
 /** Decode an array of items, returing the first item found, throw if array is empty */
 export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
-  return (value: Pojo) => {
+  return (value: unknown) => {
     const array = decoder(value);
     if (array.length == 0) {
       throw "Can’t take first item from an empty array";
@@ -31,7 +30,7 @@ export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
 
 /** Decode `undefined` and `null` as an empty array */
 export const optionalArray = <T>(itemDecoder: DecoderFunction<T>) => {
-  return (value: Pojo) => {
+  return (value: unknown) => {
     const decoder = union(undef, nil, array(itemDecoder));
     const decoded = decoder(value);
     return decoded ?? [];
@@ -43,7 +42,7 @@ export const withDefault = <T>(
   decoder: DecoderFunction<T>,
   defaultValue: T,
 ) => {
-  return (value: Pojo) => {
+  return (value: unknown) => {
     try {
       return decoder(value);
     } catch (_) {
@@ -54,7 +53,7 @@ export const withDefault = <T>(
 
 export const decodeJSONString =
   <T>(decoder: DecoderFunction<T>) =>
-  (value: Pojo) =>
+  (value: unknown) =>
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     decoder(JSON.parse(string(value)));
 
@@ -63,7 +62,7 @@ export const decodeJSONString =
  *
  * Throws if the string is not a valid URL.
  */
-export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
+export const decodeUrl = (value: unknown) => new URL(string(value)).toString();
 
 /**
  * Parse an Airtable relation from the current table to one record in another table
@@ -75,7 +74,7 @@ export const decodeUrl = (value: Pojo) => new URL(string(value)).toString();
  * As an additional evil plot twist, in a synced table the value is _not_ an array,
  * but a single string. Go figure.
  */
-export const relationToZeroOrOne = (value: Pojo) => {
+export const relationToZeroOrOne = (value: unknown) => {
   if (!value) {
     return undefined;
   } else if (Array.isArray(value) && value.length === 0) {
@@ -106,13 +105,13 @@ export const relationToZeroOrMany = optionalArray(string);
 /** Extract a dict, returning only its values */
 export const decodeDictValues =
   <T>(decodeItem: DecoderFunction<T>) =>
-  (value: Pojo) => [...dict(decodeItem)(value).values()];
+  (value: unknown) => [...dict(decodeItem)(value).values()];
 
 /** Decode an object with given entries */
 export function decodeObject<D extends Decoder<unknown>>(
   decoder: D,
 ): DecoderFunction<Record<string, decodeType<D>>> {
-  return (value: Pojo) => Object.fromEntries(dict(decoder)(value));
+  return (value: unknown) => Object.fromEntries(dict(decoder)(value));
 }
 
 /**
@@ -122,7 +121,7 @@ export function decodeObject<D extends Decoder<unknown>>(
  * other skills, so we only allow it when it’s the only skill specified. More here:
  * https://cesko-digital.slack.com/archives/CHG9NA23D/p1649168585006699
  */
-export const decodeSkills = (value: Pojo) => {
+export const decodeSkills = (value: unknown) => {
   const skills = array(string)(value);
   if (skills.length > 1) {
     return skills.filter((skill) => skill !== "Other");

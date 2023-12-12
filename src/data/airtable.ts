@@ -5,7 +5,6 @@ import Airtable, {
   type Records,
   type Table,
 } from "airtable";
-import { type Pojo } from "typescript-json-decoder";
 
 import { splitToChunks } from "~/src/utils";
 
@@ -75,7 +74,7 @@ function splitFields<TFields extends FieldSet>(
 
 /** Unwrap the raw fields object from an Airtable `Record` type */
 export const unwrapRecord = <Schema extends FieldSet>(record: Record<Schema>) =>
-  record.fields as Pojo;
+  record.fields as unknown;
 
 /** Unwrap the raw fields objects from an Airtable `Records` type */
 export const unwrapRecords = <Schema extends FieldSet>(

@@ -11,7 +11,6 @@ import {
   union,
   type DecoderFunction,
   type decodeType,
-  type Pojo,
 } from "typescript-json-decoder";
 
 import {
@@ -229,7 +228,7 @@ function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
       /* silence logs */
     }),
   );
-  return (value: Pojo) => {
+  return (value: unknown) => {
     const decoded = decoder(value);
     return decoded ?? [];
   };
