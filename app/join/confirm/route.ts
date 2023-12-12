@@ -26,10 +26,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   try {
     // We need to get the raw body here to calculate the checksum
     const rawBody = await request.text();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const body = JSON.parse(rawBody);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const msg = decodeIncomingMessage(body);
+    const msg = decodeIncomingMessage(JSON.parse(rawBody));
     switch (msg.type) {
       // This is just Slack making sure we own the endpoint
       case "url_verification":

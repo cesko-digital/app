@@ -20,7 +20,6 @@ export async function POST(request: NextRequest): Promise<Response> {
     if (!payload || typeof payload !== "string") {
       return new Response("Payload missing or invalid", { status: 400 });
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const wrappedResponse = decodeBlockActionCallback(JSON.parse(payload));
     if (wrappedResponse.token !== SLACK_BAZAAR_CALLBACK_SECRET) {
       return new Response("Request token does not match.", { status: 400 });

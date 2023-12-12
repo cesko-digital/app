@@ -51,10 +51,10 @@ export const withDefault = <T>(
   };
 };
 
+/** Decode a JSON string into an object */
 export const decodeJSONString =
   <T>(decoder: DecoderFunction<T>) =>
   (value: unknown) =>
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     decoder(JSON.parse(string(value)));
 
 /**
@@ -152,7 +152,6 @@ export function decodeValidItemsFromArray<T>(
     const values: T[] = [];
     for (const item of value) {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         values.push(decodeItem(item));
       } catch (e) {
         log(

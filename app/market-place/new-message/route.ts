@@ -19,7 +19,6 @@ export async function POST(request: NextRequest): Promise<Response> {
     decodeEventCallback(decodeMessageEvent),
   );
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const msg = decodeIncomingMessage(await request.json());
     switch (msg.type) {
       // This is just Slack making sure we own the endpoint
