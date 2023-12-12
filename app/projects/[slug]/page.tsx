@@ -245,8 +245,10 @@ const ProjectSidebar = ({
   const LinkList = () => (
     <ul className="flex flex-col gap-4">
       {ordinaryLinks.map((link) => (
-        <li key={link.url} className="item-center flex flex-row gap-2">
-          <LinkIcon url={link.url} />
+        <li key={link.url} className="item-center flex flex-row gap-3">
+          <div className="w-[20px] shrink-0 grow-0 pt-1">
+            <LinkIcon url={link.url} />
+          </div>
           <Link href={link.url} className="underline">
             {link.name}
           </Link>
