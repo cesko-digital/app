@@ -133,7 +133,7 @@ async function Page({ params }: Props) {
                 >
                   <div className="p-7">
                     <h3 className="typo-title3 mb-3">{post.title}</h3>
-                    <p>{post.description}</p>
+                    <p className="line-clamp-4">{post.description}</p>
                   </div>
                 </Card>
               ))}
