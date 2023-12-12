@@ -26,7 +26,6 @@ export async function POST(request: NextRequest): Promise<Response> {
     profileUrl: optional(string),
   });
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const payload = decodeRequest(await request.json());
     const email = normalizeEmailAddress(payload.email);
     const previousProfile = await getUserProfileByMail(email).catch(() => null);

@@ -9,7 +9,6 @@ export async function POST(request: NextRequest): Promise<Response> {
     email: string,
   });
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const { email } = decodeRequest(await request.json());
     const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
       email: email,

@@ -113,8 +113,7 @@ export async function insertNewMarketPlaceOffer(
     // reports a “wrong” ID from the original, synced User Profiles table.
     // So we need to extract the correct ID here.
     .then((records) => ({ ...records[0].fields, id: records[0].id }))
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-    .then((x) => decodeUserProfile(x as any));
+    .then((x) => decodeUserProfile(x));
 
   // Then insert the new offer
   return await marketPlaceTable
