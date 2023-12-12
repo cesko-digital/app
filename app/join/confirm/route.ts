@@ -62,7 +62,7 @@ export async function POST(request: NextRequest): Promise<Response> {
           case "ok":
             await confirmUserAccount(msg.event.user.id);
             await sendWelcomeMessage(msg.event.user.id);
-            return new Response("Account confirmed", { status: 204 });
+            return new Response(null, { status: 204 });
         }
     }
   } catch (e) {
