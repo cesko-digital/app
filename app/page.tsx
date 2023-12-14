@@ -198,11 +198,9 @@ const DiscussionSummaryBox = ({
     .slice(0, 6);
 
   const userForId = (id: number) => users.find((u) => u.id === id)!;
-
-  const avatarForTopic = (topic: Topic) => {
-    const authorUserId = topic.posters[0]!.user_id;
-    return getUserAvatar(userForId(authorUserId), 200);
-  };
+  const avatarForUser = (user: { user_id: number }) =>
+    getUserAvatar(userForId(user.user_id), 200);
+  const avatarUrlsForTopic = (topic: Topic) => topic.posters.map(avatarForUser);
 
   return (
     <div className="mb-20 grid gap-7 md:grid-cols-3">
@@ -210,8 +208,7 @@ const DiscussionSummaryBox = ({
         <DiscussionBubble
           key={topic.id}
           topic={topic}
-          authorName={userForId(topic.posters[0]!.user_id).name}
-          avatarUrl={avatarForTopic(topic)}
+          avatarUrls={avatarUrlsForTopic(topic)}
         />
       ))}
     </div>
@@ -220,12 +217,10 @@ const DiscussionSummaryBox = ({
 
 const DiscussionBubble = ({
   topic,
-  authorName,
-  avatarUrl,
+  avatarUrls,
 }: {
   topic: Topic;
-  authorName: string;
-  avatarUrl: string;
+  avatarUrls: string[];
 }) => {
   const ArrowShape = () => (
     <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
@@ -236,15 +231,17 @@ const DiscussionBubble = ({
         {topic.title}
       </div>
       <ArrowShape />
-      <div className="mb-1 ml-1 flex flex-row items-center gap-2">
-        <Image
-          src={avatarUrl}
-          className="rounded-full"
-          width={25}
-          height={25}
-          alt=""
-        />
-        <span className="typo-caption">{authorName}</span>
+      <div className="mb-1 ml-1 flex flex-row items-center gap-1">
+        {avatarUrls.map((url) => (
+          <Image
+            key={url}
+            src={url}
+            className="rounded-full"
+            width={25}
+            height={25}
+            alt=""
+          />
+        ))}
       </div>
     </Link>
   );
