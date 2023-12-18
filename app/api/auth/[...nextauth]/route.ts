@@ -1,20 +1,8 @@
 import NextAuth from "next-auth";
-import SlackProvider from "next-auth/providers/slack";
+
+import { authOptions } from "~/src/utils";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-const handler = NextAuth({
-  providers: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    SlackProvider({
-      clientId: process.env.SLACK_CLIENT_ID!,
-      clientSecret: process.env.SLACK_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          team: "TG21XF887",
-        },
-      },
-    }),
-  ],
-});
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

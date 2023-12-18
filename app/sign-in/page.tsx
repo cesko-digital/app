@@ -7,9 +7,9 @@ import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
 
 const Page = () => {
-  const handleClick = async () => {
+  const handleSignIn = async () => {
     trackCustomEvent("SignIn");
-    await signIn("slack");
+    await signIn("slack", { callbackUrl: "/" });
   };
 
   return (
@@ -26,7 +26,7 @@ const Page = () => {
           Slacku?
         </p>
         <div>
-          <a onClick={handleClick} className="btn-primary">
+          <a onClick={handleSignIn} className="btn-primary">
             Jsem, chci se přihlásit
           </a>
         </div>

@@ -1,5 +1,8 @@
 import crypto from "crypto";
 
+import { type NextAuthOptions } from "next-auth";
+import SlackProvider from "next-auth/providers/slack";
+
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;
@@ -108,3 +111,19 @@ aliquip ex ea commodo consequat. Duis aute irure dolor in
 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.`;
+
+/** NextAuth options used to configure various parts of the authentication machinery */
+export const authOptions: NextAuthOptions = {
+  providers: [
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    SlackProvider({
+      clientId: process.env.SLACK_CLIENT_ID!,
+      clientSecret: process.env.SLACK_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          team: "TG21XF887",
+        },
+      },
+    }),
+  ],
+};

@@ -5,7 +5,10 @@ import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Route } from "~/src/routing";
+import { getServerSession } from "next-auth";
+
+import { SessionToolbar } from "~/app/SessionToolbar";
+import { authOptions } from "~/src/utils";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://app.cesko.digital"),
@@ -16,11 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="cs">
       <head>
@@ -43,12 +47,7 @@ export default function RootLayout({
               alt="Česko.Digital"
             />
           </Link>
-          <div className="ml-auto flex flex-row gap-4">
-            <span className="typo-link cursor-not-allowed">Přihlásit se</span>
-            <a className="typo-link" href={Route.register}>
-              Registrovat
-            </a>
-          </div>
+          <SessionToolbar session={session} />
         </div>
         {children}
       </body>
