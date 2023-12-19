@@ -34,14 +34,16 @@ const SignedInButtons = ({ session }: { session: Session }) => {
       >
         Odhlásit
       </a>
-      <Image
-        className="rounded-full bg-gray shadow"
-        src={avatarImage}
-        alt={session.user?.name ?? "Uživatelský profil"}
-        title={avatarTitle}
-        width={40}
-        height={40}
-      />
+      <Link href={Route.userProfile}>
+        <Image
+          className="rounded-full bg-gray shadow"
+          src={avatarImage}
+          alt={session.user?.name ?? "Uživatelský profil"}
+          title={avatarTitle}
+          width={40}
+          height={40}
+        />
+      </Link>
     </Fragment>
   );
 };
