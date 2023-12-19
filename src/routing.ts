@@ -17,6 +17,7 @@ export const Route = {
   marketplace: "/market-place",
   register: "/join",
   signIn: "/sign-in",
+  userProfile: "/profile",
   // More static routes
   eventFeed: "/events/feed.ical",
   // Dynamic routes
