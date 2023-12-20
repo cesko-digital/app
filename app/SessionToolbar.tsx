@@ -5,15 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { type Session } from "next-auth";
-import { signOut } from "next-auth/react";
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 
 import { Route } from "~/src/routing";
 
-export const SessionToolbar = ({ session }: { session: Session | null }) => {
+export default function AuthContext({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <SessionProvider>{children}</SessionProvider>;
+}
+
+export const SessionToolbar = () => {
+  const { data: session, status } = useSession();
   return (
     <div className="ml-auto flex flex-row items-center gap-4">
-      {session?.user && <SignedInButtons session={session} />}
-      {!session && <SignedOutButtons />}
+      {/* status === "loading" is intentionally ignored, we just leave the place empty */}
+      {status === "authenticated" && <SignedInButtons session={session} />}
+      {status === "unauthenticated" && <SignedOutButtons />}
     </div>
   );
 };
