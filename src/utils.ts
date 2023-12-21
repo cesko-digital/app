@@ -1,6 +1,9 @@
 import crypto from "crypto";
 
+import { type NextRequest } from "next/server";
+
 import { type NextAuthOptions } from "next-auth";
+import { getToken, type JWT } from "next-auth/jwt";
 import SlackProvider from "next-auth/providers/slack";
 
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
@@ -149,3 +152,16 @@ export const postJSON =
         throw "POST failed";
       }
     });
+
+/** Check for JWT token in request, return 401 Unauthorized if missing */
+export async function withAuthenticatedUser(
+  request: NextRequest,
+  action: (token: JWT, slackId: string) => Promise<Response>,
+): Promise<Response> {
+  const token = await getToken({ req: request });
+  if (!token?.sub) {
+    return new Response("Authentication required", { status: 401 });
+  } else {
+    return await action(token, token.sub);
+  }
+}

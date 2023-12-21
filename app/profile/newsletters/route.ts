@@ -1,12 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getToken, type JWT } from "next-auth/jwt";
-
 import {
   decodeNewsletterPreferences,
   getNewsletterPreferences,
   setNewsletterPreferences,
 } from "~/src/ecomail";
+import { withAuthenticatedUser } from "~/src/utils";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 
@@ -29,16 +28,4 @@ export async function POST(request: NextRequest) {
           status: 500,
         });
   });
-}
-
-async function withAuthenticatedUser(
-  request: NextRequest,
-  action: (token: JWT) => Promise<Response>,
-): Promise<Response> {
-  const token = await getToken({ req: request });
-  if (!token?.sub) {
-    return new Response("Authentication required", { status: 401 });
-  } else {
-    return await action(token);
-  }
 }

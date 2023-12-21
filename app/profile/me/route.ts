@@ -1,6 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getToken } from "next-auth/jwt";
 import { optional, record, string } from "typescript-json-decoder";
 
 import { getSlackUserBySlackId } from "~/src/data/slack-user";
@@ -10,7 +9,7 @@ import {
   getUserProfileByMail,
   updateUserProfile,
 } from "~/src/data/user-profile";
-import { normalizeEmailAddress } from "~/src/utils";
+import { normalizeEmailAddress, withAuthenticatedUser } from "~/src/utils";
 
 /** Create new user profile (called by the onboarding form) */
 export async function POST(request: NextRequest): Promise<Response> {
@@ -51,7 +50,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 
 /** Get user profile, used for stuff like displaying user preferences */
 export async function GET(request: NextRequest) {
-  return withAuthenticatedUser(request, async (slackId) => {
+  return withAuthenticatedUser(request, async (_, slackId) => {
     let profile = await getUserProfile(slackId).catch(() => null);
     if (!profile) {
       // The profile doesn’t exist yet, let’s create it now
@@ -77,7 +76,7 @@ export async function GET(request: NextRequest) {
 
 /** Change user profile, used for stuff like updating user preferences */
 export async function PATCH(request: NextRequest) {
-  return withAuthenticatedUser(request, async (slackId) => {
+  return withAuthenticatedUser(request, async (_, slackId) => {
     const profile = await getUserProfile(slackId).catch(() => null);
     if (!profile) {
       return new Response("User profile not found.", { status: 404 });
@@ -95,16 +94,4 @@ export async function PATCH(request: NextRequest) {
     /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     return new Response("Updated", { status: 200 });
   });
-}
-
-async function withAuthenticatedUser(
-  request: NextRequest,
-  action: (slackId: string) => Promise<Response>,
-): Promise<Response> {
-  const token = await getToken({ req: request });
-  if (!token?.sub) {
-    return new Response("Authentication required", { status: 401 });
-  } else {
-    return await action(token.sub);
-  }
 }
