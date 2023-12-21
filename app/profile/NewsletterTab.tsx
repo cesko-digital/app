@@ -36,7 +36,7 @@ export const NewsletterTab = ({ userMail }: Props) => {
   };
 
   return (
-    <Fragment>
+    <div className="flex flex-col gap-4">
       <Section>
         <p className="mb-4">
           K odběru našich newsletterů je třeba odsouhlasit{" "}
@@ -104,7 +104,7 @@ export const NewsletterTab = ({ userMail }: Props) => {
         </div>
         <HelpInfo userMail={userMail} />
       </Section>
-    </Fragment>
+    </div>
   );
 };
 

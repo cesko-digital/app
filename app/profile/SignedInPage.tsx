@@ -2,9 +2,11 @@
 
 import { type Session } from "next-auth";
 
-import { NewsletterTab } from "~/app/profile/NewsletterTab";
-import { SkillsTab } from "~/app/profile/SkillsTab";
 import { SimpleTabBar } from "~/components/TabBar";
+
+import { NewsletterTab } from "./NewsletterTab";
+import { NotificationsTab } from "./NotificationsTab";
+import { SkillsTab } from "./SkillsTab";
 
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
@@ -16,7 +18,10 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       title: "Newslettery",
       content: <NewsletterTab userMail={session.user!.email!} />,
     },
-    { title: "Upozornění", content: <section>TBD: Upozornění</section> },
+    {
+      title: "Notifikace",
+      content: <NotificationsTab userEmail={session.user!.email!} />,
+    },
     { title: "Mapa komunity", content: <section>TBD: Mapa komunity</section> },
   ];
   return (
