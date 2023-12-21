@@ -9,6 +9,7 @@ import { SkillPicker } from "~/components/SkillPicker";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
 import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
+import skillMenu from "~/src/skills/skills.json";
 import { ContentType } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";
@@ -18,7 +19,6 @@ import {
   type FormState,
   type RegistrationData,
 } from "./form-state";
-import skillMenu from "./skills.json";
 
 const Page = () => {
   const [state, setState] = useState(emptyFormState);
