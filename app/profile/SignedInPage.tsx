@@ -22,7 +22,10 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       title: "Notifikace",
       content: <NotificationsTab userEmail={session.user!.email!} />,
     },
-    { title: "Mapa komunity", content: <section>TBD: Mapa komunity</section> },
+    {
+      title: "Mapa komunity",
+      content: <section>(Tohle ještě chybí, doděláme co nejdřív.)</section>,
+    },
   ];
   return (
     <section>
