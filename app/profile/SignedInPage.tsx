@@ -3,11 +3,15 @@
 import { type Session } from "next-auth";
 
 import { NewsletterTab } from "~/app/profile/NewsletterTab";
+import { SkillsTab } from "~/app/profile/SkillsTab";
 import { SimpleTabBar } from "~/components/TabBar";
 
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
-    { title: "Dovednosti", content: <section>TBD: Dovednosti</section> },
+    {
+      title: "Dovednosti",
+      content: <SkillsTab />,
+    },
     {
       title: "Newslettery",
       content: <NewsletterTab userMail={session.user!.email!} />,

@@ -8,7 +8,7 @@ import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { SkillPicker } from "~/components/SkillPicker";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
-import { encodeSkillSelection, type SkillMenu } from "~/src/skills";
+import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
 import { ContentType } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";

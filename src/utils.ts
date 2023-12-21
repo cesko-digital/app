@@ -51,6 +51,12 @@ export function map<T, U>(
   return val ? f(val) : undefined;
 }
 
+/** Return object subset with given keys */
+export const subset = <T extends object>(obj: T, keys: (keyof T)[]) =>
+  Object.fromEntries(
+    keys.filter((key) => key in obj).map((key) => [key, obj[key]]),
+  );
+
 /** Simple e-mail normalization – convert to lowercase, remove whitespace */
 export function normalizeEmailAddress(email: string): string {
   return (
@@ -132,26 +138,47 @@ export const authOptions: NextAuthOptions = {
 };
 
 /** Helper to GET and decode a JSON endpoint, throws on errors */
-export const getJSON =
-  <T>(url: string, decoder: (_: unknown) => T) =>
-  () =>
+export function getJSON<T>(
+  url: string,
+  decoder: (_: unknown) => T = (payload) => payload as T,
+) {
+  return async () =>
     fetch(url)
       .then((response) => response.json())
       .then((json) => decoder(json));
+}
 
 /** Helper to POST a JSON payload to an endpoint, throws on errors */
-export const postJSON =
-  <T>(url: string) =>
-  (val: T) =>
-    fetch(url, {
+export function postJSON<T>(url: string) {
+  return async (val: T) => {
+    const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(val, null, 2),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => {
-      if (!response.ok) {
-        throw "POST failed";
-      }
     });
+    if (!response.ok) {
+      throw "POST failed";
+    }
+  };
+}
+
+/** Helper to PATCH a JSON payload to an endpoint, throws on errors */
+export function patchJSON<T>(
+  url: string,
+  writeKeys: (keyof T)[] | undefined = undefined,
+) {
+  return async (val: Partial<T>) => {
+    const payload = writeKeys ? subset(val, writeKeys) : val;
+    const response = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(payload, null, 2),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!response.ok) {
+      throw "PATCH failed";
+    }
+  };
+}
 
 /** Check for JWT token in request, return 401 Unauthorized if missing */
 export async function withAuthenticatedUser(

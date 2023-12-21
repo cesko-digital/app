@@ -2,6 +2,7 @@ import {
   hashDigest,
   looksLikeEmailAdress,
   normalizeEmailAddress,
+  subset,
 } from "./utils";
 
 test("E-mail address normalization", () => {
@@ -24,4 +25,8 @@ test("E-mail validation", () => {
 
 test("Hash digest", () => {
   expect(hashDigest(["foo", "bar"], "baz")).toBe("f9f98a9044");
+});
+
+test("Subset object", () => {
+  expect(subset({ foo: 1, bar: 2 }, ["foo"])).toEqual({ foo: 1 });
 });

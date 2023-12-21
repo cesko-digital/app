@@ -4,7 +4,7 @@ import {
   type SkillMenu,
   type SkillSelection,
   type SubSkillSelection,
-} from "~/src/skills";
+} from "~/src/skills/skills";
 
 /** Skill selection tree widget */
 export type SkillPickerProps = {

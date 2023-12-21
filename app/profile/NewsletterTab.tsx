@@ -21,10 +21,10 @@ const groupDescriptions: Record<MainPreferenceGroupOption, string> = {
 type Props = { userMail: string };
 
 export const NewsletterTab = ({ userMail }: Props) => {
-  const { model, setModel, updating } = useJSONResource(
-    "/profile/newsletters",
-    decodeNewsletterPreferences,
-  );
+  const { model, setModel, updating } = useJSONResource({
+    url: "/profile/newsletters",
+    decoder: decodeNewsletterPreferences,
+  });
 
   const disablePolicyControls = updating;
   const disableGroupControls = updating || !model?.subscribe;

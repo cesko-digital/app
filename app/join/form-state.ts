@@ -1,4 +1,4 @@
-import { type SkillSelection } from "~/src/skills";
+import { type SkillSelection } from "~/src/skills/skills";
 import { looksLikeEmailAdress } from "~/src/utils";
 
 export type SubmissionState =
