@@ -127,3 +127,25 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 };
+
+/** Helper to GET and decode a JSON endpoint, throws on errors */
+export const getJSON =
+  <T>(url: string, decoder: (_: unknown) => T) =>
+  () =>
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => decoder(json));
+
+/** Helper to POST a JSON payload to an endpoint, throws on errors */
+export const postJSON =
+  <T>(url: string) =>
+  (val: T) =>
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(val, null, 2),
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => {
+      if (!response.ok) {
+        throw "POST failed";
+      }
+    });
