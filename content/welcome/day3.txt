@@ -1,4 +1,4 @@
-Ahoj! 👋 Dnes se více podíváme na *<https://cesko-digital.atlassian.net/l/cp/HPq3MdMi|roli expertního dobrovolníka>*. Představíme ti, co od tebe coby expertního dobrovolníka očekáváme a co ti na oplátku nabízíme my.
+Ahoj! 👋 Dnes se více podíváme na *<https://cesko-digital.atlassian.net/l/cp/HPq3MdMi|roli expertního dobrovolníka>*. Představíme ti, co od expertního dobrovolníka očekáváme, a pokud je to role, ve které se k nám chceš přidat, pak i to, co na oplátku nabízíme my.
 
 —
 
@@ -20,6 +20,8 @@ Jako dobrovolník chceš poskytnout svůj volný čas, energii a své know-how v
 • *Přistupuj* k úkolům, ke kterým jsi se přihlásil/la *zodpovědně*.
 • Budeme rádi, když *budeš sdílet své úspěchy a pokroky do komunity* (klidně i mimo komunitu), stejně jako konstruktivní kritiku, která posune celý tým dál.
 • *Když nemáš čas, tak to dej svému týmu vědět.*
+
+Jednou z možností, jak se aktivně zapojit, je naše *diskusní fórum <https://diskutuj.digital/|Diskutuj.Digital>.* Můžeš na něm spolu s námi otevírat různá zajímavá témata týkající se digitálních technologií.
 
 Ceníme si jakéhokoliv zapojení, nemusí jít vždy jen o využití tvé expertízy. V komunitě může najít uplatnění každý, kdo je ochoten přiložit ruku ke společnému dílu třebas i tím, že provede průzkum na internetu nebo upraví tabulku apod.
 
