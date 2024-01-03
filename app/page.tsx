@@ -80,16 +80,21 @@ export default async function Home() {
         />
       </section>
 
-      <section>
-        <h2 className="typo-title2 mb-1">Market-place</h2>
-        <h3 className="typo-subtitle mb-7">
-          Zapojte se krátce v projektech mimo Česko.Digital
-        </h3>
-        <div className="mb-7 grid gap-7 md:grid-cols-3">
-          {marketPlaceOffers.map(MarketPlaceOfferRow)}
-        </div>
-        <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
-      </section>
+      {marketPlaceOffers.length > 0 && (
+        <section>
+          <h2 className="typo-title2 mb-1">Market-place</h2>
+          <h3 className="typo-subtitle mb-7">
+            Zapojte se krátce v projektech mimo Česko.Digital
+          </h3>
+          <div className="mb-7 grid gap-7 md:grid-cols-3">
+            {marketPlaceOffers.map(MarketPlaceOfferRow)}
+          </div>
+          <MoreButton
+            text="Zobrazit všechny poptávky"
+            url={Route.marketplace}
+          />
+        </section>
+      )}
 
       <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
