@@ -2,6 +2,7 @@
 
 import { type Session } from "next-auth";
 
+import { MapTab } from "~/app/profile/MapTab";
 import { SimpleTabBar } from "~/components/TabBar";
 
 import { NewsletterTab } from "./NewsletterTab";
@@ -24,7 +25,7 @@ export const SignedInPage = ({ session }: { session: Session }) => {
     },
     {
       title: "Mapa komunity",
-      content: <section>(Tohle ještě chybí, doděláme co nejdřív.)</section>,
+      content: <MapTab />,
     },
   ];
   return (
