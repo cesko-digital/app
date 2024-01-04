@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: `${SITE_URL}/api/klara?answer=J%C3%A1%20bych%20v%C5%A1echny%20ty%20Scholle%C3%A1tory%20zak%C3%A1zala.`,
+        url: `${SITE_URL}/api/memes/klara?answer=J%C3%A1%20bych%20v%C5%A1echny%20ty%20Scholle%C3%A1tory%20zak%C3%A1zala.`,
         width: 1675,
         height: 900,
         alt: "Klara",

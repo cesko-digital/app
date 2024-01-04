@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: `${SITE_URL}/api/yen?answer=J%C3%A1%20bych%20v%C5%A1echny%20ty%20meme%20gener%C3%A1tory%20zak%C3%A1zal.`,
+        url: `${SITE_URL}/api/memes/yen?answer=J%C3%A1%20bych%20v%C5%A1echny%20ty%20meme%20gener%C3%A1tory%20zak%C3%A1zal.`,
         width: 1675,
         height: 900,
         alt: "Yen",
