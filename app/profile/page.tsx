@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
-import { authOptions } from "~/src/utils";
+import { authOptions } from "~/src/auth";
 
 import { SignedInPage } from "./SignedInPage";
 import { SignedOutPage } from "./SignedOutPage";

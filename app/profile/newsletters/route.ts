@@ -1,11 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import { withAuthenticatedUser } from "~/src/auth";
 import {
   decodeNewsletterPreferences,
   getNewsletterPreferences,
   setNewsletterPreferences,
 } from "~/src/ecomail";
-import { withAuthenticatedUser } from "~/src/utils";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 

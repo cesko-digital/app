@@ -1,11 +1,5 @@
 import crypto from "crypto";
 
-import { type NextRequest } from "next/server";
-
-import { type NextAuthOptions } from "next-auth";
-import { getToken, type JWT } from "next-auth/jwt";
-import SlackProvider from "next-auth/providers/slack";
-
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;
@@ -121,22 +115,6 @@ reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
 pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.`;
 
-/** NextAuth options used to configure various parts of the authentication machinery */
-export const authOptions: NextAuthOptions = {
-  providers: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    SlackProvider({
-      clientId: process.env.SLACK_CLIENT_ID!,
-      clientSecret: process.env.SLACK_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          team: "TG21XF887",
-        },
-      },
-    }),
-  ],
-};
-
 /** Helper to GET and decode a JSON endpoint, throws on errors */
 export function getJSON<T>(
   url: string,
@@ -180,15 +158,5 @@ export function patchJSON<T>(
   };
 }
 
-/** Check for JWT token in request, return 401 Unauthorized if missing */
-export async function withAuthenticatedUser(
-  request: NextRequest,
-  action: (token: JWT, slackId: string) => Promise<Response>,
-): Promise<Response> {
-  const token = await getToken({ req: request });
-  if (!token?.sub) {
-    return new Response("Authentication required", { status: 401 });
-  } else {
-    return await action(token, token.sub);
-  }
-}
+/** Is the app running in development mode? */
+export const devMode = () => process.env.NODE_ENV === "development";

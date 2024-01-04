@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { optional, record, string } from "typescript-json-decoder";
 
+import { withAuthenticatedUser } from "~/src/auth";
 import { getSlackUserBySlackId } from "~/src/data/slack-user";
 import {
   createUserProfile,
@@ -9,7 +10,7 @@ import {
   getUserProfileByMail,
   updateUserProfile,
 } from "~/src/data/user-profile";
-import { normalizeEmailAddress, withAuthenticatedUser } from "~/src/utils";
+import { normalizeEmailAddress } from "~/src/utils";
 
 /** Create new user profile (called by the onboarding form) */
 export async function POST(request: NextRequest): Promise<Response> {
