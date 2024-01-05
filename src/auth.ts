@@ -4,6 +4,7 @@ import { type NextAuthOptions } from "next-auth";
 import { getToken, type JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import SlackProvider from "next-auth/providers/slack";
+import { signIn as originalSignIn, type SignInOptions } from "next-auth/react";
 
 import { devMode } from "~/src/utils";
 
@@ -53,3 +54,16 @@ export async function withAuthenticatedUser(
     return await action(token, token.sub);
   }
 }
+
+/**
+ * Sign-in using the preferred identity provider
+ *
+ * In production mode we only support Slack as the identity provider,
+ * so we skip the identity selection screen. In development mode we display
+ * the identity selection screen so that the user can go with the testing
+ * login provider.
+ */
+export const expressSignIn = (options?: SignInOptions) =>
+  devMode()
+    ? originalSignIn(undefined, options)
+    : originalSignIn("slack", options);
