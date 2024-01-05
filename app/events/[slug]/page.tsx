@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { QuickRegistrationButton } from "~/app/events/[slug]/QuickRegistrationButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { EventCard } from "~/components/EventCard";
 import {
@@ -135,6 +136,9 @@ const EventSidebar = ({
       )}
       <div className="flex flex-col gap-4">
         {event.registrationUrl && <RegistrationButton event={event} />}
+        {event.quickRegistrationMode && (
+          <QuickRegistrationButton event={event} />
+        )}
         <a
           className="btn-inverted block text-center"
           href={`${event.slug}/ical`}
