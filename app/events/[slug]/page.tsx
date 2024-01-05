@@ -2,6 +2,8 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { SessionProvider } from "next-auth/react";
+
 import { QuickRegistrationButton } from "~/app/events/[slug]/QuickRegistrationButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { EventCard } from "~/components/EventCard";

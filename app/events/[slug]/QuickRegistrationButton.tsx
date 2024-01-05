@@ -1,5 +1,7 @@
 "use client";
 
+import { SessionProvider, signIn, useSession } from "next-auth/react";
+
 import { useJSONResource } from "~/components/hooks/resource";
 import { type Event } from "~/src/data/event";
 
@@ -7,14 +9,24 @@ type RegistrationStatus = {
   registered: boolean;
 };
 
-export const QuickRegistrationButton = ({ event }: { event: Event }) => {
+const QuickRegistrationButton = ({ event }: { event: Event }) => {
+  const { status: sessionStatus } = useSession();
   const url = `/events/${event.slug}/registration-status`;
   const { model, setModel, updating } = useJSONResource<RegistrationStatus>({
     url,
   });
-  if (updating) {
+  if (updating || sessionStatus === "loading") {
+    // Loading session or updating state
     return <a className="btn-disabled block text-center">Moment…</a>;
+  } else if (sessionStatus === "unauthenticated") {
+    // Unauthenticated: Use button to sign-in first
+    return (
+      <a className="btn-primary block text-center" onClick={() => signIn()}>
+        Pro registraci se musíš přihlásit
+      </a>
+    );
   } else if (model?.registered) {
+    // Already registered: Offer to cancel
     return (
       <a
         className="btn-destructive block text-center"
@@ -24,6 +36,7 @@ export const QuickRegistrationButton = ({ event }: { event: Event }) => {
       </a>
     );
   } else {
+    // Not registered: Offer to register
     return (
       <a
         className="btn-primary block text-center"
@@ -34,3 +47,11 @@ export const QuickRegistrationButton = ({ event }: { event: Event }) => {
     );
   }
 };
+
+const SessionWrappedButton = ({ event }: { event: Event }) => (
+  <SessionProvider>
+    <QuickRegistrationButton event={event} />
+  </SessionProvider>
+);
+
+export { SessionWrappedButton as QuickRegistrationButton };
