@@ -30,6 +30,7 @@ Při lokálním vývoji patří do souboru `.env.local`, web i různé nástroje
 | PLAUSIBLE_API_KEY | API klíč pro službu Plausible, kterou používáme pro webovou analytiku | Používá se zejména pro statistické endpointy, které generují statistiky pro grafy v Datawrapperu
 | SENDGRID_API_KEY | API klíč pro Sendgrid (rozesílání mailů) | Používáme pro rozesílání notifikací na nové hledané role
 | SHASUM_SECRET | Náhodný klíč používaný interně pro autentizaci | Používáme například pro autentizaci odhlašovacích odkazů z notifikačních e-mailů
+| NEXT_PUBLIC_SITE_URL | URL webu, používá se pro generování odkazů | Pro SEO
 
 # Code Style, architektura, testy
 
