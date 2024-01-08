@@ -1,5 +1,8 @@
 # Hacking
 
+> [!TIP]
+> Pokud si tenhle soubor prohlížíte na GitHubu, někde kolem je tlačítko, které zobrazí osnovu dokumentu.
+
 ## Instalace
 
 Pokud chcete s webem něco dělat, je potřeba si zejména naklonovat repository a nainstalovat závislosti:
@@ -55,13 +58,11 @@ Pokud jde o testy, máme k dispozici následující hierarchii:
 
 Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat unit test namísto E2E testu, je to lepší. A pokud jde danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
 
-# „Specifikace“
-
-## Uživatelské účty
+# Uživatelské účty
 
 Základní data o uživatelích máme rozdělená do dvou propojených tabulek: Tabulka _User Profiles_ obsahuje data přímo spravovaná uživatelem (například seznam jeho kompetencí), tabulka _Slack Users_ obsahuje data získaná ze Slacku (například profilový obrázek).
 
-### Založení účtu
+## Založení účtu
 
 1. Uživatel vyplní onboardovací formulář na adrese join.cesko.digital, kde zadá základní údaje, zejména e-mail. Po odeslání uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. (TBD: Co když už daný e-mail v databázi je?)
 2. Po odeslání formuláře je uživatel přesměrován na onboarding Slacku, kde mimo jiné opět zadává mailovou adresu a Slack ji ověřuje.
@@ -91,7 +92,7 @@ sequenceDiagram
     Slack->>Uživatel: Greet Bot: 👋
 ```
 
-### E-maily
+## E-maily
 
 U každého uživatele vedeme v principu až tři e-mailové adresy:
 
@@ -119,13 +120,13 @@ Poznámky k využití jednotlivých adres:
 - Ověřený je pouze slackový mail, náš registrační mail ani kontaktní mail ze slackového profilu
   zatím neověřujeme.
   
-## Projekty
+# Projekty
 
 Projekty jsou základní stavební kámen, kolem kterého se všechno točí; většina práce v Česko.Digital se odehraje v rámci některého z projektů. Na webu je najdete na adrese https://app.cesko.digital/projects.
 
 V Airtable je klíčová tabulka [Projects](https://airtable.com/appkn1DkvgVI5jpME) v databázi Web. (Pokud nemáte přístup do Airtable, řekněte si.)
 
-### Popis projektů
+## Popis projektů
 
 V Airtable je ve sloupci `description`, které má zapnutou podporu formátování, viz [Using rich text with Airtable](https://support.airtable.com/docs/using-rich-text-with-airtable). V API se formátovaný text posílá ve formátu Markdown, viz [Using Markdown in Airtable](https://support.airtable.com/v1/docs/using-markdown-in-airtable).
 
@@ -143,14 +144,14 @@ Text pokračuje…
 
 Tady je použitý vlastní tag `callout`, který je pak možné například v Reactu zobrazit samostatnou komponentou. Tím získáváme možnost používat v popisu projektů pokročilejší prvky, aniž bychom museli používat HTML, které by bylo nepraktické na údržbu, nehledě na problematickou bezpečnost.
 
-#### Podporované tagy
+### Podporované tagy
 
 > [!NOTE]
 > Tohle se netýká pouze popisu projektů, ale i akcí, takže by to chtělo vytáhnout bokem.
 
 Seznam tagů, které můžete používat v popisu projektů nad rámec běžného Markdownu:
 
-##### Callout
+#### Callout
 
 Něco jako „zvýrazněný boxík“, když potřebujete přitáhnout pozornost k části textu. Nemá žádné atributy, používá se takhle:
 
@@ -166,7 +167,7 @@ Text pokračuje…
 
 Všimněte si, že v těle „boxíku“ můžete normálně použít další Markdown, nemusí to být jen prostý text.
 
-##### Image
+#### Image
 
 Obrázek. Oproti standardnímu tagu v Markdownu podporujeme optimalizaci obrázků (zdroj může být libovolně velký, web si ho sám zmenší podle potřeby klienta) a dalších pár drobností. Příklad:
 
@@ -178,7 +179,7 @@ Povinné atributy jsou `src`, `alt`, `width` a `height`; `src` je URL zdrojovéh
 
 Nepovinný je atribut `link`, do kterého můžete dát URL, na které se dá obrázkem prokliknout.
 
-#### Generované kotvy
+### Generované kotvy
 
 Každý nadpis v rámci popisu projektu dostane automaticky generovanou kotvu, na kterou se můžete `#odkazovat`. Například tento nadpis:
 
@@ -196,7 +197,7 @@ Každý nadpis v rámci popisu projektu dostane automaticky generovanou kotvu, n
 
 Správné URL, na které se dá odkazovat, můžete snadno zjistit najetím myší poslepu na konec nadpisu – objeví se znak `#`, který je odkazem na dotyčný nadpis.
 
-### Odkazy
+## Odkazy
 
 Každý projekt může mít hromádku relevantních odkazů například na web, do hlavního Slackového kanálu, na zdroják na GitHubu a podobně. Odkazy jsou uložené v tabulce [Project Links](https://airtable.com/appkn1DkvgVI5jpME/tblL8S0FHemH4XyeN/viwwojyHfjZfKW7Po?blocks=hide), mezi tabulkou Projects a tabulkou Project Links je vazba 1:M (projekt může mít libovolný počet odkazů).
 
