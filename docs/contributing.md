@@ -58,15 +58,15 @@ Pokud jde o testy, máme k dispozici následující hierarchii:
 
 Čím vyšší číslo v téhle hierarchii test má, tím déle trvá a je potenciálně křehčí (snáz se rozbije). Snažte se proto pohybovat co nejníže – pokud jde pro něco napsat unit test namísto E2E testu, je to lepší. A pokud jde danou invariantu vystihnout přímo v typovém systému, je to úplně nejlepší.
 
-# Uživatelské účty
+# Uživatelské účty a přihlašování
 
 Základní data o uživatelích máme rozdělená do dvou propojených tabulek: Tabulka _User Profiles_ obsahuje data přímo spravovaná uživatelem (například seznam jeho kompetencí), tabulka _Slack Users_ obsahuje data získaná ze Slacku (například profilový obrázek).
 
 ## Založení účtu
 
-1. Uživatel vyplní onboardovací formulář na adrese join.cesko.digital, kde zadá základní údaje, zejména e-mail. Po odeslání uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. (TBD: Co když už daný e-mail v databázi je?)
+1. Uživatel vyplní onboardovací formulář na adrese app.cesko.digital/join, kde zadá základní údaje, zejména e-mail. Po odeslání uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. (TBD: Co když už daný e-mail v databázi je?)
 2. Po odeslání formuláře je uživatel přesměrován na onboarding Slacku, kde mimo jiné opět zadává mailovou adresu a Slack ji ověřuje.
-3. Po úspěšném přihlášení do Slacku zavolá server Slacku automaticky náš API endpoint `/api/join/confirm` a předá ID nově přihlášeného uživatele. My uložíme do tabulky _Slack Users_ informaci o novém uživateli, podle jeho e-mailu najdeme odpovídající doposud nepotvrzený uživatelský profil v tabulce _User Profiles_, označíme jej za `confirmed` a provážeme ho s odpovídajícím řádkem tabulky _Slack Users_.
+3. Po úspěšném přihlášení do Slacku zavolá server Slacku automaticky náš API endpoint `/join/confirm` a předá ID nově přihlášeného uživatele. My uložíme do tabulky _Slack Users_ informaci o novém uživateli, podle jeho e-mailu najdeme odpovídající doposud nepotvrzený uživatelský profil v tabulce _User Profiles_, označíme jej za `confirmed` a provážeme ho s odpovídajícím řádkem tabulky _Slack Users_.
 
 ```mermaid
 sequenceDiagram
@@ -83,7 +83,7 @@ sequenceDiagram
     Uživatel->>Slack: Vyplněná registrace
     Slack->>Uživatel: Tady máš chat
     Slack->>+Backend: Máte nového uživatele Slacku
-    Note over Backend: /api/join/confirm
+    Note over Backend: /join/confirm
     Backend->>Airtable: Vytvoř nového uživatele Slacku
     Note over Airtable: Slack Users
     Backend->>Airtable: Potvrď uživatelský profil z bodu ➊
@@ -96,7 +96,7 @@ sequenceDiagram
 
 U každého uživatele vedeme v principu až tři e-mailové adresy:
 
-- _Registrační e-mail_ vyplní uživatel v onboardovacím formuláři (join.cesko.digital).
+- _Registrační e-mail_ vyplní uživatel v onboardovacím formuláři (app.cesko.digital/join).
   V databázi jde o pole `email` v tabulce `User Profiles`.
 - Následně uživatel během onboardingu do Slacku vyplní druhý e-mail, říkejme mu třeba
   _slackový_. V ideálním případě je stejný jako ten předchozí, ale v reálu uživatelé běžně
