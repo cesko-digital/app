@@ -138,73 +138,6 @@ V Airtable je klíčová tabulka [Projects](https://airtable.com/appkn1DkvgVI5jp
 
 V Airtable je ve sloupci `description`, které má zapnutou podporu formátování, viz [Using rich text with Airtable](https://support.airtable.com/docs/using-rich-text-with-airtable). V API se formátovaný text posílá ve formátu Markdown, viz [Using Markdown in Airtable](https://support.airtable.com/v1/docs/using-markdown-in-airtable).
 
-Protože si v popisu projektů nevystačíme s běžným Markdownem, zpracováváme popis pomocí [Markdoc](https://markdoc.dev), který nabízí možnost přidávat vlastní tagy. Ty vypadají například takhle:
-
-```markdown
-Běžný odstavec.
-
-{% callout %}
-Zvýrazněný odstavec.
-{% /callout %}
-
-Text pokračuje…
-```
-
-Tady je použitý vlastní tag `callout`, který je pak možné například v Reactu zobrazit samostatnou komponentou. Tím získáváme možnost používat v popisu projektů pokročilejší prvky, aniž bychom museli používat HTML, které by bylo nepraktické na údržbu, nehledě na problematickou bezpečnost.
-
-### Podporované tagy
-
-> [!NOTE]
-> Tohle se netýká pouze popisu projektů, ale i akcí, takže by to chtělo vytáhnout bokem.
-
-Seznam tagů, které můžete používat v popisu projektů nad rámec běžného Markdownu:
-
-#### Callout
-
-Něco jako „zvýrazněný boxík“, když potřebujete přitáhnout pozornost k části textu. Nemá žádné atributy, používá se takhle:
-
-```markdown
-Běžný odstavec.
-
-{% callout %}
-Zvýrazněný _odstavec_.
-{% /callout %}
-
-Text pokračuje…
-```
-
-Všimněte si, že v těle „boxíku“ můžete normálně použít další Markdown, nemusí to být jen prostý text.
-
-#### Image
-
-Obrázek. Oproti standardnímu tagu v Markdownu podporujeme optimalizaci obrázků (zdroj může být libovolně velký, web si ho sám zmenší podle potřeby klienta) a dalších pár drobností. Příklad:
-
-```markdown
-{% image src="https://data.cesko.digital/web/projects/digitalni-inkluze/cilovky.png" alt="Cílové skupiny digitální inkluze" width=1588 height=888 /%}
-```
-
-Povinné atributy jsou `src`, `alt`, `width` a `height`; `src` je URL zdrojového obrázku (musí být uložený na `data.cesko.digital`), `alt` je textový popis obrázku a `width` + `height` jsou rozměry originálního obrázku v pixelech. Rozměry jsou povinné kvůli tomu, aby prohlížeč dopředu věděl, jak bude obrázek velký, a obsah během načítání neposkakoval (což je blbé UX). Všimněte si prosím, že rozměry jsou čísla, nikoliv řetězce – nejsou v uvozovkách.
-
-Nepovinný je atribut `link`, do kterého můžete dát URL, na které se dá obrázkem prokliknout.
-
-### Generované kotvy
-
-Každý nadpis v rámci popisu projektu dostane automaticky generovanou kotvu, na kterou se můžete `#odkazovat`. Například tento nadpis:
-
-```markdown
-## Ukázkový nadpis
-```
-
-…se v HTML zobrazí takhle:
-
-```html
-<h2 id="ukazkovy-nadpis">Ukázkový nadpis</h2>
-```
-
-…takže na něj pak můžete odkazovat pomocí `#ukazkovy-nadpis`.
-
-Správné URL, na které se dá odkazovat, můžete snadno zjistit najetím myší poslepu na konec nadpisu – objeví se znak `#`, který je odkazem na dotyčný nadpis.
-
 ## Odkazy
 
 Každý projekt může mít hromádku relevantních odkazů například na web, do hlavního Slackového kanálu, na zdroják na GitHubu a podobně. Odkazy jsou uložené v tabulce [Project Links](https://airtable.com/appkn1DkvgVI5jpME/tblL8S0FHemH4XyeN/viwwojyHfjZfKW7Po?blocks=hide), mezi tabulkou Projects a tabulkou Project Links je vazba 1:M (projekt může mít libovolný počet odkazů).
@@ -229,3 +162,69 @@ Aby bylo jednodušší načítat odkazy přes API i bez joinů nebo vícenásobn
 ```
 
 Je to prasečí hack, ale je to pohodlné pro klienta :)
+
+# Markdown
+
+Na různých místech, například v popisu projektů nebo akcí, používáme pro formátování textu Markdown. Běžný Markdown nám ale nevystačí na všechno, a proto používáme pro zpracování Markdownu knihovnu [Markdoc](https://markdoc.dev), která nabízí možnost přidávat vlastní tagy. Ty vypadají například takhle:
+
+```markdown
+Běžný odstavec.
+
+{% callout %}
+Zvýrazněný odstavec.
+{% /callout %}
+
+Text pokračuje…
+```
+
+Tady je použitý vlastní tag `callout`, který je pak možné například v Reactu zobrazit samostatnou komponentou. Tím získáváme možnost používat ve formátovaných textech pokročilejší prvky, aniž bychom museli používat HTML, které by bylo nepraktické na údržbu, nehledě na problematickou bezpečnost.
+
+## Vlastní tagy
+
+Seznam tagů, které můžete používat nad rámec běžného Markdownu:
+
+### Callout
+
+Něco jako „zvýrazněný boxík“, když potřebujete přitáhnout pozornost k části textu. Nemá žádné atributy, používá se takhle:
+
+```markdown
+Běžný odstavec.
+
+{% callout %}
+Zvýrazněný _odstavec_.
+{% /callout %}
+
+Text pokračuje…
+```
+
+Všimněte si, že v těle „boxíku“ můžete normálně použít další Markdown, nemusí to být jen prostý text.
+
+### Image
+
+Obrázek. Oproti standardnímu tagu v Markdownu podporujeme optimalizaci obrázků (zdroj může být libovolně velký, web si ho sám zmenší podle potřeby klienta) a dalších pár drobností. Příklad:
+
+```markdown
+{% image src="https://data.cesko.digital/web/projects/digitalni-inkluze/cilovky.png" alt="Cílové skupiny digitální inkluze" width=1588 height=888 /%}
+```
+
+Povinné atributy jsou `src`, `alt`, `width` a `height`; `src` je URL zdrojového obrázku (musí být uložený na `data.cesko.digital`), `alt` je textový popis obrázku a `width` + `height` jsou rozměry originálního obrázku v pixelech. Rozměry jsou povinné kvůli tomu, aby prohlížeč dopředu věděl, jak bude obrázek velký, a obsah během načítání neposkakoval (což je blbé UX). Všimněte si prosím, že rozměry jsou čísla, nikoliv řetězce – nejsou v uvozovkách.
+
+Nepovinný je atribut `link`, do kterého můžete dát URL, na které se dá obrázkem prokliknout.
+
+## Generované kotvy
+
+Každý nadpis v rámci formátovaného textu dostane automaticky generovanou kotvu, na kterou se můžete `#odkazovat`. Například tento nadpis:
+
+```markdown
+## Ukázkový nadpis
+```
+
+…se v HTML zobrazí takhle:
+
+```html
+<h2 id="ukazkovy-nadpis">Ukázkový nadpis</h2>
+```
+
+…takže na něj pak můžete odkazovat pomocí `#ukazkovy-nadpis`.
+
+Správné URL, na které se dá odkazovat, můžete snadno zjistit najetím myší poslepu na konec nadpisu – objeví se znak `#`, který je odkazem na dotyčný nadpis.
