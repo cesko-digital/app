@@ -128,20 +128,8 @@ const CoreTeamSection = () => (
     </p>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
       <PersonCard
-        name="Eva Pavlíková"
-        title="Chief Executive Officer"
-        image={TeamPhotos.Eva}
-      >
-        Vedu komunitu Česko.Digital, zajišťuji její rozvoj a směřování. Mimo
-        komunitu mě nejčastěji potkáte v roli CEO nebo ředitelka.{" "}
-        <a href="https://cesko-digital.atlassian.net/wiki/spaces/CD/pages/834568254/Moje+AHA+momenty">
-          Moje AHA momenty
-        </a>
-        .
-      </PersonCard>
-      <PersonCard
         name="Jan Kotara"
-        title="Chief Operations Officer"
+        title="Chief Executive Officer"
         image={TeamPhotos.Yen}
       >
         Ve své roli umožňuji ostatním se maximálně soustředit na jejich úkoly a
@@ -153,19 +141,20 @@ const CoreTeamSection = () => (
         title="Chief Strategy Officer - Systemic change"
         image={TeamPhotos.Veronika}
       >
-        Starám se o strategii celé organizace tak, abychom co nejvíce pomohli 
-        využívat technologie ve veřejném sektoru. Koordinuji aktivity v naší mapě systémové změny. 
-         Dbám na to, aby byla naše činnost smysluplná, efektivní a vedla k digitální transformaci.
+        Starám se o strategii celé organizace tak, abychom co nejvíce pomohli
+        využívat technologie ve veřejném sektoru. Koordinuji aktivity v naší
+        mapě systémové změny. Dbám na to, aby byla naše činnost smysluplná,
+        efektivní a vedla k digitální transformaci.
       </PersonCard>
-       <PersonCard
+      <PersonCard
         name="Julia Baraniakova"
         title="Head of Partnerships"
         image={TeamPhotos.Julia}
       >
-        Pečuji o naše partnery a dárce. Podílím se na přípravě strategie č.d, 
-        vč. finanční podpory a dlouhodobé finanční stability. 
-        Rozšiřuji síť podporovatelů a expertních organizací podporujících 
-        Česko.Digital na cestě k naplnění naší vize. 
+        Pečuji o naše partnery a dárce. Podílím se na přípravě strategie č.d,
+        vč. finanční podpory a dlouhodobé finanční stability. Rozšiřuji síť
+        podporovatelů a expertních organizací podporujících Česko.Digital na
+        cestě k naplnění naší vize.
       </PersonCard>
       <PersonCard
         name="Romana Pokorná"
@@ -192,9 +181,8 @@ const CoreTeamSection = () => (
         image={TeamPhotos.Jindra}
       >
         Mám na starosti image, reputaci a komunikační strategii organizace.
-        Propojuji komunikaci s organizačními cíly a zabývám se tím, co, komu
-        a jak říkáme. Hlídám konzistenci našich sdělení a dbám o naše hodnoty.
-      
+        Propojuji komunikaci s organizačními cíly a zabývám se tím, co, komu a
+        jak říkáme. Hlídám konzistenci našich sdělení a dbám o naše hodnoty.
       </PersonCard>
       <PersonCard
         name="Martina Habová"
@@ -210,12 +198,12 @@ const CoreTeamSection = () => (
         image={TeamPhotos.Lukas}
       >
         Spravuji audiovizuální obsah a vedu dobro.produkční tým a naši
-        vzdělávací platformu {" "}
+        vzdělávací platformu{" "}
         <a href="https://cesko.digital/projects/cesko-digital-edu">
           edu.digital
-        </a>. Spolutvořím grafiku pro sociální sítě,
-        blogové články a vzdělávací materiály. Působím jako spojka mezi
-        marketingem & IT.
+        </a>
+        . Spolutvořím grafiku pro sociální sítě, blogové články a vzdělávací
+        materiály. Působím jako spojka mezi marketingem & IT.
       </PersonCard>
       <PersonCard
         name="Tomáš Znamenáček"
@@ -275,6 +263,11 @@ const BoardSection = () => (
       se každé 3–4 měsíce.
     </p>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <PersonCard
+        name="Eva Pavlíková"
+        title="Non-Profit Founder"
+        image={TeamPhotos.Eva}
+      />
       <PersonCard
         name="Jakub Nešetřil"
         title="Startup Founder, Non-Profit Founder, Tech Geek"
