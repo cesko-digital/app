@@ -2,19 +2,16 @@ import { type FieldSet } from "airtable";
 import {
   array,
   field,
-  nil,
   number,
   optional,
   record,
   string,
-  undef,
   union,
-  type DecoderFunction,
   type decodeType,
 } from "typescript-json-decoder";
 
 import {
-  decodeValidItemsFromArray,
+  decodeFlags,
   relationToZeroOrOne,
   takeFirst,
   withDefault,
@@ -213,23 +210,4 @@ export async function createUserProfile(
     .create(encodeUserProfile(profile))
     .then(unwrapRecord)
     .then(decodeUserProfile);
-}
-
-//
-// Decoding Support
-//
-
-/** Decode an array of flags, skipping unknown values and returning empty array for `undefined` and `null` */
-function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
-  const decoder = union(
-    undef,
-    nil,
-    decodeValidItemsFromArray(decodeSingleFlag, "Flags", () => {
-      /* silence logs */
-    }),
-  );
-  return (value: unknown) => {
-    const decoded = decoder(value);
-    return decoded ?? [];
-  };
 }
