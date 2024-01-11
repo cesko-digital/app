@@ -134,6 +134,15 @@ Projekty jsou základní stavební kámen, kolem kterého se všechno točí; v�
 
 V Airtable je klíčová tabulka [Projects](https://airtable.com/appkn1DkvgVI5jpME) v databázi Web. (Pokud nemáte přístup do Airtable, řekněte si.)
 
+## Feature Flags
+
+Pole `featureFlags` obsahuje pár příznaků, které mění chování projektu na webu:
+
+| Příznak | Popis |
+| ----------- | -------------- |
+| `featured` | Projekt se zobrazuje prioritně, dáváme mu přednost, kde to dává smysl
+| `displayProjectTeam` | Na stránce projektu se zobrazuje seznam všech členů a členek projektu
+
 ## Popis projektů
 
 V Airtable je ve sloupci `description`, které má zapnutou podporu formátování, viz [Using rich text with Airtable](https://support.airtable.com/docs/using-rich-text-with-airtable). V API se formátovaný text posílá ve formátu Markdown, viz [Using Markdown in Airtable](https://support.airtable.com/v1/docs/using-markdown-in-airtable).
