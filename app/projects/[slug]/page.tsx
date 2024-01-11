@@ -30,6 +30,8 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import { type Metadata } from "next";
 
+import clsx from "clsx";
+
 type Params = {
   slug: string;
 };
@@ -116,6 +118,34 @@ async function Page({ params }: Props) {
             <ProjectSidebar project={project} coordinators={coordinators} />
           </aside>
         </div>
+
+        {/* Project team */}
+        <section>
+          <h2 className="typo-title2 mb-7">Tým</h2>
+          <div className="grid grid-cols-2 gap-7 md:grid-cols-4 lg:grid-cols-5">
+            {allTeamEngagements.map((engagement) => (
+              <div
+                key={engagement.id}
+                className="flex flex-col gap-2 rounded-lg bg-pebble p-4 pt-7 text-center"
+              >
+                <Image
+                  src={engagement.userAvatarUrl}
+                  className={clsx(
+                    "rounded-full bg-gray shadow",
+                    // This fixes the appearance of non-square images
+                    "aspect-square object-cover object-top",
+                    "mx-auto",
+                  )}
+                  alt=""
+                  width={80}
+                  height={80}
+                />
+                <h3 className="typo-subtitle">{engagement.userName}</h3>
+                <p>{engagement.projectRole}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Related blog posts */}
         {relatedBlogPosts.length > 0 && (
