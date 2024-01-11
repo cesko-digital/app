@@ -120,32 +120,9 @@ async function Page({ params }: Props) {
         </div>
 
         {/* Project team */}
-        <section>
-          <h2 className="typo-title2 mb-7">Tým</h2>
-          <div className="grid grid-cols-2 gap-7 md:grid-cols-4 lg:grid-cols-5">
-            {allTeamEngagements.map((engagement) => (
-              <div
-                key={engagement.id}
-                className="flex flex-col gap-2 rounded-lg bg-pebble p-4 pt-7 text-center"
-              >
-                <Image
-                  src={engagement.userAvatarUrl}
-                  className={clsx(
-                    "rounded-full bg-gray shadow",
-                    // This fixes the appearance of non-square images
-                    "aspect-square object-cover object-top",
-                    "mx-auto",
-                  )}
-                  alt=""
-                  width={80}
-                  height={80}
-                />
-                <h3 className="typo-subtitle">{engagement.userName}</h3>
-                <p>{engagement.projectRole}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {project.featureFlags.includes("displayProjectTeam") && (
+          <ProjectTeamSection team={allTeamEngagements} />
+        )}
 
         {/* Related blog posts */}
         {relatedBlogPosts.length > 0 && (
@@ -238,6 +215,40 @@ async function Page({ params }: Props) {
     </main>
   );
 }
+
+//
+// Project Team
+//
+
+const ProjectTeamSection = ({ team }: { team: TeamEngagement[] }) => (
+  <section>
+    <h2 className="typo-title2 mb-7">Tým</h2>
+    <div className="grid grid-cols-2 gap-7 md:grid-cols-4 lg:grid-cols-5">
+      {team.map((e) => (
+        <EngagementCard key={e.id} engagement={e} />
+      ))}
+    </div>
+  </section>
+);
+
+const EngagementCard = ({ engagement }: { engagement: TeamEngagement }) => (
+  <div className="flex flex-col gap-2 rounded-lg bg-pebble p-4 pt-7 text-center">
+    <Image
+      src={engagement.userAvatarUrl}
+      className={clsx(
+        "rounded-full bg-gray shadow",
+        // This fixes the appearance of non-square images
+        "aspect-square object-cover object-top",
+        "mx-auto",
+      )}
+      alt=""
+      width={80}
+      height={80}
+    />
+    <h3 className="typo-subtitle">{engagement.userName}</h3>
+    <p>{engagement.projectRole}</p>
+  </div>
+);
 
 //
 // Sidebar
