@@ -37,7 +37,7 @@ export const TabBar = <Key extends string>({
         <a
           onClick={() => clickHandler(item.key)}
           className={clsx(
-            "inline-block cursor-pointer border-b-2 p-4",
+            "inline-block cursor-pointer border-b-2 p-4 whitespace-nowrap",
             isActive ? "border-it" : "border-transparent",
           )}
         >
@@ -49,7 +49,7 @@ export const TabBar = <Key extends string>({
 
   return (
     <div className="border-b border-gravel text-center">
-      <ul className="-mb-px flex flex-wrap">{items.map(Tab)}</ul>
+      <ul className="-mb-px flex overflow-x-auto">{items.map(Tab)}</ul>
     </div>
   );
 };
