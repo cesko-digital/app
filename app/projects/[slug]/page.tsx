@@ -222,20 +222,16 @@ async function Page({ params }: Props) {
 // Project Team
 //
 
-const ProjectTeamSection = ({ team }: { team: TeamEngagement[] }) => {
-  const coordinatorsFirst = (a: TeamEngagement, b: TeamEngagement) =>
-    a.coordinatingRole ? -1 : b.coordinatingRole ? 1 : 0;
-  return (
-    <section>
-      <h2 className="typo-title2 mb-7">Tým</h2>
-      <div className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {team.sort(coordinatorsFirst).map((e) => (
-          <EngagementCard key={e.id} engagement={e} />
-        ))}
-      </div>
-    </section>
-  );
-};
+const ProjectTeamSection = ({ team }: { team: TeamEngagement[] }) => (
+  <section>
+    <h2 className="typo-title2 mb-7">Tým</h2>
+    <div className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      {team.map((e) => (
+        <EngagementCard key={e.id} engagement={e} />
+      ))}
+    </div>
+  </section>
+);
 
 const EngagementCard = ({ engagement }: { engagement: TeamEngagement }) => (
   <div className="flex gap-4 rounded-lg bg-pebble p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center">
