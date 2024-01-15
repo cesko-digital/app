@@ -1,4 +1,4 @@
-import { getAllTeamEngagements } from "~/src/data/team-engagement";
+import { getPublicTeamEngagements } from "~/src/data/team-engagement";
 import { getAllUserProfiles } from "~/src/data/user-profile";
 
 import { type WriteTrendValue } from "./trend-stats";
@@ -24,7 +24,7 @@ export async function generateNewComersTrend(
 export async function generateNewEngagementsTrend(
   writeTrendValue: WriteTrendValue,
 ): Promise<void> {
-  const teamEngagements = await getAllTeamEngagements();
+  const teamEngagements = await getPublicTeamEngagements();
 
   for (const engagement of teamEngagements) {
     if (!engagement.startDate) {

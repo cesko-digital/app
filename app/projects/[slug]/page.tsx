@@ -19,7 +19,7 @@ import { getOpportunitiesForProject } from "~/src/data/opportunity";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getFeaturedEventsForProject } from "~/src/data/queries";
 import {
-  getTeamEngagementsForProject,
+  getPublicTeamEngagementsForProject,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
 import { getAllPlaylistVideos } from "~/src/data/youtube";
@@ -60,7 +60,9 @@ async function Page({ params }: Props) {
 
   const events = await getFeaturedEventsForProject(project);
 
-  const allTeamEngagements = await getTeamEngagementsForProject(project.slug);
+  const allTeamEngagements = await getPublicTeamEngagementsForProject(
+    project.slug,
+  );
   const coordinators = allTeamEngagements
     // Only take coordinators
     .filter((e) => e.coordinatingRole)
