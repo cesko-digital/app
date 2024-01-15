@@ -166,18 +166,3 @@ export function decodeValidItemsFromArray<T>(
     return values;
   };
 }
-
-/** Decode an array of flags, skipping unknown values and returning empty array for `undefined` and `null` */
-export function decodeFlags<T>(decodeSingleFlag: DecoderFunction<T>) {
-  const decoder = union(
-    undef,
-    nil,
-    decodeValidItemsFromArray(decodeSingleFlag, "Flags", () => {
-      /* silence logs */
-    }),
-  );
-  return (value: unknown) => {
-    const decoded = decoder(value);
-    return decoded ?? [];
-  };
-}

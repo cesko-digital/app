@@ -10,7 +10,6 @@ import {
 } from "typescript-json-decoder";
 
 import {
-  decodeFlags,
   decodeJSONString,
   decodeValidItemsFromArray,
   markdown,
@@ -18,6 +17,7 @@ import {
   takeFirst,
   withDefault,
 } from "~/src/decoding";
+import { decodeFlags } from "~/src/flags";
 
 import { unwrapRecords, webBase } from "./airtable";
 
