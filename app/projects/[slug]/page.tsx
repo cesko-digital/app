@@ -228,7 +228,7 @@ const ProjectTeamSection = ({ team }: { team: TeamEngagement[] }) => {
   return (
     <section>
       <h2 className="typo-title2 mb-7">Tým</h2>
-      <div className="grid grid-cols-2 gap-7 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {team.sort(coordinatorsFirst).map((e) => (
           <EngagementCard key={e.id} engagement={e} />
         ))}
@@ -238,21 +238,23 @@ const ProjectTeamSection = ({ team }: { team: TeamEngagement[] }) => {
 };
 
 const EngagementCard = ({ engagement }: { engagement: TeamEngagement }) => (
-  <div className="flex flex-col gap-2 rounded-lg bg-pebble p-4 pt-7 text-center">
+  <div className="flex gap-4 rounded-lg bg-pebble p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center">
     <Image
       src={engagement.userAvatarUrl}
       className={clsx(
         "rounded-full bg-gray shadow",
         // This fixes the appearance of non-square images
         "aspect-square object-cover object-top",
-        "mx-auto",
+        "sm:mx-auto",
       )}
       alt=""
       width={80}
       height={80}
     />
-    <h3 className="typo-subtitle">{engagement.userName}</h3>
-    <p>{engagement.projectRole}</p>
+    <div className="self-center">
+      <h3 className="typo-subtitle">{engagement.userName}</h3>
+      <p>{engagement.projectRole}</p>
+    </div>
   </div>
 );
 
