@@ -1,5 +1,5 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
-import slack from "slack";
+import { WebClient } from "@slack/web-api";
 import { array } from "typescript-json-decoder";
 
 import { insertNewMarketPlaceOffer } from "~/src/data/market-place";
@@ -11,6 +11,7 @@ import { decodeMessageEvent } from "~/src/slack/message";
  */
 async function main() {
   const { SLACK_BAZAAR_BOT_TOKEN = "" } = process.env;
+  const slack = new WebClient(SLACK_BAZAAR_BOT_TOKEN);
   const messageUrl = process.argv[2];
   if (!messageUrl) {
     console.log(
@@ -25,7 +26,6 @@ async function main() {
     .replace(/\d{6}$/, ".$&");
   const msg = await slack.conversations
     .history({
-      token: SLACK_BAZAAR_BOT_TOKEN,
       channel: marketPlaceSlackChannelId,
       latest: timestamp,
       inclusive: true,

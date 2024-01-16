@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import slack from "slack";
+import { WebClient } from "@slack/web-api";
 import {
   boolean,
   optional,
@@ -67,9 +64,10 @@ export const isRegularUser = (user: SlackUser) =>
 export async function getAllWorkspaceUsers(
   token: string,
 ): Promise<SlackUser[]> {
+  const slack = new WebClient(token);
   return getAllPages(
     (cursor) => slack.users.list({ token, cursor }),
-    (response) => response.members.map(decodeSlackUser),
+    (response) => (response.members ?? []).map(decodeSlackUser),
     (response) => response?.response_metadata?.next_cursor,
   );
 }
@@ -79,6 +77,7 @@ export async function getSlackUser(
   token: string,
   slackId: string,
 ): Promise<SlackUser> {
+  const slack = new WebClient(token);
   const slackResponse = await slack.users.info({
     token,
     user: slackId,
@@ -99,6 +98,7 @@ export async function getUserProfile(
   token: string,
   slackId: string,
 ): Promise<SlackProfile> {
+  const slack = new WebClient(token);
   return await slack.users.profile
     .get({ token, user: slackId })
     .then((response) => response.profile)
