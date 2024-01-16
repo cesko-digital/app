@@ -147,6 +147,13 @@ Pole `featureFlags` obsahuje pár příznaků, které mění chování projektu 
 
 V Airtable je ve sloupci `description`, které má zapnutou podporu formátování, viz [Using rich text with Airtable](https://support.airtable.com/docs/using-rich-text-with-airtable). V API se formátovaný text posílá ve formátu Markdown, viz [Using Markdown in Airtable](https://support.airtable.com/v1/docs/using-markdown-in-airtable).
 
+## Projektový tým
+
+Pokud má projekt v poli `featureFlags` uvedený příznak `displayProjectTeam`, na jeho stránce se zobrazuje projektový tým. Data se berou z tabulky Teams, konkrétně pohledu [Public Team Engagements](https://airtable.com/appkn1DkvgVI5jpME/tblszIbIBAluUHvH0/viwK6KXIA78MnPE9q?blocks=hide). V nastavení pohledu je zapnuté filtrování a řazení:
+
+* Pokud má zapojený člen týmu v poli `privacyFlags` nastavený příznak `hidePublicTeamMembership`, jeho zapojení veřejně neukazujeme.
+* Pokud má dotyčné zapojení uživatele v týmu nastavený příznak `hideFromPublicView`, zapojení veřejně nezobrazujeme.
+
 ## Odkazy
 
 Každý projekt může mít hromádku relevantních odkazů například na web, do hlavního Slackového kanálu, na zdroják na GitHubu a podobně. Odkazy jsou uložené v tabulce [Project Links](https://airtable.com/appkn1DkvgVI5jpME/tblL8S0FHemH4XyeN/viwwojyHfjZfKW7Po?blocks=hide), mezi tabulkou Projects a tabulkou Project Links je vazba 1:M (projekt může mít libovolný počet odkazů).
