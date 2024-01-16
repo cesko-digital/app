@@ -14,6 +14,7 @@
   "dependencies": {
     "@markdoc/markdoc": "^0.4.0",
     "@sendgrid/mail": "^8.1.0",
+    "@slack/web-api": "^6.11.2",
     "airtable": "^0.12.2",
     "clsx": "^2.0.0",
     "ical-generator": "^6.0.0",
@@ -25,7 +26,6 @@
     "react-dom": "^18",
     "react-lite-youtube-embed": "^2.4.0",
     "react-select": "^5.8.0",
-    "slack": "^11.0.2",
     "slack-markdown": "^0.3.0",
     "typescript-json-decoder": "^1.0.11"
   },

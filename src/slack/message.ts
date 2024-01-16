@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import slack from "slack";
+import { WebClient } from "@slack/web-api";
 import {
   boolean,
   literal,
@@ -35,9 +32,10 @@ export async function getAllChannelMessages(
   token: string,
   channel: string,
 ): Promise<MessageEvent[]> {
+  const slack = new WebClient(token);
   return getAllPages(
     (cursor) => slack.conversations.history({ token, channel, cursor }),
-    (response) => response.messages.map(decodeMessageEvent),
+    (response) => (response.messages ?? []).map(decodeMessageEvent),
     (response) => response?.response_metadata?.next_cursor,
   );
 }
@@ -47,7 +45,8 @@ export async function getMessagePermalink(
   token: string,
   channel: string,
   messageTimestamp: string,
-): Promise<string> {
+): Promise<string | undefined> {
+  const slack = new WebClient(token);
   return slack.chat
     .getPermalink({ token, channel, message_ts: messageTimestamp })
     .then((response) => response.permalink);
@@ -59,9 +58,10 @@ export async function getMessageReplies(
   channel: string,
   timestamp: string,
 ): Promise<MessageEvent[]> {
+  const slack = new WebClient(token);
   return slack.conversations
     .replies({ token, channel, ts: timestamp })
-    .then((response) => response.messages.map(decodeMessageEvent));
+    .then((response) => (response.messages ?? []).map(decodeMessageEvent));
 }
 
 /** Send direct message to user with given Slack ID */
@@ -70,6 +70,7 @@ export async function sendDirectMessage(
   user: string,
   text: string,
 ) {
+  const slack = new WebClient(token);
   const decodeResponse = record({
     ok: boolean,
     channel: record({

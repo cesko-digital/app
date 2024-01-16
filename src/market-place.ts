@@ -1,4 +1,4 @@
-import slack from "slack";
+import { WebClient } from "@slack/web-api";
 
 import {
   getAllMarketPlaceOffers,
@@ -48,7 +48,7 @@ export async function receiveSlackMessage(
       state: "new",
       text: msg.text ?? "<no text in message>",
       owner: msg.user,
-      slackThreadUrl: messageUrl,
+      slackThreadUrl: messageUrl ?? "<url missing>",
       originalMessageTimestamp: msg.ts,
     });
   }
@@ -73,6 +73,7 @@ export async function notifyOwnersAboutPublishedOffers(slackToken: string) {
     const age = secondsSinceOfferWasPublished(o);
     return !!age && age < secondsPerDay;
   };
+  const slack = new WebClient(slackToken);
   const justPublishedOffers = offers
     .filter((o) => o.state === "published")
     .filter(justPublished);
@@ -110,6 +111,7 @@ export async function markExpiredOffers(slackToken: string) {
   const canExpire = (offer: MarketPlaceOffer) =>
     offer.state === "new" || offer.state === "published";
   const offers = await getAllMarketPlaceOffers();
+  const slack = new WebClient(slackToken);
   for (const offer of offers.filter(canExpire)) {
     const offerAge = offerAgeInSeconds(offer);
     if (offerAge >= expirationTimeInSeconds) {
@@ -170,6 +172,7 @@ const followupBlockId = "marketPlaceFollowUp";
 
 export async function triggerFollowupQuestions(slackToken: string) {
   const offers = await getAllMarketPlaceOffers();
+  const slack = new WebClient(slackToken);
   for (const offer of offers.filter((o) => o.state === "published")) {
     const publishTimeInSeconds = secondsSinceOfferWasPublished(offer);
     if (!publishTimeInSeconds) {
@@ -206,6 +209,8 @@ export async function handleFollowupResponse(
   slackToken: string,
   response: BlockActionCallback,
 ) {
+  const slack = new WebClient(slackToken);
+
   // We are only expecting responses with one single action
   if (response.actions.length !== 1) {
     return;
