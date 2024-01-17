@@ -17,8 +17,12 @@ import {
   takeFirst,
   withDefault,
 } from "~/src/decoding";
+import { decodeFlags } from "~/src/flags";
 
 import { unwrapRecords, webBase } from "./airtable";
+
+/** All supported feature flags */
+const featureFlags = ["featured", "displayProjectTeam"] as const;
 
 //
 // Decoding
@@ -37,6 +41,7 @@ export const decodeProject = record({
     "https://data.cesko.digital/web/projects/generic-logo.png",
   ),
   highlighted: withDefault(boolean, false),
+  featureFlags: decodeFlags(union(...featureFlags)),
   state: withDefault(
     union(
       "draft",

@@ -84,12 +84,18 @@ export async function PATCH(request: NextRequest) {
     }
     // Make sure we do NOT include the `slackId` field nor `state` here
     /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-    const { name, skills, notificationFlags, availableInDistricts } =
-      await request.json();
+    const {
+      name,
+      skills,
+      notificationFlags,
+      privacyFlags,
+      availableInDistricts,
+    } = await request.json();
     await updateUserProfile(profile.id, {
       name,
       skills,
       notificationFlags,
+      privacyFlags,
       availableInDistricts,
     });
     /* eslint-enable @typescript-eslint/no-unsafe-assignment */

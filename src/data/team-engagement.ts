@@ -50,20 +50,23 @@ export const decodeTeamEngagement = record({
 const teamEngagementTable = webBase("Teams");
 
 /** Get all team engagements */
-export async function getAllTeamEngagements(): Promise<TeamEngagement[]> {
+export async function getPublicTeamEngagements(): Promise<TeamEngagement[]> {
   return await teamEngagementTable
-    .select()
+    .select({ view: "Public Team Engagements" })
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
 }
 
 /** Get all team engagements for given project */
-export async function getTeamEngagementsForProject(
+export async function getPublicTeamEngagementsForProject(
   projectSlug: string,
 ): Promise<TeamEngagement[]> {
   return await teamEngagementTable
-    .select({ filterByFormula: `{project} = "${projectSlug}"` })
+    .select({
+      view: "Public Team Engagements",
+      filterByFormula: `{project} = "${projectSlug}"`,
+    })
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
