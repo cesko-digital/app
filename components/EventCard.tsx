@@ -17,6 +17,7 @@ export const EventCard = ({ event, badgeImageUrl }: Props) => {
     year: "2-digit",
   };
   const futureDateStyle: Intl.DateTimeFormatOptions = {
+    timeZone: "Europe/Prague",
     weekday: "short",
     day: "numeric",
     month: "numeric",

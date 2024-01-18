@@ -104,6 +104,7 @@ const EventSidebar = ({
   owner: LegacyUser;
 }) => {
   const time = new Date(event.startTime).toLocaleString("cs-CZ", {
+    timeZone: "Europe/Prague",
     weekday: "short",
     day: "numeric",
     month: "numeric",
