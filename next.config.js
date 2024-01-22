@@ -24,4 +24,13 @@ module.exports = withAxiom({
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/market-place",
+        destination: "https://diskutuj.digital/c/trziste/5",
+        permanent: true,
+      },
+    ];
+  },
 });

@@ -1,6 +1,4 @@
-import { type Event } from "~/src/data/event";
-import { type MarketPlaceOffer } from "~/src/data/market-place";
-
+import { type Event } from "./data/event";
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";
 
@@ -10,11 +8,11 @@ export const Route = {
   forum: "https://diskutuj.digital/",
   blog: "https://blog.cesko.digital/",
   slackOnboarding: "https://slack.cesko.digital/",
+  marketplace: "https://diskutuj.digital/c/trziste/5",
   // Static routes
   events: "/events",
   projects: "/projects",
   opportunities: "/opportunities",
-  marketplace: "/market-place",
   register: "/join",
   signIn: "/sign-in",
   userProfile: "/profile",
@@ -24,7 +22,6 @@ export const Route = {
   toEvent: (e: Event) => `/events/${e.slug}`,
   toProject: (p: Project) => `/projects/${p.slug}`,
   toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
-  toMarketPlaceOffer: (o: MarketPlaceOffer) => `/market-place#${o.id}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
 };

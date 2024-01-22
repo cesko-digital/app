@@ -29,8 +29,6 @@ Při lokálním vývoji patří do souboru `.env.local`, web i různé nástroje
 | SLACK_SIGNING_SECRET | Tajemství používané pro autentizaci callbacků od serverů Slacku | Používáme v endpointech pro potvrzení nových účtů
 | SLACK_SYNC_TOKEN | Autentizace přístupu k API Slacku | Používáme všude možně jako „univerzální“ API klíč
 | SLACK_GREET_BOT_TOKEN | API klíč Slacku | Používáme pro agendu spojenou s Greetbotem – zejména uvítání nových uživatelů
-| SLACK_BAZAAR_BOT_TOKEN | API klíč Slacku | Používáme pro přístup ke Slacku v rámci automatizace služby Market-place
-| SLACK_BAZAAR_CALLBACK_SECRET | Tajemství pro autentizaci callbacků od Slacku | Používáme při zpracování dialogů slackbota pro službu Market-place
 | YOUTUBE_API_KEY | API klíč pro YouTube | Používáme pro načítání seznamu videí z našich playlistů, například na stránkách projektů
 | PLAUSIBLE_API_KEY | API klíč pro službu Plausible, kterou používáme pro webovou analytiku | Používá se zejména pro statistické endpointy, které generují statistiky pro grafy v Datawrapperu
 | SENDGRID_API_KEY | API klíč pro Sendgrid (rozesílání mailů) | Používáme pro rozesílání notifikací na nové hledané role
