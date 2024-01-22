@@ -45,14 +45,30 @@ export const decodeLatestTopicsSummary = record({
 // API calls
 //
 
-export const getLatestTopicsSummary = async (revalidate = 300) =>
-  await fetch(`${baseUrl}/latest.json`, { next: { revalidate } })
+/** Get latest topics summary for whole Discourse instance or given category */
+export async function getLatestTopicsSummary({
+  revalidate = 300,
+  categoryId,
+}: {
+  revalidate?: number;
+  categoryId?: number;
+}): Promise<LatestTopicsSummary> {
+  const url = categoryId
+    ? `${baseUrl}/c/${categoryId}.json`
+    : `${baseUrl}/latest.json`;
+  return await fetch(url, { next: { revalidate } })
     .then((response) => response.json())
     .then(decodeLatestTopicsSummary);
+}
 
 //
 // Helpers
 //
+
+export const Categories = {
+  general: 4,
+  marketplace: 5,
+};
 
 export const getTopicUrl = (topic: Pick<Topic, "id">) =>
   `${baseUrl}/t/${topic.id}/last`;

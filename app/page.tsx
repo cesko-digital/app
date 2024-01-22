@@ -13,6 +13,7 @@ import {
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getFeaturedOpportunities } from "~/src/data/queries";
 import {
+  Categories,
   getLatestTopicsSummary,
   getTopicUrl,
   getUserAvatar,
@@ -30,7 +31,12 @@ export default async function Home() {
   const projects = await getFeaturedProjects();
   const opportunities = await getFeaturedOpportunities();
   const events = await getFeaturedEvents();
-  const discussionSummary = await getLatestTopicsSummary();
+  const discussionSummary = await getLatestTopicsSummary({
+    categoryId: Categories.general,
+  });
+  const marketplaceSummary = await getLatestTopicsSummary({
+    categoryId: Categories.marketplace,
+  });
 
   const projectWithId = (id: string) => allProjects.find((p) => p.id === id);
 
@@ -74,6 +80,18 @@ export default async function Home() {
       </section>
 
       <section>
+        <h2 className="typo-title2 mb-1">Tržiště</h2>
+        <h3 className="typo-subtitle mb-7">
+          Zapojte se krátce v projektech mimo Česko.Digital
+        </h3>
+        <DiscussionSummaryBox
+          summary={marketplaceSummary}
+          skipTopicIds={[35 /* welcome post */]}
+        />
+        <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
+      </section>
+
+      <section>
         <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
         <div className="mb-7 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {events.map((e) => (
@@ -92,7 +110,10 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-7">
           Potřebujete poradit? Chcete poradit? Diskutujte o digitalizaci Česka
         </h3>
-        <DiscussionSummaryBox summary={discussionSummary} />
+        <DiscussionSummaryBox
+          summary={discussionSummary}
+          skipTopicIds={[5 /* welcome post */]}
+        />
         <MoreButton text="Navštívit diskuzní fórum" url={Route.forum} />
       </section>
     </main>
@@ -129,12 +150,14 @@ async function getFeaturedEvents(): Promise<Event[]> {
 
 const DiscussionSummaryBox = ({
   summary,
+  skipTopicIds = [],
 }: {
   summary: LatestTopicsSummary;
+  skipTopicIds?: number[];
 }) => {
   const { topic_list, users } = summary;
   const featuredTopics = topic_list.topics
-    .filter((t) => t.id !== 5 /* skip welcome post */)
+    .filter((t) => !skipTopicIds.includes(t.id))
     .slice(0, 6);
 
   const userForId = (id: number) => users.find((u) => u.id === id)!;
