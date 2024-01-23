@@ -25,7 +25,6 @@ Slack funguje na principu tzv. kanálů – chatovacích skupin, které slouží
 *<https://cesko-digital.slack.com/archives/C01UYQZBT8V|#ask-me-anything>* – kanál pro nejrůznější dotazy a feedbacky
 *<https://cesko-digital.slack.com/archives/CMCCD7415|#eventy-pozvanky>* – tady najdeš pozvánky na akce, které by tě mohly zajímat
 *<https://cesko-digital.slack.com/archives/CG07ST9ME|#general>* – zprávami do tohoto kanálu prosím šetři, je určený pro ty nejdůležitější zprávy, které jsou relevantní pro celou komunitu
-*<https://cesko-digital.slack.com/archives/C0104T360QP|#ideas>* – tady diskutujeme o všech našich nápadech (nejen) na projekty
 *<https://cesko-digital.slack.com/archives/CJVB0MVCM|#introductions>* – kanál pro představování
 *<https://cesko-digital.slack.com/archives/CLVAH28P3|#market-place>* – kanál pro poptávání dobrovolníků pro jednorázovou spolupráci
 *<https://cesko-digital.slack.com/archives/CG4557BD4|#sdilej-a-inspiruj>* – veškerý zajímavý obsah, inspirace a novinky z č.d i od komunity v jednom kanálu
