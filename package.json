@@ -26,7 +26,6 @@
     "react-dom": "^18",
     "react-lite-youtube-embed": "^2.4.0",
     "react-select": "^5.8.0",
-    "slack-markdown": "^0.3.0",
     "typescript-json-decoder": "^1.0.11"
   },
   "devDependencies": {
