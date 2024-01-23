@@ -5,6 +5,9 @@
 const { withAxiom } = require("next-axiom");
 
 module.exports = withAxiom({
+  experimental: {
+    serverMinification: false,
+  },
   images: {
     remotePatterns: [
       {
