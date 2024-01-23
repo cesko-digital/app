@@ -10,6 +10,7 @@ import {
 
 import {
   decodeValidItemsFromArray,
+  optionalArray,
   takeFirst,
   withDefault,
 } from "~/src/decoding";
@@ -39,6 +40,7 @@ export const decodeTeamEngagement = record({
   projectRole: optional(string),
   projectName: relationToOne,
   coordinatingRole: withDefault(boolean, false),
+  fields: optionalArray(string),
   inactive: withDefault(boolean, false),
   startDate: optional(string),
 });
