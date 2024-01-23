@@ -12,16 +12,9 @@ import {
 } from "~/src/data/event";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getFeaturedOpportunities } from "~/src/data/queries";
-import {
-  Categories,
-  getLatestTopicsSummary,
-  getTopicUrl,
-  getUserAvatar,
-  type LatestTopicsSummary,
-  type Topic,
-} from "~/src/discourse";
+import { Categories, getBubbles, type Bubble } from "~/src/discourse";
 import { Route } from "~/src/routing";
-import { shuffled } from "~/src/utils";
+import { shuffled, stripMarkdown } from "~/src/utils";
 
 /** Main home page of the whole website */
 export default async function Home() {
@@ -31,11 +24,17 @@ export default async function Home() {
   const projects = await getFeaturedProjects();
   const opportunities = await getFeaturedOpportunities();
   const events = await getFeaturedEvents();
-  const discussionSummary = await getLatestTopicsSummary({
+
+  const discussionSummary = await getBubbles({
     categoryId: Categories.general,
+    skipTopicIds: [3, 5 /* welcome posts */],
+    maxCount: 6,
   });
-  const marketplaceSummary = await getLatestTopicsSummary({
+
+  const marketplaceSummary = await getBubbles({
     categoryId: Categories.marketplace,
+    skipTopicIds: [35 /* welcome post */],
+    maxCount: 6,
   });
 
   const projectWithId = (id: string) => allProjects.find((p) => p.id === id);
@@ -84,11 +83,8 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-7">
           Zapojte se krátce v projektech mimo Česko.Digital
         </h3>
-        <DiscussionSummaryBox
-          summary={marketplaceSummary}
-          skipTopicIds={[35 /* welcome post */]}
-        />
-        <MoreButton text="Zobrazit všechny poptávky" url={Route.marketplace} />
+        <DiscussionSummaryBox bubbles={marketplaceSummary} />
+        <MoreButton text="Otevřít Tržiště" url={Route.marketplace} />
       </section>
 
       <section>
@@ -110,11 +106,8 @@ export default async function Home() {
         <h3 className="typo-subtitle mb-7">
           Potřebujete poradit? Chcete poradit? Diskutujte o digitalizaci Česka
         </h3>
-        <DiscussionSummaryBox
-          summary={discussionSummary}
-          skipTopicIds={[5 /* welcome post */]}
-        />
-        <MoreButton text="Navštívit diskuzní fórum" url={Route.forum} />
+        <DiscussionSummaryBox bubbles={discussionSummary} />
+        <MoreButton text="Otevřít diskuzní fórum" url={Route.forum} />
       </section>
     </main>
   );
@@ -148,54 +141,31 @@ async function getFeaturedEvents(): Promise<Event[]> {
 // Discussions
 //
 
-const DiscussionSummaryBox = ({
-  summary,
-  skipTopicIds = [],
-}: {
-  summary: LatestTopicsSummary;
-  skipTopicIds?: number[];
-}) => {
-  const { topic_list, users } = summary;
-  const featuredTopics = topic_list.topics
-    .filter((t) => !skipTopicIds.includes(t.id))
-    .slice(0, 6);
-
-  const userForId = (id: number) => users.find((u) => u.id === id)!;
-  const avatarForUser = (user: { user_id: number }) =>
-    getUserAvatar(userForId(user.user_id), 200);
-  const avatarUrlsForTopic = (topic: Topic) => topic.posters.map(avatarForUser);
-
+const DiscussionSummaryBox = ({ bubbles }: { bubbles: Bubble[] }) => {
   return (
     <div className="mb-20 grid gap-7 md:grid-cols-3">
-      {featuredTopics.map((topic) => (
-        <DiscussionBubble
-          key={topic.id}
-          topic={topic}
-          avatarUrls={avatarUrlsForTopic(topic)}
-        />
+      {bubbles.map((bubble) => (
+        <DiscussionBubble key={bubble.id} bubble={bubble} />
       ))}
     </div>
   );
 };
 
-const DiscussionBubble = ({
-  topic,
-  avatarUrls,
-}: {
-  topic: Topic;
-  avatarUrls: string[];
-}) => {
+const DiscussionBubble = ({ bubble }: { bubble: Bubble }) => {
   const ArrowShape = () => (
     <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="group flex flex-col" href={getTopicUrl(topic)}>
-      <div className="grow rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
-        {topic.title}
+    <Link className="group flex flex-col" href={bubble.topicUrl}>
+      <div className="grow overflow-hidden rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
+        <p className="line-clamp-5">
+          <span className="mr-2 font-semibold">{bubble.title}</span>
+          {stripMarkdown(bubble.rawFirstPost.replaceAll(/\n\n*/g, " "))}
+        </p>
       </div>
       <ArrowShape />
       <div className="mb-1 ml-1 flex flex-row items-center gap-1">
-        {avatarUrls.map((url) => (
+        {bubble.posterAvatars.map((url) => (
           <Image
             key={url}
             src={url}

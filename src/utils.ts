@@ -1,9 +1,25 @@
 import crypto from "crypto";
 
+import Markdoc, { type Node } from "@markdoc/markdoc";
+
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;
 };
+
+/** Strip Markdown, returning just plain text */
+export const stripMarkdown = (mdown: string) =>
+  renderPlainText(Markdoc.parse(mdown));
+
+function renderPlainText(doc: Node): string {
+  let output = "";
+  for (const node of doc.walk()) {
+    if (node.type === "text") {
+      output += node.attributes.content;
+    }
+  }
+  return output;
+}
 
 /** Shuffle array in place, returns a reference to the same array */
 export function shuffleInPlace<T>(array: T[]): T[] {
