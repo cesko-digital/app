@@ -45,6 +45,13 @@ const Page = async () => {
         <DatawrapperChart id="VZWTt" />
         <DatawrapperChart id="5SpWg" />
       </Section>
+
+      <SectionHeading>Diskutuj.Digital</SectionHeading>
+      <Section>
+        <DatawrapperChart id="ar6zh" />
+        <DatawrapperChart id="xBQlZ" />
+        <DatawrapperChart id="kUHtm" />
+      </Section>
     </main>
   );
 };
