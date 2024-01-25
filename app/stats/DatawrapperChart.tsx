@@ -20,6 +20,10 @@ export const DatawrapperChart = ({ id }: Props) => {
   }, [elem, script, id]);
 
   return (
-    <div ref={elem} style={{ marginTop: "30px", marginBottom: "30px" }}></div>
+    <div
+      key={id}
+      ref={elem}
+      style={{ marginTop: "30px", marginBottom: "30px" }}
+    ></div>
   );
 };
