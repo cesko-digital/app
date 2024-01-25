@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
@@ -51,16 +52,20 @@ async function Page() {
         </div>
       </div>
 
-      <h2 className="typo-title2 mb-4">Nadcházející akce</h2>
-      <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-        {futureEvents.map((e) => (
-          <EventCard
-            badgeImageUrl={projectForEvent(e)?.logoUrl}
-            key={e.id}
-            event={e}
-          />
-        ))}
-      </div>
+      {futureEvents.length > 0 && (
+        <Fragment>
+          <h2 className="typo-title2 mb-4">Nadcházející akce</h2>
+          <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {futureEvents.map((e) => (
+              <EventCard
+                badgeImageUrl={projectForEvent(e)?.logoUrl}
+                key={e.id}
+                event={e}
+              />
+            ))}
+          </div>
+        </Fragment>
+      )}
 
       <h2 className="typo-title2 mb-4">Proběhlé akce</h2>
       <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
