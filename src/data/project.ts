@@ -22,7 +22,11 @@ import { decodeFlags } from "~/src/flags";
 import { unwrapRecords, webBase } from "./airtable";
 
 /** All supported feature flags */
-const featureFlags = ["featured", "displayProjectTeam"] as const;
+const featureFlags = [
+  "featured",
+  "displayProjectTeam",
+  "internalProject",
+] as const;
 
 //
 // Decoding

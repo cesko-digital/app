@@ -119,7 +119,8 @@ export default async function Home() {
 
 async function getFeaturedProjects(): Promise<Project[]> {
   const canBeFeatured = (p: Project) =>
-    p.state === "incubating" || p.state === "running";
+    (p.state === "incubating" || p.state === "running") &&
+    !p.featureFlags.includes("internalProject");
   const allProjects = await getAllProjects();
   return shuffled(allProjects).filter(canBeFeatured).slice(0, 3);
 }

@@ -22,7 +22,14 @@ async function Page() {
     (p) => p.state !== "draft" && p.state !== "internal",
   );
   const runningProjects = publishedProjects.filter(
-    (p) => p.state === "running" || p.state === "incubating",
+    (p) =>
+      (p.state === "running" || p.state === "incubating") &&
+      !p.featureFlags.includes("internalProject"),
+  );
+  const internalProjects = publishedProjects.filter(
+    (p) =>
+      (p.state === "running" || p.state === "incubating") &&
+      p.featureFlags.includes("internalProject"),
   );
   const finishedProjects = publishedProjects.filter(
     (p) => p.state === "finished",
@@ -46,6 +53,13 @@ async function Page() {
       <h2 className="typo-title2 mb-4">Aktuální projekty</h2>
       <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {runningProjects.map((p) => (
+          <ProjectCard key={p.id} project={p} />
+        ))}
+      </div>
+
+      <h2 className="typo-title2 mb-4">Interní projekty</h2>
+      <div className="mb-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+        {internalProjects.map((p) => (
           <ProjectCard key={p.id} project={p} />
         ))}
       </div>
