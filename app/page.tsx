@@ -87,19 +87,21 @@ export default async function Home() {
         <MoreButton text="Otevřít Tržiště" url={Route.marketplace} />
       </section>
 
-      <section>
-        <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
-        <div className="mb-7 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {events.map((e) => (
-            <EventCard
-              key={e.id}
-              badgeImageUrl={projectWithId(e.projectId)?.logoUrl}
-              event={e}
-            />
-          ))}
-        </div>
-        <MoreButton text="Zobrazit všechny akce" url={Route.events} />
-      </section>
+      {events.length > 0 && (
+        <section>
+          <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
+          <div className="mb-7 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {events.map((e) => (
+              <EventCard
+                key={e.id}
+                badgeImageUrl={projectWithId(e.projectId)?.logoUrl}
+                event={e}
+              />
+            ))}
+          </div>
+          <MoreButton text="Zobrazit všechny akce" url={Route.events} />
+        </section>
+      )}
 
       <section>
         <h2 className="typo-title2 mb-1">Diskuze</h2>
