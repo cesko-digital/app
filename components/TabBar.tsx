@@ -1,41 +1,32 @@
-import { useState } from "react";
-
 import clsx from "clsx";
+
+import useHash from '~/components/hooks/hash';
 
 export type Item<Key> = {
   key: Key;
   title: string;
+  hash: string;
 };
 
 export type Props<Key> = {
   items: Item<Key>[];
-  defaultActiveKey?: Key;
+  activeKey: Key;
   onChange?: (key: Key) => void;
 };
 
 /** TBD: Improve on mobile */
 export const TabBar = <Key extends string>({
   items,
-  defaultActiveKey,
+  activeKey,
   onChange,
 }: Props<Key>) => {
-  const [activeKey, setActiveKey] = useState<Key>(
-    defaultActiveKey ?? items[0].key,
-  );
-
-  const clickHandler = (key: Key) => {
-    setActiveKey(key);
-    if (onChange) {
-      onChange(key);
-    }
-  };
-
   const Tab = (item: Item<Key>) => {
     const isActive = activeKey === item.key;
     return (
       <li key={item.key} className="me-2">
         <a
-          onClick={() => clickHandler(item.key)}
+          href={`#${item.hash}`}
+          onClick={() => onChange && onChange(item.key)}
           className={clsx(
             "inline-block cursor-pointer whitespace-nowrap border-b-2 p-4",
             isActive ? "border-it" : "border-transparent",
@@ -58,18 +49,21 @@ export const TabBar = <Key extends string>({
 
 export type SimpleItem = {
   title: string;
+  hash: string;
   content: React.ReactNode;
 };
 
 export const SimpleTabBar = ({ items }: { items: SimpleItem[] }) => {
-  const [activeKey, setActiveKey] = useState(items[0].title);
+  const hash = useHash();
+  const activeItem = items.find((item) => item.hash === hash) ?? items[0];
+
   return (
     <div className="flex flex-col gap-7">
       <TabBar
-        items={items.map(({ title }) => ({ key: title, title }))}
-        onChange={setActiveKey}
+        items={items.map(({ title, hash }) => ({ key: title, title, hash }))}
+        activeKey={activeItem.title}
       />
-      {items.find((item) => item.title === activeKey)?.content}
+      {activeItem.content}
     </div>
   );
 };

@@ -16,10 +16,12 @@ export const StatsTabBar = ({ metrics, samples }: Props) => (
     items={[
       {
         title: "Metriky",
+        hash: "metrics",
         content: <MetricsTab metrics={metrics} samples={samples} />,
       },
       {
         title: "Nově příchozí",
+        hash: "newcomers",
         content: (
           <Section>
             <DatawrapperChart id="M1Dm2" />
@@ -29,6 +31,7 @@ export const StatsTabBar = ({ metrics, samples }: Props) => (
       },
       {
         title: "Dovednosti",
+        hash: "skills",
         content: (
           <Section>
             <div className="flex flex-col gap-7">
@@ -41,6 +44,7 @@ export const StatsTabBar = ({ metrics, samples }: Props) => (
       },
       {
         title: "Regionální rozložení",
+        hash: "regions",
         content: (
           <Section>
             <DatawrapperChart id="SopS3" />
@@ -50,6 +54,7 @@ export const StatsTabBar = ({ metrics, samples }: Props) => (
       },
       {
         title: "Hledané role",
+        hash: "roles",
         content: (
           <Section>
             <DatawrapperChart id="VZWTt" />
