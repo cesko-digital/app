@@ -25,7 +25,7 @@ export const decodeMetricDefinition = record({
   name: string,
   slug: string,
   type: union("pointInTime", "aggregate", "other"),
-  chatUrl: optional(decodeUrl),
+  datawrapperChartId: optional(string),
   description: optional(string),
 });
 
