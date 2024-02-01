@@ -45,16 +45,13 @@ const ServiceSection = ({
     <div>
       <h2 className="typo-title2 mb-4">{service}</h2>
       <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-        {metrics
-          .sort(compareMetricsByName)
-          .filter((m) => m.service === service)
-          .map((metric) => (
-            <MetricBox
-              key={metric.slug}
-              metric={metric}
-              filteredSamples={samplesForMetric(metric)}
-            />
-          ))}
+        {metrics.sort(compareMetricsByName).map((metric) => (
+          <MetricBox
+            key={metric.slug}
+            metric={metric}
+            filteredSamples={samplesForMetric(metric)}
+          />
+        ))}
       </div>
     </div>
   );

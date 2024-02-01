@@ -8,6 +8,8 @@ import {
 
 import { StatsTabBar } from "./StatsTabBar";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Statistiky | Česko.Digital",
 };
