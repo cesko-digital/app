@@ -2,13 +2,24 @@
 
 import { type ReactNode } from "react";
 
+import { MetricsTab } from "~/app/stats/Metrics";
 import { SimpleTabBar } from "~/components/TabBar";
+import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
 
-export const StatsTabBar = () => (
+export type Props = {
+  metrics: MetricDefinition[];
+  samples: MetricSample[];
+};
+
+export const StatsTabBar = ({ metrics, samples }: Props) => (
   <SimpleTabBar
     items={[
       {
-        title: "Základy",
+        title: "Metriky",
+        content: <MetricsTab metrics={metrics} samples={samples} />,
+      },
+      {
+        title: "Nově příchozí",
         content: (
           <Section>
             <DatawrapperChart id="M1Dm2" />
@@ -43,16 +54,6 @@ export const StatsTabBar = () => (
           <Section>
             <DatawrapperChart id="VZWTt" />
             <DatawrapperChart id="5SpWg" />
-          </Section>
-        ),
-      },
-      {
-        title: "Diskutuj.Digital",
-        content: (
-          <Section>
-            <DatawrapperChart id="ar6zh" />
-            <DatawrapperChart id="xBQlZ" />
-            <DatawrapperChart id="kUHtm" />
           </Section>
         ),
       },

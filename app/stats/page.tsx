@@ -1,6 +1,10 @@
 import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
+import {
+  getAllMetricDefinitions,
+  getAllMetricSamples,
+} from "~/src/data/metrics";
 
 import { StatsTabBar } from "./StatsTabBar";
 
@@ -9,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
+  const metrics = await getAllMetricDefinitions();
+  const samples = await getAllMetricSamples();
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
@@ -16,7 +22,7 @@ const Page = async () => {
         currentPage="Statistiky"
       />
       <h1 className="typo-title mb-10 mt-7">Statistiky</h1>
-      <StatsTabBar />
+      <StatsTabBar metrics={metrics} samples={samples} />
     </main>
   );
 };

@@ -3,16 +3,11 @@ import {
   optional,
   record,
   string,
-  union,
   type decodeType,
 } from "typescript-json-decoder";
 
 import { unwrapRecords, webBase } from "~/src/data/airtable";
-import {
-  decodeUrl,
-  decodeValidItemsFromArray,
-  relationToZeroOrOne,
-} from "~/src/decoding";
+import { decodeValidItemsFromArray, relationToZeroOrOne } from "~/src/decoding";
 
 //
 // Decoding
@@ -24,7 +19,6 @@ export const decodeMetricDefinition = record({
   service: string,
   name: string,
   slug: string,
-  type: union("pointInTime", "aggregate", "other"),
   datawrapperChartId: optional(string),
   description: optional(string),
 });
@@ -51,9 +45,9 @@ export const getAllMetricDefinitions = async () =>
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricDefinition));
 
-export const getAllMetricSamples = async (slug: string) =>
+export const getAllMetricSamples = async (slug?: string) =>
   samplesTable
-    .select({ filterByFormula: `{metricSlug} = "${slug}"` })
+    .select(slug ? { filterByFormula: `{metricSlug} = "${slug}"` } : {})
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricSample));
