@@ -3,11 +3,16 @@ import {
   optional,
   record,
   string,
+  union,
   type decodeType,
 } from "typescript-json-decoder";
 
 import { unwrapRecords, webBase } from "~/src/data/airtable";
-import { decodeValidItemsFromArray, relationToZeroOrOne } from "~/src/decoding";
+import {
+  decodeValidItemsFromArray,
+  relationToZeroOrOne,
+  withDefault,
+} from "~/src/decoding";
 
 //
 // Decoding
@@ -18,6 +23,7 @@ export const decodeMetricDefinition = record({
   qualifiedName: string,
   service: string,
   name: string,
+  type: withDefault(union("time", "band"), "time"),
   slug: string,
   datawrapperChartId: optional(string),
   description: optional(string),

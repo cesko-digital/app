@@ -1,3 +1,4 @@
+import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
@@ -64,14 +65,21 @@ const MetricBox = ({
   metric: MetricDefinition;
   filteredSamples: MetricSample[];
 }) => {
-  const xAxis = samples.map((s) => new Date(s.date));
-  const data = samples.map((s) => s.value);
+  type Axis = Omit<AxisConfig, "id">;
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
-    month: "numeric",
-    year: "2-digit",
+    month: "long",
   });
-
+  const data = samples.map((s) => s.value);
+  const timeAxis: Axis = {
+    data: samples.map((s) => new Date(s.date)),
+    scaleType: "time",
+    valueFormatter: (value) => dateFormatter.format(value as Date),
+  };
+  const bandAxis: Axis = {
+    data: samples.map((s) => s.label),
+    scaleType: "band",
+  };
   return (
     <div key={metric.slug} className="rounded-lg bg-pebble p-4">
       <h3 className="typo-subtitle">{metric.name}</h3>
@@ -83,13 +91,7 @@ const MetricBox = ({
         height={200}
         series={[{ data }]}
         yAxis={[{ min: 0 }]}
-        xAxis={[
-          {
-            data: xAxis,
-            scaleType: "time",
-            valueFormatter: (value) => dateFormatter.format(value as Date),
-          },
-        ]}
+        xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
       />
     </div>
   );
