@@ -85,6 +85,7 @@ const MetricBox = ({
         colors={["blue"]}
         height={200}
         series={[{ data }]}
+        yAxis={[{ min: 0 }]}
         xAxis={[
           {
             data: xAxis,
