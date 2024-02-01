@@ -70,6 +70,8 @@ const MetricBox = ({
     day: "numeric",
     month: "long",
   });
+  const numberFormatter = new Intl.NumberFormat("cs-CZ");
+  const formatNumber = (value: number) => numberFormatter.format(value);
   const data = samples.map((s) => s.value);
   const timeAxis: Axis = {
     data: samples.map((s) => new Date(s.date)),
@@ -89,8 +91,18 @@ const MetricBox = ({
       <LineChart
         colors={["blue"]}
         height={200}
-        series={[{ data }]}
-        yAxis={[{ min: 0 }]}
+        series={[
+          {
+            data,
+            valueFormatter: formatNumber,
+          },
+        ]}
+        yAxis={[
+          {
+            min: 0,
+            valueFormatter: formatNumber,
+          },
+        ]}
         xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
       />
     </div>
