@@ -45,9 +45,9 @@ export const getAllMetricDefinitions = async () =>
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricDefinition));
 
-export const getAllMetricSamples = async (slug?: string) =>
+export const getAllMetricSamples = async () =>
   samplesTable
-    .select(slug ? { filterByFormula: `{metricSlug} = "${slug}"` } : {})
+    .select()
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricSample));
