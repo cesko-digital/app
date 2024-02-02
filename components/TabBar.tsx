@@ -14,7 +14,6 @@ export type Props<Key> = {
   onChange?: (key: Key) => void;
 };
 
-/** TBD: Improve on mobile */
 export const TabBar = <Key extends string>({
   items,
   activeKey,

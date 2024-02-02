@@ -2,23 +2,11 @@
 
 import { type ReactNode } from "react";
 
-import { MetricsTab } from "~/app/stats/Metrics";
 import { SimpleTabBar } from "~/components/TabBar";
-import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
 
-export type Props = {
-  metrics: MetricDefinition[];
-  samples: MetricSample[];
-};
-
-export const StatsTabBar = ({ metrics, samples }: Props) => (
+export const StatsTabBar = () => (
   <SimpleTabBar
     items={[
-      {
-        title: "Metriky",
-        hash: "metrics",
-        content: <MetricsTab metrics={metrics} samples={samples} />,
-      },
       {
         title: "Nově příchozí",
         hash: "newcomers",
