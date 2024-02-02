@@ -14,22 +14,27 @@ export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
     {
       title: "Dovednosti",
+      hash: "skills",
       content: <SkillsTab />,
     },
     {
       title: "Newslettery",
+      hash: "newsletter",
       content: <NewsletterTab userMail={session.user!.email!} />,
     },
     {
       title: "Notifikace",
+      hash: "notifications",
       content: <NotificationsTab userEmail={session.user!.email!} />,
     },
     {
       title: "Mapa komunity",
+      hash: "community-map",
       content: <MapTab />,
     },
     {
       title: "Soukromí",
+      hash: "privacy",
       content: <PrivacyTab />,
     },
   ];
