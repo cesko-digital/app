@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ServerTabBar } from "~/components/ServerTabBar";
 
-export default function Layout({ tabs }: { tabs: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
@@ -21,7 +21,7 @@ export default function Layout({ tabs }: { tabs: React.ReactNode }) {
           },
         ]}
       />
-      <div className="mt-7">{tabs}</div>
+      <div className="mt-7">{children}</div>
     </main>
   );
 }
