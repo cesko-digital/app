@@ -70,7 +70,9 @@ const MetricBox = ({
     day: "numeric",
     month: "long",
   });
-  const numberFormatter = new Intl.NumberFormat("cs-CZ");
+  const numberFormatter = new Intl.NumberFormat("cs-CZ", {
+    notation: "compact",
+  });
   const formatNumber = (value: number) => numberFormatter.format(value);
   const data = samples.map((s) => s.value);
   const timeAxis: Axis = {
