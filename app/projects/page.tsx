@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   Podívejte se, na čem zrovna pracujeme, a kde se můžete v případě zájmu zapojit.`,
 };
 
+export const revalidate = 300;
+
 /** Page listing all our projects */
 async function Page() {
   const allProjects = await getAllProjects();
