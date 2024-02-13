@@ -11,9 +11,14 @@ export type Props = {
 
 export const MetricsTab = ({ metrics, samples }: Props) => {
   const services = unique(metrics.map((m) => m.service));
+  const haveSamplesForMetric = (metricSlug: string) =>
+    samples.filter((s) => s.metricSlug === metricSlug).length > 0;
+  const haveSamplesForService = (service: string) =>
+    metrics.filter((m) => m.service === service && haveSamplesForMetric(m.slug))
+      .length > 0;
   return (
     <div className="flex flex-col gap-20">
-      {services.map((service) => (
+      {services.filter(haveSamplesForService).map((service) => (
         <ServiceSection
           key={service}
           service={service}
