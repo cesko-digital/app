@@ -9,6 +9,9 @@ export type Props = {
   samples: MetricSample[];
 };
 
+/** How many last samples should we display? */
+const historyLength = 10;
+
 export const MetricsTab = ({ metrics, samples }: Props) => {
   const services = unique(metrics.map((m) => m.service));
   const haveSamplesForMetric = (metricSlug: string) =>
@@ -55,7 +58,7 @@ const ServiceSection = ({
           <MetricBox
             key={metric.slug}
             metric={metric}
-            filteredSamples={samplesForMetric(metric)}
+            filteredSamples={samplesForMetric(metric).slice(-historyLength)}
           />
         ))}
       </div>
