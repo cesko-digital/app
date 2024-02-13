@@ -93,28 +93,35 @@ const MetricBox = ({
     scaleType: "band",
   };
   return (
-    <div key={metric.slug} className="rounded-lg bg-pebble p-4">
-      <h3 className="typo-subtitle">{metric.name}</h3>
-      {metric.description && (
-        <p className="typo-caption">{metric.description}</p>
-      )}
-      <LineChart
-        colors={["blue"]}
-        height={200}
-        series={[
-          {
-            data,
-            valueFormatter: formatNumber,
-          },
-        ]}
-        yAxis={[
-          {
-            min: 0,
-            valueFormatter: formatNumber,
-          },
-        ]}
-        xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
-      />
+    <div
+      key={metric.slug}
+      className="flex flex-col overflow-clip rounded-lg bg-pebble"
+    >
+      <div className="p-4">
+        <LineChart
+          colors={["blue"]}
+          height={200}
+          series={[
+            {
+              data,
+              valueFormatter: formatNumber,
+            },
+          ]}
+          yAxis={[
+            {
+              min: 0,
+              valueFormatter: formatNumber,
+            },
+          ]}
+          xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
+        />
+      </div>
+      <div className="flex-grow bg-gray p-4">
+        <h3>{metric.name}</h3>
+        {metric.description && (
+          <p className="typo-caption">{metric.description}</p>
+        )}
+      </div>
     </div>
   );
 };
