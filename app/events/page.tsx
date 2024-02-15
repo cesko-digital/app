@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   spolupracujeme s partnery. Na všech vás ale rádi uvidíme.`,
 };
 
+export const revalidate = 300;
+
 /** Page listing all our events */
 async function Page() {
   const events = await getAllEvents("Live Events");
