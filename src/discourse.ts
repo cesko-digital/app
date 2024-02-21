@@ -71,7 +71,7 @@ export const decodeTopic = record({
 
 /** Get topics summary for whole Discourse instance or given category */
 export async function getForumSummary({
-  revalidate,
+  revalidate = 300,
   categoryId,
 }: {
   revalidate: number;
