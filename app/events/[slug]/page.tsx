@@ -168,7 +168,7 @@ const compareByRelevance = (a: Event, b: Event) => {
   } else if (pastB && !pastA) {
     return -1; // a before b
   } else {
-    return compareEventsByTime(a, b);
+    return -compareEventsByTime(a, b);
   }
 };
 
