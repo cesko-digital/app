@@ -17,6 +17,8 @@ import { getAllProjects, type Project } from "~/src/data/project";
 import { getAlternativeOpenRoles } from "~/src/data/queries";
 import { Route } from "~/src/routing";
 
+export const revalidate = 300;
+
 type Params = {
   slug: string;
 };
