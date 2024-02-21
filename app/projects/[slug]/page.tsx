@@ -32,6 +32,9 @@ import { type Metadata } from "next";
 
 import { ProjectTeamSection } from "./ProjectTeamSection";
 
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
+
 type Params = {
   slug: string;
 };

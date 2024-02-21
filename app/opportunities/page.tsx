@@ -5,6 +5,7 @@ import { OpportunityRow } from "~/components/OpportunityRow";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects } from "~/src/data/project";
 
+/** Refresh data every 5 minutes */
 export const revalidate = 300;
 
 export const metadata: Metadata = {

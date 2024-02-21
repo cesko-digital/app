@@ -69,9 +69,6 @@ export const decodeTopic = record({
 // API calls
 //
 
-/** Common revalidation timeout for Discourse requests */
-const revalidate = 300;
-
 /** Get topics summary for whole Discourse instance or given category */
 export async function getForumSummary({
   categoryId,
@@ -81,20 +78,20 @@ export async function getForumSummary({
   const url = categoryId
     ? `${baseUrl}/c/${categoryId}.json`
     : `${baseUrl}/latest.json`;
-  return await fetch(url, { next: { revalidate } })
+  return await fetch(url)
     .then((response) => response.json())
     .then(decodeForumSummary);
 }
 
 /** Get single topic */
 export const getTopic = async (id: number) =>
-  await fetch(`${baseUrl}/t/${id}.json`, { next: { revalidate } })
+  await fetch(`${baseUrl}/t/${id}.json`)
     .then((response) => response.json())
     .then(decodeTopic);
 
 /** Get single post */
 export const getPost = async (id: number) =>
-  await fetch(`${baseUrl}/posts/${id}.json`, { next: { revalidate } })
+  await fetch(`${baseUrl}/posts/${id}.json`)
     .then((response) => response.json())
     .then(decodePost);
 
@@ -119,7 +116,6 @@ export async function getBubbles({
   maxCount,
 }: {
   categoryId: number;
-  revalidate?: number;
   avatarSize?: number;
   skipTopicIds?: number[];
   maxCount: number;

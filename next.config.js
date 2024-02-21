@@ -5,6 +5,11 @@
 const { withAxiom } = require("next-axiom");
 
 module.exports = withAxiom({
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   experimental: {
     serverMinification: false,
   },

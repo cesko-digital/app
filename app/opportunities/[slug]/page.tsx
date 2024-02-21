@@ -17,6 +17,7 @@ import { getAllProjects, type Project } from "~/src/data/project";
 import { getAlternativeOpenRoles } from "~/src/data/queries";
 import { Route } from "~/src/routing";
 
+/** Refresh data every 5 minutes */
 export const revalidate = 300;
 
 type Params = {

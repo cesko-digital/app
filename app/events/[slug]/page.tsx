@@ -30,6 +30,9 @@ export type Props = {
   params: Params;
 };
 
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
+
 /** Event detail page */
 async function Page({ params }: Props) {
   const allEvents = await getAllEvents("Live Events");
