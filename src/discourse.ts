@@ -69,12 +69,13 @@ export const decodeTopic = record({
 // API calls
 //
 
+/** Common revalidation timeout for Discourse requests */
+const revalidate = 300;
+
 /** Get topics summary for whole Discourse instance or given category */
 export async function getForumSummary({
-  revalidate = 300,
   categoryId,
 }: {
-  revalidate: number;
   categoryId?: number;
 }): Promise<ForumSummary> {
   const url = categoryId
@@ -87,13 +88,13 @@ export async function getForumSummary({
 
 /** Get single topic */
 export const getTopic = async (id: number) =>
-  await fetch(`${baseUrl}/t/${id}.json`)
+  await fetch(`${baseUrl}/t/${id}.json`, { next: { revalidate } })
     .then((response) => response.json())
     .then(decodeTopic);
 
 /** Get single post */
 export const getPost = async (id: number) =>
-  await fetch(`${baseUrl}/posts/${id}.json`)
+  await fetch(`${baseUrl}/posts/${id}.json`, { next: { revalidate } })
     .then((response) => response.json())
     .then(decodePost);
 
@@ -113,7 +114,6 @@ export type Bubble = {
 /** Get a convenience list of topics in given category */
 export async function getBubbles({
   categoryId,
-  revalidate = 300,
   avatarSize = 200,
   skipTopicIds = [],
   maxCount,
@@ -124,7 +124,7 @@ export async function getBubbles({
   skipTopicIds?: number[];
   maxCount: number;
 }): Promise<Bubble[]> {
-  const summary = await getForumSummary({ categoryId, revalidate });
+  const summary = await getForumSummary({ categoryId });
   const userForId = (id: number) => summary.users.find((u) => u.id === id)!;
   const avatarForUser = (user: { user_id: number }) =>
     getUserAvatar(userForId(user.user_id), avatarSize);
