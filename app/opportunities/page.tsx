@@ -5,6 +5,8 @@ import { OpportunityRow } from "~/components/OpportunityRow";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects } from "~/src/data/project";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Hledané role | Česko.Digital",
 };
