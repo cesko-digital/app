@@ -8,6 +8,7 @@ import {
 
 import { StatsTabBar } from "./StatsTabBar";
 
+/** Refresh data every 5 minutes */
 export const revalidate = 300;
 
 export const metadata: Metadata = {

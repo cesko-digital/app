@@ -32,9 +32,6 @@ import { type Metadata } from "next";
 
 import { ProjectTeamSection } from "./ProjectTeamSection";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
-
 type Params = {
   slug: string;
 };
@@ -317,7 +314,7 @@ const LinkIcon = ({ url }: { url: string }) => {
 };
 
 //
-// Metadata
+// Data Loading
 //
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -333,9 +330,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Force incremental static generation (ISR), see https://github.com/cesko-digital/web/issues/987 */
 export async function generateStaticParams() {
   return [];
 }
+
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
 
 //
 // Helpers

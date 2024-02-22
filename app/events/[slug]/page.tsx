@@ -30,9 +30,6 @@ export type Props = {
   params: Params;
 };
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
-
 /** Event detail page */
 async function Page({ params }: Props) {
   const allEvents = await getAllEvents("Live Events");
@@ -176,7 +173,7 @@ const compareByRelevance = (a: Event, b: Event) => {
 };
 
 //
-// Metadata
+// Data Loading
 //
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -192,8 +189,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Force incremental static generation (ISR), see https://github.com/cesko-digital/web/issues/987 */
 export async function generateStaticParams() {
   return [];
 }
+
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
 
 export default Page;

@@ -17,9 +17,6 @@ import { getAllProjects, type Project } from "~/src/data/project";
 import { getAlternativeOpenRoles } from "~/src/data/queries";
 import { Route } from "~/src/routing";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
-
 type Params = {
   slug: string;
 };
@@ -111,7 +108,7 @@ const RoleSidebar = ({
 };
 
 //
-// Metadata
+// Data Loading
 //
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -127,8 +124,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Force incremental static generation (ISR), see https://github.com/cesko-digital/web/issues/987 */
 export async function generateStaticParams() {
   return [];
 }
+
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
 
 export default Page;
