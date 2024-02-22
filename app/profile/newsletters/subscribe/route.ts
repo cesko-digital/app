@@ -18,8 +18,24 @@ export async function POST(request: NextRequest): Promise<Response> {
     if (!success) {
       throw "Unexpected error";
     }
-    return new Response("User subscription was successful", { status: 200 });
+    return new Response("User subscription was successful", {
+      status: 200,
+      headers: {
+        Allow: "OPTIONS, POST",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch {
     return new Response("Unexpected error", { status: 500 });
   }
+}
+
+export async function OPTIONS(): Promise<Response> {
+  return new Response("TBD", {
+    status: 200,
+    headers: {
+      Allow: "OPTIONS, POST",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 }
