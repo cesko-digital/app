@@ -127,4 +127,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export async function generateStaticParams() {
+  return [];
+}
+
 export default Page;
