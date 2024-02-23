@@ -1,8 +1,12 @@
+"use client";
+
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
 import { unique } from "~/src/utils";
+import Link from "next/link";
+import { Route } from "~/src/routing";
 
 export type Props = {
   metrics: MetricDefinition[];
@@ -66,7 +70,7 @@ const ServiceSection = ({
   );
 };
 
-const MetricBox = ({
+export const MetricBox = ({
   metric,
   filteredSamples: samples,
 }: {
@@ -93,9 +97,10 @@ const MetricBox = ({
     scaleType: "band",
   };
   return (
-    <div
+    <Link
       key={metric.slug}
-      className="flex flex-col overflow-clip rounded-lg bg-pebble"
+      className="flex flex-col overflow-clip rounded-lg bg-pebble"  
+      href={Route.toMetric(metric)}    
     >
       <div className="p-4">
         <LineChart
@@ -122,6 +127,6 @@ const MetricBox = ({
           <p className="typo-caption">{metric.description}</p>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
