@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 
+import { DetailedChart } from "~/app/stats/DetailedChart";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   getAllMetricDefinitions,
   getAllMetricSamples,
+  type MetricSample,
 } from "~/src/data/metrics";
 import { Route } from "~/src/routing";
-
-import { MetricBox } from "../Metrics";
 
 type Params = {
   slug: string;
@@ -21,7 +21,14 @@ const Page = async ({ params }: Props) => {
   const metrics = await getAllMetricDefinitions();
   const allSamples = await getAllMetricSamples();
   const metric = metrics.find((m) => m.slug === params.slug);
-  const samples = allSamples.filter((s) => s.metricSlug === params.slug);
+
+  const compareSamplesByDate = (a: MetricSample, b: MetricSample) =>
+    new Date(a.date).getTime() - new Date(b.date).getTime();
+
+  const samples = allSamples
+    .filter((s) => s.metricSlug === params.slug)
+    .sort(compareSamplesByDate);
+
   if (!metric) {
     notFound();
   }
@@ -36,12 +43,17 @@ const Page = async ({ params }: Props) => {
           ]}
           currentPage={metric.name}
         />
-        <h1 className="typo-title mb-2 mt-7">{metric.qualifiedName}</h1>
-        <h2 className="typo-subtitle mb-10 max-w-prose">
-          {metric.description && metric.description}
-        </h2>
-        {/* place for graph, currently used MetricBox but it is not the cleanest solution... */}
-        <MetricBox metric={metric} filteredSamples={samples} />
+        <h1
+          className={`typo-title ${metric.description ? "mb-3" : "mb-10"} mt-7`}
+        >
+          {metric.service} | {metric.name}
+        </h1>
+        {metric.description && (
+          <h2 className="typo-subtitle mb-10 max-w-prose">
+            {metric.description}
+          </h2>
+        )}
+        <DetailedChart metric={metric} filteredSamples={samples} />
       </main>
     </div>
   );
