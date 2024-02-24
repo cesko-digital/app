@@ -69,7 +69,7 @@ const ServiceSection = ({
   );
 };
 
-export const MetricBox = ({
+const MetricBox = ({
   metric,
   filteredSamples: samples,
 }: {
