@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
+import { Route } from "~/src/routing";
 import { unique } from "~/src/utils";
 
 export type Props = {
@@ -93,9 +96,10 @@ const MetricBox = ({
     scaleType: "band",
   };
   return (
-    <div
+    <Link
       key={metric.slug}
-      className="flex flex-col overflow-clip rounded-lg bg-pebble"
+      className="flex flex-col overflow-clip rounded-lg border-2 border-gray bg-pebble hover:border-it hover:shadow-lg"
+      href={Route.toMetric(metric)}
     >
       <div className="p-4">
         <LineChart
@@ -122,6 +126,6 @@ const MetricBox = ({
           <p className="typo-caption">{metric.description}</p>
         )}
       </div>
-    </div>
+    </Link>
   );
 };

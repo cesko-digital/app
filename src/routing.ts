@@ -1,6 +1,7 @@
 import { type Event } from "./data/event";
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";
+import { type MetricDefinition } from "./data/metrics";
 
 /** Create URLs for frequently used routes */
 export const Route = {
@@ -16,6 +17,7 @@ export const Route = {
   register: "/join",
   signIn: "/sign-in",
   userProfile: "/profile",
+  stats: "/stats",
   // More static routes
   eventFeed: "/events/feed.ical",
   // Dynamic routes
@@ -24,6 +26,7 @@ export const Route = {
   toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
+  toMetric: (m: MetricDefinition) => `/stats/${m.slug}`
 };
 
 /** Site URL without trailing slash */
