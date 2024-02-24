@@ -59,4 +59,12 @@ const Page = async ({ params }: Props) => {
   );
 };
 
+/** Force incremental static generation (ISR), see https://github.com/cesko-digital/web/issues/987 */
+export async function generateStaticParams() {
+  return [];
+}
+
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
+
 export default Page;
