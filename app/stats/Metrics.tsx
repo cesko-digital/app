@@ -80,6 +80,7 @@ const MetricBox = ({
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
     month: "long",
+    year: "2-digit",
   });
   const numberFormatter = new Intl.NumberFormat("cs-CZ", {
     notation: "compact",
