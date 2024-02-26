@@ -30,7 +30,6 @@ test("Decode project", () => {
     coverImageUrl:
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     logoUrl: "https://data.cesko.digital/web/projects/loono/logo-loono.jpg",
-    highlighted: false,
     featureFlags: [],
     state: "draft",
     tagIds: ["recVa4LnmzmtfoYTg"],

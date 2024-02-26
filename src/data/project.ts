@@ -44,7 +44,6 @@ export const decodeProject = record({
     string,
     "https://data.cesko.digital/web/projects/generic-logo.png",
   ),
-  highlighted: withDefault(boolean, false),
   featureFlags: decodeFlags(union(...featureFlags)),
   state: withDefault(
     union(

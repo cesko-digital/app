@@ -37,9 +37,11 @@ async function Page() {
   const finishedProjects = publishedProjects.filter(
     (p) => p.state === "finished",
   );
-  const highlightedProjects = publishedProjects.filter((p) => p.highlighted);
+  const featuredProjects = publishedProjects.filter((p) =>
+    p.featureFlags.includes("featured"),
+  );
   const featuredProject =
-    highlightedProjects.length > 0 ? getRandomElem(highlightedProjects) : null;
+    featuredProjects.length > 0 ? getRandomElem(featuredProjects) : null;
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
