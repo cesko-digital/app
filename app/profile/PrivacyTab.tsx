@@ -1,3 +1,5 @@
+"use client";
+
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";

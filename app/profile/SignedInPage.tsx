@@ -1,47 +1,45 @@
-"use client";
-
 import { type Session } from "next-auth";
 
-import { SimpleTabBar } from "~/components/TabBar";
+import { ServerTabBar } from "~/components/ServerTabBar";
 
-import { MapTab } from "./MapTab";
-import { NewsletterTab } from "./NewsletterTab";
-import { NotificationsTab } from "./NotificationsTab";
-import { PrivacyTab } from "./PrivacyTab";
-import { SkillsTab } from "./SkillsTab";
+type Props = {
+  session: Session;
+  activeTab: string;
+};
 
-export const SignedInPage = ({ session }: { session: Session }) => {
-  const tabs = [
-    {
-      title: "Dovednosti",
-      hash: "skills",
-      content: <SkillsTab />,
-    },
-    {
-      title: "Newslettery",
-      hash: "newsletter",
-      content: <NewsletterTab userMail={session.user!.email!} />,
-    },
-    {
-      title: "Notifikace",
-      hash: "notifications",
-      content: <NotificationsTab userEmail={session.user!.email!} />,
-    },
-    {
-      title: "Mapa komunity",
-      hash: "community-map",
-      content: <MapTab />,
-    },
-    {
-      title: "Soukromí",
-      hash: "privacy",
-      content: <PrivacyTab />,
-    },
-  ];
+export const SignedInPage = ({ session, activeTab }: Props) => {
   return (
     <section>
       <h1 className="typo-title mb-4 mt-7">{session.user?.name}</h1>
-      <SimpleTabBar items={tabs} />
+      <nav className="border-b border-gravel text-center">
+        <ul className="no-scrollbar -mb-px flex overflow-x-auto">
+          <ServerTabBar
+            title="Dovednosti"
+            href="/profile/skills"
+            isActive={activeTab === "skills"}
+          />
+          <ServerTabBar
+            title="Newslettery"
+            href="/profile/newsletter"
+            isActive={activeTab === "newsletter"}
+          />
+          <ServerTabBar
+            title="Notifikace"
+            href="/profile/notifications"
+            isActive={activeTab === "notifications"}
+          />
+          <ServerTabBar
+            title="Mapa komunity"
+            href="/profile/community-map"
+            isActive={activeTab === "community-map"}
+          />
+          <ServerTabBar
+            title="Soukromí"
+            href="/profile/privacy"
+            isActive={activeTab === "privacy"}
+          />
+        </ul>
+      </nav>
     </section>
   );
 };
