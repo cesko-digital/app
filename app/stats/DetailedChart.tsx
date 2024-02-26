@@ -35,14 +35,6 @@ export const DetailedChart = ({
   };
   console.log("taxis", timeAxis);
 
-  const createObject = (item: MetricSample) => {
-    return { date: item.label ?? item.date, value: item.value };
-  };
-
-  const apiData = samples.map(createObject);
-
-  console.log("api", apiData);
-
   return (
     <div>
       <div className="mb-6 bg-pebble p-4">
