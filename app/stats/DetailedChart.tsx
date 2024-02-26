@@ -21,9 +21,7 @@ export const DetailedChart = ({
     notation: "compact",
   });
   const formatNumber = (value: number) => numberFormatter.format(value);
-  console.log("samples", samples);
   const data = samples.map((s) => s.value);
-  console.log("data", data);
   const timeAxis: Axis = {
     data: samples.map((s) => new Date(s.date)),
     scaleType: "time",
@@ -33,7 +31,6 @@ export const DetailedChart = ({
     data: samples.map((s) => s.label),
     scaleType: "band",
   };
-  console.log("taxis", timeAxis);
 
   return (
     <div>
