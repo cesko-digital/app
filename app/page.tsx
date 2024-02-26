@@ -14,7 +14,7 @@ import { getAllProjects, type Project } from "~/src/data/project";
 import { getFeaturedOpportunities } from "~/src/data/queries";
 import { Categories, getBubbles, type Bubble } from "~/src/discourse";
 import { Route } from "~/src/routing";
-import { shuffled, stripMarkdown } from "~/src/utils";
+import { stripMarkdown } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
 export const revalidate = 300;
