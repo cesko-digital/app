@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 
 import { DetailedChart } from "~/app/stats/DetailedChart";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { ImageLabel } from "~/components/ImageLabel";
+import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
 import {
   getAllMetricDefinitions,
   getAllMetricSamples,
@@ -33,6 +35,16 @@ const Page = async ({ params }: Props) => {
     notFound();
   }
 
+  const sampleLabel =
+    samples.length === 1
+      ? "vzorek"
+      : [2, 3, 4].includes(samples.length)
+        ? "vzorky"
+        : "vzorků";
+
+  const haveOwnerData =
+    metric.ownerName && metric.ownerAvatarUrl && metric.ownerMail;
+
   return (
     <div>
       <main className="m-auto max-w-content px-7 py-20">
@@ -43,17 +55,50 @@ const Page = async ({ params }: Props) => {
           ]}
           currentPage={metric.name}
         />
+
         <h1
           className={`typo-title ${metric.description ? "mb-3" : "mb-10"} mt-7`}
         >
           {metric.service} | {metric.name}
         </h1>
+
         {metric.description && (
           <h2 className="typo-subtitle mb-10 max-w-prose">
             {metric.description}
           </h2>
         )}
-        <DetailedChart metric={metric} filteredSamples={samples} />
+
+        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          <section className="lg:col-span-2">
+            <DetailedChart metric={metric} filteredSamples={samples} />
+          </section>
+          <aside>
+            <Sidebar>
+              {haveOwnerData && (
+                <SidebarSection title="O data pečuje">
+                  <ImageLabel
+                    key={metric.ownerName}
+                    imageUrl={metric.ownerAvatarUrl!}
+                    label={metric.ownerName!}
+                    link={`mailto:${metric.ownerMail}`}
+                  />
+                  <p className="mt-4">
+                    Potřebujete zjistit, co přesně data znamenají nebo jak se
+                    měří? Jsou neaktuální? Ozvěte se!
+                  </p>
+                </SidebarSection>
+              )}
+              <SidebarSection title="Data s sebou">
+                <p className="mb-4">
+                  Datová sada obsahuje celkem {samples.length} {sampleLabel},
+                  můžete si je stáhnout ve formátu CSV pro další zpracování nebo
+                  vizualizaci.
+                </p>
+                <SidebarCTA href={`${metric.slug}/csv`} label="Stáhnout CSV" />
+              </SidebarSection>
+            </Sidebar>
+          </aside>
+        </div>
       </main>
     </div>
   );

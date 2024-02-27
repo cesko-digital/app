@@ -27,6 +27,9 @@ export const decodeMetricDefinition = record({
   slug: string,
   datawrapperChartId: optional(string),
   description: optional(string),
+  ownerName: relationToZeroOrOne,
+  ownerMail: relationToZeroOrOne,
+  ownerAvatarUrl: relationToZeroOrOne,
 });
 
 export type MetricSample = decodeType<typeof decodeMetricSample>;
