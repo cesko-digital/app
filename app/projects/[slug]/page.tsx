@@ -121,6 +121,36 @@ async function Page({ params }: Props) {
           </aside>
         </div>
 
+        {/* Related open roles */}
+        {opportunities.length > 0 && (
+          <RelatedContent
+            label="Právě hledáme"
+            seeAllLabel="Všechny hledané role"
+            seeAllUrl={Route.opportunities}
+          >
+            <div>
+              {opportunities.map((o) => (
+                <OpportunityRow key={o.id} role={o} />
+              ))}
+            </div>
+          </RelatedContent>
+        )}
+
+        {/* Related events */}
+        {events.length > 0 && (
+          <RelatedContent
+            label="Vybrané akce"
+            seeAllLabel="Všechny akce"
+            seeAllUrl={Route.events}
+          >
+            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+              {events.map((e) => (
+                <EventCard key={e.id} event={e} />
+              ))}
+            </div>
+          </RelatedContent>
+        )}
+
         {/* Project team */}
         {project.featureFlags.includes("displayProjectTeam") && (
           <ProjectTeamSection team={allTeamEngagements} />
@@ -145,36 +175,6 @@ async function Page({ params }: Props) {
                     <p className="line-clamp-4">{post.description}</p>
                   </div>
                 </Card>
-              ))}
-            </div>
-          </RelatedContent>
-        )}
-
-        {/* Related events */}
-        {events.length > 0 && (
-          <RelatedContent
-            label="Vybrané akce"
-            seeAllLabel="Všechny akce"
-            seeAllUrl={Route.events}
-          >
-            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-              {events.map((e) => (
-                <EventCard key={e.id} event={e} />
-              ))}
-            </div>
-          </RelatedContent>
-        )}
-
-        {/* Related open roles */}
-        {opportunities.length > 0 && (
-          <RelatedContent
-            label="Právě hledáme"
-            seeAllLabel="Všechny hledané role"
-            seeAllUrl={Route.opportunities}
-          >
-            <div>
-              {opportunities.map((o) => (
-                <OpportunityRow key={o.id} role={o} />
               ))}
             </div>
           </RelatedContent>
