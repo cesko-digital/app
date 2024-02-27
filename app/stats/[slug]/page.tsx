@@ -88,7 +88,7 @@ const Page = async ({ params }: Props) => {
                   </p>
                 </SidebarSection>
               )}
-              <SidebarSection title="Data s sebou">
+              <SidebarSection title="Data na doma">
                 <p className="mb-4">
                   Datová sada obsahuje celkem {samples.length} {sampleLabel},
                   můžete si je stáhnout ve formátu CSV pro další zpracování nebo
