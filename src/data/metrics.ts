@@ -24,6 +24,10 @@ export const decodeMetricDefinition = record({
   service: string,
   name: string,
   type: withDefault(union("time", "band"), "time"),
+  positiveDirection: withDefault(
+    union("moreIsBetter", "lessIsBetter"),
+    "moreIsBetter",
+  ),
   slug: string,
   datawrapperChartId: optional(string),
   description: optional(string),
