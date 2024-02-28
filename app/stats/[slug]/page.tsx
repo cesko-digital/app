@@ -45,6 +45,12 @@ const Page = async ({ params }: Props) => {
   const haveOwnerData =
     metric.ownerName && metric.ownerAvatarUrl && metric.ownerMail;
 
+  const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <div>
       <main className="m-auto max-w-content px-7 py-20">
@@ -74,6 +80,11 @@ const Page = async ({ params }: Props) => {
           </section>
           <aside>
             <Sidebar>
+              <SidebarSection title="Poslední aktualizace">
+                {dateFormatter.format(
+                  new Date(samples[samples.length - 1].date),
+                )}
+              </SidebarSection>
               {haveOwnerData && (
                 <SidebarSection title="O data pečuje">
                   <ImageLabel
