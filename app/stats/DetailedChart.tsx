@@ -54,9 +54,6 @@ export const DetailedChart = ({
           xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
         />
       </div>
-      <a className="btn-primary text-center" href={`${metric.slug}/csv`}>
-        Stáhnout data ve formátu CSV
-      </a>
     </div>
   );
 };
