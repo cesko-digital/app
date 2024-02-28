@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { color } from "@mui/system";
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
@@ -87,6 +88,7 @@ const MetricBox = ({
   });
   const formatNumber = (value: number) => numberFormatter.format(value);
   const data = samples.map((s) => s.value);
+  console.log("data", data);
   const timeAxis: Axis = {
     data: samples.map((s) => new Date(s.date)),
     scaleType: "time",
@@ -96,6 +98,26 @@ const MetricBox = ({
     data: samples.map((s) => s.label),
     scaleType: "band",
   };
+
+  const calculateTrend = (data: Array<number>) => {
+    const lastValue: number = data[data.length - 1];
+    const penultimateValue: number = data[data.length - 2];
+    const trend = ((lastValue - penultimateValue) / penultimateValue) * 100;
+    const twoDecimalsTrend = Math.round(trend * 100) / 100;
+    return twoDecimalsTrend;
+  };
+
+  const trend = calculateTrend(data);
+
+  const shouldBeGreen = (metric: MetricDefinition, trend: number) => {
+    return (
+      (trend >= 0 && metric.positiveDirection === "moreIsBetter") ||
+      (trend <= 0 && metric.positiveDirection === "lessIsBetter")
+    );
+  };
+
+  const isGreen: boolean = shouldBeGreen(metric, trend);
+
   return (
     <Link
       key={metric.slug}
@@ -103,6 +125,11 @@ const MetricBox = ({
       href={Route.toMetric(metric)}
     >
       <div className="p-4">
+        <h4
+          className={`typo-caption ${isGreen ? "text-green-600" : "text-red-600"}`}
+        >
+          {trend >= 0 ? "↑" : "↓"} {trend}%
+        </h4>
         <LineChart
           colors={["blue"]}
           height={200}
@@ -121,6 +148,7 @@ const MetricBox = ({
           xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
         />
       </div>
+
       <div className="flex-grow bg-gray p-4">
         <h3>{metric.name}</h3>
         {metric.description && (
