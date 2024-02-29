@@ -1,9 +1,8 @@
 "use client";
 
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider, signIn, useSession } from "next-auth/react";
 
 import { useJSONResource } from "~/components/hooks/resource";
-import { expressSignIn } from "~/src/auth";
 import { type Event } from "~/src/data/event";
 
 type RegistrationStatus = {
@@ -22,10 +21,7 @@ const QuickRegistrationButton = ({ event }: { event: Event }) => {
   } else if (sessionStatus === "unauthenticated") {
     // Unauthenticated: Use button to sign-in first
     return (
-      <a
-        className="btn-primary block text-center"
-        onClick={() => expressSignIn()}
-      >
+      <a className="btn-primary block text-center" onClick={() => signIn()}>
         Pro registraci se musíš přihlásit
       </a>
     );

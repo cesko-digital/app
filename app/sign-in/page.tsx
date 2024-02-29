@@ -5,12 +5,11 @@ import { signIn } from "next-auth/react";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
-import { devMode } from "~/src/utils";
 
 const Page = () => {
   const handleSignIn = async () => {
     trackCustomEvent("SignIn");
-    await signIn("slack", { callbackUrl: "/" });
+    await signIn(undefined, { callbackUrl: "/" });
   };
 
   return (
@@ -35,22 +34,10 @@ const Page = () => {
           <a href={Route.register} className="typo-link typo-caption block">
             Nejsem, chci se registrovat
           </a>
-          {devMode() && <DevSignInButton />}
         </div>
       </section>
     </main>
   );
 };
-
-const DevSignInButton = () => (
-  <a
-    className="typo-link typo-caption block cursor-pointer opacity-50"
-    onClick={async () =>
-      await signIn("credentials", { callbackUrl: Route.userProfile })
-    }
-  >
-    Testovací přihlášení
-  </a>
-);
 
 export default Page;
