@@ -128,7 +128,7 @@ const MetricBox = ({
         <h4
           className={`typo-caption ${isGreen ? "text-green-600" : "text-red-600"}`}
         >
-          {trend >= 0 ? "↑" : "↓"} {trend}%
+          {trend >= 0 ? "↑" : "↓"} {trend} %
         </h4>
         <LineChart
           colors={["blue"]}
