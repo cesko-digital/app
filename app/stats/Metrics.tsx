@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { color } from "@mui/system";
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
+import clsx from "clsx";
 
 import {
   calculateTrend,
@@ -93,7 +93,6 @@ const MetricBox = ({
   });
   const formatNumber = (value: number) => numberFormatter.format(value);
   const data = samples.map((s) => s.value);
-  console.log("data", data);
   const timeAxis: Axis = {
     data: samples.map((s) => new Date(s.date)),
     scaleType: "time",
@@ -107,15 +106,6 @@ const MetricBox = ({
   const trend = calculateTrend(data) ?? 0;
   const direction = getTrendDirection(trend, metric.positiveDirection);
 
-  const shouldBeGreen = (metric: MetricDefinition, trend: number) => {
-    return (
-      (trend >= 0 && metric.positiveDirection === "moreIsBetter") ||
-      (trend <= 0 && metric.positiveDirection === "lessIsBetter")
-    );
-  };
-
-  const isGreen: boolean = shouldBeGreen(metric, trend);
-
   return (
     <Link
       key={metric.slug}
@@ -123,11 +113,18 @@ const MetricBox = ({
       href={Route.toMetric(metric)}
     >
       <div className="p-4">
-        <h4
-          className={`typo-caption ${isGreen ? "text-green-600" : "text-red-600"}`}
-        >
-          {trend >= 0 ? "↑" : "↓"} {trend} %
-        </h4>
+        {data.length > 1 && (
+          <h4
+            className={clsx(
+              "typo-caption",
+              direction === "better" && "text-green-600",
+              direction === "worse" && "text-red-600",
+              direction == "unchanged" && "text-zinc-500",
+            )}
+          >
+            {direction === "worse" ? "↓" : "↑"} {trend} %
+          </h4>
+        )}
         <LineChart
           colors={["blue"]}
           height={200}
