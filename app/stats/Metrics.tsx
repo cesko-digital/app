@@ -4,7 +4,12 @@ import { color } from "@mui/system";
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
-import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
+import {
+  calculateTrend,
+  getTrendDirection,
+  type MetricDefinition,
+  type MetricSample,
+} from "~/src/data/metrics";
 import { Route } from "~/src/routing";
 import { unique } from "~/src/utils";
 
@@ -99,15 +104,8 @@ const MetricBox = ({
     scaleType: "band",
   };
 
-  const calculateTrend = (data: Array<number>) => {
-    const lastValue: number = data[data.length - 1];
-    const penultimateValue: number = data[data.length - 2];
-    const trend = ((lastValue - penultimateValue) / penultimateValue) * 100;
-    const twoDecimalsTrend = Math.round(trend * 100) / 100;
-    return twoDecimalsTrend;
-  };
-
-  const trend = calculateTrend(data);
+  const trend = calculateTrend(data) ?? 0;
+  const direction = getTrendDirection(trend, metric.positiveDirection);
 
   const shouldBeGreen = (metric: MetricDefinition, trend: number) => {
     return (

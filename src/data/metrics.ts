@@ -64,3 +64,33 @@ export const getAllMetricSamples = async () =>
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricSample));
+
+//
+// Helpers
+//
+
+export function calculateTrend(data: number[]): number | undefined {
+  if (data.length < 2) {
+    return undefined;
+  }
+  const lastValue: number = data[data.length - 1];
+  const penultimateValue: number = data[data.length - 2];
+  const trend = ((lastValue - penultimateValue) / penultimateValue) * 100;
+  return Math.round(trend);
+}
+
+export function getTrendDirection(
+  trend: number,
+  positiveDirection: "moreIsBetter" | "lessIsBetter",
+): "better" | "worse" | "unchanged" {
+  const directionSign = positiveDirection === "moreIsBetter" ? +1 : -1;
+  if (trend !== 0) {
+    if (directionSign * trend > 0) {
+      return "better";
+    } else {
+      return "worse";
+    }
+  } else {
+    return "unchanged";
+  }
+}
