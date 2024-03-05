@@ -94,3 +94,12 @@ export function getTrendDirection(
     return "unchanged";
   }
 }
+
+export function getTrendIcon(trend: number) {
+  if (trend < 0) {
+    return "↓";
+  } else if (trend > 0) {
+    return "↑";
+  }
+  return "~";
+}

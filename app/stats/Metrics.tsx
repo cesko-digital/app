@@ -7,6 +7,7 @@ import clsx from "clsx";
 import {
   calculateTrend,
   getTrendDirection,
+  getTrendIcon,
   type MetricDefinition,
   type MetricSample,
 } from "~/src/data/metrics";
@@ -105,6 +106,7 @@ const MetricBox = ({
 
   const trend = calculateTrend(data) ?? 0;
   const direction = getTrendDirection(trend, metric.positiveDirection);
+  const trendIcon = getTrendIcon(trend);
 
   return (
     <Link
@@ -122,7 +124,7 @@ const MetricBox = ({
               direction == "unchanged" && "text-zinc-500",
             )}
           >
-            {direction === "worse" ? "↓" : "↑"} {trend} %
+            {trendIcon} {trend} %
           </h4>
         )}
         <LineChart
