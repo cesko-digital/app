@@ -2,8 +2,15 @@ import Link from "next/link";
 
 import { type AxisConfig } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
+import clsx from "clsx";
 
-import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
+import {
+  calculateTrend,
+  getTrendDirection,
+  getTrendIcon,
+  type MetricDefinition,
+  type MetricSample,
+} from "~/src/data/metrics";
 import { Route } from "~/src/routing";
 import { unique } from "~/src/utils";
 
@@ -96,6 +103,11 @@ const MetricBox = ({
     data: samples.map((s) => s.label),
     scaleType: "band",
   };
+
+  const trend = calculateTrend(data) ?? 0;
+  const direction = getTrendDirection(trend, metric.positiveDirection);
+  const trendIcon = getTrendIcon(trend);
+
   return (
     <Link
       key={metric.slug}
@@ -103,6 +115,18 @@ const MetricBox = ({
       href={Route.toMetric(metric)}
     >
       <div className="p-4">
+        {data.length > 1 && (
+          <h4
+            className={clsx(
+              "typo-caption",
+              direction === "better" && "text-green-600",
+              direction === "worse" && "text-red-600",
+              direction == "unchanged" && "text-zinc-500",
+            )}
+          >
+            {trendIcon} {trend} %
+          </h4>
+        )}
         <LineChart
           colors={["blue"]}
           height={200}
@@ -121,6 +145,7 @@ const MetricBox = ({
           xAxis={[metric.type === "band" ? bandAxis : timeAxis]}
         />
       </div>
+
       <div className="flex-grow bg-gray p-4">
         <h3>{metric.name}</h3>
         {metric.description && (
