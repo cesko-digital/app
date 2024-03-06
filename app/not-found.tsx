@@ -1,6 +1,9 @@
+import { Mark404 } from "~/components/Mark404";
+
 export default async function Page() {
   return (
     <main className="m-auto flex max-w-content flex-col gap-20 px-7 py-20">
+      <Mark404 />
       <section>
         <h1 className="typo-title mb-4 mt-20 text-center">
           404: Stránka nenalezena
