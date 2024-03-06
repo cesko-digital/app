@@ -52,10 +52,14 @@ const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
   emailVerified: user.emailVerified?.toDateString(),
 });
 
-const userTable = usersBase<UserTableSchema>("Auth: Users");
+const userTable = usersBase<UserTableSchema>("User Profiles");
 
-const createUser = async (user: Omit<User, "id">) =>
-  await userTable.create(encodeUser(user)).then(unwrapRecord).then(decodeUser);
+const createUser = async (_: Omit<User, "id">) => {
+  // The only way to create a user account is to register.
+  // The Adapter interface still requires us to supply a `createUser`
+  // function, but it should not get called.
+  throw "This should not be called";
+};
 
 const getUser = async (id: string) =>
   await userTable.find(id).then(unwrapRecord).then(decodeUser);
@@ -119,7 +123,7 @@ const encodeAccount = (
   type: account.type,
 });
 
-const accountTable = usersBase<AccountTableSchema>("Auth: Accounts");
+const accountTable = usersBase<AccountTableSchema>("Accounts");
 
 const linkAccount = async (account: Omit<Account, "id">) => {
   await accountTable.create(encodeAccount(account));
@@ -152,7 +156,7 @@ const encodeSession = (
   expires: session.expires?.toDateString(),
 });
 
-const sessionTable = usersBase<SessionTableSchema>("Auth: Sessions");
+const sessionTable = usersBase<SessionTableSchema>("Sessions");
 
 const createSession = async (
   session: Pick<Session, "sessionToken" | "userId" | "expires">,
@@ -232,7 +236,7 @@ const encodeToken = (token: Partial<Token>): Partial<TokenTableSchema> => ({
   token: token.token,
 });
 
-const tokenTable = usersBase<TokenTableSchema>("Auth: Tokens");
+const tokenTable = usersBase<TokenTableSchema>("Sign-in Tokens");
 
 const createVerificationToken = async (token: Omit<Token, "id">) =>
   await tokenTable
