@@ -10,12 +10,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst } from "~/src/decoding";
 
-import {
-  createBatch,
-  unwrapRecords,
-  updateBatch,
-  volunteerManagementBase,
-} from "./airtable";
+import { createBatch, unwrapRecords, updateBatch, usersBase } from "./airtable";
 
 /** The Airtable schema of the Slack user table */
 export interface Schema extends FieldSet {
@@ -28,7 +23,7 @@ export interface Schema extends FieldSet {
 }
 
 /** Slack Users table */
-export const slackUsersTable = volunteerManagementBase<Schema>("Slack Users");
+export const slackUsersTable = usersBase<Schema>("Slack Users");
 
 /** Slack user as stored in Airtable */
 export type SlackUser = decodeType<typeof decodeSlackUser>;

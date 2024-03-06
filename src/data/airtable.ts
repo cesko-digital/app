@@ -8,13 +8,13 @@ import Airtable, {
 
 import { splitToChunks } from "~/src/utils";
 
-/** The Volunteer Management database */
-export const volunteerManagementBase = new Airtable({
+/** The Users database contains user profiles and Slack user records */
+export const usersBase = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
 }).base("apppZX1QC3fl1RTBM");
 
-/** The Web database */
-export const webBase = new Airtable({
+/** The App database contains projects, opportunities and other app-related data */
+export const appBase = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
 }).base("appkn1DkvgVI5jpME");
 

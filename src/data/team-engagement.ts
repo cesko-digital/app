@@ -15,7 +15,7 @@ import {
   withDefault,
 } from "~/src/decoding";
 
-import { unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecords } from "./airtable";
 
 //
 // Decoding
@@ -49,7 +49,7 @@ export const decodeTeamEngagement = record({
 // API Calls
 //
 
-const teamEngagementTable = webBase("Teams");
+const teamEngagementTable = appBase("Teams");
 
 /** Get all team engagements */
 export async function getPublicTeamEngagements(): Promise<TeamEngagement[]> {

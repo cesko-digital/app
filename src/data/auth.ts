@@ -12,7 +12,7 @@ import {
 
 import { takeFirst } from "~/src/decoding";
 
-import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecord, unwrapRecords } from "./airtable";
 
 //
 // Decoding Helpers
@@ -52,7 +52,7 @@ const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
   emailVerified: user.emailVerified?.toDateString(),
 });
 
-const userTable = webBase<UserTableSchema>("Auth: Users");
+const userTable = appBase<UserTableSchema>("Auth: Users");
 
 const createUser = async (user: Omit<User, "id">) =>
   await userTable.create(encodeUser(user)).then(unwrapRecord).then(decodeUser);
@@ -119,7 +119,7 @@ const encodeAccount = (
   type: account.type,
 });
 
-const accountTable = webBase<AccountTableSchema>("Auth: Accounts");
+const accountTable = appBase<AccountTableSchema>("Auth: Accounts");
 
 const linkAccount = async (account: Omit<Account, "id">) => {
   await accountTable.create(encodeAccount(account));
@@ -152,7 +152,7 @@ const encodeSession = (
   expires: session.expires?.toDateString(),
 });
 
-const sessionTable = webBase<SessionTableSchema>("Auth: Sessions");
+const sessionTable = appBase<SessionTableSchema>("Auth: Sessions");
 
 const createSession = async (
   session: Pick<Session, "sessionToken" | "userId" | "expires">,
@@ -232,7 +232,7 @@ const encodeToken = (token: Partial<Token>): Partial<TokenTableSchema> => ({
   token: token.token,
 });
 
-const tokenTable = webBase<TokenTableSchema>("Auth: Tokens");
+const tokenTable = appBase<TokenTableSchema>("Auth: Tokens");
 
 const createVerificationToken = async (token: Omit<Token, "id">) =>
   await tokenTable

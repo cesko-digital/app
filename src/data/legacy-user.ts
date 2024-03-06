@@ -7,7 +7,7 @@ import {
 
 import { decodeValidItemsFromArray, withDefault } from "~/src/decoding";
 
-import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecord, unwrapRecords } from "./airtable";
 
 //
 // Decoding
@@ -16,8 +16,8 @@ import { unwrapRecord, unwrapRecords, webBase } from "./airtable";
 /**
  * Legacy User
  *
- * This is a legacy type representing the `Web::Volunteers` table, which
- * should be replaced by `Web::Teams` as soon as possible.
+ * This is a legacy type representing the `App::Volunteers` table, which
+ * should be replaced by `App::Teams` as soon as possible.
  */
 export type LegacyUser = decodeType<typeof decodeLegacyUser>;
 
@@ -36,7 +36,7 @@ export const decodeLegacyUser = record({
 // API Calls
 //
 
-export const usersTable = webBase("Volunteers");
+export const usersTable = appBase("Volunteers");
 
 export async function getAllUsers(): Promise<LegacyUser[]> {
   return await usersTable

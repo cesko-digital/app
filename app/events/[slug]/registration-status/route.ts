@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { webBase } from "src/data/airtable";
+import { appBase } from "src/data/airtable";
 import { eventsTable, findEventsWithSlug, type Event } from "src/data/event";
 import { boolean, record } from "typescript-json-decoder";
 
@@ -41,7 +41,7 @@ export async function POST(
     const { slug } = params;
     return withEvent(slug, async (event) => {
       const signedInUserSlackId = token.sub!;
-      const userProfileTable = webBase("User Profiles");
+      const userProfileTable = appBase("User Profiles");
       // Get database ID for the signed-in user’s profile record
       const userProfileId = await userProfileTable
         .select({

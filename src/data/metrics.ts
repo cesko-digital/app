@@ -7,7 +7,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { unwrapRecords, webBase } from "~/src/data/airtable";
+import { appBase, unwrapRecords } from "~/src/data/airtable";
 import {
   decodeValidItemsFromArray,
   relationToZeroOrOne,
@@ -48,8 +48,8 @@ export const decodeMetricSample = record({
 // API Calls
 //
 
-const definitionsTable = webBase("Metrics: Definitions");
-const samplesTable = webBase("Metrics: Samples");
+const definitionsTable = appBase("Metrics: Definitions");
+const samplesTable = appBase("Metrics: Samples");
 
 export const getAllMetricDefinitions = async () =>
   definitionsTable
