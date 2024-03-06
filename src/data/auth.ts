@@ -3,6 +3,7 @@ import { type Adapter } from "next-auth/adapters";
 import {
   array,
   date,
+  field,
   record,
   string,
   union,
@@ -10,7 +11,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { takeFirst } from "~/src/decoding";
+import { relationToZeroOrOne, takeFirst } from "~/src/decoding";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -38,6 +39,8 @@ interface UserTableSchema extends FieldSet {
   id: string;
   email: string;
   emailVerified: string;
+  name: string;
+  slackAvatarUrl: string;
 }
 
 type User = decodeType<typeof decodeUser>;
@@ -45,6 +48,8 @@ const decodeUser = record({
   id: string,
   email: string,
   emailVerified: optionalAsNull(date),
+  name: optionalAsNull(string),
+  image: field("slackAvatarUrl", relationToZeroOrOne),
 });
 
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
@@ -54,7 +59,7 @@ const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
 
 const userTable = usersBase<UserTableSchema>("User Profiles");
 
-const createUser = async (_: Omit<User, "id">) => {
+const createUser = async (_: Pick<User, "email" | "emailVerified">) => {
   // The only way to create a user account is to register.
   // The Adapter interface still requires us to supply a `createUser`
   // function, but it should not get called.
@@ -87,7 +92,9 @@ const getUserByAccount = async ({
     .then(unwrapRecords)
     .then(takeFirstMaybe(array(decodeUser)));
 
-const updateUser = async (user: Partial<User> & Pick<User, "id">) =>
+const updateUser = async (
+  user: Partial<Pick<User, "email" | "emailVerified">> & Pick<User, "id">,
+) =>
   await userTable
     .update(user.id, encodeUser(user))
     .then(unwrapRecord)
