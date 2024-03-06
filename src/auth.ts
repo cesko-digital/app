@@ -44,8 +44,9 @@ export const authOptions: NextAuthOptions = {
         return Route.register;
       }
     },
-    // Augment session with extra user info.
-    // TBD: Can we change the default Session type to make the types click here?
+    // Augment session with extra user info. We could augment the `Session`
+    // type to make the types match better both here and elsewhere, but in
+    // practice this turned out to be pain, so we just force-cast the values.
     async session({ session, user }) {
       const { name, email, image, id } = user;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
