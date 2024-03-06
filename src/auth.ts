@@ -5,7 +5,8 @@ import { type NextAuthOptions } from "next-auth";
 import { getToken, type JWT } from "next-auth/jwt";
 import EmailProvider from "next-auth/providers/email";
 
-import { authDatabaseAdapter } from "~/src/data/auth";
+import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
+import { Route } from "~/src/routing";
 
 /** NextAuth options used to configure various parts of the authentication machinery */
 export const authOptions: NextAuthOptions = {
@@ -32,6 +33,18 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    // If user does not exist already, redirect to registration page.
+    // TBD: Add a URL parameter or an intermediate screen to explain?
+    async signIn({ user }) {
+      if (user.email) {
+        const existingUser = await getUserByEmail(user.email);
+        return existingUser ? true : Route.register;
+      } else {
+        return Route.register;
+      }
+    },
+  },
 };
 
 /** Check for JWT token in request, return 401 Unauthorized if missing */

@@ -283,3 +283,5 @@ export const authDatabaseAdapter: Adapter = {
   createVerificationToken,
   useVerificationToken,
 };
+
+export { getUserByEmail };
