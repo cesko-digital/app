@@ -1,6 +1,7 @@
 import sendgrid from "@sendgrid/mail";
 import { getServerSession, type NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
+import SlackProvider from "next-auth/providers/slack";
 
 import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
 import { Route } from "~/src/routing";
@@ -17,6 +18,15 @@ export type OurUser = {
 export const authOptions: NextAuthOptions = {
   adapter: authDatabaseAdapter,
   providers: [
+    SlackProvider({
+      clientId: process.env.SLACK_CLIENT_ID!,
+      clientSecret: process.env.SLACK_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          team: "TG21XF887",
+        },
+      },
+    }),
     EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: "Česko.Digital <pomoc@cesko.digital>",
