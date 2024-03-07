@@ -302,4 +302,4 @@ export const authDatabaseAdapter: Adapter = {
   useVerificationToken,
 };
 
-export { getUserByEmail };
+export { getUserByEmail, linkAccount };

@@ -60,7 +60,8 @@ export type TableView =
   | "New Role Notification Recipients"
   | "Profiles with Occupation Data"
   | "Profiles with Skills"
-  | "Profiles with Districts";
+  | "Profiles with Districts"
+  | "Missing Slack Account";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
