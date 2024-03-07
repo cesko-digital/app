@@ -21,7 +21,7 @@ export const SessionToolbar = () => {
   const { data: session, status } = useSession();
   return (
     <div className="ml-auto flex flex-row items-center gap-4">
-      {/* status === "loading" is intentionally ignored, we just leave the place empty */}
+      {status === "loading" && "Načítám…"}
       {status === "authenticated" && <SignedInButtons session={session} />}
       {status === "unauthenticated" && <SignedOutButtons />}
     </div>

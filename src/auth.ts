@@ -17,6 +17,7 @@ export type OurUser = {
 /** NextAuth options used to configure various parts of the authentication machinery */
 export const authOptions: NextAuthOptions = {
   adapter: authDatabaseAdapter,
+
   providers: [
     SlackProvider({
       clientId: process.env.SLACK_CLIENT_ID!,
@@ -48,6 +49,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   callbacks: {
     // If user does not exist already, redirect to registration page.
     // TBD: Add a URL parameter or an intermediate screen to explain?
@@ -59,16 +61,34 @@ export const authOptions: NextAuthOptions = {
         return Route.register;
       }
     },
-    // Augment session with extra user info. We could augment the `Session`
-    // type to make the types match better both here and elsewhere, but in
-    // practice this turned out to be pain, so we just force-cast the values.
-    async session({ session, user }) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { name, email, image, id, slackId } = user as any as OurUser;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
-      session.user = { name, email, image, id, slackId } as any;
+
+    // This is called when the JWT token is created or updated. We use
+    // the callback to store the Slack ID in the token so that it is available
+    // in the session data on the client. TBD: This is a legacy hack, we
+    // should replace the Slack ID with the regular database ID of the user.
+    async jwt({ token, user }) {
+      if (user) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        token.slackId = (user as any as OurUser).slackId;
+      }
+      return token;
+    },
+
+    // Forward Slack ID from the token to the session object to be used on the client.
+    // TBD: Legacy hack, see note above.
+    async session({ session, token }) {
+      if (session.user) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (session.user as any as OurUser).slackId = token.slackId as string;
+      }
       return session;
     },
+  },
+
+  session: {
+    // Use session tokens to store sessions. We tried using DB sessions, but
+    // the session is queried very often and the performance was horrible.
+    strategy: "jwt",
   },
 };
 
