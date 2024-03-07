@@ -72,7 +72,11 @@ const getUser = async (id: string) =>
 
 const getUserByEmail = async (email: string) =>
   await userTable
-    .select({ filterByFormula: `{email} = "${email}"`, maxRecords: 1 })
+    .select({
+      view: "Confirmed Profiles",
+      filterByFormula: `{email} = "${email}"`,
+      maxRecords: 1,
+    })
     .all()
     .then(unwrapRecords)
     .then(takeFirstMaybe(array(decodeUser)));
