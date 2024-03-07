@@ -9,17 +9,16 @@ import {
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 
-export async function GET(request: NextRequest) {
-  return withAuthenticatedUser(request, async (token) => {
-    const email = token.email!;
+// TBD: This should be Slack e-mail.
+export async function GET() {
+  return withAuthenticatedUser(async ({ email }) => {
     const existingPrefs = await getNewsletterPreferences(apiKey, email);
     return NextResponse.json(existingPrefs);
   });
 }
 
 export async function POST(request: NextRequest) {
-  return withAuthenticatedUser(request, async (token) => {
-    const email = token.email!;
+  return withAuthenticatedUser(async ({ email }) => {
     const newPrefs = decodeNewsletterPreferences(await request.json());
     const success = await setNewsletterPreferences(apiKey, email, newPrefs);
     return success

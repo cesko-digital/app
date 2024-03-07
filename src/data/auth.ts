@@ -46,6 +46,7 @@ interface UserTableSchema extends FieldSet {
 type User = decodeType<typeof decodeUser>;
 const decodeUser = record({
   id: string,
+  slackId: relationToZeroOrOne,
   email: string,
   emailVerified: optionalAsNull(date),
   name: optionalAsNull(string),

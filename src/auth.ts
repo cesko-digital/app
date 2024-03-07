@@ -1,12 +1,17 @@
-import { type NextRequest } from "next/server";
-
 import sendgrid from "@sendgrid/mail";
-import { type NextAuthOptions } from "next-auth";
-import { getToken, type JWT } from "next-auth/jwt";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 
 import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
 import { Route } from "~/src/routing";
+
+export type OurUser = {
+  id: string;
+  slackId: string;
+  name: string;
+  email: string;
+  image: string;
+};
 
 /** NextAuth options used to configure various parts of the authentication machinery */
 export const authOptions: NextAuthOptions = {
@@ -48,23 +53,25 @@ export const authOptions: NextAuthOptions = {
     // type to make the types match better both here and elsewhere, but in
     // practice this turned out to be pain, so we just force-cast the values.
     async session({ session, user }) {
-      const { name, email, image, id } = user;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { name, email, image, id, slackId } = user as any as OurUser;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
-      session.user = { name, email, image, id } as any;
+      session.user = { name, email, image, id, slackId } as any;
       return session;
     },
   },
 };
 
-/** Check for JWT token in request, return 401 Unauthorized if missing */
+/** If there is an active session, run action with session user, otherwise return 401 / Unauthorized */
 export async function withAuthenticatedUser(
-  request: NextRequest,
-  action: (token: JWT, slackId: string) => Promise<Response>,
+  action: (user: OurUser) => Promise<Response>,
 ): Promise<Response> {
-  const token = await getToken({ req: request });
-  if (!token?.sub) {
-    return new Response("Authentication required", { status: 401 });
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const ourUser = session.user as any as OurUser;
+    return action(ourUser);
   } else {
-    return await action(token, token.sub);
+    return new Response("Authentication required", { status: 401 });
   }
 }

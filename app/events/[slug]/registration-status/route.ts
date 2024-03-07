@@ -14,15 +14,13 @@ type Props = {
 
 /** Get registration status for event and signed-in user */
 export async function GET(
-  request: NextRequest,
+  _: NextRequest,
   { params }: Props,
 ): Promise<Response> {
-  return withAuthenticatedUser(request, (token) => {
+  return withAuthenticatedUser((user) => {
     const { slug } = params;
     return withEvent(slug, async (event) => {
-      const signedInUserSlackId = token.sub!;
-      const registered =
-        event.registeredUserSlackIds.includes(signedInUserSlackId);
+      const registered = event.registeredUserSlackIds.includes(user.slackId);
       return NextResponse.json({ registered });
     });
   });
@@ -37,15 +35,14 @@ export async function POST(
     registered: boolean,
   });
   const { registered } = decodeBody(await request.json());
-  return withAuthenticatedUser(request, (token) => {
+  return withAuthenticatedUser((user) => {
     const { slug } = params;
     return withEvent(slug, async (event) => {
-      const signedInUserSlackId = token.sub!;
       const userProfileTable = appBase("User Profiles");
       // Get database ID for the signed-in user’s profile record
       const userProfileId = await userProfileTable
         .select({
-          filterByFormula: `{slackId} = "${signedInUserSlackId}"`,
+          filterByFormula: `{slackId} = "${user.slackId}"`,
           maxRecords: 1,
         })
         .all()

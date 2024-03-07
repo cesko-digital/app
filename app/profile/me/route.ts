@@ -50,12 +50,12 @@ export async function POST(request: NextRequest): Promise<Response> {
 }
 
 /** Get user profile, used for stuff like displaying user preferences */
-export async function GET(request: NextRequest) {
-  return withAuthenticatedUser(request, async (_, slackId) => {
-    let profile = await getUserProfile(slackId).catch(() => null);
+export async function GET() {
+  return withAuthenticatedUser(async (user) => {
+    let profile = await getUserProfile(user.slackId).catch(() => null);
     if (!profile) {
       // The profile doesn’t exist yet, let’s create it now
-      const slackUser = await getSlackUserBySlackId(slackId);
+      const slackUser = await getSlackUserBySlackId(user.slackId);
       profile = await createUserProfile({
         name: slackUser.name,
         email: slackUser.email!,
@@ -77,8 +77,8 @@ export async function GET(request: NextRequest) {
 
 /** Change user profile, used for stuff like updating user preferences */
 export async function PATCH(request: NextRequest) {
-  return withAuthenticatedUser(request, async (_, slackId) => {
-    const profile = await getUserProfile(slackId).catch(() => null);
+  return withAuthenticatedUser(async (user) => {
+    const profile = await getUserProfile(user.slackId).catch(() => null);
     if (!profile) {
       return new Response("User profile not found.", { status: 404 });
     }
@@ -98,7 +98,6 @@ export async function PATCH(request: NextRequest) {
       privacyFlags,
       availableInDistricts,
     });
-    /* eslint-enable @typescript-eslint/no-unsafe-assignment */
     return new Response("Updated", { status: 200 });
   });
 }
