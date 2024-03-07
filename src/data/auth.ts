@@ -87,15 +87,17 @@ const getUserByAccount = async ({
 }: {
   provider: string;
   providerAccountId: string;
-}) =>
-  await userTable
+}) => {
+  const account = await accountTable
     .select({
       filterByFormula: `AND({provider} = "${provider}", {providerAccountId} = "${providerAccountId}")`,
       maxRecords: 1,
     })
     .all()
     .then(unwrapRecords)
-    .then(takeFirstMaybe(array(decodeUser)));
+    .then(takeFirstMaybe(array(decodeAccount)));
+  return account ? await getUser(account.userId) : null;
+};
 
 const updateUser = async (
   user: Partial<Pick<User, "email" | "emailVerified">> & Pick<User, "id">,
