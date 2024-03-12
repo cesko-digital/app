@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { type Session } from "next-auth";
-import { SessionProvider, signOut, useSession } from "next-auth/react";
+import { SessionProvider, signIn, signOut, useSession } from "next-auth/react";
 
 import { Route } from "~/src/routing";
 
@@ -60,7 +60,7 @@ const SignedInButtons = ({ session }: { session: Session }) => {
 
 const SignedOutButtons = () => (
   <Fragment>
-    <Link className="typo-link" href={Route.signIn}>
+    <Link className="typo-link" onClick={() => signIn()} href="">
       Přihlásit se
     </Link>
     <Link className="typo-link" href={Route.register}>
