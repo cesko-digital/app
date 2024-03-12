@@ -37,7 +37,7 @@ export const authOptions: NextAuthOptions = {
           to: email,
           from: "Česko.Digital <pomoc@cesko.digital>",
           subject: "Přihlášení do aplikace Česko.Digital",
-          text: url,
+          text: renderSignInEmail(url),
           trackingSettings: {
             clickTracking: {
               enable: false,
@@ -93,6 +93,18 @@ export const authOptions: NextAuthOptions = {
 
   debug: true,
 };
+
+const renderSignInEmail = (link: string) => `Ahoj!
+
+Do aplikace Česko.Digital se můžeš přihlásit kliknutím na následující odkaz:
+
+${link}
+
+Tenhle mail ti přišel, protože se chce někdo přihlásit do aplikace Česko.Digital
+s tvou e-mailovou adresou. Pokud to nejsi ty, můžeš tenhle mail v klidu ignorovat.
+V případě dotazů nebo potíží prostě odepiš na tenhle mail, ozveme se. Díky,
+
+Česko.Digital`;
 
 /** If there is an active session, run action with session user, otherwise return 401 / Unauthorized */
 export async function withAuthenticatedUser(
