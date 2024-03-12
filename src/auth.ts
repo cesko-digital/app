@@ -90,6 +90,8 @@ export const authOptions: NextAuthOptions = {
     // the session is queried very often and the performance was horrible.
     strategy: "jwt",
   },
+
+  debug: true,
 };
 
 /** If there is an active session, run action with session user, otherwise return 401 / Unauthorized */
