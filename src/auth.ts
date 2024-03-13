@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
   adapter: authDatabaseAdapter,
 
   providers: [
+    // OAuth flow with a Slack account, only works with the Česko.Digital workspace.
     SlackProvider({
       clientId: process.env.SLACK_CLIENT_ID!,
       clientSecret: process.env.SLACK_CLIENT_SECRET!,
@@ -28,6 +29,7 @@ export const authOptions: NextAuthOptions = {
         },
       },
     }),
+    // E-mail flow, the e-mail has to already exist in our DB
     EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: "Česko.Digital <pomoc@cesko.digital>",
@@ -51,12 +53,15 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    // If user does not exist already, redirect to registration page.
-    // TBD: Add a URL parameter or an intermediate screen to explain?
     async signIn({ user }) {
       if (user.email) {
         const existingUser = await getUserByEmail(user.email);
-        return existingUser ? true : Route.register;
+        // If user does not exist already, redirect back to sign-in page
+        // with an error explainer and the option to register instead.
+        if (!existingUser) {
+          return `/auth/sign-in?error=UserNotFound&email=${user.email}`;
+        }
+        return true; // proceed
       } else {
         return Route.register;
       }
@@ -91,9 +96,17 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
 
+  // Use our custom UI for sign-in screens
+  pages: {
+    signIn: "/auth/sign-in",
+    verifyRequest: "/auth/sent",
+    error: "/auth/error",
+  },
+
   debug: true,
 };
 
+/** Render the plain-text e-mail with the magic sign-in link */
 const renderSignInEmail = (link: string) => `Ahoj!
 
 Do aplikace Česko.Digital se můžeš přihlásit kliknutím na následující odkaz:

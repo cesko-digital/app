@@ -1,43 +1,110 @@
 "use client";
 
+import { Fragment, useState } from "react";
+import { useSearchParams } from "next/navigation";
+
+import clsx from "clsx";
 import { signIn } from "next-auth/react";
 
-import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
+import { looksLikeEmailAdress } from "~/src/utils";
 
+/** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = () => {
-  const handleSignIn = async () => {
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+
+  const [email, setEmail] = useState(searchParams.get("email") ?? "");
+  const [submitting, setSubmitting] = useState(false);
+
+  // We need to relay the original callback URL to the sign-in process,
+  // otherwise it would redirect to the sign-in page after successful sign-in.
+  const params = useSearchParams();
+  const callbackUrl = params.get("callbackUrl") ?? "/";
+
+  const disabled = submitting || !email || !looksLikeEmailAdress(email);
+
+  const handleMailSignIn = async () => {
+    setSubmitting(true);
     trackCustomEvent("SignIn");
-    await signIn(undefined, { callbackUrl: "/" });
+    await signIn("email", { email, callbackUrl });
   };
 
   return (
-    <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Přihlásit se"
-      />
-      <section className="m-auto mt-10 flex max-w-[80ex] flex-col gap-7 rounded-2xl border-2 border-gray p-7 pb-10 text-center lg:mt-20">
-        <h1 className="typo-title">Přihlásit se</h1>
-        <p className="pb-4">
-          K přihlašování k tomuto webu momentálně používáme Slackový účet
-          Česko.Digital. (Na jednodušším řešení pracujeme.) Už jsi v našem
-          Slacku?
+    <Fragment>
+      <h1 className="typo-title">Přihlásit se</h1>
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          return handleMailSignIn();
+        }}
+      >
+        <label htmlFor="user-email" className="block">
+          Zadej e-mail, kterým se přihlašuješ do Slacku Česko.Digital:
+        </label>
+        <input
+          id="user-email"
+          defaultValue={email}
+          className="block w-full rounded-md border-2 border-gray p-2"
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          required
+        ></input>
+        {error && (
+          <p className="mb-2 bg-yellow p-2 text-left">{describeError(error)}</p>
+        )}
+        <button
+          className={clsx(
+            "m-auto inline-block",
+            disabled ? "btn-disabled" : "btn-primary",
+          )}
+          disabled={disabled}
+          onClick={handleMailSignIn}
+        >
+          {!submitting && "Pošli mi přihlašovací odkaz"}
+          {submitting && "Malý moment…"}
+        </button>
+        <p className="typo-caption mt-4">
+          <a
+            className="typo-link"
+            onClick={() => signIn("slack", { callbackUrl })}
+          >
+            Přihlásit přes Slack
+          </a>
         </p>
-        <div>
-          <a onClick={handleSignIn} className="btn-primary">
-            Jsem, chci se přihlásit
-          </a>
-        </div>
-        <div className="flex flex-col gap-2">
-          <a href={Route.register} className="typo-link typo-caption block">
-            Nejsem, chci se registrovat
-          </a>
-        </div>
-      </section>
-    </main>
+      </form>
+    </Fragment>
   );
+};
+
+/** See error constants described at https://next-auth.js.org/configuration/pages#sign-in-page */
+const describeError = (error: string) => {
+  switch (error) {
+    // This is our custom error
+    case "UserNotFound":
+      return (
+        <Fragment>
+          Tenhle mail neznáme. Buď zkus jiný,{" "}
+          <a href={Route.register} className="typo-link">
+            anebo se můžeš registrovat
+          </a>
+          .
+        </Fragment>
+      );
+    default:
+      return (
+        <Fragment>
+          Během přihlášení došlo k chybě (kód {error}). Pardon – zkus to prosím
+          ještě jednou a kdyby se to nezlepšilo,{" "}
+          <a href="mailto:pomoc@cesko.digital" className="typo-link">
+            ozvi se nám prosím
+          </a>
+          .
+        </Fragment>
+      );
+  }
 };
 
 export default Page;

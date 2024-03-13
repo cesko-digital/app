@@ -30,7 +30,7 @@
     @apply text-sm;
   }
   .typo-link {
-    @apply underline underline-offset-2;
+    @apply cursor-pointer underline underline-offset-2;
   }
 
   /* Buttons */
