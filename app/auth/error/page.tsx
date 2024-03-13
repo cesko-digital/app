@@ -1,13 +1,12 @@
 "use client";
 
 import { Fragment } from "react";
-import { useSearchParams } from "next/navigation";
 
 import { signIn } from "next-auth/react";
 
 /** Custom sign-in error page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = () => {
-  const params = useSearchParams();
+  const params = new URLSearchParams(document.location.search);
   const error = params.get("error");
   const Code = ({ children }: { children: React.ReactNode }) => (
     <code className="bg-yellow">{children}</code>

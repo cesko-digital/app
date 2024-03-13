@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment, useState } from "react";
-import { useSearchParams } from "next/navigation";
 
 import clsx from "clsx";
 import { signIn } from "next-auth/react";
@@ -12,15 +11,14 @@ import { looksLikeEmailAdress } from "~/src/utils";
 
 /** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = () => {
-  const searchParams = useSearchParams();
-  const error = searchParams.get("error");
+  const params = new URLSearchParams(document.location.search);
+  const error = params.get("error");
 
-  const [email, setEmail] = useState(searchParams.get("email") ?? "");
+  const [email, setEmail] = useState(params.get("email") ?? "");
   const [submitting, setSubmitting] = useState(false);
 
   // We need to relay the original callback URL to the sign-in process,
   // otherwise it would redirect to the sign-in page after successful sign-in.
-  const params = useSearchParams();
   const callbackUrl = params.get("callbackUrl") ?? "/";
 
   const disabled = submitting || !email || !looksLikeEmailAdress(email);
