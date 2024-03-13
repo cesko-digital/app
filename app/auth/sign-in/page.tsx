@@ -11,7 +11,9 @@ import { looksLikeEmailAdress } from "~/src/utils";
 
 /** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = () => {
-  const params = new URLSearchParams(document?.location.search);
+  const params = new URLSearchParams(
+    typeof document !== "undefined" ? document.location.search : undefined,
+  );
   const error = params.get("error");
 
   const [email, setEmail] = useState(params.get("email") ?? "");
