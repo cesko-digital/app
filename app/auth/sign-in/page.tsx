@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import clsx from "clsx";
 import { signIn } from "next-auth/react";
@@ -11,17 +11,20 @@ import { looksLikeEmailAdress } from "~/src/utils";
 
 /** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = () => {
-  const params = new URLSearchParams(
-    typeof document !== "undefined" ? document.location.search : undefined,
-  );
-  const error = params.get("error");
-
-  const [email, setEmail] = useState(params.get("email") ?? "");
+  const [error, setError] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [callbackUrl, setCallbackUrl] = useState("/");
 
-  // We need to relay the original callback URL to the sign-in process,
-  // otherwise it would redirect to the sign-in page after successful sign-in.
-  const callbackUrl = params.get("callbackUrl") ?? "/";
+  useEffect(() => {
+    const params = new URLSearchParams(document.location.search);
+    setError(params.get("error"));
+    // Prefill the email from GET parameter
+    setEmail(params.get("email") ?? "");
+    // We need to relay the original callback URL to the sign-in process,
+    // otherwise it would redirect to the sign-in page after successful sign-in.
+    setCallbackUrl(params.get("callbackUrl") ?? "/");
+  }, []);
 
   const disabled = submitting || !email || !looksLikeEmailAdress(email);
 
