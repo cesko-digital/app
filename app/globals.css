@@ -38,7 +38,7 @@
     @apply cursor-pointer rounded-md bg-it px-5 py-2 text-white no-underline;
   }
   .btn-inverted {
-    @apply cursor-pointer rounded-md bg-white px-5 py-2 text-it no-underline;
+    @apply cursor-pointer rounded-md border border-it bg-white px-5 py-2 text-it no-underline;
   }
   .btn-disabled {
     @apply cursor-not-allowed rounded-md bg-gravel px-5 py-2 text-white no-underline;
