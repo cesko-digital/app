@@ -113,6 +113,8 @@ Do aplikace Česko.Digital se můžeš přihlásit kliknutím na následující 
 
 ${link}
 
+Odkaz má platnost 24 hodin a dá se použít jen jednou.
+
 Tenhle mail ti přišel, protože se chce někdo přihlásit do aplikace Česko.Digital
 s tvou e-mailovou adresou. Pokud to nejsi ty, můžeš tenhle mail v klidu ignorovat.
 V případě dotazů nebo potíží prostě odepiš na tenhle mail, ozveme se. Díky,
