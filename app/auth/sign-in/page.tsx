@@ -81,9 +81,9 @@ const Page = () => {
 
 /** See error constants described at https://next-auth.js.org/configuration/pages#sign-in-page */
 const describeError = (error: string) => {
-  switch (error) {
+  switch (error.toLocaleLowerCase()) {
     // This is our custom error
-    case "UserNotFound":
+    case "usernotfound":
       return (
         <Fragment>
           Tenhle mail neznáme. Buď zkus jiný,{" "}
@@ -93,6 +93,8 @@ const describeError = (error: string) => {
           .
         </Fragment>
       );
+    case "callback":
+      return "Přihlášení skončilo chybou (chybový kód „Callback“). Pokud šlo o přihlášení mailem, není možné, že na tenhle přihlašovací odkaz už někdo kliknul?";
     default:
       return (
         <Fragment>
