@@ -21,7 +21,7 @@ const Page = () => {
         , pomůžeme.
       </p>
       <a
-        className="btn-primary m-auto inline-block"
+        className="btn-inverted m-auto inline-block"
         onClick={() => signIn(undefined, { callbackUrl: "/" })}
       >
         Zkusit znova
