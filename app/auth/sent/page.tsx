@@ -4,9 +4,14 @@ import { Fragment } from "react";
 
 import { signIn } from "next-auth/react";
 
-const Page = () => {
-  // TBD: Make the button less prominent so that people don’t click it automatically
-  // TBD: Relay original callback URL
+type Props = {
+  searchParams: {
+    callbackUrl?: string;
+  };
+};
+
+const Page = ({ searchParams }: Props) => {
+  const { callbackUrl = "/" } = searchParams;
   return (
     <Fragment>
       <h1 className="typo-title">Mrkni do pošty 📨</h1>
@@ -21,7 +26,7 @@ const Page = () => {
       </p>
       <a
         className="btn-inverted m-auto inline-block"
-        onClick={() => signIn(undefined, { callbackUrl: "/" })}
+        onClick={() => signIn(undefined, { callbackUrl })}
       >
         Zkusit znova
       </a>

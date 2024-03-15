@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 
 import clsx from "clsx";
 import { signIn } from "next-auth/react";
@@ -9,22 +9,20 @@ import { trackCustomEvent } from "~/src/plausible/events";
 import { Route } from "~/src/routing";
 import { looksLikeEmailAdress } from "~/src/utils";
 
-/** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
-const Page = () => {
-  const [error, setError] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [callbackUrl, setCallbackUrl] = useState("/");
+type Props = {
+  searchParams: {
+    error?: string;
+    email?: string;
+    callbackUrl?: string;
+  };
+};
 
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    setError(params.get("error"));
-    // Prefill the email from GET parameter
-    setEmail(params.get("email") ?? "");
-    // We need to relay the original callback URL to the sign-in process,
-    // otherwise it would redirect to the sign-in page after successful sign-in.
-    setCallbackUrl(params.get("callbackUrl") ?? "/");
-  }, []);
+/** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
+const Page = ({ searchParams }: Props) => {
+  const { error, email: defaultEmail = "", callbackUrl = "/" } = searchParams;
+
+  const [email, setEmail] = useState(defaultEmail);
+  const [submitting, setSubmitting] = useState(false);
 
   const disabled = submitting || !email || !looksLikeEmailAdress(email);
 

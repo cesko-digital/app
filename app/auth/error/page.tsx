@@ -1,22 +1,22 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 import { signIn } from "next-auth/react";
 
+type Props = {
+  searchParams: {
+    error?: string;
+    callbackUrl?: string;
+  };
+};
+
 /** Custom sign-in error page, see documentation at https://next-auth.js.org/configuration/pages */
-const Page = () => {
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    setError(params.get("error"));
-  }, []);
-
+const Page = ({ searchParams }: Props) => {
+  const { error, callbackUrl = "/" } = searchParams;
   const Code = ({ children }: { children: React.ReactNode }) => (
     <code className="bg-yellow">{children}</code>
   );
-
   return (
     <Fragment>
       <h1 className="typo-title">Přihlášení se nepodařilo 😞</h1>
@@ -29,7 +29,10 @@ const Page = () => {
         </a>
         .
       </p>
-      <a className="btn-primary m-auto inline-block" onClick={() => signIn()}>
+      <a
+        className="btn-primary m-auto inline-block"
+        onClick={() => signIn(undefined, { callbackUrl })}
+      >
         Zkusit znova
       </a>
     </Fragment>
