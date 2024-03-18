@@ -79,7 +79,6 @@ export const decodeUserProfile = record({
   profileUrl: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
-  slackRegistrationMail: relationToZeroOrOne,
   slackProfileUrl: relationToZeroOrOne,
   slackAvatarUrl: relationToZeroOrOne,
   state: union("unconfirmed", "confirmed"),

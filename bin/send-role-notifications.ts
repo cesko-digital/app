@@ -37,9 +37,9 @@ async function main() {
     process.exit(1);
   }
 
-  const recipients = (
-    await getAllUserProfiles("New Role Notification Recipients")
-  ).filter((user) => user.slackId && user.slackRegistrationMail);
+  const recipients = await getAllUserProfiles(
+    "New Role Notification Recipients",
+  );
 
   if (recipients.length > 1000) {
     console.error(
@@ -56,7 +56,7 @@ async function main() {
 
   for (const recipient of recipients) {
     await sendgrid.send({
-      to: recipient.slackRegistrationMail!,
+      to: recipient.email,
       from: "ahoj@cesko.digital",
       subject: renderNotificationMailSubject(opportunities),
       text: renderNotificationMailBody(opportunities, recipient.slackId!),
