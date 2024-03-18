@@ -4,6 +4,13 @@ import { record, string } from "typescript-json-decoder";
 
 import { subscribeToList } from "~/src/ecomail";
 
+const headers = {
+  Allow: "OPTIONS, POST",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+};
+
 export async function POST(request: NextRequest): Promise<Response> {
   const decodeRequest = record({
     email: string,
@@ -20,14 +27,16 @@ export async function POST(request: NextRequest): Promise<Response> {
     }
     return new Response("User subscription was successful", {
       status: 200,
-      headers: {
-        Allow: "POST",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers":
-          "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-      },
+      headers,
     });
   } catch {
     return new Response("Unexpected error", { status: 500 });
   }
+}
+
+export async function OPTIONS(): Promise<Response> {
+  return new Response(null, {
+    status: 200,
+    headers,
+  });
 }
