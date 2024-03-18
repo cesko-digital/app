@@ -21,21 +21,13 @@ export async function POST(request: NextRequest): Promise<Response> {
     return new Response("User subscription was successful", {
       status: 200,
       headers: {
-        Allow: "OPTIONS, POST",
+        Allow: "POST",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
       },
     });
   } catch {
     return new Response("Unexpected error", { status: 500 });
   }
-}
-
-export async function OPTIONS(): Promise<Response> {
-  return new Response("TBD", {
-    status: 200,
-    headers: {
-      Allow: "OPTIONS, POST",
-      "Access-Control-Allow-Origin": "*",
-    },
-  });
 }
