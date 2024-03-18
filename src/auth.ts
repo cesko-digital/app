@@ -5,7 +5,7 @@ import SlackProvider from "next-auth/providers/slack";
 
 import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
 import { Route } from "~/src/routing";
-import { devMode } from "~/src/utils";
+import { devMode, isHttpSuccessCode } from "~/src/utils";
 
 export type OurUser = {
   id: string;
@@ -47,8 +47,11 @@ export const authOptions: NextAuthOptions = {
             },
           },
         });
-        // TBD: Do we want to check the code?
-        console.log(`Login link mailed, SendGrid response code ${response}.`);
+        if (!isHttpSuccessCode(response.statusCode)) {
+          console.error(
+            `Got HTTP ${response.statusCode} from Sendgrid when trying to send login e-mail.`,
+          );
+        }
       },
     }),
   ],
