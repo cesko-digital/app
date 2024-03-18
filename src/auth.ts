@@ -89,6 +89,8 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (session.user as any as OurUser).slackId = token.slackId as string;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (session.user as any as OurUser).id = token.sub!;
       }
       return session;
     },
