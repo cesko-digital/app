@@ -17,7 +17,7 @@ import {
   withDefault,
 } from "~/src/decoding";
 
-import { unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecords } from "./airtable";
 
 /** Table views you can use when querying the event table */
 export type TableView = "All Events" | "Live Events" | "iCal Feed";
@@ -65,7 +65,7 @@ export const decodeEvent = record({
 //
 
 /** Events table */
-export const eventsTable = webBase("Events");
+export const eventsTable = appBase("Events");
 
 /** Get all events */
 export async function getAllEvents(

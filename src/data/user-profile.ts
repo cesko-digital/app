@@ -13,11 +13,7 @@ import {
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
 
-import {
-  unwrapRecord,
-  unwrapRecords,
-  volunteerManagementBase,
-} from "./airtable";
+import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
 /** All supported notification flags */
 const notificationFlags = [
@@ -55,8 +51,7 @@ export interface Schema extends FieldSet {
 }
 
 /** The user profile table in Airtable */
-export const userProfileTable =
-  volunteerManagementBase<Schema>("User Profiles");
+export const userProfileTable = usersBase<Schema>("User Profiles");
 
 /** Table views you can use when querying the user profile table */
 export type TableView =
@@ -65,7 +60,8 @@ export type TableView =
   | "New Role Notification Recipients"
   | "Profiles with Occupation Data"
   | "Profiles with Skills"
-  | "Profiles with Districts";
+  | "Profiles with Districts"
+  | "Missing Slack Account";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;

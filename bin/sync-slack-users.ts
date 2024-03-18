@@ -23,8 +23,8 @@ const emailFieldId = "Xf01F0M3N546";
  * Sync all Slack users to Airtable
  *
  * The script downloads a list of all users of the Česko.Digital Slack workspace
- * and inserts them into the Slack Users table in the Volunteer Management DB. Already
- * existing records (based on Slack User ID) are updated with new values, non-existing
+ * and inserts them into the Slack Users table in the Users DB. Already existing
+ * records (based on Slack User ID) are updated with new values, non-existing
  * users are inserted. No linking with other tables is done.
  */
 async function main() {

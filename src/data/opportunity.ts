@@ -18,7 +18,7 @@ import {
   withDefault,
 } from "~/src/decoding";
 
-import { unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecords } from "./airtable";
 
 /** Table views you can use when querying the opportunities table */
 export type TableView =
@@ -48,7 +48,7 @@ export const decodeOpportunity = record({
 //
 
 /** Opportunities table */
-export const opportunitiesTable = webBase("Opportunities");
+export const opportunitiesTable = appBase("Opportunities");
 
 /** Get all opportunities */
 export async function getAllOpportunities(

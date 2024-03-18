@@ -19,7 +19,7 @@ import {
 } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
 
-import { unwrapRecords, webBase } from "./airtable";
+import { appBase, unwrapRecords } from "./airtable";
 
 /** All supported feature flags */
 const featureFlags = [
@@ -78,7 +78,7 @@ export const decodeProject = record({
 //
 
 /** Projects table */
-export const projectsTable = webBase("Projects");
+export const projectsTable = appBase("Projects");
 
 /** Get all projects */
 export async function getAllProjects(): Promise<Project[]> {

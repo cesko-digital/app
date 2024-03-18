@@ -176,3 +176,6 @@ export function patchJSON<T>(
 
 /** Is the app running in development mode? */
 export const devMode = () => process.env.NODE_ENV === "development";
+
+/** Is given HTTP status code a successful one? */
+export const isHttpSuccessCode = (code: number) => 200 <= code && code < 300;

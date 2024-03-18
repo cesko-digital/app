@@ -33,7 +33,6 @@ Při lokálním vývoji patří do souboru `.env.local`, web i různé nástroje
 | PLAUSIBLE_API_KEY | API klíč pro službu Plausible, kterou používáme pro webovou analytiku | Používá se zejména pro statistické endpointy, které generují statistiky pro grafy v Datawrapperu
 | SENDGRID_API_KEY | API klíč pro Sendgrid (rozesílání mailů) | Používáme pro rozesílání notifikací na nové hledané role
 | SHASUM_SECRET | Náhodný klíč používaný interně pro autentizaci | Používáme například pro autentizaci odhlašovacích odkazů z notifikačních e-mailů
-| TEST_SIGN_IN_PASSWORD | Náhodný klíč pro přihlášení k testovacímu účtu | Používáme při lokálním vývoji pro snazší přihlášení (podrobněji viz níže)
 
 ## Code Style, architektura, testy
 
@@ -123,8 +122,6 @@ Poznámky k využití jednotlivých adres:
 O autentizaci se stará knihovna [NextAuth.js](https://next-auth.js.org). Sessions neukládáme do databáze, pouze do cookie na klientovi.
 
 V běžném provozu se uživatelé přihlašují svým slackovým účtem – po zahájení autentizace dojde k přesměrování na server Slacku, kde se uživatel prokáže svým slackovým účtem Česko.Digital a následně se přesměruje zpět k nám (kde se nastaví session cookie).
-
-Tohle je hodně nepraktické při lokálním vývoji, takže v ladicím režimu (`next dev`) je k dispozici ještě možnost přihlášení heslem. Heslo se nastavuje proměnnou prostředí `TEST_SIGN_IN_PASSWORD`. Tahle varianta není vůbec zapnutá na produkci, abychom si někde nenaběhli na hrábě. Testovací přihlášení vždy přihlašuje k testovacímu účtu *Jan Testmatov*.
 
 # Projekty
 
