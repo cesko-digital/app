@@ -1,13 +1,6 @@
-"use client";
+import { Fragment } from "react";
 
-import { Fragment, useState } from "react";
-
-import clsx from "clsx";
-import { signIn } from "next-auth/react";
-
-import { trackCustomEvent } from "~/src/plausible/events";
-import { Route } from "~/src/routing";
-import { looksLikeEmailAdress } from "~/src/utils";
+import { SignInForm } from "./SignInForm";
 
 type Props = {
   searchParams: {
@@ -19,95 +12,13 @@ type Props = {
 
 /** Custom sign-in page, see documentation at https://next-auth.js.org/configuration/pages */
 const Page = ({ searchParams }: Props) => {
-  const { error, email: defaultEmail = "", callbackUrl = "/" } = searchParams;
-
-  const [email, setEmail] = useState(defaultEmail);
-  const [submitting, setSubmitting] = useState(false);
-
-  const disabled = submitting || !email || !looksLikeEmailAdress(email);
-
-  const handleMailSignIn = async () => {
-    setSubmitting(true);
-    trackCustomEvent("SignIn");
-    await signIn("email", { email, callbackUrl });
-  };
-
+  const { error, email, callbackUrl = "/" } = searchParams;
   return (
     <Fragment>
       <h1 className="typo-title">Přihlásit se</h1>
-      <form
-        className="flex flex-col gap-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          return handleMailSignIn();
-        }}
-      >
-        <label htmlFor="user-email" className="block">
-          Zadej e-mail, kterým se přihlašuješ do Slacku Česko.Digital:
-        </label>
-        <input
-          id="user-email"
-          defaultValue={email}
-          className="block w-full rounded-md border-2 border-gray p-2"
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          required
-        ></input>
-        {error && (
-          <p className="mb-2 bg-yellow p-2 text-left">{describeError(error)}</p>
-        )}
-        <button
-          className={clsx(
-            "m-auto inline-block",
-            disabled ? "btn-disabled" : "btn-primary",
-          )}
-          disabled={disabled}
-          onClick={handleMailSignIn}
-        >
-          {!submitting && "Pošli mi přihlašovací odkaz"}
-          {submitting && "Malý moment…"}
-        </button>
-        <p className="typo-caption mt-4">
-          <a
-            className="typo-link"
-            onClick={() => signIn("slack", { callbackUrl })}
-          >
-            Přihlásit přes Slack
-          </a>
-        </p>
-      </form>
+      <SignInForm email={email} error={error} callbackUrl={callbackUrl} />
     </Fragment>
   );
-};
-
-/** See error constants described at https://next-auth.js.org/configuration/pages#sign-in-page */
-const describeError = (error: string) => {
-  switch (error.toLocaleLowerCase()) {
-    // This is our custom error
-    case "usernotfound":
-      return (
-        <Fragment>
-          Tenhle mail neznáme. Buď zkus jiný,{" "}
-          <a href={Route.register} className="typo-link">
-            anebo se můžeš registrovat
-          </a>
-          .
-        </Fragment>
-      );
-    case "callback":
-      return "Přihlášení skončilo chybou (chybový kód „Callback“). Pokud šlo o přihlášení mailem, není možné, že na tenhle přihlašovací odkaz už někdo kliknul?";
-    default:
-      return (
-        <Fragment>
-          Během přihlášení došlo k chybě (kód {error}). Pardon – zkus to prosím
-          ještě jednou a kdyby se to nezlepšilo,{" "}
-          <a href="mailto:pomoc@cesko.digital" className="typo-link">
-            ozvi se nám prosím
-          </a>
-          .
-        </Fragment>
-      );
-  }
 };
 
 export default Page;

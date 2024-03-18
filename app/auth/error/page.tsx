@@ -1,8 +1,6 @@
-"use client";
-
 import { Fragment } from "react";
 
-import { signIn } from "next-auth/react";
+import { RetryButton } from "./RetryButton";
 
 type Props = {
   searchParams: {
@@ -29,12 +27,7 @@ const Page = ({ searchParams }: Props) => {
         </a>
         .
       </p>
-      <a
-        className="btn-primary m-auto inline-block"
-        onClick={() => signIn(undefined, { callbackUrl })}
-      >
-        Zkusit znova
-      </a>
+      <RetryButton callbackUrl={callbackUrl} />
     </Fragment>
   );
 };
