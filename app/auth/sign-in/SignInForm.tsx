@@ -24,8 +24,13 @@ export const SignInForm = (props: Props) => {
 
   const handleMailSignIn = async () => {
     setSubmitting(true);
-    trackCustomEvent("SignIn");
+    trackCustomEvent("SignIn", { props: { method: "email" } });
     await signIn("email", { email, callbackUrl });
+  };
+
+  const handleSlackSignIn = async () => {
+    trackCustomEvent("SignIn", { props: { method: "slack" } });
+    await signIn("slack", { callbackUrl });
   };
 
   return (
@@ -62,10 +67,7 @@ export const SignInForm = (props: Props) => {
         {submitting && "Malý moment…"}
       </button>
       <p className="typo-caption mt-4">
-        <a
-          className="typo-link"
-          onClick={() => signIn("slack", { callbackUrl })}
-        >
+        <a className="typo-link" onClick={handleSlackSignIn}>
           Přihlásit přes Slack
         </a>
       </p>
