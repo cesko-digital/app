@@ -9,7 +9,6 @@ import { devMode, isHttpSuccessCode } from "~/src/utils";
 
 export type OurUser = {
   id: string;
-  slackId: string;
   name: string;
   email: string;
   image: string;
@@ -71,24 +70,9 @@ export const authOptions: NextAuthOptions = {
       }
     },
 
-    // This is called when the JWT token is created or updated. We use
-    // the callback to store the Slack ID in the token so that it is available
-    // in the session data on the client. TBD: This is a legacy hack, we
-    // should replace the Slack ID with the regular database ID of the user.
-    async jwt({ token, user }) {
-      if (user) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        token.slackId = (user as any as OurUser).slackId;
-      }
-      return token;
-    },
-
-    // Forward Slack ID from the token to the session object to be used on the client.
-    // TBD: Legacy hack, see note above.
+    // TBD: Comment
     async session({ session, token }) {
       if (session.user) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (session.user as any as OurUser).slackId = token.slackId as string;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (session.user as any as OurUser).id = token.sub!;
       }
