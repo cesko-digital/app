@@ -5,6 +5,7 @@ import SlackProvider from "next-auth/providers/slack";
 
 import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
 import { Route } from "~/src/routing";
+import { devMode } from "~/src/utils";
 
 export type OurUser = {
   id: string;
@@ -103,7 +104,7 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
   },
 
-  debug: true,
+  debug: devMode(),
 };
 
 /** Render the plain-text e-mail with the magic sign-in link */
