@@ -1,4 +1,4 @@
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { record, string } from "typescript-json-decoder";
 
@@ -25,10 +25,13 @@ export async function POST(request: NextRequest): Promise<Response> {
     if (!success) {
       throw "Unexpected error";
     }
-    return new Response("User subscription was successful", {
-      status: 200,
-      headers,
-    });
+    return NextResponse.json(
+      { message: "User subscription was successful" },
+      {
+        status: 200,
+        headers,
+      },
+    );
   } catch {
     return new Response("Unexpected error", { status: 500 });
   }
