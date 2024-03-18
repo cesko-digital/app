@@ -8,7 +8,7 @@ const trimLeadingWhitespace = (s: string) => s.replaceAll(/^\s+/g, "");
 
 export function renderNotificationMailBody(
   roles: Role[],
-  recipientSlackId: string,
+  recipientId: string,
 ): string {
   return `Ahoj!
 
@@ -16,7 +16,7 @@ export function renderNotificationMailBody(
 
   ${roles.map(renderRole).join("\n")}
 
-  Všechny hledané role najdeš na https://cesko.digital/opportunities.
+  Všechny hledané role najdeš na https://app.cesko.digital/opportunities.
 
   Ať se daří!
   tým Česko.Digital
@@ -24,7 +24,7 @@ export function renderNotificationMailBody(
 
   PS. Pokud chceš tahle upozornění vypnout, stačí kliknout tady:
 
-  ${absolute(unsubscribeRoute(recipientSlackId))}
+  ${absolute(unsubscribeRoute(recipientId))}
   `
     .split("\n")
     .map(trimLeadingWhitespace)
@@ -53,9 +53,9 @@ export function renderNotificationMailSubject(
 }
 
 // TBD: Can we meld this into Route and use it in end-to-end unsubscribe tests?
-export const unsubscribeRoute = (slackId: string, confirm = false) => {
-  const token = hashDigest(["unsubscribe", slackId]);
-  const params = new URLSearchParams({ slackId, token });
+export const unsubscribeRoute = (id: string, confirm = false) => {
+  const token = hashDigest(["unsubscribe", id]);
+  const params = new URLSearchParams({ id, token });
   if (confirm) {
     params.append("confirm", "y");
   }

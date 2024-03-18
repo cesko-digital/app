@@ -59,7 +59,7 @@ async function main() {
       to: recipient.email,
       from: "ahoj@cesko.digital",
       subject: renderNotificationMailSubject(opportunities),
-      text: renderNotificationMailBody(opportunities, recipient.slackId!),
+      text: renderNotificationMailBody(opportunities, recipient.id),
       trackingSettings: {
         clickTracking: {
           enable: false,
