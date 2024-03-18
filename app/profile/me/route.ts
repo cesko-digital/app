@@ -3,7 +3,6 @@ import { NextResponse, type NextRequest } from "next/server";
 import { optional, record, string } from "typescript-json-decoder";
 
 import { withAuthenticatedUser } from "~/src/auth";
-import { getSlackUserBySlackId } from "~/src/data/slack-user";
 import {
   createUserProfile,
   getUserProfile,
@@ -52,33 +51,17 @@ export async function POST(request: NextRequest): Promise<Response> {
 /** Get user profile, used for stuff like displaying user preferences */
 export async function GET() {
   return withAuthenticatedUser(async (user) => {
-    let profile = await getUserProfile(user.slackId).catch(() => null);
-    if (!profile) {
-      // The profile doesn’t exist yet, let’s create it now
-      const slackUser = await getSlackUserBySlackId(user.slackId);
-      profile = await createUserProfile({
-        name: slackUser.name,
-        email: slackUser.email!,
-        skills: "",
-        occupation: undefined,
-        organizationName: undefined,
-        profileUrl: undefined,
-        availableInDistricts: "",
-        state: "confirmed",
-        slackUserRelationId: slackUser.id,
-        createdAt: new Date().toISOString(),
-        gdprPolicyAcceptedAt: undefined,
-        codeOfConductAcceptedAt: undefined,
-      });
-    }
-    return NextResponse.json(profile);
+    const profile = await getUserProfile(user.id);
+    return profile
+      ? NextResponse.json(profile)
+      : new Response("User profile not found.", { status: 404 });
   });
 }
 
 /** Change user profile, used for stuff like updating user preferences */
 export async function PATCH(request: NextRequest) {
   return withAuthenticatedUser(async (user) => {
-    const profile = await getUserProfile(user.slackId).catch(() => null);
+    const profile = await getUserProfile(user.id);
     if (!profile) {
       return new Response("User profile not found.", { status: 404 });
     }

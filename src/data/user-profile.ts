@@ -131,9 +131,13 @@ export const getAllUserProfiles = async (view: TableView = "All Profiles") =>
     .then(unwrapRecords)
     .then(array(decodeUserProfile));
 
-/** Get user profile with given Slack ID */
-export const getUserProfile = (slackId: string) =>
-  getFirstMatchingUserProfile(`{slackId} = "${slackId}"`);
+/** Get user by database ID */
+export const getUserProfile = async (databaseId: string) =>
+  await userProfileTable
+    .find(databaseId)
+    .then(unwrapRecord)
+    .then(decodeUserProfile)
+    .catch((_) => null);
 
 /** Get user profile with given e-mail */
 export const getUserProfileByMail = (email: string) =>
