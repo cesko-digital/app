@@ -1,3 +1,5 @@
+"use client";
+
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
