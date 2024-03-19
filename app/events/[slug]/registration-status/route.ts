@@ -20,7 +20,7 @@ export async function GET(
   return withAuthenticatedUser((user) => {
     const { slug } = params;
     return withEvent(slug, async (event) => {
-      const registered = event.registeredUserSlackIds.includes(user.slackId);
+      const registered = event.registeredUserIds.includes(user.id);
       return NextResponse.json({ registered });
     });
   });
@@ -39,10 +39,14 @@ export async function POST(
     const { slug } = params;
     return withEvent(slug, async (event) => {
       const userProfileTable = appBase("User Profiles");
-      // Get database ID for the signed-in user’s profile record
+      // Get database ID for the signed-in user’s profile record.
+      // This is slightly WTF – the User Profiles table here is NOT the
+      // original User Profiles table from Users DB, but a synced one
+      // inside the App DB. And the record IDs in the synced table are
+      // different, so we have to find the synced user record first.
       const userProfileId = await userProfileTable
         .select({
-          filterByFormula: `{slackId} = "${user.slackId}"`,
+          filterByFormula: `{id} = "${user.id}"`,
           maxRecords: 1,
         })
         .all()

@@ -49,10 +49,7 @@ export const decodeEvent = record({
     withDefault(boolean, false),
   ),
   registeredUsers: field("Registered Users", relationToZeroOrMany),
-  registeredUserSlackIds: field(
-    "Registered User Slack IDs",
-    relationToZeroOrMany,
-  ),
+  registeredUserIds: field("Registered User IDs", relationToZeroOrMany),
   endTime: field("End Time", optional(string)),
   tagIds: field("Tags", withDefault(array(string), [])),
   coverImageUrl: field("Cover URL", optional(string)),
