@@ -295,7 +295,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         ></input>
         <span>
           Mám přečtená{" "}
-          <a className="typo-link" href="https://cesko.digital/go/coc">
+          <a className="typo-link" href="https://www.cesko.digital/pravidla">
             pravidla chování v komunitě
           </a>{" "}
           a zavazuji se k jejich dodržování.
