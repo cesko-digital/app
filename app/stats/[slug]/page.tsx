@@ -31,7 +31,7 @@ const Page = async ({ params }: Props) => {
     .filter((s) => s.metricSlug === params.slug)
     .sort(compareSamplesByDate);
 
-  if (!metric) {
+  if (!metric || samples.length === 0) {
     notFound();
   }
 
