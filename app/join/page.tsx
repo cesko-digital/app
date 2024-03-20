@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 
+import { signIn } from "next-auth/react";
+
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { SkillPicker } from "~/components/SkillPicker";
 import { trackCustomEvent } from "~/src/plausible/events";
-import { Route } from "~/src/routing";
 import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
 import skillMenu from "~/src/skills/skills.json";
 import { ContentType } from "~/src/utils";
@@ -31,14 +32,12 @@ const Page = () => {
       if (!success) {
         throw "Nepodařilo se založit uživatelský účet.";
       }
-      trackCustomEvent("SignUp");
-      setTimeout(() => {
-        document.location.href = Route.slackOnboarding;
-      }, 1000);
       setState({
         ...state,
         submissionState: { tag: "submitted_successfully" },
       });
+      trackCustomEvent("SignUp");
+      await signIn("email", { email: validatedData.email, callbackUrl: "/" });
     } catch (error) {
       setState({
         ...state,
@@ -93,34 +92,9 @@ const IntroSection = () => (
         mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
         sobě si pak budeš moci kdykoliv upravit na svém profilu.
       </p>
-      <h2 className="typo-title2">Co tě čeká po odeslání formuláře</h2>
-      <ol className="list-inside list-decimal space-y-4 xl:list-outside">
-        <li>
-          Pro začátek dostaneš{" "}
-          <b>všechny potřebné informace v souhrnném uvítacím e-mailu</b>.
-        </li>
-        <li>
-          Přesměrujeme tě také rovnou na{" "}
-          <b>registrační stránku komunikačního nástroje Slack</b>. U nás se bez
-          něho (zatím) neobejdeš. Veškerá komunikace probíhá právě tam. Stačí se
-          zaregistrovat a můžeš začít hledat nové příležitosti a kontakty nebo
-          sledovat dění v komunitě.
-        </li>
-      </ol>
       <p>
         Položky označené ve formuláři hvězdičkou
         <RequiredFieldMarker /> jsou povinné.
-      </p>
-      <p>
-        PS. Pokud už v našem Slacku jsi a jen jsi od něj zapomněl(a) heslo,
-        můžeš si ho resetovat{" "}
-        <a
-          className="typo-link"
-          href="https://slack.com/help/articles/201909068-Reset-your-password"
-        >
-          podle tohoto návodu
-        </a>
-        .
       </p>
     </div>
   </section>
@@ -367,7 +341,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
       ? "Malý moment…"
       : submissionState.tag === "submitted_successfully"
         ? "Úspěšně odesláno 🎉"
-        : "Odeslat a přejít na Slack";
+        : "Založit účet a přihlásit";
 
   const handleSubmit = () => {
     if (validationResult.result === "success") {

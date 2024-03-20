@@ -22,7 +22,7 @@ const notificationFlags = [
 ] as const;
 
 /** All supported feature flags */
-const featureFlags = [] as const;
+const featureFlags = ["registrationV2"] as const;
 
 /** All supported privacy flags */
 const privacyFlags = ["hidePublicTeamMembership"] as const;
@@ -45,6 +45,7 @@ export interface Schema extends FieldSet {
   slackAvatarUrl: string;
   notificationFlags: ReadonlyArray<string>;
   privacyFlags: ReadonlyArray<string>;
+  featureFlags: ReadonlyArray<string>;
   state: string;
   createdAt: string;
   lastModifiedAt: string;
@@ -108,6 +109,7 @@ export function encodeUserProfile(
     state: profile.state,
     notificationFlags: profile.notificationFlags,
     privacyFlags: profile.privacyFlags,
+    featureFlags: profile.featureFlags,
     availableInDistricts: profile.availableInDistricts,
     slackUser: profile.slackUserRelationId
       ? [profile.slackUserRelationId]
@@ -197,6 +199,7 @@ export async function createUserProfile(
     | "createdAt"
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"
+    | "featureFlags"
   >,
 ): Promise<UserProfile> {
   return await userProfileTable

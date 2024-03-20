@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("Submit button is disabled by default", async ({ page }) => {
   await page.goto("/join");
   const submitButton = page.getByRole("button", {
-    name: "Odeslat a přejít na Slack",
+    name: "Založit účet a přihlásit",
   });
   expect(submitButton).not.toBeNull();
   await expect(submitButton).toBeDisabled();
