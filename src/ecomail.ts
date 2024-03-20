@@ -17,7 +17,6 @@ import {
   optionalArray,
   withDefault,
 } from "./decoding";
-import { splitToChunks } from "./utils";
 
 /** The Ecomail ID of our main newsletter list */
 export const mainContactListId = 2;
@@ -234,42 +233,6 @@ export async function unsubscribeFromList(
     },
   );
   return response.ok;
-}
-
-/**
- * Subscribe multiple e-mail addresses to a list
- *
- * If a contact was previously in the contact list and unsubscribed, the addresss
- * won’t be resubscribed and no data will be changed for the contact.
- *
- * https://ecomailczv2.docs.apiary.io/#reference/lists/subscriber-update/add-bulk-subscribers-to-list
- */
-export async function addSubscribers(
-  apiKey: string,
-  emails: string[],
-  listId = mainContactListId,
-): Promise<void> {
-  const maxBatchSize = 500;
-  for (const batch of splitToChunks(emails, maxBatchSize)) {
-    await addSingleBatchOfSubscribers(apiKey, batch, listId);
-  }
-}
-
-async function addSingleBatchOfSubscribers(
-  apiKey: string,
-  emails: string[],
-  listId: number,
-): Promise<void> {
-  const payload = {
-    subscriber_data: emails.map((email) => ({ email })),
-    update_existing: false,
-  };
-  await fetch(`http://api2.ecomailapp.cz/lists/${listId}/subscribe-bulk`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: jsonHeaders(apiKey),
-    cache: "no-store",
-  });
 }
 
 /** Get contact list members */
