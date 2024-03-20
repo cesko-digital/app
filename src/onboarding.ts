@@ -1,16 +1,12 @@
-import fs, { readdirSync, readFileSync } from "fs";
-import { join, resolve } from "path";
-
 import { upsertSlackUser } from "~/src/data/slack-user";
 import {
   getUserProfileByMail,
   updateUserProfile,
 } from "~/src/data/user-profile";
-import { sendDirectMessage } from "~/src/slack/message";
 import { getSlackUser, isRegularUser } from "~/src/slack/user";
 import { map, normalizeEmailAddress } from "~/src/utils";
 
-const { SLACK_SYNC_TOKEN = "", SLACK_GREET_BOT_TOKEN = "" } = process.env;
+const { SLACK_SYNC_TOKEN = "" } = process.env;
 
 /**
  * Confirm user account when user joins Slack
@@ -75,44 +71,4 @@ export async function confirmUserAccount(slackId: string) {
     slackUserRelationId: slackUserInDB.id,
     state: "confirmed",
   });
-}
-
-/**
- * Send welcome message to Slack user
- *
- * The message is read from `content/welcome.txt`, see formatting spec here:
- * <https://api.slack.com/reference/surfaces/formatting>. Unfortunately it’s not
- * regular Markdown, not even close.
- */
-export async function sendWelcomeMessage(
-  slackId: string,
-  message: string | undefined = undefined,
-) {
-  const contentFolder = join(process.cwd(), "content", "welcome");
-  const welcomeMessagePath = join(contentFolder, "day0.txt");
-  const defaultMessage = fs.readFileSync(welcomeMessagePath, "utf-8");
-  await sendDirectMessage(
-    SLACK_GREET_BOT_TOKEN,
-    slackId,
-    message ?? defaultMessage,
-  );
-}
-
-/** Find all files named `dayXY.txt` under `content/welcome` and return a list of [day, message] pairs */
-export function parseWelcomeMessages() {
-  const dir = join(process.cwd(), "content", "welcome");
-  const messages: [number, string][] = [];
-  for (const entry of readdirSync(dir)) {
-    if (!entry.startsWith("day")) {
-      continue;
-    }
-    const matches = entry.match(/day(\d+)/);
-    if (matches && matches.length > 1) {
-      const [_, dayString] = matches;
-      const path = resolve(dir, entry);
-      const message = readFileSync(path, "utf-8");
-      messages.push([parseInt(dayString), message]);
-    }
-  }
-  return messages.sort(([a], [b]) => a - b);
 }
