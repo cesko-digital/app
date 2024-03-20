@@ -36,9 +36,10 @@ export async function POST(request: NextRequest): Promise<Response> {
       await createUserProfile({
         ...payload,
         email,
-        state: "unconfirmed",
+        state: "confirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
+        featureFlags: ["registrationV2"],
       });
       return new Response("User profile created.", { status: 201 });
     }
