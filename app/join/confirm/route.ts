@@ -2,7 +2,7 @@ import { type NextRequest } from "next/server";
 
 import { union } from "typescript-json-decoder";
 
-import { confirmUserAccount, sendWelcomeMessage } from "~/src/onboarding";
+import { confirmUserAccount } from "~/src/onboarding";
 import {
   decodeEndpointHandshake,
   decodeEventCallback,
@@ -58,7 +58,6 @@ export async function POST(request: NextRequest): Promise<Response> {
             return new Response("Wrong Slack team", { status: 401 });
           case "ok":
             await confirmUserAccount(msg.event.user.id);
-            await sendWelcomeMessage(msg.event.user.id);
             return new Response(null, { status: 204 });
         }
     }
