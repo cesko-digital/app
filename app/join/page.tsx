@@ -21,8 +21,19 @@ import {
   type RegistrationData,
 } from "./form-state";
 
-const Page = () => {
-  const [state, setState] = useState(emptyFormState);
+type Props = {
+  searchParams: {
+    email?: string;
+  };
+};
+
+const Page = ({ searchParams }: Props) => {
+  const { email } = searchParams;
+  const [state, setState] = useState<FormState>({
+    ...emptyFormState,
+    // Read initial e-mail value from search params
+    email: email ?? "",
+  });
 
   // When submitted, create new user account, log page conversion and redirect to Slack onboarding
   const submit = async (validatedData: RegistrationData) => {
