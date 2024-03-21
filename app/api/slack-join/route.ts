@@ -22,6 +22,9 @@ import { map, normalizeEmailAddress } from "~/src/utils";
 
 const { SLACK_SIGNING_SECRET = "", SLACK_SYNC_TOKEN = "" } = process.env;
 
+/**
+ * This webhook is called when new user joins our Slack workspace.
+ */
 export async function POST(request: NextRequest): Promise<Response> {
   /** Incoming message is either the initial handshake or an event callback */
   const decodeIncomingMessage = union(
