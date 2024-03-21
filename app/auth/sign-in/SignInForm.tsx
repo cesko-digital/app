@@ -41,8 +41,9 @@ export const SignInForm = (props: Props) => {
         return handleMailSignIn();
       }}
     >
-      <label htmlFor="user-email" className="block">
-        Zadej e-mail, kterým se přihlašuješ do Slacku Česko.Digital:
+      <label htmlFor="user-email" className="block text-balance">
+        Zadej e-mail, kterým ses registroval*a nebo kterým se přihlašuješ do
+        Slacku Česko.Digital:
       </label>
       <input
         id="user-email"
