@@ -3,6 +3,9 @@ import { type MetricDefinition } from "./data/metrics";
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";
 
+const register = (email: string | undefined = undefined) =>
+  email ? `/join?${new URLSearchParams({ email })}` : "/join";
+
 /** Create URLs for frequently used routes */
 export const Route = {
   // External routes
@@ -14,7 +17,7 @@ export const Route = {
   events: "/events",
   projects: "/projects",
   opportunities: "/opportunities",
-  register: "/join",
+  register,
   userProfile: "/profile",
   stats: "/stats",
   // More static routes

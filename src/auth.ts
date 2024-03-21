@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
         }
         return true; // proceed
       } else {
-        return Route.register;
+        return Route.register();
       }
     },
 
