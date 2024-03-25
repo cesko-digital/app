@@ -1,3 +1,4 @@
+import type { Block, KnownBlock } from "@slack/types";
 import { WebClient } from "@slack/web-api";
 import {
   boolean,
@@ -64,11 +65,16 @@ export async function getMessageReplies(
     .then((response) => (response.messages ?? []).map(decodeMessageEvent));
 }
 
-/** Send direct message to user with given Slack ID */
+/**
+ * Send direct message to user with given Slack ID.
+ * Optionally, you can provide blocks for rich text formatting. For further info see:
+ * https://api.slack.com/block-kit/building
+ * */
 export async function sendDirectMessage(
   token: string,
   user: string,
   text: string,
+  blocks?: (KnownBlock | Block)[],
 ) {
   const slack = new WebClient(token);
   const decodeResponse = record({
@@ -85,5 +91,6 @@ export async function sendDirectMessage(
     channel,
     token,
     text,
+    blocks,
   });
 }
