@@ -1,4 +1,5 @@
 import {
+  boolean,
   number,
   optional,
   record,
@@ -30,6 +31,7 @@ export const decodeMetricDefinition = record({
   ),
   slug: string,
   datawrapperChartId: optional(string),
+  featured: withDefault(boolean, false),
   description: optional(string),
   ownerName: relationToZeroOrOne,
   ownerMail: relationToZeroOrOne,
