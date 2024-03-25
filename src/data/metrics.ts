@@ -1,4 +1,5 @@
 import {
+  boolean,
   number,
   optional,
   record,
@@ -28,6 +29,7 @@ export const decodeMetricDefinition = record({
     union("moreIsBetter", "lessIsBetter"),
     "moreIsBetter",
   ),
+  featured: boolean,
   slug: string,
   datawrapperChartId: optional(string),
   description: optional(string),
