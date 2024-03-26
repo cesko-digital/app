@@ -41,6 +41,7 @@ interface UserTableSchema extends FieldSet {
   emailVerified: string;
   name: string;
   slackAvatarUrl: string;
+  state: string;
 }
 
 type User = decodeType<typeof decodeUser>;
@@ -56,6 +57,8 @@ const decodeUser = record({
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
   email: user.email,
   emailVerified: user.emailVerified?.toDateString(),
+  // Automatically mark user as confirmed when e-mail has been verified
+  state: user.emailVerified ? "confirmed" : undefined,
 });
 
 const userTable = usersBase<UserTableSchema>("User Profiles");
@@ -70,10 +73,14 @@ const createUser = async (_: Pick<User, "email" | "emailVerified">) => {
 const getUser = async (id: string) =>
   await userTable.find(id).then(unwrapRecord).then(decodeUser);
 
+/**
+ * Get user by registration e-mail
+ *
+ * Note that this is intentionally NOT limited to confirmed users.
+ */
 const getUserByEmail = async (email: string) =>
   await userTable
     .select({
-      view: "Confirmed Profiles",
       filterByFormula: `{email} = "${email}"`,
       maxRecords: 1,
     })
