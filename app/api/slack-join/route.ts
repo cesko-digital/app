@@ -86,7 +86,7 @@ export async function POST(request: NextRequest): Promise<Response> {
  * Slack account matches an existing user profile *and* the Slack e-mail address
  * is verified.
  */
-export async function handleNewSlackUser(slackId: string) {
+async function handleNewSlackUser(slackId: string) {
   // We already got the user object from the Slack callback, but
   // it’s not a full-featured object, it doesn’t have the e-mail
   // address, so we retrieve the full user object here.
