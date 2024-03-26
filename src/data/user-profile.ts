@@ -142,7 +142,7 @@ export const getUserProfile = async (databaseId: string) =>
 
 /** Get user profile with given e-mail */
 export const getUserProfileByMail = (email: string) =>
-  getFirstMatchingUserProfile(`{email} = "${email}"`);
+  getFirstMatchingUserProfile(`{email} = "${email}"`).catch(() => null);
 
 /** Return first user profile that matches given formula query */
 export async function getFirstMatchingUserProfile(

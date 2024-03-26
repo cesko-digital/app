@@ -2,6 +2,7 @@ import { type NextRequest } from "next/server";
 
 import { union } from "typescript-json-decoder";
 
+import { linkAccount } from "~/src/data/auth";
 import { upsertSlackUser } from "~/src/data/slack-user";
 import {
   getUserProfileByMail,
@@ -72,8 +73,23 @@ export async function POST(request: NextRequest): Promise<Response> {
   }
 }
 
+/**
+ * Handle new user joining our Slack workspace
+ *
+ * Since our user registration is no longer tied to Slack we don’t really
+ * have to do anything here. But as a convenience we want to (1) add the user to
+ * our Slack Users database and, if possible, (2) pair the record with the appropriate
+ * user record in the User Profiles table and (3) allow Slack sign-in by adding
+ * a record to the Accounts table.
+ *
+ * This “smart pairing” can *only* be done if the e-mail address of the new
+ * Slack account matches an existing user profile *and* the Slack e-mail address
+ * is verified.
+ */
 export async function handleNewSlackUser(slackId: string) {
-  // We need the full user object to get to the e-mail
+  // We already got the user object from the Slack callback, but
+  // it’s not a full-featured object, it doesn’t have the e-mail
+  // address, so we retrieve the full user object here.
   const slackUser = await getSlackUser(SLACK_SYNC_TOKEN, slackId);
   const normalizedEmail = map(slackUser.profile.email, normalizeEmailAddress);
 
@@ -86,7 +102,7 @@ export async function handleNewSlackUser(slackId: string) {
   }
 
   // Save the new Slack user to the Slack Users DB table.
-  // This makes sense even if the following steps fail.
+  // This makes sense regardless of the following steps.
   const slackUserInDB = await upsertSlackUser({
     slackId: slackUser.id,
     name: slackUser.real_name ?? slackUser.name,
@@ -96,36 +112,43 @@ export async function handleNewSlackUser(slackId: string) {
     userProfileRelationId: undefined,
   });
 
-  // Without an e-mail address we can’t confirm the account
-  if (!normalizedEmail) {
-    console.error(
-      `Account confirmation failed, missing email addres for user ${slackId}`,
+  // Only continue if there is a verified e-mail address associated with the Slack account
+  if (!normalizedEmail || !slackUser.is_email_confirmed) {
+    console.info(
+      `Have new Slack user ${slackId}, but e-mail is missing or not verified, ignoring.`,
     );
     return;
   }
 
-  // Get the initial user profile we are trying to confirm
-  const initialProfile = await getUserProfileByMail(normalizedEmail)
-    // Return null on errors
-    .catch(() => null);
+  // Get user profile that matches the verified e-mail address from Slack
+  const userProfile = await getUserProfileByMail(normalizedEmail);
 
-  // The profile may not exist if the user skipped onboarding somehow
-  if (!initialProfile) {
-    console.error(
-      `Account confirmation failed, user profile not found for user “${slackId}”`,
+  // If there is no such user profile, there’s nothing else to do`
+  if (!userProfile) {
+    console.info(
+      `No existing user profile matches new Slack user ${slackId}, ignoring.`,
     );
     return;
   }
 
   // Not sure how this could happen, but let’s keep the diagnostics tight here
-  if (initialProfile.state === "confirmed" && initialProfile.slackId) {
-    console.warn(`Account “${slackId}” already confirmed, skipping`);
+  if (userProfile.slackId) {
+    console.warn(
+      `User profile ${userProfile.id} already paired to a Slack account, ignoring.`,
+    );
     return;
   }
 
-  // Flip account to confirmed and link the associated Slack user
-  await updateUserProfile(initialProfile.id, {
+  // Link existing user profile to new Slack account
+  await updateUserProfile(userProfile.id, {
     slackUserRelationId: slackUserInDB.id,
-    state: "confirmed",
+  });
+
+  // Add new Accounts record that allows the user to sign in using the Slack account
+  await linkAccount({
+    userId: userProfile.id,
+    providerAccountId: slackId,
+    provider: "slack",
+    type: "oauth",
   });
 }
