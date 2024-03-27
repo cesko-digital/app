@@ -7,6 +7,7 @@ test("Validate correctly filled form", () => {
       {
         name: "Aloisie Citronová",
         email: "aloisie@cesko.digital",
+        emailAlreadyTaken: false,
         organizationName: "",
         profileUrl: "",
         occupation: "whatever",
