@@ -141,15 +141,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
             required
           />
           {state.emailAlreadyTaken && (
-            <p className="mt-2 bg-yellow p-2">
-              Účet s tímhle mailem už existuje.{" "}
-              <a
-                href={`/auth/sign-in?${new URLSearchParams({ email: state.email })}`}
-                className="typo-link"
-              >
-                Chceš se přihlásit?
-              </a>
-            </p>
+            <EmailAlreadyExistsError email={state.email} />
           )}
         </div>
         <OccupationSelect state={state} onChange={onChange} />
@@ -188,6 +180,24 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         </div>
       </div>
     </section>
+  );
+};
+
+const EmailAlreadyExistsError = ({ email }: { email: string }) => {
+  return (
+    <p className="mt-2 bg-yellow p-2">
+      Účet s tímhle mailem už existuje.{" "}
+      <a
+        onClick={async (e) => {
+          e.preventDefault();
+          await signIn("email", { email });
+        }}
+        className="typo-link"
+        href=""
+      >
+        Chceš se přihlásit?
+      </a>
+    </p>
   );
 };
 
