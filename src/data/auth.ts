@@ -64,13 +64,6 @@ const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
 
 const userTable = usersBase<UserTableSchema>("User Profiles");
 
-const createUser = async (_: Pick<User, "email" | "emailVerified">) => {
-  // The only way to create a user account is to register.
-  // The Adapter interface still requires us to supply a `createUser`
-  // function, but it should not get called.
-  throw "This should not be called";
-};
-
 const getUser = async (id: string) =>
   await userTable.find(id).then(unwrapRecord).then(decodeUser);
 
@@ -149,87 +142,6 @@ const accountTable = usersBase<AccountTableSchema>("Accounts");
 
 const linkAccount = async (account: Omit<Account, "id">) => {
   await accountTable.create(encodeAccount(account));
-};
-
-//
-// Sessions
-//
-
-interface SessionTableSchema extends FieldSet {
-  id: string;
-  expires: string;
-  sessionToken: string;
-  userId: ReadonlyArray<string>;
-}
-
-type Session = decodeType<typeof decodeSession>;
-const decodeSession = record({
-  id: string,
-  sessionToken: string,
-  userId: takeFirst(array(string)),
-  expires: date,
-});
-
-const encodeSession = (
-  session: Partial<Session>,
-): Partial<SessionTableSchema> => ({
-  sessionToken: session.sessionToken,
-  userId: session.userId ? [session.userId] : undefined,
-  expires: session.expires?.toISOString(),
-});
-
-const sessionTable = usersBase<SessionTableSchema>("Sessions");
-
-const createSession = async (
-  session: Pick<Session, "sessionToken" | "userId" | "expires">,
-) =>
-  await sessionTable
-    .create(encodeSession(session))
-    .then(unwrapRecord)
-    .then(decodeSession);
-
-const getSessionBySessionToken = async (sessionToken: string) =>
-  await sessionTable
-    .select({
-      filterByFormula: `{sessionToken} = "${sessionToken}"`,
-      maxRecords: 1,
-    })
-    .all()
-    .then(unwrapRecords)
-    .then(takeFirstMaybe(array(decodeSession)));
-
-const getSessionAndUser = async (sessionToken: string) => {
-  const session = await getSessionBySessionToken(sessionToken);
-  if (session) {
-    const user = await getUser(session.userId);
-    return { session, user };
-  } else {
-    return null;
-  }
-};
-
-const updateSession = async (
-  session: Partial<Session> & Pick<Session, "sessionToken">,
-) => {
-  const record = await getSessionBySessionToken(session.sessionToken);
-  if (record) {
-    return await sessionTable
-      .update(record.id, encodeSession(session))
-      .then(unwrapRecord)
-      .then(decodeSession);
-  } else {
-    return null;
-  }
-};
-
-const deleteSession = async (sessionToken: string) => {
-  const session = await getSessionBySessionToken(sessionToken);
-  if (session) {
-    await sessionTable.destroy(session.id);
-    return session;
-  } else {
-    return null;
-  }
 };
 
 //
@@ -390,19 +302,25 @@ export const authEventLoggers: Partial<EventCallbacks> = {
 // NextAuth DB Adapter
 //
 
+const notImplemented = () => {
+  throw "Not implemented";
+};
+
 export const authDatabaseAdapter: Adapter = {
-  createUser,
   getUser,
   getUserByEmail,
   getUserByAccount,
   updateUser,
   linkAccount,
-  createSession,
-  getSessionAndUser,
-  updateSession,
-  deleteSession,
   createVerificationToken,
   useVerificationToken,
+  // The following callbacks are not needed for our use cases
+  // and it should be safe to keep them unimplemented.
+  createUser: notImplemented,
+  createSession: notImplemented,
+  getSessionAndUser: notImplemented,
+  updateSession: notImplemented,
+  deleteSession: notImplemented,
 };
 
 export { getUserByEmail, linkAccount };
