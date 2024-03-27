@@ -130,15 +130,28 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           disabled={disabled}
           required
         />
-        <TextInput
-          id="email"
-          label="Email"
-          value={state.email}
-          autoComplete="email"
-          onChange={(email) => onChange({ ...state, email })}
-          disabled={disabled}
-          required
-        />
+        <div>
+          <TextInput
+            id="email"
+            label="Email"
+            value={state.email}
+            autoComplete="email"
+            onChange={(email) => onChange({ ...state, email })}
+            disabled={disabled}
+            required
+          />
+          {state.emailAlreadyTaken && (
+            <p className="mt-2 bg-yellow p-2">
+              Účet s tímhle mailem už existuje.{" "}
+              <a
+                href={`/auth/sign-in?${new URLSearchParams({ email: state.email })}`}
+                className="typo-link"
+              >
+                Chceš se přihlásit?
+              </a>
+            </p>
+          )}
+        </div>
         <OccupationSelect state={state} onChange={onChange} />
         <TextInput
           id="organization"
