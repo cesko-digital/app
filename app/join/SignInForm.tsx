@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { signIn } from "next-auth/react";
+import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { SkillPicker } from "~/components/SkillPicker";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
 import skillMenu from "~/src/skills/skills.json";
-import { ContentType } from "~/src/utils";
+import { ContentType, looksLikeEmailAdress } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";
 import {
@@ -29,6 +30,16 @@ export const SignInForm = ({ defaultEmail }: Props) => {
     ...emptyFormState,
     email: defaultEmail ?? "",
   });
+
+  // Check if entered e-mail already exists, and if so, offer to sign in instead
+  useEffect(() => {
+    const email = state.email;
+    if (looksLikeEmailAdress(email)) {
+      const _ = isEmailAlreadyRegistered(email).then((emailAlreadyTaken) => {
+        setState((state) => ({ ...state, emailAlreadyTaken }));
+      });
+    }
+  }, [state.email]);
 
   // When submitted, create new user account, log page conversion and redirect to e-mail sign-in
   const submit = async (validatedData: RegistrationData) => {
@@ -403,21 +414,6 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
   );
 };
 
-async function createUserProfile(data: RegistrationData): Promise<boolean> {
-  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
-  try {
-    const response = await fetch("/profile/me", {
-      method: "POST",
-      body: JSON.stringify(payload, null, 2),
-      headers: { "Content-Type": ContentType.json },
-    });
-    return response.ok;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
-}
-
 //
 // Shared Components
 //
@@ -467,3 +463,31 @@ const TextInput: React.FC<TextInputProps> = ({
     </div>
   );
 };
+
+//
+// I/O
+//
+
+async function createUserProfile(data: RegistrationData): Promise<boolean> {
+  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
+  try {
+    const response = await fetch("/profile/me", {
+      method: "POST",
+      body: JSON.stringify(payload, null, 2),
+      headers: { "Content-Type": ContentType.json },
+    });
+    return response.ok;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+
+async function isEmailAlreadyRegistered(email: string): Promise<boolean> {
+  const decodeResponse = record({ userExists: boolean });
+  return await fetch(`/join/check-email?${new URLSearchParams({ email })}`)
+    .then((response) => response.json())
+    .then(decodeResponse)
+    .then((response) => response.userExists)
+    .catch(() => false);
+}
