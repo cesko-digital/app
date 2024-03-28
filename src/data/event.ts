@@ -75,10 +75,13 @@ export async function getAllEvents(
     .then(decodeValidItemsFromArray(decodeEvent, "Events"));
 }
 
-/** Get all events for a project */
+/** Get all published events for a project */
 export const findEventsForProject = async (projectSlug: string) =>
   await eventsTable
-    .select({ filterByFormula: `{project} = "${projectSlug}"` })
+    .select({
+      view: "Live Events",
+      filterByFormula: `{project} = "${projectSlug}"`,
+    })
     .all()
     .then(unwrapRecords)
     .then(array(decodeEvent));
