@@ -27,7 +27,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   try {
     const payload = decodeRequest(await request.json());
     const email = normalizeEmailAddress(payload.email);
-    const previousProfile = await getUserProfileByMail(email).catch(() => null);
+    const previousProfile = await getUserProfileByMail(email);
     if (previousProfile) {
       const msg = "Email already exists";
       console.error(msg);
@@ -39,6 +39,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
+        featureFlags: ["registrationV2"],
       });
       return new Response("User profile created.", { status: 201 });
     }

@@ -28,7 +28,6 @@ Při lokálním vývoji patří do souboru `.env.local`, web i různé nástroje
 | NEXTAUTH_SECRET | Unikátní klíč, který zabezpečuje přihlašování | V kódu AFAIK nikde není, ale automaticky ho načítá knihovna NextAuth
 | SLACK_SIGNING_SECRET | Tajemství používané pro autentizaci callbacků od serverů Slacku | Používáme v endpointech pro potvrzení nových účtů
 | SLACK_SYNC_TOKEN | Autentizace přístupu k API Slacku | Používáme všude možně jako „univerzální“ API klíč
-| SLACK_GREET_BOT_TOKEN | API klíč Slacku | Používáme pro agendu spojenou s Greetbotem – zejména uvítání nových uživatelů
 | YOUTUBE_API_KEY | API klíč pro YouTube | Používáme pro načítání seznamu videí z našich playlistů, například na stránkách projektů
 | PLAUSIBLE_API_KEY | API klíč pro službu Plausible, kterou používáme pro webovou analytiku | Používá se zejména pro statistické endpointy, které generují statistiky pro grafy v Datawrapperu
 | SENDGRID_API_KEY | API klíč pro Sendgrid (rozesílání mailů) | Používáme pro rozesílání notifikací na nové hledané role
@@ -57,71 +56,28 @@ Pokud jde o testy, máme k dispozici následující hierarchii:
 
 # Uživatelské účty a přihlašování
 
-Základní data o uživatelích máme rozdělená do dvou propojených tabulek: Tabulka _User Profiles_ obsahuje data přímo spravovaná uživatelem (například seznam jeho kompetencí), tabulka _Slack Users_ obsahuje data získaná ze Slacku (například profilový obrázek).
+Hlavní uživatelské účty jsou uložené v tabulce *User Profiles*. Tady jsou data jako jméno, e-mail, kompetence a podobně. A jelikož historicky hrál ve správě uživatelských účtů důležitou roli Slack, je důležitá též tabulka _Slack Users_, kde jsou některá důležitá data získaná ze Slacku. Obě tabulky jsou navzájem provázané, kde to jde – tedy k danému slackovému účtu umíme najít odpovídající uživatelský profil a naopak.
 
 ## Založení účtu
 
-1. Uživatel vyplní onboardovací formulář na adrese app.cesko.digital/join, kde zadá základní údaje, zejména e-mail. Po odeslání uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. (TBD: Co když už daný e-mail v databázi je?)
-2. Po odeslání formuláře je uživatel přesměrován na onboarding Slacku, kde mimo jiné opět zadává mailovou adresu a Slack ji ověřuje.
-3. Po úspěšném přihlášení do Slacku zavolá server Slacku automaticky náš API endpoint `/join/confirm` a předá ID nově přihlášeného uživatele. My uložíme do tabulky _Slack Users_ informaci o novém uživateli, podle jeho e-mailu najdeme odpovídající doposud nepotvrzený uživatelský profil v tabulce _User Profiles_, označíme jej za `confirmed` a provážeme ho s odpovídajícím řádkem tabulky _Slack Users_.
+1. Uživatel vyplní registrační formulář na na adrese app.cesko.digital/join, kde zadá základní údaje, zejména e-mail. Po odeslání formuláře uložíme do tabulky _User Profiles_ nový uživatelský profil ve stavu `unconfirmed`. Pokud už ale daný e-mail v databázi byl, registrace končí chybou.
+2. Po úspěšném odeslání registračního formuláře pošleme uživateli přihlašovací mail na adresu zadanou při registraci. Prvním přihlášením se účet aktivuje, tedy přepne do stavu `confirmed`.
 
-```mermaid
-sequenceDiagram
-    participant Uživatel
-    participant Backend
-    participant Airtable
-    participant Slack
-    Uživatel->>+Backend: Vyplněná registrace
-    Note over Backend: /profile/me
-    Backend->>Airtable: Vytvoř nový uživatelský profil ➊
-    Note over Airtable: User Profiles
-    Airtable-->>Uživatel: Uvítací e-mail (Airtable Automation)
-    Backend->>-Uživatel: Přesměrování na onboarding Slacku
-    Uživatel->>Slack: Vyplněná registrace
-    Slack->>Uživatel: Tady máš chat
-    Slack->>+Backend: Máte nového uživatele Slacku
-    Note over Backend: /join/confirm
-    Backend->>Airtable: Vytvoř nového uživatele Slacku
-    Note over Airtable: Slack Users
-    Backend->>Airtable: Potvrď uživatelský profil z bodu ➊
-    Note over Airtable: User Profiles
-    Backend->>-Slack: Pozdrav uživatele
-    Slack->>Uživatel: Greet Bot: 👋
-```
+Historicky se proces registrace hodně měnil, takže abychom rozlišili účty založené tímto modernějším procesem, mají v poli `featureFlags` příznak `registrationV2`.
 
-## E-maily
-
-U každého uživatele vedeme v principu až tři e-mailové adresy:
-
-- _Registrační e-mail_ vyplní uživatel v onboardovacím formuláři (app.cesko.digital/join).
-  V databázi jde o pole `email` v tabulce `User Profiles`.
-- Následně uživatel během onboardingu do Slacku vyplní druhý e-mail, říkejme mu třeba
-  _slackový_. V ideálním případě je stejný jako ten předchozí, ale v reálu uživatelé běžně
-  zadávají jiný (například ten, na který už mají zřízený jiný slackový účet).
-  V databázi jde o pole `email` v tabulce `Slack Users`.
-- Třetí email jde vyplnit v profilu Slacku, říkejme mu třeba _kontaktní_. V databázi ukládáme
-  do pole `contactEmail` v tabulce `Slack Users` (které pro pohodlí zobrazujeme i v tabulce `User Profiles`).
-
-Poznámky k využití jednotlivých adres:
-
-- Obecně pracujeme s prvními dvěma adresami jako neveřejnými a teprve ta třetí je určená
-  pro běžné zobrazení.
-- Historicky jsme měli nejdřív pouze registrační e-maily ze Slacku, a právě ty jsme proto
-  synchronizovali do Ecomailu, abychom členům komunity mohli rozesílat newsletter. Zhruba od
-  začátku roku 2023 se už ale uživatelé přihlašují do Ecomailu sami prostřednictvím formuláře
-  (viz https://cesko.digital/go/newsletters), kde můžou vyplnit libovolný e-mail.
-- Pokud se uživatel přihlašuje přes Slack k našemu webu, součástí JWT tokenu, který přihlášením
-  vznikne, je jeho slackový mail.
-- Přímo měnit může uživatel svůj slackový mail ([viz tady](https://slack.com/help/articles/207262907-Change-your-email-address))
-  a kontaktní mail (v profilu na Slacku).
-- Ověřený je pouze slackový mail, náš registrační mail ani kontaktní mail ze slackového profilu
-  zatím neověřujeme.
-  
 ## Přihlašování
 
-O autentizaci se stará knihovna [NextAuth.js](https://next-auth.js.org). Sessions neukládáme do databáze, pouze do cookie na klientovi.
+Pro přihlašování používáme knihovnu [NextAuth.js](https://next-auth.js.org), session ukládáme do JWT tokenů na klientovi. Primární přihlašovací metodou je zaslání přihlašovacího odkazu e-mailem. V databázi se o podporu přihlašování starají následující tabulky a pole:
 
-V běžném provozu se uživatelé přihlašují svým slackovým účtem – po zahájení autentizace dojde k přesměrování na server Slacku, kde se uživatel prokáže svým slackovým účtem Česko.Digital a následně se přesměruje zpět k nám (kde se nastaví session cookie).
+* Tabulka User Profiles, pole `email` (přihlašovací mail) a `emailVerified` (datum posledního přihlášení e-mailem). Také je zde vazba `externalIdentities` na tabulku *Accounts* (viz níže).
+* Tabulka *Sign-in Tokens* obsahuje jednorázové tokeny používané pro přihlášení e-mailem. Úspěšné přihlášení token smaže. Pokud se token nepoužije, nějakou dobu po expiraci se pomocí automatizace smaže.
+* Tabulka *Accounts* obsahuje záznamy potřebné pro přihlašování externími poskytovateli identity, tedy například přes Slack (zatím jediný podporovaný způsob). Pokud má fungovat přihlášení externím poskytovatelem, musí mít daný uživatel odpovídající záznam v tabulce *Accounts*.
+
+## Spolupráce se Slackem
+
+Když se někdo přidá do našeho Slacku, server Slacku nám to dá vědět prostřednictvím API endpointu `/api/slack-join`. Pro každého takového nového uživatele založíme nový záznam v tabulce *Slack Users*.
+
+Pokud má nový uživatel Slacku ověřenou e-mailovou adresu, podíváme se také, jestli nemáme uživatele se stejnou adresou v tabulce *User Profiles*. Pokud ano, vytvoříme vazbu mezi příslušnými záznamy z tabulek *User Profiles* a *Slack Users*. A kromě toho založíme nový záznam v tabulce *Accounts*, aby se uživatel mohl k aplikaci přihlašovat slackovým účtem.
 
 # Projekty
 
