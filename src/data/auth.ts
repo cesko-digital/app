@@ -56,7 +56,7 @@ const decodeUser = record({
 
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
   email: user.email,
-  emailVerified: user.emailVerified?.toDateString(),
+  emailVerified: user.emailVerified?.toISOString(),
 });
 
 const userTable = usersBase<UserTableSchema>("User Profiles");
@@ -168,7 +168,7 @@ const encodeSession = (
 ): Partial<SessionTableSchema> => ({
   sessionToken: session.sessionToken,
   userId: session.userId ? [session.userId] : undefined,
-  expires: session.expires?.toDateString(),
+  expires: session.expires?.toISOString(),
 });
 
 const sessionTable = usersBase<SessionTableSchema>("Sessions");
@@ -247,7 +247,7 @@ const decodeToken = record({
 const encodeToken = (token: Partial<Token>): Partial<TokenTableSchema> => ({
   id: token.id,
   identifier: token.identifier,
-  expires: token.expires?.toDateString(),
+  expires: token.expires?.toISOString(),
   token: token.token,
 });
 
