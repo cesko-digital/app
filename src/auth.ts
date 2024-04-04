@@ -3,7 +3,11 @@ import { getServerSession, type NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import SlackProvider from "next-auth/providers/slack";
 
-import { authDatabaseAdapter, getUserByEmail } from "~/src/data/auth";
+import {
+  authDatabaseAdapter,
+  authEventLoggers,
+  getUserByEmail,
+} from "~/src/data/auth";
 import { Route } from "~/src/routing";
 import { devMode, isHttpSuccessCode } from "~/src/utils";
 
@@ -93,6 +97,7 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
   },
 
+  events: authEventLoggers,
   debug: devMode(),
 };
 

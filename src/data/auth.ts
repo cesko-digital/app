@@ -1,4 +1,5 @@
 import { type FieldSet } from "airtable";
+import { type EventCallbacks } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import {
   array,
@@ -281,6 +282,78 @@ const useVerificationToken = async ({
   } else {
     return null;
   }
+};
+
+//
+// Auth Logging
+//
+
+interface LogTableSchema extends FieldSet {
+  id: string;
+  description: string;
+  eventType: string;
+  timestamp: string;
+  user: ReadonlyArray<string>;
+  message: string;
+}
+
+type AuthLogEvent = {
+  id: string;
+  description: string;
+  eventType: "signIn" | "signOut" | "updateUser";
+  timestamp: string;
+  user: string;
+  message?: string;
+};
+
+const encodeAuthLogEvent = (
+  event: Partial<AuthLogEvent>,
+): Partial<LogTableSchema> => ({
+  id: event.id,
+  eventType: event.eventType,
+  timestamp: event.timestamp,
+  user: event.user ? [event.user] : undefined,
+  message: event.message,
+});
+
+const logAuthEvent = async (
+  eventType: AuthLogEvent["eventType"],
+  user: string | undefined,
+  message: string | undefined = undefined,
+) => {
+  const authLogTable = usersBase<TokenTableSchema>("Auth Log");
+  await authLogTable.create(
+    encodeAuthLogEvent({
+      timestamp: new Date().toISOString(),
+      eventType,
+      message,
+      user,
+    }),
+  );
+};
+
+/**
+ * https://next-auth.js.org/configuration/events
+ *
+ * TBD: Log user creation?
+ * TBD: Log sign-in token creation?
+ */
+export const authEventLoggers: Partial<EventCallbacks> = {
+  signOut: ({ token }) => logAuthEvent("signOut", token.sub),
+  signIn: ({ user, account }) =>
+    logAuthEvent(
+      "signIn",
+      user.id,
+      account
+        ? `Account type “${account.type}”, provider “${account.provider}”.`
+        : `Account unknown.`,
+    ),
+  updateUser: ({ user }) =>
+    logAuthEvent(
+      "updateUser",
+      user.id,
+      "This is the user verifying their e-mail address.",
+    ),
 };
 
 //
