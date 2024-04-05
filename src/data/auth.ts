@@ -292,6 +292,7 @@ interface LogTableSchema extends FieldSet {
   id: string;
   description: string;
   eventType: string;
+  environment: string;
   timestamp: string;
   user: ReadonlyArray<string>;
   message: string;
@@ -306,6 +307,7 @@ type AuthLogEvent = {
     | "updateUser"
     | "sendSignInLink"
     | "unknownEmailSignIn";
+  environment?: "development" | "production" | "test";
   timestamp: string;
   user: string;
   message?: string;
@@ -316,6 +318,7 @@ const encodeAuthLogEvent = (
 ): Partial<LogTableSchema> => ({
   id: event.id,
   eventType: event.eventType,
+  environment: event.environment,
   timestamp: event.timestamp,
   user: event.user ? [event.user] : undefined,
   message: event.message,
@@ -330,6 +333,7 @@ const logAuthEvent = async (
   await authLogTable.create(
     encodeAuthLogEvent({
       timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV,
       eventType,
       message,
       user,
