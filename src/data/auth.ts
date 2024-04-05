@@ -300,7 +300,7 @@ interface LogTableSchema extends FieldSet {
 type AuthLogEvent = {
   id: string;
   description: string;
-  eventType: "signIn" | "signOut" | "updateUser";
+  eventType: "signIn" | "signOut" | "updateUser" | "sendSignInLink";
   timestamp: string;
   user: string;
   message?: string;
@@ -332,11 +332,22 @@ const logAuthEvent = async (
   );
 };
 
+export const logSignInEmailEvent = async (
+  email: string,
+  mailerStatusCode: number | undefined = undefined,
+) => {
+  const user = await getUserByEmail(email);
+  await logAuthEvent(
+    "sendSignInLink",
+    user?.id,
+    `E-mail ${email}, mailer status code ${mailerStatusCode ?? "unknown"}.`,
+  );
+};
+
 /**
  * https://next-auth.js.org/configuration/events
  *
  * TBD: Log user creation?
- * TBD: Log sign-in token creation?
  */
 export const authEventLoggers: Partial<EventCallbacks> = {
   signOut: ({ token }) => logAuthEvent("signOut", token.sub),

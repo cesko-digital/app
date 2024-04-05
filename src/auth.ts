@@ -7,6 +7,7 @@ import {
   authDatabaseAdapter,
   authEventLoggers,
   getUserByEmail,
+  logSignInEmailEvent,
 } from "~/src/data/auth";
 import { Route } from "~/src/routing";
 import { devMode, isHttpSuccessCode } from "~/src/utils";
@@ -50,6 +51,7 @@ export const authOptions: NextAuthOptions = {
             },
           },
         });
+        await logSignInEmailEvent(email, response.statusCode);
         if (!isHttpSuccessCode(response.statusCode)) {
           console.error(
             `Got HTTP ${response.statusCode} from Sendgrid when trying to send login e-mail.`,
