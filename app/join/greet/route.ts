@@ -20,7 +20,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   }
 
   if (user_id) {
-    if (text && text.startsWith("day")) {
+    if (text?.startsWith("day")) {
       const messages = parseWelcomeMessages();
       for (const [day, msg] of messages) {
         if (text === `day${day}.txt`) {
