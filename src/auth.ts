@@ -8,6 +8,7 @@ import {
   authEventLoggers,
   getUserByEmail,
   logSignInEmailEvent,
+  logUnknownEmailSignInEvent,
 } from "~/src/data/auth";
 import { Route } from "~/src/routing";
 import { devMode, isHttpSuccessCode } from "~/src/utils";
@@ -68,6 +69,7 @@ export const authOptions: NextAuthOptions = {
         // If user does not exist already, redirect back to sign-in page
         // with an error explainer and the option to register instead.
         if (!existingUser) {
+          await logUnknownEmailSignInEvent(user.email);
           return `/auth/sign-in?error=UserNotFound&email=${user.email}`;
         }
         return true; // proceed

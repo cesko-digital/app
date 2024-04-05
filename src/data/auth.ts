@@ -300,7 +300,12 @@ interface LogTableSchema extends FieldSet {
 type AuthLogEvent = {
   id: string;
   description: string;
-  eventType: "signIn" | "signOut" | "updateUser" | "sendSignInLink";
+  eventType:
+    | "signIn"
+    | "signOut"
+    | "updateUser"
+    | "sendSignInLink"
+    | "unknownEmailSignIn";
   timestamp: string;
   user: string;
   message?: string;
@@ -340,9 +345,12 @@ export const logSignInEmailEvent = async (
   await logAuthEvent(
     "sendSignInLink",
     user?.id,
-    `E-mail ${email}, mailer status code ${mailerStatusCode ?? "unknown"}.`,
+    `E-mail “${email}”, mailer status code ${mailerStatusCode ?? "unknown"}.`,
   );
 };
+
+export const logUnknownEmailSignInEvent = async (email: string) =>
+  logAuthEvent("unknownEmailSignIn", undefined, `E-mail “${email}”.`);
 
 /**
  * https://next-auth.js.org/configuration/events
