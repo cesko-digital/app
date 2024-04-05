@@ -14,6 +14,7 @@ import {
 
 import { type UserProfile } from "~/src/data/user-profile";
 import { relationToZeroOrOne, takeFirst } from "~/src/decoding";
+import { normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -76,7 +77,7 @@ const getUser = async (id: string) =>
 const getUserByEmail = async (email: string) =>
   await userTable
     .select({
-      filterByFormula: `{email} = "${email}"`,
+      filterByFormula: `{email} = "${normalizeEmailAddress(email)}"`,
       maxRecords: 1,
     })
     .all()
