@@ -302,11 +302,11 @@ type AuthLogEvent = {
   id: string;
   description: string;
   eventType:
-    | "signIn"
-    | "signOut"
-    | "updateUser"
-    | "sendSignInLink"
-    | "unknownEmailSignIn";
+    | "signIn" // User has signed in successfully
+    | "signOut" // User has signed out successfully
+    | "updateUser" // User was updated, currently only used for `emailVerified` timestamp updates
+    | "sendSignInLink" // Sign-in link was requested, successfully or not
+    | "unknownEmailSignIn"; // User attempted to sign in with an unknown e-mail address
   environment?: "development" | "production" | "test";
   timestamp: string;
   user: string;
