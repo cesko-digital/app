@@ -12,6 +12,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
+import { type UserProfile } from "~/src/data/user-profile";
 import { relationToZeroOrOne, takeFirst } from "~/src/decoding";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
@@ -225,7 +226,8 @@ type AuthLogEvent = {
     | "signOut" // User has signed out successfully
     | "updateUser" // User was updated, currently only used for `emailVerified` timestamp updates
     | "sendSignInLink" // Sign-in link was requested, successfully or not
-    | "unknownEmailSignIn"; // User attempted to sign in with an unknown e-mail address
+    | "unknownEmailSignIn" // User attempted to sign in with an unknown e-mail address
+    | "userCreated"; // New user account was created
   environment?: "development" | "production" | "test";
   timestamp: string;
   user: string;
@@ -275,10 +277,11 @@ export const logSignInEmailEvent = async (
 export const logUnknownEmailSignInEvent = async (email: string) =>
   logAuthEvent("unknownEmailSignIn", undefined, `E-mail “${email}”.`);
 
+export const logUserCreatedEvent = async (user: Pick<UserProfile, "id">) =>
+  logAuthEvent("userCreated", user.id);
+
 /**
  * https://next-auth.js.org/configuration/events
- *
- * TBD: Log user creation?
  */
 export const authEventLoggers: Partial<EventCallbacks> = {
   signOut: ({ token }) => logAuthEvent("signOut", token.sub),
