@@ -25,7 +25,8 @@ type Props = {
   defaultEmail?: string;
 };
 
-export const SignInForm = ({ defaultEmail }: Props) => {
+/** Main sign-up form */
+export const SignUpForm = ({ defaultEmail }: Props) => {
   const [state, setState] = useState<FormState>({
     ...emptyFormState,
     email: defaultEmail ?? "",

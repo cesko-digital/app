@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 
-import { SignInForm } from "./SignInForm";
+import { SignUpForm } from "./SignUpForm";
 
 type Props = {
   searchParams: {
@@ -17,7 +17,7 @@ const Page = ({ searchParams }: Props) => {
         path={[{ label: "Homepage", path: "/" }]}
         currentPage="Registrace"
       />
-      <SignInForm defaultEmail={email} />
+      <SignUpForm defaultEmail={email} />
     </main>
   );
 };
