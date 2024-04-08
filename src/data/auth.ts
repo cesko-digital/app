@@ -72,7 +72,9 @@ const getUser = async (id: string) =>
 /**
  * Get user by registration e-mail
  *
- * Note that this is intentionally NOT limited to confirmed users.
+ * This is intentionally NOT limited to confirmed users.
+ *
+ * The e-mail is normalized before querying the DB.
  */
 const getUserByEmail = async (email: string) =>
   await userTable

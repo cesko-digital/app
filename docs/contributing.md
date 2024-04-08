@@ -43,7 +43,7 @@ Pár postřehů pro jednodušší orientaci a spolupráci:
 
 Poznámky k architektuře:
 
-* Nebojte se psát delší soubory. Mít každou drobnost v samostatném souboru je čistě režie navíc. Lze i zobecnit – míra „procesů“ (abstrakce, dělení do souborů, dělení do funkcí, …) musí odpovídat velikosti řešeného problému. Pokud zakládáte nový soubor kvůli čtyřem řádkům kódu, je slušná šance, že děláte něco špatně.
+* Nebojte se psát delší soubory. Mít každou drobnost v samostatném souboru je čistě režie navíc. Lze i zobecnit – míra „procesů“ (abstrakce, dělení do souborů, dělení do funkcí, …) musí odpovídat velikosti řešeného problému. Pokud zakládáte nový soubor kvůli čtyřem řádkům kódu, je slušná šance, že děláte něco špatně. (Výjimkou jsou malé soubory dané rozhraním mezi klientem a serverem – pokud potřebujete oddělit z většího souboru běžícího na serveru malý kousek běžící na klientovi, je to OK.)
 * Dvakrát se zamyslete, než přidáte novou závislost. Třikrát, pokud má sama nějaké další závislosti. Pokud jde o vyloženě větší závislost (React, GraphQL, …), domluvme se předem, jestli je to opravdu nutné. Pokud jde místo další závislosti napsat funkce o 10–20 řádcích, je to výrazně lepší. Velký počet závislostí zpomaluje build a celkově zhoršuje ergonomii práce na projektu.
 
 Pokud jde o testy, máme k dispozici následující hierarchii:
@@ -64,6 +64,8 @@ Hlavní uživatelské účty jsou uložené v tabulce *User Profiles*. Tady jsou
 2. Po úspěšném odeslání registračního formuláře pošleme uživateli přihlašovací mail na adresu zadanou při registraci. Prvním přihlášením se účet aktivuje, tedy přepne do stavu `confirmed`.
 
 Historicky se proces registrace hodně měnil, takže abychom rozlišili účty založené tímto modernějším procesem, mají v poli `featureFlags` příznak `registrationV2`.
+
+**E-mailové adresy je potřeba normalizovat**, protože z pohledu standardů i uživatele jsou Foo@bar.cz a foo@bar.cz jen dva různé zápisy jedné e-mailové adresy. Není žádoucí, abychom například dovolili založení účtu Foo@bar.cz, pokud už v databázi máme foo@bar.cz. Proto e-maily v databázi ukládáme konvertované na malá písmena a oholené od whitespace. Pokud pak v databázi vyhledáváte podle uživatelem zadaného mailu (například během přihlašování), je potřeba hledaný mail normalizovat nebo použít API, které už má normalizaci vestavěnou.
 
 ## Přihlašování
 

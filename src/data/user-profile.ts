@@ -12,6 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
+import { normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -140,9 +141,15 @@ export const getUserProfile = async (databaseId: string) =>
     .then(decodeUserProfile)
     .catch((_) => null);
 
-/** Get user profile with given e-mail */
+/**
+ * Get user profile with given e-mail
+ *
+ * The e-mail is normalized before querying the DB.
+ */
 export const getUserProfileByMail = (email: string) =>
-  getFirstMatchingUserProfile(`{email} = "${email}"`).catch(() => null);
+  getFirstMatchingUserProfile(
+    `{email} = "${normalizeEmailAddress(email)}"`,
+  ).catch(() => null);
 
 /** Return first user profile that matches given formula query */
 export async function getFirstMatchingUserProfile(
