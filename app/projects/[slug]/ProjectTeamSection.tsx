@@ -31,18 +31,21 @@ export const ProjectTeamSection = ({
 
 const EngagementCard = ({ engagement }: { engagement: TeamEngagement }) => (
   <div className="flex gap-4 rounded-lg bg-pebble p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center">
-    <Image
-      src={engagement.userAvatarUrl}
-      className={clsx(
-        "rounded-full bg-gray shadow",
-        // This fixes the appearance of non-square images
-        "aspect-square object-cover object-top",
-        "sm:mx-auto",
-      )}
-      alt=""
-      width={80}
-      height={80}
-    />
+    {/* The extra no-shrink div fixes the layout when the right box is taller */}
+    <div className="shrink-0">
+      <Image
+        src={engagement.userAvatarUrl}
+        className={clsx(
+          "shrink-0 rounded-full bg-gray shadow",
+          // This fixes the appearance of non-square images
+          "aspect-square object-cover object-top",
+          "sm:mx-auto",
+        )}
+        alt=""
+        width={80}
+        height={80}
+      />
+    </div>
     <div className="self-center">
       <h3 className="typo-subtitle">{engagement.userName}</h3>
       <p>{engagement.projectRole}</p>
