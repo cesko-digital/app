@@ -41,8 +41,9 @@ export const SignInForm = (props: Props) => {
         return handleMailSignIn();
       }}
     >
-      <label htmlFor="user-email" className="block">
-        Zadej e-mail, kterým se přihlašuješ do Slacku Česko.Digital:
+      <label htmlFor="user-email" className="block text-balance">
+        Zadej e-mail, kterým ses registroval*a nebo kterým se přihlašuješ do
+        Slacku Česko.Digital:
       </label>
       <input
         id="user-email"
@@ -53,7 +54,9 @@ export const SignInForm = (props: Props) => {
         required
       ></input>
       {error && (
-        <p className="mb-2 bg-yellow p-2 text-left">{describeError(error)}</p>
+        <p className="mb-2 bg-yellow p-2 text-left">
+          {describeError({ error, email })}
+        </p>
       )}
       <button
         className={clsx(
@@ -76,14 +79,14 @@ export const SignInForm = (props: Props) => {
 };
 
 /** See error constants described at https://next-auth.js.org/configuration/pages#sign-in-page */
-const describeError = (error: string) => {
+const describeError = ({ error, email }: { error: string; email: string }) => {
   switch (error.toLocaleLowerCase()) {
     // This is our custom error
     case "usernotfound":
       return (
         <Fragment>
           Tenhle mail neznáme. Buď zkus jiný,{" "}
-          <a href={Route.register} className="typo-link">
+          <a href={Route.register(email)} className="typo-link">
             anebo se můžeš registrovat
           </a>
           .

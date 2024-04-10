@@ -70,11 +70,15 @@ export const authOptions: NextAuthOptions = {
         // with an error explainer and the option to register instead.
         if (!existingUser) {
           await logUnknownEmailSignInEvent(user.email);
-          return `/auth/sign-in?error=UserNotFound&email=${user.email}`;
+          const params = new URLSearchParams({
+            error: "UserNotFound",
+            email: user.email,
+          });
+          return `/auth/sign-in?${params}`;
         }
         return true; // proceed
       } else {
-        return Route.register;
+        return Route.register();
       }
     },
 

@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { optional, record, string } from "typescript-json-decoder";
 
 import { withAuthenticatedUser } from "~/src/auth";
+import { logUserCreatedEvent } from "~/src/data/auth";
 import {
   createUserProfile,
   getUserProfile,
@@ -27,19 +28,21 @@ export async function POST(request: NextRequest): Promise<Response> {
   try {
     const payload = decodeRequest(await request.json());
     const email = normalizeEmailAddress(payload.email);
-    const previousProfile = await getUserProfileByMail(email).catch(() => null);
+    const previousProfile = await getUserProfileByMail(email);
     if (previousProfile) {
       const msg = "Email already exists";
       console.error(msg);
       return new Response(msg, { status: 401 });
     } else {
-      await createUserProfile({
+      const user = await createUserProfile({
         ...payload,
         email,
         state: "unconfirmed",
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
+        featureFlags: ["registrationV2"],
       });
+      await logUserCreatedEvent(user);
       return new Response("User profile created.", { status: 201 });
     }
   } catch (e) {

@@ -22,6 +22,7 @@ export type RegistrationData = {
 export type FormState = {
   name: string;
   email: string;
+  emailAlreadyTaken: boolean;
   occupation: string;
   organizationName: string;
   profileUrl: string;
@@ -36,6 +37,7 @@ export type FormState = {
 export const emptyFormState: FormState = {
   name: "",
   email: "",
+  emailAlreadyTaken: false,
   organizationName: "",
   occupation: "",
   profileUrl: "",

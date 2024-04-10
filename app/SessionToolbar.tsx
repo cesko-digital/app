@@ -63,7 +63,7 @@ const SignedOutButtons = () => (
     <Link className="typo-link" onClick={() => signIn()} href="">
       Přihlásit se
     </Link>
-    <Link className="typo-link" href={Route.register}>
+    <Link className="typo-link" href={Route.register()}>
       Registrovat
     </Link>
   </Fragment>

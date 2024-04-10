@@ -36,7 +36,7 @@ export const NotificationsTab = ({ userEmail }: Props) => {
     <div className="flex flex-col gap-4">
       <section className="max-w-prose">
         <p className="mb-4">
-          Abys nemusel*a sledovat pravidelně Slack nebo náš web, můžeme ti občas
+          Abys nemusel*a pravidelně sledovat web nebo náš Slack, můžeme ti občas
           poslat upozornění na některé důležité věci mailem. Tady si můžeš
           nastavit, jestli o to stojíš a která upozornění tě zajímají.
         </p>
