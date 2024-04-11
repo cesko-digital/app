@@ -157,10 +157,13 @@ async function getFeaturedEvents(): Promise<Event[]> {
   const projects = await getAllProjects();
   const projectForEvent = (e: Event) =>
     projects.find((p) => p.id === e.projectId);
+  const isProjectRelevant = (e: Event) =>
+    projectForEvent(e)?.state === "running" ||
+    projectForEvent(e)?.slug === "cesko-digital";
   return events
     .filter((e) => e.published)
     .filter((e) => !isEventPast(e))
-    .filter((e) => projectForEvent(e)?.state === "running")
+    .filter((e) => isProjectRelevant(e))
     .sort(compareEventsByTime)
     .slice(0, 3);
 }
