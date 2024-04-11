@@ -154,16 +154,9 @@ async function getFeaturedProjects(): Promise<Project[]> {
 
 async function getFeaturedEvents(): Promise<Event[]> {
   const events = await getAllEvents("Live Events");
-  const projects = await getAllProjects();
-  const projectForEvent = (e: Event) =>
-    projects.find((p) => p.id === e.projectId);
-  const isProjectRelevant = (e: Event) =>
-    projectForEvent(e)?.state === "running" ||
-    projectForEvent(e)?.slug === "cesko-digital";
   return events
     .filter((e) => e.published)
     .filter((e) => !isEventPast(e))
-    .filter((e) => isProjectRelevant(e))
     .sort(compareEventsByTime)
     .slice(0, 3);
 }
