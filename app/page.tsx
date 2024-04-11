@@ -42,9 +42,21 @@ export default async function Home() {
 
   const projectWithId = (id: string) => allProjects.find((p) => p.id === id);
 
-  const MoreButton = ({ text, url }: { text: string; url: string }) => (
+  const MoreButton = ({
+    text,
+    url,
+    external = false,
+  }: {
+    text: string;
+    url: string;
+    external?: boolean;
+  }) => (
     <div className="text-center">
-      <Link className="btn-primary block md:inline-block" href={url}>
+      <Link
+        className="btn-primary block md:inline-block"
+        href={url}
+        target={external ? "_blank" : undefined}
+      >
         {text}
       </Link>
     </div>
@@ -87,7 +99,11 @@ export default async function Home() {
           Zapojte se krátce v projektech mimo Česko.Digital
         </h3>
         <DiscussionSummaryBox bubbles={marketplaceSummary} />
-        <MoreButton text="Otevřít Tržiště" url={Route.marketplace} />
+        <MoreButton
+          text="Otevřít Tržiště ↗"
+          url={Route.marketplace}
+          external
+        />
       </section>
 
       {events.length > 0 && (
@@ -112,7 +128,11 @@ export default async function Home() {
           Potřebujete poradit? Chcete poradit? Diskutujte o digitalizaci Česka
         </h3>
         <DiscussionSummaryBox bubbles={discussionSummary} />
-        <MoreButton text="Otevřít diskuzní fórum" url={Route.forum} />
+        <MoreButton
+          text="Otevřít diskuzní fórum ↗"
+          url={Route.forum}
+          external
+        />
       </section>
     </main>
   );
@@ -160,7 +180,11 @@ const DiscussionBubble = ({ bubble }: { bubble: Bubble }) => {
     <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="group flex min-w-0 flex-col" href={bubble.topicUrl}>
+    <Link
+      className="group flex min-w-0 flex-col"
+      href={bubble.topicUrl}
+      target="_blank"
+    >
       <div className="grow overflow-hidden rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
         <p className="line-clamp-5">
           <span className="mr-2 font-semibold">{bubble.title}</span>
