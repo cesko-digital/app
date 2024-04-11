@@ -190,21 +190,23 @@ const useVerificationToken = async ({
   token: string;
 }) => {
   // Find matching record in token table
-  const record = await tokenTable
+  const matchingRecords = await tokenTable
     .select({
       filterByFormula: `AND({token} = "${token}", {identifier} = "${identifier}")`,
       maxRecords: 1,
     })
     .all()
-    .then(unwrapRecords)
-    .then(takeFirst(array(decodeToken)));
-  // If found, destroy and return
-  if (record) {
-    await tokenTable.destroy(record.id);
-    return record;
-  } else {
+    .then(unwrapRecords);
+
+  // Maybe the token expired and was deleted in the meantime?
+  if (matchingRecords.length === 0) {
     return null;
   }
+
+  // No, we have the token, destroy it and return
+  const [record] = matchingRecords.map(decodeToken);
+  await tokenTable.destroy(record.id);
+  return record;
 };
 
 //
