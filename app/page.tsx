@@ -160,7 +160,7 @@ const DiscussionBubble = ({ bubble }: { bubble: Bubble }) => {
     <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
   );
   return (
-    <Link className="group flex flex-col" href={bubble.topicUrl}>
+    <Link className="group flex min-w-0 flex-col" href={bubble.topicUrl}>
       <div className="grow overflow-hidden rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
         <p className="line-clamp-5">
           <span className="mr-2 font-semibold">{bubble.title}</span>
