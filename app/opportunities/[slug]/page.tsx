@@ -117,10 +117,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!role) {
     return {};
   }
+  const allProjects = await getAllProjects();
+  const project = allProjects.find((p) => p.id === role.projectId)!;
   return {
     title: `${role.name} | Česko.Digital`,
     description: role.summary.source, // TBD: strip Markdown
-    openGraph: { images: role.coverImageUrl },
+    openGraph: { images: role.coverImageUrl ?? project.coverImageUrl },
   };
 }
 
