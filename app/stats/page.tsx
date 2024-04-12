@@ -32,6 +32,12 @@ const Page = async () => {
     !!metrics.find(
       (m) => m.service === service && haveSamplesForMetric(m.slug),
     );
+  const featuredMetrics = metrics
+    .filter((m) => m.featured)
+    .sort((a, b) => a.service.localeCompare(b.service));
+  const compareMetricsByName = (a: MetricDefinition, b: MetricDefinition) =>
+    a.name.localeCompare(b.name);
+
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
@@ -43,7 +49,7 @@ const Page = async () => {
         <ServiceSection
           key="featured"
           title="Klíčové metriky"
-          filteredMetrics={metrics.filter((m) => m.featured)}
+          filteredMetrics={featuredMetrics}
           allSamples={samples}
           showServiceName
         />
@@ -51,7 +57,9 @@ const Page = async () => {
           <ServiceSection
             key={service}
             title={service}
-            filteredMetrics={metrics.filter((m) => m.service === service)}
+            filteredMetrics={metrics
+              .filter((m) => m.service === service)
+              .sort(compareMetricsByName)}
             allSamples={samples}
           />
         ))}
@@ -75,8 +83,6 @@ const ServiceSection = ({
 }: ServiceSectionProps) => {
   const compareSamplesByDate = (a: MetricSample, b: MetricSample) =>
     new Date(a.date).getTime() - new Date(b.date).getTime();
-  const compareMetricsByName = (a: MetricDefinition, b: MetricDefinition) =>
-    a.name.localeCompare(b.name);
   const samplesForMetric = (metric: MetricDefinition) =>
     samples
       .filter((s) => s.metricSlug === metric.slug)
@@ -86,7 +92,6 @@ const ServiceSection = ({
       <h2 className="typo-title2 mb-4">{title}</h2>
       <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {metrics
-          .sort(compareMetricsByName)
           .filter((m) => samplesForMetric(m).length > 0)
           .map((metric) => (
             <OverviewChart
