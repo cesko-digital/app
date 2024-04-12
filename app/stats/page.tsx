@@ -1,12 +1,14 @@
 import { type Metadata } from "next";
 
+import { OverviewChart } from "~/app/stats/OverviewChart";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   getAllMetricDefinitions,
   getAllMetricSamples,
+  type MetricDefinition,
+  type MetricSample,
 } from "~/src/data/metrics";
-
-import { StatsTabBar } from "./StatsTabBar";
+import { unique } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
 export const revalidate = 300;
@@ -15,9 +17,21 @@ export const metadata: Metadata = {
   title: "Statistiky | Česko.Digital",
 };
 
+/** How many last samples should we display? */
+const historyLength = 10;
+
 const Page = async () => {
   const metrics = await getAllMetricDefinitions();
   const samples = await getAllMetricSamples();
+  const services = unique(metrics.map((m) => m.service)).sort((a, b) =>
+    a.localeCompare(b),
+  );
+  const haveSamplesForMetric = (metricSlug: string) =>
+    samples.filter((s) => s.metricSlug === metricSlug).length > 0;
+  const haveSamplesForService = (service: string) =>
+    !!metrics.find(
+      (m) => m.service === service && haveSamplesForMetric(m.slug),
+    );
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
@@ -25,8 +39,65 @@ const Page = async () => {
         currentPage="Statistiky"
       />
       <h1 className="typo-title mb-10 mt-7">Statistiky</h1>
-      <StatsTabBar metrics={metrics} samples={samples} />
+      <div className="flex flex-col gap-20">
+        <ServiceSection
+          key="featured"
+          title="Klíčové metriky"
+          filteredMetrics={metrics.filter((m) => m.featured)}
+          allSamples={samples}
+          showServiceName
+        />
+        {services.filter(haveSamplesForService).map((service) => (
+          <ServiceSection
+            key={service}
+            title={service}
+            filteredMetrics={metrics.filter((m) => m.service === service)}
+            allSamples={samples}
+          />
+        ))}
+      </div>
     </main>
+  );
+};
+
+type ServiceSectionProps = {
+  title: string;
+  filteredMetrics: MetricDefinition[];
+  allSamples: MetricSample[];
+  showServiceName?: boolean;
+};
+
+const ServiceSection = ({
+  title,
+  filteredMetrics: metrics,
+  allSamples: samples,
+  showServiceName = false,
+}: ServiceSectionProps) => {
+  const compareSamplesByDate = (a: MetricSample, b: MetricSample) =>
+    new Date(a.date).getTime() - new Date(b.date).getTime();
+  const compareMetricsByName = (a: MetricDefinition, b: MetricDefinition) =>
+    a.name.localeCompare(b.name);
+  const samplesForMetric = (metric: MetricDefinition) =>
+    samples
+      .filter((s) => s.metricSlug === metric.slug)
+      .sort(compareSamplesByDate);
+  return (
+    <div>
+      <h2 className="typo-title2 mb-4">{title}</h2>
+      <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+        {metrics
+          .sort(compareMetricsByName)
+          .filter((m) => samplesForMetric(m).length > 0)
+          .map((metric) => (
+            <OverviewChart
+              key={metric.slug}
+              showServiceName={showServiceName}
+              metric={metric}
+              filteredSamples={samplesForMetric(metric).slice(-historyLength)}
+            />
+          ))}
+      </div>
+    </div>
   );
 };
 

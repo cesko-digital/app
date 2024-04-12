@@ -1,7 +1,8 @@
+"use client";
+
 import Link from "next/link";
 
-import { type AxisConfig } from "@mui/x-charts";
-import { LineChart } from "@mui/x-charts/LineChart";
+import { LineChart, type AxisConfig } from "@mui/x-charts";
 import clsx from "clsx";
 
 import {
@@ -12,80 +13,18 @@ import {
   type MetricSample,
 } from "~/src/data/metrics";
 import { Route } from "~/src/routing";
-import { unique } from "~/src/utils";
 
-export type Props = {
-  metrics: MetricDefinition[];
-  samples: MetricSample[];
-};
-
-/** How many last samples should we display? */
-const historyLength = 10;
-
-export const MetricsTab = ({ metrics, samples }: Props) => {
-  const services = unique(metrics.map((m) => m.service));
-  const haveSamplesForMetric = (metricSlug: string) =>
-    samples.filter((s) => s.metricSlug === metricSlug).length > 0;
-  const haveSamplesForService = (service: string) =>
-    metrics.filter((m) => m.service === service && haveSamplesForMetric(m.slug))
-      .length > 0;
-  return (
-    <div className="flex flex-col gap-20">
-      {services.filter(haveSamplesForService).map((service) => (
-        <ServiceSection
-          key={service}
-          service={service}
-          filteredMetrics={metrics.filter((m) => m.service === service)}
-          allSamples={samples}
-        />
-      ))}
-    </div>
-  );
-};
-
-const ServiceSection = ({
-  service,
-  filteredMetrics: metrics,
-  allSamples: samples,
-}: {
-  service: string;
-  filteredMetrics: MetricDefinition[];
-  allSamples: MetricSample[];
-}) => {
-  const compareSamplesByDate = (a: MetricSample, b: MetricSample) =>
-    new Date(a.date).getTime() - new Date(b.date).getTime();
-  const compareMetricsByName = (a: MetricDefinition, b: MetricDefinition) =>
-    a.name.localeCompare(b.name);
-  const samplesForMetric = (metric: MetricDefinition) =>
-    samples
-      .filter((s) => s.metricSlug === metric.slug)
-      .sort(compareSamplesByDate);
-  return (
-    <div>
-      <h2 className="typo-title2 mb-4">{service}</h2>
-      <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-        {metrics
-          .sort(compareMetricsByName)
-          .filter((m) => samplesForMetric(m).length > 0)
-          .map((metric) => (
-            <MetricBox
-              key={metric.slug}
-              metric={metric}
-              filteredSamples={samplesForMetric(metric).slice(-historyLength)}
-            />
-          ))}
-      </div>
-    </div>
-  );
-};
-
-const MetricBox = ({
-  metric,
-  filteredSamples: samples,
-}: {
+type Props = {
   metric: MetricDefinition;
   filteredSamples: MetricSample[];
-}) => {
+  showServiceName?: boolean;
+};
+
+export const OverviewChart = ({
+  metric,
+  filteredSamples: samples,
+  showServiceName = false,
+}: Props) => {
   type Axis = Omit<AxisConfig, "id">;
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
@@ -151,7 +90,12 @@ const MetricBox = ({
       </div>
 
       <div className="flex-grow bg-gray p-4">
-        <h3>{metric.name}</h3>
+        {!showServiceName && <h3>{metric.name}</h3>}
+        {showServiceName && (
+          <h3>
+            <b className="font-semibold">{metric.service}</b>: {metric.name}
+          </h3>
+        )}
         {metric.description && (
           <p className="typo-caption">{metric.description}</p>
         )}
