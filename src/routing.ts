@@ -11,7 +11,7 @@ export const Route = {
   // External routes
   forum: "https://diskutuj.digital/",
   blog: "https://blog.cesko.digital/",
-  slackOnboarding: "https://slack.cesko.digital/",
+  slackOnboarding: "https://join.slack.com/t/cesko-digital/shared_invite/zt-2czwf0gyv-2gKtKr7bHHIXk40xTbRckQ",
   marketplace: "https://diskutuj.digital/c/trziste/5",
   // Static routes
   events: "/events",
