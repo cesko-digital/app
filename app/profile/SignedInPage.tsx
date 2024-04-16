@@ -2,7 +2,9 @@
 
 import { type Session } from "next-auth";
 
+import SlackIcon from "~/components/icons/slack";
 import { SimpleTabBar } from "~/components/TabBar";
+import { Route } from "~/src/routing";
 
 import { MapTab } from "./MapTab";
 import { NewsletterTab } from "./NewsletterTab";
@@ -37,6 +39,11 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       hash: "privacy",
       content: <PrivacyTab />,
     },
+    {
+      title: "Nástroje",
+      hash: "tools",
+      content: <ToolsTab />,
+    },
   ];
   return (
     <section>
@@ -45,3 +52,16 @@ export const SignedInPage = ({ session }: { session: Session }) => {
     </section>
   );
 };
+
+const ToolsTab = () => (
+  <div>
+    <p>
+      <a
+        className="typo-link flex flex-row items-center gap-2"
+        href={Route.slackOnboarding}
+      >
+        <SlackIcon /> Přidat se do Slacku
+      </a>
+    </p>
+  </div>
+);
