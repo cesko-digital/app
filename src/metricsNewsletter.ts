@@ -4,6 +4,8 @@ import {
   calculateTrend,
   getAllMetricDefinitions,
   getAllMetricSamples,
+  getTrendDirection,
+  getTrendIcon,
   type MetricDefinition,
   type MetricSample,
 } from "~/src/data/metrics";
@@ -17,6 +19,7 @@ type Metric = {
   currentSample: MetricSample;
   // If there is a new metric, it won't have a previous sample.
   previousSample?: MetricSample;
+  trend?: number | null;
 };
 
 function sortByDateDescending(a: MetricSample, b: MetricSample): number {
@@ -89,19 +92,160 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
           metric.previousSample.value,
           metric.currentSample.value,
         ])
-      : 0,
+      : null,
   }));
 
-  // TODO: Replace with real template with metrics injected.
+  function prepareMetricBlock(metric: Metric): KnownBlock {
+    const trendDirection = getTrendDirection(
+      metric.trend,
+      metric.definition.positiveDirection,
+    );
+    return {
+      type: "rich_text",
+      elements: [
+        {
+          type: "rich_text_section",
+          elements: [
+            {
+              type: "text",
+              text: `${metric.definition.qualifiedName}`,
+              style: {
+                bold: true,
+              },
+            },
+            {
+              type: "text",
+              text: "\n",
+            },
+          ],
+        },
+        {
+          type: "rich_text_list",
+          style: "bullet",
+          indent: 0,
+          border: 0,
+          elements: [
+            {
+              type: "rich_text_section",
+              elements: [
+                {
+                  type: "text",
+                  text: `Poslední měření ${metric.definition.type === "band" ? metric.currentSample.label : metric.currentSample.date}:`,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "rich_text_list",
+          style: "bullet",
+          indent: 1,
+          border: 0,
+          elements: [
+            {
+              type: "rich_text_section",
+              elements: [
+                {
+                  type: "text",
+                  text: `${metric.currentSample.value}`,
+                  style: {
+                    bold: true,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "rich_text_list",
+          style: "bullet",
+          indent: 0,
+          border: 0,
+          elements: [
+            {
+              type: "rich_text_section",
+              elements: [
+                {
+                  type: "text",
+                  text: `Předposlední měření ${metric.definition.type === "band" ? metric.previousSample.label : metric.previousSample.date}: `,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "rich_text_list",
+          style: "bullet",
+          indent: 1,
+          border: 0,
+          elements: [
+            {
+              type: "rich_text_section",
+              elements: [
+                {
+                  type: "text",
+                  text: `${metric.previousSample.value}`,
+                  style: {
+                    bold: true,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "rich_text_list",
+          style: "bullet",
+          indent: 0,
+          border: 0,
+          elements: [
+            {
+              type: "rich_text_section",
+              elements: [
+                {
+                  type: "text",
+                  text: `${getTrendIcon(metric.trend)} ${metric.trend} % `,
+                },
+                {
+                  type: "emoji",
+                  name: `${trendDirection === "better" || trendDirection === "unchanged" ? "cat" : "crying_cat_face"}`,
+                  unicode: `${trendDirection === "better" || trendDirection === "unchanged" ? "1f431" : "1f63f"}`,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+  }
+
   const blocks = [
+    {
+      type: "header",
+      text: {
+        type: "plain_text",
+        text: "Přehled metrik za poslední období :chart_with_upwards_trend:",
+        emoji: true,
+      },
+    },
     {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: "This is sample text for the metrics newsletter.",
+        text: "Ahojte 👋 Posílám přehled nejdůležitějších metrik za poslední období:",
       },
     },
   ];
 
-  return blocks;
+  metricsWithTrend.forEach((m) => {
+    if (m.previousSample) {
+      blocks.push(prepareMetricBlock(m));
+    }
+  });
+
+  const payload = { blocks: blocks };
+
+  const payloadJson = JSON.stringify(payload);
+
+  return payloadJson;
 }

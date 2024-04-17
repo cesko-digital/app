@@ -2,8 +2,11 @@ import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
+  calculateTrend,
   getAllMetricDefinitions,
   getAllMetricSamples,
+  getTrendDirection,
+  getTrendIcon,
 } from "~/src/data/metrics";
 
 import { StatsTabBar } from "./StatsTabBar";
@@ -18,6 +21,7 @@ export const metadata: Metadata = {
 const Page = async () => {
   const metrics = await getAllMetricDefinitions();
   const samples = await getAllMetricSamples();
+
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
