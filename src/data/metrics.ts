@@ -71,9 +71,9 @@ export const getAllMetricSamples = async () =>
 // Helpers
 //
 
-export function calculateTrend(data: number[]): number | undefined {
+export function calculateTrend(data: number[]): number {
   if (data.length < 2) {
-    return undefined;
+    return 0;
   }
   const lastValue: number = data[data.length - 1];
   const penultimateValue: number = data[data.length - 2];

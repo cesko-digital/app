@@ -19,8 +19,9 @@ type Metric = {
   currentSample: MetricSample;
   // If there is a new metric, it won't have a previous sample.
   previousSample?: MetricSample;
-  trend?: number | null;
 };
+
+type SlackBuildingBlock = KnownBlock | Block;
 
 function sortByDateDescending(a: MetricSample, b: MetricSample): number {
   return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -83,24 +84,22 @@ async function getMetricsForPreviousMonth(): Promise<Metric[]> {
  *
  * For more info about building blocks, see: https://api.slack.com/block-kit/building
  */
-export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
+export async function getMetricsNewsletter(): Promise<SlackBuildingBlock[]> {
   const metrics = await getMetricsForPreviousMonth();
-  const metricsWithTrend = metrics.map((metric) => ({
-    ...metric,
-    trend: metric.previousSample
+
+  function prepareMetricBlock(metric: Metric): SlackBuildingBlock {
+    const trend = metric.previousSample
       ? calculateTrend([
           metric.previousSample.value,
           metric.currentSample.value,
         ])
-      : null,
-  }));
-
-  function prepareMetricBlock(metric: Metric): KnownBlock {
+      : 0;
     const trendDirection = getTrendDirection(
-      metric.trend,
+      trend,
       metric.definition.positiveDirection,
     );
-    return {
+
+    const metricBlock = {
       type: "rich_text",
       elements: [
         {
@@ -156,6 +155,11 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
             },
           ],
         },
+      ],
+    };
+
+    if (metric.previousSample) {
+      metricBlock.elements.push(
         {
           type: "rich_text_list",
           style: "bullet",
@@ -204,7 +208,7 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
               elements: [
                 {
                   type: "text",
-                  text: `${getTrendIcon(metric.trend)} ${metric.trend} % `,
+                  text: `${getTrendIcon(trend)} ${trend} % `,
                 },
                 {
                   type: "emoji",
@@ -215,11 +219,13 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
             },
           ],
         },
-      ],
-    };
+      );
+    }
+
+    return metricBlock;
   }
 
-  const blocks = [
+  const blocks: SlackBuildingBlock[] = [
     {
       type: "header",
       text: {
@@ -237,7 +243,7 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
     },
   ];
 
-  metricsWithTrend.forEach((m) => {
+  metrics.forEach((m) => {
     if (m.previousSample) {
       blocks.push(prepareMetricBlock(m));
     }
@@ -245,7 +251,5 @@ export async function getMetricsNewsletter(): Promise<(KnownBlock | Block)[]> {
 
   const payload = { blocks: blocks };
 
-  const payloadJson = JSON.stringify(payload);
-
-  return payloadJson;
+  return payload;
 }

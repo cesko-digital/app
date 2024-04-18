@@ -2,11 +2,8 @@ import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
-  calculateTrend,
   getAllMetricDefinitions,
   getAllMetricSamples,
-  getTrendDirection,
-  getTrendIcon,
 } from "~/src/data/metrics";
 
 import { StatsTabBar } from "./StatsTabBar";
