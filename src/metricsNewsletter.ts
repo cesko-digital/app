@@ -84,148 +84,148 @@ async function getMetricsForPreviousMonth(): Promise<Metric[]> {
  *
  * For more info about building blocks, see: https://api.slack.com/block-kit/building
  */
-export async function getMetricsNewsletter(): Promise<SlackBuildingBlock[]> {
-  const metrics = await getMetricsForPreviousMonth();
 
-  function prepareMetricBlock(metric: Metric): SlackBuildingBlock {
-    const trend = metric.previousSample
-      ? calculateTrend([
-          metric.previousSample.value,
-          metric.currentSample.value,
-        ])
-      : 0;
+function prepareMetricBlock(metric: Metric): SlackBuildingBlock {
+  const metricBlock: SlackBuildingBlock = {
+    type: "rich_text",
+    elements: [
+      {
+        type: "rich_text_section",
+        elements: [
+          {
+            type: "text",
+            text: `${metric.definition.qualifiedName}`,
+            style: {
+              bold: true,
+            },
+          },
+          {
+            type: "text",
+            text: "\n",
+          },
+        ],
+      },
+      {
+        type: "rich_text_list",
+        style: "bullet",
+        indent: 0,
+        border: 0,
+        elements: [
+          {
+            type: "rich_text_section",
+            elements: [
+              {
+                type: "text",
+                text: `Poslední měření ${metric.definition.type === "band" ? metric.currentSample.label : metric.currentSample.date}:`,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "rich_text_list",
+        style: "bullet",
+        indent: 1,
+        border: 0,
+        elements: [
+          {
+            type: "rich_text_section",
+            elements: [
+              {
+                type: "text",
+                text: `${metric.currentSample.value}`,
+                style: {
+                  bold: true,
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
+  if (metric.previousSample) {
+    const trend = calculateTrend([
+      metric.previousSample.value,
+      metric.currentSample.value,
+    ]);
     const trendDirection = getTrendDirection(
       trend,
       metric.definition.positiveDirection,
     );
-
-    const metricBlock = {
-      type: "rich_text",
-      elements: [
-        {
-          type: "rich_text_section",
-          elements: [
-            {
-              type: "text",
-              text: `${metric.definition.qualifiedName}`,
-              style: {
-                bold: true,
+    metricBlock.elements.push(
+      {
+        type: "rich_text_list",
+        style: "bullet",
+        indent: 0,
+        border: 0,
+        elements: [
+          {
+            type: "rich_text_section",
+            elements: [
+              {
+                type: "text",
+                text: `Předposlední měření ${metric.definition.type === "band" ? metric.previousSample.label : metric.previousSample.date}: `,
               },
-            },
-            {
-              type: "text",
-              text: "\n",
-            },
-          ],
-        },
-        {
-          type: "rich_text_list",
-          style: "bullet",
-          indent: 0,
-          border: 0,
-          elements: [
-            {
-              type: "rich_text_section",
-              elements: [
-                {
-                  type: "text",
-                  text: `Poslední měření ${metric.definition.type === "band" ? metric.currentSample.label : metric.currentSample.date}:`,
+            ],
+          },
+        ],
+      },
+      {
+        type: "rich_text_list",
+        style: "bullet",
+        indent: 1,
+        border: 0,
+        elements: [
+          {
+            type: "rich_text_section",
+            elements: [
+              {
+                type: "text",
+                text: `${metric.previousSample.value}`,
+                style: {
+                  bold: true,
                 },
-              ],
-            },
-          ],
-        },
-        {
-          type: "rich_text_list",
-          style: "bullet",
-          indent: 1,
-          border: 0,
-          elements: [
-            {
-              type: "rich_text_section",
-              elements: [
-                {
-                  type: "text",
-                  text: `${metric.currentSample.value}`,
-                  style: {
-                    bold: true,
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-
-    if (metric.previousSample) {
-      metricBlock.elements.push(
-        {
-          type: "rich_text_list",
-          style: "bullet",
-          indent: 0,
-          border: 0,
-          elements: [
-            {
-              type: "rich_text_section",
-              elements: [
-                {
-                  type: "text",
-                  text: `Předposlední měření ${metric.definition.type === "band" ? metric.previousSample.label : metric.previousSample.date}: `,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "rich_text_list",
-          style: "bullet",
-          indent: 1,
-          border: 0,
-          elements: [
-            {
-              type: "rich_text_section",
-              elements: [
-                {
-                  type: "text",
-                  text: `${metric.previousSample.value}`,
-                  style: {
-                    bold: true,
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "rich_text_list",
-          style: "bullet",
-          indent: 0,
-          border: 0,
-          elements: [
-            {
-              type: "rich_text_section",
-              elements: [
-                {
-                  type: "text",
-                  text: `${getTrendIcon(trend)} ${trend} % `,
-                },
-                {
-                  type: "emoji",
-                  name: `${trendDirection === "better" || trendDirection === "unchanged" ? "cat" : "crying_cat_face"}`,
-                  unicode: `${trendDirection === "better" || trendDirection === "unchanged" ? "1f431" : "1f63f"}`,
-                },
-              ],
-            },
-          ],
-        },
-      );
-    }
-
-    return metricBlock;
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "rich_text_list",
+        style: "bullet",
+        indent: 0,
+        border: 0,
+        elements: [
+          {
+            type: "rich_text_section",
+            elements: [
+              {
+                type: "text",
+                text: `${getTrendIcon(trend)} ${trend} % `,
+              },
+              {
+                type: "emoji",
+                name: `${trendDirection === "better" || trendDirection === "unchanged" ? "cat" : "crying_cat_face"}`,
+                unicode: `${trendDirection === "better" || trendDirection === "unchanged" ? "1f431" : "1f63f"}`,
+              },
+            ],
+          },
+        ],
+      },
+    );
   }
 
-  const blocks: SlackBuildingBlock[] = [
+  return metricBlock;
+}
+
+export async function getMetricsNewsletter(): Promise<{
+  blocks: SlackBuildingBlock[];
+}> {
+  const metrics = await getMetricsForPreviousMonth();
+
+  const headerBlocks: SlackBuildingBlock[] = [
     {
       type: "header",
       text: {
@@ -245,11 +245,11 @@ export async function getMetricsNewsletter(): Promise<SlackBuildingBlock[]> {
 
   metrics.forEach((m) => {
     if (m.previousSample) {
-      blocks.push(prepareMetricBlock(m));
+      headerBlocks.push(prepareMetricBlock(m));
     }
   });
 
-  const payload = { blocks: blocks };
+  const payload = { blocks: headerBlocks };
 
   return payload;
 }
