@@ -1,0 +1,20 @@
+name: Send Metrics To Slack Users
+
+on:
+  schedule:
+    - cron: "0 10 14 * *" # Run at 10.00 UTC on the 14th of each month
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_METRICS_BOT_TOKEN: ${{ secrets.SLACK_METRICS_BOT_TOKEN }}
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+      METRICS_NEWSLETTER_CHANNEL_ID: ${{ secrets.METRICS_NEWSLETTER_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run
+        run: |
+          npm ci
+          ./bin/send-metrics.ts
