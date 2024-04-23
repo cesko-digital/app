@@ -66,6 +66,26 @@ export async function getMessageReplies(
 }
 
 /**
+ * Send direct message to channel with given Slack ID.
+ * Optionally, you can provide blocks for rich text formatting. For further info see:
+ * https://api.slack.com/block-kit/building
+ */
+export async function sendDirectMessageToChannel(
+  token: string,
+  channel: string,
+  text: string,
+  blocks?: (KnownBlock | Block)[],
+) {
+  const slack = new WebClient(token);
+  await slack.chat.postMessage({
+    channel,
+    token,
+    text,
+    blocks,
+  });
+}
+
+/**
  * Send direct message to user with given Slack ID.
  * Optionally, you can provide blocks for rich text formatting. For further info see:
  * https://api.slack.com/block-kit/building
@@ -87,10 +107,5 @@ export async function sendDirectMessage(
     .open({ token, users: user })
     .then(decodeResponse)
     .then((response) => response.channel.id);
-  await slack.chat.postMessage({
-    channel,
-    token,
-    text,
-    blocks,
-  });
+  await sendDirectMessageToChannel(token, channel, text, blocks);
 }
