@@ -39,7 +39,7 @@ export const decodeEvent = record({
   summary: field("Summary", string),
   description: field("Description", markdown),
   startTime: field("Start Time", string),
-  ownerId: field("Owner", takeFirst(array(string))),
+  ownerId: field("Owner ID", takeFirst(array(string))),
   projectId: field("Project", takeFirst(array(string))),
   published: field("Published", withDefault(boolean, false)),
   registrationUrl: field("RSVP URL", optional(string)),

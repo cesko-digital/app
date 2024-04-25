@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
-import { type LegacyUser } from "~/src/data/legacy-user";
 import { type Project } from "~/src/data/project";
 import { Route } from "~/src/routing";
 
@@ -82,13 +81,3 @@ export const ProjectImageLabel = ({
     />
   );
 };
-
-export const LegacyUserImageLabel = ({
-  user,
-  link,
-}: {
-  user: LegacyUser;
-  link?: string;
-}) => (
-  <ImageLabel imageUrl={user.profilePictureUrl} label={user.name} link={link} />
-);

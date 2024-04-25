@@ -5,10 +5,7 @@ import { notFound } from "next/navigation";
 import { QuickRegistrationButton } from "~/app/events/[slug]/QuickRegistrationButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { EventCard } from "~/components/EventCard";
-import {
-  LegacyUserImageLabel,
-  ProjectImageLabel,
-} from "~/components/ImageLabel";
+import { ImageLabel, ProjectImageLabel } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
 import { Sidebar, SidebarSection } from "~/components/Sidebar";
 import {
@@ -18,8 +15,8 @@ import {
   isEventPast,
   type Event,
 } from "~/src/data/event";
-import { getUserById, type LegacyUser } from "~/src/data/legacy-user";
 import { getProjectById, type Project } from "~/src/data/project";
+import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 type Params = {
@@ -43,7 +40,7 @@ async function Page({ params }: Props) {
     notFound();
   }
 
-  const owner = await getUserById(event.ownerId);
+  const owner = await getUserProfile(event.ownerId);
   if (!owner) {
     notFound();
   }
@@ -101,7 +98,7 @@ const EventSidebar = ({
 }: {
   event: Event;
   project: Project;
-  owner: LegacyUser;
+  owner: UserProfile;
 }) => {
   const time = new Date(event.startTime).toLocaleString("cs-CZ", {
     timeZone: "Europe/Prague",
@@ -111,13 +108,20 @@ const EventSidebar = ({
     hour: "2-digit",
     minute: "2-digit",
   });
+  const ownerImageUrl =
+    owner.slackAvatarUrl ??
+    "https://data.cesko.digital/people/generic-profile.jpg";
   return (
     <Sidebar>
       <SidebarSection title="Projekt">
         <ProjectImageLabel project={project} />
       </SidebarSection>
       <SidebarSection title="Kontakt">
-        <LegacyUserImageLabel user={owner} link={`mailto:${owner.email}`} />
+        <ImageLabel
+          imageUrl={ownerImageUrl}
+          label={owner.name}
+          link={`mailto:${owner.contactEmail ?? owner.email}`}
+        />
       </SidebarSection>
       <SidebarSection title="Datum konání">{time}</SidebarSection>
       <SidebarSection title="Délka akce">

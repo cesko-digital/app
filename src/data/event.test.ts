@@ -12,7 +12,7 @@ test("Decode event", () => {
       Description: "Bude to **pecka**!\n",
       Attendees: ["recm4CtcAkbzsEbZq"],
       Name: "Show & Tell #2",
-      Owner: ["rec9ujcN8HSkEdwehgh"],
+      "Owner ID": ["rec9ujcN8HSkEdwehgh"],
       Project: ["rec9ujcN8HSkdedwedd"],
       Tags: ["foo", "bar"],
       Slug: "show-and-tell-2",
