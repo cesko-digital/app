@@ -6,7 +6,7 @@ test("Decode opportunity", () => {
       ID: "reclKrwSllzgEWOnl",
       Name: "Frontend developer - React (PWA)",
       Project: ["recSci1ztMeeakzg2"],
-      Owner: ["rec0ABdJtGIK9AeCB"],
+      "Owner ID": ["rec0ABdJtGIK9AeCB"],
       Status: "live",
       Summary: "- Práce na **mobilní** _aplikaci_.",
       "Time Requirements": "3–5 hodin týdně",
