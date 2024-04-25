@@ -34,7 +34,7 @@ export const decodeOpportunity = record({
   projectId: field("Project", takeFirst(array(string))),
   summary: field("Summary", markdown),
   timeRequirements: field("Time Requirements", string),
-  ownerId: field("Owner", takeFirst(array(string))),
+  ownerId: field("Owner ID", takeFirst(array(string))),
   contactUrl: field("RSVP URL", decodeUrl),
   coverImageUrl: field("Cover URL", optional(string)),
   skills: field("Skills", decodeSkills),

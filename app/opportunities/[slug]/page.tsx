@@ -3,18 +3,15 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
-import {
-  LegacyUserImageLabel,
-  ProjectImageLabel,
-} from "~/components/ImageLabel";
+import { ImageLabel, ProjectImageLabel } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { RelatedContent } from "~/components/RelatedContent";
 import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
-import { getUserById, type LegacyUser } from "~/src/data/legacy-user";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getAlternativeOpenRoles } from "~/src/data/queries";
+import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 type Params = {
@@ -33,7 +30,7 @@ async function Page({ params }: Props) {
   const projectForRole = (role: Opportunity) =>
     allProjects.find((p) => p.id === role.projectId)!;
   const project = projectForRole(role);
-  const owner = (await getUserById(role.ownerId))!;
+  const owner = (await getUserProfile(role.ownerId))!;
   const otherRoles = await getAlternativeOpenRoles(role);
   return (
     <main className="m-auto max-w-content px-7 py-20">
@@ -89,8 +86,11 @@ const RoleSidebar = ({
 }: {
   role: Opportunity;
   project: Project;
-  owner: LegacyUser;
+  owner: UserProfile;
 }) => {
+  const imageUrl =
+    owner.slackAvatarUrl ??
+    "https://data.cesko.digital/people/generic-profile.jpg";
   return (
     <Sidebar>
       <SidebarSection title="Projekt">
@@ -100,7 +100,7 @@ const RoleSidebar = ({
         {role.timeRequirements}
       </SidebarSection>
       <SidebarSection title="Kontaktní osoba">
-        <LegacyUserImageLabel user={owner} />
+        <ImageLabel imageUrl={imageUrl} label={owner.name} />
       </SidebarSection>
       <SidebarCTA href={role.contactUrl} label="Mám zájem" />
     </Sidebar>
