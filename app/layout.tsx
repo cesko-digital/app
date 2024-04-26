@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
-import Image from "next/image";
-import Link from "next/link";
-
-import AuthContext, { SessionToolbar } from "~/app/SessionToolbar";
+import { MobileNav } from "./MobileNav";
+import { DesktopNav } from "./Navigation";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://app.cesko.digital"),
@@ -33,22 +31,24 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <div className="m-auto -mb-10 mt-7 flex max-w-content flex-row items-center gap-7 px-7">
-          <Link href="/">
-            <Image
-              className="bg-it"
-              src="/logo.png"
-              width={60}
-              height={60}
-              alt="Česko.Digital"
-            />
-          </Link>
-          <AuthContext>
-            <SessionToolbar />
-          </AuthContext>
-        </div>
+        <NavigationBar />
         {children}
       </body>
     </html>
   );
 }
+
+const NavigationBar = () => {
+  return (
+    <nav className="w-full bg-pebble lg:pt-6">
+      <div className="m-auto -mb-12 max-w-content px-7 py-10">
+        <div className="block md:hidden">
+          <MobileNav />
+        </div>
+        <div className="hidden md:block">
+          <DesktopNav />
+        </div>
+      </div>
+    </nav>
+  );
+};
