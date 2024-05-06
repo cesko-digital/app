@@ -1,5 +1,5 @@
 import type { Block, KnownBlock } from "@slack/types";
-import { WebClient } from "@slack/web-api";
+import { WebClient, type ChatPostMessageResponse } from "@slack/web-api";
 import {
   boolean,
   literal,
@@ -70,18 +70,26 @@ export async function getMessageReplies(
  * Optionally, you can provide blocks for rich text formatting. For further info see:
  * https://api.slack.com/block-kit/building
  */
-export async function sendDirectMessageToChannel(
-  token: string,
-  channel: string,
-  text: string,
-  blocks?: (KnownBlock | Block)[],
-) {
+export async function sendDirectMessageToChannel({
+  token,
+  channel,
+  text,
+  blocks,
+  thread_ts,
+}: {
+  token: string;
+  channel: string;
+  text: string;
+  blocks?: (KnownBlock | Block)[];
+  thread_ts?: string;
+}): Promise<ChatPostMessageResponse> {
   const slack = new WebClient(token);
-  await slack.chat.postMessage({
+  return await slack.chat.postMessage({
     channel,
     token,
     text,
     blocks,
+    thread_ts,
   });
 }
 
@@ -90,12 +98,19 @@ export async function sendDirectMessageToChannel(
  * Optionally, you can provide blocks for rich text formatting. For further info see:
  * https://api.slack.com/block-kit/building
  * */
-export async function sendDirectMessage(
-  token: string,
-  user: string,
-  text: string,
-  blocks?: (KnownBlock | Block)[],
-) {
+export async function sendDirectMessage({
+  token,
+  user,
+  text,
+  blocks,
+  thread_ts,
+}: {
+  token: string;
+  user: string;
+  text: string;
+  blocks?: (KnownBlock | Block)[];
+  thread_ts?: string;
+}): Promise<ChatPostMessageResponse> {
   const slack = new WebClient(token);
   const decodeResponse = record({
     ok: boolean,
@@ -107,5 +122,11 @@ export async function sendDirectMessage(
     .open({ token, users: user })
     .then(decodeResponse)
     .then((response) => response.channel.id);
-  await sendDirectMessageToChannel(token, channel, text, blocks);
+  return await sendDirectMessageToChannel({
+    token,
+    channel,
+    text,
+    blocks,
+    thread_ts,
+  });
 }
