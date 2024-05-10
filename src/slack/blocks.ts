@@ -1,3 +1,6 @@
+import type { RichTextList } from "@slack/types";
+import type { RichTextSection } from "@slack/types/dist/block-kit/block-elements";
+
 /**
  * Simplified type for Slack’s BlockKit
  *
@@ -58,3 +61,25 @@ export type ButtonBlock = {
   value?: string;
   style?: "primary" | "danger";
 };
+
+export type TextElement = {
+  text: string;
+  style?: { bold?: boolean; italic?: boolean };
+};
+
+export function section(elements: TextElement[]): RichTextSection {
+  return {
+    type: "rich_text_section",
+    elements: elements.map((elem) => ({ ...elem, type: "text" })),
+  };
+}
+
+export function bullet(elements: TextElement[]): RichTextList {
+  return {
+    type: "rich_text_list",
+    style: "bullet",
+    indent: 0,
+    border: 0,
+    elements: [section(elements)],
+  };
+}

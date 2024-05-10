@@ -1,4 +1,5 @@
-import { WebClient } from "@slack/web-api";
+import type { Block, KnownBlock } from "@slack/types";
+import { WebClient, type ChatPostMessageResponse } from "@slack/web-api";
 import {
   boolean,
   literal,
@@ -64,12 +65,52 @@ export async function getMessageReplies(
     .then((response) => (response.messages ?? []).map(decodeMessageEvent));
 }
 
-/** Send direct message to user with given Slack ID */
-export async function sendDirectMessage(
-  token: string,
-  user: string,
-  text: string,
-) {
+/**
+ * Send direct message to channel with given Slack ID.
+ * Optionally, you can provide blocks for rich text formatting. For further info see:
+ * https://api.slack.com/block-kit/building
+ */
+export async function sendDirectMessageToChannel({
+  token,
+  channel,
+  text,
+  blocks,
+  thread_ts,
+}: {
+  token: string;
+  channel: string;
+  text: string;
+  blocks?: (KnownBlock | Block)[];
+  thread_ts?: string;
+}): Promise<ChatPostMessageResponse> {
+  const slack = new WebClient(token);
+  return await slack.chat.postMessage({
+    channel,
+    token,
+    text,
+    blocks,
+    thread_ts,
+  });
+}
+
+/**
+ * Send direct message to user with given Slack ID.
+ * Optionally, you can provide blocks for rich text formatting. For further info see:
+ * https://api.slack.com/block-kit/building
+ * */
+export async function sendDirectMessage({
+  token,
+  user,
+  text,
+  blocks,
+  thread_ts,
+}: {
+  token: string;
+  user: string;
+  text: string;
+  blocks?: (KnownBlock | Block)[];
+  thread_ts?: string;
+}): Promise<ChatPostMessageResponse> {
   const slack = new WebClient(token);
   const decodeResponse = record({
     ok: boolean,
@@ -81,9 +122,11 @@ export async function sendDirectMessage(
     .open({ token, users: user })
     .then(decodeResponse)
     .then((response) => response.channel.id);
-  await slack.chat.postMessage({
-    channel,
+  return await sendDirectMessageToChannel({
     token,
+    channel,
     text,
+    blocks,
+    thread_ts,
   });
 }

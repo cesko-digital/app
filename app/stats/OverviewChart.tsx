@@ -47,7 +47,7 @@ export const OverviewChart = ({
     scaleType: "band",
   };
 
-  const trend = calculateTrend(data) ?? 0;
+  const trend = calculateTrend(data);
   const direction = getTrendDirection(trend, metric.positiveDirection);
   const trendIcon = getTrendIcon(trend);
 
