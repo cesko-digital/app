@@ -15,6 +15,10 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Statistiky | Česko.Digital",
+  description: "Všechna čísla o fungování Česko.Digital na jednom místě",
+  openGraph: {
+    images: "https://data.cesko.digital/web/controls.jpg",
+  },
 };
 
 /** How many last samples should we display? */
