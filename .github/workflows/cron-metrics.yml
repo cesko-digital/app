@@ -9,9 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SLACK_METRICS_BOT_TOKEN: ${{ secrets.SLACK_METRICS_BOT_TOKEN }}
+      SLACK_METRICS_TOKEN: ${{ secrets.SLACK_METRICS_TOKEN }}
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-      METRICS_NEWSLETTER_CHANNEL_ID: "CSXGU7F0F"
     steps:
       - uses: actions/checkout@v3
       - name: Run

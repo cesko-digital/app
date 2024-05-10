@@ -6,23 +6,24 @@ import {
   getMetricsNewsletterHeader,
 } from "~/src/slack/metricsNewsletter";
 
-const { SLACK_METRICS_TOKEN = "", METRICS_NEWSLETTER_CHANNEL_ID = "" } =
-  process.env;
+const { SLACK_METRICS_TOKEN = "" } = process.env;
+const coreTeamChannelId = "CSXGU7F0F";
 
 async function main() {
+  const [_, __, channel = coreTeamChannelId] = process.argv;
   const metrics = await getMetricsForPreviousMonth();
   const result = await sendDirectMessageToChannel({
     token: SLACK_METRICS_TOKEN,
-    channel: METRICS_NEWSLETTER_CHANNEL_ID,
     text: "Nové metriky za poslední měsíc jsou právě tady! 📊🚀",
     blocks: getMetricsNewsletterHeader(metrics),
+    channel,
   });
   await sendDirectMessageToChannel({
     token: SLACK_METRICS_TOKEN,
-    channel: METRICS_NEWSLETTER_CHANNEL_ID,
     text: "Detail metrik za poslední měsíc",
     blocks: getMetricsNewsletterDetail(metrics),
     thread_ts: result.ts,
+    channel,
   });
 }
 
