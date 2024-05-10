@@ -6,7 +6,7 @@ import {
   getTrendIcon,
   type Metric,
 } from "~/src/data/metrics";
-import { bullet, section, type TextElement } from "~/src/slack/blocks";
+import { bullet, divider, section, type TextElement } from "~/src/slack/blocks";
 
 type SlackBuildingBlock = KnownBlock | Block;
 
@@ -146,5 +146,14 @@ export function getMetricsNewsletterHeader(
 export function getMetricsNewsletterDetail(
   metrics: Metric[],
 ): SlackBuildingBlock[] {
-  return metrics.map(prepareMetricBlock);
+  const blocks: SlackBuildingBlock[] = [];
+  const sortedMetrics = metrics.sort((a, b) =>
+    a.definition.qualifiedName.localeCompare(b.definition.qualifiedName),
+  );
+  for (const metric of sortedMetrics) {
+    blocks.push(prepareMetricBlock(metric));
+    blocks.push(divider);
+  }
+  blocks.pop(); // remove last divider
+  return blocks;
 }

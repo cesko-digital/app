@@ -34,7 +34,7 @@ export type Actions = {
 //
 
 /** https://api.slack.com/reference/block-kit/block-elements */
-export type BlockElement = TextBlock | ButtonBlock;
+export type BlockElement = TextBlock | ButtonBlock | Divider;
 
 /** https://api.slack.com/reference/block-kit/composition-objects#text */
 export type TextBlock = {
@@ -62,6 +62,10 @@ export type ButtonBlock = {
   style?: "primary" | "danger";
 };
 
+export type Divider = {
+  type: "divider";
+};
+
 export type TextElement = {
   text: string;
   style?: { bold?: boolean; italic?: boolean };
@@ -83,3 +87,7 @@ export function bullet(elements: TextElement[]): RichTextList {
     elements: [section(elements)],
   };
 }
+
+export const divider: Divider = {
+  type: "divider",
+};
