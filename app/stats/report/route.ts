@@ -13,17 +13,13 @@ const { SLACK_METRICS_TOKEN = "" } = process.env;
 
 export async function POST(request: NextRequest): Promise<Response> {
   const formData = await request.formData();
-  const user_id = formData.get("user_id");
-  const text = formData.get("text");
+  const user_id = formData.get("user_id");  
   const metrics = await getMetricsForPreviousMonth();
 
   if (user_id && typeof user_id !== "string") {
     return new Response(null, { status: 400 });
   }
-  if (text && typeof text !== "string") {
-    return new Response(null, { status: 400 });
-  }
-
+ 
   if (user_id) {   
     const result = await sendDirectMessage({
         token: SLACK_METRICS_TOKEN,
@@ -42,3 +38,4 @@ export async function POST(request: NextRequest): Promise<Response> {
 
   return new Response(null, { status: 204 });
 }
+
