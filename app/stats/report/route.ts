@@ -1,6 +1,4 @@
-// app/stats/report/route.ts
-
-import { type NextApiRequest, type NextApiResponse } from "next";
+import { type NextRequest } from "next/server";
 
 import { getMetricsForPreviousMonth } from "~/src/data/metrics";
 import { sendDirectMessage } from "~/src/slack/message";
@@ -9,43 +7,38 @@ import {
   getMetricsNewsletterHeader,
 } from "~/src/slack/metricsNewsletter";
 
+/**
+ * This endpoint is called when our users type the `/metriky` slash command
+ *
+ * https://api.slack.com/interactivity/slash-commands
+ */
+
 const { SLACK_METRICS_TOKEN = "" } = process.env;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method === "POST") {
-    try {
-      const { user_id } = req.body;
+export async function POST(request: NextRequest): Promise<Response> {
+  const formData = await request.formData();
+  const user_id = formData.get("user_id");
+  const metrics = await getMetricsForPreviousMonth();
 
-      if (!user_id || typeof user_id !== "string") {
-        return res.status(400).json({ error: "Invalid user ID provided" });
-      }
-
-      const metrics = await getMetricsForPreviousMonth();
-
-      const result = await sendDirectMessage({
-        token: SLACK_METRICS_TOKEN,
-        user: user_id,
-        text: "Nové metriky za poslední měsíc jsou právě tady! 📊🚀",
-        blocks: getMetricsNewsletterHeader(metrics),
-      });
-
-      await sendDirectMessage({
-        token: SLACK_METRICS_TOKEN,
-        user: user_id,
-        text: "Detail metrik za poslední měsíc",
-        blocks: getMetricsNewsletterDetail(metrics),
-        thread_ts: result.ts,
-      });
-
-      return res.status(204).end();
-    } catch (error) {
-      console.error("Error processing request:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
-  } else {
-    return res.status(405).json({ error: "Method Not Allowed" });
+  if (user_id && typeof user_id !== "string") {
+    return new Response(null, { status: 400 });
   }
+
+  if (user_id) {
+    const result = await sendDirectMessage({
+      token: SLACK_METRICS_TOKEN,
+      user: user_id,
+      text: "Nové metriky za poslední měsíc jsou právě tady! 📊🚀",
+      blocks: getMetricsNewsletterHeader(metrics),
+    });
+    await sendDirectMessage({
+      token: SLACK_METRICS_TOKEN,
+      user: user_id,
+      text: "Detail metrik za poslední měsíc",
+      blocks: getMetricsNewsletterDetail(metrics),
+      thread_ts: result.ts,
+    });
+  }
+
+  return new Response(null, { status: 204 });
 }
