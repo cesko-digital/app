@@ -42,6 +42,7 @@ export const MobileNav = () => {
         <MenuToggle />
       </div>
       <div
+        aria-hidden={!isOpen}
         className={clsx(
           // We could hide the menu simply by not including the appropriate
           // nodes when the menu is closed, but that keeps resetting the menu
