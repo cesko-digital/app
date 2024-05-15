@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import AuthContext, { SessionToolbar } from "~/app/SessionToolbar";
 import { Route } from "~/src/routing";
+
+import AuthContext, { SessionToolbar } from "./SessionToolbar";
+import { SecondLevelNav } from "./SiteNav";
 
 export const DesktopNav = () => (
   <div className="flex flex-row gap-12 lg:grid lg:grid-cols-3">
@@ -59,26 +61,6 @@ export const FirstLevelNav = () => (
     <li>
       <Link href={Route.blog} className="typo-link">
         Blog
-      </Link>
-    </li>
-  </ul>
-);
-
-export const SecondLevelNav = () => (
-  <ul className="flex flex-col flex-wrap gap-7 md:flex-row">
-    <li>
-      <Link href={Route.projects} className="typo-link">
-        Projekty
-      </Link>
-    </li>
-    <li>
-      <Link href={Route.opportunities} className="typo-link">
-        Hledané role
-      </Link>
-    </li>
-    <li>
-      <Link href={Route.events} className="typo-link">
-        Akce
       </Link>
     </li>
   </ul>

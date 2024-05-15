@@ -4,12 +4,8 @@ import { useState } from "react";
 
 import clsx from "clsx";
 
-import {
-  FirstLevelNav,
-  SecondLevelNav,
-  SessionNav,
-  SquareLogo,
-} from "./Navigation";
+import { FirstLevelNav, SessionNav, SquareLogo } from "./Navigation";
+import { SecondLevelNav } from "./SiteNav";
 
 export const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
