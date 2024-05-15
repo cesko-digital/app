@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import clsx from "clsx";
+
 import {
   FirstLevelNav,
   SecondLevelNav,
@@ -34,18 +36,21 @@ export const MobileNav = () => {
     </button>
   );
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col">
       <div className="flex items-center justify-between md:hidden">
         <SquareLogo />
         <ToggleMenu />
       </div>
-      {isOpen && (
-        <div className="flex flex-col gap-7">
-          <FirstLevelNav />
-          <SecondLevelNav />
-          <SessionNav />
-        </div>
-      )}
+      <div
+        className={clsx(
+          "flex flex-col gap-7 overflow-clip transition-all",
+          isOpen ? "mt-10" : "h-0",
+        )}
+      >
+        <FirstLevelNav />
+        <SecondLevelNav />
+        <SessionNav />
+      </div>
     </div>
   );
 };
