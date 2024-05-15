@@ -34,7 +34,7 @@ const SignedInButtons = ({ session }: { session: Session }) => {
       : undefined;
 
   return (
-    <div className="flex flex-row gap-7">
+    <div className="flex flex-row gap-7 text-base">
       <Link
         href={Route.userProfile}
         className="typo-link flex flex-row-reverse items-center gap-4 lg:flex-row"
@@ -54,7 +54,7 @@ const SignedInButtons = ({ session }: { session: Session }) => {
 };
 
 const SignedOutButtons = () => (
-  <div className="flex flex-col gap-7 md:flex-row">
+  <div className="flex flex-col gap-7 text-base md:flex-row">
     <Link className="typo-link" onClick={() => signIn()} href="">
       Přihlásit se
     </Link>

@@ -51,7 +51,7 @@ export const FullLogo = () => (
 );
 
 export const FirstLevelNav = () => (
-  <ul className="flex flex-row gap-7">
+  <ul className="flex flex-row gap-7 text-xl">
     <li>
       <Link href="https://cesko.digital" className="typo-link">
         Co děláme
