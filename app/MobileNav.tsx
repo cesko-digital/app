@@ -36,7 +36,7 @@ export const MobileNav = () => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-10">
       <div className="flex items-center justify-between md:hidden">
         <SquareLogo />
         <MenuToggle />
@@ -44,12 +44,8 @@ export const MobileNav = () => {
       <div
         aria-hidden={!isOpen}
         className={clsx(
-          // We could hide the menu simply by not including the appropriate
-          // nodes when the menu is closed, but that keeps resetting the menu
-          // state such as session management items, so we use zero height instead
-          // to preserve the state. This also allows us to animate the transition.
-          "flex flex-col gap-7 overflow-clip transition-all",
-          isOpen ? "mt-10" : "h-0",
+          "flex-col gap-7 overflow-clip transition-all",
+          isOpen ? "flex" : "hidden",
         )}
       >
         <FirstLevelNav />
