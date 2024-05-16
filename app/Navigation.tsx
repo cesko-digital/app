@@ -57,7 +57,9 @@ export const FirstLevelNav = () => (
         Co děláme
       </Link>
     </li>
-    <li className="font-semibold">Zapojte se</li>
+    <li className="font-semibold">
+      <Link href="/">Zapojte se</Link>
+    </li>
     <li>
       <Link href={Route.blog} className="typo-link">
         Blog
