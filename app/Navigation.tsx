@@ -11,11 +11,11 @@ export const DesktopNav = () => (
     <div className="-mt-[21px] hidden lg:block">
       <FullLogo />
     </div>
-    <div className="block lg:hidden">
+    <div className="lg:hidden">
       <SquareLogo />
     </div>
     <div className="col-span-2 flex grow flex-row items-end">
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-7 md:max-lg:gap-3">
         <FirstLevelNav />
         <SecondLevelNav />
       </div>
