@@ -34,7 +34,7 @@ const SignedInButtons = ({ session }: { session: Session }) => {
       : undefined;
 
   return (
-    <div className="flex flex-row gap-7 text-base">
+    <div className="flex flex-row gap-7 text-base md:-mb-[3px]">
       <Link
         href={Route.userProfile}
         className="typo-link flex flex-row-reverse items-center gap-4 lg:flex-row"
