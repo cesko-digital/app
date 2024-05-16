@@ -10,7 +10,7 @@ export const SecondLevelNav = () => {
   const activeOnPrefix = (prefix: string) =>
     path.startsWith(prefix) ? "font-semibold" : "typo-link";
   return (
-    <ul className="flex flex-col flex-wrap gap-7 md:flex-row">
+    <ul className="flex flex-col flex-wrap gap-7 text-base md:flex-row">
       <li>
         <Link href={Route.projects} className={activeOnPrefix("/projects")}>
           Projekty
