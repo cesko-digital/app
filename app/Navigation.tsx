@@ -7,7 +7,7 @@ import AuthContext, { SessionToolbar } from "./SessionToolbar";
 import { SecondLevelNav } from "./SiteNav";
 
 export const DesktopNav = () => (
-  <div className="flex flex-row items-center gap-12 lg:grid lg:grid-cols-3">
+  <div className="flex flex-row gap-12 md:items-center lg:grid lg:grid-cols-3 lg:items-start">
     <div className="-mt-[21px] hidden lg:block">
       <FullLogo />
     </div>
