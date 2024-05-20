@@ -24,12 +24,7 @@ async function Page() {
         path={[{ label: "Homepage", path: "/" }]}
         currentPage="Hledané role"
       />
-      <h1 className="typo-title mb-10 mt-7">
-        Hledané role{" "}
-        <span className="aspect-square rounded-full bg-gray p-2 font-normal">
-          {opportunities.length}
-        </span>
-      </h1>
+      <h1 className="typo-title mb-10 mt-7">Hledané role</h1>
       {opportunities.map((o) => (
         <OpportunityRow key={o.id} role={o} project={projectForRole(o)} />
       ))}
