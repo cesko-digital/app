@@ -7,9 +7,14 @@ export default async function UploadPage() {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Upload"
+        currentPage="Nahrát data"
       />
-      <h1 className="typo-title mb-10 mt-7">Upload</h1>
+      <h1 className="typo-title mb-10 mt-7">Nahrát data</h1>
+      <p className="mb-10 max-w-prose">
+        Tady můžete snadno nahrát například obrázek nebo PDF, ke kterému chcete
+        mít veřejné URL. Aktuálně jde takhle nahrávat pouze soubory zhruba do
+        velikosti 4 MB, pokud potřebujete větší, ozvěte se.
+      </p>
       <UploadForm />
     </main>
   );

@@ -3,10 +3,12 @@
 import { useRef, useState, type FormEvent } from "react";
 
 import { type PutBlobResult } from "@vercel/blob";
+import clsx from "clsx";
 
 export const UploadForm = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ export const UploadForm = () => {
 
     const file = inputFileRef.current.files[0];
 
+    setUploading(true);
     const response = await fetch(`/upload/upload?filename=${file.name}`, {
       method: "POST",
       body: file,
@@ -24,19 +27,30 @@ export const UploadForm = () => {
 
     const newBlob = (await response.json()) as PutBlobResult;
     setBlob(newBlob);
+    setUploading(false);
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="flex flex-col gap-7">
         <input name="file" ref={inputFileRef} type="file" required />
-        <button type="submit">Upload</button>
-      </form>
-      {blob && (
         <div>
-          Blob url: <a href={blob.url}>{blob.url}</a>
+          <button
+            type="submit"
+            className={clsx(uploading ? "btn-disabled" : "btn-primary")}
+            disabled={uploading}
+          >
+            {uploading ? "Malý moment…" : "Nahrát soubor"}
+          </button>
         </div>
-      )}
+        {blob && (
+          <div>
+            <a href={blob.url} className="typo-link">
+              {blob.url}
+            </a>
+          </div>
+        )}
+      </form>
     </div>
   );
 };
