@@ -9,6 +9,7 @@ export const UploadForm = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,14 +21,20 @@ export const UploadForm = () => {
     const file = inputFileRef.current.files[0];
 
     setUploading(true);
+    setError(false);
     const response = await fetch(`/upload/upload?filename=${file.name}`, {
       method: "POST",
       body: file,
     });
 
-    const newBlob = (await response.json()) as PutBlobResult;
-    setBlob(newBlob);
-    setUploading(false);
+    if (response.ok) {
+      const newBlob = (await response.json()) as PutBlobResult;
+      setBlob(newBlob);
+      setUploading(false);
+    } else {
+      setError(true);
+      setUploading(false);
+    }
   };
 
   return (
@@ -50,10 +57,26 @@ export const UploadForm = () => {
           </button>
         </div>
         {blob && <ResultView uploadedFileUrl={blob.url} />}
+        {error && <ErrorView />}
       </form>
     </div>
   );
 };
+
+const ErrorView = () => (
+  <p className="max-w-prose">
+    ⚠️ Soubor se nepovedlo nahrát. Není moc veliký? Jsi přihlášený nebo
+    přihlášená? Máš oprávnění nahrávat soubory? Samé otázky. V případě potřeby
+    se{" "}
+    <a
+      className="typo-link"
+      href="https://cesko-digital.slack.com/archives/CHG9NA23D"
+    >
+      ozvi na Slacku
+    </a>
+    .
+  </p>
+);
 
 const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
   const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
