@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 import { NextResponse } from "next/server";
 
 import { put } from "@vercel/blob";
@@ -17,20 +19,32 @@ export async function POST(request: Request): Promise<Response> {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const { searchParams } = new URL(request.url);
-
-  const filename = searchParams.get("filename");
-  if (!filename) {
-    return new Response("Missing filename", { status: 400 });
-  }
-
   if (!request.body) {
     return new Response("Missing payload", { status: 400 });
   }
 
-  const blob = await put(filename, request.body, {
+  const { searchParams } = new URL(request.url);
+  const originalFilename = searchParams.get("filename");
+  if (!originalFilename) {
+    return new Response("Missing filename", { status: 400 });
+  }
+
+  const data = await getArrayBufferView(request.body);
+  const hash = shasumPrefix(new Uint8Array(data));
+  const target = hash + "." + getFilenameExtension(originalFilename);
+  const blob = await put(target, data, {
+    addRandomSuffix: false,
     access: "public",
   });
 
   return NextResponse.json(blob);
 }
+
+const getArrayBufferView = async (data: ReadableStream<Uint8Array>) =>
+  new Response(data).arrayBuffer();
+
+const shasumPrefix = (data: crypto.BinaryLike) =>
+  crypto.createHash("sha1").update(data).digest("hex").slice(0, 8);
+
+const getFilenameExtension = (name: string) =>
+  name.split(".").pop()?.toLowerCase();
