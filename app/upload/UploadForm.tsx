@@ -30,6 +30,9 @@ export const UploadForm = () => {
     setUploading(false);
   };
 
+  const getPublicUrl = (blobUrl: string) =>
+    "https://assets.cesko.digital" + new URL(blobUrl).pathname;
+
   return (
     <div>
       <form onSubmit={onSubmit} className="flex flex-col gap-7">
@@ -45,8 +48,8 @@ export const UploadForm = () => {
         </div>
         {blob && (
           <div>
-            <a href={blob.url} className="typo-link">
-              {blob.url}
+            <a href={getPublicUrl(blob.url)} className="typo-link">
+              {getPublicUrl(blob.url)}
             </a>
           </div>
         )}
