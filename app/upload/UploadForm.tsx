@@ -30,30 +30,57 @@ export const UploadForm = () => {
     setUploading(false);
   };
 
-  const getPublicUrl = (blobUrl: string) =>
-    "https://assets.cesko.digital" + new URL(blobUrl).pathname;
-
   return (
     <div>
       <form onSubmit={onSubmit} className="flex flex-col gap-7">
-        <input name="file" ref={inputFileRef} type="file" required />
+        <input
+          className="max-w-prose"
+          name="file"
+          ref={inputFileRef}
+          type="file"
+          required
+        />
         <div>
           <button
             type="submit"
             className={clsx(uploading ? "btn-disabled" : "btn-primary")}
             disabled={uploading}
           >
-            {uploading ? "Malý moment…" : "Nahrát soubor"}
+            {uploading ? "Nahrávám…" : "Nahrát soubor"}
           </button>
         </div>
-        {blob && (
-          <div>
-            <a href={getPublicUrl(blob.url)} className="typo-link">
-              {getPublicUrl(blob.url)}
-            </a>
-          </div>
-        )}
+        {blob && <ResultView uploadedFileUrl={blob.url} />}
       </form>
+    </div>
+  );
+};
+
+const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
+  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
+  const publicUrl =
+    "https://assets.cesko.digital" + new URL(uploadedFileUrl).pathname;
+  return (
+    <div className="flex flex-col gap-7">
+      <p>
+        <a href={publicUrl} className="typo-link">
+          {publicUrl}
+        </a>
+      </p>
+      <div>
+        <button
+          className={clsx(
+            clipboardWriteFinished ? "btn-disabled" : "btn-primary",
+          )}
+          onClick={async (e) => {
+            e.preventDefault();
+            await navigator.clipboard.writeText(publicUrl);
+            setClipboardWriteFinished(true);
+          }}
+          disabled={clipboardWriteFinished}
+        >
+          {clipboardWriteFinished ? "Máš to tam!" : "Zkopírovat do schránky"}
+        </button>
+      </div>
     </div>
   );
 };
