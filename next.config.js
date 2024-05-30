@@ -24,6 +24,10 @@ module.exports = withAxiom({
       },
       {
         protocol: "https",
+        hostname: "assets.cesko.digital",
+      },
+      {
+        protocol: "https",
         hostname: "avatars.slack-edge.com",
       },
       {
