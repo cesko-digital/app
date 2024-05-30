@@ -9,11 +9,13 @@ import { authOptions, type OurUser } from "~/src/auth";
 import { getUserProfile } from "~/src/data/user-profile";
 
 export async function POST(request: Request): Promise<Response> {
+  // Only allow signed-in users to upload assets
   const session = await getServerSession(authOptions);
   if (!session?.user) {
     return new Response("Unauthorized", { status: 401 });
   }
 
+  // And only users with the `assetUpload` feature flag may upload
   const user = await getUserProfile((session.user as OurUser).id);
   if (!user?.featureFlags.includes("assetUpload")) {
     return new Response("Unauthorized", { status: 401 });
@@ -23,15 +25,20 @@ export async function POST(request: Request): Promise<Response> {
     return new Response("Missing payload", { status: 400 });
   }
 
+  // We use the original filename to get the extension
   const { searchParams } = new URL(request.url);
   const originalFilename = searchParams.get("filename");
   if (!originalFilename) {
     return new Response("Missing filename", { status: 400 });
   }
 
+  // But the file name itself is an 8-character prefix of the SHA1
+  // of file content
   const data = await getArrayBufferView(request.body);
   const hash = shasumPrefix(new Uint8Array(data));
   const target = hash + "." + getFilenameExtension(originalFilename);
+
+  // Upload
   const blob = await put(target, data, {
     addRandomSuffix: false,
     access: "public",

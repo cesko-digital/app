@@ -79,7 +79,6 @@ const ErrorView = () => (
 );
 
 const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
-  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
   const publicUrl =
     "https://assets.cesko.digital" + new URL(uploadedFileUrl).pathname;
   return (
@@ -90,20 +89,25 @@ const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
         </a>
       </p>
       <div>
-        <button
-          className={clsx(
-            clipboardWriteFinished ? "btn-disabled" : "btn-primary",
-          )}
-          onClick={async (e) => {
-            e.preventDefault();
-            await navigator.clipboard.writeText(publicUrl);
-            setClipboardWriteFinished(true);
-          }}
-          disabled={clipboardWriteFinished}
-        >
-          {clipboardWriteFinished ? "Máš to tam!" : "Zkopírovat do schránky"}
-        </button>
+        <CopyToClipboardButton content={publicUrl} />
       </div>
     </div>
+  );
+};
+
+const CopyToClipboardButton = ({ content }: { content: string }) => {
+  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
+  return (
+    <button
+      className={clsx(clipboardWriteFinished ? "btn-disabled" : "btn-primary")}
+      onClick={async (e) => {
+        e.preventDefault();
+        await navigator.clipboard.writeText(content);
+        setClipboardWriteFinished(true);
+      }}
+      disabled={clipboardWriteFinished}
+    >
+      {clipboardWriteFinished ? "Máš to tam!" : "Zkopírovat do schránky"}
+    </button>
   );
 };
