@@ -23,7 +23,7 @@ const notificationFlags = [
 ] as const;
 
 /** All supported feature flags */
-const featureFlags = ["registrationV2"] as const;
+const featureFlags = ["registrationV2", "assetUpload"] as const;
 
 /** All supported privacy flags */
 const privacyFlags = ["hidePublicTeamMembership"] as const;
