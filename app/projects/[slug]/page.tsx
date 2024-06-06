@@ -188,15 +188,18 @@ async function Page({ params }: Props) {
             seeAllUrl={Route.toYouTubePlaylist(project.youTubePlaylistId!)}
           >
             <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-              {relatedVideos.slice(0, 6).map((video) => (
-                <LiteYouTubeEmbed
-                  key={video.id}
-                  id={video.snippet.resourceId.videoId}
-                  title={video.snippet.title}
-                  poster="hqdefault"
-                  noCookie={true}
-                />
-              ))}
+              {relatedVideos
+                .slice(0, 6)
+                .reverse()
+                .map((video) => (
+                  <LiteYouTubeEmbed
+                    key={video.id}
+                    id={video.snippet.resourceId.videoId}
+                    title={video.snippet.title}
+                    poster="hqdefault"
+                    noCookie={true}
+                  />
+                ))}
             </div>
           </RelatedContent>
         )}
