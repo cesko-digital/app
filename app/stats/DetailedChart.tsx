@@ -1,6 +1,10 @@
 "use client";
 
-import { type AxisConfig } from "@mui/x-charts";
+import {
+  type AxisConfig,
+  type ChartsXAxisProps,
+  type ScaleName,
+} from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 import { type MetricDefinition, type MetricSample } from "~/src/data/metrics";
@@ -12,7 +16,8 @@ export const DetailedChart = ({
   metric: MetricDefinition;
   filteredSamples: MetricSample[];
 }) => {
-  type Axis = Omit<AxisConfig, "id">;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  type Axis = Omit<AxisConfig<ScaleName, any, ChartsXAxisProps>, "id">;
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
     month: "long",

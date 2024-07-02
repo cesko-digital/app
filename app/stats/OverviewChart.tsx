@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 
-import { LineChart, type AxisConfig } from "@mui/x-charts";
+import {
+  LineChart,
+  type AxisConfig,
+  type ChartsXAxisProps,
+  type ScaleName,
+} from "@mui/x-charts";
 import clsx from "clsx";
 
 import {
@@ -25,7 +30,8 @@ export const OverviewChart = ({
   filteredSamples: samples,
   showServiceName = false,
 }: Props) => {
-  type Axis = Omit<AxisConfig, "id">;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  type Axis = Omit<AxisConfig<ScaleName, any, ChartsXAxisProps>, "id">;
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
     month: "long",
