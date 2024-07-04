@@ -44,10 +44,7 @@ const Page = async () => {
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Statistiky"
-      />
+      <Breadcrumbs currentPage="Statistiky" />
       <h1 className="typo-title mb-10 mt-7">Statistiky</h1>
       <div className="flex flex-col gap-20">
         <ServiceSection
