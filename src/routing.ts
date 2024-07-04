@@ -1,3 +1,5 @@
+import { type UserProfile } from "~/src/data/user-profile";
+
 import { type Event } from "./data/event";
 import { type MetricDefinition } from "./data/metrics";
 import { type Opportunity } from "./data/opportunity";
@@ -30,7 +32,8 @@ export const Route = {
   toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
-  toMetric: (m: MetricDefinition) => `/stats/${m.slug}`,
+  toMetric: (m: Pick<MetricDefinition, "slug">) => `/stats/${m.slug}`,
+  toProfile: (p: Pick<UserProfile, "id">) => `/people/${p.id}`,
 };
 
 /** Site URL without trailing slash */
