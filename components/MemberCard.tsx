@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import clsx from "clsx";
 
 import { type UserProfile } from "~/src/data/user-profile";
+import { Route } from "~/src/routing";
 
 export type Props = {
   profile: UserProfile;
@@ -16,7 +18,13 @@ export const UserProfileCard = ({ profile, label }: Props) => {
     profile.slackAvatarUrl ??
     "https://data.cesko.digital/people/generic-profile.jpg";
   return (
-    <div className="flex gap-4 rounded-lg bg-pebble p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center">
+    <Link
+      href={Route.toProfile(profile)}
+      className={clsx(
+        "flex gap-4 p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center",
+        "rounded-xl border-2 border-gray bg-pebble hover:border-it hover:shadow-lg",
+      )}
+    >
       {/* The extra no-shrink div fixes the layout when the right box is taller */}
       <div className="shrink-0">
         <Image
@@ -36,6 +44,6 @@ export const UserProfileCard = ({ profile, label }: Props) => {
         <h3 className="typo-subtitle">{profile.name}</h3>
         {label && <p className="typo-caption">{label}</p>}
       </div>
-    </div>
+    </Link>
   );
 };
