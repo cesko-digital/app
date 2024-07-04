@@ -26,7 +26,10 @@ const notificationFlags = [
 const featureFlags = ["registrationV2", "assetUpload"] as const;
 
 /** All supported privacy flags */
-const privacyFlags = ["hidePublicTeamMembership"] as const;
+const privacyFlags = [
+  "hidePublicTeamMembership",
+  "enablePublicProfile",
+] as const;
 
 /** Notification flags to turn on user e-mail notifications about various events */
 export type NotificationFlag = (typeof notificationFlags)[number];
@@ -63,7 +66,8 @@ export type TableView =
   | "Profiles with Occupation Data"
   | "Profiles with Skills"
   | "Profiles with Districts"
-  | "Missing Slack Account";
+  | "Missing Slack Account"
+  | "Public Profiles";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
