@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { UserProfileCard } from "~/components/MemberCard";
 import { getAllUserProfiles } from "~/src/data/user-profile";
-import { unique } from "~/src/utils";
+import { skillsToHashtags } from "~/src/skills/skills";
 
 async function Page() {
   const profiles = await getAllUserProfiles("Public Profiles");
@@ -19,25 +19,12 @@ async function Page() {
           <UserProfileCard
             key={profile.id}
             profile={profile}
-            label={dressSkills(profile.skills)}
+            label={skillsToHashtags(profile.skills)}
           />
         ))}
       </div>
     </main>
   );
 }
-
-const dressSkills = (skills: string) => {
-  const uppercaseFirst = (s: string) =>
-    s.charAt(0).toLocaleUpperCase() + s.slice(1);
-  const categories = skills
-    .split(/;\s*/)
-    .map((s) => s.split(/\s*\/\s*/).shift())
-    .map((c) => c?.split(" ").map(uppercaseFirst).join(""));
-  return unique(categories)
-    .sort()
-    .map((c) => "#" + c)
-    .join(" ");
-};
 
 export default Page;
