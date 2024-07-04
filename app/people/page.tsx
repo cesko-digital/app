@@ -10,6 +10,10 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
 
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
+      <p className="mb-10 max-w-prose">
+        TBD: Semka přijde popisek o tom, jak tahle sekce funguje. TBD: Dodělat
+        analogický popisek k hledaným rolím?
+      </p>
       <div className="grid gap-7 md:grid-cols-3 xl:grid-cols-4">
         {profiles.map((profile) => (
           <UserProfileCard
