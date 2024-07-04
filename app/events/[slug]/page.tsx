@@ -53,10 +53,7 @@ async function Page({ params }: Props) {
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
-        path={[
-          { label: "Homepage", path: "/" },
-          { label: "Akce", path: Route.events },
-        ]}
+        path={[{ label: "Akce", path: Route.events }]}
         currentPage={event.name}
       />
 

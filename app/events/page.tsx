@@ -39,10 +39,7 @@ async function Page() {
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Akce"
-      />
+      <Breadcrumbs currentPage="Akce" />
 
       <h1 className="typo-title mb-10 mt-7">Akce</h1>
 
