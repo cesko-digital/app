@@ -36,7 +36,6 @@ async function Page({ params }: Props) {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[
-          { label: "Homepage", path: "/" },
           {
             label: "Hledané role",
             path: Route.opportunities,

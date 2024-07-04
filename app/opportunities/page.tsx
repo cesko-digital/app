@@ -20,10 +20,7 @@ async function Page() {
     projects.find((p) => p.id === role.projectId)!;
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Hledané role"
-      />
+      <Breadcrumbs currentPage="Hledané role" />
       <h1 className="typo-title mb-10 mt-7">Hledané role</h1>
       {opportunities.map((o) => (
         <OpportunityRow key={o.id} role={o} project={projectForRole(o)} />

@@ -7,10 +7,7 @@ async function Page() {
   const profiles = await getAllUserProfiles("Public Profiles");
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Lidé"
-      />
+      <Breadcrumbs currentPage="Lidé" />
 
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <div className="grid gap-7 md:grid-cols-3 xl:grid-cols-4">
