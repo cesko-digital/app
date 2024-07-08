@@ -243,6 +243,7 @@ const ProjectSidebar = ({
       {displayedCoordinators.map((c) => (
         <ImageLabel
           key={c.id}
+          link={Route.toProfile({ id: c.userId })}
           imageUrl={c.userAvatarUrl}
           label={c.userName}
           faded={c.inactive}
