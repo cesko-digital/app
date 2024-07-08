@@ -34,7 +34,7 @@ export type TeamEngagement = decodeType<typeof decodeTeamEngagement>;
 export const decodeTeamEngagement = record({
   id: string,
   projectId: field("project", relationToOne),
-  userId: field("user", relationToOne),
+  userId: relationToOne,
   userName: relationToOne,
   userAvatarUrl: relationToOne,
   projectRole: optional(string),
