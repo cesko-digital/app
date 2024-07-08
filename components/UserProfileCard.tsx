@@ -7,12 +7,10 @@ import { type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 export type Props = {
-  profile: UserProfile;
+  profile: Pick<UserProfile, "name" | "slackAvatarUrl" | "id">;
   label?: string;
 };
 
-// TBD: Use this to display team engagement card
-// TBD: Would it make sense to share the container grid, too?
 export const UserProfileCard = ({ profile, label }: Props) => {
   const avatarUrl =
     profile.slackAvatarUrl ??
@@ -47,3 +45,13 @@ export const UserProfileCard = ({ profile, label }: Props) => {
     </Link>
   );
 };
+
+export const UserProfileContainer = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => (
+  <div className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    {children}
+  </div>
+);
