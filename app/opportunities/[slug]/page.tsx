@@ -99,7 +99,11 @@ const RoleSidebar = ({
         {role.timeRequirements}
       </SidebarSection>
       <SidebarSection title="Kontaktní osoba">
-        <ImageLabel imageUrl={imageUrl} label={owner.name} />
+        <ImageLabel
+          link={Route.toProfile({ id: owner.id })}
+          imageUrl={imageUrl}
+          label={owner.name}
+        />
       </SidebarSection>
       <SidebarCTA href={role.contactUrl} label="Mám zájem" />
     </Sidebar>
