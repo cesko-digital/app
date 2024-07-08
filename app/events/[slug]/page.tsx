@@ -115,9 +115,9 @@ const EventSidebar = ({
       </SidebarSection>
       <SidebarSection title="Kontakt">
         <ImageLabel
+          link={Route.toProfile({ id: owner.id })}
           imageUrl={ownerImageUrl}
           label={owner.name}
-          link={`mailto:${owner.contactEmail ?? owner.email}`}
         />
       </SidebarSection>
       <SidebarSection title="Datum konání">{time}</SidebarSection>
