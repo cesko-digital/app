@@ -1,5 +1,8 @@
 import { Breadcrumbs } from "~/components/Breadcrumbs";
-import { UserProfileCard } from "~/components/MemberCard";
+import {
+  UserProfileCard,
+  UserProfileContainer,
+} from "~/components/UserProfileCard";
 import { getAllUserProfiles } from "~/src/data/user-profile";
 import { skillsToHashtags } from "~/src/skills/skills";
 
@@ -14,7 +17,7 @@ async function Page() {
         TBD: Semka přijde popisek o tom, jak tahle sekce funguje. TBD: Dodělat
         analogický popisek k hledaným rolím?
       </p>
-      <div className="grid gap-7 md:grid-cols-3 xl:grid-cols-4">
+      <UserProfileContainer>
         {profiles.map((profile) => (
           <UserProfileCard
             key={profile.id}
@@ -22,7 +25,7 @@ async function Page() {
             label={skillsToHashtags(profile.skills)}
           />
         ))}
-      </div>
+      </UserProfileContainer>
     </main>
   );
 }
