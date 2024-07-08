@@ -28,7 +28,7 @@ export const Route = {
   eventFeed: "/events/feed.ical",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
-  toProject: (p: Project) => `/projects/${p.slug}`,
+  toProject: (p: Pick<Project, "slug">) => `/projects/${p.slug}`,
   toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
