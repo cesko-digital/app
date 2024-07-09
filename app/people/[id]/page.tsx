@@ -7,9 +7,12 @@ import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
-import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
+import {
+  getUserHashtags,
+  getUserProfile,
+  type UserProfile,
+} from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
-import { skillsToHashtags } from "~/src/skills/skills";
 
 type Params = {
   id: string;
@@ -83,7 +86,7 @@ const IntroSection = ({ profile }: { profile: UserProfile }) => {
   return (
     <section className="flex flex-col gap-4">
       <h1 className="typo-title">{profile.name}</h1>
-      <p>{skillsToHashtags(profile.skills)}</p>
+      <p>{getUserHashtags(profile).join(" ")}</p>
     </section>
   );
 };

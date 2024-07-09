@@ -12,7 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { normalizeEmailAddress } from "~/src/utils";
+import { normalizeEmailAddress, unique } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -217,4 +217,24 @@ export async function createUserProfile(
     .create(encodeUserProfile(profile))
     .then(unwrapRecord)
     .then(decodeUserProfile);
+}
+
+//
+// Utils
+//
+
+export function getUserHashtags(profile: UserProfile): string[] {
+  const uppercaseFirst = (s: string) =>
+    s.charAt(0).toLocaleUpperCase() + s.slice(1);
+  const tagify = (s: string) => s.split(" ").map(uppercaseFirst).join("");
+  const categories = profile.skills
+    .split(/;\s*/)
+    .map((skill) => skill.split(/\s*\/\s*/).shift())
+    .map((category) => tagify(category!));
+  const places = profile.availableInDistricts?.split(", ").map(tagify) ?? [];
+  return unique(
+    [...categories, ...places]
+      .sort((a, b) => a.localeCompare(b))
+      .map((tag) => "#" + tag),
+  );
 }

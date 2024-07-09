@@ -3,8 +3,7 @@ import {
   UserProfileCard,
   UserProfileContainer,
 } from "~/components/UserProfileCard";
-import { getAllUserProfiles } from "~/src/data/user-profile";
-import { skillsToHashtags } from "~/src/skills/skills";
+import { getAllUserProfiles, getUserHashtags } from "~/src/data/user-profile";
 
 async function Page() {
   const profiles = await getAllUserProfiles("Public Profiles");
@@ -22,7 +21,7 @@ async function Page() {
           <UserProfileCard
             key={profile.id}
             profile={profile}
-            label={skillsToHashtags(profile.skills)}
+            label={getUserHashtags(profile).join(" ")}
           />
         ))}
       </UserProfileContainer>

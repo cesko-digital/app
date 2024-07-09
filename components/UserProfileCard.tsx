@@ -40,7 +40,7 @@ export const UserProfileCard = ({ profile, label }: Props) => {
       </div>
       <div className="flex flex-col gap-2 self-center">
         <h3 className="typo-subtitle">{profile.name}</h3>
-        {label && <p className="typo-caption">{label}</p>}
+        {label && <p className="typo-caption leading-relaxed">{label}</p>}
       </div>
     </Link>
   );
