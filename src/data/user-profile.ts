@@ -26,7 +26,7 @@ const notificationFlags = [
 const featureFlags = ["registrationV2", "assetUpload"] as const;
 
 /** All supported privacy flags */
-const privacyFlags = [
+export const privacyFlags = [
   "hidePublicTeamMembership",
   "enablePublicProfile",
 ] as const;
@@ -211,6 +211,7 @@ export async function createUserProfile(
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"
     | "featureFlags"
+    | "privacyFlags"
   >,
 ): Promise<UserProfile> {
   return await userProfileTable
