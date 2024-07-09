@@ -140,16 +140,3 @@ export function decodeSkillSelection(input: string): SkillSelection {
       .reduce(addSkill, {})
   );
 }
-
-export const skillsToHashtags = (skills: string) => {
-  const uppercaseFirst = (s: string) =>
-    s.charAt(0).toLocaleUpperCase() + s.slice(1);
-  const categories = skills
-    .split(/;\s*/)
-    .map((s) => s.split(/\s*\/\s*/).shift())
-    .map((c) => c?.split(" ").map(uppercaseFirst).join(""));
-  return unique(categories)
-    .sort()
-    .map((c) => "#" + c)
-    .join(" ");
-};
