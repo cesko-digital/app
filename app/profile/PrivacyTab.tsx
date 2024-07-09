@@ -19,7 +19,7 @@ export const PrivacyTab = () => {
           type="checkbox"
           className="mr-3"
           disabled={updating}
-          onChange={(e) => {
+          onChange={(e) =>
             setModel({
               ...model!,
               privacyFlags: setFlag(
@@ -27,9 +27,8 @@ export const PrivacyTab = () => {
                 "enablePublicProfile",
                 e.target.checked,
               ),
-            });
-            console.log(model?.privacyFlags);
-          }}
+            })
+          }
         ></input>
         Chci mít veřejný profil
       </label>
