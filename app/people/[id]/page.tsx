@@ -35,9 +35,9 @@ async function Page({ params }: Props) {
         path={[{ label: "Lidé", path: Route.people }]}
         currentPage={profile.name}
       />
-      <div className="mt-10 grid grid-cols-4 gap-10">
+      <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
         <ContactSidebar profile={profile} />
-        <div className="col-span-3 flex flex-col gap-7 pt-2">
+        <div className="flex flex-col gap-7 pt-2">
           <IntroSection profile={profile} />
           {projectEngagements.length > 0 && (
             <ProjectSection engagements={projectEngagements} />
