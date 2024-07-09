@@ -26,31 +26,14 @@ async function Page({ params }: Props) {
     notFound();
   }
   const projectEngagements = await getPublicTeamEngagementsForUser(profile.id);
-  const avatarUrl =
-    profile.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[{ label: "Lidé", path: Route.people }]}
         currentPage={profile.name}
       />
-      <div className="mt-10 grid grid-cols-4 gap-7">
-        <div className="flex flex-col items-center gap-10">
-          <Image
-            src={avatarUrl}
-            className="rounded-full bg-pebble"
-            width={200}
-            height={200}
-            alt=""
-          />
-          <a
-            href={`mailto:${profile.contactEmail ?? profile.email}`}
-            className="btn-primary"
-          >
-            Napsat mail
-          </a>
-        </div>
+      <div className="mt-10 grid grid-cols-4 gap-10">
+        <ContactSidebar profile={profile} />
         <div className="col-span-3 flex flex-col gap-7 pt-2">
           <IntroSection profile={profile} />
           {projectEngagements.length > 0 && (
@@ -62,12 +45,48 @@ async function Page({ params }: Props) {
   );
 }
 
-const IntroSection = ({ profile }: { profile: UserProfile }) => (
-  <section>
-    <h1 className="typo-title mb-4">{profile.name}</h1>
-    <p>{skillsToHashtags(profile.skills)}</p>
-  </section>
-);
+const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
+  const avatarUrl =
+    profile.slackAvatarUrl ??
+    "https://data.cesko.digital/people/generic-profile.jpg";
+
+  const Button = ({ url, label }: { url: string; label: string }) => (
+    <Link href={url} className="btn-primary">
+      {label}
+    </Link>
+  );
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Image
+        src={avatarUrl}
+        className="mb-7 rounded-full bg-pebble"
+        width={200}
+        height={200}
+        alt=""
+      />
+      {profile.slackId && (
+        <Button
+          label="Poslat zprávu na Slacku"
+          url={`slack://user?team=TG21XF887&id=${profile.slackId}`}
+        />
+      )}
+      <Button
+        label="Napsat mail"
+        url={`mailto:${profile.contactEmail ?? profile.email}`}
+      />
+    </div>
+  );
+};
+
+const IntroSection = ({ profile }: { profile: UserProfile }) => {
+  return (
+    <section className="flex flex-col gap-4">
+      <h1 className="typo-title">{profile.name}</h1>
+      <p>{skillsToHashtags(profile.skills)}</p>
+    </section>
+  );
+};
 
 const ProjectSection = ({ engagements }: { engagements: TeamEngagement[] }) => (
   <section>
