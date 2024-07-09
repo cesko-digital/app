@@ -230,6 +230,7 @@ export function getUserHashtags(profile: UserProfile): string[] {
   const categories = profile.skills
     .split(/;\s*/)
     .map((skill) => skill.split(/\s*\/\s*/).shift())
+    .filter((category) => category !== "Ostatní")
     .map((category) => tagify(category!));
   const places = profile.availableInDistricts?.split(", ").map(tagify) ?? [];
   return unique(
