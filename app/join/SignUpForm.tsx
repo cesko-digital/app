@@ -69,6 +69,7 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
       <IntroSection />
       <PersonalDetailsSection state={state} onChange={setState} />
       <SkillSection skillMenu={skillMenu} state={state} onChange={setState} />
+      <PrivacySection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
     </div>
@@ -278,6 +279,39 @@ const SkillSection: React.FC<SkillSectionProps> = ({
           disabled={!isEditable(state)}
           onChange={(skills) => onChange({ ...state, skills })}
         />
+      </div>
+    </section>
+  );
+};
+
+//
+// Privacy section
+//
+
+const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
+  return (
+    <section>
+      <div className="flex max-w-prose flex-col gap-4">
+        <h2 className="typo-title2">Soukromí</h2>
+
+        <label className="flex items-center">
+          <input
+            type="checkbox"
+            checked={state.enablePublicProfile}
+            disabled={!isEditable(state)}
+            className="mr-3 mt-2 shrink-0 self-start"
+            onChange={(e) =>
+              onChange({ ...state, enablePublicProfile: e.target.checked })
+            }
+          ></input>
+          <div>
+            <span>Chci mít veřejný profil</span>
+            <p className="typo-caption">
+              Budu uvedený v seznamu uživatelů a kdokoli si bude moci
+              prohlédnout údaje jako jsou moje projekty nebo kontakt na mě.
+            </p>
+          </div>
+        </label>
       </div>
     </section>
   );
