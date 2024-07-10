@@ -83,6 +83,7 @@ export const decodeUserProfile = record({
   occupation: optional(string),
   organizationName: optional(string),
   profileUrl: optional(string),
+  bio: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   slackProfileUrl: relationToZeroOrOne,
