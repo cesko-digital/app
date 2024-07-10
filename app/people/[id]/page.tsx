@@ -24,8 +24,8 @@ export type Props = {
 
 async function Page({ params }: Props) {
   const profile = await getUserProfile(params.id);
+  const isPublic = profile?.privacyFlags.includes("enablePublicProfile");
   if (!profile) {
-    // TBD: Maybe the profile is private?
     notFound();
   }
   const projectEngagements = await getPublicTeamEngagementsForUser(profile.id);
@@ -36,23 +36,43 @@ async function Page({ params }: Props) {
         currentPage={profile.name}
       />
       <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-        <ContactSidebar profile={profile} />
-        <div className="flex flex-col gap-7 pt-2">
-          <IntroSection profile={profile} />
-          {projectEngagements.length > 0 && (
-            <ProjectSection engagements={projectEngagements} />
-          )}
-        </div>
+        {isPublic ? (
+          <PublicProfile profile={profile} engagements={projectEngagements} />
+        ) : (
+          <PrivateProfile profile={profile} />
+        )}
       </div>
     </main>
   );
 }
 
-const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
-  const avatarUrl =
-    profile.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
+const PublicProfile = ({
+  profile,
+  engagements,
+}: {
+  profile: UserProfile;
+  engagements: TeamEngagement[];
+}) => (
+  <>
+    <ContactSidebar profile={profile} />
+    <div className="flex flex-col gap-7 pt-2">
+      <IntroSection profile={profile} />
+      {engagements.length > 0 && <ProjectSection engagements={engagements} />}
+    </div>
+  </>
+);
 
+const PrivateProfile = ({ profile }: { profile: UserProfile }) => (
+  <>
+    <Avatar profile={profile} />
+    <div className="flex flex-col gap-7 pt-2">
+      <h1 className="typo-title">{profile.name}</h1>
+      <p>Tenhle profil je soukromý.</p>
+    </div>
+  </>
+);
+
+const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
   const Button = ({ url, label }: { url: string; label: string }) => (
     <Link href={url} className="btn-primary">
       {label}
@@ -61,13 +81,7 @@ const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <Image
-        src={avatarUrl}
-        className="mb-7 rounded-full bg-pebble"
-        width={200}
-        height={200}
-        alt=""
-      />
+      <Avatar profile={profile} />
       {profile.slackId && (
         <Button
           label="Poslat zprávu na Slacku"
@@ -114,5 +128,20 @@ const ProjectSection = ({ engagements }: { engagements: TeamEngagement[] }) => (
     </ul>
   </section>
 );
+
+const Avatar = ({ profile }: { profile: UserProfile }) => {
+  const avatarUrl =
+    profile.slackAvatarUrl ??
+    "https://data.cesko.digital/people/generic-profile.jpg";
+  return (
+    <Image
+      src={avatarUrl}
+      className="mb-7 rounded-full bg-pebble"
+      width={200}
+      height={200}
+      alt=""
+    />
+  );
+};
 
 export default Page;
