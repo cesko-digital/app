@@ -87,6 +87,7 @@ const IntroSection = ({ profile }: { profile: UserProfile }) => {
     <section className="flex flex-col gap-4">
       <h1 className="typo-title">{profile.name}</h1>
       <p>{getUserHashtags(profile).join(" ")}</p>
+      {profile.bio && <p className="max-w-prose">{profile.bio}</p>}
     </section>
   );
 };
