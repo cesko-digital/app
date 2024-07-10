@@ -33,8 +33,8 @@ export const PrivacyTab = () => {
         Chci mít veřejný profil
       </label>
       <div className="typo-caption mb-4 ml-6">
-        Budete uvedený v seznamu uživatelů a kdokoliv si bude moct prohlédnou
-        údaje jako třeba vaše projekty nebo kontakt na vás
+        Budeš uvedený v seznamu uživatelů a kdokoliv si bude moct prohlédnou
+        údaje jako třeba tvé projekty nebo kontakt
       </div>
 
       <label className="flex items-center">
@@ -57,7 +57,7 @@ export const PrivacyTab = () => {
         Nechci veřejně ukazovat svoje zapojení na projektech
       </label>
       <div className="typo-caption mb-4 ml-6">
-        Nebudete uvedený v detailu projektu jako součást týmu
+        Nebudeš uvedený v detailu projektu jako součást týmu
       </div>
     </div>
   );
