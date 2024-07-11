@@ -4,7 +4,8 @@ import { useState } from "react";
 
 import clsx from "clsx";
 
-import { FirstLevelNav, SessionNav, SquareLogo } from "./Navigation";
+import { FirstLevelNav, SquareLogo } from "./Navigation";
+import { SessionToolbar } from "./SessionToolbar";
 import { SecondLevelNav } from "./SiteNav";
 
 export const MobileNav = () => {
@@ -46,7 +47,7 @@ export const MobileNav = () => {
       >
         <FirstLevelNav />
         <SecondLevelNav />
-        <SessionNav />
+        <SessionToolbar />
       </div>
     </div>
   );

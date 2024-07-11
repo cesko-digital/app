@@ -1,6 +1,6 @@
 "use client";
 
-import { SessionProvider, signIn, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { useJSONResource } from "~/components/hooks/resource";
 import { type Event } from "~/src/data/event";
@@ -9,7 +9,7 @@ type RegistrationStatus = {
   registered: boolean;
 };
 
-const QuickRegistrationButton = ({ event }: { event: Event }) => {
+export const QuickRegistrationButton = ({ event }: { event: Event }) => {
   const { status: sessionStatus } = useSession();
   const url = `/events/${event.slug}/registration-status`;
   const { model, setModel, updating } = useJSONResource<RegistrationStatus>({
@@ -47,11 +47,3 @@ const QuickRegistrationButton = ({ event }: { event: Event }) => {
     );
   }
 };
-
-const SessionWrappedButton = ({ event }: { event: Event }) => (
-  <SessionProvider>
-    <QuickRegistrationButton event={event} />
-  </SessionProvider>
-);
-
-export { SessionWrappedButton as QuickRegistrationButton };

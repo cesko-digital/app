@@ -1,17 +1,13 @@
 "use client";
 
-import { Fragment, type ReactNode } from "react";
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { type Session } from "next-auth";
-import { SessionProvider, signIn, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { Route } from "~/src/routing";
-
-export default function AuthContext({ children }: { children: ReactNode }) {
-  return <SessionProvider>{children}</SessionProvider>;
-}
 
 export const SessionToolbar = () => {
   const { data: session, status } = useSession();

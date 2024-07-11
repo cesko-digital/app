@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { Route } from "~/src/routing";
 
-import AuthContext, { SessionToolbar } from "./SessionToolbar";
+import { SessionToolbar } from "./SessionToolbar";
 import { SecondLevelNav } from "./SiteNav";
 
 export const DesktopNav = () => (
@@ -20,7 +20,7 @@ export const DesktopNav = () => (
         <SecondLevelNav />
       </div>
       <div className="ml-auto">
-        <SessionNav />
+        <SessionToolbar />
       </div>
     </div>
   </div>
@@ -66,10 +66,4 @@ export const FirstLevelNav = () => (
       </Link>
     </li>
   </ul>
-);
-
-export const SessionNav = () => (
-  <AuthContext>
-    <SessionToolbar />
-  </AuthContext>
 );
