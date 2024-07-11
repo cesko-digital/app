@@ -1,4 +1,4 @@
-import { type privacyFlags } from "~/src/data/user-profile";
+import { type PrivacyFlags } from "~/src/data/user-profile";
 import { type SkillSelection } from "~/src/skills/skills";
 import { looksLikeEmailAdress } from "~/src/utils";
 
@@ -7,8 +7,6 @@ export type SubmissionState =
   | { tag: "submitting" }
   | { tag: "submitted_successfully" }
   | { tag: "submission_error"; msg: string };
-
-type PrivacyFlags = (typeof privacyFlags)[number][];
 
 export type RegistrationData = {
   name: string;
