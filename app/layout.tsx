@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import { SessionProvider } from "components/SessionProvider";
+
 import { MobileNav } from "./MobileNav";
 import { DesktopNav } from "./Navigation";
 
@@ -31,8 +33,10 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <NavigationBar />
-        {children}
+        <SessionProvider>
+          <NavigationBar />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
