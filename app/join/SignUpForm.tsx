@@ -295,15 +295,13 @@ const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
         <h2 className="typo-title2">Soukromí</h2>
 
         <label className="flex items-center">
-          <input
-            type="checkbox"
+          <Checkbox
             checked={state.enablePublicProfile}
             disabled={!isEditable(state)}
-            className="mr-3 mt-2 shrink-0 self-start"
-            onChange={(e) =>
-              onChange({ ...state, enablePublicProfile: e.target.checked })
+            onChange={(enablePublicProfile) =>
+              onChange({ ...state, enablePublicProfile })
             }
-          ></input>
+          />
           <div>
             <span>Chci mít veřejný profil</span>
             <p className="typo-caption">
@@ -329,13 +327,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         <RequiredFieldMarker />
       </h2>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.cocConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) => onChange({ ...state, cocConsent: e.target.checked })}
-        ></input>
+          onChange={(cocConsent) => onChange({ ...state, cocConsent })}
+        />
         <span>
           Mám přečtená{" "}
           <a className="typo-link" href="https://www.cesko.digital/pravidla">
@@ -345,15 +341,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         </span>
       </label>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.gdprConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) =>
-            onChange({ ...state, gdprConsent: e.target.checked })
-          }
-        ></input>
+          onChange={(gdprConsent) => onChange({ ...state, gdprConsent })}
+        />
         <span>
           Mám přečtené{" "}
           <a className="typo-link" href="https://cesko.digital/go/gdpr">
@@ -363,15 +355,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         </span>
       </label>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.privacyConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) =>
-            onChange({ ...state, privacyConsent: e.target.checked })
-          }
-        ></input>
+          onChange={(privacyConsent) => onChange({ ...state, privacyConsent })}
+        />
         <span>
           Vím, jak bude Česko.Digital při vzájemné spolupráci a pro zajištění
           transparentnosti zpracovávat mé{" "}
@@ -506,6 +494,24 @@ const TextInput: React.FC<TextInputProps> = ({
         onChange={(e) => onChange(e.target.value)}
       ></input>
     </div>
+  );
+};
+
+type CheckboxProps = {
+  checked: boolean;
+  disabled: boolean;
+  onChange: (newValue: boolean) => void;
+};
+
+const Checkbox: React.FC<CheckboxProps> = ({ checked, disabled, onChange }) => {
+  return (
+    <input
+      type="checkbox"
+      checked={checked}
+      disabled={disabled}
+      className="mr-3 mt-2 shrink-0 self-start"
+      onChange={(e) => onChange(e.target.checked)}
+    ></input>
   );
 };
 
