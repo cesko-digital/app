@@ -180,6 +180,14 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
             různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
           </p>
         </div>
+        <TextArea
+          id="bio"
+          label="Cokoli dalšího, co bys nám chtěl/a o sobě sdělit"
+          value={state.bio}
+          placeholder="zájmy, profesní historie, čemu by ses rád/a věnoval/a, …"
+          disabled={disabled}
+          onChange={(bio) => onChange({ ...state, bio })}
+        />
       </div>
     </section>
   );
@@ -512,6 +520,48 @@ const Checkbox: React.FC<CheckboxProps> = ({ checked, disabled, onChange }) => {
       className="mr-3 mt-2 shrink-0 self-start"
       onChange={(e) => onChange(e.target.checked)}
     ></input>
+  );
+};
+
+type TextAreaProps = {
+  id: string;
+  label: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  rows?: number;
+  cols?: number;
+  onChange?: (newValue: string) => void;
+};
+
+const TextArea: React.FC<TextAreaProps> = ({
+  id,
+  label,
+  value = undefined,
+  placeholder = undefined,
+  required = false,
+  disabled = false,
+  rows = 3,
+  onChange = (_) => {},
+}) => {
+  return (
+    <div>
+      <label htmlFor={id}>
+        {label}
+        {required && <RequiredFieldMarker />}
+      </label>
+      <textarea
+        id={id}
+        required={required}
+        value={value}
+        placeholder={placeholder}
+        disabled={disabled}
+        rows={rows}
+        className="w-full rounded-md border-2 border-gray p-2"
+        onChange={(e) => onChange(e.target.value)}
+      ></textarea>
+    </div>
   );
 };
 

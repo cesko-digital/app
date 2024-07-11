@@ -211,6 +211,7 @@ export async function createUserProfile(
     | "state"
     | "slackUserRelationId"
     | "availableInDistricts"
+    | "bio"
     | "createdAt"
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"

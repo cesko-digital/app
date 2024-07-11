@@ -18,6 +18,7 @@ export type RegistrationData = {
   gdprPolicyAcceptedAt: string;
   codeOfConductAcceptedAt: string;
   availableInDistricts: string;
+  bio: string;
   profileUrl?: string;
 };
 
@@ -31,6 +32,7 @@ export type FormState = {
   skills: SkillSelection;
   privacyConsent: boolean;
   availableInDistricts: string;
+  bio: string;
   enablePublicProfile: boolean;
   gdprConsent: boolean;
   cocConsent: boolean;
@@ -46,6 +48,7 @@ export const emptyFormState: FormState = {
   profileUrl: "",
   skills: {},
   availableInDistricts: "",
+  bio: "",
   privacyConsent: false,
   enablePublicProfile: false,
   gdprConsent: false,
@@ -92,6 +95,7 @@ export function validateForm(
       organizationName,
       profileUrl,
       availableInDistricts,
+      bio,
       enablePublicProfile,
     } = data;
     const gdprPolicyAcceptedAt = now.toISOString();
@@ -110,6 +114,7 @@ export function validateForm(
         skills,
         organizationName,
         availableInDistricts,
+        bio,
         occupation,
         profileUrl,
         gdprPolicyAcceptedAt,
