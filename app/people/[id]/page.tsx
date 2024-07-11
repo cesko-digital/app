@@ -46,13 +46,10 @@ async function Page({ params }: Props) {
   );
 }
 
-const PublicProfile = ({
-  profile,
-  engagements,
-}: {
-  profile: UserProfile;
-  engagements: TeamEngagement[];
-}) => (
+type Profile = { profile: UserProfile };
+type Engagements = { engagements: TeamEngagement[] };
+
+const PublicProfile = ({ profile, engagements }: Profile & Engagements) => (
   <>
     <ContactSidebar profile={profile} />
     <div className="flex flex-col gap-7 pt-2">
@@ -62,7 +59,7 @@ const PublicProfile = ({
   </>
 );
 
-const PrivateProfile = ({ profile }: { profile: UserProfile }) => (
+const PrivateProfile = ({ profile }: Profile) => (
   <>
     <Avatar profile={profile} />
     <div className="flex flex-col gap-7 pt-2">
@@ -72,7 +69,7 @@ const PrivateProfile = ({ profile }: { profile: UserProfile }) => (
   </>
 );
 
-const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
+const ContactSidebar = ({ profile }: Profile) => {
   const Button = ({ url, label }: { url: string; label: string }) => (
     <Link href={url} className="btn-primary">
       {label}
@@ -96,7 +93,7 @@ const ContactSidebar = ({ profile }: { profile: UserProfile }) => {
   );
 };
 
-const IntroSection = ({ profile }: { profile: UserProfile }) => {
+const IntroSection = ({ profile }: Profile) => {
   return (
     <section className="flex flex-col gap-4">
       <h1 className="typo-title">{profile.name}</h1>
@@ -106,7 +103,7 @@ const IntroSection = ({ profile }: { profile: UserProfile }) => {
   );
 };
 
-const ProjectSection = ({ engagements }: { engagements: TeamEngagement[] }) => (
+const ProjectSection = ({ engagements }: Engagements) => (
   <section>
     <h2 className="typo-title2 mb-4">Moje projekty</h2>
     <ul className="leading-loose">
@@ -129,7 +126,7 @@ const ProjectSection = ({ engagements }: { engagements: TeamEngagement[] }) => (
   </section>
 );
 
-const Avatar = ({ profile }: { profile: UserProfile }) => {
+const Avatar = ({ profile }: Profile) => {
   const avatarUrl =
     profile.slackAvatarUrl ??
     "https://data.cesko.digital/people/generic-profile.jpg";
