@@ -168,7 +168,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           onChange={(profileUrl) => onChange({ ...state, profileUrl })}
         />
         <div>
-          <p className="mb-1">Ve kterých okresech ČR býváš k zastižení?</p>
+          <label>Ve kterých okresech ČR býváš k zastižení?</label>
           <DistrictSelect
             value={state.availableInDistricts}
             onChange={(availableInDistricts) =>
