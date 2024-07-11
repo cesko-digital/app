@@ -34,17 +34,20 @@
   }
 
   /* Buttons */
+  .btn-base {
+    @apply rounded-md px-5 py-2 text-center no-underline;
+  }
   .btn-primary {
-    @apply cursor-pointer rounded-md bg-it px-5 py-2 text-white no-underline;
+    @apply btn-base cursor-pointer bg-it text-white;
   }
   .btn-inverted {
-    @apply cursor-pointer rounded-md border border-it bg-white px-5 py-2 text-it no-underline;
+    @apply btn-base cursor-pointer border border-it bg-white text-it;
   }
   .btn-disabled {
-    @apply cursor-not-allowed rounded-md bg-gravel px-5 py-2 text-white no-underline;
+    @apply btn-base cursor-not-allowed bg-gravel text-white;
   }
   .btn-destructive {
-    @apply cursor-pointer rounded-md bg-red-500 px-5 py-2 text-white no-underline;
+    @apply btn-base cursor-pointer bg-red-500 text-white;
   }
 
   /* Utils */
