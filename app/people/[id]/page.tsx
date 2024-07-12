@@ -35,13 +35,11 @@ async function Page({ params }: Props) {
         path={[{ label: "Lidé", path: Route.people }]}
         currentPage={profile.name}
       />
-      <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-        {isPublic ? (
-          <PublicProfile profile={profile} engagements={projectEngagements} />
-        ) : (
-          <PrivateProfile profile={profile} />
-        )}
-      </div>
+      {isPublic ? (
+        <PublicProfile profile={profile} engagements={projectEngagements} />
+      ) : (
+        <PrivateProfile profile={profile} />
+      )}
     </main>
   );
 }
@@ -50,23 +48,23 @@ type Profile = { profile: UserProfile };
 type Engagements = { engagements: TeamEngagement[] };
 
 const PublicProfile = ({ profile, engagements }: Profile & Engagements) => (
-  <>
+  <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
     <ContactSidebar profile={profile} />
     <div className="flex flex-col gap-7 pt-2">
       <IntroSection profile={profile} />
       {engagements.length > 0 && <ProjectSection engagements={engagements} />}
     </div>
-  </>
+  </div>
 );
 
 const PrivateProfile = ({ profile }: Profile) => (
-  <>
-    <Avatar profile={profile} />
-    <div className="flex flex-col gap-7 pt-2">
-      <h1 className="typo-title">{profile.name}</h1>
-      <p>Tenhle profil je soukromý.</p>
+  <div className="pt-12 text-center">
+    <div className="inline-block">
+      <Avatar profile={profile} />
+      <h1 className="typo-title mb-2">{profile.name}</h1>
+      <p>Tenhle profil je soukromý</p>
     </div>
-  </>
+  </div>
 );
 
 const ContactSidebar = ({ profile }: Profile) => {
