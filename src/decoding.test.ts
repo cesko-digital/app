@@ -1,4 +1,10 @@
-import { number, record, string } from "typescript-json-decoder";
+import {
+  boolean,
+  number,
+  optional,
+  record,
+  string,
+} from "typescript-json-decoder";
 
 import {
   decodeJSONString,
@@ -7,6 +13,7 @@ import {
   decodeValidItemsFromArray,
   optionalArray,
   relationToZeroOrOne,
+  withDefault,
 } from "./decoding";
 
 test("Decode URL", () => {
@@ -32,6 +39,13 @@ test("Decode object", () => {
       age: 42,
     },
   });
+});
+
+test("Decode with defaults", () => {
+  const decoder = withDefault(optional(boolean), true);
+  expect(decoder(false)).toBe(false);
+  expect(decoder(true)).toBe(true);
+  expect(decoder(undefined)).toBe(true);
 });
 
 test("Decode Airtable relation", () => {
