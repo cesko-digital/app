@@ -124,19 +124,14 @@ const ProjectSection = ({ engagements }: Engagements) => (
   </section>
 );
 
-const Avatar = ({ profile }: Profile) => {
-  const avatarUrl =
-    profile.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
-  return (
-    <Image
-      src={avatarUrl}
-      className="mb-7 rounded-full bg-pebble"
-      width={200}
-      height={200}
-      alt=""
-    />
-  );
-};
+const Avatar = ({ profile }: Profile) => (
+  <Image
+    src={profile.avatarUrl}
+    className="mb-7 rounded-full bg-pebble"
+    width={200}
+    height={200}
+    alt=""
+  />
+);
 
 export default Page;
