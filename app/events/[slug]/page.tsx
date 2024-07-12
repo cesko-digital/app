@@ -105,9 +105,6 @@ const EventSidebar = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-  const ownerImageUrl =
-    owner.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
   return (
     <Sidebar>
       <SidebarSection title="Projekt">
@@ -116,7 +113,7 @@ const EventSidebar = ({
       <SidebarSection title="Kontakt">
         <ImageLabel
           link={Route.toProfile({ id: owner.id })}
-          imageUrl={ownerImageUrl}
+          imageUrl={owner.avatarUrl}
           label={owner.name}
         />
       </SidebarSection>

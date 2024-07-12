@@ -12,7 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { normalizeEmailAddress, unique } from "~/src/utils";
+import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -91,6 +91,10 @@ export const decodeUserProfile = record({
   slackId: relationToZeroOrOne,
   slackProfileUrl: relationToZeroOrOne,
   slackAvatarUrl: relationToZeroOrOne,
+  avatarUrl: field(
+    "slackAvatarUrl",
+    withDefault(relationToZeroOrOne, defaultAvatarUrl),
+  ),
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFlags(union(...featureFlags)),
   notificationFlags: decodeFlags(union(...notificationFlags)),

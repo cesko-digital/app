@@ -1,3 +1,5 @@
+import { defaultAvatarUrl } from "~/src/utils";
+
 import { decodeUserProfile, type UserProfile } from "./user-profile";
 
 test("Decode user with no skills", () => {
@@ -25,6 +27,7 @@ test("Decode user with no skills", () => {
     slackId: "slack-id",
     state: "confirmed",
     slackAvatarUrl: undefined,
+    avatarUrl: defaultAvatarUrl,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: [],
@@ -67,6 +70,7 @@ test("Decode Slack Users relation", () => {
     slackId: "slack-id",
     state: "confirmed",
     slackAvatarUrl: undefined,
+    avatarUrl: defaultAvatarUrl,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: ["allowNotifications"],
@@ -106,6 +110,7 @@ test("Decode Slack Users relation", () => {
     slackId: "slack-id",
     state: "confirmed",
     slackAvatarUrl: undefined,
+    avatarUrl: defaultAvatarUrl,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: [],

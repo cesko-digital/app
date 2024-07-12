@@ -8,6 +8,7 @@ import { type Session } from "next-auth";
 import { signIn, useSession } from "next-auth/react";
 
 import { Route } from "~/src/routing";
+import { defaultAvatarUrl } from "~/src/utils";
 
 export const SessionToolbar = () => {
   const { data: session, status } = useSession();
@@ -21,9 +22,7 @@ export const SessionToolbar = () => {
 };
 
 const SignedInButtons = ({ session }: { session: Session }) => {
-  const avatarImage =
-    session.user?.image ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
+  const avatarImage = session.user?.image ?? defaultAvatarUrl;
   const avatarTitle =
     session.user?.name && session.user?.email
       ? `${session.user?.name} (${session.user?.email})`

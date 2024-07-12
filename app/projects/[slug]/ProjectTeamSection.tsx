@@ -3,7 +3,7 @@ import {
   UserProfileContainer,
 } from "~/components/UserProfileCard";
 import { type TeamEngagement } from "~/src/data/team-engagement";
-import { unique } from "~/src/utils";
+import { defaultAvatarUrl, unique } from "~/src/utils";
 
 type Subteam = [string, TeamEngagement[]];
 
@@ -26,7 +26,7 @@ export const ProjectTeamSection = ({
                 profile={{
                   id: e.userId,
                   name: e.userName,
-                  slackAvatarUrl: e.userAvatarUrl,
+                  avatarUrl: e.userAvatarUrl ?? defaultAvatarUrl,
                 }}
               />
             ))}
