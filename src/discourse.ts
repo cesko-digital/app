@@ -57,11 +57,21 @@ export type Topic = decodeType<typeof decodeTopic>;
 export const decodeTopic = record({
   id: number,
   title: string,
+  tags: array(string),
   details: record({
     participants: array(decodeUser),
   }),
   post_stream: record({
     posts: array(decodePost),
+  }),
+});
+
+export const decodeNewTopicCallback = record({
+  topic: record({
+    id: number,
+    tags: array(string),
+    title: string,
+    created_by: decodeUser,
   }),
 });
 
@@ -138,14 +148,14 @@ export async function getBubbles({
   );
 }
 
+export const getTopicUrl = (topic: Pick<TopicSummary, "id">) =>
+  `${baseUrl}/t/${topic.id}`;
+
 const getRawFirstPost = ({ id }: TopicSummary) =>
   getTopic(id)
     .then((response) => response.post_stream.posts[0].id)
     .then(getPost)
     .then((post) => post.raw);
-
-const getTopicUrl = (topic: Pick<TopicSummary, "id">) =>
-  `${baseUrl}/t/${topic.id}`;
 
 const getUserAvatar = (user: Pick<User, "avatar_template">, size: number) =>
   baseUrl + "/" + user.avatar_template?.replace("{size}", size.toString());
