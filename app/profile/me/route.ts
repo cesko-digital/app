@@ -29,6 +29,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     codeOfConductAcceptedAt: string,
     occupation: optional(string),
     availableInDistricts: optional(string),
+    bio: optional(string),
     organizationName: optional(string),
     profileUrl: optional(string),
     privacyFlags: array(union(...privacyFlags)),

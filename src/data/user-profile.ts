@@ -31,6 +31,9 @@ export const privacyFlags = [
   "enablePublicProfile",
 ] as const;
 
+type PrivacyFlag = (typeof privacyFlags)[number];
+export type PrivacyFlags = PrivacyFlag[];
+
 /** Notification flags to turn on user e-mail notifications about various events */
 export type NotificationFlag = (typeof notificationFlags)[number];
 
@@ -208,6 +211,7 @@ export async function createUserProfile(
     | "state"
     | "slackUserRelationId"
     | "availableInDistricts"
+    | "bio"
     | "createdAt"
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"
