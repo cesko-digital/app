@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import clsx from "clsx";
+
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
@@ -16,10 +18,10 @@ export const SkillsTab = () => {
     writeKeys: ["skills", "bio"],
   });
 
-  const defaultBio = model?.bio ?? "";
+  const actualBio = model?.bio ?? "";
 
-  const [actualBio, setActualBio] = useState({
-    bio: defaultBio,
+  const [bioState, setBioState] = useState({
+    bio: actualBio,
     submissionState: "no_changes",
   });
 
@@ -30,26 +32,22 @@ export const SkillsTab = () => {
     setModel({ ...model!, skills: encodeSkillSelection(selection) });
   };
 
-  const enableSubmitButton =
-    actualBio.submissionState !== "no_changes" &&
-    actualBio.submissionState !== "submitted_successfully";
+  const enableSubmitButton = bioState.submissionState === "changes_done";
 
   const submitButtonLabel =
-    actualBio.submissionState === "no_changes"
-      ? "Uložit změny"
-      : actualBio.submissionState === "submitted_successfully"
-        ? "Úspěšně uloženo 🎉"
-        : "Uložit změny";
+    bioState.submissionState === "submitted_successfully"
+      ? "Úspěšně uloženo 🎉"
+      : "Uložit změny";
 
   return (
     <section className="mb-10">
       <p className="mb-4">Řekni něco málo o sobě, ať tě lidé lépe poznají</p>
       <textarea
         className="block w-full rounded-md border-2 border-gray p-2"
-        defaultValue={actualBio.bio}
+        defaultValue={actualBio}
         onChange={(e) =>
-          setActualBio(() => ({
-            submissionState: "",
+          setBioState(() => ({
+            submissionState: "changes_done",
             bio: e.target.value,
           }))
         }
@@ -60,18 +58,17 @@ export const SkillsTab = () => {
         onClick={() => {
           setModel({
             ...model!,
-            bio: actualBio.bio,
+            bio: bioState.bio,
           }),
-            setActualBio((prevState) => ({
+            setBioState((prevState) => ({
               ...prevState,
               submissionState: "submitted_successfully",
             }));
         }}
-        className={
-          enableSubmitButton
-            ? "btn-primary mb-10 mt-2 block"
-            : "btn-disabled mb-10 mt-2 block"
-        }
+        className={clsx("mb-10 mt-2 block", {
+          "btn-primary": enableSubmitButton,
+          "btn-disabled": !enableSubmitButton,
+        })}
       >
         {submitButtonLabel}
       </button>
