@@ -43,7 +43,8 @@ export const SkillsTab = () => {
     <section className="mb-10">
       <p className="mb-4">Řekni něco málo o sobě, ať tě lidé lépe poznají</p>
       <textarea
-        className="block w-full rounded-md border-2 border-gray p-2"
+        className="block w-full max-w-prose rounded-md border-2 border-gray p-2"
+        rows={3}
         defaultValue={actualBio}
         onChange={(e) =>
           setBioState(() => ({
