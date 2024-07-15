@@ -193,6 +193,7 @@ export async function updateUserProfile(
       | "notificationFlags"
       | "privacyFlags"
       | "availableInDistricts"
+      | "bio"
     >
   >,
 ): Promise<UserProfile> {
