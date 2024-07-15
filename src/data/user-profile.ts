@@ -130,6 +130,7 @@ export function encodeUserProfile(
     createdAt: profile.createdAt,
     gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
     codeOfConductAcceptedAt: profile.codeOfConductAcceptedAt,
+    bio: profile.bio,
   };
 }
 
