@@ -85,6 +85,7 @@ export async function PATCH(request: NextRequest) {
       notificationFlags,
       privacyFlags,
       availableInDistricts,
+      bio,
     } = await request.json();
     await updateUserProfile(profile.id, {
       name,
@@ -92,6 +93,7 @@ export async function PATCH(request: NextRequest) {
       notificationFlags,
       privacyFlags,
       availableInDistricts,
+      bio,
     });
     return new Response("Updated", { status: 200 });
   });
