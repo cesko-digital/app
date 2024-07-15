@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
-import { type UserProfile } from "~/src/data/user-profile";
+import { type BioState, type UserProfile } from "~/src/data/user-profile";
 import {
   decodeSkillSelection,
   encodeSkillSelection,
@@ -20,7 +20,7 @@ export const SkillsTab = () => {
 
   const actualBio = model?.bio ?? "";
 
-  const [bioState, setBioState] = useState({
+  const [bioState, setBioState] = useState<BioState>({
     bio: actualBio,
     submissionState: "no_changes",
   });
@@ -47,10 +47,10 @@ export const SkillsTab = () => {
         rows={3}
         defaultValue={actualBio}
         onChange={(e) =>
-          setBioState(() => ({
+          setBioState({
             submissionState: "changes_done",
             bio: e.target.value,
-          }))
+          })
         }
         placeholder="Čemu se věnuješ? Co tě baví? Do jakých projektů tě láká se zapojit?"
       />
@@ -60,16 +60,16 @@ export const SkillsTab = () => {
           setModel({
             ...model!,
             bio: bioState.bio,
-          }),
-            setBioState((prevState) => ({
-              ...prevState,
-              submissionState: "submitted_successfully",
-            }));
+          });
+          setBioState({
+            ...bioState,
+            submissionState: "submitted_successfully",
+          });
         }}
-        className={clsx("mb-10 mt-2 block", {
-          "btn-primary": enableSubmitButton,
-          "btn-disabled": !enableSubmitButton,
-        })}
+        className={clsx(
+          "mb-10 mt-2 block",
+          enableSubmitButton ? "btn-primary" : "btn-disabled",
+        )}
       >
         {submitButtonLabel}
       </button>
