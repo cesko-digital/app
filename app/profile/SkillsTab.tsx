@@ -4,13 +4,18 @@ import clsx from "clsx";
 
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
-import { type BioState, type UserProfile } from "~/src/data/user-profile";
+import { type UserProfile } from "~/src/data/user-profile";
 import {
   decodeSkillSelection,
   encodeSkillSelection,
   type SkillSelection,
 } from "~/src/skills/skills";
 import skills from "~/src/skills/skills.json";
+
+type BioState = {
+  bio: string;
+  submissionState: "no_changes" | "changes_done" | "submitted_successfully";
+};
 
 export const SkillsTab = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({

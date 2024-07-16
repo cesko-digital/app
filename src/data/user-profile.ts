@@ -75,12 +75,6 @@ export type TableView =
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
 
-/** A type of state of user profile bio */
-export type BioState = {
-  bio: string;
-  submissionState: "no_changes" | "changes_done" | "submitted_successfully";
-};
-
 /** Decode `UserProfile` from DB schema */
 export const decodeUserProfile = record({
   id: string,
