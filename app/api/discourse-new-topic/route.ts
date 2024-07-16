@@ -48,11 +48,13 @@ type NewTopicMetadata = {
   topicId: number;
   title: string;
   tags: string[];
+  author: string;
   bodyMarkdown?: string;
 };
 
 export function buildSlackMessage(metadata: NewTopicMetadata) {
   const topicUrl = getTopicUrl({ id: metadata.topicId });
+  const byline = [metadata.author, ...metadata.tags.map((t) => "#" + t)];
   return [
     {
       type: "header",
@@ -67,7 +69,7 @@ export function buildSlackMessage(metadata: NewTopicMetadata) {
       elements: [
         {
           type: "plain_text",
-          text: metadata.tags.map((t) => "#" + t).join(" "),
+          text: byline.join(" "),
         },
       ],
     },
@@ -97,6 +99,7 @@ const reportNewTopic = async (topicId: number): Promise<void> => {
     topicId: topic.id,
     title: topic.title,
     tags: topic.tags,
+    author: topic.details.participants[0].name,
     bodyMarkdown: firstPost.raw,
   });
   await sendDirectMessageToChannel({
