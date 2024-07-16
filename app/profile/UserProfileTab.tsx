@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import clsx from "clsx";
 
+import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
@@ -14,7 +15,7 @@ import skills from "~/src/skills/skills.json";
 
 type SectionProps = {
   model?: UserProfile;
-  updating: boolean;
+  updating?: boolean;
   onChange: (newState: UserProfile) => void;
 };
 
@@ -22,13 +23,14 @@ type SectionProps = {
 // with the sign-up form if possible, maybe at the section level?
 export const UserProfileTab = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
+    writeKeys: ["skills", "bio", "availableInDistricts"],
     url: "/profile/me",
-    writeKeys: ["skills", "bio"],
   });
 
   return (
     <div className="flex flex-col gap-10">
       <BioSection model={model} updating={updating} onChange={setModel} />
+      <MapSection model={model} onChange={setModel} />
       <SkillSection model={model} updating={updating} onChange={setModel} />
     </div>
   );
@@ -71,6 +73,27 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   );
 };
 
+export const MapSection = ({ model, onChange }: SectionProps) => {
+  return (
+    <section className="flex max-w-prose flex-col gap-4">
+      <h2 className="typo-title2">Kde býváš k zastižení?</h2>
+      <p>
+        Jsme Česko.Digital, ne Praha.Digital :) Jestli chceš, dej nám vědět, ve
+        kterých okresech ČR se vyskytuješ, ať můžeme lépe propojit členy
+        komunity z různých koutů Česka.
+      </p>
+      <div>
+        <DistrictSelect
+          value={model?.availableInDistricts ?? ""}
+          onChange={(availableInDistricts) =>
+            onChange({ ...model!, availableInDistricts })
+          }
+        />
+      </div>
+    </section>
+  );
+};
+
 const SkillSection = ({ model, updating, onChange }: SectionProps) => {
   const selection = model ? decodeSkillSelection(model.skills) : {};
 
@@ -80,10 +103,11 @@ const SkillSection = ({ model, updating, onChange }: SectionProps) => {
   };
 
   return (
-    <section>
-      <p className="mb-4 max-w-prose">
-        Co chceš v Česko.Digital dělat? Dej nám to vědět, ať ti můžeme různými
-        kanály nabízet relevantnější příležitosti.
+    <section className="flex flex-col gap-4">
+      <h2 className="typo-title2">Co umíš?</h2>
+      <p className="max-w-prose">
+        Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
+        příležitosti.
       </p>
       <SkillPicker
         skillMenu={skills}

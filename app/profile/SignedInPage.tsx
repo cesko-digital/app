@@ -6,7 +6,6 @@ import SlackIcon from "~/components/icons/slack";
 import { SimpleTabBar } from "~/components/TabBar";
 import { Route } from "~/src/routing";
 
-import { MapTab } from "./MapTab";
 import { NewsletterTab } from "./NewsletterTab";
 import { NotificationsTab } from "./NotificationsTab";
 import { PrivacyTab } from "./PrivacyTab";
@@ -28,11 +27,6 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       title: "Notifikace",
       hash: "notifications",
       content: <NotificationsTab userEmail={session.user!.email!} />,
-    },
-    {
-      title: "Mapa komunity",
-      hash: "community-map",
-      content: <MapTab />,
     },
     {
       title: "Soukromí",
