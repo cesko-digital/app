@@ -10,7 +10,7 @@ const Page = async () => {
   const session = await getServerSession(authOptions);
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs currentPage="Můj profil" />
+      <Breadcrumbs currentPage="Můj účet" />
       {!session?.user && <SignedOutPage />}
       {session?.user && <SignedInPage session={session} />}
     </main>

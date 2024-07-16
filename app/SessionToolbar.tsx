@@ -37,12 +37,12 @@ const SignedInButtons = ({ session }: { session: Session }) => {
         <Image
           className="rounded-full bg-gray shadow"
           src={avatarImage}
-          alt={session.user?.name ?? "Uživatelský profil"}
+          alt={session.user?.name ?? "Můj účet"}
           title={avatarTitle}
           width={30}
           height={30}
         />
-        Můj profil
+        Můj účet
       </Link>
     </div>
   );

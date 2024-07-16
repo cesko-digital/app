@@ -17,7 +17,7 @@ type BioState = {
   submissionState: "no_changes" | "changes_done" | "submitted_successfully";
 };
 
-export const SkillsTab = () => {
+export const UserProfileTab = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
     url: "/profile/me",
     writeKeys: ["skills", "bio"],

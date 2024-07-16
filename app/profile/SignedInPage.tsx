@@ -10,14 +10,14 @@ import { MapTab } from "./MapTab";
 import { NewsletterTab } from "./NewsletterTab";
 import { NotificationsTab } from "./NotificationsTab";
 import { PrivacyTab } from "./PrivacyTab";
-import { SkillsTab } from "./SkillsTab";
+import { UserProfileTab } from "./UserProfileTab";
 
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
     {
-      title: "O mně",
-      hash: "skills",
-      content: <SkillsTab />,
+      title: "Můj profil",
+      hash: "profile",
+      content: <UserProfileTab />,
     },
     {
       title: "Newslettery",
