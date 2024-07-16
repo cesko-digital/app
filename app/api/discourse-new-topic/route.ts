@@ -2,13 +2,10 @@ import { type NextRequest } from "next/server";
 
 import { waitUntil } from "@vercel/functions";
 
-import {
-  decodeNewTopicCallback,
-  getPost,
-  getTopic,
-  getTopicUrl,
-} from "~/src/discourse";
+import { decodeNewTopicCallback, getPost, getTopic } from "~/src/discourse";
 import { sendDirectMessageToChannel } from "~/src/slack/message";
+
+import { buildSlackMessage } from "./discourse";
 
 // How long to wait before fetching the new topic and sending the message.
 // Since the poster may often edit the topic right after publishing it to
@@ -42,54 +39,6 @@ export async function POST(request: NextRequest): Promise<Response> {
   );
 
   return new Response("Thanks!", { status: 200 });
-}
-
-type NewTopicMetadata = {
-  topicId: number;
-  title: string;
-  tags: string[];
-  author: string;
-  bodyMarkdown?: string;
-};
-
-export function buildSlackMessage(metadata: NewTopicMetadata) {
-  const topicUrl = getTopicUrl({ id: metadata.topicId });
-  const byline = [metadata.author, ...metadata.tags.map((t) => "#" + t)];
-  return [
-    {
-      type: "header",
-      text: {
-        type: "plain_text",
-        text: metadata.title,
-        emoji: true,
-      },
-    },
-    {
-      type: "context",
-      elements: [
-        {
-          type: "plain_text",
-          text: byline.join(" "),
-        },
-      ],
-    },
-    {
-      type: "section",
-      text: {
-        type: "mrkdwn",
-        text: metadata.bodyMarkdown,
-      },
-    },
-    {
-      type: "section",
-      text: {
-        type: "mrkdwn",
-        // We need to disable link unfurling here, see documentation:
-        // https://api.slack.com/reference/messaging/link-unfurling
-        text: `👉 <${topicUrl}|${topicUrl.replace("https://", "")}>`,
-      },
-    },
-  ];
 }
 
 const reportNewTopic = async (topicId: number): Promise<void> => {

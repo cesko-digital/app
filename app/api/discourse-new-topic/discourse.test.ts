@@ -1,4 +1,4 @@
-import { buildSlackMessage } from "./route";
+import { buildSlackMessage } from "./discourse";
 
 test("Build Slack message", () => {
   const msg = buildSlackMessage({
