@@ -15,7 +15,7 @@ import { SkillsTab } from "./SkillsTab";
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
     {
-      title: "Dovednosti",
+      title: "O mně",
       hash: "skills",
       content: <SkillsTab />,
     },
