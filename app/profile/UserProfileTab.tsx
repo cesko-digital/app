@@ -48,7 +48,8 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <p>Řekni něco málo o sobě, ať tě lidé lépe poznají:</p>
+      <h2 className="typo-title2">Základní informace</h2>
+      <p>Řekni něco málo o sobě, ať tě lidé lépe poznají.</p>
       <textarea
         className="block w-full max-w-prose rounded-md border-2 border-gray p-2"
         placeholder="Čemu se věnuješ? Co tě baví? Do jakých projektů tě láká se zapojit?"
@@ -79,8 +80,8 @@ export const MapSection = ({ model, onChange }: SectionProps) => {
       <h2 className="typo-title2">Kde býváš k zastižení?</h2>
       <p>
         Jsme Česko.Digital, ne Praha.Digital :) Jestli chceš, dej nám vědět, ve
-        kterých okresech ČR se vyskytuješ, ať můžeme lépe propojit členy
-        komunity z různých koutů Česka.
+        kterých okresech ČR se vyskytuješ, ať můžeme lépe propojit členy a
+        členky Česko.Digital z různých koutů Česka.
       </p>
       <div>
         <DistrictSelect
