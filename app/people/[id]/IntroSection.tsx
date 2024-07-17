@@ -13,7 +13,7 @@ export const IntroSection = ({ profile }: { profile: UserProfile }) => {
       <div className="flex flex-col justify-between gap-y-2 md:flex-row">
         <h1 className="typo-title mb-2">{profile.name}</h1>
         {isCurrentUser && (
-          <Link href={Route.userProfile} className="btn-inverted">
+          <Link href={Route.account} className="btn-inverted">
             Upravit
           </Link>
         )}

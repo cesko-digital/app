@@ -31,7 +31,7 @@ const SignedInButtons = ({ session }: { session: Session }) => {
   return (
     <div className="flex flex-row gap-7 text-base md:-mb-[3px]">
       <Link
-        href={Route.userProfile}
+        href={Route.account}
         className="typo-link flex flex-row-reverse items-center gap-4 lg:flex-row"
       >
         <Image

@@ -27,7 +27,7 @@ type SectionProps = {
 export const UserProfileTab = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
     writeKeys: ["skills", "bio", "availableInDistricts", "privacyFlags"],
-    url: "/profile/me",
+    url: "/account/me",
   });
 
   return (

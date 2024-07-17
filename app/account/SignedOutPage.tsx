@@ -8,7 +8,7 @@ import { Route } from "~/src/routing";
 export const SignedOutPage = () => {
   const handleSignIn = async () => {
     trackCustomEvent("SignIn");
-    await signIn(undefined, { callbackUrl: Route.userProfile });
+    await signIn(undefined, { callbackUrl: Route.account });
   };
   return (
     <section className="m-auto mt-10 flex max-w-[80ex] flex-col gap-7 rounded-2xl border-2 border-gray p-7 pb-10 text-center lg:mt-20">

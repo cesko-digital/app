@@ -59,5 +59,5 @@ export const unsubscribeRoute = (id: string, confirm = false) => {
   if (confirm) {
     params.append("confirm", "y");
   }
-  return `/profile/notifications/unsubscribe?${params}`;
+  return `/account/notifications/unsubscribe?${params}`;
 };

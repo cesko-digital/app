@@ -572,7 +572,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
   const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
-    const response = await fetch("/profile/me", {
+    const response = await fetch("/account/me", {
       method: "POST",
       body: JSON.stringify(payload, null, 2),
       headers: { "Content-Type": ContentType.json },

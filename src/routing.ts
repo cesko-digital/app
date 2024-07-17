@@ -22,7 +22,7 @@ export const Route = {
   opportunities: "/opportunities",
   people: "/people",
   register,
-  userProfile: "/profile",
+  account: "/account",
   stats: "/stats",
   // More static routes
   eventFeed: "/events/feed.ical",
