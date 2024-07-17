@@ -31,6 +31,13 @@ export async function POST(request: NextRequest): Promise<Response> {
     });
   }
 
+  if (newTopicInfo.topic.archetype !== "regular") {
+    return new Response(
+      "We only care about regular topics, but thanks, try next time.",
+      { status: 200 },
+    );
+  }
+
   console.log(
     `New topic was created, #${newTopicInfo.topic.id}, will fetch it after a brief pause.`,
   );

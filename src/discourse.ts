@@ -72,6 +72,7 @@ export const decodeNewTopicCallback = record({
     tags: array(string),
     title: string,
     created_by: decodeUser,
+    archetype: string,
   }),
 });
 
