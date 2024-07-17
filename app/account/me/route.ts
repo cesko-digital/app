@@ -84,6 +84,7 @@ export async function PATCH(request: NextRequest) {
       skills,
       notificationFlags,
       privacyFlags,
+      contactEmail,
       availableInDistricts,
       bio,
     } = await request.json();
@@ -92,6 +93,7 @@ export async function PATCH(request: NextRequest) {
       skills,
       notificationFlags,
       privacyFlags,
+      contactEmail,
       availableInDistricts,
       bio,
     });

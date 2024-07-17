@@ -115,6 +115,7 @@ export function encodeUserProfile(
     id: profile.id,
     name: profile.name,
     email: profile.email,
+    contactEmail: profile.contactEmail,
     competencies: profile.skills,
     occupation: profile.occupation,
     organizationName: profile.organizationName,
@@ -193,6 +194,7 @@ export async function updateUserProfile(
       | "codeOfConductAcceptedAt"
       | "notificationFlags"
       | "privacyFlags"
+      | "contactEmail"
       | "availableInDistricts"
       | "bio"
     >
