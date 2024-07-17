@@ -47,15 +47,20 @@ async function Page({ params }: Props) {
 type Profile = { profile: UserProfile };
 type Engagements = { engagements: TeamEngagement[] };
 
-const PublicProfile = ({ profile, engagements }: Profile & Engagements) => (
-  <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-    <ContactSidebar profile={profile} />
-    <div className="flex flex-col gap-7 pt-2">
-      <IntroSection profile={profile} />
-      {engagements.length > 0 && <ProjectSection engagements={engagements} />}
+const PublicProfile = ({ profile, engagements }: Profile & Engagements) => {
+  const showProjectEngagement =
+    !profile.privacyFlags.includes("hidePublicTeamMembership") &&
+    engagements.length > 0;
+  return (
+    <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
+      <ContactSidebar profile={profile} />
+      <div className="flex flex-col gap-7 pt-2">
+        <IntroSection profile={profile} />
+        {showProjectEngagement && <ProjectSection engagements={engagements} />}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PrivateProfile = ({ profile }: Profile) => (
   <div className="pt-12 text-center">
