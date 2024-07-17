@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import clsx from "clsx";
 
@@ -6,6 +7,8 @@ import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
+import { setFlag } from "~/src/flags";
+import { Route } from "~/src/routing";
 import {
   decodeSkillSelection,
   encodeSkillSelection,
@@ -23,13 +26,14 @@ type SectionProps = {
 // with the sign-up form if possible, maybe at the section level?
 export const UserProfileTab = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
-    writeKeys: ["skills", "bio", "availableInDistricts"],
+    writeKeys: ["skills", "bio", "availableInDistricts", "privacyFlags"],
     url: "/profile/me",
   });
 
   return (
     <div className="flex flex-col gap-10">
       <BioSection model={model} updating={updating} onChange={setModel} />
+      <PrivacySection model={model} updating={updating} onChange={setModel} />
       <MapSection model={model} onChange={setModel} />
       <SkillSection model={model} updating={updating} onChange={setModel} />
     </div>
@@ -74,7 +78,72 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   );
 };
 
-export const MapSection = ({ model, onChange }: SectionProps) => {
+export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
+  return (
+    <section className="flex max-w-prose flex-col gap-4">
+      <h2 className="typo-title2">Soukromí</h2>
+      <p>
+        Chceš svůj profil vystavit{" "}
+        <Link href={Route.people} className="typo-link">
+          veřejně na stránce Lidé
+        </Link>
+        ? Doporučujeme, zjednodušuje to vzájemné propojování.
+      </p>
+
+      <div>
+        <label className="flex items-center">
+          <input
+            checked={model?.privacyFlags.includes("enablePublicProfile")}
+            type="checkbox"
+            className="mr-3"
+            disabled={updating}
+            onChange={(e) =>
+              onChange({
+                ...model!,
+                privacyFlags: setFlag(
+                  model!.privacyFlags,
+                  "enablePublicProfile",
+                  e.target.checked,
+                ),
+              })
+            }
+          ></input>
+          Chci mít veřejný profil
+        </label>
+      </div>
+
+      <div>
+        <label className="flex items-center">
+          <input
+            checked={model?.privacyFlags.includes("hidePublicTeamMembership")}
+            type="checkbox"
+            className="mr-3"
+            disabled={updating}
+            onChange={(e) =>
+              onChange({
+                ...model!,
+                privacyFlags: setFlag(
+                  model!.privacyFlags,
+                  "hidePublicTeamMembership",
+                  e.target.checked,
+                ),
+              })
+            }
+          ></input>
+          Nechci veřejně ukazovat svoje zapojení na projektech
+        </label>
+        <p className="typo-caption ml-6 text-balance">
+          Pokud se zapojíš do některého z našich projektů, nebudeme to ukazovat
+          ani na tvém profilu, ani na stránce projektu
+        </p>
+      </div>
+
+      <p>Může pár minut trvat, než se změny v těchto nastaveních projeví.</p>
+    </section>
+  );
+};
+
+const MapSection = ({ model, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-4">
       <h2 className="typo-title2">Kde býváš k zastižení?</h2>

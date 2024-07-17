@@ -8,7 +8,6 @@ import { Route } from "~/src/routing";
 
 import { NewsletterTab } from "./NewsletterTab";
 import { NotificationsTab } from "./NotificationsTab";
-import { PrivacyTab } from "./PrivacyTab";
 import { UserProfileTab } from "./UserProfileTab";
 
 export const SignedInPage = ({ session }: { session: Session }) => {
@@ -27,11 +26,6 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       title: "Notifikace",
       hash: "notifications",
       content: <NotificationsTab userEmail={session.user!.email!} />,
-    },
-    {
-      title: "Soukromí",
-      hash: "privacy",
-      content: <PrivacyTab />,
     },
     {
       title: "Nástroje",
