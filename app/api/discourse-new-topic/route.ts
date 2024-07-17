@@ -7,6 +7,9 @@ import { sendDirectMessageToChannel } from "~/src/slack/message";
 
 import { buildSlackMessage } from "./discourse";
 
+// Increase allowed maximum function run time, see comment below.
+export const maxDuration = 300;
+
 // How long to wait before fetching the new topic and sending the message.
 // Since the poster may often edit the topic right after publishing it to
 // fix mistakes, we give them some time to finish before reporting the topic.
