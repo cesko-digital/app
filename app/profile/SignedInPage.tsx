@@ -13,7 +13,7 @@ import { UserProfileTab } from "./UserProfileTab";
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
     {
-      title: "Můj profil",
+      title: "Profil",
       hash: "profile",
       content: <UserProfileTab />,
     },
@@ -35,7 +35,7 @@ export const SignedInPage = ({ session }: { session: Session }) => {
   ];
   return (
     <section>
-      <h1 className="typo-title mb-4 mt-7">{session.user?.name}</h1>
+      <h1 className="typo-title mb-4 mt-7">Můj účet</h1>
       <SimpleTabBar items={tabs} />
     </section>
   );
