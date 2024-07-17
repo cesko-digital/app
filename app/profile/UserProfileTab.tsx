@@ -79,6 +79,10 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
 };
 
 export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
+  const Note = ({ children }: { children: React.ReactNode }) => (
+    <p className="typo-caption ml-6 mt-1 text-balance">{children}</p>
+  );
+
   return (
     <section className="flex max-w-prose flex-col gap-4">
       <h2 className="typo-title2">Soukromí</h2>
@@ -110,6 +114,14 @@ export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
           ></input>
           Chci mít veřejný profil
         </label>
+        {model && (
+          <Note>
+            Svůj profil najdeš{" "}
+            <Link href={Route.toProfile(model)} className="typo-link">
+              na téhle adrese
+            </Link>
+          </Note>
+        )}
       </div>
 
       <div>
@@ -132,10 +144,10 @@ export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
           ></input>
           Nechci veřejně ukazovat svoje zapojení na projektech
         </label>
-        <p className="typo-caption ml-6 text-balance">
+        <Note>
           Pokud se zapojíš do některého z našich projektů, nebudeme to ukazovat
           ani na tvém profilu, ani na stránce projektu
-        </p>
+        </Note>
       </div>
 
       <p>Může pár minut trvat, než se změny v těchto nastaveních projeví.</p>
