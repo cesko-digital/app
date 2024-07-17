@@ -8,7 +8,7 @@ import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
-import { Route } from "~/src/routing";
+import { absolute, Route } from "~/src/routing";
 import {
   decodeSkillSelection,
   encodeSkillSelection,
@@ -79,6 +79,8 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
 };
 
 export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
+  const hasPublicProfile = model?.privacyFlags.includes("enablePublicProfile");
+
   const Note = ({ children }: { children: React.ReactNode }) => (
     <p className="typo-caption ml-6 mt-1 text-balance">{children}</p>
   );
@@ -114,11 +116,10 @@ export const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
           ></input>
           Chci mít veřejný profil
         </label>
-        {model && (
+        {hasPublicProfile && (
           <Note>
-            Svůj profil najdeš{" "}
-            <Link href={Route.toProfile(model)} className="typo-link">
-              na téhle adrese
+            <Link href={Route.toProfile(model!)} className="typo-link">
+              {absolute(Route.toProfile(model!))}
             </Link>
           </Note>
         )}
