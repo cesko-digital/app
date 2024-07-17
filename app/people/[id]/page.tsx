@@ -8,11 +8,7 @@ import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
-import {
-  getUserHashtags,
-  getUserProfile,
-  type UserProfile,
-} from "~/src/data/user-profile";
+import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 type Params = {
