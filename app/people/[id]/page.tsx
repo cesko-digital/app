@@ -85,10 +85,9 @@ const ContactSidebar = ({ profile }: Profile) => {
           url={`slack://user?team=TG21XF887&id=${profile.slackId}`}
         />
       )}
-      <Button
-        label="Napsat mail"
-        url={`mailto:${profile.contactEmail ?? profile.email}`}
-      />
+      {profile.contactEmail && (
+        <Button label="Napsat mail" url={`mailto:${profile.contactEmail}`} />
+      )}
     </div>
   );
 };
