@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { IntroSection } from "~/app/people/[id]/IntroSection";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   getPublicTeamEngagementsForUser,
@@ -93,16 +94,6 @@ const ContactSidebar = ({ profile }: Profile) => {
         url={`mailto:${profile.contactEmail ?? profile.email}`}
       />
     </div>
-  );
-};
-
-const IntroSection = ({ profile }: Profile) => {
-  return (
-    <section className="flex flex-col gap-4">
-      <h1 className="typo-title">{profile.name}</h1>
-      <p>{getUserHashtags(profile).join(" ")}</p>
-      {profile.bio && <p className="max-w-prose">{profile.bio}</p>}
-    </section>
   );
 };
 
