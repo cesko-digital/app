@@ -209,7 +209,7 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
       <div>
         <label className="flex items-center">
           <input
-            checked={model?.privacyFlags.includes("hidePublicTeamMembership")}
+            checked={!model?.privacyFlags.includes("hidePublicTeamMembership")}
             type="checkbox"
             className="mr-3"
             disabled={updating}
@@ -219,16 +219,16 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
                 privacyFlags: setFlag(
                   model!.privacyFlags,
                   "hidePublicTeamMembership",
-                  e.target.checked,
+                  !e.target.checked,
                 ),
               })
             }
           ></input>
-          Nechci veřejně ukazovat svoje zapojení na projektech
+          Chci veřejně ukazovat svoje zapojení na projektech
         </label>
         <Note>
-          Pokud se zapojíš do některého z našich projektů, nebudeme to ukazovat
-          ani na tvém profilu, ani na stránce projektu
+          Když se zapojíš do některého z našich projektů, dáme o tom vědět na
+          stránce projektu a ve tvém veřejném profilu
         </Note>
       </div>
 

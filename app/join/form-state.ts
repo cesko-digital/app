@@ -50,7 +50,7 @@ export const emptyFormState: FormState = {
   availableInDistricts: "",
   bio: "",
   privacyConsent: false,
-  enablePublicProfile: false,
+  enablePublicProfile: true,
   gdprConsent: false,
   cocConsent: false,
   submissionState: { tag: "not_submitted_yet" },

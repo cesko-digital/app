@@ -312,9 +312,10 @@ const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
           />
           <div>
             <span>Chci mít veřejný profil</span>
-            <p className="typo-caption">
-              Budeš uvedený v seznamu uživatelů a kdokoliv si bude moct
-              prohlédnout údaje jako třeba tvé projekty nebo kontakt.
+            <p className="typo-caption mt-1 text-balance">
+              Budeš veřejně vidět v seznamu uživatelů a kdokoliv si bude moct
+              prohlédnout třeba tvé projekty nebo kontakt. Doporučujeme,
+              zjednodušuje to vzájemné propojování.
             </p>
           </div>
         </label>
