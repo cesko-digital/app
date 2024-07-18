@@ -230,8 +230,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
         <RequiredFieldMarker />
       </label>
       <p className="typo-caption mb-3">
-        Vyber prosím svoji hlavní činnost. V uvítacím e-mailu tě pak můžeme
-        seznámit s dalšími podrobnostmi ohledně případné spolupráce.
+        Pokud toho děláš víc, vyber, co převažuje
       </p>
 
       <div>
