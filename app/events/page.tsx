@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: `Pojďme se potkat! Online, naživo, v Praze, v Brně,
   na vzdělávacím webináři, praktickém workshopu – zkrátka kdekoliv
   a jakkoliv. Některé z těchto akcí pořádáme přímo my, na některých
-  spolupracujeme s partnery. Na všech vás ale rádi uvidíme.`,
+  spolupracujeme s partnery. Na všech tě ale rádi uvidíme.`,
 };
 
 /** Refresh data every 5 minutes */

@@ -22,6 +22,11 @@ async function Page() {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs currentPage="Hledané role" />
       <h1 className="typo-title mb-10 mt-7">Hledané role</h1>
+      <p className="mb-10 max-w-prose">
+        Tady najdeš seznam konkrétních rolí nebo úkolů, se kterými potřebujeme
+        pomoc v našich projektech. Bývají hodně různorodé – jednorázové, kratší
+        i dlouhodobé, placené i dobrovolnické, více i méně kvalifikované.
+      </p>
       {opportunities.map((o) => (
         <OpportunityRow key={o.id} role={o} project={projectForRole(o)} />
       ))}

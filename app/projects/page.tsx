@@ -11,7 +11,7 @@ import { getRandomElem } from "~/src/utils";
 export const metadata: Metadata = {
   title: "Projekty | Česko.Digital",
   description: `Velká část z toho, co se v Česko.Digital děje, se děje formou projektů.
-  Podívejte se, na čem zrovna pracujeme, a kde se můžete v případě zájmu zapojit.`,
+  Podívej se, na čem zrovna pracujeme, a kde se můžeš v případě zájmu zapojit.`,
 };
 
 /** Refresh data every 5 minutes */
