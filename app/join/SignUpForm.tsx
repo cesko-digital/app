@@ -182,9 +182,9 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
         </div>
         <TextArea
           id="bio"
-          label="Cokoli dalšího, co bys nám chtěl/a o sobě sdělit"
+          label="Řekni něco málo o sobě, ať tě lidé lépe poznají"
           value={state.bio}
-          placeholder="zájmy, profesní historie, čemu by ses rád/a věnoval/a, …"
+          placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
           disabled={disabled}
           onChange={(bio) => onChange({ ...state, bio })}
         />
