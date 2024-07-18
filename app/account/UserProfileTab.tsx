@@ -75,8 +75,8 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         ></input>
         <p className="typo-caption">
           Tenhle mail slouží k přihlašování, zasílání notifikací a podobně.
-          Nikde ho neukazujeme veřejně. Pokud ho potřebuješ změnit, ozvi se
-          prosím na{" "}
+          Nikde ho neukazujeme veřejně (pokud ho níže nezadáš jako veřejný
+          kontakt). Pokud ho potřebuješ změnit, ozvi se prosím na{" "}
           <a href="mailto:pomoc@cesko.digital" className="typo-link">
             pomoc@cesko.digital
           </a>
