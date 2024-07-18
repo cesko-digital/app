@@ -153,7 +153,10 @@ export const getUserProfile = async (databaseId: string) =>
     .find(databaseId)
     .then(unwrapRecord)
     .then(decodeUserProfile)
-    .catch((_) => null);
+    .catch((e) => {
+      console.error(e);
+      return null;
+    });
 
 /**
  * Get user profile with given e-mail
