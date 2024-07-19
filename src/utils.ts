@@ -94,6 +94,13 @@ export function normalizeEmailAddress(email: string): string {
 export const looksLikeEmailAdress = (s: string) =>
   !!s.match(/^[^@ ]+@[^@ ]+\.[^@ ]+$/);
 
+/** Replace all newlines with spaces, merge multiple spaces to one */
+export const stripWhitespace = (s: string) =>
+  s.replaceAll(/\n/g, " ").replaceAll(/ +/g, " ");
+
+/** Convenience version of `stripWhitespace` that works directly with template literals */
+export const strip = ([s]: TemplateStringsArray) => stripWhitespace(s);
+
 /** Filtering convenience, see https://stackoverflow.com/questions/43118692 */
 export function notEmpty<TValue>(
   value: TValue | null | undefined,

@@ -11,10 +11,11 @@ import {
 } from "~/src/data/event";
 import { getAllProjects } from "~/src/data/project";
 import { Route } from "~/src/routing";
+import { strip } from "~/src/utils";
 
 export const metadata: Metadata = {
   title: "Akce | Česko.Digital",
-  description: `Pojďme se potkat! Online, naživo, v Praze, v Brně,
+  description: strip`Pojďme se potkat! Online, naživo, v Praze, v Brně,
   na vzdělávacím webináři, praktickém workshopu – zkrátka kdekoliv
   a jakkoliv. Některé z těchto akcí pořádáme přímo my, na některých
   spolupracujeme s partnery. Na všech tě ale rádi uvidíme.`,

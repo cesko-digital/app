@@ -2,6 +2,7 @@ import {
   hashDigest,
   looksLikeEmailAdress,
   normalizeEmailAddress,
+  strip,
   subset,
 } from "./utils";
 
@@ -29,4 +30,13 @@ test("Hash digest", () => {
 
 test("Subset object", () => {
   expect(subset({ foo: 1, bar: 2 }, ["foo"])).toEqual({ foo: 1 });
+});
+
+test("Whitespace strip", () => {
+  const stripped = strip`Tady najdeš seznam konkrétních rolí nebo úkolů,
+  se kterými potřebujeme pomoc v našich projektech. Bývají hodně
+  různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické,
+  více i méně kvalifikované.`;
+  const singleline = `Tady najdeš seznam konkrétních rolí nebo úkolů, se kterými potřebujeme pomoc v našich projektech. Bývají hodně různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické, více i méně kvalifikované.`;
+  expect(stripped).toBe(singleline);
 });

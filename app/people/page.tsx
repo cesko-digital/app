@@ -6,13 +6,14 @@ import {
   UserProfileContainer,
 } from "~/components/UserProfileCard";
 import { getAllUserProfiles, getUserHashtags } from "~/src/data/user-profile";
+import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Lidé | Česko.Digital",
-  description: `Důležitou součástí naší práce je propojovat lidi, tenhle adresář
+  description: strip`Důležitou součástí naší práce je propojovat lidi, tenhle adresář
     s tím pomáhá. Zatím ho teprve testujeme, takže tu není mnoho lidí ani funkcí,
     ale to se brzy změní.`,
   openGraph: {

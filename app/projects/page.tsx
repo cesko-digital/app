@@ -6,11 +6,11 @@ import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ProjectCard } from "~/components/ProjectCard";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { Route } from "~/src/routing";
-import { getRandomElem } from "~/src/utils";
+import { getRandomElem, strip } from "~/src/utils";
 
 export const metadata: Metadata = {
   title: "Projekty | Česko.Digital",
-  description: `Velká část z toho, co se v Česko.Digital děje, se děje formou projektů.
+  description: strip`Velká část z toho, co se v Česko.Digital děje, se děje formou projektů.
   Podívej se, na čem zrovna pracujeme, a kde se můžeš v případě zájmu zapojit.`,
 };
 

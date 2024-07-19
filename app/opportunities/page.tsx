@@ -4,13 +4,14 @@ import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects } from "~/src/data/project";
+import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Hledané role | Česko.Digital",
-  description: `Tady najdeš seznam konkrétních rolí nebo úkolů,
+  description: strip`Tady najdeš seznam konkrétních rolí nebo úkolů,
     se kterými potřebujeme pomoc v našich projektech. Bývají hodně
     různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické,
     více i méně kvalifikované.`,
