@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -124,5 +125,19 @@ const Avatar = ({ profile }: Profile) => (
     alt=""
   />
 );
+
+//
+// Data Loading
+//
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const profile = await getUserProfile(params.id);
+  if (!profile) {
+    return {};
+  }
+  return {
+    title: `${profile.name} | Česko.Digital`,
+  };
+}
 
 export default Page;

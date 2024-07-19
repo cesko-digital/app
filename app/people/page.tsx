@@ -1,3 +1,5 @@
+import { type Metadata } from "next";
+
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   UserProfileCard,
@@ -5,6 +7,20 @@ import {
 } from "~/components/UserProfileCard";
 import { getAllUserProfiles, getUserHashtags } from "~/src/data/user-profile";
 
+/** Refresh data every 5 minutes */
+export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Lidé | Česko.Digital",
+  description: `Důležitou součástí naší práce je propojovat lidi, tenhle adresář
+    s tím pomáhá. Zatím ho teprve testujeme, takže tu není mnoho lidí ani funkcí,
+    ale to se brzy změní.`,
+  openGraph: {
+    images: "https://assets.cesko.digital/df17b194.jpeg",
+  },
+};
+
+/** People address book */
 async function Page() {
   const profiles = await getAllUserProfiles("Public Profiles");
   return (
@@ -12,11 +28,7 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
 
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
-      <p className="mb-10 max-w-prose">
-        Důležitou součástí naší práce je propojovat lidi, tenhle adresář s tím
-        pomáhá. Zatím ho teprve testujeme, takže tu není mnoho lidí ani funkcí,
-        ale to se brzy změní.
-      </p>
+      <p className="mb-10 max-w-prose">{metadata.description}</p>
       <UserProfileContainer>
         {profiles.map((profile) => (
           <UserProfileCard
