@@ -119,7 +119,7 @@ const ProjectSection = ({ engagements }: Engagements) => (
 const Avatar = ({ profile }: Profile) => (
   <Image
     src={profile.avatarUrl}
-    className="mb-7 rounded-full bg-pebble"
+    className="mx-auto mb-7 rounded-full bg-pebble"
     width={200}
     height={200}
     alt=""
