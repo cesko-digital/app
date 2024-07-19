@@ -1,7 +1,5 @@
 import { undef, union } from "typescript-json-decoder";
 
-import { unique } from "~/src/utils";
-
 /** All available skill levels we work with */
 export const SKILL_LEVELS = ["junior", "medior", "senior", "mentor"] as const;
 
