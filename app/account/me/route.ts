@@ -1,6 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { optional, record, string } from "typescript-json-decoder";
+import {
+  array,
+  optional,
+  record,
+  string,
+  union,
+} from "typescript-json-decoder";
 
 import { withAuthenticatedUser } from "~/src/auth";
 import { logUserCreatedEvent } from "~/src/data/auth";
@@ -8,6 +14,7 @@ import {
   createUserProfile,
   getUserProfile,
   getUserProfileByMail,
+  privacyFlags,
   updateUserProfile,
 } from "~/src/data/user-profile";
 import { normalizeEmailAddress } from "~/src/utils";
@@ -22,8 +29,10 @@ export async function POST(request: NextRequest): Promise<Response> {
     codeOfConductAcceptedAt: string,
     occupation: optional(string),
     availableInDistricts: optional(string),
+    bio: optional(string),
     organizationName: optional(string),
     profileUrl: optional(string),
+    privacyFlags: array(union(...privacyFlags)),
   });
   try {
     const payload = decodeRequest(await request.json());
@@ -75,14 +84,18 @@ export async function PATCH(request: NextRequest) {
       skills,
       notificationFlags,
       privacyFlags,
+      contactEmail,
       availableInDistricts,
+      bio,
     } = await request.json();
     await updateUserProfile(profile.id, {
       name,
       skills,
       notificationFlags,
       privacyFlags,
+      contactEmail,
       availableInDistricts,
+      bio,
     });
     return new Response("Updated", { status: 200 });
   });

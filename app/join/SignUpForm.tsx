@@ -69,6 +69,7 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
       <IntroSection />
       <PersonalDetailsSection state={state} onChange={setState} />
       <SkillSection skillMenu={skillMenu} state={state} onChange={setState} />
+      <PrivacySection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
     </div>
@@ -167,7 +168,7 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           onChange={(profileUrl) => onChange({ ...state, profileUrl })}
         />
         <div>
-          <p className="mb-1">Ve kterých okresech ČR býváš k zastižení?</p>
+          <label>Ve kterých okresech ČR býváš k zastižení?</label>
           <DistrictSelect
             value={state.availableInDistricts}
             onChange={(availableInDistricts) =>
@@ -179,6 +180,14 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
             různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
           </p>
         </div>
+        <TextArea
+          id="bio"
+          label="Řekni něco málo o sobě, ať tě lidé lépe poznají"
+          value={state.bio}
+          placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
+          disabled={disabled}
+          onChange={(bio) => onChange({ ...state, bio })}
+        />
       </div>
     </section>
   );
@@ -221,8 +230,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
         <RequiredFieldMarker />
       </label>
       <p className="typo-caption mb-3">
-        Vyber prosím svoji hlavní činnost. V uvítacím e-mailu tě pak můžeme
-        seznámit s dalšími podrobnostmi ohledně případné spolupráce.
+        Pokud toho děláš víc, vyber, co převažuje
       </p>
 
       <div>
@@ -284,6 +292,38 @@ const SkillSection: React.FC<SkillSectionProps> = ({
 };
 
 //
+// Privacy section
+//
+
+const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
+  return (
+    <section>
+      <div className="flex max-w-prose flex-col gap-4">
+        <h2 className="typo-title2">Soukromí</h2>
+
+        <label className="flex items-center">
+          <Checkbox
+            checked={state.enablePublicProfile}
+            disabled={!isEditable(state)}
+            onChange={(enablePublicProfile) =>
+              onChange({ ...state, enablePublicProfile })
+            }
+          />
+          <div>
+            <span>Chci mít veřejný profil</span>
+            <p className="typo-caption mt-1 text-balance">
+              Budeš veřejně vidět v seznamu uživatelů a kdokoliv si bude moct
+              prohlédnout třeba tvé projekty nebo kontakt. Doporučujeme,
+              zjednodušuje to vzájemné propojování.
+            </p>
+          </div>
+        </label>
+      </div>
+    </section>
+  );
+};
+
+//
 // Legal section
 //
 
@@ -295,13 +335,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         <RequiredFieldMarker />
       </h2>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.cocConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) => onChange({ ...state, cocConsent: e.target.checked })}
-        ></input>
+          onChange={(cocConsent) => onChange({ ...state, cocConsent })}
+        />
         <span>
           Mám přečtená{" "}
           <a className="typo-link" href="https://www.cesko.digital/pravidla">
@@ -311,15 +349,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         </span>
       </label>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.gdprConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) =>
-            onChange({ ...state, gdprConsent: e.target.checked })
-          }
-        ></input>
+          onChange={(gdprConsent) => onChange({ ...state, gdprConsent })}
+        />
         <span>
           Mám přečtené{" "}
           <a className="typo-link" href="https://cesko.digital/go/gdpr">
@@ -329,15 +363,11 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         </span>
       </label>
       <label className="flex items-center">
-        <input
-          type="checkbox"
+        <Checkbox
           checked={state.privacyConsent}
           disabled={!isEditable(state)}
-          className="mr-3 mt-2 shrink-0 self-start"
-          onChange={(e) =>
-            onChange({ ...state, privacyConsent: e.target.checked })
-          }
-        ></input>
+          onChange={(privacyConsent) => onChange({ ...state, privacyConsent })}
+        />
         <span>
           Vím, jak bude Česko.Digital při vzájemné spolupráci a pro zajištění
           transparentnosti zpracovávat mé{" "}
@@ -475,6 +505,66 @@ const TextInput: React.FC<TextInputProps> = ({
   );
 };
 
+type CheckboxProps = {
+  checked: boolean;
+  disabled: boolean;
+  onChange: (newValue: boolean) => void;
+};
+
+const Checkbox: React.FC<CheckboxProps> = ({ checked, disabled, onChange }) => {
+  return (
+    <input
+      type="checkbox"
+      checked={checked}
+      disabled={disabled}
+      className="mr-3 mt-2 shrink-0 self-start"
+      onChange={(e) => onChange(e.target.checked)}
+    ></input>
+  );
+};
+
+type TextAreaProps = {
+  id: string;
+  label: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  rows?: number;
+  cols?: number;
+  onChange?: (newValue: string) => void;
+};
+
+const TextArea: React.FC<TextAreaProps> = ({
+  id,
+  label,
+  value = undefined,
+  placeholder = undefined,
+  required = false,
+  disabled = false,
+  rows = 3,
+  onChange = (_) => {},
+}) => {
+  return (
+    <div>
+      <label htmlFor={id}>
+        {label}
+        {required && <RequiredFieldMarker />}
+      </label>
+      <textarea
+        id={id}
+        required={required}
+        value={value}
+        placeholder={placeholder}
+        disabled={disabled}
+        rows={rows}
+        className="w-full rounded-md border-2 border-gray p-2"
+        onChange={(e) => onChange(e.target.value)}
+      ></textarea>
+    </div>
+  );
+};
+
 //
 // I/O
 //
@@ -482,7 +572,7 @@ const TextInput: React.FC<TextInputProps> = ({
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
   const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
-    const response = await fetch("/profile/me", {
+    const response = await fetch("/account/me", {
       method: "POST",
       body: JSON.stringify(payload, null, 2),
       headers: { "Content-Type": ContentType.json },

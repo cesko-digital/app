@@ -89,10 +89,7 @@ async function Page({ params }: Props) {
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
-        path={[
-          { label: "Homepage", path: "/" },
-          { label: "Projekty", path: Route.projects },
-        ]}
+        path={[{ label: "Projekty", path: Route.projects }]}
         currentPage={project.name}
       />
 
@@ -246,6 +243,7 @@ const ProjectSidebar = ({
       {displayedCoordinators.map((c) => (
         <ImageLabel
           key={c.id}
+          link={Route.toProfile({ id: c.userId })}
           imageUrl={c.userAvatarUrl}
           label={c.userName}
           faded={c.inactive}

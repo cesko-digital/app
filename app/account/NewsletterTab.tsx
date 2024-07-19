@@ -22,7 +22,7 @@ type Props = { userMail: string };
 
 export const NewsletterTab = ({ userMail }: Props) => {
   const { model, setModel, updating } = useJSONResource({
-    url: "/profile/newsletters",
+    url: "/account/newsletters",
     decoder: decodeNewsletterPreferences,
   });
 

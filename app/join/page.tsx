@@ -13,10 +13,7 @@ const Page = ({ searchParams }: Props) => {
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Registrace"
-      />
+      <Breadcrumbs currentPage="Registrace" />
       <SignUpForm defaultEmail={email} />
     </main>
   );

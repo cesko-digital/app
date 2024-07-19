@@ -53,10 +53,7 @@ async function Page({ params }: Props) {
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
-        path={[
-          { label: "Homepage", path: "/" },
-          { label: "Akce", path: Route.events },
-        ]}
+        path={[{ label: "Akce", path: Route.events }]}
         currentPage={event.name}
       />
 
@@ -108,9 +105,6 @@ const EventSidebar = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-  const ownerImageUrl =
-    owner.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
   return (
     <Sidebar>
       <SidebarSection title="Projekt">
@@ -118,9 +112,9 @@ const EventSidebar = ({
       </SidebarSection>
       <SidebarSection title="Kontakt">
         <ImageLabel
-          imageUrl={ownerImageUrl}
+          link={Route.toProfile({ id: owner.id })}
+          imageUrl={owner.avatarUrl}
           label={owner.name}
-          link={`mailto:${owner.contactEmail ?? owner.email}`}
         />
       </SidebarSection>
       <SidebarSection title="Datum konání">{time}</SidebarSection>

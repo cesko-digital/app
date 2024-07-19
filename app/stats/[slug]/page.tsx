@@ -55,10 +55,7 @@ const Page = async ({ params }: Props) => {
     <div>
       <main className="m-auto max-w-content px-7 py-20">
         <Breadcrumbs
-          path={[
-            { label: "Homepage", path: "/" },
-            { label: "Statistiky", path: Route.stats },
-          ]}
+          path={[{ label: "Statistiky", path: Route.stats }]}
           currentPage={metric.name}
         />
 

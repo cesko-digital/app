@@ -2,6 +2,10 @@ import crypto from "crypto";
 
 import Markdoc, { type Node } from "@markdoc/markdoc";
 
+/** Default user avatar picture URL if we have no better one */
+export const defaultAvatarUrl =
+  "https://data.cesko.digital/people/generic-profile.jpg";
+
 /** A simple string wrapper to avoid bugs from mixing HTML strings and Markdown source */
 export type MarkdownString = {
   source: string;

@@ -8,6 +8,7 @@ import { type Session } from "next-auth";
 import { signIn, useSession } from "next-auth/react";
 
 import { Route } from "~/src/routing";
+import { defaultAvatarUrl } from "~/src/utils";
 
 export const SessionToolbar = () => {
   const { data: session, status } = useSession();
@@ -21,9 +22,7 @@ export const SessionToolbar = () => {
 };
 
 const SignedInButtons = ({ session }: { session: Session }) => {
-  const avatarImage =
-    session.user?.image ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
+  const avatarImage = session.user?.image ?? defaultAvatarUrl;
   const avatarTitle =
     session.user?.name && session.user?.email
       ? `${session.user?.name} (${session.user?.email})`
@@ -32,18 +31,18 @@ const SignedInButtons = ({ session }: { session: Session }) => {
   return (
     <div className="flex flex-row gap-7 text-base md:-mb-[3px]">
       <Link
-        href={Route.userProfile}
+        href={Route.account}
         className="typo-link flex flex-row-reverse items-center gap-4 lg:flex-row"
       >
         <Image
           className="rounded-full bg-gray shadow"
           src={avatarImage}
-          alt={session.user?.name ?? "Uživatelský profil"}
+          alt={session.user?.name ?? "Můj účet"}
           title={avatarTitle}
           width={30}
           height={30}
         />
-        Můj profil
+        Můj účet
       </Link>
     </div>
   );

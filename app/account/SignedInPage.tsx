@@ -6,18 +6,16 @@ import SlackIcon from "~/components/icons/slack";
 import { SimpleTabBar } from "~/components/TabBar";
 import { Route } from "~/src/routing";
 
-import { MapTab } from "./MapTab";
 import { NewsletterTab } from "./NewsletterTab";
 import { NotificationsTab } from "./NotificationsTab";
-import { PrivacyTab } from "./PrivacyTab";
-import { SkillsTab } from "./SkillsTab";
+import { UserProfileTab } from "./UserProfileTab";
 
 export const SignedInPage = ({ session }: { session: Session }) => {
   const tabs = [
     {
-      title: "Dovednosti",
-      hash: "skills",
-      content: <SkillsTab />,
+      title: "Profil",
+      hash: "profile",
+      content: <UserProfileTab />,
     },
     {
       title: "Newslettery",
@@ -30,16 +28,6 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       content: <NotificationsTab userEmail={session.user!.email!} />,
     },
     {
-      title: "Mapa komunity",
-      hash: "community-map",
-      content: <MapTab />,
-    },
-    {
-      title: "Soukromí",
-      hash: "privacy",
-      content: <PrivacyTab />,
-    },
-    {
       title: "Nástroje",
       hash: "tools",
       content: <ToolsTab />,
@@ -47,7 +35,7 @@ export const SignedInPage = ({ session }: { session: Session }) => {
   ];
   return (
     <section>
-      <h1 className="typo-title mb-4 mt-7">{session.user?.name}</h1>
+      <h1 className="typo-title mb-4 mt-7">Můj účet</h1>
       <SimpleTabBar items={tabs} />
     </section>
   );

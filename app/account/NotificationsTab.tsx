@@ -12,7 +12,7 @@ type Props = {
 
 export const NotificationsTab = ({ userEmail }: Props) => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
-    url: "/profile/me",
+    url: "/account/me",
     writeKeys: ["notificationFlags"],
   });
 

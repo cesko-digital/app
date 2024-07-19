@@ -37,14 +37,14 @@ export const optionalArray = <T>(itemDecoder: DecoderFunction<T>) => {
   };
 };
 
-/** Try a decoder and return a default value in case it fails */
+/** Try a decoder and return a default value in case it fails or returns `undefined` */
 export const withDefault = <T>(
-  decoder: DecoderFunction<T>,
+  decoder: DecoderFunction<T | undefined>,
   defaultValue: T,
-) => {
+): DecoderFunction<T> => {
   return (value: unknown) => {
     try {
-      return decoder(value);
+      return decoder(value) ?? defaultValue;
     } catch (_) {
       return defaultValue;
     }

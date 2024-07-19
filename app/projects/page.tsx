@@ -11,7 +11,7 @@ import { getRandomElem } from "~/src/utils";
 export const metadata: Metadata = {
   title: "Projekty | Česko.Digital",
   description: `Velká část z toho, co se v Česko.Digital děje, se děje formou projektů.
-  Podívejte se, na čem zrovna pracujeme, a kde se můžete v případě zájmu zapojit.`,
+  Podívej se, na čem zrovna pracujeme, a kde se můžeš v případě zájmu zapojit.`,
 };
 
 /** Refresh data every 5 minutes */
@@ -45,10 +45,7 @@ async function Page() {
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Projekty"
-      />
+      <Breadcrumbs currentPage="Projekty" />
 
       <h1 className="typo-title mb-10 mt-7">Projekty</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>

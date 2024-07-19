@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: `Pojďme se potkat! Online, naživo, v Praze, v Brně,
   na vzdělávacím webináři, praktickém workshopu – zkrátka kdekoliv
   a jakkoliv. Některé z těchto akcí pořádáme přímo my, na některých
-  spolupracujeme s partnery. Na všech vás ale rádi uvidíme.`,
+  spolupracujeme s partnery. Na všech tě ale rádi uvidíme.`,
 };
 
 /** Refresh data every 5 minutes */
@@ -39,10 +39,7 @@ async function Page() {
 
   return (
     <main className="m-auto max-w-content px-7 py-20">
-      <Breadcrumbs
-        path={[{ label: "Homepage", path: "/" }]}
-        currentPage="Akce"
-      />
+      <Breadcrumbs currentPage="Akce" />
 
       <h1 className="typo-title mb-10 mt-7">Akce</h1>
 

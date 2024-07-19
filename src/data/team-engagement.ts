@@ -34,11 +34,12 @@ export type TeamEngagement = decodeType<typeof decodeTeamEngagement>;
 export const decodeTeamEngagement = record({
   id: string,
   projectId: field("project", relationToOne),
-  userId: field("user", relationToOne),
+  userId: relationToOne,
   userName: relationToOne,
   userAvatarUrl: relationToOne,
   projectRole: optional(string),
   projectName: relationToOne,
+  projectSlug: relationToOne,
   coordinatingRole: withDefault(boolean, false),
   fields: optionalArray(string),
   inactive: withDefault(boolean, false),
@@ -68,6 +69,19 @@ export async function getPublicTeamEngagementsForProject(
     .select({
       view: "Public Team Engagements",
       filterByFormula: `{project} = "${projectSlug}"`,
+    })
+    .all()
+    .then(unwrapRecords)
+    .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
+}
+
+export async function getPublicTeamEngagementsForUser(
+  userId: string,
+): Promise<TeamEngagement[]> {
+  return await teamEngagementTable
+    .select({
+      view: "Public Team Engagements",
+      filterByFormula: `{userId} = "${userId}"`,
     })
     .all()
     .then(unwrapRecords)

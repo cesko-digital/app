@@ -29,6 +29,11 @@ export const SecondLevelNav = () => {
           Akce
         </Link>
       </li>
+      <li>
+        <Link href={Route.people} className={activeOnPrefix("/people")}>
+          Lidé
+        </Link>
+      </li>
     </ul>
   );
 };

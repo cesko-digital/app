@@ -77,7 +77,7 @@ export default async function Home() {
 
       <section>
         <h2 className="typo-title2 mb-1">Hledané role</h2>
-        <h3 className="typo-subtitle mb-5">Zapojte se v našich projektech</h3>
+        <h3 className="typo-subtitle mb-5">Zapoj se v našich projektech</h3>
         <div className="mb-7">
           {opportunities.map((o) => (
             <OpportunityRow
@@ -96,7 +96,7 @@ export default async function Home() {
       <section>
         <h2 className="typo-title2 mb-1">Tržiště</h2>
         <h3 className="typo-subtitle mb-7">
-          Zapojte se krátce v projektech mimo Česko.Digital
+          Zapoj se krátce v projektech mimo Česko.Digital
         </h3>
         <DiscussionSummaryBox bubbles={marketplaceSummary} />
         <MoreButton
@@ -125,7 +125,7 @@ export default async function Home() {
       <section>
         <h2 className="typo-title2 mb-1">Diskuze</h2>
         <h3 className="typo-subtitle mb-7">
-          Potřebujete poradit? Chcete poradit? Diskutujte o digitalizaci Česka
+          Potřebuješ poradit? Chceš poradit? Diskutuj o digitalizaci Česka
         </h3>
         <DiscussionSummaryBox bubbles={discussionSummary} />
         <MoreButton

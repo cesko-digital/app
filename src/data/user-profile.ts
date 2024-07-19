@@ -12,7 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { normalizeEmailAddress } from "~/src/utils";
+import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -26,7 +26,13 @@ const notificationFlags = [
 const featureFlags = ["registrationV2", "assetUpload"] as const;
 
 /** All supported privacy flags */
-const privacyFlags = ["hidePublicTeamMembership"] as const;
+export const privacyFlags = [
+  "hidePublicTeamMembership",
+  "enablePublicProfile",
+] as const;
+
+type PrivacyFlag = (typeof privacyFlags)[number];
+export type PrivacyFlags = PrivacyFlag[];
 
 /** Notification flags to turn on user e-mail notifications about various events */
 export type NotificationFlag = (typeof notificationFlags)[number];
@@ -63,7 +69,8 @@ export type TableView =
   | "Profiles with Occupation Data"
   | "Profiles with Skills"
   | "Profiles with Districts"
-  | "Missing Slack Account";
+  | "Missing Slack Account"
+  | "Public Profiles";
 
 /** A user profile type */
 export type UserProfile = decodeType<typeof decodeUserProfile>;
@@ -79,10 +86,15 @@ export const decodeUserProfile = record({
   occupation: optional(string),
   organizationName: optional(string),
   profileUrl: optional(string),
+  bio: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   slackProfileUrl: relationToZeroOrOne,
   slackAvatarUrl: relationToZeroOrOne,
+  avatarUrl: field(
+    "slackAvatarUrl",
+    withDefault(relationToZeroOrOne, defaultAvatarUrl),
+  ),
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFlags(union(...featureFlags)),
   notificationFlags: decodeFlags(union(...notificationFlags)),
@@ -103,6 +115,7 @@ export function encodeUserProfile(
     id: profile.id,
     name: profile.name,
     email: profile.email,
+    contactEmail: profile.contactEmail,
     competencies: profile.skills,
     occupation: profile.occupation,
     organizationName: profile.organizationName,
@@ -118,6 +131,7 @@ export function encodeUserProfile(
     createdAt: profile.createdAt,
     gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
     codeOfConductAcceptedAt: profile.codeOfConductAcceptedAt,
+    bio: profile.bio,
   };
 }
 
@@ -139,7 +153,10 @@ export const getUserProfile = async (databaseId: string) =>
     .find(databaseId)
     .then(unwrapRecord)
     .then(decodeUserProfile)
-    .catch((_) => null);
+    .catch((e) => {
+      console.error(e);
+      return null;
+    });
 
 /**
  * Get user profile with given e-mail
@@ -180,7 +197,9 @@ export async function updateUserProfile(
       | "codeOfConductAcceptedAt"
       | "notificationFlags"
       | "privacyFlags"
+      | "contactEmail"
       | "availableInDistricts"
+      | "bio"
     >
   >,
 ): Promise<UserProfile> {
@@ -203,14 +222,37 @@ export async function createUserProfile(
     | "state"
     | "slackUserRelationId"
     | "availableInDistricts"
+    | "bio"
     | "createdAt"
     | "gdprPolicyAcceptedAt"
     | "codeOfConductAcceptedAt"
     | "featureFlags"
+    | "privacyFlags"
   >,
 ): Promise<UserProfile> {
   return await userProfileTable
     .create(encodeUserProfile(profile))
     .then(unwrapRecord)
     .then(decodeUserProfile);
+}
+
+//
+// Utils
+//
+
+export function getUserHashtags(profile: UserProfile): string[] {
+  const uppercaseFirst = (s: string) =>
+    s.charAt(0).toLocaleUpperCase() + s.slice(1);
+  const tagify = (s: string) => s.split(" ").map(uppercaseFirst).join("");
+  const categories = profile.skills
+    .split(/;\s*/)
+    .map((skill) => skill.split(/\s*\/\s*/).shift())
+    .filter((category) => category !== "Ostatní")
+    .map((category) => tagify(category!));
+  const places = profile.availableInDistricts?.split(", ").map(tagify) ?? [];
+  return unique(
+    [...categories, ...places]
+      .sort((a, b) => a.localeCompare(b))
+      .map((tag) => "#" + tag),
+  );
 }

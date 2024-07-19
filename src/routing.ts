@@ -1,3 +1,5 @@
+import { type UserProfile } from "~/src/data/user-profile";
+
 import { type Event } from "./data/event";
 import { type MetricDefinition } from "./data/metrics";
 import { type Opportunity } from "./data/opportunity";
@@ -11,24 +13,27 @@ export const Route = {
   // External routes
   forum: "https://diskutuj.digital/",
   blog: "https://blog.cesko.digital/",
-  slackOnboarding: "https://join.slack.com/t/cesko-digital/shared_invite/zt-2czwf0gyv-2gKtKr7bHHIXk40xTbRckQ",
+  slackOnboarding:
+    "https://join.slack.com/t/cesko-digital/shared_invite/zt-2czwf0gyv-2gKtKr7bHHIXk40xTbRckQ",
   marketplace: "https://diskutuj.digital/c/trziste/5",
   // Static routes
   events: "/events",
   projects: "/projects",
   opportunities: "/opportunities",
+  people: "/people",
   register,
-  userProfile: "/profile",
+  account: "/account",
   stats: "/stats",
   // More static routes
   eventFeed: "/events/feed.ical",
   // Dynamic routes
   toEvent: (e: Event) => `/events/${e.slug}`,
-  toProject: (p: Project) => `/projects/${p.slug}`,
+  toProject: (p: Pick<Project, "slug">) => `/projects/${p.slug}`,
   toOpportunity: (o: Pick<Opportunity, "slug">) => `/opportunities/${o.slug}`,
   toYouTubePlaylist: (playlistId: string) =>
     `https://www.youtube.com/playlist?list=${playlistId}`,
-  toMetric: (m: MetricDefinition) => `/stats/${m.slug}`,
+  toMetric: (m: Pick<MetricDefinition, "slug">) => `/stats/${m.slug}`,
+  toProfile: (p: Pick<UserProfile, "id">) => `/people/${p.id}`,
 };
 
 /** Site URL without trailing slash */

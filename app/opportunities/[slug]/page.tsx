@@ -36,7 +36,6 @@ async function Page({ params }: Props) {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[
-          { label: "Homepage", path: "/" },
           {
             label: "Hledané role",
             path: Route.opportunities,
@@ -87,25 +86,24 @@ const RoleSidebar = ({
   role: Opportunity;
   project: Project;
   owner: UserProfile;
-}) => {
-  const imageUrl =
-    owner.slackAvatarUrl ??
-    "https://data.cesko.digital/people/generic-profile.jpg";
-  return (
-    <Sidebar>
-      <SidebarSection title="Projekt">
-        <ProjectImageLabel project={project} />
-      </SidebarSection>
-      <SidebarSection title="Časová náročnost">
-        {role.timeRequirements}
-      </SidebarSection>
-      <SidebarSection title="Kontaktní osoba">
-        <ImageLabel imageUrl={imageUrl} label={owner.name} />
-      </SidebarSection>
-      <SidebarCTA href={role.contactUrl} label="Mám zájem" />
-    </Sidebar>
-  );
-};
+}) => (
+  <Sidebar>
+    <SidebarSection title="Projekt">
+      <ProjectImageLabel project={project} />
+    </SidebarSection>
+    <SidebarSection title="Časová náročnost">
+      {role.timeRequirements}
+    </SidebarSection>
+    <SidebarSection title="Kontaktní osoba">
+      <ImageLabel
+        link={Route.toProfile({ id: owner.id })}
+        imageUrl={owner.avatarUrl}
+        label={owner.name}
+      />
+    </SidebarSection>
+    <SidebarCTA href={role.contactUrl} label="Mám zájem" />
+  </Sidebar>
+);
 
 //
 // Data Loading

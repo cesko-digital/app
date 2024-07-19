@@ -1,3 +1,4 @@
+import { type PrivacyFlags } from "~/src/data/user-profile";
 import { type SkillSelection } from "~/src/skills/skills";
 import { looksLikeEmailAdress } from "~/src/utils";
 
@@ -13,9 +14,11 @@ export type RegistrationData = {
   skills: SkillSelection;
   occupation: string;
   organizationName?: string;
+  privacyFlags: PrivacyFlags;
   gdprPolicyAcceptedAt: string;
   codeOfConductAcceptedAt: string;
   availableInDistricts: string;
+  bio: string;
   profileUrl?: string;
 };
 
@@ -29,6 +32,8 @@ export type FormState = {
   skills: SkillSelection;
   privacyConsent: boolean;
   availableInDistricts: string;
+  bio: string;
+  enablePublicProfile: boolean;
   gdprConsent: boolean;
   cocConsent: boolean;
   submissionState: SubmissionState;
@@ -43,7 +48,9 @@ export const emptyFormState: FormState = {
   profileUrl: "",
   skills: {},
   availableInDistricts: "",
+  bio: "",
   privacyConsent: false,
+  enablePublicProfile: true,
   gdprConsent: false,
   cocConsent: false,
   submissionState: { tag: "not_submitted_yet" },
@@ -84,9 +91,21 @@ export function validateForm(
   } else if (!occupation) {
     return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
-    const { organizationName, profileUrl, availableInDistricts } = data;
+    const {
+      organizationName,
+      profileUrl,
+      availableInDistricts,
+      bio,
+      enablePublicProfile,
+    } = data;
     const gdprPolicyAcceptedAt = now.toISOString();
     const codeOfConductAcceptedAt = now.toISOString();
+
+    const privacyFlags: PrivacyFlags = [];
+    if (enablePublicProfile) {
+      privacyFlags.push("enablePublicProfile");
+    }
+
     return {
       result: "success",
       validatedData: {
@@ -95,10 +114,12 @@ export function validateForm(
         skills,
         organizationName,
         availableInDistricts,
+        bio,
         occupation,
         profileUrl,
         gdprPolicyAcceptedAt,
         codeOfConductAcceptedAt,
+        privacyFlags,
       },
     };
   }
