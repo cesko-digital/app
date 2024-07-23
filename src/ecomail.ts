@@ -165,29 +165,42 @@ export async function getSubscriber(
     .then((w) => w.subscriber);
 }
 
-/** Subscribe contact to given list */
+export type SubscriptionProps = {
+  /** Subscriber email */
+  email: string;
+
+  /** ID of the contact list to subscribe to, defaults to our main contact list */
+  listId?: number;
+
+  /**
+   * Tags to set
+   *
+   * NOTE: The value will overwrite any existing tags.
+   */
+  tags?: string[];
+
+  /**
+   * Preference groups to set
+   *
+   * NOTE: The value will overwrite any existing groups.
+   */
+  groups?: MainPreferenceGroupOption[];
+
+  /** Should the subscriber be resubscribed if needed? Defaults to `true`. */
+  resubscribe?: boolean;
+
+  /** If set, the contact will be immediately subscribed without double opt-in */
+  skipConfirmation?: boolean;
+};
+
+/**
+ * Subscribe contact to given list
+ *
+ * https://ecomailczv2.docs.apiary.io/#reference/lists/list-subscribe
+ */
 export async function subscribeToList(
   apiKey: string,
-  subscription: {
-    /** Subscriber email */
-    email: string;
-    /** ID of the contact list to subscribe to, defaults to our main contact list */
-    listId?: number;
-    /**
-     * Tags to set
-     *
-     * NOTE: The value will overwrite any existing tags.
-     */
-    tags?: string[];
-    /**
-     * Preference groups to set
-     *
-     * NOTE: The value will overwrite any existing groups.
-     */
-    groups?: MainPreferenceGroupOption[];
-    /** Should the subscriber be resubscribed if needed? Defaults to `true`. */
-    resubscribe?: boolean;
-  },
+  subscription: SubscriptionProps,
 ): Promise<boolean> {
   const {
     email,
@@ -195,6 +208,7 @@ export async function subscribeToList(
     tags,
     groups,
     resubscribe = true,
+    skipConfirmation = false,
   } = subscription;
   const payload = {
     subscriber_data: {
@@ -202,6 +216,7 @@ export async function subscribeToList(
       tags,
       groups: groups ? { [mainPreferenceGroupId]: groups } : undefined,
     },
+    skip_confirmation: skipConfirmation,
     update_existing: true,
     resubscribe,
   };
