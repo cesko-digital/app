@@ -96,7 +96,7 @@ export const NewsletterTab = ({ userMail }: Props) => {
                 ></input>
                 {name}
               </label>
-              <div className="typo-caption mb-2 ml-6">
+              <div className="typo-caption mb-2 ml-6 text-balance">
                 {groupDescriptions[name]}
               </div>
             </Fragment>
@@ -111,8 +111,8 @@ export const NewsletterTab = ({ userMail }: Props) => {
 const HelpInfo = ({ userMail }: { userMail: string }) => {
   return (
     <p className="typo-caption mb-10 max-w-prose">
-      Nastavení se týká adresy, kterou se přihlašuješ do Slacku ({userMail}).
-      Pokud si chceš newslettery přihlásit na jinou adresu, můžeš využít{" "}
+      Nastavení se týká tvé registrační adresy ({userMail}). Pokud si chceš
+      newslettery přihlásit na jinou adresu, můžeš využít{" "}
       <a
         href="https://cesko.digital/go/newsletters"
         className="typo-link"
