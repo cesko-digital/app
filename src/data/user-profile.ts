@@ -12,7 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
+import { defaultAvatarUrl, normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
