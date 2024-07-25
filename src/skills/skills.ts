@@ -227,7 +227,11 @@ Vývoj / WordPress -> #wordpress
 Projektové řízení / Business model a development -> #projektové-řízení
 Projektové řízení / Finance -> #finance
 Projektové řízení / Fundraising -> #fundraising
+<<<<<<< HEAD
 Projektové řízení / Product Owner -> #product-owner
+=======
+Projektové řízení / Product Owner -> #ProductOwner
+>>>>>>> ec1e578b (Add first draft of skills-to-tags conversion routine)
 Projektové řízení / Scrum Master -> #scrum
 Personalistika / Community management -> #komunity
 Personalistika / Recruitment -> #hr
