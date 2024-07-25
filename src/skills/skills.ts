@@ -219,7 +219,7 @@ Vývoj / WordPress -> #wordpress
 Projektové řízení / Business model a development -> #projektové-řízení
 Projektové řízení / Finance -> #finance
 Projektové řízení / Fundraising -> #fundraising
-Projektové řízení / Product Owner -> #ProductOwner
+Projektové řízení / Product Owner -> #product-owner
 Projektové řízení / Scrum Master -> #scrum
 Personalistika / Community management -> #komunity
 Personalistika / Recruitment -> #hr
