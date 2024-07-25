@@ -103,6 +103,7 @@ test("Adding skills", () => {
 });
 
 test("Convert skills to hashtags", () => {
+  expect(skillsToHashtags("")).toBe("");
   expect(
     skillsToHashtags(
       "Marketing / Marketingová strategie / medior; Marketing / Analýza marketingových dat / medior",
