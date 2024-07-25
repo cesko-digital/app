@@ -2,17 +2,14 @@
 
 import Image from "next/image";
 
-import { type Session } from "next-auth";
-
 import { Icons } from "~/components/icons";
 import { SimpleTabBar } from "~/components/TabBar";
 import { Route } from "~/src/routing";
 
-import { NewsletterTab } from "./NewsletterTab";
 import { NotificationsTab } from "./NotificationsTab";
 import { UserProfileTab } from "./UserProfileTab";
 
-export const SignedInPage = ({ session }: { session: Session }) => {
+export const SignedInPage = () => {
   const tabs = [
     {
       title: "Profil",
@@ -20,14 +17,9 @@ export const SignedInPage = ({ session }: { session: Session }) => {
       content: <UserProfileTab />,
     },
     {
-      title: "Newslettery",
-      hash: "newsletter",
-      content: <NewsletterTab userMail={session.user!.email!} />,
-    },
-    {
       title: "Notifikace",
       hash: "notifications",
-      content: <NotificationsTab userEmail={session.user!.email!} />,
+      content: <NotificationsTab />,
     },
     {
       title: "Nástroje",

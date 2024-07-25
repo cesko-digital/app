@@ -1,30 +1,44 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import { boolean, record } from "typescript-json-decoder";
+
 import { withAuthenticatedUser } from "~/src/auth";
 import {
-  decodeNewsletterPreferences,
-  getNewsletterPreferences,
-  setNewsletterPreferences,
+  getSubscriber,
+  mainContactListId,
+  subscribeToList,
+  unsubscribeFromList,
 } from "~/src/ecomail";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 
-// TBD: This should be Slack e-mail.
+/** Get main Ecomail contact list subscription status for signed-in user */
 export async function GET() {
   return withAuthenticatedUser(async ({ email }) => {
-    const existingPrefs = await getNewsletterPreferences(apiKey, email);
-    return NextResponse.json(existingPrefs);
+    const subscriber = await getSubscriber(apiKey, email);
+    const subscribed =
+      subscriber.lists.find((list) => list.listId === mainContactListId)
+        ?.state === "subscribed";
+    return NextResponse.json({ subscribed });
   });
 }
 
+/** Set main Ecomail contact list subscription status for signed-in user */
 export async function POST(request: NextRequest) {
+  const decodePayload = record({
+    subscribed: boolean,
+  });
   return withAuthenticatedUser(async ({ email }) => {
-    const newPrefs = decodeNewsletterPreferences(await request.json());
-    const success = await setNewsletterPreferences(apiKey, email, newPrefs);
-    return success
-      ? new Response(null, { status: 204 })
-      : new Response("Failed to update subscriber prefs at Ecomail", {
-          status: 500,
-        });
+    const { subscribed } = decodePayload(await request.json());
+    if (subscribed) {
+      await subscribeToList(apiKey, {
+        skipConfirmation: true,
+        email,
+      });
+      return new Response(null, { status: 204 });
+    } else {
+      await unsubscribeFromList(apiKey, email);
+      return new Response(null, { status: 204 });
+    }
   });
 }

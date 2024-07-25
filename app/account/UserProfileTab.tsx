@@ -25,7 +25,11 @@ type SectionProps = {
 // TBD: In the long term we probably want to share more of this code
 // with the sign-up form if possible, maybe at the section level?
 export const UserProfileTab = () => {
-  const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
+  const {
+    model: model,
+    updating,
+    setModel,
+  } = usePatchedJSONResource<UserProfile>({
     url: "/account/me",
     writeKeys: [
       "skills",
