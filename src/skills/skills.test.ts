@@ -4,6 +4,7 @@ import {
   decodeSkillSelection,
   encodeSkill,
   encodeSkillSelection,
+  skillsToHashtags,
   type Skill,
   type SkillSelection,
 } from "./skills";
@@ -98,5 +99,32 @@ test("Adding skills", () => {
   expect(addTo("Dev / Go / senior", "Dev / Go")).toBe("Dev / Go / senior");
   expect(addTo("Dev / Go / mentor", "Dev / Go / senior")).toBe(
     "Dev / Go / mentor",
+  );
+});
+
+test("Convert skills to hashtags", () => {
+  expect(
+    skillsToHashtags(
+      "Marketing / Marketingová strategie / medior; Marketing / Analýza marketingových dat / medior",
+    ),
+  ).toBe("#marketing #medior #strategie");
+  expect(
+    skillsToHashtags(
+      "Vývoj / Backend; Vývoj / Cloud (Azure, AWS, GCP); Vývoj / DevOps; Vývoj / Frontend; Vývoj / HTML & CSS; Vývoj / JavaScript + TypeScript; Vývoj / Mobilní aplikace (Android, iOS, Flutter, …); Vývoj / Node.js; Vývoj / React; Marketing / Copywriting",
+    ),
+  ).toBe(
+    "#backend #cloud #copywriting #css #devops #frontend #html #javascript #mobile #node #react #typescript",
+  );
+  expect(
+    skillsToHashtags(
+      "Design / UX design / medior; Marketing; Vývoj / React / junior",
+    ),
+  ).toBe("#design #junior #marketing #medior #react #ux");
+  expect(
+    skillsToHashtags(
+      "Vývoj / Docker a Kubernetes / medior; Vývoj / HTML & CSS / medior; Vývoj / Python / senior; Vývoj / React / senior; Vývoj / Testování / medior; Vývoj / JavaScript + TypeScript / medior; Vývoj / Node.js / junior",
+    ),
+  ).toBe(
+    "#css #devops #html #javascript #junior #medior #node #python #react #senior #testování #typescript",
   );
 });

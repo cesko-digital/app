@@ -1,5 +1,7 @@
 import { undef, union } from "typescript-json-decoder";
 
+import { unique } from "~/src/utils";
+
 /** All available skill levels we work with */
 export const SKILL_LEVELS = ["junior", "medior", "senior", "mentor"] as const;
 
@@ -138,3 +140,96 @@ export function decodeSkillSelection(input: string): SkillSelection {
       .reduce(addSkill, {})
   );
 }
+
+export function skillsToHashtags(skills: string): string {
+  const tags: string[] = [];
+  const selection = decodeSkillSelection(skills);
+
+  //
+  // Convert top-level categories
+  //
+  const categoryMap: Record<string, string> = {
+    Marketing: "#marketing",
+    "Projektové řízení": "#projektové-řízení",
+    Personalistika: "#hr",
+    Design: "#design",
+  };
+
+  for (const category of Object.keys(selection)) {
+    if (
+      // Have conversion rule
+      categoryMap[category] &&
+      // There are no skills selected in category
+      Object.values(selection[category]).length === 0
+    ) {
+      tags.push(categoryMap[category]);
+    }
+  }
+
+  //
+  // Convert regular mid-level skills
+  //
+  for (const categoryName of Object.keys(selection)) {
+    const category = selection[categoryName];
+    for (const skill of Object.keys(category)) {
+      for (const line of conversionTable) {
+        const [key, val] = line;
+        if (key === `${categoryName} / ${skill}`) {
+          tags.push(...val.split(" "));
+        }
+      }
+    }
+  }
+
+  //
+  // Convert seniorities
+  //
+  Object.values(selection)
+    .map((subselection) => Object.values(subselection))
+    .forEach((level) =>
+      tags.push(...level.filter((l) => !!l).map((l) => "#" + l)),
+    );
+
+  return unique(tags).sort().join(" ");
+}
+
+const conversionTableSrc = `
+Marketing / Analýza marketingových dat -> #marketing
+Marketing / Audiovizuální produkce -> #audio #video
+Marketing / Event management -> #eventy
+Marketing / Marketingová strategie -> #marketing #strategie
+Marketing / Copywriting -> #copywriting
+Marketing / Public Relations -> #pr
+Vývoj / Backend -> #backend
+Vývoj / Cloud (Azure, AWS, GCP) -> #cloud
+Vývoj / Databáze -> #databáze
+Vývoj / DevOps -> #devops
+Vývoj / Docker a Kubernetes -> #devops
+Vývoj / Frontend -> #frontend
+Vývoj / HTML & CSS -> #html #css
+Vývoj / Java a Kotlin -> #java #kotlin
+Vývoj / JavaScript + TypeScript -> #javascript #typescript
+Vývoj / Mobilní aplikace (Android, iOS, Flutter, …) -> #mobile
+Vývoj / Node.js -> #node
+Vývoj / PHP -> #php
+Vývoj / Python -> #python
+Vývoj / React -> #react
+Vývoj / Testování -> #testování
+Vývoj / WordPress -> #wordpress
+Projektové řízení / Business model a development -> #projektové-řízení
+Projektové řízení / Finance -> #finance
+Projektové řízení / Fundraising -> #fundraising
+Projektové řízení / Product Owner -> #ProductOwner
+Projektové řízení / Scrum Master -> #scrum
+Personalistika / Community management -> #komunity
+Personalistika / Recruitment -> #hr
+Design / Mobile design -> #design
+Design / Research -> #design #výzkum
+Design / UI design -> #design #ui
+Design / UX design -> #design #ux
+Design / Web design -> #design
+`;
+
+const conversionTable = conversionTableSrc
+  .split(/\n/)
+  .map((line) => line.split(" -> "));
