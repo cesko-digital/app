@@ -50,6 +50,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
         featureFlags: ["registrationV2"],
+        tags: "",
       });
       await logUserCreatedEvent(user);
       return new Response("User profile created.", { status: 201 });
