@@ -5,7 +5,10 @@ import {
   UserProfileCard,
   UserProfileContainer,
 } from "~/components/UserProfileCard";
-import { getAllUserProfiles, getUserHashtags } from "~/src/data/user-profile";
+import {
+  getAllUserProfiles,
+  mergeUserProfileTags,
+} from "~/src/data/user-profile";
 import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
@@ -35,7 +38,7 @@ async function Page() {
           <UserProfileCard
             key={profile.id}
             profile={profile}
-            label={getUserHashtags(profile).join(" ")}
+            label={mergeUserProfileTags(profile)}
           />
         ))}
       </UserProfileContainer>
