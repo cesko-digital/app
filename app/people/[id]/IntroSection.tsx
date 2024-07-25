@@ -5,7 +5,10 @@ import Link from "next/link";
 
 import { useCurrentUser } from "~/components/hooks/user";
 import { iconForUrl } from "~/components/icons";
-import { getUserHashtags, type UserProfile } from "~/src/data/user-profile";
+import {
+  mergeUserProfileTags,
+  type UserProfile,
+} from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 export const IntroSection = ({ profile }: { profile: UserProfile }) => {
@@ -39,7 +42,7 @@ export const IntroSection = ({ profile }: { profile: UserProfile }) => {
         </div>
       </div>
       <div className="text-gravel">
-        <p className="mb-1">{getUserHashtags(profile).join(" ")}</p>
+        <p className="mb-1 text-balance">{mergeUserProfileTags(profile)}</p>
       </div>
       {profile.bio && <p className="mt-2 max-w-prose">{profile.bio}</p>}
     </section>
