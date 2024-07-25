@@ -78,7 +78,7 @@ const ContactSidebar = ({ profile }: Profile) => {
   );
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex shrink-0 flex-col items-center gap-4">
       <Avatar profile={profile} />
       {profile.slackId && (
         <Button
