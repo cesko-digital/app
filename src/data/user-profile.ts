@@ -252,5 +252,23 @@ export function mergeUserProfileTags(
     ?.split(", ")
     .map(tagify)
     .join(" ");
-  return [occupationTags, locationTags].join(" ");
+  const occupationTag = profile.occupation
+    ? dressOccupation(profile.occupation)
+    : undefined;
+  return [occupationTags, locationTags, occupationTag]
+    .filter((item) => !!item)
+    .join(" ");
 }
+
+const dressOccupation = (occupation: string) => {
+  const labels: Record<string, string> = {
+    "private-sector": "#soukromý-sektor",
+    "non-profit": "#nezisk",
+    state: "#veřejná-správa",
+    freelancing: "#freelance",
+    studying: "#studuju",
+    "parental-leave": "#rodičovská",
+    "looking-for-job": "#hire-me",
+  };
+  return labels[occupation] ?? undefined;
+};
