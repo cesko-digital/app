@@ -1,5 +1,4 @@
 import { type PrivacyFlags } from "~/src/data/user-profile";
-import { type SkillSelection } from "~/src/skills/skills";
 import { looksLikeEmailAdress } from "~/src/utils";
 
 export type SubmissionState =
@@ -11,7 +10,7 @@ export type SubmissionState =
 export type RegistrationData = {
   name: string;
   email: string;
-  skills: SkillSelection;
+  tags: string;
   occupation: string;
   organizationName?: string;
   privacyFlags: PrivacyFlags;
@@ -29,7 +28,7 @@ export type FormState = {
   occupation: string;
   organizationName: string;
   profileUrl: string;
-  skills: SkillSelection;
+  tags: string;
   privacyConsent: boolean;
   availableInDistricts: string;
   bio: string;
@@ -46,7 +45,7 @@ export const emptyFormState: FormState = {
   organizationName: "",
   occupation: "",
   profileUrl: "",
-  skills: {},
+  tags: "",
   availableInDistricts: "",
   bio: "",
   privacyConsent: false,
@@ -67,7 +66,7 @@ export function validateForm(
   const {
     name,
     email,
-    skills,
+    tags,
     privacyConsent,
     gdprConsent,
     cocConsent,
@@ -80,8 +79,6 @@ export function validateForm(
     return error("Je třeba vyplnit email.");
   } else if (!looksLikeEmailAdress(email)) {
     return error("V e-mailové adrese je nějaká chyba.");
-  } else if (Object.entries(skills).length === 0) {
-    return error("Je třeba vyplnit aspoň jednu dovednost.");
   } else if (!privacyConsent) {
     return error("Je třeba odsouhlasit podmínky zpracování osobních údajů.");
   } else if (!gdprConsent) {
@@ -111,7 +108,7 @@ export function validateForm(
       validatedData: {
         name,
         email,
-        skills,
+        tags,
         organizationName,
         availableInDistricts,
         bio,
