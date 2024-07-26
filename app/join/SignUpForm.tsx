@@ -7,10 +7,8 @@ import { signIn } from "next-auth/react";
 import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
-import { SkillPicker } from "~/components/SkillPicker";
+import { HashtagSelect } from "~/components/HashtagSelect";
 import { trackCustomEvent } from "~/src/plausible/events";
-import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
-import skillMenu from "~/src/skills/skills.json";
 import { ContentType, looksLikeEmailAdress } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";
@@ -68,7 +66,7 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
     <div className="flex flex-col gap-10 pt-7">
       <IntroSection />
       <PersonalDetailsSection state={state} onChange={setState} />
-      <SkillSection skillMenu={skillMenu} state={state} onChange={setState} />
+      <SkillSection state={state} onChange={setState} />
       <PrivacySection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
@@ -258,21 +256,12 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 // Skills section
 //
 
-type SkillSectionProps = FormSectionProps & {
-  skillMenu: SkillMenu;
-};
-
-const SkillSection: React.FC<SkillSectionProps> = ({
-  state,
-  skillMenu,
-  onChange,
-}) => {
+const SkillSection: React.FC<FormSectionProps> = ({ state, onChange }) => {
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-4">
         <h2 className="typo-title2">
           Dovednosti, které můžeš komunitě nabídnout
-          <RequiredFieldMarker />
         </h2>
         <p>
           Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
@@ -280,11 +269,9 @@ const SkillSection: React.FC<SkillSectionProps> = ({
           typu aktivity nebo projektu. Vyplň vše, co tě zajímá, včetně oblastí,
           ve kterých se chceš rozvíjet.
         </p>
-        <SkillPicker
-          skillMenu={skillMenu}
-          selection={state.skills}
-          disabled={!isEditable(state)}
-          onChange={(skills) => onChange({ ...state, skills })}
+        <HashtagSelect
+          value={state.tags}
+          onChange={(tags) => onChange({ ...state, tags })}
         />
       </div>
     </section>
@@ -570,11 +557,10 @@ const TextArea: React.FC<TextAreaProps> = ({
 //
 
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
-  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
     const response = await fetch("/account/me", {
       method: "POST",
-      body: JSON.stringify(payload, null, 2),
+      body: JSON.stringify(data, null, 2),
       headers: { "Content-Type": ContentType.json },
     });
     return response.ok;
