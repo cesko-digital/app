@@ -66,8 +66,8 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
   return (
     <div className="flex flex-col gap-10 pt-7">
       <IntroSection />
-      <PersonalDetailsSection state={state} onChange={setState} />
-      <SkillSection state={state} onChange={setState} />
+      <BasicInfoSection state={state} onChange={setState} />
+      <ProfileDetailSection state={state} onChange={setState} />
       <PrivacySection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
@@ -111,15 +111,16 @@ const IntroSection = () => (
 );
 
 //
-// Personal details
+// Basic Info
 //
 
-const PersonalDetailsSection = ({ state, onChange }: FormSectionProps) => {
+const BasicInfoSection = ({ state, onChange }: FormSectionProps) => {
   const disabled = !isEditable(state);
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-7">
         <h2 className="typo-title2">To nejdůležitější o tobě</h2>
+
         <TextInput
           id="name"
           label="Jméno a příjmení"
@@ -129,6 +130,7 @@ const PersonalDetailsSection = ({ state, onChange }: FormSectionProps) => {
           disabled={disabled}
           required
         />
+
         <div>
           <TextInput
             id="email"
@@ -143,40 +145,7 @@ const PersonalDetailsSection = ({ state, onChange }: FormSectionProps) => {
             <EmailAlreadyExistsError email={state.email} />
           )}
         </div>
-        <OccupationSelect state={state} onChange={onChange} />
-        <TextInput
-          id="organization"
-          label="Název organizace, kde působíš"
-          value={state.organizationName}
-          placeholder="název firmy, neziskové organizace, státní instituce, …"
-          autoComplete="organization"
-          disabled={disabled}
-          onChange={(organizationName) =>
-            onChange({ ...state, organizationName })
-          }
-        />
-        <TextInput
-          id="profile"
-          label="Odkaz na tvůj web nebo profesní profil"
-          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
-          value={state.profileUrl}
-          type="url"
-          disabled={disabled}
-          onChange={(profileUrl) => onChange({ ...state, profileUrl })}
-        />
-        <div>
-          <label>Ve kterých okresech ČR býváš k zastižení?</label>
-          <DistrictSelect
-            value={state.availableInDistricts}
-            onChange={(availableInDistricts) =>
-              onChange({ ...state, availableInDistricts })
-            }
-          />
-          <p className="typo-caption mt-2">
-            Tahle data sbíráme, abychom mohli propojovat členy komunity z
-            různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
-          </p>
-        </div>
+
         <TextArea
           id="bio"
           label="Řekni něco málo o sobě, ať tě lidé lépe poznají"
@@ -185,6 +154,15 @@ const PersonalDetailsSection = ({ state, onChange }: FormSectionProps) => {
           disabled={disabled}
           onChange={(bio) => onChange({ ...state, bio })}
         />
+
+        <div>
+          <label>Čemu se věnuješ?</label>
+          <HashtagSelect
+            value={state.tags}
+            onChange={(tags) => onChange({ ...state, tags })}
+          />
+          <p className="typo-caption mt-2">TBD: Vysvětlující popisek</p>
+        </div>
       </div>
     </section>
   );
@@ -208,6 +186,59 @@ const EmailAlreadyExistsError = ({ email }: { email: string }) => {
   );
 };
 
+//
+// Details
+//
+
+const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
+  const disabled = !isEditable(state);
+  return (
+    <section>
+      <div className="flex max-w-prose flex-col gap-7">
+        <h2 className="typo-title2">TBD: Další věci do profilu</h2>
+
+        <OccupationSelect state={state} onChange={onChange} />
+
+        <TextInput
+          id="organization"
+          label="Název organizace, kde působíš"
+          value={state.organizationName}
+          placeholder="název firmy, neziskové organizace, státní instituce, …"
+          autoComplete="organization"
+          disabled={disabled}
+          onChange={(organizationName) =>
+            onChange({ ...state, organizationName })
+          }
+        />
+
+        <TextInput
+          id="profile"
+          label="Odkaz na tvůj web nebo profesní profil"
+          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
+          value={state.profileUrl}
+          type="url"
+          disabled={disabled}
+          onChange={(profileUrl) => onChange({ ...state, profileUrl })}
+        />
+
+        <div>
+          <label>Ve kterých okresech ČR býváš k zastižení?</label>
+          <DistrictSelect
+            value={state.availableInDistricts}
+            onChange={(availableInDistricts) =>
+              onChange({ ...state, availableInDistricts })
+            }
+          />
+          <p className="typo-caption mt-2">
+            Tahle data sbíráme, abychom mohli propojovat členy komunity z
+            různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const OccupationSelect = ({ state, onChange }: FormSectionProps) => {
   const options = {
     "private-sector": "Pracuji v soukromém sektoru",
@@ -223,7 +254,7 @@ const OccupationSelect = ({ state, onChange }: FormSectionProps) => {
   return (
     <div>
       <label className="mb-1 block">
-        Čemu se aktuálně věnuješ?
+        TBD: Čemu se aktuálně věnuješ?
         <RequiredFieldMarker />
       </label>
       <p className="typo-caption mb-3">
@@ -248,32 +279,6 @@ const OccupationSelect = ({ state, onChange }: FormSectionProps) => {
         ))}
       </div>
     </div>
-  );
-};
-
-//
-// Skills section
-//
-
-const SkillSection = ({ state, onChange }: FormSectionProps) => {
-  return (
-    <section>
-      <div className="flex max-w-prose flex-col gap-4">
-        <h2 className="typo-title2">
-          Dovednosti, které můžeš komunitě nabídnout
-        </h2>
-        <p>
-          Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
-          může někdo z komunity poprosit o radu nebo tě zapojit do správného
-          typu aktivity nebo projektu. Vyplň vše, co tě zajímá, včetně oblastí,
-          ve kterých se chceš rozvíjet.
-        </p>
-        <HashtagSelect
-          value={state.tags}
-          onChange={(tags) => onChange({ ...state, tags })}
-        />
-      </div>
-    </section>
   );
 };
 
