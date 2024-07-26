@@ -80,8 +80,6 @@ type FormSectionProps = {
   onChange: (updatedState: FormState) => void;
 };
 
-type FormSection = React.FC<FormSectionProps>;
-
 const isEditable = (state: FormState) => {
   const tag = state.submissionState.tag;
   return tag === "not_submitted_yet" || tag === "submission_error";
@@ -116,7 +114,7 @@ const IntroSection = () => (
 // Personal details
 //
 
-const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
+const PersonalDetailsSection = ({ state, onChange }: FormSectionProps) => {
   const disabled = !isEditable(state);
   return (
     <section>
@@ -210,7 +208,7 @@ const EmailAlreadyExistsError = ({ email }: { email: string }) => {
   );
 };
 
-const OccupationSelect: FormSection = ({ state, onChange }) => {
+const OccupationSelect = ({ state, onChange }: FormSectionProps) => {
   const options = {
     "private-sector": "Pracuji v soukromém sektoru",
     "non-profit": "Pracuji v neziskové organizaci",
@@ -257,7 +255,7 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
 // Skills section
 //
 
-const SkillSection: React.FC<FormSectionProps> = ({ state, onChange }) => {
+const SkillSection = ({ state, onChange }: FormSectionProps) => {
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-4">
@@ -283,7 +281,7 @@ const SkillSection: React.FC<FormSectionProps> = ({ state, onChange }) => {
 // Privacy section
 //
 
-const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
+const PrivacySection = ({ state, onChange }: FormSectionProps) => {
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-4">
@@ -315,7 +313,7 @@ const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
 // Legal section
 //
 
-const LegalSection: FormSection = ({ state, onChange }) => (
+const LegalSection = ({ state, onChange }: FormSectionProps) => (
   <section>
     <div className="flex max-w-prose flex-col gap-2">
       <h2 className="typo-title2 mb-2">
@@ -383,10 +381,7 @@ type SubmitSectionProps = FormSectionProps & {
   onSubmit?: (validatedData: RegistrationData) => Promise<void>;
 };
 
-const SubmitSection: React.FC<SubmitSectionProps> = ({
-  state,
-  onSubmit = (_) => {},
-}) => {
+const SubmitSection = ({ state, onSubmit }: SubmitSectionProps) => {
   const validationResult = validateForm(state);
   const { submissionState } = state;
 
@@ -405,7 +400,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
   const handleSubmit = () => {
     if (validationResult.result === "success") {
       if (onSubmit) {
-        onSubmit(validationResult.validatedData);
+        return onSubmit(validationResult.validatedData);
       } else {
         console.log(
           `Submitted form data: ${JSON.stringify(
@@ -463,7 +458,7 @@ type TextInputProps = {
   onChange?: (newValue: string) => void;
 };
 
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput = ({
   id,
   label,
   type = "text",
@@ -473,7 +468,7 @@ const TextInput: React.FC<TextInputProps> = ({
   disabled = false,
   autoComplete,
   onChange = (_) => {},
-}) => {
+}: TextInputProps) => {
   return (
     <div>
       <label htmlFor={id}>
@@ -501,7 +496,7 @@ type CheckboxProps = {
   onChange: (newValue: boolean) => void;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, disabled, onChange }) => {
+const Checkbox = ({ checked, disabled, onChange }: CheckboxProps) => {
   return (
     <input
       type="checkbox"
@@ -525,7 +520,7 @@ type TextAreaProps = {
   onChange?: (newValue: string) => void;
 };
 
-const TextArea: React.FC<TextAreaProps> = ({
+const TextArea = ({
   id,
   label,
   value = undefined,
@@ -534,7 +529,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   disabled = false,
   rows = 3,
   onChange = (_) => {},
-}) => {
+}: TextAreaProps) => {
   return (
     <div>
       <label htmlFor={id}>
