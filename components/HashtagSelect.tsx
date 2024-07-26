@@ -20,7 +20,7 @@ export const HashtagSelect = ({
     options={values.map((v) => ({ label: v, value: v }))}
     value={decodeSelection(value)}
     onChange={(selection) => onChange(encodeSelection(selection))}
-    placeholder="Co děláš?"
+    placeholder="copywriting, TypeScript, právo, dotace, operations, …"
     noOptionsMessage={() => "Žádný tag neodpovídá"}
     className={className}
     isMulti
