@@ -53,6 +53,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         // TBD: Update after these are supplied in payload
         tags: "",
         experience: "",
+        background: "",
       });
       await logUserCreatedEvent(user);
       return new Response("User profile created.", { status: 201 });
