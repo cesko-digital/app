@@ -52,25 +52,31 @@ export const IntroSection = ({ profile }: { profile: UserProfile }) => {
 const ProfileTags = ({ profile }: { profile: UserProfile }) => {
   const tagify = (t: string) =>
     "#" + t.toLocaleLowerCase().replaceAll(/\s+/g, "-");
-  const ToolIcon = () => <span className="opacity-70">🛠️</span>;
-  const MapIcon = () => <span className="-ml-1 opacity-70">📍</span>;
-  const WorkIcon = () => <span className="mr-1 opacity-70">💼</span>;
+  const ToolIcon = () => <span>🛠️</span>;
+  const MapIcon = () => <span className="-ml-1">📍</span>;
+  const WorkIcon = () => <span className="mr-1">💼</span>;
+  const ExperienceIcon = () => <span>⭐️</span>;
   return (
     <div className="mb-1 text-balance">
       {profile.tags && (
         <p className="mr-2 inline">
-          <ToolIcon /> {profile.tags}
+          <ToolIcon /> {profile.tags}
         </p>
       )}
       {profile.availableInDistricts && (
         <p className="mr-2 inline">
-          <MapIcon />
+          <MapIcon /> 
           {profile.availableInDistricts?.split(/, /).map(tagify).join(" ")}
         </p>
       )}
       {profile.background && (
         <p className="mr-2 inline">
-          <WorkIcon /> {profile.background}
+          <WorkIcon /> {profile.background}
+        </p>
+      )}
+      {profile.experience && (
+        <p className="mr-2 inline">
+          <ExperienceIcon /> {profile.experience}
         </p>
       )}
     </div>
