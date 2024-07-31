@@ -4,6 +4,15 @@ import { skillsToHashtags } from "~/src/skills/skills";
 
 async function main() {
   const profiles = await getAllUserProfiles("Profiles with Skills");
+  const labels: Record<string, string> = {
+    "private-sector": "#soukromý-sektor",
+    "non-profit": "#nezisk",
+    state: "#veřejná-správa",
+    freelancing: "#freelance",
+    studying: "#studuju",
+    "parental-leave": "#rodičovská",
+    "looking-for-job": "#hire-me",
+  };
   for (const profile of profiles) {
     const isExperienceTag = (t: string) =>
       t === "#junior" || t === "#medior" || t === "#senior" || t === "#mentor";
@@ -13,8 +22,9 @@ async function main() {
       .filter((t) => !isExperienceTag(t))
       .join(" ");
     const experience = allTags.split(" ").filter(isExperienceTag).join(" ");
+    const background = labels[profile.occupation ?? ""];
     console.log(`${profile.id}: ${profile.skills} -> ${tags}, ${experience}`);
-    await updateUserProfile(profile.id, { tags, experience });
+    await updateUserProfile(profile.id, { tags, experience, background });
   }
 }
 
