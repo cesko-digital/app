@@ -42,9 +42,37 @@ export const IntroSection = ({ profile }: { profile: UserProfile }) => {
         </div>
       </div>
       <div className="text-gravel">
-        <p className="mb-1 text-balance">{mergeUserProfileTags(profile)}</p>
+        <ProfileTags profile={profile} />
       </div>
       {profile.bio && <p className="mt-2 max-w-prose">{profile.bio}</p>}
     </section>
+  );
+};
+
+const ProfileTags = ({ profile }: { profile: UserProfile }) => {
+  const tagify = (t: string) =>
+    "#" + t.toLocaleLowerCase().replaceAll(/\s+/g, "-");
+  const ToolIcon = () => <span className="opacity-70">🛠️</span>;
+  const MapIcon = () => <span className="-ml-1 opacity-70">📍</span>;
+  const WorkIcon = () => <span className="mr-1 opacity-70">💼</span>;
+  return (
+    <div className="mb-1 text-balance">
+      {profile.tags && (
+        <p className="mr-2 inline">
+          <ToolIcon /> {profile.tags}
+        </p>
+      )}
+      {profile.availableInDistricts && (
+        <p className="mr-2 inline">
+          <MapIcon />
+          {profile.availableInDistricts?.split(/, /).map(tagify).join(" ")}
+        </p>
+      )}
+      {profile.background && (
+        <p className="mr-2 inline">
+          <WorkIcon /> {profile.background}
+        </p>
+      )}
+    </div>
   );
 };
