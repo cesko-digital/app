@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { Card } from "~/components/Card";
 import { EventCard } from "~/components/EventCard";
-import Icons from "~/components/icons";
 import { ImageLabel } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
 import { OpportunityRow } from "~/components/OpportunityRow";
@@ -29,6 +28,8 @@ import { shuffleInPlace } from "~/src/utils";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import { type Metadata } from "next";
+
+import { iconForUrl } from "~/components/icons";
 
 import { ProjectTeamSection } from "./ProjectTeamSection";
 
@@ -256,10 +257,10 @@ const ProjectSidebar = ({
     <ul className="flex flex-col gap-4">
       {ordinaryLinks.map((link) => (
         <li key={link.url} className="item-center flex flex-row gap-3">
-          <div className="w-[20px] shrink-0 grow-0 pt-1">
-            <LinkIcon url={link.url} />
+          <div className="shrink-0 grow-0 pt-1">
+            <Image src={iconForUrl(link.url)} width={24} height={24} alt="" />
           </div>
-          <Link href={link.url} className="underline">
+          <Link href={link.url} className="typo-link">
             {link.name}
           </Link>
         </li>
@@ -284,34 +285,6 @@ const ProjectSidebar = ({
       )}
     </Sidebar>
   );
-};
-
-const LinkIcon = ({ url }: { url: string }) => {
-  const ICONS_BY_PAGES = {
-    "cesko-digital.slack.com": Icons.Slack,
-    "app.slack.com": Icons.Slack,
-    "github.com": Icons.GitHub,
-    "cesko-digital.atlassian.net/jira": Icons.Jira,
-    "trello.com": Icons.Trello,
-    "cesko-digital.atlassian.net": Icons.Confluence,
-    "miro.com": Icons.Miro,
-    "youtube.com": Icons.YouTube,
-    "app.asana.com": Icons.Asana,
-    "calendar.google.com": Icons.GoogleCalendar,
-    "docs.google.com": Icons.GoogleDocs,
-    "drive.google.com": Icons.GoogleDrive,
-    "figma.com": Icons.Figma,
-    "airtable.com": Icons.Airtable,
-  };
-
-  const hostname = getHostname(url);
-  for (const [page, Icon] of Object.entries(ICONS_BY_PAGES)) {
-    if (hostname.startsWith(page)) {
-      return <Icon />;
-    }
-  }
-
-  return <Icons.GenericWebsite />;
 };
 
 //
@@ -342,17 +315,6 @@ export const revalidate = 300;
 //
 // Helpers
 //
-
-/**
- * Returns a hostname of the provided URL without the "www." prefix.
- */
-const getHostname = (url: string): string => {
-  try {
-    return new URL(url).hostname.replace("www.", "");
-  } catch {
-    return url;
-  }
-};
 
 const stripTrailingComma = (s: string) => s.replace(/\.?\s*$/, "");
 

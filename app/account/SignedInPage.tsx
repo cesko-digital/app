@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
+
 import { type Session } from "next-auth";
 
-import SlackIcon from "~/components/icons/slack";
+import { Icons } from "~/components/icons";
 import { SimpleTabBar } from "~/components/TabBar";
 import { Route } from "~/src/routing";
 
@@ -48,7 +50,8 @@ const ToolsTab = () => (
         className="typo-link flex flex-row items-center gap-2"
         href={Route.slackOnboarding}
       >
-        <SlackIcon /> Přidat se do Slacku
+        <Image src={Icons.Slack} width={24} height={24} alt="" />
+        Přidat se do Slacku
       </a>
     </p>
   </div>
