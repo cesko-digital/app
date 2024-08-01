@@ -95,10 +95,13 @@ const ContactSidebar = ({ profile }: Profile) => {
 
 const ProjectSection = ({ engagements }: Engagements) => (
   <section>
-    <h2 className="typo-title2 mb-4">Kde jsem se zapojil*a v Česko.Digital</h2>
+    <h2 className="typo-title2 mb-4">Kde jsem se zapojil*a v Česko.Digital</h2>
     <ul className="leading-loose">
       {engagements.map((engagement) => (
-        <li key={engagement.id}>
+        <li
+          key={engagement.id}
+          className="flex flex-col items-baseline md:flex-row"
+        >
           <Link
             href={Route.toProject({ slug: engagement.projectSlug })}
             className="typo-link mr-3"
