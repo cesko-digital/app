@@ -43,7 +43,7 @@ function formatDate(
   const date =
     metric.definition.type === "band"
       ? // `label` is in arbitrary format, so we can't really parse it and format it.
-        metric[sample]!.label ?? "Chybějící datum"
+        (metric[sample]!.label ?? "Chybějící datum")
       : Intl.DateTimeFormat("cs-CZ", { day: "numeric", month: "long" }).format(
           new Date(metric[sample]!.date),
         );

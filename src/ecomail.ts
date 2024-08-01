@@ -347,5 +347,5 @@ export async function setNewsletterPreferences(
 
 const jsonHeaders = (apiKey: string) => ({
   "Content-Type": "application/json",
-  key: apiKey,
+  "key": apiKey,
 });

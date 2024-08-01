@@ -215,12 +215,12 @@ const OccupationSelect: FormSection = ({ state, onChange }) => {
   const options = {
     "private-sector": "Pracuji v soukromém sektoru",
     "non-profit": "Pracuji v neziskové organizaci",
-    state: "Pracuji ve státním sektoru",
-    freelancing: "Jsem na volné noze/freelancer",
-    studying: "Studuji",
+    "state": "Pracuji ve státním sektoru",
+    "freelancing": "Jsem na volné noze/freelancer",
+    "studying": "Studuji",
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci",
-    other: "Jiné",
+    "other": "Jiné",
   };
 
   return (

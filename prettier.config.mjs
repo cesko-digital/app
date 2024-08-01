@@ -17,6 +17,7 @@ const config = {
     "^[./]",
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  quoteProps: "consistent",
 };
 
 export default config;

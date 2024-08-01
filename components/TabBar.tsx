@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import useHash from '~/components/hooks/hash';
+import useHash from "~/components/hooks/hash";
 
 export type Item<Key> = {
   key: Key;

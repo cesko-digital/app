@@ -5,7 +5,7 @@ import { record, string } from "typescript-json-decoder";
 import { subscribeToList } from "~/src/ecomail";
 
 const headers = {
-  Allow: "OPTIONS, POST",
+  "Allow": "OPTIONS, POST",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
