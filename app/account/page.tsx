@@ -12,7 +12,7 @@ const Page = async () => {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs currentPage="Můj účet" />
       {!session?.user && <SignedOutPage />}
-      {session?.user && <SignedInPage session={session} />}
+      {session?.user && <SignedInPage />}
     </main>
   );
 };

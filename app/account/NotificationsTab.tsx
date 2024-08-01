@@ -1,84 +1,90 @@
-import { Fragment } from "react";
-
-import { usePatchedJSONResource } from "~/components/hooks/resource";
 import {
-  type NotificationFlag,
-  type UserProfile,
-} from "~/src/data/user-profile";
+  useJSONResource,
+  usePatchedJSONResource,
+} from "~/components/hooks/resource";
+import { type UserProfile } from "~/src/data/user-profile";
+import { setFlag } from "~/src/flags";
 
-type Props = {
-  userEmail: string;
+export const NotificationsTab = () => {
+  return (
+    <section className="flex max-w-prose flex-col gap-4">
+      <p>
+        Abys nemusel*a pravidelně sledovat web nebo náš Slack, můžeme ti občas
+        poslat některé důležité věci mailem.
+      </p>
+      <NewsletterPrefs />
+      <NotificationPrefs />
+      <p>Odhlásit z odběru se můžeš tady i v každém mailu, který ti přijde.</p>
+    </section>
+  );
 };
 
-export const NotificationsTab = ({ userEmail }: Props) => {
+const NewsletterPrefs = () => {
+  type Subscription = { subscribed: boolean };
+  const { model, updating, setModel } = useJSONResource<Subscription>({
+    url: "/account/newsletters",
+  });
+  return (
+    <div>
+      <label className="flex items-center">
+        <input
+          checked={model?.subscribed}
+          type="checkbox"
+          className="mr-3"
+          disabled={updating}
+          onChange={(e) => setModel({ subscribed: e.target.checked })}
+        ></input>
+        Chci dostat jednou měsíčně newsletter číst.digital
+      </label>
+      <p className="typo-caption ml-6 mt-1 text-balance">
+        Je to praktický souhrn dění za uplynulý měsíc,{" "}
+        <a
+          href="https://ceskodigital.ecomailapp.cz/campaigns/render/643/63fd5376313f1656f15325ff001d3c51"
+          className="typo-link"
+          target="_blank"
+        >
+          vypadá takhle
+        </a>
+        .
+      </p>
+    </div>
+  );
+};
+
+const NotificationPrefs = () => {
   const { model, updating, setModel } = usePatchedJSONResource<UserProfile>({
     url: "/account/me",
     writeKeys: ["notificationFlags"],
   });
 
-  const toggleFlag = async (flag: NotificationFlag, checked: boolean) => {
+  const toggleRoleNotifications = async (checked: boolean) => {
     if (model) {
-      const oldFlags = model.notificationFlags;
-      const newFlags = checked
-        ? [...oldFlags, flag]
-        : oldFlags.filter((f) => f !== flag);
-      setModel({ ...model, notificationFlags: newFlags });
+      const notificationFlags = setFlag(
+        model.notificationFlags,
+        "receiveNewRoleNotifications",
+        checked,
+      );
+      setModel({ ...model, notificationFlags });
     }
-  };
-
-  const groups: Partial<Record<NotificationFlag, string>> = {
-    receiveNewRoleNotifications: "Když se objeví nová hledaná role",
   };
 
   const flags = model?.notificationFlags ?? [];
 
   return (
-    <div className="flex flex-col gap-4">
-      <section className="max-w-prose">
-        <p className="mb-4">
-          Abys nemusel*a pravidelně sledovat web nebo náš Slack, můžeme ti občas
-          poslat upozornění na některé důležité věci mailem. Tady si můžeš
-          nastavit, jestli o to stojíš a která upozornění tě zajímají.
-        </p>
-        <div>
-          <label className="flex items-center">
-            <input
-              checked={flags.includes("allowNotifications")}
-              type="checkbox"
-              className="mr-3"
-              disabled={updating}
-              onChange={(e) =>
-                toggleFlag("allowNotifications", e.target.checked)
-              }
-            ></input>
-            Chci dostávat upozornění mailem
-          </label>
-        </div>
-      </section>
-
-      <section className="max-w-prose">
-        <p className="mb-4">
-          Kdy chceš dostat nový mail na adresu {userEmail}?
-        </p>
-        <div className="mb-20">
-          {Object.entries(groups).map(([id, description]) => (
-            <Fragment key={id}>
-              <label className="flex items-center">
-                <input
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-                  checked={flags.includes(id as any)}
-                  type="checkbox"
-                  className="mr-3"
-                  disabled={updating || !flags.includes("allowNotifications")}
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-                  onChange={(e) => toggleFlag(id as any, e.target.checked)}
-                ></input>
-                {description}
-              </label>
-            </Fragment>
-          ))}
-        </div>
-      </section>
+    <div>
+      <label className="flex items-center">
+        <input
+          checked={flags.includes("receiveNewRoleNotifications")}
+          type="checkbox"
+          className="mr-3"
+          disabled={updating}
+          onChange={(e) => toggleRoleNotifications(e.target.checked)}
+        ></input>
+        Chci dostat mail, když se objeví nová role
+      </label>
+      <p className="typo-caption ml-6 mt-1 text-balance">
+        Většinou to bývá maximálně párkrát do měsíce.
+      </p>
     </div>
   );
 };

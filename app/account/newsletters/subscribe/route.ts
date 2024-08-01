@@ -4,6 +4,7 @@ import { record, string } from "typescript-json-decoder";
 
 import { subscribeToList } from "~/src/ecomail";
 
+// The extra headers are here so that the endpoint works with Webflow
 const headers = {
   "Allow": "OPTIONS, POST",
   "Access-Control-Allow-Origin": "*",
@@ -11,32 +12,35 @@ const headers = {
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
 };
 
+/**
+ * Add an e-mail address to our main contact list in Ecomail
+ *
+ * This is used by “external” systems such as the footer on our main website.
+ */
 export async function POST(request: NextRequest): Promise<Response> {
   const decodeRequest = record({
     email: string,
   });
-  try {
-    const { email } = decodeRequest(await request.json());
-    const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
-      email: email,
-      tags: ["web-subscribe-form"],
-      groups: ["číst.digital"],
+  const { email } = decodeRequest(await request.json());
+  const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
+    email: email,
+    tags: ["web-subscribe-form"],
+  });
+  if (!success) {
+    return new Response("Failed to create Ecomail subscription", {
+      status: 500,
     });
-    if (!success) {
-      throw "Unexpected error";
-    }
-    return NextResponse.json(
-      { message: "User subscription was successful" },
-      {
-        status: 200,
-        headers,
-      },
-    );
-  } catch {
-    return new Response("Unexpected error", { status: 500 });
   }
+  return NextResponse.json(
+    { message: "User subscription was successful" },
+    {
+      status: 200,
+      headers,
+    },
+  );
 }
 
+// The OPTION method support is needed by Webflow
 export async function OPTIONS(): Promise<Response> {
   return new Response(null, {
     status: 200,
