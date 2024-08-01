@@ -87,7 +87,7 @@ const ContactSidebar = ({ profile }: Profile) => {
         />
       )}
       {profile.contactEmail && (
-        <Button label="Napsat mail" url={`mailto:${profile.contactEmail}`} />
+        <Button label="Poslat mail" url={`mailto:${profile.contactEmail}`} />
       )}
     </div>
   );
