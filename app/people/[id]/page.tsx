@@ -95,7 +95,7 @@ const ContactSidebar = ({ profile }: Profile) => {
 
 const ProjectSection = ({ engagements }: Engagements) => (
   <section>
-    <h2 className="typo-title2 mb-4">Moje projekty</h2>
+    <h2 className="typo-title2 mb-4">Kde jsem se zapojil*a v Česko.Digital</h2>
     <ul className="leading-loose">
       {engagements.map((engagement) => (
         <li key={engagement.id}>
