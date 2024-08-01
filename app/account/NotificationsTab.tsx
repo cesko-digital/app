@@ -41,6 +41,7 @@ const NewsletterPrefs = () => {
         <a
           href="https://ceskodigital.ecomailapp.cz/campaigns/render/643/63fd5376313f1656f15325ff001d3c51"
           className="typo-link"
+          target="_blank"
         >
           vypadá takhle
         </a>
