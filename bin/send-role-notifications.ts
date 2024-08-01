@@ -37,29 +37,29 @@ async function main() {
     process.exit(1);
   }
 
-  const recipients = await getAllUserProfiles(
+  const userProfiles = await getAllUserProfiles(
     "New Role Notification Recipients",
   );
 
-  if (recipients.length > 1000) {
+  if (userProfiles.length > 1000) {
     console.error(
-      `Got ${recipients.length} recipients, that doesn’t seem right, aborting.`,
+      `Got ${userProfiles.length} recipients, that doesn’t seem right, aborting.`,
     );
     process.exit(1);
   }
 
   console.log(
-    `Got ${opportunities.length} role(s), sending notification to ${recipients.length} users.`,
+    `Got ${opportunities.length} role(s), sending notification to ${userProfiles.length} users.`,
   );
 
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY ?? "");
 
-  for (const recipient of recipients) {
+  for (const userProfile of userProfiles) {
     await sendgrid.send({
-      to: recipient.email,
+      to: userProfile.email,
       from: "ahoj@cesko.digital",
       subject: renderNotificationMailSubject(opportunities),
-      text: renderNotificationMailBody(opportunities, recipient.id),
+      text: renderNotificationMailBody(opportunities, userProfile.id),
       trackingSettings: {
         clickTracking: {
           enable: false,

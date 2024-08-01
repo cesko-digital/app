@@ -1,4 +1,5 @@
 import { getUserProfile, updateUserProfile } from "~/src/data/user-profile";
+import { setFlag } from "~/src/flags";
 import { unsubscribeRoute } from "~/src/notifications/mailing";
 import { hashDigest } from "~/src/utils";
 
@@ -46,11 +47,12 @@ export async function GET(request: Request) {
       },
     });
   } else {
-    await updateUserProfile(profile.id, {
-      notificationFlags: profile.notificationFlags.filter(
-        (f) => f !== "allowNotifications",
-      ),
-    });
+    const notificationFlags = setFlag(
+      profile.notificationFlags,
+      "receiveNewRoleNotifications",
+      false,
+    );
+    await updateUserProfile(profile.id, { notificationFlags });
     return new Response("Nastavení upraveno.", { status: 200 });
   }
 }

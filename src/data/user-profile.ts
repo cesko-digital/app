@@ -17,10 +17,7 @@ import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
 /** All supported notification flags */
-const notificationFlags = [
-  "allowNotifications",
-  "receiveNewRoleNotifications",
-] as const;
+const notificationFlags = ["receiveNewRoleNotifications"] as const;
 
 /** All supported feature flags */
 const featureFlags = ["registrationV2", "assetUpload"] as const;
