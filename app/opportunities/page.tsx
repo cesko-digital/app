@@ -6,6 +6,8 @@ import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects } from "~/src/data/project";
 import { strip } from "~/src/utils";
 
+import { NotificationPrefs } from "./NotificationPrefs";
+
 /** Refresh data every 5 minutes */
 export const revalidate = 300;
 
@@ -27,7 +29,8 @@ async function Page() {
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs currentPage="Hledané role" />
       <h1 className="typo-title mb-10 mt-7">Hledané role</h1>
-      <p className="mb-10 max-w-prose">{metadata.description}</p>
+      <p className="mb-4 max-w-prose">{metadata.description}</p>
+      <NotificationPrefs />
       {opportunities.map((o) => (
         <OpportunityRow key={o.id} role={o} project={projectForRole(o)} />
       ))}
