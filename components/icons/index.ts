@@ -58,11 +58,16 @@ const iconMap = {
  * If no specific icon was found, a generic globe icon is returned.
  */
 export function iconForUrl(url: string): StaticImageData {
-  const host = new URL(url).hostname.replace("www.", "");
-  for (const [page, icon] of Object.entries(iconMap)) {
-    if (host.startsWith(page)) {
-      return icon;
+  try {
+    // This can throw for non-well formed URLs
+    const host = new URL(url).hostname.replace("www.", "");
+    for (const [page, icon] of Object.entries(iconMap)) {
+      if (host.startsWith(page)) {
+        return icon;
+      }
     }
+    return Icons.Globe;
+  } catch {
+    return Icons.Globe;
   }
-  return Icons.Globe;
 }
