@@ -41,7 +41,7 @@ export function renderNotificationMailSubject(
   roles: Pick<Opportunity, "name">[],
 ): string {
   if (roles.length === 0) {
-    throw "Expected at least one role, got zero.";
+    throw new Error("Expected at least one role, got zero.");
   } else if (roles.length === 1) {
     return `Česko.Digital hledá: ${roles[0].name}`;
   } else if (roles.length >= 2 && roles.length <= 4) {

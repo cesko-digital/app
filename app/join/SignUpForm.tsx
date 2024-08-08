@@ -48,7 +48,7 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
       setState({ ...state, submissionState: { tag: "submitting" } });
       const success = await createUserProfile(validatedData);
       if (!success) {
-        throw "Nepodařilo se založit uživatelský účet.";
+        throw new Error("Nepodařilo se založit uživatelský účet.");
       }
       setState({
         ...state,

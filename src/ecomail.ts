@@ -31,7 +31,7 @@ export function decodeSubscriptionStateCode(value: unknown): SubscriptionState {
   const num = number(value);
   const state = subscriptionStates[num - 1];
   if (!state) {
-    throw `Invalid subscription state code ${num}`;
+    throw new Error(`Invalid subscription state code ${num}`);
   }
   return state;
 }

@@ -116,11 +116,11 @@ export function decodeSkill(input: string): Skill {
   const decodeLevel = union(...SKILL_LEVELS, undef);
   const parts = input.split(/ \/ /);
   if (parts.length > 3) {
-    throw `Invalid number of skill components: “${input}”`;
+    throw new Error(`Invalid number of skill components: “${input}”`);
   }
   const [category, name, level] = parts;
   if (!category) {
-    throw "Failed to decode skill category";
+    throw new Error("Failed to decode skill category");
   }
   return { category, name, level: decodeLevel(level) };
 }

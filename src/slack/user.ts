@@ -83,7 +83,7 @@ export async function getSlackUser(
     user: slackId,
   });
   if (!slackResponse.ok) {
-    throw "Slack API reports failure";
+    throw new Error("Slack API reports failure");
   }
   return decodeSlackUser(slackResponse.user);
 }

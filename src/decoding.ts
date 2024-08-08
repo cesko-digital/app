@@ -22,7 +22,7 @@ export const takeFirst = <T>(decoder: DecoderFunction<T[]>) => {
   return (value: unknown) => {
     const array = decoder(value);
     if (array.length == 0) {
-      throw "Can’t take first item from an empty array";
+      throw new Error("Can’t take first item from an empty array");
     }
     return array[0];
   };
@@ -45,7 +45,7 @@ export const withDefault = <T>(
   return (value: unknown) => {
     try {
       return decoder(value) ?? defaultValue;
-    } catch (_) {
+    } catch {
       return defaultValue;
     }
   };
@@ -144,9 +144,11 @@ export function decodeValidItemsFromArray<T>(
   const stringify = (val: unknown) => `${JSON.stringify(val)}`;
   return (value: unknown) => {
     if (!Array.isArray(value)) {
-      throw `The value \`${stringify(
-        value,
-      )}\` is not of type \`array\`, but is of type \`${typeof value}\``;
+      throw new Error(
+        `The value \`${stringify(
+          value,
+        )}\` is not of type \`array\`, but is of type \`${typeof value}\``,
+      );
     }
     let index = 0;
     const values: T[] = [];
