@@ -311,7 +311,7 @@ export const authEventLoggers: Partial<EventCallbacks> = {
 //
 
 const notImplemented = () => {
-  throw "Not implemented";
+  throw new Error("Not implemented");
 };
 
 export const authDatabaseAdapter: Adapter = {

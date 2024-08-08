@@ -92,7 +92,7 @@ export function normalizeEmailAddress(email: string): string {
  * at least something basic here to guard users from plain typos.
  */
 export const looksLikeEmailAdress = (s: string) =>
-  !!s.match(/^[^@ ]+@[^@ ]+\.[^@ ]+$/);
+  !!/^[^@ ]+@[^@ ]+\.[^@ ]+$/.exec(s);
 
 /** Replace all newlines with spaces, merge multiple spaces to one */
 export const stripWhitespace = (s: string) =>
@@ -162,7 +162,7 @@ export function postJSON<T>(url: string) {
       headers: { "Content-Type": "application/json" },
     });
     if (!response.ok) {
-      throw "POST failed";
+      throw new Error("POST failed");
     }
   };
 }
@@ -180,7 +180,7 @@ export function patchJSON<T>(
       headers: { "Content-Type": "application/json" },
     });
     if (!response.ok) {
-      throw "PATCH failed";
+      throw new Error("PATCH failed");
     }
   };
 }
