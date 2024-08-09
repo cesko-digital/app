@@ -68,7 +68,9 @@ const PublicProfile = async ({ profile }: ProfileProps) => {
     engagements.length > 0;
   return (
     <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-      <ContactSidebar profile={profile} />
+      <div>
+        <Avatar profile={profile} />
+      </div>
       <div className="flex flex-col gap-7 pt-2">
         <HeadingRow profile={profile} />
         <InfoTable profile={profile} />
@@ -115,11 +117,41 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
       {profile.experience && (
         <Row label="Zkušenosti" content={profile.experience} />
       )}
+      {/* TODO: Only for signed-in */}
+      {profile.contactEmail && (
+        <Row
+          label="E-mail"
+          content={
+            <a href={`mailto:${profile.contactEmail}`} className="typo-link">
+              {profile.contactEmail}
+            </a>
+          }
+        />
+      )}
+      {profile.slackId && (
+        <Row
+          label="Slack"
+          content={
+            <a
+              href={`slack://user?team=TG21XF887&id=${profile.slackId}`}
+              className="typo-link"
+            >
+              poslat zprávu
+            </a>
+          }
+        />
+      )}
     </div>
   );
 };
 
-const Row = ({ label, content }: { label: string; content: string }) => (
+const Row = ({
+  label,
+  content,
+}: {
+  label: string;
+  content: React.ReactNode;
+}) => (
   <div className="flex flex-col gap-x-7 gap-y-2 border-t-[1px] border-gray py-3 align-top md:flex-row">
     <div className="typo-caption mt-1 w-[13ex] shrink-0 grow-0 uppercase">
       {label}
@@ -127,29 +159,6 @@ const Row = ({ label, content }: { label: string; content: string }) => (
     <p>{content}</p>
   </div>
 );
-
-const ContactSidebar = ({ profile }: ProfileProps) => {
-  const Button = ({ url, label }: { url: string; label: string }) => (
-    <Link href={url} className="btn-primary">
-      {label}
-    </Link>
-  );
-
-  return (
-    <div className="flex shrink-0 flex-col items-center gap-4">
-      <Avatar profile={profile} />
-      {profile.slackId && (
-        <Button
-          label="Poslat zprávu na Slacku"
-          url={`slack://user?team=TG21XF887&id=${profile.slackId}`}
-        />
-      )}
-      {profile.contactEmail && (
-        <Button label="Poslat mail" url={`mailto:${profile.contactEmail}`} />
-      )}
-    </div>
-  );
-};
 
 const ProjectSection = ({ engagements }: EngagementProps) => (
   <section>
