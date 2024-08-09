@@ -14,6 +14,7 @@ import { Route } from "~/src/routing";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
+import { UpdateProfileButton } from "./UpdateProfileButton";
 
 type Params = {
   id: string;
@@ -71,8 +72,9 @@ const PublicProfile = async ({ profile }: ProfileProps) => {
     engagements.length > 0;
   return (
     <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-      <div>
+      <div className="flex flex-col gap-7">
         <Avatar profile={profile} />
+        <UpdateProfileButton profile={profile} />
       </div>
       <div className="flex flex-col gap-7 pt-2">
         <HeadingRow profile={profile} />
@@ -154,7 +156,7 @@ const ProjectSection = ({ engagements }: EngagementProps) => (
 const Avatar = ({ profile }: ProfileProps) => (
   <Image
     src={profile.avatarUrl}
-    className="mx-auto mb-7 rounded-full bg-pebble"
+    className="mx-auto rounded-full bg-pebble"
     width={200}
     height={200}
     alt=""
