@@ -7,6 +7,7 @@ import { default as GoogleDocs } from "./docs.png";
 import { default as Figma } from "./figma.png";
 import { default as GitHub } from "./github.png";
 import { default as Globe } from "./globe.png";
+import { default as Gmail } from "./gmail.png";
 import { default as GoogleCalendar } from "./google-calendar.png";
 import { default as GoogleDrive } from "./google-drive.png";
 import { default as Jira } from "./jira.png";
@@ -26,6 +27,7 @@ export const Icons = {
   GoogleDrive,
   GoogleDocs,
   Globe,
+  Gmail,
   Jira,
   LinkedIn,
   Miro,
@@ -58,6 +60,10 @@ const iconMap = {
  * If no specific icon was found, a generic globe icon is returned.
  */
 export function iconForUrl(url: string): StaticImageData {
+  if (url.startsWith("mailto://")) {
+    return Icons.Gmail;
+  }
+
   try {
     // This can throw for non-well formed URLs
     const host = new URL(url).hostname.replace("www.", "");
