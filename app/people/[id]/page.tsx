@@ -12,6 +12,9 @@ import {
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
+import { ContactRows } from "./ContactInfo";
+import { InfoRow } from "./InfoRow";
+
 type Params = {
   id: string;
 };
@@ -107,58 +110,20 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
   return (
     <div className="max-w-prose">
-      {profile.tags && <Row label="Co dělám" content={profile.tags} />}
+      {profile.tags && <InfoRow label="Co dělám" content={profile.tags} />}
       {profile.availableInDistricts && (
-        <Row label="Kde bývám" content={profile.availableInDistricts} />
+        <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
       )}
       {profile.background && (
-        <Row label="Background" content={profile.background} />
+        <InfoRow label="Background" content={profile.background} />
       )}
       {profile.experience && (
-        <Row label="Zkušenosti" content={profile.experience} />
+        <InfoRow label="Zkušenosti" content={profile.experience} />
       )}
-      {/* TODO: Only for signed-in */}
-      {profile.contactEmail && (
-        <Row
-          label="E-mail"
-          content={
-            <a href={`mailto:${profile.contactEmail}`} className="typo-link">
-              {profile.contactEmail}
-            </a>
-          }
-        />
-      )}
-      {profile.slackId && (
-        <Row
-          label="Slack"
-          content={
-            <a
-              href={`slack://user?team=TG21XF887&id=${profile.slackId}`}
-              className="typo-link"
-            >
-              poslat zprávu
-            </a>
-          }
-        />
-      )}
+      <ContactRows profile={profile} />
     </div>
   );
 };
-
-const Row = ({
-  label,
-  content,
-}: {
-  label: string;
-  content: React.ReactNode;
-}) => (
-  <div className="flex flex-col gap-x-7 gap-y-2 border-t-[1px] border-gray py-3 align-top md:flex-row">
-    <div className="typo-caption mt-1 w-[13ex] shrink-0 grow-0 uppercase">
-      {label}
-    </div>
-    <p>{content}</p>
-  </div>
-);
 
 const ProjectSection = ({ engagements }: EngagementProps) => (
   <section>
