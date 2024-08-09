@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { Icons } from "~/components/icons";
 import { type UserProfile } from "~/src/data/user-profile";
@@ -17,7 +17,23 @@ export const ContactRows = ({ profile }: { profile: UserProfile }) => {
       return <InfoRow label="Kontakt" content="Načítám…" />;
     case "unauthenticated":
       return (
-        <InfoRow label="Kontakt" content="Pro zobrazení se musíš přihlásit" />
+        <InfoRow
+          label="Kontakt"
+          content={
+            <span>
+              Pro zobrazení se musíš{" "}
+              <a
+                className="typo-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  return signIn();
+                }}
+              >
+                přihlásit
+              </a>
+            </span>
+          }
+        />
       );
     case "authenticated":
       return (
@@ -44,7 +60,8 @@ const EmailRow = ({ profile }: { profile: UserProfile }) => (
   />
 );
 
-export const SlackRow = ({ profile }: { profile: UserProfile }) => (
+// TBD: Only display if the current user also has a Slack account?
+const SlackRow = ({ profile }: { profile: UserProfile }) => (
   <InfoRow
     label={
       <span className="flex flex-row items-center gap-2">
