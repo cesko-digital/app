@@ -3,14 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { IntroSection } from "~/app/people/[id]/IntroSection";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { iconForUrl } from "~/components/icons";
 import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
+
+import { ContactRows } from "./ContactInfo";
+import { InfoRow } from "./InfoRow";
+import { UpdateProfileButton } from "./UpdateProfileButton";
 
 type Params = {
   id: string;
@@ -20,47 +24,33 @@ export type Props = {
   params: Params;
 };
 
+type ProfileProps = { profile: UserProfile };
+type EngagementProps = { engagements: TeamEngagement[] };
+
+/** User profile page */
 async function Page({ params }: Props) {
   const profile = await getUserProfile(params.id);
   const isPublic = profile?.privacyFlags.includes("enablePublicProfile");
   if (!profile) {
     notFound();
   }
-  const projectEngagements = await getPublicTeamEngagementsForUser(profile.id);
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs
         path={[{ label: "Lidé", path: Route.people }]}
         currentPage={profile.name}
       />
-      {isPublic ? (
-        <PublicProfile profile={profile} engagements={projectEngagements} />
-      ) : (
-        <PrivateProfile profile={profile} />
-      )}
+      {isPublic && <PublicProfile profile={profile} />}
+      {!isPublic && <PrivateProfile profile={profile} />}
     </main>
   );
 }
 
-type Profile = { profile: UserProfile };
-type Engagements = { engagements: TeamEngagement[] };
+//
+// Private Profile
+//
 
-const PublicProfile = ({ profile, engagements }: Profile & Engagements) => {
-  const showProjectEngagement =
-    !profile.privacyFlags.includes("hidePublicTeamMembership") &&
-    engagements.length > 0;
-  return (
-    <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-      <ContactSidebar profile={profile} />
-      <div className="flex flex-col gap-7 pt-2">
-        <IntroSection profile={profile} />
-        {showProjectEngagement && <ProjectSection engagements={engagements} />}
-      </div>
-    </div>
-  );
-};
-
-const PrivateProfile = ({ profile }: Profile) => (
+const PrivateProfile = ({ profile }: ProfileProps) => (
   <div className="pt-12 text-center">
     <div className="inline-block">
       <Avatar profile={profile} />
@@ -70,30 +60,74 @@ const PrivateProfile = ({ profile }: Profile) => (
   </div>
 );
 
-const ContactSidebar = ({ profile }: Profile) => {
-  const Button = ({ url, label }: { url: string; label: string }) => (
-    <Link href={url} className="btn-primary">
-      {label}
-    </Link>
-  );
+//
+// Public Profile
+//
 
+// TODO: Add link to profile edit page for current user
+const PublicProfile = async ({ profile }: ProfileProps) => {
+  const engagements = await getPublicTeamEngagementsForUser(profile.id);
+  const showProjectEngagement =
+    !profile.privacyFlags.includes("hidePublicTeamMembership") &&
+    engagements.length > 0;
   return (
-    <div className="flex flex-col items-center gap-4">
-      <Avatar profile={profile} />
-      {profile.slackId && (
-        <Button
-          label="Poslat zprávu na Slacku"
-          url={`slack://user?team=TG21XF887&id=${profile.slackId}`}
-        />
-      )}
-      {profile.contactEmail && (
-        <Button label="Poslat mail" url={`mailto:${profile.contactEmail}`} />
-      )}
+    <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
+      <div className="flex flex-col gap-7">
+        <Avatar profile={profile} />
+        <UpdateProfileButton profile={profile} />
+      </div>
+      <div className="flex flex-col gap-7 pt-2">
+        <HeadingRow profile={profile} />
+        <InfoTable profile={profile} />
+        {showProjectEngagement && <ProjectSection engagements={engagements} />}
+      </div>
     </div>
   );
 };
 
-const ProjectSection = ({ engagements }: Engagements) => (
+const HeadingRow = ({ profile }: ProfileProps) => (
+  <div>
+    <div className="flex flex-col justify-between gap-y-2 max-md:mb-3 md:flex-row">
+      <div className="flex flex-row items-center gap-4">
+        <h1 className="typo-title mb-2">{profile.name}</h1>
+        {profile.profileUrl && (
+          <ProfessionalProfileLink link={profile.profileUrl} />
+        )}
+      </div>
+    </div>
+    {profile.bio && <p className="mt-2 max-w-prose">{profile.bio}</p>}
+  </div>
+);
+
+const ProfessionalProfileLink = ({ link }: { link: string }) => (
+  <a
+    href={link}
+    className="typo-link opacity-60 grayscale hover:opacity-100 hover:grayscale-0"
+    target="_blank"
+  >
+    <Image src={iconForUrl(link)} alt="" width={24} height={24} />
+  </a>
+);
+
+const InfoTable = ({ profile }: { profile: UserProfile }) => {
+  return (
+    <div className="max-w-prose">
+      {profile.tags && <InfoRow label="Co dělám" content={profile.tags} />}
+      {profile.availableInDistricts && (
+        <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
+      )}
+      {profile.background && (
+        <InfoRow label="Background" content={profile.background} />
+      )}
+      {profile.experience && (
+        <InfoRow label="Zkušenosti" content={profile.experience} />
+      )}
+      <ContactRows profile={profile} />
+    </div>
+  );
+};
+
+const ProjectSection = ({ engagements }: EngagementProps) => (
   <section>
     <h2 className="typo-title2 mb-4">Kde jsem se zapojil*a v Česko.Digital</h2>
     <ul className="leading-loose">
@@ -119,10 +153,10 @@ const ProjectSection = ({ engagements }: Engagements) => (
   </section>
 );
 
-const Avatar = ({ profile }: Profile) => (
+const Avatar = ({ profile }: ProfileProps) => (
   <Image
     src={profile.avatarUrl}
-    className="mx-auto mb-7 rounded-full bg-pebble"
+    className="mx-auto rounded-full bg-pebble"
     width={200}
     height={200}
     alt=""

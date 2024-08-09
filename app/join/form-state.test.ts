@@ -11,7 +11,7 @@ test("Validate correctly filled form", () => {
         organizationName: "",
         profileUrl: "",
         occupation: "whatever",
-        skills: { Marketing: { Copywriting: null } },
+        tags: "#fake",
         availableInDistricts: "Praha, Brno",
         bio: "Ahoj, já jsem Aloisie a chci se zapojit do vašeho projektu.",
         privacyConsent: true,
@@ -27,7 +27,7 @@ test("Validate correctly filled form", () => {
     validatedData: {
       name: "Aloisie Citronová",
       email: "aloisie@cesko.digital",
-      skills: { Marketing: { Copywriting: null } },
+      tags: "#fake",
       occupation: "whatever",
       availableInDistricts: "Praha, Brno",
       bio: "Ahoj, já jsem Aloisie a chci se zapojit do vašeho projektu.",
