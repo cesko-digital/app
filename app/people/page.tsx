@@ -31,7 +31,6 @@ async function Page() {
   return (
     <main className="m-auto max-w-content px-7 py-20">
       <Breadcrumbs currentPage="Lidé" />
-
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
       <UserProfileContainer>

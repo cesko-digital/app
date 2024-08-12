@@ -9,7 +9,11 @@ import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
-import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
+import {
+  getUserHashtags,
+  getUserProfile,
+  type UserProfile,
+} from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 import { ContactRows } from "./ContactInfo";
@@ -109,18 +113,21 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
   </a>
 );
 
+// TBD: Add experience, convert hashtags, improve Background copy & display
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
   return (
     <div className="max-w-prose">
-      {profile.tags && <InfoRow label="Co dělám" content={profile.tags} />}
+      {profile.skills && (
+        <InfoRow
+          label="Co dělám"
+          content={getUserHashtags(profile).join(" ")}
+        />
+      )}
       {profile.availableInDistricts && (
         <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
       )}
-      {profile.background && (
-        <InfoRow label="Background" content={profile.background} />
-      )}
-      {profile.experience && (
-        <InfoRow label="Zkušenosti" content={profile.experience} />
+      {profile.occupation && (
+        <InfoRow label="Background" content={profile.occupation} />
       )}
       <ContactRows profile={profile} />
     </div>
