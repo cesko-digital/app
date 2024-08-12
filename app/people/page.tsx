@@ -5,7 +5,11 @@ import {
   UserProfileCard,
   UserProfileContainer,
 } from "~/components/UserProfileCard";
-import { getAllUserProfiles, getUserHashtags } from "~/src/data/user-profile";
+import {
+  compareByName,
+  getAllUserProfiles,
+  getUserHashtags,
+} from "~/src/data/user-profile";
 import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
@@ -31,7 +35,7 @@ async function Page() {
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
       <UserProfileContainer>
-        {profiles.map((profile) => (
+        {profiles.sort(compareByName).map((profile) => (
           <UserProfileCard
             key={profile.id}
             profile={profile}

@@ -1,6 +1,10 @@
 import { defaultAvatarUrl } from "~/src/utils";
 
-import { decodeUserProfile, type UserProfile } from "./user-profile";
+import {
+  compareNames,
+  decodeUserProfile,
+  type UserProfile,
+} from "./user-profile";
 
 test("Decode user with no skills", () => {
   expect(
@@ -122,4 +126,16 @@ test("Decode Slack Users relation", () => {
     codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
   });
+});
+
+test("Compare names", () => {
+  const equal = 0;
+  const ordered = -1;
+  const reversed = 1;
+  expect(compareNames("A", "A")).toBe(equal);
+  expect(compareNames("A", "B")).toBe(ordered);
+  expect(compareNames("B", "A")).toBe(reversed);
+  expect(compareNames("A B", "A A")).toBe(reversed);
+  expect(compareNames("Č", "B")).toBe(reversed);
+  expect(compareNames("B", "C A")).toBe(reversed);
 });

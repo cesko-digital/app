@@ -253,3 +253,15 @@ export function getUserHashtags(profile: UserProfile): string[] {
       .map((tag) => "#" + tag),
   );
 }
+
+/**
+ * Compare user profiles by name
+ *
+ * Uses `String.localeCompare` on the last word of the name.
+ */
+export const compareByName = (a: UserProfile, b: UserProfile) =>
+  compareNames(a.name, b.name);
+
+/** Locale compare strings according to their last words */
+export const compareNames = (a: string, b: string) =>
+  a.split(/\s+/).pop()!.localeCompare(b.split(/\s+/).pop()!);
