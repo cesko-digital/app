@@ -184,6 +184,23 @@ export function skillsToHashtags(skills: string): string {
   return unique(tags).sort().join(" ");
 }
 
+export function getMaxSeniority(
+  skills: string,
+): "junior" | "medior" | "senior" | undefined {
+  const selection = decodeSkillSelection(skills);
+  const levels = Object.values(selection)
+    .flatMap((selection) => Object.values(selection))
+    .filter((s) => s !== null);
+  if (levels.includes("senior")) {
+    return "senior";
+  } else if (levels.includes("medior")) {
+    return "medior";
+  } else if (levels.includes("junior")) {
+    return "junior";
+  }
+  return undefined;
+}
+
 const conversionTableSrc = `
 Marketing / Analýza marketingových dat -> #marketing
 Marketing / Audiovizuální produkce -> #audio #video

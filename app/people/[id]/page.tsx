@@ -11,7 +11,7 @@ import {
 } from "~/src/data/team-engagement";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
-import { skillsToHashtags } from "~/src/skills/skills";
+import { getMaxSeniority, skillsToHashtags } from "~/src/skills/skills";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
@@ -125,9 +125,11 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   const occupation = profile.occupation
     ? labels[profile.occupation]
     : undefined;
+  const seniority = getMaxSeniority(profile.skills);
   return (
     <div className="max-w-prose">
       {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
+      {seniority && <InfoRow label="Seniorita" content={seniority} />}
       {profile.availableInDistricts && (
         <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
       )}
