@@ -110,18 +110,28 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
   </a>
 );
 
-// TBD: Add experience, improve Background copy & display
+// TBD: Add experience
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
   const tags = skillsToHashtags(profile.skills);
+  const labels: Record<string, string> = {
+    "private-sector": "V soukromém sektoru",
+    "non-profit": "V nezisku",
+    "state": "Ve veřejné správě",
+    "freelancing": "Na volné noze",
+    "studying": "Studuju",
+    "parental-leave": "Jsem na rodičovské",
+    "looking-for-job": "Hledám práci!",
+  };
+  const occupation = profile.occupation
+    ? labels[profile.occupation]
+    : undefined;
   return (
     <div className="max-w-prose">
       {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
       {profile.availableInDistricts && (
         <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
       )}
-      {profile.occupation && (
-        <InfoRow label="Background" content={profile.occupation} />
-      )}
+      {occupation && <InfoRow label="Kde pracuju" content={occupation} />}
       <ContactRows profile={profile} />
     </div>
   );
