@@ -1,57 +1,40 @@
 import { type StaticImageData } from "next/image";
 
-import { default as Airtable } from "./airtable.png";
-import { default as Asana } from "./asana.png";
-import { default as Confluence } from "./confluence.png";
-import { default as GoogleDocs } from "./docs.png";
-import { default as Figma } from "./figma.png";
-import { default as GitHub } from "./github.png";
-import { default as Globe } from "./globe.png";
-import { default as Gmail } from "./gmail.png";
-import { default as GoogleCalendar } from "./google-calendar.png";
-import { default as GoogleDrive } from "./google-drive.png";
-import { default as Jira } from "./jira.png";
-import { default as LinkedIn } from "./linkedin.png";
-import { default as Miro } from "./miro.png";
-import { default as Slack } from "./slack.png";
-import { default as Trello } from "./trello.png";
-import { default as YouTube } from "./youtube.png";
-
-export const Icons = {
+import { Globe } from "./generic";
+import {
   Airtable,
   Asana,
   Confluence,
   Figma,
   GitHub,
-  GoogleCalendar,
-  GoogleDrive,
-  GoogleDocs,
-  Globe,
   Gmail,
+  GoogleCalendar,
+  GoogleDocs,
+  GoogleDrive,
   Jira,
   LinkedIn,
   Miro,
   Slack,
   Trello,
   YouTube,
-};
+} from "./services";
 
-const iconMap = {
-  "cesko-digital.slack.com": Icons.Slack,
-  "app.slack.com": Icons.Slack,
-  "github.com": Icons.GitHub,
-  "cesko-digital.atlassian.net/jira": Icons.Jira,
-  "trello.com": Icons.Trello,
-  "cesko-digital.atlassian.net": Icons.Confluence,
-  "miro.com": Icons.Miro,
-  "youtube.com": Icons.YouTube,
-  "app.asana.com": Icons.Asana,
-  "calendar.google.com": Icons.GoogleCalendar,
-  "docs.google.com": Icons.GoogleDocs,
-  "drive.google.com": Icons.GoogleDrive,
-  "linkedin.com": Icons.LinkedIn,
-  "figma.com": Icons.Figma,
-  "airtable.com": Icons.Airtable,
+const iconMap: Record<string, StaticImageData> = {
+  "cesko-digital.slack.com": Slack,
+  "app.slack.com": Slack,
+  "github.com": GitHub,
+  "cesko-digital.atlassian.net/jira": Jira,
+  "trello.com": Trello,
+  "cesko-digital.atlassian.net": Confluence,
+  "miro.com": Miro,
+  "youtube.com": YouTube,
+  "app.asana.com": Asana,
+  "calendar.google.com": GoogleCalendar,
+  "docs.google.com": GoogleDocs,
+  "drive.google.com": GoogleDrive,
+  "linkedin.com": LinkedIn,
+  "figma.com": Figma,
+  "airtable.com": Airtable,
 };
 
 /**
@@ -60,8 +43,8 @@ const iconMap = {
  * If no specific icon was found, a generic globe icon is returned.
  */
 export function iconForUrl(url: string): StaticImageData {
-  if (url.startsWith("mailto://")) {
-    return Icons.Gmail;
+  if (url.startsWith("mailto:")) {
+    return Gmail;
   }
 
   try {
@@ -72,8 +55,8 @@ export function iconForUrl(url: string): StaticImageData {
         return icon;
       }
     }
-    return Icons.Globe;
+    return Globe;
   } catch {
-    return Icons.Globe;
+    return Globe;
   }
 }

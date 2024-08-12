@@ -1,0 +1,15 @@
+export { default as Airtable } from "./airtable.png";
+export { default as Asana } from "./asana.png";
+export { default as Confluence } from "./confluence.png";
+export { default as GoogleDocs } from "./docs.png";
+export { default as Figma } from "./figma.png";
+export { default as GitHub } from "./github.png";
+export { default as Gmail } from "./gmail.png";
+export { default as GoogleCalendar } from "./google-calendar.png";
+export { default as GoogleDrive } from "./google-drive.png";
+export { default as Jira } from "./jira.png";
+export { default as LinkedIn } from "./linkedin.png";
+export { default as Miro } from "./miro.png";
+export { default as Slack } from "./slack.png";
+export { default as Trello } from "./trello.png";
+export { default as YouTube } from "./youtube.png";

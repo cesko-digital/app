@@ -1,11 +1,13 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 
+import clsx from "clsx";
 import { signIn, useSession } from "next-auth/react";
 
-import { Icons } from "~/components/icons";
+import { Copy as CopyIcon } from "~/components/icons/generic";
+import { Gmail, Slack } from "~/components/icons/services";
 import { type UserProfile } from "~/src/data/user-profile";
 
 import { InfoRow } from "./InfoRow";
@@ -49,23 +51,49 @@ const EmailRow = ({ profile }: { profile: UserProfile }) => (
   <InfoRow
     label={
       <span className="flex flex-row items-center gap-2">
-        E-mail <Image src={Icons.Gmail} alt="" width={16} height={16} />
+        E-mail <Image src={Gmail} alt="" width={16} height={16} />
       </span>
     }
     content={
-      <a href={`mailto:${profile.contactEmail}`} className="typo-link">
-        {profile.contactEmail}
-      </a>
+      <div className="flex flex-row items-center gap-4">
+        <a href={`mailto:${profile.contactEmail}`} className="typo-link">
+          {profile.contactEmail}
+        </a>
+        <CopyToClipboardButton value={profile.contactEmail} />
+      </div>
     }
   />
 );
+
+const CopyToClipboardButton = ({ value }: { value?: string }) => {
+  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
+  return (
+    <button
+      disabled={clipboardWriteFinished}
+      className={clsx(clipboardWriteFinished && "opacity-20")}
+      title="Zkopírovat do schránky"
+      onClick={async (e) => {
+        e.preventDefault();
+        await navigator.clipboard.writeText(value ?? "");
+        setClipboardWriteFinished(true);
+      }}
+    >
+      <Image
+        src={CopyIcon}
+        width={20}
+        height={20}
+        alt="Zkopírovat do schránky"
+      />
+    </button>
+  );
+};
 
 // TBD: Only display if the current user also has a Slack account?
 const SlackRow = ({ profile }: { profile: UserProfile }) => (
   <InfoRow
     label={
       <span className="flex flex-row items-center gap-2">
-        Slack <Image src={Icons.Slack} alt="" width={16} height={16} />
+        Slack <Image src={Slack} alt="" width={16} height={16} />
       </span>
     }
     content={
