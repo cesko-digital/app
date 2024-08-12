@@ -112,11 +112,10 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
 
 // TBD: Add experience, improve Background copy & display
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
+  const tags = skillsToHashtags(profile.skills);
   return (
     <div className="max-w-prose">
-      {profile.skills && (
-        <InfoRow label="Co dělám" content={skillsToHashtags(profile.skills)} />
-      )}
+      {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
       {profile.availableInDistricts && (
         <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
       )}
