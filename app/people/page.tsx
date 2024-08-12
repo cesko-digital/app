@@ -6,6 +6,7 @@ import {
   UserProfileContainer,
 } from "~/components/UserProfileCard";
 import {
+  compareByName,
   getAllUserProfiles,
   mergeUserProfileTags,
 } from "~/src/data/user-profile";
@@ -34,7 +35,7 @@ async function Page() {
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
       <UserProfileContainer>
-        {profiles.map((profile) => (
+        {profiles.sort(compareByName).map((profile) => (
           <UserProfileCard
             key={profile.id}
             profile={profile}
