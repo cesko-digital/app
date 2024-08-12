@@ -9,12 +9,9 @@ import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
-import {
-  getUserHashtags,
-  getUserProfile,
-  type UserProfile,
-} from "~/src/data/user-profile";
+import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
+import { skillsToHashtags } from "~/src/skills/skills";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
@@ -113,15 +110,12 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
   </a>
 );
 
-// TBD: Add experience, convert hashtags, improve Background copy & display
+// TBD: Add experience, improve Background copy & display
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
   return (
     <div className="max-w-prose">
       {profile.skills && (
-        <InfoRow
-          label="Co dělám"
-          content={getUserHashtags(profile).join(" ")}
-        />
+        <InfoRow label="Co dělám" content={skillsToHashtags(profile.skills)} />
       )}
       {profile.availableInDistricts && (
         <InfoRow label="Kde bývám" content={profile.availableInDistricts} />

@@ -12,7 +12,7 @@ import {
 
 import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
+import { defaultAvatarUrl, normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -236,23 +236,6 @@ export async function createUserProfile(
 //
 // Utils
 //
-
-export function getUserHashtags(profile: UserProfile): string[] {
-  const uppercaseFirst = (s: string) =>
-    s.charAt(0).toLocaleUpperCase() + s.slice(1);
-  const tagify = (s: string) => s.split(" ").map(uppercaseFirst).join("");
-  const categories = profile.skills
-    .split(/;\s*/)
-    .map((skill) => skill.split(/\s*\/\s*/).shift())
-    .filter((category) => category !== "Ostatní")
-    .map((category) => tagify(category!));
-  const places = profile.availableInDistricts?.split(", ").map(tagify) ?? [];
-  return unique(
-    [...categories, ...places]
-      .sort((a, b) => a.localeCompare(b))
-      .map((tag) => "#" + tag),
-  );
-}
 
 /**
  * Compare user profiles by name
