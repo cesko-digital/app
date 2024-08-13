@@ -96,7 +96,9 @@ const HeadingRow = ({ profile }: ProfileProps) => (
         )}
       </div>
     </div>
-    {profile.bio && <p className="mt-2 max-w-prose">{profile.bio}</p>}
+    {profile.bio && (
+      <p className="mt-2 max-w-prose whitespace-pre-line">{profile.bio}</p>
+    )}
   </div>
 );
 
