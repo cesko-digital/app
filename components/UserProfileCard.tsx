@@ -13,30 +13,17 @@ export type Props = {
   label?: string;
 };
 
-export const UserProfileCard = ({ profile, label }: Props) => {
-  const CoreTeamMarker = () => (
-    <Image
-      src={CeskoDigital}
-      className="absolute right-3 top-3 cursor-help rounded-full"
-      width={20}
-      height={20}
-      title="Člen*ka placeného týmu Česko.Digital"
-      alt="Člen*ka placeného týmu Česko.Digital"
-    />
-  );
-  return (
-    <Link
-      href={Route.toProfile(profile)}
-      className={clsx(
-        "relative flex gap-4 overflow-clip p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center",
-        "rounded-xl border-2 border-gray bg-pebble hover:border-it hover:shadow-lg",
-      )}
-    >
-      {profile.roles && profile.roles.includes("Core Team Member") && (
-        <CoreTeamMarker />
-      )}
-      {/* The extra no-shrink div fixes the layout when the right box is taller */}
-      <div className="shrink-0">
+export const UserProfileCard = ({ profile, label }: Props) => (
+  <Link
+    href={Route.toProfile(profile)}
+    className={clsx(
+      "flex gap-4 overflow-clip p-4 pt-7 sm:flex-col sm:gap-2 sm:text-center",
+      "rounded-xl border-2 border-gray bg-pebble hover:border-it hover:shadow-lg",
+    )}
+  >
+    {/* The extra no-shrink div fixes the layout when the right box is taller */}
+    <div className="shrink-0">
+      <div className="relative mx-auto w-[80px]">
         <Image
           src={profile.avatarUrl}
           className={clsx(
@@ -49,14 +36,24 @@ export const UserProfileCard = ({ profile, label }: Props) => {
           width={80}
           height={80}
         />
+        {profile.roles && profile.roles.includes("Core Team Member") && (
+          <Image
+            src={CeskoDigital}
+            className="absolute left-[60px] top-[60px] cursor-help"
+            width={20}
+            height={20}
+            title="Člen*ka placeného týmu Česko.Digital"
+            alt="Člen*ka placeného týmu Česko.Digital"
+          />
+        )}
       </div>
-      <div className="flex flex-col gap-2 self-center">
-        <h3 className="typo-subtitle">{profile.name}</h3>
-        {label && <p className="typo-caption leading-relaxed">{label}</p>}
-      </div>
-    </Link>
-  );
-};
+    </div>
+    <div className="flex flex-col gap-2 self-center">
+      <h3 className="typo-subtitle">{profile.name}</h3>
+      {label && <p className="typo-caption leading-relaxed">{label}</p>}
+    </div>
+  </Link>
+);
 
 export const UserProfileContainer = ({
   children,
