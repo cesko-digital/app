@@ -5,6 +5,8 @@ import { useRef, useState, type FormEvent } from "react";
 import { type PutBlobResult } from "@vercel/blob";
 import clsx from "clsx";
 
+import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
+
 export const UploadForm = () => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
@@ -82,32 +84,11 @@ const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
   const publicUrl =
     "https://assets.cesko.digital" + new URL(uploadedFileUrl).pathname;
   return (
-    <div className="flex flex-col gap-7">
-      <p>
-        <a href={publicUrl} className="typo-link">
-          {publicUrl}
-        </a>
-      </p>
-      <div>
-        <CopyToClipboardButton content={publicUrl} />
-      </div>
-    </div>
-  );
-};
-
-const CopyToClipboardButton = ({ content }: { content: string }) => {
-  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
-  return (
-    <button
-      className={clsx(clipboardWriteFinished ? "btn-disabled" : "btn-primary")}
-      onClick={async (e) => {
-        e.preventDefault();
-        await navigator.clipboard.writeText(content);
-        setClipboardWriteFinished(true);
-      }}
-      disabled={clipboardWriteFinished}
-    >
-      {clipboardWriteFinished ? "Máš to tam!" : "Zkopírovat do schránky"}
-    </button>
+    <p className="flex flex-row items-center gap-4">
+      <a href={publicUrl} className="typo-link">
+        {publicUrl}
+      </a>
+      <CopyToClipboardButton value={publicUrl} />
+    </p>
   );
 };

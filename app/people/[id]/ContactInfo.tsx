@@ -1,12 +1,11 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Image from "next/image";
 
-import clsx from "clsx";
 import { signIn, useSession } from "next-auth/react";
 
-import { Copy as CopyIcon } from "~/components/icons/generic";
+import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { Gmail, Slack } from "~/components/icons/services";
 import { type UserProfile } from "~/src/data/user-profile";
 
@@ -64,29 +63,6 @@ const EmailRow = ({ profile }: { profile: UserProfile }) => (
     }
   />
 );
-
-const CopyToClipboardButton = ({ value }: { value?: string }) => {
-  const [clipboardWriteFinished, setClipboardWriteFinished] = useState(false);
-  return (
-    <button
-      disabled={clipboardWriteFinished}
-      className={clsx(clipboardWriteFinished && "opacity-20")}
-      title="Zkopírovat do schránky"
-      onClick={async (e) => {
-        e.preventDefault();
-        await navigator.clipboard.writeText(value ?? "");
-        setClipboardWriteFinished(true);
-      }}
-    >
-      <Image
-        src={CopyIcon}
-        width={20}
-        height={20}
-        alt="Zkopírovat do schránky"
-      />
-    </button>
-  );
-};
 
 // TBD: Only display if the current user also has a Slack account?
 const SlackRow = ({ profile }: { profile: UserProfile }) => (
