@@ -139,31 +139,51 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   );
 };
 
-const ProjectSection = ({ engagements }: EngagementProps) => (
-  <section>
-    <h2 className="typo-title2 mb-4">Kde jsem se zapojil*a v Česko.Digital</h2>
-    <ul className="leading-loose">
-      {engagements.map((engagement) => (
-        <li
-          key={engagement.id}
-          className="flex flex-col items-baseline md:flex-row"
-        >
-          <Link
-            href={Route.toProject({ slug: engagement.projectSlug })}
-            className="typo-link mr-3"
+const ProjectSection = ({ engagements }: EngagementProps) => {
+  const isRunning = (e: TeamEngagement) => e.projectState === "running";
+  const runningFirst = (a: TeamEngagement, b: TeamEngagement) =>
+    isRunning(a) ? -1 : isRunning(b) ? 1 : 0;
+
+  const RunningMarker = () => (
+    <span
+      className="animate-pulse text-green-500"
+      title="Aktuálně běžící projekt"
+    >
+      ⦿
+    </span>
+  );
+
+  return (
+    <section>
+      <h2 className="typo-title2 mb-4">
+        Kde jsem se zapojil*a v Česko.Digital
+      </h2>
+      <ul className="leading-loose">
+        {engagements.sort(runningFirst).map((engagement) => (
+          <li
+            key={engagement.id}
+            className="flex flex-col items-baseline gap-x-3 md:flex-row"
           >
-            {engagement.projectName}
-          </Link>
-          {engagement.projectRole && (
-            <span className="typo-caption text-gravel">
-              {engagement.projectRole}
+            <span className="flex flex-row items-center gap-2">
+              <Link
+                href={Route.toProject({ slug: engagement.projectSlug })}
+                className="typo-link"
+              >
+                {engagement.projectName}
+              </Link>
+              {engagement.projectState === "running" && <RunningMarker />}
             </span>
-          )}
-        </li>
-      ))}
-    </ul>
-  </section>
-);
+            {engagement.projectRole && (
+              <span className="typo-caption text-gravel">
+                {engagement.projectRole}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
 
 const Avatar = ({ profile }: ProfileProps) => (
   <Image
