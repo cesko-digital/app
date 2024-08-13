@@ -15,12 +15,14 @@ export type Props = {
 
 export const UserProfileCard = ({ profile, label }: Props) => {
   const CoreTeamMarker = () => (
-    <div
-      className="typo-caption absolute -right-[80px] bottom-[10px] w-[200px] -rotate-45 transform bg-it text-center text-white"
+    <Image
+      src={CeskoDigital}
+      className="absolute right-3 top-3 rounded-full"
+      width={20}
+      height={20}
       title="Člen*ka placeného týmu Česko.Digital"
-    >
-      č.d
-    </div>
+      alt="Člen*ka placeného týmu Česko.Digital"
+    />
   );
   return (
     <Link
