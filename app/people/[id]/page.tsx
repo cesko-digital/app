@@ -122,9 +122,11 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci!",
   };
-  const occupation = profile.occupation
-    ? labels[profile.occupation]
-    : undefined;
+  const occupation = profile.roles.includes("Core Team Member")
+    ? "V Česko.Digital :)"
+    : profile.occupation
+      ? labels[profile.occupation]
+      : undefined;
   const seniority = getMaxSeniority(profile.skills);
   return (
     <div className="max-w-prose">
