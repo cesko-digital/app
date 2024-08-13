@@ -22,6 +22,9 @@ const notificationFlags = ["receiveNewRoleNotifications"] as const;
 /** All supported feature flags */
 const featureFlags = ["registrationV2", "assetUpload"] as const;
 
+/** All supported user roles */
+const userRoles = ["Code of Conduct Admin", "Core Team Member"] as const;
+
 /** All supported privacy flags */
 export const privacyFlags = [
   "hidePublicTeamMembership",
@@ -50,6 +53,7 @@ export interface Schema extends FieldSet {
   notificationFlags: ReadonlyArray<string>;
   privacyFlags: ReadonlyArray<string>;
   featureFlags: ReadonlyArray<string>;
+  roles: ReadonlyArray<string>;
   state: string;
   createdAt: string;
   lastModifiedAt: string;
@@ -96,6 +100,7 @@ export const decodeUserProfile = record({
   featureFlags: decodeFlags(union(...featureFlags)),
   notificationFlags: decodeFlags(union(...notificationFlags)),
   privacyFlags: decodeFlags(union(...privacyFlags)),
+  roles: decodeFlags(union(...userRoles)),
   availableInDistricts: optional(string),
   gdprPolicyAcceptedAt: optional(string),
   codeOfConductAcceptedAt: optional(string),
