@@ -74,8 +74,11 @@ const PublicProfile = async ({ profile }: ProfileProps) => {
     engagements.length > 0;
   return (
     <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-      <div className="flex flex-col gap-7">
+      <div className="flex max-w-[200px] flex-col gap-7">
         <Avatar profile={profile} />
+        {profile.roles && profile.roles.includes("Core Team Member") && (
+          <p className="text-center">Člen*ka placeného týmu Česko.Digital</p>
+        )}
         <UpdateProfileButton profile={profile} />
       </div>
       <div className="flex flex-col gap-7 pt-2">
@@ -97,11 +100,6 @@ const HeadingRow = ({ profile }: ProfileProps) => (
         )}
       </div>
     </div>
-    {profile.roles && profile.roles.includes("Core Team Member") && (
-      <p className="typo-caption inline-block rounded-md border-[1px] border-it px-2 lowercase text-it">
-        Člen*ka placeného týmu Česko.Digital
-      </p>
-    )}
     {profile.bio && (
       <p className="mt-2 max-w-prose whitespace-pre-line">{profile.bio}</p>
     )}
