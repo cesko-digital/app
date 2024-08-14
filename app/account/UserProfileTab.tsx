@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
+import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
@@ -202,11 +203,19 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
           Chci mít veřejný profil
         </label>
         {hasPublicProfile && (
-          <Note>
-            <Link href={Route.toProfile(model!)} className="typo-link">
-              {absolute(Route.toProfile(model!))}
-            </Link>
-          </Note>
+          <div className="flex flex-row items-center gap-2">
+            <Note>
+              Svůj profil najdeš na{" "}
+              <Link
+                href={Route.toProfile(model!)}
+                className="typo-link"
+                target="_blank"
+              >
+                téhle adrese
+              </Link>
+            </Note>
+            <CopyToClipboardButton value={absolute(Route.toProfile(model!))} />
+          </div>
         )}
       </div>
 
