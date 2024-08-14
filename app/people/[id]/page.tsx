@@ -149,10 +149,10 @@ const ProjectSection = ({ engagements }: EngagementProps) => {
 
   const RunningMarker = () => (
     <span
-      className="animate-pulse text-green-500"
+      className="typo-caption cursor-help rounded-md border-[1px] border-green-500 px-2 text-green-500"
       title="Aktuálně běžící projekt"
     >
-      ⦿
+      běží
     </span>
   );
 
