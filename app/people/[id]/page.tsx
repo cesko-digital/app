@@ -56,7 +56,7 @@ const PrivateProfile = ({ profile }: ProfileProps) => (
   <div className="pt-12 text-center">
     <div className="inline-block">
       <Avatar profile={profile} />
-      <h1 className="typo-title mb-2">{profile.name}</h1>
+      <h1 className="typo-title my-2">{profile.name}</h1>
       <p>Tenhle profil je soukromý</p>
     </div>
   </div>
@@ -188,10 +188,10 @@ const ProjectSection = ({ engagements }: EngagementProps) => {
 };
 
 const Avatar = ({ profile }: ProfileProps) => (
-  <div className="relative aspect-square w-[200px]">
+  <div className="relative mx-auto aspect-square w-[200px]">
     <Image
       src={profile.avatarUrl}
-      className="mx-auto rounded-full bg-pebble"
+      className="rounded-full bg-pebble"
       width={200}
       height={200}
       alt=""
