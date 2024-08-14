@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { iconForUrl } from "~/components/icons";
+import { CeskoDigital } from "~/components/icons/generic";
 import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
@@ -124,11 +125,9 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci!",
   };
-  const occupation = profile.roles.includes("Core Team Member")
-    ? "V Česko.Digital :)"
-    : profile.occupation
-      ? labels[profile.occupation]
-      : undefined;
+  const occupation = profile.occupation
+    ? labels[profile.occupation]
+    : undefined;
   const seniority = getMaxSeniority(profile.skills);
   return (
     <div className="max-w-prose">
@@ -190,13 +189,25 @@ const ProjectSection = ({ engagements }: EngagementProps) => {
 };
 
 const Avatar = ({ profile }: ProfileProps) => (
-  <Image
-    src={profile.avatarUrl}
-    className="mx-auto rounded-full bg-pebble"
-    width={200}
-    height={200}
-    alt=""
-  />
+  <div className="relative aspect-square w-[200px]">
+    <Image
+      src={profile.avatarUrl}
+      className="mx-auto rounded-full bg-pebble"
+      width={200}
+      height={200}
+      alt=""
+    />
+    {profile.roles.includes("Core Team Member") && (
+      <Image
+        className="absolute bottom-[12px] right-[12px] cursor-help"
+        src={CeskoDigital}
+        width={30}
+        height={30}
+        title="Člen*ka placeného týmu Česko.Digital"
+        alt="Člen*ka placeného týmu Česko.Digital"
+      />
+    )}
+  </div>
 );
 
 //
