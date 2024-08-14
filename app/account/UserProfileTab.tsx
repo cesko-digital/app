@@ -65,7 +65,15 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
-
+      <div>
+        <a
+          className="btn-inverted"
+          href={model ? Route.toProfile(model) : undefined}
+          target="_blank"
+        >
+          Zobrazit profil
+        </a>
+      </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="registrationEmail" className="block">
           Registrační e-mail:
