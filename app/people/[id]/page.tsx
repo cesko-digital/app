@@ -74,7 +74,7 @@ const PublicProfile = async ({ profile }: ProfileProps) => {
     engagements.length > 0;
   return (
     <div className="mt-10 flex flex-col gap-x-20 gap-y-10 md:flex-row">
-      <div className="flex max-w-[200px] flex-col gap-7">
+      <div className="flex max-w-[200px] flex-col gap-7 max-sm:mx-auto">
         <Avatar profile={profile} />
         {profile.roles && profile.roles.includes("Core Team Member") && (
           <p className="text-center">Člen*ka placeného týmu Česko.Digital</p>
