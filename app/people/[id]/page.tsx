@@ -97,6 +97,11 @@ const HeadingRow = ({ profile }: ProfileProps) => (
         )}
       </div>
     </div>
+    {profile.roles && profile.roles.includes("Core Team Member") && (
+      <p className="typo-caption inline-block rounded-md border-[1px] border-it px-2 lowercase text-it">
+        Člen*ka placeného týmu Česko.Digital
+      </p>
+    )}
     {profile.bio && (
       <p className="mt-2 max-w-prose whitespace-pre-line">{profile.bio}</p>
     )}
@@ -113,7 +118,6 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
   </a>
 );
 
-// TBD: Add experience
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
   const tags = skillsToHashtags(profile.skills);
   const labels: Record<string, string> = {
@@ -134,7 +138,7 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
       {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
       {seniority && <InfoRow label="Seniorita" content={seniority} />}
       {profile.availableInDistricts && (
-        <InfoRow label="Kde bývám" content={profile.availableInDistricts} />
+        <InfoRow label="K zastižení" content={profile.availableInDistricts} />
       )}
       {occupation && <InfoRow label="Kde pracuju" content={occupation} />}
       <ContactRows profile={profile} />
@@ -148,10 +152,7 @@ const ProjectSection = ({ engagements }: EngagementProps) => {
     isRunning(a) ? -1 : isRunning(b) ? 1 : 0;
 
   const RunningMarker = () => (
-    <span
-      className="typo-caption cursor-help rounded-md border-[1px] border-green-500 px-2 text-green-500"
-      title="Aktuálně běžící projekt"
-    >
+    <span className="typo-caption rounded-md border-[1px] border-green-500 px-2 text-green-500">
       běží
     </span>
   );
@@ -199,11 +200,10 @@ const Avatar = ({ profile }: ProfileProps) => (
     />
     {profile.roles.includes("Core Team Member") && (
       <Image
-        className="absolute bottom-[12px] right-[12px] cursor-help"
+        className="absolute bottom-[12px] right-[12px]"
         src={CeskoDigital}
         width={30}
         height={30}
-        title="Člen*ka placeného týmu Česko.Digital"
         alt="Člen*ka placeného týmu Česko.Digital"
       />
     )}

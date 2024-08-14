@@ -39,10 +39,9 @@ export const UserProfileCard = ({ profile, label }: Props) => (
         {profile.roles && profile.roles.includes("Core Team Member") && (
           <Image
             src={CeskoDigital}
-            className="absolute left-[60px] top-[60px] cursor-help"
+            className="absolute left-[60px] top-[60px]"
             width={20}
             height={20}
-            title="Člen*ka placeného týmu Česko.Digital"
             alt="Člen*ka placeného týmu Česko.Digital"
           />
         )}
