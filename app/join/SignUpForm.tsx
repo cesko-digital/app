@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
+import { FormError } from "~/components/form/FormError";
 import { SkillPicker } from "~/components/SkillPicker";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
@@ -432,14 +433,10 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
     <section>
       <div className="flex max-w-prose flex-col gap-4">
         {validationResult.result === "error" && state !== emptyFormState && (
-          <p className="text-red-500" data-testid="form-error">
-            {validationResult.msg}
-          </p>
+          <FormError error={validationResult.msg} />
         )}
         {submissionState.tag === "submission_error" && (
-          <p className="text-red-500" data-testid="form-error">
-            {submissionState.msg}
-          </p>
+          <FormError error={submissionState.msg} />
         )}
         <div>
           <button
