@@ -80,7 +80,7 @@ const SlackRow = ({ profile }: { profile: UserProfile }) => (
         href={`slack://user?team=TG21XF887&id=${profile.slackId}`}
         className="typo-link"
       >
-        poslat zprávu
+        poslat zprávu na Slacku
       </a>
     }
   />
