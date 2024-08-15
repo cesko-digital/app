@@ -10,9 +10,14 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
+import {
+  decodeUrl,
+  relationToZeroOrOne,
+  takeFirst,
+  withDefault,
+} from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { defaultAvatarUrl, normalizeEmailAddress, unique } from "~/src/utils";
+import { defaultAvatarUrl, normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -21,6 +26,9 @@ const notificationFlags = ["receiveNewRoleNotifications"] as const;
 
 /** All supported feature flags */
 const featureFlags = ["registrationV2", "assetUpload"] as const;
+
+/** All supported user roles */
+const userRoles = ["Code of Conduct Admin", "Core Team Member"] as const;
 
 /** All supported privacy flags */
 export const privacyFlags = [
@@ -50,6 +58,7 @@ export interface Schema extends FieldSet {
   notificationFlags: ReadonlyArray<string>;
   privacyFlags: ReadonlyArray<string>;
   featureFlags: ReadonlyArray<string>;
+  roles: ReadonlyArray<string>;
   state: string;
   createdAt: string;
   lastModifiedAt: string;
@@ -82,7 +91,8 @@ export const decodeUserProfile = record({
   skills: field("competencies", withDefault(string, "")),
   occupation: optional(string),
   organizationName: optional(string),
-  profileUrl: optional(string),
+  // If profile URL is malformed, parse as `undefined` instead of throwing
+  profileUrl: withDefault(optional(decodeUrl), undefined),
   bio: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
@@ -96,6 +106,7 @@ export const decodeUserProfile = record({
   featureFlags: decodeFlags(union(...featureFlags)),
   notificationFlags: decodeFlags(union(...notificationFlags)),
   privacyFlags: decodeFlags(union(...privacyFlags)),
+  roles: decodeFlags(union(...userRoles)),
   availableInDistricts: optional(string),
   gdprPolicyAcceptedAt: optional(string),
   codeOfConductAcceptedAt: optional(string),
@@ -237,19 +248,14 @@ export async function createUserProfile(
 // Utils
 //
 
-export function getUserHashtags(profile: UserProfile): string[] {
-  const uppercaseFirst = (s: string) =>
-    s.charAt(0).toLocaleUpperCase() + s.slice(1);
-  const tagify = (s: string) => s.split(" ").map(uppercaseFirst).join("");
-  const categories = profile.skills
-    .split(/;\s*/)
-    .map((skill) => skill.split(/\s*\/\s*/).shift())
-    .filter((category) => category !== "Ostatní")
-    .map((category) => tagify(category!));
-  const places = profile.availableInDistricts?.split(", ").map(tagify) ?? [];
-  return unique(
-    [...categories, ...places]
-      .sort((a, b) => a.localeCompare(b))
-      .map((tag) => "#" + tag),
-  );
-}
+/**
+ * Compare user profiles by name
+ *
+ * Uses `String.localeCompare` on the last word of the name.
+ */
+export const compareByName = (a: UserProfile, b: UserProfile) =>
+  compareNames(a.name, b.name);
+
+/** Locale compare strings according to their last words */
+export const compareNames = (a: string, b: string) =>
+  a.split(/\s+/).pop()!.localeCompare(b.split(/\s+/).pop()!);

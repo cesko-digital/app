@@ -40,6 +40,7 @@ export const decodeTeamEngagement = record({
   projectRole: optional(string),
   projectName: relationToOne,
   projectSlug: relationToOne,
+  projectState: relationToOne,
   coordinatingRole: withDefault(boolean, false),
   fields: optionalArray(string),
   inactive: withDefault(boolean, false),

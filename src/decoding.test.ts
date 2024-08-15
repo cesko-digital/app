@@ -24,6 +24,7 @@ test("Decode URL", () => {
     decodeUrl("https://cesko-digital.slack.com/archives/C01AENB1LPP"),
   ).toEqual("https://cesko-digital.slack.com/archives/C01AENB1LPP");
   expect(decodeUrl("mailto:bagr@lopata.cz")).toEqual("mailto:bagr@lopata.cz");
+  expect(decodeUrl("www.google.com")).toEqual("https://www.google.com/");
 });
 
 test("Decode valid items from array", () => {

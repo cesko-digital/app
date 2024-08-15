@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
+import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
@@ -64,7 +65,15 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
-
+      <div>
+        <a
+          className="btn-inverted"
+          href={model ? Route.toProfile(model) : undefined}
+          target="_blank"
+        >
+          Zobrazit profil
+        </a>
+      </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="registrationEmail" className="block">
           Registrační e-mail:
@@ -202,11 +211,22 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
           Chci mít veřejný profil
         </label>
         {hasPublicProfile && (
-          <Note>
-            <Link href={Route.toProfile(model!)} className="typo-link">
-              {absolute(Route.toProfile(model!))}
-            </Link>
-          </Note>
+          <div className="flex flex-row items-center gap-2">
+            <Note>
+              Svůj profil najdeš na{" "}
+              <Link
+                href={Route.toProfile(model!)}
+                className="typo-link"
+                target="_blank"
+              >
+                téhle adrese
+              </Link>
+            </Note>
+            <CopyToClipboardButton
+              title="Zkopírovat adresu profilu do schránky"
+              value={absolute(Route.toProfile(model!))}
+            />
+          </div>
         )}
       </div>
 
