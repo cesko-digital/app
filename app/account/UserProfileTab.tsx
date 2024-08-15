@@ -69,7 +69,6 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         <a
           className="btn-inverted"
           href={model ? Route.toProfile(model) : undefined}
-          target="_blank"
         >
           Zobrazit profil
         </a>
