@@ -60,9 +60,17 @@ export const decodeJSONString =
 /**
  * Decode a URL string
  *
- * Throws if the string is not a valid URL.
+ * Throws if the string is not a valid URL. As a courtesy, relative
+ * URLs that start with `www.` are converted to absolute URLs by prepending
+ * `https://`.
  */
-export const decodeUrl = (value: unknown) => new URL(string(value)).toString();
+export const decodeUrl = (value: unknown) => {
+  let s = string(value);
+  if (s.startsWith("www.")) {
+    s = "https://" + s;
+  }
+  return new URL(s).toString();
+};
 
 /**
  * Parse an Airtable relation from the current table to one record in another table

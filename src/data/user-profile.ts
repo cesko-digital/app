@@ -10,7 +10,12 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { relationToZeroOrOne, takeFirst, withDefault } from "~/src/decoding";
+import {
+  decodeUrl,
+  relationToZeroOrOne,
+  takeFirst,
+  withDefault,
+} from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
 import { defaultAvatarUrl, normalizeEmailAddress } from "~/src/utils";
 
@@ -86,7 +91,8 @@ export const decodeUserProfile = record({
   skills: field("competencies", withDefault(string, "")),
   occupation: optional(string),
   organizationName: optional(string),
-  profileUrl: optional(string),
+  // If profile URL is malformed, parse as `undefined` instead of throwing
+  profileUrl: withDefault(optional(decodeUrl), undefined),
   bio: optional(string),
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
