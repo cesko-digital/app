@@ -88,7 +88,10 @@ const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
       <a href={publicUrl} className="typo-link">
         {publicUrl}
       </a>
-      <CopyToClipboardButton value={publicUrl} />
+      <CopyToClipboardButton
+        title="Zkopírovat URL do schránky"
+        value={publicUrl}
+      />
     </p>
   );
 };

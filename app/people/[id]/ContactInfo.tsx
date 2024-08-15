@@ -58,7 +58,10 @@ const EmailRow = ({ profile }: { profile: UserProfile }) => (
         <a href={`mailto:${profile.contactEmail}`} className="typo-link">
           {profile.contactEmail}
         </a>
-        <CopyToClipboardButton value={profile.contactEmail} />
+        <CopyToClipboardButton
+          title="Zkopírovat e-mail do schránky"
+          value={profile.contactEmail}
+        />
       </div>
     }
   />

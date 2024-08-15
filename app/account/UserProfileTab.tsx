@@ -222,7 +222,10 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
                 téhle adrese
               </Link>
             </Note>
-            <CopyToClipboardButton value={absolute(Route.toProfile(model!))} />
+            <CopyToClipboardButton
+              title="Zkopírovat adresu profilu do schránky"
+              value={absolute(Route.toProfile(model!))}
+            />
           </div>
         )}
       </div>
