@@ -103,7 +103,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         <textarea
           id="bio-textarea"
           className="mb-2 block w-full rounded-md border-2 border-gray p-2"
-          placeholder="Čemu se věnuješ? Co tě baví? Do jakých projektů tě láká se zapojit?"
+          placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
           rows={3}
           disabled={!model || updating}
           defaultValue={bio}
