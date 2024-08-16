@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
+import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
@@ -16,6 +17,7 @@ import {
   type SkillSelection,
 } from "~/src/skills/skills";
 import skills from "~/src/skills/skills.json";
+import { looksLikeEmailAdress } from "~/src/utils";
 
 type SectionProps = {
   model?: UserProfile;
@@ -103,7 +105,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         <textarea
           id="bio-textarea"
           className="mb-2 block w-full rounded-md border-2 border-gray p-2"
-          placeholder="Čemu se věnuješ? Co tě baví? Do jakých projektů tě láká se zapojit?"
+          placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
           rows={3}
           disabled={!model || updating}
           defaultValue={bio}
@@ -128,6 +130,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
 
 const ContactSection = ({ model, updating, onChange }: SectionProps) => {
   const [contactEmail, setContactEmail] = useState("");
+  const [contactEmailError, setContactEmailError] = useState("");
   const [pendingChanges, setPendingChanges] = useState(false);
   const canSubmit = pendingChanges && !updating;
 
@@ -152,10 +155,18 @@ const ContactSection = ({ model, updating, onChange }: SectionProps) => {
           type="text"
           className="block w-full rounded-md border-2 border-gray p-2"
           onChange={(e) => {
-            setContactEmail(e.target.value);
-            setPendingChanges(true);
+            const newContactEmail = e.target.value;
+            if (looksLikeEmailAdress(newContactEmail)) {
+              setContactEmail(newContactEmail);
+              setPendingChanges(true);
+              setContactEmailError("");
+            } else {
+              setPendingChanges(false);
+              setContactEmailError("V e-mailové adrese je nějaká chyba.");
+            }
           }}
         ></input>
+        <FormError error={contactEmailError} />
       </div>
 
       <div>
