@@ -10,7 +10,12 @@ export async function POST(request: Request): Promise<Response> {
     // Only users with the `assetUpload` feature flag may upload
     const user = await getUserProfile(id);
     if (!user?.featureFlags.includes("assetUpload")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json(
+        {
+          error: `Feature flag 'assetUpload' not set for user '${user?.name}'.`,
+        },
+        { status: 403 },
+      );
     }
 
     const body = (await request.json()) as HandleUploadBody;
