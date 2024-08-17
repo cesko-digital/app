@@ -9,8 +9,7 @@ export default async function UploadPage() {
       <h1 className="typo-title mb-10 mt-7">Nahrát data</h1>
       <p className="mb-10 max-w-prose">
         Tady můžeš snadno nahrát například obrázek nebo PDF, ke kterému chceš
-        mít veřejné URL. Aktuálně jde takhle nahrávat pouze soubory zhruba do
-        velikosti 4 MB, pokud potřebuješ větší, ozvi se.
+        mít veřejné URL.
       </p>
       <UploadForm />
     </main>
