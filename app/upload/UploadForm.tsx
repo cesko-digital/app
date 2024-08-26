@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 
 import { type PutBlobResult } from "@vercel/blob";
+import { upload } from "@vercel/blob/client";
 import clsx from "clsx";
 
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
@@ -19,24 +20,22 @@ export const UploadForm = () => {
     if (!inputFileRef.current?.files) {
       throw new Error("No file selected");
     }
-
-    const file = inputFileRef.current.files[0];
+    if (!inputFileRef.current.files[0].name) {
+      throw new Error("Missing filename");
+    }
 
     setUploading(true);
     setError(false);
-    const response = await fetch(`/upload/upload?filename=${file.name}`, {
-      method: "POST",
-      body: file,
-    });
 
-    if (response.ok) {
-      const newBlob = (await response.json()) as PutBlobResult;
+    try {
+      const file = inputFileRef.current.files[0];
+      const newBlob = await uploadFile(file);
       setBlob(newBlob);
-      setUploading(false);
-    } else {
+    } catch {
       setError(true);
-      setUploading(false);
     }
+
+    setUploading(false);
   };
 
   return (
@@ -67,9 +66,8 @@ export const UploadForm = () => {
 
 const ErrorView = () => (
   <p className="max-w-prose">
-    ⚠️ Soubor se nepovedlo nahrát. Není moc veliký? Jsi přihlášený nebo
-    přihlášená? Máš oprávnění nahrávat soubory? Samé otázky. V případě potřeby
-    se{" "}
+    ⚠️ Soubor se nepovedlo nahrát. Jsi přihlášený nebo přihlášená? Máš oprávnění
+    nahrávat soubory? Samé otázky. V případě potřeby se{" "}
     <a
       className="typo-link"
       href="https://cesko-digital.slack.com/archives/CHG9NA23D"
@@ -95,3 +93,31 @@ const ResultView = ({ uploadedFileUrl }: { uploadedFileUrl: string }) => {
     </p>
   );
 };
+
+/**
+ * Function for generating SHA-1 hash of a file contents.
+ *
+ * Courtesy of MDN Web Docs:
+ * https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#converting_a_digest_to_a_hex_string
+ */
+async function SHA1Hash(file: File): Promise<string> {
+  const data = await file.arrayBuffer();
+  const hashBuffer = await window.crypto.subtle.digest("SHA-1", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  // Convert bytes to hex string.
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function SHA1Prefix(file: File): Promise<string> {
+  return (await SHA1Hash(file)).slice(0, 8);
+}
+
+async function uploadFile(file: File): Promise<PutBlobResult> {
+  const hash = await SHA1Prefix(file);
+  const fileExtension = file.name.split(".").pop();
+  const target = `${hash}.${fileExtension}`;
+  return await upload(target, file, {
+    access: "public",
+    handleUploadUrl: "/upload/upload",
+  });
+}

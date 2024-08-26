@@ -1,57 +1,41 @@
-import crypto from "crypto";
-
 import { NextResponse } from "next/server";
 
-import { put } from "@vercel/blob";
-import { getServerSession } from "next-auth";
+import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 
-import { authOptions, type OurUser } from "~/src/auth";
+import { withAuthenticatedUser } from "~/src/auth";
 import { getUserProfile } from "~/src/data/user-profile";
 
 export async function POST(request: Request): Promise<Response> {
-  // Only allow signed-in users to upload assets
-  const session = await getServerSession(authOptions);
-  if (!session?.user) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+  return withAuthenticatedUser(async ({ id }) => {
+    // Only users with the `assetUpload` feature flag may upload
+    const user = await getUserProfile(id);
+    if (!user?.featureFlags.includes("assetUpload")) {
+      return NextResponse.json(
+        {
+          error: `Feature flag 'assetUpload' not set for user '${user?.name}'.`,
+        },
+        { status: 403 },
+      );
+    }
 
-  // And only users with the `assetUpload` feature flag may upload
-  const user = await getUserProfile((session.user as OurUser).id);
-  if (!user?.featureFlags.includes("assetUpload")) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+    const body = (await request.json()) as HandleUploadBody;
 
-  if (!request.body) {
-    return new Response("Missing payload", { status: 400 });
-  }
-
-  // We use the original filename to get the extension
-  const { searchParams } = new URL(request.url);
-  const originalFilename = searchParams.get("filename");
-  if (!originalFilename) {
-    return new Response("Missing filename", { status: 400 });
-  }
-
-  // But the file name itself is an 8-character prefix of the SHA1
-  // of file content
-  const data = await getArrayBufferView(request.body);
-  const hash = shasumPrefix(new Uint8Array(data));
-  const target = hash + "." + getFilenameExtension(originalFilename);
-
-  // Upload
-  const blob = await put(target, data, {
-    addRandomSuffix: false,
-    access: "public",
+    try {
+      // The `handleUpload` function will generate a token for uploading the file from the client (browser).
+      const jsonResponse = await handleUpload({
+        body,
+        request,
+        onBeforeGenerateToken: async () => ({ addRandomSuffix: false }),
+        onUploadCompleted: async () => {},
+      });
+      return NextResponse.json(jsonResponse);
+    } catch (error) {
+      console.error("Error uploading blob", error);
+      return NextResponse.json(
+        { error: (error as Error).message },
+        // The webhook will retry 5 times waiting for a 200 status code.
+        { status: 400 },
+      );
+    }
   });
-
-  return NextResponse.json(blob);
 }
-
-const getArrayBufferView = async (data: ReadableStream<Uint8Array>) =>
-  new Response(data).arrayBuffer();
-
-const shasumPrefix = (data: crypto.BinaryLike) =>
-  crypto.createHash("sha1").update(data).digest("hex").slice(0, 8);
-
-const getFilenameExtension = (name: string) =>
-  name.split(".").pop()?.toLowerCase();
