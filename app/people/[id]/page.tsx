@@ -194,7 +194,7 @@ const Avatar = ({ profile }: ProfileProps) => (
   <div className="relative mx-auto aspect-square w-[200px]">
     <Image
       src={profile.avatarUrl}
-      className="rounded-full bg-pebble"
+      className="aspect-square rounded-full bg-pebble object-cover object-top"
       width={200}
       height={200}
       alt=""
