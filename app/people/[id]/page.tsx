@@ -101,7 +101,10 @@ const HeadingRow = ({ profile }: ProfileProps) => (
       </div>
     </div>
     {profile.bio && (
-      <p className="mt-2 max-w-prose whitespace-pre-line">{profile.bio}</p>
+      <p className="mt-2 max-w-prose whitespace-pre-line">
+        {/* Make newlines consistent */}
+        {profile.bio.replaceAll(/\n+/g, "\n\n")}
+      </p>
     )}
   </div>
 );
