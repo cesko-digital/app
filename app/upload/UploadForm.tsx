@@ -67,7 +67,8 @@ export const UploadForm = () => {
 const ErrorView = () => (
   <p className="max-w-prose">
     ⚠️ Soubor se nepovedlo nahrát. Jsi přihlášený nebo přihlášená? Máš oprávnění
-    nahrávat soubory? Samé otázky. V případě potřeby se{" "}
+    nahrávat soubory? Nahráváš správné typy souborů (PNG, JPEG či PDF)? Samé
+    otázky. V případě potřeby se{" "}
     <a
       className="typo-link"
       href="https://cesko-digital.slack.com/archives/CHG9NA23D"

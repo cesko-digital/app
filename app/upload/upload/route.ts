@@ -25,7 +25,10 @@ export async function POST(request: Request): Promise<Response> {
       const jsonResponse = await handleUpload({
         body,
         request,
-        onBeforeGenerateToken: async () => ({ addRandomSuffix: false }),
+        onBeforeGenerateToken: async () => ({
+          addRandomSuffix: false,
+          allowedContentTypes: ["image/png", "image/jpeg", "application/pdf"],
+        }),
         onUploadCompleted: async () => {},
       });
       return NextResponse.json(jsonResponse);
