@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { SessionProvider } from "components/SessionProvider";
+import { Toaster } from "react-hot-toast";
 
 import { MobileNav } from "./MobileNav";
 import { DesktopNav } from "./Navigation";
@@ -36,6 +37,8 @@ export default async function RootLayout({
         <SessionProvider>
           <NavigationBar />
           {children}
+          {/* It's important to have only a single instance of the `Toaster` in the whole app. */}
+          <Toaster />
         </SessionProvider>
       </body>
     </html>
