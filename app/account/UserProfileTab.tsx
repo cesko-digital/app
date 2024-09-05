@@ -81,6 +81,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
           Zobrazit profil
         </a>
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="registrationEmail" className="block">
           Registrační e-mail:
@@ -128,6 +129,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
           </button>
         </div>
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="bio-textarea" className="block">
           Řekni něco málo o sobě, ať tě lidé lépe poznají:
@@ -150,7 +152,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
             className={clsx(canSubmitBio ? "btn-primary" : "btn-disabled")}
             disabled={!canSubmitBio}
           >
-            Uložit bio
+            Uložit text
           </button>
         </div>
       </div>
@@ -244,6 +246,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-4">
       <h2 className="typo-title2">Práce</h2>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="occupation" className="block">
           Čemu se aktuálně věnuješ:
@@ -257,7 +260,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
                 name="occupation"
                 checked={occupation == id}
                 disabled={updating}
-                onChange={(e) =>
+                onChange={() =>
                   onChange({
                     ...model!,
                     occupation: id,
@@ -271,6 +274,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
           ))}
         </div>
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="organization" className="block">
           Název organizace, kde působíš:
@@ -300,6 +304,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
           </button>
         </div>
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="profileUrl" className="block">
           Odkaz na tvůj web nebo profesní profil:
