@@ -47,6 +47,7 @@ export const UserProfileTab = () => {
     <div className="flex flex-col gap-10">
       <BioSection model={model} updating={updating} onChange={setModel} />
       <ContactSection model={model} updating={updating} onChange={setModel} />
+      <WorkSection model={model} updating={updating} onChange={setModel} />
       <PrivacySection model={model} updating={updating} onChange={setModel} />
       <MapSection model={model} onChange={setModel} />
       <SkillSection model={model} updating={updating} onChange={setModel} />
@@ -56,12 +57,17 @@ export const UserProfileTab = () => {
 
 const BioSection = ({ model, updating, onChange }: SectionProps) => {
   const [bio, setBio] = useState("");
-  const [pendingChanges, setPendingChanges] = useState(false);
-  const canSubmit = pendingChanges && !updating;
+  const [name, setName] = useState("");
+  const [pendingChangesBio, setPendingChangesBio] = useState(false);
+  const [pendingChangesName, setPendingChangesName] = useState(false);
+  const canSubmitBio = pendingChangesBio && !updating;
+  const canSubmitName = pendingChangesName && !updating;
 
   useEffect(() => {
     setBio(model?.bio ?? "");
-    setPendingChanges(false);
+    setName(model?.name ?? "");
+    setPendingChangesBio(false);
+    setPendingChangesName(false);
   }, [model]);
 
   return (
@@ -75,6 +81,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
           Zobrazit profil
         </a>
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="registrationEmail" className="block">
           Registrační e-mail:
@@ -99,6 +106,31 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <div className="flex flex-col gap-2">
+        <label htmlFor="name" className="block">
+          Jméno a příjmení:
+        </label>
+        <input
+          id="name"
+          className="block w-full rounded-md border-2 border-gray p-2"
+          disabled={!model || updating}
+          defaultValue={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setPendingChangesName(true);
+          }}
+        />
+        <div>
+          <button
+            onClick={() => onChange({ ...model!, name })}
+            className={clsx(canSubmitName ? "btn-primary" : "btn-disabled")}
+            disabled={!canSubmitName}
+          >
+            Uložit jméno
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
         <label htmlFor="bio-textarea" className="block">
           Řekni něco málo o sobě, ať tě lidé lépe poznají:
         </label>
@@ -111,16 +143,16 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
           defaultValue={bio}
           onChange={(e) => {
             setBio(e.target.value);
-            setPendingChanges(true);
+            setPendingChangesBio(true);
           }}
         />
         <div>
           <button
             onClick={() => onChange({ ...model!, bio })}
-            className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
-            disabled={!canSubmit}
+            className={clsx(canSubmitBio ? "btn-primary" : "btn-disabled")}
+            disabled={!canSubmitBio}
           >
-            Uložit změny
+            Uložit text
           </button>
         </div>
       </div>
@@ -175,8 +207,128 @@ const ContactSection = ({ model, updating, onChange }: SectionProps) => {
           className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
           disabled={!canSubmit}
         >
-          Uložit změny
+          Uložit kontaktní email
         </button>
+      </div>
+    </section>
+  );
+};
+
+const WorkSection = ({ model, updating, onChange }: SectionProps) => {
+  const occupationsOptions = {
+    "private-sector": "Pracuji v soukromém sektoru",
+    "non-profit": "Pracuji v neziskové organizaci",
+    state: "Pracuji ve státním sektoru",
+    freelancing: "Jsem na volné noze/freelancer",
+    studying: "Studuji",
+    "parental-leave": "Jsem na rodičovské",
+    "looking-for-job": "Hledám práci",
+    other: "Jiné",
+  };
+
+  const [occupation, setOccupation] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [url, setUrl] = useState("");
+  const [pendingChangesOrganization, setPendingChangesOrganization] =
+    useState(false);
+  const [pendingChangesUrl, setPendingChangesUrl] = useState(false);
+  const canSubmitOrganization = pendingChangesOrganization && !updating;
+  const canSubmitUrl = pendingChangesUrl && !updating;
+
+  useEffect(() => {
+    setOccupation(model?.occupation ?? "");
+    setOrganization(model?.organizationName ?? "");
+    setUrl(model?.profileUrl ?? "");
+    setPendingChangesOrganization(false);
+    setPendingChangesUrl(false);
+  }, [model]);
+
+  return (
+    <section className="flex max-w-prose flex-col gap-4">
+      <h2 className="typo-title2">Práce</h2>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="occupation" className="block">
+          Čemu se aktuálně věnuješ:
+        </label>
+        <div>
+          {Object.entries(occupationsOptions).map(([id, label]) => (
+            <label key={id} className="mb-1 flex items-center">
+              <input
+                type="radio"
+                className="mr-3"
+                name="occupation"
+                checked={occupation == id}
+                disabled={updating}
+                onChange={() =>
+                  onChange({
+                    ...model!,
+                    occupation: id,
+                  })
+                }
+              />
+              <span className={occupation === id ? "font-bold" : ""}>
+                {label}
+              </span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="organization" className="block">
+          Název organizace, kde působíš:
+        </label>
+        <input
+          id="organization"
+          className="block w-full rounded-md border-2 border-gray p-2"
+          disabled={!model || updating}
+          defaultValue={organization}
+          placeholder="název firmy, neziskové organizace, státní instituce, …"
+          onChange={(e) => {
+            setOrganization(e.target.value);
+            setPendingChangesOrganization(true);
+          }}
+        />
+        <div>
+          <button
+            onClick={() =>
+              onChange({ ...model!, organizationName: organization })
+            }
+            className={clsx(
+              canSubmitOrganization ? "btn-primary" : "btn-disabled",
+            )}
+            disabled={!canSubmitOrganization}
+          >
+            Uložit organizaci
+          </button>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="profileUrl" className="block">
+          Odkaz na tvůj web nebo profesní profil:
+        </label>
+        <input
+          id="profileUrl"
+          className="block w-full rounded-md border-2 border-gray p-2"
+          disabled={!model || updating}
+          defaultValue={url}
+          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
+          onChange={(e) => {
+            setUrl(e.target.value);
+            setPendingChangesUrl(true);
+          }}
+        />
+        <div>
+          <button
+            onClick={() => onChange({ ...model!, profileUrl: url })}
+            className={clsx(canSubmitUrl ? "btn-primary" : "btn-disabled")}
+            disabled={!canSubmitUrl}
+          >
+            Uložit odkaz
+          </button>
+        </div>
       </div>
     </section>
   );
