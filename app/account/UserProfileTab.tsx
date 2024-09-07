@@ -231,7 +231,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
   };
 
   const [occupation, setOccupation] = useState("");
-  const [organization, setOrganization] = useState("");
+  const [organizationName, setOrganizationName] = useState("");
   const [url, setUrl] = useState("");
   const [pendingChangesOrganization, setPendingChangesOrganization] =
     useState(false);
@@ -241,7 +241,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
 
   useEffect(() => {
     setOccupation(model?.occupation ?? "");
-    setOrganization(model?.organizationName ?? "");
+    setOrganizationName(model?.organizationName ?? "");
     setUrl(model?.profileUrl ?? "");
     setPendingChangesOrganization(false);
     setPendingChangesUrl(false);
@@ -287,18 +287,16 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
           id="organization"
           className="block w-full rounded-md border-2 border-gray p-2"
           disabled={!model || updating}
-          defaultValue={organization}
+          defaultValue={organizationName}
           placeholder="název firmy, neziskové organizace, státní instituce, …"
           onChange={(e) => {
-            setOrganization(e.target.value);
+            setOrganizationName(e.target.value);
             setPendingChangesOrganization(true);
           }}
         />
         <div>
           <button
-            onClick={() =>
-              onChange({ ...model!, organizationName: organization })
-            }
+            onClick={() => onChange({ ...model!, organizationName })}
             className={clsx(
               canSubmitOrganization ? "btn-primary" : "btn-disabled",
             )}
