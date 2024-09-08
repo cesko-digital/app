@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import Link from "next/link";
 
 import clsx from "clsx";
@@ -19,10 +19,34 @@ import {
 import skills from "~/src/skills/skills.json";
 import { looksLikeEmailAdress } from "~/src/utils";
 
+const inputIds = [
+  "bio",
+  "contactEmail",
+  "name",
+  "occupation",
+  "organizationName",
+  "profileUrl",
+] as const;
+
+type InputIds = (typeof inputIds)[number];
+
 type SectionProps = {
   model?: UserProfile;
   updating?: boolean;
   onChange: (newState: UserProfile) => void;
+};
+
+type InputWithSaveButtonProps = {
+  model?: UserProfile;
+  updating?: boolean;
+  label: string;
+  inputId: InputIds;
+  buttonText: string;
+  onChange: (newState: UserProfile) => void;
+  placeholder?: string;
+  rows?: number;
+  isTextArea?: boolean;
+  isEmail?: boolean;
 };
 
 // TBD: In the long term we probably want to share more of this code
@@ -50,7 +74,6 @@ export const UserProfileTab = () => {
   return (
     <div className="flex flex-col gap-10">
       <BioSection model={model} updating={updating} onChange={setModel} />
-      <ContactSection model={model} updating={updating} onChange={setModel} />
       <WorkSection model={model} updating={updating} onChange={setModel} />
       <PrivacySection model={model} updating={updating} onChange={setModel} />
       <MapSection model={model} onChange={setModel} />
@@ -59,21 +82,94 @@ export const UserProfileTab = () => {
   );
 };
 
-const BioSection = ({ model, updating, onChange }: SectionProps) => {
-  const [bio, setBio] = useState("");
-  const [name, setName] = useState("");
-  const [pendingChangesBio, setPendingChangesBio] = useState(false);
-  const [pendingChangesName, setPendingChangesName] = useState(false);
-  const canSubmitBio = pendingChangesBio && !updating;
-  const canSubmitName = pendingChangesName && !updating;
+const InputWithSaveButton = ({
+  model,
+  updating,
+  label,
+  inputId,
+  buttonText,
+  onChange,
+  placeholder = "",
+  rows = 3,
+  isTextArea = false,
+  isEmail = false,
+}: InputWithSaveButtonProps) => {
+  const [pendingChanges, setPendingChanges] = useState(false);
+  const canSubmit = pendingChanges && !updating;
+  const [inputValue, setInputValue] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   useEffect(() => {
-    setBio(model?.bio ?? "");
-    setName(model?.name ?? "");
-    setPendingChangesBio(false);
-    setPendingChangesName(false);
-  }, [model]);
+    setInputValue(model?.[inputId] ?? "");
+    setPendingChanges(false);
+  }, [model, inputId]);
 
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    setPendingChanges(true);
+  };
+
+  const emailOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const newContactEmail = e.target.value;
+    if (looksLikeEmailAdress(newContactEmail)) {
+      setInputValue(newContactEmail);
+      setPendingChanges(true);
+      setEmailError("");
+    } else {
+      setPendingChanges(false);
+      setEmailError("V e-mailové adrese je nějaká chyba.");
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={inputId} className="block">
+        {label}
+      </label>
+
+      {isTextArea ? (
+        <div>
+          <textarea
+            id={inputId}
+            className="mb-1 block w-full rounded-md border-2 border-gray p-2"
+            placeholder={placeholder}
+            rows={rows}
+            disabled={!model || updating}
+            defaultValue={inputValue}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              setPendingChanges(true);
+            }}
+          />
+        </div>
+      ) : (
+        <div>
+          <input
+            id={inputId}
+            className="mb-1 block w-full rounded-md border-2 border-gray p-2"
+            disabled={!model || updating}
+            defaultValue={inputValue}
+            onChange={isEmail ? emailOnChangeHandler : onChangeHandler}
+          />
+          {isEmail && <FormError error={emailError} />}
+        </div>
+      )}
+      <div>
+        <button
+          onClick={() => {
+            onChange({ ...model!, [inputId]: inputValue });
+          }}
+          className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
+          disabled={!canSubmit}
+        >
+          {buttonText}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const BioSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -109,111 +205,35 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="block">
-          Jméno a příjmení:
-        </label>
-        <input
-          id="name"
-          className="block w-full rounded-md border-2 border-gray p-2"
-          disabled={!model || updating}
-          defaultValue={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            setPendingChangesName(true);
-          }}
-        />
-        <div>
-          <button
-            onClick={() => onChange({ ...model!, name })}
-            className={clsx(canSubmitName ? "btn-primary" : "btn-disabled")}
-            disabled={!canSubmitName}
-          >
-            Uložit jméno
-          </button>
-        </div>
-      </div>
+      <InputWithSaveButton
+        model={model}
+        updating={updating}
+        label={"Jméno a příjmění"}
+        inputId={"name"}
+        buttonText={"Uložit jméno"}
+        onChange={onChange}
+      />
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="bio-textarea" className="block">
-          Řekni něco málo o sobě, ať tě lidé lépe poznají:
-        </label>
-        <textarea
-          id="bio-textarea"
-          className="mb-2 block w-full rounded-md border-2 border-gray p-2"
-          placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
-          rows={3}
-          disabled={!model || updating}
-          defaultValue={bio}
-          onChange={(e) => {
-            setBio(e.target.value);
-            setPendingChangesBio(true);
-          }}
-        />
-        <div>
-          <button
-            onClick={() => onChange({ ...model!, bio })}
-            className={clsx(canSubmitBio ? "btn-primary" : "btn-disabled")}
-            disabled={!canSubmitBio}
-          >
-            Uložit text
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-};
+      <InputWithSaveButton
+        model={model}
+        updating={updating}
+        label="Veřejný kontaktní e-mail"
+        inputId="contactEmail"
+        buttonText="Uložit kontaktní email"
+        onChange={onChange}
+        isEmail={true}
+      />
 
-const ContactSection = ({ model, updating, onChange }: SectionProps) => {
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactEmailError, setContactEmailError] = useState("");
-  const [pendingChanges, setPendingChanges] = useState(false);
-  const canSubmit = pendingChanges && !updating;
-
-  useEffect(() => {
-    setContactEmail(model?.bio ?? "");
-    setPendingChanges(false);
-  }, [model]);
-
-  return (
-    <section className="flex max-w-prose flex-col gap-4">
-      <h2 className="typo-title2">Kontaktní informace</h2>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="contactEmail" className="block">
-          Veřejný kontaktní e-mail:
-        </label>
-        <input
-          id="contactEmail"
-          defaultValue={model?.contactEmail}
-          autoComplete="email"
-          disabled={updating}
-          type="text"
-          className="block w-full rounded-md border-2 border-gray p-2"
-          onChange={(e) => {
-            const newContactEmail = e.target.value;
-            if (looksLikeEmailAdress(newContactEmail)) {
-              setContactEmail(newContactEmail);
-              setPendingChanges(true);
-              setContactEmailError("");
-            } else {
-              setPendingChanges(false);
-              setContactEmailError("V e-mailové adrese je nějaká chyba.");
-            }
-          }}
-        ></input>
-        <FormError error={contactEmailError} />
-      </div>
-
-      <div>
-        <button
-          onClick={() => onChange({ ...model!, contactEmail })}
-          className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
-          disabled={!canSubmit}
-        >
-          Uložit kontaktní email
-        </button>
-      </div>
+      <InputWithSaveButton
+        model={model}
+        updating={updating}
+        label={"Řekni něco málo o sobě, ať tě lidé lépe poznají:"}
+        inputId={"bio"}
+        buttonText={"Uložit text"}
+        onChange={onChange}
+        placeholder={"zájmy, profesní historie, čemu se chceš věnovat, …"}
+        isTextArea={true}
+      />
     </section>
   );
 };
@@ -231,20 +251,9 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
   };
 
   const [occupation, setOccupation] = useState("");
-  const [organizationName, setOrganizationName] = useState("");
-  const [url, setUrl] = useState("");
-  const [pendingChangesOrganization, setPendingChangesOrganization] =
-    useState(false);
-  const [pendingChangesUrl, setPendingChangesUrl] = useState(false);
-  const canSubmitOrganization = pendingChangesOrganization && !updating;
-  const canSubmitUrl = pendingChangesUrl && !updating;
 
   useEffect(() => {
     setOccupation(model?.occupation ?? "");
-    setOrganizationName(model?.organizationName ?? "");
-    setUrl(model?.profileUrl ?? "");
-    setPendingChangesOrganization(false);
-    setPendingChangesUrl(false);
   }, [model]);
 
   return (
@@ -279,59 +288,25 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="organization" className="block">
-          Název organizace, kde působíš:
-        </label>
-        <input
-          id="organization"
-          className="block w-full rounded-md border-2 border-gray p-2"
-          disabled={!model || updating}
-          defaultValue={organizationName}
-          placeholder="název firmy, neziskové organizace, státní instituce, …"
-          onChange={(e) => {
-            setOrganizationName(e.target.value);
-            setPendingChangesOrganization(true);
-          }}
-        />
-        <div>
-          <button
-            onClick={() => onChange({ ...model!, organizationName })}
-            className={clsx(
-              canSubmitOrganization ? "btn-primary" : "btn-disabled",
-            )}
-            disabled={!canSubmitOrganization}
-          >
-            Uložit organizaci
-          </button>
-        </div>
-      </div>
+      <InputWithSaveButton
+        model={model}
+        updating={updating}
+        label={"Název organizace, kde působíš:"}
+        inputId={"organizationName"}
+        buttonText={"Uložit organizaci"}
+        onChange={onChange}
+        placeholder={"název firmy, neziskové organizace, státní instituce, …"}
+      />
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="profileUrl" className="block">
-          Odkaz na tvůj web nebo profesní profil:
-        </label>
-        <input
-          id="profileUrl"
-          className="block w-full rounded-md border-2 border-gray p-2"
-          disabled={!model || updating}
-          defaultValue={url}
-          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
-          onChange={(e) => {
-            setUrl(e.target.value);
-            setPendingChangesUrl(true);
-          }}
-        />
-        <div>
-          <button
-            onClick={() => onChange({ ...model!, profileUrl: url })}
-            className={clsx(canSubmitUrl ? "btn-primary" : "btn-disabled")}
-            disabled={!canSubmitUrl}
-          >
-            Uložit odkaz
-          </button>
-        </div>
-      </div>
+      <InputWithSaveButton
+        model={model}
+        updating={updating}
+        label={"Odkaz na tvůj web nebo profesní profil:"}
+        inputId={"profileUrl"}
+        buttonText={"Uložit odkaz"}
+        onChange={onChange}
+        placeholder={"například LinkedIn, GitHub, Behance, About.me, …"}
+      />
     </section>
   );
 };
