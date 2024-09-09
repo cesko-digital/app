@@ -208,6 +208,9 @@ export async function updateUserProfile(
       | "contactEmail"
       | "availableInDistricts"
       | "bio"
+      | "occupation"
+      | "profileUrl"
+      | "organizationName"
     >
   >,
 ): Promise<UserProfile> {

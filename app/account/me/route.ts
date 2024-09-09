@@ -87,6 +87,9 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      occupation,
+      organizationName,
+      profileUrl,
     } = await request.json();
     await updateUserProfile(profile.id, {
       name,
@@ -96,6 +99,9 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      occupation,
+      organizationName,
+      profileUrl,
     });
     return new Response("Updated", { status: 200 });
   });
