@@ -83,7 +83,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         </label>
         <input
           id="registrationEmail"
-          value={model?.email}
+          value={model?.email ?? ""}
           autoComplete="email"
           disabled
           type="text"
@@ -232,7 +232,7 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
       <div>
         <label className="flex items-center">
           <input
-            checked={model?.privacyFlags.includes("enablePublicProfile")}
+            checked={!!model?.privacyFlags.includes("enablePublicProfile")}
             type="checkbox"
             className="mr-3"
             disabled={updating}
@@ -371,7 +371,7 @@ const InputWithSaveButton = (props: InputWithSaveButtonProps) => {
     disabled = false,
     placeholder,
     onSave,
-    defaultValue,
+    defaultValue = "",
     validator,
     rows = 1,
     type = "text",
