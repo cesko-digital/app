@@ -1,4 +1,10 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import {
+  useEffect,
+  useState,
+  type DetailedHTMLProps,
+  type HTMLInputTypeAttribute,
+  type InputHTMLAttributes,
+} from "react";
 import Link from "next/link";
 
 import clsx from "clsx";
@@ -19,34 +25,10 @@ import {
 import skills from "~/src/skills/skills.json";
 import { looksLikeEmailAdress } from "~/src/utils";
 
-const inputIds = [
-  "bio",
-  "contactEmail",
-  "name",
-  "occupation",
-  "organizationName",
-  "profileUrl",
-] as const;
-
-type InputIds = (typeof inputIds)[number];
-
 type SectionProps = {
   model?: UserProfile;
   updating?: boolean;
   onChange: (newState: UserProfile) => void;
-};
-
-type InputWithSaveButtonProps = {
-  model?: UserProfile;
-  updating?: boolean;
-  label: string;
-  inputId: InputIds;
-  buttonText: string;
-  onChange: (newState: UserProfile) => void;
-  placeholder?: string;
-  rows?: number;
-  isTextArea?: boolean;
-  isEmail?: boolean;
 };
 
 // TBD: In the long term we probably want to share more of this code
@@ -78,93 +60,6 @@ export const UserProfileTab = () => {
       <PrivacySection model={model} updating={updating} onChange={setModel} />
       <MapSection model={model} onChange={setModel} />
       <SkillSection model={model} updating={updating} onChange={setModel} />
-    </div>
-  );
-};
-
-const InputWithSaveButton = ({
-  model,
-  updating,
-  label,
-  inputId,
-  buttonText,
-  onChange,
-  placeholder = "",
-  rows = 3,
-  isTextArea = false,
-  isEmail = false,
-}: InputWithSaveButtonProps) => {
-  const [pendingChanges, setPendingChanges] = useState(false);
-  const canSubmit = pendingChanges && !updating;
-  const [inputValue, setInputValue] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  useEffect(() => {
-    setInputValue(model?.[inputId] ?? "");
-    setPendingChanges(false);
-  }, [model, inputId]);
-
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    setPendingChanges(true);
-  };
-
-  const emailOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const newContactEmail = e.target.value;
-    if (looksLikeEmailAdress(newContactEmail)) {
-      setInputValue(newContactEmail);
-      setPendingChanges(true);
-      setEmailError("");
-    } else {
-      setPendingChanges(false);
-      setEmailError("V e-mailové adrese je nějaká chyba.");
-    }
-  };
-
-  return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={inputId} className="block">
-        {label}
-      </label>
-
-      {isTextArea ? (
-        <div>
-          <textarea
-            id={inputId}
-            className="mb-1 block w-full rounded-md border-2 border-gray p-2"
-            placeholder={placeholder}
-            rows={rows}
-            disabled={!model || updating}
-            defaultValue={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              setPendingChanges(true);
-            }}
-          />
-        </div>
-      ) : (
-        <div>
-          <input
-            id={inputId}
-            className="mb-1 block w-full rounded-md border-2 border-gray p-2"
-            disabled={!model || updating}
-            defaultValue={inputValue}
-            onChange={isEmail ? emailOnChangeHandler : onChangeHandler}
-          />
-          {isEmail && <FormError error={emailError} />}
-        </div>
-      )}
-      <div>
-        <button
-          onClick={() => {
-            onChange({ ...model!, [inputId]: inputValue });
-          }}
-          className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
-          disabled={!canSubmit}
-        >
-          {buttonText}
-        </button>
-      </div>
     </div>
   );
 };
@@ -206,33 +101,38 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <InputWithSaveButton
-        model={model}
-        updating={updating}
-        label={"Jméno a příjmění"}
-        inputId={"name"}
-        buttonText={"Uložit jméno"}
-        onChange={onChange}
+        id="name"
+        label="Celé jméno:"
+        saveButtonLabel="Uložit jméno"
+        disabled={!model || updating}
+        defaultValue={model?.name}
+        onSave={(name) => onChange({ ...model!, name })}
       />
 
       <InputWithSaveButton
-        model={model}
-        updating={updating}
-        label="Veřejný kontaktní e-mail"
-        inputId="contactEmail"
-        buttonText="Uložit kontaktní email"
-        onChange={onChange}
-        isEmail={true}
+        id="contactMail"
+        type="email"
+        label="Veřejný kontaktní e-mail:"
+        saveButtonLabel="Uložit email"
+        defaultValue={model?.contactEmail}
+        disabled={!model || updating}
+        onSave={(contactEmail) => onChange({ ...model!, contactEmail })}
+        validator={(value) =>
+          !looksLikeEmailAdress(value)
+            ? "V e-mailové adrese je nějaká chyba."
+            : undefined
+        }
       />
 
       <InputWithSaveButton
-        model={model}
-        updating={updating}
-        label={"Řekni něco málo o sobě, ať tě lidé lépe poznají:"}
-        inputId={"bio"}
-        buttonText={"Uložit text"}
-        onChange={onChange}
-        placeholder={"zájmy, profesní historie, čemu se chceš věnovat, …"}
-        isTextArea={true}
+        id="bio"
+        label="Řekni něco málo o sobě, ať tě lidé lépe poznají:"
+        saveButtonLabel="Uložit text"
+        defaultValue={model?.bio}
+        disabled={!model || updating}
+        placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
+        onSave={(bio) => onChange({ ...model!, bio })}
+        rows={3}
       />
     </section>
   );
@@ -289,23 +189,23 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <InputWithSaveButton
-        model={model}
-        updating={updating}
-        label={"Název organizace, kde působíš:"}
-        inputId={"organizationName"}
-        buttonText={"Uložit organizaci"}
-        onChange={onChange}
-        placeholder={"název firmy, neziskové organizace, státní instituce, …"}
+        id="organizationName"
+        label="Název organizace, kde působíš:"
+        saveButtonLabel="Uložit organizaci"
+        placeholder="název firmy, neziskové organizace, státní instituce, …"
+        defaultValue={model?.organizationName}
+        disabled={!model || updating}
+        onSave={(organizationName) => onChange({ ...model!, organizationName })}
       />
 
       <InputWithSaveButton
-        model={model}
-        updating={updating}
-        label={"Odkaz na tvůj web nebo profesní profil:"}
-        inputId={"profileUrl"}
-        buttonText={"Uložit odkaz"}
-        onChange={onChange}
-        placeholder={"například LinkedIn, GitHub, Behance, About.me, …"}
+        id="professionalProfile"
+        type="url"
+        label="Odkaz na tvůj web nebo profesní profil:"
+        saveButtonLabel="Uložit odkaz"
+        defaultValue={model?.profileUrl}
+        disabled={!model || updating}
+        onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
       />
     </section>
   );
@@ -443,5 +343,108 @@ const SkillSection = ({ model, updating, onChange }: SectionProps) => {
         disabled={updating}
       />
     </section>
+  );
+};
+
+//
+// Shared Code
+//
+
+type InputWithSaveButtonProps = {
+  id: string;
+  label: string;
+  saveButtonLabel?: string;
+  disabled?: boolean;
+  placeholder?: string;
+  onSave: (validatedValue: string) => void;
+  defaultValue?: string;
+  validator?: (value: string) => string | undefined;
+  rows?: number;
+  type?: Extract<HTMLInputTypeAttribute, "text" | "email" | "url">;
+};
+
+const InputWithSaveButton = (props: InputWithSaveButtonProps) => {
+  const {
+    id,
+    label,
+    saveButtonLabel = "Uložit",
+    disabled = false,
+    placeholder,
+    onSave,
+    defaultValue,
+    validator,
+    rows = 1,
+    type = "text",
+  } = props;
+
+  const [pendingChanges, setPendingChanges] = useState(false);
+  const [validationError, setValidationError] = useState<string | undefined>();
+  const [newValue, setNewValue] = useState("");
+
+  const canSubmit = pendingChanges && !disabled && !validationError;
+
+  useEffect(() => {
+    console.log(id);
+    setNewValue(defaultValue ?? "");
+    setPendingChanges(false);
+  }, [defaultValue, id]);
+
+  // This horrific type makes it easier to share the code for a
+  // single-line `input` and a `textarea` in a type-safe manner. Sorry!
+  type SharedProps = Pick<
+    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    | "id"
+    | "className"
+    | "defaultValue"
+    | "placeholder"
+    | "disabled"
+    | "onChange"
+  >;
+
+  const sharedProps = {
+    id,
+    defaultValue,
+    placeholder,
+    disabled,
+    className: "mb-1 block w-full rounded-md border-2 border-gray p-2",
+    onChange: (e: { target: { value: string } }) => {
+      const newValue = e.target.value;
+      setNewValue(newValue);
+      setPendingChanges(true);
+      if (validator) {
+        setValidationError(validator(newValue));
+      }
+    },
+  } satisfies SharedProps;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="block">
+        {label}
+      </label>
+
+      <div>
+        {rows === 1 && <input type={type} {...sharedProps} />}
+        {rows > 1 && <textarea rows={rows} {...sharedProps} />}
+        {validationError && (
+          <div className="py-1">
+            <FormError error={validationError} />
+          </div>
+        )}
+      </div>
+
+      <div>
+        <button
+          onClick={() => {
+            onSave(newValue);
+            setPendingChanges(false);
+          }}
+          className={clsx(canSubmit ? "btn-primary" : "btn-disabled")}
+          disabled={!canSubmit}
+        >
+          {saveButtonLabel}
+        </button>
+      </div>
+    </div>
   );
 };
