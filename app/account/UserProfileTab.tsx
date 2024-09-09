@@ -43,6 +43,7 @@ export const UserProfileTab = () => {
       "name",
       "occupation",
       "organizationName",
+      "profileUrl",
     ],
   });
 
