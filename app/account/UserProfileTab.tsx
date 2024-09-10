@@ -38,20 +38,7 @@ export const UserProfileTab = () => {
     model: model,
     updating,
     setModel,
-  } = usePatchedJSONResource<UserProfile>({
-    url: "/account/me",
-    writeKeys: [
-      "skills",
-      "bio",
-      "availableInDistricts",
-      "privacyFlags",
-      "contactEmail",
-      "name",
-      "occupation",
-      "organizationName",
-      "profileUrl",
-    ],
-  });
+  } = usePatchedJSONResource<UserProfile>({ url: "/account/me" });
 
   return (
     <div className="flex flex-col gap-10">
@@ -120,7 +107,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         validator={(value) =>
           !looksLikeEmailAdress(value)
             ? "V e-mailové adrese je nějaká chyba."
-            : undefined
+            : null
         }
       />
 
@@ -358,7 +345,7 @@ type InputWithSaveButtonProps = {
   placeholder?: string;
   onSave: (validatedValue: string) => void;
   defaultValue?: string;
-  validator?: (value: string) => string | undefined;
+  validator?: (value: string) => string | null;
   rows?: number;
   type?: Extract<HTMLInputTypeAttribute, "text" | "email" | "url">;
 };
@@ -378,7 +365,7 @@ const InputWithSaveButton = (props: InputWithSaveButtonProps) => {
   } = props;
 
   const [pendingChanges, setPendingChanges] = useState(false);
-  const [validationError, setValidationError] = useState<string | undefined>();
+  const [validationError, setValidationError] = useState<string | null>();
   const [newValue, setNewValue] = useState("");
 
   const canSubmit = pendingChanges && !disabled && !validationError;
