@@ -100,7 +100,7 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         id="contactMail"
         type="email"
         label="Veřejný kontaktní e-mail:"
-        saveButtonLabel="Uložit email"
+        saveButtonLabel="Uložit e-mail"
         defaultValue={model?.contactEmail}
         disabled={!model || updating}
         onSave={(contactEmail) => onChange({ ...model!, contactEmail })}
