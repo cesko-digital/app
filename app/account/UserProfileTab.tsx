@@ -371,7 +371,6 @@ const InputWithSaveButton = (props: InputWithSaveButtonProps) => {
   const canSubmit = pendingChanges && !disabled && !validationError;
 
   useEffect(() => {
-    console.log(id);
     setNewValue(defaultValue ?? "");
     setPendingChanges(false);
   }, [defaultValue, id]);
