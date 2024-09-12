@@ -30,6 +30,7 @@
     "plausible-tracker": "^0.3.9",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "react-lite-youtube-embed": "^2.4.0",
     "react-papaparse": "^4.4.0",
     "react-select": "^5.8.0",

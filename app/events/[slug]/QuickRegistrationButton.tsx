@@ -14,6 +14,10 @@ export const QuickRegistrationButton = ({ event }: { event: Event }) => {
   const url = `/events/${event.slug}/registration-status`;
   const { model, setModel, updating } = useJSONResource<RegistrationStatus>({
     url,
+    toastOptions: {
+      onSavePendingMsg: (oldValue) =>
+        !oldValue?.registered ? "Registruji..." : "Ruším registraci...",
+    },
   });
   if (updating || sessionStatus === "loading") {
     // Loading session or updating state
