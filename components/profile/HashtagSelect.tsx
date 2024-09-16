@@ -9,11 +9,13 @@ export type Props = {
   value: string;
   className?: string;
   onChange?: (value: string) => void;
+  disabled?: boolean;
 };
 
 export const HashtagSelect = ({
   className = "",
   onChange = () => {},
+  disabled = false,
   value,
 }: Props) => (
   <Select
@@ -23,6 +25,7 @@ export const HashtagSelect = ({
     placeholder="copywriting, TypeScript, právo, dotace, operations, …"
     noOptionsMessage={() => "Žádný tag neodpovídá"}
     className={className}
+    isDisabled={disabled}
     isMulti
   />
 );

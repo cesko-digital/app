@@ -13,17 +13,11 @@ import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
+import { HashtagSelect } from "~/components/profile/HashtagSelect";
 import { SenioritySelect } from "~/components/profile/SenioritySelect";
-import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
 import { absolute, Route } from "~/src/routing";
-import {
-  decodeSkillSelection,
-  encodeSkillSelection,
-  type SkillSelection,
-} from "~/src/skills/skills";
-import skills from "~/src/skills/skills.json";
 import { looksLikeEmailAdress } from "~/src/utils";
 
 type SectionProps = {
@@ -288,36 +282,25 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
   );
 };
 
-
-const SkillSection = ({ model, updating, onChange }: SectionProps) => {
-  const selection = model ? decodeSkillSelection(model.skills) : {};
-
-  // TBD: Batch updates without blocking the UI?
-  const onSelectionChange = (selection: SkillSelection) => {
-    onChange({ ...model!, skills: encodeSkillSelection(selection) });
-  };
-
-  return (
-    <section className="flex flex-col gap-4">
-      <h2 className="typo-title2">Co umíš?</h2>
-      <p className="max-w-prose">
-        Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
-        příležitosti.
-      </p>
-      <SenioritySelect
-        value={model?.maxSeniority}
-        disabled={updating}
-        onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
-      />
-      <SkillPicker
-        skillMenu={skills}
-        selection={selection}
-        onChange={onSelectionChange}
-        disabled={updating}
-      />
-    </section>
-  );
-};
+const SkillSection = ({ model, updating, onChange }: SectionProps) => (
+  <section className="flex max-w-prose flex-col gap-4">
+    <h2 className="typo-title2">Co umíš?</h2>
+    <p className="max-w-prose">
+      Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
+      příležitosti.
+    </p>
+    <HashtagSelect
+      onChange={(tags) => onChange({ ...model!, tags })}
+      value={model?.tags ?? ""}
+      disabled={updating}
+    />
+    <SenioritySelect
+      onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
+      value={model?.maxSeniority}
+      disabled={updating}
+    />
+  </section>
+);
 
 const MapSection = ({ model, onChange }: SectionProps) => {
   return (
