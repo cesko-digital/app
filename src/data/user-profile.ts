@@ -30,6 +30,9 @@ const featureFlags = ["registrationV2", "assetUpload"] as const;
 /** All supported user roles */
 const userRoles = ["Code of Conduct Admin", "Core Team Member"] as const;
 
+export type UserSeniority = (typeof userSeniorities)[number];
+export const userSeniorities = ["junior", "medior", "senior"] as const;
+
 /** All supported privacy flags */
 export const privacyFlags = [
   "hidePublicTeamMembership",
@@ -49,6 +52,7 @@ export interface Schema extends FieldSet {
   email: string;
   competencies: string;
   tags: string;
+  maxSeniority: string;
   occupation: string;
   organizationName: string;
   profileUrl: string;
@@ -91,6 +95,7 @@ export const decodeUserProfile = record({
   // TBD: Once the skill migration is over, rename
   skills: field("competencies", withDefault(string, "")),
   tags: withDefault(string, ""),
+  maxSeniority: optional(union(...userSeniorities)),
   occupation: optional(string),
   organizationName: optional(string),
   // If profile URL is malformed, parse as `undefined` instead of throwing
@@ -128,6 +133,7 @@ export function encodeUserProfile(
     contactEmail: profile.contactEmail,
     competencies: profile.skills,
     tags: profile.tags,
+    maxSeniority: profile.maxSeniority,
     occupation: profile.occupation,
     organizationName: profile.organizationName,
     profileUrl: profile.profileUrl,
@@ -202,6 +208,7 @@ export async function updateUserProfile(
       | "name"
       | "skills"
       | "tags"
+      | "maxSeniority"
       | "slackUserRelationId"
       | "state"
       | "createdAt"
@@ -232,6 +239,7 @@ export async function createUserProfile(
     | "email"
     | "skills"
     | "tags"
+    | "maxSeniority"
     | "occupation"
     | "organizationName"
     | "profileUrl"

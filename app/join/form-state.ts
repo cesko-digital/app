@@ -1,4 +1,4 @@
-import { type PrivacyFlags } from "~/src/data/user-profile";
+import { type PrivacyFlags, type UserSeniority } from "~/src/data/user-profile";
 import { looksLikeEmailAdress } from "~/src/utils";
 
 export type SubmissionState =
@@ -11,6 +11,7 @@ export type RegistrationData = {
   name: string;
   email: string;
   tags: string;
+  maxSeniority?: UserSeniority;
   occupation: string;
   organizationName?: string;
   privacyFlags: PrivacyFlags;
@@ -29,6 +30,7 @@ export type FormState = {
   organizationName: string;
   profileUrl: string;
   tags: string;
+  maxSeniority?: UserSeniority;
   privacyConsent: boolean;
   availableInDistricts: string;
   bio: string;

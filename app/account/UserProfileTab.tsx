@@ -13,6 +13,7 @@ import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
+import { SenioritySelect } from "~/components/profile/SenioritySelect";
 import { SkillPicker } from "~/components/SkillPicker";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
@@ -303,6 +304,11 @@ const SkillSection = ({ model, updating, onChange }: SectionProps) => {
         Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
         příležitosti.
       </p>
+      <SenioritySelect
+        value={model?.maxSeniority}
+        disabled={updating}
+        onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
+      />
       <SkillPicker
         skillMenu={skills}
         selection={selection}

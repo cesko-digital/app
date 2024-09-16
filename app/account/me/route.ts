@@ -52,6 +52,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         featureFlags: ["registrationV2"],
         // TBD: Take new fields from payload
         tags: "",
+        maxSeniority: undefined,
       });
       await logUserCreatedEvent(user);
       return new Response("User profile created.", { status: 201 });
@@ -89,6 +90,7 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      maxSeniority,
       occupation,
       organizationName,
       profileUrl,
@@ -101,6 +103,7 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      maxSeniority,
       occupation,
       organizationName,
       profileUrl,
