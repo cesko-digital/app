@@ -8,6 +8,8 @@ import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
+import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
+import { OccupationSelect } from "~/components/profile/OccupationSelect";
 import { SenioritySelect } from "~/components/profile/SenioritySelect";
 import { SkillSelect } from "~/components/profile/SkillSelect";
 import { trackCustomEvent } from "~/src/plausible/events";
@@ -204,7 +206,12 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
       <div className="flex max-w-prose flex-col gap-7">
         <h2 className="typo-title2">TBD: Další věci do profilu</h2>
 
-        <OccupationSelect state={state} onChange={onChange} />
+        <OccupationSelect
+          onChange={(occupation) => onChange({ ...state, occupation })}
+          occupation={state.occupation}
+          disabled={!isEditable(state)}
+          required
+        />
 
         <TextInput
           id="organization"
@@ -243,49 +250,6 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
         </div>
       </div>
     </section>
-  );
-};
-
-const OccupationSelect = ({ state, onChange }: FormSectionProps) => {
-  const options = {
-    "private-sector": "Pracuji v soukromém sektoru",
-    "non-profit": "Pracuji v neziskové organizaci",
-    "state": "Pracuji ve státním sektoru",
-    "freelancing": "Jsem na volné noze/freelancer",
-    "studying": "Studuji",
-    "parental-leave": "Jsem na rodičovské",
-    "looking-for-job": "Hledám práci",
-    "other": "Jiné",
-  };
-
-  return (
-    <div>
-      <label className="mb-1 block">
-        TBD: Čemu se aktuálně věnuješ?
-        <RequiredFieldMarker />
-      </label>
-      <p className="typo-caption mb-3">
-        Pokud toho děláš víc, vyber, co převažuje
-      </p>
-
-      <div>
-        {Object.entries(options).map(([id, label]) => (
-          <label key={id} className="mb-1 flex items-center">
-            <input
-              type="radio"
-              className="mr-3"
-              name="occupation"
-              disabled={!isEditable(state)}
-              checked={state.occupation === id}
-              onChange={() => onChange({ ...state, occupation: id })}
-            />
-            <span className={state.occupation === id ? "font-bold" : ""}>
-              {label}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
   );
 };
 
@@ -455,8 +419,6 @@ const SubmitSection = ({ state, onSubmit }: SubmitSectionProps) => {
 //
 // Shared Components
 //
-
-const RequiredFieldMarker = () => <span className="pl-1 text-red-500">*</span>;
 
 type TextInputProps = {
   id: string;

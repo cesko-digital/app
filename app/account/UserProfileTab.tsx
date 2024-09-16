@@ -13,6 +13,7 @@ import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
+import { OccupationSelect } from "~/components/profile/OccupationSelect";
 import { SenioritySelect } from "~/components/profile/SenioritySelect";
 import { SkillSelect } from "~/components/profile/SkillSelect";
 import { type UserProfile } from "~/src/data/user-profile";
@@ -120,6 +121,35 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   );
 };
 
+const WorkSection = ({ model, updating, onChange }: SectionProps) => (
+  <section className="flex max-w-prose flex-col gap-4">
+    <h2 className="typo-title2">Práce</h2>
+    <OccupationSelect
+      onChange={(occupation) => onChange({ ...model!, occupation })}
+      occupation={model?.occupation}
+      disabled={updating}
+    />
+    <InputWithSaveButton
+      onSave={(organizationName) => onChange({ ...model!, organizationName })}
+      id="organizationName"
+      label="Název organizace, kde působíš:"
+      saveButtonLabel="Uložit organizaci"
+      placeholder="název firmy, neziskové organizace, státní instituce, …"
+      defaultValue={model?.organizationName}
+      disabled={!model || updating}
+    />
+    <InputWithSaveButton
+      onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
+      id="professionalProfile"
+      type="url"
+      label="Odkaz na tvůj web nebo profesní profil:"
+      saveButtonLabel="Uložit odkaz"
+      defaultValue={model?.profileUrl}
+      disabled={!model || updating}
+    />
+  </section>
+);
+
 const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
   const hasPublicProfile = model?.privacyFlags.includes("enablePublicProfile");
 
@@ -205,79 +235,6 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <p>Může pár minut trvat, než se změny v těchto nastaveních projeví.</p>
-    </section>
-  );
-};
-
-const WorkSection = ({ model, updating, onChange }: SectionProps) => {
-  const occupationsOptions = {
-    "private-sector": "Pracuji v soukromém sektoru",
-    "non-profit": "Pracuji v neziskové organizaci",
-    "state": "Pracuji ve státním sektoru",
-    "freelancing": "Jsem na volné noze/freelancer",
-    "studying": "Studuji",
-    "parental-leave": "Jsem na rodičovské",
-    "looking-for-job": "Hledám práci",
-    "other": "Jiné",
-  };
-
-  const [occupation, setOccupation] = useState("");
-
-  useEffect(() => {
-    setOccupation(model?.occupation ?? "");
-  }, [model]);
-
-  return (
-    <section className="flex max-w-prose flex-col gap-4">
-      <h2 className="typo-title2">Práce</h2>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="occupation" className="block">
-          Čemu se aktuálně věnuješ:
-        </label>
-        <div>
-          {Object.entries(occupationsOptions).map(([id, label]) => (
-            <label key={id} className="mb-1 flex items-center">
-              <input
-                type="radio"
-                className="mr-3"
-                name="occupation"
-                checked={occupation == id}
-                disabled={updating}
-                onChange={() =>
-                  onChange({
-                    ...model!,
-                    occupation: id,
-                  })
-                }
-              />
-              <span className={occupation === id ? "font-bold" : ""}>
-                {label}
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <InputWithSaveButton
-        id="organizationName"
-        label="Název organizace, kde působíš:"
-        saveButtonLabel="Uložit organizaci"
-        placeholder="název firmy, neziskové organizace, státní instituce, …"
-        defaultValue={model?.organizationName}
-        disabled={!model || updating}
-        onSave={(organizationName) => onChange({ ...model!, organizationName })}
-      />
-
-      <InputWithSaveButton
-        id="professionalProfile"
-        type="url"
-        label="Odkaz na tvůj web nebo profesní profil:"
-        saveButtonLabel="Uložit odkaz"
-        defaultValue={model?.profileUrl}
-        disabled={!model || updating}
-        onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
-      />
     </section>
   );
 };
