@@ -13,8 +13,8 @@ import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
-import { HashtagSelect } from "~/components/profile/HashtagSelect";
 import { SenioritySelect } from "~/components/profile/SenioritySelect";
+import { SkillSelect } from "~/components/profile/SkillSelect";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
 import { absolute, Route } from "~/src/routing";
@@ -289,7 +289,7 @@ const SkillSection = ({ model, updating, onChange }: SectionProps) => (
       Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
       příležitosti.
     </p>
-    <HashtagSelect
+    <SkillSelect
       onChange={(tags) => onChange({ ...model!, tags })}
       value={model?.tags ?? ""}
       disabled={updating}

@@ -8,8 +8,8 @@ import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
-import { HashtagSelect } from "~/components/profile/HashtagSelect";
 import { SenioritySelect } from "~/components/profile/SenioritySelect";
+import { SkillSelect } from "~/components/profile/SkillSelect";
 import { trackCustomEvent } from "~/src/plausible/events";
 import { ContentType, looksLikeEmailAdress } from "~/src/utils";
 
@@ -158,7 +158,7 @@ const BasicInfoSection = ({ state, onChange }: FormSectionProps) => {
 
         <div>
           <label>Čemu se věnuješ?</label>
-          <HashtagSelect
+          <SkillSelect
             value={state.tags}
             onChange={(tags) => onChange({ ...state, tags })}
           />

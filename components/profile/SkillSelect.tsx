@@ -12,7 +12,7 @@ export type Props = {
   disabled?: boolean;
 };
 
-export const HashtagSelect = ({
+export const SkillSelect = ({
   className = "",
   onChange = () => {},
   disabled = false,
