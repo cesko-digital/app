@@ -97,7 +97,7 @@ const IntroSection = () => (
       <Image src={ArrowIllustration} alt="" width={181} height={373} />
     </div>
     <div className="flex max-w-prose flex-col gap-7">
-      <h1 className="typo-title">Staň se členem komunity</h1>
+      <h1 className="typo-title">Přidej se komunity</h1>
       <p>
         Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
         mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
