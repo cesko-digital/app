@@ -261,4 +261,13 @@ export const compareByName = (a: UserProfile, b: UserProfile) =>
 
 /** Locale compare strings according to their last words */
 export const compareNames = (a: string, b: string) =>
-  a.split(/\s+/).pop()!.localeCompare(b.split(/\s+/).pop()!);
+  normalize(a)
+    .split(/\s+/)
+    .pop()!
+    .localeCompare(normalize(b).split(/\s+/).pop()!);
+
+const normalize = (s: string) =>
+  s
+    .replace(/^\s+/, "")
+    .replace(/\s+$/, "")
+    .replace(/\s*\([^)]+\)$/, "");

@@ -136,6 +136,8 @@ test("Compare names", () => {
   const ordered = -1;
   const reversed = 1;
   expect(compareNames("A", "A")).toBe(equal);
+  expect(compareNames("A (Company)", "A")).toBe(equal);
+  expect(compareNames("A ", "A")).toBe(equal);
   expect(compareNames("A", "B")).toBe(ordered);
   expect(compareNames("B", "A")).toBe(reversed);
   expect(compareNames("A B", "A A")).toBe(reversed);
