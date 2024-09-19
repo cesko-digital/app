@@ -341,7 +341,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           disabled={!isEditable(state)}
           onChange={(cocConsent) => onChange({ ...state, cocConsent })}
         />
-        <span>
+        <span className="text-balance">
           Mám přečtená{" "}
           <a className="typo-link" href="https://www.cesko.digital/pravidla">
             pravidla chování v komunitě
@@ -355,12 +355,15 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           disabled={!isEditable(state)}
           onChange={(gdprConsent) => onChange({ ...state, gdprConsent })}
         />
-        <span>
+        <span className="text-balance">
           Mám přečtené{" "}
-          <a className="typo-link" href="https://cesko.digital/go/gdpr">
-            zásady přístupu k datům
+          <a
+            className="typo-link"
+            href="https://drive.google.com/drive/folders/1B6nNeyYbhRyeEn-PfyiM9pi01_0YqZf8"
+          >
+            směrnice o ochraně osobních údajů a bezpečnosti dat
           </a>{" "}
-          a zavazuji se k jejich dodržování.
+          a zavazuji se k jejich dodržování.
         </span>
       </label>
       <label className="flex items-center">
@@ -369,7 +372,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           disabled={!isEditable(state)}
           onChange={(privacyConsent) => onChange({ ...state, privacyConsent })}
         />
-        <span>
+        <span className="text-balance">
           Vím, jak bude Česko.Digital při vzájemné spolupráci a pro zajištění
           transparentnosti zpracovávat mé{" "}
           <a className="typo-link" href="https://cesko.digital/go/privacy">
