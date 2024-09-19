@@ -359,7 +359,7 @@ const LegalSection: FormSection = ({ state, onChange }) => (
           Mám přečtené{" "}
           <a
             className="typo-link"
-            href="https://drive.google.com/drive/folders/1B6nNeyYbhRyeEn-PfyiM9pi01_0YqZf8"
+            href="https://drive.google.com/file/d/1yXtDFLr4Y_apubpc1GmUmdHUnnasCsuw/view?usp=sharing"
           >
             směrnice o ochraně osobních údajů a bezpečnosti dat
           </a>{" "}
