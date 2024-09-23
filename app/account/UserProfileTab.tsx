@@ -38,16 +38,18 @@ export const UserProfileTab = () => {
 
   return (
     <div className="flex flex-col gap-10">
-      <BioSection model={model} updating={updating} onChange={setModel} />
+      <BasicInfoSection model={model} updating={updating} onChange={setModel} />
       <PrivacySection model={model} updating={updating} onChange={setModel} />
-      <WorkSection model={model} updating={updating} onChange={setModel} />
-      <SkillSection model={model} updating={updating} onChange={setModel} />
-      <MapSection model={model} onChange={setModel} />
+      <DetailedInfoSection
+        model={model}
+        updating={updating}
+        onChange={setModel}
+      />
     </div>
   );
 };
 
-const BioSection = ({ model, updating, onChange }: SectionProps) => {
+const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -121,14 +123,28 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
   );
 };
 
-const WorkSection = ({ model, updating, onChange }: SectionProps) => (
-  <section className="flex max-w-prose flex-col gap-4">
-    <h2 className="typo-title2">Práce</h2>
+const DetailedInfoSection = ({ model, updating, onChange }: SectionProps) => (
+  <section className="flex max-w-prose flex-col gap-7">
+    <h2 className="typo-title2">Řekni nám o sobě víc</h2>
+
+    <SkillSelect
+      onChange={(tags) => onChange({ ...model!, tags })}
+      value={model?.tags ?? ""}
+      disabled={updating}
+    />
+
+    <SenioritySelect
+      onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
+      value={model?.maxSeniority}
+      disabled={updating}
+    />
+
     <OccupationSelect
       onChange={(occupation) => onChange({ ...model!, occupation })}
       occupation={model?.occupation}
       disabled={updating}
     />
+
     <InputWithSaveButton
       onSave={(organizationName) => onChange({ ...model!, organizationName })}
       id="organizationName"
@@ -138,6 +154,7 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => (
       defaultValue={model?.organizationName}
       disabled={!model || updating}
     />
+
     <InputWithSaveButton
       onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
       id="professionalProfile"
@@ -146,6 +163,13 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => (
       saveButtonLabel="Uložit odkaz"
       defaultValue={model?.profileUrl}
       disabled={!model || updating}
+    />
+
+    <DistrictSelect
+      value={model?.availableInDistricts ?? ""}
+      onChange={(availableInDistricts) =>
+        onChange({ ...model!, availableInDistricts })
+      }
     />
   </section>
 );
@@ -235,47 +259,6 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <p>Může pár minut trvat, než se změny v těchto nastaveních projeví.</p>
-    </section>
-  );
-};
-
-const SkillSection = ({ model, updating, onChange }: SectionProps) => (
-  <section className="flex max-w-prose flex-col gap-4">
-    <h2 className="typo-title2">Co umíš?</h2>
-    <p className="max-w-prose">
-      Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
-      příležitosti.
-    </p>
-    <SkillSelect
-      onChange={(tags) => onChange({ ...model!, tags })}
-      value={model?.tags ?? ""}
-      disabled={updating}
-    />
-    <SenioritySelect
-      onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
-      value={model?.maxSeniority}
-      disabled={updating}
-    />
-  </section>
-);
-
-const MapSection = ({ model, onChange }: SectionProps) => {
-  return (
-    <section className="flex max-w-prose flex-col gap-4">
-      <h2 className="typo-title2">Kde býváš k zastižení?</h2>
-      <p>
-        Jsme Česko.Digital, ne Praha.Digital :) Jestli chceš, dej nám vědět, ve
-        kterých okresech ČR se vyskytuješ, ať můžeme lépe propojit členy a
-        členky Česko.Digital z různých koutů Česka.
-      </p>
-      <div>
-        <DistrictSelect
-          value={model?.availableInDistricts ?? ""}
-          onChange={(availableInDistricts) =>
-            onChange({ ...model!, availableInDistricts })
-          }
-        />
-      </div>
     </section>
   );
 };

@@ -23,15 +23,24 @@ export const DistrictSelect = ({
   onChange = () => {},
   value,
 }: Props) => (
-  <Select
-    options={options}
-    value={decodeSelection(value)}
-    onChange={(selection) => onChange(encodeSelection(selection))}
-    placeholder="Vyber okres"
-    noOptionsMessage={() => "Žádný okres neodpovídá"}
-    className={className}
-    isMulti
-  />
+  <div>
+    <label className="mb-2 block">
+      Ve kterých okresech ČR býváš k zastižení?
+    </label>
+    <Select
+      options={options}
+      value={decodeSelection(value)}
+      onChange={(selection) => onChange(encodeSelection(selection))}
+      placeholder="Vyber okres"
+      noOptionsMessage={() => "Žádný okres neodpovídá"}
+      className={className}
+      isMulti
+    />
+    <p className="typo-caption mt-2 text-balance">
+      Tahle data sbíráme, abychom mohli propojovat lidi z různých koutů Česka.
+      Jestli nechceš, klidně nech pole nevyplněné.
+    </p>
+  </div>
 );
 
 const encodeSelection = (d: readonly Option[]) =>

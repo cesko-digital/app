@@ -71,7 +71,6 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
       <IntroSection />
       <BasicInfoSection state={state} onChange={setState} />
       <ProfileDetailSection state={state} onChange={setState} />
-      <PrivacySection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
     </div>
@@ -99,7 +98,7 @@ const IntroSection = () => (
       <Image src={ArrowIllustration} alt="" width={181} height={373} />
     </div>
     <div className="flex max-w-prose flex-col gap-7">
-      <h1 className="typo-title">Přidej se komunity</h1>
+      <h1 className="typo-title">Přidej se k nám</h1>
       <p>
         Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
         mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
@@ -124,20 +123,10 @@ const BasicInfoSection = ({ state, onChange }: FormSectionProps) => {
       <div className="flex max-w-prose flex-col gap-7">
         <h2 className="typo-title2">To nejdůležitější o tobě</h2>
 
-        <TextInput
-          id="name"
-          label="Jméno a příjmení"
-          value={state.name}
-          autoComplete="name"
-          onChange={(name) => onChange({ ...state, name })}
-          disabled={disabled}
-          required
-        />
-
         <div>
           <TextInput
             id="email"
-            label="Email"
+            label="Registrační e-mail:"
             value={state.email}
             autoComplete="email"
             onChange={(email) => onChange({ ...state, email })}
@@ -147,31 +136,47 @@ const BasicInfoSection = ({ state, onChange }: FormSectionProps) => {
           {state.emailAlreadyTaken && (
             <EmailAlreadyExistsError email={state.email} />
           )}
+          <p className="typo-caption mt-2 text-balance">
+            Slouží pro přihlašování, nebudeme ho nikde ukazovat veřejně.
+          </p>
         </div>
+
+        <TextInput
+          id="name"
+          label="Celé jméno:"
+          value={state.name}
+          autoComplete="name"
+          onChange={(name) => onChange({ ...state, name })}
+          disabled={disabled}
+          required
+        />
 
         <TextArea
           id="bio"
-          label="Řekni něco málo o sobě, ať tě lidé lépe poznají"
+          label="Řekni něco málo o sobě, ať tě lidé lépe poznají:"
           value={state.bio}
           placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
           disabled={disabled}
           onChange={(bio) => onChange({ ...state, bio })}
         />
 
-        <div>
-          <label>Čemu se věnuješ?</label>
-          <SkillSelect
-            value={state.tags}
-            onChange={(tags) => onChange({ ...state, tags })}
+        <label className="flex items-center">
+          <Checkbox
+            checked={state.enablePublicProfile}
+            disabled={!isEditable(state)}
+            onChange={(enablePublicProfile) =>
+              onChange({ ...state, enablePublicProfile })
+            }
           />
-          <p className="typo-caption mt-2">TBD: Vysvětlující popisek</p>
-        </div>
-
-        <SenioritySelect
-          onChange={(maxSeniority) => onChange({ ...state, maxSeniority })}
-          value={state.maxSeniority}
-          disabled={!isEditable(state)}
-        />
+          <div>
+            <span>Chci mít veřejný profil</span>
+            <p className="typo-caption mt-1 text-balance">
+              Budeš veřejně vidět v seznamu uživatelů a kdokoliv si bude moct
+              prohlédnout třeba tvé projekty nebo kontakt. Doporučujeme,
+              zjednodušuje to vzájemné propojování.
+            </p>
+          </div>
+        </label>
       </div>
     </section>
   );
@@ -204,7 +209,18 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-7">
-        <h2 className="typo-title2">TBD: Další věci do profilu</h2>
+        <h2 className="typo-title2">Řekni nám víc</h2>
+
+        <SkillSelect
+          value={state.tags}
+          onChange={(tags) => onChange({ ...state, tags })}
+        />
+
+        <SenioritySelect
+          onChange={(maxSeniority) => onChange({ ...state, maxSeniority })}
+          value={state.maxSeniority}
+          disabled={!isEditable(state)}
+        />
 
         <OccupationSelect
           onChange={(occupation) => onChange({ ...state, occupation })}
@@ -215,7 +231,7 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
 
         <TextInput
           id="organization"
-          label="Název organizace, kde působíš"
+          label="Název organizace, kde působíš:"
           value={state.organizationName}
           placeholder="název firmy, neziskové organizace, státní instituce, …"
           autoComplete="organization"
@@ -227,7 +243,7 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
 
         <TextInput
           id="profile"
-          label="Odkaz na tvůj web nebo profesní profil"
+          label="Odkaz na tvůj web nebo profesní profil:"
           placeholder="například LinkedIn, GitHub, Behance, About.me, …"
           value={state.profileUrl}
           type="url"
@@ -235,51 +251,12 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
           onChange={(profileUrl) => onChange({ ...state, profileUrl })}
         />
 
-        <div>
-          <label>Ve kterých okresech ČR býváš k zastižení?</label>
-          <DistrictSelect
-            value={state.availableInDistricts}
-            onChange={(availableInDistricts) =>
-              onChange({ ...state, availableInDistricts })
-            }
-          />
-          <p className="typo-caption mt-2">
-            Tahle data sbíráme, abychom mohli propojovat členy komunity z
-            různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-//
-// Privacy section
-//
-
-const PrivacySection = ({ state, onChange }: FormSectionProps) => {
-  return (
-    <section>
-      <div className="flex max-w-prose flex-col gap-4">
-        <h2 className="typo-title2">Soukromí</h2>
-
-        <label className="flex items-center">
-          <Checkbox
-            checked={state.enablePublicProfile}
-            disabled={!isEditable(state)}
-            onChange={(enablePublicProfile) =>
-              onChange({ ...state, enablePublicProfile })
-            }
-          />
-          <div>
-            <span>Chci mít veřejný profil</span>
-            <p className="typo-caption mt-1 text-balance">
-              Budeš veřejně vidět v seznamu uživatelů a kdokoliv si bude moct
-              prohlédnout třeba tvé projekty nebo kontakt. Doporučujeme,
-              zjednodušuje to vzájemné propojování.
-            </p>
-          </div>
-        </label>
+        <DistrictSelect
+          value={state.availableInDistricts}
+          onChange={(availableInDistricts) =>
+            onChange({ ...state, availableInDistricts })
+          }
+        />
       </div>
     </section>
   );
@@ -291,7 +268,7 @@ const PrivacySection = ({ state, onChange }: FormSectionProps) => {
 
 const LegalSection = ({ state, onChange }: FormSectionProps) => (
   <section>
-    <div className="flex max-w-prose flex-col gap-2">
+    <div className="flex max-w-prose flex-col gap-4">
       <h2 className="typo-title2 mb-2">
         Právní náležitosti
         <RequiredFieldMarker />
@@ -445,7 +422,7 @@ const TextInput = ({
 }: TextInputProps) => {
   return (
     <div>
-      <label htmlFor={id}>
+      <label htmlFor={id} className="mb-2 block">
         {label}
         {required && <RequiredFieldMarker />}
       </label>
@@ -506,7 +483,7 @@ const TextArea = ({
 }: TextAreaProps) => {
   return (
     <div>
-      <label htmlFor={id}>
+      <label htmlFor={id} className="mb-2 block">
         {label}
         {required && <RequiredFieldMarker />}
       </label>

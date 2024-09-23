@@ -20,21 +20,28 @@ export const SkillSelect = ({
   disabled = false,
   value,
 }: Props) => (
-  <Select
-    options={defaultTags}
-    getOptionLabel={(option) => option.name}
-    getOptionValue={(option) => option.name}
-    value={decodeSelection(value)}
-    onChange={(selection) => onChange(encodeSelection(selection))}
-    placeholder="copywriting, TypeScript, právo, dotace, operations, …"
-    noOptionsMessage={() => "Žádný tag neodpovídá"}
-    filterOption={createFilter({
-      stringify: (option) => `${option.label}, ${option.data.alsoMatch}`,
-    })}
-    className={className}
-    isDisabled={disabled}
-    isMulti
-  />
+  <div>
+    <label className="mb-2 block">Co umíš, čím se zabýváš?</label>
+    <Select
+      options={defaultTags}
+      getOptionLabel={(option) => option.name}
+      getOptionValue={(option) => option.name}
+      value={decodeSelection(value)}
+      onChange={(selection) => onChange(encodeSelection(selection))}
+      placeholder="copywriting, TypeScript, právo, dotace, operations, …"
+      noOptionsMessage={() => "Žádný tag neodpovídá"}
+      filterOption={createFilter({
+        stringify: (option) => `${option.label}, ${option.data.alsoMatch}`,
+      })}
+      className={className}
+      isDisabled={disabled}
+      isMulti
+    />
+    <p className="typo-caption mt-2 text-balance">
+      Když tohle víme, můžeme ti lépe nabídnout příležitosti k zapojení nebo
+      propojení s ostatními.
+    </p>
+  </div>
 );
 
 const encodeSelection = (d: readonly Option[]) =>

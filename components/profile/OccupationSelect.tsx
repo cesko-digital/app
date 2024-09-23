@@ -27,11 +27,11 @@ export const OccupationSelect = ({
   return (
     <div>
       <label className="mb-1 block">
-        TBD: Čemu se aktuálně věnuješ?
+        V jakém prostředí se pohybuješ?
         {required && <RequiredFieldMarker />}
       </label>
       <p className="typo-caption mb-3">
-        Pokud toho děláš víc, vyber, co převažuje
+        Pokud toho děláš víc, vyber, co převažuje.
       </p>
 
       <div>
