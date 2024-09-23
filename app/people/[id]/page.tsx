@@ -12,7 +12,6 @@ import {
 } from "~/src/data/team-engagement";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
-import { getMaxSeniority, skillsToHashtags } from "~/src/skills/skills";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
@@ -120,7 +119,6 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
 );
 
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
-  const tags = skillsToHashtags(profile.skills);
   const labels: Record<string, string> = {
     "private-sector": "V soukromém sektoru",
     "non-profit": "V nezisku",
@@ -133,11 +131,14 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   const occupation = profile.occupation
     ? labels[profile.occupation]
     : undefined;
-  const seniority = getMaxSeniority(profile.skills);
   return (
     <div className="max-w-prose">
-      {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
-      {seniority && <InfoRow label="Seniorita" content={seniority} />}
+      {profile.tags.length > 0 && (
+        <InfoRow label="Co dělám" content={profile.tags} />
+      )}
+      {profile.maxSeniority && (
+        <InfoRow label="Seniorita" content={profile.maxSeniority} />
+      )}
       {profile.availableInDistricts && (
         <InfoRow label="K zastižení" content={profile.availableInDistricts} />
       )}

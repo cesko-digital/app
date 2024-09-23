@@ -6,7 +6,6 @@ import {
   UserProfileContainer,
 } from "~/components/UserProfileCard";
 import { compareByName, getAllUserProfiles } from "~/src/data/user-profile";
-import { skillsToHashtags } from "~/src/skills/skills";
 import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
@@ -35,7 +34,7 @@ async function Page() {
           <UserProfileCard
             key={profile.id}
             profile={profile}
-            label={skillsToHashtags(profile.skills)}
+            label={profile.tags}
           />
         ))}
       </UserProfileContainer>
