@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
+import { UploadImage } from "~/app/upload/UploadImage";
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
@@ -23,7 +24,7 @@ import {
   type SkillSelection,
 } from "~/src/skills/skills";
 import skills from "~/src/skills/skills.json";
-import { looksLikeEmailAdress } from "~/src/utils";
+import { defaultAvatarUrl, looksLikeEmailAdress } from "~/src/utils";
 
 type SectionProps = {
   model?: UserProfile;
@@ -52,6 +53,15 @@ export const UserProfileTab = () => {
 };
 
 const BioSection = ({ model, updating, onChange }: SectionProps) => {
+  const [avatarImage, setAvatarImage] = useState("");
+  useEffect(() => {
+    setAvatarImage(model?.avatarUrl ?? defaultAvatarUrl);
+  }, [model]);
+
+  const onAvatarChange = (url: string) => {
+    onChange({ ...model!, avatarUrl: url });
+  };
+
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -62,6 +72,24 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         >
           Zobrazit profil
         </a>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="avatarImage" className="block">
+          Profilová fotka:
+        </label>
+        <img
+          src={avatarImage}
+          className="h-[100px] w-[100px] rounded-full bg-gray object-cover shadow"
+          alt="avatarImage"
+        />
+        <div className="space-y-2">
+          <UploadImage
+            setAvatarImage={setAvatarImage}
+            avatarImage={avatarImage}
+            onChange={onAvatarChange}
+          />
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -286,7 +314,6 @@ const WorkSection = ({ model, updating, onChange }: SectionProps) => {
     </section>
   );
 };
-
 
 const SkillSection = ({ model, updating, onChange }: SectionProps) => {
   const selection = model ? decodeSkillSelection(model.skills) : {};

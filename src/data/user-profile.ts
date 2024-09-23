@@ -140,6 +140,7 @@ export function encodeUserProfile(
     gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
     codeOfConductAcceptedAt: profile.codeOfConductAcceptedAt,
     bio: profile.bio,
+    avatarUrl: profile.avatarUrl,
   };
 }
 
