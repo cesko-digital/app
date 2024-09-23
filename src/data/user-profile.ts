@@ -237,7 +237,6 @@ export async function createUserProfile(
     UserProfile,
     | "name"
     | "email"
-    | "skills"
     | "tags"
     | "maxSeniority"
     | "occupation"

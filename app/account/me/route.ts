@@ -16,6 +16,7 @@ import {
   getUserProfileByMail,
   privacyFlags,
   updateUserProfile,
+  userSeniorities,
 } from "~/src/data/user-profile";
 import { normalizeEmailAddress } from "~/src/utils";
 
@@ -24,7 +25,8 @@ export async function POST(request: NextRequest): Promise<Response> {
   const decodeRequest = record({
     name: string,
     email: string,
-    skills: string,
+    tags: string,
+    maxSeniority: optional(union(...userSeniorities)),
     gdprPolicyAcceptedAt: string,
     codeOfConductAcceptedAt: string,
     occupation: optional(string),
@@ -50,9 +52,6 @@ export async function POST(request: NextRequest): Promise<Response> {
         slackUserRelationId: undefined,
         createdAt: new Date().toISOString(),
         featureFlags: ["registrationV2"],
-        // TBD: Take new fields from payload
-        tags: "",
-        maxSeniority: undefined,
       });
       await logUserCreatedEvent(user);
       return new Response("User profile created.", { status: 201 });
