@@ -1,8 +1,10 @@
-import Select from "react-select";
+import Select, { createFilter } from "react-select";
+
+import defaultTags from "~/src/tags.json";
 
 type Option = {
-  label: string;
-  value: string;
+  name: string;
+  alsoMatch?: string;
 };
 
 export type Props = {
@@ -19,11 +21,16 @@ export const SkillSelect = ({
   value,
 }: Props) => (
   <Select
-    options={values.map((v) => ({ label: v, value: v }))}
+    options={defaultTags}
+    getOptionLabel={(option) => option.name}
+    getOptionValue={(option) => option.name}
     value={decodeSelection(value)}
     onChange={(selection) => onChange(encodeSelection(selection))}
     placeholder="copywriting, TypeScript, právo, dotace, operations, …"
     noOptionsMessage={() => "Žádný tag neodpovídá"}
+    filterOption={createFilter({
+      stringify: (option) => `${option.label}, ${option.data.alsoMatch}`,
+    })}
     className={className}
     isDisabled={disabled}
     isMulti
@@ -31,53 +38,10 @@ export const SkillSelect = ({
 );
 
 const encodeSelection = (d: readonly Option[]) =>
-  d.map((d) => d.label).join(" ");
+  d.map((d) => d.name).join(" ");
 
 const decodeSelection = (s: string): Option[] =>
   s
     .split(/ /)
     .filter((s) => s !== "")
-    .map((name) => ({ label: name, value: name }));
-
-const values = [
-  "#audio",
-  "#backend",
-  "#cloud",
-  "#copywriting",
-  "#css",
-  "#databáze",
-  "#design",
-  "#devops",
-  "#eventy",
-  "#finance",
-  "#frontend",
-  "#fundraising",
-  "#hr",
-  "#html",
-  "#java",
-  "#javascript",
-  "#junior",
-  "#komunity",
-  "#kotlin",
-  "#marketing",
-  "#medior",
-  "#mentor",
-  "#mobile",
-  "#node",
-  "#php",
-  "#pr",
-  "#product-owner",
-  "#projektové-řízení",
-  "#python",
-  "#react",
-  "#scrum",
-  "#senior",
-  "#strategie",
-  "#testování",
-  "#typescript",
-  "#ui",
-  "#ux",
-  "#video",
-  "#výzkum",
-  "#wordpress",
-];
+    .map((name) => defaultTags.find((tag) => tag.name === name) ?? { name });
