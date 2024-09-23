@@ -226,7 +226,6 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
           onChange={(occupation) => onChange({ ...state, occupation })}
           occupation={state.occupation}
           disabled={!isEditable(state)}
-          required
         />
 
         <TextInput

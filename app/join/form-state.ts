@@ -65,15 +65,7 @@ export function validateForm(
   data: FormState,
   now = new Date(),
 ): ValidationResult {
-  const {
-    name,
-    email,
-    tags,
-    privacyConsent,
-    gdprConsent,
-    cocConsent,
-    occupation,
-  } = data;
+  const { name, email, tags, privacyConsent, gdprConsent, cocConsent } = data;
   const error = (msg: string) => ({ result: "error" as const, msg });
   if (!name) {
     return error("Je třeba vyplnit jméno.");
@@ -87,8 +79,6 @@ export function validateForm(
     return error("Je třeba odsouhlasit směrnici GDPR.");
   } else if (!cocConsent) {
     return error("Je třeba odsouhlasit pravidla chování v komunitě.");
-  } else if (!occupation) {
-    return error("Vyber prosím, čemu se aktuálně věnuješ.");
   } else {
     const {
       organizationName,
@@ -96,6 +86,7 @@ export function validateForm(
       availableInDistricts,
       bio,
       enablePublicProfile,
+      occupation,
     } = data;
     const gdprPolicyAcceptedAt = now.toISOString();
     const codeOfConductAcceptedAt = now.toISOString();

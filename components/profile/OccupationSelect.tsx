@@ -3,14 +3,12 @@ import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
 export type Props = {
   occupation?: string;
   disabled?: boolean;
-  required?: boolean;
   onChange?: (occupation: string) => void;
 };
 
 export const OccupationSelect = ({
   occupation,
   disabled = false,
-  required = false,
   onChange = (_) => {},
 }: Props) => {
   const options = {
@@ -26,10 +24,7 @@ export const OccupationSelect = ({
 
   return (
     <div>
-      <label className="mb-1 block">
-        V jakém prostředí se pohybuješ?
-        {required && <RequiredFieldMarker />}
-      </label>
+      <label className="mb-1 block">V jakém prostředí se pohybuješ?</label>
       <p className="typo-caption mb-3">
         Pokud toho děláš víc, vyber, co převažuje.
       </p>
