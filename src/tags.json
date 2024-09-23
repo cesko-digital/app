@@ -9,7 +9,7 @@
     "name": "automatizace",
     "alsoMatch": "Airtable, Notion, Integromat, workflow, procesy"
   },
-  { "name": "backend", "alsoMatch": "vývoj, dev, frontend" },
+  { "name": "backend", "alsoMatch": "vývoj, dev, fullstack" },
   { "name": "bezpečnost", "alsoMatch": "security, kybez, vývoj, dev" },
   { "name": "byznys analýza", "alsoMatch": "business, analyst" },
   { "name": "řízení změn", "alsoMatch": "change, management" },
@@ -40,7 +40,7 @@
   { "name": "fotografie", "alsoMatch": "kreativa, produkce, eventy" },
   {
     "name": "frontend",
-    "alsoMatch": "dev, vývoj, backend, fullstack, React"
+    "alsoMatch": "dev, vývoj, fullstack, React, Angular, Vue"
   },
   { "name": "Google Workspace", "alsoMatch": "nástroje, procesy" },
   { "name": "grafika", "alsoMatch": "Figma, typo" },
@@ -49,7 +49,7 @@
   { "name": "Java/Kotlin", "alsoMatch": "dev, vývoj, backend" },
   {
     "name": "JavaScript/TypeScript",
-    "alsoMatch": "dev, vývoj, frontend, web"
+    "alsoMatch": "dev, vývoj, frontend, web, Angular, Vue"
   },
   { "name": "Jira/Confluence", "alsoMatch": "Atlassian, nástroje" },
   { "name": "koordinace týmu", "alsoMatch": "management, řízení" },

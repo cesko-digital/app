@@ -23,7 +23,7 @@ export const SkillSelect = ({
   <div>
     <label className="mb-2 block">Co umíš, čím se zabýváš?</label>
     <Select
-      options={defaultTags}
+      options={defaultTags.sort((a, b) => a.name.localeCompare(b.name))}
       getOptionLabel={(option) => option.name}
       getOptionValue={(option) => option.name}
       value={decodeSelection(value)}
@@ -45,10 +45,10 @@ export const SkillSelect = ({
 );
 
 const encodeSelection = (d: readonly Option[]) =>
-  d.map((d) => d.name).join(" ");
+  d.map((d) => d.name).join("; ");
 
 const decodeSelection = (s: string): Option[] =>
   s
-    .split(/ /)
+    .split(/; /)
     .filter((s) => s !== "")
     .map((name) => defaultTags.find((tag) => tag.name === name) ?? { name });
