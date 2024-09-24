@@ -113,7 +113,7 @@ const EventSidebar = ({
       <SidebarSection title="Kontakt">
         <ImageLabel
           link={Route.toProfile({ id: owner.id })}
-          imageUrl={owner.avatarUrl}
+          imageUrl={owner.profilePictureUrl}
           label={owner.name}
         />
       </SidebarSection>

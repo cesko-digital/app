@@ -43,6 +43,7 @@ test("Decode user with no skills", () => {
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
+    profilePictureUrl: defaultAvatarUrl,
   });
 });
 
@@ -87,6 +88,7 @@ test("Decode Slack Users relation", () => {
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
+    profilePictureUrl: defaultAvatarUrl,
   });
   expect(
     decodeUserProfile({
@@ -128,6 +130,7 @@ test("Decode Slack Users relation", () => {
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
     daysSinceRegistered: undefined,
+    profilePictureUrl: defaultAvatarUrl,
   });
 });
 

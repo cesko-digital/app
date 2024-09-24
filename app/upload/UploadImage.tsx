@@ -11,30 +11,43 @@ import { defaultAvatarUrl } from "~/src/utils";
 type Props = {
   setAvatarImage: React.Dispatch<React.SetStateAction<string>>;
   avatarImage: string;
-  onChange: (url: string) => void;
+  onAvatarChange: (url: string) => void;
 };
 
 export const UploadImage = ({
   setAvatarImage,
   avatarImage,
-  onChange,
+  onAvatarChange,
 }: Props) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  // const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [uploading, setUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [pendingChanges, setPendingChanges] = useState(false);
+
+  const cleanInputFile = () => {
+    if (inputFileRef.current) {
+      inputFileRef.current.value = "";
+    }
+  };
+
+  const handleProblematicFile = (message: string) => {
+    setErrorMessage(message);
+    cleanInputFile();
+    setAvatarImage(defaultAvatarUrl);
+    setPendingChanges(false);
+  };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!inputFileRef.current?.files) {
+      setErrorMessage("Není vybraný soubor");
       throw new Error("No file selected");
     }
 
     const file = inputFileRef.current.files[0];
-
     setUploading(true);
+    setPendingChanges(true);
     const response = await fetch(`/account/picture?filename=${file.name}`, {
       method: "POST",
       body: file,
@@ -42,38 +55,31 @@ export const UploadImage = ({
 
     if (response.ok) {
       const newBlob = (await response.json()) as PutBlobResult;
-      setUploading(false);
-      onChange(newBlob.url);
+      cleanInputFile();
+      onAvatarChange(newBlob.url);
     } else {
-      setUploading(false);
+      setErrorMessage("Něco se nepovedlo, zkus to znovu");
     }
+    setUploading(false);
+    setPendingChanges(false);
   };
 
-  const uploadHandler = () => {
+  const onUpload = () => {
     setErrorMessage("");
     setPendingChanges(true);
     if (!inputFileRef.current?.files) {
+      setErrorMessage("Není vybraný soubor");
       throw new Error("No file selected");
     }
 
     const file = inputFileRef.current.files[0];
 
     if (file.size > 4500000) {
-      setErrorMessage("Soubor musí být menší než 4.5 MB");
-      if (inputFileRef.current) {
-        inputFileRef.current.value = "";
-      }
-      setAvatarImage(defaultAvatarUrl);
-      setPendingChanges(false);
+      handleProblematicFile("Soubor musí být menší než 4.5 MB");
       return;
     }
     if (!file.type.startsWith("image/")) {
-      setErrorMessage("Soubor musí mít formát obrázku");
-      if (inputFileRef.current) {
-        inputFileRef.current.value = "";
-      }
-      setAvatarImage(defaultAvatarUrl);
-      setPendingChanges(false);
+      handleProblematicFile("Soubor musí mít formát obrázku");
       return;
     }
     const fileReader = new FileReader();
@@ -81,19 +87,17 @@ export const UploadImage = ({
       if (e.target && typeof e.target.result === "string") {
         setAvatarImage(e.target.result);
       } else {
+        setErrorMessage("Něco se nepovedlo, zkus to znovu");
         throw new Error("FileReader result is not a string");
       }
     };
     fileReader.readAsDataURL(file);
   };
 
-  const handleRemoval = () => {
-    if (inputFileRef.current) {
-      inputFileRef.current.value = "";
-    }
+  const onDelete = () => {
+    cleanInputFile();
     setAvatarImage(defaultAvatarUrl);
-    setPendingChanges(false);
-    onChange(defaultAvatarUrl);
+    onAvatarChange(defaultAvatarUrl);
   };
 
   return (
@@ -105,7 +109,7 @@ export const UploadImage = ({
           ref={inputFileRef}
           type="file"
           required
-          onChange={uploadHandler}
+          onChange={onUpload}
         />
         {errorMessage && (
           <div className="py-1">
@@ -120,7 +124,7 @@ export const UploadImage = ({
             )}
             disabled={uploading}
           >
-            {uploading ? "Ukladam" : "Uložit profilovou fotku"}
+            Uložit profilovou fotku
           </button>
           <button
             className={clsx(
@@ -128,7 +132,7 @@ export const UploadImage = ({
                 ? "btn-disabled"
                 : "btn-inverted",
             )}
-            onClick={handleRemoval}
+            onClick={onDelete}
             disabled={uploading}
           >
             Smazat profilovou fotku

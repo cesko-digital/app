@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "~/src/auth";
 
 export async function POST(request: Request): Promise<Response> {
-  // Only allow signed-in users to upload assets
+  // Only allow signed-in users to upload photo
   const session = await getServerSession(authOptions);
   if (!session?.user) {
     return new Response("Unauthorized", { status: 401 });
@@ -39,8 +39,6 @@ export async function POST(request: Request): Promise<Response> {
   });
 
   const result = NextResponse.json(blob);
-  console.log("result", result);
-
   return result;
 }
 

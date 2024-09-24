@@ -43,7 +43,7 @@ interface UserTableSchema extends FieldSet {
   email: string;
   emailVerified: string;
   name: string;
-  slackAvatarUrl: string;
+  userProfileUrl: string;
   state: string;
 }
 
@@ -54,7 +54,7 @@ const decodeUser = record({
   email: string,
   emailVerified: optionalAsNull(date),
   name: optionalAsNull(string),
-  image: field("slackAvatarUrl", relationToZeroOrOne),
+  image: field("userProfileUrl", relationToZeroOrOne),
 });
 
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({

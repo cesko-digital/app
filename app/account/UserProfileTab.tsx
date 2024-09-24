@@ -55,11 +55,11 @@ export const UserProfileTab = () => {
 const BioSection = ({ model, updating, onChange }: SectionProps) => {
   const [avatarImage, setAvatarImage] = useState("");
   useEffect(() => {
-    setAvatarImage(model?.avatarUrl ?? defaultAvatarUrl);
+    setAvatarImage(model?.profilePictureUrl ?? defaultAvatarUrl);
   }, [model]);
 
   const onAvatarChange = (url: string) => {
-    onChange({ ...model!, avatarUrl: url });
+    onChange({ ...model!, profilePictureUrl: url });
   };
 
   return (
@@ -72,24 +72,6 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         >
           Zobrazit profil
         </a>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="avatarImage" className="block">
-          Profilová fotka:
-        </label>
-        <img
-          src={avatarImage}
-          className="h-[100px] w-[100px] rounded-full bg-gray object-cover shadow"
-          alt="avatarImage"
-        />
-        <div className="space-y-2">
-          <UploadImage
-            setAvatarImage={setAvatarImage}
-            avatarImage={avatarImage}
-            onChange={onAvatarChange}
-          />
-        </div>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -123,6 +105,24 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         defaultValue={model?.name}
         onSave={(name) => onChange({ ...model!, name })}
       />
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="avatarImage" className="block">
+          Profilová fotka:
+        </label>
+        <img
+          src={avatarImage}
+          className="h-[100px] w-[100px] rounded-full bg-gray object-cover shadow"
+          alt="avatarImage"
+        />
+        <div className="space-y-2">
+          <UploadImage
+            setAvatarImage={setAvatarImage}
+            avatarImage={avatarImage}
+            onAvatarChange={onAvatarChange}
+          />
+        </div>
+      </div>
 
       <InputWithSaveButton
         id="contactMail"
