@@ -108,8 +108,8 @@
     "alsoMatch": "Figma, typo"
   },
   {
-    "name": "hiring",
-    "alsoMatch": "nábor, HR"
+    "name": "HR",
+    "alsoMatch": "nábor, hiring, personalistika"
   },
   {
     "name": "HTML/CSS",
@@ -244,8 +244,8 @@
     "alsoMatch": "nástroje, procesy, workflow, automatizace"
   },
   {
-    "name": "UX research",
-    "alsoMatch": "výzkum, uživatel"
+    "name": "UX výzkum",
+    "alsoMatch": "research, uživatel"
   },
   {
     "name": "vývoj webu",
@@ -264,7 +264,7 @@
     "alsoMatch": "vývoj, dev, web"
   },
   {
-    "name": "Wordpress",
+    "name": "WordPress",
     "alsoMatch": "vývoj, dev, web"
   }
 ]
