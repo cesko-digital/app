@@ -214,6 +214,7 @@ const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
         <SkillSelect
           value={state.tags}
           onChange={(tags) => onChange({ ...state, tags })}
+          sendChangesImmediately={true}
         />
 
         <SenioritySelect
