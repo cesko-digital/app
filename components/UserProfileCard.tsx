@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ import { Route } from "~/src/routing";
 export type Props = {
   profile: Pick<UserProfile, "name" | "avatarUrl" | "id"> &
     Partial<Pick<UserProfile, "roles">>;
-  label?: string;
+  label?: ReactNode;
 };
 
 export const UserProfileCard = ({ profile, label }: Props) => (
@@ -49,7 +50,7 @@ export const UserProfileCard = ({ profile, label }: Props) => (
     </div>
     <div className="flex flex-col gap-2 self-center">
       <h3 className="typo-subtitle">{profile.name}</h3>
-      {label && <p className="typo-caption leading-relaxed">{label}</p>}
+      {label && <div className="typo-caption leading-relaxed">{label}</div>}
     </div>
   </Link>
 );
