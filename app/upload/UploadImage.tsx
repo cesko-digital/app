@@ -124,7 +124,7 @@ export const UploadImage = ({
             )}
             disabled={uploading}
           >
-            Uložit profilovou fotku
+            Uložit fotku
           </button>
           <button
             className={clsx(
@@ -135,7 +135,7 @@ export const UploadImage = ({
             onClick={onDelete}
             disabled={uploading}
           >
-            Smazat profilovou fotku
+            Smazat fotku
           </button>
         </div>
       </form>
