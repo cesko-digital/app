@@ -135,18 +135,17 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   return (
     <div className="max-w-prose">
       {profile.tags.length > 0 && (
-        <InfoRow
-          label="Co dělám"
-          content={<SkillList skills={profile.tags.split(/;\s*/)} />}
-        />
+        <InfoRow label="Co dělám">
+          <SkillList skills={profile.tags.split(/;\s*/)} />
+        </InfoRow>
       )}
       {profile.maxSeniority && (
-        <InfoRow label="Seniorita" content={profile.maxSeniority} />
+        <InfoRow label="Seniorita">{profile.maxSeniority}</InfoRow>
       )}
       {profile.availableInDistricts && (
-        <InfoRow label="K zastižení" content={profile.availableInDistricts} />
+        <InfoRow label="K zastižení">{profile.availableInDistricts}</InfoRow>
       )}
-      {occupation && <InfoRow label="Kde pracuju" content={occupation} />}
+      {occupation && <InfoRow label="Kde pracuju">{occupation}</InfoRow>}
       <ContactRows profile={profile} />
     </div>
   );
