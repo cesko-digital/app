@@ -1,5 +1,8 @@
+import { assert } from "console";
+
 import { undef, union } from "typescript-json-decoder";
 
+import defaultTags from "~/src/tags.json";
 import { unique } from "~/src/utils";
 
 /** All available skill levels we work with */
@@ -149,20 +152,19 @@ export function skillsToHashtags(skills: string): string {
   // Convert top-level categories
   //
   const categoryMap: Record<string, string> = {
-    "Marketing": "#marketing",
-    "Projektové řízení": "#projektové-řízení",
-    "Personalistika": "#hr",
-    "Design": "#design",
+    "Marketing": "marketing",
+    "Projektové řízení": "projektové řízení",
+    "Personalistika": "HR",
   };
 
   for (const category of Object.keys(selection)) {
-    if (
-      // Have conversion rule
-      categoryMap[category] &&
-      // There are no skills selected in category
-      Object.values(selection[category]).length === 0
-    ) {
-      tags.push(categoryMap[category]);
+    if (categoryMap[category]) {
+      const tag = categoryMap[category];
+      assert(
+        !!defaultTags.find((t) => t.name === tag),
+        `Tag not found: ${tag}`,
+      );
+      tags.push(tag);
     }
   }
 
@@ -173,15 +175,21 @@ export function skillsToHashtags(skills: string): string {
     const category = selection[categoryName];
     for (const skill of Object.keys(category)) {
       for (const line of conversionTable) {
-        const [key, val] = line;
-        if (key === `${categoryName} / ${skill}`) {
-          tags.push(...val.split(" "));
+        const [oldName, newName] = line;
+        if (oldName === `${categoryName} / ${skill}`) {
+          assert(
+            !!defaultTags.find((t) => t.name === newName),
+            `Tag not found: ${newName}`,
+          );
+          tags.push(newName);
         }
       }
     }
   }
 
-  return unique(tags).sort().join(" ");
+  return unique(tags)
+    .sort((a, b) => a.localeCompare(b))
+    .join("; ");
 }
 
 export function getMaxSeniority(
@@ -202,40 +210,37 @@ export function getMaxSeniority(
 }
 
 const conversionTableSrc = `
-Marketing / Analýza marketingových dat -> #marketing
-Marketing / Audiovizuální produkce -> #audio #video
-Marketing / Event management -> #eventy
-Marketing / Marketingová strategie -> #marketing #strategie
-Marketing / Copywriting -> #copywriting
-Marketing / Public Relations -> #pr
-Vývoj / Backend -> #backend
-Vývoj / Cloud (Azure, AWS, GCP) -> #cloud
-Vývoj / Databáze -> #databáze
-Vývoj / DevOps -> #devops
-Vývoj / Docker a Kubernetes -> #devops
-Vývoj / Frontend -> #frontend
-Vývoj / HTML & CSS -> #html #css
-Vývoj / Java a Kotlin -> #java #kotlin
-Vývoj / JavaScript + TypeScript -> #javascript #typescript
-Vývoj / Mobilní aplikace (Android, iOS, Flutter, …) -> #mobile
-Vývoj / Node.js -> #node
-Vývoj / PHP -> #php
-Vývoj / Python -> #python
-Vývoj / React -> #react
-Vývoj / Testování -> #testování
-Vývoj / WordPress -> #wordpress
-Projektové řízení / Business model a development -> #projektové-řízení
-Projektové řízení / Finance -> #finance
-Projektové řízení / Fundraising -> #fundraising
-Projektové řízení / Product Owner -> #product-owner
-Projektové řízení / Scrum Master -> #scrum
-Personalistika / Community management -> #komunity
-Personalistika / Recruitment -> #hr
-Design / Mobile design -> #design
-Design / Research -> #design #výzkum
-Design / UI design -> #design #ui
-Design / UX design -> #design #ux
-Design / Web design -> #design
+Design / Product design -> produktový design
+Design / UI design -> design UX/UI
+Design / UX design -> design UX/UI
+Marketing / Audiovizuální produkce -> audio-video
+Marketing / Copywriting -> copywriting
+Marketing / Event management -> eventy
+Marketing / Marketingová strategie -> marketingová strategie
+Marketing / Online marketing -> sociální sítě
+Marketing / Public Relations -> PR
+Personalistika / Community management -> komunity
+Personalistika / Recruitment -> HR
+Personalistika / Vzdělávání -> vzdělávání
+Projektové řízení / Fundraising -> fundraising
+Projektové řízení / Product Owner -> Product Owner
+Projektové řízení / Scrum Master -> agile
+Vývoj / Backend -> backend
+Vývoj / Cloud (Azure, AWS, GCP) -> DevOps/cloud
+Vývoj / Databáze -> databáze
+Vývoj / DevOps -> DevOps/cloud
+Vývoj / Docker a Kubernetes -> DevOps/cloud
+Vývoj / Frontend -> frontend
+Vývoj / HTML & CSS -> HTML/CSS
+Vývoj / Java a Kotlin -> Java/Kotlin
+Vývoj / JavaScript + TypeScript -> JavaScript/TypeScript
+Vývoj / Mobilní aplikace (Android, iOS, Flutter, …) -> mobilní vývoj
+Vývoj / Node.js -> backend
+Vývoj / PHP -> backend
+Vývoj / Python -> backend
+Vývoj / React -> React
+Vývoj / Testování -> testování
+Vývoj / WordPress -> WordPress
 `;
 
 const conversionTable = conversionTableSrc
