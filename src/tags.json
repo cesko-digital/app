@@ -1,7 +1,7 @@
 [
   {
-    "name": "agilní vývoj",
-    "alsoMatch": "agile, scrum"
+    "name": "agile",
+    "alsoMatch": "scrum"
   },
   {
     "name": "AI",
@@ -25,7 +25,7 @@
   },
   {
     "name": "bezpečnost",
-    "alsoMatch": "security, kybez, vývoj, dev"
+    "alsoMatch": "security, kyber, kybez, vývoj, dev"
   },
   {
     "name": "byznys analýza",
@@ -84,10 +84,6 @@
     "alsoMatch": "nástroje, grafika"
   },
   {
-    "name": "finance",
-    "alsoMatch": ""
-  },
-  {
     "name": "finanční reportování",
     "alsoMatch": ""
   },
@@ -98,6 +94,10 @@
   {
     "name": "frontend",
     "alsoMatch": "dev, vývoj, fullstack, React, Angular, Vue"
+  },
+  {
+    "name": "fundraising",
+    "alsoMatch": ""
   },
   {
     "name": "Google Workspace",
@@ -126,6 +126,10 @@
   {
     "name": "Jira/Confluence",
     "alsoMatch": "Atlassian, nástroje"
+  },
+  {
+    "name": "komunity",
+    "alsoMatch": ""
   },
   {
     "name": "koordinace týmu",
