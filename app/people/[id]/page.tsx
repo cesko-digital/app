@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { iconForUrl } from "~/components/icons";
 import { CeskoDigital } from "~/components/icons/generic";
+import { SkillList } from "~/components/profile/SkillList";
 import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
@@ -134,7 +135,10 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   return (
     <div className="max-w-prose">
       {profile.tags.length > 0 && (
-        <InfoRow label="Co dělám" content={profile.tags} />
+        <InfoRow
+          label="Co dělám"
+          content={<SkillList skills={profile.tags.split(/;\s*/)} />}
+        />
       )}
       {profile.maxSeniority && (
         <InfoRow label="Seniorita" content={profile.maxSeniority} />

@@ -1,15 +1,12 @@
 import { type Metadata } from "next";
 
 import { Breadcrumbs } from "~/components/Breadcrumbs";
+import { SkillList } from "~/components/profile/SkillList";
 import {
   UserProfileCard,
   UserProfileContainer,
 } from "~/components/UserProfileCard";
-import {
-  compareByName,
-  getAllUserProfiles,
-  type UserProfile,
-} from "~/src/data/user-profile";
+import { compareByName, getAllUserProfiles } from "~/src/data/user-profile";
 import { strip } from "~/src/utils";
 
 /** Refresh data every 5 minutes */
@@ -38,31 +35,12 @@ async function Page() {
           <UserProfileCard
             key={profile.id}
             profile={profile}
-            label={<Skills profile={profile} />}
+            label={<SkillList skills={profile.tags.split(/;\s*/)} />}
           />
         ))}
       </UserProfileContainer>
     </main>
   );
 }
-
-const Skills = ({ profile }: { profile: UserProfile }) => (
-  <ul className="line-clamp-6 text-balance">
-    {profile.tags.split(/;\s*/).map((tag) => (
-      <li key={tag} className="inline">
-        {tag}
-        <span
-          className="bg-center bg-no-repeat tracking-[0.8em]"
-          style={{ backgroundImage: `url(${bulletImage})` }}
-        >
-          {" "}
-        </span>
-      </li>
-    ))}
-  </ul>
-);
-
-const bulletImage =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xMkMEa+wAAAAnSURBVBhXY/Dz89MA4sNA/B9Ka4AEYQIwfBgkiCwAxjhVopnppwEApxQqhnyQ+VkAAAAASUVORK5CYII=";
 
 export default Page;
