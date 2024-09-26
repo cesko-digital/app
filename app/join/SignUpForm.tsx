@@ -375,7 +375,10 @@ const LegalSection: FormSection = ({ state, onChange }) => (
         <span className="text-balance">
           Vím, jak bude Česko.Digital při vzájemné spolupráci a pro zajištění
           transparentnosti zpracovávat mé{" "}
-          <a className="typo-link" href="https://cesko.digital/go/privacy">
+          <a
+            className="typo-link"
+            href="https://docs.google.com/document/d/1G7jYaHuz8_TbfsGqseKIvzDj7u03VfnkKnk1s6lnPqI/edit"
+          >
             osobní údaje
           </a>
           .
