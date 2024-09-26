@@ -47,7 +47,7 @@ async function Page() {
 }
 
 const Skills = ({ profile }: { profile: UserProfile }) => (
-  <ul className="text-balance">
+  <ul className="line-clamp-6 text-balance">
     {profile.tags.split(/;\s*/).map((tag) => (
       <li key={tag} className="inline">
         {tag}
