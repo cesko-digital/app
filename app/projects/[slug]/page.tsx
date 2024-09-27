@@ -30,6 +30,7 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { type Metadata } from "next";
 
 import { iconForUrl } from "~/components/icons";
+import { defaultAvatarUrl } from "~/src/utils";
 
 import { ProjectTeamSection } from "./ProjectTeamSection";
 
@@ -245,7 +246,7 @@ const ProjectSidebar = ({
         <ImageLabel
           key={c.id}
           link={Route.toProfile({ id: c.userId })}
-          imageUrl={c.userAvatarUrl}
+          imageUrl={c.profilePictureUrl ?? defaultAvatarUrl}
           label={c.userName}
           faded={c.inactive}
         />

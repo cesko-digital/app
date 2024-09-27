@@ -12,6 +12,7 @@ import { defaultAvatarUrl } from "~/src/utils";
 
 export const SessionToolbar = () => {
   const { data: session, status } = useSession();
+  console.log(session, "ssn");
   return (
     <Fragment>
       {status === "loading" && <SignedOutButtons />}
@@ -23,6 +24,7 @@ export const SessionToolbar = () => {
 
 const SignedInButtons = ({ session }: { session: Session }) => {
   const avatarImage = session.user?.image ?? defaultAvatarUrl;
+
   const avatarTitle =
     session.user?.name && session.user?.email
       ? `${session.user?.name} (${session.user?.email})`

@@ -62,6 +62,7 @@ export interface Schema extends FieldSet {
   state: string;
   createdAt: string;
   lastModifiedAt: string;
+  profilePicture: string;
 }
 
 /** The user profile table in Airtable */
@@ -113,6 +114,7 @@ export const decodeUserProfile = record({
   createdAt: optional(string),
   lastModifiedAt: string,
   daysSinceRegistered: optional(number),
+  profilePictureUrl: withDefault(string, defaultAvatarUrl),
 });
 
 /** Encode `UserProfile` to DB schema */
@@ -140,6 +142,7 @@ export function encodeUserProfile(
     gdprPolicyAcceptedAt: profile.gdprPolicyAcceptedAt,
     codeOfConductAcceptedAt: profile.codeOfConductAcceptedAt,
     bio: profile.bio,
+    profilePictureUrl: profile.profilePictureUrl,
   };
 }
 
@@ -211,6 +214,7 @@ export async function updateUserProfile(
       | "occupation"
       | "profileUrl"
       | "organizationName"
+      | "profilePictureUrl"
     >
   >,
 ): Promise<UserProfile> {
@@ -239,6 +243,7 @@ export async function createUserProfile(
     | "codeOfConductAcceptedAt"
     | "featureFlags"
     | "privacyFlags"
+    | "profilePictureUrl"
   >,
 ): Promise<UserProfile> {
   return await userProfileTable
