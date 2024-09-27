@@ -5,11 +5,12 @@ import {
   type HTMLInputTypeAttribute,
   type InputHTMLAttributes,
 } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import clsx from "clsx";
 
-import { UploadImage } from "~/app/upload/UploadImage";
+import { ImageUploader } from "~/app/upload/ImageUploader";
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
@@ -58,9 +59,9 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
     setAvatarImage(model?.profilePictureUrl ?? defaultAvatarUrl);
   }, [model]);
 
-  const onAvatarChange = (url: string) => {
-    onChange({ ...model!, profilePictureUrl: url });
-  };
+  // const onAvatarChange = (url: string) => {
+  //   onChange({ ...model!, profilePictureUrl: url });
+  // };
 
   return (
     <section className="flex max-w-prose flex-col gap-7">
@@ -110,16 +111,20 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
         <label htmlFor="avatarImage" className="block">
           Profilová fotka:
         </label>
-        <img
+        <Image
           src={avatarImage}
           className="h-[100px] w-[100px] rounded-full bg-gray object-cover shadow"
-          alt="avatarImage"
+          alt="Profilová foto"
+          width={100}
+          height={100}
         />
         <div className="space-y-2">
-          <UploadImage
+          <ImageUploader
             setAvatarImage={setAvatarImage}
             avatarImage={avatarImage}
-            onAvatarChange={onAvatarChange}
+            onAvatarChange={(url: string) => {
+              onChange({ ...model!, profilePictureUrl: url });
+            }}
           />
         </div>
       </div>

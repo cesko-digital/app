@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useState, type FormEvent } from "react";
 
 import { type PutBlobResult } from "@vercel/blob";
@@ -9,12 +7,12 @@ import { FormError } from "~/components/form/FormError";
 import { defaultAvatarUrl } from "~/src/utils";
 
 type Props = {
-  setAvatarImage: React.Dispatch<React.SetStateAction<string>>;
+  setAvatarImage: (url: string) => void;
   avatarImage: string;
   onAvatarChange: (url: string) => void;
 };
 
-export const UploadImage = ({
+export const ImageUploader = ({
   setAvatarImage,
   avatarImage,
   onAvatarChange,

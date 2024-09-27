@@ -28,6 +28,10 @@ module.exports = withAxiom({
       },
       {
         protocol: "https",
+        hostname: "mogrfyhmal8klgqy.public.blob.vercel-storage.com",
+      },
+      {
+        protocol: "https",
         hostname: "avatars.slack-edge.com",
       },
       {
