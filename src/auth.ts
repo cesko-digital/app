@@ -63,6 +63,16 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    jwt({ token, trigger, session, user }) {
+      if (user?.image) {
+        token.image = user.image;
+      }
+      if (trigger === "update") {
+        token.image = session.image;
+      }
+      return token;
+    },
+
     async signIn({ user }) {
       if (user.email) {
         const existingUser = await getUserByEmail(user.email);
@@ -87,6 +97,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (session.user as any as OurUser).id = token.sub!;
+        session.user.image = token.image;
       }
       return session;
     },

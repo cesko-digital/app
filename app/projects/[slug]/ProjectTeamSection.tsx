@@ -19,17 +19,20 @@ export const ProjectTeamSection = ({
         <div key={label} className="mb-7">
           <h2 className="typo-title2 mb-4">{label}</h2>
           <UserProfileContainer>
-            {engagements.map((e) => (
-              <UserProfileCard
-                key={e.id}
-                label={e.projectRole}
-                profile={{
-                  id: e.userId,
-                  name: e.userName,
-                  profilePicutureUrl: e.userAvatarUrl ?? defaultAvatarUrl,
-                }}
-              />
-            ))}
+            {engagements.map((e) => {
+              console.log(e);
+              return (
+                <UserProfileCard
+                  key={e.id}
+                  label={e.projectRole}
+                  profile={{
+                    id: e.userId,
+                    name: e.userName,
+                    profilePictureUrl: e.profilePictureUrl,
+                  }}
+                />
+              );
+            })}
           </UserProfileContainer>
         </div>
       ))}

@@ -59,10 +59,6 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
     setAvatarImage(model?.profilePictureUrl ?? defaultAvatarUrl);
   }, [model]);
 
-  // const onAvatarChange = (url: string) => {
-  //   onChange({ ...model!, profilePictureUrl: url });
-  // };
-
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>

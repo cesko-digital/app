@@ -2,6 +2,7 @@ import { useRef, useState, type FormEvent } from "react";
 
 import { type PutBlobResult } from "@vercel/blob";
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 
 import { FormError } from "~/components/form/FormError";
 import { defaultAvatarUrl } from "~/src/utils";
@@ -21,6 +22,8 @@ export const ImageUploader = ({
   const [uploading, setUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [pendingChanges, setPendingChanges] = useState(false);
+
+  const { data: session, update } = useSession();
 
   const cleanInputFile = () => {
     if (inputFileRef.current) {
@@ -55,6 +58,7 @@ export const ImageUploader = ({
       const newBlob = (await response.json()) as PutBlobResult;
       cleanInputFile();
       onAvatarChange(newBlob.url);
+      await update({ image: newBlob.url });
     } else {
       setErrorMessage("Něco se nepovedlo, zkus to znovu");
     }
@@ -92,10 +96,11 @@ export const ImageUploader = ({
     fileReader.readAsDataURL(file);
   };
 
-  const onDelete = () => {
+  const onDelete = async () => {
     cleanInputFile();
     setAvatarImage(defaultAvatarUrl);
     onAvatarChange(defaultAvatarUrl);
+    await update({ image: defaultAvatarUrl });
   };
 
   return (

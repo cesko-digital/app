@@ -8,7 +8,7 @@ import { type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 
 export type Props = {
-  profile: Pick<UserProfile, "name" | "avatarUrl" | "id"> &
+  profile: Pick<UserProfile, "name" | "profilePictureUrl" | "id"> &
     Partial<Pick<UserProfile, "roles">>;
   label?: string;
 };
@@ -25,7 +25,7 @@ export const UserProfileCard = ({ profile, label }: Props) => (
     <div className="shrink-0">
       <div className="relative mx-auto w-[80px]">
         <Image
-          src={profile.avatarUrl}
+          src={profile.profilePictureUrl}
           className={clsx(
             "shrink-0 rounded-full bg-gray shadow",
             // This fixes the appearance of non-square images

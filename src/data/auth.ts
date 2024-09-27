@@ -43,7 +43,7 @@ interface UserTableSchema extends FieldSet {
   email: string;
   emailVerified: string;
   name: string;
-  userProfileUrl: string;
+  profilePictureUrl: string;
   state: string;
 }
 
@@ -54,7 +54,7 @@ const decodeUser = record({
   email: string,
   emailVerified: optionalAsNull(date),
   name: optionalAsNull(string),
-  image: field("userProfileUrl", relationToZeroOrOne),
+  image: field("profilePictureUrl", relationToZeroOrOne),
 });
 
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({
