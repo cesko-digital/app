@@ -76,10 +76,8 @@ export type TableView =
   | "All Profiles"
   | "Confirmed Profiles"
   | "New Role Notification Recipients"
-  | "Profiles with Occupation Data"
   | "Profiles with Skills"
   | "Profiles with Districts"
-  | "Missing Slack Account"
   | "Public Profiles";
 
 /** A user profile type */
@@ -115,8 +113,6 @@ export const decodeUserProfile = record({
   gdprPolicyAcceptedAt: optional(string),
   codeOfConductAcceptedAt: optional(string),
   createdAt: optional(string),
-  lastModifiedAt: string,
-  daysSinceRegistered: optional(number),
 });
 
 /** Encode `UserProfile` to DB schema */

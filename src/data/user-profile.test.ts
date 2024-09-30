@@ -38,10 +38,8 @@ test("Decode user with no skills", () => {
     roles: [],
     availableInDistricts: undefined,
     createdAt: "2022-03-23T08:31:54.500Z",
-    lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
-    daysSinceRegistered: undefined,
   });
 });
 
@@ -81,10 +79,8 @@ test("Decode Slack Users relation", () => {
     roles: [],
     availableInDistricts: undefined,
     createdAt: "2022-03-23T08:31:54.500Z",
-    lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
-    daysSinceRegistered: undefined,
   });
   expect(
     decodeUserProfile({
@@ -121,10 +117,8 @@ test("Decode Slack Users relation", () => {
     roles: [],
     availableInDistricts: undefined,
     createdAt: "2022-03-23T08:31:54.500Z",
-    lastModifiedAt: "2022-03-23T08:31:54.500Z",
     gdprPolicyAcceptedAt: undefined,
     codeOfConductAcceptedAt: undefined,
-    daysSinceRegistered: undefined,
   });
 });
 
