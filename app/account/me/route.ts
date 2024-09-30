@@ -16,6 +16,7 @@ import {
   getUserProfileByMail,
   privacyFlags,
   updateUserProfile,
+  userSeniorities,
 } from "~/src/data/user-profile";
 import { normalizeEmailAddress } from "~/src/utils";
 
@@ -24,7 +25,8 @@ export async function POST(request: NextRequest): Promise<Response> {
   const decodeRequest = record({
     name: string,
     email: string,
-    skills: string,
+    tags: string,
+    maxSeniority: optional(union(...userSeniorities)),
     gdprPolicyAcceptedAt: string,
     codeOfConductAcceptedAt: string,
     occupation: optional(string),
@@ -87,6 +89,8 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      tags,
+      maxSeniority,
       occupation,
       organizationName,
       profileUrl,
@@ -99,6 +103,8 @@ export async function PATCH(request: NextRequest) {
       contactEmail,
       availableInDistricts,
       bio,
+      tags,
+      maxSeniority,
       occupation,
       organizationName,
       profileUrl,

@@ -8,10 +8,11 @@ import { boolean, record } from "typescript-json-decoder";
 
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
-import { SkillPicker } from "~/components/SkillPicker";
+import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
+import { OccupationSelect } from "~/components/profile/OccupationSelect";
+import { SenioritySelect } from "~/components/profile/SenioritySelect";
+import { SkillSelect } from "~/components/profile/SkillSelect";
 import { trackCustomEvent } from "~/src/plausible/events";
-import { encodeSkillSelection, type SkillMenu } from "~/src/skills/skills";
-import skillMenu from "~/src/skills/skills.json";
 import { ContentType, looksLikeEmailAdress } from "~/src/utils";
 
 import ArrowIllustration from "./arrows.svg";
@@ -68,9 +69,8 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
   return (
     <div className="flex flex-col gap-10 pt-7">
       <IntroSection />
-      <PersonalDetailsSection state={state} onChange={setState} />
-      <SkillSection skillMenu={skillMenu} state={state} onChange={setState} />
-      <PrivacySection state={state} onChange={setState} />
+      <BasicInfoSection state={state} onChange={setState} />
+      <ProfileDetailSection state={state} onChange={setState} />
       <LegalSection state={state} onChange={setState} />
       <SubmitSection state={state} onChange={setState} onSubmit={submit} />
     </div>
@@ -81,8 +81,6 @@ type FormSectionProps = {
   state: FormState;
   onChange: (updatedState: FormState) => void;
 };
-
-type FormSection = React.FC<FormSectionProps>;
 
 const isEditable = (state: FormState) => {
   const tag = state.submissionState.tag;
@@ -100,7 +98,7 @@ const IntroSection = () => (
       <Image src={ArrowIllustration} alt="" width={181} height={373} />
     </div>
     <div className="flex max-w-prose flex-col gap-7">
-      <h1 className="typo-title">Staň se členem komunity</h1>
+      <h1 className="typo-title">Přidej se k nám</h1>
       <p>
         Prozraď nám o sobě více. Budeme tak vědět, co by tě z našich aktivit
         mohlo zajímat a kdo z komunity se na tebe může případně obrátit. Údaje o
@@ -115,28 +113,20 @@ const IntroSection = () => (
 );
 
 //
-// Personal details
+// Basic Info
 //
 
-const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
+const BasicInfoSection = ({ state, onChange }: FormSectionProps) => {
   const disabled = !isEditable(state);
   return (
     <section>
       <div className="flex max-w-prose flex-col gap-7">
         <h2 className="typo-title2">To nejdůležitější o tobě</h2>
-        <TextInput
-          id="name"
-          label="Jméno a příjmení"
-          value={state.name}
-          autoComplete="name"
-          onChange={(name) => onChange({ ...state, name })}
-          disabled={disabled}
-          required
-        />
+
         <div>
           <TextInput
             id="email"
-            label="Email"
+            label="Registrační e-mail:"
             value={state.email}
             autoComplete="email"
             onChange={(email) => onChange({ ...state, email })}
@@ -146,161 +136,29 @@ const PersonalDetailsSection: FormSection = ({ state, onChange }) => {
           {state.emailAlreadyTaken && (
             <EmailAlreadyExistsError email={state.email} />
           )}
-        </div>
-        <OccupationSelect state={state} onChange={onChange} />
-        <TextInput
-          id="organization"
-          label="Název organizace, kde působíš"
-          value={state.organizationName}
-          placeholder="název firmy, neziskové organizace, státní instituce, …"
-          autoComplete="organization"
-          disabled={disabled}
-          onChange={(organizationName) =>
-            onChange({ ...state, organizationName })
-          }
-        />
-        <TextInput
-          id="profile"
-          label="Odkaz na tvůj web nebo profesní profil"
-          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
-          value={state.profileUrl}
-          type="url"
-          disabled={disabled}
-          onChange={(profileUrl) => onChange({ ...state, profileUrl })}
-        />
-        <div>
-          <label>Ve kterých okresech ČR býváš k zastižení?</label>
-          <DistrictSelect
-            value={state.availableInDistricts}
-            onChange={(availableInDistricts) =>
-              onChange({ ...state, availableInDistricts })
-            }
-          />
-          <p className="typo-caption mt-2">
-            Tahle data sbíráme, abychom mohli propojovat členy komunity z
-            různých koutů Česka. Jestli nechceš, klidně nech pole nevyplněné.
+          <p className="typo-caption mt-2 text-balance">
+            Slouží pro přihlašování, nebudeme ho nikde ukazovat veřejně.
           </p>
         </div>
+
+        <TextInput
+          id="name"
+          label="Celé jméno:"
+          value={state.name}
+          autoComplete="name"
+          onChange={(name) => onChange({ ...state, name })}
+          disabled={disabled}
+          required
+        />
+
         <TextArea
           id="bio"
-          label="Řekni něco málo o sobě, ať tě lidé lépe poznají"
+          label="Řekni něco málo o sobě, ať tě lidé lépe poznají:"
           value={state.bio}
           placeholder="zájmy, profesní historie, čemu se chceš věnovat, …"
           disabled={disabled}
           onChange={(bio) => onChange({ ...state, bio })}
         />
-      </div>
-    </section>
-  );
-};
-
-const EmailAlreadyExistsError = ({ email }: { email: string }) => {
-  return (
-    <p className="mt-2 bg-yellow p-2">
-      Účet s tímhle mailem už existuje.{" "}
-      <a
-        onClick={async (e) => {
-          e.preventDefault();
-          await signIn("email", { email });
-        }}
-        className="typo-link"
-        href=""
-      >
-        Chceš se přihlásit?
-      </a>
-    </p>
-  );
-};
-
-const OccupationSelect: FormSection = ({ state, onChange }) => {
-  const options = {
-    "private-sector": "Pracuji v soukromém sektoru",
-    "non-profit": "Pracuji v neziskové organizaci",
-    "state": "Pracuji ve státním sektoru",
-    "freelancing": "Jsem na volné noze/freelancer",
-    "studying": "Studuji",
-    "parental-leave": "Jsem na rodičovské",
-    "looking-for-job": "Hledám práci",
-    "other": "Jiné",
-  };
-
-  return (
-    <div>
-      <label className="mb-1 block">
-        Čemu se aktuálně věnuješ?
-        <RequiredFieldMarker />
-      </label>
-      <p className="typo-caption mb-3">
-        Pokud toho děláš víc, vyber, co převažuje
-      </p>
-
-      <div>
-        {Object.entries(options).map(([id, label]) => (
-          <label key={id} className="mb-1 flex items-center">
-            <input
-              type="radio"
-              className="mr-3"
-              name="occupation"
-              disabled={!isEditable(state)}
-              checked={state.occupation === id}
-              onChange={() => onChange({ ...state, occupation: id })}
-            />
-            <span className={state.occupation === id ? "font-bold" : ""}>
-              {label}
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-//
-// Skills section
-//
-
-type SkillSectionProps = FormSectionProps & {
-  skillMenu: SkillMenu;
-};
-
-const SkillSection: React.FC<SkillSectionProps> = ({
-  state,
-  skillMenu,
-  onChange,
-}) => {
-  return (
-    <section>
-      <div className="flex max-w-prose flex-col gap-4">
-        <h2 className="typo-title2">
-          Dovednosti, které můžeš komunitě nabídnout
-          <RequiredFieldMarker />
-        </h2>
-        <p>
-          Díky co nejpřesnějšímu vyplnění tvého zaměření a úrovně zkušeností tě
-          může někdo z komunity poprosit o radu nebo tě zapojit do správného
-          typu aktivity nebo projektu. Vyplň vše, co tě zajímá, včetně oblastí,
-          ve kterých se chceš rozvíjet.
-        </p>
-        <SkillPicker
-          skillMenu={skillMenu}
-          selection={state.skills}
-          disabled={!isEditable(state)}
-          onChange={(skills) => onChange({ ...state, skills })}
-        />
-      </div>
-    </section>
-  );
-};
-
-//
-// Privacy section
-//
-
-const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
-  return (
-    <section>
-      <div className="flex max-w-prose flex-col gap-4">
-        <h2 className="typo-title2">Soukromí</h2>
 
         <label className="flex items-center">
           <Checkbox
@@ -324,13 +182,93 @@ const PrivacySection: React.FC<FormSectionProps> = ({ state, onChange }) => {
   );
 };
 
+const EmailAlreadyExistsError = ({ email }: { email: string }) => {
+  return (
+    <p className="mt-2 bg-yellow p-2">
+      Účet s tímhle mailem už existuje.{" "}
+      <a
+        onClick={async (e) => {
+          e.preventDefault();
+          await signIn("email", { email });
+        }}
+        className="typo-link"
+        href=""
+      >
+        Chceš se přihlásit?
+      </a>
+    </p>
+  );
+};
+
+//
+// Details
+//
+
+const ProfileDetailSection = ({ state, onChange }: FormSectionProps) => {
+  const disabled = !isEditable(state);
+  return (
+    <section>
+      <div className="flex max-w-prose flex-col gap-7">
+        <h2 className="typo-title2">Řekni nám víc</h2>
+
+        <SkillSelect
+          value={state.tags}
+          onChange={(tags) => onChange({ ...state, tags })}
+          sendChangesImmediately={true}
+        />
+
+        <SenioritySelect
+          onChange={(maxSeniority) => onChange({ ...state, maxSeniority })}
+          value={state.maxSeniority}
+          disabled={!isEditable(state)}
+        />
+
+        <OccupationSelect
+          onChange={(occupation) => onChange({ ...state, occupation })}
+          occupation={state.occupation}
+          disabled={!isEditable(state)}
+        />
+
+        <TextInput
+          id="organization"
+          label="Název organizace, kde působíš:"
+          value={state.organizationName}
+          placeholder="název firmy, neziskové organizace, státní instituce, …"
+          autoComplete="organization"
+          disabled={disabled}
+          onChange={(organizationName) =>
+            onChange({ ...state, organizationName })
+          }
+        />
+
+        <TextInput
+          id="profile"
+          label="Odkaz na tvůj web nebo profesní profil:"
+          placeholder="například LinkedIn, GitHub, Behance, About.me, …"
+          value={state.profileUrl}
+          type="url"
+          disabled={disabled}
+          onChange={(profileUrl) => onChange({ ...state, profileUrl })}
+        />
+
+        <DistrictSelect
+          value={state.availableInDistricts}
+          onChange={(availableInDistricts) =>
+            onChange({ ...state, availableInDistricts })
+          }
+        />
+      </div>
+    </section>
+  );
+};
+
 //
 // Legal section
 //
 
-const LegalSection: FormSection = ({ state, onChange }) => (
+const LegalSection = ({ state, onChange }: FormSectionProps) => (
   <section>
-    <div className="flex max-w-prose flex-col gap-2">
+    <div className="flex max-w-prose flex-col gap-4">
       <h2 className="typo-title2 mb-2">
         Právní náležitosti
         <RequiredFieldMarker />
@@ -396,10 +334,7 @@ type SubmitSectionProps = FormSectionProps & {
   onSubmit?: (validatedData: RegistrationData) => Promise<void>;
 };
 
-const SubmitSection: React.FC<SubmitSectionProps> = ({
-  state,
-  onSubmit = (_) => {},
-}) => {
+const SubmitSection = ({ state, onSubmit }: SubmitSectionProps) => {
   const validationResult = validateForm(state);
   const { submissionState } = state;
 
@@ -418,7 +353,7 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
   const handleSubmit = () => {
     if (validationResult.result === "success") {
       if (onSubmit) {
-        onSubmit(validationResult.validatedData);
+        return onSubmit(validationResult.validatedData);
       } else {
         console.log(
           `Submitted form data: ${JSON.stringify(
@@ -462,8 +397,6 @@ const SubmitSection: React.FC<SubmitSectionProps> = ({
 // Shared Components
 //
 
-const RequiredFieldMarker = () => <span className="pl-1 text-red-500">*</span>;
-
 type TextInputProps = {
   id: string;
   label: string;
@@ -476,7 +409,7 @@ type TextInputProps = {
   onChange?: (newValue: string) => void;
 };
 
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput = ({
   id,
   label,
   type = "text",
@@ -486,10 +419,10 @@ const TextInput: React.FC<TextInputProps> = ({
   disabled = false,
   autoComplete,
   onChange = (_) => {},
-}) => {
+}: TextInputProps) => {
   return (
     <div>
-      <label htmlFor={id}>
+      <label htmlFor={id} className="mb-2 block">
         {label}
         {required && <RequiredFieldMarker />}
       </label>
@@ -514,7 +447,7 @@ type CheckboxProps = {
   onChange: (newValue: boolean) => void;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, disabled, onChange }) => {
+const Checkbox = ({ checked, disabled, onChange }: CheckboxProps) => {
   return (
     <input
       type="checkbox"
@@ -538,7 +471,7 @@ type TextAreaProps = {
   onChange?: (newValue: string) => void;
 };
 
-const TextArea: React.FC<TextAreaProps> = ({
+const TextArea = ({
   id,
   label,
   value = undefined,
@@ -547,10 +480,10 @@ const TextArea: React.FC<TextAreaProps> = ({
   disabled = false,
   rows = 3,
   onChange = (_) => {},
-}) => {
+}: TextAreaProps) => {
   return (
     <div>
-      <label htmlFor={id}>
+      <label htmlFor={id} className="mb-2 block">
         {label}
         {required && <RequiredFieldMarker />}
       </label>
@@ -573,11 +506,10 @@ const TextArea: React.FC<TextAreaProps> = ({
 //
 
 async function createUserProfile(data: RegistrationData): Promise<boolean> {
-  const payload = { ...data, skills: encodeSkillSelection(data.skills) };
   try {
     const response = await fetch("/account/me", {
       method: "POST",
-      body: JSON.stringify(payload, null, 2),
+      body: JSON.stringify(data, null, 2),
       headers: { "Content-Type": ContentType.json },
     });
     return response.ok;

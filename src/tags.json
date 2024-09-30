@@ -1,0 +1,274 @@
+[
+  {
+    "name": "agile",
+    "alsoMatch": "scrum"
+  },
+  {
+    "name": "AI",
+    "alsoMatch": "Midjourney, ChatGPT, prompt, umělá inteligence"
+  },
+  {
+    "name": "Airtable",
+    "alsoMatch": "nástroje, procesy, automatizace"
+  },
+  {
+    "name": "audio-video",
+    "alsoMatch": "kreativa, produkce"
+  },
+  {
+    "name": "automatizace",
+    "alsoMatch": "Airtable, Notion, Integromat, workflow, procesy"
+  },
+  {
+    "name": "backend",
+    "alsoMatch": "vývoj, dev, fullstack"
+  },
+  {
+    "name": "bezpečnost",
+    "alsoMatch": "security, kyber, kybez, vývoj, dev"
+  },
+  {
+    "name": "byznys analýza",
+    "alsoMatch": "business, analyst"
+  },
+  {
+    "name": "copywriting",
+    "alsoMatch": "marketing, psaní, texty"
+  },
+  {
+    "name": "CRM",
+    "alsoMatch": "customer, zákazník"
+  },
+  {
+    "name": "customer experience",
+    "alsoMatch": "design, zážitek, uživatel"
+  },
+  {
+    "name": "databáze",
+    "alsoMatch": "vývoj, dev, backend, SQL, Postgres"
+  },
+  {
+    "name": "datová analýza",
+    "alsoMatch": "data"
+  },
+  {
+    "name": "design služeb",
+    "alsoMatch": "service"
+  },
+  {
+    "name": "design UX/UI",
+    "alsoMatch": "experience, zkušenost, uživatel"
+  },
+  {
+    "name": "DevOps/cloud",
+    "alsoMatch": "vývoj, dev, backend, AWS, Amazon, Google, GCP, Azure"
+  },
+  {
+    "name": "dotace",
+    "alsoMatch": ""
+  },
+  {
+    "name": "e-mailing",
+    "alsoMatch": "marketing, Ecomail, Mailchimp"
+  },
+  {
+    "name": "eventy",
+    "alsoMatch": "akce"
+  },
+  {
+    "name": "Excel",
+    "alsoMatch": "data, nástroje"
+  },
+  {
+    "name": "Figma",
+    "alsoMatch": "nástroje, grafika"
+  },
+  {
+    "name": "finanční reportování",
+    "alsoMatch": ""
+  },
+  {
+    "name": "fotografie",
+    "alsoMatch": "kreativa, produkce, eventy"
+  },
+  {
+    "name": "frontend",
+    "alsoMatch": "dev, vývoj, fullstack, React, Angular, Vue"
+  },
+  {
+    "name": "fundraising",
+    "alsoMatch": ""
+  },
+  {
+    "name": "Google Workspace",
+    "alsoMatch": "nástroje, procesy"
+  },
+  {
+    "name": "grafika",
+    "alsoMatch": "Figma, typo"
+  },
+  {
+    "name": "HR",
+    "alsoMatch": "nábor, hiring, personalistika"
+  },
+  {
+    "name": "HTML/CSS",
+    "alsoMatch": "dev, vývoj, frontend, web"
+  },
+  {
+    "name": "Java/Kotlin",
+    "alsoMatch": "dev, vývoj, backend"
+  },
+  {
+    "name": "JavaScript/TypeScript",
+    "alsoMatch": "dev, vývoj, frontend, web, Angular, Vue"
+  },
+  {
+    "name": "Jira/Confluence",
+    "alsoMatch": "Atlassian, nástroje"
+  },
+  {
+    "name": "komunity",
+    "alsoMatch": ""
+  },
+  {
+    "name": "koordinace týmu",
+    "alsoMatch": "management, řízení"
+  },
+  {
+    "name": "kvalitativní výzkum",
+    "alsoMatch": "research"
+  },
+  {
+    "name": "kvantitativní výzkum",
+    "alsoMatch": "research"
+  },
+  {
+    "name": "leadership",
+    "alsoMatch": "management, řízení"
+  },
+  {
+    "name": "marketing",
+    "alsoMatch": ""
+  },
+  {
+    "name": "marketingová koordinace",
+    "alsoMatch": "management, řízení"
+  },
+  {
+    "name": "marketingová strategie",
+    "alsoMatch": "management, řízení"
+  },
+  {
+    "name": "Microsoft 365",
+    "alsoMatch": "O365, nástroje, procesy"
+  },
+  {
+    "name": "mobilní vývoj",
+    "alsoMatch": "Flutter, iOS, Android, native"
+  },
+  {
+    "name": "Moodle",
+    "alsoMatch": "nástroje, vzdělávání, výuka, LMS"
+  },
+  {
+    "name": "Notion",
+    "alsoMatch": "nástroje, procesy, automatizace"
+  },
+  {
+    "name": "odměňování",
+    "alsoMatch": "compensation, benefit"
+  },
+  {
+    "name": "operations",
+    "alsoMatch": "provoz"
+  },
+  {
+    "name": "partnerství",
+    "alsoMatch": ""
+  },
+  {
+    "name": "podcasting",
+    "alsoMatch": "audio, video, produkce, zvuk"
+  },
+  {
+    "name": "pomáhající profese",
+    "alsoMatch": "sociální, zdravotní"
+  },
+  {
+    "name": "PR",
+    "alsoMatch": "marketing, média, vztahy, relations, public"
+  },
+  {
+    "name": "právo",
+    "alsoMatch": "legal, gdpr"
+  },
+  {
+    "name": "procesy",
+    "alsoMatch": "nástroje, workflow"
+  },
+  {
+    "name": "Product Owner",
+    "alsoMatch": "agil, management"
+  },
+  {
+    "name": "produktový design",
+    "alsoMatch": ""
+  },
+  {
+    "name": "produktový management",
+    "alsoMatch": "řízení, owner, discovery, strategy"
+  },
+  {
+    "name": "projektové řízení",
+    "alsoMatch": "management"
+  },
+  {
+    "name": "React",
+    "alsoMatch": "dev, vývoj, frontend, javascript, typescript, web"
+  },
+  {
+    "name": "řízení změn",
+    "alsoMatch": "change, management"
+  },
+  {
+    "name": "sociální sítě",
+    "alsoMatch": "marketing, online, socme"
+  },
+  {
+    "name": "Tabidoo",
+    "alsoMatch": "nástroje, procesy, workflow, automatizace"
+  },
+  {
+    "name": "testování",
+    "alsoMatch": "dev, vývoj"
+  },
+  {
+    "name": "Trello",
+    "alsoMatch": "nástroje, procesy, workflow, automatizace"
+  },
+  {
+    "name": "UX výzkum",
+    "alsoMatch": "research, uživatel"
+  },
+  {
+    "name": "vývoj webu",
+    "alsoMatch": "vývoj, dev"
+  },
+  {
+    "name": "výzkum",
+    "alsoMatch": ""
+  },
+  {
+    "name": "vzdělávání",
+    "alsoMatch": ""
+  },
+  {
+    "name": "Webflow",
+    "alsoMatch": "vývoj, dev, web"
+  },
+  {
+    "name": "WordPress",
+    "alsoMatch": "vývoj, dev, web"
+  }
+]

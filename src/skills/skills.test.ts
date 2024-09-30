@@ -108,24 +108,34 @@ test("Convert skills to hashtags", () => {
     skillsToHashtags(
       "Marketing / Marketingová strategie / medior; Marketing / Analýza marketingových dat / medior",
     ),
-  ).toBe("#marketing #strategie");
+  ).toBe("marketing; marketingová strategie");
   expect(
     skillsToHashtags(
       "Vývoj / Backend; Vývoj / Cloud (Azure, AWS, GCP); Vývoj / DevOps; Vývoj / Frontend; Vývoj / HTML & CSS; Vývoj / JavaScript + TypeScript; Vývoj / Mobilní aplikace (Android, iOS, Flutter, …); Vývoj / Node.js; Vývoj / React; Marketing / Copywriting",
     ),
   ).toBe(
-    "#backend #cloud #copywriting #css #devops #frontend #html #javascript #mobile #node #react #typescript",
+    "backend; copywriting; DevOps/cloud; frontend; HTML/CSS; JavaScript/TypeScript; marketing; mobilní vývoj; React",
   );
   expect(
     skillsToHashtags(
       "Design / UX design / medior; Marketing; Vývoj / React / junior",
     ),
-  ).toBe("#design #marketing #react #ux");
+  ).toBe("design UX/UI; marketing; React");
   expect(
     skillsToHashtags(
       "Vývoj / Docker a Kubernetes / medior; Vývoj / HTML & CSS / medior; Vývoj / Python / senior; Vývoj / React / senior; Vývoj / Testování / medior; Vývoj / JavaScript + TypeScript / medior; Vývoj / Node.js / junior",
     ),
   ).toBe(
-    "#css #devops #html #javascript #node #python #react #testování #typescript",
+    "backend; DevOps/cloud; HTML/CSS; JavaScript/TypeScript; React; testování",
   );
+  expect(
+    skillsToHashtags(
+      "Marketing / Analýza marketingových dat / senior; Projektové řízení / Business model a development / medior",
+    ),
+  ).toBe("marketing; projektové řízení");
+  expect(
+    skillsToHashtags(
+      "Ostatní; Projektové řízení / Business model a development / medior; Design / Research / senior",
+    ),
+  ).toBe("projektové řízení");
 });

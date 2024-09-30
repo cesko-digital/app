@@ -15,26 +15,23 @@ export const ContactRows = ({ profile }: { profile: UserProfile }) => {
   const { status } = useSession();
   switch (status) {
     case "loading":
-      return <InfoRow label="Kontakt" content="Načítám…" />;
+      return <InfoRow label="Kontakt">Načítám…</InfoRow>;
     case "unauthenticated":
       return (
-        <InfoRow
-          label="Kontakt"
-          content={
-            <span>
-              Pro zobrazení se musíš{" "}
-              <a
-                className="typo-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  return signIn();
-                }}
-              >
-                přihlásit
-              </a>
-            </span>
-          }
-        />
+        <InfoRow label="Kontakt">
+          <span>
+            Pro zobrazení se musíš{" "}
+            <a
+              className="typo-link"
+              onClick={(e) => {
+                e.preventDefault();
+                return signIn();
+              }}
+            >
+              přihlásit
+            </a>
+          </span>
+        </InfoRow>
       );
     case "authenticated":
       return (
@@ -53,18 +50,17 @@ const EmailRow = ({ profile }: { profile: UserProfile }) => (
         E-mail <Image src={Gmail} alt="" width={16} height={16} />
       </span>
     }
-    content={
-      <div className="flex flex-row items-center gap-4">
-        <a href={`mailto:${profile.contactEmail}`} className="typo-link">
-          {profile.contactEmail}
-        </a>
-        <CopyToClipboardButton
-          title="Zkopírovat e-mail do schránky"
-          value={profile.contactEmail}
-        />
-      </div>
-    }
-  />
+  >
+    <div className="flex flex-row items-center gap-4">
+      <a href={`mailto:${profile.contactEmail}`} className="typo-link">
+        {profile.contactEmail}
+      </a>
+      <CopyToClipboardButton
+        title="Zkopírovat e-mail do schránky"
+        value={profile.contactEmail}
+      />
+    </div>
+  </InfoRow>
 );
 
 // TBD: Only display if the current user also has a Slack account?
@@ -75,13 +71,12 @@ const SlackRow = ({ profile }: { profile: UserProfile }) => (
         Slack <Image src={Slack} alt="" width={16} height={16} />
       </span>
     }
-    content={
-      <a
-        href={`slack://user?team=TG21XF887&id=${profile.slackId}`}
-        className="typo-link"
-      >
-        poslat zprávu na Slacku
-      </a>
-    }
-  />
+  >
+    <a
+      href={`slack://user?team=TG21XF887&id=${profile.slackId}`}
+      className="typo-link"
+    >
+      poslat zprávu na Slacku
+    </a>
+  </InfoRow>
 );

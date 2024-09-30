@@ -13,16 +13,12 @@ import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";
 import { usePatchedJSONResource } from "~/components/hooks/resource";
-import { SkillPicker } from "~/components/SkillPicker";
+import { OccupationSelect } from "~/components/profile/OccupationSelect";
+import { SenioritySelect } from "~/components/profile/SenioritySelect";
+import { SkillSelect } from "~/components/profile/SkillSelect";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
 import { absolute, Route } from "~/src/routing";
-import {
-  decodeSkillSelection,
-  encodeSkillSelection,
-  type SkillSelection,
-} from "~/src/skills/skills";
-import skills from "~/src/skills/skills.json";
 import { looksLikeEmailAdress } from "~/src/utils";
 
 type SectionProps = {
@@ -42,16 +38,18 @@ export const UserProfileTab = () => {
 
   return (
     <div className="flex flex-col gap-10">
-      <BioSection model={model} updating={updating} onChange={setModel} />
+      <BasicInfoSection model={model} updating={updating} onChange={setModel} />
       <PrivacySection model={model} updating={updating} onChange={setModel} />
-      <WorkSection model={model} updating={updating} onChange={setModel} />
-      <SkillSection model={model} updating={updating} onChange={setModel} />
-      <MapSection model={model} onChange={setModel} />
+      <DetailedInfoSection
+        model={model}
+        updating={updating}
+        onChange={setModel}
+      />
     </div>
   );
 };
 
-const BioSection = ({ model, updating, onChange }: SectionProps) => {
+const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -124,6 +122,57 @@ const BioSection = ({ model, updating, onChange }: SectionProps) => {
     </section>
   );
 };
+
+const DetailedInfoSection = ({ model, updating, onChange }: SectionProps) => (
+  <section className="flex max-w-prose flex-col gap-7">
+    <h2 className="typo-title2">Řekni nám o sobě víc</h2>
+
+    <SkillSelect
+      onChange={(tags) => onChange({ ...model!, tags })}
+      value={model?.tags ?? ""}
+      disabled={updating}
+    />
+
+    <SenioritySelect
+      onChange={(maxSeniority) => onChange({ ...model!, maxSeniority })}
+      value={model?.maxSeniority}
+      disabled={updating}
+    />
+
+    <OccupationSelect
+      onChange={(occupation) => onChange({ ...model!, occupation })}
+      occupation={model?.occupation}
+      disabled={updating}
+    />
+
+    <InputWithSaveButton
+      onSave={(organizationName) => onChange({ ...model!, organizationName })}
+      id="organizationName"
+      label="Název organizace, kde působíš:"
+      saveButtonLabel="Uložit organizaci"
+      placeholder="název firmy, neziskové organizace, státní instituce, …"
+      defaultValue={model?.organizationName}
+      disabled={!model || updating}
+    />
+
+    <InputWithSaveButton
+      onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
+      id="professionalProfile"
+      type="url"
+      label="Odkaz na tvůj web nebo profesní profil:"
+      saveButtonLabel="Uložit odkaz"
+      defaultValue={model?.profileUrl}
+      disabled={!model || updating}
+    />
+
+    <DistrictSelect
+      value={model?.availableInDistricts ?? ""}
+      onChange={(availableInDistricts) =>
+        onChange({ ...model!, availableInDistricts })
+      }
+    />
+  </section>
+);
 
 const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
   const hasPublicProfile = model?.privacyFlags.includes("enablePublicProfile");
@@ -210,126 +259,6 @@ const PrivacySection = ({ model, updating, onChange }: SectionProps) => {
       </div>
 
       <p>Může pár minut trvat, než se změny v těchto nastaveních projeví.</p>
-    </section>
-  );
-};
-
-const WorkSection = ({ model, updating, onChange }: SectionProps) => {
-  const occupationsOptions = {
-    "private-sector": "Pracuji v soukromém sektoru",
-    "non-profit": "Pracuji v neziskové organizaci",
-    "state": "Pracuji ve státním sektoru",
-    "freelancing": "Jsem na volné noze/freelancer",
-    "studying": "Studuji",
-    "parental-leave": "Jsem na rodičovské",
-    "looking-for-job": "Hledám práci",
-    "other": "Jiné",
-  };
-
-  const [occupation, setOccupation] = useState("");
-
-  useEffect(() => {
-    setOccupation(model?.occupation ?? "");
-  }, [model]);
-
-  return (
-    <section className="flex max-w-prose flex-col gap-4">
-      <h2 className="typo-title2">Práce</h2>
-
-      <div className="flex flex-col gap-2">
-        <label htmlFor="occupation" className="block">
-          Čemu se aktuálně věnuješ:
-        </label>
-        <div>
-          {Object.entries(occupationsOptions).map(([id, label]) => (
-            <label key={id} className="mb-1 flex items-center">
-              <input
-                type="radio"
-                className="mr-3"
-                name="occupation"
-                checked={occupation == id}
-                disabled={updating}
-                onChange={() =>
-                  onChange({
-                    ...model!,
-                    occupation: id,
-                  })
-                }
-              />
-              <span className={occupation === id ? "font-bold" : ""}>
-                {label}
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      <InputWithSaveButton
-        id="organizationName"
-        label="Název organizace, kde působíš:"
-        saveButtonLabel="Uložit organizaci"
-        placeholder="název firmy, neziskové organizace, státní instituce, …"
-        defaultValue={model?.organizationName}
-        disabled={!model || updating}
-        onSave={(organizationName) => onChange({ ...model!, organizationName })}
-      />
-
-      <InputWithSaveButton
-        id="professionalProfile"
-        type="url"
-        label="Odkaz na tvůj web nebo profesní profil:"
-        saveButtonLabel="Uložit odkaz"
-        defaultValue={model?.profileUrl}
-        disabled={!model || updating}
-        onSave={(profileUrl) => onChange({ ...model!, profileUrl })}
-      />
-    </section>
-  );
-};
-
-
-const SkillSection = ({ model, updating, onChange }: SectionProps) => {
-  const selection = model ? decodeSkillSelection(model.skills) : {};
-
-  // TBD: Batch updates without blocking the UI?
-  const onSelectionChange = (selection: SkillSelection) => {
-    onChange({ ...model!, skills: encodeSkillSelection(selection) });
-  };
-
-  return (
-    <section className="flex flex-col gap-4">
-      <h2 className="typo-title2">Co umíš?</h2>
-      <p className="max-w-prose">
-        Dej nám to vědět, ať ti můžeme různými kanály nabízet relevantnější
-        příležitosti.
-      </p>
-      <SkillPicker
-        skillMenu={skills}
-        selection={selection}
-        onChange={onSelectionChange}
-        disabled={updating}
-      />
-    </section>
-  );
-};
-
-const MapSection = ({ model, onChange }: SectionProps) => {
-  return (
-    <section className="flex max-w-prose flex-col gap-4">
-      <h2 className="typo-title2">Kde býváš k zastižení?</h2>
-      <p>
-        Jsme Česko.Digital, ne Praha.Digital :) Jestli chceš, dej nám vědět, ve
-        kterých okresech ČR se vyskytuješ, ať můžeme lépe propojit členy a
-        členky Česko.Digital z různých koutů Česka.
-      </p>
-      <div>
-        <DistrictSelect
-          value={model?.availableInDistricts ?? ""}
-          onChange={(availableInDistricts) =>
-            onChange({ ...model!, availableInDistricts })
-          }
-        />
-      </div>
     </section>
   );
 };

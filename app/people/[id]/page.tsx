@@ -6,13 +6,13 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { iconForUrl } from "~/components/icons";
 import { CeskoDigital } from "~/components/icons/generic";
+import { SkillList } from "~/components/profile/SkillList";
 import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
-import { getMaxSeniority, skillsToHashtags } from "~/src/skills/skills";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
@@ -120,7 +120,6 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
 );
 
 const InfoTable = ({ profile }: { profile: UserProfile }) => {
-  const tags = skillsToHashtags(profile.skills);
   const labels: Record<string, string> = {
     "private-sector": "V soukromém sektoru",
     "non-profit": "V nezisku",
@@ -133,15 +132,20 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
   const occupation = profile.occupation
     ? labels[profile.occupation]
     : undefined;
-  const seniority = getMaxSeniority(profile.skills);
   return (
     <div className="max-w-prose">
-      {tags.length > 0 && <InfoRow label="Co dělám" content={tags} />}
-      {seniority && <InfoRow label="Seniorita" content={seniority} />}
-      {profile.availableInDistricts && (
-        <InfoRow label="K zastižení" content={profile.availableInDistricts} />
+      {profile.tags.length > 0 && (
+        <InfoRow label="Co dělám">
+          <SkillList skills={profile.tags.split(/;\s*/)} />
+        </InfoRow>
       )}
-      {occupation && <InfoRow label="Kde pracuju" content={occupation} />}
+      {profile.maxSeniority && (
+        <InfoRow label="Seniorita">{profile.maxSeniority}</InfoRow>
+      )}
+      {profile.availableInDistricts && (
+        <InfoRow label="K zastižení">{profile.availableInDistricts}</InfoRow>
+      )}
+      {occupation && <InfoRow label="Kde pracuju">{occupation}</InfoRow>}
       <ContactRows profile={profile} />
     </div>
   );
