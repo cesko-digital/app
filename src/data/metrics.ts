@@ -55,7 +55,7 @@ const samplesTable = appBase("Metrics: Samples");
 
 export const getAllMetricDefinitions = async () =>
   definitionsTable
-    .select()
+    .select({ view: "Public Metrics" })
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeMetricDefinition));
