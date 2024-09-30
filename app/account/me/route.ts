@@ -83,7 +83,6 @@ export async function PATCH(request: NextRequest) {
     /* eslint-disable @typescript-eslint/no-unsafe-assignment */
     const {
       name,
-      skills,
       notificationFlags,
       privacyFlags,
       contactEmail,
@@ -97,7 +96,6 @@ export async function PATCH(request: NextRequest) {
     } = await request.json();
     await updateUserProfile(profile.id, {
       name,
-      skills,
       notificationFlags,
       privacyFlags,
       contactEmail,

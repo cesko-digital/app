@@ -50,7 +50,6 @@ export interface Schema extends FieldSet {
   id: string;
   name: string;
   email: string;
-  competencies: string;
   tags: string;
   maxSeniority: string;
   occupation: string;
@@ -92,8 +91,6 @@ export const decodeUserProfile = record({
   name: string,
   email: string,
   contactEmail: relationToZeroOrOne,
-  // TBD: Once the skill migration is over, rename
-  skills: field("competencies", withDefault(string, "")),
   tags: withDefault(string, ""),
   maxSeniority: optional(union(...userSeniorities)),
   occupation: optional(string),
@@ -131,7 +128,6 @@ export function encodeUserProfile(
     name: profile.name,
     email: profile.email,
     contactEmail: profile.contactEmail,
-    competencies: profile.skills,
     tags: profile.tags,
     maxSeniority: profile.maxSeniority,
     occupation: profile.occupation,
@@ -206,7 +202,6 @@ export async function updateUserProfile(
     Pick<
       UserProfile,
       | "name"
-      | "skills"
       | "tags"
       | "maxSeniority"
       | "slackUserRelationId"
