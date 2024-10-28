@@ -1,5 +1,3 @@
-import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
-
 export type Props = {
   occupation?: string;
   disabled?: boolean;
