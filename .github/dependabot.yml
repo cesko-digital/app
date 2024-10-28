@@ -4,6 +4,10 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # We have to do this manually, see https://github.com/cesko-digital/app/issues/1117
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
     groups:
       dev-dependencies:
         patterns:
