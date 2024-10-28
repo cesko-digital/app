@@ -5,7 +5,7 @@ import sourceData from "./districts.json";
 /** Map member is a subset of user profile containing just the necessary fields */
 export type MapMember = Pick<
   UserProfile,
-  "name" | "slackId" | "slackAvatarUrl" | "slackProfileUrl"
+  "name" | "slackId" | "slackProfileUrl"
 >;
 
 /** Map model is a map where the keys are district names and the values are lists of users in given district */

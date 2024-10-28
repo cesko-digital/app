@@ -16,7 +16,7 @@ import {
   withDefault,
 } from "~/src/decoding";
 import { decodeFlags } from "~/src/flags";
-import { defaultAvatarUrl, normalizeEmailAddress } from "~/src/utils";
+import { normalizeEmailAddress } from "~/src/utils";
 
 import { unwrapRecord, unwrapRecords, usersBase } from "./airtable";
 
@@ -57,7 +57,7 @@ export interface Schema extends FieldSet {
   slackUser: ReadonlyArray<string>;
   slackId: ReadonlyArray<string>;
   slackProfileUrl: string;
-  slackAvatarUrl: string;
+  profilePictureUrl: string;
   notificationFlags: ReadonlyArray<string>;
   privacyFlags: ReadonlyArray<string>;
   featureFlags: ReadonlyArray<string>;
@@ -98,11 +98,7 @@ export const decodeUserProfile = record({
   slackUserRelationId: field("slackUser", relationToZeroOrOne),
   slackId: relationToZeroOrOne,
   slackProfileUrl: relationToZeroOrOne,
-  slackAvatarUrl: relationToZeroOrOne,
-  avatarUrl: field(
-    "slackAvatarUrl",
-    withDefault(relationToZeroOrOne, defaultAvatarUrl),
-  ),
+  profilePictureUrl: optional(string),
   state: union("unconfirmed", "confirmed"),
   featureFlags: decodeFlags(union(...featureFlags)),
   notificationFlags: decodeFlags(union(...notificationFlags)),
@@ -128,6 +124,7 @@ export function encodeUserProfile(
     occupation: profile.occupation,
     organizationName: profile.organizationName,
     profileUrl: profile.profileUrl,
+    profilePictureUrl: profile.profilePictureUrl,
     state: profile.state,
     notificationFlags: profile.notificationFlags,
     privacyFlags: profile.privacyFlags,
@@ -211,6 +208,7 @@ export async function updateUserProfile(
       | "bio"
       | "occupation"
       | "profileUrl"
+      | "profilePictureUrl"
       | "organizationName"
     >
   >,

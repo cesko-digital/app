@@ -15,7 +15,6 @@ import {
   takeFirst,
   withDefault,
 } from "~/src/decoding";
-import { defaultAvatarUrl } from "~/src/utils";
 
 import { appBase, unwrapRecords } from "./airtable";
 
@@ -38,10 +37,7 @@ export const decodeTeamEngagement = record({
   projectId: field("project", relationToOne),
   userId: relationToOne,
   userName: relationToOne,
-  userAvatarUrl: field(
-    "userAvatarUrl",
-    withDefault(relationToZeroOrOne, defaultAvatarUrl),
-  ),
+  profilePictureUrl: relationToZeroOrOne,
   projectRole: optional(string),
   projectName: relationToOne,
   projectSlug: relationToOne,

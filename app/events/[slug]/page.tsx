@@ -18,6 +18,7 @@ import {
 import { getProjectById, type Project } from "~/src/data/project";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
+import { defaultAvatarUrl } from "~/src/utils";
 
 type Params = {
   slug: string;
@@ -113,7 +114,7 @@ const EventSidebar = ({
       <SidebarSection title="Kontakt">
         <ImageLabel
           link={Route.toProfile({ id: owner.id })}
-          imageUrl={owner.avatarUrl}
+          imageUrl={owner.profilePictureUrl ?? defaultAvatarUrl}
           label={owner.name}
         />
       </SidebarSection>

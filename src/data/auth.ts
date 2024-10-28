@@ -54,7 +54,7 @@ const decodeUser = record({
   email: string,
   emailVerified: optionalAsNull(date),
   name: optionalAsNull(string),
-  image: field("slackAvatarUrl", relationToZeroOrOne),
+  image: field("profilePictureUrl", relationToZeroOrOne),
 });
 
 const encodeUser = (user: Partial<User>): Partial<UserTableSchema> => ({

@@ -26,7 +26,7 @@ export const ProjectTeamSection = ({
                 profile={{
                   id: e.userId,
                   name: e.userName,
-                  avatarUrl: e.userAvatarUrl ?? defaultAvatarUrl,
+                  profilePictureUrl: e.profilePictureUrl ?? defaultAvatarUrl,
                 }}
               />
             ))}

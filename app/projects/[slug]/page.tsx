@@ -23,7 +23,7 @@ import {
 } from "~/src/data/team-engagement";
 import { getAllPlaylistVideos } from "~/src/data/youtube";
 import { Route } from "~/src/routing";
-import { shuffleInPlace } from "~/src/utils";
+import { defaultAvatarUrl, shuffleInPlace } from "~/src/utils";
 
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
@@ -245,7 +245,7 @@ const ProjectSidebar = ({
         <ImageLabel
           key={c.id}
           link={Route.toProfile({ id: c.userId })}
-          imageUrl={c.userAvatarUrl}
+          imageUrl={c.profilePictureUrl ?? defaultAvatarUrl}
           label={c.userName}
           faded={c.inactive}
         />

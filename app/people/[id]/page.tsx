@@ -13,6 +13,7 @@ import {
 } from "~/src/data/team-engagement";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
+import { defaultAvatarUrl } from "~/src/utils";
 
 import { ContactRows } from "./ContactInfo";
 import { InfoRow } from "./InfoRow";
@@ -197,7 +198,7 @@ const ProjectSection = ({ engagements }: EngagementProps) => {
 const Avatar = ({ profile }: ProfileProps) => (
   <div className="relative mx-auto aspect-square w-[200px]">
     <Image
-      src={profile.avatarUrl}
+      src={profile.profilePictureUrl ?? defaultAvatarUrl}
       className="aspect-square rounded-full bg-pebble object-cover object-top"
       width={200}
       height={200}

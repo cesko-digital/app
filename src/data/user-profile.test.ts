@@ -1,5 +1,3 @@
-import { defaultAvatarUrl } from "~/src/utils";
-
 import {
   compareNames,
   decodeUserProfile,
@@ -29,8 +27,7 @@ test("Decode user with no skills", () => {
     slackUserRelationId: undefined,
     slackId: "slack-id",
     state: "confirmed",
-    slackAvatarUrl: undefined,
-    avatarUrl: defaultAvatarUrl,
+    profilePictureUrl: undefined,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: [],
@@ -70,8 +67,7 @@ test("Decode Slack Users relation", () => {
     slackUserRelationId: undefined,
     slackId: "slack-id",
     state: "confirmed",
-    slackAvatarUrl: undefined,
-    avatarUrl: defaultAvatarUrl,
+    profilePictureUrl: undefined,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: ["receiveNewRoleNotifications"],
@@ -108,8 +104,7 @@ test("Decode Slack Users relation", () => {
     slackUserRelationId: "someDatabaseId",
     slackId: "slack-id",
     state: "confirmed",
-    slackAvatarUrl: undefined,
-    avatarUrl: defaultAvatarUrl,
+    profilePictureUrl: undefined,
     slackProfileUrl: undefined,
     featureFlags: [],
     notificationFlags: [],
