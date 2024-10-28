@@ -10,9 +10,6 @@ module.exports = withAxiom({
       fullUrl: true,
     },
   },
-  experimental: {
-    serverMinification: false,
-  },
   images: {
     remotePatterns: [
       {
