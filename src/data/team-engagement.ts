@@ -11,9 +11,11 @@ import {
 import {
   decodeValidItemsFromArray,
   optionalArray,
+  relationToZeroOrOne,
   takeFirst,
   withDefault,
 } from "~/src/decoding";
+import { defaultAvatarUrl } from "~/src/utils";
 
 import { appBase, unwrapRecords } from "./airtable";
 
@@ -36,7 +38,10 @@ export const decodeTeamEngagement = record({
   projectId: field("project", relationToOne),
   userId: relationToOne,
   userName: relationToOne,
-  userAvatarUrl: relationToOne,
+  userAvatarUrl: field(
+    "userAvatarUrl",
+    withDefault(relationToZeroOrOne, defaultAvatarUrl),
+  ),
   projectRole: optional(string),
   projectName: relationToOne,
   projectSlug: relationToOne,

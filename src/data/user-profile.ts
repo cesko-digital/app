@@ -2,7 +2,6 @@ import { type FieldSet } from "airtable";
 import {
   array,
   field,
-  number,
   optional,
   record,
   string,
