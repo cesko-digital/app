@@ -1,4 +1,4 @@
-import { usePapaParse } from "react-papaparse";
+import { jsonToCSV } from "react-papaparse";
 
 import { getAllMetricSamples, type MetricSample } from "~/src/data/metrics";
 import { ContentType } from "~/src/utils";
@@ -11,8 +11,6 @@ type Props = {
 
 export async function GET(_: Request, { params }: Props): Promise<Response> {
   const { slug } = params;
-
-  const { jsonToCSV } = usePapaParse();
 
   const compareSamplesByDate = (a: MetricSample, b: MetricSample) =>
     new Date(a.date).getTime() - new Date(b.date).getTime();
