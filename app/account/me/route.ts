@@ -92,6 +92,7 @@ export async function PATCH(request: NextRequest) {
       maxSeniority,
       occupation,
       organizationName,
+      profilePictureUrl,
       profileUrl,
     } = await request.json();
     await updateUserProfile(profile.id, {
@@ -100,6 +101,7 @@ export async function PATCH(request: NextRequest) {
       privacyFlags,
       contactEmail,
       availableInDistricts,
+      profilePictureUrl,
       bio,
       tags,
       maxSeniority,

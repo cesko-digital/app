@@ -5,6 +5,7 @@ import {
   type HTMLInputTypeAttribute,
   type InputHTMLAttributes,
 } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import clsx from "clsx";
@@ -19,7 +20,9 @@ import { SkillSelect } from "~/components/profile/SkillSelect";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
 import { absolute, Route } from "~/src/routing";
-import { looksLikeEmailAdress } from "~/src/utils";
+import { defaultAvatarUrl, looksLikeEmailAdress } from "~/src/utils";
+
+import { ImageUploader } from "./ImageUploader";
 
 type SectionProps = {
   model?: UserProfile;
@@ -50,6 +53,13 @@ export const UserProfileTab = () => {
 };
 
 const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
+  const [profilePictureUrl, setProfilePictureUrl] = useState<
+    string | undefined
+  >();
+  useEffect(() => {
+    setProfilePictureUrl(model?.profilePictureUrl);
+  }, [model]);
+
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -93,6 +103,28 @@ const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
         defaultValue={model?.name}
         onSave={(name) => onChange({ ...model!, name })}
       />
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="avatarImage" className="block">
+          Profilová fotka:
+        </label>
+        <Image
+          src={profilePictureUrl ?? defaultAvatarUrl}
+          className="h-[100px] w-[100px] rounded-full bg-gray object-cover shadow"
+          alt="Profilová foto"
+          width={100}
+          height={100}
+        />
+        <div className="space-y-2">
+          <ImageUploader
+            setAvatarImage={setProfilePictureUrl}
+            avatarImage={profilePictureUrl ?? defaultAvatarUrl}
+            onAvatarChange={(url: string) => {
+              onChange({ ...model!, profilePictureUrl: url });
+            }}
+          />
+        </div>
+      </div>
 
       <InputWithSaveButton
         id="contactMail"
