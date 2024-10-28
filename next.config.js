@@ -31,6 +31,10 @@ module.exports = withAxiom({
         protocol: "https",
         hostname: "secure.gravatar.com",
       },
+      {
+        protocol: "https",
+        hostname: "bbp30zne50ll9cz3.public.blob.vercel-storage.com",
+      },
     ],
   },
   async redirects() {
