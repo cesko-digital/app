@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 
 import clsx from "clsx";
+import { useSession } from "next-auth/react";
 
 import { AvatarUploader } from "~/app/account/AvatarUploader";
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
@@ -51,6 +52,7 @@ export const UserProfileTab = () => {
 };
 
 const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
+  const { update: updateSession } = useSession();
   return (
     <section className="flex max-w-prose flex-col gap-7">
       <h2 className="typo-title2">Základní informace</h2>
@@ -97,10 +99,11 @@ const BasicInfoSection = ({ model, updating, onChange }: SectionProps) => {
 
       <AvatarUploader
         currentImageUrl={model?.profilePictureUrl}
-        onImageChange={(profilePictureUrl) =>
+        onImageChange={async (profilePictureUrl) => {
           // TBD: Handle deletion
-          onChange({ ...model!, profilePictureUrl })
-        }
+          onChange({ ...model!, profilePictureUrl });
+          await updateSession({ image: profilePictureUrl });
+        }}
       />
 
       <InputWithSaveButton
