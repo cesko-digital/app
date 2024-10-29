@@ -33,7 +33,7 @@ module.exports = withAxiom({
       },
       {
         protocol: "https",
-        hostname: "bbp30zne50ll9cz3.public.blob.vercel-storage.com",
+        hostname: "mogrfyhmal8klgqy.public.blob.vercel-storage.com",
       },
     ],
   },

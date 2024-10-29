@@ -1,7 +1,12 @@
 import sendgrid from "@sendgrid/mail";
-import { getServerSession, type NextAuthOptions } from "next-auth";
+import {
+  getServerSession,
+  type DefaultSession,
+  type NextAuthOptions,
+} from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import SlackProvider from "next-auth/providers/slack";
+import { optional, record, string } from "typescript-json-decoder";
 
 import {
   authDatabaseAdapter,
@@ -63,6 +68,8 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    // This callback is used to control whether a user can sign in.
+    // https://next-auth.js.org/configuration/callbacks#sign-in-callback
     async signIn({ user }) {
       if (user.email) {
         const existingUser = await getUserByEmail(user.email);
@@ -82,13 +89,42 @@ export const authOptions: NextAuthOptions = {
       }
     },
 
-    // TBD: Comment
+    // The session callback is called whenever a session is checked.
+    // https://next-auth.js.org/configuration/callbacks#session-callback
     async session({ session, token }) {
+      function assertIsOurUser(
+        user: DefaultSession["user"],
+      ): asserts user is OurUser {
+        /* If there is a user it’s always OurUser */
+      }
       if (session.user) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (session.user as any as OurUser).id = token.sub!;
+        assertIsOurUser(session.user);
+        // Expose our user ID to the client side
+        session.user.id = token.sub!;
+        // If there is user image, expose that to the client, too
+        if (typeof token.image === "string") {
+          session.user.image = token.image;
+        }
       }
       return session;
+    },
+
+    // This callback is called whenever a JSON Web Token is created (i.e. at sign in)
+    // or updated (i.e whenever a session is accessed in the client).
+    // https://next-auth.js.org/configuration/callbacks#jwt-callback
+    async jwt({ token, session: updateContext }) {
+      // The session object here is whatever was sent from the client using the `update` function.
+      // Currently our only use case for updating the session is changing the profile picture.
+      const decodeContext = record({
+        image: optional(string),
+      });
+      try {
+        const sessionUpdateData = decodeContext(updateContext);
+        token.image = sessionUpdateData.image;
+      } catch {
+        /* ignoring intentionally */
+      }
+      return token;
     },
   },
 

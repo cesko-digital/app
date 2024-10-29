@@ -75,10 +75,6 @@ export async function GET() {
 /** Change user profile, used for stuff like updating user preferences */
 export async function PATCH(request: NextRequest) {
   return withAuthenticatedUser(async (user) => {
-    const profile = await getUserProfile(user.id);
-    if (!profile) {
-      return new Response("User profile not found.", { status: 404 });
-    }
     // Make sure we do NOT include the `slackId` field nor `state` here
     /* eslint-disable @typescript-eslint/no-unsafe-assignment */
     const {
@@ -92,14 +88,16 @@ export async function PATCH(request: NextRequest) {
       maxSeniority,
       occupation,
       organizationName,
+      profilePictureUrl,
       profileUrl,
     } = await request.json();
-    await updateUserProfile(profile.id, {
+    await updateUserProfile(user.id, {
       name,
       notificationFlags,
       privacyFlags,
       contactEmail,
       availableInDistricts,
+      profilePictureUrl,
       bio,
       tags,
       maxSeniority,
