@@ -30,7 +30,6 @@ test("Decode opportunity", () => {
     coverImageUrl:
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",
     skills: ["Dev"],
-    juniorFriendly: true,
     status: "live",
   });
 });
