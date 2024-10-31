@@ -1,6 +1,5 @@
 import {
   array,
-  boolean,
   field,
   optional,
   record,
@@ -15,7 +14,6 @@ import {
   decodeValidItemsFromArray,
   markdown,
   takeFirst,
-  withDefault,
 } from "~/src/decoding";
 
 import { appBase, unwrapRecords } from "./airtable";
@@ -38,7 +36,6 @@ export const decodeOpportunity = record({
   contactUrl: field("RSVP URL", decodeUrl),
   coverImageUrl: field("Cover URL", optional(string)),
   skills: field("Skills", decodeSkills),
-  juniorFriendly: field("Junior Friendly", withDefault(boolean, false)),
   status: field("Status", union("draft", "live", "unlisted")),
   creationTime: field("Created Time", string),
 });
@@ -48,7 +45,7 @@ export const decodeOpportunity = record({
 //
 
 /** Opportunities table */
-export const opportunitiesTable = appBase("Opportunities");
+export const opportunitiesTable = appBase("tblRGYoOWBeh6B5h5");
 
 /** Get all opportunities */
 export async function getAllOpportunities(
