@@ -1,5 +1,6 @@
 import {
   array,
+  boolean,
   field,
   optional,
   record,
@@ -14,6 +15,7 @@ import {
   decodeValidItemsFromArray,
   markdown,
   takeFirst,
+  withDefault,
 } from "~/src/decoding";
 
 import { appBase, unwrapRecords } from "./airtable";
@@ -33,7 +35,8 @@ export const decodeOpportunity = record({
   summary: field("Summary", markdown),
   timeRequirements: field("Time Requirements", string),
   ownerId: field("Owner ID", takeFirst(array(string))),
-  contactUrl: field("RSVP URL", decodeUrl),
+  responseUrl: field("RSVP URL", decodeUrl),
+  prefillUserId: field("Prefill User ID", withDefault(boolean, false)),
   coverImageUrl: field("Cover URL", optional(string)),
   skills: field("Skills", decodeSkills),
   status: field("Status", union("draft", "live", "unlisted")),

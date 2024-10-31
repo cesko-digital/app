@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
 import Markdoc, { type Node } from "@markdoc/markdoc";
+import { type DefaultSession } from "next-auth";
 
 /** Default user avatar picture URL if we have no better one */
 export const defaultAvatarUrl =
@@ -190,3 +191,23 @@ export const devMode = () => process.env.NODE_ENV === "development";
 
 /** Is given HTTP status code a successful one? */
 export const isHttpSuccessCode = (code: number) => 200 <= code && code < 300;
+
+/**
+ * The type of user data we keep in the session
+ *
+ * TBD: It would be much better to setup NextAuth to operate with this type
+ * everywhere without having to cast.
+ */
+export type OurUser = {
+  id: string;
+  name: string;
+  email: string;
+  image: string;
+};
+
+/** Utility assert to make TypeScript believe the user value in session is `OurUser` */
+export function assertIsOurUser(
+  user: DefaultSession["user"],
+): asserts user is OurUser {
+  /* If there is a user it’s always OurUser */
+}

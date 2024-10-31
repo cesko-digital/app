@@ -2,12 +2,13 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { ResponseButton } from "~/app/opportunities/[slug]/ResponseButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ImageLabel, ProjectImageLabel } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
 import { OpportunityRow } from "~/components/OpportunityRow";
 import { RelatedContent } from "~/components/RelatedContent";
-import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
+import { Sidebar, SidebarSection } from "~/components/Sidebar";
 import { getAllOpportunities, type Opportunity } from "~/src/data/opportunity";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getAlternativeOpenRoles } from "~/src/data/queries";
@@ -102,7 +103,7 @@ const RoleSidebar = ({
         label={owner.name}
       />
     </SidebarSection>
-    <SidebarCTA href={role.contactUrl} label="Mám zájem" />
+    <ResponseButton role={role} />
   </Sidebar>
 );
 

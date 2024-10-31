@@ -1,9 +1,5 @@
 import sendgrid from "@sendgrid/mail";
-import {
-  getServerSession,
-  type DefaultSession,
-  type NextAuthOptions,
-} from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import SlackProvider from "next-auth/providers/slack";
 import { optional, record, string } from "typescript-json-decoder";
@@ -16,14 +12,12 @@ import {
   logUnknownEmailSignInEvent,
 } from "~/src/data/auth";
 import { Route } from "~/src/routing";
-import { devMode, isHttpSuccessCode } from "~/src/utils";
-
-export type OurUser = {
-  id: string;
-  name: string;
-  email: string;
-  image: string;
-};
+import {
+  assertIsOurUser,
+  devMode,
+  isHttpSuccessCode,
+  type OurUser,
+} from "~/src/utils";
 
 /** NextAuth options used to configure various parts of the authentication machinery */
 export const authOptions: NextAuthOptions = {
@@ -92,11 +86,6 @@ export const authOptions: NextAuthOptions = {
     // The session callback is called whenever a session is checked.
     // https://next-auth.js.org/configuration/callbacks#session-callback
     async session({ session, token }) {
-      function assertIsOurUser(
-        user: DefaultSession["user"],
-      ): asserts user is OurUser {
-        /* If there is a user it’s always OurUser */
-      }
       if (session.user) {
         assertIsOurUser(session.user);
         // Expose our user ID to the client side
