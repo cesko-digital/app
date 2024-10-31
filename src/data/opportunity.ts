@@ -37,6 +37,7 @@ export const decodeOpportunity = record({
   ownerId: field("Owner ID", takeFirst(array(string))),
   responseUrl: field("RSVP URL", decodeUrl),
   prefillUserId: field("Prefill User ID", withDefault(boolean, false)),
+  requireSignIn: field("Require Sign-In", withDefault(boolean, false)),
   coverImageUrl: field("Cover URL", optional(string)),
   skills: field("Skills", decodeSkills),
   status: field("Status", union("draft", "live", "unlisted")),
