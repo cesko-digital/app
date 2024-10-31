@@ -1,6 +1,8 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
 
+import clsx from "clsx";
+
 /** Generic sidebar container */
 export const Sidebar = ({ children }: { children: ReactNode }) => (
   <div className="flex flex-col gap-7 rounded-xl bg-pebble p-7">{children}</div>
@@ -24,12 +26,21 @@ export const SidebarSection = ({
 export const SidebarCTA = ({
   href,
   label,
+  disabled = false,
 }: {
   href: string;
   label: string;
+  disabled?: boolean;
 }) => (
   <div>
-    <Link href={href} className="btn-primary block text-center">
+    <Link
+      href={disabled ? "" : href}
+      aria-disabled={disabled}
+      className={clsx(
+        "block text-center",
+        disabled ? "btn-disabled" : "btn-primary",
+      )}
+    >
       {label}
     </Link>
   </div>
