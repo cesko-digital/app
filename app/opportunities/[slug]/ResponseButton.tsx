@@ -1,28 +1,24 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-
+import { useSignedInUser } from "~/components/hooks/user";
 import { SidebarCTA } from "~/components/Sidebar";
 import { type Opportunity } from "~/src/data/opportunity";
-import { assertIsOurUser } from "~/src/utils";
 
 type Props = {
   role: Pick<Opportunity, "responseUrl" | "prefillUserId">;
 };
 
 export const ResponseButton = ({ role }: Props) => {
-  const { data: session, status: sessionStatus } = useSession();
+  const signedInUser = useSignedInUser();
   if (
     role.prefillUserId &&
-    sessionStatus === "authenticated" &&
-    session.user &&
-    role.responseUrl.startsWith("https://")
+    role.responseUrl.startsWith("https://") &&
+    signedInUser
   ) {
     // If we have a valid session and the response URL is an ordinary
     // HTTPS URL, add current user ID to the response URL.
-    assertIsOurUser(session.user);
     const responseUrl = new URL(role.responseUrl);
-    responseUrl.searchParams.append("prefill_User", session.user.id);
+    responseUrl.searchParams.append("prefill_User", signedInUser.id);
     responseUrl.searchParams.append("hide_User", "true");
     return <SidebarCTA href={responseUrl.toString()} label="Mám zájem ✨" />;
   } else {
