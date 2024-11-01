@@ -14,29 +14,18 @@ type Props = {
 };
 
 export const ResponseButton = ({ role }: Props) => {
-  const signedInUser = useSignedInUser();
   const { status: sessionStatus } = useSession();
-  const [translatedUserId, setTranslatedUserId] = useState<
-    string | undefined
-  >();
+  const translatedUserId = useTranslatedUserId(role.responseUrl);
 
   const shouldPrefill =
     role.prefillUserId && role.responseUrl.startsWith("https://");
 
-  useEffect(() => {
-    if (!shouldPrefill || !signedInUser) {
-      return;
-    }
-    const decodeResponse = record({ targetUserId: string });
-    async function fetchTranslatedId() {
-      return fetch(`/api/translate-user-id?formUrl=${role.responseUrl}`)
-        .then((response) => response.json())
-        .then(decodeResponse)
-        .then((response) => setTranslatedUserId(response.targetUserId))
-        .catch((e) => console.error(e));
-    }
-    void fetchTranslatedId();
-  }, [signedInUser, role.responseUrl, shouldPrefill]);
+  const prefillUserId = (responseUrl: string, userId: string) => {
+    const prefilledUrl = new URL(responseUrl);
+    prefilledUrl.searchParams.append("prefill_User", userId);
+    prefilledUrl.searchParams.append("hide_User", "true");
+    return prefilledUrl.toString();
+  };
 
   const { requireSignIn } = role;
 
@@ -55,9 +44,9 @@ export const ResponseButton = ({ role }: Props) => {
       return <LoadingSpinner />;
     } else {
       return (
-        <PrefillButton
-          responseUrl={role.responseUrl}
-          translatedUserId={translatedUserId}
+        <SidebarCTA
+          href={prefillUserId(role.responseUrl, translatedUserId)}
+          label="Mám zájem ✨"
         />
       );
     }
@@ -73,9 +62,9 @@ export const ResponseButton = ({ role }: Props) => {
       return <SidebarCTA href={role.responseUrl} label="Mám zájem" />;
     } else {
       return (
-        <PrefillButton
-          responseUrl={role.responseUrl}
-          translatedUserId={translatedUserId}
+        <SidebarCTA
+          href={prefillUserId(role.responseUrl, translatedUserId)}
+          label="Mám zájem ✨"
         />
       );
     }
@@ -114,15 +103,24 @@ const SignInButton = () => (
   </div>
 );
 
-const PrefillButton = ({
-  responseUrl,
-  translatedUserId,
-}: {
-  responseUrl: string;
-  translatedUserId: string;
-}) => {
-  const prefilledUrl = new URL(responseUrl);
-  prefilledUrl.searchParams.append("prefill_User", translatedUserId);
-  prefilledUrl.searchParams.append("hide_User", "true");
-  return <SidebarCTA href={prefilledUrl.toString()} label="Mám zájem ✨" />;
-};
+function useTranslatedUserId(responseUrl: string) {
+  const signedInUser = useSignedInUser();
+  const [translatedId, setTranslatedId] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (!signedInUser) {
+      return;
+    }
+    const decodeResponse = record({ targetUserId: string });
+    async function fetchTranslatedId() {
+      return fetch(`/api/translate-user-id?formUrl=${responseUrl}`)
+        .then((response) => response.json())
+        .then(decodeResponse)
+        .then((response) => setTranslatedId(response.targetUserId))
+        .catch((e) => console.error(e));
+    }
+    void fetchTranslatedId();
+  }, [signedInUser, responseUrl]);
+
+  return translatedId;
+}
