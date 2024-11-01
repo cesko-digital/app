@@ -41,6 +41,11 @@ export const ResponseButton = ({ role }: Props) => {
   const { requireSignIn } = role;
 
   if (requireSignIn && shouldPrefill) {
+    //
+    // 1. Both sign-in and prefill are on. This is expected to be the
+    // default for most use cases – users are required to sign in and after
+    // that we pass their ID to the form.
+    //
     if (sessionStatus === "loading") {
       return <LoadingSpinner />;
     } else if (sessionStatus === "unauthenticated") {
@@ -57,6 +62,11 @@ export const ResponseButton = ({ role }: Props) => {
       );
     }
   } else if (!requireSignIn && shouldPrefill) {
+    //
+    // 2. Prefill is on, but sign-in is optional. If the user is signed in,
+    // we pass their ID to the form. Not sure if this is going to be used in
+    // practice.
+    //
     if (!translatedUserId) {
       // TBD: If we fail to translate the user ID we’re stuck here forever
       return <LoadingSpinner />;
@@ -69,6 +79,12 @@ export const ResponseButton = ({ role }: Props) => {
       );
     }
   } else if (requireSignIn && !shouldPrefill) {
+    //
+    // 3. Sign-in is required, but user ID is not passed to the form. This may be
+    // handy for fully custom forms where you don’t want any autofilling, but
+    // want to be sure users sign in (and therefore accept our general T&C)
+    // before filling the form.
+    //
     if (sessionStatus === "authenticated") {
       return <SidebarCTA href={role.responseUrl} label="Mám zájem 🔓" />;
     } else if (sessionStatus === "unauthenticated") {
@@ -77,7 +93,7 @@ export const ResponseButton = ({ role }: Props) => {
       return <LoadingSpinner />;
     }
   } else {
-    // No fancy processing needed, just use the response URL from the DB
+    // 4. No fancy processing needed, just use the response URL from the DB
     return <SidebarCTA href={role.responseUrl} label="Mám zájem" />;
   }
 };
