@@ -67,9 +67,10 @@ export const ResponseButton = ({ role }: Props) => {
     // we pass their ID to the form. Not sure if this is going to be used in
     // practice.
     //
-    if (!translatedUserId) {
-      // TBD: If we fail to translate the user ID we’re stuck here forever
+    if (sessionStatus === "loading") {
       return <LoadingSpinner />;
+    } else if (sessionStatus === "unauthenticated" || !translatedUserId) {
+      return <SidebarCTA href={role.responseUrl} label="Mám zájem" />;
     } else {
       return (
         <PrefillButton
