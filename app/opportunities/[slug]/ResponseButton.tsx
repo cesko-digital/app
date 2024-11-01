@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { signIn, useSession } from "next-auth/react";
 import { record, string } from "typescript-json-decoder";
 
 import { useSignedInUser } from "~/components/hooks/user";
@@ -9,11 +10,12 @@ import { SidebarCTA } from "~/components/Sidebar";
 import { type Opportunity } from "~/src/data/opportunity";
 
 type Props = {
-  role: Pick<Opportunity, "responseUrl" | "prefillUserId">;
+  role: Pick<Opportunity, "responseUrl" | "prefillUserId" | "requireSignIn">;
 };
 
 export const ResponseButton = ({ role }: Props) => {
   const signedInUser = useSignedInUser();
+  const { status: sessionStatus } = useSession();
   const [translatedUserId, setTranslatedUserId] = useState<
     string | undefined
   >();
@@ -36,17 +38,74 @@ export const ResponseButton = ({ role }: Props) => {
     void fetchTranslatedId();
   }, [signedInUser, role.responseUrl, shouldPrefill]);
 
-  if (shouldPrefill && signedInUser && translatedUserId) {
-    // We have everything we need to add the user ID into the response URL
-    const responseUrl = new URL(role.responseUrl);
-    responseUrl.searchParams.append("prefill_User", translatedUserId);
-    responseUrl.searchParams.append("hide_User", "true");
-    return <SidebarCTA href={responseUrl.toString()} label="Mám zájem ✨" />;
-  } else if (shouldPrefill) {
-    // We would like to add the user ID to the response URL, but we don’t have it yet
-    return <SidebarCTA href="" label="Malý moment…" disabled />;
+  const { requireSignIn } = role;
+
+  if (requireSignIn && shouldPrefill) {
+    if (sessionStatus === "loading") {
+      return <LoadingSpinner />;
+    } else if (sessionStatus === "unauthenticated") {
+      return <SignInButton />;
+    } else if (!translatedUserId) {
+      // TBD: If we fail to translate the user ID we’re stuck here forever
+      return <LoadingSpinner />;
+    } else {
+      return (
+        <PrefillButton
+          responseUrl={role.responseUrl}
+          translatedUserId={translatedUserId}
+        />
+      );
+    }
+  } else if (!requireSignIn && shouldPrefill) {
+    if (!translatedUserId) {
+      // TBD: If we fail to translate the user ID we’re stuck here forever
+      return <LoadingSpinner />;
+    } else {
+      return (
+        <PrefillButton
+          responseUrl={role.responseUrl}
+          translatedUserId={translatedUserId}
+        />
+      );
+    }
+  } else if (requireSignIn && !shouldPrefill) {
+    if (sessionStatus === "authenticated") {
+      return <SidebarCTA href={role.responseUrl} label="Mám zájem 🔓" />;
+    } else if (sessionStatus === "unauthenticated") {
+      return <SignInButton />;
+    } else {
+      return <LoadingSpinner />;
+    }
   } else {
-    // We don’t want to prefill anything, just use the response URL from the DB
+    // No fancy processing needed, just use the response URL from the DB
     return <SidebarCTA href={role.responseUrl} label="Mám zájem" />;
   }
+};
+
+const LoadingSpinner = () => (
+  <SidebarCTA href="" label="Malý moment…" disabled />
+);
+
+const SignInButton = () => (
+  <div className="flex flex-col gap-2">
+    <button className="btn-primary block text-center" onClick={() => signIn()}>
+      Mám zájem 🔒
+    </button>
+    <p className="typo-caption">
+      Dotextovat: musíte se přihlásit nebo se registrovat.
+    </p>
+  </div>
+);
+
+const PrefillButton = ({
+  responseUrl,
+  translatedUserId,
+}: {
+  responseUrl: string;
+  translatedUserId: string;
+}) => {
+  const prefilledUrl = new URL(responseUrl);
+  prefilledUrl.searchParams.append("prefill_User", translatedUserId);
+  prefilledUrl.searchParams.append("hide_User", "true");
+  return <SidebarCTA href={prefilledUrl.toString()} label="Mám zájem ✨" />;
 };
