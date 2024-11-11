@@ -5,8 +5,14 @@ import { type MetricDefinition } from "./data/metrics";
 import { type Opportunity } from "./data/opportunity";
 import { type Project } from "./data/project";
 
-const register = (email: string | undefined = undefined) =>
-  email ? `/join?${new URLSearchParams({ email })}` : "/join";
+const filterUndefines = <T extends Record<string, string>>(val: T): T =>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  JSON.parse(JSON.stringify(val));
+
+const register = (params: { email?: string; callbackUrl?: string } = {}) =>
+  Object.keys(params).length > 0
+    ? `/join?${new URLSearchParams(filterUndefines(params))}`
+    : "/join";
 
 /** Create URLs for frequently used routes */
 export const Route = {

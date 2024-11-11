@@ -86,7 +86,7 @@ const describeError = ({ error, email }: { error: string; email: string }) => {
       return (
         <Fragment>
           Tenhle mail neznáme. Buď zkus jiný,{" "}
-          <a href={Route.register(email)} className="typo-link">
+          <a href={Route.register({ email })} className="typo-link">
             anebo se můžeš registrovat
           </a>
           .
