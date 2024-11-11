@@ -6,6 +6,8 @@ import { withAuthenticatedUser } from "~/src/auth";
 const syncedUserTablesByDatabase: Record<string, string | undefined> = {
   // App -> User Profiles
   appkn1DkvgVI5jpME: "tbl3QK2aTskyu2rNQ",
+  // Uživatelský výzkum DIA -> Users
+  appKWumcDDL9KI00N: "tblTf8usuYWgIZD9x",
 };
 
 /** Translate signed-in user’s ID to a different database */
