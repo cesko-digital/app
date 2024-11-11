@@ -97,8 +97,9 @@ const SignInButton = () => (
     <button className="btn-primary block text-center" onClick={() => signIn()}>
       Mám zájem 🔒
     </button>
-    <p className="typo-caption">
-      Dotextovat: musíte se přihlásit nebo se registrovat.
+    <p className="typo-caption text-balance text-center">
+      Pokud máš o nabízenou roli zájem, musíš se nejdřív přihlásit nebo
+      registrovat.
     </p>
   </div>
 );
