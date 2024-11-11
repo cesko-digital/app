@@ -74,6 +74,11 @@ export const SignInForm = (props: Props) => {
           Přihlásit přes Slack
         </a>
       </p>
+      <p className="typo-caption">
+        <a className="typo-link" href={Route.register({ email, callbackUrl })}>
+          Založit nový účet
+        </a>
+      </p>
     </form>
   );
 };
