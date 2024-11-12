@@ -74,6 +74,11 @@ export const SignInForm = (props: Props) => {
           Přihlásit přes Slack
         </a>
       </p>
+      <p className="typo-caption">
+        <a className="typo-link" href={Route.register({ email, callbackUrl })}>
+          Založit nový účet
+        </a>
+      </p>
     </form>
   );
 };
@@ -86,7 +91,7 @@ const describeError = ({ error, email }: { error: string; email: string }) => {
       return (
         <Fragment>
           Tenhle mail neznáme. Buď zkus jiný,{" "}
-          <a href={Route.register(email)} className="typo-link">
+          <a href={Route.register({ email })} className="typo-link">
             anebo se můžeš registrovat
           </a>
           .

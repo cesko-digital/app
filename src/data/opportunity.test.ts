@@ -25,7 +25,9 @@ test("Decode opportunity", () => {
     summary: { source: "- Práce na **mobilní** _aplikaci_." },
     timeRequirements: "3–5 hodin týdně",
     ownerId: "rec0ABdJtGIK9AeCB",
-    contactUrl: "https://cesko-digital.slack.com/archives/C01AENB1LPP",
+    responseUrl: "https://cesko-digital.slack.com/archives/C01AENB1LPP",
+    prefillUserId: false,
+    requireSignIn: false,
     creationTime: "2021-09-02T17:20:26.000Z",
     coverImageUrl:
       "https://data.cesko.digital/web/projects/loono/cover-loono.jpg",

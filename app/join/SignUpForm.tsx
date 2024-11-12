@@ -25,10 +25,11 @@ import {
 
 type Props = {
   defaultEmail?: string;
+  callbackUrl?: string;
 };
 
 /** Main sign-up form */
-export const SignUpForm = ({ defaultEmail }: Props) => {
+export const SignUpForm = ({ defaultEmail, callbackUrl = "/" }: Props) => {
   const [state, setState] = useState<FormState>({
     ...emptyFormState,
     email: defaultEmail ?? "",
@@ -57,7 +58,7 @@ export const SignUpForm = ({ defaultEmail }: Props) => {
         submissionState: { tag: "submitted_successfully" },
       });
       trackCustomEvent("SignUp");
-      await signIn("email", { email: validatedData.email, callbackUrl: "/" });
+      await signIn("email", { email: validatedData.email, callbackUrl });
     } catch (error) {
       setState({
         ...state,
