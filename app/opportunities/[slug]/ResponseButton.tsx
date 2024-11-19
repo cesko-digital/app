@@ -95,7 +95,7 @@ const LoadingSpinner = () => (
 const SignInButton = () => (
   <div className="flex flex-col gap-2">
     <button className="btn-primary block text-center" onClick={() => signIn()}>
-      Mám zájem 🔒
+      Mám zájem
     </button>
     <p className="typo-caption text-balance text-center">
       Pokud máš o nabízenou roli zájem, musíš se nejdřív přihlásit nebo
