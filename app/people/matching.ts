@@ -1,7 +1,14 @@
 import { type UserProfile } from "~/src/data/user-profile";
 import { subset } from "~/src/utils";
 
-const publicProps = ["id", "name", "bio", "tags", "profilePictureUrl"] as const;
+const publicProps = [
+  "id",
+  "name",
+  "bio",
+  "tags",
+  "profilePictureUrl",
+  "roles",
+] as const;
 
 export type PublicUserProfile = Pick<UserProfile, (typeof publicProps)[number]>;
 
