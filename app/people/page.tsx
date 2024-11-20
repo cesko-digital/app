@@ -1,16 +1,9 @@
 import { type Metadata } from "next";
 
+import { SearchablePeopleBox } from "~/app/people/SearchablePeopleBox";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
-import { SkillList } from "~/components/profile/SkillList";
-import {
-  UserProfileCard,
-  UserProfileContainer,
-} from "~/components/UserProfileCard";
-import { compareByName, getAllUserProfiles } from "~/src/data/user-profile";
+import { getAllUserProfiles } from "~/src/data/user-profile";
 import { strip } from "~/src/utils";
-
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Lidé | Česko.Digital",
@@ -30,15 +23,7 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
-      <UserProfileContainer>
-        {profiles.sort(compareByName).map((profile) => (
-          <UserProfileCard
-            key={profile.id}
-            profile={profile}
-            label={<SkillList skills={profile.tags.split(/;\s*/)} />}
-          />
-        ))}
-      </UserProfileContainer>
+      <SearchablePeopleBox allUserProfiles={profiles} />
     </main>
   );
 }
