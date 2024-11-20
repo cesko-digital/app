@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { SkillList } from "~/components/profile/SkillList";
 import {
@@ -16,8 +17,16 @@ type Props = {
 };
 
 export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
-  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const profiles = allUserProfiles.filter((p) => match(p, query));
+
+  const onQueryChange = (q: string) => {
+    router.replace("/people?" + new URLSearchParams({ q }).toString());
+    setQuery(q);
+  };
+
   return (
     <div>
       <div className="mb-10">
@@ -25,7 +34,8 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
           type="text"
           className="w-full max-w-prose rounded-sm border-2 border-gray p-2"
           placeholder="filtruj kámo"
-          onChange={(e) => setQuery(e.target.value)}
+          defaultValue={query}
+          onChange={(e) => onQueryChange(e.target.value)}
         ></input>
       </div>
       <UserProfileContainer>
