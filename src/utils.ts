@@ -67,7 +67,10 @@ export function map<T, U>(
 }
 
 /** Return object subset with given keys */
-export const subset = <T extends object>(obj: T, keys: (keyof T)[]) =>
+export const subset = <T extends object>(
+  obj: T,
+  keys: ReadonlyArray<keyof T>,
+) =>
   Object.fromEntries(
     keys.filter((key) => key in obj).map((key) => [key, obj[key]]),
   );

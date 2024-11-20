@@ -7,10 +7,12 @@ import {
   UserProfileCard,
   UserProfileContainer,
 } from "~/components/UserProfileCard";
-import { compareByName, type UserProfile } from "~/src/data/user-profile";
+import { compareByName } from "~/src/data/user-profile";
+
+import { match, type PublicUserProfile } from "./matching";
 
 type Props = {
-  allUserProfiles: ReadonlyArray<UserProfile>;
+  allUserProfiles: ReadonlyArray<PublicUserProfile>;
 };
 
 export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
@@ -36,21 +38,5 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
         ))}
       </UserProfileContainer>
     </div>
-  );
-};
-
-const normalize = (s: string) =>
-  s
-    .toLocaleLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-
-const match = (profile: UserProfile, query: string): boolean => {
-  const scalarMatches = (value: string | undefined) =>
-    value ? normalize(value).includes(normalize(query)) : false;
-  return (
-    scalarMatches(profile.name) ||
-    scalarMatches(profile.tags) ||
-    scalarMatches(profile.bio)
   );
 };
