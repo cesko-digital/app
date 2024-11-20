@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { type Metadata } from "next";
 
 import { stripNonPublicFields } from "~/app/people/matching";
@@ -25,7 +26,9 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
-      <SearchablePeopleBox allUserProfiles={strippedProfiles} />
+      <Suspense fallback="Moment…">
+        <SearchablePeopleBox allUserProfiles={strippedProfiles} />
+      </Suspense>
     </main>
   );
 }
