@@ -33,7 +33,7 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
         <input
           type="text"
           className="w-full max-w-prose rounded-sm border-2 border-gray p-2"
-          placeholder="filtruj kámo"
+          placeholder="filtrovat podle jména, dovedností, …"
           defaultValue={query}
           onChange={(e) => onQueryChange(e.target.value)}
         ></input>
