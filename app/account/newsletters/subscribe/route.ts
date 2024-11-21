@@ -36,6 +36,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   }
 
   if (requestData.acceptTerms === true) {
+    console.info("Bot subscribe detected, ignoring.");
     return new Response("User subscription was successful, LOL", {
       status: 200,
       headers,
