@@ -25,7 +25,10 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
   const profiles = allUserProfiles.filter((p) => match(p, debouncedQuery));
 
   const onQueryChange = (q: string) => {
-    router.replace("/people?" + new URLSearchParams({ q }).toString());
+    const params = new URLSearchParams({ q });
+    router.replace("/people?" + params.toString(), {
+      scroll: false,
+    });
     setQuery(q);
   };
 
