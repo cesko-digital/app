@@ -40,15 +40,18 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
           onChange={(e) => onQueryChange(e.target.value)}
         ></input>
       </div>
-      <UserProfileContainer>
-        {profiles.sort(compareByName).map((profile) => (
-          <UserProfileCard
-            key={profile.id}
-            profile={profile}
-            label={<SkillList skills={profile.tags.split(/;\s*/)} />}
-          />
-        ))}
-      </UserProfileContainer>
+      {profiles.length > 0 && (
+        <UserProfileContainer>
+          {profiles.sort(compareByName).map((profile) => (
+            <UserProfileCard
+              key={profile.id}
+              profile={profile}
+              label={<SkillList skills={profile.tags.split(/;\s*/)} />}
+            />
+          ))}
+        </UserProfileContainer>
+      )}
+      {profiles.length === 0 && <p>Dotazu neodpovídá žádný veřejný profil.</p>}
     </div>
   );
 };

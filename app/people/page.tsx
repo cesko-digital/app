@@ -26,7 +26,7 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-10 max-w-prose">{metadata.description}</p>
-      <Suspense fallback="Moment…">
+      <Suspense fallback="Načítám data…">
         <SearchablePeopleBox allUserProfiles={strippedProfiles} />
       </Suspense>
     </main>
