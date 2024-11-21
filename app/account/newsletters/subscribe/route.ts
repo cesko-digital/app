@@ -21,7 +21,13 @@ export async function POST(request: NextRequest): Promise<Response> {
   const decodeRequest = record({
     email: string,
   });
-  const { email } = decodeRequest(await request.json());
+  const { email } = await request
+    .json()
+    .then(decodeRequest)
+    .catch(() => ({ email: null }));
+  if (!email) {
+    return new Response("Email field missing", { status: 400 });
+  }
   const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
     email: email,
     tags: ["web-subscribe-form"],
