@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { record, string } from "typescript-json-decoder";
+import { boolean, optional, record, string } from "typescript-json-decoder";
 
 import { subscribeToList } from "~/src/ecomail";
 
@@ -18,25 +18,44 @@ const headers = {
  * This is used by “external” systems such as the footer on our main website.
  */
 export async function POST(request: NextRequest): Promise<Response> {
+  //
+  // Decode form data
+  //
   const decodeRequest = record({
+    acceptTerms: optional(boolean),
     email: string,
   });
-  const { email } = await request
+
+  const requestData = await request
     .json()
     .then(decodeRequest)
-    .catch(() => ({ email: null }));
-  if (!email) {
-    return new Response("Email field missing", { status: 400 });
+    .catch(() => null);
+
+  if (!requestData) {
+    return new Response("Request invalid", { status: 400 });
   }
+
+  if (requestData.acceptTerms === true) {
+    return new Response("User subscription was successful, LOL", {
+      status: 200,
+      headers,
+    });
+  }
+
+  //
+  // Add new subscriber to Ecomail
+  //
   const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
-    email: email,
+    email: requestData.email,
     tags: ["web-subscribe-form"],
   });
+
   if (!success) {
     return new Response("Failed to create Ecomail subscription", {
       status: 500,
     });
   }
+
   return NextResponse.json(
     { message: "User subscription was successful" },
     {
@@ -46,7 +65,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   );
 }
 
-// The OPTION method support is needed by Webflow
+// The OPTIONS method support is needed by Webflow
 export async function OPTIONS(): Promise<Response> {
   return new Response(null, {
     status: 200,
