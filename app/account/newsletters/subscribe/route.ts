@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { boolean, optional, record, string } from "typescript-json-decoder";
+import { literal, optional, record, string } from "typescript-json-decoder";
 
 import { subscribeToList } from "~/src/ecomail";
 
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   // Decode form data
   //
   const decodeRequest = record({
-    acceptTerms: optional(boolean),
+    acceptTerms: optional(literal("on")),
     email: string,
   });
 
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     return new Response("Request invalid", { status: 400 });
   }
 
-  if (requestData.acceptTerms === true) {
+  if (requestData.acceptTerms === "on") {
     console.info("Bot subscribe detected, ignoring.");
     return new Response("User subscription was successful, LOL", {
       status: 200,
