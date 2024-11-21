@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { useDebounce } from "~/components/hooks/debounce";
 import { SkillList } from "~/components/profile/SkillList";
 import {
   UserProfileCard,
@@ -20,7 +21,8 @@ export const SearchablePeopleBox = ({ allUserProfiles }: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
-  const profiles = allUserProfiles.filter((p) => match(p, query));
+  const debouncedQuery = useDebounce(query, 275); // Wait 275 ms for the query to settle
+  const profiles = allUserProfiles.filter((p) => match(p, debouncedQuery));
 
   const onQueryChange = (q: string) => {
     router.replace("/people?" + new URLSearchParams({ q }).toString());
