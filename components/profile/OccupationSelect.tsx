@@ -1,3 +1,5 @@
+import { semicolonStrToArr } from "~/src/data/user-profile";
+
 export type Props = {
   occupation?: string;
   disabled?: boolean;
@@ -19,24 +21,27 @@ export const OccupationSelect = ({
     "looking-for-job": "Hledám práci",
     "other": "Jiné",
   };
+  const occupationSet = new Set(semicolonStrToArr(occupation));
 
   return (
     <div>
       <label className="mb-1 block">V jakém prostředí se pohybuješ?</label>
       <p className="typo-caption mb-3">
-        Pokud toho děláš víc, vyber, co převažuje.
+        Pokud toho děláš víc, klidně vyber více možností.
       </p>
 
       <div>
         {Object.entries(options).map(([id, label]) => (
           <label key={id} className="mb-1 flex items-center">
             <input
-              type="radio"
+              type="checkbox"
               className="mr-3"
               name="occupation"
               disabled={disabled}
-              checked={occupation === id}
-              onChange={() => onChange(id)}
+              checked={occupationSet.has(id)}
+              onChange={() =>
+                onChange(encodeSelection(flip(occupationSet, id)))
+              }
             />
             <span>{label}</span>
           </label>
@@ -44,4 +49,21 @@ export const OccupationSelect = ({
       </div>
     </div>
   );
+};
+
+/**
+ * Toggles a value in a set.
+ */
+function flip<T>(values: Set<T>, value: T): Set<T> {
+  const newValues = new Set(values);
+  if (newValues.has(value)) {
+    newValues.delete(value);
+  } else {
+    newValues.add(value);
+  }
+  return newValues;
+}
+
+const encodeSelection = (occupation: Set<string>) => {
+  return Array.from(occupation).join("; ");
 };

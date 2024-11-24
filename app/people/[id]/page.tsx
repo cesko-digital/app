@@ -11,7 +11,11 @@ import {
   getPublicTeamEngagementsForUser,
   type TeamEngagement,
 } from "~/src/data/team-engagement";
-import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
+import {
+  getUserProfile,
+  semicolonStrToArr,
+  type UserProfile,
+} from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 import { defaultAvatarUrl } from "~/src/utils";
 
@@ -120,7 +124,7 @@ const ProfessionalProfileLink = ({ link }: { link: string }) => (
   </a>
 );
 
-const InfoTable = ({ profile }: { profile: UserProfile }) => {
+function decodeOccupations(occupations?: string): string {
   const labels: Record<string, string> = {
     "private-sector": "V soukromém sektoru",
     "non-profit": "V nezisku",
@@ -130,9 +134,14 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci!",
   };
-  const occupation = profile.occupation
-    ? labels[profile.occupation]
-    : undefined;
+  const occupationSet = new Set(semicolonStrToArr(occupations));
+  return Array.from(occupationSet)
+    .map((id) => labels[id])
+    .join("; ");
+}
+
+const InfoTable = ({ profile }: { profile: UserProfile }) => {
+  const occupations = decodeOccupations(profile.occupation);
   return (
     <div className="max-w-prose">
       {profile.tags.length > 0 && (
@@ -146,7 +155,7 @@ const InfoTable = ({ profile }: { profile: UserProfile }) => {
       {profile.availableInDistricts && (
         <InfoRow label="K zastižení">{profile.availableInDistricts}</InfoRow>
       )}
-      {occupation && <InfoRow label="Kde pracuju">{occupation}</InfoRow>}
+      {occupations && <InfoRow label="Kde pracuju">{occupations}</InfoRow>}
       <ContactRows profile={profile} />
     </div>
   );
