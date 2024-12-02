@@ -19,7 +19,6 @@ export const OccupationSelect = ({
     "studying": "Studuji",
     "parental-leave": "Jsem na rodičovské",
     "looking-for-job": "Hledám práci",
-    "other": "Jiné",
   };
   const occupationSet = new Set(semicolonStrToArr(occupation));
 
