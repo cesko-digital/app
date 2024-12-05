@@ -273,3 +273,11 @@ const normalize = (s: string) =>
     .replace(/^\s+/, "")
     .replace(/\s+$/, "")
     .replace(/\s*\([^)]+\)$/, "");
+
+/**
+ * Decode a semicolon-separated string into an array of strings.
+ *
+ * E.g. "foo; bar; baz" -> ["foo", "bar", "baz"]
+ */
+export const semicolonStrToArr = (occupation?: string) =>
+  occupation?.split(/;\s*/).filter((s) => s !== "") ?? [];
