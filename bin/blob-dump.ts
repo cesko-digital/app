@@ -14,6 +14,9 @@ async function fetchToFile(url: string, fileName: string) {
   }
 }
 
+// Change token name to switch to a different blob
+const token = process.env.BLOB_READ_WRITE_TOKEN!;
+
 /**
  * Dump default blob store contents to `blob`, useful for backups
  *
@@ -25,7 +28,7 @@ async function main() {
   mkdirSync("blob");
 
   do {
-    const response: ListBlobResult = await list({ cursor, limit: 1000 });
+    const response: ListBlobResult = await list({ token, cursor, limit: 1000 });
 
     for (const { url, pathname } of response.blobs) {
       console.log(`${url} -> ${pathname}`);
