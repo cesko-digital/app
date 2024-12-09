@@ -8,6 +8,14 @@ updates:
       # We have to do this manually, see https://github.com/cesko-digital/app/issues/1117
       - dependency-name: "next"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react-dom"
+        update-types: ["version-update:semver-major"]
     groups:
       dev-dependencies:
         patterns:
