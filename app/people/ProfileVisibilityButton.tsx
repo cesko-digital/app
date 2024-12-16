@@ -1,7 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
@@ -14,11 +12,9 @@ export const ProfileVisibilityButton = () => {
   } = usePatchedJSONResource<UserProfile>({ url: "/account/me" });
   const hasPublicProfile = model?.privacyFlags.includes("enablePublicProfile");
 
-  const { status } = useSession();
-
   return (
     <div>
-      {status === "authenticated" && (
+      {model !== undefined && (
         <label className="mb-5 flex items-center">
           <input
             checked={!!model?.privacyFlags.includes("enablePublicProfile")}
