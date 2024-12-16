@@ -1,5 +1,7 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+
 import { usePatchedJSONResource } from "~/components/hooks/resource";
 import { type UserProfile } from "~/src/data/user-profile";
 import { setFlag } from "~/src/flags";
@@ -12,27 +14,31 @@ export const ProfileVisibilityButton = () => {
   } = usePatchedJSONResource<UserProfile>({ url: "/account/me" });
   const hasPublicProfile = model?.privacyFlags.includes("enablePublicProfile");
 
+  const { status } = useSession();
+
   return (
     <div>
-      <label className="mb-5 flex items-center">
-        <input
-          checked={!!model?.privacyFlags.includes("enablePublicProfile")}
-          type="checkbox"
-          className="mr-3"
-          disabled={updating}
-          onChange={(e) =>
-            setModel({
-              ...model!,
-              privacyFlags: setFlag(
-                model!.privacyFlags,
-                "enablePublicProfile",
-                e.target.checked,
-              ),
-            })
-          }
-        ></input>
-        Chci mít veřejný profil
-      </label>
+      {status === "authenticated" && (
+        <label className="mb-5 flex items-center">
+          <input
+            checked={!!model?.privacyFlags.includes("enablePublicProfile")}
+            type="checkbox"
+            className="mr-3"
+            disabled={updating}
+            onChange={(e) =>
+              setModel({
+                ...model,
+                privacyFlags: setFlag(
+                  model.privacyFlags,
+                  "enablePublicProfile",
+                  e.target.checked,
+                ),
+              })
+            }
+          ></input>
+          Chci mít veřejný profil
+        </label>
+      )}
       {!hasPublicProfile && hasPublicProfile !== undefined && (
         <>
           <p className="mb-3">
