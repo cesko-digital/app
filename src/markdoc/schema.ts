@@ -94,6 +94,7 @@ function generateID(
     if (Tag.isTag(node)) {
       return node.children.map(stringify).join(" ");
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       return `${node}`;
     }
   };
