@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { Mark404 } from "~/components/Mark404";
+import { Route } from "~/src/routing";
 
 export default async function Page() {
   return (
@@ -9,16 +12,13 @@ export default async function Page() {
           404: Stránka nenalezena
         </h1>
         <p className="m-auto max-w-prose">
-          Na tomto místě se dříve nacházela otevřená role.
-          Zobrazuje-li se nyní tento text, znamená to, že už daná role není aktuální.
-          Díky za pochopení!
-          Všechny otevřené role můžete najít 
-          <a
-            href="https://app.cesko.digital/opportunities"
-            className="typo-link"
-          >
-            tady.
-          </a>
+          Na tomto místě se dříve nejspíš nacházela otevřená role. Zobrazuje-li
+          se nyní tento text, znamená to, že už daná role není aktuální. Díky za
+          pochopení! Možná tě budou zajímat{" "}
+          <Link href={Route.opportunities} className="typo-link">
+            všechny naše otevřené role
+          </Link>
+          ?
         </p>
       </section>
     </main>
