@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { type Metadata } from "next";
 
 import { stripNonPublicFields } from "~/app/people/matching";
-import { ProfileVisibilityButton } from "~/app/people/ProfileVisibilityButton";
+import { ProfileVisibilityPrefs } from "~/app/people/ProfileVisibilityPrefs";
 import { SearchablePeopleBox } from "~/app/people/SearchablePeopleBox";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { getAllUserProfiles } from "~/src/data/user-profile";
@@ -28,7 +28,7 @@ async function Page() {
       <Breadcrumbs currentPage="Lidé" />
       <h1 className="typo-title mb-10 mt-7">Lidé</h1>
       <p className="mb-5 max-w-prose">{metadata.description}</p>
-      <ProfileVisibilityButton />
+      <ProfileVisibilityPrefs />
       <Suspense fallback="Načítám data…">
         <SearchablePeopleBox allUserProfiles={strippedProfiles} />
       </Suspense>
