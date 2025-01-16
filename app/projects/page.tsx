@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   Podívej se, na čem zrovna pracujeme, a kde se můžeš v případě zájmu zapojit.`,
 };
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 /** Page listing all our projects */
 async function Page() {

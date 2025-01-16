@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   spolupracujeme s partnery. Na všech tě ale rádi uvidíme.`,
 };
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 /** Page listing all our events */
 async function Page() {

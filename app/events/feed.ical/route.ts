@@ -4,8 +4,8 @@ import { getAllEvents } from "~/src/data/event";
 import { absolute, Route } from "~/src/routing";
 import { ContentType } from "~/src/utils";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 30 minutes */
+export const revalidate = 1800;
 
 /** Create an iCal feed with our events */
 export async function GET(): Promise<Response> {

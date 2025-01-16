@@ -10,8 +10,8 @@ import {
 } from "~/src/data/metrics";
 import { unique } from "~/src/utils";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Statistiky | Česko.Digital",

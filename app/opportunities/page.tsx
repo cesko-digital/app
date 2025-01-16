@@ -8,8 +8,8 @@ import { strip } from "~/src/utils";
 
 import { NotificationPrefs } from "./NotificationPrefs";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Hledané role | Česko.Digital",

@@ -309,8 +309,8 @@ export async function generateStaticParams() {
   return [];
 }
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 //
 // Helpers

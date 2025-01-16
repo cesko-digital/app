@@ -16,8 +16,8 @@ import { Categories, getBubbles, type Bubble } from "~/src/discourse";
 import { Route } from "~/src/routing";
 import { stripMarkdown } from "~/src/utils";
 
-/** Refresh data every 5 minutes */
-export const revalidate = 300;
+/** Refresh data every 10 minutes */
+export const revalidate = 600;
 
 /** Main home page of the whole website */
 export default async function Home() {
