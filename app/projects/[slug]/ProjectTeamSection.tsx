@@ -3,6 +3,7 @@ import {
   UserProfileContainer,
 } from "~/components/UserProfileCard";
 import { type TeamEngagement } from "~/src/data/team-engagement";
+import { slugify } from "~/src/markdoc/schema";
 import { defaultAvatarUrl, unique } from "~/src/utils";
 
 type Subteam = [string, TeamEngagement[]];
@@ -17,7 +18,15 @@ export const ProjectTeamSection = ({
     <section>
       {subteams.map(([label, engagements]) => (
         <div key={label} className="mb-7">
-          <h2 className="typo-title2 mb-4">{label}</h2>
+          <h2 className="typo-title2 mb-4" id={slugify(label)}>
+            {label}
+            <a
+              href={`#${slugify(label)}`}
+              className="ml-1 cursor-pointer text-black no-underline opacity-0 hover:opacity-20"
+            >
+              #
+            </a>
+          </h2>
           <UserProfileContainer>
             {engagements.map((e) => (
               <UserProfileCard
