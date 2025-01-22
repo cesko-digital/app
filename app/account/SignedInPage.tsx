@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 
-import { Slack } from "~/components/icons/services";
-import { Diskutuj } from "~/components/icons/services";
+import { Diskutuj, Slack } from "~/components/icons/services";
 import { SimpleTabBar } from "~/components/TabBar";
 import { Route } from "~/src/routing";
 
@@ -37,8 +36,8 @@ export const SignedInPage = () => {
 };
 
 const ToolsTab = () => (
-  <div>
-    <p>
+  <ul className="flex flex-col gap-2">
+    <li>
       <a
         className="typo-link flex flex-row items-center gap-2"
         href={Route.slackOnboarding}
@@ -46,8 +45,8 @@ const ToolsTab = () => (
         <Image src={Slack} width={24} height={24} alt="" />
         Přidat se do Slacku
       </a>
-    </p>
-    <p>
+    </li>
+    <li>
       <a
         className="typo-link flex flex-row items-center gap-2"
         href="https://diskutuj.digital/"
@@ -55,6 +54,6 @@ const ToolsTab = () => (
         <Image src={Diskutuj} width={24} height={24} alt="" />
         Přejít na Diskutuj.Digital
       </a>
-    </p>
-  </div>
+    </li>
+  </ul>
 );
