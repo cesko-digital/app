@@ -1,6 +1,7 @@
 export { default as Airtable } from "./airtable.png";
 export { default as Asana } from "./asana.png";
 export { default as Confluence } from "./confluence.png";
+export { default as Diskutuj } from "./diskutuj.png";
 export { default as GoogleDocs } from "./docs.png";
 export { default as Figma } from "./figma.png";
 export { default as GitHub } from "./github.png";

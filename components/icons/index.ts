@@ -6,6 +6,7 @@ import {
   Asana,
   Confluence,
   Figma,
+  Diskutuj,
   GitHub,
   Gmail,
   GoogleCalendar,
@@ -35,6 +36,7 @@ const iconMap: Record<string, StaticImageData> = {
   "linkedin.com": LinkedIn,
   "figma.com": Figma,
   "airtable.com": Airtable,
+  "diskutuj.digital": Diskutuj,
 };
 
 /**
