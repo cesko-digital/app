@@ -8,6 +8,7 @@ import {
   type MetricDefinition,
   type MetricSample,
 } from "~/src/data/metrics";
+import { slugify } from "~/src/markdoc/schema";
 import { unique } from "~/src/utils";
 
 /** Refresh data every 10 minutes */
@@ -90,7 +91,15 @@ const ServiceSection = ({
       .sort(compareSamplesByDate);
   return (
     <div>
-      <h2 className="typo-title2 mb-4">{title}</h2>
+      <h2 className="typo-title2 mb-4" id={slugify(title)}>
+        {title}
+        <a
+          href={`#${slugify(title)}`}
+          className="ml-1 cursor-pointer text-black no-underline opacity-0 hover:opacity-20"
+        >
+          #
+        </a>
+      </h2>
       <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
         {metrics
           .filter((m) => samplesForMetric(m).length > 0)
