@@ -44,6 +44,12 @@ module.exports = {
         destination: "https://diskutuj.digital/c/trziste/5",
         permanent: true,
       },
+      {
+        source: "/projects/nezisk-digital",
+        destination:
+          "https://www.cesko.digital/projekty/nezisk-digital/kurz-nezisk-digital",
+        permanent: true,
+      },
     ];
   },
 };
