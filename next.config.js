@@ -50,6 +50,12 @@ module.exports = {
           "https://www.cesko.digital/projekty/nezisk-digital/kurz-nezisk-digital",
         permanent: true,
       },
+      {
+        source: "/projects/digitalni-partnerstvi",
+        destination:
+          "https://www.cesko.digital/projekty/digitalni-partnerstvi/home",
+        permanent: true,
+      },
     ];
   },
 };
