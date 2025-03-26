@@ -108,6 +108,8 @@ export const decodeUserProfile = record({
   gdprPolicyAcceptedAt: optional(string),
   codeOfConductAcceptedAt: optional(string),
   createdAt: optional(string),
+  firstName: optional(string),
+  lastName: optional(string),
 });
 
 /** Encode `UserProfile` to DB schema */
