@@ -2,7 +2,6 @@ import {
   array,
   date,
   number,
-  optional,
   record,
   string,
   type DecoderFunction,
@@ -59,6 +58,24 @@ const postJson = <T>({
     .then(unwrapJson)
     .then(decodeResponse);
 
+const putJson = <T>({
+  apiKey,
+  path,
+  decodeResponse,
+  body,
+}: CommonArgs<T> & { body: unknown }) =>
+  fetch(buildUrl(path), {
+    method: "PUT",
+    body: JSON.stringify(body, null, 2),
+    headers: {
+      "X-Api-Key": apiKey,
+      "Content-type": "application/json",
+    },
+  })
+    .then(throwErrors)
+    .then(unwrapJson)
+    .then(decodeResponse);
+
 //
 // Helpers
 //
@@ -83,18 +100,22 @@ const nullable =
 // Contacts
 //
 
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+
 export type Contact = decodeType<typeof decodeContact>;
+export type ContactCreate = Optional<Omit<Contact, "id">, "createdAt">;
 
 const decodeContact = record({
   id: string,
-  name: optional(string),
+  name: string,
+  emailAddress: string,
+  createdAt: date,
   firstName: nullable(string),
   lastName: nullable(string),
-  emailAddress: optional(string),
   cLegacyAirtableID: nullable(string),
   cSlackUserID: nullable(string),
   cDataSource: nullable(string),
-  createdAt: optional(date),
+  cBio: nullable(string),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
@@ -129,13 +150,21 @@ export const getContactById = async (apiKey: string, id: string) =>
     apiKey,
   });
 
-export const createContact = async (
-  apiKey: string,
-  contact: Omit<Contact, "id">,
-) =>
+export const createContact = async (apiKey: string, contact: ContactCreate) =>
   postJson({
     decodeResponse: decodeContact,
     body: contact,
     path: "Contact",
+    apiKey,
+  });
+
+export const updateContact = async (
+  apiKey: string,
+  contact: Pick<Contact, "id"> & Partial<Contact>,
+) =>
+  putJson({
+    decodeResponse: decodeContact,
+    body: contact,
+    path: `Contact/${contact.id}`,
     apiKey,
   });

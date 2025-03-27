@@ -1,49 +1,105 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
-import { getAllUserProfiles } from "~/src/data/user-profile";
-import { createContact, getAllContacts } from "~/src/espo";
+import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
+import {
+  getAllContacts,
+  updateContact,
+  type Contact,
+  type ContactCreate,
+} from "~/src/espo";
+
+const crmApiKey = process.env.CRM_API_KEY ?? "<not set>";
+
+const map = <T, U>(value: T | undefined, f: (val: T) => U) =>
+  value ? f(value) : undefined;
+
+const stripWhitespace = (s: string) =>
+  s.replaceAll(/^\s+/g, "").replaceAll(/\s+$/g, "");
+
+const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
+  name: profile.name,
+  firstName: map(profile.firstName, stripWhitespace),
+  lastName: map(profile.lastName, stripWhitespace),
+  emailAddress: profile.email,
+  cLegacyAirtableID: profile.id,
+  cSlackUserID: profile.slackId,
+  cDataSource: "Airtable sync",
+  cBio: profile.bio,
+});
+
+const userProfileToContactUpdate = (
+  profile: UserProfile,
+): Partial<Contact> => ({
+  firstName: map(profile.firstName, stripWhitespace),
+  lastName: map(profile.lastName, stripWhitespace),
+  emailAddress: profile.email,
+  cLegacyAirtableID: profile.id,
+  cSlackUserID: profile.slackId,
+  cBio: profile.bio,
+});
 
 async function main() {
-  const crmApiKey = process.env.CRM_API_KEY ?? "<not set>";
-  console.debug("Downloading confirmed user profiles from Airtable.");
+  console.debug(`Downloading confirmed user profiles from Airtable.`);
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   console.debug(`Downloaded ${userProfiles.length} user profiles.`);
-  console.debug("Downloading existing contacts from CRM.");
-  const contacts = await getAllContacts(crmApiKey);
-  console.debug(`Downloaded ${contacts.length} contacts.`);
 
-  for (const userProfile of userProfiles) {
-    // Previous contact for this user profile in the CRM
-    const previousContact = contacts.find(
-      (c) => c.cLegacyAirtableID === userProfile.id,
-    );
+  console.debug(`Downloading all previous CRM contacts.`);
+  const previousContacts = await getAllContacts(crmApiKey);
+  console.debug(`Downloaded ${previousContacts.length} CRM contacts.`);
 
-    // The CRM requires first name and last name fields, so
-    // make sure we have them. This is slightly silly, but works
-    // for now.
-    if (!userProfile.firstName || !userProfile.lastName) {
-      console.warn(
-        `First name or last name missing for ${userProfile.name} (${userProfile.id}), skipping entirely.`,
-      );
-      continue;
+  const previousContactFor = ({ id }: UserProfile) =>
+    previousContacts.find((c) => c.cLegacyAirtableID === id);
+  const isExistingUserProfile = (profile: UserProfile) =>
+    !!previousContactFor(profile);
+
+  //
+  // Insert new contacts
+  //
+
+  const newUserProfiles = userProfiles.filter((p) => !isExistingUserProfile(p));
+  const newContacts = newUserProfiles
+    .filter((profile) => profile.firstName && profile.lastName)
+    .map(userProfileToNewContact);
+  console.log(`Inserting ${newContacts.length} new contacts.`);
+
+  //
+  // Update existing contacts
+  //
+
+  const keys: Array<keyof Contact> = [
+    "cSlackUserID",
+    "emailAddress",
+    "firstName",
+    "lastName",
+    "cBio",
+  ];
+
+  console.log("Updating existing contacts.");
+  for (const userProfile of userProfiles.filter(isExistingUserProfile)) {
+    const updatedContact = userProfileToContactUpdate(userProfile);
+    const existingContact = previousContactFor(userProfile)!;
+    const dirtyKeys: Array<keyof Contact> = [];
+    for (const key of keys) {
+      const savedValue = existingContact[key];
+      const newValue = updatedContact[key];
+      if (savedValue !== newValue) {
+        dirtyKeys.push(key);
+      }
     }
-
-    // If this is a new user not seen previously, create a new CRM contact
-    if (!previousContact) {
-      console.info(
-        `New user profile without previous contact, creating: ${userProfile.name}`,
-      );
-      await createContact(crmApiKey, {
-        name: userProfile.name,
-        firstName: userProfile.firstName,
-        lastName: userProfile.lastName,
-        emailAddress: userProfile.email,
-        cLegacyAirtableID: userProfile.id,
-        cSlackUserID: userProfile.slackId,
-        cDataSource: "Airtable sync",
+    if (dirtyKeys.length > 0) {
+      console.log(`Contact “${userProfile.name}” needs update:`);
+      dirtyKeys.forEach((key) => {
+        console.log(
+          `- ${key}: “${existingContact[key]}” => “${updatedContact[key]}”`,
+        );
       });
-      continue;
+      await updateContact(crmApiKey, {
+        id: existingContact.id,
+        ...updatedContact,
+      });
     }
   }
+
+  console.debug("Finished!");
 }
 
 main().catch((error) => {
