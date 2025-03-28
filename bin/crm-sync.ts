@@ -1,6 +1,7 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import {
+  createContact,
   getAllContacts,
   updateContact,
   type Contact,
@@ -60,6 +61,9 @@ async function main() {
     .filter((profile) => profile.firstName && profile.lastName)
     .map(userProfileToNewContact);
   console.log(`Inserting ${newContacts.length} new contacts.`);
+  for (const contact of newContacts) {
+    await createContact(crmApiKey, contact);
+  }
 
   //
   // Update existing contacts
