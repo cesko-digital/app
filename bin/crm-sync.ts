@@ -25,6 +25,7 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cSlackUserID: profile.slackId,
   cDataSource: "Airtable sync",
   cBio: profile.bio,
+  cTags: profile.tags,
 });
 
 const userProfileToContactUpdate = (
@@ -36,6 +37,7 @@ const userProfileToContactUpdate = (
   cLegacyAirtableID: profile.id,
   cSlackUserID: profile.slackId,
   cBio: profile.bio,
+  cTags: profile.tags,
 });
 
 async function main() {
@@ -75,6 +77,7 @@ async function main() {
     "firstName",
     "lastName",
     "cBio",
+    "cTags",
   ];
 
   console.log("Updating existing contacts.");

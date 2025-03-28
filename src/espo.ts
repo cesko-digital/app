@@ -8,6 +8,8 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
+import { withDefault } from "~/src/decoding";
+
 //
 // Http Client
 //
@@ -116,6 +118,7 @@ const decodeContact = record({
   cSlackUserID: nullable(string),
   cDataSource: nullable(string),
   cBio: nullable(string),
+  cTags: withDefault(string, ""),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
