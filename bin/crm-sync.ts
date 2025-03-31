@@ -27,7 +27,7 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cBio: profile.bio,
   cTags: profile.tags,
   cSeniority: profile.maxSeniority,
-  cOrganizationName: profile.organizationName,
+  cOrganizationName: map(profile.organizationName, stripWhitespace),
 });
 
 const userProfileToContactUpdate = (
@@ -41,7 +41,7 @@ const userProfileToContactUpdate = (
   cBio: profile.bio,
   cTags: profile.tags,
   cSeniority: profile.maxSeniority,
-  cOrganizationName: profile.organizationName,
+  cOrganizationName: map(profile.organizationName, stripWhitespace),
 });
 
 async function main() {
