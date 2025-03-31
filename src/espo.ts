@@ -2,8 +2,10 @@ import {
   array,
   date,
   number,
+  optional,
   record,
   string,
+  union,
   type DecoderFunction,
   type decodeType,
 } from "typescript-json-decoder";
@@ -119,6 +121,8 @@ const decodeContact = record({
   cDataSource: nullable(string),
   cBio: nullable(string),
   cTags: withDefault(string, ""),
+  cSeniority: nullable(union("junior", "medior", "senior")),
+  cOrganizationName: nullable(string),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
