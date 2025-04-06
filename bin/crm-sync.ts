@@ -68,7 +68,12 @@ async function main() {
     .map(userProfileToNewContact);
   console.log(`Inserting ${newContacts.length} new contacts.`);
   for (const contact of newContacts) {
-    await createContact(crmApiKey, contact);
+    try {
+      await createContact(crmApiKey, contact);
+    } catch (error) {
+      console.error(`Create failed for contact ${contact.name}:`);
+      console.error(error);
+    }
   }
 
   //
