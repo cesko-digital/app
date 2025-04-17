@@ -30,6 +30,7 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cOrganizationName: map(profile.organizationName, stripWhitespace),
   cPublicContactEmail: profile.contactEmail,
   cProfessionalProfileURL: profile.profileUrl,
+  cOccupation: profile.occupation,
 });
 
 const userProfileToContactUpdate = (
@@ -46,6 +47,7 @@ const userProfileToContactUpdate = (
   cOrganizationName: map(profile.organizationName, stripWhitespace),
   cPublicContactEmail: profile.contactEmail,
   cProfessionalProfileURL: profile.profileUrl,
+  cOccupation: profile.occupation,
 });
 
 async function main() {
@@ -95,6 +97,7 @@ async function main() {
     "cOrganizationName",
     "cPublicContactEmail",
     "cProfessionalProfileURL",
+    "cOccupation",
   ];
 
   console.log("Updating existing contacts.");
