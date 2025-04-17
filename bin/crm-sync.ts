@@ -107,6 +107,7 @@ async function main() {
       console.log(`Contact “${userProfile.name}” needs update:`);
       dirtyKeys.forEach((key) => {
         console.log(
+          // eslint-disable-next-line @typescript-eslint/no-base-to-string
           `- ${key}: “${existingContact[key]}” => “${updatedContact[key]}”`,
         );
       });

@@ -1,8 +1,8 @@
 import {
   array,
+  boolean,
   date,
   number,
-  optional,
   record,
   string,
   union,
@@ -10,7 +10,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { withDefault } from "~/src/decoding";
+import { optionalArray, withDefault } from "~/src/decoding";
 
 //
 // Http Client
@@ -107,12 +107,24 @@ const nullable =
 type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 
 export type Contact = decodeType<typeof decodeContact>;
-export type ContactCreate = Optional<Omit<Contact, "id">, "createdAt">;
+export type ContactCreate = Optional<
+  Omit<Contact, "id">,
+  "createdAt" | "emailAddressData"
+>;
 
 const decodeContact = record({
   id: string,
   name: string,
   emailAddress: string,
+  emailAddressData: optionalArray(
+    record({
+      emailAddress: string,
+      lower: string,
+      primary: boolean,
+      optOut: boolean,
+      invalid: boolean,
+    }),
+  ),
   createdAt: date,
   firstName: nullable(string),
   lastName: nullable(string),
