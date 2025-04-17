@@ -29,6 +29,7 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cSeniority: profile.maxSeniority,
   cOrganizationName: map(profile.organizationName, stripWhitespace),
   cPublicContactEmail: profile.contactEmail,
+  cProfessionalProfileURL: profile.profileUrl,
 });
 
 const userProfileToContactUpdate = (
@@ -44,6 +45,7 @@ const userProfileToContactUpdate = (
   cSeniority: profile.maxSeniority,
   cOrganizationName: map(profile.organizationName, stripWhitespace),
   cPublicContactEmail: profile.contactEmail,
+  cProfessionalProfileURL: profile.profileUrl,
 });
 
 async function main() {
@@ -92,6 +94,7 @@ async function main() {
     "cSeniority",
     "cOrganizationName",
     "cPublicContactEmail",
+    "cProfessionalProfileURL",
   ];
 
   console.log("Updating existing contacts.");
@@ -114,10 +117,14 @@ async function main() {
           `- ${key}: “${existingContact[key]}” => “${updatedContact[key]}”`,
         );
       });
-      await updateContact(crmApiKey, {
-        id: existingContact.id,
-        ...updatedContact,
-      });
+      try {
+        await updateContact(crmApiKey, {
+          id: existingContact.id,
+          ...updatedContact,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 

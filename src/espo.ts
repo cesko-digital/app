@@ -136,6 +136,7 @@ const decodeContact = record({
   cSeniority: nullable(union("junior", "medior", "senior")),
   cOrganizationName: nullable(string),
   cPublicContactEmail: nullable(string),
+  cProfessionalProfileURL: nullable(string),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
