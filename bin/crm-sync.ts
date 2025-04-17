@@ -32,6 +32,8 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cProfessionalProfileURL: profile.profileUrl,
   cOccupation: profile.occupation,
   cPrivacyFlags: profile.privacyFlags,
+  cProfilePictureURL: profile.profilePictureUrl,
+  cAvailableInDistricts: profile.availableInDistricts,
 });
 
 const userProfileToContactUpdate = (
@@ -50,6 +52,8 @@ const userProfileToContactUpdate = (
   cProfessionalProfileURL: profile.profileUrl,
   cOccupation: profile.occupation,
   cPrivacyFlags: profile.privacyFlags,
+  cProfilePictureURL: profile.profilePictureUrl,
+  cAvailableInDistricts: profile.availableInDistricts,
 });
 
 async function main() {
@@ -101,6 +105,8 @@ async function main() {
     "cProfessionalProfileURL",
     "cOccupation",
     "cPrivacyFlags",
+    "cProfilePictureURL",
+    "cAvailableInDistricts",
   ];
 
   console.log("Updating existing contacts.");

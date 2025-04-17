@@ -141,6 +141,8 @@ const decodeContact = record({
   cPrivacyFlags: optionalArray(
     union("enablePublicProfile", "hidePublicTeamMembership"),
   ),
+  cProfilePictureURL: nullable(string),
+  cAvailableInDistricts: nullable(string),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
