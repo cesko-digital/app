@@ -109,7 +109,7 @@ type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 export type Contact = decodeType<typeof decodeContact>;
 export type ContactCreate = Optional<
   Omit<Contact, "id">,
-  "createdAt" | "emailAddressData"
+  "createdAt" | "emailAddressData" | "cPrivacyFlags"
 >;
 
 const decodeContact = record({
@@ -138,6 +138,9 @@ const decodeContact = record({
   cPublicContactEmail: nullable(string),
   cProfessionalProfileURL: nullable(string),
   cOccupation: nullable(string),
+  cPrivacyFlags: optionalArray(
+    union("enablePublicProfile", "hidePublicTeamMembership"),
+  ),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>

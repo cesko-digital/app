@@ -31,6 +31,7 @@ const userProfileToNewContact = (profile: UserProfile): ContactCreate => ({
   cPublicContactEmail: profile.contactEmail,
   cProfessionalProfileURL: profile.profileUrl,
   cOccupation: profile.occupation,
+  cPrivacyFlags: profile.privacyFlags,
 });
 
 const userProfileToContactUpdate = (
@@ -48,6 +49,7 @@ const userProfileToContactUpdate = (
   cPublicContactEmail: profile.contactEmail,
   cProfessionalProfileURL: profile.profileUrl,
   cOccupation: profile.occupation,
+  cPrivacyFlags: profile.privacyFlags,
 });
 
 async function main() {
@@ -98,6 +100,7 @@ async function main() {
     "cPublicContactEmail",
     "cProfessionalProfileURL",
     "cOccupation",
+    "cPrivacyFlags",
   ];
 
   console.log("Updating existing contacts.");
@@ -108,7 +111,7 @@ async function main() {
     for (const key of keys) {
       const savedValue = existingContact[key];
       const newValue = updatedContact[key];
-      if (savedValue !== newValue) {
+      if (JSON.stringify(savedValue) !== JSON.stringify(newValue)) {
         dirtyKeys.push(key);
       }
     }
