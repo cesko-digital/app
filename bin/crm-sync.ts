@@ -6,7 +6,7 @@ import {
   updateContact,
   type Contact,
   type ContactCreate,
-} from "~/src/espo";
+} from "~/src/espocrm/espo";
 
 const crmApiKey = process.env.CRM_API_KEY ?? "<not set>";
 

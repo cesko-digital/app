@@ -12,77 +12,14 @@ import {
 
 import { optionalArray, withDefault } from "~/src/decoding";
 
-//
-// Http Client
-//
-
-const siteUrl = "https://crm.cesko.digital";
-const buildUrl = (path: string) => `${siteUrl}/api/v1/${path}`;
-const unwrapJson = (response: Response) => response.json();
-
-const throwErrors = (response: Response) => {
-  if (response.ok) {
-    return response;
-  } else {
-    throw new Error(
-      `Fetch failed, response code ${response.status} (${response.statusText})`,
-    );
-  }
-};
-
-type CommonArgs<T> = {
-  apiKey: string;
-  path: string;
-  decodeResponse: DecoderFunction<T>;
-};
-
-const getJson = <T>({ apiKey, path, decodeResponse }: CommonArgs<T>) =>
-  fetch(buildUrl(path), {
-    headers: { "X-Api-Key": apiKey },
-  })
-    .then(throwErrors)
-    .then(unwrapJson)
-    .then(decodeResponse);
-
-const postJson = <T>({
-  apiKey,
-  path,
-  decodeResponse,
-  body,
-}: CommonArgs<T> & { body: unknown }) =>
-  fetch(buildUrl(path), {
-    method: "POST",
-    body: JSON.stringify(body, null, 2),
-    headers: {
-      "X-Api-Key": apiKey,
-      "Content-type": "application/json",
-    },
-  })
-    .then(throwErrors)
-    .then(unwrapJson)
-    .then(decodeResponse);
-
-const putJson = <T>({
-  apiKey,
-  path,
-  decodeResponse,
-  body,
-}: CommonArgs<T> & { body: unknown }) =>
-  fetch(buildUrl(path), {
-    method: "PUT",
-    body: JSON.stringify(body, null, 2),
-    headers: {
-      "X-Api-Key": apiKey,
-      "Content-type": "application/json",
-    },
-  })
-    .then(throwErrors)
-    .then(unwrapJson)
-    .then(decodeResponse);
+import { getJson, postJson, putJson } from "./http";
+import { mergeArrays, mergeDelimitedArrays, type MergeRules } from "./merge";
 
 //
 // Helpers
 //
+
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 
 const decodeResponseWrapper = <T>(decodeResponse: DecoderFunction<T>) =>
   record({
@@ -104,8 +41,6 @@ const nullable =
 // Contacts
 //
 
-type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
-
 export type Contact = decodeType<typeof decodeContact>;
 export type ContactCreate = Optional<
   Omit<Contact, "id">,
@@ -113,8 +48,12 @@ export type ContactCreate = Optional<
 >;
 
 const decodeContact = record({
+  // Built-ins
   id: string,
+  createdAt: date,
   name: string,
+  firstName: nullable(string),
+  lastName: nullable(string),
   emailAddress: string,
   emailAddressData: optionalArray(
     record({
@@ -125,12 +64,11 @@ const decodeContact = record({
       invalid: boolean,
     }),
   ),
-  createdAt: date,
-  firstName: nullable(string),
-  lastName: nullable(string),
+  // Custom Fields
   cLegacyAirtableID: nullable(string),
   cSlackUserID: nullable(string),
   cDataSource: nullable(string),
+  // User Profile
   cBio: nullable(string),
   cTags: withDefault(string, ""),
   cSeniority: nullable(union("junior", "medior", "senior")),
@@ -195,3 +133,61 @@ export const updateContact = async (
     path: `Contact/${contact.id}`,
     apiKey,
   });
+
+function mergeEmails(
+  a: Partial<Contact>,
+  b: Partial<Contact>,
+  merged: Partial<Contact>,
+) {
+  if (!a.emailAddress || !b.emailAddress) {
+    merged.emailAddress = a.emailAddress ?? b.emailAddress;
+    return;
+  }
+
+  type AddressData = NonNullable<typeof a.emailAddressData>[number];
+  const toVector = (email: string, isPrimary: boolean) =>
+    ({
+      emailAddress: email,
+      lower: email.toLocaleLowerCase(),
+      primary: isPrimary,
+      invalid: false,
+      optOut: false,
+    }) as AddressData;
+
+  const vectorA = a.emailAddressData ?? [toVector(a.emailAddress, true)];
+  const vectorB = b.emailAddressData ?? [toVector(b.emailAddress, false)];
+  const addressData = [...vectorA, ...vectorB];
+
+  addressData.forEach((a) => {
+    a.primary = a.emailAddress === vectorA[0].emailAddress;
+  });
+
+  merged.emailAddress = vectorA[0].emailAddress;
+  merged.emailAddressData = addressData;
+}
+
+export const contactMergeRules: MergeRules<Contact> = {
+  immutableProps: ["id", "cLegacyAirtableID"],
+  updatableProps: [
+    "cBio",
+    "cDataSource",
+    "cOrganizationName",
+    "cProfessionalProfileURL",
+    "cProfilePictureURL",
+    "cPublicContactEmail",
+    "cSeniority",
+    "cSlackUserID",
+    "firstName",
+    "lastName",
+    "name",
+  ],
+  mergableProps: {
+    cPrivacyFlags: mergeArrays,
+    cTags: mergeDelimitedArrays(";"),
+    cOccupation: mergeDelimitedArrays(";"),
+    cAvailableInDistricts: mergeDelimitedArrays(","),
+  },
+  magicProps: {
+    emailAddress: mergeEmails,
+  },
+};
