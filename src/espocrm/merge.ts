@@ -1,5 +1,6 @@
-import { type EmailAddressData } from "~/src/espocrm/espo";
 import { unique } from "~/src/utils";
+
+import { type EmailAddressData } from "./contact";
 
 type MergeFunction<Entity, K extends keyof Entity> = (
   a: NonNullable<Entity[K]>,
@@ -17,12 +18,12 @@ export type MergeRules<Entity> = {
   };
 };
 
-export function mergeEntities<Entity>(
-  a: Partial<Entity>,
-  b: Partial<Entity>,
-  rules: MergeRules<Entity>,
-): Partial<Entity> {
-  const merged: Partial<Entity> = {};
+export function mergeEntities<E>(
+  a: Partial<E>,
+  b: Partial<E>,
+  rules: MergeRules<E>,
+): Partial<E> {
+  const merged: Partial<E> = {};
 
   // Immutable props
   for (const key of rules.immutableProps) {

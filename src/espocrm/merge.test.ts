@@ -1,4 +1,4 @@
-import { contactMergeRules, type Contact } from "./espo";
+import { mergeRules, type Contact } from "./contact";
 import {
   mergeArrays,
   mergeArraysWithCustomEquality,
@@ -12,7 +12,7 @@ import {
 //
 
 test("Empty merge", () => {
-  expect(mergeEntities<Contact>({}, {}, contactMergeRules)).toEqual({});
+  expect(mergeEntities({}, {}, mergeRules)).toEqual({});
 });
 
 //
@@ -28,7 +28,7 @@ test("Throw on immutable prop conflict", () => {
       {
         id: "yyy",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toThrow();
 });
@@ -42,7 +42,7 @@ test("Keep immutable prop if equal", () => {
       {
         id: "xxx",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     id: "xxx",
@@ -56,7 +56,7 @@ test("Update immutable prop if not present", () => {
       {
         id: "xxx",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     id: "xxx",
@@ -76,7 +76,7 @@ test("Merge unrelated updatable props", () => {
       {
         name: "Miles Davis",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     id: "xxx",
@@ -91,7 +91,7 @@ test("Pick defined value for updatable prop", () => {
       {
         name: "Miles Davis",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     name: "Miles Davis",
@@ -105,7 +105,7 @@ test("Do not erase existing value by undefined", () => {
         name: "Miles Davis",
       },
       {},
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     name: "Miles Davis",
@@ -121,7 +121,7 @@ test("Pick right-hand side if both are defined", () => {
       {
         name: "Miles Davis sr.",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     name: "Miles Davis sr.",
@@ -141,7 +141,7 @@ test("Mergable props, both undefined", () => {
       {
         cOccupation: undefined,
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({});
 });
@@ -153,7 +153,7 @@ test("Mergable props, rhs defined", () => {
       {
         cOccupation: "foo",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     cOccupation: "foo",
@@ -169,7 +169,7 @@ test("Mergable props, both defined", () => {
       {
         cOccupation: "foo",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     cOccupation: "bar; baz; foo",
@@ -185,7 +185,7 @@ test("Mergable props, both defined, comma-separated", () => {
       {
         cAvailableInDistricts: "Paris",
       },
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     cAvailableInDistricts: "Brno, Praha, Paris",
@@ -201,7 +201,7 @@ test("Ignore scalar email when merging", () => {
     mergeEntities<Contact>(
       { emailAddress: "miles@davis.name" },
       {},
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({});
 });
@@ -211,7 +211,7 @@ test("Merge email address data", () => {
     mergeEntities<Contact>(
       { emailAddressData: [{ emailAddress: "miles@davis.name" }] },
       {},
-      contactMergeRules,
+      mergeRules,
     ),
   ).toEqual({
     emailAddressData: [{ emailAddress: "miles@davis.name" }],
