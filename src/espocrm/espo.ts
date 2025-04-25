@@ -13,7 +13,12 @@ import {
 import { optionalArray, withDefault } from "~/src/decoding";
 
 import { getJson, postJson, putJson } from "./http";
-import { mergeArrays, mergeDelimitedArrays, type MergeRules } from "./merge";
+import {
+  mergeArrays,
+  mergeDelimitedArrays,
+  mergeEmailAdddressData,
+  type MergeRules,
+} from "./merge";
 
 //
 // Helpers
@@ -27,7 +32,7 @@ const decodeResponseWrapper = <T>(decodeResponse: DecoderFunction<T>) =>
     list: array(decodeResponse),
   });
 
-const nullable =
+const undefinedIfNull =
   <T>(decoder: DecoderFunction<T>) =>
   (value: unknown) => {
     if (typeof value === "undefined" || value === null) {
@@ -47,40 +52,42 @@ export type ContactCreate = Optional<
   "createdAt" | "emailAddressData" | "cPrivacyFlags"
 >;
 
+export type EmailAddressData = decodeType<typeof decodeEmailAddressData>;
+
+const decodeEmailAddressData = record({
+  emailAddress: string,
+  lower: undefinedIfNull(string),
+  primary: undefinedIfNull(boolean),
+  optOut: undefinedIfNull(boolean),
+  invalid: undefinedIfNull(boolean),
+});
+
 const decodeContact = record({
   // Built-ins
   id: string,
   createdAt: date,
   name: string,
-  firstName: nullable(string),
-  lastName: nullable(string),
+  firstName: undefinedIfNull(string),
+  lastName: undefinedIfNull(string),
   emailAddress: string,
-  emailAddressData: optionalArray(
-    record({
-      emailAddress: string,
-      lower: string,
-      primary: boolean,
-      optOut: boolean,
-      invalid: boolean,
-    }),
-  ),
+  emailAddressData: optionalArray(decodeEmailAddressData),
   // Custom Fields
-  cLegacyAirtableID: nullable(string),
-  cSlackUserID: nullable(string),
-  cDataSource: nullable(string),
+  cLegacyAirtableID: undefinedIfNull(string),
+  cSlackUserID: undefinedIfNull(string),
+  cDataSource: undefinedIfNull(string),
   // User Profile
-  cBio: nullable(string),
+  cBio: undefinedIfNull(string),
   cTags: withDefault(string, ""),
-  cSeniority: nullable(union("junior", "medior", "senior")),
-  cOrganizationName: nullable(string),
-  cPublicContactEmail: nullable(string),
-  cProfessionalProfileURL: nullable(string),
-  cOccupation: nullable(string),
+  cSeniority: undefinedIfNull(union("junior", "medior", "senior")),
+  cOrganizationName: undefinedIfNull(string),
+  cPublicContactEmail: undefinedIfNull(string),
+  cProfessionalProfileURL: undefinedIfNull(string),
+  cOccupation: undefinedIfNull(string),
   cPrivacyFlags: optionalArray(
     union("enablePublicProfile", "hidePublicTeamMembership"),
   ),
-  cProfilePictureURL: nullable(string),
-  cAvailableInDistricts: nullable(string),
+  cProfilePictureURL: undefinedIfNull(string),
+  cAvailableInDistricts: undefinedIfNull(string),
 });
 
 const getSinglePageContacts = async (apiKey: string, offset: number) =>
@@ -134,38 +141,6 @@ export const updateContact = async (
     apiKey,
   });
 
-function mergeEmails(
-  a: Partial<Contact>,
-  b: Partial<Contact>,
-  merged: Partial<Contact>,
-) {
-  if (!a.emailAddress || !b.emailAddress) {
-    merged.emailAddress = a.emailAddress ?? b.emailAddress;
-    return;
-  }
-
-  type AddressData = NonNullable<typeof a.emailAddressData>[number];
-  const toVector = (email: string, isPrimary: boolean) =>
-    ({
-      emailAddress: email,
-      lower: email.toLocaleLowerCase(),
-      primary: isPrimary,
-      invalid: false,
-      optOut: false,
-    }) as AddressData;
-
-  const vectorA = a.emailAddressData ?? [toVector(a.emailAddress, true)];
-  const vectorB = b.emailAddressData ?? [toVector(b.emailAddress, false)];
-  const addressData = [...vectorA, ...vectorB];
-
-  addressData.forEach((a) => {
-    a.primary = a.emailAddress === vectorA[0].emailAddress;
-  });
-
-  merged.emailAddress = vectorA[0].emailAddress;
-  merged.emailAddressData = addressData;
-}
-
 export const contactMergeRules: MergeRules<Contact> = {
   immutableProps: ["id", "cLegacyAirtableID"],
   updatableProps: [
@@ -186,8 +161,6 @@ export const contactMergeRules: MergeRules<Contact> = {
     cTags: mergeDelimitedArrays(";"),
     cOccupation: mergeDelimitedArrays(";"),
     cAvailableInDistricts: mergeDelimitedArrays(","),
-  },
-  magicProps: {
-    emailAddress: mergeEmails,
+    emailAddressData: mergeEmailAdddressData,
   },
 };

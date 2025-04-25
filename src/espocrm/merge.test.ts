@@ -1,5 +1,11 @@
 import { contactMergeRules, type Contact } from "./espo";
-import { mergeEntities } from "./merge";
+import {
+  mergeArrays,
+  mergeArraysWithCustomEquality,
+  mergeDelimitedArrays,
+  mergeEmailAdddressData,
+  mergeEntities,
+} from "./merge";
 
 //
 // Trivial Cases
@@ -187,92 +193,72 @@ test("Mergable props, both defined, comma-separated", () => {
 });
 
 //
-// Magic Props
+// Email
 //
 
-test("Merge e-mails with one missing", () => {
+test("Ignore scalar email when merging", () => {
   expect(
     mergeEntities<Contact>(
+      { emailAddress: "miles@davis.name" },
       {},
-      {
-        emailAddress: "miles@davis.name",
-      },
       contactMergeRules,
     ),
-  ).toEqual<Partial<Contact>>({
-    emailAddress: "miles@davis.name",
+  ).toEqual({});
+});
+
+test("Merge email address data", () => {
+  expect(
+    mergeEntities<Contact>(
+      { emailAddressData: [{ emailAddress: "miles@davis.name" }] },
+      {},
+      contactMergeRules,
+    ),
+  ).toEqual({
+    emailAddressData: [{ emailAddress: "miles@davis.name" }],
   });
 });
 
-test("Merge two different e-mails", () => {
-  expect(
-    mergeEntities<Contact>(
-      {
-        emailAddress: "miles@davis.name",
-      },
-      {
-        emailAddress: "milesdavis@gmail.com",
-      },
-      contactMergeRules,
-    ),
-  ).toEqual<Partial<Contact>>({
-    emailAddress: "miles@davis.name",
-    emailAddressData: [
-      {
-        emailAddress: "miles@davis.name",
-        lower: "miles@davis.name",
-        primary: true,
-        invalid: false,
-        optOut: false,
-      },
-      {
-        emailAddress: "milesdavis@gmail.com",
-        lower: "milesdavis@gmail.com",
-        primary: false,
-        invalid: false,
-        optOut: false,
-      },
-    ],
-  });
+//
+// Merge Utils
+//
+
+test("Merge arrays", () => {
+  expect(mergeArrays([], [])).toEqual([]);
+  expect(mergeArrays([1], [2])).toEqual([1, 2]);
+  expect(mergeArrays([1, 2], [2])).toEqual([1, 2]);
 });
 
-test("Merge single vs. multiple e-mails", () => {
+test("Merge separator-delimited arrays", () => {
+  expect(mergeDelimitedArrays(";")("", "")).toBe("");
+  expect(mergeDelimitedArrays(";")("a;b", "c;d")).toBe("a; b; c; d");
+  expect(mergeDelimitedArrays(",")("a,b", "c,d")).toBe("a, b, c, d");
+  expect(mergeDelimitedArrays(",")("a,b", "a,c")).toBe("a, b, c");
+});
+
+test("Merge arrays with custom equality", () => {
+  type Item = { name: string };
+  const merge = mergeArraysWithCustomEquality<Item>(
+    (a, b) => a.name === b.name,
+  );
+  expect(merge([], [])).toEqual([]);
+  expect(merge([{ name: "foo" }], [])).toEqual([{ name: "foo" }]);
+  expect(merge([{ name: "foo" }], [{ name: "foo" }, { name: "bar" }])).toEqual([
+    { name: "foo" },
+    { name: "bar" },
+  ]);
+});
+
+test("Merge email address data", () => {
   expect(
-    mergeEntities<Contact>(
-      {
-        emailAddress: "miles@davis.name",
-      },
-      {
-        emailAddress: "milesdavis@gmail.com",
-        emailAddressData: [
-          {
-            emailAddress: "milesdavis@gmail.com",
-            lower: "milesdavis@gmail.com",
-            primary: true,
-            invalid: false,
-            optOut: false,
-          },
-        ],
-      },
-      contactMergeRules,
+    mergeEmailAdddressData(
+      [{ emailAddress: "miles@davis.name", primary: true }],
+      [
+        { emailAddress: "Miles@davis.name" },
+        { emailAddress: "milesdavis@gmail.com", primary: true },
+      ],
     ),
-  ).toEqual<Partial<Contact>>({
-    emailAddress: "miles@davis.name",
-    emailAddressData: [
-      {
-        emailAddress: "miles@davis.name",
-        lower: "miles@davis.name",
-        primary: true,
-        invalid: false,
-        optOut: false,
-      },
-      {
-        emailAddress: "milesdavis@gmail.com",
-        lower: "milesdavis@gmail.com",
-        primary: false,
-        invalid: false,
-        optOut: false,
-      },
-    ],
-  });
+  ).toEqual([
+    { emailAddress: "miles@davis.name", primary: true },
+    { emailAddress: "milesdavis@gmail.com", primary: false },
+  ]);
 });
