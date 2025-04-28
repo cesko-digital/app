@@ -1,5 +1,7 @@
 import { date, record, string, type decodeType } from "typescript-json-decoder";
 
+import { undefinedIfNull } from "~/src/decoding";
+
 import { type Entity } from "./espo";
 
 export type Account = decodeType<typeof decodeAccount>;
@@ -8,6 +10,9 @@ const decodeAccount = record({
   id: string,
   createdAt: date,
   name: string,
+  // Custom props
+  cIco: undefinedIfNull(string),
+  cDataSource: undefinedIfNull(string),
 });
 
 export const entity: Entity<Account> = {
@@ -15,9 +20,9 @@ export const entity: Entity<Account> = {
   pluralName: "accounts",
   apiPath: "Account",
   mergeRules: {
-    immutableProps: ["id"],
+    immutableProps: ["id", "cIco"],
     updatableProps: [],
-    readOnlyAfterCreatePops: [],
+    readOnlyAfterCreatePops: ["name"],
     mergableProps: {},
   },
   decoder: decodeAccount,

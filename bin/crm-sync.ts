@@ -1,5 +1,10 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
+import {
+  getAllOrganizations,
+  type Organization,
+} from "~/src/data/organization";
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
+import { type Account } from "~/src/espocrm/account";
 import { type Contact } from "~/src/espocrm/contact";
 import { Entities } from "~/src/espocrm/espo";
 import { importObjects, normalize } from "~/src/espocrm/import";
@@ -30,7 +35,14 @@ const userProfileToContact = (profile: UserProfile): Partial<Contact> => ({
   cAvailableInDistricts: profile.availableInDistricts,
 });
 
-async function main() {
+const organizationToAccount = (org: Organization): Partial<Account> => ({
+  name: normalize(org.name),
+  cIco: org.governmentId,
+  cDataSource: "Airtable sync",
+});
+
+async function importUserProfiles() {
+  console.info(`*** Importing user profiles`);
   console.debug(`Downloading confirmed user profiles from Airtable.`);
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   console.debug(`Downloaded ${userProfiles.length} user profiles.`);
@@ -43,6 +55,23 @@ async function main() {
   });
 
   console.debug("Finished!");
+}
+
+async function importOrganizations() {
+  console.info(`*** Importing organizations`);
+  const organizations = await getAllOrganizations();
+  console.debug(`Downloaded ${organizations.length} organizations.`);
+  await importObjects({
+    entity: Entities.Account,
+    newValues: organizations.map(organizationToAccount),
+    isEqual: (a, b) => a.name === b.name || a.cIco === b.cIco,
+    apiKey: crmApiKey,
+  });
+}
+
+async function main() {
+  await importOrganizations();
+  await importUserProfiles();
 }
 
 main().catch((error) => {

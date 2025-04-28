@@ -214,3 +214,23 @@ export function assertIsOurUser(
 ): asserts user is OurUser {
   /* If there is a user it’s always OurUser */
 }
+
+/** IČO validator */
+export function isValidIČO(val: string): boolean {
+  if (val.length !== 8) {
+    return false;
+  }
+
+  const digits = val.split("").map((c) => parseInt(c));
+  const sum =
+    digits[0] * 8 +
+    digits[1] * 7 +
+    digits[2] * 6 +
+    digits[3] * 5 +
+    digits[4] * 4 +
+    digits[5] * 3 +
+    digits[6] * 2;
+  const control = (11 - (sum % 11)) % 10;
+
+  return control === digits[7];
+}

@@ -4,11 +4,10 @@ import {
   record,
   string,
   union,
-  type DecoderFunction,
   type decodeType,
 } from "typescript-json-decoder";
 
-import { optionalArray, withDefault } from "~/src/decoding";
+import { optionalArray, undefinedIfNull, withDefault } from "~/src/decoding";
 
 import { type Entity } from "./espo";
 import {
@@ -17,16 +16,6 @@ import {
   mergeEmailAdddressData,
   type MergeRules,
 } from "./merge";
-
-const undefinedIfNull =
-  <T>(decoder: DecoderFunction<T>) =>
-  (value: unknown) => {
-    if (typeof value === "undefined" || value === null) {
-      return undefined;
-    } else {
-      return decoder(value);
-    }
-  };
 
 export type Contact = decodeType<typeof decodeContact>;
 export type EmailAddressData = decodeType<typeof decodeEmailAddressData>;
@@ -80,7 +69,7 @@ export const mergeRules: MergeRules<Contact> = {
     "firstName",
     "lastName",
   ],
-  readOnlyAfterCreatePops: ["cDataSource", "createdAt"],
+  readOnlyAfterCreatePops: ["createdAt"],
   mergableProps: {
     cPrivacyFlags: mergeArrays,
     cTags: mergeDelimitedArrays(";"),

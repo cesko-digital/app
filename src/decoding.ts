@@ -10,7 +10,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { type MarkdownString } from "~/src/utils";
+import { isValidIČO, type MarkdownString } from "~/src/utils";
 
 /** Decode a string, returning it as a `MarkdownString` */
 export const markdown = (value: unknown): MarkdownString => ({
@@ -176,3 +176,39 @@ export function decodeValidItemsFromArray<T>(
     return values;
   };
 }
+
+/**
+ * Decode `null` as `undefined`
+ *
+ * Good for converting values from APIs that use `null` where we would prefer `undefined`.
+ */
+export const undefinedIfNull =
+  <T>(decoder: DecoderFunction<T>) =>
+  (value: unknown) => {
+    if (typeof value === "undefined" || value === null) {
+      return undefined;
+    } else {
+      return decoder(value);
+    }
+  };
+
+/**
+ * Decode IČO
+ *
+ * Strict IČO decoder, will ignore spaces but will throw if the CRC check fails.
+ */
+export const decodeIČO = (value: unknown) => {
+  const raw = string(value);
+  const normalized = raw.replaceAll(/\s+/g, "");
+  if (normalized.length !== 8) {
+    throw new Error(
+      `IČO has invalid length, expected 8, got ${normalized.length} in “${normalized}”.`,
+    );
+  } else {
+    if (!isValidIČO(normalized)) {
+      throw new Error(`IČO “${normalized}” is invalid, CRC check failed.`);
+    } else {
+      return normalized;
+    }
+  }
+};

@@ -1,5 +1,6 @@
 import {
   hashDigest,
+  isValidIČO,
   looksLikeEmailAdress,
   normalizeEmailAddress,
   strip,
@@ -39,4 +40,9 @@ test("Whitespace strip", () => {
   více i méně kvalifikované.`;
   const singleline = `Tady najdeš seznam konkrétních rolí nebo úkolů, se kterými potřebujeme pomoc v našich projektech. Bývají hodně různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické, více i méně kvalifikované.`;
   expect(stripped).toBe(singleline);
+});
+
+test("IČO check", () => {
+  expect(isValidIČO("08178607")).toBe(true);
+  expect(isValidIČO("08178606")).toBe(false);
 });

@@ -18,6 +18,11 @@ export const appBase = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
 }).base("appkn1DkvgVI5jpME");
 
+/** The CRM base */
+export const crmBase = new Airtable({
+  apiKey: process.env.AIRTABLE_API_KEY ?? "<not set>",
+}).base("app9PMOVA5mE9hm6Z");
+
 //
 // API Helpers
 //
