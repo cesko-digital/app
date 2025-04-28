@@ -2,23 +2,17 @@
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import { type Contact } from "~/src/espocrm/contact";
 import { Entities } from "~/src/espocrm/espo";
-import { importObjects } from "~/src/espocrm/import";
+import { importObjects, normalize } from "~/src/espocrm/import";
 
 const crmApiKey = process.env.CRM_API_KEY ?? "<not set>";
 
-const map = <T, U>(value: T | undefined, f: (val: T) => U) =>
-  value ? f(value) : undefined;
-
-const stripWhitespace = (s: string) =>
-  s.replaceAll(/^\s+/g, "").replaceAll(/\s+$/g, "");
-
 const userProfileToContact = (profile: UserProfile): Partial<Contact> => ({
   name: profile.name,
-  firstName: map(profile.firstName, stripWhitespace),
-  lastName: map(profile.lastName, stripWhitespace),
+  firstName: normalize(profile.firstName),
+  lastName: normalize(profile.lastName),
   emailAddressData: [
     {
-      emailAddress: profile.email,
+      emailAddress: normalize(profile.email),
     },
   ],
   cLegacyAirtableID: profile.id,
@@ -27,8 +21,8 @@ const userProfileToContact = (profile: UserProfile): Partial<Contact> => ({
   cBio: profile.bio,
   cTags: profile.tags,
   cSeniority: profile.maxSeniority,
-  cOrganizationName: map(profile.organizationName, stripWhitespace),
-  cPublicContactEmail: profile.contactEmail,
+  cOrganizationName: normalize(profile.organizationName),
+  cPublicContactEmail: normalize(profile.contactEmail),
   cProfessionalProfileURL: profile.profileUrl,
   cOccupation: profile.occupation,
   cPrivacyFlags: profile.privacyFlags,

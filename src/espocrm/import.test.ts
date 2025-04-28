@@ -1,22 +1,25 @@
 import { type Contact } from "./contact";
-import { diff } from "./import";
+import { diff, map, stripWhitespaceAround } from "./import";
 
-test("Null diff", () => {
+test("Diff", () => {
   expect(diff({}, {})).toEqual({});
-});
-
-test("Add prop", () => {
   expect(diff<Contact>({}, { name: "Miles" })).toEqual({ name: "Miles" });
-});
-
-test("Change prop", () => {
   expect(diff<Contact>({ name: "Miles" }, { name: "Dizzy" })).toEqual({
     name: "Dizzy",
   });
-});
-
-test("Delete prop", () => {
   expect(diff<Contact>({ name: "Miles" }, {})).toEqual({
     name: undefined,
   });
+});
+
+test("Map", () => {
+  expect(
+    map<string, string>(undefined, (s) => s.toUpperCase()),
+  ).toBeUndefined();
+  expect(map<string, string>("foo", (s) => s.toUpperCase())).toEqual("FOO");
+});
+
+test("Strip whitespace", () => {
+  expect(stripWhitespaceAround("  foo ")).toEqual("foo");
+  expect(stripWhitespaceAround("  foo bar")).toEqual("foo bar");
 });
