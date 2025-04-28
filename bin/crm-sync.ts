@@ -40,7 +40,6 @@ async function main() {
     newValues: userProfiles.map(userProfileToContact),
     isEqual: (a, b) => a.cLegacyAirtableID === b.cLegacyAirtableID,
     apiKey: crmApiKey,
-    dryRun: true,
   });
 
   console.debug("Finished!");
