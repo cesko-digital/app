@@ -12,6 +12,8 @@ export type MergeRules<Entity> = {
   immutableProps: Array<keyof Entity>;
   /** If there is just one defined value, we take that. Otherwise right-hand side wins. */
   updatableProps: Array<keyof Entity>;
+  /** If there already is a value, keep that. Otherwise set. */
+  readOnlyAfterCreatePops: Array<keyof Entity>;
   /** If there is just one defined value, we take that. Otherwise merge with given function. */
   mergableProps: {
     [K in keyof Entity]?: MergeFunction<Entity, K>;
@@ -58,6 +60,15 @@ export function mergeEntities<E>(
       merged[key] = valB ?? valA;
     } else {
       // nothing
+    }
+  }
+
+  // Read-only after create props
+  for (const key of rules.readOnlyAfterCreatePops) {
+    const valA = a[key];
+    const valB = b[key];
+    if (valA || valB) {
+      merged[key] = valA ?? valB;
     }
   }
 

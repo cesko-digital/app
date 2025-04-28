@@ -10,7 +10,7 @@ import {
 
 import { optionalArray, withDefault } from "~/src/decoding";
 
-import { type Blueprint } from "./espo";
+import { type Entity } from "./espo";
 import {
   mergeArrays,
   mergeDelimitedArrays,
@@ -71,7 +71,6 @@ export const mergeRules: MergeRules<Contact> = {
   immutableProps: ["id", "cLegacyAirtableID"],
   updatableProps: [
     "cBio",
-    "cDataSource",
     "cOrganizationName",
     "cProfessionalProfileURL",
     "cProfilePictureURL",
@@ -80,8 +79,8 @@ export const mergeRules: MergeRules<Contact> = {
     "cSlackUserID",
     "firstName",
     "lastName",
-    "name",
   ],
+  readOnlyAfterCreatePops: ["cDataSource", "createdAt"],
   mergableProps: {
     cPrivacyFlags: mergeArrays,
     cTags: mergeDelimitedArrays(";"),
@@ -91,7 +90,7 @@ export const mergeRules: MergeRules<Contact> = {
   },
 };
 
-export const blueprint: Blueprint<Contact> = {
+export const entity: Entity<Contact> = {
   singularName: "contact",
   pluralName: "contacts",
   apiPath: "Contact",

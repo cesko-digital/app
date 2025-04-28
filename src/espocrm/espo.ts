@@ -5,24 +5,32 @@ import {
   type DecoderFunction,
 } from "typescript-json-decoder";
 
-import { blueprint } from "~/src/espocrm/contact";
-
+import { entity as accountEntity } from "./account";
+import { entity as contactEntity } from "./contact";
 import { getJson, postJson, putJson } from "./http";
 import { type MergeRules } from "./merge";
 
+/** All supported CRM entities */
 export const Entities = {
-  Contact: blueprint,
+  Contact: contactEntity,
+  Account: accountEntity,
 };
 
+/** Base entity type that all entities extend */
 export type BaseEntity = {
   id: string;
 };
 
-export type Blueprint<E extends BaseEntity> = {
+export type Entity<E extends BaseEntity> = {
+  /** Singular entity name, ie. `contact` */
   singularName: string;
+  /** Plural entity name, ie. `contacts` */
   pluralName: string;
+  /** API path of the relevant REST resource, ie. `Contact` */
   apiPath: string;
+  /** Rules to merge two objects of this entity */
   mergeRules: MergeRules<E>;
+  /** Function to decode JSON API response */
   decoder: (value: unknown) => E;
 };
 
@@ -30,38 +38,38 @@ export type Blueprint<E extends BaseEntity> = {
 // Generic API Code
 //
 
-export const getEntityById = async <E extends BaseEntity>(
-  blueprint: Blueprint<E>,
+export const getObjectById = async <E extends BaseEntity>(
+  entity: Entity<E>,
   apiKey: string,
   id: string,
 ) =>
   getJson({
-    decodeResponse: blueprint.decoder,
-    path: `${blueprint.apiPath}/${id}`,
+    decodeResponse: entity.decoder,
+    path: `${entity.apiPath}/${id}`,
     apiKey,
   });
 
-export const createEntity = async <E extends BaseEntity>(
-  Blueprint: Blueprint<E>,
+export const createObject = async <E extends BaseEntity>(
+  entity: Entity<E>,
   apiKey: string,
-  data: Omit<E, "id">,
+  data: Partial<E>,
 ) =>
   postJson({
-    decodeResponse: Blueprint.decoder,
+    decodeResponse: entity.decoder,
     body: data,
-    path: Blueprint.apiPath,
+    path: entity.apiPath,
     apiKey,
   });
 
-export const updateEntity = async <E extends BaseEntity>(
-  blueprint: Blueprint<E>,
+export const updateObject = async <E extends BaseEntity>(
+  entity: Entity<E>,
   apiKey: string,
   data: Pick<E, "id"> & Partial<E>,
 ) =>
   putJson({
-    decodeResponse: blueprint.decoder,
+    decodeResponse: entity.decoder,
     body: data,
-    path: `${blueprint.apiPath}/${data.id}`,
+    path: `${entity.apiPath}/${data.id}`,
     apiKey,
   });
 
@@ -69,34 +77,34 @@ export const updateEntity = async <E extends BaseEntity>(
 // Batch API Requests
 //
 
-const decodeResponseWrapper = <T>(decodeResponse: DecoderFunction<T>) =>
+const decodeWrapper = <T>(decodeResponse: DecoderFunction<T>) =>
   record({
     total: number,
     list: array(decodeResponse),
   });
 
-const getSinglePageEntityList = async <E extends BaseEntity>(
-  blueprint: Blueprint<E>,
+const getOnePageOfObjects = async <E extends BaseEntity>(
+  entity: Entity<E>,
   apiKey: string,
   offset: number,
 ) =>
   getJson({
-    decodeResponse: decodeResponseWrapper(blueprint.decoder),
-    path: `${blueprint.apiPath}?offset=${offset}`,
+    decodeResponse: decodeWrapper(entity.decoder),
+    path: `${entity.apiPath}?offset=${offset}`,
     apiKey,
   });
 
-export const getAllEntities = async <E extends BaseEntity>(
-  blueprint: Blueprint<E>,
+export const getAllObjects = async <E extends BaseEntity>(
+  entity: Entity<E>,
   apiKey: string,
 ) => {
   let items: E[] = [];
   let offset = 0;
   while (1) {
-    const batch = await getSinglePageEntityList(blueprint, apiKey, offset);
+    const batch = await getOnePageOfObjects(entity, apiKey, offset);
     if (batch.list.length > 0) {
       console.debug(
-        `Downloaded ${batch.list.length} ${blueprint.pluralName} from offset ${offset}.`,
+        `Downloaded ${batch.list.length} ${entity.pluralName} from offset ${offset}.`,
       );
       items = [...items, ...(batch.list as E[])];
       offset += batch.list.length;

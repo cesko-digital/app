@@ -74,13 +74,13 @@ test("Merge unrelated updatable props", () => {
         id: "xxx",
       },
       {
-        name: "Miles Davis",
+        firstName: "Miles",
       },
       mergeRules,
     ),
   ).toEqual({
     id: "xxx",
-    name: "Miles Davis",
+    firstName: "Miles",
   });
 });
 
@@ -89,12 +89,12 @@ test("Pick defined value for updatable prop", () => {
     mergeEntities<Contact>(
       {},
       {
-        name: "Miles Davis",
+        firstName: "Miles",
       },
       mergeRules,
     ),
   ).toEqual({
-    name: "Miles Davis",
+    firstName: "Miles",
   });
 });
 
@@ -102,13 +102,13 @@ test("Do not erase existing value by undefined", () => {
   expect(
     mergeEntities<Contact>(
       {
-        name: "Miles Davis",
+        firstName: "Miles",
       },
       {},
       mergeRules,
     ),
   ).toEqual({
-    name: "Miles Davis",
+    firstName: "Miles",
   });
 });
 
@@ -116,15 +116,39 @@ test("Pick right-hand side if both are defined", () => {
   expect(
     mergeEntities<Contact>(
       {
-        name: "Miles Davis",
+        firstName: "Miles",
       },
       {
-        name: "Miles Davis sr.",
+        firstName: "Dizzy",
       },
       mergeRules,
     ),
   ).toEqual({
-    name: "Miles Davis sr.",
+    firstName: "Dizzy",
+  });
+});
+
+//
+// Read-only after create
+//
+
+test("Read-only after create: set new value for undefined prop", () => {
+  expect(
+    mergeEntities<Contact>({}, { cDataSource: "initial import" }, mergeRules),
+  ).toEqual<Partial<Contact>>({
+    cDataSource: "initial import",
+  });
+});
+
+test("Read-only after create: ignore new value if already present", () => {
+  expect(
+    mergeEntities<Contact>(
+      { cDataSource: "initial import" },
+      { cDataSource: "new import" },
+      mergeRules,
+    ),
+  ).toEqual<Partial<Contact>>({
+    cDataSource: "initial import",
   });
 });
 
