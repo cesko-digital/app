@@ -56,6 +56,16 @@ const decodeContact = record({
   cAvailableInDistricts: undefinedIfNull(string),
 });
 
+/**
+ * Merge rules for contacts
+ *
+ * We intentionally skip all name-related fields here to keep
+ * any name customizations and cleanups in CRM from being overwritten
+ * by initial Airtable data.
+ *
+ * We also  intentionally skip the `cDataSource` prop because it
+ * should only be set when records are created, not updated.
+ */
 export const mergeRules: MergeRules<Contact> = {
   immutableProps: ["id", "cLegacyAirtableID"],
   updatableProps: [
@@ -66,8 +76,6 @@ export const mergeRules: MergeRules<Contact> = {
     "cPublicContactEmail",
     "cSeniority",
     "cSlackUserID",
-    "firstName",
-    "lastName",
   ],
   readOnlyAfterCreatePops: ["createdAt"],
   mergableProps: {
