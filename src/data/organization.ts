@@ -16,7 +16,7 @@ import { decodeIČO, decodeValidItemsFromArray } from "~/src/decoding";
 export type Organization = decodeType<typeof decodeOrganization>;
 export const decodeOrganization = record({
   name: field("Název a pobočka", string),
-  governmentId: field("IČO", decodeIČO),
+  governmentId: field("IČO", optional(decodeIČO)),
   website: field("Web", optional(string)),
 });
 
@@ -28,7 +28,7 @@ const organizationsTable = crmBase("Organizace");
 
 export const getAllOrganizations = async () =>
   organizationsTable
-    .select({ view: "Mají IČ" })
+    .select()
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeOrganization, "Organizations"));

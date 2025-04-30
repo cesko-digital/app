@@ -70,7 +70,7 @@ async function importOrganizations() {
   await importObjects({
     entity: Entities.Account,
     newValues: organizations.map(organizationToAccount),
-    isEqual: (a, b) => a.name === b.name || a.cIco === b.cIco,
+    isEqual: (a, b) => !!a.name && a.name === b.name,
     apiKey: crmApiKey,
   });
 }
