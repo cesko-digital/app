@@ -1,5 +1,6 @@
 import {
   field,
+  optional,
   record,
   string,
   type decodeType,
@@ -16,6 +17,7 @@ export type Organization = decodeType<typeof decodeOrganization>;
 export const decodeOrganization = record({
   name: field("Název a pobočka", string),
   governmentId: field("IČO", decodeIČO),
+  website: field("Web", optional(string)),
 });
 
 //

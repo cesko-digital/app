@@ -108,3 +108,25 @@ export function normalize(value: string | undefined): string | undefined;
 export function normalize(value: string | undefined): string | undefined {
   return map(value, stripWhitespaceAround);
 }
+
+export function normalizeWebsiteUrl(value: string): string | undefined {
+  // Strip whitespace
+  value = stripWhitespaceAround(value);
+
+  // Add missing scheme
+  value = value.replace(/^www\./, "https://www.");
+  // Convert HTTP to HTTPS
+  value = value.replace(/^http:\/\//, "https://");
+  // Add missing scheme to naked domains
+  if (!value.startsWith("https://")) {
+    value = "https://" + value;
+  }
+
+  // Return `undefined` if the result does not parse
+  try {
+    const parsed = new URL(value);
+    return parsed.origin;
+  } catch {
+    return undefined;
+  }
+}

@@ -7,7 +7,12 @@ import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import { type Account } from "~/src/espocrm/account";
 import { type Contact } from "~/src/espocrm/contact";
 import { Entities } from "~/src/espocrm/espo";
-import { importObjects, normalize } from "~/src/espocrm/import";
+import {
+  importObjects,
+  map,
+  normalize,
+  normalizeWebsiteUrl,
+} from "~/src/espocrm/import";
 
 const crmApiKey = process.env.CRM_API_KEY ?? "<not set>";
 
@@ -37,6 +42,7 @@ const userProfileToContact = (profile: UserProfile): Partial<Contact> => ({
 
 const organizationToAccount = (org: Organization): Partial<Account> => ({
   name: normalize(org.name),
+  website: map(org.website, normalizeWebsiteUrl),
   cIco: org.governmentId,
   cDataSource: "Airtable sync",
 });

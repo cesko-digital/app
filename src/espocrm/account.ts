@@ -10,6 +10,7 @@ const decodeAccount = record({
   id: string,
   createdAt: date,
   name: string,
+  website: undefinedIfNull(string),
   // Custom props
   cIco: undefinedIfNull(string),
   cDataSource: undefinedIfNull(string),
@@ -22,7 +23,7 @@ export const entity: Entity<Account> = {
   mergeRules: {
     immutableProps: ["id", "cIco"],
     updatableProps: [],
-    readOnlyAfterCreatePops: ["name"],
+    readOnlyAfterCreatePops: ["name", "website"],
     mergableProps: {},
   },
   decoder: decodeAccount,
