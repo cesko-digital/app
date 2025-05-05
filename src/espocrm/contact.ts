@@ -91,6 +91,6 @@ export const entity: Entity<Contact> = {
   singularName: "contact",
   pluralName: "contacts",
   apiPath: "Contact",
-  mergeRules: mergeRules,
   decoder: decodeContact,
+  mergeRules,
 };

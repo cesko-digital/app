@@ -9,11 +9,13 @@ import { entity as accountEntity } from "./account";
 import { entity as contactEntity } from "./contact";
 import { getJson, postJson, putJson } from "./http";
 import { type MergeRules } from "./merge";
+import { entity as targetListEntity } from "./targetlist";
 
 /** All supported CRM entities */
 export const Entities = {
   Contact: contactEntity,
   Account: accountEntity,
+  TargetList: targetListEntity,
 };
 
 /** Base entity type that all entities extend */
