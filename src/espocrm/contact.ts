@@ -1,6 +1,7 @@
 import {
   boolean,
   date,
+  intersection,
   record,
   string,
   union,
@@ -17,9 +18,7 @@ import {
   type MergeRules,
 } from "./merge";
 
-export type Contact = decodeType<typeof decodeContact>;
 export type EmailAddressData = decodeType<typeof decodeEmailAddressData>;
-
 const decodeEmailAddressData = record({
   emailAddress: string,
   lower: undefinedIfNull(string),
@@ -28,14 +27,17 @@ const decodeEmailAddressData = record({
   invalid: undefinedIfNull(boolean),
 });
 
-const decodeContact = record({
-  // Built-ins
+export const decodeBasicContactFields = record({
   id: string,
   createdAt: date,
   name: string,
   firstName: undefinedIfNull(string),
   lastName: undefinedIfNull(string),
   emailAddress: string,
+});
+
+export const decodeExtraContactFields = record({
+  // Built-ins
   emailAddressData: optionalArray(decodeEmailAddressData),
   // Custom Fields
   cLegacyAirtableID: undefinedIfNull(string),
@@ -55,6 +57,12 @@ const decodeContact = record({
   cProfilePictureURL: undefinedIfNull(string),
   cAvailableInDistricts: undefinedIfNull(string),
 });
+
+export type Contact = decodeType<typeof decodeContact>;
+const decodeContact = intersection(
+  decodeBasicContactFields,
+  decodeExtraContactFields,
+);
 
 /**
  * Merge rules for contacts

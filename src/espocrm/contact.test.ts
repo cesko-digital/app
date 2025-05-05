@@ -1,4 +1,4 @@
-import { mergeRules, type Contact } from "./contact";
+import { decodeBasicContactFields, mergeRules, type Contact } from "./contact";
 import { mergeEntities } from "./merge";
 
 //
@@ -226,4 +226,27 @@ test("Merge email address data", () => {
   ).toEqual({
     emailAddressData: [{ emailAddress: "miles@davis.name" }],
   });
+});
+
+test("Decode basic contact from target list", () => {
+  expect(() =>
+    decodeBasicContactFields({
+      id: "67e2af5ae58fb01ac",
+      name: "Tomáš Znamenáček",
+      salutationName: null,
+      firstName: "Tomáš",
+      lastName: "Znamenáček",
+      emailAddress: "zoul@zoul.cz",
+      accountIsInactive: false,
+      createdAt: "2019-12-12 16:47:00",
+      targetListIsOptedOut: false,
+      middleName: null,
+      emailAddressIsOptedOut: false,
+      emailAddressIsInvalid: false,
+      accountId: "67e552903f9522d5b",
+      accountName: "Česko.Digital",
+      createdById: "67d2f77123879824e",
+      assignedUserId: null,
+    }),
+  ).not.toThrow();
 });
