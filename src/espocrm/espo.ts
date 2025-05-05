@@ -30,10 +30,14 @@ export type Entity<E extends BaseEntity> = {
   pluralName: string;
   /** API path of the relevant REST resource, ie. `Contact` */
   apiPath: string;
-  /** Rules to merge two objects of this entity */
-  mergeRules: MergeRules<E>;
   /** Function to decode JSON API response */
   decoder: (value: unknown) => E;
+  /**
+   * Rules to merge two objects of this entity
+   *
+   * If there are no merge rules the entity is not mergable.
+   */
+  mergeRules?: MergeRules<E>;
 };
 
 //

@@ -23,10 +23,4 @@ export const entity: Entity<TargetList> = {
   pluralName: "target lists",
   apiPath: "TargetList",
   decoder: decodeTargetList,
-  mergeRules: {
-    immutableProps: ["id"],
-    updatableProps: ["name", "description"],
-    readOnlyAfterCreatePops: [],
-    mergableProps: {},
-  },
 };

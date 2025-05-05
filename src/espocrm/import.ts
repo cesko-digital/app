@@ -54,6 +54,13 @@ export async function importObjects<E extends BaseEntity>({
     }
   }
 
+  if (!entity.mergeRules) {
+    console.warn(
+      `Skipping updates, merge rules not defined for ${entity.pluralName}.`,
+    );
+    return;
+  }
+
   const itemsToUpdate = newValues.filter(havePreviousVersionOf);
   for (const updatedItem of itemsToUpdate) {
     // The listing API endpoints don’t include all properties,
