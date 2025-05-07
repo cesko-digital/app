@@ -91,7 +91,7 @@ const userProfileMergeRules: MergeRules<FullContact> = {
 
 /** Import legacy user profiles from Airtable */
 async function importUserProfilesFromAirtable() {
-  console.log(`*** Importing user profiles from Airtable`);
+  console.log(`*** Importing contacts from “User Profiles”`);
   console.log(`Downloading confirmed user profiles from Airtable.`);
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   await importCRMObjects<FullContact>({
@@ -122,7 +122,7 @@ const organizationToAccount = (org: Organization): Partial<Account> => ({
 
 /** Import organizations from Airtable */
 async function importOrganizationsFromAirtable() {
-  console.info(`*** Importing organizations`);
+  console.info(`*** Importing accounts from “CRM Organizací”`);
   console.debug(`Downloading organizations from Airtable.`);
   const organizations = await getAllOrganizations();
   console.debug(`Downloaded ${organizations.length} organizations.`);

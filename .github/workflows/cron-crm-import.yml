@@ -1,4 +1,4 @@
-name: Sync CRM Users
+name: Import CRM Data
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  import:
     runs-on: ubuntu-latest
     timeout-minutes: 60 # Limit running time to one hour max
     env:
@@ -14,7 +14,7 @@ jobs:
       CRM_API_KEY: ${{ secrets.CRM_API_KEY }}
     steps:
       - uses: actions/checkout@v3
-      - name: Sync
+      - name: Import
         run: |
           npm ci
-          ./bin/crm-sync.ts
+          ./bin/crm-import.ts
