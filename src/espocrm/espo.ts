@@ -20,7 +20,7 @@ import { optionalArray, withDefault } from "~/src/decoding";
 type EspoFetchParams<T> = {
   method: "GET" | "POST" | "PATCH" | "DELETE";
   path: string;
-  searchParams?: URLSearchParams;
+  searchParams?: Record<string, string>;
   apiKey: string;
   body?: unknown;
   decodeResponse: DecoderFunction<T>;
@@ -33,12 +33,12 @@ async function espoFetch<T>({
   method,
   decodeResponse,
   body = undefined,
-  searchParams = new URLSearchParams(),
+  searchParams = {},
   siteUrl = "https://crm.cesko.digital",
 }: EspoFetchParams<T>): Promise<T> {
   const absoluteUrl = new URL("/api/v1/" + path, siteUrl);
 
-  for (const [key, val] of searchParams.entries()) {
+  for (const [key, val] of Object.entries(searchParams)) {
     absoluteUrl.searchParams.set(key, val);
   }
 
@@ -116,30 +116,36 @@ const decodeListWrapper = <T>(decodeItem: DecoderFunction<T>) =>
 const espoFetchOnePage = async <T>({
   path,
   decodeResponse,
+  searchParams = {},
   apiKey,
   offset,
-}: Pick<EspoFetchParams<T>, "path" | "apiKey" | "decodeResponse"> & {
+}: Omit<EspoFetchParams<T>, "method"> & {
   offset: number;
 }) =>
   espoFetch({
     path,
     apiKey,
     decodeResponse: decodeListWrapper(decodeResponse),
-    searchParams: new URLSearchParams({ offset: offset.toString() }),
+    searchParams: {
+      ...searchParams,
+      offset: offset.toString(),
+    },
     method: "GET",
   }).then((wrapper) => wrapper.list as T[]);
 
 const espoFetchAll = async <T>({
   path,
   decodeResponse,
+  searchParams,
   apiKey,
-}: Pick<EspoFetchParams<T>, "path" | "apiKey" | "decodeResponse">) => {
+}: Omit<EspoFetchParams<T>, "method">) => {
   let items: T[] = [];
   let offset = 0;
   while (1) {
     const page = await espoFetchOnePage({
       path,
       decodeResponse,
+      searchParams,
       apiKey,
       offset,
     });
@@ -183,10 +189,16 @@ const getObjectById =
 
 const getAllObjectsOfType =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
-  async (apiKey: string): Promise<T[]> =>
+  async (apiKey: string, query: string | undefined = undefined): Promise<T[]> =>
     espoFetchAll({
       path: entity,
       decodeResponse: decoder,
+      searchParams: query
+        ? {
+            "whereGroup[0][type]": "textFilter",
+            "whereGroup[0][value]": query,
+          }
+        : {},
       apiKey,
     });
 
