@@ -1,6 +1,5 @@
+import { type EmailAddressData } from "~/src/espocrm/espo";
 import { unique } from "~/src/utils";
-
-import { type EmailAddressData } from "./contact";
 
 type MergeFunction<Entity, K extends keyof Entity> = (
   a: NonNullable<Entity[K]>,
@@ -82,13 +81,6 @@ export function mergeEntities<E>(
 export const mergeArrays = <T>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) =>
   unique([...a, ...b]);
 
-export const mergeDelimitedArrays =
-  (separator: string) => (a: string, b: string) =>
-    mergeArrays(
-      a.split(new RegExp(separator + "\\s*")),
-      b.split(new RegExp(separator + "\\s*")),
-    ).join(separator + " ");
-
 export const mergeArraysWithCustomEquality =
   <T>(isEqual: (a: T, b: T) => boolean) =>
   (a: ReadonlyArray<T>, b: ReadonlyArray<T>) => {
@@ -100,6 +92,13 @@ export const mergeArraysWithCustomEquality =
     }
     return merged;
   };
+
+export const mergeDelimitedArrays =
+  (separator: string) => (a: string, b: string) =>
+    mergeArrays(
+      a.split(new RegExp(separator + "\\s*")),
+      b.split(new RegExp(separator + "\\s*")),
+    ).join(separator + " ");
 
 export const mergeEmailAdddressData = <
   D extends Pick<EmailAddressData, "emailAddress"> & Partial<EmailAddressData>,
