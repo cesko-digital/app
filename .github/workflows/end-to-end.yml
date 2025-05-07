@@ -16,6 +16,7 @@ jobs:
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       SHASUM_SECRET: ${{ secrets.SHASUM_SECRET }}
       ECOMAIL_API_KEY: ${{ secrets.ECOMAIL_API_KEY }}
+      CRM_API_KEY: ${{ secrets.CRM_API_KEY }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
