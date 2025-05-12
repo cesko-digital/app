@@ -217,11 +217,12 @@ const updateObject =
 // Contact
 //
 
-export type BasicContact = decodeType<typeof decodeBasicContact>;
-export const decodeBasicContact = intersection(
+export type Contact = decodeType<typeof decodeContact>;
+export const decodeContact = intersection(
   // Basic built-ins
   decodePersonEntity,
   record({
+    emailAddressData: maybe(array(decodeEmailAddressData)),
     // Custom fields
     cLegacyAirtableID: maybe(string),
     cSlackUserID: maybe(string),
@@ -242,32 +243,21 @@ export const decodeBasicContact = intersection(
   }),
 );
 
-export type FullContact = decodeType<typeof decodeFullContact>;
-export const decodeFullContact = intersection(
-  decodeBasicContact,
-  record({
-    emailAddressData: array(decodeEmailAddressData),
-  }),
-);
-
 /**
  * Create new contact
  *
  * Will throw if contact with given name or e-mail already exists.
  */
-export const espoCreateContact = createObject("Contact", decodeFullContact);
+export const espoCreateContact = createObject("Contact", decodeContact);
 
 /** Get contact by ID */
-export const espoGetContactById = getObjectById("Contact", decodeFullContact);
+export const espoGetContactById = getObjectById("Contact", decodeContact);
 
 /** Update contact */
-export const espoUpdateContact = updateObject("Contact", decodeFullContact);
+export const espoUpdateContact = updateObject("Contact", decodeContact);
 
 /** Get all contacts */
-export const espoGetAllContacts = getAllObjectsOfType(
-  "Contact",
-  decodeBasicContact,
-);
+export const espoGetAllContacts = getAllObjectsOfType("Contact", decodeContact);
 
 //
 // Account
