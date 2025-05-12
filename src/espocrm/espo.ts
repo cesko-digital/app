@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   date,
+  dict,
   intersection,
   number,
   record,
@@ -11,7 +12,7 @@ import {
   type decodeType,
 } from "typescript-json-decoder";
 
-import { optionalArray, withDefault } from "~/src/decoding";
+import { decodeObject, optionalArray, withDefault } from "~/src/decoding";
 
 //
 // HTTP
@@ -229,7 +230,19 @@ export const decodeContact = intersection(
   // Basic built-ins
   decodePersonEntity,
   record({
+    // Detailed email address data, should be present everywhere
     emailAddressData: maybe(array(decodeEmailAddressData)),
+    // Account links, is only present in detailed endpoints
+    accountsIds: maybe(array(string)),
+    accountsNames: maybe(decodeObject(string)),
+    accountsColumns: maybe(
+      decodeObject(
+        record({
+          role: string,
+          isInactive: boolean,
+        }),
+      ),
+    ),
     // Custom fields
     cLegacyAirtableID: maybe(string),
     cSlackUserID: maybe(string),

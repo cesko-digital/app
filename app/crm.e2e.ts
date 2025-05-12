@@ -11,10 +11,11 @@ import {
 // expected (or not expected).
 
 const apiKey = process.env.CRM_API_KEY ?? "";
+const testAccountId = "67e2aec3194113385";
 
 // Basic test to make sure the API works at all
 test("Get testing contact", async () => {
-  const contact = await espoGetContactById(apiKey, "67e2aec3194113385");
+  const contact = await espoGetContactById(apiKey, testAccountId);
   expect(contact.name).toBe("Jan Testmatov");
 });
 
@@ -52,4 +53,33 @@ test("Insert conflict", async () => {
       emailAddress: "zoul+testmatov3@cesko.digital",
     }),
   ).rejects.toThrow(/conflict/i);
+});
+
+// All account link fields are present in detail view
+test("Load all account fields in detail view", async () => {
+  const contact = await espoGetContactById(apiKey, testAccountId);
+  expect(contact.accountsIds).toEqual([
+    "67e552903f9522d5b",
+    "67e552d92602faab3",
+  ]);
+  expect(contact.accountsNames).toEqual({
+    "67e552903f9522d5b": "Česko.Digital",
+    "67e552d92602faab3": "Ohlasy",
+  });
+  expect(contact.accountsColumns).toEqual({
+    "67e552903f9522d5b": { role: "testovací účet", isInactive: false },
+    "67e552d92602faab3": { role: "testovací účet", isInactive: false },
+  });
+});
+
+// Account link fields are missing in list view
+test("Load all account fields in list view", async () => {
+  const allContacts = await espoGetAllContacts(apiKey, "Testmatov");
+  const contact = allContacts.find(
+    (contact) => contact.name === "Jan Testmatov",
+  )!;
+  expect(contact).toBeDefined();
+  expect(contact.accountsIds).toBeUndefined();
+  expect(contact.accountsNames).toBeUndefined();
+  expect(contact.accountsColumns).toBeUndefined();
 });
