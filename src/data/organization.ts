@@ -10,8 +10,10 @@ import { crmBase, unwrapRecords } from "~/src/data/airtable";
 import { decodeIČO, decodeValidItemsFromArray } from "~/src/decoding";
 
 //
-// Data Definitions
+// Organizations
 //
+
+const organizationsTable = crmBase("Organizace");
 
 export type Organization = decodeType<typeof decodeOrganization>;
 export const decodeOrganization = record({
@@ -20,15 +22,30 @@ export const decodeOrganization = record({
   website: field("Web", optional(string)),
 });
 
-//
-// API Calls
-//
-
-const organizationsTable = crmBase("Organizace");
-
 export const getAllOrganizations = async () =>
   organizationsTable
     .select()
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeOrganization, "Organizations"));
+
+//
+// Contacts
+//
+
+const contactTable = crmBase("Externí kontakty");
+
+export type Contact = decodeType<typeof decodeContact>;
+export const decodeContact = record({
+  name: field("Kontaktní osoba", string),
+  firstName: field("Jméno", string),
+  lastName: field("Příjmení", string),
+  email: field("Email", string),
+});
+
+export const getAllContacts = async () =>
+  contactTable
+    .select()
+    .all()
+    .then(unwrapRecords)
+    .then(decodeValidItemsFromArray(decodeContact, "Contacts"));

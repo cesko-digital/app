@@ -1,6 +1,8 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
 import {
+  getAllContacts,
   getAllOrganizations,
+  type Contact as LegacyContact,
   type Organization,
 } from "~/src/data/organization";
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
@@ -14,7 +16,7 @@ import {
   espoUpdateAccount,
   espoUpdateContact,
   type Account,
-  type FullContact,
+  type Contact,
 } from "~/src/espocrm/espo";
 import {
   importCRMObjects,
@@ -32,34 +34,11 @@ import {
 const apiKey = process.env.CRM_API_KEY ?? "<not set>";
 
 //
-// User Profiles -> Contacts
+// Shared
 //
 
-/** Convert legacy user profile to contact */
-export const userProfileToContact = (
-  profile: UserProfile,
-): Partial<FullContact> => ({
-  name: profile.name,
-  firstName: normalize(profile.firstName),
-  lastName: normalize(profile.lastName),
-  emailAddressData: [{ emailAddress: normalize(profile.email) }],
-  cLegacyAirtableID: profile.id,
-  cSlackUserID: profile.slackId,
-  cDataSource: "Airtable sync",
-  cBio: profile.bio,
-  cTags: profile.tags,
-  cSeniority: profile.maxSeniority,
-  cOrganizationName: normalize(profile.organizationName),
-  cPublicContactEmail: normalize(profile.contactEmail),
-  cProfessionalProfileURL: profile.profileUrl,
-  cOccupation: profile.occupation,
-  cPrivacyFlags: profile.privacyFlags,
-  cProfilePictureURL: profile.profilePictureUrl,
-  cAvailableInDistricts: profile.availableInDistricts,
-});
-
 /**
- * Merge rules for user profiles
+ * Merge rules for accounts
  *
  * We intentionally skip all name-related fields here to keep
  * any name customizations and cleanups in CRM from being overwritten
@@ -68,7 +47,7 @@ export const userProfileToContact = (
  * We also intentionally skip the `cDataSource` prop because it
  * should only be set when records are created, not updated.
  */
-const userProfileMergeRules: MergeRules<FullContact> = {
+const accountMergeRules: MergeRules<Contact> = {
   immutableProps: ["id", "cLegacyAirtableID"],
   updatableProps: [
     "cBio",
@@ -89,19 +68,50 @@ const userProfileMergeRules: MergeRules<FullContact> = {
   },
 };
 
-/** Import legacy user profiles from Airtable */
+//
+// User Profiles -> Contacts
+//
+
+/** Convert legacy user profile to contact */
+export const userProfileToContact = (
+  profile: UserProfile,
+): Partial<Contact> => ({
+  name: profile.name,
+  firstName: normalize(profile.firstName),
+  lastName: normalize(profile.lastName),
+  emailAddressData: [{ emailAddress: normalize(profile.email) }],
+  cLegacyAirtableID: profile.id,
+  cSlackUserID: profile.slackId,
+  cDataSource: "Airtable sync",
+  cBio: profile.bio,
+  cTags: profile.tags,
+  cSeniority: profile.maxSeniority,
+  cOrganizationName: normalize(profile.organizationName),
+  cPublicContactEmail: normalize(profile.contactEmail),
+  cProfessionalProfileURL: profile.profileUrl,
+  cOccupation: profile.occupation,
+  cPrivacyFlags: profile.privacyFlags,
+  cProfilePictureURL: profile.profilePictureUrl,
+  cAvailableInDistricts: profile.availableInDistricts,
+});
+
+/**
+ * Import legacy user profiles from Airtable
+ *
+ * Previous user profiles are deduplicated using Airtable record ID.
+ */
 async function importUserProfilesFromAirtable() {
   console.log(`*** Importing contacts from “User Profiles”`);
   console.log(`Downloading confirmed user profiles from Airtable.`);
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
-  await importCRMObjects<FullContact>({
+  await importCRMObjects<Contact>({
     existingValues: await espoGetAllContacts(apiKey),
     newValues: userProfiles.map(userProfileToContact),
     isEqual: (a, b) => a.cLegacyAirtableID === b.cLegacyAirtableID,
     createValue: (v) => espoCreateContact(apiKey, v),
     updateValue: (v) => espoUpdateContact(apiKey, v),
     getValueById: (id) => espoGetContactById(apiKey, id),
-    mergeRules: userProfileMergeRules,
+    mergeRules: accountMergeRules,
     singularName: "contact",
     pluralName: "contacts",
   });
@@ -120,8 +130,12 @@ const organizationToAccount = (org: Organization): Partial<Account> => ({
   cDataSource: "Airtable sync",
 });
 
-/** Import organizations from Airtable */
-async function importOrganizationsFromAirtable() {
+/**
+ * Import organizations from Airtable
+ *
+ * Previous organizations are deduplicated using the name field.
+ */
+async function importOrganizationsFromCRM() {
   console.info(`*** Importing accounts from “CRM Organizací”`);
   console.debug(`Downloading organizations from Airtable.`);
   const organizations = await getAllOrganizations();
@@ -145,6 +159,55 @@ async function importOrganizationsFromAirtable() {
   console.log("Finished!");
 }
 
+//
+// Import contacts from “CRM Organizací”
+//
+
+const haveCommonEmailAddress = (a: Partial<Contact>, b: Partial<Contact>) => {
+  for (const candidateA of a.emailAddressData ?? []) {
+    for (const candidateB of b.emailAddressData ?? []) {
+      if (
+        candidateA.emailAddress.toLocaleLowerCase() ===
+        candidateB.emailAddress.toLocaleLowerCase()
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+const convertLegacyContact = (c: LegacyContact): Partial<Contact> => ({
+  emailAddressData: [{ emailAddress: normalize(c.email) }],
+  firstName: normalize(c.firstName),
+  lastName: normalize(c.lastName),
+  name: normalize(c.name),
+  cDataSource: "CRM Organizací",
+});
+
+/**
+ * Import contacts from the legacy CRM database
+ *
+ * Previous contacts are deduplicated by e-mail match only. If there
+ * is an existing contact with the same name, we create a new, duplicate
+ * one.
+ */
+async function importContactsFromCRM() {
+  console.info(`*** Importing contacts from “CRM Organizací”`);
+  const contacts = await getAllContacts();
+  await importCRMObjects<Contact>({
+    existingValues: await espoGetAllContacts(apiKey),
+    newValues: contacts.map(convertLegacyContact),
+    isEqual: haveCommonEmailAddress,
+    createValue: (v) => espoCreateContact(apiKey, v, true), // skip duplicate checks
+    updateValue: (v) => espoUpdateContact(apiKey, v),
+    getValueById: (id) => espoGetContactById(apiKey, id),
+    mergeRules: accountMergeRules,
+    singularName: "contact",
+    pluralName: "contacts",
+  });
+}
+
 /**
  * Import CRM-related data from various legacy sources
  *
@@ -153,8 +216,9 @@ async function importOrganizationsFromAirtable() {
  * New objects are created, existing objects updated according to merge rules.
  */
 async function main() {
-  await importOrganizationsFromAirtable();
+  await importOrganizationsFromCRM();
   await importUserProfilesFromAirtable();
+  await importContactsFromCRM();
 }
 
 main().catch((error) => {

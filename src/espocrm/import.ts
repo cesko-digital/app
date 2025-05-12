@@ -74,7 +74,9 @@ export async function importCRMObjects<E extends BaseEntity>({
     const mergedItem = mergeEntities(savedItem, updatedItem, mergeRules);
     const patch = diff(savedItem, mergedItem);
     if (Object.keys(patch).length > 0) {
-      console.log(`Will update ${singularName} ${id}:`);
+      console.log(
+        `Found existing ${singularName} ${id} (${savedItem.name}), will update:`,
+      );
       console.log(JSON.stringify(patch, null, 2));
       try {
         if (!dryRun) {
@@ -85,7 +87,9 @@ export async function importCRMObjects<E extends BaseEntity>({
         console.error(e);
       }
     } else {
-      console.log(`Skipping ${singularName} ${id}, no update needed.`);
+      console.log(
+        `Found existing ${singularName} ${id} (${savedItem.name}), no update needed.`,
+      );
     }
   }
 }
