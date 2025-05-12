@@ -24,6 +24,7 @@ type EspoFetchParams<T> = {
   apiKey: string;
   body?: unknown;
   decodeResponse: DecoderFunction<T>;
+  skipDuplicateChecks?: boolean;
   siteUrl?: string;
 };
 
@@ -32,6 +33,7 @@ async function espoFetch<T>({
   apiKey,
   method,
   decodeResponse,
+  skipDuplicateChecks = false,
   body = undefined,
   searchParams = {},
   siteUrl = "https://crm.cesko.digital",
@@ -48,6 +50,10 @@ async function espoFetch<T>({
   if (body) {
     headers["Content-Type"] = "application/json";
     requestParams.body = JSON.stringify(body, null, 2);
+  }
+
+  if (skipDuplicateChecks) {
+    headers["X-Skip-Duplicate-Check"] = "true";
   }
 
   const response = await fetch(absoluteUrl, requestParams);
@@ -168,10 +174,11 @@ type Entity = "Contact" | "Account" | "TargetList";
 
 const createObject =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
-  async (apiKey: string, data: Partial<T>) =>
+  async (apiKey: string, data: Partial<T>, skipDuplicateChecks = false) =>
     espoFetch({
       path: entity,
       decodeResponse: decoder,
+      skipDuplicateChecks,
       method: "POST",
       body: data,
       apiKey,
