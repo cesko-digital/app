@@ -171,7 +171,7 @@ const espoFetchAll = async <T>({
 // Convenience Generics
 //
 
-type Entity = "Contact" | "Account" | "TargetList";
+type Entity = "Contact" | "Account" | "TargetList" | "Meeting";
 
 const createObject =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
@@ -370,3 +370,16 @@ export const espoUnlinkContactsFromTargetList = (
     decodeResponse: boolean,
     apiKey,
   });
+
+//
+// Meetings
+//
+
+export type Meeting = decodeType<typeof decodeMeeting>;
+export const decodeMeeting = decodeBaseEntity;
+
+/** Get meeting by ID */
+export const espoGetMeetingById = getObjectById("Meeting", decodeMeeting);
+
+/** Get all meetings */
+export const espoGetAllMeetings = getAllObjectsOfType("Meeting", decodeMeeting);
