@@ -28,8 +28,10 @@ import {
   mergeArrays,
   mergeDelimitedArrays,
   mergeEmailAdddressData,
+  mergeRecords,
   type MergeRules,
 } from "~/src/espocrm/merge";
+import { notEmpty } from "~/src/utils";
 
 const apiKey = process.env.CRM_API_KEY ?? "<not set>";
 
@@ -65,6 +67,9 @@ const accountMergeRules: MergeRules<Contact> = {
     cOccupation: mergeDelimitedArrays(";"),
     cAvailableInDistricts: mergeDelimitedArrays(","),
     emailAddressData: mergeEmailAdddressData,
+    accountsIds: mergeArrays,
+    accountsNames: mergeRecords,
+    accountsColumns: mergeRecords,
   },
 };
 
@@ -177,14 +182,6 @@ const haveCommonEmailAddress = (a: Partial<Contact>, b: Partial<Contact>) => {
   return false;
 };
 
-const convertLegacyContact = (c: LegacyContact): Partial<Contact> => ({
-  emailAddressData: [{ emailAddress: normalize(c.email) }],
-  firstName: normalize(c.firstName),
-  lastName: normalize(c.lastName),
-  name: normalize(c.name),
-  cDataSource: "CRM Organizací",
-});
-
 /**
  * Import contacts from the legacy CRM database
  *
@@ -195,6 +192,39 @@ const convertLegacyContact = (c: LegacyContact): Partial<Contact> => ({
 async function importContactsFromCRM() {
   console.info(`*** Importing contacts from “CRM Organizací”`);
   const contacts = await getAllContacts();
+
+  const legacyOrganizations = await getAllOrganizations();
+  const accounts = await espoGetAllAccounts(apiKey);
+
+  const findAccount = (legacyOrgId: string) => {
+    const organization = legacyOrganizations.find((o) => o.id === legacyOrgId)!;
+    return accounts.find((a) => a.name === organization.name);
+  };
+
+  const convertLegacyContact = (c: LegacyContact): Partial<Contact> => {
+    return {
+      emailAddressData: [{ emailAddress: normalize(c.email) }],
+      firstName: normalize(c.firstName),
+      lastName: normalize(c.lastName),
+      name: normalize(c.name),
+      cDataSource: "CRM Organizací",
+      accountsIds: c.relatedOrganizationIds
+        .map((legacyOrgId) => findAccount(legacyOrgId)?.id)
+        .filter(notEmpty),
+      accountsColumns:
+        c.relatedOrganizationIds.length === 1 &&
+        findAccount(c.relatedOrganizationIds[0]) &&
+        c.position
+          ? {
+              [findAccount(c.relatedOrganizationIds[0])!.id]: {
+                role: c.position,
+                isInactive: false,
+              },
+            }
+          : undefined,
+    };
+  };
+
   await importCRMObjects<Contact>({
     existingValues: await espoGetAllContacts(apiKey),
     newValues: contacts.map(convertLegacyContact),
