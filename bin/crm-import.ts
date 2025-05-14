@@ -191,10 +191,10 @@ const haveCommonEmailAddress = (a: Partial<Contact>, b: Partial<Contact>) => {
  */
 async function importContactsFromCRM() {
   console.info(`*** Importing contacts from “CRM Organizací”`);
-  const contacts = await getAllContacts();
 
-  const legacyOrganizations = await getAllOrganizations();
   const accounts = await espoGetAllAccounts(apiKey);
+  const legacyOrganizations = await getAllOrganizations();
+  const legacyContacts = await getAllContacts();
 
   const findAccount = (legacyOrgId: string) => {
     const organization = legacyOrganizations.find((o) => o.id === legacyOrgId)!;
@@ -227,7 +227,7 @@ async function importContactsFromCRM() {
 
   await importCRMObjects<Contact>({
     existingValues: await espoGetAllContacts(apiKey),
-    newValues: contacts.map(convertLegacyContact),
+    newValues: legacyContacts.map(convertLegacyContact),
     isEqual: haveCommonEmailAddress,
     createValue: (v) => espoCreateContact(apiKey, v, true), // skip duplicate checks
     updateValue: (v) => espoUpdateContact(apiKey, v),
