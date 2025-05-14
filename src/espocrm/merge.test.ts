@@ -3,6 +3,7 @@ import {
   mergeArraysWithCustomEquality,
   mergeDelimitedArrays,
   mergeEmailAdddressData,
+  mergeRecords,
 } from "./merge";
 
 test("Merge arrays", () => {
@@ -29,6 +30,12 @@ test("Merge arrays with custom equality", () => {
     { name: "foo" },
     { name: "bar" },
   ]);
+});
+
+test("Merge records", () => {
+  expect(mergeRecords({}, {})).toEqual({});
+  expect(mergeRecords({ foo: 1 }, { bar: 2 })).toEqual({ foo: 1, bar: 2 });
+  expect(mergeRecords({ foo: 1 }, { foo: 2 })).toEqual({ foo: 2 });
 });
 
 test("Merge email address data", () => {

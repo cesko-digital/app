@@ -100,6 +100,11 @@ export const mergeDelimitedArrays =
       b.split(new RegExp(separator + "\\s*")),
     ).join(separator + " ");
 
+export const mergeRecords = <T>(
+  a: Record<string, T>,
+  b: Record<string, T>,
+) => ({ ...a, ...b });
+
 export const mergeEmailAdddressData = <
   D extends Pick<EmailAddressData, "emailAddress"> & Partial<EmailAddressData>,
 >(
