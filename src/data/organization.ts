@@ -7,7 +7,11 @@ import {
 } from "typescript-json-decoder";
 
 import { crmBase, unwrapRecords } from "~/src/data/airtable";
-import { decodeIČO, decodeValidItemsFromArray } from "~/src/decoding";
+import {
+  decodeIČO,
+  decodeValidItemsFromArray,
+  relationToZeroOrMany,
+} from "~/src/decoding";
 
 //
 // Organizations
@@ -17,6 +21,7 @@ const organizationsTable = crmBase("Organizace");
 
 export type Organization = decodeType<typeof decodeOrganization>;
 export const decodeOrganization = record({
+  id: field("ID", string),
   name: field("Název a pobočka", string),
   governmentId: field("IČO", optional(decodeIČO)),
   website: field("Web", optional(string)),
@@ -41,6 +46,8 @@ export const decodeContact = record({
   firstName: field("Jméno", string),
   lastName: field("Příjmení", string),
   email: field("Email", string),
+  position: field("Pracovní zařazení/ Job Title", optional(string)),
+  relatedOrganizationIds: field("Organizace", relationToZeroOrMany),
 });
 
 export const getAllContacts = async () =>
