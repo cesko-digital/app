@@ -238,8 +238,8 @@ export const decodeContact = intersection(
     accountsColumns: maybe(
       decodeObject(
         record({
-          role: string,
-          isInactive: boolean,
+          role: maybe(string),
+          isInactive: maybe(boolean),
         }),
       ),
     ),
