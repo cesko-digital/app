@@ -312,6 +312,21 @@ export const espoUpdateAccount = updateObject("Account", decodeAccount);
 /** Get all accounts */
 export const espoGetAllAccounts = getAllObjectsOfType("Account", decodeAccount);
 
+/** Get all contacts linked to an account */
+export const espoGetAccountContacts = (apiKey: string, accountId: string) =>
+  espoFetchAll({
+    path: `Account/${accountId}/contacts`,
+    decodeResponse: decodePersonEntity,
+    searchParams: {
+      // By default the server selects a very bare attribute set that
+      // doesn’t even satisfy `BaseEntity`. Could we perhaps generalize
+      // the attribute selection to get code completion and type safety?
+      attributeSelect:
+        "id,name,description,createdAt,firstName,lastName,emailAddress",
+    },
+    apiKey,
+  });
+
 //
 // Target List
 //
