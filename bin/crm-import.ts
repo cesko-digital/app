@@ -217,7 +217,7 @@ async function importContactsFromCRM() {
         c.position
           ? {
               [findAccount(c.relatedOrganizationIds[0])!.id]: {
-                role: c.position,
+                role: normalize(c.position),
                 isInactive: false,
               },
             }
