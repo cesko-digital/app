@@ -4,6 +4,7 @@ import {
   espoCreateContact,
   espoGetAllContacts,
   espoGetContactById,
+  espoGetProjectById,
 } from "~/src/espocrm/espo";
 
 // This is not a regular test file, it’s more like an assumption
@@ -82,4 +83,12 @@ test("Load all account fields in list view", async () => {
   expect(contact.accountsIds).toBeUndefined();
   expect(contact.accountsNames).toBeUndefined();
   expect(contact.accountsColumns).toBeUndefined();
+});
+
+test("Load project engagements", async () => {
+  const project = await espoGetProjectById(apiKey, "6824ccfb47eb15c7e");
+  expect(project.projectEngagementsIds).toContain("6825912ea3e0dbb0b");
+  expect(project.projectEngagementsNames?.get("6825912ea3e0dbb0b")).toBe(
+    "Tester",
+  );
 });

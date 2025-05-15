@@ -3,6 +3,7 @@ import {
   boolean,
   date,
   dict,
+  field,
   intersection,
   number,
   record,
@@ -171,7 +172,7 @@ const espoFetchAll = async <T>({
 // Convenience Generics
 //
 
-type Entity = "Contact" | "Account" | "TargetList" | "Meeting";
+type Entity = "Contact" | "Account" | "TargetList" | "Meeting" | "CProject";
 
 const createObject =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
@@ -398,3 +399,27 @@ export const espoGetMeetingById = getObjectById("Meeting", decodeMeeting);
 
 /** Get all meetings */
 export const espoGetAllMeetings = getAllObjectsOfType("Meeting", decodeMeeting);
+
+//
+// Projects
+//
+
+export type Project = decodeType<typeof decodeProject>;
+export const decodeProject = intersection(
+  decodeBaseEntity,
+  record({
+    slug: string,
+    state: union("running", "finished", "cancelled"),
+    projectEngagementsIds: field("teamEngagementsIds", maybe(array(string))),
+    projectEngagementsNames: field("teamEngagementsNames", maybe(dict(string))),
+  }),
+);
+
+/** Get all projects */
+export const espoGetAllProjects = getAllObjectsOfType(
+  "CProject",
+  decodeProject,
+);
+
+/** Get project by ID */
+export const espoGetProjectById = getObjectById("CProject", decodeProject);
