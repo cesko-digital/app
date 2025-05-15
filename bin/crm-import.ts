@@ -5,6 +5,10 @@ import {
   type Contact as LegacyContact,
   type Organization,
 } from "~/src/data/organization";
+import {
+  getAllTeamEngagements,
+  getPublicTeamEngagements,
+} from "~/src/data/team-engagement";
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import {
   espoCreateAccount,
@@ -295,6 +299,48 @@ async function importLegacyContactEngagements() {
   });
 }
 
+async function importTeamEngagements() {
+  const legacyEngagements = await getAllTeamEngagements();
+  const contacts = await espoGetAllContacts(apiKey);
+  const projects = await espoGetAllProjects(apiKey);
+
+  const newEngagements: Partial<ProjectEngagement>[] = [];
+
+  for (const legacyEngagement of legacyEngagements) {
+    const existingContact = contacts.find(
+      (c) => c.cLegacyAirtableID === legacyEngagement.userId,
+    );
+    const project = projects.find(
+      (p) => p.slug === legacyEngagement.projectSlug,
+    );
+    if (!existingContact || !project) {
+      continue;
+    }
+    newEngagements.push({
+      name: legacyEngagement.projectRole ?? "zapojil*a se, ale nevíme jak",
+      contactId: existingContact.id,
+      projectId: project.id,
+      dataSource: "Teams (Airtable)",
+      isPublic: !legacyEngagement.hideFromPublicView,
+      sections: legacyEngagement.fields.join("; "),
+    });
+  }
+
+  await importCRMObjects({
+    existingValues: await espoGetAllProjectEngagements(apiKey),
+    newValues: newEngagements,
+    isEqual: (a, b) =>
+      a.contactId === b.contactId &&
+      a.projectId === b.projectId &&
+      a.name === b.name,
+    createValue: (v) => espoCreateProjectEngagement(apiKey, v),
+    updateValue: (v) => espoUpdateProjectEngagement(apiKey, v),
+    getValueById: (id) => espoGetProjectEngagementById(apiKey, id),
+    singularName: "project engagement",
+    pluralName: "project engagements",
+  });
+}
+
 /**
  * Import CRM-related data from various legacy sources
  *
@@ -307,6 +353,7 @@ async function main() {
   await importUserProfilesFromAirtable();
   await importContactsFromCRM();
   await importLegacyContactEngagements();
+  await importTeamEngagements();
 }
 
 main().catch((error) => {

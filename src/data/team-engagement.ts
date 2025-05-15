@@ -46,6 +46,7 @@ export const decodeTeamEngagement = record({
   fields: optionalArray(string),
   inactive: withDefault(boolean, false),
   startDate: optional(string),
+  hideFromPublicView: withDefault(boolean, false),
 });
 
 //
@@ -54,10 +55,19 @@ export const decodeTeamEngagement = record({
 
 const teamEngagementTable = appBase("Teams");
 
-/** Get all team engagements */
+/** Get all public team engagements */
 export async function getPublicTeamEngagements(): Promise<TeamEngagement[]> {
   return await teamEngagementTable
     .select({ view: "Public Team Engagements" })
+    .all()
+    .then(unwrapRecords)
+    .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));
+}
+
+/** Get all team engagements */
+export async function getAllTeamEngagements(): Promise<TeamEngagement[]> {
+  return await teamEngagementTable
+    .select()
     .all()
     .then(unwrapRecords)
     .then(decodeValidItemsFromArray(decodeTeamEngagement, "Teams"));

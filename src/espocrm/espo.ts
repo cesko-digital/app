@@ -443,6 +443,8 @@ export const decodeProjectEngagement = intersection(
     contactId: string,
     contactName: string,
     dataSource: maybe(string),
+    isPublic: maybe(boolean),
+    sections: maybe(string),
   }),
 );
 
