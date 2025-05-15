@@ -9,14 +9,20 @@ import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import {
   espoCreateAccount,
   espoCreateContact,
+  espoCreateProjectEngagement,
   espoGetAccountById,
   espoGetAllAccounts,
   espoGetAllContacts,
+  espoGetAllProjectEngagements,
+  espoGetAllProjects,
   espoGetContactById,
+  espoGetProjectEngagementById,
   espoUpdateAccount,
   espoUpdateContact,
+  espoUpdateProjectEngagement,
   type Account,
   type Contact,
+  type ProjectEngagement,
 } from "~/src/espocrm/espo";
 import {
   importCRMObjects,
@@ -238,6 +244,57 @@ async function importContactsFromCRM() {
   });
 }
 
+/** Import contacts’ engagement on projects from the legacy CRM database */
+async function importLegacyContactEngagements() {
+  console.log("*** Importing legacy contact project engagements");
+  const legacyContacts = await getAllContacts();
+  const projects = await espoGetAllProjects(apiKey);
+  const newEngagements: Partial<ProjectEngagement>[] = [];
+
+  const contacts = await espoGetAllContacts(apiKey);
+  const getExistingContact = (email: string) =>
+    contacts.find(
+      (c) => !!c.emailAddressData?.find((data) => data.emailAddress === email),
+    );
+
+  for (const legacyContact of legacyContacts) {
+    for (const slug of legacyContact.projectLinks) {
+      const project = projects.find((p) => p.slug === slug);
+      if (!project) {
+        continue;
+      }
+      const existingContact = getExistingContact(
+        normalize(legacyContact.email),
+      );
+      if (existingContact) {
+        newEngagements.push({
+          name: "zapojil*a se, ale nevíme jak",
+          contactId: existingContact.id,
+          projectId: project.id,
+          dataSource: "CRM Organizací (Airtable)",
+        });
+      }
+    }
+  }
+
+  console.log(`Found ${newEngagements.length} engagements.`);
+
+  await importCRMObjects<ProjectEngagement>({
+    existingValues: await espoGetAllProjectEngagements(apiKey),
+    newValues: newEngagements,
+    isEqual: (a, b) =>
+      a.contactId === b.contactId &&
+      a.projectId === b.projectId &&
+      a.name === b.name,
+    createValue: (v) => espoCreateProjectEngagement(apiKey, v),
+    updateValue: (v) => espoUpdateProjectEngagement(apiKey, v),
+    getValueById: (id) => espoGetProjectEngagementById(apiKey, id),
+    singularName: "project engagement",
+    pluralName: "project engagements",
+    dryRun: true,
+  });
+}
+
 /**
  * Import CRM-related data from various legacy sources
  *
@@ -249,6 +306,7 @@ async function main() {
   await importOrganizationsFromCRM();
   await importUserProfilesFromAirtable();
   await importContactsFromCRM();
+  await importLegacyContactEngagements();
 }
 
 main().catch((error) => {

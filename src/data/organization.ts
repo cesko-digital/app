@@ -48,6 +48,7 @@ export const decodeContact = record({
   email: field("Email", string),
   position: field("Pracovní zařazení/ Job Title", optional(string)),
   relatedOrganizationIds: field("Organizace", relationToZeroOrMany),
+  projectLinks: field("Project links", relationToZeroOrMany),
 });
 
 export const getAllContacts = async () =>

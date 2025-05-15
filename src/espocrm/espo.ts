@@ -172,7 +172,13 @@ const espoFetchAll = async <T>({
 // Convenience Generics
 //
 
-type Entity = "Contact" | "Account" | "TargetList" | "Meeting" | "CProject";
+type Entity =
+  | "Contact"
+  | "Account"
+  | "TargetList"
+  | "Meeting"
+  | "CProject"
+  | "CTeamEngagement";
 
 const createObject =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
@@ -423,3 +429,43 @@ export const espoGetAllProjects = getAllObjectsOfType(
 
 /** Get project by ID */
 export const espoGetProjectById = getObjectById("CProject", decodeProject);
+
+//
+// Project Engagements
+//
+
+export type ProjectEngagement = decodeType<typeof decodeProjectEngagement>;
+export const decodeProjectEngagement = intersection(
+  decodeBaseEntity,
+  record({
+    projectId: string,
+    projectName: string,
+    contactId: string,
+    contactName: string,
+    dataSource: maybe(string),
+  }),
+);
+
+/** Get all project engagements */
+export const espoGetAllProjectEngagements = getAllObjectsOfType(
+  "CTeamEngagement",
+  decodeProjectEngagement,
+);
+
+/** Get project engagement by ID */
+export const espoGetProjectEngagementById = getObjectById(
+  "CTeamEngagement",
+  decodeProjectEngagement,
+);
+
+/** Create a project engagement */
+export const espoCreateProjectEngagement = createObject(
+  "CTeamEngagement",
+  decodeProjectEngagement,
+);
+
+/** Update a project engagement */
+export const espoUpdateProjectEngagement = updateObject(
+  "CTeamEngagement",
+  decodeProjectEngagement,
+);
