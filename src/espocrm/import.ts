@@ -32,7 +32,7 @@ export async function importCRMObjects<E extends BaseEntity>({
   }
 
   console.log(
-    `Got ${existingValues.length} existing ${pluralName}, importing ${newValues.length} new.`,
+    `Got ${existingValues.length} existing ${pluralName}, will create or update ${newValues.length} incoming.`,
   );
 
   const findPrevious = (newItem: Partial<E>) =>

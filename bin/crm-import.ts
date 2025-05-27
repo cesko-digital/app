@@ -5,10 +5,7 @@ import {
   type Contact as LegacyContact,
   type Organization,
 } from "~/src/data/organization";
-import {
-  getAllTeamEngagements,
-  getPublicTeamEngagements,
-} from "~/src/data/team-engagement";
+import { getAllTeamEngagements } from "~/src/data/team-engagement";
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import {
   espoCreateAccount,
@@ -295,7 +292,6 @@ async function importLegacyContactEngagements() {
     getValueById: (id) => espoGetProjectEngagementById(apiKey, id),
     singularName: "project engagement",
     pluralName: "project engagements",
-    dryRun: true,
   });
 }
 
@@ -317,7 +313,9 @@ async function importTeamEngagements() {
       continue;
     }
     newEngagements.push({
-      name: legacyEngagement.projectRole ?? "zapojil*a se, ale nevíme jak",
+      name:
+        normalize(legacyEngagement.projectRole) ??
+        "zapojil*a se, ale nevíme jak",
       contactId: existingContact.id,
       projectId: project.id,
       dataSource: "Teams (Airtable)",
