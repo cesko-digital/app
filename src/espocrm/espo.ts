@@ -5,6 +5,7 @@ import {
   dict,
   field,
   intersection,
+  literal,
   number,
   record,
   string,
@@ -227,6 +228,14 @@ const updateObject =
       method: "PATCH",
       apiKey,
     });
+
+const deleteObject = (entity: Entity) => async (apiKey: string, id: string) =>
+  espoFetch({
+    path: `${entity}/${id}`,
+    decodeResponse: (value: unknown) => value === "true",
+    method: "DELETE",
+    apiKey,
+  });
 
 //
 // Contact
@@ -471,3 +480,6 @@ export const espoUpdateProjectEngagement = updateObject(
   "CTeamEngagement",
   decodeProjectEngagement,
 );
+
+/** Delete a project engagement */
+export const espoDeleteProjectEngagement = deleteObject("CTeamEngagement");
