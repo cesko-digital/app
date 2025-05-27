@@ -5,7 +5,6 @@ import {
   dict,
   field,
   intersection,
-  literal,
   number,
   record,
   string,
