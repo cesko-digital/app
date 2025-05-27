@@ -1,5 +1,6 @@
 import {
   array,
+  nullable,
   number,
   optional,
   record,
@@ -22,7 +23,7 @@ export type User = decodeType<typeof decodeUser>;
 export const decodeUser = record({
   id: number,
   username: string,
-  name: string,
+  name: nullable(string),
   avatar_template: optional(string),
 });
 

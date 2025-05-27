@@ -58,7 +58,9 @@ const reportNewTopic = async (topicId: number): Promise<void> => {
     topicId: topic.id,
     title: topic.title,
     tags: topic.tags,
-    author: topic.details.participants[0].name,
+    author:
+      topic.details.participants[0].name ??
+      topic.details.participants[0].username,
     bodyMarkdown: firstPost.raw,
   });
   await sendDirectMessageToChannel({
