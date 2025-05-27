@@ -1,4 +1,5 @@
-import { type Contact } from "./contact";
+import { type Contact } from "~/src/espocrm/espo";
+
 import {
   diff,
   map,
