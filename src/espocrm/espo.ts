@@ -308,6 +308,8 @@ const decodeAccount = intersection(
     // Custom fields
     cIco: maybe(string),
     cDataSource: maybe(string),
+    cKodPravniFormy: maybe(string),
+    cPravniForma: maybe(string),
   }),
 );
 
