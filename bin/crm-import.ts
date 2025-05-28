@@ -1,4 +1,10 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
+import { createClient } from "redis";
+
+import {
+  aresGetEkonomickySubjekt,
+  type EkonomickySubjekt,
+} from "~/src/ares/ares";
 import {
   getAllContacts,
   getAllOrganizations,
@@ -339,6 +345,46 @@ async function importTeamEngagements() {
   });
 }
 
+//
+// ARES Data
+//
+
+async function importARESAccountData() {
+  const redis = await createClient({ url: process.env.REDIS_URL }).connect();
+
+  const getCachedSubject = async (id: string) => {
+    const existingValue = await redis.get(id);
+    if (existingValue) {
+      console.debug(`Redis cache hit for ID “${id}”`);
+      return JSON.parse(existingValue) as EkonomickySubjekt;
+    } else {
+      console.debug(`Redis cache miss for ID “${id}”`);
+      const freshValue = await aresGetEkonomickySubjekt(id);
+      if (freshValue) {
+        await redis.set(id, JSON.stringify(freshValue));
+      }
+      return freshValue;
+    }
+  };
+
+  const allAccounts = await espoGetAllAccounts(apiKey);
+  for (const account of allAccounts) {
+    if (account.cIco) {
+      console.log(`Adding ARES data for ${account.name}`);
+      const subject = await getCachedSubject(account.cIco);
+      if (subject && !account.cKodPravniFormy) {
+        await espoUpdateAccount(apiKey, {
+          id: account.id,
+          cKodPravniFormy: subject?.pravniForma,
+          cPravniForma: subject?.nazevPravniFormy,
+        });
+      }
+    }
+  }
+
+  await redis.close();
+}
+
 /**
  * Import CRM-related data from various legacy sources
  *
@@ -352,6 +398,7 @@ async function main() {
   await importContactsFromCRM();
   await importLegacyContactEngagements();
   await importTeamEngagements();
+  await importARESAccountData();
 }
 
 main().catch((error) => {
