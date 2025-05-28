@@ -305,6 +305,7 @@ const decodeAccount = intersection(
   record({
     // Standard fields
     website: maybe(string),
+    emailAddress: maybe(string),
     // Custom fields
     cIco: maybe(string),
     cDataSource: maybe(string),
@@ -399,6 +400,20 @@ export const espoUnlinkContactsFromTargetList = (
     path: `TargetList/${targetListId}/contacts`,
     method: "DELETE",
     body: { ids: contactIds },
+    decodeResponse: boolean,
+    apiKey,
+  });
+
+/** Add contacts to target list */
+export const espoAddAccountsToTargetList = (
+  apiKey: string,
+  targetListId: string,
+  accountIds: string[],
+): Promise<boolean> =>
+  espoFetch({
+    path: `TargetList/${targetListId}/accounts`,
+    method: "POST",
+    body: { ids: accountIds },
     decodeResponse: boolean,
     apiKey,
   });
