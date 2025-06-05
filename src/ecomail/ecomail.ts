@@ -71,10 +71,10 @@ const subscriptionStates = [
 ] as const;
 
 /** Subscription state – is the user subscribed, unsubscribed, bounces, etc. */
-export type SubscriptionState = (typeof subscriptionStates)[number];
+type SubscriptionState = (typeof subscriptionStates)[number];
 
 /** Decode subscription state from the numeric code used in API responses */
-export function decodeSubscriptionStateCode(value: unknown): SubscriptionState {
+function decodeSubscriptionStateCode(value: unknown): SubscriptionState {
   const code = number(value);
   const state = subscriptionStates[code - 1];
   if (!state) {
@@ -113,7 +113,7 @@ export const decodeSubscriber = record({
  *
  * https://ecomailczv2.docs.apiary.io/#reference/subscribers/get-subscriber/get-subscriber-details
  */
-export const getSubscriber = (apiKey: string, email: string) =>
+export const ecomailGetSubscriber = (apiKey: string, email: string) =>
   ecomailFetch({
     path: `/subscribers/${email}`,
     decodeResponse: record({
@@ -142,7 +142,7 @@ type SubscribeProps = {
  *
  * https://ecomailczv2.docs.apiary.io/#reference/lists/list-subscribe
  */
-export const subscribeToList = ({
+export const ecomailSubscribeToList = ({
   apiKey,
   email,
   tags,
@@ -168,7 +168,7 @@ export const subscribeToList = ({
  *
  * https://ecomailczv2.docs.apiary.io/#reference/lists/list-unsubscribe/unsubscribes-subscriber-from-list
  */
-export const unsubscribeFromList = (
+export const ecomailUnsubscribeFromList = (
   apiKey: string,
   email: string,
   listId = mainContactListId,
@@ -186,7 +186,7 @@ export const unsubscribeFromList = (
  *
  * https://ecomailczv2.docs.apiary.io/#reference/subscribers/delete-subscriber/remove-subscriber-from-db
  */
-export const deleteSubscriber = (apiKey: string, email: string) =>
+export const ecomailDeleteSubscriber = (apiKey: string, email: string) =>
   ecomailFetch({
     path: `/subscribers/${email}/delete`,
     decodeResponse: justIgnore,
@@ -216,7 +216,7 @@ const decodeCampaign = record({
   status: number,
 });
 
-export const getAllCampaigns = (apiKey: string) =>
+export const ecomailGetAllCampaigns = (apiKey: string) =>
   ecomailFetch({
     path: "/campaigns",
     method: "GET",

@@ -1,29 +1,29 @@
 import { expect, test } from "@playwright/test";
 
 import {
-  deleteSubscriber,
-  getAllCampaigns,
-  getSubscriber,
-  subscribeToList,
-  unsubscribeFromList,
+  ecomailDeleteSubscriber,
+  ecomailGetAllCampaigns,
+  ecomailGetSubscriber,
+  ecomailSubscribeToList,
+  ecomailUnsubscribeFromList,
 } from "~/src/ecomail/ecomail";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 const testEmail = "zoul+testmatov@cesko.digital";
 
 test("Basic subscriber management", async () => {
-  await subscribeToList({
+  await ecomailSubscribeToList({
     apiKey,
     email: testEmail,
     skipConfirmation: true,
   });
-  await unsubscribeFromList(apiKey, testEmail);
-  const subscriber = await getSubscriber(apiKey, testEmail);
+  await ecomailUnsubscribeFromList(apiKey, testEmail);
+  const subscriber = await ecomailGetSubscriber(apiKey, testEmail);
   expect(subscriber.email).toBe(testEmail);
-  await deleteSubscriber(apiKey, testEmail);
+  await ecomailDeleteSubscriber(apiKey, testEmail);
 });
 
 test("Campaigns", async () => {
-  const campaigns = await getAllCampaigns(apiKey);
+  const campaigns = await ecomailGetAllCampaigns(apiKey);
   expect(campaigns.length).toBeGreaterThan(0);
 });

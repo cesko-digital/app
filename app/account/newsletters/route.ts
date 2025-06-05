@@ -4,10 +4,10 @@ import { boolean, record } from "typescript-json-decoder";
 
 import { withAuthenticatedUser } from "~/src/auth";
 import {
-  getSubscriber,
+  ecomailGetSubscriber,
+  ecomailSubscribeToList,
+  ecomailUnsubscribeFromList,
   mainContactListId,
-  subscribeToList,
-  unsubscribeFromList,
 } from "~/src/ecomail/ecomail";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
@@ -15,7 +15,7 @@ const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 /** Get main Ecomail contact list subscription status for signed-in user */
 export async function GET() {
   return withAuthenticatedUser(async ({ email }) => {
-    const subscriber = await getSubscriber(apiKey, email);
+    const subscriber = await ecomailGetSubscriber(apiKey, email);
     const subscribed =
       subscriber.lists.find((list) => list.listId === mainContactListId)
         ?.state === "subscribed";
@@ -31,14 +31,14 @@ export async function POST(request: NextRequest) {
   return withAuthenticatedUser(async ({ email }) => {
     const { subscribed } = decodePayload(await request.json());
     if (subscribed) {
-      await subscribeToList({
+      await ecomailSubscribeToList({
         skipConfirmation: true,
         apiKey,
         email,
       });
       return new Response(null, { status: 204 });
     } else {
-      await unsubscribeFromList(apiKey, email);
+      await ecomailUnsubscribeFromList(apiKey, email);
       return new Response(null, { status: 204 });
     }
   });
