@@ -5,6 +5,7 @@ import {
   number,
   record,
   string,
+  union,
   type DecoderFunction,
   type decodeType,
 } from "typescript-json-decoder";
@@ -192,5 +193,39 @@ export const deleteSubscriber = (apiKey: string, email: string) =>
     method: "DELETE",
     apiKey,
   });
+
+//
+// Campaigns
+//
+
+const decodeCampaignTarget = union(
+  array(number),
+  record({
+    segments: array({
+      list: number,
+      id: string,
+    }),
+  }),
+);
+
+const decodeCampaign = record({
+  id: number,
+  title: string,
+  recipients: nullable(number),
+  recepient_lists: decodeCampaignTarget,
+  status: number,
+});
+
+export const getAllCampaigns = (apiKey: string) =>
+  ecomailFetch({
+    path: "/campaigns",
+    method: "GET",
+    decodeResponse: array(decodeCampaign),
+    apiKey,
+  });
+
+//
+// Helpers
+//
 
 const justIgnore = () => {};
