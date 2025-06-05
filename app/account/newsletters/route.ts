@@ -8,7 +8,7 @@ import {
   mainContactListId,
   subscribeToList,
   unsubscribeFromList,
-} from "~/src/ecomail";
+} from "~/src/ecomail/ecomail";
 
 const apiKey = process.env.ECOMAIL_API_KEY ?? "";
 
@@ -31,8 +31,9 @@ export async function POST(request: NextRequest) {
   return withAuthenticatedUser(async ({ email }) => {
     const { subscribed } = decodePayload(await request.json());
     if (subscribed) {
-      await subscribeToList(apiKey, {
+      await subscribeToList({
         skipConfirmation: true,
+        apiKey,
         email,
       });
       return new Response(null, { status: 204 });

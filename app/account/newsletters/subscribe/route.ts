@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { literal, optional, record, string } from "typescript-json-decoder";
 
-import { subscribeToList } from "~/src/ecomail";
+import { subscribeToList } from "~/src/ecomail/ecomail";
 
 // The extra headers are here so that the endpoint works with Webflow
 const headers = {
@@ -46,12 +46,13 @@ export async function POST(request: NextRequest): Promise<Response> {
   //
   // Add new subscriber to Ecomail
   //
-  const success = await subscribeToList(process.env.ECOMAIL_API_KEY ?? "", {
-    email: requestData.email,
-    tags: ["web-subscribe-form"],
-  });
-
-  if (!success) {
+  try {
+    await subscribeToList({
+      apiKey: process.env.ECOMAIL_API_KEY ?? "",
+      email: requestData.email,
+      tags: ["web-subscribe-form"],
+    });
+  } catch {
     return new Response("Failed to create Ecomail subscription", {
       status: 500,
     });

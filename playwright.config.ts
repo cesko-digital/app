@@ -17,6 +17,6 @@ export default defineConfig({
   expect: {
     timeout: 180 * 1000,
   },
-  testMatch: ["app/**/*.e2e.ts"],
+  testMatch: ["app/**/*.e2e.ts", "src/**/*.e2e.ts"],
   timeout: 180 * 1000,
 });
