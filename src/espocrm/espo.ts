@@ -107,7 +107,7 @@ const decodePersonEntity = intersection(
   record({
     firstName: maybe(string),
     lastName: maybe(string),
-    emailAddress: string,
+    emailAddress: maybe(string),
   }),
 );
 
