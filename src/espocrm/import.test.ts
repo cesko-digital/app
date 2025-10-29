@@ -2,6 +2,8 @@ import { type Contact } from "~/src/espocrm/espo";
 
 import {
   diff,
+  firstName,
+  lastName,
   map,
   normalizeWebsiteUrl,
   stripWhitespaceAround,
@@ -23,6 +25,25 @@ test("Map", () => {
     map<string, string>(undefined, (s) => s.toUpperCase()),
   ).toBeUndefined();
   expect(map<string, string>("foo", (s) => s.toUpperCase())).toEqual("FOO");
+});
+
+test("Name split", () => {
+  // First name
+  expect(firstName("John Doe ")).toEqual("John");
+  expect(firstName(" John  Doe ")).toEqual("John");
+  expect(firstName("John Doe")).toEqual("John");
+  expect(firstName("John")).toEqual("John");
+  expect(firstName("")).toEqual("");
+  expect(firstName("Ing. JUDr. John Doe")).toEqual("John");
+
+  // Last name
+  expect(lastName("John Doe Deere")).toEqual("Doe Deere");
+  expect(lastName("John Doe")).toEqual("Doe");
+  expect(lastName("John Doe ")).toEqual("Doe");
+  expect(lastName("John  Doe ")).toEqual("Doe");
+  expect(lastName("John")).toEqual("");
+  expect(lastName("")).toEqual("");
+  expect(lastName("Ing. JUDr. John Doe, PhD.")).toEqual("Doe");
 });
 
 test("Strip whitespace", () => {

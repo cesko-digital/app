@@ -111,8 +111,24 @@ export function diff<T>(a: Partial<T>, b: Partial<T>): Partial<T> {
 // Import Helpers
 //
 
+const honorifics = ["Ing.", "JUDr.", "Mgr.", "Bc.", "PhDr.", "PhD."];
+const isHonorific = (s: string) =>
+  honorifics.map((s) => s.toLocaleLowerCase()).includes(s.toLocaleLowerCase());
+
 export const map = <T, U>(value: T | undefined, f: (val: T) => U) =>
   value ? f(value) : undefined;
+
+export const firstName = (name: string) =>
+  stripWhitespaceAround(name)
+    .split(/[\s,]+/)
+    .find((x) => !isHonorific(x));
+
+export const lastName = (name: string) =>
+  stripWhitespaceAround(name)
+    .split(/[\s,]+/)
+    .filter((x) => !isHonorific(x))
+    .slice(1)
+    .join(" ");
 
 export const stripWhitespaceAround = (s: string) =>
   s.replaceAll(/^\s+/g, "").replaceAll(/\s+$/g, "");
