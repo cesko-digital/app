@@ -108,6 +108,7 @@ const decodePersonEntity = intersection(
     firstName: maybe(string),
     lastName: maybe(string),
     emailAddress: maybe(string),
+    phoneNumber: maybe(string),
   }),
 );
 

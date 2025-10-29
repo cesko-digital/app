@@ -140,6 +140,7 @@ export const contactMergeRules: MergeRules<Contact> = {
     "cPublicContactEmail",
     "cSeniority",
     "cSlackUserID",
+    "phoneNumber",
   ],
   readOnlyAfterCreatePops: ["createdAt"],
   mergableProps: {
