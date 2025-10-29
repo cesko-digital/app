@@ -1,4 +1,4 @@
-import { type EmailAddressData } from "~/src/espocrm/espo";
+import { type Contact, type EmailAddressData } from "~/src/espocrm/espo";
 import { unique } from "~/src/utils";
 
 type MergeFunction<Entity, K extends keyof Entity> = (
@@ -116,6 +116,59 @@ export const mergeEmailAdddressData = <
   const merged = mergeArraysWithCustomEquality(isEqual)(a, b);
   merged.forEach((a, idx) => (a.primary = idx === 0));
   return merged;
+};
+
+/**
+ * Merge rules for contacts
+ *
+ * We intentionally skip all name-related fields here to keep
+ * any name customizations and cleanups in CRM from being overwritten
+ * by initial Airtable data.
+ *
+ * We also intentionally skip the `cDataSource` prop because it
+ * should only be set when records are created, not updated.
+ *
+ * TBD: Move elsewhere to keep merge code above entirely general
+ */
+export const contactMergeRules: MergeRules<Contact> = {
+  immutableProps: ["id", "cLegacyAirtableID"],
+  updatableProps: [
+    "cBio",
+    "cOrganizationName",
+    "cProfessionalProfileURL",
+    "cProfilePictureURL",
+    "cPublicContactEmail",
+    "cSeniority",
+    "cSlackUserID",
+  ],
+  readOnlyAfterCreatePops: ["createdAt"],
+  mergableProps: {
+    cPrivacyFlags: mergeArrays,
+    cTags: mergeDelimitedArrays(";"),
+    cOccupation: mergeDelimitedArrays(";"),
+    cAvailableInDistricts: mergeDelimitedArrays(","),
+    emailAddressData: mergeEmailAdddressData,
+    accountsIds: mergeArrays,
+    accountsNames: mergeRecords,
+    accountsColumns: mergeRecords,
+  },
+};
+
+export const haveCommonEmailAddress = (
+  a: Partial<Contact>,
+  b: Partial<Contact>,
+) => {
+  for (const candidateA of a.emailAddressData ?? []) {
+    for (const candidateB of b.emailAddressData ?? []) {
+      if (
+        candidateA.emailAddress.toLocaleLowerCase() ===
+        candidateB.emailAddress.toLocaleLowerCase()
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 //

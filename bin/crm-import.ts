@@ -37,54 +37,10 @@ import {
   normalize,
   normalizeWebsiteUrl,
 } from "~/src/espocrm/import";
-import {
-  mergeArrays,
-  mergeDelimitedArrays,
-  mergeEmailAdddressData,
-  mergeRecords,
-  type MergeRules,
-} from "~/src/espocrm/merge";
+import { contactMergeRules, haveCommonEmailAddress } from "~/src/espocrm/merge";
 import { notEmpty } from "~/src/utils";
 
 const apiKey = process.env.CRM_API_KEY ?? "<not set>";
-
-//
-// Shared
-//
-
-/**
- * Merge rules for accounts
- *
- * We intentionally skip all name-related fields here to keep
- * any name customizations and cleanups in CRM from being overwritten
- * by initial Airtable data.
- *
- * We also intentionally skip the `cDataSource` prop because it
- * should only be set when records are created, not updated.
- */
-const accountMergeRules: MergeRules<Contact> = {
-  immutableProps: ["id", "cLegacyAirtableID"],
-  updatableProps: [
-    "cBio",
-    "cOrganizationName",
-    "cProfessionalProfileURL",
-    "cProfilePictureURL",
-    "cPublicContactEmail",
-    "cSeniority",
-    "cSlackUserID",
-  ],
-  readOnlyAfterCreatePops: ["createdAt"],
-  mergableProps: {
-    cPrivacyFlags: mergeArrays,
-    cTags: mergeDelimitedArrays(";"),
-    cOccupation: mergeDelimitedArrays(";"),
-    cAvailableInDistricts: mergeDelimitedArrays(","),
-    emailAddressData: mergeEmailAdddressData,
-    accountsIds: mergeArrays,
-    accountsNames: mergeRecords,
-    accountsColumns: mergeRecords,
-  },
-};
 
 //
 // User Profiles -> Contacts
@@ -129,7 +85,7 @@ async function importUserProfilesFromAirtable() {
     createValue: (v) => espoCreateContact(apiKey, v),
     updateValue: (v) => espoUpdateContact(apiKey, v),
     getValueById: (id) => espoGetContactById(apiKey, id),
-    mergeRules: accountMergeRules,
+    mergeRules: contactMergeRules,
     singularName: "contact",
     pluralName: "contacts",
   });
@@ -181,20 +137,6 @@ async function importOrganizationsFromCRM() {
 // Import contacts from “CRM Organizací”
 //
 
-const haveCommonEmailAddress = (a: Partial<Contact>, b: Partial<Contact>) => {
-  for (const candidateA of a.emailAddressData ?? []) {
-    for (const candidateB of b.emailAddressData ?? []) {
-      if (
-        candidateA.emailAddress.toLocaleLowerCase() ===
-        candidateB.emailAddress.toLocaleLowerCase()
-      ) {
-        return true;
-      }
-    }
-  }
-  return false;
-};
-
 /**
  * Import contacts from the legacy CRM database
  *
@@ -245,7 +187,7 @@ async function importContactsFromCRM() {
     createValue: (v) => espoCreateContact(apiKey, v, true), // skip duplicate checks
     updateValue: (v) => espoUpdateContact(apiKey, v),
     getValueById: (id) => espoGetContactById(apiKey, id),
-    mergeRules: accountMergeRules,
+    mergeRules: contactMergeRules,
     singularName: "contact",
     pluralName: "contacts",
   });
