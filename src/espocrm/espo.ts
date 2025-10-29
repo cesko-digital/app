@@ -111,6 +111,14 @@ const decodePersonEntity = intersection(
   }),
 );
 
+export type EventEntity = decodeType<typeof decodeEventEntity>;
+const decodeEventEntity = intersection(
+  decodeBaseEntity,
+  record({
+    status: union("Planned", "Held", "Not Held"),
+  }),
+);
+
 //
 // Paging
 //
@@ -178,7 +186,9 @@ type Entity =
   | "TargetList"
   | "Meeting"
   | "CProject"
-  | "CTeamEngagement";
+  | "CTeamEngagement"
+  | "CEvent"
+  | "CEventRegistration";
 
 const createObject =
   <T extends BaseEntity>(entity: Entity, decoder: DecoderFunction<T>) =>
@@ -499,3 +509,59 @@ export const espoUpdateProjectEngagement = updateObject(
 
 /** Delete a project engagement */
 export const espoDeleteProjectEngagement = deleteObject("CTeamEngagement");
+
+//
+// Events
+//
+
+export type Event = decodeType<typeof decodeEvent>;
+export const decodeEvent = decodeEventEntity;
+
+/** Get all events */
+export const espoGetAllEvents = getAllObjectsOfType("CEvent", decodeEvent);
+
+//
+// Event Registrations
+//
+
+export type EventRegistration = decodeType<typeof decodeEventRegistration>;
+export const decodeEventRegistration = intersection(
+  decodeBaseEntity,
+  record({
+    contactId: string,
+    contactName: string,
+    eventId: string,
+    eventName: string,
+    status: union(
+      "chceme pozvat",
+      "pozvali jsme",
+      "potvrdili účast",
+      "odmítli účast",
+      "dorazili",
+    ),
+  }),
+);
+
+/** Get event registration by ID */
+export const espoGetEventRegistrationById = getObjectById(
+  "CEventRegistration",
+  decodeEventRegistration,
+);
+
+/** Get all event registrations */
+export const espoGetAllEventRegistrations = getAllObjectsOfType(
+  "CEventRegistration",
+  decodeEventRegistration,
+);
+
+/** Create new event registration */
+export const espoCreateEventRegistration = createObject(
+  "CEventRegistration",
+  decodeEventRegistration,
+);
+
+/** Update existing event registration */
+export const espoUpdateEventRegistration = updateObject(
+  "CEventRegistration",
+  decodeEventRegistration,
+);
