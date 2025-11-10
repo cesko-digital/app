@@ -47,7 +47,7 @@ export async function GET(request: Request) {
     // Otherwise, look up the ID of the synced User Profiles table in the target DB
     const userTableId = syncedUserTablesByDatabase[databaseId];
     if (!userTableId) {
-      return new Response(`Unknown database ID: "${databaseId}".`, {
+      return new Response(`Unknown database ID.`, {
         status: 400,
       });
     }
