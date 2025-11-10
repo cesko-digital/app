@@ -17,7 +17,10 @@ export const DetailedChart = ({
   filteredSamples: MetricSample[];
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  type Axis = Omit<AxisConfig<ScaleName, any, ChartsXAxisProps>, "id">;
+  type Axis<Scale extends ScaleName> = Omit<
+    AxisConfig<Scale, any, ChartsXAxisProps>,
+    "id"
+  >;
   const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
     day: "numeric",
     month: "long",
@@ -29,12 +32,12 @@ export const DetailedChart = ({
   const formatNumber = (value: number | null) =>
     numberFormatter.format(value ?? 0);
   const data = samples.map((s) => s.value);
-  const timeAxis: Axis = {
+  const timeAxis: Axis<"time"> = {
     data: samples.map((s) => new Date(s.date)),
     scaleType: "time",
     valueFormatter: (value) => dateFormatter.format(value as Date),
   };
-  const bandAxis: Axis = {
+  const bandAxis: Axis<"band"> = {
     data: samples.map((s) => s.label),
     scaleType: "band",
   };
