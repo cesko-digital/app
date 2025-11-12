@@ -12,7 +12,6 @@ jobs:
     env:
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       CRM_API_KEY: ${{ secrets.CRM_API_KEY }}
-      REDIS_URL: ${{ secrets.REDIS_URL }}
     steps:
       - uses: actions/checkout@v3
       - name: Import
