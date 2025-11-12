@@ -1,44 +1,17 @@
 #!/usr/bin/env -S npx ts-node -r tsconfig-paths/register -r dotenv-flow/config
-import { createClient } from "redis";
-
-import {
-  aresGetEkonomickySubjekt,
-  type EkonomickySubjekt,
-} from "~/src/ares/ares";
-import {
-  getAllContacts,
-  getAllOrganizations,
-  type Contact as LegacyContact,
-  type Organization,
-} from "~/src/data/organization";
-import { getAllTeamEngagements } from "~/src/data/team-engagement";
+import { aresGetEkonomickySubjekt } from "~/src/ares/ares";
 import { getAllUserProfiles, type UserProfile } from "~/src/data/user-profile";
 import {
-  espoCreateAccount,
   espoCreateContact,
-  espoCreateProjectEngagement,
-  espoGetAccountById,
   espoGetAllAccounts,
   espoGetAllContacts,
-  espoGetAllProjectEngagements,
-  espoGetAllProjects,
   espoGetContactById,
-  espoGetProjectEngagementById,
   espoUpdateAccount,
   espoUpdateContact,
-  espoUpdateProjectEngagement,
-  type Account,
   type Contact,
-  type ProjectEngagement,
 } from "~/src/espocrm/espo";
-import {
-  importCRMObjects,
-  map,
-  normalize,
-  normalizeWebsiteUrl,
-} from "~/src/espocrm/import";
-import { contactMergeRules, haveCommonEmailAddress } from "~/src/espocrm/merge";
-import { notEmpty } from "~/src/utils";
+import { importCRMObjects, normalize } from "~/src/espocrm/import";
+import { contactMergeRules } from "~/src/espocrm/merge";
 
 const apiKey = process.env.CRM_API_KEY ?? "<not set>";
 
@@ -75,12 +48,13 @@ export const userProfileToContact = (
  * Previous user profiles are deduplicated using Airtable record ID.
  */
 async function importUserProfilesFromAirtable() {
-  console.log(`*** Importing contacts from “User Profiles”`);
+  console.log(`*** Importing contacts from Airtable DB “User Profiles”`);
   console.log(`Downloading confirmed user profiles from Airtable.`);
   const userProfiles = await getAllUserProfiles("Confirmed Profiles");
   await importCRMObjects<Contact>({
     existingValues: await espoGetAllContacts(apiKey),
     newValues: userProfiles.map(userProfileToContact),
+    // TBD: Or e-mails match? But we’d have to sort out the legacy ID then
     isEqual: (a, b) => a.cLegacyAirtableID === b.cLegacyAirtableID,
     createValue: (v) => espoCreateContact(apiKey, v),
     updateValue: (v) => espoUpdateContact(apiKey, v),
@@ -93,227 +67,15 @@ async function importUserProfilesFromAirtable() {
 }
 
 //
-// Organizations -> Accounts
-//
-
-/** Convert organization to account */
-const organizationToAccount = (org: Organization): Partial<Account> => ({
-  name: normalize(org.name),
-  website: map(org.website, normalizeWebsiteUrl),
-  cIco: org.governmentId,
-  cDataSource: "Airtable sync",
-});
-
-/**
- * Import organizations from Airtable
- *
- * Previous organizations are deduplicated using the name field.
- */
-async function importOrganizationsFromCRM() {
-  console.info(`*** Importing accounts from “CRM Organizací”`);
-  console.debug(`Downloading organizations from Airtable.`);
-  const organizations = await getAllOrganizations();
-  console.debug(`Downloaded ${organizations.length} organizations.`);
-  await importCRMObjects<Account>({
-    existingValues: await espoGetAllAccounts(apiKey),
-    newValues: organizations.map(organizationToAccount),
-    isEqual: (a, b) => !!a.name && a.name === b.name,
-    createValue: (v) => espoCreateAccount(apiKey, v),
-    updateValue: (v) => espoUpdateAccount(apiKey, v),
-    getValueById: (id) => espoGetAccountById(apiKey, id),
-    mergeRules: {
-      immutableProps: ["id"],
-      readOnlyAfterCreatePops: ["name", "website"],
-      updatableProps: ["cIco"],
-      mergableProps: {},
-    },
-    singularName: "account",
-    pluralName: "accounts",
-  });
-  console.log("Finished!");
-}
-
-//
-// Import contacts from “CRM Organizací”
-//
-
-/**
- * Import contacts from the legacy CRM database
- *
- * Previous contacts are deduplicated by e-mail match only. If there
- * is an existing contact with the same name, we create a new, duplicate
- * one.
- */
-async function importContactsFromCRM() {
-  console.info(`*** Importing contacts from “CRM Organizací”`);
-
-  const accounts = await espoGetAllAccounts(apiKey);
-  const legacyOrganizations = await getAllOrganizations();
-  const legacyContacts = await getAllContacts();
-
-  const findAccount = (legacyOrgId: string) => {
-    const organization = legacyOrganizations.find((o) => o.id === legacyOrgId)!;
-    return accounts.find((a) => a.name === organization.name);
-  };
-
-  const convertLegacyContact = (c: LegacyContact): Partial<Contact> => {
-    return {
-      emailAddressData: [{ emailAddress: normalize(c.email) }],
-      firstName: normalize(c.firstName),
-      lastName: normalize(c.lastName),
-      name: normalize(c.name),
-      cDataSource: "CRM Organizací",
-      accountsIds: c.relatedOrganizationIds
-        .map((legacyOrgId) => findAccount(legacyOrgId)?.id)
-        .filter(notEmpty),
-      accountsColumns:
-        c.relatedOrganizationIds.length === 1 &&
-        findAccount(c.relatedOrganizationIds[0]) &&
-        c.position
-          ? {
-              [findAccount(c.relatedOrganizationIds[0])!.id]: {
-                role: normalize(c.position),
-                isInactive: false,
-              },
-            }
-          : undefined,
-    };
-  };
-
-  await importCRMObjects<Contact>({
-    existingValues: await espoGetAllContacts(apiKey),
-    newValues: legacyContacts.map(convertLegacyContact),
-    isEqual: haveCommonEmailAddress,
-    createValue: (v) => espoCreateContact(apiKey, v, true), // skip duplicate checks
-    updateValue: (v) => espoUpdateContact(apiKey, v),
-    getValueById: (id) => espoGetContactById(apiKey, id),
-    mergeRules: contactMergeRules,
-    singularName: "contact",
-    pluralName: "contacts",
-  });
-}
-
-/** Import contacts’ engagement on projects from the legacy CRM database */
-async function importLegacyContactEngagements() {
-  console.log("*** Importing legacy contact project engagements");
-  const legacyContacts = await getAllContacts();
-  const projects = await espoGetAllProjects(apiKey);
-  const newEngagements: Partial<ProjectEngagement>[] = [];
-
-  const contacts = await espoGetAllContacts(apiKey);
-  const getExistingContact = (email: string) =>
-    contacts.find(
-      (c) => !!c.emailAddressData?.find((data) => data.emailAddress === email),
-    );
-
-  for (const legacyContact of legacyContacts) {
-    for (const slug of legacyContact.projectLinks) {
-      const project = projects.find((p) => p.slug === slug);
-      if (!project) {
-        continue;
-      }
-      const existingContact = getExistingContact(
-        normalize(legacyContact.email),
-      );
-      if (existingContact) {
-        newEngagements.push({
-          name: "zapojil*a se, ale nevíme jak",
-          contactId: existingContact.id,
-          projectId: project.id,
-          dataSource: "CRM Organizací (Airtable)",
-        });
-      }
-    }
-  }
-
-  console.log(`Found ${newEngagements.length} engagements.`);
-
-  await importCRMObjects<ProjectEngagement>({
-    existingValues: await espoGetAllProjectEngagements(apiKey),
-    newValues: newEngagements,
-    isEqual: (a, b) =>
-      a.contactId === b.contactId &&
-      a.projectId === b.projectId &&
-      a.name === b.name,
-    createValue: (v) => espoCreateProjectEngagement(apiKey, v),
-    updateValue: (v) => espoUpdateProjectEngagement(apiKey, v),
-    getValueById: (id) => espoGetProjectEngagementById(apiKey, id),
-    singularName: "project engagement",
-    pluralName: "project engagements",
-  });
-}
-
-async function importTeamEngagements() {
-  const legacyEngagements = await getAllTeamEngagements();
-  const contacts = await espoGetAllContacts(apiKey);
-  const projects = await espoGetAllProjects(apiKey);
-
-  const newEngagements: Partial<ProjectEngagement>[] = [];
-
-  for (const legacyEngagement of legacyEngagements) {
-    const existingContact = contacts.find(
-      (c) => c.cLegacyAirtableID === legacyEngagement.userId,
-    );
-    const project = projects.find(
-      (p) => p.slug === legacyEngagement.projectSlug,
-    );
-    if (!existingContact || !project) {
-      continue;
-    }
-    newEngagements.push({
-      name:
-        normalize(legacyEngagement.projectRole) ??
-        "zapojil*a se, ale nevíme jak",
-      contactId: existingContact.id,
-      projectId: project.id,
-      dataSource: "Teams (Airtable)",
-      isPublic: !legacyEngagement.hideFromPublicView,
-      sections: legacyEngagement.fields.join("; "),
-    });
-  }
-
-  await importCRMObjects({
-    existingValues: await espoGetAllProjectEngagements(apiKey),
-    newValues: newEngagements,
-    isEqual: (a, b) =>
-      a.contactId === b.contactId &&
-      a.projectId === b.projectId &&
-      a.name === b.name,
-    createValue: (v) => espoCreateProjectEngagement(apiKey, v),
-    updateValue: (v) => espoUpdateProjectEngagement(apiKey, v),
-    getValueById: (id) => espoGetProjectEngagementById(apiKey, id),
-    singularName: "project engagement",
-    pluralName: "project engagements",
-  });
-}
-
-//
 // ARES Data
 //
 
 async function importARESAccountData() {
-  const redis = await createClient({ url: process.env.REDIS_URL }).connect();
-
-  const getCachedSubject = async (id: string) => {
-    const existingValue = await redis.get(id);
-    if (existingValue) {
-      console.debug(`Redis cache hit for ID “${id}”`);
-      return JSON.parse(existingValue) as EkonomickySubjekt;
-    } else {
-      console.debug(`Redis cache miss for ID “${id}”`);
-      const freshValue = await aresGetEkonomickySubjekt(id);
-      if (freshValue) {
-        await redis.set(id, JSON.stringify(freshValue));
-      }
-      return freshValue;
-    }
-  };
-
   const allAccounts = await espoGetAllAccounts(apiKey);
   for (const account of allAccounts) {
     if (account.cIco) {
       console.log(`Adding ARES data for ${account.name}`);
-      const subject = await getCachedSubject(account.cIco);
+      const subject = await aresGetEkonomickySubjekt(account.cIco);
       if (subject && !account.cKodPravniFormy) {
         await espoUpdateAccount(apiKey, {
           id: account.id,
@@ -323,8 +85,6 @@ async function importARESAccountData() {
       }
     }
   }
-
-  await redis.close();
 }
 
 /**
@@ -335,11 +95,7 @@ async function importARESAccountData() {
  * New objects are created, existing objects updated according to merge rules.
  */
 async function main() {
-  await importOrganizationsFromCRM();
   await importUserProfilesFromAirtable();
-  await importContactsFromCRM();
-  await importLegacyContactEngagements();
-  await importTeamEngagements();
   await importARESAccountData();
 }
 

@@ -33,7 +33,6 @@
     "react-lite-youtube-embed": "^2.5.6",
     "react-papaparse": "^4.4.0",
     "react-select": "^5.10.2",
-    "redis": "^5.9.0",
     "typescript-json-decoder": "^1.0.11"
   },
   "devDependencies": {
