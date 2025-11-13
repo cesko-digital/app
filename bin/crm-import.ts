@@ -73,10 +73,10 @@ async function importUserProfilesFromAirtable() {
 async function importARESAccountData() {
   const allAccounts = await espoGetAllAccounts(apiKey);
   for (const account of allAccounts) {
-    if (account.cIco) {
+    if (account.cIco && !account.cKodPravniFormy) {
       console.log(`Adding ARES data for ${account.name}`);
       const subject = await aresGetEkonomickySubjekt(account.cIco);
-      if (subject && !account.cKodPravniFormy) {
+      if (subject) {
         await espoUpdateAccount(apiKey, {
           id: account.id,
           cKodPravniFormy: subject?.pravniForma,
