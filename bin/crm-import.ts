@@ -12,6 +12,7 @@ import {
 } from "~/src/espocrm/espo";
 import { importCRMObjects, normalize } from "~/src/espocrm/import";
 import { contactMergeRules } from "~/src/espocrm/merge";
+import { isValidIČO } from "~/src/utils";
 
 const apiKey = process.env.CRM_API_KEY ?? "<not set>";
 
@@ -75,6 +76,10 @@ async function importARESAccountData() {
   for (const account of allAccounts) {
     if (account.cIco && !account.cKodPravniFormy) {
       console.log(`Adding ARES data for ${account.name}`);
+      if (!isValidIČO(account.cIco)) {
+        console.warn(`Skipping, “${account.cIco}” is not a valid IČO.`);
+        continue;
+      }
       const subject = await aresGetEkonomickySubjekt(account.cIco);
       if (subject) {
         await espoUpdateAccount(apiKey, {
