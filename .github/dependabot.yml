@@ -4,6 +4,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    # https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns
+    cooldown:
+      default-days: 7
     ignore:
       # We have to do this manually, see https://github.com/cesko-digital/app/issues/1117
       - dependency-name: "next"
