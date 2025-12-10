@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import {
   mergeArrays,
   mergeArraysWithCustomEquality,
@@ -7,16 +10,16 @@ import {
 } from "./merge";
 
 test("Merge arrays", () => {
-  expect(mergeArrays([], [])).toEqual([]);
-  expect(mergeArrays([1], [2])).toEqual([1, 2]);
-  expect(mergeArrays([1, 2], [2])).toEqual([1, 2]);
+  assert.deepStrictEqual(mergeArrays([], []), []);
+  assert.deepStrictEqual(mergeArrays([1], [2]), [1, 2]);
+  assert.deepStrictEqual(mergeArrays([1, 2], [2]), [1, 2]);
 });
 
 test("Merge separator-delimited arrays", () => {
-  expect(mergeDelimitedArrays(";")("", "")).toBe("");
-  expect(mergeDelimitedArrays(";")("a;b", "c;d")).toBe("a; b; c; d");
-  expect(mergeDelimitedArrays(",")("a,b", "c,d")).toBe("a, b, c, d");
-  expect(mergeDelimitedArrays(",")("a,b", "a,c")).toBe("a, b, c");
+  assert.equal(mergeDelimitedArrays(";")("", ""), "");
+  assert.equal(mergeDelimitedArrays(";")("a;b", "c;d"), "a; b; c; d");
+  assert.equal(mergeDelimitedArrays(",")("a,b", "c,d"), "a, b, c, d");
+  assert.equal(mergeDelimitedArrays(",")("a,b", "a,c"), "a, b, c");
 });
 
 test("Merge arrays with custom equality", () => {
@@ -24,22 +27,25 @@ test("Merge arrays with custom equality", () => {
   const merge = mergeArraysWithCustomEquality<Item>(
     (a, b) => a.name === b.name,
   );
-  expect(merge([], [])).toEqual([]);
-  expect(merge([{ name: "foo" }], [])).toEqual([{ name: "foo" }]);
-  expect(merge([{ name: "foo" }], [{ name: "foo" }, { name: "bar" }])).toEqual([
-    { name: "foo" },
-    { name: "bar" },
-  ]);
+  assert.deepStrictEqual(merge([], []), []);
+  assert.deepStrictEqual(merge([{ name: "foo" }], []), [{ name: "foo" }]);
+  assert.deepStrictEqual(
+    merge([{ name: "foo" }], [{ name: "foo" }, { name: "bar" }]),
+    [{ name: "foo" }, { name: "bar" }],
+  );
 });
 
 test("Merge records", () => {
-  expect(mergeRecords({}, {})).toEqual({});
-  expect(mergeRecords({ foo: 1 }, { bar: 2 })).toEqual({ foo: 1, bar: 2 });
-  expect(mergeRecords({ foo: 1 }, { foo: 2 })).toEqual({ foo: 2 });
+  assert.deepStrictEqual(mergeRecords({}, {}), {});
+  assert.deepStrictEqual(mergeRecords({ foo: 1 }, { bar: 2 }), {
+    foo: 1,
+    bar: 2,
+  });
+  assert.deepStrictEqual(mergeRecords({ foo: 1 }, { foo: 2 }), { foo: 2 });
 });
 
 test("Merge email address data", () => {
-  expect(
+  assert.deepStrictEqual(
     mergeEmailAdddressData(
       [{ emailAddress: "miles@davis.name", primary: true }],
       [
@@ -47,8 +53,9 @@ test("Merge email address data", () => {
         { emailAddress: "milesdavis@gmail.com", primary: true },
       ],
     ),
-  ).toEqual([
-    { emailAddress: "miles@davis.name", primary: true },
-    { emailAddress: "milesdavis@gmail.com", primary: false },
-  ]);
+    [
+      { emailAddress: "miles@davis.name", primary: true },
+      { emailAddress: "milesdavis@gmail.com", primary: false },
+    ],
+  );
 });

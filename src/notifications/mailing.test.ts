@@ -1,16 +1,21 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { renderNotificationMailSubject, renderRole } from "./mailing";
 
 test("Render notification e-mail subject", () => {
-  expect(renderNotificationMailSubject([{ name: "Krotitel tygrů" }])).toBe(
+  assert.equal(
+    renderNotificationMailSubject([{ name: "Krotitel tygrů" }]),
     "Česko.Digital hledá: Krotitel tygrů",
   );
-  expect(
+  assert.equal(
     renderNotificationMailSubject([
       { name: "Krotitel tygrů" },
       { name: "Masér varanů" },
     ]),
-  ).toBe("Česko.Digital hledá dvě nové role");
-  expect(
+    "Česko.Digital hledá dvě nové role",
+  );
+  assert.equal(
     renderNotificationMailSubject([
       { name: "Krotitel tygrů" },
       { name: "Masér varanů" },
@@ -19,12 +24,15 @@ test("Render notification e-mail subject", () => {
       { name: "Krotitel tygrů" },
       { name: "Masér varanů" },
     ]),
-  ).toBe("Česko.Digital hledá 6 nových rolí");
+    "Česko.Digital hledá 6 nových rolí",
+  );
 });
 
 test("Role rendering", () => {
-  expect(renderRole({ name: "Krotitel tygrů", slug: "krotitel" }))
-    .toEqual(`🔹 Krotitel tygrů
+  assert.equal(
+    renderRole({ name: "Krotitel tygrů", slug: "krotitel" }),
+    `🔹 Krotitel tygrů
   https://app.cesko.digital/opportunities/krotitel
-  `);
+  `,
+  );
 });

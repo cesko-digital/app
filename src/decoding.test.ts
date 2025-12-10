@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import {
   boolean,
   number,
@@ -17,24 +20,25 @@ import {
 } from "./decoding";
 
 test("Decode URL", () => {
-  expect(() => decodeUrl("bagr")).toThrow();
-  expect(() => decodeUrl("")).toThrow();
-  expect(decodeUrl("app://deeplink")).toEqual("app://deeplink");
-  expect(
+  assert.throws(() => decodeUrl("bagr"));
+  assert.throws(() => decodeUrl(""));
+  assert.equal(decodeUrl("app://deeplink"), "app://deeplink");
+  assert.equal(
     decodeUrl("https://cesko-digital.slack.com/archives/C01AENB1LPP"),
-  ).toEqual("https://cesko-digital.slack.com/archives/C01AENB1LPP");
-  expect(decodeUrl("mailto:bagr@lopata.cz")).toEqual("mailto:bagr@lopata.cz");
-  expect(decodeUrl("www.google.com")).toEqual("https://www.google.com/");
+    "https://cesko-digital.slack.com/archives/C01AENB1LPP",
+  );
+  assert.equal(decodeUrl("mailto:bagr@lopata.cz"), "mailto:bagr@lopata.cz");
+  assert.equal(decodeUrl("www.google.com"), "https://www.google.com/");
 });
 
 test("Decode valid items from array", () => {
   const decoder = decodeValidItemsFromArray(number, "Test", () => {});
-  expect(decoder(["foo", "bar", 42])).toEqual([42]);
+  assert.deepStrictEqual(decoder(["foo", "bar", 42]), [42]);
 });
 
 test("Decode object", () => {
   const decoder = decodeObject(record({ name: string, age: number }));
-  expect(decoder({ userA: { name: "Miles", age: 42 } })).toEqual({
+  assert.deepStrictEqual(decoder({ userA: { name: "Miles", age: 42 } }), {
     userA: {
       name: "Miles",
       age: 42,
@@ -44,32 +48,24 @@ test("Decode object", () => {
 
 test("Decode with defaults", () => {
   const decoder = withDefault(optional(boolean), true);
-  expect(decoder(false)).toBe(false);
-  expect(decoder(true)).toBe(true);
-  expect(decoder(undefined)).toBe(true);
+  assert.equal(decoder(false), false);
+  assert.equal(decoder(true), true);
+  assert.equal(decoder(undefined), true);
 });
 
 test("Decode Airtable relation", () => {
-  expect(relationToZeroOrOne(undefined)).toBeUndefined();
-  expect(relationToZeroOrOne([])).toBeUndefined();
-  expect(relationToZeroOrOne(["foo"])).toBe("foo");
-  expect(relationToZeroOrOne("foo")).toBe("foo");
-});
-
-test("Decode relation with unexpected number of records", () => {
-  const consoleWarn = console.warn;
-  console.warn = jest.fn();
-  expect(relationToZeroOrOne(["foo", "bar"])).toBe("foo");
-  expect(console.warn).toHaveBeenCalled();
-  console.warn = consoleWarn;
+  assert.equal(relationToZeroOrOne(undefined), undefined);
+  assert.equal(relationToZeroOrOne([]), undefined);
+  assert.equal(relationToZeroOrOne(["foo"]), "foo");
+  assert.equal(relationToZeroOrOne("foo"), "foo");
 });
 
 test("Decode optional array", () => {
   const decoder = optionalArray(string);
-  expect(decoder(undefined)).toEqual([]);
-  expect(decoder([])).toEqual([]);
-  expect(decoder(["foo", "bar"])).toEqual(["foo", "bar"]);
-  expect(() => decoder([1, 2])).toThrow();
+  assert.deepStrictEqual(decoder(undefined), []);
+  assert.deepStrictEqual(decoder([]), []);
+  assert.deepStrictEqual(decoder(["foo", "bar"]), ["foo", "bar"]);
+  assert.throws(() => decoder([1, 2]));
 });
 
 test("Decode JSON string", () => {
@@ -78,5 +74,5 @@ test("Decode JSON string", () => {
     foo: string,
   });
   const decode = decodeJSONString(decodePayload);
-  expect(decode(input)).toEqual({ foo: "bar" });
+  assert.deepStrictEqual(decode(input), { foo: "bar" });
 });

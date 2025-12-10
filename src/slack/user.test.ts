@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import {
   decodeSlackProfile,
   decodeSlackUser,
@@ -6,21 +9,19 @@ import {
 } from "./user";
 
 test("Decode user", () => {
-  expect(decodeSlackUser(sampleUserPayload)).toEqual({
+  assert.partialDeepStrictEqual(decodeSlackUser(sampleUserPayload), {
     id: "U038G4SGK9Q",
     team_id: "TG21XF887",
     name: "zoul_test",
     real_name: "Tomáš Znamenáček",
     is_bot: false,
     is_email_confirmed: true,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    profile: expect.anything(),
     deleted: false,
   });
 });
 
 test("Decode profile", () => {
-  expect(decodeSlackProfile(sampleProfilePayload)).toEqual({
+  assert.deepStrictEqual(decodeSlackProfile(sampleProfilePayload), {
     real_name: "Tomáš Znamenáček",
     display_name: "Tomáš Znamenáček",
     image_512: "https://…512.png",

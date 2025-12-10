@@ -1,7 +1,10 @@
+import assert from "node:assert";
+import test, { describe } from "node:test";
+
 import { decodeEvent, getEventDuration } from "./event";
 
 test("Decode event", () => {
-  expect(
+  assert.partialDeepStrictEqual(
     decodeEvent({
       "ID": "rec9ujcN8HSkE0hgh",
       "Live URL": "https://cesko.digital/show-and-tell",
@@ -22,65 +25,71 @@ test("Decode event", () => {
       "RSVP Deadline": "2021-06-24T17:00:00.000Z",
       "Start Time": "2021-06-24T17:00:00.000Z",
     }),
-  ).toEqual({
-    id: "rec9ujcN8HSkE0hgh",
-    name: "Show & Tell #2",
-    summary: "Živé vysílání bla bla bla…",
-    description: { source: "Bude to **pecka**!\n" },
-    startTime: "2021-06-24T17:00:00.000Z",
-    ownerId: "rec9ujcN8HSkEdwehgh",
-    projectId: "rec9ujcN8HSkdedwedd",
-    published: false,
-    registrationUrl: "https://cesko.digital/rsvp",
-    registrationTitle: "Sleduj!",
-    quickRegistrationMode: false,
-    registeredUserIds: [],
-    registeredUsers: [],
-    slug: "show-and-tell-2",
-    endTime: "2021-06-24T18:00:00.000Z",
-    tagIds: ["foo", "bar"],
-  });
+    {
+      id: "rec9ujcN8HSkE0hgh",
+      name: "Show & Tell #2",
+      summary: "Živé vysílání bla bla bla…",
+      description: { source: "Bude to **pecka**!\n" },
+      startTime: "2021-06-24T17:00:00.000Z",
+      ownerId: "rec9ujcN8HSkEdwehgh",
+      projectId: "rec9ujcN8HSkdedwedd",
+      published: false,
+      registrationUrl: "https://cesko.digital/rsvp",
+      registrationTitle: "Sleduj!",
+      quickRegistrationMode: false,
+      registeredUserIds: [],
+      registeredUsers: [],
+      slug: "show-and-tell-2",
+      endTime: "2021-06-24T18:00:00.000Z",
+      tagIds: ["foo", "bar"],
+    },
+  );
 });
 
 describe("Get event duration", () => {
   test("No result for same dates", () => {
-    expect(
+    assert.equal(
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T14:00:00.00Z",
       }),
-    ).toBe(null);
+      null,
+    );
   });
   test("No result when end time is missing", () => {
-    expect(
+    assert.equal(
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: undefined,
       }),
-    ).toBe(null);
+      null,
+    );
   });
   test("Shorter duration in minutes", () => {
-    expect(
+    assert.equal(
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T15:00:00.00Z",
       }),
-    ).toBe("60 minut");
+      "60 minut",
+    );
   });
   test("Longer duration in hours", () => {
-    expect(
+    assert.equal(
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T17:00:00.00Z",
       }),
-    ).toBe("3 hodiny");
+      "3 hodiny",
+    );
   });
   test("Longer duration in hours", () => {
-    expect(
+    assert.equal(
       getEventDuration({
         startTime: "2022-01-14T14:00:00.00Z",
         endTime: "2022-01-14T19:00:00.00Z",
       }),
-    ).toBe("5 hodin");
+      "5 hodin",
+    );
   });
 });

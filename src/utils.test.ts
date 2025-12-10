@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import {
   hashDigest,
   isValidIČO,
@@ -8,29 +11,29 @@ import {
 } from "./utils";
 
 test("E-mail address normalization", () => {
-  expect(normalizeEmailAddress("foo@bar.cz")).toBe("foo@bar.cz");
-  expect(normalizeEmailAddress("Foo@bar.cz")).toBe("foo@bar.cz");
-  expect(normalizeEmailAddress(" Foo@bar.cz")).toBe("foo@bar.cz");
-  expect(normalizeEmailAddress(" Foo@bar.cz ")).toBe("foo@bar.cz");
+  assert.equal(normalizeEmailAddress("foo@bar.cz"), "foo@bar.cz");
+  assert.equal(normalizeEmailAddress("Foo@bar.cz"), "foo@bar.cz");
+  assert.equal(normalizeEmailAddress(" Foo@bar.cz"), "foo@bar.cz");
+  assert.equal(normalizeEmailAddress(" Foo@bar.cz "), "foo@bar.cz");
 });
 
 test("E-mail validation", () => {
-  expect(looksLikeEmailAdress("foo@bar")).toBe(false);
-  expect(looksLikeEmailAdress("foo")).toBe(false);
-  expect(looksLikeEmailAdress("@bar")).toBe(false);
-  expect(looksLikeEmailAdress("@foo@bar.cz")).toBe(false);
-  expect(looksLikeEmailAdress("foo @bar.cz")).toBe(false);
-  expect(looksLikeEmailAdress("@foo@bar.cz")).toBe(false);
-  expect(looksLikeEmailAdress("foo@bar.")).toBe(false);
-  expect(looksLikeEmailAdress("foo@bar.cz")).toBe(true);
+  assert.equal(looksLikeEmailAdress("foo@bar"), false);
+  assert.equal(looksLikeEmailAdress("foo"), false);
+  assert.equal(looksLikeEmailAdress("@bar"), false);
+  assert.equal(looksLikeEmailAdress("@foo@bar.cz"), false);
+  assert.equal(looksLikeEmailAdress("foo @bar.cz"), false);
+  assert.equal(looksLikeEmailAdress("@foo@bar.cz"), false);
+  assert.equal(looksLikeEmailAdress("foo@bar."), false);
+  assert.equal(looksLikeEmailAdress("foo@bar.cz"), true);
 });
 
 test("Hash digest", () => {
-  expect(hashDigest(["foo", "bar"], "baz")).toBe("f9f98a9044");
+  assert.equal(hashDigest(["foo", "bar"], "baz"), "f9f98a9044");
 });
 
 test("Subset object", () => {
-  expect(subset({ foo: 1, bar: 2 }, ["foo"])).toEqual({ foo: 1 });
+  assert.deepStrictEqual(subset({ foo: 1, bar: 2 }, ["foo"]), { foo: 1 });
 });
 
 test("Whitespace strip", () => {
@@ -39,10 +42,10 @@ test("Whitespace strip", () => {
   různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické,
   více i méně kvalifikované.`;
   const singleline = `Tady najdeš seznam konkrétních rolí nebo úkolů, se kterými potřebujeme pomoc v našich projektech. Bývají hodně různorodé – jednorázové, kratší i dlouhodobé, placené i dobrovolnické, více i méně kvalifikované.`;
-  expect(stripped).toBe(singleline);
+  assert.equal(stripped, singleline);
 });
 
 test("IČO check", () => {
-  expect(isValidIČO("08178607")).toBe(true);
-  expect(isValidIČO("08178606")).toBe(false);
+  assert.equal(isValidIČO("08178607"), true);
+  assert.equal(isValidIČO("08178606"), false);
 });

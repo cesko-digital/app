@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { decodeBlockActionCallback } from "./interactions";
 
 test("Decode interation callback", () => {
@@ -42,7 +45,7 @@ test("Decode interation callback", () => {
       },
     ],
   };
-  expect(decodeBlockActionCallback(payload)).toEqual({
+  assert.deepStrictEqual(decodeBlockActionCallback(payload), {
     type: "block_actions",
     user: {
       id: "UJJ3MNA91",

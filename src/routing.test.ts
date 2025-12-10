@@ -1,11 +1,16 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { Route } from "~/src/routing";
 
 test("Registration params", () => {
-  expect(Route.register()).toBe("/join");
-  expect(Route.register({ email: "foo@bar.cz" })).toBe(
+  assert.equal(Route.register(), "/join");
+  assert.equal(
+    Route.register({ email: "foo@bar.cz" }),
     "/join?email=foo%40bar.cz",
   );
-  expect(Route.register({ email: "foo@bar.cz", callbackUrl: undefined })).toBe(
+  assert.equal(
+    Route.register({ email: "foo@bar.cz", callbackUrl: undefined }),
     "/join?email=foo%40bar.cz",
   );
 });

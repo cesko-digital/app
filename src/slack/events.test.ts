@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import {
   decodeEndpointHandshake,
   decodeEventCallback,
@@ -11,7 +14,7 @@ test("Decode initial handshake", () => {
     challenge: "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P",
     type: "url_verification",
   };
-  expect(decodeEndpointHandshake(payload)).toEqual(payload);
+  assert.deepStrictEqual(decodeEndpointHandshake(payload), payload);
 });
 
 test("Decode event callback", () => {
@@ -29,15 +32,13 @@ test("Decode event callback", () => {
     event_time: 1234567890,
   };
   const decode = decodeEventCallback(decodeTeamJoinEvent);
-  expect(decode(payload)).toEqual({
+  assert.partialDeepStrictEqual(decode(payload), {
     token: "XXYYZZ",
     team_id: "TXXXXXXXX",
     api_app_id: "AXXXXXXXXX",
     type: "event_callback",
     event: {
       type: "team_join",
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      user: expect.anything(),
     },
   });
 });

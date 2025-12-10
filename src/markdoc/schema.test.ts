@@ -1,12 +1,16 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { slugify } from "./schema";
 
 test("Slugify", () => {
-  expect(slugify("foo")).toBe("foo");
-  expect(slugify("foo bar")).toBe("foo-bar");
-  expect(slugify("foo/bar")).toBe("foo-bar");
-  expect(slugify("foo!?")).toBe("foo");
-  expect(slugify("PŘÍŠERA")).toBe("prisera");
-  expect(slugify("První krok k řešení = pilotní kurz Nezisk.Digital")).toBe(
+  assert.equal(slugify("foo"), "foo");
+  assert.equal(slugify("foo bar"), "foo-bar");
+  assert.equal(slugify("foo/bar"), "foo-bar");
+  assert.equal(slugify("foo!?"), "foo");
+  assert.equal(slugify("PŘÍŠERA"), "prisera");
+  assert.equal(
+    slugify("První krok k řešení = pilotní kurz Nezisk.Digital"),
     "prvni-krok-k-reseni-pilotni-kurz-nezisk-digital",
   );
 });

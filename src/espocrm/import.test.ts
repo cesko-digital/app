@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { type Contact } from "~/src/espocrm/espo";
 
 import {
@@ -10,71 +13,82 @@ import {
 } from "./import";
 
 test("Diff", () => {
-  expect(diff({}, {})).toEqual({});
-  expect(diff<Contact>({}, { name: "Miles" })).toEqual({ name: "Miles" });
-  expect(diff<Contact>({ name: "Miles" }, { name: "Dizzy" })).toEqual({
-    name: "Dizzy",
+  assert.deepStrictEqual(diff({}, {}), {});
+  assert.deepStrictEqual(diff<Contact>({}, { name: "Miles" }), {
+    name: "Miles",
   });
-  expect(diff<Contact>({ name: "Miles" }, {})).toEqual({
-    name: undefined,
+  assert.deepStrictEqual(diff<Contact>({ name: "Miles" }, { name: "Dizzy" }), {
+    name: "Dizzy",
   });
 });
 
 test("Map", () => {
-  expect(
+  assert.equal(
     map<string, string>(undefined, (s) => s.toUpperCase()),
-  ).toBeUndefined();
-  expect(map<string, string>("foo", (s) => s.toUpperCase())).toEqual("FOO");
+    undefined,
+  );
+  assert.equal(
+    map<string, string>("foo", (s) => s.toUpperCase()),
+    "FOO",
+  );
 });
 
 test("Name split", () => {
   // First name
-  expect(firstName("John Doe ")).toEqual("John");
-  expect(firstName(" John  Doe ")).toEqual("John");
-  expect(firstName("John Doe")).toEqual("John");
-  expect(firstName("John")).toEqual("John");
-  expect(firstName("")).toEqual("");
-  expect(firstName("Ing. JUDr. John Doe")).toEqual("John");
+  assert.equal(firstName("John Doe "), "John");
+  assert.equal(firstName(" John  Doe "), "John");
+  assert.equal(firstName("John Doe"), "John");
+  assert.equal(firstName("John"), "John");
+  assert.equal(firstName(""), "");
+  assert.equal(firstName("Ing. JUDr. John Doe"), "John");
 
   // Last name
-  expect(lastName("John Doe Deere")).toEqual("Doe Deere");
-  expect(lastName("John Doe")).toEqual("Doe");
-  expect(lastName("John Doe ")).toEqual("Doe");
-  expect(lastName("John  Doe ")).toEqual("Doe");
-  expect(lastName("John")).toEqual("");
-  expect(lastName("")).toEqual("");
-  expect(lastName("Ing. JUDr. John Doe, PhD.")).toEqual("Doe");
+  assert.equal(lastName("John Doe Deere"), "Doe Deere");
+  assert.equal(lastName("John Doe"), "Doe");
+  assert.equal(lastName("John Doe "), "Doe");
+  assert.equal(lastName("John  Doe "), "Doe");
+  assert.equal(lastName("John"), "");
+  assert.equal(lastName(""), "");
+  assert.equal(lastName("Ing. JUDr. John Doe, PhD."), "Doe");
 });
 
 test("Strip whitespace", () => {
-  expect(stripWhitespaceAround("  foo ")).toEqual("foo");
-  expect(stripWhitespaceAround("  foo bar")).toEqual("foo bar");
+  assert.equal(stripWhitespaceAround("  foo "), "foo");
+  assert.equal(stripWhitespaceAround("  foo bar"), "foo bar");
 });
 
 test("Normalize website URL", () => {
-  expect(normalizeWebsiteUrl("www.2zsdobris.cz")).toEqual(
+  assert.equal(
+    normalizeWebsiteUrl("www.2zsdobris.cz"),
     "https://www.2zsdobris.cz",
   );
-  expect(
+  assert.equal(
     normalizeWebsiteUrl("https://www.alliancefrancaise.cz/jiznicechy/"),
-  ).toEqual("https://www.alliancefrancaise.cz");
-  expect(normalizeWebsiteUrl("http://centrumlocika.cz/")).toEqual(
+    "https://www.alliancefrancaise.cz",
+  );
+  assert.equal(
+    normalizeWebsiteUrl("http://centrumlocika.cz/"),
     "https://centrumlocika.cz",
   );
-  expect(normalizeWebsiteUrl("vizovice.dcpr.cz")).toEqual(
+  assert.equal(
+    normalizeWebsiteUrl("vizovice.dcpr.cz"),
     "https://vizovice.dcpr.cz",
   );
-  expect(normalizeWebsiteUrl("lopata bagr")).toBeUndefined();
-  expect(normalizeWebsiteUrl(" www.proximasociale.cz")).toEqual(
+  assert.equal(normalizeWebsiteUrl("lopata bagr"), undefined);
+  assert.equal(
+    normalizeWebsiteUrl(" www.proximasociale.cz"),
     "https://www.proximasociale.cz",
   );
-  expect(normalizeWebsiteUrl("www.proximasociale.cz?foo=bar")).toEqual(
+  assert.equal(
+    normalizeWebsiteUrl("www.proximasociale.cz?foo=bar"),
     "https://www.proximasociale.cz",
   );
-  expect(normalizeWebsiteUrl("WWW.foo.example")).toEqual(
+  assert.equal(
+    normalizeWebsiteUrl("WWW.foo.example"),
     "https://www.foo.example",
   );
-  expect(normalizeWebsiteUrl("https://opava.eurotopia.cz/index.php")).toEqual(
+  assert.equal(
+    normalizeWebsiteUrl("https://opava.eurotopia.cz/index.php"),
     "https://opava.eurotopia.cz",
   );
 });

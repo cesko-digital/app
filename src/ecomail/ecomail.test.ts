@@ -1,9 +1,7 @@
-import {
-  decodeSubscriber,
-  decodeSubscription,
-  type Subscriber,
-  type Subscription,
-} from "./ecomail";
+import assert from "node:assert";
+import test from "node:test";
+
+import { decodeSubscriber, decodeSubscription } from "./ecomail";
 
 test("Decode subscriber", () => {
   const payload = {
@@ -62,7 +60,7 @@ test("Decode subscriber", () => {
       },
     },
   };
-  expect(decodeSubscriber(payload)).toEqual<Subscriber>({
+  assert.deepStrictEqual(decodeSubscriber(payload), {
     name: null,
     surname: null,
     email: "zoul@cesko.digital",
@@ -98,7 +96,7 @@ test("Decode subscription", () => {
       active_subscribers: 0,
     },
   };
-  expect(decodeSubscription(payload)).toEqual<Subscription>({
+  assert.deepStrictEqual(decodeSubscription(payload), {
     listId: 2,
     state: "subscribed",
     groups: {},
