@@ -1,3 +1,6 @@
+import assert from "node:assert";
+import test from "node:test";
+
 import { buildSlackMessage } from "./discourse";
 
 test("Build Slack message", () => {
@@ -8,7 +11,7 @@ test("Build Slack message", () => {
     bodyMarkdown: "Post body",
     author: "Aloisie Citronová",
   });
-  expect(msg).toEqual([
+  assert.deepStrictEqual(msg, [
     {
       type: "header",
       text: {

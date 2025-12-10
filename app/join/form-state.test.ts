@@ -1,8 +1,11 @@
-import { validateForm, type ValidationResult } from "./form-state";
+import assert from "node:assert";
+import test from "node:test";
+
+import { validateForm } from "./form-state";
 
 test("Validate correctly filled form", () => {
   const now = new Date();
-  expect(
+  assert.deepStrictEqual(
     validateForm(
       {
         name: "Aloisie Citronová",
@@ -22,20 +25,21 @@ test("Validate correctly filled form", () => {
       },
       now,
     ),
-  ).toEqual<ValidationResult>({
-    result: "success",
-    validatedData: {
-      name: "Aloisie Citronová",
-      email: "aloisie@cesko.digital",
-      tags: "#fake",
-      occupation: "whatever",
-      availableInDistricts: "Praha, Brno",
-      bio: "Ahoj, já jsem Aloisie a chci se zapojit do vašeho projektu.",
-      organizationName: "",
-      profileUrl: "",
-      privacyFlags: ["enablePublicProfile"],
-      gdprPolicyAcceptedAt: now.toISOString(),
-      codeOfConductAcceptedAt: now.toISOString(),
+    {
+      result: "success",
+      validatedData: {
+        name: "Aloisie Citronová",
+        email: "aloisie@cesko.digital",
+        tags: "#fake",
+        occupation: "whatever",
+        availableInDistricts: "Praha, Brno",
+        bio: "Ahoj, já jsem Aloisie a chci se zapojit do vašeho projektu.",
+        organizationName: "",
+        profileUrl: "",
+        privacyFlags: ["enablePublicProfile"],
+        gdprPolicyAcceptedAt: now.toISOString(),
+        codeOfConductAcceptedAt: now.toISOString(),
+      },
     },
-  });
+  );
 });
