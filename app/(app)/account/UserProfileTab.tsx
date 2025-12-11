@@ -10,7 +10,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 
-import { AvatarUploader } from "~/app/account/AvatarUploader";
+import { AvatarUploader } from "~/app/(app)/account/AvatarUploader";
 import { CopyToClipboardButton } from "~/components/CopyToClipboardButton";
 import { DistrictSelect } from "~/components/districts/DistrictSelect";
 import { FormError } from "~/components/form/FormError";

@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 
-import { OverviewChart } from "~/app/stats/OverviewChart";
+import { OverviewChart } from "~/app/(app)/stats/OverviewChart";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import {
   getAllMetricDefinitions,
