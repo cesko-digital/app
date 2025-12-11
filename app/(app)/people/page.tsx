@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
 
-import { stripNonPublicFields } from "~/app/people/matching";
-import { ProfileVisibilityPrefs } from "~/app/people/ProfileVisibilityPrefs";
-import { SearchablePeopleBox } from "~/app/people/SearchablePeopleBox";
+import { stripNonPublicFields } from "~/app/(app)/people/matching";
+import { ProfileVisibilityPrefs } from "~/app/(app)/people/ProfileVisibilityPrefs";
+import { SearchablePeopleBox } from "~/app/(app)/people/SearchablePeopleBox";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { getAllUserProfiles } from "~/src/data/user-profile";
 import { strip } from "~/src/utils";

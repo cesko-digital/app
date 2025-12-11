@@ -2,7 +2,6 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { QuickRegistrationButton } from "~/app/events/[slug]/QuickRegistrationButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { EventCard } from "~/components/EventCard";
 import { ImageLabel, ProjectImageLabel } from "~/components/ImageLabel";
@@ -19,6 +18,8 @@ import { getProjectById, type Project } from "~/src/data/project";
 import { getUserProfile, type UserProfile } from "~/src/data/user-profile";
 import { Route } from "~/src/routing";
 import { defaultAvatarUrl } from "~/src/utils";
+
+import { QuickRegistrationButton } from "./QuickRegistrationButton";
 
 type Params = {
   slug: string;
