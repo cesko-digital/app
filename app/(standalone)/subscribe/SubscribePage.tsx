@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
 import { looksLikeEmailAdress } from "~/src/utils";
@@ -40,9 +41,24 @@ export const SubscribePage = () => {
     },
   ];
 
+  const router = useRouter();
+  const searchParams = useSearchParams() ?? [];
+  const [formState, setFormState] = useState<FormState>({
+    ...initialFormState,
+    selectedTargetGroups: decodeTargetGroupIds(searchParams),
+    email: searchParams.get("email") ?? "",
+  });
+
   return (
     <Form
       options={targetGroups}
+      state={formState}
+      setState={(state) => {
+        router.replace(
+          "/subscribe/?" + encodeTargetGroupIds(state.selectedTargetGroups),
+        );
+        setFormState(state);
+      }}
       onSubmit={async (state) => {
         // TBD: Handle errors and success
         await fetch("/subscribe/submit", {
@@ -69,11 +85,17 @@ type FormState = {
 
 const initialFormState: FormState = {
   submitting: false,
-  selectedTargetGroups: ["cist.digital"],
+  selectedTargetGroups: [],
   firstName: "",
   lastName: "",
   email: "",
 };
+
+const encodeTargetGroupIds = (list: TargetGroupId[]) =>
+  new URLSearchParams(list.map((val) => ["g", val]));
+
+const decodeTargetGroupIds = (params: URLSearchParams) =>
+  params.getAll("g") as TargetGroupId[];
 
 const canSubmit = (state: FormState) =>
   state.firstName !== "" &&
@@ -84,12 +106,12 @@ const canSubmit = (state: FormState) =>
 
 type FormProps = {
   options: TargetGroup[];
+  state: FormState;
+  setState: (state: FormState) => void;
   onSubmit: (state: FormState) => Promise<void>;
 };
 
-const Form = ({ options, onSubmit }: FormProps) => {
-  const [state, setState] = useState<FormState>(initialFormState);
-
+const Form = ({ options, state, setState, onSubmit }: FormProps) => {
   const toggleTargetGroup = (id: TargetGroupId) => {
     const oldValue = state.selectedTargetGroups;
     const selectedTargetGroups = oldValue.includes(id)
