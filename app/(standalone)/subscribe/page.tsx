@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 
 import { SubscribePage } from "./SubscribePage";
@@ -15,7 +16,9 @@ export default function Page() {
   return (
     <div className="m-auto my-10 flex max-w-prose flex-col gap-8 p-8">
       <h1 className="typo-title">Česko.Digital ve vaší schránce</h1>
-      <SubscribePage />
+      <Suspense fallback="Načítám data…">
+        <SubscribePage />
+      </Suspense>
     </div>
   );
 }
