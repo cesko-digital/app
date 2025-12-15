@@ -7,7 +7,7 @@ import {
   espoCreateLead,
   espoGetContactsByEmail,
 } from "~/src/espocrm/espo";
-import { notEmpty } from "~/src/utils";
+import { normalizeEmailAddress, notEmpty } from "~/src/utils";
 
 const targetListIds: Record<string, string> = {
   "cist.digital": "693c0cd42b2d08580",
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest): Promise<Response> {
       await espoCreateLead(crmApiKey, {
         firstName: subscription.firstName,
         lastName: subscription.lastName,
-        emailAddress: subscription.email,
+        emailAddress: normalizeEmailAddress(subscription.email),
         targetListsIds: selectedTargetListIds,
       });
     } else {
