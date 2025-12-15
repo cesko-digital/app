@@ -43,6 +43,12 @@ const targetGroups: TargetGroup[] = [
 
 type PageState = "filling-form" | "submitted-successfully";
 
+const encodeTargetGroupIds = (list: TargetGroupId[]) =>
+  new URLSearchParams(list.map((val) => ["g", val]));
+
+const decodeTargetGroupIds = (params: URLSearchParams) =>
+  params.getAll("g") as TargetGroupId[];
+
 export const SubscribePage = () => {
   const [pageState, setPageState] = useState<PageState>("filling-form");
 
@@ -135,12 +141,6 @@ const initialFormState: FormState = {
   lastName: "",
   email: "",
 };
-
-const encodeTargetGroupIds = (list: TargetGroupId[]) =>
-  new URLSearchParams(list.map((val) => ["g", val]));
-
-const decodeTargetGroupIds = (params: URLSearchParams) =>
-  params.getAll("g") as TargetGroupId[];
 
 const canSubmit = (state: FormState) =>
   state.firstName !== "" &&
