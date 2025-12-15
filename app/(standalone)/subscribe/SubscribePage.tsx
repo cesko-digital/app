@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { FormError } from "~/components/form/FormError";
 import { RequiredFieldMarker } from "~/components/form/RequiredFieldMarker";
 import { looksLikeEmailAdress } from "~/src/utils";
 
@@ -18,30 +19,34 @@ type TargetGroup = {
   description: string;
 };
 
+const targetGroups: TargetGroup[] = [
+  {
+    id: "cist.digital",
+    name: "Číst.Digital",
+    description: "Jednou měsíčně hlavní novinky z Česko.Digital",
+  },
+  {
+    id: "nezisk.digital",
+    name: "Nezisk.Digital",
+    description: "Digitální transformace nezisku",
+  },
+  {
+    id: "sluzby.digital",
+    name: "Služby.Digital",
+    description: "Digitální transformace veřejné správy",
+  },
+];
+
 //
 // Subscribe Page
 //
 
-export const SubscribePage = () => {
-  const targetGroups: TargetGroup[] = [
-    {
-      id: "cist.digital",
-      name: "Číst.Digital",
-      description: "Jednou měsíčně hlavní novinky z Česko.Digital",
-    },
-    {
-      id: "nezisk.digital",
-      name: "Nezisk.Digital",
-      description: "Digitální transformace nezisku",
-    },
-    {
-      id: "sluzby.digital",
-      name: "Služby.Digital",
-      description: "Digitální transformace veřejné správy",
-    },
-  ];
+type PageState = "filling-form" | "submitted-successfully";
 
-  const router = useRouter();
+export const SubscribePage = () => {
+  const [pageState, setPageState] = useState<PageState>("filling-form");
+
+  // Initialize target groups and e-mail address from URL search params
   const searchParams = useSearchParams() ?? [];
   const [formState, setFormState] = useState<FormState>({
     ...initialFormState,
@@ -49,26 +54,65 @@ export const SubscribePage = () => {
     email: searchParams.get("email") ?? "",
   });
 
-  return (
-    <Form
-      options={targetGroups}
-      state={formState}
-      setState={(state) => {
-        router.replace(
-          "/subscribe/?" + encodeTargetGroupIds(state.selectedTargetGroups),
-        );
-        setFormState(state);
-      }}
-      onSubmit={async (state) => {
-        // TBD: Handle errors and success
-        await fetch("/subscribe/submit", {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(state),
-        });
-      }}
-    />
-  );
+  // When form state changes, save params to URL
+  const router = useRouter();
+  const updateURLToMatchFormState = (state: FormState) => {
+    const mergedParams = encodeTargetGroupIds(state.selectedTargetGroups);
+    for (const [key, val] of searchParams.entries()) {
+      if (key !== "g") {
+        mergedParams.append(key, val);
+      }
+    }
+    router.replace("/subscribe/?" + mergedParams);
+  };
+
+  const submitForm = async () => {
+    setFormState({ ...formState, submitting: true });
+    const response = await fetch("/subscribe/submit", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(formState),
+    }).catch(() => null);
+    if (response?.ok) {
+      setFormState({ ...formState, submitting: false });
+      setPageState("submitted-successfully");
+    } else {
+      setFormState({
+        ...formState,
+        errorMessage:
+          "Chyba při ukládání dat. Zkuste to ještě jednou nebo později?",
+        submitting: false,
+      });
+    }
+  };
+
+  if (pageState === "filling-form") {
+    return (
+      <Form
+        options={targetGroups}
+        onSubmit={submitForm}
+        state={formState}
+        setState={(state) => {
+          updateURLToMatchFormState(state);
+          setFormState(state);
+        }}
+      />
+    );
+  } else {
+    const returnUrl = searchParams.get("returnTo");
+    return (
+      <div className="flex flex-col gap-8">
+        <p>Díky za váš zájem! Zůstaneme v kontaktu :)</p>
+        {returnUrl && (
+          <p>
+            <a className="btn-inverted inline-block" href={returnUrl}>
+              Zpátky na web →
+            </a>
+          </p>
+        )}
+      </div>
+    );
+  }
 };
 
 //
@@ -77,6 +121,7 @@ export const SubscribePage = () => {
 
 type FormState = {
   submitting: boolean;
+  errorMessage?: string;
   selectedTargetGroups: TargetGroupId[];
   firstName: string;
   lastName: string;
@@ -108,7 +153,7 @@ type FormProps = {
   options: TargetGroup[];
   state: FormState;
   setState: (state: FormState) => void;
-  onSubmit: (state: FormState) => Promise<void>;
+  onSubmit: () => void;
 };
 
 const Form = ({ options, state, setState, onSubmit }: FormProps) => {
@@ -132,6 +177,7 @@ const Form = ({ options, state, setState, onSubmit }: FormProps) => {
                   type="checkbox"
                   className="mr-3"
                   name={id}
+                  disabled={state.submitting}
                   checked={state.selectedTargetGroups.includes(id)}
                   onChange={() => toggleTargetGroup(id)}
                 />
@@ -148,6 +194,7 @@ const Form = ({ options, state, setState, onSubmit }: FormProps) => {
         label="Jméno"
         autoComplete="given-name"
         required={true}
+        disabled={state.submitting}
         value={state.firstName}
         onChange={(firstName) => setState({ ...state, firstName })}
       />
@@ -156,6 +203,7 @@ const Form = ({ options, state, setState, onSubmit }: FormProps) => {
         label="Příjmení"
         autoComplete="family-name"
         value={state.lastName}
+        disabled={state.submitting}
         required={true}
         onChange={(lastName) => setState({ ...state, lastName })}
       />
@@ -164,6 +212,7 @@ const Form = ({ options, state, setState, onSubmit }: FormProps) => {
         label="E-mail"
         autoComplete="email"
         value={state.email}
+        disabled={state.submitting}
         required={true}
         type="email"
         onChange={(email) => setState({ ...state, email })}
@@ -178,16 +227,11 @@ const Form = ({ options, state, setState, onSubmit }: FormProps) => {
         .
       </p>
 
+      {state.errorMessage && <FormError error={state.errorMessage} />}
+
       <div>
         {canSubmit(state) && (
-          <button
-            className="btn-primary mt-4"
-            onClick={async () => {
-              setState({ ...state, submitting: true });
-              await onSubmit(state);
-              setState({ ...state, submitting: false });
-            }}
-          >
+          <button className="btn-primary mt-4" onClick={onSubmit}>
             Přihlásit odběr
           </button>
         )}
@@ -253,6 +297,3 @@ const TextInput = ({
     </div>
   );
 };
-
-const sleep = (seconds: number) =>
-  new Promise((resolve) => setTimeout(resolve, seconds * 1000));
