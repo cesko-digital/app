@@ -2,7 +2,7 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { ResponseButton } from "~/app/opportunities/[slug]/ResponseButton";
+import { ResponseButton } from "~/app/(app)/opportunities/[slug]/ResponseButton";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ImageLabel, ProjectImageLabel } from "~/components/ImageLabel";
 import { MarkdownContent } from "~/components/MarkdownContent";
