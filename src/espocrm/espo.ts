@@ -185,6 +185,7 @@ type Entity =
   | "Contact"
   | "Account"
   | "TargetList"
+  | "Lead"
   | "Meeting"
   | "CProject"
   | "CTeamEngagement"
@@ -304,6 +305,24 @@ export const espoUpdateContact = updateObject("Contact", decodeContact);
 
 /** Get all contacts */
 export const espoGetAllContacts = getAllObjectsOfType("Contact", decodeContact);
+
+/**
+ * Get all contacts with a given e-mail address
+ *
+ * The e-mail address must be an exact string match.
+ * Both main e-mail address and `emailAddressData` are checked.
+ */
+export const espoGetContactsByEmail = (apiKey: string, email: string) =>
+  espoFetchAll({
+    path: "Contact",
+    searchParams: {
+      "whereGroup[0][type]": "equals",
+      "whereGroup[0][attribute]": "emailAddress",
+      "whereGroup[0][value]": email,
+    },
+    decodeResponse: decodeContact,
+    apiKey,
+  });
 
 //
 // Account
@@ -428,6 +447,21 @@ export const espoAddAccountsToTargetList = (
     decodeResponse: boolean,
     apiKey,
   });
+
+//
+// Leads
+//
+
+export type Lead = decodeType<typeof decodeLead>;
+export const decodeLead = intersection(
+  decodePersonEntity,
+  record({
+    targetListsIds: maybe(array(string)),
+  }),
+);
+
+/** Create a new lead */
+export const espoCreateLead = createObject("Lead", decodeLead);
 
 //
 // Meetings

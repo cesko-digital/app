@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { DetailedChart } from "~/app/stats/DetailedChart";
+import { DetailedChart } from "~/app/(app)/stats/DetailedChart";
 import { Breadcrumbs } from "~/components/Breadcrumbs";
 import { ImageLabel } from "~/components/ImageLabel";
 import { Sidebar, SidebarCTA, SidebarSection } from "~/components/Sidebar";
