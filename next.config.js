@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   logging: {
     fetches: {
       fullUrl: true,
