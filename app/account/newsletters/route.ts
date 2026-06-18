@@ -17,7 +17,7 @@ export async function GET() {
   return withAuthenticatedUser(async ({ email }) => {
     const subscriber = await ecomailGetSubscriber(apiKey, email);
     const subscribed =
-      subscriber.lists.find((list) => list.listId === mainContactListId)
+      subscriber.lists?.find((list) => list.listId === mainContactListId)
         ?.state === "subscribed";
     return NextResponse.json({ subscribed });
   });
