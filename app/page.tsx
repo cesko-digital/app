@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { EventCard } from "~/components/EventCard";
@@ -12,9 +11,7 @@ import {
 } from "~/src/data/event";
 import { getAllProjects, type Project } from "~/src/data/project";
 import { getFeaturedOpportunities } from "~/src/data/queries";
-import { Categories, getBubbles, type Bubble } from "~/src/discourse";
 import { Route } from "~/src/routing";
-import { stripMarkdown } from "~/src/utils";
 
 /** Refresh data every 10 minutes */
 export const revalidate = 600;
@@ -27,18 +24,6 @@ export default async function Home() {
   const projects = await getFeaturedProjects();
   const opportunities = await getFeaturedOpportunities();
   const events = await getFeaturedEvents();
-
-  const discussionSummary = await getBubbles({
-    categoryId: Categories.general,
-    skipTopicIds: [3, 5 /* welcome posts */],
-    maxCount: 6,
-  });
-
-  const marketplaceSummary = await getBubbles({
-    categoryId: Categories.marketplace,
-    skipTopicIds: [35 /* welcome post */],
-    maxCount: 6,
-  });
 
   const projectWithId = (id: string) => allProjects.find((p) => p.id === id);
 
@@ -93,19 +78,6 @@ export default async function Home() {
         />
       </section>
 
-      <section>
-        <h2 className="typo-title2 mb-1">Tržiště</h2>
-        <h3 className="typo-subtitle mb-7">
-          Zapoj se krátce v projektech mimo Česko.Digital
-        </h3>
-        <DiscussionSummaryBox bubbles={marketplaceSummary} />
-        <MoreButton
-          text="Otevřít Tržiště ↗"
-          url={Route.marketplace}
-          external
-        />
-      </section>
-
       {events.length > 0 && (
         <section>
           <h2 className="typo-title2 mb-4">Nejbližší akce</h2>
@@ -121,19 +93,6 @@ export default async function Home() {
           <MoreButton text="Zobrazit všechny akce" url={Route.events} />
         </section>
       )}
-
-      <section>
-        <h2 className="typo-title2 mb-1">Diskuze</h2>
-        <h3 className="typo-subtitle mb-7">
-          Potřebuješ poradit? Chceš poradit? Diskutuj o digitalizaci Česka
-        </h3>
-        <DiscussionSummaryBox bubbles={discussionSummary} />
-        <MoreButton
-          text="Otevřít diskuzní fórum ↗"
-          url={Route.forum}
-          external
-        />
-      </section>
     </main>
   );
 }
@@ -160,50 +119,3 @@ async function getFeaturedEvents(): Promise<Event[]> {
     .sort(compareEventsByTime)
     .slice(0, 3);
 }
-
-//
-// Discussions
-//
-
-const DiscussionSummaryBox = ({ bubbles }: { bubbles: Bubble[] }) => {
-  return (
-    <div className="mb-20 grid gap-7 md:grid-cols-3">
-      {bubbles.map((bubble) => (
-        <DiscussionBubble key={bubble.id} bubble={bubble} />
-      ))}
-    </div>
-  );
-};
-
-const DiscussionBubble = ({ bubble }: { bubble: Bubble }) => {
-  const ArrowShape = () => (
-    <div className="ml-[30px] h-0 w-0 border-r-[8px] border-t-[10px] border-r-transparent border-t-gray group-hover:border-t-it"></div>
-  );
-  return (
-    <Link
-      className="group flex min-w-0 flex-col"
-      href={bubble.topicUrl}
-      target="_blank"
-    >
-      <div className="grow overflow-hidden rounded-xl border-2 border-gray bg-gray p-4 group-hover:border-it">
-        <p className="line-clamp-5">
-          <span className="mr-2 font-semibold">{bubble.title}</span>
-          {stripMarkdown(bubble.rawFirstPost.replaceAll(/\n\n*/g, " "))}
-        </p>
-      </div>
-      <ArrowShape />
-      <div className="mb-1 ml-1 flex flex-row items-center gap-1">
-        {bubble.posterAvatars.map((url) => (
-          <Image
-            key={url}
-            src={url}
-            className="rounded-full"
-            width={25}
-            height={25}
-            alt=""
-          />
-        ))}
-      </div>
-    </Link>
-  );
-};
